@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly GenericDeviceUsagePage Instance = new GenericDeviceUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericDeviceUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="GenericDeviceUsagePage" /> class
         /// </summary>
         private GenericDeviceUsagePage() : base(0x0006, "GenericDevice")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

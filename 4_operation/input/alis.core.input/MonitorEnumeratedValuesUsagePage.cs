@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly MonitorEnumeratedValuesUsagePage Instance = new MonitorEnumeratedValuesUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MonitorEnumeratedValuesUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="MonitorEnumeratedValuesUsagePage" /> class
         /// </summary>
         private MonitorEnumeratedValuesUsagePage() : base(0x0081, "MonitorEnumeratedValues")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -74,7 +74,7 @@ namespace DevDecoder.HIDDevices.Pages
             }
 
             // Create dynamic usages from ranges
-            var n = (ushort)(id-0x0001);
+            var n = (ushort)(id - 0x0001);
             if (id >= 0x0001 || id < 0xffff) return new Usage(this, id, $"ENUM_{n}", UsageTypes.Sel);
 
             return base.CreateUsage(id);

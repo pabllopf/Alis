@@ -17,7 +17,7 @@ namespace Alis.Core.Input.Converters
         public static readonly LeftTriggerConverter Instance = new LeftTriggerConverter();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LeftTriggerConverter"/> class
+        ///     Initializes a new instance of the <see cref="LeftTriggerConverter" /> class
         /// </summary>
         private LeftTriggerConverter() : base(0D, 1D, 0.5D)
         {

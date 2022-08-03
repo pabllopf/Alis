@@ -208,37 +208,37 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 case JointType.DistanceJoint:
                 {
-                    joint = new DistanceJoint((DistanceJointDef) def);
+                    joint = new DistanceJoint((DistanceJointDef)def);
                 }
                     break;
                 case JointType.MouseJoint:
                 {
-                    joint = new MouseJoint((MouseJointDef) def);
+                    joint = new MouseJoint((MouseJointDef)def);
                 }
                     break;
                 case JointType.PrismaticJoint:
                 {
-                    joint = new PrismaticJoint((PrismaticJointDef) def);
+                    joint = new PrismaticJoint((PrismaticJointDef)def);
                 }
                     break;
                 case JointType.RevoluteJoint:
                 {
-                    joint = new RevoluteJoint((RevoluteJointDef) def);
+                    joint = new RevoluteJoint((RevoluteJointDef)def);
                 }
                     break;
                 case JointType.PulleyJoint:
                 {
-                    joint = new PulleyJoint((PulleyJointDef) def);
+                    joint = new PulleyJoint((PulleyJointDef)def);
                 }
                     break;
                 case JointType.GearJoint:
                 {
-                    joint = new GearJoint((GearJointDef) def);
+                    joint = new GearJoint((GearJointDef)def);
                 }
                     break;
                 case JointType.LineJoint:
                 {
-                    joint = new LineJoint((LineJointDef) def);
+                    joint = new LineJoint((LineJointDef)def);
                 }
                     break;
                 default:

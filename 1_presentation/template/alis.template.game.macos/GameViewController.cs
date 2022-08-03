@@ -2,7 +2,7 @@ using System;
 using System.Numerics;
 using Alis.Template.Game.Android;
 using AppKit;
-using CoreAnimation;
+using CoreGraphics;
 using Foundation;
 using Metal;
 using MetalKit;
@@ -10,58 +10,79 @@ using MetalKit;
 namespace Alis.Template.Game.MacOs
 {
     /// <summary>
-    /// The game view controller class
+    ///     The game view controller class
     /// </summary>
-    /// <seealso cref="NSViewController"/>
-    /// <seealso cref="IMTKViewDelegate"/>
+    /// <seealso cref="NSViewController" />
+    /// <seealso cref="IMTKViewDelegate" />
     public partial class GameViewController : NSViewController, IMTKViewDelegate
     {
-        // view
         /// <summary>
-        /// The mtk view
+        ///     The command queue
         /// </summary>
-        MTKView mtkView;
+        private IMTLCommandQueue commandQueue;
 
         // renderer
         /// <summary>
-        /// The device
+        ///     The device
         /// </summary>
-        IMTLDevice device;
+        private IMTLDevice device;
+
+        // view
         /// <summary>
-        /// The command queue
+        ///     The mtk view
         /// </summary>
-        IMTLCommandQueue commandQueue;
-        /// <summary>
-        /// The pipeline state
-        /// </summary>
-        IMTLRenderPipelineState pipelineState;
-        /// <summary>
-        /// The vertex buffer
-        /// </summary>
-        IMTLBuffer vertexBuffer;
-        
-        /// <summary>
-        /// The view
-        /// </summary>
-        Matrix4x4 proj, view;
+        private MTKView mtkView;
 
         /// <summary>
-        /// The blue
+        ///     The pipeline state
         /// </summary>
-        float red, green, blue;
-        
+        private IMTLRenderPipelineState pipelineState;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameViewController"/> class
+        ///     The view
+        /// </summary>
+        private Matrix4x4 proj, view;
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private float red, green, blue;
+
+        /// <summary>
+        ///     The vertex buffer
+        /// </summary>
+        private IMTLBuffer vertexBuffer;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GameViewController" /> class
         /// </summary>
         /// <param name="coder">The coder</param>
-        [Export ("initWithCoder:")]
-        public GameViewController (NSCoder coder) : base (coder)
+        [Export("initWithCoder:")]
+        public GameViewController(NSCoder coder) : base(coder)
         {
+        }
+
+        /// <summary>
+        ///     Drawables the size will change using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        /// <param name="size">The size</param>
+        public void DrawableSizeWillChange(MTKView view, CGSize size)
+        {
+        }
+
+        /// <summary>
+        ///     Draws the view
+        /// </summary>
+        /// <param name="view">The view</param>
+        public void Draw(MTKView view)
+        {
+            RenderManager.OnDrawFrame(view, commandQueue);
         }
 
 
         /// <summary>
-        /// Views the did load
+        ///     Views the did load
         /// </summary>
         public override void ViewDidLoad()
         {
@@ -76,12 +97,12 @@ namespace Alis.Template.Game.MacOs
 
             // Create a new command queue
             commandQueue = device.CreateCommandQueue();
-            
+
             // Setup view
             mtkView = (MTKView)View;
             mtkView.Delegate = this;
             mtkView.Device = device;
-            
+
             mtkView.EnableSetNeedsDisplay = false;
 
             mtkView.SampleCount = 1;
@@ -90,27 +111,6 @@ namespace Alis.Template.Game.MacOs
             mtkView.PreferredFramesPerSecond = 60;
 
             mtkView.ClearColor = new MTLClearColor(0.5f, 0.5f, 0.5f, 1.0f);
-            
         }
-
-        /// <summary>
-        /// Drawables the size will change using the specified view
-        /// </summary>
-        /// <param name="view">The view</param>
-        /// <param name="size">The size</param>
-        public void DrawableSizeWillChange(MTKView view, CoreGraphics.CGSize size)
-        {
-
-        }
-
-        /// <summary>
-        /// Draws the view
-        /// </summary>
-        /// <param name="view">The view</param>
-        public void Draw(MTKView view)
-        {
-            RenderManager.OnDrawFrame(view, commandQueue);
-        }
-        
     }
 }

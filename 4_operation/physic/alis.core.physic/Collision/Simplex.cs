@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Collision
         internal unsafe void WriteCache(SimplexCache* cache)
         {
             cache->Metric = GetMetric();
-            cache->Count = (ushort) Count;
+            cache->Count = (ushort)Count;
             SimplexVertex** vertices = stackalloc SimplexVertex*[3];
             fixed (SimplexVertex* v1Ptr = &V1, v2Ptr = &V2, v3Ptr = &V3)
             {
@@ -137,8 +137,8 @@ namespace Alis.Core.Physic.Collision
                 vertices[2] = v3Ptr;
                 for (int i = 0; i < Count; ++i)
                 {
-                    cache->IndexA[i] = (byte) vertices[i]->IndexA;
-                    cache->IndexB[i] = (byte) vertices[i]->IndexB;
+                    cache->IndexA[i] = (byte)vertices[i]->IndexA;
+                    cache->IndexB[i] = (byte)vertices[i]->IndexB;
                 }
             }
         }

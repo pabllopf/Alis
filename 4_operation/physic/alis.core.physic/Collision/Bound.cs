@@ -52,18 +52,12 @@ namespace Alis.Core.Physic.Collision
         /// <summary>
         ///     Gets the value of the is lower
         /// </summary>
-        public bool IsLower
-        {
-            get { return (Value & 1) == 0; }
-        }
+        public bool IsLower => (Value & 1) == 0;
 
         /// <summary>
         ///     Gets the value of the is upper
         /// </summary>
-        public bool IsUpper
-        {
-            get { return (Value & 1) == 1; }
-        }
+        public bool IsUpper => (Value & 1) == 1;
 
         /// <summary>
         ///     Clones this instance

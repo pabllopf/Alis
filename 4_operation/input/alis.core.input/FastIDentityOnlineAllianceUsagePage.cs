@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly FastIDentityOnlineAllianceUsagePage Instance = new FastIDentityOnlineAllianceUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FastIDentityOnlineAllianceUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="FastIDentityOnlineAllianceUsagePage" /> class
         /// </summary>
         private FastIDentityOnlineAllianceUsagePage() : base(0xf1d0, "FastIDentityOnlineAlliance")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

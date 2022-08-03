@@ -142,7 +142,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override bool Equals(object obj)
         {
-            return obj is FloatRect && Equals((FloatRect) obj);
+            return obj is FloatRect && Equals((FloatRect)obj);
         }
 
         ///////////////////////////////////////////////////////////
@@ -168,10 +168,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override int GetHashCode()
         {
-            return unchecked((int) ((uint) Left ^
-                                    (((uint) Top << 13) | ((uint) Top >> 19)) ^
-                                    (((uint) Width << 26) | ((uint) Width >> 6)) ^
-                                    (((uint) Height << 7) | ((uint) Height >> 25))));
+            return unchecked((int)((uint)Left ^
+                                   (((uint)Top << 13) | ((uint)Top >> 19)) ^
+                                   (((uint)Width << 26) | ((uint)Width >> 6)) ^
+                                   (((uint)Height << 7) | ((uint)Height >> 25))));
         }
 
         ////////////////////////////////////////////////////////////
@@ -209,10 +209,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public static explicit operator IntRect(FloatRect r)
         {
-            return new IntRect((int) r.Left,
-                (int) r.Top,
-                (int) r.Width,
-                (int) r.Height);
+            return new IntRect((int)r.Left,
+                (int)r.Top,
+                (int)r.Width,
+                (int)r.Height);
         }
 
         /// <summary>Left coordinate of the rectangle</summary>

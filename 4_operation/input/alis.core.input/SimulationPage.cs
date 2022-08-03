@@ -41,8 +41,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00020000,
+        [Description("Undefined")] Undefined = 0x00020000,
 
         /// <summary>
         ///     Flight Simulation Device Usage.
@@ -119,80 +118,67 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Flight Control Stick Usage.
         /// </summary>
-        [Description("Flight Control Stick")]
-        FlightControlStick = 0x00020020,
+        [Description("Flight Control Stick")] FlightControlStick = 0x00020020,
 
         /// <summary>
         ///     Flight Stick Usage.
         /// </summary>
-        [Description("Flight Stick")]
-        FlightStick = 0x00020021,
+        [Description("Flight Stick")] FlightStick = 0x00020021,
 
         /// <summary>
         ///     Cyclic Control Usage.
         /// </summary>
-        [Description("Cyclic Control")]
-        CyclicControl = 0x00020022,
+        [Description("Cyclic Control")] CyclicControl = 0x00020022,
 
         /// <summary>
         ///     Cyclic Trim Usage.
         /// </summary>
-        [Description("Cyclic Trim")]
-        CyclicTrim = 0x00020023,
+        [Description("Cyclic Trim")] CyclicTrim = 0x00020023,
 
         /// <summary>
         ///     Flight Yoke Usage.
         /// </summary>
-        [Description("Flight Yoke")]
-        FlightYoke = 0x00020024,
+        [Description("Flight Yoke")] FlightYoke = 0x00020024,
 
         /// <summary>
         ///     Track Control Usage.
         /// </summary>
-        [Description("Track Control")]
-        TrackControl = 0x00020025,
+        [Description("Track Control")] TrackControl = 0x00020025,
 
         /// <summary>
         ///     Aileron Usage.
         /// </summary>
-        [Description("Aileron")]
-        Aileron = 0x000200b0,
+        [Description("Aileron")] Aileron = 0x000200b0,
 
         /// <summary>
         ///     Aileron Trim Usage.
         /// </summary>
-        [Description("Aileron Trim")]
-        AileronTrim = 0x000200b1,
+        [Description("Aileron Trim")] AileronTrim = 0x000200b1,
 
         /// <summary>
         ///     Anti-Torque Control Usage.
         /// </summary>
-        [Description("Anti-Torque Control")]
-        AntiTorqueControl = 0x000200b2,
+        [Description("Anti-Torque Control")] AntiTorqueControl = 0x000200b2,
 
         /// <summary>
         ///     Autopilot Enable Usage.
         /// </summary>
-        [Description("Autopilot Enable")]
-        AutopilotEnable = 0x000200b3,
+        [Description("Autopilot Enable")] AutopilotEnable = 0x000200b3,
 
         /// <summary>
         ///     Chaff Release Usage.
         /// </summary>
-        [Description("Chaff Release")]
-        ChaffRelease = 0x000200b4,
+        [Description("Chaff Release")] ChaffRelease = 0x000200b4,
 
         /// <summary>
         ///     Collective Control Usage.
         /// </summary>
-        [Description("Collective Control")]
-        CollectiveControl = 0x000200b5,
+        [Description("Collective Control")] CollectiveControl = 0x000200b5,
 
         /// <summary>
         ///     Dive Brake Usage.
         /// </summary>
-        [Description("Dive Brake")]
-        DiveBrake = 0x000200b6,
+        [Description("Dive Brake")] DiveBrake = 0x000200b6,
 
         /// <summary>
         ///     Electronic Countermeasures Usage.
@@ -203,151 +189,126 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Elevator Usage.
         /// </summary>
-        [Description("Elevator")]
-        Elevator = 0x000200b8,
+        [Description("Elevator")] Elevator = 0x000200b8,
 
         /// <summary>
         ///     Elevator Trim Usage.
         /// </summary>
-        [Description("Elevator Trim")]
-        ElevatorTrim = 0x000200b9,
+        [Description("Elevator Trim")] ElevatorTrim = 0x000200b9,
 
         /// <summary>
         ///     Rudder Usage.
         /// </summary>
-        [Description("Rudder")]
-        Rudder = 0x000200ba,
+        [Description("Rudder")] Rudder = 0x000200ba,
 
         /// <summary>
         ///     Throttle Usage.
         /// </summary>
-        [Description("Throttle")]
-        Throttle = 0x000200bb,
+        [Description("Throttle")] Throttle = 0x000200bb,
 
         /// <summary>
         ///     Flight Communications Usage.
         /// </summary>
-        [Description("Flight Communications")]
-        FlightCommunications = 0x000200bc,
+        [Description("Flight Communications")] FlightCommunications = 0x000200bc,
 
         /// <summary>
         ///     Flare Release Usage.
         /// </summary>
-        [Description("Flare Release")]
-        FlareRelease = 0x000200bd,
+        [Description("Flare Release")] FlareRelease = 0x000200bd,
 
         /// <summary>
         ///     Landing Gear Usage.
         /// </summary>
-        [Description("Landing Gear")]
-        LandingGear = 0x000200be,
+        [Description("Landing Gear")] LandingGear = 0x000200be,
 
         /// <summary>
         ///     Toe Brake Usage.
         /// </summary>
-        [Description("Toe Brake")]
-        ToeBrake = 0x000200bf,
+        [Description("Toe Brake")] ToeBrake = 0x000200bf,
 
         /// <summary>
         ///     Trigger Usage.
         /// </summary>
-        [Description("Trigger")]
-        Trigger = 0x000200c0,
+        [Description("Trigger")] Trigger = 0x000200c0,
 
         /// <summary>
         ///     Weapons Arm Usage.
         /// </summary>
-        [Description("Weapons Arm")]
-        WeaponsArm = 0x000200c1,
+        [Description("Weapons Arm")] WeaponsArm = 0x000200c1,
 
         /// <summary>
         ///     Weapons Select Usage.
         /// </summary>
-        [Description("Weapons Select")]
-        WeaponsSelect = 0x000200c2,
+        [Description("Weapons Select")] WeaponsSelect = 0x000200c2,
 
         /// <summary>
         ///     Wing Flaps Usage.
         /// </summary>
-        [Description("Wing Flaps")]
-        WingFlaps = 0x000200c3,
+        [Description("Wing Flaps")] WingFlaps = 0x000200c3,
 
         /// <summary>
         ///     Accelerator Usage.
         /// </summary>
-        [Description("Accelerator")]
-        Accelerator = 0x000200c4,
+        [Description("Accelerator")] Accelerator = 0x000200c4,
 
         /// <summary>
         ///     Brake Usage.
         /// </summary>
-        [Description("Brake")]
-        Brake = 0x000200c5,
+        [Description("Brake")] Brake = 0x000200c5,
 
         /// <summary>
         ///     Clutch Usage.
         /// </summary>
-        [Description("Clutch")]
-        Clutch = 0x000200c6,
+        [Description("Clutch")] Clutch = 0x000200c6,
 
         /// <summary>
         ///     Shifter Usage.
         /// </summary>
-        [Description("Shifter")]
-        Shifter = 0x000200c7,
+        [Description("Shifter")] Shifter = 0x000200c7,
 
         /// <summary>
         ///     Steering Usage.
         /// </summary>
-        [Description("Steering")]
-        Steering = 0x000200c8,
+        [Description("Steering")] Steering = 0x000200c8,
 
         /// <summary>
         ///     Turret Direction Usage.
         /// </summary>
-        [Description("Turret Direction")]
-        TurretDirection = 0x000200c9,
+        [Description("Turret Direction")] TurretDirection = 0x000200c9,
 
         /// <summary>
         ///     Barrel Elevation Usage.
         /// </summary>
-        [Description("Barrel Elevation")]
-        BarrelElevation = 0x000200ca,
+        [Description("Barrel Elevation")] BarrelElevation = 0x000200ca,
 
         /// <summary>
         ///     Dive Plane Usage.
         /// </summary>
-        [Description("Dive Plane")]
-        DivePlane = 0x000200cb,
+        [Description("Dive Plane")] DivePlane = 0x000200cb,
 
         /// <summary>
         ///     Ballast Usage.
         /// </summary>
-        [Description("Ballast")]
-        Ballast = 0x000200cc,
+        [Description("Ballast")] Ballast = 0x000200cc,
 
         /// <summary>
         ///     Bicycle Crank Usage.
         /// </summary>
-        [Description("Bicycle Crank")]
-        BicycleCrank = 0x000200cd,
+        [Description("Bicycle Crank")] BicycleCrank = 0x000200cd,
 
         /// <summary>
         ///     Handle Bars Usage.
         /// </summary>
-        [Description("Handle Bars")]
-        HandleBars = 0x000200ce,
+        [Description("Handle Bars")] HandleBars = 0x000200ce,
 
         /// <summary>
         ///     Front Brake Usage.
         /// </summary>
-        [Description("Front Brake")]
-        FrontBrake = 0x000200cf,
+        [Description("Front Brake")] FrontBrake = 0x000200cf,
 
         /// <summary>
         ///     Rear Brake Usage.
         /// </summary>
-        [Description("Rear Brake")]
-        RearBrake = 0x000200d0
+        [Description("Rear Brake")] RearBrake = 0x000200d0
     }
 }

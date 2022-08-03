@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly VESAVirtualUsagePage Instance = new VESAVirtualUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VESAVirtualUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="VESAVirtualUsagePage" /> class
         /// </summary>
         private VESAVirtualUsagePage() : base(0x0082, "VESAVirtual")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

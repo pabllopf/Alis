@@ -44,15 +44,18 @@ namespace Alis.Core.Network.Internal
     internal static class WebSocketFrameWriter
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WebSocketFrameWriter" /> class
-        /// </summary>
-        static WebSocketFrameWriter() => _random = new Random((int) DateTime.Now.Ticks);
-
-        /// <summary>
         ///     This is used for data masking so that web proxies don't cache the data
         ///     Therefore, there are no cryptographic concerns
         /// </summary>
         private static readonly Random _random;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WebSocketFrameWriter" /> class
+        /// </summary>
+        static WebSocketFrameWriter()
+        {
+            _random = new Random((int)DateTime.Now.Ticks);
+        }
 
         /// <summary>
         ///     No async await stuff here because we are dealing with a memory stream
@@ -66,30 +69,30 @@ namespace Alis.Core.Network.Internal
             bool isLastFrame, bool isClient)
         {
             MemoryStream memoryStream = toStream;
-            byte finBitSetAsByte = isLastFrame ? (byte) 0x80 : (byte) 0x00;
-            byte byte1 = (byte) (finBitSetAsByte | (byte) opCode);
+            byte finBitSetAsByte = isLastFrame ? (byte)0x80 : (byte)0x00;
+            byte byte1 = (byte)(finBitSetAsByte | (byte)opCode);
             memoryStream.WriteByte(byte1);
 
             // NB, set the mask flag if we are constructing a client frame
-            byte maskBitSetAsByte = isClient ? (byte) 0x80 : (byte) 0x00;
+            byte maskBitSetAsByte = isClient ? (byte)0x80 : (byte)0x00;
 
             // depending on the size of the length we want to write it as a byte, ushort or ulong
             if (fromPayload.Count < 126)
             {
-                byte byte2 = (byte) (maskBitSetAsByte | (byte) fromPayload.Count);
+                byte byte2 = (byte)(maskBitSetAsByte | (byte)fromPayload.Count);
                 memoryStream.WriteByte(byte2);
             }
             else if (fromPayload.Count <= ushort.MaxValue)
             {
-                byte byte2 = (byte) (maskBitSetAsByte | 126);
+                byte byte2 = (byte)(maskBitSetAsByte | 126);
                 memoryStream.WriteByte(byte2);
-                BinaryReaderWriter.WriteUShort((ushort) fromPayload.Count, memoryStream, false);
+                BinaryReaderWriter.WriteUShort((ushort)fromPayload.Count, memoryStream, false);
             }
             else
             {
-                byte byte2 = (byte) (maskBitSetAsByte | 127);
+                byte byte2 = (byte)(maskBitSetAsByte | 127);
                 memoryStream.WriteByte(byte2);
-                BinaryReaderWriter.WriteULong((ulong) fromPayload.Count, memoryStream, false);
+                BinaryReaderWriter.WriteULong((ulong)fromPayload.Count, memoryStream, false);
             }
 
             // if we are creating a client frame then we MUST mack the payload as per the spec

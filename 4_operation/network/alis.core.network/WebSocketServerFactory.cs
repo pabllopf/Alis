@@ -67,7 +67,10 @@ namespace Alis.Core.Network
         ///     Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
         /// </summary>
         /// <param name="bufferFactory"></param>
-        public WebSocketServerFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
+        public WebSocketServerFactory(Func<MemoryStream> bufferFactory)
+        {
+            _bufferFactory = bufferFactory;
+        }
 
         /// <summary>
         ///     Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
@@ -76,7 +79,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>Http data read from the stream</returns>
         public async Task<WebSocketHttpContext> ReadHttpHeaderFromStreamAsync(Stream stream,
-            CancellationToken token = default(CancellationToken))
+            CancellationToken token = default)
         {
             string header = await HttpHelper.ReadHttpHeaderAsync(stream, token);
             string path = HttpHelper.GetPathFromHeader(header);
@@ -93,8 +96,10 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
-            CancellationToken token = default(CancellationToken)) =>
-            await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
+            CancellationToken token = default)
+        {
+            return await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
+        }
 
         /// <summary>
         ///     Accept web socket with options specified
@@ -105,7 +110,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options,
-            CancellationToken token = default(CancellationToken))
+            CancellationToken token = default)
         {
             Guid guid = Guid.NewGuid();
             Events.Log.AcceptWebSocketStarted(guid);

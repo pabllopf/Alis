@@ -41,19 +41,16 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00900000,
+        [Description("Undefined")] Undefined = 0x00900000,
 
         /// <summary>
         ///     Camera Auto-focus Usage.
         /// </summary>
-        [Description("Camera Auto-focus")]
-        CameraAutofocus = 0x00900020,
+        [Description("Camera Auto-focus")] CameraAutofocus = 0x00900020,
 
         /// <summary>
         ///     Camera Shutter Usage.
         /// </summary>
-        [Description("Camera Shutter")]
-        CameraShutter = 0x00900021
+        [Description("Camera Shutter")] CameraShutter = 0x00900021
     }
 }

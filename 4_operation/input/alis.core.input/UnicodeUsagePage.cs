@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly UnicodeUsagePage Instance = new UnicodeUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnicodeUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="UnicodeUsagePage" /> class
         /// </summary>
         private UnicodeUsagePage() : base(0x0010, "Unicode")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

@@ -20,20 +20,23 @@ namespace Alis.Core.Input.Converters
         public static readonly DirectionConverter Instance = new DirectionConverter();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DirectionConverter"/> class
+        ///     Initializes a new instance of the <see cref="DirectionConverter" /> class
         /// </summary>
         private DirectionConverter()
         {
         }
-        
+
         /// <summary>
-        /// Converts the culture
+        ///     Converts the culture
         /// </summary>
         /// <param name="culture">The culture</param>
         /// <param name="value">The value</param>
         /// <returns>The direction</returns>
-        public override Direction Convert(CultureInfo culture, double value) => double.IsNaN(value)
-            ? Direction.NotPressed
-            : (Direction)Math.Clamp((int)Math.Round(value * 7.0), 0, 7);
+        public override Direction Convert(CultureInfo culture, double value)
+        {
+            return double.IsNaN(value)
+                ? Direction.NotPressed
+                : (Direction)Math.Clamp((int)Math.Round(value * 7.0), 0, 7);
+        }
     }
 }

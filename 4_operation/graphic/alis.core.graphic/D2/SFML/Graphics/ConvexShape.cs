@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override uint GetPointCount()
         {
-            return (uint) myPoints.Length;
+            return (uint)myPoints.Length;
         }
 
         ////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public void SetPointCount(uint count)
         {
-            Array.Resize(ref myPoints, (int) count);
+            Array.Resize(ref myPoints, (int)count);
             Update();
         }
 

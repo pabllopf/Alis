@@ -332,7 +332,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
                     fixed (short* samplesPtr = myTempBuffer)
                     {
                         dataChunk.samples = samplesPtr;
-                        dataChunk.sampleCount = (uint) myTempBuffer.Length;
+                        dataChunk.sampleCount = (uint)myTempBuffer.Length;
                     }
                 }
 
@@ -365,7 +365,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="UserData">The user data</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundStream_create(GetDataCallbackType OnGetData, SeekCallbackType OnSeek,
             uint ChannelCount, uint SampleRate, IntPtr UserData);
 
@@ -374,7 +374,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundStreamStream">The sound stream stream</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_destroy(IntPtr SoundStreamStream);
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundStream">The sound stream</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_play(IntPtr SoundStream);
 
         /// <summary>
@@ -390,7 +390,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundStream">The sound stream</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_pause(IntPtr SoundStream);
 
         /// <summary>
@@ -398,7 +398,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundStream">The sound stream</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_stop(IntPtr SoundStream);
 
         /// <summary>
@@ -407,7 +407,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The sound status</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern SoundStatus sfSoundStream_getStatus(IntPtr SoundStream);
 
         /// <summary>
@@ -416,7 +416,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The uint</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundStream_getChannelCount(IntPtr SoundStream);
 
         /// <summary>
@@ -425,7 +425,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The uint</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundStream_getSampleRate(IntPtr SoundStream);
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="Loop">The loop</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setLoop(IntPtr SoundStream, bool Loop);
 
         /// <summary>
@@ -443,7 +443,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="Pitch">The pitch</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setPitch(IntPtr SoundStream, float Pitch);
 
         /// <summary>
@@ -452,7 +452,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="Volume">The volume</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setVolume(IntPtr SoundStream, float Volume);
 
         /// <summary>
@@ -461,7 +461,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="position">The position</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setPosition(IntPtr SoundStream, Vector3f position);
 
         /// <summary>
@@ -470,7 +470,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="Relative">The relative</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setRelativeToListener(IntPtr SoundStream, bool Relative);
 
         /// <summary>
@@ -479,7 +479,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="MinDistance">The min distance</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setMinDistance(IntPtr SoundStream, float MinDistance);
 
         /// <summary>
@@ -488,7 +488,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="Attenuation">The attenuation</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setAttenuation(IntPtr SoundStream, float Attenuation);
 
         /// <summary>
@@ -497,7 +497,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <param name="TimeOffset">The time offset</param>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundStream_setPlayingOffset(IntPtr SoundStream, Time TimeOffset);
 
         /// <summary>
@@ -506,7 +506,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundStream_getLoop(IntPtr SoundStream);
 
         /// <summary>
@@ -515,7 +515,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern float sfSoundStream_getPitch(IntPtr SoundStream);
 
         /// <summary>
@@ -524,7 +524,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern float sfSoundStream_getVolume(IntPtr SoundStream);
 
         /// <summary>
@@ -533,7 +533,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The vector 3f</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector3f sfSoundStream_getPosition(IntPtr SoundStream);
 
         /// <summary>
@@ -542,7 +542,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundStream_isRelativeToListener(IntPtr SoundStream);
 
         /// <summary>
@@ -551,7 +551,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern float sfSoundStream_getMinDistance(IntPtr SoundStream);
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The float</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern float sfSoundStream_getAttenuation(IntPtr SoundStream);
 
         /// <summary>
@@ -569,7 +569,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundStream">The sound stream</param>
         /// <returns>The systems time</returns>
         [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Time sfSoundStream_getPlayingOffset(IntPtr SoundStream);
 
         ////////////////////////////////////////////////////////////

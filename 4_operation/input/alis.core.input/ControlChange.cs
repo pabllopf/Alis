@@ -19,7 +19,7 @@ namespace Alis.Core.Input
     public readonly struct ControlChange : IEquatable<ControlChange>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ControlChange"/> class
+        ///     Initializes a new instance of the <see cref="ControlChange" /> class
         /// </summary>
         /// <param name="control">The control</param>
         /// <param name="value">The value</param>
@@ -32,7 +32,7 @@ namespace Alis.Core.Input
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ControlChange"/> class
+        ///     Initializes a new instance of the <see cref="ControlChange" /> class
         /// </summary>
         /// <param name="control">The control</param>
         /// <param name="previousValue">The previous value</param>
@@ -80,7 +80,7 @@ namespace Alis.Core.Input
                 (double)(Stopwatch.GetTimestamp() - Timestamp) / Stopwatch.Frequency);
 
         /// <summary>
-        /// Updates the value
+        ///     Updates the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The control change</returns>
@@ -94,15 +94,23 @@ namespace Alis.Core.Input
 
         /// <inheritdoc />
         public bool Equals(ControlChange other)
-            => ReferenceEquals(Control, other.Control) &&
-               PreviousValue.Equals(other.PreviousValue) &&
-               Value.Equals(other.Value);
+        {
+            return ReferenceEquals(Control, other.Control) &&
+                   PreviousValue.Equals(other.PreviousValue) &&
+                   Value.Equals(other.Value);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is ControlChange other && Equals(other);
+        public override bool Equals(object obj)
+        {
+            return obj is ControlChange other && Equals(other);
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(Control, PreviousValue, Value);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Control, PreviousValue, Value);
+        }
 
         /// <summary>
         ///     Implements the == operator.
@@ -110,7 +118,10 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(ControlChange left, ControlChange right) => left.Equals(right);
+        public static bool operator ==(ControlChange left, ControlChange right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Implements the != operator.
@@ -118,19 +129,28 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(ControlChange left, ControlChange right) => !left.Equals(right);
+        public static bool operator !=(ControlChange left, ControlChange right)
+        {
+            return !left.Equals(right);
+        }
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="ControlChange" /> to <see cref="System.Double" />.
         /// </summary>
         /// <param name="change">The change.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator double(ControlChange change) => change.Value;
+        public static implicit operator double(ControlChange change)
+        {
+            return change.Value;
+        }
 
         /// <summary>
         ///     Creates a change that simulates the current value having changed from <seealso cref="double.NaN" />.
         /// </summary>
         /// <returns></returns>
-        internal ControlChange Reset() => new ControlChange(Control, double.NaN, Value, Timestamp);
+        internal ControlChange Reset()
+        {
+            return new ControlChange(Control, double.NaN, Value, Timestamp);
+        }
     }
 }

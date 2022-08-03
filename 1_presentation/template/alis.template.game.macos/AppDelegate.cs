@@ -4,21 +4,21 @@ using Foundation;
 namespace Alis.Template.Game.MacOs
 {
     /// <summary>
-    /// The app delegate class
+    ///     The app delegate class
     /// </summary>
-    /// <seealso cref="NSApplicationDelegate"/>
+    /// <seealso cref="NSApplicationDelegate" />
     [Register("AppDelegate")]
     public class AppDelegate : NSApplicationDelegate
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AppDelegate"/> class
+        ///     Initializes a new instance of the <see cref="AppDelegate" /> class
         /// </summary>
         public AppDelegate()
         {
         }
 
         /// <summary>
-        /// Describes whether this instance application should terminate after last window closed
+        ///     Describes whether this instance application should terminate after last window closed
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <returns>The bool</returns>
@@ -28,7 +28,7 @@ namespace Alis.Template.Game.MacOs
         }
 
         /// <summary>
-        /// Dids the finish launching using the specified notification
+        ///     Dids the finish launching using the specified notification
         /// </summary>
         /// <param name="notification">The notification</param>
         public override void DidFinishLaunching(NSNotification notification)
@@ -37,7 +37,7 @@ namespace Alis.Template.Game.MacOs
         }
 
         /// <summary>
-        /// Wills the terminate using the specified notification
+        ///     Wills the terminate using the specified notification
         /// </summary>
         /// <param name="notification">The notification</param>
         public override void WillTerminate(NSNotification notification)

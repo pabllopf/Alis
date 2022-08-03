@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly MedicalInstrumentsUsagePage Instance = new MedicalInstrumentsUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MedicalInstrumentsUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="MedicalInstrumentsUsagePage" /> class
         /// </summary>
         private MedicalInstrumentsUsagePage() : base(0x0040, "MedicalInstruments")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

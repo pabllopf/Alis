@@ -339,7 +339,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public void Draw(Vertex[] vertices, PrimitiveType type, RenderStates states)
         {
-            Draw(vertices, 0, (uint) vertices.Length, type, states);
+            Draw(vertices, 0, (uint)vertices.Length, type, states);
         }
 
         ////////////////////////////////////////////////////////////
@@ -539,7 +539,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <returns>The int ptr</returns>
         [Obsolete("sfRenderTexture_create is obselete. Use sfRenderTexture_createWithSettings instead.")]
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderTexture_create(uint Width, uint Height, bool DepthBuffer);
 
         /// <summary>
@@ -550,7 +550,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="Settings">The settings</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderTexture_createWithSettings(uint Width, uint Height,
             ContextSettings Settings);
 
@@ -559,7 +559,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -568,7 +568,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="ClearColor">The clear color</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_clear(IntPtr CPointer, Color ClearColor);
 
         /// <summary>
@@ -577,7 +577,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2u sfRenderTexture_getSize(IntPtr CPointer);
 
         /// <summary>
@@ -587,7 +587,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="Active">The active</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderTexture_setActive(IntPtr CPointer, bool Active);
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderTexture_saveGLStates(IntPtr CPointer);
 
         /// <summary>
@@ -605,7 +605,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderTexture_restoreGLStates(IntPtr CPointer);
 
         /// <summary>
@@ -614,7 +614,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderTexture_display(IntPtr CPointer);
 
         /// <summary>
@@ -623,7 +623,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="View">The view</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_setView(IntPtr CPointer, IntPtr View);
 
         /// <summary>
@@ -632,7 +632,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderTexture_getView(IntPtr CPointer);
 
         /// <summary>
@@ -641,7 +641,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderTexture_getDefaultView(IntPtr CPointer);
 
         /// <summary>
@@ -651,7 +651,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="TargetView">The target view</param>
         /// <returns>The int rect</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntRect sfRenderTexture_getViewport(IntPtr CPointer, IntPtr TargetView);
 
         /// <summary>
@@ -662,7 +662,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="View">The view</param>
         /// <returns>The vector 2i</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfRenderTexture_mapCoordsToPixel(IntPtr CPointer, Vector2f point, IntPtr View);
 
         /// <summary>
@@ -673,7 +673,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="View">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2f sfRenderTexture_mapPixelToCoords(IntPtr CPointer, Vector2i point, IntPtr View);
 
         /// <summary>
@@ -682,7 +682,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfRenderTexture_getTexture(IntPtr CPointer);
 
         /// <summary>
@@ -690,7 +690,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>The uint</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern uint sfRenderTexture_getMaximumAntialiasingLevel();
 
         /// <summary>
@@ -699,7 +699,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="smooth">The smooth</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_setSmooth(IntPtr CPointer, bool smooth);
 
         /// <summary>
@@ -708,7 +708,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderTexture_isSmooth(IntPtr CPointer);
 
         /// <summary>
@@ -717,7 +717,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="repeated">The repeated</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_setRepeated(IntPtr CPointer, bool repeated);
 
         /// <summary>
@@ -726,7 +726,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderTexture_isRepeated(IntPtr CPointer);
 
         /// <summary>
@@ -735,7 +735,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfRenderTexture_generateMipmap(IntPtr CPointer);
 
         /// <summary>
@@ -747,7 +747,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="type">The type</param>
         /// <param name="renderStates">The render states</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern unsafe void sfRenderTexture_drawPrimitives(IntPtr CPointer, Vertex* vertexPtr,
             uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
@@ -756,7 +756,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_pushGLStates(IntPtr CPointer);
 
         /// <summary>
@@ -764,7 +764,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_popGLStates(IntPtr CPointer);
 
         /// <summary>
@@ -772,7 +772,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_resetGLStates(IntPtr CPointer);
     }
 }

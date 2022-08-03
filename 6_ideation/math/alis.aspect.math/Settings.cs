@@ -237,7 +237,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         public static float MixFriction(float friction1, float friction2)
         {
-            return (float) System.Math.Sqrt(friction1 * friction2);
+            return (float)System.Math.Sqrt(friction1 * friction2);
         }
 
         /// <summary>

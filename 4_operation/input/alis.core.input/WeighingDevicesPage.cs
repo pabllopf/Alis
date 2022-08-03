@@ -41,38 +41,32 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x008d0000,
+        [Description("Undefined")] Undefined = 0x008d0000,
 
         /// <summary>
         ///     Weighing Device Usage.
         /// </summary>
-        [Description("Weighing Device")]
-        WeighingDevice = 0x008d0001,
+        [Description("Weighing Device")] WeighingDevice = 0x008d0001,
 
         /// <summary>
         ///     Scale Device Usage.
         /// </summary>
-        [Description("Scale Device")]
-        ScaleDevice = 0x008d0020,
+        [Description("Scale Device")] ScaleDevice = 0x008d0020,
 
         /// <summary>
         ///     Scale Class I Metric Usage.
         /// </summary>
-        [Description("Scale Class I Metric")]
-        ScaleClassIMetric = 0x008d0021,
+        [Description("Scale Class I Metric")] ScaleClassIMetric = 0x008d0021,
 
         /// <summary>
         ///     Scale Class I Metric Usage.
         /// </summary>
-        [Description("Scale Class I Metric")]
-        ScaleClassIMetric2 = 0x008d0022,
+        [Description("Scale Class I Metric")] ScaleClassIMetric2 = 0x008d0022,
 
         /// <summary>
         ///     Scale Class II Metric Usage.
         /// </summary>
-        [Description("Scale Class II Metric")]
-        ScaleClassIIMetric = 0x008d0023,
+        [Description("Scale Class II Metric")] ScaleClassIIMetric = 0x008d0023,
 
         /// <summary>
         ///     Scale Class III Metric Usage.
@@ -89,8 +83,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Scale Class IV Metric Usage.
         /// </summary>
-        [Description("Scale Class IV Metric")]
-        ScaleClassIVMetric = 0x008d0026,
+        [Description("Scale Class IV Metric")] ScaleClassIVMetric = 0x008d0026,
 
         /// <summary>
         ///     Scale Class III English Usage.
@@ -113,8 +106,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Scale Class Generic Usage.
         /// </summary>
-        [Description("Scale Class Generic")]
-        ScaleClassGeneric = 0x008d002a,
+        [Description("Scale Class Generic")] ScaleClassGeneric = 0x008d002a,
 
         /// <summary>
         ///     Scale Attribute Report Usage.
@@ -125,20 +117,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Scale Control Report Usage.
         /// </summary>
-        [Description("Scale Control Report")]
-        ScaleControlReport = 0x008d0031,
+        [Description("Scale Control Report")] ScaleControlReport = 0x008d0031,
 
         /// <summary>
         ///     Scale Data Report Usage.
         /// </summary>
-        [Description("Scale Data Report")]
-        ScaleDataReport = 0x008d0032,
+        [Description("Scale Data Report")] ScaleDataReport = 0x008d0032,
 
         /// <summary>
         ///     Scale Status Report Usage.
         /// </summary>
-        [Description("Scale Status Report")]
-        ScaleStatusReport = 0x008d0033,
+        [Description("Scale Status Report")] ScaleStatusReport = 0x008d0033,
 
         /// <summary>
         ///     Scale Weight Limit Report Usage.
@@ -155,56 +144,47 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Weight Usage.
         /// </summary>
-        [Description("Data Weight")]
-        DataWeight = 0x008d0040,
+        [Description("Data Weight")] DataWeight = 0x008d0040,
 
         /// <summary>
         ///     Data Scaling Usage.
         /// </summary>
-        [Description("Data Scaling")]
-        DataScaling = 0x008d0041,
+        [Description("Data Scaling")] DataScaling = 0x008d0041,
 
         /// <summary>
         ///     Weight Unit Usage.
         /// </summary>
-        [Description("Weight Unit")]
-        WeightUnit = 0x008d0050,
+        [Description("Weight Unit")] WeightUnit = 0x008d0050,
 
         /// <summary>
         ///     Weight Unit Milligram Usage.
         /// </summary>
-        [Description("Weight Unit Milligram")]
-        WeightUnitMilligram = 0x008d0051,
+        [Description("Weight Unit Milligram")] WeightUnitMilligram = 0x008d0051,
 
         /// <summary>
         ///     Weight Unit Gram Usage.
         /// </summary>
-        [Description("Weight Unit Gram")]
-        WeightUnitGram = 0x008d0052,
+        [Description("Weight Unit Gram")] WeightUnitGram = 0x008d0052,
 
         /// <summary>
         ///     Weight Unit Kilogram Usage.
         /// </summary>
-        [Description("Weight Unit Kilogram")]
-        WeightUnitKilogram = 0x008d0053,
+        [Description("Weight Unit Kilogram")] WeightUnitKilogram = 0x008d0053,
 
         /// <summary>
         ///     Weight Unit Carats Usage.
         /// </summary>
-        [Description("Weight Unit Carats")]
-        WeightUnitCarats = 0x008d0054,
+        [Description("Weight Unit Carats")] WeightUnitCarats = 0x008d0054,
 
         /// <summary>
         ///     Weight Unit Taels Usage.
         /// </summary>
-        [Description("Weight Unit Taels")]
-        WeightUnitTaels = 0x008d0055,
+        [Description("Weight Unit Taels")] WeightUnitTaels = 0x008d0055,
 
         /// <summary>
         ///     Weight Unit Grains Usage.
         /// </summary>
-        [Description("Weight Unit Grains")]
-        WeightUnitGrains = 0x008d0056,
+        [Description("Weight Unit Grains")] WeightUnitGrains = 0x008d0056,
 
         /// <summary>
         ///     Weight Unit Pennyweights Usage.
@@ -221,8 +201,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Weight Unit Avoir Ton Usage.
         /// </summary>
-        [Description("Weight Unit Avoir Ton")]
-        WeightUnitAvoirTon = 0x008d0059,
+        [Description("Weight Unit Avoir Ton")] WeightUnitAvoirTon = 0x008d0059,
 
         /// <summary>
         ///     Weight Unit Troy Ounce Usage.
@@ -233,38 +212,32 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Weight Unit Ounce Usage.
         /// </summary>
-        [Description("Weight Unit Ounce")]
-        WeightUnitOunce = 0x008d005b,
+        [Description("Weight Unit Ounce")] WeightUnitOunce = 0x008d005b,
 
         /// <summary>
         ///     Weight Unit Pound Usage.
         /// </summary>
-        [Description("Weight Unit Pound")]
-        WeightUnitPound = 0x008d005c,
+        [Description("Weight Unit Pound")] WeightUnitPound = 0x008d005c,
 
         /// <summary>
         ///     Calibration Count Usage.
         /// </summary>
-        [Description("Calibration Count")]
-        CalibrationCount = 0x008d0060,
+        [Description("Calibration Count")] CalibrationCount = 0x008d0060,
 
         /// <summary>
         ///     Re-Zero Count Usage.
         /// </summary>
-        [Description("Re-Zero Count")]
-        ReZeroCount = 0x008d0061,
+        [Description("Re-Zero Count")] ReZeroCount = 0x008d0061,
 
         /// <summary>
         ///     Scale Status Usage.
         /// </summary>
-        [Description("Scale Status")]
-        ScaleStatus = 0x008d0070,
+        [Description("Scale Status")] ScaleStatus = 0x008d0070,
 
         /// <summary>
         ///     Scale Status Fault Usage.
         /// </summary>
-        [Description("Scale Status Fault")]
-        ScaleStatusFault = 0x008d0071,
+        [Description("Scale Status Fault")] ScaleStatusFault = 0x008d0071,
 
         /// <summary>
         ///     Scale Status Stable at Center of Zero Usage.
@@ -311,13 +284,11 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Zero Scale Usage.
         /// </summary>
-        [Description("Zero Scale")]
-        ZeroScale = 0x008d0080,
+        [Description("Zero Scale")] ZeroScale = 0x008d0080,
 
         /// <summary>
         ///     Enforced Zero Return Usage.
         /// </summary>
-        [Description("Enforced Zero Return")]
-        EnforcedZeroReturn = 0x008d0081
+        [Description("Enforced Zero Return")] EnforcedZeroReturn = 0x008d0081
     }
 }

@@ -197,34 +197,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vector2 Anchor1
-        {
-            get { return Body1.GetWorldPoint(LocalAnchor1); }
-        }
+        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vector2 Anchor2
-        {
-            get { return Body2.GetWorldPoint(LocalAnchor2); }
-        }
+        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
         /// <summary>
         ///     Get the first ground anchor.
         /// </summary>
-        public Vector2 GroundAnchorX1
-        {
-            get { return Ground.GetXForm().Position + GroundAnchor1; }
-        }
+        public Vector2 GroundAnchorX1 => Ground.GetXForm().Position + GroundAnchor1;
 
         /// <summary>
         ///     Get the second ground anchor.
         /// </summary>
-        public Vector2 GroundAnchorX2
-        {
-            get { return Ground.GetXForm().Position + GroundAnchor2; }
-        }
+        public Vector2 GroundAnchorX2 => Ground.GetXForm().Position + GroundAnchor2;
 
         /// <summary>
         ///     Get the current length of the segment attached to body1.

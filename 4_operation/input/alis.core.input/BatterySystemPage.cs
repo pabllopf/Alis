@@ -41,62 +41,52 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00850000,
+        [Description("Undefined")] Undefined = 0x00850000,
 
         /// <summary>
         ///     SMB Battery Mode Usage.
         /// </summary>
-        [Description("SMB Battery Mode")]
-        SMBBatteryMode = 0x00850001,
+        [Description("SMB Battery Mode")] SMBBatteryMode = 0x00850001,
 
         /// <summary>
         ///     SMB Battery Status Usage.
         /// </summary>
-        [Description("SMB Battery Status")]
-        SMBBatteryStatus = 0x00850002,
+        [Description("SMB Battery Status")] SMBBatteryStatus = 0x00850002,
 
         /// <summary>
         ///     SMB Alarm Warning Usage.
         /// </summary>
-        [Description("SMB Alarm Warning")]
-        SMBAlarmWarning = 0x00850003,
+        [Description("SMB Alarm Warning")] SMBAlarmWarning = 0x00850003,
 
         /// <summary>
         ///     SMB Charger Mode Usage.
         /// </summary>
-        [Description("SMB Charger Mode")]
-        SMBChargerMode = 0x00850004,
+        [Description("SMB Charger Mode")] SMBChargerMode = 0x00850004,
 
         /// <summary>
         ///     SMB Charger Status Usage.
         /// </summary>
-        [Description("SMB Charger Status")]
-        SMBChargerStatus = 0x00850005,
+        [Description("SMB Charger Status")] SMBChargerStatus = 0x00850005,
 
         /// <summary>
         ///     SMB Charger Spec Info Usage.
         /// </summary>
-        [Description("SMB Charger Spec Info")]
-        SMBChargerSpecInfo = 0x00850006,
+        [Description("SMB Charger Spec Info")] SMBChargerSpecInfo = 0x00850006,
 
         /// <summary>
         ///     SMB Selector State Usage.
         /// </summary>
-        [Description("SMB Selector State")]
-        SMBSelectorState = 0x00850007,
+        [Description("SMB Selector State")] SMBSelectorState = 0x00850007,
 
         /// <summary>
         ///     SMB Selector Presets Usage.
         /// </summary>
-        [Description("SMB Selector Presets")]
-        SMBSelectorPresets = 0x00850008,
+        [Description("SMB Selector Presets")] SMBSelectorPresets = 0x00850008,
 
         /// <summary>
         ///     SMB Selector Info Usage.
         /// </summary>
-        [Description("SMB Selector Info")]
-        SMBSelectorInfo = 0x00850009,
+        [Description("SMB Selector Info")] SMBSelectorInfo = 0x00850009,
 
         /*
          * Range: 0x0010 -> 0x0014
@@ -136,62 +126,52 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Connection To SMBus Usage.
         /// </summary>
-        [Description("Connection To SMBus")]
-        ConnectionToSMBus = 0x00850015,
+        [Description("Connection To SMBus")] ConnectionToSMBus = 0x00850015,
 
         /// <summary>
         ///     Output Connection Usage.
         /// </summary>
-        [Description("Output Connection")]
-        OutputConnection = 0x00850016,
+        [Description("Output Connection")] OutputConnection = 0x00850016,
 
         /// <summary>
         ///     Charger Connection Usage.
         /// </summary>
-        [Description("Charger Connection")]
-        ChargerConnection = 0x00850017,
+        [Description("Charger Connection")] ChargerConnection = 0x00850017,
 
         /// <summary>
         ///     Battery Insertion Usage.
         /// </summary>
-        [Description("Battery Insertion")]
-        BatteryInsertion = 0x00850018,
+        [Description("Battery Insertion")] BatteryInsertion = 0x00850018,
 
         /// <summary>
         ///     Use Next Usage.
         /// </summary>
-        [Description("Use Next")]
-        UseNext = 0x00850019,
+        [Description("Use Next")] UseNext = 0x00850019,
 
         /// <summary>
         ///     OK To Use Usage.
         /// </summary>
-        [Description("OK To Use")]
-        OKToUse = 0x0085001a,
+        [Description("OK To Use")] OKToUse = 0x0085001a,
 
         /// <summary>
         ///     Battery Supported Usage.
         /// </summary>
-        [Description("Battery Supported")]
-        BatterySupported = 0x0085001b,
+        [Description("Battery Supported")] BatterySupported = 0x0085001b,
 
         /// <summary>
         ///     Selector Revision Usage.
         /// </summary>
-        [Description("Selector Revision")]
-        SelectorRevision = 0x0085001c,
+        [Description("Selector Revision")] SelectorRevision = 0x0085001c,
 
         /// <summary>
         ///     Charging Indicator Usage.
         /// </summary>
-        [Description("Charging Indicator")]
-        ChargingIndicator = 0x0085001d,
+        [Description("Charging Indicator")] ChargingIndicator = 0x0085001d,
 
         /// <summary>
         ///     Manufacturer Access Usage.
         /// </summary>
-        [Description("Manufacturer Access")]
-        ManufacturerAccess = 0x00850028,
+        [Description("Manufacturer Access")] ManufacturerAccess = 0x00850028,
 
         /// <summary>
         ///     Remaining Capacity Limit Usage.
@@ -202,50 +182,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Remaining Time Limit Usage.
         /// </summary>
-        [Description("Remaining Time Limit")]
-        RemainingTimeLimit = 0x0085002a,
+        [Description("Remaining Time Limit")] RemainingTimeLimit = 0x0085002a,
 
         /// <summary>
         ///     At Rate Usage.
         /// </summary>
-        [Description("At Rate")]
-        AtRate = 0x0085002b,
+        [Description("At Rate")] AtRate = 0x0085002b,
 
         /// <summary>
         ///     Capacity Mode Usage.
         /// </summary>
-        [Description("Capacity Mode")]
-        CapacityMode = 0x0085002c,
+        [Description("Capacity Mode")] CapacityMode = 0x0085002c,
 
         /// <summary>
         ///     Broadcast To Charger Usage.
         /// </summary>
-        [Description("Broadcast To Charger")]
-        BroadcastToCharger = 0x0085002d,
+        [Description("Broadcast To Charger")] BroadcastToCharger = 0x0085002d,
 
         /// <summary>
         ///     Primary Battery Usage.
         /// </summary>
-        [Description("Primary Battery")]
-        PrimaryBattery = 0x0085002e,
+        [Description("Primary Battery")] PrimaryBattery = 0x0085002e,
 
         /// <summary>
         ///     Charge Controller Usage.
         /// </summary>
-        [Description("Charge Controller")]
-        ChargeController = 0x0085002f,
+        [Description("Charge Controller")] ChargeController = 0x0085002f,
 
         /// <summary>
         ///     Terminate Charge Usage.
         /// </summary>
-        [Description("Terminate Charge")]
-        TerminateCharge = 0x00850040,
+        [Description("Terminate Charge")] TerminateCharge = 0x00850040,
 
         /// <summary>
         ///     Terminate Discharge Usage.
         /// </summary>
-        [Description("Terminate Discharge")]
-        TerminateDischarge = 0x00850041,
+        [Description("Terminate Discharge")] TerminateDischarge = 0x00850041,
 
         /// <summary>
         ///     Below Remaining Capacity Limit Usage.
@@ -262,74 +234,62 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Charging Usage.
         /// </summary>
-        [Description("Charging")]
-        Charging = 0x00850044,
+        [Description("Charging")] Charging = 0x00850044,
 
         /// <summary>
         ///     Discharging Usage.
         /// </summary>
-        [Description("Discharging")]
-        Discharging = 0x00850045,
+        [Description("Discharging")] Discharging = 0x00850045,
 
         /// <summary>
         ///     Fully Charged Usage.
         /// </summary>
-        [Description("Fully Charged")]
-        FullyCharged = 0x00850046,
+        [Description("Fully Charged")] FullyCharged = 0x00850046,
 
         /// <summary>
         ///     Fully Discharged Usage.
         /// </summary>
-        [Description("Fully Discharged")]
-        FullyDischarged = 0x00850047,
+        [Description("Fully Discharged")] FullyDischarged = 0x00850047,
 
         /// <summary>
         ///     Conditioning Flag Usage.
         /// </summary>
-        [Description("Conditioning Flag")]
-        ConditioningFlag = 0x00850048,
+        [Description("Conditioning Flag")] ConditioningFlag = 0x00850048,
 
         /// <summary>
         ///     At Rate OK Usage.
         /// </summary>
-        [Description("At Rate OK")]
-        AtRateOK = 0x00850049,
+        [Description("At Rate OK")] AtRateOK = 0x00850049,
 
         /// <summary>
         ///     SMB Error Code Usage.
         /// </summary>
-        [Description("SMB Error Code")]
-        SMBErrorCode = 0x0085004a,
+        [Description("SMB Error Code")] SMBErrorCode = 0x0085004a,
 
         /// <summary>
         ///     Need Replacement Usage.
         /// </summary>
-        [Description("Need Replacement")]
-        NeedReplacement = 0x0085004b,
+        [Description("Need Replacement")] NeedReplacement = 0x0085004b,
 
         /// <summary>
         ///     At Rate Time To Full Usage.
         /// </summary>
-        [Description("At Rate Time To Full")]
-        AtRateTimeToFull = 0x00850060,
+        [Description("At Rate Time To Full")] AtRateTimeToFull = 0x00850060,
 
         /// <summary>
         ///     At Rate Time To Empty Usage.
         /// </summary>
-        [Description("At Rate Time To Empty")]
-        AtRateTimeToEmpty = 0x00850061,
+        [Description("At Rate Time To Empty")] AtRateTimeToEmpty = 0x00850061,
 
         /// <summary>
         ///     Average Current Usage.
         /// </summary>
-        [Description("Average Current")]
-        AverageCurrent = 0x00850062,
+        [Description("Average Current")] AverageCurrent = 0x00850062,
 
         /// <summary>
         ///     Max Error Usage.
         /// </summary>
-        [Description("Max Error")]
-        MaxError = 0x00850063,
+        [Description("Max Error")] MaxError = 0x00850063,
 
         /// <summary>
         ///     Relative State Of Charge Usage.
@@ -346,38 +306,32 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Remaining Capacity Usage.
         /// </summary>
-        [Description("Remaining Capacity")]
-        RemainingCapacity = 0x00850066,
+        [Description("Remaining Capacity")] RemainingCapacity = 0x00850066,
 
         /// <summary>
         ///     Full Charge Capacity Usage.
         /// </summary>
-        [Description("Full Charge Capacity")]
-        FullChargeCapacity = 0x00850067,
+        [Description("Full Charge Capacity")] FullChargeCapacity = 0x00850067,
 
         /// <summary>
         ///     Run Time To Empty Usage.
         /// </summary>
-        [Description("Run Time To Empty")]
-        RunTimeToEmpty = 0x00850068,
+        [Description("Run Time To Empty")] RunTimeToEmpty = 0x00850068,
 
         /// <summary>
         ///     Average Time To Empty Usage.
         /// </summary>
-        [Description("Average Time To Empty")]
-        AverageTimeToEmpty = 0x00850069,
+        [Description("Average Time To Empty")] AverageTimeToEmpty = 0x00850069,
 
         /// <summary>
         ///     Average Time To Full Usage.
         /// </summary>
-        [Description("Average Time To Full")]
-        AverageTimeToFull = 0x0085006a,
+        [Description("Average Time To Full")] AverageTimeToFull = 0x0085006a,
 
         /// <summary>
         ///     Cycle Count Usage.
         /// </summary>
-        [Description("Cycle Count")]
-        CycleCount = 0x0085006b,
+        [Description("Cycle Count")] CycleCount = 0x0085006b,
 
         /// <summary>
         ///     Battery Pack Model Level Usage.
@@ -400,56 +354,47 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Design Capacity Usage.
         /// </summary>
-        [Description("Design Capacity")]
-        DesignCapacity = 0x00850083,
+        [Description("Design Capacity")] DesignCapacity = 0x00850083,
 
         /// <summary>
         ///     Specification Info Usage.
         /// </summary>
-        [Description("Specification Info")]
-        SpecificationInfo = 0x00850084,
+        [Description("Specification Info")] SpecificationInfo = 0x00850084,
 
         /// <summary>
         ///     Manufacturer Date Usage.
         /// </summary>
-        [Description("Manufacturer Date")]
-        ManufacturerDate = 0x00850085,
+        [Description("Manufacturer Date")] ManufacturerDate = 0x00850085,
 
         /// <summary>
         ///     Serial Number Usage.
         /// </summary>
-        [Description("Serial Number")]
-        SerialNumber = 0x00850086,
+        [Description("Serial Number")] SerialNumber = 0x00850086,
 
         /// <summary>
         ///     iManufacturer Usage.
         /// </summary>
-        [Description("iManufacturer")]
-        IManufacturer = 0x00850087,
+        [Description("iManufacturer")] IManufacturer = 0x00850087,
 
         /// <summary>
         ///     iDeviceName Usage.
         /// </summary>
-        [Description("iDeviceName")]
-        IDeviceName = 0x00850088,
+        [Description("iDeviceName")] IDeviceName = 0x00850088,
 
         /// <summary>
         ///     iDeviceChemistry Usage.
         /// </summary>
-        [Description("iDeviceChemistry")]
-        IDeviceChemistry = 0x00850089,
+        [Description("iDeviceChemistry")] IDeviceChemistry = 0x00850089,
 
         /// <summary>
         ///     Manufacturer Data Usage.
         /// </summary>
-        [Description("Manufacturer Data")]
-        ManufacturerData = 0x0085008a,
+        [Description("Manufacturer Data")] ManufacturerData = 0x0085008a,
 
         /// <summary>
         ///     Rechargeable Usage.
         /// </summary>
-        [Description("Rechargeable")]
-        Rechargeable = 0x0085008b,
+        [Description("Rechargeable")] Rechargeable = 0x0085008b,
 
         /// <summary>
         ///     Warning Capacity Limit Usage.
@@ -472,50 +417,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     iOEMInformation Usage.
         /// </summary>
-        [Description("iOEMInformation")]
-        IOEMInformation = 0x0085008f,
+        [Description("iOEMInformation")] IOEMInformation = 0x0085008f,
 
         /// <summary>
         ///     Inhibit Charge Usage.
         /// </summary>
-        [Description("Inhibit Charge")]
-        InhibitCharge = 0x008500c0,
+        [Description("Inhibit Charge")] InhibitCharge = 0x008500c0,
 
         /// <summary>
         ///     Enable Polling Usage.
         /// </summary>
-        [Description("Enable Polling")]
-        EnablePolling = 0x008500c1,
+        [Description("Enable Polling")] EnablePolling = 0x008500c1,
 
         /// <summary>
         ///     Reset To Zero Usage.
         /// </summary>
-        [Description("Reset To Zero")]
-        ResetToZero = 0x008500c2,
+        [Description("Reset To Zero")] ResetToZero = 0x008500c2,
 
         /// <summary>
         ///     AC Present Usage.
         /// </summary>
-        [Description("AC Present")]
-        ACPresent = 0x008500d0,
+        [Description("AC Present")] ACPresent = 0x008500d0,
 
         /// <summary>
         ///     Battery Present Usage.
         /// </summary>
-        [Description("Battery Present")]
-        BatteryPresent = 0x008500d1,
+        [Description("Battery Present")] BatteryPresent = 0x008500d1,
 
         /// <summary>
         ///     Power Fail Usage.
         /// </summary>
-        [Description("Power Fail")]
-        PowerFail = 0x008500d2,
+        [Description("Power Fail")] PowerFail = 0x008500d2,
 
         /// <summary>
         ///     Alarm Inhibited Usage.
         /// </summary>
-        [Description("Alarm Inhibited")]
-        AlarmInhibited = 0x008500d3,
+        [Description("Alarm Inhibited")] AlarmInhibited = 0x008500d3,
 
         /// <summary>
         ///     Thermistor Under Range Usage.
@@ -526,50 +463,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Thermistor Hot Usage.
         /// </summary>
-        [Description("Thermistor Hot")]
-        ThermistorHot = 0x008500d5,
+        [Description("Thermistor Hot")] ThermistorHot = 0x008500d5,
 
         /// <summary>
         ///     Thermistor Cold Usage.
         /// </summary>
-        [Description("Thermistor Cold")]
-        ThermistorCold = 0x008500d6,
+        [Description("Thermistor Cold")] ThermistorCold = 0x008500d6,
 
         /// <summary>
         ///     Thermistor Over Range Usage.
         /// </summary>
-        [Description("Thermistor Over Range")]
-        ThermistorOverRange = 0x008500d7,
+        [Description("Thermistor Over Range")] ThermistorOverRange = 0x008500d7,
 
         /// <summary>
         ///     Voltage Out Of Range Usage.
         /// </summary>
-        [Description("Voltage Out Of Range")]
-        VoltageOutOfRange = 0x008500d8,
+        [Description("Voltage Out Of Range")] VoltageOutOfRange = 0x008500d8,
 
         /// <summary>
         ///     Current Out Of Range Usage.
         /// </summary>
-        [Description("Current Out Of Range")]
-        CurrentOutOfRange = 0x008500d9,
+        [Description("Current Out Of Range")] CurrentOutOfRange = 0x008500d9,
 
         /// <summary>
         ///     Current Not Regulated Usage.
         /// </summary>
-        [Description("Current Not Regulated")]
-        CurrentNotRegulated = 0x008500da,
+        [Description("Current Not Regulated")] CurrentNotRegulated = 0x008500da,
 
         /// <summary>
         ///     Voltage Not Regulated Usage.
         /// </summary>
-        [Description("Voltage Not Regulated")]
-        VoltageNotRegulated = 0x008500db,
+        [Description("Voltage Not Regulated")] VoltageNotRegulated = 0x008500db,
 
         /// <summary>
         ///     Master Mode Usage.
         /// </summary>
-        [Description("Master Mode")]
-        MasterMode = 0x008500dc,
+        [Description("Master Mode")] MasterMode = 0x008500dc,
 
         /// <summary>
         ///     Charger Selector Support Usage.
@@ -580,19 +509,16 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Charger Spec Usage.
         /// </summary>
-        [Description("Charger Spec")]
-        ChargerSpec = 0x008500f1,
+        [Description("Charger Spec")] ChargerSpec = 0x008500f1,
 
         /// <summary>
         ///     Level 2 Usage.
         /// </summary>
-        [Description("Level 2")]
-        Level2 = 0x008500f2,
+        [Description("Level 2")] Level2 = 0x008500f2,
 
         /// <summary>
         ///     Level 3 Usage.
         /// </summary>
-        [Description("Level 3")]
-        Level3 = 0x008500f3
+        [Description("Level 3")] Level3 = 0x008500f3
     }
 }

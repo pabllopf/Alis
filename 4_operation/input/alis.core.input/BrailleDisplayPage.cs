@@ -41,32 +41,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00410000,
+        [Description("Undefined")] Undefined = 0x00410000,
 
         /// <summary>
         ///     Braille Display Usage.
         /// </summary>
-        [Description("Braille Display")]
-        BrailleDisplay = 0x00410001,
+        [Description("Braille Display")] BrailleDisplay = 0x00410001,
 
         /// <summary>
         ///     Braille Row Usage.
         /// </summary>
-        [Description("Braille Row")]
-        BrailleRow = 0x00410002,
+        [Description("Braille Row")] BrailleRow = 0x00410002,
 
         /// <summary>
         ///     8 Dot Braille Cell Usage.
         /// </summary>
-        [Description("8 Dot Braille Cell")]
-        DotBrailleCell = 0x00410003,
+        [Description("8 Dot Braille Cell")] DotBrailleCell = 0x00410003,
 
         /// <summary>
         ///     6 Dot Braille Cell Usage.
         /// </summary>
-        [Description("6 Dot Braille Cell")]
-        DotBrailleCell2 = 0x00410004,
+        [Description("6 Dot Braille Cell")] DotBrailleCell2 = 0x00410004,
 
         /// <summary>
         ///     Number of Braille Cells Usage.
@@ -77,8 +72,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Screen Reader Control Usage.
         /// </summary>
-        [Description("Screen Reader Control")]
-        ScreenReaderControl = 0x00410006,
+        [Description("Screen Reader Control")] ScreenReaderControl = 0x00410006,
 
         /// <summary>
         ///     Screen Reader Identifier Usage.
@@ -94,26 +88,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Router Set 1 Usage.
         /// </summary>
-        [Description("Router Set 1")]
-        RouterSet1 = 0x004100fa,
+        [Description("Router Set 1")] RouterSet1 = 0x004100fa,
 
         /// <summary>
         ///     Router Set 2 Usage.
         /// </summary>
-        [Description("Router Set 2")]
-        RouterSet2 = 0x004100fb,
+        [Description("Router Set 2")] RouterSet2 = 0x004100fb,
 
         /// <summary>
         ///     Router Set 3 Usage.
         /// </summary>
-        [Description("Router Set 3")]
-        RouterSet3 = 0x004100fc,
+        [Description("Router Set 3")] RouterSet3 = 0x004100fc,
 
         /// <summary>
         ///     Braille Buttons Usage.
         /// </summary>
-        [Description("Braille Buttons")]
-        BrailleButtons = 0x00410100,
+        [Description("Braille Buttons")] BrailleButtons = 0x00410100,
 
         /*
          * Range: 0x0201 -> 0x0208
@@ -189,14 +179,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Braille Face Controls Usage.
         /// </summary>
-        [Description("Braille Face Controls")]
-        BrailleFaceControls = 0x0041020c,
+        [Description("Braille Face Controls")] BrailleFaceControls = 0x0041020c,
 
         /// <summary>
         ///     Braille Left Controls Usage.
         /// </summary>
-        [Description("Braille Left Controls")]
-        BrailleLeftControls = 0x0041020d,
+        [Description("Braille Left Controls")] BrailleLeftControls = 0x0041020d,
 
         /// <summary>
         ///     Braille Right Controls Usage.
@@ -207,8 +195,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Braille Top Controls Usage.
         /// </summary>
-        [Description("Braille Top Controls")]
-        BrailleTopControls = 0x0041020f,
+        [Description("Braille Top Controls")] BrailleTopControls = 0x0041020f,
 
         /// <summary>
         ///     Braille Joystick Center Usage.
@@ -219,20 +206,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Braille Joystick Up Usage.
         /// </summary>
-        [Description("Braille Joystick Up")]
-        BrailleJoystickUp = 0x00410211,
+        [Description("Braille Joystick Up")] BrailleJoystickUp = 0x00410211,
 
         /// <summary>
         ///     Braille Joystick Down Usage.
         /// </summary>
-        [Description("Braille Joystick Down")]
-        BrailleJoystickDown = 0x00410212,
+        [Description("Braille Joystick Down")] BrailleJoystickDown = 0x00410212,
 
         /// <summary>
         ///     Braille Joystick Left Usage.
         /// </summary>
-        [Description("Braille Joystick Left")]
-        BrailleJoystickLeft = 0x00410213,
+        [Description("Braille Joystick Left")] BrailleJoystickLeft = 0x00410213,
 
         /// <summary>
         ///     Braille Joystick Right Usage.
@@ -243,61 +227,51 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Braille D-pad Center Usage.
         /// </summary>
-        [Description("Braille D-pad Center")]
-        BrailleDpadCenter = 0x00410215,
+        [Description("Braille D-pad Center")] BrailleDpadCenter = 0x00410215,
 
         /// <summary>
         ///     Braille D-pad Up Usage.
         /// </summary>
-        [Description("Braille D-pad Up")]
-        BrailleDpadUp = 0x00410216,
+        [Description("Braille D-pad Up")] BrailleDpadUp = 0x00410216,
 
         /// <summary>
         ///     Braille D-pad Down Usage.
         /// </summary>
-        [Description("Braille D-pad Down")]
-        BrailleDpadDown = 0x00410217,
+        [Description("Braille D-pad Down")] BrailleDpadDown = 0x00410217,
 
         /// <summary>
         ///     Braille D-pad Left Usage.
         /// </summary>
-        [Description("Braille D-pad Left")]
-        BrailleDpadLeft = 0x00410218,
+        [Description("Braille D-pad Left")] BrailleDpadLeft = 0x00410218,
 
         /// <summary>
         ///     Braille D-pad Right Usage.
         /// </summary>
-        [Description("Braille D-pad Right")]
-        BrailleDpadRight = 0x00410219,
+        [Description("Braille D-pad Right")] BrailleDpadRight = 0x00410219,
 
         /// <summary>
         ///     Braille Pan Left Usage.
         /// </summary>
-        [Description("Braille Pan Left")]
-        BraillePanLeft = 0x0041021a,
+        [Description("Braille Pan Left")] BraillePanLeft = 0x0041021a,
 
         /// <summary>
         ///     Braille Pan Right Usage.
         /// </summary>
-        [Description("Braille Pan Right")]
-        BraillePanRight = 0x0041021b,
+        [Description("Braille Pan Right")] BraillePanRight = 0x0041021b,
 
         /// <summary>
         ///     Braille Rocker Up Usage.
         /// </summary>
-        [Description("Braille Rocker Up")]
-        BrailleRockerUp = 0x0041021c,
+        [Description("Braille Rocker Up")] BrailleRockerUp = 0x0041021c,
 
         /// <summary>
         ///     Braille Rocker Down Usage.
         /// </summary>
-        [Description("Braille Rocker Down")]
-        BrailleRockerDown = 0x0041021d,
+        [Description("Braille Rocker Down")] BrailleRockerDown = 0x0041021d,
 
         /// <summary>
         ///     Braille Rocker Press Usage.
         /// </summary>
-        [Description("Braille Rocker Press")]
-        BrailleRockerPress = 0x0041021e
+        [Description("Braille Rocker Press")] BrailleRockerPress = 0x0041021e
     }
 }

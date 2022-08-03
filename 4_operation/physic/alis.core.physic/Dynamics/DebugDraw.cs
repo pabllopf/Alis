@@ -55,8 +55,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public DrawFlags Flags
         {
-            get { return DrawFlags; }
-            set { DrawFlags = value; }
+            get => DrawFlags;
+            set => DrawFlags = value;
         }
 
         /// <summary>

@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly VRUsagePage Instance = new VRUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VRUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="VRUsagePage" /> class
         /// </summary>
         private VRUsagePage() : base(0x0003, "VR")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

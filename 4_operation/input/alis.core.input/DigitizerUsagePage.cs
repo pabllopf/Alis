@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly DigitizerUsagePage Instance = new DigitizerUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DigitizerUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="DigitizerUsagePage" /> class
         /// </summary>
         private DigitizerUsagePage() : base(0x000d, "Digitizer")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -70,7 +70,7 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x000d: return new Usage(this, id, "Free Space Wand", UsageTypes.CA);
                 case 0x000e: return new Usage(this, id, "Device Configuration", UsageTypes.CA);
                 case 0x000f: return new Usage(this, id, "Capacitive Heat Map Digitizer", UsageTypes.CA);
-                case 0x0020: return new Usage(this, id, "Stylus", UsageTypes.CA|UsageTypes.CL);
+                case 0x0020: return new Usage(this, id, "Stylus", UsageTypes.CA | UsageTypes.CL);
                 case 0x0021: return new Usage(this, id, "Puck", UsageTypes.CL);
                 case 0x0022: return new Usage(this, id, "Finger", UsageTypes.CL);
                 case 0x0023: return new Usage(this, id, "Device Settings", UsageTypes.CL);
@@ -119,9 +119,11 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0063: return new Usage(this, id, "Character Gesture Data", UsageTypes.DV);
                 case 0x0064: return new Usage(this, id, "Gesture Character Encoding", UsageTypes.NAry);
                 case 0x0065: return new Usage(this, id, "UTF8 Character Gesture Encoding", UsageTypes.Sel);
-                case 0x0066: return new Usage(this, id, "UTF16 Little Endian Character Gesture Encoding", UsageTypes.Sel);
+                case 0x0066:
+                    return new Usage(this, id, "UTF16 Little Endian Character Gesture Encoding", UsageTypes.Sel);
                 case 0x0067: return new Usage(this, id, "UTF16 Big Endian Character Gesture Encoding", UsageTypes.Sel);
-                case 0x0068: return new Usage(this, id, "UTF32 Little Endian Character Gesture Encoding", UsageTypes.Sel);
+                case 0x0068:
+                    return new Usage(this, id, "UTF32 Little Endian Character Gesture Encoding", UsageTypes.Sel);
                 case 0x0069: return new Usage(this, id, "UTF32 Big Endian Character Gesture Encoding", UsageTypes.Sel);
                 case 0x006a: return new Usage(this, id, "Capacitive Heat Map Protocol Vendor ID", UsageTypes.SV);
                 case 0x006b: return new Usage(this, id, "Capacitive Heat Map Protocol Version", UsageTypes.SV);
@@ -132,13 +134,14 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0090: return new Usage(this, id, "Transducer Software Info", UsageTypes.CL);
                 case 0x0091: return new Usage(this, id, "Transducer Vendor ID", UsageTypes.SV);
                 case 0x0092: return new Usage(this, id, "Transducer Product ID", UsageTypes.SV);
-                case 0x0093: return new Usage(this, id, "Device Supported Protocols", UsageTypes.CL|UsageTypes.NAry);
-                case 0x0094: return new Usage(this, id, "Transducer Supported Protocols", UsageTypes.CL|UsageTypes.NAry);
+                case 0x0093: return new Usage(this, id, "Device Supported Protocols", UsageTypes.CL | UsageTypes.NAry);
+                case 0x0094:
+                    return new Usage(this, id, "Transducer Supported Protocols", UsageTypes.CL | UsageTypes.NAry);
                 case 0x0095: return new Usage(this, id, "No Protocol", UsageTypes.Sel);
                 case 0x0096: return new Usage(this, id, "Wacom AES Protocol", UsageTypes.Sel);
                 case 0x0097: return new Usage(this, id, "USI Protocol", UsageTypes.Sel);
                 case 0x0098: return new Usage(this, id, "Microsoft Pen Protocol", UsageTypes.Sel);
-                case 0x00a0: return new Usage(this, id, "Supported Report Rates", UsageTypes.CL|UsageTypes.SV);
+                case 0x00a0: return new Usage(this, id, "Supported Report Rates", UsageTypes.CL | UsageTypes.SV);
                 case 0x00a1: return new Usage(this, id, "Report Rate", UsageTypes.DV);
                 case 0x00a2: return new Usage(this, id, "Transducer Connected", UsageTypes.SF);
                 case 0x00a3: return new Usage(this, id, "Switch Disabled", UsageTypes.Sel);

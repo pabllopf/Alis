@@ -41,68 +41,57 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00820000,
+        [Description("Undefined")] Undefined = 0x00820000,
 
         /// <summary>
         ///     Degauss Usage.
         /// </summary>
-        [Description("Degauss")]
-        Degauss = 0x00820001,
+        [Description("Degauss")] Degauss = 0x00820001,
 
         /// <summary>
         ///     Brightness Usage.
         /// </summary>
-        [Description("Brightness")]
-        Brightness = 0x00820010,
+        [Description("Brightness")] Brightness = 0x00820010,
 
         /// <summary>
         ///     Contrast Usage.
         /// </summary>
-        [Description("Contrast")]
-        Contrast = 0x00820012,
+        [Description("Contrast")] Contrast = 0x00820012,
 
         /// <summary>
         ///     Red Video Gain Usage.
         /// </summary>
-        [Description("Red Video Gain")]
-        RedVideoGain = 0x00820016,
+        [Description("Red Video Gain")] RedVideoGain = 0x00820016,
 
         /// <summary>
         ///     Green Video Gain Usage.
         /// </summary>
-        [Description("Green Video Gain")]
-        GreenVideoGain = 0x00820018,
+        [Description("Green Video Gain")] GreenVideoGain = 0x00820018,
 
         /// <summary>
         ///     Blue Video Gain Usage.
         /// </summary>
-        [Description("Blue Video Gain")]
-        BlueVideoGain = 0x0082001a,
+        [Description("Blue Video Gain")] BlueVideoGain = 0x0082001a,
 
         /// <summary>
         ///     Focus Usage.
         /// </summary>
-        [Description("Focus")]
-        Focus = 0x0082001c,
+        [Description("Focus")] Focus = 0x0082001c,
 
         /// <summary>
         ///     Horizontal Position Usage.
         /// </summary>
-        [Description("Horizontal Position")]
-        HorizontalPosition = 0x00820020,
+        [Description("Horizontal Position")] HorizontalPosition = 0x00820020,
 
         /// <summary>
         ///     Horizontal Size Usage.
         /// </summary>
-        [Description("Horizontal Size")]
-        HorizontalSize = 0x00820022,
+        [Description("Horizontal Size")] HorizontalSize = 0x00820022,
 
         /// <summary>
         ///     Horizontal Pincushion Usage.
         /// </summary>
-        [Description("Horizontal Pincushion")]
-        HorizontalPincushion = 0x00820024,
+        [Description("Horizontal Pincushion")] HorizontalPincushion = 0x00820024,
 
         /// <summary>
         ///     Horizontal Pincushion Balance Usage.
@@ -119,8 +108,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Horizontal Linearity Usage.
         /// </summary>
-        [Description("Horizontal Linearity")]
-        HorizontalLinearity = 0x0082002a,
+        [Description("Horizontal Linearity")] HorizontalLinearity = 0x0082002a,
 
         /// <summary>
         ///     Horizontal Linearity Balance Usage.
@@ -131,20 +119,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Vertical Position Usage.
         /// </summary>
-        [Description("Vertical Position")]
-        VerticalPosition = 0x00820030,
+        [Description("Vertical Position")] VerticalPosition = 0x00820030,
 
         /// <summary>
         ///     Vertical Size Usage.
         /// </summary>
-        [Description("Vertical Size")]
-        VerticalSize = 0x00820032,
+        [Description("Vertical Size")] VerticalSize = 0x00820032,
 
         /// <summary>
         ///     Vertical Pincushion Usage.
         /// </summary>
-        [Description("Vertical Pincushion")]
-        VerticalPincushion = 0x00820034,
+        [Description("Vertical Pincushion")] VerticalPincushion = 0x00820034,
 
         /// <summary>
         ///     Vertical Pincushion Balance Usage.
@@ -161,8 +146,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Vertical Linearity Usage.
         /// </summary>
-        [Description("Vertical Linearity")]
-        VerticalLinearity = 0x0082003a,
+        [Description("Vertical Linearity")] VerticalLinearity = 0x0082003a,
 
         /// <summary>
         ///     Vertical Linearity Balance Usage.
@@ -185,8 +169,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Tilt (Rotation) Usage.
         /// </summary>
-        [Description("Tilt (Rotation)")]
-        TiltRotation = 0x00820044,
+        [Description("Tilt (Rotation)")] TiltRotation = 0x00820044,
 
         /// <summary>
         ///     Top Corner Distortion Control Usage.
@@ -215,32 +198,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Horizontal Moire Usage.
         /// </summary>
-        [Description("Horizontal Moire")]
-        HorizontalMoire = 0x00820056,
+        [Description("Horizontal Moire")] HorizontalMoire = 0x00820056,
 
         /// <summary>
         ///     Vertical Moire Usage.
         /// </summary>
-        [Description("Vertical Moire")]
-        VerticalMoire = 0x00820058,
+        [Description("Vertical Moire")] VerticalMoire = 0x00820058,
 
         /// <summary>
         ///     Input Level Select Usage.
         /// </summary>
-        [Description("Input Level Select")]
-        InputLevelSelect = 0x0082005e,
+        [Description("Input Level Select")] InputLevelSelect = 0x0082005e,
 
         /// <summary>
         ///     Input Source Select Usage.
         /// </summary>
-        [Description("Input Source Select")]
-        InputSourceSelect = 0x00820060,
+        [Description("Input Source Select")] InputSourceSelect = 0x00820060,
 
         /// <summary>
         ///     Red Video Black Level Usage.
         /// </summary>
-        [Description("Red Video Black Level")]
-        RedVideoBlackLevel = 0x0082006c,
+        [Description("Red Video Black Level")] RedVideoBlackLevel = 0x0082006c,
 
         /// <summary>
         ///     Green Video Black Level Usage.
@@ -257,8 +235,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Auto Size Center Usage.
         /// </summary>
-        [Description("Auto Size Center")]
-        AutoSizeCenter = 0x008200a2,
+        [Description("Auto Size Center")] AutoSizeCenter = 0x008200a2,
 
         /// <summary>
         ///     Polarity Horizontal Synchronization Usage.
@@ -275,43 +252,36 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Synchronization Type Usage.
         /// </summary>
-        [Description("Synchronization Type")]
-        SynchronizationType = 0x008200a8,
+        [Description("Synchronization Type")] SynchronizationType = 0x008200a8,
 
         /// <summary>
         ///     Screen Orientation Usage.
         /// </summary>
-        [Description("Screen Orientation")]
-        ScreenOrientation = 0x008200aa,
+        [Description("Screen Orientation")] ScreenOrientation = 0x008200aa,
 
         /// <summary>
         ///     Horizontal Frequency Usage.
         /// </summary>
-        [Description("Horizontal Frequency")]
-        HorizontalFrequency = 0x008200ac,
+        [Description("Horizontal Frequency")] HorizontalFrequency = 0x008200ac,
 
         /// <summary>
         ///     Vertical Frequency Usage.
         /// </summary>
-        [Description("Vertical Frequency")]
-        VerticalFrequency = 0x008200ae,
+        [Description("Vertical Frequency")] VerticalFrequency = 0x008200ae,
 
         /// <summary>
         ///     Settings Usage.
         /// </summary>
-        [Description("Settings")]
-        Settings = 0x008200b0,
+        [Description("Settings")] Settings = 0x008200b0,
 
         /// <summary>
         ///     On Screen Display Usage.
         /// </summary>
-        [Description("On Screen Display")]
-        OnScreenDisplay = 0x008200ca,
+        [Description("On Screen Display")] OnScreenDisplay = 0x008200ca,
 
         /// <summary>
         ///     StereoMode Usage.
         /// </summary>
-        [Description("StereoMode")]
-        StereoMode = 0x008200d4
+        [Description("StereoMode")] StereoMode = 0x008200d4
     }
 }

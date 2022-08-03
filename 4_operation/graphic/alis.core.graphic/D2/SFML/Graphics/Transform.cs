@@ -274,7 +274,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode()
@@ -384,7 +383,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">The transform</param>
         /// <returns>The transform</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Transform sfTransform_getInverse(ref Transform transform);
 
         /// <summary>
@@ -394,7 +393,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">The point</param>
         /// <returns>The vector 2f</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector2f sfTransform_transformPoint(ref Transform transform, Vector2f point);
 
         /// <summary>
@@ -404,7 +403,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rectangle">The rectangle</param>
         /// <returns>The float rect</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfTransform_transformRect(ref Transform transform, FloatRect rectangle);
 
         /// <summary>
@@ -413,7 +412,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">The transform</param>
         /// <param name="other">The other</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_combine(ref Transform transform, ref Transform other);
 
         /// <summary>
@@ -423,7 +422,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_translate(ref Transform transform, float x, float y);
 
         /// <summary>
@@ -432,7 +431,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">The transform</param>
         /// <param name="angle">The angle</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_rotate(ref Transform transform, float angle);
 
         /// <summary>
@@ -443,7 +442,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="centerX">The center</param>
         /// <param name="centerY">The center</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_rotateWithCenter(ref Transform transform, float angle, float centerX,
             float centerY);
 
@@ -454,7 +453,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="scaleX">The scale</param>
         /// <param name="scaleY">The scale</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_scale(ref Transform transform, float scaleX, float scaleY);
 
         /// <summary>
@@ -466,7 +465,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="centerX">The center</param>
         /// <param name="centerY">The center</param>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_scaleWithCenter(ref Transform transform, float scaleX, float scaleY,
             float centerX, float centerY);
 
@@ -477,7 +476,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="right">The right</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfTransform_equal(ref Transform left, ref Transform right);
     }
 }

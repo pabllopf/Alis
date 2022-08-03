@@ -43,20 +43,20 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly WeighingDevicesUsagePage Instance = new WeighingDevicesUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeighingDevicesUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="WeighingDevicesUsagePage" /> class
         /// </summary>
         private WeighingDevicesUsagePage() : base(0x008d, "WeighingDevices")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
                 case 0x0001: return new Usage(this, id, "Weighing Device", UsageTypes.CA);
-                case 0x0020: return new Usage(this, id, "Scale Device", UsageTypes.CL|UsageTypes.NAry);
+                case 0x0020: return new Usage(this, id, "Scale Device", UsageTypes.CL | UsageTypes.NAry);
                 case 0x0021: return new Usage(this, id, "Scale Class I Metric", UsageTypes.Sel);
                 case 0x0022: return new Usage(this, id, "Scale Class I Metric", UsageTypes.Sel);
                 case 0x0023: return new Usage(this, id, "Scale Class II Metric", UsageTypes.Sel);
@@ -75,7 +75,7 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0035: return new Usage(this, id, "Scale Statistics Report", UsageTypes.CL);
                 case 0x0040: return new Usage(this, id, "Data Weight", UsageTypes.DV);
                 case 0x0041: return new Usage(this, id, "Data Scaling", UsageTypes.DV);
-                case 0x0050: return new Usage(this, id, "Weight Unit", UsageTypes.CL|UsageTypes.NAry);
+                case 0x0050: return new Usage(this, id, "Weight Unit", UsageTypes.CL | UsageTypes.NAry);
                 case 0x0051: return new Usage(this, id, "Weight Unit Milligram", UsageTypes.Sel);
                 case 0x0052: return new Usage(this, id, "Weight Unit Gram", UsageTypes.Sel);
                 case 0x0053: return new Usage(this, id, "Weight Unit Kilogram", UsageTypes.Sel);
@@ -90,7 +90,7 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x005c: return new Usage(this, id, "Weight Unit Pound", UsageTypes.Sel);
                 case 0x0060: return new Usage(this, id, "Calibration Count", UsageTypes.DV);
                 case 0x0061: return new Usage(this, id, "Re-Zero Count", UsageTypes.DV);
-                case 0x0070: return new Usage(this, id, "Scale Status", UsageTypes.CL|UsageTypes.NAry);
+                case 0x0070: return new Usage(this, id, "Scale Status", UsageTypes.CL | UsageTypes.NAry);
                 case 0x0071: return new Usage(this, id, "Scale Status Fault", UsageTypes.Sel);
                 case 0x0072: return new Usage(this, id, "Scale Status Stable at Center of Zero", UsageTypes.Sel);
                 case 0x0073: return new Usage(this, id, "Scale Status In Motion", UsageTypes.Sel);

@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Dynamics
                 case ShapeType.CircleShape:
                 {
                     CircleShape circle = new CircleShape();
-                    CircleDef circleDef = (CircleDef) def;
+                    CircleDef circleDef = (CircleDef)def;
                     circle.Position = circleDef.LocalPosition;
                     circle.Radius = circleDef.Radius;
                     Shape = circle;
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Dynamics
                 case ShapeType.PolygonShape:
                 {
                     PolygonShape polygon = new PolygonShape();
-                    PolygonDef polygonDef = (PolygonDef) def;
+                    PolygonDef polygonDef = (PolygonDef)def;
                     polygon.Set(polygonDef.Vertices, polygonDef.VertexCount);
                     Shape = polygon;
                 }
@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Dynamics
                 case ShapeType.EdgeShape:
                 {
                     EdgeShape edge = new EdgeShape();
-                    EdgeDef edgeDef = (EdgeDef) def;
+                    EdgeDef edgeDef = (EdgeDef)def;
                     edge.Set(edgeDef.Vertex1, edgeDef.Vertex2);
                     Shape = edge;
                 }

@@ -32,6 +32,5 @@ namespace Alis.Core.Entities
     /// <summary>Represent a object of the game.</summary>
     public class GameObject
     {
-        
     }
 }

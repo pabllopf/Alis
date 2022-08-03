@@ -16,7 +16,7 @@ namespace Alis.Core.Input
     public sealed class Event
     {
         /// <summary>
-        /// The event
+        ///     The event
         /// </summary>
         private static readonly Dictionary<int, Event> s_all = new Dictionary<int, Event>();
 
@@ -77,20 +77,22 @@ namespace Alis.Core.Input
             nameof(Resources.DeviceConnectionClosedDescription));
 
         /// <summary>
-        /// The idcounter
+        ///     The idcounter
         /// </summary>
         private static int s_idCounter = 3500;
 
         /// <summary>
-        /// The description resource
+        ///     The description resource
         /// </summary>
         private readonly string _descriptionResource;
+
         /// <summary>
-        /// The id
+        ///     The id
         /// </summary>
         private readonly int _id;
+
         /// <summary>
-        /// The message resource
+        ///     The message resource
         /// </summary>
         private readonly string _messageResource;
 
@@ -100,7 +102,7 @@ namespace Alis.Core.Input
         public readonly LogLevel Level;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event"/> class
+        ///     Initializes a new instance of the <see cref="Event" /> class
         /// </summary>
         /// <param name="messageResource">The message resource</param>
         /// <param name="descriptionResource">The description resource</param>
@@ -110,7 +112,7 @@ namespace Alis.Core.Input
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Event"/> class
+        ///     Initializes a new instance of the <see cref="Event" /> class
         /// </summary>
         /// <param name="level">The level</param>
         /// <param name="messageResource">The message resource</param>
@@ -150,50 +152,66 @@ namespace Alis.Core.Input
 
 
         /// <summary>
-        /// hello
+        ///     hello
         /// </summary>
         /// <param name="id"></param>
         /// <param name="event"></param>
         /// <returns></returns>
-        public static bool TryGet(int id,  out Event @event) =>
-            s_all.TryGetValue(id, out @event);
+        public static bool TryGet(int id, out Event @event)
+        {
+            return s_all.TryGetValue(id, out @event);
+        }
 
-  
+
         /// <summary>
-        /// Gets the id
+        ///     Gets the id
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The event</returns>
-        public static Event Get(int id) => s_all.TryGetValue(id, out var @event) ? @event : null;
+        public static Event Get(int id)
+        {
+            return s_all.TryGetValue(id, out var @event) ? @event : null;
+        }
 
-      
+
         /// <summary>
-        /// Logs the logger
+        ///     Logs the logger
         /// </summary>
         /// <param name="logger">The logger</param>
         /// <param name="args">The args</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void Log(ILogger logger, params object[] args) => logger.Log(Level, Id, Format, args);
+        internal void Log(ILogger logger, params object[] args)
+        {
+            logger.Log(Level, Id, Format, args);
+        }
 
- 
+
         /// <summary>
-        /// Logs the logger
+        ///     Logs the logger
         /// </summary>
         /// <param name="logger">The logger</param>
         /// <param name="exception">The exception</param>
         /// <param name="args">The args</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal void Log(ILogger logger, Exception exception, params object[] args) =>
+        internal void Log(ILogger logger, Exception exception, params object[] args)
+        {
             logger.Log(Level, Id, exception, Format, args);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => Description;
+        public override string ToString()
+        {
+            return Description;
+        }
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="Event" /> to <see cref="EventId" />.
         /// </summary>
         /// <param name="event">The event.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator EventId(Event @event) => @event.Id;
+        public static implicit operator EventId(Event @event)
+        {
+            return @event.Id;
+        }
     }
 }

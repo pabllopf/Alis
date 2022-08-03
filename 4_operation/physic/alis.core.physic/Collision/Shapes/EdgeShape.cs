@@ -160,7 +160,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="segment">The segment</param>
         /// <param name="maxLambda">The max lambda</param>
         /// <returns>The segment collide</returns>
-        public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vector2 normal, Segment segment,
+        public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vector2 normal,
+            Segment segment,
             float maxLambda)
         {
             Vector2 r = segment.P2 - segment.P1;

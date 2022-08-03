@@ -26,6 +26,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
 namespace Alis.Core.Components
 {
     /// <summary>
@@ -34,6 +35,5 @@ namespace Alis.Core.Components
     /// <seealso cref="Component" />
     public abstract class Collider : Component
     {
-        
     }
 }

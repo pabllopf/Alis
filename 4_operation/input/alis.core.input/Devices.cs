@@ -27,19 +27,22 @@ namespace Alis.Core.Input
     public sealed class Devices : IObservableCache<Device, string>
     {
         /// <summary>
-        /// The logger
+        ///     The logger
         /// </summary>
         internal readonly ILogger<Devices> Logger;
+
         /// <summary>
-        /// The controllers
+        ///     The controllers
         /// </summary>
         private SourceCache<Device, string> _controllers;
+
         /// <summary>
-        /// The event subscription
+        ///     The event subscription
         /// </summary>
         private IDisposable _eventSubscription;
+
         /// <summary>
-        /// The refreshing behavior subject
+        ///     The refreshing behavior subject
         /// </summary>
         private BehaviorSubject<bool> _refreshingBehaviorSubject;
 
@@ -94,18 +97,24 @@ namespace Alis.Core.Input
                                     throw new ObjectDisposedException(nameof(Devices));
 
         /// <inheritdoc />
-        public IObservable<Change<Device, string>> Watch(string key) =>
-            _controllers?.Watch(key) ?? throw new ObjectDisposedException(nameof(Devices));
+        public IObservable<Change<Device, string>> Watch(string key)
+        {
+            return _controllers?.Watch(key) ?? throw new ObjectDisposedException(nameof(Devices));
+        }
 
         /// <inheritdoc />
         public IObservable<IChangeSet<Device, string>> Connect(Func<Device, bool> predicate = null,
             bool suppressEmptyChangeSets = true)
-            => _controllers?.Connect(predicate, suppressEmptyChangeSets) ??
-               throw new ObjectDisposedException(nameof(Devices));
+        {
+            return _controllers?.Connect(predicate, suppressEmptyChangeSets) ??
+                   throw new ObjectDisposedException(nameof(Devices));
+        }
 
         /// <inheritdoc />
         public IObservable<IChangeSet<Device, string>> Preview(Func<Device, bool> predicate = null)
-            => _controllers?.Preview(predicate) ?? throw new ObjectDisposedException(nameof(Devices));
+        {
+            return _controllers?.Preview(predicate) ?? throw new ObjectDisposedException(nameof(Devices));
+        }
 
         /// <inheritdoc />
         public IObservable<int> CountChanged
@@ -141,7 +150,9 @@ namespace Alis.Core.Input
 
         /// <inheritdoc />
         public Optional<Device> Lookup(string key)
-            => _controllers?.Lookup(key) ?? throw new ObjectDisposedException(nameof(Devices));
+        {
+            return _controllers?.Lookup(key) ?? throw new ObjectDisposedException(nameof(Devices));
+        }
 
         /// <inheritdoc />
         IEnumerable<string> IObservableCache<Device, string>.Keys
@@ -273,9 +284,11 @@ namespace Alis.Core.Input
         /// </param>
         /// <returns>An awaitable task that completes when the first load of devices has completed.</returns>
         public Task<IChangeSet<Device, string>> LoadAsync(CancellationToken cancellationToken = default)
-            => (_controllers ?? throw new ObjectDisposedException(nameof(Devices)))
+        {
+            return (_controllers ?? throw new ObjectDisposedException(nameof(Devices)))
                 .Connect()
                 .FirstAsync()
                 .ToTask(cancellationToken);
+        }
     }
 }

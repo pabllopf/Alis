@@ -41,32 +41,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00060000,
+        [Description("Undefined")] Undefined = 0x00060000,
 
         /// <summary>
         ///     Background Controls Usage.
         /// </summary>
-        [Description("Background Controls")]
-        BackgroundControls = 0x00060001,
+        [Description("Background Controls")] BackgroundControls = 0x00060001,
 
         /// <summary>
         ///     Battery Strength Usage.
         /// </summary>
-        [Description("Battery Strength")]
-        BatteryStrength = 0x00060020,
+        [Description("Battery Strength")] BatteryStrength = 0x00060020,
 
         /// <summary>
         ///     Wireless Channel Usage.
         /// </summary>
-        [Description("Wireless Channel")]
-        WirelessChannel = 0x00060021,
+        [Description("Wireless Channel")] WirelessChannel = 0x00060021,
 
         /// <summary>
         ///     Wireless ID Usage.
         /// </summary>
-        [Description("Wireless ID")]
-        WirelessID = 0x00060022,
+        [Description("Wireless ID")] WirelessID = 0x00060022,
 
         /// <summary>
         ///     Discover Wireless Control Usage.
@@ -89,103 +84,86 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Security Code Cleared Usage.
         /// </summary>
-        [Description("Security Code Cleared")]
-        SecurityCodeCleared = 0x00060026,
+        [Description("Security Code Cleared")] SecurityCodeCleared = 0x00060026,
 
         /// <summary>
         ///     Sequence ID Usage.
         /// </summary>
-        [Description("Sequence ID")]
-        SequenceID = 0x00060027,
+        [Description("Sequence ID")] SequenceID = 0x00060027,
 
         /// <summary>
         ///     Sequence ID Reset Usage.
         /// </summary>
-        [Description("Sequence ID Reset")]
-        SequenceIDReset = 0x00060028,
+        [Description("Sequence ID Reset")] SequenceIDReset = 0x00060028,
 
         /// <summary>
         ///     RF Signal Strength Usage.
         /// </summary>
-        [Description("RF Signal Strength")]
-        RFSignalStrength = 0x00060029,
+        [Description("RF Signal Strength")] RFSignalStrength = 0x00060029,
 
         /// <summary>
         ///     Software Version Usage.
         /// </summary>
-        [Description("Software Version")]
-        SoftwareVersion = 0x0006002a,
+        [Description("Software Version")] SoftwareVersion = 0x0006002a,
 
         /// <summary>
         ///     Protocol Version Usage.
         /// </summary>
-        [Description("Protocol Version")]
-        ProtocolVersion = 0x0006002b,
+        [Description("Protocol Version")] ProtocolVersion = 0x0006002b,
 
         /// <summary>
         ///     Hardware Version Usage.
         /// </summary>
-        [Description("Hardware Version")]
-        HardwareVersion = 0x0006002c,
+        [Description("Hardware Version")] HardwareVersion = 0x0006002c,
 
         /// <summary>
         ///     Major Usage.
         /// </summary>
-        [Description("Major")]
-        Major = 0x0006002d,
+        [Description("Major")] Major = 0x0006002d,
 
         /// <summary>
         ///     Minor Usage.
         /// </summary>
-        [Description("Minor")]
-        Minor = 0x0006002e,
+        [Description("Minor")] Minor = 0x0006002e,
 
         /// <summary>
         ///     Revision Usage.
         /// </summary>
-        [Description("Revision")]
-        Revision = 0x0006002f,
+        [Description("Revision")] Revision = 0x0006002f,
 
         /// <summary>
         ///     Handedness Usage.
         /// </summary>
-        [Description("Handedness")]
-        Handedness = 0x00060030,
+        [Description("Handedness")] Handedness = 0x00060030,
 
         /// <summary>
         ///     Either Hand Usage.
         /// </summary>
-        [Description("Either Hand")]
-        EitherHand = 0x00060031,
+        [Description("Either Hand")] EitherHand = 0x00060031,
 
         /// <summary>
         ///     Left Hand Usage.
         /// </summary>
-        [Description("Left Hand")]
-        LeftHand = 0x00060032,
+        [Description("Left Hand")] LeftHand = 0x00060032,
 
         /// <summary>
         ///     Right Hand Usage.
         /// </summary>
-        [Description("Right Hand")]
-        RightHand = 0x00060033,
+        [Description("Right Hand")] RightHand = 0x00060033,
 
         /// <summary>
         ///     Both Hands Usage.
         /// </summary>
-        [Description("Both Hands")]
-        BothHands = 0x00060034,
+        [Description("Both Hands")] BothHands = 0x00060034,
 
         /// <summary>
         ///     Grip Pose Offset Usage.
         /// </summary>
-        [Description("Grip Pose Offset")]
-        GripPoseOffset = 0x00060040,
+        [Description("Grip Pose Offset")] GripPoseOffset = 0x00060040,
 
         /// <summary>
         ///     Pointer Pose Offset Usage.
         /// </summary>
-        [Description("Pointer Pose Offset")]
-        PointerPoseOffset = 0x00060041
+        [Description("Pointer Pose Offset")] PointerPoseOffset = 0x00060041
     }
 }

@@ -110,7 +110,7 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         public PairManager()
         {
-            Box2DxDebug.Assert(Math.IsPowerOfTwo((uint) TableCapacity));
+            Box2DxDebug.Assert(Math.IsPowerOfTwo((uint)TableCapacity));
             Box2DxDebug.Assert(TableCapacity >= Settings.MaxPairs);
             for (int i = 0; i < TableCapacity; ++i)
             {
@@ -120,12 +120,12 @@ namespace Alis.Core.Physic.Collision
             FreePair = 0;
             for (int i = 0; i < Settings.MaxPairs; ++i)
             {
-                Pairs[i] = new Pair(); 
+                Pairs[i] = new Pair();
                 Pairs[i].ProxyId1 = NullProxy;
                 Pairs[i].ProxyId2 = NullProxy;
                 Pairs[i].UserData = null;
                 Pairs[i].Status = 0;
-                Pairs[i].Next = (ushort) (i + 1U);
+                Pairs[i].Next = (ushort)(i + 1U);
             }
 
             Pairs[Settings.MaxPairs - 1].Next = NullPair;
@@ -313,7 +313,7 @@ namespace Alis.Core.Physic.Collision
                 Math.Swap(ref proxyId1, ref proxyId2);
             }
 
-            uint hash = (uint) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
+            uint hash = (uint)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
 
             return Find(proxyId1, proxyId2, hash);
         }
@@ -358,9 +358,9 @@ namespace Alis.Core.Physic.Collision
                 Math.Swap(ref proxyId1, ref proxyId2);
             }
 
-            int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
+            int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
 
-            Pair pair = Find(proxyId1, proxyId2, (uint) hash);
+            Pair pair = Find(proxyId1, proxyId2, (uint)hash);
             if (pair != null)
             {
                 return pair;
@@ -372,8 +372,8 @@ namespace Alis.Core.Physic.Collision
             pair = Pairs[pairIndex];
             FreePair = pair.Next;
 
-            pair.ProxyId1 = (ushort) proxyId1;
-            pair.ProxyId2 = (ushort) proxyId2;
+            pair.ProxyId1 = (ushort)proxyId1;
+            pair.ProxyId2 = (ushort)proxyId2;
             pair.Status = 0;
             pair.UserData = null;
             pair.Next = HashTable[hash];
@@ -401,7 +401,7 @@ namespace Alis.Core.Physic.Collision
                 Math.Swap(ref proxyId1, ref proxyId2);
             }
 
-            int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
+            int hash = (int)(Hash((uint)proxyId1, (uint)proxyId2) & TableMask);
 
             //uint16* node = &m_hashTable[hash];
             ushort node = HashTable[hash];

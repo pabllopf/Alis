@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly ConsumerUsagePage Instance = new ConsumerUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ConsumerUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="ConsumerUsagePage" /> class
         /// </summary>
         private ConsumerUsagePage() : base(0x000c, "Consumer")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

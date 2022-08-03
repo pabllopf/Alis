@@ -54,10 +54,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     Get the vertex count.
         /// </summary>
-        public int VertexCount
-        {
-            get { return 1; }
-        }
+        public int VertexCount => 1;
 
         /// <summary>
         ///     Describes whether this instance test point
@@ -85,7 +82,8 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="segment">The segment</param>
         /// <param name="maxLambda">The max lambda</param>
         /// <returns>The segment collide</returns>
-        public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vector2 normal, Segment segment,
+        public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vector2 normal,
+            Segment segment,
             float maxLambda)
         {
             lambda = 0f;
@@ -189,9 +187,9 @@ namespace Alis.Core.Physic.Collision.Shapes
             //Magic
             float r2 = Radius * Radius;
             float l2 = l * l;
-            float area = r2 * ((float) System.Math.Asin(l / Radius) + Settings.Pi / 2) +
+            float area = r2 * ((float)System.Math.Asin(l / Radius) + Settings.Pi / 2) +
                          l * Math.Sqrt(r2 - l2);
-            float com = -2.0f / 3.0f * (float) System.Math.Pow(r2 - l2, 1.5f) / area;
+            float com = -2.0f / 3.0f * (float)System.Math.Pow(r2 - l2, 1.5f) / area;
 
             c.X = p.X + normal.X * com;
             c.Y = p.Y + normal.Y * com;

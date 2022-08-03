@@ -26,6 +26,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Core.Components
@@ -37,7 +38,7 @@ namespace Alis.Core.Components
     public class BoxCollider2D : Collider
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
@@ -46,7 +47,7 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()

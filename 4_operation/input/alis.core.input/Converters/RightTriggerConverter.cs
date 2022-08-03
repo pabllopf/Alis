@@ -17,7 +17,7 @@ namespace Alis.Core.Input.Converters
         public static readonly RightTriggerConverter Instance = new RightTriggerConverter();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RightTriggerConverter"/> class
+        ///     Initializes a new instance of the <see cref="RightTriggerConverter" /> class
         /// </summary>
         public RightTriggerConverter() : base(0D, 1D, 0.5D, 0D)
         {

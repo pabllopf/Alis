@@ -41,104 +41,87 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00400000,
+        [Description("Undefined")] Undefined = 0x00400000,
 
         /// <summary>
         ///     Medical Ultrasound Usage.
         /// </summary>
-        [Description("Medical Ultrasound")]
-        MedicalUltrasound = 0x00400001,
+        [Description("Medical Ultrasound")] MedicalUltrasound = 0x00400001,
 
         /// <summary>
         ///     VCR/Acquisition Usage.
         /// </summary>
-        [Description("VCR/Acquisition")]
-        VCRAcquisition = 0x00400020,
+        [Description("VCR/Acquisition")] VCRAcquisition = 0x00400020,
 
         /// <summary>
         ///     Freeze/Thaw Usage.
         /// </summary>
-        [Description("Freeze/Thaw")]
-        FreezeThaw = 0x00400021,
+        [Description("Freeze/Thaw")] FreezeThaw = 0x00400021,
 
         /// <summary>
         ///     Clip Store Usage.
         /// </summary>
-        [Description("Clip Store")]
-        ClipStore = 0x00400022,
+        [Description("Clip Store")] ClipStore = 0x00400022,
 
         /// <summary>
         ///     Update Usage.
         /// </summary>
-        [Description("Update")]
-        Update = 0x00400023,
+        [Description("Update")] Update = 0x00400023,
 
         /// <summary>
         ///     Next Usage.
         /// </summary>
-        [Description("Next")]
-        Next = 0x00400024,
+        [Description("Next")] Next = 0x00400024,
 
         /// <summary>
         ///     Save Usage.
         /// </summary>
-        [Description("Save")]
-        Save = 0x00400025,
+        [Description("Save")] Save = 0x00400025,
 
         /// <summary>
         ///     Print Usage.
         /// </summary>
-        [Description("Print")]
-        Print = 0x00400026,
+        [Description("Print")] Print = 0x00400026,
 
         /// <summary>
         ///     Microphone Enable Usage.
         /// </summary>
-        [Description("Microphone Enable")]
-        MicrophoneEnable = 0x00400027,
+        [Description("Microphone Enable")] MicrophoneEnable = 0x00400027,
 
         /// <summary>
         ///     Cine Usage.
         /// </summary>
-        [Description("Cine")]
-        Cine = 0x00400040,
+        [Description("Cine")] Cine = 0x00400040,
 
         /// <summary>
         ///     Transmit Power Usage.
         /// </summary>
-        [Description("Transmit Power")]
-        TransmitPower = 0x00400041,
+        [Description("Transmit Power")] TransmitPower = 0x00400041,
 
         /// <summary>
         ///     Volume Usage.
         /// </summary>
-        [Description("Volume")]
-        Volume = 0x00400042,
+        [Description("Volume")] Volume = 0x00400042,
 
         /// <summary>
         ///     Focus Usage.
         /// </summary>
-        [Description("Focus")]
-        Focus = 0x00400043,
+        [Description("Focus")] Focus = 0x00400043,
 
         /// <summary>
         ///     Depth Usage.
         /// </summary>
-        [Description("Depth")]
-        Depth = 0x00400044,
+        [Description("Depth")] Depth = 0x00400044,
 
         /// <summary>
         ///     Soft Step - Primary Usage.
         /// </summary>
-        [Description("Soft Step - Primary")]
-        SoftStepPrimary = 0x00400060,
+        [Description("Soft Step - Primary")] SoftStepPrimary = 0x00400060,
 
         /// <summary>
         ///     Soft Step - Secondary Usage.
         /// </summary>
-        [Description("Soft Step - Secondary")]
-        SoftStepSecondary = 0x00400061,
+        [Description("Soft Step - Secondary")] SoftStepSecondary = 0x00400061,
 
         /// <summary>
         ///     Depth Gain Compensation Usage.
@@ -149,14 +132,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Zoom Select Usage.
         /// </summary>
-        [Description("Zoom Select")]
-        ZoomSelect = 0x00400080,
+        [Description("Zoom Select")] ZoomSelect = 0x00400080,
 
         /// <summary>
         ///     Zoom Adjust Usage.
         /// </summary>
-        [Description("Zoom Adjust")]
-        ZoomAdjust = 0x00400081,
+        [Description("Zoom Adjust")] ZoomAdjust = 0x00400081,
 
         /// <summary>
         ///     Spectral Doppler Mode Select Usage.
@@ -179,43 +160,36 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Color Doppler Adjust Usage.
         /// </summary>
-        [Description("Color Doppler Adjust")]
-        ColorDopplerAdjust = 0x00400085,
+        [Description("Color Doppler Adjust")] ColorDopplerAdjust = 0x00400085,
 
         /// <summary>
         ///     Motion Mode Select Usage.
         /// </summary>
-        [Description("Motion Mode Select")]
-        MotionModeSelect = 0x00400086,
+        [Description("Motion Mode Select")] MotionModeSelect = 0x00400086,
 
         /// <summary>
         ///     Motion Mode Adjust Usage.
         /// </summary>
-        [Description("Motion Mode Adjust")]
-        MotionModeAdjust = 0x00400087,
+        [Description("Motion Mode Adjust")] MotionModeAdjust = 0x00400087,
 
         /// <summary>
         ///     2D Mode Select Usage.
         /// </summary>
-        [Description("2D Mode Select")]
-        DModeSelect = 0x00400088,
+        [Description("2D Mode Select")] DModeSelect = 0x00400088,
 
         /// <summary>
         ///     2D Mode Adjust Usage.
         /// </summary>
-        [Description("2D Mode Adjust")]
-        DModeAdjust = 0x00400089,
+        [Description("2D Mode Adjust")] DModeAdjust = 0x00400089,
 
         /// <summary>
         ///     Soft Control Select Usage.
         /// </summary>
-        [Description("Soft Control Select")]
-        SoftControlSelect = 0x004000a0,
+        [Description("Soft Control Select")] SoftControlSelect = 0x004000a0,
 
         /// <summary>
         ///     Soft Control Adjust Usage.
         /// </summary>
-        [Description("Soft Control Adjust")]
-        SoftControlAdjust = 0x004000a1
+        [Description("Soft Control Adjust")] SoftControlAdjust = 0x004000a1
     }
 }

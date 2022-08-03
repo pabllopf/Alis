@@ -188,7 +188,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override bool Equals(object obj)
         {
-            return obj is BlendMode && Equals((BlendMode) obj);
+            return obj is BlendMode && Equals((BlendMode)obj);
         }
 
         ///////////////////////////////////////////////////////////

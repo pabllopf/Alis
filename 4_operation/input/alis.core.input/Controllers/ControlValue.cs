@@ -19,7 +19,7 @@ namespace Alis.Core.Input.Controllers
     public readonly struct ControlValue : IEquatable<ControlValue>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ControlValue"/> class
+        ///     Initializes a new instance of the <see cref="ControlValue" /> class
         /// </summary>
         /// <param name="change">The change</param>
         /// <param name="info">The info</param>
@@ -87,14 +87,22 @@ namespace Alis.Core.Input.Controllers
         public object Value { get; }
 
         /// <inheritdoc />
-        public bool Equals(ControlValue other) =>
-            Change.Equals(other.Change) && Info.Equals(other.Info) && Equals(Value, other.Value);
+        public bool Equals(ControlValue other)
+        {
+            return Change.Equals(other.Change) && Info.Equals(other.Info) && Equals(Value, other.Value);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => obj is ControlValue other && Equals(other);
+        public override bool Equals(object obj)
+        {
+            return obj is ControlValue other && Equals(other);
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(Change, Info, Value);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Change, Info, Value);
+        }
 
         /// <summary>
         ///     Implements the == operator.
@@ -102,7 +110,10 @@ namespace Alis.Core.Input.Controllers
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(ControlValue left, ControlValue right) => left.Equals(right);
+        public static bool operator ==(ControlValue left, ControlValue right)
+        {
+            return left.Equals(right);
+        }
 
         /// <summary>
         ///     Implements the != operator.
@@ -110,6 +121,9 @@ namespace Alis.Core.Input.Controllers
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(ControlValue left, ControlValue right) => !left.Equals(right);
+        public static bool operator !=(ControlValue left, ControlValue right)
+        {
+            return !left.Equals(right);
+        }
     }
 }

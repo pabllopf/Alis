@@ -46,17 +46,17 @@ using OpenTK.Graphics.OpenGL4;
 namespace Alis.Template.Game.Android
 {
     /// <summary>
-    /// The render manager class
+    ///     The render manager class
     /// </summary>
     public static class RenderManager
     {
         /// <summary>
-        /// The blue
+        ///     The blue
         /// </summary>
         private static float red, green, blue;
-        
+
         /// <summary>
-        /// Ons the draw frame
+        ///     Ons the draw frame
         /// </summary>
         public static void OnDrawFrame()
         {
@@ -76,7 +76,7 @@ namespace Alis.Template.Game.Android
             if (blue >= 1.0f)
                 blue -= 1.0f;
 #endif
-            
+
 #if WINDOWS || LINUX
             GL.Clear(ClearBufferMask.ColorBufferBit);
             

@@ -42,7 +42,6 @@ namespace Alis.Core.Network.Sample
     /// </summary>
     public class Program
     {
-
         //private static ILogger _logger;
         //private static ILoggerFactory _loggerFactory;
 
@@ -50,7 +49,7 @@ namespace Alis.Core.Network.Sample
         ///     The web socket server factory
         /// </summary>
         private static IWebSocketServerFactory _webSocketServerFactory;
-        
+
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -62,10 +61,10 @@ namespace Alis.Core.Network.Sample
             //_logger = _loggerFactory.CreateLogger<Program>();
             _webSocketServerFactory = new WebSocketServerFactory();
             Task task = StartWebServer();
-            
-            
+
+
             RunComplexTest(args);
-            
+
             if (args.Length == 0)
             {
                 RunSimpleTest().Wait();
@@ -74,7 +73,6 @@ namespace Alis.Core.Network.Sample
             {
                 // TODO: allow buffer pool to grow its buffers
                 // ws://localhost:27416/echo 5 1000 5000 40000
-                
             }
             else
             {
@@ -88,7 +86,7 @@ namespace Alis.Core.Network.Sample
             Console.ReadKey();
             task.Wait();
         }
-        
+
         /// <summary>
         ///     Runs the load test
         /// </summary>
@@ -126,8 +124,8 @@ namespace Alis.Core.Network.Sample
             SimpleClient client = new SimpleClient();
             await client.Run();
         }
-        
-        
+
+
         /// <summary>
         ///     Starts the web server
         /// </summary>
@@ -136,7 +134,7 @@ namespace Alis.Core.Network.Sample
             try
             {
                 int port = 27416;
-                IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
+                IList<string> supportedSubProtocols = new[] { "chatV1", "chatV2", "chatV3" };
                 using (WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols))
                 {
                     await server.Listen(port);

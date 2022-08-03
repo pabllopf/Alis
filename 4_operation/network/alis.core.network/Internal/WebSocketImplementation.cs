@@ -50,6 +50,11 @@ namespace Alis.Core.Network.Internal
     internal class WebSocketImplementation : WebSocket
     {
         /// <summary>
+        ///     The max ping pong payload len
+        /// </summary>
+        private const int MAX_PING_PONG_PAYLOAD_LEN = 125;
+
+        /// <summary>
         ///     The guid
         /// </summary>
         private readonly Guid _guid;
@@ -205,11 +210,6 @@ namespace Alis.Core.Network.Internal
         ///     Gets the value of the keep alive interval
         /// </summary>
         public TimeSpan KeepAliveInterval { get; }
-
-        /// <summary>
-        ///     The max ping pong payload len
-        /// </summary>
-        private const int MAX_PING_PONG_PAYLOAD_LEN = 125;
 
         public event EventHandler<PongEventArgs> Pong;
 
@@ -520,7 +520,7 @@ namespace Alis.Core.Network.Internal
         /// <returns>The payload to sent in the close frame</returns>
         private ArraySegment<byte> BuildClosePayload(WebSocketCloseStatus closeStatus, string statusDescription)
         {
-            byte[] statusBuffer = BitConverter.GetBytes((ushort) closeStatus);
+            byte[] statusBuffer = BitConverter.GetBytes((ushort)closeStatus);
             Array.Reverse(statusBuffer); // network byte order (big endian)
 
             if (statusDescription == null)
@@ -652,7 +652,7 @@ namespace Alis.Core.Network.Internal
                 buffer = new ArraySegment<byte>(array, 0, array.Length);
             }
 
-            return new ArraySegment<byte>(buffer.Array, buffer.Offset, (int) stream.Position);
+            return new ArraySegment<byte>(buffer.Array, buffer.Offset, (int)stream.Position);
 #endif
         }
 
@@ -726,7 +726,7 @@ namespace Alis.Core.Network.Internal
             catch (OperationCanceledException)
             {
                 // do not throw an exception because that will mask the original exception
-                Events.Log.CloseOutputAutoTimeoutCancelled(_guid, (int) timeSpan.TotalSeconds, closeStatus,
+                Events.Log.CloseOutputAutoTimeoutCancelled(_guid, (int)timeSpan.TotalSeconds, closeStatus,
                     statusDescription, ex.ToString());
             }
             catch (Exception closeException)

@@ -17,13 +17,16 @@ namespace Alis.Core.Input.Converters
         public static readonly BooleanConverter Instance = new BooleanConverter();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BooleanConverter"/> class
+        ///     Initializes a new instance of the <see cref="BooleanConverter" /> class
         /// </summary>
         private BooleanConverter()
         {
         }
 
         /// <inheritdoc />
-        public override bool Convert(CultureInfo culture, double value) => !double.IsNaN(value) && value > 0.5D;
+        public override bool Convert(CultureInfo culture, double value)
+        {
+            return !double.IsNaN(value) && value > 0.5D;
+        }
     }
 }

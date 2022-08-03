@@ -41,7 +41,6 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00830000
+        [Description("Undefined")] Undefined = 0x00830000
     }
 }

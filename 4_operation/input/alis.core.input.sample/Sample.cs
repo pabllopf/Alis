@@ -12,22 +12,23 @@ using Microsoft.Extensions.Logging;
 namespace HIDDevices.Sample
 {
     /// <summary>
-    /// The sample class
+    ///     The sample class
     /// </summary>
-    /// <seealso cref="ISample"/>
+    /// <seealso cref="ISample" />
     public abstract class Sample : ISample
     {
         /// <summary>
-        /// The logger
+        ///     The logger
         /// </summary>
         private readonly SimpleConsoleLogger<Sample> _logger;
+
         /// <summary>
-        /// The short names
+        ///     The short names
         /// </summary>
         private readonly HashSet<string> _shortNames;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sample"/> class
+        ///     Initializes a new instance of the <see cref="Sample" /> class
         /// </summary>
         /// <param name="fullName">The full name</param>
         /// <param name="shortNames">The short names</param>
@@ -40,14 +41,18 @@ namespace HIDDevices.Sample
         }
 
         /// <summary>
-        /// Gets the value of the logger
+        ///     Gets the value of the logger
         /// </summary>
         protected ILogger Logger => _logger;
 
         /// <summary>
-        /// Gets or sets the value of the log level
+        ///     Gets or sets the value of the log level
         /// </summary>
-        public LogLevel LogLevel { get => _logger.LogLevel; set => _logger.LogLevel = value; }
+        public LogLevel LogLevel
+        {
+            get => _logger.LogLevel;
+            set => _logger.LogLevel = value;
+        }
 
         /// <inheritdoc />
         public string FullName { get; }
@@ -56,7 +61,10 @@ namespace HIDDevices.Sample
         public IReadOnlyCollection<string> ShortNames => _shortNames;
 
         /// <inheritdoc />
-        public virtual Task ExecuteAsync(CancellationToken token = default) => Task.Run(Execute, token);
+        public virtual Task ExecuteAsync(CancellationToken token = default)
+        {
+            return Task.Run(Execute, token);
+        }
 
         /// <inheritdoc />
         public abstract string Description { get; }
@@ -64,16 +72,20 @@ namespace HIDDevices.Sample
         /// <summary>
         ///     Execute the example synchronously.
         /// </summary>
-        protected virtual void Execute() { }
+        protected virtual void Execute()
+        {
+        }
 
         /// <summary>
-        /// Creates the logger using the specified log level
+        ///     Creates the logger using the specified log level
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="logLevel">The log level</param>
         /// <returns>A logger of t</returns>
-        public static ILogger<T> CreateLogger<T>(LogLevel logLevel = LogLevel.Information) =>
-            new SimpleConsoleLogger<T>(logLevel);
+        public static ILogger<T> CreateLogger<T>(LogLevel logLevel = LogLevel.Information)
+        {
+            return new SimpleConsoleLogger<T>(logLevel);
+        }
 
         /// <summary>
         ///     Gets a friendly full name

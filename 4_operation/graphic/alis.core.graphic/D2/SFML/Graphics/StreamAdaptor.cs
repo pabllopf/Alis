@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         private long Read(IntPtr data, long size, IntPtr userData)
         {
             byte[] buffer = new byte[size];
-            int count = myStream.Read(buffer, 0, (int) size);
+            int count = myStream.Read(buffer, 0, (int)size);
             Marshal.Copy(buffer, 0, data, count);
             return count;
         }

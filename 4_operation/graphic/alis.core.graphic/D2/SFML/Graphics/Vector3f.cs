@@ -179,7 +179,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override bool Equals(object obj)
         {
-            return obj is Vector3f && Equals((Vector3f) obj);
+            return obj is Vector3f && Equals((Vector3f)obj);
         }
 
         ///////////////////////////////////////////////////////////

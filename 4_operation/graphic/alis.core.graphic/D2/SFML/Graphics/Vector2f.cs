@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override bool Equals(object obj)
         {
-            return obj is Vector2f && Equals((Vector2f) obj);
+            return obj is Vector2f && Equals((Vector2f)obj);
         }
 
         ///////////////////////////////////////////////////////////
@@ -212,7 +212,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public static explicit operator Vector2i(Vector2f v)
         {
-            return new Vector2i((int) v.X, (int) v.Y);
+            return new Vector2i((int)v.X, (int)v.Y);
         }
 
         ////////////////////////////////////////////////////////////
@@ -224,7 +224,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public static explicit operator Vector2u(Vector2f v)
         {
-            return new Vector2u((uint) v.X, (uint) v.Y);
+            return new Vector2u((uint)v.X, (uint)v.Y);
         }
 
         /// <summary>X (horizontal) component of the vector</summary>

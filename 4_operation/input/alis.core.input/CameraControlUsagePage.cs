@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly CameraControlUsagePage Instance = new CameraControlUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CameraControlUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="CameraControlUsagePage" /> class
         /// </summary>
         private CameraControlUsagePage() : base(0x0090, "CameraControl")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

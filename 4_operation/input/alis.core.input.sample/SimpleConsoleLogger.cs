@@ -8,18 +8,18 @@ using Microsoft.Extensions.Logging;
 namespace HIDDevices.Sample
 {
     /// <summary>
-    /// The simple console logger class
+    ///     The simple console logger class
     /// </summary>
-    /// <seealso cref="ILogger{T}"/>
+    /// <seealso cref="ILogger{T}" />
     public class SimpleConsoleLogger<T> : ILogger<T>
     {
         /// <summary>
-        /// The name
+        ///     The name
         /// </summary>
         public readonly string Name;
 
         /// <summary>
-        /// Initializes a new instance of the class
+        ///     Initializes a new instance of the class
         /// </summary>
         /// <param name="logLevel">The log level</param>
         /// <param name="name">The name</param>
@@ -30,7 +30,7 @@ namespace HIDDevices.Sample
         }
 
         /// <summary>
-        /// Gets or sets the value of the log level
+        ///     Gets or sets the value of the log level
         /// </summary>
         public LogLevel LogLevel { get; set; }
 
@@ -52,9 +52,15 @@ namespace HIDDevices.Sample
         }
 
         /// <inheritdoc />
-        public bool IsEnabled(LogLevel logLevel) => LogLevel <= logLevel;
+        public bool IsEnabled(LogLevel logLevel)
+        {
+            return LogLevel <= logLevel;
+        }
 
         /// <inheritdoc />
-        public IDisposable BeginScope<TState>(TState state) => Disposable.Empty;
+        public IDisposable BeginScope<TState>(TState state)
+        {
+            return Disposable.Empty;
+        }
     }
 }

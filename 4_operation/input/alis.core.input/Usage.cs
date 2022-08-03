@@ -17,7 +17,7 @@ namespace Alis.Core.Input
     public sealed class Usage : IEquatable<Usage>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Usage"/> class
+        ///     Initializes a new instance of the <see cref="Usage" /> class
         /// </summary>
         /// <param name="page">The page</param>
         /// <param name="id">The id</param>
@@ -67,31 +67,39 @@ namespace Alis.Core.Input
         /// <value>The types.</value>
         public IReadOnlyCollection<UsageType> Types { get; }
 
-  
+
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        public bool Equals(Usage other) =>
-            !(other is null) &&
-            (ReferenceEquals(this, other) || (Page.Equals(other.Page) && Id == other.Id));
+        public bool Equals(Usage other)
+        {
+            return !(other is null) &&
+                   (ReferenceEquals(this, other) || (Page.Equals(other.Page) && Id == other.Id));
+        }
 
-     
+
         /// <summary>
-        /// Gets the usage
+        ///     Gets the usage
         /// </summary>
         /// <param name="usage">The usage</param>
         /// <returns>The usage</returns>
-        public static Usage Get(Enum usage) => Get(Convert.ToUInt32(usage));
+        public static Usage Get(Enum usage)
+        {
+            return Get(Convert.ToUInt32(usage));
+        }
 
-      
+
         /// <summary>
-        /// Gets the full id
+        ///     Gets the full id
         /// </summary>
         /// <param name="fullId">The full id</param>
         /// <returns>The usage</returns>
-        public static Usage Get(uint fullId) => UsagePage.Get(fullId).GetUsage((ushort)(fullId & 0xFFFF));
+        public static Usage Get(uint fullId)
+        {
+            return UsagePage.Get(fullId).GetUsage((ushort)(fullId & 0xFFFF));
+        }
 
         /// <summary>
         ///     Implements the == operator.
@@ -99,7 +107,10 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(Usage left, Usage right) => Equals(left, right);
+        public static bool operator ==(Usage left, Usage right)
+        {
+            return Equals(left, right);
+        }
 
         /// <summary>
         ///     Implements the != operator.
@@ -107,36 +118,57 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(Usage left, Usage right) => !Equals(left, right);
+        public static bool operator !=(Usage left, Usage right)
+        {
+            return !Equals(left, right);
+        }
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="Usage" /> to <see cref="System.UInt32" />.
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator uint(Usage usage) => usage.FullId;
+        public static implicit operator uint(Usage usage)
+        {
+            return usage.FullId;
+        }
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="System.UInt32" /> to <see cref="Usage" />.
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Usage(uint usage) => Get(usage);
+        public static implicit operator Usage(uint usage)
+        {
+            return Get(usage);
+        }
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="Enum" /> to <see cref="Usage" />.
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Usage(Enum usage) => Get(usage);
+        public static implicit operator Usage(Enum usage)
+        {
+            return Get(usage);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) => ReferenceEquals(this, obj) || (obj is Usage other && Equals(other));
+        public override bool Equals(object obj)
+        {
+            return ReferenceEquals(this, obj) || (obj is Usage other && Equals(other));
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => HashCode.Combine(Page, Id);
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Page, Id);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => $"{Page} - {Name}";
+        public override string ToString()
+        {
+            return $"{Page} - {Name}";
+        }
     }
 }

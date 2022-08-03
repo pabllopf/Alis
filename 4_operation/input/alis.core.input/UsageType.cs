@@ -9,13 +9,13 @@ using System.Linq;
 namespace Alis.Core.Input
 {
     /// <summary>
-    /// The usage type class
+    ///     The usage type class
     /// </summary>
-    /// <seealso cref="IEquatable{UsageType}"/>
+    /// <seealso cref="IEquatable{UsageType}" />
     public sealed class UsageType : IEquatable<UsageType>
     {
         /// <summary>
-        /// The usage type
+        ///     The usage type
         /// </summary>
         private static readonly ConcurrentDictionary<UsageTypes, IReadOnlyCollection<UsageType>>
             s_usageTypes = new ConcurrentDictionary<UsageTypes, IReadOnlyCollection<UsageType>>();
@@ -112,7 +112,7 @@ namespace Alis.Core.Input
             "Usage Modifier");
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UsageType"/> class
+        ///     Initializes a new instance of the <see cref="UsageType" /> class
         /// </summary>
         /// <param name="usageTypes">The usage types</param>
         /// <param name="usageTypeGroup">The usage type group</param>
@@ -124,7 +124,7 @@ namespace Alis.Core.Input
             UsageTypeGroup = usageTypeGroup;
             Name = name;
             Description = description;
-            s_usageTypes[usageTypes] = new[] {this};
+            s_usageTypes[usageTypes] = new[] { this };
         }
 
         /// <summary>
@@ -152,16 +152,23 @@ namespace Alis.Core.Input
         public string Description { get; }
 
         /// <inheritdoc />
-        public bool Equals(UsageType other) =>
-            !(other is null) &&
-            (ReferenceEquals(this, other) || UsageTypes == other.UsageTypes);
+        public bool Equals(UsageType other)
+        {
+            return !(other is null) &&
+                   (ReferenceEquals(this, other) || UsageTypes == other.UsageTypes);
+        }
 
         /// <inheritdoc />
-        public override bool Equals(object obj) =>
-            ReferenceEquals(this, obj) || (obj is UsageType other && Equals(other));
+        public override bool Equals(object obj)
+        {
+            return ReferenceEquals(this, obj) || (obj is UsageType other && Equals(other));
+        }
 
         /// <inheritdoc />
-        public override int GetHashCode() => (int)UsageTypes;
+        public override int GetHashCode()
+        {
+            return (int)UsageTypes;
+        }
 
         /// <summary>
         ///     Implements the == operator.
@@ -169,7 +176,10 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(UsageType left, UsageType right) => Equals(left, right);
+        public static bool operator ==(UsageType left, UsageType right)
+        {
+            return Equals(left, right);
+        }
 
         /// <summary>
         ///     Implements the != operator.
@@ -177,7 +187,10 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(UsageType left, UsageType right) => !Equals(left, right);
+        public static bool operator !=(UsageType left, UsageType right)
+        {
+            return !Equals(left, right);
+        }
 
         /// <summary>
         ///     Gets the specified usage types from the flag enum.
@@ -185,7 +198,8 @@ namespace Alis.Core.Input
         /// <param name="usageTypes">The usage types.</param>
         /// <returns>A collection of <seealso cref="UsageType" />.</returns>
         public static IReadOnlyCollection<UsageType> Get(UsageTypes usageTypes)
-            => usageTypes > UsageTypes.None
+        {
+            return usageTypes > UsageTypes.None
                 ? s_usageTypes.GetOrAdd(
                     usageTypes,
                     u =>
@@ -196,15 +210,22 @@ namespace Alis.Core.Input
                             .Where(ut => ut != null)
                             .ToArray())
                 : Array.Empty<UsageType>();
+        }
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="UsageType" /> to <see cref="UsageTypes" />.
         /// </summary>
         /// <param name="usageType">Type of the usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator UsageTypes(UsageType usageType) => usageType.UsageTypes;
+        public static implicit operator UsageTypes(UsageType usageType)
+        {
+            return usageType.UsageTypes;
+        }
 
         /// <inheritdoc />
-        public override string ToString() => Name;
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

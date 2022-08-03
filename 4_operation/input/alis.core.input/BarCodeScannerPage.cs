@@ -41,32 +41,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x008c0000,
+        [Description("Undefined")] Undefined = 0x008c0000,
 
         /// <summary>
         ///     Bar Code Badge Reader Usage.
         /// </summary>
-        [Description("Bar Code Badge Reader")]
-        BarCodeBadgeReader = 0x008c0001,
+        [Description("Bar Code Badge Reader")] BarCodeBadgeReader = 0x008c0001,
 
         /// <summary>
         ///     Bar Code Scanner Usage.
         /// </summary>
-        [Description("Bar Code Scanner")]
-        BarCodeScanner = 0x008c0002,
+        [Description("Bar Code Scanner")] BarCodeScanner = 0x008c0002,
 
         /// <summary>
         ///     Dumb Bar Code Scanner Usage.
         /// </summary>
-        [Description("Dumb Bar Code Scanner")]
-        DumbBarCodeScanner = 0x008c0003,
+        [Description("Dumb Bar Code Scanner")] DumbBarCodeScanner = 0x008c0003,
 
         /// <summary>
         ///     Cordless Scanner Base Usage.
         /// </summary>
-        [Description("Cordless Scanner Base")]
-        CordlessScannerBase = 0x008c0004,
+        [Description("Cordless Scanner Base")] CordlessScannerBase = 0x008c0004,
 
         /// <summary>
         ///     Bar Code Scanner Cradle Usage.
@@ -77,20 +72,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Attribute Report Usage.
         /// </summary>
-        [Description("Attribute Report")]
-        AttributeReport = 0x008c0010,
+        [Description("Attribute Report")] AttributeReport = 0x008c0010,
 
         /// <summary>
         ///     Settings Report Usage.
         /// </summary>
-        [Description("Settings Report")]
-        SettingsReport = 0x008c0011,
+        [Description("Settings Report")] SettingsReport = 0x008c0011,
 
         /// <summary>
         ///     Scanned Data Report Usage.
         /// </summary>
-        [Description("Scanned Data Report")]
-        ScannedDataReport = 0x008c0012,
+        [Description("Scanned Data Report")] ScannedDataReport = 0x008c0012,
 
         /// <summary>
         ///     Raw Scanned Data Report Usage.
@@ -101,14 +93,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Trigger Report Usage.
         /// </summary>
-        [Description("Trigger Report")]
-        TriggerReport = 0x008c0014,
+        [Description("Trigger Report")] TriggerReport = 0x008c0014,
 
         /// <summary>
         ///     Status Report Usage.
         /// </summary>
-        [Description("Status Report")]
-        StatusReport = 0x008c0015,
+        [Description("Status Report")] StatusReport = 0x008c0015,
 
         /// <summary>
         ///     UPC/EAN Control Report Usage.
@@ -167,14 +157,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     2D Control Report Usage.
         /// </summary>
-        [Description("2D Control Report")]
-        DControlReport = 0x008c001f,
+        [Description("2D Control Report")] DControlReport = 0x008c001f,
 
         /// <summary>
         ///     Aiming/Pointer Mode Usage.
         /// </summary>
-        [Description("Aiming/Pointer Mode")]
-        AimingPointerMode = 0x008c0030,
+        [Description("Aiming/Pointer Mode")] AimingPointerMode = 0x008c0030,
 
         /// <summary>
         ///     Bar Code Present Sensor Usage.
@@ -185,26 +173,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Class 1A Laser Usage.
         /// </summary>
-        [Description("Class 1A Laser")]
-        Class1ALaser = 0x008c0032,
+        [Description("Class 1A Laser")] Class1ALaser = 0x008c0032,
 
         /// <summary>
         ///     Class 2 Laser Usage.
         /// </summary>
-        [Description("Class 2 Laser")]
-        Class2Laser = 0x008c0033,
+        [Description("Class 2 Laser")] Class2Laser = 0x008c0033,
 
         /// <summary>
         ///     Heater Present Usage.
         /// </summary>
-        [Description("Heater Present")]
-        HeaterPresent = 0x008c0034,
+        [Description("Heater Present")] HeaterPresent = 0x008c0034,
 
         /// <summary>
         ///     Contact Scanner Usage.
         /// </summary>
-        [Description("Contact Scanner")]
-        ContactScanner = 0x008c0035,
+        [Description("Contact Scanner")] ContactScanner = 0x008c0035,
 
         /// <summary>
         ///     Electronic Article Surveillance Notification Usage.
@@ -221,14 +205,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Error Indication Usage.
         /// </summary>
-        [Description("Error Indication")]
-        ErrorIndication = 0x008c0038,
+        [Description("Error Indication")] ErrorIndication = 0x008c0038,
 
         /// <summary>
         ///     Fixed Beeper Usage.
         /// </summary>
-        [Description("Fixed Beeper")]
-        FixedBeeper = 0x008c0039,
+        [Description("Fixed Beeper")] FixedBeeper = 0x008c0039,
 
         /// <summary>
         ///     Good Decode Indication Usage.
@@ -239,32 +221,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Hands Free Scanning Usage.
         /// </summary>
-        [Description("Hands Free Scanning")]
-        HandsFreeScanning = 0x008c003b,
+        [Description("Hands Free Scanning")] HandsFreeScanning = 0x008c003b,
 
         /// <summary>
         ///     Intrinsically Safe Usage.
         /// </summary>
-        [Description("Intrinsically Safe")]
-        IntrinsicallySafe = 0x008c003c,
+        [Description("Intrinsically Safe")] IntrinsicallySafe = 0x008c003c,
 
         /// <summary>
         ///     Class 1 Laser Usage.
         /// </summary>
-        [Description("Class 1 Laser")]
-        Class1Laser = 0x008c003d,
+        [Description("Class 1 Laser")] Class1Laser = 0x008c003d,
 
         /// <summary>
         ///     Long Range Scanner Usage.
         /// </summary>
-        [Description("Long Range Scanner")]
-        LongRangeScanner = 0x008c003e,
+        [Description("Long Range Scanner")] LongRangeScanner = 0x008c003e,
 
         /// <summary>
         ///     Mirror Speed Control Usage.
         /// </summary>
-        [Description("Mirror Speed Control")]
-        MirrorSpeedControl = 0x008c003f,
+        [Description("Mirror Speed Control")] MirrorSpeedControl = 0x008c003f,
 
         /// <summary>
         ///     Not On File Indication Usage.
@@ -275,44 +252,37 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Programmable Beeper Usage.
         /// </summary>
-        [Description("Programmable Beeper")]
-        ProgrammableBeeper = 0x008c0041,
+        [Description("Programmable Beeper")] ProgrammableBeeper = 0x008c0041,
 
         /// <summary>
         ///     Triggerless Usage.
         /// </summary>
-        [Description("Triggerless")]
-        Triggerless = 0x008c0042,
+        [Description("Triggerless")] Triggerless = 0x008c0042,
 
         /// <summary>
         ///     Wand Usage.
         /// </summary>
-        [Description("Wand")]
-        Wand = 0x008c0043,
+        [Description("Wand")] Wand = 0x008c0043,
 
         /// <summary>
         ///     Water Resistant Usage.
         /// </summary>
-        [Description("Water Resistant")]
-        WaterResistant = 0x008c0044,
+        [Description("Water Resistant")] WaterResistant = 0x008c0044,
 
         /// <summary>
         ///     Multi-Range Scanner Usage.
         /// </summary>
-        [Description("Multi-Range Scanner")]
-        MultiRangeScanner = 0x008c0045,
+        [Description("Multi-Range Scanner")] MultiRangeScanner = 0x008c0045,
 
         /// <summary>
         ///     Proximity Sensor Usage.
         /// </summary>
-        [Description("Proximity Sensor")]
-        ProximitySensor = 0x008c0046,
+        [Description("Proximity Sensor")] ProximitySensor = 0x008c0046,
 
         /// <summary>
         ///     Fragment Decoding Usage.
         /// </summary>
-        [Description("Fragment Decoding")]
-        FragmentDecoding = 0x008c004d,
+        [Description("Fragment Decoding")] FragmentDecoding = 0x008c004d,
 
         /// <summary>
         ///     Scanner Read Confidence Usage.
@@ -323,80 +293,67 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Prefix Usage.
         /// </summary>
-        [Description("Data Prefix")]
-        DataPrefix = 0x008c004f,
+        [Description("Data Prefix")] DataPrefix = 0x008c004f,
 
         /// <summary>
         ///     Prefix AIMI Usage.
         /// </summary>
-        [Description("Prefix AIMI")]
-        PrefixAIMI = 0x008c0050,
+        [Description("Prefix AIMI")] PrefixAIMI = 0x008c0050,
 
         /// <summary>
         ///     Prefix None Usage.
         /// </summary>
-        [Description("Prefix None")]
-        PrefixNone = 0x008c0051,
+        [Description("Prefix None")] PrefixNone = 0x008c0051,
 
         /// <summary>
         ///     Prefix Proprietary Usage.
         /// </summary>
-        [Description("Prefix Proprietary")]
-        PrefixProprietary = 0x008c0052,
+        [Description("Prefix Proprietary")] PrefixProprietary = 0x008c0052,
 
         /// <summary>
         ///     Active Time Usage.
         /// </summary>
-        [Description("Active Time")]
-        ActiveTime = 0x008c0055,
+        [Description("Active Time")] ActiveTime = 0x008c0055,
 
         /// <summary>
         ///     Aiming Laser Pattern Usage.
         /// </summary>
-        [Description("Aiming Laser Pattern")]
-        AimingLaserPattern = 0x008c0056,
+        [Description("Aiming Laser Pattern")] AimingLaserPattern = 0x008c0056,
 
         /// <summary>
         ///     Bar Code Present Usage.
         /// </summary>
-        [Description("Bar Code Present")]
-        BarCodePresent = 0x008c0057,
+        [Description("Bar Code Present")] BarCodePresent = 0x008c0057,
 
         /// <summary>
         ///     Beeper State Usage.
         /// </summary>
-        [Description("Beeper State")]
-        BeeperState = 0x008c0058,
+        [Description("Beeper State")] BeeperState = 0x008c0058,
 
         /// <summary>
         ///     Laser On Time Usage.
         /// </summary>
-        [Description("Laser On Time")]
-        LaserOnTime = 0x008c0059,
+        [Description("Laser On Time")] LaserOnTime = 0x008c0059,
 
         /// <summary>
         ///     Laser State Usage.
         /// </summary>
-        [Description("Laser State")]
-        LaserState = 0x008c005a,
+        [Description("Laser State")] LaserState = 0x008c005a,
 
         /// <summary>
         ///     Lockout Time Usage.
         /// </summary>
-        [Description("Lockout Time")]
-        LockoutTime = 0x008c005b,
+        [Description("Lockout Time")] LockoutTime = 0x008c005b,
 
         /// <summary>
         ///     Motor State Usage.
         /// </summary>
-        [Description("Motor State")]
-        MotorState = 0x008c005c,
+        [Description("Motor State")] MotorState = 0x008c005c,
 
         /// <summary>
         ///     Motor Timeout Usage.
         /// </summary>
-        [Description("Motor Timeout")]
-        MotorTimeout = 0x008c005d,
+        [Description("Motor Timeout")] MotorTimeout = 0x008c005d,
 
         /// <summary>
         ///     Power On Reset Scanner Usage.
@@ -413,20 +370,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Initiate Barcode Read Usage.
         /// </summary>
-        [Description("Initiate Barcode Read")]
-        InitiateBarcodeRead = 0x008c0060,
+        [Description("Initiate Barcode Read")] InitiateBarcodeRead = 0x008c0060,
 
         /// <summary>
         ///     Trigger State Usage.
         /// </summary>
-        [Description("Trigger State")]
-        TriggerState = 0x008c0061,
+        [Description("Trigger State")] TriggerState = 0x008c0061,
 
         /// <summary>
         ///     Trigger Mode Usage.
         /// </summary>
-        [Description("Trigger Mode")]
-        TriggerMode = 0x008c0062,
+        [Description("Trigger Mode")] TriggerMode = 0x008c0062,
 
         /// <summary>
         ///     Trigger Mode Blinking Laser On Usage.
@@ -461,14 +415,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Parameter Scanning Usage.
         /// </summary>
-        [Description("Parameter Scanning")]
-        ParameterScanning = 0x008c006e,
+        [Description("Parameter Scanning")] ParameterScanning = 0x008c006e,
 
         /// <summary>
         ///     Parameters Changed Usage.
         /// </summary>
-        [Description("Parameters Changed")]
-        ParametersChanged = 0x008c006f,
+        [Description("Parameters Changed")] ParametersChanged = 0x008c006f,
 
         /// <summary>
         ///     Set parameter default values Usage.
@@ -479,20 +431,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Scanner In Cradle Usage.
         /// </summary>
-        [Description("Scanner In Cradle")]
-        ScannerInCradle = 0x008c0075,
+        [Description("Scanner In Cradle")] ScannerInCradle = 0x008c0075,
 
         /// <summary>
         ///     Scanner In Range Usage.
         /// </summary>
-        [Description("Scanner In Range")]
-        ScannerInRange = 0x008c0076,
+        [Description("Scanner In Range")] ScannerInRange = 0x008c0076,
 
         /// <summary>
         ///     Aim Duration Usage.
         /// </summary>
-        [Description("Aim Duration")]
-        AimDuration = 0x008c007a,
+        [Description("Aim Duration")] AimDuration = 0x008c007a,
 
         /// <summary>
         ///     Good Read Lamp Duration Usage.
@@ -509,8 +458,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Good Read LED Usage.
         /// </summary>
-        [Description("Good Read LED")]
-        GoodReadLED = 0x008c007d,
+        [Description("Good Read LED")] GoodReadLED = 0x008c007d,
 
         /// <summary>
         ///     Good Read Tone Frequency Usage.
@@ -521,44 +469,37 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Good Read Tone Length Usage.
         /// </summary>
-        [Description("Good Read Tone Length")]
-        GoodReadToneLength = 0x008c007f,
+        [Description("Good Read Tone Length")] GoodReadToneLength = 0x008c007f,
 
         /// <summary>
         ///     Good Read Tone Volume Usage.
         /// </summary>
-        [Description("Good Read Tone Volume")]
-        GoodReadToneVolume = 0x008c0080,
+        [Description("Good Read Tone Volume")] GoodReadToneVolume = 0x008c0080,
 
         /// <summary>
         ///     No Read Message Usage.
         /// </summary>
-        [Description("No Read Message")]
-        NoReadMessage = 0x008c0082,
+        [Description("No Read Message")] NoReadMessage = 0x008c0082,
 
         /// <summary>
         ///     Not on File Volume Usage.
         /// </summary>
-        [Description("Not on File Volume")]
-        NotOnFileVolume = 0x008c0083,
+        [Description("Not on File Volume")] NotOnFileVolume = 0x008c0083,
 
         /// <summary>
         ///     Powerup Beep Usage.
         /// </summary>
-        [Description("Powerup Beep")]
-        PowerupBeep = 0x008c0084,
+        [Description("Powerup Beep")] PowerupBeep = 0x008c0084,
 
         /// <summary>
         ///     Sound Error Beep Usage.
         /// </summary>
-        [Description("Sound Error Beep")]
-        SoundErrorBeep = 0x008c0085,
+        [Description("Sound Error Beep")] SoundErrorBeep = 0x008c0085,
 
         /// <summary>
         ///     Sound Good Read Beep Usage.
         /// </summary>
-        [Description("Sound Good Read Beep")]
-        SoundGoodReadBeep = 0x008c0086,
+        [Description("Sound Good Read Beep")] SoundGoodReadBeep = 0x008c0086,
 
         /// <summary>
         ///     Sound Not On File Beep Usage.
@@ -575,8 +516,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     GRWTI After Decode Usage.
         /// </summary>
-        [Description("GRWTI After Decode")]
-        GRWTIAfterDecode = 0x008c0089,
+        [Description("GRWTI After Decode")] GRWTIAfterDecode = 0x008c0089,
 
         /// <summary>
         ///     GRWTI Beep/Lamp after transmit Usage.
@@ -593,8 +533,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Bookland EAN Usage.
         /// </summary>
-        [Description("Bookland EAN")]
-        BooklandEAN = 0x008c0091,
+        [Description("Bookland EAN")] BooklandEAN = 0x008c0091,
 
         /// <summary>
         ///     Convert EAN 8 to 13 Type Usage.
@@ -611,26 +550,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Convert UPC-E to A Usage.
         /// </summary>
-        [Description("Convert UPC-E to A")]
-        ConvertUPCEToA = 0x008c0094,
+        [Description("Convert UPC-E to A")] ConvertUPCEToA = 0x008c0094,
 
         /// <summary>
         ///     EAN-13 Usage.
         /// </summary>
-        [Description("EAN-13")]
-        EAN13 = 0x008c0095,
+        [Description("EAN-13")] EAN13 = 0x008c0095,
 
         /// <summary>
         ///     EAN-8 Usage.
         /// </summary>
-        [Description("EAN-8")]
-        EAN8 = 0x008c0096,
+        [Description("EAN-8")] EAN8 = 0x008c0096,
 
         /// <summary>
         ///     EAN-99 128_Mandatory Usage.
         /// </summary>
-        [Description("EAN-99 128_Mandatory")]
-        EAN99128_Mandatory = 0x008c0097,
+        [Description("EAN-99 128_Mandatory")] EAN99128_Mandatory = 0x008c0097,
 
         /// <summary>
         ///     EAN-99 P5/128_Optional Usage.
@@ -641,26 +576,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     UPC/EAN Usage.
         /// </summary>
-        [Description("UPC/EAN")]
-        UPCEAN = 0x008c009a,
+        [Description("UPC/EAN")] UPCEAN = 0x008c009a,
 
         /// <summary>
         ///     UPC/EAN Coupon Code Usage.
         /// </summary>
-        [Description("UPC/EAN Coupon Code")]
-        UPCEANCouponCode = 0x008c009b,
+        [Description("UPC/EAN Coupon Code")] UPCEANCouponCode = 0x008c009b,
 
         /// <summary>
         ///     UPC/EAN Periodicals Usage.
         /// </summary>
-        [Description("UPC/EAN Periodicals")]
-        UPCEANPeriodicals = 0x008c009c,
+        [Description("UPC/EAN Periodicals")] UPCEANPeriodicals = 0x008c009c,
 
         /// <summary>
         ///     UPC-A Usage.
         /// </summary>
-        [Description("UPC-A")]
-        UPCA = 0x008c009d,
+        [Description("UPC-A")] UPCA = 0x008c009d,
 
         /// <summary>
         ///     UPC-A with 128 Mandatory Usage.
@@ -683,20 +614,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     UPC-E Usage.
         /// </summary>
-        [Description("UPC-E")]
-        UPCE = 0x008c00a1,
+        [Description("UPC-E")] UPCE = 0x008c00a1,
 
         /// <summary>
         ///     UPC-E1 Usage.
         /// </summary>
-        [Description("UPC-E1")]
-        UPCE1 = 0x008c00a2,
+        [Description("UPC-E1")] UPCE1 = 0x008c00a2,
 
         /// <summary>
         ///     Periodical Usage.
         /// </summary>
-        [Description("Periodical")]
-        Periodical = 0x008c00a9,
+        [Description("Periodical")] Periodical = 0x008c00a9,
 
         /// <summary>
         ///     Periodical Auto-Discriminate + 2 Usage.
@@ -713,8 +641,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Periodical Ignore + 2 Usage.
         /// </summary>
-        [Description("Periodical Ignore + 2")]
-        PeriodicalIgnore2 = 0x008c00ac,
+        [Description("Periodical Ignore + 2")] PeriodicalIgnore2 = 0x008c00ac,
 
         /// <summary>
         ///     Periodical Auto-Discriminate + 5 Usage.
@@ -731,20 +658,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Periodical Ignore + 5 Usage.
         /// </summary>
-        [Description("Periodical Ignore + 5")]
-        PeriodicalIgnore5 = 0x008c00af,
+        [Description("Periodical Ignore + 5")] PeriodicalIgnore5 = 0x008c00af,
 
         /// <summary>
         ///     Check Usage.
         /// </summary>
-        [Description("Check")]
-        Check = 0x008c00b0,
+        [Description("Check")] Check = 0x008c00b0,
 
         /// <summary>
         ///     Check Disable Price Usage.
         /// </summary>
-        [Description("Check Disable Price")]
-        CheckDisablePrice = 0x008c00b1,
+        [Description("Check Disable Price")] CheckDisablePrice = 0x008c00b1,
 
         /// <summary>
         ///     Check Enable 4 digit Price Usage.
@@ -773,50 +697,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     EAN Two Label Usage.
         /// </summary>
-        [Description("EAN Two Label")]
-        EANTwoLabel = 0x008c00b7,
+        [Description("EAN Two Label")] EANTwoLabel = 0x008c00b7,
 
         /// <summary>
         ///     EAN Three Label Usage.
         /// </summary>
-        [Description("EAN Three Label")]
-        EANThreeLabel = 0x008c00b8,
+        [Description("EAN Three Label")] EANThreeLabel = 0x008c00b8,
 
         /// <summary>
         ///     EAN 8 Flag Digit 1 Usage.
         /// </summary>
-        [Description("EAN 8 Flag Digit 1")]
-        EAN8FlagDigit1 = 0x008c00b9,
+        [Description("EAN 8 Flag Digit 1")] EAN8FlagDigit1 = 0x008c00b9,
 
         /// <summary>
         ///     EAN 8 Flag Digit 2 Usage.
         /// </summary>
-        [Description("EAN 8 Flag Digit 2")]
-        EAN8FlagDigit2 = 0x008c00ba,
+        [Description("EAN 8 Flag Digit 2")] EAN8FlagDigit2 = 0x008c00ba,
 
         /// <summary>
         ///     EAN 8 Flag Digit 3 Usage.
         /// </summary>
-        [Description("EAN 8 Flag Digit 3")]
-        EAN8FlagDigit3 = 0x008c00bb,
+        [Description("EAN 8 Flag Digit 3")] EAN8FlagDigit3 = 0x008c00bb,
 
         /// <summary>
         ///     EAN 13 Flag Digit 1 Usage.
         /// </summary>
-        [Description("EAN 13 Flag Digit 1")]
-        EAN13FlagDigit1 = 0x008c00bc,
+        [Description("EAN 13 Flag Digit 1")] EAN13FlagDigit1 = 0x008c00bc,
 
         /// <summary>
         ///     EAN 13 Flag Digit 2 Usage.
         /// </summary>
-        [Description("EAN 13 Flag Digit 2")]
-        EAN13FlagDigit2 = 0x008c00bd,
+        [Description("EAN 13 Flag Digit 2")] EAN13FlagDigit2 = 0x008c00bd,
 
         /// <summary>
         ///     EAN 13 Flag Digit 3 Usage.
         /// </summary>
-        [Description("EAN 13 Flag Digit 3")]
-        EAN13FlagDigit3 = 0x008c00be,
+        [Description("EAN 13 Flag Digit 3")] EAN13FlagDigit3 = 0x008c00be,
 
         /// <summary>
         ///     Add EAN 2/3 Label Definition Usage.
@@ -833,92 +749,77 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Codabar Usage.
         /// </summary>
-        [Description("Codabar")]
-        Codabar = 0x008c00c3,
+        [Description("Codabar")] Codabar = 0x008c00c3,
 
         /// <summary>
         ///     Code 128 Usage.
         /// </summary>
-        [Description("Code 128")]
-        Code128 = 0x008c00c4,
+        [Description("Code 128")] Code128 = 0x008c00c4,
 
         /// <summary>
         ///     Code 39 Usage.
         /// </summary>
-        [Description("Code 39")]
-        Code39 = 0x008c00c7,
+        [Description("Code 39")] Code39 = 0x008c00c7,
 
         /// <summary>
         ///     Code 93 Usage.
         /// </summary>
-        [Description("Code 93")]
-        Code93 = 0x008c00c8,
+        [Description("Code 93")] Code93 = 0x008c00c8,
 
         /// <summary>
         ///     Full ASCII Conversion Usage.
         /// </summary>
-        [Description("Full ASCII Conversion")]
-        FullASCIIConversion = 0x008c00c9,
+        [Description("Full ASCII Conversion")] FullASCIIConversion = 0x008c00c9,
 
         /// <summary>
         ///     Interleaved 2 of 5 Usage.
         /// </summary>
-        [Description("Interleaved 2 of 5")]
-        Interleaved2Of5 = 0x008c00ca,
+        [Description("Interleaved 2 of 5")] Interleaved2Of5 = 0x008c00ca,
 
         /// <summary>
         ///     Italian Pharmacy Code Usage.
         /// </summary>
-        [Description("Italian Pharmacy Code")]
-        ItalianPharmacyCode = 0x008c00cb,
+        [Description("Italian Pharmacy Code")] ItalianPharmacyCode = 0x008c00cb,
 
         /// <summary>
         ///     MSI/Plessey Usage.
         /// </summary>
-        [Description("MSI/Plessey")]
-        MSIPlessey = 0x008c00cc,
+        [Description("MSI/Plessey")] MSIPlessey = 0x008c00cc,
 
         /// <summary>
         ///     Standard 2 of 5 IATA Usage.
         /// </summary>
-        [Description("Standard 2 of 5 IATA")]
-        Standard2Of5IATA = 0x008c00cd,
+        [Description("Standard 2 of 5 IATA")] Standard2Of5IATA = 0x008c00cd,
 
         /// <summary>
         ///     Standard 2 of 5 Usage.
         /// </summary>
-        [Description("Standard 2 of 5")]
-        Standard2Of5 = 0x008c00ce,
+        [Description("Standard 2 of 5")] Standard2Of5 = 0x008c00ce,
 
         /// <summary>
         ///     Transmit Start/Stop Usage.
         /// </summary>
-        [Description("Transmit Start/Stop")]
-        TransmitStartStop = 0x008c00d3,
+        [Description("Transmit Start/Stop")] TransmitStartStop = 0x008c00d3,
 
         /// <summary>
         ///     Tri-Optic Usage.
         /// </summary>
-        [Description("Tri-Optic")]
-        TriOptic = 0x008c00d4,
+        [Description("Tri-Optic")] TriOptic = 0x008c00d4,
 
         /// <summary>
         ///     UCC/EAN-128 Usage.
         /// </summary>
-        [Description("UCC/EAN-128")]
-        UCCEAN128 = 0x008c00d5,
+        [Description("UCC/EAN-128")] UCCEAN128 = 0x008c00d5,
 
         /// <summary>
         ///     Check Digit Usage.
         /// </summary>
-        [Description("Check Digit")]
-        CheckDigit = 0x008c00d6,
+        [Description("Check Digit")] CheckDigit = 0x008c00d6,
 
         /// <summary>
         ///     Check Digit Disable Usage.
         /// </summary>
-        [Description("Check Digit Disable")]
-        CheckDigitDisable = 0x008c00d7,
+        [Description("Check Digit Disable")] CheckDigitDisable = 0x008c00d7,
 
         /// <summary>
         ///     Check Digit Enable Interleaved 2 of 5 OPCC Usage.
@@ -971,8 +872,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Transmit Check Digit Usage.
         /// </summary>
-        [Description("Transmit Check Digit")]
-        TransmitCheckDigit = 0x008c00f0,
+        [Description("Transmit Check Digit")] TransmitCheckDigit = 0x008c00f0,
 
         /// <summary>
         ///     Disable Check Digit Transmit Usage.
@@ -989,50 +889,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Symbology Identifier Usage.
         /// </summary>
-        [Description("Symbology Identifier")]
-        SymbologyIdentifier = 0x008c00fb,
+        [Description("Symbology Identifier")] SymbologyIdentifier = 0x008c00fb,
 
         /// <summary>
         ///     Symbology Identifier Usage.
         /// </summary>
-        [Description("Symbology Identifier")]
-        SymbologyIdentifier2 = 0x008c00fc,
+        [Description("Symbology Identifier")] SymbologyIdentifier2 = 0x008c00fc,
 
         /// <summary>
         ///     Symbology Identifier Usage.
         /// </summary>
-        [Description("Symbology Identifier")]
-        SymbologyIdentifier3 = 0x008c00fd,
+        [Description("Symbology Identifier")] SymbologyIdentifier3 = 0x008c00fd,
 
         /// <summary>
         ///     Decoded Data Usage.
         /// </summary>
-        [Description("Decoded Data")]
-        DecodedData = 0x008c00fe,
+        [Description("Decoded Data")] DecodedData = 0x008c00fe,
 
         /// <summary>
         ///     Decode Data Continued Usage.
         /// </summary>
-        [Description("Decode Data Continued")]
-        DecodeDataContinued = 0x008c00ff,
+        [Description("Decode Data Continued")] DecodeDataContinued = 0x008c00ff,
 
         /// <summary>
         ///     Bar Space Data Usage.
         /// </summary>
-        [Description("Bar Space Data")]
-        BarSpaceData = 0x008c0100,
+        [Description("Bar Space Data")] BarSpaceData = 0x008c0100,
 
         /// <summary>
         ///     Scanner Data Accuracy Usage.
         /// </summary>
-        [Description("Scanner Data Accuracy")]
-        ScannerDataAccuracy = 0x008c0101,
+        [Description("Scanner Data Accuracy")] ScannerDataAccuracy = 0x008c0101,
 
         /// <summary>
         ///     Raw Data Polarity Usage.
         /// </summary>
-        [Description("Raw Data Polarity")]
-        RawDataPolarity = 0x008c0102,
+        [Description("Raw Data Polarity")] RawDataPolarity = 0x008c0102,
 
         /// <summary>
         ///     Polarity Inverted Bar Code Usage.
@@ -1073,14 +965,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Length Method Usage.
         /// </summary>
-        [Description("Data Length Method")]
-        DataLengthMethod = 0x008c010a,
+        [Description("Data Length Method")] DataLengthMethod = 0x008c010a,
 
         /// <summary>
         ///     DL Method Read any Usage.
         /// </summary>
-        [Description("DL Method Read any")]
-        DLMethodReadAny = 0x008c010b,
+        [Description("DL Method Read any")] DLMethodReadAny = 0x008c010b,
 
         /// <summary>
         ///     DL Method Check in Range Usage.
@@ -1097,109 +987,91 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Aztec Code Usage.
         /// </summary>
-        [Description("Aztec Code")]
-        AztecCode = 0x008c0110,
+        [Description("Aztec Code")] AztecCode = 0x008c0110,
 
         /// <summary>
         ///     BC412 Usage.
         /// </summary>
-        [Description("BC412")]
-        BC412 = 0x008c0111,
+        [Description("BC412")] BC412 = 0x008c0111,
 
         /// <summary>
         ///     Channel Code Usage.
         /// </summary>
-        [Description("Channel Code")]
-        ChannelCode = 0x008c0112,
+        [Description("Channel Code")] ChannelCode = 0x008c0112,
 
         /// <summary>
         ///     Code 16 Usage.
         /// </summary>
-        [Description("Code 16")]
-        Code16 = 0x008c0113,
+        [Description("Code 16")] Code16 = 0x008c0113,
 
         /// <summary>
         ///     Code 32 Usage.
         /// </summary>
-        [Description("Code 32")]
-        Code32 = 0x008c0114,
+        [Description("Code 32")] Code32 = 0x008c0114,
 
         /// <summary>
         ///     Code 49 Usage.
         /// </summary>
-        [Description("Code 49")]
-        Code49 = 0x008c0115,
+        [Description("Code 49")] Code49 = 0x008c0115,
 
         /// <summary>
         ///     Code One Usage.
         /// </summary>
-        [Description("Code One")]
-        CodeOne = 0x008c0116,
+        [Description("Code One")] CodeOne = 0x008c0116,
 
         /// <summary>
         ///     Colorcode Usage.
         /// </summary>
-        [Description("Colorcode")]
-        Colorcode = 0x008c0117,
+        [Description("Colorcode")] Colorcode = 0x008c0117,
 
         /// <summary>
         ///     Data Matrix Usage.
         /// </summary>
-        [Description("Data Matrix")]
-        DataMatrix = 0x008c0118,
+        [Description("Data Matrix")] DataMatrix = 0x008c0118,
 
         /// <summary>
         ///     MaxiCode Usage.
         /// </summary>
-        [Description("MaxiCode")]
-        MaxiCode = 0x008c0119,
+        [Description("MaxiCode")] MaxiCode = 0x008c0119,
 
         /// <summary>
         ///     MicroPDF Usage.
         /// </summary>
-        [Description("MicroPDF")]
-        MicroPDF = 0x008c011a,
+        [Description("MicroPDF")] MicroPDF = 0x008c011a,
 
         /// <summary>
         ///     PDF-417 Usage.
         /// </summary>
-        [Description("PDF-417")]
-        PDF417 = 0x008c011b,
+        [Description("PDF-417")] PDF417 = 0x008c011b,
 
         /// <summary>
         ///     PosiCode Usage.
         /// </summary>
-        [Description("PosiCode")]
-        PosiCode = 0x008c011c,
+        [Description("PosiCode")] PosiCode = 0x008c011c,
 
         /// <summary>
         ///     QR Code Usage.
         /// </summary>
-        [Description("QR Code")]
-        QRCode = 0x008c011d,
+        [Description("QR Code")] QRCode = 0x008c011d,
 
         /// <summary>
         ///     SuperCode Usage.
         /// </summary>
-        [Description("SuperCode")]
-        SuperCode = 0x008c011e,
+        [Description("SuperCode")] SuperCode = 0x008c011e,
 
         /// <summary>
         ///     UltraCode Usage.
         /// </summary>
-        [Description("UltraCode")]
-        UltraCode = 0x008c011f,
+        [Description("UltraCode")] UltraCode = 0x008c011f,
 
         /// <summary>
         ///     USD-5 (Slug Code) Usage.
         /// </summary>
-        [Description("USD-5 (Slug Code)")]
-        USD5SlugCode = 0x008c0120,
+        [Description("USD-5 (Slug Code)")] USD5SlugCode = 0x008c0120,
 
         /// <summary>
         ///     VeriCode Usage.
         /// </summary>
-        [Description("VeriCode")]
-        VeriCode = 0x008c0121
+        [Description("VeriCode")] VeriCode = 0x008c0121
     }
 }

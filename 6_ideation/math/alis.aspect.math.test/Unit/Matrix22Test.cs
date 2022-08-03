@@ -29,29 +29,32 @@
 
 using Xunit;
 
-namespace Alis.Aspect.Math.Test.Unit {
+namespace Alis.Aspect.Math.Test.Unit
+{
     /// <summary>
-    /// The matrix 22 test class
+    ///     The matrix 22 test class
     /// </summary>
-    public class Matrix22Test {
+    public class Matrix22Test
+    {
         /// <summary>
-        /// Tests that test matrix 22
+        ///     Tests that test matrix 22
         /// </summary>
         [Fact]
-        public void TestMatrix22() {
+        public void TestMatrix22()
+        {
             var m = new Matrix22(1, 2, 3, 4);
             Assert.Equal(1, m.Col1.X);
             Assert.Equal(2, m.Col2.X);
             Assert.Equal(3, m.Col1.Y);
             Assert.Equal(4, m.Col2.Y);
         }
-        
-     
+
+
         /// <summary>
-        /// Tests the matrix 22 solve
+        ///     Tests the matrix 22 solve
         /// </summary>
         [Fact]
-        public void TestMatrix22Solve() 
+        public void TestMatrix22Solve()
         {
             Assert.Equal(1, 1);
         }

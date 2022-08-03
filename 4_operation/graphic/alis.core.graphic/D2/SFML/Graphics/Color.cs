@@ -79,10 +79,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         {
             unchecked
             {
-                R = (byte) (color >> 24);
-                G = (byte) (color >> 16);
-                B = (byte) (color >> 8);
-                A = (byte) color;
+                R = (byte)(color >> 24);
+                G = (byte)(color >> 16);
+                B = (byte)(color >> 8);
+                A = (byte)color;
             }
         }
 
@@ -104,7 +104,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public uint ToInteger()
         {
-            return (uint) ((R << 24) | (G << 16) | (B << 8) | A);
+            return (uint)((R << 24) | (G << 16) | (B << 8) | A);
         }
 
         ////////////////////////////////////////////////////////////
@@ -127,7 +127,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override bool Equals(object obj)
         {
-            return obj is Color && Equals((Color) obj);
+            return obj is Color && Equals((Color)obj);
         }
 
         ///////////////////////////////////////////////////////////
@@ -184,10 +184,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public static Color operator +(Color left, Color right)
         {
-            return new Color((byte) Math.Min(left.R + right.R, 255),
-                (byte) Math.Min(left.G + right.G, 255),
-                (byte) Math.Min(left.B + right.B, 255),
-                (byte) Math.Min(left.A + right.A, 255));
+            return new Color((byte)Math.Min(left.R + right.R, 255),
+                (byte)Math.Min(left.G + right.G, 255),
+                (byte)Math.Min(left.B + right.B, 255),
+                (byte)Math.Min(left.A + right.A, 255));
         }
 
         ////////////////////////////////////////////////////////////
@@ -199,10 +199,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public static Color operator -(Color left, Color right)
         {
-            return new Color((byte) Math.Max(left.R - right.R, 0),
-                (byte) Math.Max(left.G - right.G, 0),
-                (byte) Math.Max(left.B - right.B, 0),
-                (byte) Math.Max(left.A - right.A, 0));
+            return new Color((byte)Math.Max(left.R - right.R, 0),
+                (byte)Math.Max(left.G - right.G, 0),
+                (byte)Math.Max(left.B - right.B, 0),
+                (byte)Math.Max(left.A - right.A, 0));
         }
 
         ////////////////////////////////////////////////////////////
@@ -214,10 +214,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public static Color operator *(Color left, Color right)
         {
-            return new Color((byte) (left.R * right.R / 255),
-                (byte) (left.G * right.G / 255),
-                (byte) (left.B * right.B / 255),
-                (byte) (left.A * right.A / 255));
+            return new Color((byte)(left.R * right.R / 255),
+                (byte)(left.G * right.G / 255),
+                (byte)(left.B * right.B / 255),
+                (byte)(left.A * right.A / 255));
         }
 
         /// <summary>Red component of the color</summary>

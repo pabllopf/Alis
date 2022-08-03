@@ -22,7 +22,7 @@ namespace Alis.Core.Input.Attributes
     public sealed class DeviceAttribute : Attribute
     {
         /// <summary>
-        /// The release number regex
+        ///     The release number regex
         /// </summary>
         private Regex _releaseNumberRegex;
 
@@ -30,7 +30,10 @@ namespace Alis.Core.Input.Attributes
         ///     Initializes a new instance of the <see cref="DeviceAttribute" /> class.
         /// </summary>
         /// <param name="usages">The usages, all of which must match.</param>
-        public DeviceAttribute(params object[] usages) => Usages = usages.OfType<Enum>().Select(Usage.Get).ToArray();
+        public DeviceAttribute(params object[] usages)
+        {
+            Usages = usages.OfType<Enum>().Select(Usage.Get).ToArray();
+        }
 
         /// <summary>
         ///     Gets a list of valid usages, of which the device must match all.
@@ -49,7 +52,7 @@ namespace Alis.Core.Input.Attributes
         public string ReleaseNumberRegex { get; set; }
 
         /// <summary>
-        /// Describes whether this instance matches
+        ///     Describes whether this instance matches
         /// </summary>
         /// <param name="device">The device</param>
         /// <returns>The bool</returns>

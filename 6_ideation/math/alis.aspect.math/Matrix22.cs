@@ -70,7 +70,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         public Matrix22(float angle)
         {
-            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
+            float c = (float)System.Math.Cos(angle), s = (float)System.Math.Sin(angle);
             Col1.X = c;
             Col2.X = -s;
             Col1.Y = s;
@@ -92,7 +92,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         public void Set(float angle)
         {
-            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
+            float c = (float)System.Math.Cos(angle), s = (float)System.Math.Sin(angle);
             Col1.X = c;
             Col2.X = -s;
             Col1.Y = s;
@@ -126,7 +126,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         public float GetAngle()
         {
-            return (float) System.Math.Atan2(Col1.Y, Col1.X);
+            return (float)System.Math.Atan2(Col1.Y, Col1.X);
         }
 
         /// <summary>
@@ -171,10 +171,7 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static Matrix22 Identity
-        {
-            get { return new Matrix22(1, 0, 0, 1); }
-        }
+        public static Matrix22 Identity => new Matrix22(1, 0, 0, 1);
 
         /// <summary>
         /// </summary>

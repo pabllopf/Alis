@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly MonitorUsagePage Instance = new MonitorUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MonitorUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="MonitorUsagePage" /> class
         /// </summary>
         private MonitorUsagePage() : base(0x0080, "Monitor")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

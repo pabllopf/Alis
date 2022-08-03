@@ -53,7 +53,10 @@ namespace Alis.Core.Components
         ///     Attaches the to using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        public void AttachTo(GameObject gameObject) => GameObject = gameObject;
+        public void AttachTo(GameObject gameObject)
+        {
+            GameObject = gameObject;
+        }
 
         /// <summary>
         ///     Ons the destroy

@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 
+using System;
+
 namespace Alis.Core.Components
 {
     /// <summary>
@@ -37,21 +39,21 @@ namespace Alis.Core.Components
     public class Camera : Component
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
         public override void Start()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         /// <exception cref="System.NotImplementedException"></exception>
         public override void Update()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

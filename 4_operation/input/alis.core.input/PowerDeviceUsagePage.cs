@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly PowerDeviceUsagePage Instance = new PowerDeviceUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PowerDeviceUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="PowerDeviceUsagePage" /> class
         /// </summary>
         private PowerDeviceUsagePage() : base(0x0084, "PowerDevice")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -90,14 +90,14 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0036: return new Usage(this, id, "Temperature", UsageTypes.DV);
                 case 0x0037: return new Usage(this, id, "Humidity", UsageTypes.DV);
                 case 0x0038: return new Usage(this, id, "Bad Count", UsageTypes.DV);
-                case 0x0040: return new Usage(this, id, "Nominal Voltage", UsageTypes.SV|UsageTypes.DV);
-                case 0x0041: return new Usage(this, id, "Nominal Current", UsageTypes.SV|UsageTypes.DV);
-                case 0x0042: return new Usage(this, id, "Nominal Frequency", UsageTypes.SV|UsageTypes.DV);
-                case 0x0043: return new Usage(this, id, "Nominal Apparent Power", UsageTypes.SV|UsageTypes.DV);
-                case 0x0044: return new Usage(this, id, "Nominal Active Power", UsageTypes.SV|UsageTypes.DV);
-                case 0x0045: return new Usage(this, id, "Nominal Load (percent)", UsageTypes.SV|UsageTypes.DV);
-                case 0x0046: return new Usage(this, id, "Nominal Temperature", UsageTypes.SV|UsageTypes.DV);
-                case 0x0047: return new Usage(this, id, "Nominal Humidity", UsageTypes.SV|UsageTypes.DV);
+                case 0x0040: return new Usage(this, id, "Nominal Voltage", UsageTypes.SV | UsageTypes.DV);
+                case 0x0041: return new Usage(this, id, "Nominal Current", UsageTypes.SV | UsageTypes.DV);
+                case 0x0042: return new Usage(this, id, "Nominal Frequency", UsageTypes.SV | UsageTypes.DV);
+                case 0x0043: return new Usage(this, id, "Nominal Apparent Power", UsageTypes.SV | UsageTypes.DV);
+                case 0x0044: return new Usage(this, id, "Nominal Active Power", UsageTypes.SV | UsageTypes.DV);
+                case 0x0045: return new Usage(this, id, "Nominal Load (percent)", UsageTypes.SV | UsageTypes.DV);
+                case 0x0046: return new Usage(this, id, "Nominal Temperature", UsageTypes.SV | UsageTypes.DV);
+                case 0x0047: return new Usage(this, id, "Nominal Humidity", UsageTypes.SV | UsageTypes.DV);
                 case 0x0050: return new Usage(this, id, "Switch On Control", UsageTypes.DV);
                 case 0x0051: return new Usage(this, id, "Switch Off Control", UsageTypes.DV);
                 case 0x0052: return new Usage(this, id, "Toggle Control", UsageTypes.DV);

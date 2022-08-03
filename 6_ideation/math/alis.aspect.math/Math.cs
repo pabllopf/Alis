@@ -87,7 +87,7 @@ namespace Alis.Aspect.Math
         /// <returns>The float</returns>
         public static float Sqrt(float x)
         {
-            return (float) System.Math.Sqrt(x);
+            return (float)System.Math.Sqrt(x);
         }
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace Alis.Aspect.Math
         /// <returns>The float</returns>
         public static float Atan2(float y, float x)
         {
-            return (float) System.Math.Atan2(y, x);
+            return (float)System.Math.Atan2(y, x);
         }
 
         /// <summary>

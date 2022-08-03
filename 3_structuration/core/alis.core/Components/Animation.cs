@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
 namespace Alis.Core.Components
 {
     /// <summary>
@@ -37,6 +34,5 @@ namespace Alis.Core.Components
     /// </summary>
     public class Animation
     {
-        
     }
 }

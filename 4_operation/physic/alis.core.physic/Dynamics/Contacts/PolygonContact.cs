@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="xf2">The xf</param>
         private static void CollidePolygons(ref Manifold manifold, Shape shape1, XForm xf1, Shape shape2, XForm xf2)
         {
-            Collision.Collision.CollidePolygons(ref manifold, (PolygonShape) shape1, xf1, (PolygonShape) shape2, xf2);
+            Collision.Collision.CollidePolygons(ref manifold, (PolygonShape)shape1, xf1, (PolygonShape)shape2, xf2);
         }
 
         /// <summary>

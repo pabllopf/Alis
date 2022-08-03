@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly BrailleDisplayUsagePage Instance = new BrailleDisplayUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BrailleDisplayUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="BrailleDisplayUsagePage" /> class
         /// </summary>
         private BrailleDisplayUsagePage() : base(0x0041, "BrailleDisplay")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

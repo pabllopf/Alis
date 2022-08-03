@@ -12,9 +12,9 @@ using Microsoft.Extensions.Logging;
 namespace HIDDevices.Sample.Samples
 {
     /// <summary>
-    /// The game loop sample class
+    ///     The game loop sample class
     /// </summary>
-    /// <seealso cref="Sample"/>
+    /// <seealso cref="Sample" />
     public class GameLoopSample : Sample
     {
         /// <inheritdoc />
@@ -46,7 +46,8 @@ namespace HIDDevices.Sample.Samples
 
                 if (g.Name.ToLowerInvariant().Contains("xbox "))
                 {
-                    Logger.LogWarning($"{g.Name} found!  Unfortunately, it appears XInput-compatible HID device driver only transmits events from the HID device whilst the current process has a focussed window, so console applications/background services cannot detect button presses. Please try a different controller.");
+                    Logger.LogWarning(
+                        $"{g.Name} found!  Unfortunately, it appears XInput-compatible HID device driver only transmits events from the HID device whilst the current process has a focussed window, so console applications/background services cannot detect button presses. Please try a different controller.");
                     return;
                 }
 
@@ -73,7 +74,10 @@ namespace HIDDevices.Sample.Samples
 
                     // If we haven't got a gamepad, or the current one isn't connected, wait for a connected gamepad.
                     var currentGamepad = gamepad;
-                    if (currentGamepad?.IsConnected != true) { continue; }
+                    if (currentGamepad?.IsConnected != true)
+                    {
+                        continue;
+                    }
 
                     // Look for any changes since the last detected change.
                     var changes = currentGamepad.ChangesSince(timestamp);
@@ -107,14 +111,14 @@ namespace HIDDevices.Sample.Samples
 
                         Logger.LogInformation(logBuilder.ToString());
                     }
-                    
+
 
                     // Or directly access controls
                     if (currentGamepad.AButton)
                     {
                         Logger.LogInformation("A Button pressed, finishing.");
                     }
-                    
+
                     if (currentGamepad.BButton)
                     {
                         Logger.LogInformation("B Button pressed, finishing.");

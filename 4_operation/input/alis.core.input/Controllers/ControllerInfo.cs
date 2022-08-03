@@ -14,41 +14,43 @@ using DevDecoder.HIDDevices;
 namespace Alis.Core.Input.Controllers
 {
     /// <summary>
-    /// The controller class
+    ///     The controller class
     /// </summary>
     public partial class Controller
     {
         /// <summary>
-        /// The controller info class
+        ///     The controller info class
         /// </summary>
         private class ControllerInfo
         {
             /// <summary>
-            /// The controller info
+            ///     The controller info
             /// </summary>
             private static readonly ConcurrentDictionary<Type, ControllerInfo> s_infos =
                 new ConcurrentDictionary<Type, ControllerInfo>();
 
             /// <summary>
-            /// The control info
+            ///     The control info
             /// </summary>
-            private static readonly Type[] s_constructorTypes = {typeof(Device), typeof(ControlInfo[])};
+            private static readonly Type[] s_constructorTypes = { typeof(Device), typeof(ControlInfo[]) };
 
             /// <summary>
-            /// The create controller
+            ///     The create controller
             /// </summary>
             public readonly CreateControllerDelegate<Controller> CreateController;
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ControllerInfo"/> class
+            ///     Initializes a new instance of the <see cref="ControllerInfo" /> class
             /// </summary>
             /// <param name="createControllerDelegate">The create controller delegate</param>
             private ControllerInfo(
                 CreateControllerDelegate<Controller> createControllerDelegate)
-                => CreateController = createControllerDelegate;
+            {
+                CreateController = createControllerDelegate;
+            }
 
             /// <summary>
-            /// Initializes a new instance of the <see cref="ControllerInfo"/> class
+            ///     Initializes a new instance of the <see cref="ControllerInfo" /> class
             /// </summary>
             /// <param name="constructor">The constructor</param>
             /// <param name="deviceAttributes">The device attributes</param>
@@ -57,35 +59,42 @@ namespace Alis.Core.Input.Controllers
                 ConstructorInfo constructor,
                 IReadOnlyList<DeviceAttribute> deviceAttributes,
                 IReadOnlyDictionary<string, PropertyData> propertyData)
-                => CreateController = device =>
+            {
+                CreateController = device =>
                 {
                     var mapping = GetMapping(device, deviceAttributes, propertyData);
                     return mapping is null ||
-                           !(constructor.Invoke(new object[] {device, mapping}) is Controller controller)
+                           !(constructor.Invoke(new object[] { device, mapping }) is Controller controller)
                         ? null
                         : controller;
                 };
+            }
 
             // ReSharper disable once MemberHidesStaticFromOuterClass
             /// <summary>
-            /// Registers the type
+            ///     Registers the type
             /// </summary>
             /// <param name="type">The type</param>
             /// <param name="createControllerDelegate">The create controller delegate</param>
             public static void Register(
                 Type type,
                 CreateControllerDelegate<Controller> createControllerDelegate)
-                => s_infos[type] = new ControllerInfo(createControllerDelegate);
+            {
+                s_infos[type] = new ControllerInfo(createControllerDelegate);
+            }
 
             /// <summary>
-            /// Gets
+            ///     Gets
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <returns>The controller info</returns>
-            public static ControllerInfo Get<T>() where T : Controller => Get(typeof(T));
+            public static ControllerInfo Get<T>() where T : Controller
+            {
+                return Get(typeof(T));
+            }
 
             /// <summary>
-            /// Gets the type
+            ///     Gets the type
             /// </summary>
             /// <param name="type">The type</param>
             /// <exception cref="ArgumentOutOfRangeException"></exception>
@@ -131,7 +140,7 @@ namespace Alis.Core.Input.Controllers
             }
 
             /// <summary>
-            /// Gets the mapping using the specified device
+            ///     Gets the mapping using the specified device
             /// </summary>
             /// <param name="device">The device</param>
             /// <param name="deviceAttributes">The device attributes</param>
@@ -156,7 +165,7 @@ namespace Alis.Core.Input.Controllers
                     foreach (var control in device.Keys)
                     {
                         foreach (var controlAttribute in attributes.Controls.Where(controlAttribute =>
-                            controlAttribute.Matches(control)))
+                                     controlAttribute.Matches(control)))
                         {
                             if (!controlScores.TryGetValue(control, out var score))
                             {
@@ -191,35 +200,38 @@ namespace Alis.Core.Input.Controllers
             }
 
             /// <summary>
-            /// The property data class
+            ///     The property data class
             /// </summary>
             private class PropertyData
             {
                 /// <summary>
-                /// The type converter
+                ///     The type converter
                 /// </summary>
                 private static readonly ConcurrentDictionary<Type, TypeConverter> s_converterCache =
                     new ConcurrentDictionary<Type, TypeConverter>();
 
                 /// <summary>
-                /// The controls
+                ///     The controls
                 /// </summary>
                 public readonly IReadOnlyList<ControlAttribute> Controls;
+
                 /// <summary>
-                /// The converter
+                ///     The converter
                 /// </summary>
                 public readonly TypeConverter Converter;
+
                 /// <summary>
-                /// The is required
+                ///     The is required
                 /// </summary>
                 public readonly bool IsRequired;
+
                 /// <summary>
-                /// The return type
+                ///     The return type
                 /// </summary>
                 public readonly Type ReturnType;
 
                 /// <summary>
-                /// Initializes a new instance of the <see cref="PropertyData"/> class
+                ///     Initializes a new instance of the <see cref="PropertyData" /> class
                 /// </summary>
                 /// <param name="propertyInfo">The property info</param>
                 public PropertyData(PropertyInfo propertyInfo)

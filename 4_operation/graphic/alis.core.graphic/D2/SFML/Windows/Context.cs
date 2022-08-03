@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     ///     This class defines a .NET interface to an SFML OpenGL Context
     /// </summary>
     //////////////////////////////////////////////////////////////////
-    public class Context 
+    public class Context
     {
         /// <summary>
         ///     The our global context

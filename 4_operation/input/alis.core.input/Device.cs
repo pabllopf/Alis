@@ -27,37 +27,42 @@ namespace Alis.Core.Input
     public sealed class Device : IObservable<IList<ControlChange>>, IReadOnlyDictionary<Control, ControlChange>
     {
         /// <summary>
-        /// The cache
+        ///     The cache
         /// </summary>
         private readonly Dictionary<Control, ControlChange> _cache;
+
         /// <summary>
-        /// The changes
+        ///     The changes
         /// </summary>
         private readonly IObservable<IList<ControlChange>> _changes;
+
         /// <summary>
-        /// The controls
+        ///     The controls
         /// </summary>
         private readonly IReadOnlyDictionary<(DataItem dataItem, int index), Control> _controls;
+
         /// <summary>
-        /// The device
+        ///     The device
         /// </summary>
         private readonly HidDevice _device;
 
         /// <summary>
-        /// The usages
+        ///     The usages
         /// </summary>
         private readonly HashSet<Usage> _usages;
+
         /// <summary>
-        /// The cancellation token source
+        ///     The cancellation token source
         /// </summary>
         private CancellationTokenSource _cancellationTokenSource;
+
         /// <summary>
-        /// The connected subject
+        ///     The connected subject
         /// </summary>
         private BehaviorSubject<bool> _connectedSubject;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Device"/> class
+        ///     Initializes a new instance of the <see cref="Device" /> class
         /// </summary>
         /// <param name="devices">The devices</param>
         /// <param name="device">The device</param>
@@ -190,10 +195,12 @@ namespace Alis.Core.Input
                                 lock (_cache)
                                 {
                                     foreach (var tuple in batch
-                                        .Select(kvp => (
-                                            control: _controls.TryGetValue(kvp.Key, out var control) ? control : null,
-                                            value: kvp.Value))
-                                        .Where(t => t.control != null))
+                                                 .Select(kvp => (
+                                                     control: _controls.TryGetValue(kvp.Key, out var control)
+                                                         ? control
+                                                         : null,
+                                                     value: kvp.Value))
+                                                 .Where(t => t.control != null))
                                     {
                                         var control = tuple.control!;
                                         if (_cache.TryGetValue(control, out var controlChange))
@@ -319,7 +326,7 @@ namespace Alis.Core.Input
         public bool IsConnected => _connectedSubject?.Value ?? throw new ObjectDisposedException(nameof(Device));
 
         /// <summary>
-        /// Gets the value of the raw report descriptor
+        ///     Gets the value of the raw report descriptor
         /// </summary>
         internal byte[] RawReportDescriptor { get; }
 
@@ -330,7 +337,10 @@ namespace Alis.Core.Input
         public IEnumerable<Control> Controls => _controls.Values;
 
         /// <inheritdoc />
-        public IDisposable Subscribe(IObserver<IList<ControlChange>> observer) => _changes.Subscribe(observer);
+        public IDisposable Subscribe(IObserver<IList<ControlChange>> observer)
+        {
+            return _changes.Subscribe(observer);
+        }
 
         /// <inheritdoc />
         public IEnumerator<KeyValuePair<Control, ControlChange>> GetEnumerator()
@@ -345,7 +355,10 @@ namespace Alis.Core.Input
         }
 
         /// <inheritdoc />
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         /// <inheritdoc />
         public int Count => _controls.Count;
@@ -428,14 +441,18 @@ namespace Alis.Core.Input
             {
                 manufacturer = device.GetManufacturer().Trim();
             }
-            catch { }
+            catch
+            {
+            }
 
             var productName = string.Empty;
             try
             {
                 productName = device.GetProductName().Trim();
             }
-            catch { }
+            catch
+            {
+            }
             // ReSharper restore EmptyGeneralCatchClause
 #pragma warning restore CA1031 // Do not catch general exception types
 
@@ -457,7 +474,10 @@ namespace Alis.Core.Input
         }
 
         /// <inheritdoc />
-        public override string ToString() => Name;
+        public override string ToString()
+        {
+            return Name;
+        }
 
         /// <summary>
         ///     Gets a filtered observable of control changes.
@@ -468,8 +488,10 @@ namespace Alis.Core.Input
         /// </param>
         /// <returns>A filtered observable of control changes.</returns>
         public IObservable<IList<ControlChange>> Watch(Func<Control, bool> predicate = null)
-            => predicate is null
+        {
+            return predicate is null
                 ? (IObservable<IList<ControlChange>>)this
                 : this.Select(l => l.Where(change => predicate(change.Control)).ToList());
+        }
     }
 }

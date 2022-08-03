@@ -41,8 +41,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0xf1d00000,
+        [Description("Undefined")] Undefined = 0xf1d00000,
 
         /// <summary>
         ///     U2F Authenticator Device Usage.
@@ -53,13 +52,11 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Input Report Data Usage.
         /// </summary>
-        [Description("Input Report Data")]
-        InputReportData = 0xf1d00020,
+        [Description("Input Report Data")] InputReportData = 0xf1d00020,
 
         /// <summary>
         ///     Output Report Data Usage.
         /// </summary>
-        [Description("Output Report Data")]
-        OutputReportData = 0xf1d00021
+        [Description("Output Report Data")] OutputReportData = 0xf1d00021
     }
 }

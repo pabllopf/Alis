@@ -41,128 +41,107 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00120000,
+        [Description("Undefined")] Undefined = 0x00120000,
 
         /// <summary>
         ///     Eye Tracker Usage.
         /// </summary>
-        [Description("Eye Tracker")]
-        EyeTracker = 0x00120001,
+        [Description("Eye Tracker")] EyeTracker = 0x00120001,
 
         /// <summary>
         ///     Head Tracker Usage.
         /// </summary>
-        [Description("Head Tracker")]
-        HeadTracker = 0x00120002,
+        [Description("Head Tracker")] HeadTracker = 0x00120002,
 
         /// <summary>
         ///     Tracking Data Usage.
         /// </summary>
-        [Description("Tracking Data")]
-        TrackingData = 0x00120010,
+        [Description("Tracking Data")] TrackingData = 0x00120010,
 
         /// <summary>
         ///     Capabilities Usage.
         /// </summary>
-        [Description("Capabilities")]
-        Capabilities = 0x00120011,
+        [Description("Capabilities")] Capabilities = 0x00120011,
 
         /// <summary>
         ///     Configuration Usage.
         /// </summary>
-        [Description("Configuration")]
-        Configuration = 0x00120012,
+        [Description("Configuration")] Configuration = 0x00120012,
 
         /// <summary>
         ///     Status Usage.
         /// </summary>
-        [Description("Status")]
-        Status = 0x00120013,
+        [Description("Status")] Status = 0x00120013,
 
         /// <summary>
         ///     Control Usage.
         /// </summary>
-        [Description("Control")]
-        Control = 0x00120014,
+        [Description("Control")] Control = 0x00120014,
 
         /// <summary>
         ///     Sensor Timestamp Usage.
         /// </summary>
-        [Description("Sensor Timestamp")]
-        SensorTimestamp = 0x00120020,
+        [Description("Sensor Timestamp")] SensorTimestamp = 0x00120020,
 
         /// <summary>
         ///     Position X Usage.
         /// </summary>
-        [Description("Position X")]
-        PositionX = 0x00120021,
+        [Description("Position X")] PositionX = 0x00120021,
 
         /// <summary>
         ///     Position Y Usage.
         /// </summary>
-        [Description("Position Y")]
-        PositionY = 0x00120022,
+        [Description("Position Y")] PositionY = 0x00120022,
 
         /// <summary>
         ///     Position Z Usage.
         /// </summary>
-        [Description("Position Z")]
-        PositionZ = 0x00120023,
+        [Description("Position Z")] PositionZ = 0x00120023,
 
         /// <summary>
         ///     Gaze Point Usage.
         /// </summary>
-        [Description("Gaze Point")]
-        GazePoint = 0x00120024,
+        [Description("Gaze Point")] GazePoint = 0x00120024,
 
         /// <summary>
         ///     Left Eye Position Usage.
         /// </summary>
-        [Description("Left Eye Position")]
-        LeftEyePosition = 0x00120025,
+        [Description("Left Eye Position")] LeftEyePosition = 0x00120025,
 
         /// <summary>
         ///     Right Eye Position Usage.
         /// </summary>
-        [Description("Right Eye Position")]
-        RightEyePosition = 0x00120026,
+        [Description("Right Eye Position")] RightEyePosition = 0x00120026,
 
         /// <summary>
         ///     Head Position Usage.
         /// </summary>
-        [Description("Head Position")]
-        HeadPosition = 0x00120027,
+        [Description("Head Position")] HeadPosition = 0x00120027,
 
         /// <summary>
         ///     Head Direction Point Usage.
         /// </summary>
-        [Description("Head Direction Point")]
-        HeadDirectionPoint = 0x00120028,
+        [Description("Head Direction Point")] HeadDirectionPoint = 0x00120028,
 
         /// <summary>
         ///     Rotation about X axis Usage.
         /// </summary>
-        [Description("Rotation about X axis")]
-        RotationAboutXAxis = 0x00120029,
+        [Description("Rotation about X axis")] RotationAboutXAxis = 0x00120029,
 
         /// <summary>
         ///     Rotation about Y axis Usage.
         /// </summary>
-        [Description("Rotation about Y axis")]
-        RotationAboutYAxis = 0x0012002a,
+        [Description("Rotation about Y axis")] RotationAboutYAxis = 0x0012002a,
 
         /// <summary>
         ///     Rotation about Z axis Usage.
         /// </summary>
-        [Description("Rotation about Z axis")]
-        RotationAboutZAxis = 0x0012002b,
+        [Description("Rotation about Z axis")] RotationAboutZAxis = 0x0012002b,
 
         /// <summary>
         ///     Tracker Quality Usage.
         /// </summary>
-        [Description("Tracker Quality")]
-        TrackerQuality = 0x00120100,
+        [Description("Tracker Quality")] TrackerQuality = 0x00120100,
 
         /// <summary>
         ///     Minimum Tracking Distance Usage.
@@ -203,14 +182,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Display Product ID Usage.
         /// </summary>
-        [Description("Display Product ID")]
-        DisplayProductID = 0x00120201,
+        [Description("Display Product ID")] DisplayProductID = 0x00120201,
 
         /// <summary>
         ///     Display Serial Number Usage.
         /// </summary>
-        [Description("Display Serial Number")]
-        DisplaySerialNumber = 0x00120202,
+        [Description("Display Serial Number")] DisplaySerialNumber = 0x00120202,
 
         /// <summary>
         ///     Display Manufacturer Date Usage.
@@ -233,19 +210,16 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Sampling Frequency Usage.
         /// </summary>
-        [Description("Sampling Frequency")]
-        SamplingFrequency = 0x00120300,
+        [Description("Sampling Frequency")] SamplingFrequency = 0x00120300,
 
         /// <summary>
         ///     Configuration Status Usage.
         /// </summary>
-        [Description("Configuration Status")]
-        ConfigurationStatus = 0x00120301,
+        [Description("Configuration Status")] ConfigurationStatus = 0x00120301,
 
         /// <summary>
         ///     Device Mode Request Usage.
         /// </summary>
-        [Description("Device Mode Request")]
-        DeviceModeRequest = 0x00120400
+        [Description("Device Mode Request")] DeviceModeRequest = 0x00120400
     }
 }

@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly AuxiliaryDisplayUsagePage Instance = new AuxiliaryDisplayUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuxiliaryDisplayUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="AuxiliaryDisplayUsagePage" /> class
         /// </summary>
         private AuxiliaryDisplayUsagePage() : base(0x0014, "AuxiliaryDisplay")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -64,10 +64,10 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0024: return new Usage(this, id, "Display Control Report", UsageTypes.CL);
                 case 0x0025: return new Usage(this, id, "Clear Display", UsageTypes.DF);
                 case 0x0026: return new Usage(this, id, "Display Enable", UsageTypes.DF);
-                case 0x0027: return new Usage(this, id, "Screen Saver Delay", UsageTypes.SV|UsageTypes.DV);
+                case 0x0027: return new Usage(this, id, "Screen Saver Delay", UsageTypes.SV | UsageTypes.DV);
                 case 0x0028: return new Usage(this, id, "Screen Saver Enable", UsageTypes.DF);
-                case 0x0029: return new Usage(this, id, "Vertical Scroll", UsageTypes.SF|UsageTypes.DF);
-                case 0x002a: return new Usage(this, id, "Horizontal Scroll", UsageTypes.SF|UsageTypes.DF);
+                case 0x0029: return new Usage(this, id, "Vertical Scroll", UsageTypes.SF | UsageTypes.DF);
+                case 0x002a: return new Usage(this, id, "Horizontal Scroll", UsageTypes.SF | UsageTypes.DF);
                 case 0x002b: return new Usage(this, id, "Character Report", UsageTypes.CL);
                 case 0x002c: return new Usage(this, id, "Display Data", UsageTypes.DV);
                 case 0x002d: return new Usage(this, id, "Display Status", UsageTypes.CL);

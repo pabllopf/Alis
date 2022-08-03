@@ -97,14 +97,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body1 = def.Joint1.GetBody2();
             if (type1 == JointType.RevoluteJoint)
             {
-                Revolute1 = (RevoluteJoint) def.Joint1;
+                Revolute1 = (RevoluteJoint)def.Joint1;
                 GroundAnchor1 = Revolute1.LocalAnchor1;
                 LocalAnchor1 = Revolute1.LocalAnchor2;
                 coordinate1 = Revolute1.JointAngleX;
             }
             else
             {
-                Prismatic1 = (PrismaticJoint) def.Joint1;
+                Prismatic1 = (PrismaticJoint)def.Joint1;
                 GroundAnchor1 = Prismatic1.LocalAnchor1;
                 LocalAnchor1 = Prismatic1.LocalAnchor2;
                 coordinate1 = Prismatic1.JointTranslation;
@@ -114,14 +114,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body2 = def.Joint2.GetBody2();
             if (type2 == JointType.RevoluteJoint)
             {
-                Revolute2 = (RevoluteJoint) def.Joint2;
+                Revolute2 = (RevoluteJoint)def.Joint2;
                 GroundAnchor2 = Revolute2.LocalAnchor1;
                 LocalAnchor2 = Revolute2.LocalAnchor2;
                 coordinate2 = Revolute2.JointAngleX;
             }
             else
             {
-                Prismatic2 = (PrismaticJoint) def.Joint2;
+                Prismatic2 = (PrismaticJoint)def.Joint2;
                 GroundAnchor2 = Prismatic2.LocalAnchor1;
                 LocalAnchor2 = Prismatic2.LocalAnchor2;
                 coordinate2 = Prismatic2.JointTranslation;
@@ -210,18 +210,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vector2 Anchor1
-        {
-            get { return Body1.GetWorldPoint(LocalAnchor1); }
-        }
+        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vector2 Anchor2
-        {
-            get { return Body2.GetWorldPoint(LocalAnchor2); }
-        }
+        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
         /// <summary>
         ///     Get the gear ratio.

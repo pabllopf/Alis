@@ -41,14 +41,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00590000,
+        [Description("Undefined")] Undefined = 0x00590000,
 
         /// <summary>
         ///     Lamp Array Usage.
         /// </summary>
-        [Description("Lamp Array")]
-        LampArray = 0x00590001,
+        [Description("Lamp Array")] LampArray = 0x00590001,
 
         /// <summary>
         ///     Lamp Array Attributes Report Usage.
@@ -59,8 +57,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp Count Usage.
         /// </summary>
-        [Description("Lamp Count")]
-        LampCount = 0x00590003,
+        [Description("Lamp Count")] LampCount = 0x00590003,
 
         /// <summary>
         ///     Bounding Box Width (um) Usage.
@@ -83,8 +80,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp Array Kind Usage.
         /// </summary>
-        [Description("Lamp Array Kind")]
-        LampArrayKind = 0x00590007,
+        [Description("Lamp Array Kind")] LampArrayKind = 0x00590007,
 
         /// <summary>
         ///     Minimal Update Interval (us) Usage.
@@ -101,8 +97,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp ID Usage.
         /// </summary>
-        [Description("Lamp ID")]
-        LampID = 0x00590021,
+        [Description("Lamp ID")] LampID = 0x00590021,
 
         /// <summary>
         ///     Lamp Attributes Response Report Usage.
@@ -113,68 +108,57 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Position X (um) Usage.
         /// </summary>
-        [Description("Position X (um)")]
-        PositionXUm = 0x00590023,
+        [Description("Position X (um)")] PositionXUm = 0x00590023,
 
         /// <summary>
         ///     Position Y (um) Usage.
         /// </summary>
-        [Description("Position Y (um)")]
-        PositionYUm = 0x00590024,
+        [Description("Position Y (um)")] PositionYUm = 0x00590024,
 
         /// <summary>
         ///     Position Z (um) Usage.
         /// </summary>
-        [Description("Position Z (um)")]
-        PositionZUm = 0x00590025,
+        [Description("Position Z (um)")] PositionZUm = 0x00590025,
 
         /// <summary>
         ///     Lamp Purposes Usage.
         /// </summary>
-        [Description("Lamp Purposes")]
-        LampPurposes = 0x00590026,
+        [Description("Lamp Purposes")] LampPurposes = 0x00590026,
 
         /// <summary>
         ///     Update Latency (us) Usage.
         /// </summary>
-        [Description("Update Latency (us)")]
-        UpdateLatencyUs = 0x00590027,
+        [Description("Update Latency (us)")] UpdateLatencyUs = 0x00590027,
 
         /// <summary>
         ///     Red Level Count Usage.
         /// </summary>
-        [Description("Red Level Count")]
-        RedLevelCount = 0x00590028,
+        [Description("Red Level Count")] RedLevelCount = 0x00590028,
 
         /// <summary>
         ///     Green Level Count Usage.
         /// </summary>
-        [Description("Green Level Count")]
-        GreenLevelCount = 0x00590029,
+        [Description("Green Level Count")] GreenLevelCount = 0x00590029,
 
         /// <summary>
         ///     Blue Level Count Usage.
         /// </summary>
-        [Description("Blue Level Count")]
-        BlueLevelCount = 0x0059002a,
+        [Description("Blue Level Count")] BlueLevelCount = 0x0059002a,
 
         /// <summary>
         ///     Intensity Level Count Usage.
         /// </summary>
-        [Description("Intensity Level Count")]
-        IntensityLevelCount = 0x0059002b,
+        [Description("Intensity Level Count")] IntensityLevelCount = 0x0059002b,
 
         /// <summary>
         ///     Programmable Usage.
         /// </summary>
-        [Description("Programmable")]
-        Programmable = 0x0059002c,
+        [Description("Programmable")] Programmable = 0x0059002c,
 
         /// <summary>
         ///     Input Binding Usage.
         /// </summary>
-        [Description("Input Binding")]
-        InputBinding = 0x0059002d,
+        [Description("Input Binding")] InputBinding = 0x0059002d,
 
         /// <summary>
         ///     Lamp Multi Update Report Usage.
@@ -185,20 +169,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Red Update Channel Usage.
         /// </summary>
-        [Description("Red Update Channel")]
-        RedUpdateChannel = 0x00590051,
+        [Description("Red Update Channel")] RedUpdateChannel = 0x00590051,
 
         /// <summary>
         ///     Green Update Channel Usage.
         /// </summary>
-        [Description("Green Update Channel")]
-        GreenUpdateChannel = 0x00590052,
+        [Description("Green Update Channel")] GreenUpdateChannel = 0x00590052,
 
         /// <summary>
         ///     Blue Update Channel Usage.
         /// </summary>
-        [Description("Blue Update Channel")]
-        BlueUpdateChannel = 0x00590053,
+        [Description("Blue Update Channel")] BlueUpdateChannel = 0x00590053,
 
         /// <summary>
         ///     Intensity Update Channel Usage.
@@ -209,8 +190,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp Update Flags Usage.
         /// </summary>
-        [Description("Lamp Update Flags")]
-        LampUpdateFlags = 0x00590055,
+        [Description("Lamp Update Flags")] LampUpdateFlags = 0x00590055,
 
         /// <summary>
         ///     Lamp Range Update Report Usage.
@@ -221,14 +201,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp ID Start Usage.
         /// </summary>
-        [Description("Lamp ID Start")]
-        LampIDStart = 0x00590061,
+        [Description("Lamp ID Start")] LampIDStart = 0x00590061,
 
         /// <summary>
         ///     Lamp ID End Usage.
         /// </summary>
-        [Description("Lamp ID End")]
-        LampIDEnd = 0x00590062,
+        [Description("Lamp ID End")] LampIDEnd = 0x00590062,
 
         /// <summary>
         ///     Lamp Array Control Report Usage.
@@ -239,8 +217,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Autonomous Mode Usage.
         /// </summary>
-        [Description("Autonomous Mode")]
-        AutonomousMode = 0x00590071,
+        [Description("Autonomous Mode")] AutonomousMode = 0x00590071,
 
         /// <summary>
         ///     Lamp Array Kind Keyboard Usage.
@@ -251,8 +228,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp Array Kind Mouse Usage.
         /// </summary>
-        [Description("Lamp Array Kind Mouse")]
-        LampArrayKindMouse = 0x00591000,
+        [Description("Lamp Array Kind Mouse")] LampArrayKindMouse = 0x00591000,
 
         /// <summary>
         ///     Lamp Array Kind Game Controller Usage.
@@ -269,8 +245,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp Array Kind Scene Usage.
         /// </summary>
-        [Description("Lamp Array Kind Scene")]
-        LampArrayKindScene = 0x00591000,
+        [Description("Lamp Array Kind Scene")] LampArrayKindScene = 0x00591000,
 
         /// <summary>
         ///     Lamp Array Kind Notification Usage.
@@ -299,32 +274,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Lamp Array Kind Art Usage.
         /// </summary>
-        [Description("Lamp Array Kind Art")]
-        LampArrayKindArt = 0x00591000,
+        [Description("Lamp Array Kind Art")] LampArrayKindArt = 0x00591000,
 
         /// <summary>
         ///     Lamp Purpose Control Usage.
         /// </summary>
-        [Description("Lamp Purpose Control")]
-        LampPurposeControl = 0x00592000,
+        [Description("Lamp Purpose Control")] LampPurposeControl = 0x00592000,
 
         /// <summary>
         ///     Lamp Purpose Accent Usage.
         /// </summary>
-        [Description("Lamp Purpose Accent")]
-        LampPurposeAccent = 0x00592000,
+        [Description("Lamp Purpose Accent")] LampPurposeAccent = 0x00592000,
 
         /// <summary>
         ///     Lamp Purpose Branding Usage.
         /// </summary>
-        [Description("Lamp Purpose Branding")]
-        LampPurposeBranding = 0x00592000,
+        [Description("Lamp Purpose Branding")] LampPurposeBranding = 0x00592000,
 
         /// <summary>
         ///     Lamp Purpose Status Usage.
         /// </summary>
-        [Description("Lamp Purpose Status")]
-        LampPurposeStatus = 0x00592000,
+        [Description("Lamp Purpose Status")] LampPurposeStatus = 0x00592000,
 
         /// <summary>
         ///     Lamp Purpose Illumination Usage.

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Alis.Core.Entities
 {
     /// <summary>
@@ -36,6 +34,5 @@ namespace Alis.Core.Entities
     /// </summary>
     public class Scene
     {
-       
     }
 }

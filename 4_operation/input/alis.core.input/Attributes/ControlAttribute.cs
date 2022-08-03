@@ -24,7 +24,10 @@ namespace Alis.Core.Input.Attributes
         ///     Initializes a new instance of the <see cref="ControlAttribute" /> class.
         /// </summary>
         /// <param name="usages">The usages.</param>
-        public ControlAttribute(params object[] usages) => Usages = usages.OfType<Enum>().Select(Usage.Get).ToArray();
+        public ControlAttribute(params object[] usages)
+        {
+            Usages = usages.OfType<Enum>().Select(Usage.Get).ToArray();
+        }
 
         /// <summary>
         ///     Gets or sets the weight, a higher weight will increase the scoring of controls matching this attribute,
@@ -44,10 +47,13 @@ namespace Alis.Core.Input.Attributes
         public IReadOnlyList<Usage> Usages { get; }
 
         /// <summary>
-        /// Describes whether this instance matches
+        ///     Describes whether this instance matches
         /// </summary>
         /// <param name="control">The control</param>
         /// <returns>The bool</returns>
-        internal bool Matches(Control control) => Usages.All(usage => control.Usages.Contains(usage));
+        internal bool Matches(Control control)
+        {
+            return Usages.All(usage => control.Usages.Contains(usage));
+        }
     }
 }

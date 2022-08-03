@@ -32,12 +32,12 @@ using System;
 namespace Alis.App.Engine
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     public static class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         [STAThread]
@@ -47,4 +47,3 @@ namespace Alis.App.Engine
         }
     }
 }
-

@@ -207,13 +207,13 @@ namespace Alis.Core.Physic.Collision
             c = new ClipVertex[2];
 
             c[0].V = Math.Mul(xf2, vertices2[i1]);
-            c[0].Id.Features.ReferenceEdge = (byte) edge1;
-            c[0].Id.Features.IncidentEdge = (byte) i1;
+            c[0].Id.Features.ReferenceEdge = (byte)edge1;
+            c[0].Id.Features.IncidentEdge = (byte)i1;
             c[0].Id.Features.IncidentVertex = 0;
 
             c[1].V = Math.Mul(xf2, vertices2[i2]);
-            c[1].Id.Features.ReferenceEdge = (byte) edge1;
-            c[1].Id.Features.IncidentEdge = (byte) i2;
+            c[1].Id.Features.ReferenceEdge = (byte)edge1;
+            c[1].Id.Features.IncidentEdge = (byte)i2;
             c[1].Id.Features.IncidentVertex = 1;
         }
 

@@ -143,7 +143,7 @@ namespace Alis.Core.Network
         /// </summary>
         private async Task PingForever()
         {
-            Events.Log.PingPongManagerStarted(_guid, (int) _keepAliveInterval.TotalSeconds);
+            Events.Log.PingPongManagerStarted(_guid, (int)_keepAliveInterval.TotalSeconds);
 
             try
             {
@@ -158,7 +158,7 @@ namespace Alis.Core.Network
 
                     if (_pingSentTicks != 0)
                     {
-                        Events.Log.KeepAliveIntervalExpired(_guid, (int) _keepAliveInterval.TotalSeconds);
+                        Events.Log.KeepAliveIntervalExpired(_guid, (int)_keepAliveInterval.TotalSeconds);
                         await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure,
                             $"No Pong message received in response to a Ping after KeepAliveInterval {_keepAliveInterval}",
                             _cancellationToken);

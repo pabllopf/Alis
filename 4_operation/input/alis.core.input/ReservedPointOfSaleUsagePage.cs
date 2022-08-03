@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly ReservedPointOfSaleUsagePage Instance = new ReservedPointOfSaleUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ReservedPointOfSaleUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="ReservedPointOfSaleUsagePage" /> class
         /// </summary>
         private ReservedPointOfSaleUsagePage() : base(0x008f, "ReservedPointOfSale")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

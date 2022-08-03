@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Dynamics
                 return true;
             }
 
-            return ShouldCollide((Fixture) userData, fixture);
+            return ShouldCollide((Fixture)userData, fixture);
         }
     }
 }

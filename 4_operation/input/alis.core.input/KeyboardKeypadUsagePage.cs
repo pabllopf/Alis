@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly KeyboardKeypadUsagePage Instance = new KeyboardKeypadUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KeyboardKeypadUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="KeyboardKeypadUsagePage" /> class
         /// </summary>
         private KeyboardKeypadUsagePage() : base(0x0007, "KeyboardKeypad")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

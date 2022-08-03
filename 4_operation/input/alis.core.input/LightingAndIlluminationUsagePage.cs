@@ -43,28 +43,28 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly LightingAndIlluminationUsagePage Instance = new LightingAndIlluminationUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LightingAndIlluminationUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="LightingAndIlluminationUsagePage" /> class
         /// </summary>
         private LightingAndIlluminationUsagePage() : base(0x0059, "LightingAndIllumination")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
                 case 0x0001: return new Usage(this, id, "Lamp Array", UsageTypes.CA);
                 case 0x0002: return new Usage(this, id, "Lamp Array Attributes Report", UsageTypes.CL);
-                case 0x0003: return new Usage(this, id, "Lamp Count", UsageTypes.SV|UsageTypes.DV);
+                case 0x0003: return new Usage(this, id, "Lamp Count", UsageTypes.SV | UsageTypes.DV);
                 case 0x0004: return new Usage(this, id, "Bounding Box Width (um)", UsageTypes.SV);
                 case 0x0005: return new Usage(this, id, "Bounding Box Height (um)", UsageTypes.SV);
                 case 0x0006: return new Usage(this, id, "Bounding Box Depth (um)", UsageTypes.SV);
                 case 0x0007: return new Usage(this, id, "Lamp Array Kind", UsageTypes.NAry);
                 case 0x0008: return new Usage(this, id, "Minimal Update Interval (us)", UsageTypes.SV);
                 case 0x0020: return new Usage(this, id, "Lamp Attributes Request Report", UsageTypes.CL);
-                case 0x0021: return new Usage(this, id, "Lamp ID", UsageTypes.SV|UsageTypes.DV);
+                case 0x0021: return new Usage(this, id, "Lamp ID", UsageTypes.SV | UsageTypes.DV);
                 case 0x0022: return new Usage(this, id, "Lamp Attributes Response Report", UsageTypes.CL);
                 case 0x0023: return new Usage(this, id, "Position X (um)", UsageTypes.DV);
                 case 0x0024: return new Usage(this, id, "Position Y (um)", UsageTypes.DV);
@@ -75,7 +75,7 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0029: return new Usage(this, id, "Green Level Count", UsageTypes.DV);
                 case 0x002a: return new Usage(this, id, "Blue Level Count", UsageTypes.DV);
                 case 0x002b: return new Usage(this, id, "Intensity Level Count", UsageTypes.DV);
-                case 0x002c: return new Usage(this, id, "Programmable", UsageTypes.SF|UsageTypes.DF);
+                case 0x002c: return new Usage(this, id, "Programmable", UsageTypes.SF | UsageTypes.DF);
                 case 0x002d: return new Usage(this, id, "Input Binding", UsageTypes.NAry);
                 case 0x0050: return new Usage(this, id, "Lamp Multi Update Report", UsageTypes.CL);
                 case 0x0051: return new Usage(this, id, "Red Update Channel", UsageTypes.DV);

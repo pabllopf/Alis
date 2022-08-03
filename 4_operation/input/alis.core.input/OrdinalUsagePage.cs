@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly OrdinalUsagePage Instance = new OrdinalUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="OrdinalUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="OrdinalUsagePage" /> class
         /// </summary>
         private OrdinalUsagePage() : base(0x000a, "Ordinal")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -74,7 +74,7 @@ namespace DevDecoder.HIDDevices.Pages
             }
 
             // Create dynamic usages from ranges
-            var n = (ushort)(id-0x0001);
+            var n = (ushort)(id - 0x0001);
             if (id >= 0x0001 || id < 0xffff) return new Usage(this, id, $"Instance {n}", UsageTypes.UM);
 
             return base.CreateUsage(id);

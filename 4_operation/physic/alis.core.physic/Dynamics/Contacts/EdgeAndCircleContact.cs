@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         private static void CollideEdgeAndCircle(ref Manifold manifold, Shape shape1, XForm xf1, Shape shape2,
             XForm xf2)
         {
-            Collision.Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape) shape1, xf1, (CircleShape) shape2, xf2);
+            Collision.Collision.CollideEdgeAndCircle(ref manifold, (EdgeShape)shape1, xf1, (CircleShape)shape2, xf2);
         }
 
         /// <summary>

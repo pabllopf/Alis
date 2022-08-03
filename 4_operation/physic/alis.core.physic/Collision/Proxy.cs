@@ -64,16 +64,13 @@ namespace Alis.Core.Physic.Collision
         /// </summary>
         public ushort Next
         {
-            get { return LowerBounds[0]; }
-            set { LowerBounds[0] = value; }
+            get => LowerBounds[0];
+            set => LowerBounds[0] = value;
         }
 
         /// <summary>
         ///     Gets the value of the is valid
         /// </summary>
-        public bool IsValid
-        {
-            get { return OverlapCount != BroadPhase.Invalid; }
-        }
+        public bool IsValid => OverlapCount != BroadPhase.Invalid;
     }
 }

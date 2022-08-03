@@ -227,18 +227,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vector2 Anchor1
-        {
-            get { return Body1.GetWorldPoint(LocalAnchor1); }
-        }
+        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vector2 Anchor2
-        {
-            get { return Body2.GetWorldPoint(LocalAnchor2); }
-        }
+        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
 
         /// <summary>
         ///     Get the current joint translation, usually in meters.
@@ -313,7 +307,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         public float MotorSpeedx
         {
-            get { return motorSpeedx; }
+            get => motorSpeedx;
             set
             {
                 Body1.WakeUp();

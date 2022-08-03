@@ -18,7 +18,7 @@ namespace Alis.Core.Input.Converters
         public static readonly SignedConverter Instance = new SignedConverter();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SignedConverter"/> class
+        ///     Initializes a new instance of the <see cref="SignedConverter" /> class
         /// </summary>
         private SignedConverter() : base(-1D, 1D)
         {

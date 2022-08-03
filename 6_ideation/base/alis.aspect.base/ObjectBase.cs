@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
-using System.Text;
-
 namespace Alis.Aspect.Base
 {
     /// <summary>
@@ -38,7 +35,7 @@ namespace Alis.Aspect.Base
     public class ObjectBase
     {
         /// <summary>
-        ///    The object base class
+        ///     The object base class
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>

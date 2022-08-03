@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly BatterySystemUsagePage Instance = new BatterySystemUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BatterySystemUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="BatterySystemUsagePage" /> class
         /// </summary>
         private BatterySystemUsagePage() : base(0x0085, "BatterySystem")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

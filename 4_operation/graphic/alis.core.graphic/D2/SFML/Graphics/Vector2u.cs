@@ -135,7 +135,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override bool Equals(object obj)
         {
-            return obj is Vector2u && Equals((Vector2u) obj);
+            return obj is Vector2u && Equals((Vector2u)obj);
         }
 
         ///////////////////////////////////////////////////////////
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public static explicit operator Vector2i(Vector2u v)
         {
-            return new Vector2i((int) v.X, (int) v.Y);
+            return new Vector2i((int)v.X, (int)v.Y);
         }
 
         ////////////////////////////////////////////////////////////

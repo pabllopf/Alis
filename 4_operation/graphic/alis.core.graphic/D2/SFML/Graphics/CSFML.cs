@@ -161,7 +161,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     The audio
         /// </summary>
         public const string audio = "runtimes/win-x64/native/csfml-audio";
-        
+
         /// <summary>
         ///     The graphics
         /// </summary>

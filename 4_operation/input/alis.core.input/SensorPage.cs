@@ -41,20 +41,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00200000,
+        [Description("Undefined")] Undefined = 0x00200000,
 
         /// <summary>
         ///     Sensor Usage.
         /// </summary>
-        [Description("Sensor")]
-        Sensor = 0x00200001,
+        [Description("Sensor")] Sensor = 0x00200001,
 
         /// <summary>
         ///     Biometric Usage.
         /// </summary>
-        [Description("Biometric")]
-        Biometric = 0x00200010,
+        [Description("Biometric")] Biometric = 0x00200010,
 
         /// <summary>
         ///     Biometric: Human Presence Usage.
@@ -89,8 +86,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Biometric: Heart Rate Usage.
         /// </summary>
-        [Description("Biometric: Heart Rate")]
-        BiometricHeartRate = 0x00200016,
+        [Description("Biometric: Heart Rate")] BiometricHeartRate = 0x00200016,
 
         /// <summary>
         ///     Biometric: Heart Rate Variability Usage.
@@ -113,8 +109,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Electrical Usage.
         /// </summary>
-        [Description("Electrical")]
-        Electrical = 0x00200020,
+        [Description("Electrical")] Electrical = 0x00200020,
 
         /// <summary>
         ///     Electrical: Capacitance Usage.
@@ -125,14 +120,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Electrical: Current Usage.
         /// </summary>
-        [Description("Electrical: Current")]
-        ElectricalCurrent = 0x00200022,
+        [Description("Electrical: Current")] ElectricalCurrent = 0x00200022,
 
         /// <summary>
         ///     Electrical: Power Usage.
         /// </summary>
-        [Description("Electrical: Power")]
-        ElectricalPower = 0x00200023,
+        [Description("Electrical: Power")] ElectricalPower = 0x00200023,
 
         /// <summary>
         ///     Electrical: Inductance Usage.
@@ -149,8 +142,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Electrical: Voltage Usage.
         /// </summary>
-        [Description("Electrical: Voltage")]
-        ElectricalVoltage = 0x00200026,
+        [Description("Electrical: Voltage")] ElectricalVoltage = 0x00200026,
 
         /// <summary>
         ///     Electrical: Potentiometer Usage.
@@ -161,20 +153,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Electrical: Frequency Usage.
         /// </summary>
-        [Description("Electrical: Frequency")]
-        ElectricalFrequency = 0x00200028,
+        [Description("Electrical: Frequency")] ElectricalFrequency = 0x00200028,
 
         /// <summary>
         ///     Electrical: Period Usage.
         /// </summary>
-        [Description("Electrical: Period")]
-        ElectricalPeriod = 0x00200029,
+        [Description("Electrical: Period")] ElectricalPeriod = 0x00200029,
 
         /// <summary>
         ///     Environmental Usage.
         /// </summary>
-        [Description("Environmental")]
-        Environmental = 0x00200030,
+        [Description("Environmental")] Environmental = 0x00200030,
 
         /// <summary>
         ///     Environmental: Atmospheric Pressure Usage.
@@ -245,14 +234,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Light Usage.
         /// </summary>
-        [Description("Light")]
-        Light = 0x00200040,
+        [Description("Light")] Light = 0x00200040,
 
         /// <summary>
         ///     Light: Ambient Light Usage.
         /// </summary>
-        [Description("Light: Ambient Light")]
-        LightAmbientLight = 0x00200041,
+        [Description("Light: Ambient Light")] LightAmbientLight = 0x00200041,
 
         /// <summary>
         ///     Light: Consumer Infrared Usage.
@@ -263,14 +250,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Light: Infrared Light Usage.
         /// </summary>
-        [Description("Light: Infrared Light")]
-        LightInfraredLight = 0x00200043,
+        [Description("Light: Infrared Light")] LightInfraredLight = 0x00200043,
 
         /// <summary>
         ///     Light: Visible Light Usage.
         /// </summary>
-        [Description("Light: Visible Light")]
-        LightVisibleLight = 0x00200044,
+        [Description("Light: Visible Light")] LightVisibleLight = 0x00200044,
 
         /// <summary>
         ///     Light: Ultraviolet Light Usage.
@@ -281,14 +266,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Location Usage.
         /// </summary>
-        [Description("Location")]
-        Location = 0x00200050,
+        [Description("Location")] Location = 0x00200050,
 
         /// <summary>
         ///     Location: Broadcast Usage.
         /// </summary>
-        [Description("Location: Broadcast")]
-        LocationBroadcast = 0x00200051,
+        [Description("Location: Broadcast")] LocationBroadcast = 0x00200051,
 
         /// <summary>
         ///     Location: Dead Reckoning Usage.
@@ -299,26 +282,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Location: GPS Usage.
         /// </summary>
-        [Description("Location: GPS")]
-        LocationGPS = 0x00200053,
+        [Description("Location: GPS")] LocationGPS = 0x00200053,
 
         /// <summary>
         ///     Location: Lookup Usage.
         /// </summary>
-        [Description("Location: Lookup")]
-        LocationLookup = 0x00200054,
+        [Description("Location: Lookup")] LocationLookup = 0x00200054,
 
         /// <summary>
         ///     Location: Other Usage.
         /// </summary>
-        [Description("Location: Other")]
-        LocationOther = 0x00200055,
+        [Description("Location: Other")] LocationOther = 0x00200055,
 
         /// <summary>
         ///     Location: Static Usage.
         /// </summary>
-        [Description("Location: Static")]
-        LocationStatic = 0x00200056,
+        [Description("Location: Static")] LocationStatic = 0x00200056,
 
         /// <summary>
         ///     Location: Triangulation Usage.
@@ -329,8 +308,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Mechanical Usage.
         /// </summary>
-        [Description("Mechanical")]
-        Mechanical = 0x00200060,
+        [Description("Mechanical")] Mechanical = 0x00200060,
 
         /// <summary>
         ///     Mechanical: Boolean Switch Usage.
@@ -353,26 +331,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Mechanical: Force Usage.
         /// </summary>
-        [Description("Mechanical: Force")]
-        MechanicalForce = 0x00200064,
+        [Description("Mechanical: Force")] MechanicalForce = 0x00200064,
 
         /// <summary>
         ///     Mechanical: Pressure Usage.
         /// </summary>
-        [Description("Mechanical: Pressure")]
-        MechanicalPressure = 0x00200065,
+        [Description("Mechanical: Pressure")] MechanicalPressure = 0x00200065,
 
         /// <summary>
         ///     Mechanical: Strain Usage.
         /// </summary>
-        [Description("Mechanical: Strain")]
-        MechanicalStrain = 0x00200066,
+        [Description("Mechanical: Strain")] MechanicalStrain = 0x00200066,
 
         /// <summary>
         ///     Mechanical: Weight Usage.
         /// </summary>
-        [Description("Mechanical: Weight")]
-        MechanicalWeight = 0x00200067,
+        [Description("Mechanical: Weight")] MechanicalWeight = 0x00200067,
 
         /// <summary>
         ///     Mechanical: Haptic Vibrator Usage.
@@ -389,8 +363,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Motion Usage.
         /// </summary>
-        [Description("Motion")]
-        Motion = 0x00200070,
+        [Description("Motion")] Motion = 0x00200070,
 
         /// <summary>
         ///     Motion: Accelerometer 1D Usage.
@@ -413,20 +386,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Motion: Gyrometer 1D Usage.
         /// </summary>
-        [Description("Motion: Gyrometer 1D")]
-        MotionGyrometer1D = 0x00200074,
+        [Description("Motion: Gyrometer 1D")] MotionGyrometer1D = 0x00200074,
 
         /// <summary>
         ///     Motion: Gyrometer 2D Usage.
         /// </summary>
-        [Description("Motion: Gyrometer 2D")]
-        MotionGyrometer2D = 0x00200075,
+        [Description("Motion: Gyrometer 2D")] MotionGyrometer2D = 0x00200075,
 
         /// <summary>
         ///     Motion: Gyrometer 3D Usage.
         /// </summary>
-        [Description("Motion: Gyrometer 3D")]
-        MotionGyrometer3D = 0x00200076,
+        [Description("Motion: Gyrometer 3D")] MotionGyrometer3D = 0x00200076,
 
         /// <summary>
         ///     Motion: Motion Detector Usage.
@@ -437,20 +407,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Motion: Speedometer Usage.
         /// </summary>
-        [Description("Motion: Speedometer")]
-        MotionSpeedometer = 0x00200078,
+        [Description("Motion: Speedometer")] MotionSpeedometer = 0x00200078,
 
         /// <summary>
         ///     Motion: Accelerometer Usage.
         /// </summary>
-        [Description("Motion: Accelerometer")]
-        MotionAccelerometer = 0x00200079,
+        [Description("Motion: Accelerometer")] MotionAccelerometer = 0x00200079,
 
         /// <summary>
         ///     Motion: Gyrometer Usage.
         /// </summary>
-        [Description("Motion: Gyrometer")]
-        MotionGyrometer = 0x0020007a,
+        [Description("Motion: Gyrometer")] MotionGyrometer = 0x0020007a,
 
         /// <summary>
         ///     Motion: Gravity Vector Usage.
@@ -467,8 +434,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Orientation Usage.
         /// </summary>
-        [Description("Orientation")]
-        Orientation = 0x00200080,
+        [Description("Orientation")] Orientation = 0x00200080,
 
         /// <summary>
         ///     Orientation: Compass 1D Usage.
@@ -533,8 +499,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Orientation: Compass Usage.
         /// </summary>
-        [Description("Orientation: Compass")]
-        OrientationCompass = 0x0020008b,
+        [Description("Orientation: Compass")] OrientationCompass = 0x0020008b,
 
         /// <summary>
         ///     Orientation: Inclinometer Usage.
@@ -545,8 +510,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Orientation: Distance Usage.
         /// </summary>
-        [Description("Orientation: Distance")]
-        OrientationDistance = 0x0020008d,
+        [Description("Orientation: Distance")] OrientationDistance = 0x0020008d,
 
         /// <summary>
         ///     Orientation: Relative Orientation Usage.
@@ -563,50 +527,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Scanner Usage.
         /// </summary>
-        [Description("Scanner")]
-        Scanner = 0x00200090,
+        [Description("Scanner")] Scanner = 0x00200090,
 
         /// <summary>
         ///     Scanner: Barcode Usage.
         /// </summary>
-        [Description("Scanner: Barcode")]
-        ScannerBarcode = 0x00200091,
+        [Description("Scanner: Barcode")] ScannerBarcode = 0x00200091,
 
         /// <summary>
         ///     Scanner: RFID Usage.
         /// </summary>
-        [Description("Scanner: RFID")]
-        ScannerRFID = 0x00200092,
+        [Description("Scanner: RFID")] ScannerRFID = 0x00200092,
 
         /// <summary>
         ///     Scanner: NFC Usage.
         /// </summary>
-        [Description("Scanner: NFC")]
-        ScannerNFC = 0x00200093,
+        [Description("Scanner: NFC")] ScannerNFC = 0x00200093,
 
         /// <summary>
         ///     Time Usage.
         /// </summary>
-        [Description("Time")]
-        Time = 0x002000a0,
+        [Description("Time")] Time = 0x002000a0,
 
         /// <summary>
         ///     Time: Alarm Timer Usage.
         /// </summary>
-        [Description("Time: Alarm Timer")]
-        TimeAlarmTimer = 0x002000a1,
+        [Description("Time: Alarm Timer")] TimeAlarmTimer = 0x002000a1,
 
         /// <summary>
         ///     Time: Real Time Clock Usage.
         /// </summary>
-        [Description("Time: Real Time Clock")]
-        TimeRealTimeClock = 0x002000a2,
+        [Description("Time: Real Time Clock")] TimeRealTimeClock = 0x002000a2,
 
         /// <summary>
         ///     Personal Activity Usage.
         /// </summary>
-        [Description("Personal Activity")]
-        PersonalActivity = 0x002000b0,
+        [Description("Personal Activity")] PersonalActivity = 0x002000b0,
 
         /// <summary>
         ///     Personal Activity: Activity Detection Usage.
@@ -635,8 +591,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Orientation Extended Usage.
         /// </summary>
-        [Description("Orientation Extended")]
-        OrientationExtended = 0x002000c0,
+        [Description("Orientation Extended")] OrientationExtended = 0x002000c0,
 
         /// <summary>
         ///     Orientation Extended: Geomagnetic Orientation Usage.
@@ -653,8 +608,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Gesture Usage.
         /// </summary>
-        [Description("Gesture")]
-        Gesture = 0x002000d0,
+        [Description("Gesture")] Gesture = 0x002000d0,
 
         /// <summary>
         ///     Gesture: Chassis Flip Gesture Usage.
@@ -671,20 +625,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Other Usage.
         /// </summary>
-        [Description("Other")]
-        Other = 0x002000e0,
+        [Description("Other")] Other = 0x002000e0,
 
         /// <summary>
         ///     Other: Custom Usage.
         /// </summary>
-        [Description("Other: Custom")]
-        OtherCustom = 0x002000e1,
+        [Description("Other: Custom")] OtherCustom = 0x002000e1,
 
         /// <summary>
         ///     Other: Generic Usage.
         /// </summary>
-        [Description("Other: Generic")]
-        OtherGeneric = 0x002000e2,
+        [Description("Other: Generic")] OtherGeneric = 0x002000e2,
 
         /// <summary>
         ///     Other: Generic Enumerator Usage.
@@ -695,8 +646,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Other: Hinge Angle Usage.
         /// </summary>
-        [Description("Other: Hinge Angle")]
-        OtherHingeAngle = 0x002000e4,
+        [Description("Other: Hinge Angle")] OtherHingeAngle = 0x002000e4,
 
         /*
          * Range: 0x00f0 -> 0x00ff
@@ -706,116 +656,97 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Vendor Reserved 1 Usage.
         /// </summary>
-        [Description("Vendor Reserved 1")]
-        VendorReserved1 = 0x002000f0,
+        [Description("Vendor Reserved 1")] VendorReserved1 = 0x002000f0,
 
         /// <summary>
         ///     Vendor Reserved 2 Usage.
         /// </summary>
-        [Description("Vendor Reserved 2")]
-        VendorReserved2 = 0x002000f1,
+        [Description("Vendor Reserved 2")] VendorReserved2 = 0x002000f1,
 
         /// <summary>
         ///     Vendor Reserved 3 Usage.
         /// </summary>
-        [Description("Vendor Reserved 3")]
-        VendorReserved3 = 0x002000f2,
+        [Description("Vendor Reserved 3")] VendorReserved3 = 0x002000f2,
 
         /// <summary>
         ///     Vendor Reserved 4 Usage.
         /// </summary>
-        [Description("Vendor Reserved 4")]
-        VendorReserved4 = 0x002000f3,
+        [Description("Vendor Reserved 4")] VendorReserved4 = 0x002000f3,
 
         /// <summary>
         ///     Vendor Reserved 5 Usage.
         /// </summary>
-        [Description("Vendor Reserved 5")]
-        VendorReserved5 = 0x002000f4,
+        [Description("Vendor Reserved 5")] VendorReserved5 = 0x002000f4,
 
         /// <summary>
         ///     Vendor Reserved 6 Usage.
         /// </summary>
-        [Description("Vendor Reserved 6")]
-        VendorReserved6 = 0x002000f5,
+        [Description("Vendor Reserved 6")] VendorReserved6 = 0x002000f5,
 
         /// <summary>
         ///     Vendor Reserved 7 Usage.
         /// </summary>
-        [Description("Vendor Reserved 7")]
-        VendorReserved7 = 0x002000f6,
+        [Description("Vendor Reserved 7")] VendorReserved7 = 0x002000f6,
 
         /// <summary>
         ///     Vendor Reserved 8 Usage.
         /// </summary>
-        [Description("Vendor Reserved 8")]
-        VendorReserved8 = 0x002000f7,
+        [Description("Vendor Reserved 8")] VendorReserved8 = 0x002000f7,
 
         /// <summary>
         ///     Vendor Reserved 9 Usage.
         /// </summary>
-        [Description("Vendor Reserved 9")]
-        VendorReserved9 = 0x002000f8,
+        [Description("Vendor Reserved 9")] VendorReserved9 = 0x002000f8,
 
         /// <summary>
         ///     Vendor Reserved 10 Usage.
         /// </summary>
-        [Description("Vendor Reserved 10")]
-        VendorReserved10 = 0x002000f9,
+        [Description("Vendor Reserved 10")] VendorReserved10 = 0x002000f9,
 
         /// <summary>
         ///     Vendor Reserved 11 Usage.
         /// </summary>
-        [Description("Vendor Reserved 11")]
-        VendorReserved11 = 0x002000fa,
+        [Description("Vendor Reserved 11")] VendorReserved11 = 0x002000fa,
 
         /// <summary>
         ///     Vendor Reserved 12 Usage.
         /// </summary>
-        [Description("Vendor Reserved 12")]
-        VendorReserved12 = 0x002000fb,
+        [Description("Vendor Reserved 12")] VendorReserved12 = 0x002000fb,
 
         /// <summary>
         ///     Vendor Reserved 13 Usage.
         /// </summary>
-        [Description("Vendor Reserved 13")]
-        VendorReserved13 = 0x002000fc,
+        [Description("Vendor Reserved 13")] VendorReserved13 = 0x002000fc,
 
         /// <summary>
         ///     Vendor Reserved 14 Usage.
         /// </summary>
-        [Description("Vendor Reserved 14")]
-        VendorReserved14 = 0x002000fd,
+        [Description("Vendor Reserved 14")] VendorReserved14 = 0x002000fd,
 
         /// <summary>
         ///     Vendor Reserved 15 Usage.
         /// </summary>
-        [Description("Vendor Reserved 15")]
-        VendorReserved15 = 0x002000fe,
+        [Description("Vendor Reserved 15")] VendorReserved15 = 0x002000fe,
 
         /// <summary>
         ///     Vendor Reserved 16 Usage.
         /// </summary>
-        [Description("Vendor Reserved 16")]
-        VendorReserved16 = 0x002000ff,
+        [Description("Vendor Reserved 16")] VendorReserved16 = 0x002000ff,
 
         /// <summary>
         ///     Event: Sensor State Usage.
         /// </summary>
-        [Description("Event: Sensor State")]
-        EventSensorState = 0x00200201,
+        [Description("Event: Sensor State")] EventSensorState = 0x00200201,
 
         /// <summary>
         ///     Event: Sensor Event Usage.
         /// </summary>
-        [Description("Event: Sensor Event")]
-        EventSensorEvent = 0x00200202,
+        [Description("Event: Sensor Event")] EventSensorEvent = 0x00200202,
 
         /// <summary>
         ///     Property Usage.
         /// </summary>
-        [Description("Property")]
-        Property = 0x00200300,
+        [Description("Property")] Property = 0x00200300,
 
         /// <summary>
         ///     Property: Friendly Name Usage.
@@ -922,26 +853,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Accuracy Usage.
         /// </summary>
-        [Description("Property: Accuracy")]
-        PropertyAccuracy = 0x00200312,
+        [Description("Property: Accuracy")] PropertyAccuracy = 0x00200312,
 
         /// <summary>
         ///     Property: Resolution Usage.
         /// </summary>
-        [Description("Property: Resolution")]
-        PropertyResolution = 0x00200313,
+        [Description("Property: Resolution")] PropertyResolution = 0x00200313,
 
         /// <summary>
         ///     Property: Maximum Usage.
         /// </summary>
-        [Description("Property: Maximum")]
-        PropertyMaximum = 0x00200314,
+        [Description("Property: Maximum")] PropertyMaximum = 0x00200314,
 
         /// <summary>
         ///     Property: Minimum Usage.
         /// </summary>
-        [Description("Property: Minimum")]
-        PropertyMinimum = 0x00200315,
+        [Description("Property: Minimum")] PropertyMinimum = 0x00200315,
 
         /// <summary>
         ///     Property: Reporting State Usage.
@@ -964,8 +891,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Power State Usage.
         /// </summary>
-        [Description("Property: Power State")]
-        PropertyPowerState = 0x00200319,
+        [Description("Property: Power State")] PropertyPowerState = 0x00200319,
 
         /// <summary>
         ///     Property: Maximum FIFO Events Usage.
@@ -994,8 +920,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Is Primary Usage.
         /// </summary>
-        [Description("Property: Is Primary")]
-        PropertyIsPrimary = 0x0020031e,
+        [Description("Property: Is Primary")] PropertyIsPrimary = 0x0020031e,
 
         /// <summary>
         ///     Property: Human Presence Detection Type Usage.
@@ -1006,8 +931,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Location Usage.
         /// </summary>
-        [Description("Data Field: Location")]
-        DataFieldLocation = 0x00200400,
+        [Description("Data Field: Location")] DataFieldLocation = 0x00200400,
 
         /// <summary>
         ///     Data Field: Altitude Antenna Sea Level Usage.
@@ -1066,8 +990,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Fix Type Usage.
         /// </summary>
-        [Description("Data Field: Fix Type")]
-        DataFieldFixType = 0x0020040b,
+        [Description("Data Field: Fix Type")] DataFieldFixType = 0x0020040b,
 
         /// <summary>
         ///     Data Field: Geoidal Separation Usage.
@@ -1114,14 +1037,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Latitude Usage.
         /// </summary>
-        [Description("Data Field: Latitude")]
-        DataFieldLatitude = 0x00200413,
+        [Description("Data Field: Latitude")] DataFieldLatitude = 0x00200413,
 
         /// <summary>
         ///     Data Field: Longitude Usage.
         /// </summary>
-        [Description("Data Field: Longitude")]
-        DataFieldLongitude = 0x00200414,
+        [Description("Data Field: Longitude")] DataFieldLongitude = 0x00200414,
 
         /// <summary>
         ///     Data Field: True Heading Usage.
@@ -1144,8 +1065,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Speed Usage.
         /// </summary>
-        [Description("Data Field: Speed")]
-        DataFieldSpeed = 0x00200418,
+        [Description("Data Field: Speed")] DataFieldSpeed = 0x00200418,
 
         /// <summary>
         ///     Data Field: Satellites in View Usage.
@@ -1216,8 +1136,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: City Usage.
         /// </summary>
-        [Description("Data Field: City")]
-        DataFieldCity = 0x00200424,
+        [Description("Data Field: City")] DataFieldCity = 0x00200424,
 
         /// <summary>
         ///     Data Field: State or Province Usage.
@@ -1330,8 +1249,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Motion Usage.
         /// </summary>
-        [Description("Data Field: Motion")]
-        DataFieldMotion = 0x00200450,
+        [Description("Data Field: Motion")] DataFieldMotion = 0x00200450,
 
         /// <summary>
         ///     Data Field: Motion State Usage.
@@ -1432,8 +1350,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Heading Usage.
         /// </summary>
-        [Description("Data Field: Heading")]
-        DataFieldHeading = 0x00200471,
+        [Description("Data Field: Heading")] DataFieldHeading = 0x00200471,
 
         /// <summary>
         ///     Data Field: Heading X Axis Usage.
@@ -1480,8 +1397,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Distance Usage.
         /// </summary>
-        [Description("Data Field: Distance")]
-        DataFieldDistance = 0x00200479,
+        [Description("Data Field: Distance")] DataFieldDistance = 0x00200479,
 
         /// <summary>
         ///     Data Field: Distance X Axis Usage.
@@ -1510,8 +1426,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Tilt Usage.
         /// </summary>
-        [Description("Data Field: Tilt")]
-        DataFieldTilt = 0x0020047e,
+        [Description("Data Field: Tilt")] DataFieldTilt = 0x0020047e,
 
         /// <summary>
         ///     Data Field: Tilt X Axis Usage.
@@ -1606,8 +1521,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Force Usage.
         /// </summary>
-        [Description("Data Field: Force")]
-        DataFieldForce = 0x00200494,
+        [Description("Data Field: Force")] DataFieldForce = 0x00200494,
 
         /// <summary>
         ///     Data Field: Absolute Pressure Usage.
@@ -1624,20 +1538,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Strain Usage.
         /// </summary>
-        [Description("Data Field: Strain")]
-        DataFieldStrain = 0x00200497,
+        [Description("Data Field: Strain")] DataFieldStrain = 0x00200497,
 
         /// <summary>
         ///     Data Field: Weight Usage.
         /// </summary>
-        [Description("Data Field: Weight")]
-        DataFieldWeight = 0x00200498,
+        [Description("Data Field: Weight")] DataFieldWeight = 0x00200498,
 
         /// <summary>
         ///     Property: Mechanical Usage.
         /// </summary>
-        [Description("Property: Mechanical")]
-        PropertyMechanical = 0x002004a0,
+        [Description("Property: Mechanical")] PropertyMechanical = 0x002004a0,
 
         /// <summary>
         ///     Property: Vibration State Usage.
@@ -1660,8 +1571,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Biometric Usage.
         /// </summary>
-        [Description("Data Field: Biometric")]
-        DataFieldBiometric = 0x002004b0,
+        [Description("Data Field: Biometric")] DataFieldBiometric = 0x002004b0,
 
         /// <summary>
         ///     Data Field: Human Presence Usage.
@@ -1744,8 +1654,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Light Usage.
         /// </summary>
-        [Description("Data Field: Light")]
-        DataFieldLight = 0x002004d0,
+        [Description("Data Field: Light")] DataFieldLight = 0x002004d0,
 
         /// <summary>
         ///     Data Field: Illuminance Usage.
@@ -1792,8 +1701,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Red Light Usage.
         /// </summary>
-        [Description("Data Field: Red Light")]
-        DataFieldRedLight = 0x002004d8,
+        [Description("Data Field: Red Light")] DataFieldRedLight = 0x002004d8,
 
         /// <summary>
         ///     Data Field: Green Light Usage.
@@ -1834,8 +1742,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Light Usage.
         /// </summary>
-        [Description("Property: Light")]
-        PropertyLight = 0x002004e0,
+        [Description("Property: Light")] PropertyLight = 0x002004e0,
 
         /// <summary>
         ///     Property: Consumer IR Sentence Send Usage.
@@ -1858,8 +1765,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Scanner Usage.
         /// </summary>
-        [Description("Data Field: Scanner")]
-        DataFieldScanner = 0x002004f0,
+        [Description("Data Field: Scanner")] DataFieldScanner = 0x002004f0,
 
         /// <summary>
         ///     Data Field: RFID Tag 40 Bit Usage.
@@ -1876,8 +1782,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Scanner Usage.
         /// </summary>
-        [Description("Property: Scanner")]
-        PropertyScanner = 0x002004f8,
+        [Description("Property: Scanner")] PropertyScanner = 0x002004f8,
 
         /// <summary>
         ///     Property: NFC Sentence Send Usage.
@@ -1900,8 +1805,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Current Usage.
         /// </summary>
-        [Description("Data Field: Current")]
-        DataFieldCurrent = 0x00200502,
+        [Description("Data Field: Current")] DataFieldCurrent = 0x00200502,
 
         /// <summary>
         ///     Data Field: Electrical Power Usage.
@@ -1924,20 +1828,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Voltage Usage.
         /// </summary>
-        [Description("Data Field: Voltage")]
-        DataFieldVoltage = 0x00200506,
+        [Description("Data Field: Voltage")] DataFieldVoltage = 0x00200506,
 
         /// <summary>
         ///     Data Field: Frequency Usage.
         /// </summary>
-        [Description("Data Field: Frequency")]
-        DataFieldFrequency = 0x00200507,
+        [Description("Data Field: Frequency")] DataFieldFrequency = 0x00200507,
 
         /// <summary>
         ///     Data Field: Period Usage.
         /// </summary>
-        [Description("Data Field: Period")]
-        DataFieldPeriod = 0x00200508,
+        [Description("Data Field: Period")] DataFieldPeriod = 0x00200508,
 
         /// <summary>
         ///     Data Field: Percent of Range Usage.
@@ -1948,26 +1849,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Time Usage.
         /// </summary>
-        [Description("Data Field: Time")]
-        DataFieldTime = 0x00200520,
+        [Description("Data Field: Time")] DataFieldTime = 0x00200520,
 
         /// <summary>
         ///     Data Field: Year Usage.
         /// </summary>
-        [Description("Data Field: Year")]
-        DataFieldYear = 0x00200521,
+        [Description("Data Field: Year")] DataFieldYear = 0x00200521,
 
         /// <summary>
         ///     Data Field: Month Usage.
         /// </summary>
-        [Description("Data Field: Month")]
-        DataFieldMonth = 0x00200522,
+        [Description("Data Field: Month")] DataFieldMonth = 0x00200522,
 
         /// <summary>
         ///     Data Field: Day Usage.
         /// </summary>
-        [Description("Data Field: Day")]
-        DataFieldDay = 0x00200523,
+        [Description("Data Field: Day")] DataFieldDay = 0x00200523,
 
         /// <summary>
         ///     Data Field: Day of Week Usage.
@@ -1978,14 +1875,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Minute Usage.
         /// </summary>
-        [Description("Data Field: Minute")]
-        DataFieldMinute = 0x00200526,
+        [Description("Data Field: Minute")] DataFieldMinute = 0x00200526,
 
         /// <summary>
         ///     Data Field: Second Usage.
         /// </summary>
-        [Description("Data Field: Second")]
-        DataFieldSecond = 0x00200527,
+        [Description("Data Field: Second")] DataFieldSecond = 0x00200527,
 
         /// <summary>
         ///     Data Field: Millisecond Usage.
@@ -1996,8 +1891,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Timestamp Usage.
         /// </summary>
-        [Description("Data Field: Timestamp")]
-        DataFieldTimestamp = 0x00200529,
+        [Description("Data Field: Timestamp")] DataFieldTimestamp = 0x00200529,
 
         /// <summary>
         ///     Data Field: Julian Day of Year Usage.
@@ -2014,8 +1908,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Time Usage.
         /// </summary>
-        [Description("Property: Time")]
-        PropertyTime = 0x00200530,
+        [Description("Property: Time")] PropertyTime = 0x00200530,
 
         /// <summary>
         ///     Property: Time Zone Offset from UTC Usage.
@@ -2044,14 +1937,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Arm Alarm Usage.
         /// </summary>
-        [Description("Property: Arm Alarm")]
-        PropertyArmAlarm = 0x00200535,
+        [Description("Property: Arm Alarm")] PropertyArmAlarm = 0x00200535,
 
         /// <summary>
         ///     Data Field: Custom Usage.
         /// </summary>
-        [Description("Data Field: Custom")]
-        DataFieldCustom = 0x00200540,
+        [Description("Data Field: Custom")] DataFieldCustom = 0x00200540,
 
         /// <summary>
         ///     Data Field: Custom Usage Usage.
@@ -2175,8 +2066,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Generic Usage.
         /// </summary>
-        [Description("Data Field: Generic")]
-        DataFieldGeneric = 0x00200560,
+        [Description("Data Field: Generic")] DataFieldGeneric = 0x00200560,
 
         /// <summary>
         ///     Data Field: Generic GUID or PROPERTYKEY Usage.
@@ -2313,8 +2203,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Generic Usage.
         /// </summary>
-        [Description("Property: Generic")]
-        PropertyGeneric = 0x00200580,
+        [Description("Property: Generic")] PropertyGeneric = 0x00200580,
 
         /// <summary>
         ///     Property: Enumerator Table Row Index Usage.
@@ -2373,8 +2262,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Step Type Usage.
         /// </summary>
-        [Description("Data Field: Step Type")]
-        DataFieldStepType = 0x00200597,
+        [Description("Data Field: Step Type")] DataFieldStepType = 0x00200597,
 
         /// <summary>
         ///     Property: Minimum Activity Detection Interval Usage.
@@ -2421,8 +2309,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Property: Custom Usage.
         /// </summary>
-        [Description("Property: Custom")]
-        PropertyCustom = 0x002005c0,
+        [Description("Property: Custom")] PropertyCustom = 0x002005c0,
 
         /*
          * Range: 0x05c1 -> 0x05d0
@@ -2623,8 +2510,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Data Field: Hinge Usage.
         /// </summary>
-        [Description("Data Field: Hinge")]
-        DataFieldHinge = 0x002005e0,
+        [Description("Data Field: Hinge")] DataFieldHinge = 0x002005e0,
 
         /// <summary>
         ///     Data Field: Hinge Angle Usage.
@@ -2677,8 +2563,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Sensor State: Ready Usage.
         /// </summary>
-        [Description("Sensor State: Ready")]
-        SensorStateReady = 0x00200801,
+        [Description("Sensor State: Ready")] SensorStateReady = 0x00200801,
 
         /// <summary>
         ///     Sensor State: Not Available Usage.
@@ -2689,8 +2574,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Sensor State: No Data Usage.
         /// </summary>
-        [Description("Sensor State: No Data")]
-        SensorStateNoData = 0x00200803,
+        [Description("Sensor State: No Data")] SensorStateNoData = 0x00200803,
 
         /// <summary>
         ///     Sensor State: Initializing Usage.
@@ -2707,14 +2591,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Sensor State: Error Usage.
         /// </summary>
-        [Description("Sensor State: Error")]
-        SensorStateError = 0x00200806,
+        [Description("Sensor State: Error")] SensorStateError = 0x00200806,
 
         /// <summary>
         ///     Sensor Event: Unknown Usage.
         /// </summary>
-        [Description("Sensor Event: Unknown")]
-        SensorEventUnknown = 0x00200810,
+        [Description("Sensor Event: Unknown")] SensorEventUnknown = 0x00200810,
 
         /// <summary>
         ///     Sensor Event: State Changed Usage.
@@ -2905,50 +2787,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Accuracy: Default Usage.
         /// </summary>
-        [Description("Accuracy: Default")]
-        AccuracyDefault = 0x00200860,
+        [Description("Accuracy: Default")] AccuracyDefault = 0x00200860,
 
         /// <summary>
         ///     Accuracy: High Usage.
         /// </summary>
-        [Description("Accuracy: High")]
-        AccuracyHigh = 0x00200861,
+        [Description("Accuracy: High")] AccuracyHigh = 0x00200861,
 
         /// <summary>
         ///     Accuracy: Medium Usage.
         /// </summary>
-        [Description("Accuracy: Medium")]
-        AccuracyMedium = 0x00200862,
+        [Description("Accuracy: Medium")] AccuracyMedium = 0x00200862,
 
         /// <summary>
         ///     Accuracy: Low Usage.
         /// </summary>
-        [Description("Accuracy: Low")]
-        AccuracyLow = 0x00200863,
+        [Description("Accuracy: Low")] AccuracyLow = 0x00200863,
 
         /// <summary>
         ///     Fix Quality: No Fix Usage.
         /// </summary>
-        [Description("Fix Quality: No Fix")]
-        FixQualityNoFix = 0x00200870,
+        [Description("Fix Quality: No Fix")] FixQualityNoFix = 0x00200870,
 
         /// <summary>
         ///     Fix Quality: GPS Usage.
         /// </summary>
-        [Description("Fix Quality: GPS")]
-        FixQualityGPS = 0x00200871,
+        [Description("Fix Quality: GPS")] FixQualityGPS = 0x00200871,
 
         /// <summary>
         ///     Fix Quality: DGPS Usage.
         /// </summary>
-        [Description("Fix Quality: DGPS")]
-        FixQualityDGPS = 0x00200872,
+        [Description("Fix Quality: DGPS")] FixQualityDGPS = 0x00200872,
 
         /// <summary>
         ///     Fix Type: No Fix Usage.
         /// </summary>
-        [Description("Fix Type: No Fix")]
-        FixTypeNoFix = 0x00200880,
+        [Description("Fix Type: No Fix")] FixTypeNoFix = 0x00200880,
 
         /// <summary>
         ///     Fix Type: GPS SPS Mode, Fix Valid Usage.
@@ -2977,8 +2851,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Fix Type: Float RTK Usage.
         /// </summary>
-        [Description("Fix Type: Float RTK")]
-        FixTypeFloatRTK = 0x00200885,
+        [Description("Fix Type: Float RTK")] FixTypeFloatRTK = 0x00200885,
 
         /// <summary>
         ///     Fix Type: Estimated (dead reckoned) Usage.
@@ -3061,20 +2934,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Day of Week: Sunday Usage.
         /// </summary>
-        [Description("Day of Week: Sunday")]
-        DayOfWeekSunday = 0x002008c0,
+        [Description("Day of Week: Sunday")] DayOfWeekSunday = 0x002008c0,
 
         /// <summary>
         ///     Day of Week: Monday Usage.
         /// </summary>
-        [Description("Day of Week: Monday")]
-        DayOfWeekMonday = 0x002008c1,
+        [Description("Day of Week: Monday")] DayOfWeekMonday = 0x002008c1,
 
         /// <summary>
         ///     Day of Week: Tuesday Usage.
         /// </summary>
-        [Description("Day of Week: Tuesday")]
-        DayOfWeekTuesday = 0x002008c2,
+        [Description("Day of Week: Tuesday")] DayOfWeekTuesday = 0x002008c2,
 
         /// <summary>
         ///     Day of Week: Wednesday Usage.
@@ -3085,50 +2955,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Day of Week: Thursday Usage.
         /// </summary>
-        [Description("Day of Week: Thursday")]
-        DayOfWeekThursday = 0x002008c4,
+        [Description("Day of Week: Thursday")] DayOfWeekThursday = 0x002008c4,
 
         /// <summary>
         ///     Day of Week: Friday Usage.
         /// </summary>
-        [Description("Day of Week: Friday")]
-        DayOfWeekFriday = 0x002008c5,
+        [Description("Day of Week: Friday")] DayOfWeekFriday = 0x002008c5,
 
         /// <summary>
         ///     Day of Week: Saturday Usage.
         /// </summary>
-        [Description("Day of Week: Saturday")]
-        DayOfWeekSaturday = 0x002008c6,
+        [Description("Day of Week: Saturday")] DayOfWeekSaturday = 0x002008c6,
 
         /// <summary>
         ///     Kind: Category Usage.
         /// </summary>
-        [Description("Kind: Category")]
-        KindCategory = 0x002008d0,
+        [Description("Kind: Category")] KindCategory = 0x002008d0,
 
         /// <summary>
         ///     Kind: Type Usage.
         /// </summary>
-        [Description("Kind: Type")]
-        KindType = 0x002008d1,
+        [Description("Kind: Type")] KindType = 0x002008d1,
 
         /// <summary>
         ///     Kind: Event Usage.
         /// </summary>
-        [Description("Kind: Event")]
-        KindEvent = 0x002008d2,
+        [Description("Kind: Event")] KindEvent = 0x002008d2,
 
         /// <summary>
         ///     Kind: Property Usage.
         /// </summary>
-        [Description("Kind: Property")]
-        KindProperty = 0x002008d3,
+        [Description("Kind: Property")] KindProperty = 0x002008d3,
 
         /// <summary>
         ///     Kind: Data Field Usage.
         /// </summary>
-        [Description("Kind: Data Field")]
-        KindDataField = 0x002008d4,
+        [Description("Kind: Data Field")] KindDataField = 0x002008d4,
 
         /// <summary>
         ///     Magnetometer Accuracy: Low Usage.
@@ -3187,26 +3049,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     VT_NULL: Empty Usage.
         /// </summary>
-        [Description("VT_NULL: Empty")]
-        VT_NULLEmpty = 0x00200900,
+        [Description("VT_NULL: Empty")] VT_NULLEmpty = 0x00200900,
 
         /// <summary>
         ///     VT_BOOL: Boolean Usage.
         /// </summary>
-        [Description("VT_BOOL: Boolean")]
-        VT_BOOLBoolean = 0x00200901,
+        [Description("VT_BOOL: Boolean")] VT_BOOLBoolean = 0x00200901,
 
         /// <summary>
         ///     VT_UI1: Byte Usage.
         /// </summary>
-        [Description("VT_UI1: Byte")]
-        VT_UI1Byte = 0x00200902,
+        [Description("VT_UI1: Byte")] VT_UI1Byte = 0x00200902,
 
         /// <summary>
         ///     VT_I1: Character Usage.
         /// </summary>
-        [Description("VT_I1: Character")]
-        VT_I1Character = 0x00200903,
+        [Description("VT_I1: Character")] VT_I1Character = 0x00200903,
 
         /// <summary>
         ///     VT_UI2: Unsigned Short Usage.
@@ -3217,20 +3075,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     VT_I2: Short Usage.
         /// </summary>
-        [Description("VT_I2: Short")]
-        VT_I2Short = 0x00200905,
+        [Description("VT_I2: Short")] VT_I2Short = 0x00200905,
 
         /// <summary>
         ///     VT_UI4: Unsigned Long Usage.
         /// </summary>
-        [Description("VT_UI4: Unsigned Long")]
-        VT_UI4UnsignedLong = 0x00200906,
+        [Description("VT_UI4: Unsigned Long")] VT_UI4UnsignedLong = 0x00200906,
 
         /// <summary>
         ///     VT_I4: Long Usage.
         /// </summary>
-        [Description("VT_I4: Long")]
-        VT_I4Long = 0x00200907,
+        [Description("VT_I4: Long")] VT_I4Long = 0x00200907,
 
         /// <summary>
         ///     VT_UI8: Unsigned Long Long Usage.
@@ -3241,38 +3096,32 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     VT_I8: Long Long Usage.
         /// </summary>
-        [Description("VT_I8: Long Long")]
-        VT_I8LongLong = 0x00200909,
+        [Description("VT_I8: Long Long")] VT_I8LongLong = 0x00200909,
 
         /// <summary>
         ///     VT_R4: Float Usage.
         /// </summary>
-        [Description("VT_R4: Float")]
-        VT_R4Float = 0x0020090a,
+        [Description("VT_R4: Float")] VT_R4Float = 0x0020090a,
 
         /// <summary>
         ///     VT_R8: Double Usage.
         /// </summary>
-        [Description("VT_R8: Double")]
-        VT_R8Double = 0x0020090b,
+        [Description("VT_R8: Double")] VT_R8Double = 0x0020090b,
 
         /// <summary>
         ///     VT_WSTR: Wide String Usage.
         /// </summary>
-        [Description("VT_WSTR: Wide String")]
-        VT_WSTRWideString = 0x0020090c,
+        [Description("VT_WSTR: Wide String")] VT_WSTRWideString = 0x0020090c,
 
         /// <summary>
         ///     VT_STR: Narrow String Usage.
         /// </summary>
-        [Description("VT_STR: Narrow String")]
-        VT_STRNarrowString = 0x0020090d,
+        [Description("VT_STR: Narrow String")] VT_STRNarrowString = 0x0020090d,
 
         /// <summary>
         ///     VT_CLSID: Guid Usage.
         /// </summary>
-        [Description("VT_CLSID: Guid")]
-        VT_CLSIDGuid = 0x0020090e,
+        [Description("VT_CLSID: Guid")] VT_CLSIDGuid = 0x0020090e,
 
         /// <summary>
         ///     VT_VECTOR|VT_UI1: Opaque Structure Usage.
@@ -3511,68 +3360,57 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Activity Type: Biking Usage.
         /// </summary>
-        [Description("Activity Type: Biking")]
-        ActivityTypeBiking = 0x00200936,
+        [Description("Activity Type: Biking")] ActivityTypeBiking = 0x00200936,
 
         /// <summary>
         ///     Activity Type: Idle Usage.
         /// </summary>
-        [Description("Activity Type: Idle")]
-        ActivityTypeIdle = 0x00200937,
+        [Description("Activity Type: Idle")] ActivityTypeIdle = 0x00200937,
 
         /// <summary>
         ///     Unit: Not Specified Usage.
         /// </summary>
-        [Description("Unit: Not Specified")]
-        UnitNotSpecified = 0x00200940,
+        [Description("Unit: Not Specified")] UnitNotSpecified = 0x00200940,
 
         /// <summary>
         ///     Unit: Lux Usage.
         /// </summary>
-        [Description("Unit: Lux")]
-        UnitLux = 0x00200941,
+        [Description("Unit: Lux")] UnitLux = 0x00200941,
 
         /// <summary>
         ///     Unit: Degrees Kelvin Usage.
         /// </summary>
-        [Description("Unit: Degrees Kelvin")]
-        UnitDegreesKelvin = 0x00200942,
+        [Description("Unit: Degrees Kelvin")] UnitDegreesKelvin = 0x00200942,
 
         /// <summary>
         ///     Unit: Degrees Celsius Usage.
         /// </summary>
-        [Description("Unit: Degrees Celsius")]
-        UnitDegreesCelsius = 0x00200943,
+        [Description("Unit: Degrees Celsius")] UnitDegreesCelsius = 0x00200943,
 
         /// <summary>
         ///     Unit: Pascal Usage.
         /// </summary>
-        [Description("Unit: Pascal")]
-        UnitPascal = 0x00200944,
+        [Description("Unit: Pascal")] UnitPascal = 0x00200944,
 
         /// <summary>
         ///     Unit: Newton Usage.
         /// </summary>
-        [Description("Unit: Newton")]
-        UnitNewton = 0x00200945,
+        [Description("Unit: Newton")] UnitNewton = 0x00200945,
 
         /// <summary>
         ///     Unit: Meters/Second Usage.
         /// </summary>
-        [Description("Unit: Meters/Second")]
-        UnitMetersSecond = 0x00200946,
+        [Description("Unit: Meters/Second")] UnitMetersSecond = 0x00200946,
 
         /// <summary>
         ///     Unit: Kilogram Usage.
         /// </summary>
-        [Description("Unit: Kilogram")]
-        UnitKilogram = 0x00200947,
+        [Description("Unit: Kilogram")] UnitKilogram = 0x00200947,
 
         /// <summary>
         ///     Unit: Meter Usage.
         /// </summary>
-        [Description("Unit: Meter")]
-        UnitMeter = 0x00200948,
+        [Description("Unit: Meter")] UnitMeter = 0x00200948,
 
         /// <summary>
         ///     Unit: Meters/Second/Second Usage.
@@ -3583,50 +3421,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Unit: Farad Usage.
         /// </summary>
-        [Description("Unit: Farad")]
-        UnitFarad = 0x0020094a,
+        [Description("Unit: Farad")] UnitFarad = 0x0020094a,
 
         /// <summary>
         ///     Unit: Ampere Usage.
         /// </summary>
-        [Description("Unit: Ampere")]
-        UnitAmpere = 0x0020094b,
+        [Description("Unit: Ampere")] UnitAmpere = 0x0020094b,
 
         /// <summary>
         ///     Unit: Watt Usage.
         /// </summary>
-        [Description("Unit: Watt")]
-        UnitWatt = 0x0020094c,
+        [Description("Unit: Watt")] UnitWatt = 0x0020094c,
 
         /// <summary>
         ///     Unit: Henry Usage.
         /// </summary>
-        [Description("Unit: Henry")]
-        UnitHenry = 0x0020094d,
+        [Description("Unit: Henry")] UnitHenry = 0x0020094d,
 
         /// <summary>
         ///     Unit: Ohm Usage.
         /// </summary>
-        [Description("Unit: Ohm")]
-        UnitOhm = 0x0020094e,
+        [Description("Unit: Ohm")] UnitOhm = 0x0020094e,
 
         /// <summary>
         ///     Unit: Volt Usage.
         /// </summary>
-        [Description("Unit: Volt")]
-        UnitVolt = 0x0020094f,
+        [Description("Unit: Volt")] UnitVolt = 0x0020094f,
 
         /// <summary>
         ///     Unit: Hertz Usage.
         /// </summary>
-        [Description("Unit: Hertz")]
-        UnitHertz = 0x00200950,
+        [Description("Unit: Hertz")] UnitHertz = 0x00200950,
 
         /// <summary>
         ///     Unit: Bar Usage.
         /// </summary>
-        [Description("Unit: Bar")]
-        UnitBar = 0x00200951,
+        [Description("Unit: Bar")] UnitBar = 0x00200951,
 
         /// <summary>
         ///     Unit: Degrees Anti-clockwise Usage.
@@ -3643,14 +3473,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Unit: Degrees Usage.
         /// </summary>
-        [Description("Unit: Degrees")]
-        UnitDegrees = 0x00200954,
+        [Description("Unit: Degrees")] UnitDegrees = 0x00200954,
 
         /// <summary>
         ///     Unit: Degrees/Second Usage.
         /// </summary>
-        [Description("Unit: Degrees/Second")]
-        UnitDegreesSecond = 0x00200955,
+        [Description("Unit: Degrees/Second")] UnitDegreesSecond = 0x00200955,
 
         /// <summary>
         ///     Unit: Degrees/Second/Second Usage.
@@ -3661,50 +3489,42 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Unit: Knot Usage.
         /// </summary>
-        [Description("Unit: Knot")]
-        UnitKnot = 0x00200957,
+        [Description("Unit: Knot")] UnitKnot = 0x00200957,
 
         /// <summary>
         ///     Unit: Percent Usage.
         /// </summary>
-        [Description("Unit: Percent")]
-        UnitPercent = 0x00200958,
+        [Description("Unit: Percent")] UnitPercent = 0x00200958,
 
         /// <summary>
         ///     Unit: Second Usage.
         /// </summary>
-        [Description("Unit: Second")]
-        UnitSecond = 0x00200959,
+        [Description("Unit: Second")] UnitSecond = 0x00200959,
 
         /// <summary>
         ///     Unit: Millisecond Usage.
         /// </summary>
-        [Description("Unit: Millisecond")]
-        UnitMillisecond = 0x0020095a,
+        [Description("Unit: Millisecond")] UnitMillisecond = 0x0020095a,
 
         /// <summary>
         ///     Unit: G Usage.
         /// </summary>
-        [Description("Unit: G")]
-        UnitG = 0x0020095b,
+        [Description("Unit: G")] UnitG = 0x0020095b,
 
         /// <summary>
         ///     Unit: Bytes Usage.
         /// </summary>
-        [Description("Unit: Bytes")]
-        UnitBytes = 0x0020095c,
+        [Description("Unit: Bytes")] UnitBytes = 0x0020095c,
 
         /// <summary>
         ///     Unit: Milligauss Usage.
         /// </summary>
-        [Description("Unit: Milligauss")]
-        UnitMilligauss = 0x0020095d,
+        [Description("Unit: Milligauss")] UnitMilligauss = 0x0020095d,
 
         /// <summary>
         ///     Unit: Bits Usage.
         /// </summary>
-        [Description("Unit: Bits")]
-        UnitBits = 0x0020095e,
+        [Description("Unit: Bits")] UnitBits = 0x0020095e,
 
         /// <summary>
         ///     Activity State: No State Change Usage.
@@ -3727,44 +3547,37 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Exponent 0: 1 Usage.
         /// </summary>
-        [Description("Exponent 0: 1")]
-        Exponent01 = 0x00200970,
+        [Description("Exponent 0: 1")] Exponent01 = 0x00200970,
 
         /// <summary>
         ///     Exponent 1: 10 Usage.
         /// </summary>
-        [Description("Exponent 1: 10")]
-        Exponent110 = 0x00200971,
+        [Description("Exponent 1: 10")] Exponent110 = 0x00200971,
 
         /// <summary>
         ///     Exponent 2: 100 Usage.
         /// </summary>
-        [Description("Exponent 2: 100")]
-        Exponent2100 = 0x00200972,
+        [Description("Exponent 2: 100")] Exponent2100 = 0x00200972,
 
         /// <summary>
         ///     Exponent 3: 1 000 Usage.
         /// </summary>
-        [Description("Exponent 3: 1 000")]
-        Exponent31000 = 0x00200973,
+        [Description("Exponent 3: 1 000")] Exponent31000 = 0x00200973,
 
         /// <summary>
         ///     Exponent 4: 10 000 Usage.
         /// </summary>
-        [Description("Exponent 4: 10 000")]
-        Exponent410000 = 0x00200974,
+        [Description("Exponent 4: 10 000")] Exponent410000 = 0x00200974,
 
         /// <summary>
         ///     Exponent 5: 100 000 Usage.
         /// </summary>
-        [Description("Exponent 5: 100 000")]
-        Exponent5100000 = 0x00200975,
+        [Description("Exponent 5: 100 000")] Exponent5100000 = 0x00200975,
 
         /// <summary>
         ///     Exponent 6: 1 000 000 Usage.
         /// </summary>
-        [Description("Exponent 6: 1 000 000")]
-        Exponent61000000 = 0x00200976,
+        [Description("Exponent 6: 1 000 000")] Exponent61000000 = 0x00200976,
 
         /// <summary>
         ///     Exponent 7: 10 000 000 Usage.
@@ -3787,38 +3600,32 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Exponent A: 0.000 001 Usage.
         /// </summary>
-        [Description("Exponent A: 0.000 001")]
-        ExponentA0000001 = 0x0020097a,
+        [Description("Exponent A: 0.000 001")] ExponentA0000001 = 0x0020097a,
 
         /// <summary>
         ///     Exponent B: 0.00 001 Usage.
         /// </summary>
-        [Description("Exponent B: 0.00 001")]
-        ExponentB000001 = 0x0020097b,
+        [Description("Exponent B: 0.00 001")] ExponentB000001 = 0x0020097b,
 
         /// <summary>
         ///     Exponent C: 0.0 001 Usage.
         /// </summary>
-        [Description("Exponent C: 0.0 001")]
-        ExponentC00001 = 0x0020097c,
+        [Description("Exponent C: 0.0 001")] ExponentC00001 = 0x0020097c,
 
         /// <summary>
         ///     Exponent D: 0.001 Usage.
         /// </summary>
-        [Description("Exponent D: 0.001")]
-        ExponentD0001 = 0x0020097d,
+        [Description("Exponent D: 0.001")] ExponentD0001 = 0x0020097d,
 
         /// <summary>
         ///     Exponent E: 0.01 Usage.
         /// </summary>
-        [Description("Exponent E: 0.01")]
-        ExponentE001 = 0x0020097e,
+        [Description("Exponent E: 0.01")] ExponentE001 = 0x0020097e,
 
         /// <summary>
         ///     Exponent F: 0.1 Usage.
         /// </summary>
-        [Description("Exponent F: 0.1")]
-        ExponentF01 = 0x0020097f,
+        [Description("Exponent F: 0.1")] ExponentF01 = 0x0020097f,
 
         /// <summary>
         ///     Device Position: Unknown Usage.
@@ -3859,20 +3666,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Step Type: Unknown Usage.
         /// </summary>
-        [Description("Step Type: Unknown")]
-        StepTypeUnknown = 0x00200990,
+        [Description("Step Type: Unknown")] StepTypeUnknown = 0x00200990,
 
         /// <summary>
         ///     Step Type: Running Usage.
         /// </summary>
-        [Description("Step Type: Running")]
-        StepTypeRunning = 0x00200991,
+        [Description("Step Type: Running")] StepTypeRunning = 0x00200991,
 
         /// <summary>
         ///     Step Type: Walking Usage.
         /// </summary>
-        [Description("Step Type: Walking")]
-        StepTypeWalking = 0x00200992,
+        [Description("Step Type: Walking")] StepTypeWalking = 0x00200992,
 
         /// <summary>
         ///     Gesture State: Unknown Usage.
@@ -3925,20 +3729,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Fold Type: Unknown Usage.
         /// </summary>
-        [Description("Fold Type: Unknown")]
-        FoldTypeUnknown = 0x002009b4,
+        [Description("Fold Type: Unknown")] FoldTypeUnknown = 0x002009b4,
 
         /// <summary>
         ///     Fold Type: Increasing Usage.
         /// </summary>
-        [Description("Fold Type: Increasing")]
-        FoldTypeIncreasing = 0x002009b5,
+        [Description("Fold Type: Increasing")] FoldTypeIncreasing = 0x002009b5,
 
         /// <summary>
         ///     Fold Type: Decreasing Usage.
         /// </summary>
-        [Description("Fold Type: Decreasing")]
-        FoldTypeDecreasing = 0x002009b6,
+        [Description("Fold Type: Decreasing")] FoldTypeDecreasing = 0x002009b6,
 
         /// <summary>
         ///     Human Presence Detection Type: Vendor-Defined Non-Biometric Usage.
@@ -4073,98 +3874,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum = 0x00202000,
+        [Description("Maximum")] Maximum = 0x00202000,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum2 = 0x00202001,
+        [Description("Maximum")] Maximum2 = 0x00202001,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum3 = 0x00202002,
+        [Description("Maximum")] Maximum3 = 0x00202002,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum4 = 0x00202003,
+        [Description("Maximum")] Maximum4 = 0x00202003,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum5 = 0x00202004,
+        [Description("Maximum")] Maximum5 = 0x00202004,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum6 = 0x00202005,
+        [Description("Maximum")] Maximum6 = 0x00202005,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum7 = 0x00202006,
+        [Description("Maximum")] Maximum7 = 0x00202006,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum8 = 0x00202007,
+        [Description("Maximum")] Maximum8 = 0x00202007,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum9 = 0x00202008,
+        [Description("Maximum")] Maximum9 = 0x00202008,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum10 = 0x00202009,
+        [Description("Maximum")] Maximum10 = 0x00202009,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum11 = 0x0020200a,
+        [Description("Maximum")] Maximum11 = 0x0020200a,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum12 = 0x0020200b,
+        [Description("Maximum")] Maximum12 = 0x0020200b,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum13 = 0x0020200c,
+        [Description("Maximum")] Maximum13 = 0x0020200c,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum14 = 0x0020200d,
+        [Description("Maximum")] Maximum14 = 0x0020200d,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum15 = 0x0020200e,
+        [Description("Maximum")] Maximum15 = 0x0020200e,
 
         /// <summary>
         ///     Maximum Usage.
         /// </summary>
-        [Description("Maximum")]
-        Maximum16 = 0x0020200f,
+        [Description("Maximum")] Maximum16 = 0x0020200f,
 
         /*
          * Range: 0x3000 -> 0x3fff
@@ -4174,98 +3959,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum = 0x00203000,
+        [Description("Minimum")] Minimum = 0x00203000,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum2 = 0x00203001,
+        [Description("Minimum")] Minimum2 = 0x00203001,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum3 = 0x00203002,
+        [Description("Minimum")] Minimum3 = 0x00203002,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum4 = 0x00203003,
+        [Description("Minimum")] Minimum4 = 0x00203003,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum5 = 0x00203004,
+        [Description("Minimum")] Minimum5 = 0x00203004,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum6 = 0x00203005,
+        [Description("Minimum")] Minimum6 = 0x00203005,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum7 = 0x00203006,
+        [Description("Minimum")] Minimum7 = 0x00203006,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum8 = 0x00203007,
+        [Description("Minimum")] Minimum8 = 0x00203007,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum9 = 0x00203008,
+        [Description("Minimum")] Minimum9 = 0x00203008,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum10 = 0x00203009,
+        [Description("Minimum")] Minimum10 = 0x00203009,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum11 = 0x0020300a,
+        [Description("Minimum")] Minimum11 = 0x0020300a,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum12 = 0x0020300b,
+        [Description("Minimum")] Minimum12 = 0x0020300b,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum13 = 0x0020300c,
+        [Description("Minimum")] Minimum13 = 0x0020300c,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum14 = 0x0020300d,
+        [Description("Minimum")] Minimum14 = 0x0020300d,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum15 = 0x0020300e,
+        [Description("Minimum")] Minimum15 = 0x0020300e,
 
         /// <summary>
         ///     Minimum Usage.
         /// </summary>
-        [Description("Minimum")]
-        Minimum16 = 0x0020300f,
+        [Description("Minimum")] Minimum16 = 0x0020300f,
 
         /*
          * Range: 0x4000 -> 0x4fff
@@ -4275,98 +4044,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy = 0x00204000,
+        [Description("Accuracy")] Accuracy = 0x00204000,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy2 = 0x00204001,
+        [Description("Accuracy")] Accuracy2 = 0x00204001,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy3 = 0x00204002,
+        [Description("Accuracy")] Accuracy3 = 0x00204002,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy4 = 0x00204003,
+        [Description("Accuracy")] Accuracy4 = 0x00204003,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy5 = 0x00204004,
+        [Description("Accuracy")] Accuracy5 = 0x00204004,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy6 = 0x00204005,
+        [Description("Accuracy")] Accuracy6 = 0x00204005,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy7 = 0x00204006,
+        [Description("Accuracy")] Accuracy7 = 0x00204006,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy8 = 0x00204007,
+        [Description("Accuracy")] Accuracy8 = 0x00204007,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy9 = 0x00204008,
+        [Description("Accuracy")] Accuracy9 = 0x00204008,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy10 = 0x00204009,
+        [Description("Accuracy")] Accuracy10 = 0x00204009,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy11 = 0x0020400a,
+        [Description("Accuracy")] Accuracy11 = 0x0020400a,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy12 = 0x0020400b,
+        [Description("Accuracy")] Accuracy12 = 0x0020400b,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy13 = 0x0020400c,
+        [Description("Accuracy")] Accuracy13 = 0x0020400c,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy14 = 0x0020400d,
+        [Description("Accuracy")] Accuracy14 = 0x0020400d,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy15 = 0x0020400e,
+        [Description("Accuracy")] Accuracy15 = 0x0020400e,
 
         /// <summary>
         ///     Accuracy Usage.
         /// </summary>
-        [Description("Accuracy")]
-        Accuracy16 = 0x0020400f,
+        [Description("Accuracy")] Accuracy16 = 0x0020400f,
 
         /*
          * Range: 0x5000 -> 0x5fff
@@ -4376,98 +4129,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution = 0x00205000,
+        [Description("Resolution")] Resolution = 0x00205000,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution2 = 0x00205001,
+        [Description("Resolution")] Resolution2 = 0x00205001,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution3 = 0x00205002,
+        [Description("Resolution")] Resolution3 = 0x00205002,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution4 = 0x00205003,
+        [Description("Resolution")] Resolution4 = 0x00205003,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution5 = 0x00205004,
+        [Description("Resolution")] Resolution5 = 0x00205004,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution6 = 0x00205005,
+        [Description("Resolution")] Resolution6 = 0x00205005,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution7 = 0x00205006,
+        [Description("Resolution")] Resolution7 = 0x00205006,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution8 = 0x00205007,
+        [Description("Resolution")] Resolution8 = 0x00205007,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution9 = 0x00205008,
+        [Description("Resolution")] Resolution9 = 0x00205008,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution10 = 0x00205009,
+        [Description("Resolution")] Resolution10 = 0x00205009,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution11 = 0x0020500a,
+        [Description("Resolution")] Resolution11 = 0x0020500a,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution12 = 0x0020500b,
+        [Description("Resolution")] Resolution12 = 0x0020500b,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution13 = 0x0020500c,
+        [Description("Resolution")] Resolution13 = 0x0020500c,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution14 = 0x0020500d,
+        [Description("Resolution")] Resolution14 = 0x0020500d,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution15 = 0x0020500e,
+        [Description("Resolution")] Resolution15 = 0x0020500e,
 
         /// <summary>
         ///     Resolution Usage.
         /// </summary>
-        [Description("Resolution")]
-        Resolution16 = 0x0020500f,
+        [Description("Resolution")] Resolution16 = 0x0020500f,
 
         /*
          * Range: 0x6000 -> 0x6fff
@@ -4477,98 +4214,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh = 0x00206000,
+        [Description("Threshold High")] ThresholdHigh = 0x00206000,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh2 = 0x00206001,
+        [Description("Threshold High")] ThresholdHigh2 = 0x00206001,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh3 = 0x00206002,
+        [Description("Threshold High")] ThresholdHigh3 = 0x00206002,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh4 = 0x00206003,
+        [Description("Threshold High")] ThresholdHigh4 = 0x00206003,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh5 = 0x00206004,
+        [Description("Threshold High")] ThresholdHigh5 = 0x00206004,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh6 = 0x00206005,
+        [Description("Threshold High")] ThresholdHigh6 = 0x00206005,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh7 = 0x00206006,
+        [Description("Threshold High")] ThresholdHigh7 = 0x00206006,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh8 = 0x00206007,
+        [Description("Threshold High")] ThresholdHigh8 = 0x00206007,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh9 = 0x00206008,
+        [Description("Threshold High")] ThresholdHigh9 = 0x00206008,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh10 = 0x00206009,
+        [Description("Threshold High")] ThresholdHigh10 = 0x00206009,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh11 = 0x0020600a,
+        [Description("Threshold High")] ThresholdHigh11 = 0x0020600a,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh12 = 0x0020600b,
+        [Description("Threshold High")] ThresholdHigh12 = 0x0020600b,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh13 = 0x0020600c,
+        [Description("Threshold High")] ThresholdHigh13 = 0x0020600c,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh14 = 0x0020600d,
+        [Description("Threshold High")] ThresholdHigh14 = 0x0020600d,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh15 = 0x0020600e,
+        [Description("Threshold High")] ThresholdHigh15 = 0x0020600e,
 
         /// <summary>
         ///     Threshold High Usage.
         /// </summary>
-        [Description("Threshold High")]
-        ThresholdHigh16 = 0x0020600f,
+        [Description("Threshold High")] ThresholdHigh16 = 0x0020600f,
 
         /*
          * Range: 0x7000 -> 0x7fff
@@ -4578,98 +4299,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow = 0x00207000,
+        [Description("Threshold Low")] ThresholdLow = 0x00207000,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow2 = 0x00207001,
+        [Description("Threshold Low")] ThresholdLow2 = 0x00207001,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow3 = 0x00207002,
+        [Description("Threshold Low")] ThresholdLow3 = 0x00207002,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow4 = 0x00207003,
+        [Description("Threshold Low")] ThresholdLow4 = 0x00207003,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow5 = 0x00207004,
+        [Description("Threshold Low")] ThresholdLow5 = 0x00207004,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow6 = 0x00207005,
+        [Description("Threshold Low")] ThresholdLow6 = 0x00207005,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow7 = 0x00207006,
+        [Description("Threshold Low")] ThresholdLow7 = 0x00207006,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow8 = 0x00207007,
+        [Description("Threshold Low")] ThresholdLow8 = 0x00207007,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow9 = 0x00207008,
+        [Description("Threshold Low")] ThresholdLow9 = 0x00207008,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow10 = 0x00207009,
+        [Description("Threshold Low")] ThresholdLow10 = 0x00207009,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow11 = 0x0020700a,
+        [Description("Threshold Low")] ThresholdLow11 = 0x0020700a,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow12 = 0x0020700b,
+        [Description("Threshold Low")] ThresholdLow12 = 0x0020700b,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow13 = 0x0020700c,
+        [Description("Threshold Low")] ThresholdLow13 = 0x0020700c,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow14 = 0x0020700d,
+        [Description("Threshold Low")] ThresholdLow14 = 0x0020700d,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow15 = 0x0020700e,
+        [Description("Threshold Low")] ThresholdLow15 = 0x0020700e,
 
         /// <summary>
         ///     Threshold Low Usage.
         /// </summary>
-        [Description("Threshold Low")]
-        ThresholdLow16 = 0x0020700f,
+        [Description("Threshold Low")] ThresholdLow16 = 0x0020700f,
 
         /*
          * Range: 0x8000 -> 0x8fff
@@ -4679,98 +4384,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset = 0x00208000,
+        [Description("Calibration Offset")] CalibrationOffset = 0x00208000,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset2 = 0x00208001,
+        [Description("Calibration Offset")] CalibrationOffset2 = 0x00208001,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset3 = 0x00208002,
+        [Description("Calibration Offset")] CalibrationOffset3 = 0x00208002,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset4 = 0x00208003,
+        [Description("Calibration Offset")] CalibrationOffset4 = 0x00208003,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset5 = 0x00208004,
+        [Description("Calibration Offset")] CalibrationOffset5 = 0x00208004,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset6 = 0x00208005,
+        [Description("Calibration Offset")] CalibrationOffset6 = 0x00208005,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset7 = 0x00208006,
+        [Description("Calibration Offset")] CalibrationOffset7 = 0x00208006,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset8 = 0x00208007,
+        [Description("Calibration Offset")] CalibrationOffset8 = 0x00208007,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset9 = 0x00208008,
+        [Description("Calibration Offset")] CalibrationOffset9 = 0x00208008,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset10 = 0x00208009,
+        [Description("Calibration Offset")] CalibrationOffset10 = 0x00208009,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset11 = 0x0020800a,
+        [Description("Calibration Offset")] CalibrationOffset11 = 0x0020800a,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset12 = 0x0020800b,
+        [Description("Calibration Offset")] CalibrationOffset12 = 0x0020800b,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset13 = 0x0020800c,
+        [Description("Calibration Offset")] CalibrationOffset13 = 0x0020800c,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset14 = 0x0020800d,
+        [Description("Calibration Offset")] CalibrationOffset14 = 0x0020800d,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset15 = 0x0020800e,
+        [Description("Calibration Offset")] CalibrationOffset15 = 0x0020800e,
 
         /// <summary>
         ///     Calibration Offset Usage.
         /// </summary>
-        [Description("Calibration Offset")]
-        CalibrationOffset16 = 0x0020800f,
+        [Description("Calibration Offset")] CalibrationOffset16 = 0x0020800f,
 
         /*
          * Range: 0x9000 -> 0x9fff
@@ -4881,98 +4570,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval = 0x0020a000,
+        [Description("Report Interval")] ReportInterval = 0x0020a000,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval2 = 0x0020a001,
+        [Description("Report Interval")] ReportInterval2 = 0x0020a001,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval3 = 0x0020a002,
+        [Description("Report Interval")] ReportInterval3 = 0x0020a002,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval4 = 0x0020a003,
+        [Description("Report Interval")] ReportInterval4 = 0x0020a003,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval5 = 0x0020a004,
+        [Description("Report Interval")] ReportInterval5 = 0x0020a004,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval6 = 0x0020a005,
+        [Description("Report Interval")] ReportInterval6 = 0x0020a005,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval7 = 0x0020a006,
+        [Description("Report Interval")] ReportInterval7 = 0x0020a006,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval8 = 0x0020a007,
+        [Description("Report Interval")] ReportInterval8 = 0x0020a007,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval9 = 0x0020a008,
+        [Description("Report Interval")] ReportInterval9 = 0x0020a008,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval10 = 0x0020a009,
+        [Description("Report Interval")] ReportInterval10 = 0x0020a009,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval11 = 0x0020a00a,
+        [Description("Report Interval")] ReportInterval11 = 0x0020a00a,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval12 = 0x0020a00b,
+        [Description("Report Interval")] ReportInterval12 = 0x0020a00b,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval13 = 0x0020a00c,
+        [Description("Report Interval")] ReportInterval13 = 0x0020a00c,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval14 = 0x0020a00d,
+        [Description("Report Interval")] ReportInterval14 = 0x0020a00d,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval15 = 0x0020a00e,
+        [Description("Report Interval")] ReportInterval15 = 0x0020a00e,
 
         /// <summary>
         ///     Report Interval Usage.
         /// </summary>
-        [Description("Report Interval")]
-        ReportInterval16 = 0x0020a00f,
+        [Description("Report Interval")] ReportInterval16 = 0x0020a00f,
 
         /*
          * Range: 0xb000 -> 0xbfff
@@ -4982,98 +4655,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax = 0x0020b000,
+        [Description("Frequency Max")] FrequencyMax = 0x0020b000,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax2 = 0x0020b001,
+        [Description("Frequency Max")] FrequencyMax2 = 0x0020b001,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax3 = 0x0020b002,
+        [Description("Frequency Max")] FrequencyMax3 = 0x0020b002,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax4 = 0x0020b003,
+        [Description("Frequency Max")] FrequencyMax4 = 0x0020b003,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax5 = 0x0020b004,
+        [Description("Frequency Max")] FrequencyMax5 = 0x0020b004,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax6 = 0x0020b005,
+        [Description("Frequency Max")] FrequencyMax6 = 0x0020b005,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax7 = 0x0020b006,
+        [Description("Frequency Max")] FrequencyMax7 = 0x0020b006,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax8 = 0x0020b007,
+        [Description("Frequency Max")] FrequencyMax8 = 0x0020b007,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax9 = 0x0020b008,
+        [Description("Frequency Max")] FrequencyMax9 = 0x0020b008,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax10 = 0x0020b009,
+        [Description("Frequency Max")] FrequencyMax10 = 0x0020b009,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax11 = 0x0020b00a,
+        [Description("Frequency Max")] FrequencyMax11 = 0x0020b00a,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax12 = 0x0020b00b,
+        [Description("Frequency Max")] FrequencyMax12 = 0x0020b00b,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax13 = 0x0020b00c,
+        [Description("Frequency Max")] FrequencyMax13 = 0x0020b00c,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax14 = 0x0020b00d,
+        [Description("Frequency Max")] FrequencyMax14 = 0x0020b00d,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax15 = 0x0020b00e,
+        [Description("Frequency Max")] FrequencyMax15 = 0x0020b00e,
 
         /// <summary>
         ///     Frequency Max Usage.
         /// </summary>
-        [Description("Frequency Max")]
-        FrequencyMax16 = 0x0020b00f,
+        [Description("Frequency Max")] FrequencyMax16 = 0x0020b00f,
 
         /*
          * Range: 0xc000 -> 0xcfff
@@ -5083,98 +4740,82 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax = 0x0020c000,
+        [Description("Period Max")] PeriodMax = 0x0020c000,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax2 = 0x0020c001,
+        [Description("Period Max")] PeriodMax2 = 0x0020c001,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax3 = 0x0020c002,
+        [Description("Period Max")] PeriodMax3 = 0x0020c002,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax4 = 0x0020c003,
+        [Description("Period Max")] PeriodMax4 = 0x0020c003,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax5 = 0x0020c004,
+        [Description("Period Max")] PeriodMax5 = 0x0020c004,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax6 = 0x0020c005,
+        [Description("Period Max")] PeriodMax6 = 0x0020c005,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax7 = 0x0020c006,
+        [Description("Period Max")] PeriodMax7 = 0x0020c006,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax8 = 0x0020c007,
+        [Description("Period Max")] PeriodMax8 = 0x0020c007,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax9 = 0x0020c008,
+        [Description("Period Max")] PeriodMax9 = 0x0020c008,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax10 = 0x0020c009,
+        [Description("Period Max")] PeriodMax10 = 0x0020c009,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax11 = 0x0020c00a,
+        [Description("Period Max")] PeriodMax11 = 0x0020c00a,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax12 = 0x0020c00b,
+        [Description("Period Max")] PeriodMax12 = 0x0020c00b,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax13 = 0x0020c00c,
+        [Description("Period Max")] PeriodMax13 = 0x0020c00c,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax14 = 0x0020c00d,
+        [Description("Period Max")] PeriodMax14 = 0x0020c00d,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax15 = 0x0020c00e,
+        [Description("Period Max")] PeriodMax15 = 0x0020c00e,
 
         /// <summary>
         ///     Period Max Usage.
         /// </summary>
-        [Description("Period Max")]
-        PeriodMax16 = 0x0020c00f,
+        [Description("Period Max")] PeriodMax16 = 0x0020c00f,
 
         /*
          * Range: 0xd000 -> 0xdfff

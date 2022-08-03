@@ -38,7 +38,7 @@ namespace Alis.Core.Components
     public class Sprite : Component
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
@@ -47,7 +47,7 @@ namespace Alis.Core.Components
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()

@@ -120,7 +120,7 @@ namespace Alis.Core.Input.Converters
                 return OutputMaximum;
             }
 
-            return OutputMinimum + (((value - InputMinimum) / InputRange) * OutputRange);
+            return OutputMinimum + (value - InputMinimum) / InputRange * OutputRange;
         }
     }
 }

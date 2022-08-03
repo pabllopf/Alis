@@ -42,7 +42,6 @@ namespace Alis.Aspect.Time.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
             Console.WriteLine("Example");
         }
     }

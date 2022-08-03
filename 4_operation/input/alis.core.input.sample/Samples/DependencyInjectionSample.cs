@@ -17,9 +17,9 @@ using Microsoft.Extensions.Logging;
 namespace HIDDevices.Sample.Samples
 {
     /// <summary>
-    /// The dependency injection sample class
+    ///     The dependency injection sample class
     /// </summary>
-    /// <seealso cref="Sample"/>
+    /// <seealso cref="Sample" />
     public class DependencyInjectionSample : Sample
     {
         /// <inheritdoc />
@@ -72,7 +72,7 @@ namespace HIDDevices.Sample.Samples
                         {
                             case ChangeReason.Add:
                                 logBuilder.AppendLine("added.");
-                                
+
                                 break;
                             case ChangeReason.Update:
                                 logBuilder.AppendLine("updated.");
@@ -198,13 +198,15 @@ namespace HIDDevices.Sample.Samples
         }
 
         /// <summary>
-        /// Configures the services using the specified services
+        ///     Configures the services using the specified services
         /// </summary>
         /// <param name="services">The services</param>
-        private static void ConfigureServices(IServiceCollection services) =>
+        private static void ConfigureServices(IServiceCollection services)
+        {
             // Configure logging and add the Devices service as a singleton.
             services
                 .AddLogging(configure => configure.AddConsole())
                 .AddSingleton<Devices>();
+        }
     }
 }

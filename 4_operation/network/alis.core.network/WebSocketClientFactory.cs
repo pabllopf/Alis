@@ -76,7 +76,10 @@ namespace Alis.Core.Network
         ///     Used to get a memory stream. Feel free to implement your own buffer pool. MemoryStreams
         ///     will be disposed when no longer needed and can be returned to the pool.
         /// </param>
-        public WebSocketClientFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
+        public WebSocketClientFactory(Func<MemoryStream> bufferFactory)
+        {
+            _bufferFactory = bufferFactory;
+        }
 
         /// <summary>
         ///     Connect with default options
@@ -84,8 +87,10 @@ namespace Alis.Core.Network
         /// <param name="uri">The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
-        public async Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default(CancellationToken)) =>
-            await ConnectAsync(uri, new WebSocketClientOptions(), token);
+        public async Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default)
+        {
+            return await ConnectAsync(uri, new WebSocketClientOptions(), token);
+        }
 
         /// <summary>
         ///     Connect with options specified
@@ -95,7 +100,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
         public async Task<WebSocket> ConnectAsync(Uri uri, WebSocketClientOptions options,
-            CancellationToken token = default(CancellationToken))
+            CancellationToken token = default)
         {
             Guid guid = Guid.NewGuid();
             string host = uri.Host;
@@ -120,7 +125,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns></returns>
         public async Task<WebSocket> ConnectAsync(Stream responseStream, string secWebSocketKey,
-            WebSocketClientOptions options, CancellationToken token = default(CancellationToken))
+            WebSocketClientOptions options, CancellationToken token = default)
         {
             Guid guid = Guid.NewGuid();
             return await ConnectAsync(guid, responseStream, secWebSocketKey, options.KeepAliveInterval,
@@ -226,7 +231,7 @@ namespace Alis.Core.Network
 
             if (!responseCode.StartsWith("101 ", StringComparison.InvariantCultureIgnoreCase))
             {
-                string[] lines = responseHeader.Split(new[] {"\r\n"}, StringSplitOptions.None);
+                string[] lines = responseHeader.Split(new[] { "\r\n" }, StringSplitOptions.None);
 
                 for (int i = 0; i < lines.Length; i++)
                 {

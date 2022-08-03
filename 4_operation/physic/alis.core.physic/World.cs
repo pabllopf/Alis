@@ -29,8 +29,8 @@
 
 using System;
 using Alis.Aspect.Logging;
-using Alis.Aspect.Time;
 using Alis.Aspect.Math;
+using Alis.Aspect.Time;
 using Alis.Core.Physic.Collision;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -227,8 +227,8 @@ namespace Alis.Core.Physic
         /// </summary>
         public Vector2 Gravity
         {
-            get { return gravity; }
-            set { gravity = value; }
+            get => gravity;
+            set => gravity = value;
         }
 
         /// <summary>
@@ -801,7 +801,7 @@ namespace Alis.Core.Physic
 
                 for (int i = 0; i < count; ++i)
                 {
-                    fixtures[i] = (Fixture) results[i];
+                    fixtures[i] = (Fixture)results[i];
                 }
 
                 results = null;
@@ -838,7 +838,7 @@ namespace Alis.Core.Physic
 
             for (int i = 0; i < count; ++i)
             {
-                fixtures[i] = (Fixture) results[i];
+                fixtures[i] = (Fixture)results[i];
             }
 
             return count;
@@ -859,7 +859,8 @@ namespace Alis.Core.Physic
         /// <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
         /// <param name="userData"></param>
         /// <returns>Returns the colliding shape shape, or null if not found.</returns>
-        public Fixture RaycastOne(Segment segment, out float lambda, out Vector2 normal, bool solidShapes, object userData)
+        public Fixture RaycastOne(Segment segment, out float lambda, out Vector2 normal, bool solidShapes,
+            object userData)
         {
             int maxCount = 1;
             Fixture[] fixture;
@@ -1104,7 +1105,7 @@ namespace Alis.Core.Physic
 
                 for (Contact c = ContactList; c != null; c = c.Next)
                 {
-                    if ((int) (c.Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
+                    if ((int)(c.Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
                     {
                         continue;
                     }
@@ -1112,7 +1113,7 @@ namespace Alis.Core.Physic
                     // TODO_ERIN keep a counter on the contact, only respond to M TOIs per contact.
 
                     float toi = 1.0f;
-                    if ((int) (c.Flags & Contact.CollisionFlags.Toi) == 1)
+                    if ((int)(c.Flags & Contact.CollisionFlags.Toi) == 1)
                     {
                         // This contact has a valid cached TOI.
                         toi = c.Toi;
@@ -1241,8 +1242,8 @@ namespace Alis.Core.Physic
                         }
 
                         // Has this contact already been added to an island? Skip slow or non-solid contacts.
-                        if ((int) (cEdge.Contact.Flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.Slow |
-                                                          Contact.CollisionFlags.NonSolid)) != 0)
+                        if ((int)(cEdge.Contact.Flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.Slow |
+                                                         Contact.CollisionFlags.NonSolid)) != 0)
                         {
                             continue;
                         }
@@ -1260,7 +1261,7 @@ namespace Alis.Core.Physic
                         Body other = cEdge.Other;
 
                         // Was the other body already added to this island?
-                        if ((int) (other.Flags & BodyFlags.Island) == 1)
+                        if ((int)(other.Flags & BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -1296,7 +1297,7 @@ namespace Alis.Core.Physic
 
                         Body other = jEdge.Other;
 
-                        if ((int) (other.Flags & BodyFlags.Island) == 1)
+                        if ((int)(other.Flags & BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -1331,7 +1332,7 @@ namespace Alis.Core.Physic
                     Body b = island.Bodies[i];
                     b.Flags &= ~BodyFlags.Island;
 
-                    if ((int) (b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) == 1)
+                    if ((int)(b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) == 1)
                     {
                         continue;
                     }
@@ -1407,7 +1408,7 @@ namespace Alis.Core.Physic
 
                 case JointType.PulleyJoint:
                 {
-                    PulleyJoint pulley = (PulleyJoint) joint;
+                    PulleyJoint pulley = (PulleyJoint)joint;
                     Vector2 s1 = pulley.GroundAnchorX1;
                     Vector2 s2 = pulley.GroundAnchorX2;
                     debugDraw.DrawSegment(s1, p1, color);
@@ -1443,7 +1444,7 @@ namespace Alis.Core.Physic
             {
                 case ShapeType.CircleShape:
                 {
-                    CircleShape circle = (CircleShape) fixture.Shape;
+                    CircleShape circle = (CircleShape)fixture.Shape;
 
                     Vector2 center = Math.Mul(xf, circle.Position);
                     float radius = circle.Radius;
@@ -1455,7 +1456,7 @@ namespace Alis.Core.Physic
 
                 case ShapeType.PolygonShape:
                 {
-                    PolygonShape poly = (PolygonShape) fixture.Shape;
+                    PolygonShape poly = (PolygonShape)fixture.Shape;
                     int vertexCount = poly.VertexCount;
                     Vector2[] localVertices = poly.Vertices;
 
@@ -1473,7 +1474,7 @@ namespace Alis.Core.Physic
 
                 case ShapeType.EdgeShape:
                 {
-                    EdgeShape edge = (EdgeShape) fixture.Shape;
+                    EdgeShape edge = (EdgeShape)fixture.Shape;
 
                     debugDraw.DrawSegment(Math.Mul(xf, edge.Vertex1), Math.Mul(xf, edge.Vertex2), color);
                 }

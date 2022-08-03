@@ -168,7 +168,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override bool Equals(object obj)
         {
-            return obj is IntRect && Equals((IntRect) obj);
+            return obj is IntRect && Equals((IntRect)obj);
         }
 
         ///////////////////////////////////////////////////////////
@@ -194,10 +194,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override int GetHashCode()
         {
-            return unchecked((int) ((uint) Left ^
-                                    (((uint) Top << 13) | ((uint) Top >> 19)) ^
-                                    (((uint) Width << 26) | ((uint) Width >> 6)) ^
-                                    (((uint) Height << 7) | ((uint) Height >> 25))));
+            return unchecked((int)((uint)Left ^
+                                   (((uint)Top << 13) | ((uint)Top >> 19)) ^
+                                   (((uint)Width << 26) | ((uint)Width >> 6)) ^
+                                   (((uint)Height << 7) | ((uint)Height >> 25))));
         }
 
         ////////////////////////////////////////////////////////////

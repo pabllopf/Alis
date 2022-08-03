@@ -41,44 +41,37 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x000d0000,
+        [Description("Undefined")] Undefined = 0x000d0000,
 
         /// <summary>
         ///     Digitizer Usage.
         /// </summary>
-        [Description("Digitizer")]
-        Digitizer = 0x000d0001,
+        [Description("Digitizer")] Digitizer = 0x000d0001,
 
         /// <summary>
         ///     Pen Usage.
         /// </summary>
-        [Description("Pen")]
-        Pen = 0x000d0002,
+        [Description("Pen")] Pen = 0x000d0002,
 
         /// <summary>
         ///     Light Pen Usage.
         /// </summary>
-        [Description("Light Pen")]
-        LightPen = 0x000d0003,
+        [Description("Light Pen")] LightPen = 0x000d0003,
 
         /// <summary>
         ///     Touch Screen Usage.
         /// </summary>
-        [Description("Touch Screen")]
-        TouchScreen = 0x000d0004,
+        [Description("Touch Screen")] TouchScreen = 0x000d0004,
 
         /// <summary>
         ///     Touch Pad Usage.
         /// </summary>
-        [Description("Touch Pad")]
-        TouchPad = 0x000d0005,
+        [Description("Touch Pad")] TouchPad = 0x000d0005,
 
         /// <summary>
         ///     White Board Usage.
         /// </summary>
-        [Description("White Board")]
-        WhiteBoard = 0x000d0006,
+        [Description("White Board")] WhiteBoard = 0x000d0006,
 
         /// <summary>
         ///     Coordinate Measuring Machine Usage.
@@ -89,26 +82,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     3D Digitizer Usage.
         /// </summary>
-        [Description("3D Digitizer")]
-        DDigitizer = 0x000d0008,
+        [Description("3D Digitizer")] DDigitizer = 0x000d0008,
 
         /// <summary>
         ///     Stereo Plotter Usage.
         /// </summary>
-        [Description("Stereo Plotter")]
-        StereoPlotter = 0x000d0009,
+        [Description("Stereo Plotter")] StereoPlotter = 0x000d0009,
 
         /// <summary>
         ///     Articulated Arm Usage.
         /// </summary>
-        [Description("Articulated Arm")]
-        ArticulatedArm = 0x000d000a,
+        [Description("Articulated Arm")] ArticulatedArm = 0x000d000a,
 
         /// <summary>
         ///     Armature Usage.
         /// </summary>
-        [Description("Armature")]
-        Armature = 0x000d000b,
+        [Description("Armature")] Armature = 0x000d000b,
 
         /// <summary>
         ///     Multiple Point Digitizer Usage.
@@ -119,14 +108,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Free Space Wand Usage.
         /// </summary>
-        [Description("Free Space Wand")]
-        FreeSpaceWand = 0x000d000d,
+        [Description("Free Space Wand")] FreeSpaceWand = 0x000d000d,
 
         /// <summary>
         ///     Device Configuration Usage.
         /// </summary>
-        [Description("Device Configuration")]
-        DeviceConfiguration = 0x000d000e,
+        [Description("Device Configuration")] DeviceConfiguration = 0x000d000e,
 
         /// <summary>
         ///     Capacitive Heat Map Digitizer Usage.
@@ -137,242 +124,202 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Stylus Usage.
         /// </summary>
-        [Description("Stylus")]
-        Stylus = 0x000d0020,
+        [Description("Stylus")] Stylus = 0x000d0020,
 
         /// <summary>
         ///     Puck Usage.
         /// </summary>
-        [Description("Puck")]
-        Puck = 0x000d0021,
+        [Description("Puck")] Puck = 0x000d0021,
 
         /// <summary>
         ///     Finger Usage.
         /// </summary>
-        [Description("Finger")]
-        Finger = 0x000d0022,
+        [Description("Finger")] Finger = 0x000d0022,
 
         /// <summary>
         ///     Device Settings Usage.
         /// </summary>
-        [Description("Device Settings")]
-        DeviceSettings = 0x000d0023,
+        [Description("Device Settings")] DeviceSettings = 0x000d0023,
 
         /// <summary>
         ///     Character Gesture Usage.
         /// </summary>
-        [Description("Character Gesture")]
-        CharacterGesture = 0x000d0024,
+        [Description("Character Gesture")] CharacterGesture = 0x000d0024,
 
         /// <summary>
         ///     Tip Pressure Usage.
         /// </summary>
-        [Description("Tip Pressure")]
-        TipPressure = 0x000d0030,
+        [Description("Tip Pressure")] TipPressure = 0x000d0030,
 
         /// <summary>
         ///     Barrel Pressure Usage.
         /// </summary>
-        [Description("Barrel Pressure")]
-        BarrelPressure = 0x000d0031,
+        [Description("Barrel Pressure")] BarrelPressure = 0x000d0031,
 
         /// <summary>
         ///     In Range Usage.
         /// </summary>
-        [Description("In Range")]
-        InRange = 0x000d0032,
+        [Description("In Range")] InRange = 0x000d0032,
 
         /// <summary>
         ///     Touch Usage.
         /// </summary>
-        [Description("Touch")]
-        Touch = 0x000d0033,
+        [Description("Touch")] Touch = 0x000d0033,
 
         /// <summary>
         ///     Untouch Usage.
         /// </summary>
-        [Description("Untouch")]
-        Untouch = 0x000d0034,
+        [Description("Untouch")] Untouch = 0x000d0034,
 
         /// <summary>
         ///     Tap Usage.
         /// </summary>
-        [Description("Tap")]
-        Tap = 0x000d0035,
+        [Description("Tap")] Tap = 0x000d0035,
 
         /// <summary>
         ///     Quality Usage.
         /// </summary>
-        [Description("Quality")]
-        Quality = 0x000d0036,
+        [Description("Quality")] Quality = 0x000d0036,
 
         /// <summary>
         ///     Data Valid Usage.
         /// </summary>
-        [Description("Data Valid")]
-        DataValid = 0x000d0037,
+        [Description("Data Valid")] DataValid = 0x000d0037,
 
         /// <summary>
         ///     Transducer Index Usage.
         /// </summary>
-        [Description("Transducer Index")]
-        TransducerIndex = 0x000d0038,
+        [Description("Transducer Index")] TransducerIndex = 0x000d0038,
 
         /// <summary>
         ///     Tablet Function Keys Usage.
         /// </summary>
-        [Description("Tablet Function Keys")]
-        TabletFunctionKeys = 0x000d0039,
+        [Description("Tablet Function Keys")] TabletFunctionKeys = 0x000d0039,
 
         /// <summary>
         ///     Program Change Keys Usage.
         /// </summary>
-        [Description("Program Change Keys")]
-        ProgramChangeKeys = 0x000d003a,
+        [Description("Program Change Keys")] ProgramChangeKeys = 0x000d003a,
 
         /// <summary>
         ///     Battery Strength Usage.
         /// </summary>
-        [Description("Battery Strength")]
-        BatteryStrength = 0x000d003b,
+        [Description("Battery Strength")] BatteryStrength = 0x000d003b,
 
         /// <summary>
         ///     Invert Usage.
         /// </summary>
-        [Description("Invert")]
-        Invert = 0x000d003c,
+        [Description("Invert")] Invert = 0x000d003c,
 
         /// <summary>
         ///     X Tilt Usage.
         /// </summary>
-        [Description("X Tilt")]
-        XTilt = 0x000d003d,
+        [Description("X Tilt")] XTilt = 0x000d003d,
 
         /// <summary>
         ///     Y Tilt Usage.
         /// </summary>
-        [Description("Y Tilt")]
-        YTilt = 0x000d003e,
+        [Description("Y Tilt")] YTilt = 0x000d003e,
 
         /// <summary>
         ///     Azimuth Usage.
         /// </summary>
-        [Description("Azimuth")]
-        Azimuth = 0x000d003f,
+        [Description("Azimuth")] Azimuth = 0x000d003f,
 
         /// <summary>
         ///     Altitude Usage.
         /// </summary>
-        [Description("Altitude")]
-        Altitude = 0x000d0040,
+        [Description("Altitude")] Altitude = 0x000d0040,
 
         /// <summary>
         ///     Twist Usage.
         /// </summary>
-        [Description("Twist")]
-        Twist = 0x000d0041,
+        [Description("Twist")] Twist = 0x000d0041,
 
         /// <summary>
         ///     Tip Switch Usage.
         /// </summary>
-        [Description("Tip Switch")]
-        TipSwitch = 0x000d0042,
+        [Description("Tip Switch")] TipSwitch = 0x000d0042,
 
         /// <summary>
         ///     Secondary Tip Switch Usage.
         /// </summary>
-        [Description("Secondary Tip Switch")]
-        SecondaryTipSwitch = 0x000d0043,
+        [Description("Secondary Tip Switch")] SecondaryTipSwitch = 0x000d0043,
 
         /// <summary>
         ///     Barrel Switch Usage.
         /// </summary>
-        [Description("Barrel Switch")]
-        BarrelSwitch = 0x000d0044,
+        [Description("Barrel Switch")] BarrelSwitch = 0x000d0044,
 
         /// <summary>
         ///     Eraser Usage.
         /// </summary>
-        [Description("Eraser")]
-        Eraser = 0x000d0045,
+        [Description("Eraser")] Eraser = 0x000d0045,
 
         /// <summary>
         ///     Tablet Pick Usage.
         /// </summary>
-        [Description("Tablet Pick")]
-        TabletPick = 0x000d0046,
+        [Description("Tablet Pick")] TabletPick = 0x000d0046,
 
         /// <summary>
         ///     Touch Valid Usage.
         /// </summary>
-        [Description("Touch Valid")]
-        TouchValid = 0x000d0047,
+        [Description("Touch Valid")] TouchValid = 0x000d0047,
 
         /// <summary>
         ///     Width Usage.
         /// </summary>
-        [Description("Width")]
-        Width = 0x000d0048,
+        [Description("Width")] Width = 0x000d0048,
 
         /// <summary>
         ///     Height Usage.
         /// </summary>
-        [Description("Height")]
-        Height = 0x000d0049,
+        [Description("Height")] Height = 0x000d0049,
 
         /// <summary>
         ///     Contact Identifier Usage.
         /// </summary>
-        [Description("Contact Identifier")]
-        ContactIdentifier = 0x000d0051,
+        [Description("Contact Identifier")] ContactIdentifier = 0x000d0051,
 
         /// <summary>
         ///     Device Mode Usage.
         /// </summary>
-        [Description("Device Mode")]
-        DeviceMode = 0x000d0052,
+        [Description("Device Mode")] DeviceMode = 0x000d0052,
 
         /// <summary>
         ///     Device Identifier Usage.
         /// </summary>
-        [Description("Device Identifier")]
-        DeviceIdentifier = 0x000d0053,
+        [Description("Device Identifier")] DeviceIdentifier = 0x000d0053,
 
         /// <summary>
         ///     Contact Count Usage.
         /// </summary>
-        [Description("Contact Count")]
-        ContactCount = 0x000d0054,
+        [Description("Contact Count")] ContactCount = 0x000d0054,
 
         /// <summary>
         ///     Contact Count Maximum Usage.
         /// </summary>
-        [Description("Contact Count Maximum")]
-        ContactCountMaximum = 0x000d0055,
+        [Description("Contact Count Maximum")] ContactCountMaximum = 0x000d0055,
 
         /// <summary>
         ///     Scan Time Usage.
         /// </summary>
-        [Description("Scan Time")]
-        ScanTime = 0x000d0056,
+        [Description("Scan Time")] ScanTime = 0x000d0056,
 
         /// <summary>
         ///     Surface Width Usage.
         /// </summary>
-        [Description("Surface Width")]
-        SurfaceWidth = 0x000d0057,
+        [Description("Surface Width")] SurfaceWidth = 0x000d0057,
 
         /// <summary>
         ///     Button Switch Usage.
         /// </summary>
-        [Description("Button Switch")]
-        ButtonSwitch = 0x000d0058,
+        [Description("Button Switch")] ButtonSwitch = 0x000d0058,
 
         /// <summary>
         ///     Pad Type Usage.
         /// </summary>
-        [Description("Pad Type")]
-        PadType = 0x000d0059,
+        [Description("Pad Type")] PadType = 0x000d0059,
 
         /// <summary>
         ///     Secondary Barrel Switch Usage.
@@ -389,14 +336,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Preferred Color Usage.
         /// </summary>
-        [Description("Preferred Color")]
-        PreferredColor = 0x000d005c,
+        [Description("Preferred Color")] PreferredColor = 0x000d005c,
 
         /// <summary>
         ///     Latency Mode Usage.
         /// </summary>
-        [Description("Latency Mode")]
-        LatencyMode = 0x000d0060,
+        [Description("Latency Mode")] LatencyMode = 0x000d0060,
 
         /// <summary>
         ///     Gesture Character Quality Usage.
@@ -485,8 +430,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     No Preferred Color Usage.
         /// </summary>
-        [Description("No Preferred Color")]
-        NoPreferredColor = 0x000d006f,
+        [Description("No Preferred Color")] NoPreferredColor = 0x000d006f,
 
         /// <summary>
         ///     Transducer Software Info Usage.
@@ -497,14 +441,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Transducer Vendor ID Usage.
         /// </summary>
-        [Description("Transducer Vendor ID")]
-        TransducerVendorID = 0x000d0091,
+        [Description("Transducer Vendor ID")] TransducerVendorID = 0x000d0091,
 
         /// <summary>
         ///     Transducer Product ID Usage.
         /// </summary>
-        [Description("Transducer Product ID")]
-        TransducerProductID = 0x000d0092,
+        [Description("Transducer Product ID")] TransducerProductID = 0x000d0092,
 
         /// <summary>
         ///     Device Supported Protocols Usage.
@@ -521,20 +463,17 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     No Protocol Usage.
         /// </summary>
-        [Description("No Protocol")]
-        NoProtocol = 0x000d0095,
+        [Description("No Protocol")] NoProtocol = 0x000d0095,
 
         /// <summary>
         ///     Wacom AES Protocol Usage.
         /// </summary>
-        [Description("Wacom AES Protocol")]
-        WacomAESProtocol = 0x000d0096,
+        [Description("Wacom AES Protocol")] WacomAESProtocol = 0x000d0096,
 
         /// <summary>
         ///     USI Protocol Usage.
         /// </summary>
-        [Description("USI Protocol")]
-        USIProtocol = 0x000d0097,
+        [Description("USI Protocol")] USIProtocol = 0x000d0097,
 
         /// <summary>
         ///     Microsoft Pen Protocol Usage.
@@ -551,31 +490,26 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Report Rate Usage.
         /// </summary>
-        [Description("Report Rate")]
-        ReportRate = 0x000d00a1,
+        [Description("Report Rate")] ReportRate = 0x000d00a1,
 
         /// <summary>
         ///     Transducer Connected Usage.
         /// </summary>
-        [Description("Transducer Connected")]
-        TransducerConnected = 0x000d00a2,
+        [Description("Transducer Connected")] TransducerConnected = 0x000d00a2,
 
         /// <summary>
         ///     Switch Disabled Usage.
         /// </summary>
-        [Description("Switch Disabled")]
-        SwitchDisabled = 0x000d00a3,
+        [Description("Switch Disabled")] SwitchDisabled = 0x000d00a3,
 
         /// <summary>
         ///     Switch Unimplemented Usage.
         /// </summary>
-        [Description("Switch Unimplemented")]
-        SwitchUnimplemented = 0x000d00a4,
+        [Description("Switch Unimplemented")] SwitchUnimplemented = 0x000d00a4,
 
         /// <summary>
         ///     Transducer Switches Usage.
         /// </summary>
-        [Description("Transducer Switches")]
-        TransducerSwitches = 0x000d00a5
+        [Description("Transducer Switches")] TransducerSwitches = 0x000d00a5
     }
 }

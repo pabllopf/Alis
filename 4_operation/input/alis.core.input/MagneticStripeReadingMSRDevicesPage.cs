@@ -41,14 +41,12 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x008e0000,
+        [Description("Undefined")] Undefined = 0x008e0000,
 
         /// <summary>
         ///     MSR Device Read-Only Usage.
         /// </summary>
-        [Description("MSR Device Read-Only")]
-        MSRDeviceReadOnly = 0x008e0001,
+        [Description("MSR Device Read-Only")] MSRDeviceReadOnly = 0x008e0001,
 
         /*
          * Range: 0x0011 -> 0x0013
@@ -58,32 +56,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Track 1 Length Usage.
         /// </summary>
-        [Description("Track 1 Length")]
-        Track1Length = 0x008e0011,
+        [Description("Track 1 Length")] Track1Length = 0x008e0011,
 
         /// <summary>
         ///     Track 2 Length Usage.
         /// </summary>
-        [Description("Track 2 Length")]
-        Track2Length = 0x008e0012,
+        [Description("Track 2 Length")] Track2Length = 0x008e0012,
 
         /// <summary>
         ///     Track 3 Length Usage.
         /// </summary>
-        [Description("Track 3 Length")]
-        Track3Length = 0x008e0013,
+        [Description("Track 3 Length")] Track3Length = 0x008e0013,
 
         /// <summary>
         ///     Track JIS Length Usage.
         /// </summary>
-        [Description("Track JIS Length")]
-        TrackJISLength = 0x008e0014,
+        [Description("Track JIS Length")] TrackJISLength = 0x008e0014,
 
         /// <summary>
         ///     Track Data Usage.
         /// </summary>
-        [Description("Track Data")]
-        TrackData = 0x008e0020,
+        [Description("Track Data")] TrackData = 0x008e0020,
 
         /*
          * Range: 0x0021 -> 0x0023
@@ -93,25 +86,21 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Track 1 Data Usage.
         /// </summary>
-        [Description("Track 1 Data")]
-        Track1Data = 0x008e0021,
+        [Description("Track 1 Data")] Track1Data = 0x008e0021,
 
         /// <summary>
         ///     Track 2 Data Usage.
         /// </summary>
-        [Description("Track 2 Data")]
-        Track2Data = 0x008e0022,
+        [Description("Track 2 Data")] Track2Data = 0x008e0022,
 
         /// <summary>
         ///     Track 3 Data Usage.
         /// </summary>
-        [Description("Track 3 Data")]
-        Track3Data = 0x008e0023,
+        [Description("Track 3 Data")] Track3Data = 0x008e0023,
 
         /// <summary>
         ///     Track JIS Data Usage.
         /// </summary>
-        [Description("Track JIS Data")]
-        TrackJISData = 0x008e0024
+        [Description("Track JIS Data")] TrackJISData = 0x008e0024
     }
 }

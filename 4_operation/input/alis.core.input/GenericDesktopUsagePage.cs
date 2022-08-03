@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly GenericDesktopUsagePage Instance = new GenericDesktopUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericDesktopUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="GenericDesktopUsagePage" /> class
         /// </summary>
         private GenericDesktopUsagePage() : base(0x0001, "GenericDesktop")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -95,7 +95,7 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0044: return new Usage(this, id, "Vbry", UsageTypes.DV);
                 case 0x0045: return new Usage(this, id, "Vbrz", UsageTypes.DV);
                 case 0x0046: return new Usage(this, id, "Vno", UsageTypes.DV);
-                case 0x0047: return new Usage(this, id, "Feature Notification", UsageTypes.DV|UsageTypes.DF);
+                case 0x0047: return new Usage(this, id, "Feature Notification", UsageTypes.DV | UsageTypes.DF);
                 case 0x0048: return new Usage(this, id, "Resolution Multiplier", UsageTypes.DV);
                 case 0x0049: return new Usage(this, id, "Qx", UsageTypes.DV);
                 case 0x004a: return new Usage(this, id, "Qy", UsageTypes.DV);
@@ -121,8 +121,8 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0091: return new Usage(this, id, "D-pad Down", UsageTypes.OOC);
                 case 0x0092: return new Usage(this, id, "D-pad Right", UsageTypes.OOC);
                 case 0x0093: return new Usage(this, id, "D-pad Left", UsageTypes.OOC);
-                case 0x0094: return new Usage(this, id, "Index Trigger", UsageTypes.MC|UsageTypes.DV);
-                case 0x0095: return new Usage(this, id, "Palm Trigger", UsageTypes.MC|UsageTypes.DV);
+                case 0x0094: return new Usage(this, id, "Index Trigger", UsageTypes.MC | UsageTypes.DV);
+                case 0x0095: return new Usage(this, id, "Palm Trigger", UsageTypes.MC | UsageTypes.DV);
                 case 0x0096: return new Usage(this, id, "Thumbstick", UsageTypes.CP);
                 case 0x0097: return new Usage(this, id, "System Function Shift", UsageTypes.MC);
                 case 0x0098: return new Usage(this, id, "System Function Shift Lock", UsageTypes.OOC);

@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly EyeAndHeadTrackersUsagePage Instance = new EyeAndHeadTrackersUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EyeAndHeadTrackersUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="EyeAndHeadTrackersUsagePage" /> class
         /// </summary>
         private EyeAndHeadTrackersUsagePage() : base(0x0012, "EyeAndHeadTrackers")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

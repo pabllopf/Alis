@@ -38,9 +38,8 @@ namespace Alis.Core.Physic.Test.Unit
     /// </summary>
     public class WoldTest
     {
-        
         /// <summary>
-        /// Test get proxy count.
+        ///     Test get proxy count.
         /// </summary>
         [Fact]
         public void Test_GetProxyCount_Method()

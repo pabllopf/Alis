@@ -57,7 +57,7 @@ namespace Alis.Core.Network
         public static string CalculateWebSocketKey()
         {
             // this is not used for cryptography so doing something simple like he code below is op
-            Random rand = new Random((int) DateTime.Now.Ticks);
+            Random rand = new Random((int)DateTime.Now.Ticks);
             byte[] keyAsBytes = new byte[16];
             rand.NextBytes(keyAsBytes);
             return Convert.ToBase64String(keyAsBytes);
@@ -177,7 +177,7 @@ namespace Alis.Core.Network
 
                 // extract a csv list of sub protocols (in order of highest preference first)
                 string csv = match.Groups["protocols"].Value.Trim();
-                return csv.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries)
+                return csv.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
                     .Select(x => x.Trim())
                     .ToList();
             }

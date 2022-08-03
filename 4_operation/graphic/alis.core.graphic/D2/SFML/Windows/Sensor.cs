@@ -110,7 +110,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Sensor">The sensor</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfSensor_isAvailable(Type Sensor);
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Sensor">The sensor</param>
         /// <param name="Enabled">The enabled</param>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfSensor_setEnabled(Type Sensor, bool Enabled);
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Sensor">The sensor</param>
         /// <returns>The vector 3f</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Vector3f sfSensor_getValue(Type Sensor);
     }
 }

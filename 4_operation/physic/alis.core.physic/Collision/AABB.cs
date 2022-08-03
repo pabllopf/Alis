@@ -59,16 +59,10 @@ namespace Alis.Core.Physic.Collision
         }
 
         /// Get the center of the AABB.
-        public Vector2 Center
-        {
-            get { return 0.5f * (LowerBound + UpperBound); }
-        }
+        public Vector2 Center => 0.5f * (LowerBound + UpperBound);
 
         /// Get the extents of the AABB (half-widths).
-        public Vector2 Extents
-        {
-            get { return 0.5f * (UpperBound - LowerBound); }
-        }
+        public Vector2 Extents => 0.5f * (UpperBound - LowerBound);
 
         /// Combine two AABBs into this one.
         public void Combine(Aabb aabb1, Aabb aabb2)

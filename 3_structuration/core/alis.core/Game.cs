@@ -26,6 +26,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
 namespace Alis.Core
 {
     /// <summary>Define the main logic of game made with ALIS.</summary>

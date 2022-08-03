@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace HIDDevices.Sample
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     internal static class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         private static async Task Main(string[] args)

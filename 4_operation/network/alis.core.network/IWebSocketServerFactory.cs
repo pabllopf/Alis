@@ -46,7 +46,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>Http data read from the stream</returns>
         Task<WebSocketHttpContext> ReadHttpHeaderFromStreamAsync(Stream stream,
-            CancellationToken token = default(CancellationToken));
+            CancellationToken token = default);
 
         /// <summary>
         ///     Accept web socket with default options
@@ -56,7 +56,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
         Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
-            CancellationToken token = default(CancellationToken));
+            CancellationToken token = default);
 
         /// <summary>
         ///     Accept web socket with options specified
@@ -67,6 +67,6 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
         Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options,
-            CancellationToken token = default(CancellationToken));
+            CancellationToken token = default);
     }
 }

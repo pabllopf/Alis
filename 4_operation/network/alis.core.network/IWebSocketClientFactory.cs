@@ -46,7 +46,7 @@ namespace Alis.Core.Network
         /// <param name="uri">The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
-        Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default(CancellationToken));
+        Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default);
 
         /// <summary>
         ///     Connect with options specified
@@ -56,7 +56,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
         Task<WebSocket> ConnectAsync(Uri uri, WebSocketClientOptions options,
-            CancellationToken token = default(CancellationToken));
+            CancellationToken token = default);
 
         /// <summary>
         ///     Connect with a stream that has already been opened and HTTP websocket upgrade request sent
@@ -72,6 +72,6 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns></returns>
         Task<WebSocket> ConnectAsync(Stream responseStream, string secWebSocketKey, WebSocketClientOptions options,
-            CancellationToken token = default(CancellationToken));
+            CancellationToken token = default);
     }
 }

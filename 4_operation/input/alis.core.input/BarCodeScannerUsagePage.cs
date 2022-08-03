@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly BarCodeScannerUsagePage Instance = new BarCodeScannerUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BarCodeScannerUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="BarCodeScannerUsagePage" /> class
         /// </summary>
         private BarCodeScannerUsagePage() : base(0x008c, "BarCodeScanner")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -122,7 +122,8 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0063: return new Usage(this, id, "Trigger Mode Blinking Laser On", UsageTypes.Sel);
                 case 0x0064: return new Usage(this, id, "Trigger Mode Continuous Laser On", UsageTypes.Sel);
                 case 0x0065: return new Usage(this, id, "Trigger Mode Laser on while Pulled", UsageTypes.Sel);
-                case 0x0066: return new Usage(this, id, "Trigger Mode Laser stays on after Trigger release", UsageTypes.Sel);
+                case 0x0066:
+                    return new Usage(this, id, "Trigger Mode Laser stays on after Trigger release", UsageTypes.Sel);
                 case 0x006d: return new Usage(this, id, "Commit Parameters to NVM", UsageTypes.DF);
                 case 0x006e: return new Usage(this, id, "Parameter Scanning", UsageTypes.DF);
                 case 0x006f: return new Usage(this, id, "Parameters Changed", UsageTypes.OOC);

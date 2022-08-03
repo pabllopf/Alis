@@ -19,7 +19,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ////////////////////////////////////////////////////////////
         public TextEventArgs(TextEvent e)
         {
-            Unicode = char.ConvertFromUtf32((int) e.Unicode);
+            Unicode = char.ConvertFromUtf32((int)e.Unicode);
         }
 
         ////////////////////////////////////////////////////////////

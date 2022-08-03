@@ -56,7 +56,7 @@ namespace Alis.Aspect.Math
                 return false;
             }
 
-            return obj is Vector2 && Equals((Vector2) obj);
+            return obj is Vector2 && Equals((Vector2)obj);
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace Alis.Aspect.Math
                 }
                 //else
                 //{
-                  //  Box2DxDebug.Assert(false, "Incorrect Vec2 element!");
-               // }
+                //  Box2DxDebug.Assert(false, "Incorrect Vec2 element!");
+                // }
             }
         }
 
@@ -164,7 +164,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         public float Length()
         {
-            return (float) System.Math.Sqrt(X * X + Y * Y);
+            return (float)System.Math.Sqrt(X * X + Y * Y);
         }
 
         /// <summary>
@@ -197,10 +197,7 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Does this vector contain finite coordinates?
         /// </summary>
-        public bool IsValid
-        {
-            get { return Math.IsValid(X) && Math.IsValid(Y); }
-        }
+        public bool IsValid => Math.IsValid(X) && Math.IsValid(Y);
 
         /// <summary>
         ///     Negate this vector.
@@ -286,10 +283,7 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Gets the value of the zero
         /// </summary>
-        public static Vector2 Zero
-        {
-            get { return new Vector2(0, 0); }
-        }
+        public static Vector2 Zero => new Vector2(0, 0);
 
         /// <summary>
         ///     Peform the dot product on two vectors.

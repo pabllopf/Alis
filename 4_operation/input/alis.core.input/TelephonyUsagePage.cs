@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly TelephonyUsagePage Instance = new TelephonyUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TelephonyUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="TelephonyUsagePage" /> class
         /// </summary>
         private TelephonyUsagePage() : base(0x000b, "Telephony")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
@@ -72,7 +72,7 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0027: return new Usage(this, id, "Park", UsageTypes.OOC);
                 case 0x0028: return new Usage(this, id, "Forward Calls", UsageTypes.OOC);
                 case 0x0029: return new Usage(this, id, "Alternate  Function", UsageTypes.MC);
-                case 0x002a: return new Usage(this, id, "Line", UsageTypes.OSC|UsageTypes.NAry);
+                case 0x002a: return new Usage(this, id, "Line", UsageTypes.OSC | UsageTypes.NAry);
                 case 0x002b: return new Usage(this, id, "Speaker Phone", UsageTypes.OOC);
                 case 0x002c: return new Usage(this, id, "Conference", UsageTypes.OOC);
                 case 0x002d: return new Usage(this, id, "Ring Enable", UsageTypes.OOC);

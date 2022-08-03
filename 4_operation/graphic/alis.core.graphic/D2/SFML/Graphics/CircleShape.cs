@@ -144,9 +144,9 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public override Vector2f GetPoint(uint index)
         {
-            float angle = (float) (index * 2 * Math.PI / myPointCount - Math.PI / 2);
-            float x = (float) Math.Cos(angle) * myRadius;
-            float y = (float) Math.Sin(angle) * myRadius;
+            float angle = (float)(index * 2 * Math.PI / myPointCount - Math.PI / 2);
+            float x = (float)Math.Cos(angle) * myRadius;
+            float y = (float)Math.Sin(angle) * myRadius;
 
             return new Vector2f(myRadius + x, myRadius + y);
         }

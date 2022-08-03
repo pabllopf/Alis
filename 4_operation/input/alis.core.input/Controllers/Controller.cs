@@ -25,13 +25,13 @@ namespace Alis.Core.Input.Controllers
     public partial class Controller : IReadOnlyCollection<ControlValue>, IDisposable
     {
         /// <summary>
-        /// The type converter
+        ///     The type converter
         /// </summary>
         private static readonly ConcurrentDictionary<Type, TypeConverter> s_defaultConverters =
             new ConcurrentDictionary<Type, TypeConverter>();
 
         /// <summary>
-        /// The control value
+        ///     The control value
         /// </summary>
         private readonly ConcurrentDictionary<string, ControlValue> _values =
             new ConcurrentDictionary<string, ControlValue>();
@@ -42,23 +42,26 @@ namespace Alis.Core.Input.Controllers
         public readonly IReadOnlyDictionary<Control, IReadOnlyList<ControlInfo>> Mapping;
 
         /// <summary>
-        /// The subscription
+        ///     The subscription
         /// </summary>
         private IDisposable _subscription;
+
         /// <summary>
-        /// The values subject
+        ///     The values subject
         /// </summary>
         private Subject<IList<ControlValue>> _valuesSubject;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Controller"/> class
+        ///     Initializes a new instance of the <see cref="Controller" /> class
         /// </summary>
-        static Controller() =>
+        static Controller()
+        {
             // Register a default converter to boolean.
             s_defaultConverters[typeof(bool)] = BooleanConverter.Instance;
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Controller"/> class
+        ///     Initializes a new instance of the <see cref="Controller" /> class
         /// </summary>
         /// <param name="device">The device</param>
         /// <param name="controls">The controls</param>
@@ -124,10 +127,16 @@ namespace Alis.Core.Input.Controllers
         }
 
         /// <inheritdoc />
-        public IEnumerator<ControlValue> GetEnumerator() => _values.Values.GetEnumerator();
+        public IEnumerator<ControlValue> GetEnumerator()
+        {
+            return _values.Values.GetEnumerator();
+        }
 
         /// <inheritdoc />
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
         /// <inheritdoc />
         public int Count => _values.Count;
@@ -135,24 +144,28 @@ namespace Alis.Core.Input.Controllers
         /// <summary>
         ///     Connects to the controller and starts listening for changes.
         /// </summary>
-        public void Connect() =>
+        public void Connect()
+        {
             // Create a new subscription, disposing any existing one.
             Interlocked.Exchange(ref _subscription, Device.Subscribe(OnControlChange, OnError, OnDisconnect))
                 ?.Dispose();
+        }
 
         /// <summary>
-        /// Describes whether this instance is mapped
+        ///     Describes whether this instance is mapped
         /// </summary>
         /// <param name="propertyName">The property name</param>
         /// <returns>The bool</returns>
-        public bool IsMapped(string propertyName) =>
-            Mapping.Values
+        public bool IsMapped(string propertyName)
+        {
+            return Mapping.Values
                 .SelectMany(list => list)
                 .Any(controlInfo => string.Equals(controlInfo.PropertyName, propertyName));
+        }
 
-  
+
         /// <summary>
-        /// Gets the value using the specified property name
+        ///     Gets the value using the specified property name
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="propertyName">The property name</param>
@@ -178,13 +191,19 @@ namespace Alis.Core.Input.Controllers
         /// <summary>
         ///     Called when the controller is disconnected.
         /// </summary>
-        protected virtual void OnDisconnect() => Interlocked.Exchange(ref _subscription, null)?.Dispose();
+        protected virtual void OnDisconnect()
+        {
+            Interlocked.Exchange(ref _subscription, null)?.Dispose();
+        }
 
         /// <summary>
         ///     Called when an error is raised by the underlying connection.
         /// </summary>
         /// <param name="exception">The exception.</param>
-        protected virtual void OnError(Exception exception) => Interlocked.Exchange(ref _subscription, null)?.Dispose();
+        protected virtual void OnError(Exception exception)
+        {
+            Interlocked.Exchange(ref _subscription, null)?.Dispose();
+        }
 
         /// <summary>
         ///     Called when a control's value changes.
@@ -272,36 +291,42 @@ namespace Alis.Core.Input.Controllers
             }
         }
 
-   
+
         /// <summary>
-        /// Changeses the since using the specified timestamp
+        ///     Changeses the since using the specified timestamp
         /// </summary>
         /// <param name="timestamp">The timestamp</param>
         /// <returns>A read only list of control value</returns>
         public IReadOnlyList<ControlValue> ChangesSince(long timestamp)
-            => timestamp < Timestamp
+        {
+            return timestamp < Timestamp
                 ? _values.Values.Where(c => c.Timestamp > timestamp).ToArray()
                 : Array.Empty<ControlValue>();
+        }
 
 
         /// <summary>
-        /// Creates the device
+        ///     Creates the device
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="device">The device</param>
         /// <returns>The</returns>
-        public static T Create<T>(Device device) where T : Controller =>
-            ControllerInfo.Get<T>()?.CreateController(device) as T;
+        public static T Create<T>(Device device) where T : Controller
+        {
+            return ControllerInfo.Get<T>()?.CreateController(device) as T;
+        }
 
 
         /// <summary>
-        /// Creates the device
+        ///     Creates the device
         /// </summary>
         /// <param name="device">The device</param>
         /// <param name="deviceType">The device type</param>
         /// <returns>The controller</returns>
-        public static Controller Create(Device device, Type deviceType) =>
-            ControllerInfo.Get(deviceType)?.CreateController(device);
+        public static Controller Create(Device device, Type deviceType)
+        {
+            return ControllerInfo.Get(deviceType)?.CreateController(device);
+        }
 
         /// <summary>
         ///     Registers a control creation delegate which creates controls for the specified controller type
@@ -309,17 +334,21 @@ namespace Alis.Core.Input.Controllers
         /// <typeparam name="T">The controller type.</typeparam>
         /// <param name="createControllerDelegate">The create controller delegate.</param>
         public static void Register<T>(CreateControllerDelegate<T> createControllerDelegate) where T : Controller
-            => Register(typeof(T), createControllerDelegate);
+        {
+            Register(typeof(T), createControllerDelegate);
+        }
 
         /// <summary>
-        ///     Registers a control creation delegate which creates controls 
+        ///     Registers a control creation delegate which creates controls
         /// </summary>
         /// <param name="type">The controller type.</param>
         /// <param name="createControllerDelegate">The create controller delegate.</param>
         public static void Register(
             Type type,
             CreateControllerDelegate<Controller> createControllerDelegate)
-            => ControllerInfo.Register(type, createControllerDelegate);
+        {
+            ControllerInfo.Register(type, createControllerDelegate);
+        }
 
         /// <summary>
         ///     Registers a default type converter used for converting control values to property values.
@@ -327,7 +356,9 @@ namespace Alis.Core.Input.Controllers
         /// <param name="type">The type.</param>
         /// <param name="converter">The converter.</param>
         /// <exception cref="ArgumentOutOfRangeException">The supplied converter must implement IControlConverter&lt;&gt;</exception>
-        public static void RegisterDefaultTypeConverter(Type type, TypeConverter converter) =>
+        public static void RegisterDefaultTypeConverter(Type type, TypeConverter converter)
+        {
             s_defaultConverters[type] = converter;
+        }
     }
 }

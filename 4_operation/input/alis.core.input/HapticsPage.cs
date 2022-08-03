@@ -41,8 +41,7 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x000e0000,
+        [Description("Undefined")] Undefined = 0x000e0000,
 
         /// <summary>
         ///     Simple Haptic Controller Usage.
@@ -53,26 +52,22 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Waveform List Usage.
         /// </summary>
-        [Description("Waveform List")]
-        WaveformList = 0x000e0010,
+        [Description("Waveform List")] WaveformList = 0x000e0010,
 
         /// <summary>
         ///     Duration List Usage.
         /// </summary>
-        [Description("Duration List")]
-        DurationList = 0x000e0011,
+        [Description("Duration List")] DurationList = 0x000e0011,
 
         /// <summary>
         ///     Auto Trigger Usage.
         /// </summary>
-        [Description("Auto Trigger")]
-        AutoTrigger = 0x000e0020,
+        [Description("Auto Trigger")] AutoTrigger = 0x000e0020,
 
         /// <summary>
         ///     Manual Trigger Usage.
         /// </summary>
-        [Description("Manual Trigger")]
-        ManualTrigger = 0x000e0021,
+        [Description("Manual Trigger")] ManualTrigger = 0x000e0021,
 
         /// <summary>
         ///     Auto Trigger Associated Control Usage.
@@ -83,56 +78,47 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Intensity Usage.
         /// </summary>
-        [Description("Intensity")]
-        Intensity = 0x000e0023,
+        [Description("Intensity")] Intensity = 0x000e0023,
 
         /// <summary>
         ///     Repeat Count Usage.
         /// </summary>
-        [Description("Repeat Count")]
-        RepeatCount = 0x000e0024,
+        [Description("Repeat Count")] RepeatCount = 0x000e0024,
 
         /// <summary>
         ///     Retrigger Period Usage.
         /// </summary>
-        [Description("Retrigger Period")]
-        RetriggerPeriod = 0x000e0025,
+        [Description("Retrigger Period")] RetriggerPeriod = 0x000e0025,
 
         /// <summary>
         ///     Waveform Vendor Page Usage.
         /// </summary>
-        [Description("Waveform Vendor Page")]
-        WaveformVendorPage = 0x000e0026,
+        [Description("Waveform Vendor Page")] WaveformVendorPage = 0x000e0026,
 
         /// <summary>
         ///     Waveform Vendor ID Usage.
         /// </summary>
-        [Description("Waveform Vendor ID")]
-        WaveformVendorID = 0x000e0027,
+        [Description("Waveform Vendor ID")] WaveformVendorID = 0x000e0027,
 
         /// <summary>
         ///     Waveform Cutoff Time Usage.
         /// </summary>
-        [Description("Waveform Cutoff Time")]
-        WaveformCutoffTime = 0x000e0028,
+        [Description("Waveform Cutoff Time")] WaveformCutoffTime = 0x000e0028,
 
         /// <summary>
         ///     Waveform None Usage.
         /// </summary>
-        [Description("Waveform None")]
-        WaveformNone = 0x000e1001,
+        [Description("Waveform None")] WaveformNone = 0x000e1001,
 
         /// <summary>
         ///     Waveform Stop Usage.
         /// </summary>
-        [Description("Waveform Stop")]
-        WaveformStop = 0x000e1002,
+        [Description("Waveform Stop")] WaveformStop = 0x000e1002,
 
         /// <summary>
         ///     Waveform Click Usage.
         /// </summary>
-        [Description("Waveform Click")]
-        WaveformClick = 0x000e1003,
+        [Description("Waveform Click")] WaveformClick = 0x000e1003,
 
         /// <summary>
         ///     Waveform Buzz Continuous Usage.
@@ -149,32 +135,27 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Waveform Press Usage.
         /// </summary>
-        [Description("Waveform Press")]
-        WaveformPress = 0x000e1006,
+        [Description("Waveform Press")] WaveformPress = 0x000e1006,
 
         /// <summary>
         ///     Waveform Release Usage.
         /// </summary>
-        [Description("Waveform Release")]
-        WaveformRelease = 0x000e1007,
+        [Description("Waveform Release")] WaveformRelease = 0x000e1007,
 
         /// <summary>
         ///     Waveform Hover Usage.
         /// </summary>
-        [Description("Waveform Hover")]
-        WaveformHover = 0x000e1008,
+        [Description("Waveform Hover")] WaveformHover = 0x000e1008,
 
         /// <summary>
         ///     Waveform Success Usage.
         /// </summary>
-        [Description("Waveform Success")]
-        WaveformSuccess = 0x000e1009,
+        [Description("Waveform Success")] WaveformSuccess = 0x000e1009,
 
         /// <summary>
         ///     Waveform Error Usage.
         /// </summary>
-        [Description("Waveform Error")]
-        WaveformError = 0x000e100a,
+        [Description("Waveform Error")] WaveformError = 0x000e100a,
 
         /// <summary>
         ///     Waveform Ink Continuous Usage.

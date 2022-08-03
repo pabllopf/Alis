@@ -209,8 +209,8 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
                     myTransformNeedUpdate = false;
 
                     float angle = -myRotation * 3.141592654F / 180.0F;
-                    float cosine = (float) Math.Cos(angle);
-                    float sine = (float) Math.Sin(angle);
+                    float cosine = (float)Math.Cos(angle);
+                    float sine = (float)Math.Sin(angle);
                     float sxc = myScale.X * cosine;
                     float syc = myScale.Y * cosine;
                     float sxs = myScale.X * sine;

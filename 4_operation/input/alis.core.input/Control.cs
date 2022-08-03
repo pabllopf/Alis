@@ -18,21 +18,22 @@ namespace DevDecoder.HIDDevices
     public class Control
     {
         /// <summary>
-        /// The maximum value
+        ///     The maximum value
         /// </summary>
         private readonly int _maximumValue;
 
         /// <summary>
-        /// The minimum value
+        ///     The minimum value
         /// </summary>
         private readonly int _minimumValue;
+
         /// <summary>
-        /// The usages
+        ///     The usages
         /// </summary>
         private readonly HashSet<Usage> _usages;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Control"/> class
+        ///     Initializes a new instance of the <see cref="Control" /> class
         /// </summary>
         /// <param name="device">The device</param>
         /// <param name="value">The value</param>
@@ -209,16 +210,21 @@ namespace DevDecoder.HIDDevices
         public IReadOnlyCollection<Usage> Usages => _usages;
 
         /// <summary>
-        /// Normalises the value
+        ///     Normalises the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The double</returns>
-        internal double Normalise(int value) =>
-            value < _minimumValue || value > _maximumValue
+        internal double Normalise(int value)
+        {
+            return value < _minimumValue || value > _maximumValue
                 ? DataItem.HasNullState ? double.NaN : 0D
                 : (value - _minimumValue) / (double)(_maximumValue - _minimumValue);
+        }
 
         /// <inheritdoc />
-        public override string ToString() => FullName;
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }

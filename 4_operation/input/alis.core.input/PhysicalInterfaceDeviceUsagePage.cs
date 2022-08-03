@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly PhysicalInterfaceDeviceUsagePage Instance = new PhysicalInterfaceDeviceUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PhysicalInterfaceDeviceUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="PhysicalInterfaceDeviceUsagePage" /> class
         /// </summary>
         private PhysicalInterfaceDeviceUsagePage() : base(0x000f, "PhysicalInterfaceDevice")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

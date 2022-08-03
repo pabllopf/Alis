@@ -51,7 +51,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
                 uint length = 0;
                 unsafe
                 {
-                    for (uint* ptr = (uint*) source.ToPointer(); *ptr != 0; ++ptr)
+                    for (uint* ptr = (uint*)source.ToPointer(); *ptr != 0; ++ptr)
                     {
                         length++;
                     }
@@ -70,7 +70,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
                 {
                     fixed (byte* ptr = utf32)
                     {
-                        sfClipboard_setUnicodeString((IntPtr) ptr);
+                        sfClipboard_setUnicodeString((IntPtr)ptr);
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfClipboard_getUnicodeString();
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfClipboard_setUnicodeString(IntPtr ptr);
     }
 }

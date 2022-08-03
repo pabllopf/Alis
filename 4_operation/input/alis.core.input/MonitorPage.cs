@@ -41,13 +41,11 @@ namespace DevDecoder.HIDDevices.Usages
         /// <summary>
         ///     Undefined Usage.
         /// </summary>
-        [Description("Undefined")]
-        Undefined = 0x00800000,
+        [Description("Undefined")] Undefined = 0x00800000,
 
         /// <summary>
         ///     Monitor Control Usage.
         /// </summary>
-        [Description("Monitor Control")]
-        MonitorControl = 0x00800001
+        [Description("Monitor Control")] MonitorControl = 0x00800001
     }
 }

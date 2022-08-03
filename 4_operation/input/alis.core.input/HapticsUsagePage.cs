@@ -43,19 +43,19 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly HapticsUsagePage Instance = new HapticsUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HapticsUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="HapticsUsagePage" /> class
         /// </summary>
         private HapticsUsagePage() : base(0x000e, "Haptics")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "Simple Haptic Controller", UsageTypes.CA|UsageTypes.CL);
+                case 0x0001: return new Usage(this, id, "Simple Haptic Controller", UsageTypes.CA | UsageTypes.CL);
                 case 0x0010: return new Usage(this, id, "Waveform List", UsageTypes.NAry);
                 case 0x0011: return new Usage(this, id, "Duration List", UsageTypes.NAry);
                 case 0x0020: return new Usage(this, id, "Auto Trigger", UsageTypes.DV);

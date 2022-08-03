@@ -56,7 +56,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
             WebSocketClientFactory factory = new WebSocketClientFactory();
             Uri uri = new Uri("ws://localhost:27416/chat");
             WebSocketClientOptions options = new WebSocketClientOptions
-                {KeepAliveInterval = TimeSpan.FromMilliseconds(500)};
+                { KeepAliveInterval = TimeSpan.FromMilliseconds(500) };
             using (WebSocket webSocket = await factory.ConnectAsync(uri, options))
             {
                 // receive loop

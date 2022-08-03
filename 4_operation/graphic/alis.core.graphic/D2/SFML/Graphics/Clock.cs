@@ -82,7 +82,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfClock_create();
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfClock_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="Clock">The clock</param>
         /// <returns>The time</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Time sfClock_getElapsedTime(IntPtr Clock);
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="Clock">The clock</param>
         /// <returns>The time</returns>
         [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern Time sfClock_restart(IntPtr Clock);
     }
 }

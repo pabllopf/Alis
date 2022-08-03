@@ -43,14 +43,14 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly LEDsUsagePage Instance = new LEDsUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LEDsUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="LEDsUsagePage" /> class
         /// </summary>
         private LEDsUsagePage() : base(0x0008, "LEDs")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {

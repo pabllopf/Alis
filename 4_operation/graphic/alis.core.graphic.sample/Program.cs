@@ -39,10 +39,10 @@ namespace Alis.Core.Graphic.Sample
     public class Program
     {
         /// <summary>
-        /// The window
+        ///     The window
         /// </summary>
         private static RenderWindow window;
-        
+
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -50,7 +50,7 @@ namespace Alis.Core.Graphic.Sample
         public static void Main(string[] args)
         {
             Console.WriteLine("Start");
-            window= new RenderWindow(new VideoMode(800, 600), "SFML window");
+            window = new RenderWindow(new VideoMode(800, 600), "SFML window");
             window.SetVisible(true);
             window.Closed += WindowOnClosed;
             while (window.IsOpen)
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Windows the on closed using the specified sender
+        ///     Windows the on closed using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>

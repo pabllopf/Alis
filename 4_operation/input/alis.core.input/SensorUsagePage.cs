@@ -43,143 +43,163 @@ namespace DevDecoder.HIDDevices.Pages
         public static readonly SensorUsagePage Instance = new SensorUsagePage();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SensorUsagePage"/> class
+        ///     Initializes a new instance of the <see cref="SensorUsagePage" /> class
         /// </summary>
         private SensorUsagePage() : base(0x0020, "Sensor")
         {
         }
 
         /// <inheritdoc />
-        protected override Usage CreateUsage(ushort id) 
+        protected override Usage CreateUsage(ushort id)
         {
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "Sensor", UsageTypes.CA|UsageTypes.CP);
-                case 0x0010: return new Usage(this, id, "Biometric", UsageTypes.CA|UsageTypes.CP);
-                case 0x0011: return new Usage(this, id, "Biometric: Human Presence", UsageTypes.CA|UsageTypes.CP);
-                case 0x0012: return new Usage(this, id, "Biometric: Human Proximity", UsageTypes.CA|UsageTypes.CP);
-                case 0x0013: return new Usage(this, id, "Biometric: Human Touch", UsageTypes.CA|UsageTypes.CP);
-                case 0x0014: return new Usage(this, id, "Biometric: Blood Pressure", UsageTypes.CA|UsageTypes.CP);
-                case 0x0015: return new Usage(this, id, "Biometric: Body Temperature", UsageTypes.CA|UsageTypes.CP);
-                case 0x0016: return new Usage(this, id, "Biometric: Heart Rate", UsageTypes.CA|UsageTypes.CP);
-                case 0x0017: return new Usage(this, id, "Biometric: Heart Rate Variability", UsageTypes.CA|UsageTypes.CP);
-                case 0x0018: return new Usage(this, id, "Biometric: Peripheral Oxygen Saturation", UsageTypes.CA|UsageTypes.CP);
-                case 0x0019: return new Usage(this, id, "Biometric: Respiratory Rate", UsageTypes.CA|UsageTypes.CP);
-                case 0x0020: return new Usage(this, id, "Electrical", UsageTypes.CA|UsageTypes.CP);
-                case 0x0021: return new Usage(this, id, "Electrical: Capacitance", UsageTypes.CA|UsageTypes.CP);
-                case 0x0022: return new Usage(this, id, "Electrical: Current", UsageTypes.CA|UsageTypes.CP);
-                case 0x0023: return new Usage(this, id, "Electrical: Power", UsageTypes.CA|UsageTypes.CP);
-                case 0x0024: return new Usage(this, id, "Electrical: Inductance", UsageTypes.CA|UsageTypes.CP);
-                case 0x0025: return new Usage(this, id, "Electrical: Resistance", UsageTypes.CA|UsageTypes.CP);
-                case 0x0026: return new Usage(this, id, "Electrical: Voltage", UsageTypes.CA|UsageTypes.CP);
-                case 0x0027: return new Usage(this, id, "Electrical: Potentiometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x0028: return new Usage(this, id, "Electrical: Frequency", UsageTypes.CA|UsageTypes.CP);
-                case 0x0029: return new Usage(this, id, "Electrical: Period", UsageTypes.CA|UsageTypes.CP);
-                case 0x0030: return new Usage(this, id, "Environmental", UsageTypes.CA|UsageTypes.CP);
-                case 0x0031: return new Usage(this, id, "Environmental: Atmospheric Pressure", UsageTypes.CA|UsageTypes.CP);
-                case 0x0032: return new Usage(this, id, "Environmental: Humidity", UsageTypes.CA|UsageTypes.CP);
-                case 0x0033: return new Usage(this, id, "Environmental: Temperature", UsageTypes.CA|UsageTypes.CP);
-                case 0x0034: return new Usage(this, id, "Environmental: Wind Direction", UsageTypes.CA|UsageTypes.CP);
-                case 0x0035: return new Usage(this, id, "Environmental: Wind Speed", UsageTypes.CA|UsageTypes.CP);
-                case 0x0036: return new Usage(this, id, "Environmental: Air Quality", UsageTypes.CA|UsageTypes.CP);
-                case 0x0037: return new Usage(this, id, "Environmental: Heat Index", UsageTypes.CA|UsageTypes.CP);
-                case 0x0038: return new Usage(this, id, "Environmental: Surface Temperature", UsageTypes.CA|UsageTypes.CP);
-                case 0x0039: return new Usage(this, id, "Environmental: Volatile Organic Compounds", UsageTypes.CA|UsageTypes.CP);
-                case 0x003a: return new Usage(this, id, "Environmental: Object Presence", UsageTypes.CA|UsageTypes.CP);
-                case 0x003b: return new Usage(this, id, "Environmental: Object Proximity", UsageTypes.CA|UsageTypes.CP);
-                case 0x0040: return new Usage(this, id, "Light", UsageTypes.CA|UsageTypes.CP);
-                case 0x0041: return new Usage(this, id, "Light: Ambient Light", UsageTypes.CA|UsageTypes.CP);
-                case 0x0042: return new Usage(this, id, "Light: Consumer Infrared", UsageTypes.CA|UsageTypes.CP);
-                case 0x0043: return new Usage(this, id, "Light: Infrared Light", UsageTypes.CA|UsageTypes.CP);
-                case 0x0044: return new Usage(this, id, "Light: Visible Light", UsageTypes.CA|UsageTypes.CP);
-                case 0x0045: return new Usage(this, id, "Light: Ultraviolet Light", UsageTypes.CA|UsageTypes.CP);
-                case 0x0050: return new Usage(this, id, "Location", UsageTypes.CA|UsageTypes.CP);
-                case 0x0051: return new Usage(this, id, "Location: Broadcast", UsageTypes.CA|UsageTypes.CP);
-                case 0x0052: return new Usage(this, id, "Location: Dead Reckoning", UsageTypes.CA|UsageTypes.CP);
-                case 0x0053: return new Usage(this, id, "Location: GPS", UsageTypes.CA|UsageTypes.CP);
-                case 0x0054: return new Usage(this, id, "Location: Lookup", UsageTypes.CA|UsageTypes.CP);
-                case 0x0055: return new Usage(this, id, "Location: Other", UsageTypes.CA|UsageTypes.CP);
-                case 0x0056: return new Usage(this, id, "Location: Static", UsageTypes.CA|UsageTypes.CP);
-                case 0x0057: return new Usage(this, id, "Location: Triangulation", UsageTypes.CA|UsageTypes.CP);
-                case 0x0060: return new Usage(this, id, "Mechanical", UsageTypes.CA|UsageTypes.CP);
-                case 0x0061: return new Usage(this, id, "Mechanical: Boolean Switch", UsageTypes.CA|UsageTypes.CP);
-                case 0x0062: return new Usage(this, id, "Mechanical: Boolean Switch Array", UsageTypes.CA|UsageTypes.CP);
-                case 0x0063: return new Usage(this, id, "Mechanical: Multivalue Switch", UsageTypes.CA|UsageTypes.CP);
-                case 0x0064: return new Usage(this, id, "Mechanical: Force", UsageTypes.CA|UsageTypes.CP);
-                case 0x0065: return new Usage(this, id, "Mechanical: Pressure", UsageTypes.CA|UsageTypes.CP);
-                case 0x0066: return new Usage(this, id, "Mechanical: Strain", UsageTypes.CA|UsageTypes.CP);
-                case 0x0067: return new Usage(this, id, "Mechanical: Weight", UsageTypes.CA|UsageTypes.CP);
-                case 0x0068: return new Usage(this, id, "Mechanical: Haptic Vibrator", UsageTypes.CA|UsageTypes.CP);
-                case 0x0069: return new Usage(this, id, "Mechanical: Hall Effect Switch", UsageTypes.CA|UsageTypes.CP);
-                case 0x0070: return new Usage(this, id, "Motion", UsageTypes.CA|UsageTypes.CP);
-                case 0x0071: return new Usage(this, id, "Motion: Accelerometer 1D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0072: return new Usage(this, id, "Motion: Accelerometer 2D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0073: return new Usage(this, id, "Motion: Accelerometer 3D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0074: return new Usage(this, id, "Motion: Gyrometer 1D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0075: return new Usage(this, id, "Motion: Gyrometer 2D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0076: return new Usage(this, id, "Motion: Gyrometer 3D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0077: return new Usage(this, id, "Motion: Motion Detector", UsageTypes.CA|UsageTypes.CP);
-                case 0x0078: return new Usage(this, id, "Motion: Speedometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x0079: return new Usage(this, id, "Motion: Accelerometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x007a: return new Usage(this, id, "Motion: Gyrometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x007b: return new Usage(this, id, "Motion: Gravity Vector", UsageTypes.CA|UsageTypes.CP);
-                case 0x007c: return new Usage(this, id, "Motion: Linear Accelerometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x0080: return new Usage(this, id, "Orientation", UsageTypes.CA|UsageTypes.CP);
-                case 0x0081: return new Usage(this, id, "Orientation: Compass 1D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0082: return new Usage(this, id, "Orientation: Compass 2D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0083: return new Usage(this, id, "Orientation: Compass 3D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0084: return new Usage(this, id, "Orientation: Inclinometer 1D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0085: return new Usage(this, id, "Orientation: Inclinometer 2D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0086: return new Usage(this, id, "Orientation: Inclinometer 3D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0087: return new Usage(this, id, "Orientation: Distance 1D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0088: return new Usage(this, id, "Orientation: Distance 2D", UsageTypes.CA|UsageTypes.CP);
-                case 0x0089: return new Usage(this, id, "Orientation: Distance 3D", UsageTypes.CA|UsageTypes.CP);
-                case 0x008a: return new Usage(this, id, "Orientation: Device Orientation", UsageTypes.CA|UsageTypes.CP);
-                case 0x008b: return new Usage(this, id, "Orientation: Compass", UsageTypes.CA|UsageTypes.CP);
-                case 0x008c: return new Usage(this, id, "Orientation: Inclinometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x008d: return new Usage(this, id, "Orientation: Distance", UsageTypes.CA|UsageTypes.CP);
-                case 0x008e: return new Usage(this, id, "Orientation: Relative Orientation", UsageTypes.CA|UsageTypes.CP);
-                case 0x008f: return new Usage(this, id, "Orientation: Simple Orientation", UsageTypes.CA|UsageTypes.CP);
-                case 0x0090: return new Usage(this, id, "Scanner", UsageTypes.CA|UsageTypes.CP);
-                case 0x0091: return new Usage(this, id, "Scanner: Barcode", UsageTypes.CA|UsageTypes.CP);
-                case 0x0092: return new Usage(this, id, "Scanner: RFID", UsageTypes.CA|UsageTypes.CP);
-                case 0x0093: return new Usage(this, id, "Scanner: NFC", UsageTypes.CA|UsageTypes.CP);
-                case 0x00a0: return new Usage(this, id, "Time", UsageTypes.CA|UsageTypes.CP);
-                case 0x00a1: return new Usage(this, id, "Time: Alarm Timer", UsageTypes.CA|UsageTypes.CP);
-                case 0x00a2: return new Usage(this, id, "Time: Real Time Clock", UsageTypes.CA|UsageTypes.CP);
-                case 0x00b0: return new Usage(this, id, "Personal Activity", UsageTypes.CA|UsageTypes.CP);
-                case 0x00b1: return new Usage(this, id, "Personal Activity: Activity Detection", UsageTypes.CA|UsageTypes.CP);
-                case 0x00b2: return new Usage(this, id, "Personal Activity: Device Position", UsageTypes.CA|UsageTypes.CP);
-                case 0x00b3: return new Usage(this, id, "Personal Activity: Pedometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x00b4: return new Usage(this, id, "Personal Activity: Step Detection", UsageTypes.CA|UsageTypes.CP);
-                case 0x00c0: return new Usage(this, id, "Orientation Extended", UsageTypes.CA|UsageTypes.CP);
-                case 0x00c1: return new Usage(this, id, "Orientation Extended: Geomagnetic Orientation", UsageTypes.CA|UsageTypes.CP);
-                case 0x00c2: return new Usage(this, id, "Orientation Extended: Magnetometer", UsageTypes.CA|UsageTypes.CP);
-                case 0x00d0: return new Usage(this, id, "Gesture", UsageTypes.CA|UsageTypes.CP);
-                case 0x00d1: return new Usage(this, id, "Gesture: Chassis Flip Gesture", UsageTypes.CA|UsageTypes.CP);
-                case 0x00d2: return new Usage(this, id, "Gesture: Hinge Fold Gesture", UsageTypes.CA|UsageTypes.CP);
-                case 0x00e0: return new Usage(this, id, "Other", UsageTypes.CA|UsageTypes.CP);
-                case 0x00e1: return new Usage(this, id, "Other: Custom", UsageTypes.CA|UsageTypes.CP);
-                case 0x00e2: return new Usage(this, id, "Other: Generic", UsageTypes.CA|UsageTypes.CP);
-                case 0x00e3: return new Usage(this, id, "Other: Generic Enumerator", UsageTypes.CA|UsageTypes.CP);
-                case 0x00e4: return new Usage(this, id, "Other: Hinge Angle", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f0: return new Usage(this, id, "Vendor Reserved 1", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f1: return new Usage(this, id, "Vendor Reserved 2", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f2: return new Usage(this, id, "Vendor Reserved 3", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f3: return new Usage(this, id, "Vendor Reserved 4", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f4: return new Usage(this, id, "Vendor Reserved 5", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f5: return new Usage(this, id, "Vendor Reserved 6", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f6: return new Usage(this, id, "Vendor Reserved 7", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f7: return new Usage(this, id, "Vendor Reserved 8", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f8: return new Usage(this, id, "Vendor Reserved 9", UsageTypes.CA|UsageTypes.CP);
-                case 0x00f9: return new Usage(this, id, "Vendor Reserved 10", UsageTypes.CA|UsageTypes.CP);
-                case 0x00fa: return new Usage(this, id, "Vendor Reserved 11", UsageTypes.CA|UsageTypes.CP);
-                case 0x00fb: return new Usage(this, id, "Vendor Reserved 12", UsageTypes.CA|UsageTypes.CP);
-                case 0x00fc: return new Usage(this, id, "Vendor Reserved 13", UsageTypes.CA|UsageTypes.CP);
-                case 0x00fd: return new Usage(this, id, "Vendor Reserved 14", UsageTypes.CA|UsageTypes.CP);
-                case 0x00fe: return new Usage(this, id, "Vendor Reserved 15", UsageTypes.CA|UsageTypes.CP);
-                case 0x00ff: return new Usage(this, id, "Vendor Reserved 16", UsageTypes.CA|UsageTypes.CP);
+                case 0x0001: return new Usage(this, id, "Sensor", UsageTypes.CA | UsageTypes.CP);
+                case 0x0010: return new Usage(this, id, "Biometric", UsageTypes.CA | UsageTypes.CP);
+                case 0x0011: return new Usage(this, id, "Biometric: Human Presence", UsageTypes.CA | UsageTypes.CP);
+                case 0x0012: return new Usage(this, id, "Biometric: Human Proximity", UsageTypes.CA | UsageTypes.CP);
+                case 0x0013: return new Usage(this, id, "Biometric: Human Touch", UsageTypes.CA | UsageTypes.CP);
+                case 0x0014: return new Usage(this, id, "Biometric: Blood Pressure", UsageTypes.CA | UsageTypes.CP);
+                case 0x0015: return new Usage(this, id, "Biometric: Body Temperature", UsageTypes.CA | UsageTypes.CP);
+                case 0x0016: return new Usage(this, id, "Biometric: Heart Rate", UsageTypes.CA | UsageTypes.CP);
+                case 0x0017:
+                    return new Usage(this, id, "Biometric: Heart Rate Variability", UsageTypes.CA | UsageTypes.CP);
+                case 0x0018:
+                    return new Usage(this, id, "Biometric: Peripheral Oxygen Saturation",
+                        UsageTypes.CA | UsageTypes.CP);
+                case 0x0019: return new Usage(this, id, "Biometric: Respiratory Rate", UsageTypes.CA | UsageTypes.CP);
+                case 0x0020: return new Usage(this, id, "Electrical", UsageTypes.CA | UsageTypes.CP);
+                case 0x0021: return new Usage(this, id, "Electrical: Capacitance", UsageTypes.CA | UsageTypes.CP);
+                case 0x0022: return new Usage(this, id, "Electrical: Current", UsageTypes.CA | UsageTypes.CP);
+                case 0x0023: return new Usage(this, id, "Electrical: Power", UsageTypes.CA | UsageTypes.CP);
+                case 0x0024: return new Usage(this, id, "Electrical: Inductance", UsageTypes.CA | UsageTypes.CP);
+                case 0x0025: return new Usage(this, id, "Electrical: Resistance", UsageTypes.CA | UsageTypes.CP);
+                case 0x0026: return new Usage(this, id, "Electrical: Voltage", UsageTypes.CA | UsageTypes.CP);
+                case 0x0027: return new Usage(this, id, "Electrical: Potentiometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x0028: return new Usage(this, id, "Electrical: Frequency", UsageTypes.CA | UsageTypes.CP);
+                case 0x0029: return new Usage(this, id, "Electrical: Period", UsageTypes.CA | UsageTypes.CP);
+                case 0x0030: return new Usage(this, id, "Environmental", UsageTypes.CA | UsageTypes.CP);
+                case 0x0031:
+                    return new Usage(this, id, "Environmental: Atmospheric Pressure", UsageTypes.CA | UsageTypes.CP);
+                case 0x0032: return new Usage(this, id, "Environmental: Humidity", UsageTypes.CA | UsageTypes.CP);
+                case 0x0033: return new Usage(this, id, "Environmental: Temperature", UsageTypes.CA | UsageTypes.CP);
+                case 0x0034: return new Usage(this, id, "Environmental: Wind Direction", UsageTypes.CA | UsageTypes.CP);
+                case 0x0035: return new Usage(this, id, "Environmental: Wind Speed", UsageTypes.CA | UsageTypes.CP);
+                case 0x0036: return new Usage(this, id, "Environmental: Air Quality", UsageTypes.CA | UsageTypes.CP);
+                case 0x0037: return new Usage(this, id, "Environmental: Heat Index", UsageTypes.CA | UsageTypes.CP);
+                case 0x0038:
+                    return new Usage(this, id, "Environmental: Surface Temperature", UsageTypes.CA | UsageTypes.CP);
+                case 0x0039:
+                    return new Usage(this, id, "Environmental: Volatile Organic Compounds",
+                        UsageTypes.CA | UsageTypes.CP);
+                case 0x003a:
+                    return new Usage(this, id, "Environmental: Object Presence", UsageTypes.CA | UsageTypes.CP);
+                case 0x003b:
+                    return new Usage(this, id, "Environmental: Object Proximity", UsageTypes.CA | UsageTypes.CP);
+                case 0x0040: return new Usage(this, id, "Light", UsageTypes.CA | UsageTypes.CP);
+                case 0x0041: return new Usage(this, id, "Light: Ambient Light", UsageTypes.CA | UsageTypes.CP);
+                case 0x0042: return new Usage(this, id, "Light: Consumer Infrared", UsageTypes.CA | UsageTypes.CP);
+                case 0x0043: return new Usage(this, id, "Light: Infrared Light", UsageTypes.CA | UsageTypes.CP);
+                case 0x0044: return new Usage(this, id, "Light: Visible Light", UsageTypes.CA | UsageTypes.CP);
+                case 0x0045: return new Usage(this, id, "Light: Ultraviolet Light", UsageTypes.CA | UsageTypes.CP);
+                case 0x0050: return new Usage(this, id, "Location", UsageTypes.CA | UsageTypes.CP);
+                case 0x0051: return new Usage(this, id, "Location: Broadcast", UsageTypes.CA | UsageTypes.CP);
+                case 0x0052: return new Usage(this, id, "Location: Dead Reckoning", UsageTypes.CA | UsageTypes.CP);
+                case 0x0053: return new Usage(this, id, "Location: GPS", UsageTypes.CA | UsageTypes.CP);
+                case 0x0054: return new Usage(this, id, "Location: Lookup", UsageTypes.CA | UsageTypes.CP);
+                case 0x0055: return new Usage(this, id, "Location: Other", UsageTypes.CA | UsageTypes.CP);
+                case 0x0056: return new Usage(this, id, "Location: Static", UsageTypes.CA | UsageTypes.CP);
+                case 0x0057: return new Usage(this, id, "Location: Triangulation", UsageTypes.CA | UsageTypes.CP);
+                case 0x0060: return new Usage(this, id, "Mechanical", UsageTypes.CA | UsageTypes.CP);
+                case 0x0061: return new Usage(this, id, "Mechanical: Boolean Switch", UsageTypes.CA | UsageTypes.CP);
+                case 0x0062:
+                    return new Usage(this, id, "Mechanical: Boolean Switch Array", UsageTypes.CA | UsageTypes.CP);
+                case 0x0063: return new Usage(this, id, "Mechanical: Multivalue Switch", UsageTypes.CA | UsageTypes.CP);
+                case 0x0064: return new Usage(this, id, "Mechanical: Force", UsageTypes.CA | UsageTypes.CP);
+                case 0x0065: return new Usage(this, id, "Mechanical: Pressure", UsageTypes.CA | UsageTypes.CP);
+                case 0x0066: return new Usage(this, id, "Mechanical: Strain", UsageTypes.CA | UsageTypes.CP);
+                case 0x0067: return new Usage(this, id, "Mechanical: Weight", UsageTypes.CA | UsageTypes.CP);
+                case 0x0068: return new Usage(this, id, "Mechanical: Haptic Vibrator", UsageTypes.CA | UsageTypes.CP);
+                case 0x0069:
+                    return new Usage(this, id, "Mechanical: Hall Effect Switch", UsageTypes.CA | UsageTypes.CP);
+                case 0x0070: return new Usage(this, id, "Motion", UsageTypes.CA | UsageTypes.CP);
+                case 0x0071: return new Usage(this, id, "Motion: Accelerometer 1D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0072: return new Usage(this, id, "Motion: Accelerometer 2D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0073: return new Usage(this, id, "Motion: Accelerometer 3D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0074: return new Usage(this, id, "Motion: Gyrometer 1D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0075: return new Usage(this, id, "Motion: Gyrometer 2D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0076: return new Usage(this, id, "Motion: Gyrometer 3D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0077: return new Usage(this, id, "Motion: Motion Detector", UsageTypes.CA | UsageTypes.CP);
+                case 0x0078: return new Usage(this, id, "Motion: Speedometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x0079: return new Usage(this, id, "Motion: Accelerometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x007a: return new Usage(this, id, "Motion: Gyrometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x007b: return new Usage(this, id, "Motion: Gravity Vector", UsageTypes.CA | UsageTypes.CP);
+                case 0x007c: return new Usage(this, id, "Motion: Linear Accelerometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x0080: return new Usage(this, id, "Orientation", UsageTypes.CA | UsageTypes.CP);
+                case 0x0081: return new Usage(this, id, "Orientation: Compass 1D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0082: return new Usage(this, id, "Orientation: Compass 2D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0083: return new Usage(this, id, "Orientation: Compass 3D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0084: return new Usage(this, id, "Orientation: Inclinometer 1D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0085: return new Usage(this, id, "Orientation: Inclinometer 2D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0086: return new Usage(this, id, "Orientation: Inclinometer 3D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0087: return new Usage(this, id, "Orientation: Distance 1D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0088: return new Usage(this, id, "Orientation: Distance 2D", UsageTypes.CA | UsageTypes.CP);
+                case 0x0089: return new Usage(this, id, "Orientation: Distance 3D", UsageTypes.CA | UsageTypes.CP);
+                case 0x008a:
+                    return new Usage(this, id, "Orientation: Device Orientation", UsageTypes.CA | UsageTypes.CP);
+                case 0x008b: return new Usage(this, id, "Orientation: Compass", UsageTypes.CA | UsageTypes.CP);
+                case 0x008c: return new Usage(this, id, "Orientation: Inclinometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x008d: return new Usage(this, id, "Orientation: Distance", UsageTypes.CA | UsageTypes.CP);
+                case 0x008e:
+                    return new Usage(this, id, "Orientation: Relative Orientation", UsageTypes.CA | UsageTypes.CP);
+                case 0x008f:
+                    return new Usage(this, id, "Orientation: Simple Orientation", UsageTypes.CA | UsageTypes.CP);
+                case 0x0090: return new Usage(this, id, "Scanner", UsageTypes.CA | UsageTypes.CP);
+                case 0x0091: return new Usage(this, id, "Scanner: Barcode", UsageTypes.CA | UsageTypes.CP);
+                case 0x0092: return new Usage(this, id, "Scanner: RFID", UsageTypes.CA | UsageTypes.CP);
+                case 0x0093: return new Usage(this, id, "Scanner: NFC", UsageTypes.CA | UsageTypes.CP);
+                case 0x00a0: return new Usage(this, id, "Time", UsageTypes.CA | UsageTypes.CP);
+                case 0x00a1: return new Usage(this, id, "Time: Alarm Timer", UsageTypes.CA | UsageTypes.CP);
+                case 0x00a2: return new Usage(this, id, "Time: Real Time Clock", UsageTypes.CA | UsageTypes.CP);
+                case 0x00b0: return new Usage(this, id, "Personal Activity", UsageTypes.CA | UsageTypes.CP);
+                case 0x00b1:
+                    return new Usage(this, id, "Personal Activity: Activity Detection", UsageTypes.CA | UsageTypes.CP);
+                case 0x00b2:
+                    return new Usage(this, id, "Personal Activity: Device Position", UsageTypes.CA | UsageTypes.CP);
+                case 0x00b3: return new Usage(this, id, "Personal Activity: Pedometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x00b4:
+                    return new Usage(this, id, "Personal Activity: Step Detection", UsageTypes.CA | UsageTypes.CP);
+                case 0x00c0: return new Usage(this, id, "Orientation Extended", UsageTypes.CA | UsageTypes.CP);
+                case 0x00c1:
+                    return new Usage(this, id, "Orientation Extended: Geomagnetic Orientation",
+                        UsageTypes.CA | UsageTypes.CP);
+                case 0x00c2:
+                    return new Usage(this, id, "Orientation Extended: Magnetometer", UsageTypes.CA | UsageTypes.CP);
+                case 0x00d0: return new Usage(this, id, "Gesture", UsageTypes.CA | UsageTypes.CP);
+                case 0x00d1: return new Usage(this, id, "Gesture: Chassis Flip Gesture", UsageTypes.CA | UsageTypes.CP);
+                case 0x00d2: return new Usage(this, id, "Gesture: Hinge Fold Gesture", UsageTypes.CA | UsageTypes.CP);
+                case 0x00e0: return new Usage(this, id, "Other", UsageTypes.CA | UsageTypes.CP);
+                case 0x00e1: return new Usage(this, id, "Other: Custom", UsageTypes.CA | UsageTypes.CP);
+                case 0x00e2: return new Usage(this, id, "Other: Generic", UsageTypes.CA | UsageTypes.CP);
+                case 0x00e3: return new Usage(this, id, "Other: Generic Enumerator", UsageTypes.CA | UsageTypes.CP);
+                case 0x00e4: return new Usage(this, id, "Other: Hinge Angle", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f0: return new Usage(this, id, "Vendor Reserved 1", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f1: return new Usage(this, id, "Vendor Reserved 2", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f2: return new Usage(this, id, "Vendor Reserved 3", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f3: return new Usage(this, id, "Vendor Reserved 4", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f4: return new Usage(this, id, "Vendor Reserved 5", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f5: return new Usage(this, id, "Vendor Reserved 6", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f6: return new Usage(this, id, "Vendor Reserved 7", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f7: return new Usage(this, id, "Vendor Reserved 8", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f8: return new Usage(this, id, "Vendor Reserved 9", UsageTypes.CA | UsageTypes.CP);
+                case 0x00f9: return new Usage(this, id, "Vendor Reserved 10", UsageTypes.CA | UsageTypes.CP);
+                case 0x00fa: return new Usage(this, id, "Vendor Reserved 11", UsageTypes.CA | UsageTypes.CP);
+                case 0x00fb: return new Usage(this, id, "Vendor Reserved 12", UsageTypes.CA | UsageTypes.CP);
+                case 0x00fc: return new Usage(this, id, "Vendor Reserved 13", UsageTypes.CA | UsageTypes.CP);
+                case 0x00fd: return new Usage(this, id, "Vendor Reserved 14", UsageTypes.CA | UsageTypes.CP);
+                case 0x00fe: return new Usage(this, id, "Vendor Reserved 15", UsageTypes.CA | UsageTypes.CP);
+                case 0x00ff: return new Usage(this, id, "Vendor Reserved 16", UsageTypes.CA | UsageTypes.CP);
                 case 0x0201: return new Usage(this, id, "Event: Sensor State", UsageTypes.NAry);
                 case 0x0202: return new Usage(this, id, "Event: Sensor Event", UsageTypes.NAry);
                 case 0x0300: return new Usage(this, id, "Property", UsageTypes.DV);
@@ -262,12 +282,15 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0436: return new Usage(this, id, "Data Field: Wind Speed", UsageTypes.SV);
                 case 0x0437: return new Usage(this, id, "Data Field: Air Quality Index", UsageTypes.SV);
                 case 0x0438: return new Usage(this, id, "Data Field: Equivalent CO2", UsageTypes.SV);
-                case 0x0439: return new Usage(this, id, "Data Field: Volatile Organic Compound Concentration", UsageTypes.SV);
+                case 0x0439:
+                    return new Usage(this, id, "Data Field: Volatile Organic Compound Concentration", UsageTypes.SV);
                 case 0x043a: return new Usage(this, id, "Data Field: Object Presence", UsageTypes.SF);
                 case 0x043b: return new Usage(this, id, "Data Field: Object Proximity Range", UsageTypes.SV);
                 case 0x043c: return new Usage(this, id, "Data Field: Object Proximity Out of Range", UsageTypes.SF);
                 case 0x0440: return new Usage(this, id, "Property: Environmental", UsageTypes.SV);
-                case 0x0441: return new Usage(this, id, "Property: Reference Pressure (default Sel \"Unit: bars)", UsageTypes.SV);
+                case 0x0441:
+                    return new Usage(this, id, "Property: Reference Pressure (default Sel \"Unit: bars)",
+                        UsageTypes.SV);
                 case 0x0450: return new Usage(this, id, "Data Field: Motion", UsageTypes.SV);
                 case 0x0451: return new Usage(this, id, "Data Field: Motion State", UsageTypes.SF);
                 case 0x0452: return new Usage(this, id, "Data Field: Acceleration", UsageTypes.SV);
@@ -289,7 +312,8 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0472: return new Usage(this, id, "Data Field: Heading X Axis", UsageTypes.SV);
                 case 0x0473: return new Usage(this, id, "Data Field: Heading Y Axis", UsageTypes.SV);
                 case 0x0474: return new Usage(this, id, "Data Field: Heading Z Axis", UsageTypes.SV);
-                case 0x0475: return new Usage(this, id, "Data Field: Heading Compensated Magnetic North", UsageTypes.SV);
+                case 0x0475:
+                    return new Usage(this, id, "Data Field: Heading Compensated Magnetic North", UsageTypes.SV);
                 case 0x0476: return new Usage(this, id, "Data Field: Heading Compensated True North", UsageTypes.SV);
                 case 0x0477: return new Usage(this, id, "Data Field: Heading Magnetic North", UsageTypes.SV);
                 case 0x0478: return new Usage(this, id, "Data Field: Heading True North", UsageTypes.SV);
@@ -420,12 +444,14 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0569: return new Usage(this, id, "Data Field: Generic Data Field", UsageTypes.SV);
                 case 0x056a: return new Usage(this, id, "Data Field: Enumerator Table Row Index", UsageTypes.SV);
                 case 0x056b: return new Usage(this, id, "Data Field: Enumerator Table Row Count", UsageTypes.SV);
-                case 0x056c: return new Usage(this, id, "Data Field: Generic GUID or PROPERTYKEY kind", UsageTypes.NAry);
+                case 0x056c:
+                    return new Usage(this, id, "Data Field: Generic GUID or PROPERTYKEY kind", UsageTypes.NAry);
                 case 0x056d: return new Usage(this, id, "Data Field: Generic GUID", UsageTypes.SV);
                 case 0x056e: return new Usage(this, id, "Data Field: Generic PROPERTYKEY", UsageTypes.SV);
                 case 0x056f: return new Usage(this, id, "Data Field: Generic Top Level Collection ID", UsageTypes.SV);
                 case 0x0570: return new Usage(this, id, "Data Field: Generic Report ID", UsageTypes.SV);
-                case 0x0571: return new Usage(this, id, "Data Field: Generic Report Item Position Index", UsageTypes.SV);
+                case 0x0571:
+                    return new Usage(this, id, "Data Field: Generic Report Item Position Index", UsageTypes.SV);
                 case 0x0572: return new Usage(this, id, "Data Field: Generic Firmware VARTYPE", UsageTypes.NAry);
                 case 0x0573: return new Usage(this, id, "Data Field: Generic Unit of Measure", UsageTypes.NAry);
                 case 0x0574: return new Usage(this, id, "Data Field: Generic Unit Exponent", UsageTypes.NAry);
@@ -449,40 +475,40 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x05a4: return new Usage(this, id, "Property: Subscribed Step Types", UsageTypes.NAry);
                 case 0x05a5: return new Usage(this, id, "Property: Floor Height", UsageTypes.DV);
                 case 0x05b0: return new Usage(this, id, "Data Field: Custom Type ID", UsageTypes.SV);
-                case 0x05c0: return new Usage(this, id, "Property: Custom", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c1: return new Usage(this, id, "Property: Custom Value 1", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c2: return new Usage(this, id, "Property: Custom Value 2", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c3: return new Usage(this, id, "Property: Custom Value 3", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c4: return new Usage(this, id, "Property: Custom Value 4", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c5: return new Usage(this, id, "Property: Custom Value 5", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c6: return new Usage(this, id, "Property: Custom Value 6", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c7: return new Usage(this, id, "Property: Custom Value 7", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c8: return new Usage(this, id, "Property: Custom Value 8", UsageTypes.DF|UsageTypes.DV);
-                case 0x05c9: return new Usage(this, id, "Property: Custom Value 9", UsageTypes.DF|UsageTypes.DV);
-                case 0x05ca: return new Usage(this, id, "Property: Custom Value 10", UsageTypes.DF|UsageTypes.DV);
-                case 0x05cb: return new Usage(this, id, "Property: Custom Value 11", UsageTypes.DF|UsageTypes.DV);
-                case 0x05cc: return new Usage(this, id, "Property: Custom Value 12", UsageTypes.DF|UsageTypes.DV);
-                case 0x05cd: return new Usage(this, id, "Property: Custom Value 13", UsageTypes.DF|UsageTypes.DV);
-                case 0x05ce: return new Usage(this, id, "Property: Custom Value 14", UsageTypes.DF|UsageTypes.DV);
-                case 0x05cf: return new Usage(this, id, "Property: Custom Value 15", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d0: return new Usage(this, id, "Property: Custom Value 16", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d1: return new Usage(this, id, "Property: Custom Reserved 1", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d2: return new Usage(this, id, "Property: Custom Reserved 2", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d3: return new Usage(this, id, "Property: Custom Reserved 3", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d4: return new Usage(this, id, "Property: Custom Reserved 4", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d5: return new Usage(this, id, "Property: Custom Reserved 5", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d6: return new Usage(this, id, "Property: Custom Reserved 6", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d7: return new Usage(this, id, "Property: Custom Reserved 7", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d8: return new Usage(this, id, "Property: Custom Reserved 8", UsageTypes.DF|UsageTypes.DV);
-                case 0x05d9: return new Usage(this, id, "Property: Custom Reserved 9", UsageTypes.DF|UsageTypes.DV);
-                case 0x05da: return new Usage(this, id, "Property: Custom Reserved 10", UsageTypes.DF|UsageTypes.DV);
-                case 0x05db: return new Usage(this, id, "Property: Custom Reserved 11", UsageTypes.DF|UsageTypes.DV);
-                case 0x05dc: return new Usage(this, id, "Property: Custom Reserved 12", UsageTypes.DF|UsageTypes.DV);
-                case 0x05dd: return new Usage(this, id, "Property: Custom Reserved 13", UsageTypes.DF|UsageTypes.DV);
-                case 0x05de: return new Usage(this, id, "Property: Custom Reserved 14", UsageTypes.DF|UsageTypes.DV);
-                case 0x05df: return new Usage(this, id, "Property: Custom Reserved 15", UsageTypes.DF|UsageTypes.DV);
-                case 0x05e0: return new Usage(this, id, "Data Field: Hinge", UsageTypes.SV|UsageTypes.DV);
-                case 0x05e1: return new Usage(this, id, "Data Field: Hinge Angle", UsageTypes.SV|UsageTypes.DV);
+                case 0x05c0: return new Usage(this, id, "Property: Custom", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c1: return new Usage(this, id, "Property: Custom Value 1", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c2: return new Usage(this, id, "Property: Custom Value 2", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c3: return new Usage(this, id, "Property: Custom Value 3", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c4: return new Usage(this, id, "Property: Custom Value 4", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c5: return new Usage(this, id, "Property: Custom Value 5", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c6: return new Usage(this, id, "Property: Custom Value 6", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c7: return new Usage(this, id, "Property: Custom Value 7", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c8: return new Usage(this, id, "Property: Custom Value 8", UsageTypes.DF | UsageTypes.DV);
+                case 0x05c9: return new Usage(this, id, "Property: Custom Value 9", UsageTypes.DF | UsageTypes.DV);
+                case 0x05ca: return new Usage(this, id, "Property: Custom Value 10", UsageTypes.DF | UsageTypes.DV);
+                case 0x05cb: return new Usage(this, id, "Property: Custom Value 11", UsageTypes.DF | UsageTypes.DV);
+                case 0x05cc: return new Usage(this, id, "Property: Custom Value 12", UsageTypes.DF | UsageTypes.DV);
+                case 0x05cd: return new Usage(this, id, "Property: Custom Value 13", UsageTypes.DF | UsageTypes.DV);
+                case 0x05ce: return new Usage(this, id, "Property: Custom Value 14", UsageTypes.DF | UsageTypes.DV);
+                case 0x05cf: return new Usage(this, id, "Property: Custom Value 15", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d0: return new Usage(this, id, "Property: Custom Value 16", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d1: return new Usage(this, id, "Property: Custom Reserved 1", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d2: return new Usage(this, id, "Property: Custom Reserved 2", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d3: return new Usage(this, id, "Property: Custom Reserved 3", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d4: return new Usage(this, id, "Property: Custom Reserved 4", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d5: return new Usage(this, id, "Property: Custom Reserved 5", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d6: return new Usage(this, id, "Property: Custom Reserved 6", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d7: return new Usage(this, id, "Property: Custom Reserved 7", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d8: return new Usage(this, id, "Property: Custom Reserved 8", UsageTypes.DF | UsageTypes.DV);
+                case 0x05d9: return new Usage(this, id, "Property: Custom Reserved 9", UsageTypes.DF | UsageTypes.DV);
+                case 0x05da: return new Usage(this, id, "Property: Custom Reserved 10", UsageTypes.DF | UsageTypes.DV);
+                case 0x05db: return new Usage(this, id, "Property: Custom Reserved 11", UsageTypes.DF | UsageTypes.DV);
+                case 0x05dc: return new Usage(this, id, "Property: Custom Reserved 12", UsageTypes.DF | UsageTypes.DV);
+                case 0x05dd: return new Usage(this, id, "Property: Custom Reserved 13", UsageTypes.DF | UsageTypes.DV);
+                case 0x05de: return new Usage(this, id, "Property: Custom Reserved 14", UsageTypes.DF | UsageTypes.DV);
+                case 0x05df: return new Usage(this, id, "Property: Custom Reserved 15", UsageTypes.DF | UsageTypes.DV);
+                case 0x05e0: return new Usage(this, id, "Data Field: Hinge", UsageTypes.SV | UsageTypes.DV);
+                case 0x05e1: return new Usage(this, id, "Data Field: Hinge Angle", UsageTypes.SV | UsageTypes.DV);
                 case 0x05f0: return new Usage(this, id, "Data Field: Gesture Sensor", UsageTypes.SV);
                 case 0x05f1: return new Usage(this, id, "Data Field: Gesture State", UsageTypes.NAry);
                 case 0x05f2: return new Usage(this, id, "Data Field: Hinge Fold Initial Angle", UsageTypes.SV);
@@ -548,7 +574,8 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x0891: return new Usage(this, id, "GPS Operation Mode: Automatic", UsageTypes.Sel);
                 case 0x08a0: return new Usage(this, id, "GPS Selection Mode: Autonomous", UsageTypes.Sel);
                 case 0x08a1: return new Usage(this, id, "GPS Selection Mode: DGPS", UsageTypes.Sel);
-                case 0x08a2: return new Usage(this, id, "GPS Selection Mode: Estimated (dead reckoned)", UsageTypes.Sel);
+                case 0x08a2:
+                    return new Usage(this, id, "GPS Selection Mode: Estimated (dead reckoned)", UsageTypes.Sel);
                 case 0x08a3: return new Usage(this, id, "GPS Selection Mode: Manual Input", UsageTypes.Sel);
                 case 0x08a4: return new Usage(this, id, "GPS Selection Mode: Simulator", UsageTypes.Sel);
                 case 0x08a5: return new Usage(this, id, "GPS Selection Mode: Data Not Valid", UsageTypes.Sel);
@@ -570,9 +597,12 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x08e1: return new Usage(this, id, "Magnetometer Accuracy: Medium", UsageTypes.Sel);
                 case 0x08e2: return new Usage(this, id, "Magnetometer Accuracy: High", UsageTypes.Sel);
                 case 0x08f0: return new Usage(this, id, "Simple Orientation Direction: Not Rotated", UsageTypes.Sel);
-                case 0x08f1: return new Usage(this, id, "Simple Orientation Direction: Rotated 90 Degrees CCW", UsageTypes.Sel);
-                case 0x08f2: return new Usage(this, id, "Simple Orientation Direction: Rotated 180 Degrees CCW", UsageTypes.Sel);
-                case 0x08f3: return new Usage(this, id, "Simple Orientation Direction: Rotated 270 Degrees CCW", UsageTypes.Sel);
+                case 0x08f1:
+                    return new Usage(this, id, "Simple Orientation Direction: Rotated 90 Degrees CCW", UsageTypes.Sel);
+                case 0x08f2:
+                    return new Usage(this, id, "Simple Orientation Direction: Rotated 180 Degrees CCW", UsageTypes.Sel);
+                case 0x08f3:
+                    return new Usage(this, id, "Simple Orientation Direction: Rotated 270 Degrees CCW", UsageTypes.Sel);
                 case 0x08f4: return new Usage(this, id, "Simple Orientation Direction: Face Up", UsageTypes.Sel);
                 case 0x08f5: return new Usage(this, id, "Simple Orientation Direction: Face Down", UsageTypes.Sel);
                 case 0x0900: return new Usage(this, id, "VT_NULL: Empty", UsageTypes.Sel);
@@ -701,10 +731,16 @@ namespace DevDecoder.HIDDevices.Pages
                 case 0x09b4: return new Usage(this, id, "Fold Type: Unknown", UsageTypes.Sel);
                 case 0x09b5: return new Usage(this, id, "Fold Type: Increasing", UsageTypes.Sel);
                 case 0x09b6: return new Usage(this, id, "Fold Type: Decreasing", UsageTypes.Sel);
-                case 0x09c0: return new Usage(this, id, "Human Presence Detection Type: Vendor-Defined Non-Biometric", UsageTypes.Sel);
-                case 0x09c1: return new Usage(this, id, "Human Presence Detection Type: Vendor-Defined Biometric", UsageTypes.Sel);
-                case 0x09c2: return new Usage(this, id, "Human Presence Detection Type: Facial Biometric", UsageTypes.Sel);
-                case 0x09c3: return new Usage(this, id, "Human Presence Detection Type: Audio Biometric", UsageTypes.Sel);
+                case 0x09c0:
+                    return new Usage(this, id, "Human Presence Detection Type: Vendor-Defined Non-Biometric",
+                        UsageTypes.Sel);
+                case 0x09c1:
+                    return new Usage(this, id, "Human Presence Detection Type: Vendor-Defined Biometric",
+                        UsageTypes.Sel);
+                case 0x09c2:
+                    return new Usage(this, id, "Human Presence Detection Type: Facial Biometric", UsageTypes.Sel);
+                case 0x09c3:
+                    return new Usage(this, id, "Human Presence Detection Type: Audio Biometric", UsageTypes.Sel);
                 case 0x1000: return new Usage(this, id, "Change Sensitivity Absolute", UsageTypes.US);
                 case 0x1001: return new Usage(this, id, "Change Sensitivity Absolute", UsageTypes.US);
                 case 0x1002: return new Usage(this, id, "Change Sensitivity Absolute", UsageTypes.US);
@@ -932,26 +968,31 @@ namespace DevDecoder.HIDDevices.Pages
             }
 
             // Create dynamic usages from ranges
-            var n = (ushort)(id-0x00f0);
-            if (id >= 0x00f0 || id < 0x00ff) return new Usage(this, id, $"Vendor Reserved {n+1}", UsageTypes.CA|UsageTypes.CP);
-            n = (ushort)(id-0x0544);
-            if (id >= 0x0544 || id < 0x055f) return new Usage(this, id, $"Data Field: Custom Value {n+1}", UsageTypes.SV);
-            n = (ushort)(id-0x05c1);
-            if (id >= 0x05c1 || id < 0x05d0) return new Usage(this, id, $"Property: Custom Value {n+1}", UsageTypes.DF|UsageTypes.DV);
-            if (id >= 0x1000 || id < 0x1fff) return new Usage(this, id, $"Change Sensitivity Absolute", UsageTypes.US);
-            if (id >= 0x2000 || id < 0x2fff) return new Usage(this, id, $"Maximum", UsageTypes.US);
-            if (id >= 0x3000 || id < 0x3fff) return new Usage(this, id, $"Minimum", UsageTypes.US);
-            if (id >= 0x4000 || id < 0x4fff) return new Usage(this, id, $"Accuracy", UsageTypes.US);
-            if (id >= 0x5000 || id < 0x5fff) return new Usage(this, id, $"Resolution", UsageTypes.US);
-            if (id >= 0x6000 || id < 0x6fff) return new Usage(this, id, $"Threshold High", UsageTypes.US);
-            if (id >= 0x7000 || id < 0x7fff) return new Usage(this, id, $"Threshold Low", UsageTypes.US);
-            if (id >= 0x8000 || id < 0x8fff) return new Usage(this, id, $"Calibration Offset", UsageTypes.US);
-            if (id >= 0x9000 || id < 0x9fff) return new Usage(this, id, $"Calibration Multiplier", UsageTypes.US);
-            if (id >= 0xa000 || id < 0xafff) return new Usage(this, id, $"Report Interval", UsageTypes.US);
-            if (id >= 0xb000 || id < 0xbfff) return new Usage(this, id, $"Frequency Max", UsageTypes.US);
-            if (id >= 0xc000 || id < 0xcfff) return new Usage(this, id, $"Period Max", UsageTypes.US);
-            if (id >= 0xd000 || id < 0xdfff) return new Usage(this, id, $"Change Sensitivity Percent of Range", UsageTypes.US);
-            if (id >= 0xe000 || id < 0xefff) return new Usage(this, id, $"Change Sensitivity Percent Relative", UsageTypes.US);
+            var n = (ushort)(id - 0x00f0);
+            if (id >= 0x00f0 || id < 0x00ff)
+                return new Usage(this, id, $"Vendor Reserved {n + 1}", UsageTypes.CA | UsageTypes.CP);
+            n = (ushort)(id - 0x0544);
+            if (id >= 0x0544 || id < 0x055f)
+                return new Usage(this, id, $"Data Field: Custom Value {n + 1}", UsageTypes.SV);
+            n = (ushort)(id - 0x05c1);
+            if (id >= 0x05c1 || id < 0x05d0)
+                return new Usage(this, id, $"Property: Custom Value {n + 1}", UsageTypes.DF | UsageTypes.DV);
+            if (id >= 0x1000 || id < 0x1fff) return new Usage(this, id, "Change Sensitivity Absolute", UsageTypes.US);
+            if (id >= 0x2000 || id < 0x2fff) return new Usage(this, id, "Maximum", UsageTypes.US);
+            if (id >= 0x3000 || id < 0x3fff) return new Usage(this, id, "Minimum", UsageTypes.US);
+            if (id >= 0x4000 || id < 0x4fff) return new Usage(this, id, "Accuracy", UsageTypes.US);
+            if (id >= 0x5000 || id < 0x5fff) return new Usage(this, id, "Resolution", UsageTypes.US);
+            if (id >= 0x6000 || id < 0x6fff) return new Usage(this, id, "Threshold High", UsageTypes.US);
+            if (id >= 0x7000 || id < 0x7fff) return new Usage(this, id, "Threshold Low", UsageTypes.US);
+            if (id >= 0x8000 || id < 0x8fff) return new Usage(this, id, "Calibration Offset", UsageTypes.US);
+            if (id >= 0x9000 || id < 0x9fff) return new Usage(this, id, "Calibration Multiplier", UsageTypes.US);
+            if (id >= 0xa000 || id < 0xafff) return new Usage(this, id, "Report Interval", UsageTypes.US);
+            if (id >= 0xb000 || id < 0xbfff) return new Usage(this, id, "Frequency Max", UsageTypes.US);
+            if (id >= 0xc000 || id < 0xcfff) return new Usage(this, id, "Period Max", UsageTypes.US);
+            if (id >= 0xd000 || id < 0xdfff)
+                return new Usage(this, id, "Change Sensitivity Percent of Range", UsageTypes.US);
+            if (id >= 0xe000 || id < 0xefff)
+                return new Usage(this, id, "Change Sensitivity Percent Relative", UsageTypes.US);
 
             return base.CreateUsage(id);
         }

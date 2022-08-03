@@ -418,7 +418,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Key">The key</param>
         /// <returns>The bool</returns>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern bool sfKeyboard_isKeyPressed(Key Key);
 
         /// <summary>
@@ -426,7 +426,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="visible">The visible</param>
         [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-         [SuppressUnmanagedCodeSecurity]
+        [SuppressUnmanagedCodeSecurity]
         private static extern void sfKeyboard_setVirtualKeyboardVisible(bool visible);
     }
 }
