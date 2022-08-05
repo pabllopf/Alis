@@ -6,8 +6,11 @@
     </PropertyGroup>
     
     <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)1_presentation/template/alis.template.game/Alis.Template.Game.csproj" />
         <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.7.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="$(SolutionDir)1_presentation/template/alis.template.game/Alis.Template.Game.csproj" />
     </ItemGroup>
 
 </Project>

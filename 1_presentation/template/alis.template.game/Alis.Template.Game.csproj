@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>$(TargetFrameworks);netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>$(TargetFrameworks);</TargetFrameworks>
     </PropertyGroup>
     
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx'))">
-        <TargetFrameworks>$(TargetFrameworks);net6.0-ios;net6.0-android;net6.0-macos</TargetFrameworks>
+        <TargetFrameworks>$(TargetFrameworks);net6.0;net6.0-ios;net6.0-android;net6.0-macos</TargetFrameworks>
     </PropertyGroup>
     
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
@@ -45,7 +45,9 @@
         <PackageReference Include="OpenTK.Graphics" Version="4.7.4" />
     </ItemGroup>
     
+    <!--
     <ItemGroup>
       <ProjectReference Include="..\..\..\2_application\alis\alis\Alis.csproj" />
     </ItemGroup>
+    -->
 </Project>
