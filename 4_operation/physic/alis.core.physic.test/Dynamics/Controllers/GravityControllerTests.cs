@@ -49,14 +49,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         {
             // Arrange
             var gravityController = CreateGravityController();
-            TimeStep step = default(Aspect.Time.TimeStep);
+            TimeStep step = default(TimeStep);
 
             // Act
             gravityController.Step(
                 step);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

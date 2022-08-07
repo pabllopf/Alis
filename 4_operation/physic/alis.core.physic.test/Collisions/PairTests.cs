@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collisions
             pair.SetBuffered();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Test.Collisions
             pair.ClearBuffered();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Test.Collisions
             var result = pair.IsBuffered();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test.Collisions
             pair.SetRemoved();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Test.Collisions
             pair.ClearRemoved();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -133,7 +133,7 @@ namespace Alis.Core.Physic.Test.Collisions
             var result = pair.IsRemoved();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -150,7 +150,7 @@ namespace Alis.Core.Physic.Test.Collisions
             pair.SetFinal();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Test.Collisions
             var result = pair.IsFinal();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

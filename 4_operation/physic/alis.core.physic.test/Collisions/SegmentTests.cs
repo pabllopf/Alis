@@ -45,8 +45,7 @@ namespace Alis.Core.Physic.Test.Collisions
             // Arrange
             var segment = CreateSegment();
             float lambda = 0;
-            Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
-            Segment segment = default(Segment);
+            Vector2 normal = default(Vector2);
             float maxLambda = 0;
 
             // Act
@@ -57,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 maxLambda);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

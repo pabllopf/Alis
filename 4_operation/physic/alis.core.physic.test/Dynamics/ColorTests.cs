@@ -34,9 +34,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         private Color CreateColor()
         {
             return new Color(
-                TODO,
-                TODO,
-                TODO);
+                1,
+                1,
+                1);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 b);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

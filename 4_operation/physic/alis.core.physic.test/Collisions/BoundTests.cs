@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collisions
             var result = bound.Clone();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

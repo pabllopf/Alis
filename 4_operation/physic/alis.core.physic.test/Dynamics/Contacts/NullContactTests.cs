@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

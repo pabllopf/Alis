@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 invDt);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 invDt);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

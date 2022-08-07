@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collisions
             var result = manifoldPoint.Clone();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

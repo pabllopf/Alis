@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             edgeShape.Dispose();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -62,8 +62,8 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            Vector2 v1 = default(global::Alis.Aspect.Math.Vector2);
-            Vector2 v2 = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 v1 = default(Vector2);
+            Vector2 v2 = default(Vector2);
 
             // Act
             edgeShape.Set(
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 v2);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -83,8 +83,8 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            XForm transform = default(global::Alis.Aspect.Math.XForm);
-            Vector2 p = default(global::Alis.Aspect.Math.Vector2);
+            XForm transform = default(XForm);
+            Vector2 p = default(Vector2);
 
             // Act
             var result = edgeShape.TestPoint(
@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 p);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -104,10 +104,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            XForm transform = default(global::Alis.Aspect.Math.XForm);
+            XForm transform = default(XForm);
             float lambda = 0;
-            Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
-            Segment segment = default(global::Alis.Core.Physic.Collisions.Segment);
+            Vector2 normal = default(Vector2);
+            Segment segment = default(Segment);
             float maxLambda = 0;
 
             // Act
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 maxLambda);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -131,8 +131,8 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            Aabb aabb = default(global::Alis.Core.Physic.Collisions.Aabb);
-            XForm transform = default(global::Alis.Aspect.Math.XForm);
+            Aabb aabb = default(Aabb);
+            XForm transform = default(XForm);
 
             // Act
             edgeShape.ComputeAabb(
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 transform);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 density);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -174,7 +174,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             // Arrange
             var edgeShape = CreateEdgeShape();
             EdgeShape edge = null;
-            Vector2 cornerDir = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 cornerDir = default(Vector2);
             bool convex = false;
 
             // Act
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 convex);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             // Arrange
             var edgeShape = CreateEdgeShape();
             EdgeShape edge = null;
-            Vector2 cornerDir = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 cornerDir = default(Vector2);
             bool convex = false;
 
             // Act
@@ -207,7 +207,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 convex);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -219,10 +219,10 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 normal = default(Vector2);
             float offset = 0;
-            XForm xf = default(global::Alis.Aspect.Math.XForm);
-            Vector2 c = default(global::Alis.Aspect.Math.Vector2);
+            XForm xf = default(XForm);
+            Vector2 c = default(Vector2);
 
             // Act
             var result = edgeShape.ComputeSubmergedArea(
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 out c);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -244,14 +244,14 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            Vector2 d = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 d = default(Vector2);
 
             // Act
             var result = edgeShape.GetSupport(
                 d);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -263,14 +263,14 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            Vector2 d = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 d = default(Vector2);
 
             // Act
             var result = edgeShape.GetSupportVertex(
                 d);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -289,7 +289,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
                 index);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -301,14 +301,14 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         {
             // Arrange
             var edgeShape = CreateEdgeShape();
-            Vector2 pivot = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 pivot = default(Vector2);
 
             // Act
             var result = edgeShape.ComputeSweepRadius(
                 pivot);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

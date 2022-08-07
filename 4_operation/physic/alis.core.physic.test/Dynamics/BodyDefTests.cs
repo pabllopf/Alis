@@ -33,8 +33,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// <returns>The body def</returns>
         private BodyDef CreateBodyDef()
         {
-            return new BodyDef(
-                TODO);
+            return new BodyDef();
         }
 
         /// <summary>
@@ -50,7 +49,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

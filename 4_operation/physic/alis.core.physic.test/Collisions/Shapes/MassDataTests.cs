@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
 
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

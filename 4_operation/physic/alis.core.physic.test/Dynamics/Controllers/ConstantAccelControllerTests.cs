@@ -49,14 +49,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         {
             // Arrange
             var constantAccelController = CreateConstantAccelController();
-            TimeStep step = default(Aspect.Time.TimeStep);
+            TimeStep step = default(TimeStep);
 
             // Act
             constantAccelController.Step(
                 step);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

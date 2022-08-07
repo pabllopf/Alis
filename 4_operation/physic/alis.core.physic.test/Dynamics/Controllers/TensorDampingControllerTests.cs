@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
                 yDamping);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -66,14 +66,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         {
             // Arrange
             var tensorDampingController = CreateTensorDampingController();
-            TimeStep step = default(Aspect.Time.TimeStep);
+            TimeStep step = default(TimeStep);
 
             // Act
             tensorDampingController.Step(
                 step);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

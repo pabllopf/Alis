@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 hy);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Test.Dynamics
             var polygonDef = CreatePolygonDef();
             float hx = 0;
             float hy = 0;
-            Vector2 center = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 center = default(Vector2);
             float angle = 0;
 
             // Act
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 angle);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

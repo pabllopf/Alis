@@ -4,94 +4,94 @@
         <name>Alis.Core.Input.Sample</name>
     </assembly>
     <members>
-        <member name="T:HIDDevices.Sample.ISample">
+        <member name="T:Alis.Core.Input.Sample.ISample">
             <summary>
                 The sample interface
             </summary>
         </member>
-        <member name="P:HIDDevices.Sample.ISample.FullName">
+        <member name="P:Alis.Core.Input.Sample.ISample.FullName">
             <summary>
                 Gets the value of the full name
             </summary>
         </member>
-        <member name="P:HIDDevices.Sample.ISample.Description">
+        <member name="P:Alis.Core.Input.Sample.ISample.Description">
             <summary>
                 Gets the value of the description
             </summary>
         </member>
-        <member name="P:HIDDevices.Sample.ISample.ShortNames">
+        <member name="P:Alis.Core.Input.Sample.ISample.ShortNames">
             <summary>
                 Gets the value of the short names
             </summary>
         </member>
-        <member name="M:HIDDevices.Sample.ISample.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:Alis.Core.Input.Sample.ISample.ExecuteAsync(System.Threading.CancellationToken)">
             <summary>
                 Executes the token
             </summary>
             <param name="token">The token</param>
         </member>
-        <member name="T:HIDDevices.Sample.Program">
+        <member name="T:Alis.Core.Input.Sample.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:HIDDevices.Sample.Program.Main(System.String[])">
+        <member name="M:Alis.Core.Input.Sample.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>
             <param name="args">The args</param>
         </member>
-        <member name="T:HIDDevices.Sample.Sample">
+        <member name="T:Alis.Core.Input.Sample.Sample">
             <summary>
                 The sample class
             </summary>
-            <seealso cref="T:HIDDevices.Sample.ISample" />
+            <seealso cref="T:Alis.Core.Input.Sample.ISample" />
         </member>
-        <member name="F:HIDDevices.Sample.Sample._logger">
+        <member name="F:Alis.Core.Input.Sample.Sample._logger">
             <summary>
                 The logger
             </summary>
         </member>
-        <member name="F:HIDDevices.Sample.Sample._shortNames">
+        <member name="F:Alis.Core.Input.Sample.Sample._shortNames">
             <summary>
                 The short names
             </summary>
         </member>
-        <member name="M:HIDDevices.Sample.Sample.#ctor(System.String,System.String[])">
+        <member name="M:Alis.Core.Input.Sample.Sample.#ctor(System.String,System.String[])">
             <summary>
-                Initializes a new instance of the <see cref="T:HIDDevices.Sample.Sample" /> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.Sample.Sample" /> class
             </summary>
             <param name="fullName">The full name</param>
             <param name="shortNames">The short names</param>
         </member>
-        <member name="P:HIDDevices.Sample.Sample.Logger">
+        <member name="P:Alis.Core.Input.Sample.Sample.Logger">
             <summary>
                 Gets the value of the logger
             </summary>
         </member>
-        <member name="P:HIDDevices.Sample.Sample.LogLevel">
+        <member name="P:Alis.Core.Input.Sample.Sample.LogLevel">
             <summary>
                 Gets or sets the value of the log level
             </summary>
         </member>
-        <member name="P:HIDDevices.Sample.Sample.FullName">
+        <member name="P:Alis.Core.Input.Sample.Sample.FullName">
             <inheritdoc />
         </member>
-        <member name="P:HIDDevices.Sample.Sample.ShortNames">
+        <member name="P:Alis.Core.Input.Sample.Sample.ShortNames">
             <inheritdoc />
         </member>
-        <member name="M:HIDDevices.Sample.Sample.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:Alis.Core.Input.Sample.Sample.ExecuteAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="P:HIDDevices.Sample.Sample.Description">
+        <member name="P:Alis.Core.Input.Sample.Sample.Description">
             <inheritdoc />
         </member>
-        <member name="M:HIDDevices.Sample.Sample.Execute">
+        <member name="M:Alis.Core.Input.Sample.Sample.Execute">
             <summary>
                 Execute the example synchronously.
             </summary>
         </member>
-        <member name="M:HIDDevices.Sample.Sample.CreateLogger``1(Microsoft.Extensions.Logging.LogLevel)">
+        <member name="M:Alis.Core.Input.Sample.Sample.CreateLogger``1(Microsoft.Extensions.Logging.LogLevel)">
             <summary>
                 Creates the logger using the specified log level
             </summary>
@@ -99,80 +99,80 @@
             <param name="logLevel">The log level</param>
             <returns>A logger of t</returns>
         </member>
-        <member name="M:HIDDevices.Sample.Sample.GetFullName(System.String)">
+        <member name="M:Alis.Core.Input.Sample.Sample.GetFullName(System.String)">
             <summary>
                 Gets a friendly full name
             </summary>
             <param name="typeName"></param>
             <returns></returns>
         </member>
-        <member name="M:HIDDevices.Sample.Sample.GetShortNames(System.String)">
+        <member name="M:Alis.Core.Input.Sample.Sample.GetShortNames(System.String)">
             <summary>
                 Gets some short names based on the first word and initials.
             </summary>
             <param name="fullName">The full name of the sample.</param>
             <returns>An array of short names.</returns>
         </member>
-        <member name="T:HIDDevices.Sample.Samples.DependencyInjectionSample">
+        <member name="T:Alis.Core.Input.Sample.Samples.DependencyInjectionSample">
             <summary>
                 The dependency injection sample class
             </summary>
-            <seealso cref="T:HIDDevices.Sample.Sample" />
+            <seealso cref="T:Alis.Core.Input.Sample.Sample" />
         </member>
-        <member name="P:HIDDevices.Sample.Samples.DependencyInjectionSample.Description">
+        <member name="P:Alis.Core.Input.Sample.Samples.DependencyInjectionSample.Description">
             <inheritdoc />
         </member>
-        <member name="M:HIDDevices.Sample.Samples.DependencyInjectionSample.ExecuteAsync(System.Threading.CancellationToken)">
+        <member name="M:Alis.Core.Input.Sample.Samples.DependencyInjectionSample.ExecuteAsync(System.Threading.CancellationToken)">
             <inheritdoc />
         </member>
-        <member name="M:HIDDevices.Sample.Samples.DependencyInjectionSample.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+        <member name="M:Alis.Core.Input.Sample.Samples.DependencyInjectionSample.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
                 Configures the services using the specified services
             </summary>
             <param name="services">The services</param>
         </member>
-        <member name="T:HIDDevices.Sample.Samples.GameLoopSample">
+        <member name="T:Alis.Core.Input.Sample.Samples.GameLoopSample">
             <summary>
                 The game loop sample class
             </summary>
-            <seealso cref="T:HIDDevices.Sample.Sample" />
+            <seealso cref="T:Alis.Core.Input.Sample.Sample" />
         </member>
-        <member name="P:HIDDevices.Sample.Samples.GameLoopSample.Description">
+        <member name="P:Alis.Core.Input.Sample.Samples.GameLoopSample.Description">
             <inheritdoc />
         </member>
-        <member name="M:HIDDevices.Sample.Samples.GameLoopSample.Execute">
+        <member name="M:Alis.Core.Input.Sample.Samples.GameLoopSample.Execute">
             <inheritdoc />
         </member>
-        <member name="T:HIDDevices.Sample.SimpleConsoleLogger`1">
+        <member name="T:Alis.Core.Input.Sample.SimpleConsoleLogger`1">
             <summary>
                 The simple console logger class
             </summary>
             <seealso cref="T:Microsoft.Extensions.Logging.ILogger`1" />
         </member>
-        <member name="F:HIDDevices.Sample.SimpleConsoleLogger`1.Name">
+        <member name="F:Alis.Core.Input.Sample.SimpleConsoleLogger`1.Name">
             <summary>
                 The name
             </summary>
         </member>
-        <member name="M:HIDDevices.Sample.SimpleConsoleLogger`1.#ctor(Microsoft.Extensions.Logging.LogLevel,System.String)">
+        <member name="M:Alis.Core.Input.Sample.SimpleConsoleLogger`1.#ctor(Microsoft.Extensions.Logging.LogLevel,System.String)">
             <summary>
                 Initializes a new instance of the class
             </summary>
             <param name="logLevel">The log level</param>
             <param name="name">The name</param>
         </member>
-        <member name="P:HIDDevices.Sample.SimpleConsoleLogger`1.LogLevel">
+        <member name="P:Alis.Core.Input.Sample.SimpleConsoleLogger`1.LogLevel">
             <summary>
                 Gets or sets the value of the log level
             </summary>
         </member>
-        <member name="M:HIDDevices.Sample.SimpleConsoleLogger`1.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
+        <member name="M:Alis.Core.Input.Sample.SimpleConsoleLogger`1.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">
             <inheritdoc />
         </member>
-        <member name="M:HIDDevices.Sample.SimpleConsoleLogger`1.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
+        <member name="M:Alis.Core.Input.Sample.SimpleConsoleLogger`1.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">
             <inheritdoc />
         </member>
-        <member name="M:HIDDevices.Sample.SimpleConsoleLogger`1.BeginScope``1(``0)">
+        <member name="M:Alis.Core.Input.Sample.SimpleConsoleLogger`1.BeginScope``1(``0)">
             <inheritdoc />
         </member>
     </members>

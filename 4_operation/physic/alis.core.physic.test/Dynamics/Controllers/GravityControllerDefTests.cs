@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

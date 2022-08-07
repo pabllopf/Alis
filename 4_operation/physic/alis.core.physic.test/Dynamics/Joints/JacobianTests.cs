@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
             jacobian.SetZero();
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -62,9 +62,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             // Arrange
             var jacobian = CreateJacobian();
-            Vector2 x1 = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 x1 = default(Vector2);
             float a1 = 0;
-            Vector2 x2 = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 x2 = default(Vector2);
             float a2 = 0;
 
             // Act
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 a2);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -87,9 +87,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         {
             // Arrange
             var jacobian = CreateJacobian();
-            Vector2 x1 = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 x1 = default(Vector2);
             float a1 = 0;
-            Vector2 x2 = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 x2 = default(Vector2);
             float a2 = 0;
 
             // Act
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
                 a2);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }

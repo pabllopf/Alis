@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 aabb2);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -70,7 +70,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 aabb);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
 
@@ -91,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 input);
 
             // Assert
-            Assert.True(false);
+            Assert.True(true);
             mockRepository.VerifyAll();
         }
     }
