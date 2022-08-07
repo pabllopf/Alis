@@ -30,7 +30,6 @@
 using System;
 using System.Diagnostics;
 using System.Threading;
-using DevDecoder.HIDDevices;
 using HidSharp.Reports;
 
 namespace Alis.Core.Input

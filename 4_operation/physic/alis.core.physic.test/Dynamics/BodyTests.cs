@@ -1,30 +1,55 @@
-using Alis.Core.Physic;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   BodyTests.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Dynamics;
 using Moq;
-using System;
-using Alis.Aspect.Math;
-using Alis.Core.Physic.Collisions.Shapes;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The body tests class
+    ///     The body tests class
     /// </summary>
     public class BodyTests
     {
         /// <summary>
-        /// The mock repository
+        ///     The mock repository
         /// </summary>
         private MockRepository mockRepository;
 
         /// <summary>
-        /// The mock world
+        ///     The mock world
         /// </summary>
         private Mock<World> mockWorld;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BodyTests"/> class
+        ///     Initializes a new instance of the <see cref="BodyTests" /> class
         /// </summary>
         public BodyTests()
         {
@@ -34,7 +59,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Creates the body
+        ///     Creates the body
         /// </summary>
         /// <returns>The body</returns>
         private Body CreateBody()
@@ -45,7 +70,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that dispose state under test expected behavior
+        ///     Tests that dispose state under test expected behavior
         /// </summary>
         [Fact]
         public void Dispose_StateUnderTest_ExpectedBehavior()
@@ -63,7 +88,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that create fixture state under test expected behavior
+        ///     Tests that create fixture state under test expected behavior
         /// </summary>
         [Fact]
         public void CreateFixture_StateUnderTest_ExpectedBehavior()
@@ -83,7 +108,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that destroy fixture state under test expected behavior
+        ///     Tests that destroy fixture state under test expected behavior
         /// </summary>
         [Fact]
         public void DestroyFixture_StateUnderTest_ExpectedBehavior()
@@ -103,7 +128,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set mass state under test expected behavior
+        ///     Tests that set mass state under test expected behavior
         /// </summary>
         [Fact]
         public void SetMass_StateUnderTest_ExpectedBehavior()
@@ -123,7 +148,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set mass from shapes state under test expected behavior
+        ///     Tests that set mass from shapes state under test expected behavior
         /// </summary>
         [Fact]
         public void SetMassFromShapes_StateUnderTest_ExpectedBehavior()
@@ -141,7 +166,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set x form state under test expected behavior
+        ///     Tests that set x form state under test expected behavior
         /// </summary>
         [Fact]
         public void SetXForm_StateUnderTest_ExpectedBehavior()
@@ -163,7 +188,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set x form state under test expected behavior 1
+        ///     Tests that set x form state under test expected behavior 1
         /// </summary>
         [Fact]
         public void SetXForm_StateUnderTest_ExpectedBehavior1()
@@ -177,14 +202,14 @@ namespace Alis.Core.Physic.Test.Dynamics
             var result = body.SetXForm(
                 xf);
 */
-            
+
             // Assert
             Assert.True(true);
             mockRepository.VerifyAll();
         }
 
         /// <summary>
-        /// Tests that get x form state under test expected behavior
+        ///     Tests that get x form state under test expected behavior
         /// </summary>
         [Fact]
         public void GetXForm_StateUnderTest_ExpectedBehavior()
@@ -203,7 +228,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set position state under test expected behavior
+        ///     Tests that set position state under test expected behavior
         /// </summary>
         [Fact]
         public void SetPosition_StateUnderTest_ExpectedBehavior()
@@ -223,7 +248,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set angle state under test expected behavior
+        ///     Tests that set angle state under test expected behavior
         /// </summary>
         [Fact]
         public void SetAngle_StateUnderTest_ExpectedBehavior()
@@ -243,7 +268,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get position state under test expected behavior
+        ///     Tests that get position state under test expected behavior
         /// </summary>
         [Fact]
         public void GetPosition_StateUnderTest_ExpectedBehavior()
@@ -261,7 +286,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get angle state under test expected behavior
+        ///     Tests that get angle state under test expected behavior
         /// </summary>
         [Fact]
         public void GetAngle_StateUnderTest_ExpectedBehavior()
@@ -279,7 +304,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get world center state under test expected behavior
+        ///     Tests that get world center state under test expected behavior
         /// </summary>
         [Fact]
         public void GetWorldCenter_StateUnderTest_ExpectedBehavior()
@@ -297,7 +322,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get local center state under test expected behavior
+        ///     Tests that get local center state under test expected behavior
         /// </summary>
         [Fact]
         public void GetLocalCenter_StateUnderTest_ExpectedBehavior()
@@ -315,26 +340,26 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set linear velocity state under test expected behavior
+        ///     Tests that set linear velocity state under test expected behavior
         /// </summary>
         [Fact]
         public void SetLinearVelocity_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-           /* var body = CreateBody();
-            Vector2 v = default(Vector2);
-
-            // Act
-            body.SetLinearVelocity(
-                v);
-*/
+            /* var body = CreateBody();
+             Vector2 v = default(Vector2);
+ 
+             // Act
+             body.SetLinearVelocity(
+                 v);
+ */
             // Assert
             Assert.True(true);
             mockRepository.VerifyAll();
         }
 
         /// <summary>
-        /// Tests that get linear velocity state under test expected behavior
+        ///     Tests that get linear velocity state under test expected behavior
         /// </summary>
         [Fact]
         public void GetLinearVelocity_StateUnderTest_ExpectedBehavior()
@@ -352,7 +377,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set angular velocity state under test expected behavior
+        ///     Tests that set angular velocity state under test expected behavior
         /// </summary>
         [Fact]
         public void SetAngularVelocity_StateUnderTest_ExpectedBehavior()
@@ -372,7 +397,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get angular velocity state under test expected behavior
+        ///     Tests that get angular velocity state under test expected behavior
         /// </summary>
         [Fact]
         public void GetAngularVelocity_StateUnderTest_ExpectedBehavior()
@@ -390,7 +415,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that apply force state under test expected behavior
+        ///     Tests that apply force state under test expected behavior
         /// </summary>
         [Fact]
         public void ApplyForce_StateUnderTest_ExpectedBehavior()
@@ -412,7 +437,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that apply torque state under test expected behavior
+        ///     Tests that apply torque state under test expected behavior
         /// </summary>
         [Fact]
         public void ApplyTorque_StateUnderTest_ExpectedBehavior()
@@ -433,7 +458,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that apply impulse state under test expected behavior
+        ///     Tests that apply impulse state under test expected behavior
         /// </summary>
         [Fact]
         public void ApplyImpulse_StateUnderTest_ExpectedBehavior()
@@ -455,7 +480,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get mass state under test expected behavior
+        ///     Tests that get mass state under test expected behavior
         /// </summary>
         [Fact]
         public void GetMass_StateUnderTest_ExpectedBehavior()
@@ -473,7 +498,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get inertia state under test expected behavior
+        ///     Tests that get inertia state under test expected behavior
         /// </summary>
         [Fact]
         public void GetInertia_StateUnderTest_ExpectedBehavior()
@@ -492,7 +517,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get mass data state under test expected behavior
+        ///     Tests that get mass data state under test expected behavior
         /// </summary>
         [Fact]
         public void GetMassData_StateUnderTest_ExpectedBehavior()
@@ -510,7 +535,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get world point state under test expected behavior
+        ///     Tests that get world point state under test expected behavior
         /// </summary>
         [Fact]
         public void GetWorldPoint_StateUnderTest_ExpectedBehavior()
@@ -530,7 +555,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get world vector state under test expected behavior
+        ///     Tests that get world vector state under test expected behavior
         /// </summary>
         [Fact]
         public void GetWorldVector_StateUnderTest_ExpectedBehavior()
@@ -550,7 +575,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get local point state under test expected behavior
+        ///     Tests that get local point state under test expected behavior
         /// </summary>
         [Fact]
         public void GetLocalPoint_StateUnderTest_ExpectedBehavior()
@@ -570,7 +595,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get local vector state under test expected behavior
+        ///     Tests that get local vector state under test expected behavior
         /// </summary>
         [Fact]
         public void GetLocalVector_StateUnderTest_ExpectedBehavior()
@@ -590,7 +615,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get linear velocity from world point state under test expected behavior
+        ///     Tests that get linear velocity from world point state under test expected behavior
         /// </summary>
         [Fact]
         public void GetLinearVelocityFromWorldPoint_StateUnderTest_ExpectedBehavior()
@@ -610,7 +635,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get linear velocity from local point state under test expected behavior
+        ///     Tests that get linear velocity from local point state under test expected behavior
         /// </summary>
         [Fact]
         public void GetLinearVelocityFromLocalPoint_StateUnderTest_ExpectedBehavior()
@@ -630,7 +655,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get linear damping state under test expected behavior
+        ///     Tests that get linear damping state under test expected behavior
         /// </summary>
         [Fact]
         public void GetLinearDamping_StateUnderTest_ExpectedBehavior()
@@ -648,7 +673,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set linear damping state under test expected behavior
+        ///     Tests that set linear damping state under test expected behavior
         /// </summary>
         [Fact]
         public void SetLinearDamping_StateUnderTest_ExpectedBehavior()
@@ -668,7 +693,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get angular damping state under test expected behavior
+        ///     Tests that get angular damping state under test expected behavior
         /// </summary>
         [Fact]
         public void GetAngularDamping_StateUnderTest_ExpectedBehavior()
@@ -686,7 +711,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set angular damping state under test expected behavior
+        ///     Tests that set angular damping state under test expected behavior
         /// </summary>
         [Fact]
         public void SetAngularDamping_StateUnderTest_ExpectedBehavior()
@@ -706,7 +731,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that is bullet state under test expected behavior
+        ///     Tests that is bullet state under test expected behavior
         /// </summary>
         [Fact]
         public void IsBullet_StateUnderTest_ExpectedBehavior()
@@ -724,7 +749,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set bullet state under test expected behavior
+        ///     Tests that set bullet state under test expected behavior
         /// </summary>
         [Fact]
         public void SetBullet_StateUnderTest_ExpectedBehavior()
@@ -743,7 +768,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that is fixed rotation state under test expected behavior
+        ///     Tests that is fixed rotation state under test expected behavior
         /// </summary>
         [Fact]
         public void IsFixedRotation_StateUnderTest_ExpectedBehavior()
@@ -760,7 +785,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set fixed rotation state under test expected behavior
+        ///     Tests that set fixed rotation state under test expected behavior
         /// </summary>
         [Fact]
         public void SetFixedRotation_StateUnderTest_ExpectedBehavior()
@@ -780,7 +805,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that is static state under test expected behavior
+        ///     Tests that is static state under test expected behavior
         /// </summary>
         [Fact]
         public void IsStatic_StateUnderTest_ExpectedBehavior()
@@ -798,7 +823,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set static state under test expected behavior
+        ///     Tests that set static state under test expected behavior
         /// </summary>
         [Fact]
         public void SetStatic_StateUnderTest_ExpectedBehavior()
@@ -816,7 +841,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that is dynamic state under test expected behavior
+        ///     Tests that is dynamic state under test expected behavior
         /// </summary>
         [Fact]
         public void IsDynamic_StateUnderTest_ExpectedBehavior()
@@ -834,7 +859,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that is frozen state under test expected behavior
+        ///     Tests that is frozen state under test expected behavior
         /// </summary>
         [Fact]
         public void IsFrozen_StateUnderTest_ExpectedBehavior()
@@ -852,7 +877,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that is sleeping state under test expected behavior
+        ///     Tests that is sleeping state under test expected behavior
         /// </summary>
         [Fact]
         public void IsSleeping_StateUnderTest_ExpectedBehavior()
@@ -869,7 +894,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that is allow sleeping state under test expected behavior
+        ///     Tests that is allow sleeping state under test expected behavior
         /// </summary>
         [Fact]
         public void IsAllowSleeping_StateUnderTest_ExpectedBehavior()
@@ -887,7 +912,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that allow sleeping state under test expected behavior
+        ///     Tests that allow sleeping state under test expected behavior
         /// </summary>
         [Fact]
         public void AllowSleeping_StateUnderTest_ExpectedBehavior()
@@ -906,7 +931,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that wake up state under test expected behavior
+        ///     Tests that wake up state under test expected behavior
         /// </summary>
         [Fact]
         public void WakeUp_StateUnderTest_ExpectedBehavior()
@@ -924,7 +949,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that put to sleep state under test expected behavior
+        ///     Tests that put to sleep state under test expected behavior
         /// </summary>
         [Fact]
         public void PutToSleep_StateUnderTest_ExpectedBehavior()
@@ -941,7 +966,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get fixture list state under test expected behavior
+        ///     Tests that get fixture list state under test expected behavior
         /// </summary>
         [Fact]
         public void GetFixtureList_StateUnderTest_ExpectedBehavior()
@@ -959,7 +984,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get joint list state under test expected behavior
+        ///     Tests that get joint list state under test expected behavior
         /// </summary>
         [Fact]
         public void GetJointList_StateUnderTest_ExpectedBehavior()
@@ -977,7 +1002,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get controller list state under test expected behavior
+        ///     Tests that get controller list state under test expected behavior
         /// </summary>
         [Fact]
         public void GetControllerList_StateUnderTest_ExpectedBehavior()
@@ -995,7 +1020,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get next state under test expected behavior
+        ///     Tests that get next state under test expected behavior
         /// </summary>
         [Fact]
         public void GetNext_StateUnderTest_ExpectedBehavior()
@@ -1013,7 +1038,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get user data state under test expected behavior
+        ///     Tests that get user data state under test expected behavior
         /// </summary>
         [Fact]
         public void GetUserData_StateUnderTest_ExpectedBehavior()
@@ -1031,7 +1056,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that set user data state under test expected behavior
+        ///     Tests that set user data state under test expected behavior
         /// </summary>
         [Fact]
         public void SetUserData_StateUnderTest_ExpectedBehavior()
@@ -1051,7 +1076,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that get world state under test expected behavior
+        ///     Tests that get world state under test expected behavior
         /// </summary>
         [Fact]
         public void GetWorld_StateUnderTest_ExpectedBehavior()

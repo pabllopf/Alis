@@ -1,28 +1,56 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   GravityControllerTests.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Alis.Aspect.Time;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Moq;
-using System;
-using Alis.Aspect.Time;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Controllers
 {
     /// <summary>
-    /// The gravity controller tests class
+    ///     The gravity controller tests class
     /// </summary>
     public class GravityControllerTests
     {
         /// <summary>
-        /// The mock repository
-        /// </summary>
-        private MockRepository mockRepository;
-
-        /// <summary>
-        /// The mock gravity controller def
+        ///     The mock gravity controller def
         /// </summary>
         private Mock<GravityControllerDef> mockGravityControllerDef;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GravityControllerTests"/> class
+        ///     The mock repository
+        /// </summary>
+        private MockRepository mockRepository;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GravityControllerTests" /> class
         /// </summary>
         public GravityControllerTests()
         {
@@ -32,7 +60,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Creates the gravity controller
+        ///     Creates the gravity controller
         /// </summary>
         /// <returns>The gravity controller</returns>
         private GravityController CreateGravityController()
@@ -42,7 +70,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         }
 
         /// <summary>
-        /// Tests that step state under test expected behavior
+        ///     Tests that step state under test expected behavior
         /// </summary>
         [Fact]
         public void Step_StateUnderTest_ExpectedBehavior()

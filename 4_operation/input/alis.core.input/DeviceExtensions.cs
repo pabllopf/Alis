@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using Alis.Core.Input.Controllers;
-using DevDecoder.HIDDevices;
 using DynamicData;
 
 namespace Alis.Core.Input

@@ -35,7 +35,6 @@ using Android.Opengl;
 #if OSX || IOS
 using Metal;
 using MetalKit;
-using MetalPerformanceShaders;
 using CoreAnimation;
 #endif
 
@@ -98,22 +97,22 @@ namespace Alis.Template.Game.Android
         public static void OnDrawFrame(MTKView view, IMTLCommandQueue commandQueue)
         {
             view.ClearColor = new MTLClearColor(red, green, blue, 1.0f);
-			
+
             // Create a new command buffer for each renderpass to the current drawable
             IMTLCommandBuffer commandBuffer = commandQueue.CommandBuffer();
-			
+
             // Obtain a renderPassDescriptor generated from the view's drawable textures
             MTLRenderPassDescriptor renderPassDescriptor = view.CurrentRenderPassDescriptor;
-			
+
             // Create a render command encoder so we can render into something
             IMTLRenderCommandEncoder commandEncoder = commandBuffer.CreateRenderCommandEncoder(renderPassDescriptor);
-			
+
             commandEncoder.EndEncoding();
 
             ICAMetalDrawable drawable = view.CurrentDrawable;
-			
+
             commandBuffer.PresentDrawable(drawable);
-			
+
             commandBuffer.Commit();
 
             red += 0.01f;

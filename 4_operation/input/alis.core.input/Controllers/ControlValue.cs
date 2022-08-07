@@ -30,7 +30,6 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
-using DevDecoder.HIDDevices;
 
 namespace Alis.Core.Input.Controllers
 {

@@ -1,31 +1,59 @@
-using Alis.Core.Physic.Dynamics;
-using Moq;
-using System;
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   IslandTests.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joints;
+using Moq;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The island tests class
+    ///     The island tests class
     /// </summary>
     public class IslandTests
     {
         /// <summary>
-        /// The mock repository
-        /// </summary>
-        private MockRepository mockRepository;
-
-        /// <summary>
-        /// The mock contact listener
+        ///     The mock contact listener
         /// </summary>
         private Mock<IContactListener> mockContactListener;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="IslandTests"/> class
+        ///     The mock repository
+        /// </summary>
+        private MockRepository mockRepository;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="IslandTests" /> class
         /// </summary>
         public IslandTests()
         {
@@ -35,7 +63,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Creates the island
+        ///     Creates the island
         /// </summary>
         /// <returns>The island</returns>
         private Island CreateIsland()
@@ -48,7 +76,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that dispose state under test expected behavior
+        ///     Tests that dispose state under test expected behavior
         /// </summary>
         [Fact]
         public void Dispose_StateUnderTest_ExpectedBehavior()
@@ -65,7 +93,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that clear state under test expected behavior
+        ///     Tests that clear state under test expected behavior
         /// </summary>
         [Fact]
         public void Clear_StateUnderTest_ExpectedBehavior()
@@ -82,7 +110,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that solve state under test expected behavior
+        ///     Tests that solve state under test expected behavior
         /// </summary>
         [Fact]
         public void Solve_StateUnderTest_ExpectedBehavior()
@@ -105,7 +133,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that solve toi state under test expected behavior
+        ///     Tests that solve toi state under test expected behavior
         /// </summary>
         [Fact]
         public void SolveToi_StateUnderTest_ExpectedBehavior()
@@ -124,7 +152,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that add state under test expected behavior
+        ///     Tests that add state under test expected behavior
         /// </summary>
         [Fact]
         public void Add_StateUnderTest_ExpectedBehavior()
@@ -142,7 +170,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that add state under test expected behavior 1
+        ///     Tests that add state under test expected behavior 1
         /// </summary>
         [Fact]
         public void Add_StateUnderTest_ExpectedBehavior1()
@@ -161,7 +189,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that add state under test expected behavior 2
+        ///     Tests that add state under test expected behavior 2
         /// </summary>
         [Fact]
         public void Add_StateUnderTest_ExpectedBehavior2()
@@ -180,7 +208,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that report state under test expected behavior
+        ///     Tests that report state under test expected behavior
         /// </summary>
         [Fact]
         public void Report_StateUnderTest_ExpectedBehavior()

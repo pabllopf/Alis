@@ -47,6 +47,16 @@ namespace Alis.Core.Physic.Collisions
         public static readonly byte NullFeature = Math.UcharMax;
 
         /// <summary>
+        ///     The max toi iters
+        /// </summary>
+        public static int MaxToiIters;
+
+        /// <summary>
+        ///     The max toi root iters
+        /// </summary>
+        public static int MaxToiRootIters;
+
+        /// <summary>
         ///     Describes whether test overlap
         /// </summary>
         /// <param name="a">The </param>
@@ -172,9 +182,9 @@ namespace Alis.Core.Physic.Collisions
 
             return numOut;
         }
-        
-        
-         /// <summary>
+
+
+        /// <summary>
         ///     Collides the circles using the specified manifold
         /// </summary>
         /// <param name="manifold">The manifold</param>
@@ -316,7 +326,7 @@ namespace Alis.Core.Physic.Collisions
                 manifold.Points[0].Id.Key = 0;
             }
         }
-        
+
         // This implements 2-sided edge vs circle collision.
         /// <summary>
         ///     Collides the edge and circle using the specified manifold
@@ -406,8 +416,8 @@ namespace Alis.Core.Physic.Collisions
 
             CollidePolygons(ref manifold, polygon, transformA, polygonB, transformB);
         }
-        
-         /// <summary>
+
+        /// <summary>
         ///     Find the separation between poly1 and poly2 for a give edge normal on poly1.
         /// </summary>
         public static float EdgeSeparation(PolygonShape poly1, XForm xf1, int edge1, PolygonShape poly2, XForm xf2)
@@ -717,8 +727,8 @@ namespace Alis.Core.Physic.Collisions
 
             manifold.PointCount = pointCount;
         }
-        
-         /// <summary>
+
+        /// <summary>
         ///     Compute the closest points between two shapes. Supports any combination of:
         ///     CircleShape, PolygonShape, EdgeShape. The simplex cache is input/output.
         ///     On the first call set SimplexCache.Count to zero.
@@ -887,16 +897,6 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
         }
-         
-         /// <summary>
-        ///     The max toi iters
-        /// </summary>
-        public static int MaxToiIters;
-
-        /// <summary>
-        ///     The max toi root iters
-        /// </summary>
-        public static int MaxToiRootIters;
 
         // CCD via the secant method.
         /// <summary>

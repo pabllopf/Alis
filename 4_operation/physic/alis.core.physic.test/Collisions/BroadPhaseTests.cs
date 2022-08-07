@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   BroadPhaseTests.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Collisions;
 using Moq;
 using Xunit;
@@ -5,22 +34,22 @@ using Xunit;
 namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
-    /// The broad phase tests class
+    ///     The broad phase tests class
     /// </summary>
     public class BroadPhaseTests
     {
         /// <summary>
-        /// The mock repository
-        /// </summary>
-        private MockRepository mockRepository;
-
-        /// <summary>
-        /// The mock pair callback
+        ///     The mock pair callback
         /// </summary>
         private Mock<PairCallback> mockPairCallback;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BroadPhaseTests"/> class
+        ///     The mock repository
+        /// </summary>
+        private MockRepository mockRepository;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="BroadPhaseTests" /> class
         /// </summary>
         public BroadPhaseTests()
         {
@@ -30,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Creates the broad phase
+        ///     Creates the broad phase
         /// </summary>
         /// <returns>The broad phase</returns>
         private BroadPhase CreateBroadPhase()
@@ -41,7 +70,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that in range state under test expected behavior
+        ///     Tests that in range state under test expected behavior
         /// </summary>
         [Fact]
         public void InRange_StateUnderTest_ExpectedBehavior()
@@ -60,7 +89,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that create proxy state under test expected behavior
+        ///     Tests that create proxy state under test expected behavior
         /// </summary>
         [Fact]
         public void CreateProxy_StateUnderTest_ExpectedBehavior()
@@ -81,7 +110,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that destroy proxy state under test expected behavior
+        ///     Tests that destroy proxy state under test expected behavior
         /// </summary>
         [Fact]
         public void DestroyProxy_StateUnderTest_ExpectedBehavior()
@@ -99,7 +128,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that move proxy state under test expected behavior
+        ///     Tests that move proxy state under test expected behavior
         /// </summary>
         [Fact]
         public void MoveProxy_StateUnderTest_ExpectedBehavior()
@@ -120,7 +149,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that commit state under test expected behavior
+        ///     Tests that commit state under test expected behavior
         /// </summary>
         [Fact]
         public void Commit_StateUnderTest_ExpectedBehavior()
@@ -137,7 +166,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that get proxy state under test expected behavior
+        ///     Tests that get proxy state under test expected behavior
         /// </summary>
         [Fact]
         public void GetProxy_StateUnderTest_ExpectedBehavior()
@@ -156,7 +185,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that query state under test expected behavior
+        ///     Tests that query state under test expected behavior
         /// </summary>
         [Fact]
         public void Query_StateUnderTest_ExpectedBehavior()
@@ -179,7 +208,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that query segment state under test expected behavior
+        ///     Tests that query segment state under test expected behavior
         /// </summary>
         [Fact]
         public void QuerySegment_StateUnderTest_ExpectedBehavior()
@@ -204,7 +233,7 @@ namespace Alis.Core.Physic.Test.Collisions
         }
 
         /// <summary>
-        /// Tests that validate state under test expected behavior
+        ///     Tests that validate state under test expected behavior
         /// </summary>
         [Fact]
         public void Validate_StateUnderTest_ExpectedBehavior()

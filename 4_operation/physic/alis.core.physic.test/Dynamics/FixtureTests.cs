@@ -1,37 +1,59 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:   FixtureTests.cs
+// 
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using Alis.Core.Physic.Dynamics;
 using Moq;
-using System;
-using Alis.Aspect.Math;
-using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics
 {
     /// <summary>
-    /// The fixture tests class
+    ///     The fixture tests class
     /// </summary>
     public class FixtureTests
     {
         /// <summary>
-        /// The mock repository
+        ///     The mock repository
         /// </summary>
         private MockRepository mockRepository;
 
 
-
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixtureTests"/> class
+        ///     Initializes a new instance of the <see cref="FixtureTests" /> class
         /// </summary>
         public FixtureTests()
         {
             mockRepository = new MockRepository(MockBehavior.Strict);
-
-
         }
 
         /// <summary>
-        /// Creates the fixture
+        ///     Creates the fixture
         /// </summary>
         /// <returns>The fixture</returns>
         private Fixture CreateFixture()
@@ -40,7 +62,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that create state under test expected behavior
+        ///     Tests that create state under test expected behavior
         /// </summary>
         [Fact]
         public void Create_StateUnderTest_ExpectedBehavior()
@@ -66,7 +88,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that destroy state under test expected behavior
+        ///     Tests that destroy state under test expected behavior
         /// </summary>
         [Fact]
         public void Destroy_StateUnderTest_ExpectedBehavior()
@@ -86,7 +108,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that dispose state under test expected behavior
+        ///     Tests that dispose state under test expected behavior
         /// </summary>
         [Fact]
         public void Dispose_StateUnderTest_ExpectedBehavior()
@@ -103,7 +125,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that compute mass state under test expected behavior
+        ///     Tests that compute mass state under test expected behavior
         /// </summary>
         [Fact]
         public void ComputeMass_StateUnderTest_ExpectedBehavior()
@@ -123,7 +145,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that compute submerged area state under test expected behavior
+        ///     Tests that compute submerged area state under test expected behavior
         /// </summary>
         [Fact]
         public void ComputeSubmergedArea_StateUnderTest_ExpectedBehavior()
@@ -147,7 +169,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that test point state under test expected behavior
+        ///     Tests that test point state under test expected behavior
         /// </summary>
         [Fact]
         public void TestPoint_StateUnderTest_ExpectedBehavior()
@@ -167,7 +189,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that test segment state under test expected behavior
+        ///     Tests that test segment state under test expected behavior
         /// </summary>
         [Fact]
         public void TestSegment_StateUnderTest_ExpectedBehavior()
@@ -193,7 +215,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         }
 
         /// <summary>
-        /// Tests that compute sweep radius state under test expected behavior
+        ///     Tests that compute sweep radius state under test expected behavior
         /// </summary>
         [Fact]
         public void ComputeSweepRadius_StateUnderTest_ExpectedBehavior()

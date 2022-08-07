@@ -29,7 +29,6 @@
 
 using System;
 using System.ComponentModel;
-using DevDecoder.HIDDevices;
 
 namespace Alis.Core.Input.Controllers
 {
