@@ -1,0 +1,225 @@
+using Alis.Core.Physic.Collision;
+using Moq;
+using System;
+using Xunit;
+
+namespace Alis.Core.Physic.Test.Collision
+{
+    /// <summary>
+    /// The broad phase tests class
+    /// </summary>
+    public class BroadPhaseTests
+    {
+        /// <summary>
+        /// The mock repository
+        /// </summary>
+        private MockRepository mockRepository;
+
+        /// <summary>
+        /// The mock pair callback
+        /// </summary>
+        private Mock<PairCallback> mockPairCallback;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BroadPhaseTests"/> class
+        /// </summary>
+        public BroadPhaseTests()
+        {
+            this.mockRepository = new MockRepository(MockBehavior.Strict);
+
+            this.mockPairCallback = this.mockRepository.Create<PairCallback>();
+        }
+
+        /// <summary>
+        /// Creates the broad phase
+        /// </summary>
+        /// <returns>The broad phase</returns>
+        private BroadPhase CreateBroadPhase()
+        {
+            return new BroadPhase(
+                TODO,
+                this.mockPairCallback.Object);
+        }
+
+        /// <summary>
+        /// Tests that in range state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void InRange_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+
+            // Act
+            var result = broadPhase.InRange(
+                aabb);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that create proxy state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void CreateProxy_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            object userData = null;
+
+            // Act
+            var result = broadPhase.CreateProxy(
+                aabb,
+                userData);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that destroy proxy state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void DestroyProxy_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+            int proxyId = 0;
+
+            // Act
+            broadPhase.DestroyProxy(
+                proxyId);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that move proxy state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void MoveProxy_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+            int proxyId = 0;
+            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+
+            // Act
+            broadPhase.MoveProxy(
+                proxyId,
+                aabb);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that commit state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void Commit_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+
+            // Act
+            broadPhase.Commit();
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that get proxy state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void GetProxy_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+            int proxyId = 0;
+
+            // Act
+            var result = broadPhase.GetProxy(
+                proxyId);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that query state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void Query_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            object[] userData = null;
+            int maxCount = 0;
+
+            // Act
+            var result = broadPhase.Query(
+                aabb,
+                userData,
+                maxCount);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that query segment state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void QuerySegment_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+            Segment segment = default(global::Alis.Core.Physic.Collision.Segment);
+            object[] userData = null;
+            int maxCount = 0;
+            SortKeyFunc sortKey = null;
+
+            // Act
+            var result = broadPhase.QuerySegment(
+                segment,
+                userData,
+                maxCount,
+                sortKey);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that validate state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void Validate_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var broadPhase = this.CreateBroadPhase();
+
+            // Act
+            broadPhase.Validate();
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+    }
+}

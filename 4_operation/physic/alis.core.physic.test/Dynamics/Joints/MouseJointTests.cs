@@ -1,0 +1,100 @@
+using Alis.Core.Physic.Dynamics.Joints;
+using Moq;
+using System;
+using Xunit;
+
+namespace Alis.Core.Physic.Test.Dynamics.Joints
+{
+    /// <summary>
+    /// The mouse joint tests class
+    /// </summary>
+    public class MouseJointTests
+    {
+        /// <summary>
+        /// The mock repository
+        /// </summary>
+        private MockRepository mockRepository;
+
+        /// <summary>
+        /// The mock mouse joint def
+        /// </summary>
+        private Mock<MouseJointDef> mockMouseJointDef;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MouseJointTests"/> class
+        /// </summary>
+        public MouseJointTests()
+        {
+            this.mockRepository = new MockRepository(MockBehavior.Strict);
+
+            this.mockMouseJointDef = this.mockRepository.Create<MouseJointDef>();
+        }
+
+        /// <summary>
+        /// Creates the mouse joint
+        /// </summary>
+        /// <returns>The mouse joint</returns>
+        private MouseJoint CreateMouseJoint()
+        {
+            return new MouseJoint(
+                this.mockMouseJointDef.Object);
+        }
+
+        /// <summary>
+        /// Tests that get reaction force state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void GetReactionForce_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var mouseJoint = this.CreateMouseJoint();
+            float invDt = 0;
+
+            // Act
+            var result = mouseJoint.GetReactionForce(
+                invDt);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that get reaction torque state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void GetReactionTorque_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var mouseJoint = this.CreateMouseJoint();
+            float invDt = 0;
+
+            // Act
+            var result = mouseJoint.GetReactionTorque(
+                invDt);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+
+        /// <summary>
+        /// Tests that set target state under test expected behavior
+        /// </summary>
+        [Fact]
+        public void SetTarget_StateUnderTest_ExpectedBehavior()
+        {
+            // Arrange
+            var mouseJoint = this.CreateMouseJoint();
+            Vector2 target = default(global::Alis.Aspect.Math.Vector2);
+
+            // Act
+            mouseJoint.SetTarget(
+                target);
+
+            // Assert
+            Assert.True(false);
+            this.mockRepository.VerifyAll();
+        }
+    }
+}

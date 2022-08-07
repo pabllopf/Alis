@@ -1,6 +1,7 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.102
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{0F6ED8BC-329E-4716-8419-C8C94377C8BE}"
 	ProjectSection(SolutionItems) = preProject
@@ -22,6 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assembly", "assembly", "{94
 	ProjectSection(SolutionItems) = preProject
 		.config\assembly\Company.props = .config\assembly\Company.props
 		.config\assembly\FileVersion.props = .config\assembly\FileVersion.props
+		.config\assembly\InternalsVisibleTo.props = .config\assembly\InternalsVisibleTo.props
 		.config\assembly\NeutralLanguage.props = .config\assembly\NeutralLanguage.props
 		.config\assembly\Product.props = .config\assembly\Product.props
 	EndProjectSection
@@ -124,23 +126,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scripts", ".scripts", "{53
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB}"
 	ProjectSection(SolutionItems) = preProject
-		.scripts\macos\restart_nuget.sh = .scripts\macos\restart_nuget.sh
-		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
-		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
 		.scripts\macos\generate_comments.sh = .scripts\macos\generate_comments.sh
 		.scripts\macos\install_env.sh = .scripts\macos\install_env.sh
+		.scripts\macos\restart_nuget.sh = .scripts\macos\restart_nuget.sh
+		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
+		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
 	ProjectSection(SolutionItems) = preProject
+		.scripts\linux\clean_temp_files.sh = .scripts\linux\clean_temp_files.sh
+		.scripts\linux\create_web.sh = .scripts\linux\create_web.sh
 		.scripts\linux\document_code.sh = .scripts\linux\document_code.sh
 		.scripts\linux\publish.sh = .scripts\linux\publish.sh
+		.scripts\linux\publish_to_github.sh = .scripts\linux\publish_to_github.sh
 		.scripts\linux\restart_nuget.sh = .scripts\linux\restart_nuget.sh
 		.scripts\linux\restart_sln.sh = .scripts\linux\restart_sln.sh
 		.scripts\linux\trust_certificates.sh = .scripts\linux\trust_certificates.sh
-		.scripts\linux\clean_temp_files.sh = .scripts\linux\clean_temp_files.sh
-		.scripts\linux\create_web.sh = .scripts\linux\create_web.sh
-		.scripts\linux\publish_to_github.sh = .scripts\linux\publish_to_github.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015EBC6B-559D-4454-9DB0-8E2D42CBBE34}"
@@ -148,8 +150,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015E
 		.scripts\windows\clean_temp_files.bat = .scripts\windows\clean_temp_files.bat
 		.scripts\windows\create_web.bat = .scripts\windows\create_web.bat
 		.scripts\windows\document_code.bat = .scripts\windows\document_code.bat
-		.scripts\windows\publish_to_github.bat = .scripts\windows\publish_to_github.bat
 		.scripts\windows\publish.bat = .scripts\windows\publish.bat
+		.scripts\windows\publish_to_github.bat = .scripts\windows\publish_to_github.bat
 		.scripts\windows\restart_nuget.bat = .scripts\windows\restart_nuget.bat
 		.scripts\windows\restart_sln.bat = .scripts\windows\restart_sln.bat
 		.scripts\windows\trust_certificates.bat = .scripts\windows\trust_certificates.bat
@@ -165,405 +167,261 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6_ideation", "6_ideation", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "memory", "memory", "{CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Memory.Test", "6_ideation\memory\alis.aspect.memory.test\Alis.Aspect.Memory.Test.csproj", "{57D7A0A6-47CF-438B-9F58-09E6D86CF4EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Memory.Test", "6_ideation\memory\alis.aspect.memory.test\Alis.Aspect.Memory.Test.csproj", "{57D7A0A6-47CF-438B-9F58-09E6D86CF4EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Memory.Sample", "6_ideation\memory\alis.aspect.memory.sample\Alis.Aspect.Memory.Sample.csproj", "{9CAFA4F4-4241-4855-BFD8-9B787402D632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Memory.Sample", "6_ideation\memory\alis.aspect.memory.sample\Alis.Aspect.Memory.Sample.csproj", "{9CAFA4F4-4241-4855-BFD8-9B787402D632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Memory", "6_ideation\memory\alis.aspect.memory\Alis.Aspect.Memory.csproj", "{5A4352AF-91C6-4A29-97F1-7849CDE80DFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Memory", "6_ideation\memory\alis.aspect.memory\Alis.Aspect.Memory.csproj", "{5A4352AF-91C6-4A29-97F1-7849CDE80DFC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "security", "security", "{3FF288B8-271E-442D-8E9F-EDBE2938AB96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Security.Sample", "6_ideation\security\alis.aspect.security.sample\Alis.Aspect.Security.Sample.csproj", "{599064E6-3971-4983-8FCA-F49F7DCF2530}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Security.Sample", "6_ideation\security\alis.aspect.security.sample\Alis.Aspect.Security.Sample.csproj", "{599064E6-3971-4983-8FCA-F49F7DCF2530}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Security", "6_ideation\security\alis.aspect.security\Alis.Aspect.Security.csproj", "{05BF49E4-381C-4F37-B33E-6C13DC41CEA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Security", "6_ideation\security\alis.aspect.security\Alis.Aspect.Security.csproj", "{05BF49E4-381C-4F37-B33E-6C13DC41CEA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Security.Test", "6_ideation\security\alis.aspect.security.test\Alis.Aspect.Security.Test.csproj", "{6EADE403-E287-4D39-9A6D-99C0300838B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Security.Test", "6_ideation\security\alis.aspect.security.test\Alis.Aspect.Security.Test.csproj", "{6EADE403-E287-4D39-9A6D-99C0300838B6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fluent", "fluent", "{E48E3C03-1E9F-41CE-90CE-582DA26AE3F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Fluent.Test", "6_ideation\fluent\alis.aspect.fluent.test\Alis.Aspect.Fluent.Test.csproj", "{8C280078-C481-4993-A206-1A83A3D583A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Fluent.Test", "6_ideation\fluent\alis.aspect.fluent.test\Alis.Aspect.Fluent.Test.csproj", "{8C280078-C481-4993-A206-1A83A3D583A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Fluent.Sample", "6_ideation\fluent\alis.aspect.fluent.sample\Alis.Aspect.Fluent.Sample.csproj", "{86E2366D-80EB-434B-A6BD-28011AA13C6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Fluent.Sample", "6_ideation\fluent\alis.aspect.fluent.sample\Alis.Aspect.Fluent.Sample.csproj", "{86E2366D-80EB-434B-A6BD-28011AA13C6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Fluent", "6_ideation\fluent\alis.aspect.fluent\Alis.Aspect.Fluent.csproj", "{0FB47BEF-16DE-4C41-93E8-5C08BD37C641}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Fluent", "6_ideation\fluent\alis.aspect.fluent\Alis.Aspect.Fluent.csproj", "{0FB47BEF-16DE-4C41-93E8-5C08BD37C641}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "math", "math", "{615AF9CA-9E9A-445A-9C18-46E1A795CBE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Math.Test", "6_ideation\math\alis.aspect.math.test\Alis.Aspect.Math.Test.csproj", "{BCCFA061-BABD-4FAD-A65B-0771EA2520D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Math.Test", "6_ideation\math\alis.aspect.math.test\Alis.Aspect.Math.Test.csproj", "{BCCFA061-BABD-4FAD-A65B-0771EA2520D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Math", "6_ideation\math\alis.aspect.math\Alis.Aspect.Math.csproj", "{BB7569C5-0D3A-4605-BEE2-8B77EC5F8CE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Math", "6_ideation\math\alis.aspect.math\Alis.Aspect.Math.csproj", "{BB7569C5-0D3A-4605-BEE2-8B77EC5F8CE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Math.Sample", "6_ideation\math\alis.aspect.math.sample\Alis.Aspect.Math.Sample.csproj", "{741FCCAF-8453-4E3D-8134-F54F7E3C5A6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Math.Sample", "6_ideation\math\alis.aspect.math.sample\Alis.Aspect.Math.Sample.csproj", "{741FCCAF-8453-4E3D-8134-F54F7E3C5A6B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "time", "time", "{D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Time.Sample", "6_ideation\time\alis.aspect.time.sample\Alis.Aspect.Time.Sample.csproj", "{80B14994-61F4-43E6-8F6B-74F061A6C751}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Time.Sample", "6_ideation\time\alis.aspect.time.sample\Alis.Aspect.Time.Sample.csproj", "{80B14994-61F4-43E6-8F6B-74F061A6C751}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Aspect.Test", "6_ideation\time\alis.aspect.time.test\Alis.Core.Aspect.Test.csproj", "{24BFD35E-C585-463D-A52E-E7D6BE0115E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Aspect.Test", "6_ideation\time\alis.aspect.time.test\Alis.Core.Aspect.Test.csproj", "{24BFD35E-C585-463D-A52E-E7D6BE0115E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Time", "6_ideation\time\alis.aspect.time\Alis.Aspect.Time.csproj", "{18BCC2F5-5D7A-4B20-897D-02B12893F64C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Time", "6_ideation\time\alis.aspect.time\Alis.Aspect.Time.csproj", "{18BCC2F5-5D7A-4B20-897D-02B12893F64C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{0782BAF0-81F6-4FAB-8F45-AD280C56A9CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Data", "6_ideation\data\alis.aspect.data\Alis.Aspect.Data.csproj", "{B232BBFF-21CA-4ED2-8A4B-AAF405DADE14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Data", "6_ideation\data\alis.aspect.data\Alis.Aspect.Data.csproj", "{B232BBFF-21CA-4ED2-8A4B-AAF405DADE14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Data.Test", "6_ideation\data\alis.aspect.data.test\Alis.Aspect.Data.Test.csproj", "{9261E435-6DCF-4289-B3D5-9C7FBD017099}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Data.Test", "6_ideation\data\alis.aspect.data.test\Alis.Aspect.Data.Test.csproj", "{9261E435-6DCF-4289-B3D5-9C7FBD017099}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Data.Sample", "6_ideation\data\alis.aspect.data.sample\Alis.Aspect.Data.Sample.csproj", "{420CFBEF-FE71-46C9-B5D6-583EAE713605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Data.Sample", "6_ideation\data\alis.aspect.data.sample\Alis.Aspect.Data.Sample.csproj", "{420CFBEF-FE71-46C9-B5D6-583EAE713605}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thread", "thread", "{E4243D4C-3B88-4F4F-B3D8-084837B039FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Thread.Sample", "6_ideation\thread\alis.aspect.thread.sample\Alis.Aspect.Thread.Sample.csproj", "{073ED5EC-B067-40D3-B4FF-7FCBE92AD2DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Thread.Sample", "6_ideation\thread\alis.aspect.thread.sample\Alis.Aspect.Thread.Sample.csproj", "{073ED5EC-B067-40D3-B4FF-7FCBE92AD2DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Thread.Test", "6_ideation\thread\alis.aspect.thread.test\Alis.Aspect.Thread.Test.csproj", "{2B2FD00A-71B7-490F-8AC9-9CBBFEA2B939}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Thread.Test", "6_ideation\thread\alis.aspect.thread.test\Alis.Aspect.Thread.Test.csproj", "{2B2FD00A-71B7-490F-8AC9-9CBBFEA2B939}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Thread", "6_ideation\thread\alis.aspect.thread\Alis.Aspect.Thread.csproj", "{033189D2-2456-4783-B0EB-E54E2A7EDD56}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Thread", "6_ideation\thread\alis.aspect.thread\Alis.Aspect.Thread.csproj", "{033189D2-2456-4783-B0EB-E54E2A7EDD56}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "logging", "logging", "{226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Logging.Test", "6_ideation\logging\alis.aspect.logging.test\Alis.Aspect.Logging.Test.csproj", "{2CE9BD6F-7182-41F8-BDD1-9CCF4ED1FF0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Logging.Test", "6_ideation\logging\alis.aspect.logging.test\Alis.Aspect.Logging.Test.csproj", "{2CE9BD6F-7182-41F8-BDD1-9CCF4ED1FF0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Logging.Sample", "6_ideation\logging\alis.aspect.logging.sample\Alis.Aspect.Logging.Sample.csproj", "{3047A273-7434-47F0-B605-CC0661ABB567}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Logging.Sample", "6_ideation\logging\alis.aspect.logging.sample\Alis.Aspect.Logging.Sample.csproj", "{3047A273-7434-47F0-B605-CC0661ABB567}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Logging", "6_ideation\logging\alis.aspect.logging\Alis.Aspect.Logging.csproj", "{667EA0CE-EA10-4BB9-BB83-E869961295F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Logging", "6_ideation\logging\alis.aspect.logging\Alis.Aspect.Logging.csproj", "{667EA0CE-EA10-4BB9-BB83-E869961295F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base", "base", "{3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Base.Sample", "6_ideation\base\alis.aspect.base.sample\Alis.Aspect.Base.Sample.csproj", "{4A3CC720-D2F3-4EF8-95CD-F52F8E3E500E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Base.Sample", "6_ideation\base\alis.aspect.base.sample\Alis.Aspect.Base.Sample.csproj", "{4A3CC720-D2F3-4EF8-95CD-F52F8E3E500E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Base", "6_ideation\base\alis.aspect.base\Alis.Aspect.Base.csproj", "{D7F2D588-E8E1-4E54-86E9-27C34C13C329}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Base", "6_ideation\base\alis.aspect.base\Alis.Aspect.Base.csproj", "{D7F2D588-E8E1-4E54-86E9-27C34C13C329}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Base.Test", "6_ideation\base\alis.aspect.base.test\Alis.Aspect.Base.Test.csproj", "{FD0AACC4-D399-407E-B756-5FD8A40BA661}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Base.Test", "6_ideation\base\alis.aspect.base.test\Alis.Aspect.Base.Test.csproj", "{FD0AACC4-D399-407E-B756-5FD8A40BA661}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_presentation", "1_presentation", "{ADBE4286-5BE2-4A22-9069-02863FF5152E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "template", "template", "{63A242F5-C33B-4B53-9E83-CB571AF25A94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game", "1_presentation\template\alis.template.game\Alis.Template.Game.csproj", "{FE6458B6-9AF0-4B13-84F4-5955ADA07998}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Template.Game", "1_presentation\template\alis.template.game\Alis.Template.Game.csproj", "{FE6458B6-9AF0-4B13-84F4-5955ADA07998}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Android", "1_presentation\template\alis.template.game.android\Alis.Template.Game.Android.csproj", "{363983A4-9F07-4F8C-83D3-6EA86632BC20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Template.Game.Android", "1_presentation\template\alis.template.game.android\Alis.Template.Game.Android.csproj", "{363983A4-9F07-4F8C-83D3-6EA86632BC20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Ios", "1_presentation\template\alis.template.game.ios\Alis.Template.Game.Ios.csproj", "{A19E90D3-8C2F-43E4-9CF8-DBD9E92A7AE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Template.Game.Ios", "1_presentation\template\alis.template.game.ios\Alis.Template.Game.Ios.csproj", "{A19E90D3-8C2F-43E4-9CF8-DBD9E92A7AE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Desktop", "1_presentation\template\alis.template.game.desktop\Alis.Template.Game.Desktop.csproj", "{02FFE418-B706-4B9D-B79E-0005E1DE6D08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Template.Game.Desktop", "1_presentation\template\alis.template.game.desktop\Alis.Template.Game.Desktop.csproj", "{02FFE418-B706-4B9D-B79E-0005E1DE6D08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.MacOs", "1_presentation\template\alis.template.game.macos\Alis.Template.Game.MacOs.csproj", "{724FB916-747A-429A-ACD4-C521C5402207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Template.Game.MacOs", "1_presentation\template\alis.template.game.macos\Alis.Template.Game.MacOs.csproj", "{724FB916-747A-429A-ACD4-C521C5402207}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "installer", "installer", "{4FB49C2C-B018-4DDE-BDF5-CB97C1CD7380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.App.Installer", "1_presentation\installer\alis.app.installer\Alis.App.Installer.csproj", "{DF33E281-A8DF-409E-830A-A4B258A456E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.App.Installer", "1_presentation\installer\alis.app.installer\Alis.App.Installer.csproj", "{DF33E281-A8DF-409E-830A-A4B258A456E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.App.Installer.Test", "1_presentation\installer\alis.app.installer.test\Alis.App.Installer.Test.csproj", "{863B5135-A92A-498C-BE0E-5CA62294F32B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.App.Installer.Test", "1_presentation\installer\alis.app.installer.test\Alis.App.Installer.Test.csproj", "{863B5135-A92A-498C-BE0E-5CA62294F32B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "engine", "engine", "{19264B7F-E3EB-4A10-BF9D-A124DB1BC5AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.App.Engine.Test", "1_presentation\engine\alis.app.engine.test\Alis.App.Engine.Test.csproj", "{14C2DB18-2314-4F19-82E0-9DA71DCE20EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.App.Engine.Test", "1_presentation\engine\alis.app.engine.test\Alis.App.Engine.Test.csproj", "{14C2DB18-2314-4F19-82E0-9DA71DCE20EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.App.Engine", "1_presentation\engine\alis.app.engine\Alis.App.Engine.csproj", "{7837516A-A349-4FDB-B0D8-803609727637}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.App.Engine", "1_presentation\engine\alis.app.engine\Alis.App.Engine.csproj", "{7837516A-A349-4FDB-B0D8-803609727637}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_structuration", "3_structuration", "{6E338B59-93FF-4A2E-AC1F-C9950A5C5F8A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{A2536C51-6C61-4125-BC10-C1159BBB9C4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core", "3_structuration\core\alis.core\Alis.Core.csproj", "{AEC1740A-AA99-44CB-9CB5-514557AE2AC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core", "3_structuration\core\alis.core\Alis.Core.csproj", "{AEC1740A-AA99-44CB-9CB5-514557AE2AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Sample", "3_structuration\core\alis.core.sample\Alis.Core.Sample.csproj", "{8513866B-541F-4F83-B960-EA871804D722}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Sample", "3_structuration\core\alis.core.sample\Alis.Core.Sample.csproj", "{8513866B-541F-4F83-B960-EA871804D722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Test", "3_structuration\core\alis.core.test\Alis.Core.Test.csproj", "{751BC794-8B43-4E8B-9020-F82C5D1A07D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Test", "3_structuration\core\alis.core.test\Alis.Core.Test.csproj", "{751BC794-8B43-4E8B-9020-F82C5D1A07D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_application", "2_application", "{09F04E95-7D36-44A9-B29F-6A542EA30047}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alis", "alis", "{C171EE2B-3881-4A03-AFF1-F01D3926390C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Test", "2_application\alis\alis.test\Alis.Test.csproj", "{15D474BF-420C-4501-8D29-5FAE0C29988B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Test", "2_application\alis\alis.test\Alis.Test.csproj", "{15D474BF-420C-4501-8D29-5FAE0C29988B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis", "2_application\alis\alis\Alis.csproj", "{08351646-97B3-49C9-9543-7383A8DB9122}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis", "2_application\alis\alis\Alis.csproj", "{08351646-97B3-49C9-9543-7383A8DB9122}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "alis.sample", "alis.sample", "{3916975F-B793-4A3D-AF73-B546227ABB5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.PacMan", "2_application\alis\alis.sample\alis.sample.pacman\Alis.Sample.PacMan.csproj", "{E2914306-3CB6-4653-A8CD-A0DB62E161BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.PacMan", "2_application\alis\alis.sample\alis.sample.pacman\Alis.Sample.PacMan.csproj", "{E2914306-3CB6-4653-A8CD-A0DB62E161BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Asteroids", "2_application\alis\alis.sample\alis.sample.asteroids\Alis.Sample.Asteroids.csproj", "{3505E99E-2973-4798-8D9F-4637F4990B94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Asteroids", "2_application\alis\alis.sample\alis.sample.asteroids\Alis.Sample.Asteroids.csproj", "{3505E99E-2973-4798-8D9F-4637F4990B94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.GeometryDash", "2_application\alis\alis.sample\alis.sample.geometrydash\Alis.Sample.GeometryDash.csproj", "{B73FA038-1774-40F9-8E5D-12C0BDBDEFEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.GeometryDash", "2_application\alis\alis.sample\alis.sample.geometrydash\Alis.Sample.GeometryDash.csproj", "{B73FA038-1774-40F9-8E5D-12C0BDBDEFEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Tetris", "2_application\alis\alis.sample\alis.sample.tetris\Alis.Sample.Tetris.csproj", "{8B03BA66-7718-4666-B2C7-2A7192232014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Tetris", "2_application\alis\alis.sample\alis.sample.tetris\Alis.Sample.Tetris.csproj", "{8B03BA66-7718-4666-B2C7-2A7192232014}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.FlappyBird", "2_application\alis\alis.sample\alis.sample.flappybird\Alis.Sample.FlappyBird.csproj", "{1F972033-2CB8-40FB-8D07-2ABD92580679}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.FlappyBird", "2_application\alis\alis.sample\alis.sample.flappybird\Alis.Sample.FlappyBird.csproj", "{1F972033-2CB8-40FB-8D07-2ABD92580679}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.RocketLeague", "2_application\alis\alis.sample\alis.sample.rocketleague\Alis.Sample.RocketLeague.csproj", "{8ACBED94-3B7A-4085-8AB1-68A109B80EE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.RocketLeague", "2_application\alis\alis.sample\alis.sample.rocketleague\Alis.Sample.RocketLeague.csproj", "{8ACBED94-3B7A-4085-8AB1-68A109B80EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.TicTacToe", "2_application\alis\alis.sample\alis.sample.tictactoe\Alis.Sample.TicTacToe.csproj", "{76484D8C-2BD9-4B76-9937-1B46856F051F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.TicTacToe", "2_application\alis\alis.sample\alis.sample.tictactoe\Alis.Sample.TicTacToe.csproj", "{76484D8C-2BD9-4B76-9937-1B46856F051F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Doom", "2_application\alis\alis.sample\alis.sample.doom\Alis.Sample.Doom.csproj", "{DFAF8A26-F5DE-415D-9E61-139855D5624B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Doom", "2_application\alis\alis.sample\alis.sample.doom\Alis.Sample.Doom.csproj", "{DFAF8A26-F5DE-415D-9E61-139855D5624B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Pinball", "2_application\alis\alis.sample\alis.sample.pinball\Alis.Sample.Pinball.csproj", "{E63BB726-4FFF-497A-823B-4134DADD3979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Pinball", "2_application\alis\alis.sample\alis.sample.pinball\Alis.Sample.Pinball.csproj", "{E63BB726-4FFF-497A-823B-4134DADD3979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Rogue", "2_application\alis\alis.sample\alis.sample.rogue\Alis.Sample.Rogue.csproj", "{F399DCE3-AB79-4C96-8504-C70D2E5C1C6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Rogue", "2_application\alis\alis.sample\alis.sample.rogue\Alis.Sample.Rogue.csproj", "{F399DCE3-AB79-4C96-8504-C70D2E5C1C6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Snake", "2_application\alis\alis.sample\alis.sample.snake\Alis.Sample.Snake.csproj", "{DF9F7CA3-87BA-4317-81F3-A7D6C7E838C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Snake", "2_application\alis\alis.sample\alis.sample.snake\Alis.Sample.Snake.csproj", "{DF9F7CA3-87BA-4317-81F3-A7D6C7E838C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Chessmaster", "2_application\alis\alis.sample\alis.sample.chessmaster\Alis.Sample.Chessmaster.csproj", "{B62C7029-95D5-40FE-8693-3E483B535693}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Chessmaster", "2_application\alis\alis.sample\alis.sample.chessmaster\Alis.Sample.Chessmaster.csproj", "{B62C7029-95D5-40FE-8693-3E483B535693}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Minesweeper", "2_application\alis\alis.sample\alis.sample.minesweeper\Alis.Sample.Minesweeper.csproj", "{052BEF8C-6B0E-419D-8EE2-0779745939EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Minesweeper", "2_application\alis\alis.sample\alis.sample.minesweeper\Alis.Sample.Minesweeper.csproj", "{052BEF8C-6B0E-419D-8EE2-0779745939EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.PingPong", "2_application\alis\alis.sample\alis.sample.pingpong\Alis.Sample.PingPong.csproj", "{AFE59DB0-9CA8-401F-9AE1-FFB0B1C642A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.PingPong", "2_application\alis\alis.sample\alis.sample.pingpong\Alis.Sample.PingPong.csproj", "{AFE59DB0-9CA8-401F-9AE1-FFB0B1C642A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Bomberman", "2_application\alis\alis.sample\alis.sample.bomberman\Alis.Sample.Bomberman.csproj", "{E67ACEA1-1D25-4F8C-864F-6B1DF06AF49B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Sample.Bomberman", "2_application\alis\alis.sample\alis.sample.bomberman\Alis.Sample.Bomberman.csproj", "{E67ACEA1-1D25-4F8C-864F-6B1DF06AF49B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5_declaration", "5_declaration", "{453D4328-4C99-4233-8F3F-A7ED7D29B18D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "aspect", "aspect", "{7EC16453-0505-455F-8701-CDE971B447A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Sample", "5_declaration\aspect\alis.aspect.sample\Alis.Aspect.Sample.csproj", "{F787A3F8-0538-467F-A0B6-CAE12469B16C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Sample", "5_declaration\aspect\alis.aspect.sample\Alis.Aspect.Sample.csproj", "{F787A3F8-0538-467F-A0B6-CAE12469B16C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect.Test", "5_declaration\aspect\alis.aspect.test\Alis.Aspect.Test.csproj", "{674CEE4C-652E-4696-B921-CB510D790F3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect.Test", "5_declaration\aspect\alis.aspect.test\Alis.Aspect.Test.csproj", "{674CEE4C-652E-4696-B921-CB510D790F3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Aspect", "5_declaration\aspect\alis.aspect\Alis.Aspect.csproj", "{2C2B681C-0B5D-4E14-AF29-0865BFFD7C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Aspect", "5_declaration\aspect\alis.aspect\Alis.Aspect.csproj", "{2C2B681C-0B5D-4E14-AF29-0865BFFD7C65}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4_operation", "4_operation", "{8EC3E5CA-EEC7-451B-884D-239537D9F32D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ads", "ads", "{1F061379-0A1E-427C-8328-F89EF3C14F64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads.Test", "4_operation\ads\alis.core.ads.test\Alis.Core.Ads.Test.csproj", "{BF9DFA6F-91C1-4E41-941D-8931358C3B0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ads.Test", "4_operation\ads\alis.core.ads.test\Alis.Core.Ads.Test.csproj", "{BF9DFA6F-91C1-4E41-941D-8931358C3B0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads.Sample", "4_operation\ads\alis.core.ads.sample\Alis.Core.Ads.Sample.csproj", "{CC64F4A5-7064-4A75-B362-14185BCDEB64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ads.Sample", "4_operation\ads\alis.core.ads.sample\Alis.Core.Ads.Sample.csproj", "{CC64F4A5-7064-4A75-B362-14185BCDEB64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ads", "4_operation\ads\alis.core.ads\Alis.Core.Ads.csproj", "{91888531-A159-4AD7-88EB-0BB82FB884FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ads", "4_operation\ads\alis.core.ads\Alis.Core.Ads.csproj", "{91888531-A159-4AD7-88EB-0BB82FB884FC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{959839BD-0D06-450E-BEB3-DF8EF3D7A61E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Database.Sample", "4_operation\database\alis.core.database.sample\Alis.Core.Database.Sample.csproj", "{91A60369-EBE6-4B64-B907-6C9851A1EBE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Database.Sample", "4_operation\database\alis.core.database.sample\Alis.Core.Database.Sample.csproj", "{91A60369-EBE6-4B64-B907-6C9851A1EBE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Database.Test", "4_operation\database\alis.core.database.test\Alis.Core.Database.Test.csproj", "{78917C8B-B99E-4207-8ED9-E3D8A40CBF05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Database.Test", "4_operation\database\alis.core.database.test\Alis.Core.Database.Test.csproj", "{78917C8B-B99E-4207-8ED9-E3D8A40CBF05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Database", "4_operation\database\alis.core.database\Alis.Core.Database.csproj", "{667DC2A1-D6A1-4613-A4D1-53E9E5CCF794}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Database", "4_operation\database\alis.core.database\Alis.Core.Database.csproj", "{667DC2A1-D6A1-4613-A4D1-53E9E5CCF794}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "input", "input", "{93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Input.Sample", "4_operation\input\alis.core.input.sample\Alis.Core.Input.Sample.csproj", "{29B5B3E6-D1C3-4A7C-A6AF-E648E9740BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Input.Sample", "4_operation\input\alis.core.input.sample\Alis.Core.Input.Sample.csproj", "{29B5B3E6-D1C3-4A7C-A6AF-E648E9740BC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Input.Test", "4_operation\input\alis.core.input.test\Alis.Core.Input.Test.csproj", "{9BDADA57-29E4-49A1-A5F4-12F7199F6B09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Input.Test", "4_operation\input\alis.core.input.test\Alis.Core.Input.Test.csproj", "{9BDADA57-29E4-49A1-A5F4-12F7199F6B09}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Input", "4_operation\input\alis.core.input\Alis.Core.Input.csproj", "{1D6F5244-C5C1-45FE-8297-A163866B28D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Input", "4_operation\input\alis.core.input\Alis.Core.Input.csproj", "{1D6F5244-C5C1-45FE-8297-A163866B28D4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "diagnostic", "diagnostic", "{DE78FDEE-1C53-4975-B8D6-231329EB30C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Diagnostic.Sample", "4_operation\diagnostic\alis.core.diagnostic..sample\Alis.Core.Diagnostic.Sample.csproj", "{BC3BEE43-9CD7-453A-B774-97DB68F0A03B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Diagnostic.Sample", "4_operation\diagnostic\alis.core.diagnostic..sample\Alis.Core.Diagnostic.Sample.csproj", "{BC3BEE43-9CD7-453A-B774-97DB68F0A03B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Diagnostic", "4_operation\diagnostic\alis.core.diagnostic\Alis.Core.Diagnostic.csproj", "{C290F8EC-7BA1-4DDC-AC61-8AAF84700C72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Diagnostic", "4_operation\diagnostic\alis.core.diagnostic\Alis.Core.Diagnostic.csproj", "{C290F8EC-7BA1-4DDC-AC61-8AAF84700C72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Diagnostic.Test", "4_operation\diagnostic\alis.core.diagnostic.test\Alis.Core.Diagnostic.Test.csproj", "{6799816B-1014-42F5-AB8D-3F7AF550066B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Diagnostic.Test", "4_operation\diagnostic\alis.core.diagnostic.test\Alis.Core.Diagnostic.Test.csproj", "{6799816B-1014-42F5-AB8D-3F7AF550066B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "network", "network", "{961C0A80-7FE7-46F6-9E43-4D346ACD609B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network", "4_operation\network\alis.core.network\Alis.Core.Network.csproj", "{77C4EC5D-1D52-4E9D-ADFC-C0AA33CE39C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network", "4_operation\network\alis.core.network\Alis.Core.Network.csproj", "{77C4EC5D-1D52-4E9D-ADFC-C0AA33CE39C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network.Test", "4_operation\network\alis.core.network.test\Alis.Core.Network.Test.csproj", "{4000F58B-A42F-4AA7-A306-FFD27E2CA954}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network.Test", "4_operation\network\alis.core.network.test\Alis.Core.Network.Test.csproj", "{4000F58B-A42F-4AA7-A306-FFD27E2CA954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Network.Sample", "4_operation\network\alis.core.network.sample\Alis.Core.Network.Sample.csproj", "{77179650-6374-45EF-9147-77E6F7912ACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Network.Sample", "4_operation\network\alis.core.network.sample\Alis.Core.Network.Sample.csproj", "{77179650-6374-45EF-9147-77E6F7912ACE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "output", "output", "{B2BAACB6-7760-45EE-A83D-4DDB374D6C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Output.Test", "4_operation\output\alis.core.output.test\Alis.Core.Output.Test.csproj", "{93E138CC-BD25-4A18-AE5E-D24A5BF89653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Output.Test", "4_operation\output\alis.core.output.test\Alis.Core.Output.Test.csproj", "{93E138CC-BD25-4A18-AE5E-D24A5BF89653}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Output", "4_operation\output\alis.core.output\Alis.Core.Output.csproj", "{FF5947FA-5559-4168-AD60-2D89D98EEF03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Output", "4_operation\output\alis.core.output\Alis.Core.Output.csproj", "{FF5947FA-5559-4168-AD60-2D89D98EEF03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Output.Sample", "4_operation\output\alis.core.output.sample\Alis.Core.Output.Sample.csproj", "{D10E7554-CD92-4FF5-A33F-B914524A9644}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Output.Sample", "4_operation\output\alis.core.output.sample\Alis.Core.Output.Sample.csproj", "{D10E7554-CD92-4FF5-A33F-B914524A9644}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "updater", "updater", "{BA8F94CA-1AA3-476E-92C1-75CB6223BD21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater", "4_operation\updater\alis.core.updater\Alis.Core.Updater.csproj", "{0183C721-A84B-4F1F-ADF0-9FDDAB027D03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Updater", "4_operation\updater\alis.core.updater\Alis.Core.Updater.csproj", "{0183C721-A84B-4F1F-ADF0-9FDDAB027D03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater.Sample", "4_operation\updater\alis.core.updater.sample\Alis.Core.Updater.Sample.csproj", "{A9217191-1F3F-4B59-BD7D-EAACDE52AAE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Updater.Sample", "4_operation\updater\alis.core.updater.sample\Alis.Core.Updater.Sample.csproj", "{A9217191-1F3F-4B59-BD7D-EAACDE52AAE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Updater.Test", "4_operation\updater\alis.core.updater.test\Alis.Core.Updater.Test.csproj", "{7725773B-0368-482F-B192-90E9880B054B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Updater.Test", "4_operation\updater\alis.core.updater.test\Alis.Core.Updater.Test.csproj", "{7725773B-0368-482F-B192-90E9880B054B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "graphic", "graphic", "{FFD24346-AABE-4174-BADD-C5366ADF4F93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphic.Sample", "4_operation\graphic\alis.core.graphic.sample\Alis.Core.Graphic.Sample.csproj", "{D0303DE4-673F-4F85-9EA9-5374006C3E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphic.Sample", "4_operation\graphic\alis.core.graphic.sample\Alis.Core.Graphic.Sample.csproj", "{D0303DE4-673F-4F85-9EA9-5374006C3E75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphic.Test", "4_operation\graphic\alis.core.graphic.test\Alis.Core.Graphic.Test.csproj", "{8A64CE89-B413-4AB9-BA59-488FCBA8E5B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphic.Test", "4_operation\graphic\alis.core.graphic.test\Alis.Core.Graphic.Test.csproj", "{8A64CE89-B413-4AB9-BA59-488FCBA8E5B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Graphic", "4_operation\graphic\alis.core.graphic\Alis.Core.Graphic.csproj", "{EF1A97AE-8E84-48FB-9095-8B3E1A6994DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Graphic", "4_operation\graphic\alis.core.graphic\Alis.Core.Graphic.csproj", "{EF1A97AE-8E84-48FB-9095-8B3E1A6994DF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "audio", "audio", "{85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.Sample", "4_operation\audio\alis.core.audio.sample\Alis.Core.Audio.Sample.csproj", "{3556AFC3-38B2-4FCC-AF88-7744BC1A4084}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.Sample", "4_operation\audio\alis.core.audio.sample\Alis.Core.Audio.Sample.csproj", "{3556AFC3-38B2-4FCC-AF88-7744BC1A4084}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio", "4_operation\audio\alis.core.audio\Alis.Core.Audio.csproj", "{5DB2F64C-E6B5-4E8A-B604-7CA609C7E390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio", "4_operation\audio\alis.core.audio\Alis.Core.Audio.csproj", "{5DB2F64C-E6B5-4E8A-B604-7CA609C7E390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Audio.Test", "4_operation\audio\alis.core.audio.test\Alis.Core.Audio.Test.csproj", "{4F657D7C-B501-4499-9EE3-EAC18943B7DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Audio.Test", "4_operation\audio\alis.core.audio.test\Alis.Core.Audio.Test.csproj", "{4F657D7C-B501-4499-9EE3-EAC18943B7DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ai", "ai", "{E4F17510-1522-430B-A876-7B0F21A6BB8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ai", "4_operation\ai\alis.core.ai\Alis.Core.Ai.csproj", "{EC7FEC80-50C7-40C9-A6DF-B2029325610A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ai", "4_operation\ai\alis.core.ai\Alis.Core.Ai.csproj", "{EC7FEC80-50C7-40C9-A6DF-B2029325610A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ai.Sample", "4_operation\ai\alis.core.ai.sample\Alis.Core.Ai.Sample.csproj", "{99E21612-B5BE-4691-A3A6-892583C0D9EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ai.Sample", "4_operation\ai\alis.core.ai.sample\Alis.Core.Ai.Sample.csproj", "{99E21612-B5BE-4691-A3A6-892583C0D9EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Ai.Test", "4_operation\ai\alis.core.ai.test\Alis.Core.Ai.Test.csproj", "{A4A8BEBE-9ADC-46BC-BC4E-EEB9773D19EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Ai.Test", "4_operation\ai\alis.core.ai.test\Alis.Core.Ai.Test.csproj", "{A4A8BEBE-9ADC-46BC-BC4E-EEB9773D19EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cloud", "cloud", "{B892C555-2E3D-486F-8694-75DC7E26692F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Cloud.Test", "4_operation\cloud\alis.core.cloud.test\Alis.Core.Cloud.Test.csproj", "{5E3BA207-AF90-440A-9D17-2EB8A4556660}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Cloud.Test", "4_operation\cloud\alis.core.cloud.test\Alis.Core.Cloud.Test.csproj", "{5E3BA207-AF90-440A-9D17-2EB8A4556660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Cloud.Sample", "4_operation\cloud\alis.core.cloud.sample\Alis.Core.Cloud.Sample.csproj", "{3DC22DEA-E735-4663-BE85-9EB30D5473D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Cloud.Sample", "4_operation\cloud\alis.core.cloud.sample\Alis.Core.Cloud.Sample.csproj", "{3DC22DEA-E735-4663-BE85-9EB30D5473D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Cloud", "4_operation\cloud\alis.core.cloud\Alis.Core.Cloud.csproj", "{4A85C77F-D55E-4E49-8FC3-3028A47381D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Cloud", "4_operation\cloud\alis.core.cloud\Alis.Core.Cloud.csproj", "{4A85C77F-D55E-4E49-8FC3-3028A47381D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "physic", "physic", "{C9A8B38E-EB7C-4758-B282-910F63CAE444}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic.Test", "4_operation\physic\alis.core.physic.test\Alis.Core.Physic.Test.csproj", "{C5C36787-A640-4EEB-B795-4E654852DBA5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physic.Test", "4_operation\physic\alis.core.physic.test\Alis.Core.Physic.Test.csproj", "{C5C36787-A640-4EEB-B795-4E654852DBA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic.Sample", "4_operation\physic\alis.core.physic.sample\Alis.Core.Physic.Sample.csproj", "{79A95105-A138-4C12-ADAE-5CDAD0E04FFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physic.Sample", "4_operation\physic\alis.core.physic.sample\Alis.Core.Physic.Sample.csproj", "{79A95105-A138-4C12-ADAE-5CDAD0E04FFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Core.Physic", "4_operation\physic\alis.core.physic\Alis.Core.Physic.csproj", "{B0D6908F-102B-4D9D-8773-A4FBE1A0BE50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alis.Core.Physic", "4_operation\physic\alis.core.physic\Alis.Core.Physic.csproj", "{B0D6908F-102B-4D9D-8773-A4FBE1A0BE50}"
 EndProject
 Global
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A1B35FDA-66DC-4C35-B80D-114770163610} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{9444A5E5-647C-451D-97B2-0C480EA31258} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{0B0C39B0-DF36-4782-9B28-0902A4927D78} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{7211F41D-27C7-461A-954A-7010BAD3DE1F} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{F90708CD-3588-499D-93D9-78DF2AA56C86} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{8285E72E-D64B-400F-B220-257546B7F22B} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{F025DB85-A618-4B9B-BE22-ACF53063C9FA} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
-		{74539232-F133-45A6-9D2A-6EAB3203E7E7} = {7211F41D-27C7-461A-954A-7010BAD3DE1F}
-		{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059} = {6E102FFE-9727-458C-9361-4588C4157572}
-		{063D29E8-51CF-4155-B23F-8510CA62512A} = {6E102FFE-9727-458C-9361-4588C4157572}
-		{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
-		{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
-		{015EBC6B-559D-4454-9DB0-8E2D42CBBE34} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
-		{CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{57D7A0A6-47CF-438B-9F58-09E6D86CF4EF} = {CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2}
-		{9CAFA4F4-4241-4855-BFD8-9B787402D632} = {CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2}
-		{5A4352AF-91C6-4A29-97F1-7849CDE80DFC} = {CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2}
-		{3FF288B8-271E-442D-8E9F-EDBE2938AB96} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{599064E6-3971-4983-8FCA-F49F7DCF2530} = {3FF288B8-271E-442D-8E9F-EDBE2938AB96}
-		{05BF49E4-381C-4F37-B33E-6C13DC41CEA9} = {3FF288B8-271E-442D-8E9F-EDBE2938AB96}
-		{6EADE403-E287-4D39-9A6D-99C0300838B6} = {3FF288B8-271E-442D-8E9F-EDBE2938AB96}
-		{E48E3C03-1E9F-41CE-90CE-582DA26AE3F7} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{8C280078-C481-4993-A206-1A83A3D583A6} = {E48E3C03-1E9F-41CE-90CE-582DA26AE3F7}
-		{86E2366D-80EB-434B-A6BD-28011AA13C6F} = {E48E3C03-1E9F-41CE-90CE-582DA26AE3F7}
-		{0FB47BEF-16DE-4C41-93E8-5C08BD37C641} = {E48E3C03-1E9F-41CE-90CE-582DA26AE3F7}
-		{615AF9CA-9E9A-445A-9C18-46E1A795CBE7} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{BCCFA061-BABD-4FAD-A65B-0771EA2520D4} = {615AF9CA-9E9A-445A-9C18-46E1A795CBE7}
-		{BB7569C5-0D3A-4605-BEE2-8B77EC5F8CE2} = {615AF9CA-9E9A-445A-9C18-46E1A795CBE7}
-		{741FCCAF-8453-4E3D-8134-F54F7E3C5A6B} = {615AF9CA-9E9A-445A-9C18-46E1A795CBE7}
-		{D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{80B14994-61F4-43E6-8F6B-74F061A6C751} = {D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C}
-		{24BFD35E-C585-463D-A52E-E7D6BE0115E1} = {D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C}
-		{18BCC2F5-5D7A-4B20-897D-02B12893F64C} = {D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C}
-		{0782BAF0-81F6-4FAB-8F45-AD280C56A9CB} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{B232BBFF-21CA-4ED2-8A4B-AAF405DADE14} = {0782BAF0-81F6-4FAB-8F45-AD280C56A9CB}
-		{9261E435-6DCF-4289-B3D5-9C7FBD017099} = {0782BAF0-81F6-4FAB-8F45-AD280C56A9CB}
-		{420CFBEF-FE71-46C9-B5D6-583EAE713605} = {0782BAF0-81F6-4FAB-8F45-AD280C56A9CB}
-		{E4243D4C-3B88-4F4F-B3D8-084837B039FE} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{073ED5EC-B067-40D3-B4FF-7FCBE92AD2DC} = {E4243D4C-3B88-4F4F-B3D8-084837B039FE}
-		{2B2FD00A-71B7-490F-8AC9-9CBBFEA2B939} = {E4243D4C-3B88-4F4F-B3D8-084837B039FE}
-		{033189D2-2456-4783-B0EB-E54E2A7EDD56} = {E4243D4C-3B88-4F4F-B3D8-084837B039FE}
-		{226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{2CE9BD6F-7182-41F8-BDD1-9CCF4ED1FF0F} = {226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4}
-		{3047A273-7434-47F0-B605-CC0661ABB567} = {226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4}
-		{667EA0CE-EA10-4BB9-BB83-E869961295F0} = {226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4}
-		{3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
-		{4A3CC720-D2F3-4EF8-95CD-F52F8E3E500E} = {3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1}
-		{D7F2D588-E8E1-4E54-86E9-27C34C13C329} = {3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1}
-		{FD0AACC4-D399-407E-B756-5FD8A40BA661} = {3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1}
-		{63A242F5-C33B-4B53-9E83-CB571AF25A94} = {ADBE4286-5BE2-4A22-9069-02863FF5152E}
-		{FE6458B6-9AF0-4B13-84F4-5955ADA07998} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
-		{363983A4-9F07-4F8C-83D3-6EA86632BC20} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
-		{A19E90D3-8C2F-43E4-9CF8-DBD9E92A7AE1} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
-		{02FFE418-B706-4B9D-B79E-0005E1DE6D08} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
-		{724FB916-747A-429A-ACD4-C521C5402207} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
-		{4FB49C2C-B018-4DDE-BDF5-CB97C1CD7380} = {ADBE4286-5BE2-4A22-9069-02863FF5152E}
-		{DF33E281-A8DF-409E-830A-A4B258A456E7} = {4FB49C2C-B018-4DDE-BDF5-CB97C1CD7380}
-		{863B5135-A92A-498C-BE0E-5CA62294F32B} = {4FB49C2C-B018-4DDE-BDF5-CB97C1CD7380}
-		{19264B7F-E3EB-4A10-BF9D-A124DB1BC5AF} = {ADBE4286-5BE2-4A22-9069-02863FF5152E}
-		{14C2DB18-2314-4F19-82E0-9DA71DCE20EF} = {19264B7F-E3EB-4A10-BF9D-A124DB1BC5AF}
-		{7837516A-A349-4FDB-B0D8-803609727637} = {19264B7F-E3EB-4A10-BF9D-A124DB1BC5AF}
-		{A2536C51-6C61-4125-BC10-C1159BBB9C4A} = {6E338B59-93FF-4A2E-AC1F-C9950A5C5F8A}
-		{AEC1740A-AA99-44CB-9CB5-514557AE2AC9} = {A2536C51-6C61-4125-BC10-C1159BBB9C4A}
-		{8513866B-541F-4F83-B960-EA871804D722} = {A2536C51-6C61-4125-BC10-C1159BBB9C4A}
-		{751BC794-8B43-4E8B-9020-F82C5D1A07D9} = {A2536C51-6C61-4125-BC10-C1159BBB9C4A}
-		{C171EE2B-3881-4A03-AFF1-F01D3926390C} = {09F04E95-7D36-44A9-B29F-6A542EA30047}
-		{15D474BF-420C-4501-8D29-5FAE0C29988B} = {C171EE2B-3881-4A03-AFF1-F01D3926390C}
-		{08351646-97B3-49C9-9543-7383A8DB9122} = {C171EE2B-3881-4A03-AFF1-F01D3926390C}
-		{3916975F-B793-4A3D-AF73-B546227ABB5B} = {C171EE2B-3881-4A03-AFF1-F01D3926390C}
-		{E2914306-3CB6-4653-A8CD-A0DB62E161BF} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{3505E99E-2973-4798-8D9F-4637F4990B94} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{B73FA038-1774-40F9-8E5D-12C0BDBDEFEB} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{8B03BA66-7718-4666-B2C7-2A7192232014} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{1F972033-2CB8-40FB-8D07-2ABD92580679} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{8ACBED94-3B7A-4085-8AB1-68A109B80EE8} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{76484D8C-2BD9-4B76-9937-1B46856F051F} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{DFAF8A26-F5DE-415D-9E61-139855D5624B} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{E63BB726-4FFF-497A-823B-4134DADD3979} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{F399DCE3-AB79-4C96-8504-C70D2E5C1C6A} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{DF9F7CA3-87BA-4317-81F3-A7D6C7E838C4} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{B62C7029-95D5-40FE-8693-3E483B535693} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{052BEF8C-6B0E-419D-8EE2-0779745939EC} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{AFE59DB0-9CA8-401F-9AE1-FFB0B1C642A6} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{E67ACEA1-1D25-4F8C-864F-6B1DF06AF49B} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
-		{7EC16453-0505-455F-8701-CDE971B447A1} = {453D4328-4C99-4233-8F3F-A7ED7D29B18D}
-		{F787A3F8-0538-467F-A0B6-CAE12469B16C} = {7EC16453-0505-455F-8701-CDE971B447A1}
-		{674CEE4C-652E-4696-B921-CB510D790F3D} = {7EC16453-0505-455F-8701-CDE971B447A1}
-		{2C2B681C-0B5D-4E14-AF29-0865BFFD7C65} = {7EC16453-0505-455F-8701-CDE971B447A1}
-		{1F061379-0A1E-427C-8328-F89EF3C14F64} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{BF9DFA6F-91C1-4E41-941D-8931358C3B0F} = {1F061379-0A1E-427C-8328-F89EF3C14F64}
-		{CC64F4A5-7064-4A75-B362-14185BCDEB64} = {1F061379-0A1E-427C-8328-F89EF3C14F64}
-		{91888531-A159-4AD7-88EB-0BB82FB884FC} = {1F061379-0A1E-427C-8328-F89EF3C14F64}
-		{959839BD-0D06-450E-BEB3-DF8EF3D7A61E} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{91A60369-EBE6-4B64-B907-6C9851A1EBE6} = {959839BD-0D06-450E-BEB3-DF8EF3D7A61E}
-		{78917C8B-B99E-4207-8ED9-E3D8A40CBF05} = {959839BD-0D06-450E-BEB3-DF8EF3D7A61E}
-		{667DC2A1-D6A1-4613-A4D1-53E9E5CCF794} = {959839BD-0D06-450E-BEB3-DF8EF3D7A61E}
-		{93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{29B5B3E6-D1C3-4A7C-A6AF-E648E9740BC7} = {93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC}
-		{9BDADA57-29E4-49A1-A5F4-12F7199F6B09} = {93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC}
-		{1D6F5244-C5C1-45FE-8297-A163866B28D4} = {93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC}
-		{DE78FDEE-1C53-4975-B8D6-231329EB30C7} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{BC3BEE43-9CD7-453A-B774-97DB68F0A03B} = {DE78FDEE-1C53-4975-B8D6-231329EB30C7}
-		{C290F8EC-7BA1-4DDC-AC61-8AAF84700C72} = {DE78FDEE-1C53-4975-B8D6-231329EB30C7}
-		{6799816B-1014-42F5-AB8D-3F7AF550066B} = {DE78FDEE-1C53-4975-B8D6-231329EB30C7}
-		{961C0A80-7FE7-46F6-9E43-4D346ACD609B} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{77C4EC5D-1D52-4E9D-ADFC-C0AA33CE39C9} = {961C0A80-7FE7-46F6-9E43-4D346ACD609B}
-		{4000F58B-A42F-4AA7-A306-FFD27E2CA954} = {961C0A80-7FE7-46F6-9E43-4D346ACD609B}
-		{77179650-6374-45EF-9147-77E6F7912ACE} = {961C0A80-7FE7-46F6-9E43-4D346ACD609B}
-		{B2BAACB6-7760-45EE-A83D-4DDB374D6C9E} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{93E138CC-BD25-4A18-AE5E-D24A5BF89653} = {B2BAACB6-7760-45EE-A83D-4DDB374D6C9E}
-		{FF5947FA-5559-4168-AD60-2D89D98EEF03} = {B2BAACB6-7760-45EE-A83D-4DDB374D6C9E}
-		{D10E7554-CD92-4FF5-A33F-B914524A9644} = {B2BAACB6-7760-45EE-A83D-4DDB374D6C9E}
-		{BA8F94CA-1AA3-476E-92C1-75CB6223BD21} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{0183C721-A84B-4F1F-ADF0-9FDDAB027D03} = {BA8F94CA-1AA3-476E-92C1-75CB6223BD21}
-		{A9217191-1F3F-4B59-BD7D-EAACDE52AAE6} = {BA8F94CA-1AA3-476E-92C1-75CB6223BD21}
-		{7725773B-0368-482F-B192-90E9880B054B} = {BA8F94CA-1AA3-476E-92C1-75CB6223BD21}
-		{FFD24346-AABE-4174-BADD-C5366ADF4F93} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{D0303DE4-673F-4F85-9EA9-5374006C3E75} = {FFD24346-AABE-4174-BADD-C5366ADF4F93}
-		{8A64CE89-B413-4AB9-BA59-488FCBA8E5B3} = {FFD24346-AABE-4174-BADD-C5366ADF4F93}
-		{EF1A97AE-8E84-48FB-9095-8B3E1A6994DF} = {FFD24346-AABE-4174-BADD-C5366ADF4F93}
-		{85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{3556AFC3-38B2-4FCC-AF88-7744BC1A4084} = {85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93}
-		{5DB2F64C-E6B5-4E8A-B604-7CA609C7E390} = {85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93}
-		{4F657D7C-B501-4499-9EE3-EAC18943B7DD} = {85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93}
-		{E4F17510-1522-430B-A876-7B0F21A6BB8C} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{EC7FEC80-50C7-40C9-A6DF-B2029325610A} = {E4F17510-1522-430B-A876-7B0F21A6BB8C}
-		{99E21612-B5BE-4691-A3A6-892583C0D9EA} = {E4F17510-1522-430B-A876-7B0F21A6BB8C}
-		{A4A8BEBE-9ADC-46BC-BC4E-EEB9773D19EA} = {E4F17510-1522-430B-A876-7B0F21A6BB8C}
-		{B892C555-2E3D-486F-8694-75DC7E26692F} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{5E3BA207-AF90-440A-9D17-2EB8A4556660} = {B892C555-2E3D-486F-8694-75DC7E26692F}
-		{3DC22DEA-E735-4663-BE85-9EB30D5473D7} = {B892C555-2E3D-486F-8694-75DC7E26692F}
-		{4A85C77F-D55E-4E49-8FC3-3028A47381D0} = {B892C555-2E3D-486F-8694-75DC7E26692F}
-		{C9A8B38E-EB7C-4758-B282-910F63CAE444} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
-		{C5C36787-A640-4EEB-B795-4E654852DBA5} = {C9A8B38E-EB7C-4758-B282-910F63CAE444}
-		{79A95105-A138-4C12-ADAE-5CDAD0E04FFF} = {C9A8B38E-EB7C-4758-B282-910F63CAE444}
-		{B0D6908F-102B-4D9D-8773-A4FBE1A0BE50} = {C9A8B38E-EB7C-4758-B282-910F63CAE444}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
@@ -1713,5 +1571,149 @@ Global
 		{B0D6908F-102B-4D9D-8773-A4FBE1A0BE50}.Release|x64.Build.0 = Release|Any CPU
 		{B0D6908F-102B-4D9D-8773-A4FBE1A0BE50}.Release|x86.ActiveCfg = Release|Any CPU
 		{B0D6908F-102B-4D9D-8773-A4FBE1A0BE50}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A1B35FDA-66DC-4C35-B80D-114770163610} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{9444A5E5-647C-451D-97B2-0C480EA31258} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{0B0C39B0-DF36-4782-9B28-0902A4927D78} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{7211F41D-27C7-461A-954A-7010BAD3DE1F} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{F90708CD-3588-499D-93D9-78DF2AA56C86} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{8285E72E-D64B-400F-B220-257546B7F22B} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{F025DB85-A618-4B9B-BE22-ACF53063C9FA} = {0F6ED8BC-329E-4716-8419-C8C94377C8BE}
+		{74539232-F133-45A6-9D2A-6EAB3203E7E7} = {7211F41D-27C7-461A-954A-7010BAD3DE1F}
+		{CDB74D6E-4B2E-4FDA-8239-B8C6C1C47059} = {6E102FFE-9727-458C-9361-4588C4157572}
+		{063D29E8-51CF-4155-B23F-8510CA62512A} = {6E102FFE-9727-458C-9361-4588C4157572}
+		{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
+		{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
+		{015EBC6B-559D-4454-9DB0-8E2D42CBBE34} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
+		{CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{57D7A0A6-47CF-438B-9F58-09E6D86CF4EF} = {CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2}
+		{9CAFA4F4-4241-4855-BFD8-9B787402D632} = {CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2}
+		{5A4352AF-91C6-4A29-97F1-7849CDE80DFC} = {CAE0BA50-C6E4-4342-9E4D-50CC876E9FF2}
+		{3FF288B8-271E-442D-8E9F-EDBE2938AB96} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{599064E6-3971-4983-8FCA-F49F7DCF2530} = {3FF288B8-271E-442D-8E9F-EDBE2938AB96}
+		{05BF49E4-381C-4F37-B33E-6C13DC41CEA9} = {3FF288B8-271E-442D-8E9F-EDBE2938AB96}
+		{6EADE403-E287-4D39-9A6D-99C0300838B6} = {3FF288B8-271E-442D-8E9F-EDBE2938AB96}
+		{E48E3C03-1E9F-41CE-90CE-582DA26AE3F7} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{8C280078-C481-4993-A206-1A83A3D583A6} = {E48E3C03-1E9F-41CE-90CE-582DA26AE3F7}
+		{86E2366D-80EB-434B-A6BD-28011AA13C6F} = {E48E3C03-1E9F-41CE-90CE-582DA26AE3F7}
+		{0FB47BEF-16DE-4C41-93E8-5C08BD37C641} = {E48E3C03-1E9F-41CE-90CE-582DA26AE3F7}
+		{615AF9CA-9E9A-445A-9C18-46E1A795CBE7} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{BCCFA061-BABD-4FAD-A65B-0771EA2520D4} = {615AF9CA-9E9A-445A-9C18-46E1A795CBE7}
+		{BB7569C5-0D3A-4605-BEE2-8B77EC5F8CE2} = {615AF9CA-9E9A-445A-9C18-46E1A795CBE7}
+		{741FCCAF-8453-4E3D-8134-F54F7E3C5A6B} = {615AF9CA-9E9A-445A-9C18-46E1A795CBE7}
+		{D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{80B14994-61F4-43E6-8F6B-74F061A6C751} = {D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C}
+		{24BFD35E-C585-463D-A52E-E7D6BE0115E1} = {D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C}
+		{18BCC2F5-5D7A-4B20-897D-02B12893F64C} = {D348B1AA-5CAA-4F0A-ADBD-D27BB2355E3C}
+		{0782BAF0-81F6-4FAB-8F45-AD280C56A9CB} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{B232BBFF-21CA-4ED2-8A4B-AAF405DADE14} = {0782BAF0-81F6-4FAB-8F45-AD280C56A9CB}
+		{9261E435-6DCF-4289-B3D5-9C7FBD017099} = {0782BAF0-81F6-4FAB-8F45-AD280C56A9CB}
+		{420CFBEF-FE71-46C9-B5D6-583EAE713605} = {0782BAF0-81F6-4FAB-8F45-AD280C56A9CB}
+		{E4243D4C-3B88-4F4F-B3D8-084837B039FE} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{073ED5EC-B067-40D3-B4FF-7FCBE92AD2DC} = {E4243D4C-3B88-4F4F-B3D8-084837B039FE}
+		{2B2FD00A-71B7-490F-8AC9-9CBBFEA2B939} = {E4243D4C-3B88-4F4F-B3D8-084837B039FE}
+		{033189D2-2456-4783-B0EB-E54E2A7EDD56} = {E4243D4C-3B88-4F4F-B3D8-084837B039FE}
+		{226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{2CE9BD6F-7182-41F8-BDD1-9CCF4ED1FF0F} = {226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4}
+		{3047A273-7434-47F0-B605-CC0661ABB567} = {226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4}
+		{667EA0CE-EA10-4BB9-BB83-E869961295F0} = {226E7580-C7A7-4C75-A7FB-BC6E0BF6C8C4}
+		{3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1} = {8D4BBCC0-B287-4FD8-8E61-8463CACC10E1}
+		{4A3CC720-D2F3-4EF8-95CD-F52F8E3E500E} = {3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1}
+		{D7F2D588-E8E1-4E54-86E9-27C34C13C329} = {3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1}
+		{FD0AACC4-D399-407E-B756-5FD8A40BA661} = {3A933FED-CC5C-437D-9B61-DF6D1C7DD9A1}
+		{63A242F5-C33B-4B53-9E83-CB571AF25A94} = {ADBE4286-5BE2-4A22-9069-02863FF5152E}
+		{FE6458B6-9AF0-4B13-84F4-5955ADA07998} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
+		{363983A4-9F07-4F8C-83D3-6EA86632BC20} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
+		{A19E90D3-8C2F-43E4-9CF8-DBD9E92A7AE1} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
+		{02FFE418-B706-4B9D-B79E-0005E1DE6D08} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
+		{724FB916-747A-429A-ACD4-C521C5402207} = {63A242F5-C33B-4B53-9E83-CB571AF25A94}
+		{4FB49C2C-B018-4DDE-BDF5-CB97C1CD7380} = {ADBE4286-5BE2-4A22-9069-02863FF5152E}
+		{DF33E281-A8DF-409E-830A-A4B258A456E7} = {4FB49C2C-B018-4DDE-BDF5-CB97C1CD7380}
+		{863B5135-A92A-498C-BE0E-5CA62294F32B} = {4FB49C2C-B018-4DDE-BDF5-CB97C1CD7380}
+		{19264B7F-E3EB-4A10-BF9D-A124DB1BC5AF} = {ADBE4286-5BE2-4A22-9069-02863FF5152E}
+		{14C2DB18-2314-4F19-82E0-9DA71DCE20EF} = {19264B7F-E3EB-4A10-BF9D-A124DB1BC5AF}
+		{7837516A-A349-4FDB-B0D8-803609727637} = {19264B7F-E3EB-4A10-BF9D-A124DB1BC5AF}
+		{A2536C51-6C61-4125-BC10-C1159BBB9C4A} = {6E338B59-93FF-4A2E-AC1F-C9950A5C5F8A}
+		{AEC1740A-AA99-44CB-9CB5-514557AE2AC9} = {A2536C51-6C61-4125-BC10-C1159BBB9C4A}
+		{8513866B-541F-4F83-B960-EA871804D722} = {A2536C51-6C61-4125-BC10-C1159BBB9C4A}
+		{751BC794-8B43-4E8B-9020-F82C5D1A07D9} = {A2536C51-6C61-4125-BC10-C1159BBB9C4A}
+		{C171EE2B-3881-4A03-AFF1-F01D3926390C} = {09F04E95-7D36-44A9-B29F-6A542EA30047}
+		{15D474BF-420C-4501-8D29-5FAE0C29988B} = {C171EE2B-3881-4A03-AFF1-F01D3926390C}
+		{08351646-97B3-49C9-9543-7383A8DB9122} = {C171EE2B-3881-4A03-AFF1-F01D3926390C}
+		{3916975F-B793-4A3D-AF73-B546227ABB5B} = {C171EE2B-3881-4A03-AFF1-F01D3926390C}
+		{E2914306-3CB6-4653-A8CD-A0DB62E161BF} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{3505E99E-2973-4798-8D9F-4637F4990B94} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{B73FA038-1774-40F9-8E5D-12C0BDBDEFEB} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{8B03BA66-7718-4666-B2C7-2A7192232014} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{1F972033-2CB8-40FB-8D07-2ABD92580679} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{8ACBED94-3B7A-4085-8AB1-68A109B80EE8} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{76484D8C-2BD9-4B76-9937-1B46856F051F} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{DFAF8A26-F5DE-415D-9E61-139855D5624B} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{E63BB726-4FFF-497A-823B-4134DADD3979} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{F399DCE3-AB79-4C96-8504-C70D2E5C1C6A} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{DF9F7CA3-87BA-4317-81F3-A7D6C7E838C4} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{B62C7029-95D5-40FE-8693-3E483B535693} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{052BEF8C-6B0E-419D-8EE2-0779745939EC} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{AFE59DB0-9CA8-401F-9AE1-FFB0B1C642A6} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{E67ACEA1-1D25-4F8C-864F-6B1DF06AF49B} = {3916975F-B793-4A3D-AF73-B546227ABB5B}
+		{7EC16453-0505-455F-8701-CDE971B447A1} = {453D4328-4C99-4233-8F3F-A7ED7D29B18D}
+		{F787A3F8-0538-467F-A0B6-CAE12469B16C} = {7EC16453-0505-455F-8701-CDE971B447A1}
+		{674CEE4C-652E-4696-B921-CB510D790F3D} = {7EC16453-0505-455F-8701-CDE971B447A1}
+		{2C2B681C-0B5D-4E14-AF29-0865BFFD7C65} = {7EC16453-0505-455F-8701-CDE971B447A1}
+		{1F061379-0A1E-427C-8328-F89EF3C14F64} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{BF9DFA6F-91C1-4E41-941D-8931358C3B0F} = {1F061379-0A1E-427C-8328-F89EF3C14F64}
+		{CC64F4A5-7064-4A75-B362-14185BCDEB64} = {1F061379-0A1E-427C-8328-F89EF3C14F64}
+		{91888531-A159-4AD7-88EB-0BB82FB884FC} = {1F061379-0A1E-427C-8328-F89EF3C14F64}
+		{959839BD-0D06-450E-BEB3-DF8EF3D7A61E} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{91A60369-EBE6-4B64-B907-6C9851A1EBE6} = {959839BD-0D06-450E-BEB3-DF8EF3D7A61E}
+		{78917C8B-B99E-4207-8ED9-E3D8A40CBF05} = {959839BD-0D06-450E-BEB3-DF8EF3D7A61E}
+		{667DC2A1-D6A1-4613-A4D1-53E9E5CCF794} = {959839BD-0D06-450E-BEB3-DF8EF3D7A61E}
+		{93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{29B5B3E6-D1C3-4A7C-A6AF-E648E9740BC7} = {93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC}
+		{9BDADA57-29E4-49A1-A5F4-12F7199F6B09} = {93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC}
+		{1D6F5244-C5C1-45FE-8297-A163866B28D4} = {93BF96E7-8588-4F1A-9C7E-1DE4F5F372FC}
+		{DE78FDEE-1C53-4975-B8D6-231329EB30C7} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{BC3BEE43-9CD7-453A-B774-97DB68F0A03B} = {DE78FDEE-1C53-4975-B8D6-231329EB30C7}
+		{C290F8EC-7BA1-4DDC-AC61-8AAF84700C72} = {DE78FDEE-1C53-4975-B8D6-231329EB30C7}
+		{6799816B-1014-42F5-AB8D-3F7AF550066B} = {DE78FDEE-1C53-4975-B8D6-231329EB30C7}
+		{961C0A80-7FE7-46F6-9E43-4D346ACD609B} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{77C4EC5D-1D52-4E9D-ADFC-C0AA33CE39C9} = {961C0A80-7FE7-46F6-9E43-4D346ACD609B}
+		{4000F58B-A42F-4AA7-A306-FFD27E2CA954} = {961C0A80-7FE7-46F6-9E43-4D346ACD609B}
+		{77179650-6374-45EF-9147-77E6F7912ACE} = {961C0A80-7FE7-46F6-9E43-4D346ACD609B}
+		{B2BAACB6-7760-45EE-A83D-4DDB374D6C9E} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{93E138CC-BD25-4A18-AE5E-D24A5BF89653} = {B2BAACB6-7760-45EE-A83D-4DDB374D6C9E}
+		{FF5947FA-5559-4168-AD60-2D89D98EEF03} = {B2BAACB6-7760-45EE-A83D-4DDB374D6C9E}
+		{D10E7554-CD92-4FF5-A33F-B914524A9644} = {B2BAACB6-7760-45EE-A83D-4DDB374D6C9E}
+		{BA8F94CA-1AA3-476E-92C1-75CB6223BD21} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{0183C721-A84B-4F1F-ADF0-9FDDAB027D03} = {BA8F94CA-1AA3-476E-92C1-75CB6223BD21}
+		{A9217191-1F3F-4B59-BD7D-EAACDE52AAE6} = {BA8F94CA-1AA3-476E-92C1-75CB6223BD21}
+		{7725773B-0368-482F-B192-90E9880B054B} = {BA8F94CA-1AA3-476E-92C1-75CB6223BD21}
+		{FFD24346-AABE-4174-BADD-C5366ADF4F93} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{D0303DE4-673F-4F85-9EA9-5374006C3E75} = {FFD24346-AABE-4174-BADD-C5366ADF4F93}
+		{8A64CE89-B413-4AB9-BA59-488FCBA8E5B3} = {FFD24346-AABE-4174-BADD-C5366ADF4F93}
+		{EF1A97AE-8E84-48FB-9095-8B3E1A6994DF} = {FFD24346-AABE-4174-BADD-C5366ADF4F93}
+		{85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{3556AFC3-38B2-4FCC-AF88-7744BC1A4084} = {85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93}
+		{5DB2F64C-E6B5-4E8A-B604-7CA609C7E390} = {85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93}
+		{4F657D7C-B501-4499-9EE3-EAC18943B7DD} = {85922F3E-7ED4-4F7A-B3F8-40FC5FFBEB93}
+		{E4F17510-1522-430B-A876-7B0F21A6BB8C} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{EC7FEC80-50C7-40C9-A6DF-B2029325610A} = {E4F17510-1522-430B-A876-7B0F21A6BB8C}
+		{99E21612-B5BE-4691-A3A6-892583C0D9EA} = {E4F17510-1522-430B-A876-7B0F21A6BB8C}
+		{A4A8BEBE-9ADC-46BC-BC4E-EEB9773D19EA} = {E4F17510-1522-430B-A876-7B0F21A6BB8C}
+		{B892C555-2E3D-486F-8694-75DC7E26692F} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{5E3BA207-AF90-440A-9D17-2EB8A4556660} = {B892C555-2E3D-486F-8694-75DC7E26692F}
+		{3DC22DEA-E735-4663-BE85-9EB30D5473D7} = {B892C555-2E3D-486F-8694-75DC7E26692F}
+		{4A85C77F-D55E-4E49-8FC3-3028A47381D0} = {B892C555-2E3D-486F-8694-75DC7E26692F}
+		{C9A8B38E-EB7C-4758-B282-910F63CAE444} = {8EC3E5CA-EEC7-451B-884D-239537D9F32D}
+		{C5C36787-A640-4EEB-B795-4E654852DBA5} = {C9A8B38E-EB7C-4758-B282-910F63CAE444}
+		{79A95105-A138-4C12-ADAE-5CDAD0E04FFF} = {C9A8B38E-EB7C-4758-B282-910F63CAE444}
+		{B0D6908F-102B-4D9D-8773-A4FBE1A0BE50} = {C9A8B38E-EB7C-4758-B282-910F63CAE444}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
 	EndGlobalSection
 EndGlobal
