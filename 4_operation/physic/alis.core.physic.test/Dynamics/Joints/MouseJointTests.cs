@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public MouseJointTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockMouseJointDef = this.mockRepository.Create<MouseJointDef>();
+            mockMouseJointDef = mockRepository.Create<MouseJointDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         private MouseJoint CreateMouseJoint()
         {
             return new MouseJoint(
-                this.mockMouseJointDef.Object);
+                mockMouseJointDef.Object);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var mouseJoint = this.CreateMouseJoint();
+            var mouseJoint = CreateMouseJoint();
             float invDt = 0;
 
             // Act
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionTorque_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var mouseJoint = this.CreateMouseJoint();
+            var mouseJoint = CreateMouseJoint();
             float invDt = 0;
 
             // Act
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void SetTarget_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var mouseJoint = this.CreateMouseJoint();
+            var mouseJoint = CreateMouseJoint();
             Vector2 target = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

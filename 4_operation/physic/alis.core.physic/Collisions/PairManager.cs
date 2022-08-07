@@ -38,7 +38,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Math = Alis.Aspect.Math.Math;
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     The pair manager class

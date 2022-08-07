@@ -32,7 +32,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 
-namespace HIDDevices.Sample
+namespace Alis.Core.Input.Sample
 {
     /// <summary>
     ///     The program class

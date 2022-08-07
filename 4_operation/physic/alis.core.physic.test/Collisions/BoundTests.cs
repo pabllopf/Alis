@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The bound tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public BoundTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +42,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void Clone_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var bound = this.CreateBound();
+            var bound = CreateBound();
 
             // Act
             var result = bound.Clone();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

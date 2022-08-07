@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public LineJointTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockLineJointDef = this.mockRepository.Create<LineJointDef>();
+            mockLineJointDef = mockRepository.Create<LineJointDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         private LineJoint CreateLineJoint()
         {
             return new LineJoint(
-                this.mockLineJointDef.Object);
+                mockLineJointDef.Object);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
             float invDt = 0;
 
             // Act
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionTorque_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
             float invDt = 0;
 
             // Act
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -85,14 +85,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetJointTranslation_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.GetJointTranslation();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -102,14 +102,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetJointSpeed_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.GetJointSpeed();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -119,14 +119,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void IsLimitEnabled_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.IsLimitEnabled();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void EnableLimit_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
             bool flag = false;
 
             // Act
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -155,14 +155,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetLowerLimit_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.GetLowerLimit();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -172,14 +172,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetUpperLimit_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.GetUpperLimit();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void SetLimits_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
             float lower = 0;
             float upper = 0;
 
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -210,14 +210,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void IsMotorEnabled_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.IsMotorEnabled();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -227,7 +227,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void EnableMotor_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
             bool flag = false;
 
             // Act
@@ -236,7 +236,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void SetMotorSpeed_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
             float speed = 0;
 
             // Act
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void SetMaxMotorForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
             float force = 0;
 
             // Act
@@ -274,7 +274,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -284,14 +284,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetMotorForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.GetMotorForce();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -301,14 +301,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetMotorSpeed_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJoint = this.CreateLineJoint();
+            var lineJoint = CreateLineJoint();
 
             // Act
             var result = lineJoint.GetMotorSpeed();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

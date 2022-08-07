@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         /// </summary>
         public ConstantForceControllerTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockConstantForceControllerDef = this.mockRepository.Create<ConstantForceControllerDef>();
+            mockConstantForceControllerDef = mockRepository.Create<ConstantForceControllerDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         private ConstantForceController CreateConstantForceController()
         {
             return new ConstantForceController(
-                this.mockConstantForceControllerDef.Object);
+                mockConstantForceControllerDef.Object);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void Step_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var constantForceController = this.CreateConstantForceController();
-            TimeStep step = default(global::Alis.Aspect.Time.TimeStep);
+            var constantForceController = CreateConstantForceController();
+            TimeStep step = default(Aspect.Time.TimeStep);
 
             // Act
             constantForceController.Step(
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

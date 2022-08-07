@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The collision tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public CollisionTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +42,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void CollideCircles_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var collision = this.CreateCollision();
+            var collision = CreateCollision();
             Manifold manifold = null;
             CircleShape circle1 = null;
             XForm xf1 = default(global::Alis.Aspect.Math.XForm);
@@ -60,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -70,7 +69,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void CollidePolygonAndCircle_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var collision = this.CreateCollision();
+            var collision = CreateCollision();
             Manifold manifold = null;
             PolygonShape polygon = null;
             XForm xf1 = default(global::Alis.Aspect.Math.XForm);
@@ -87,7 +86,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         /// </summary>
         public BuoyancyControllerTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockBuoyancyControllerDef = this.mockRepository.Create<BuoyancyControllerDef>();
+            mockBuoyancyControllerDef = mockRepository.Create<BuoyancyControllerDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         private BuoyancyController CreateBuoyancyController()
         {
             return new BuoyancyController(
-                this.mockBuoyancyControllerDef.Object);
+                mockBuoyancyControllerDef.Object);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void Step_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var buoyancyController = this.CreateBuoyancyController();
-            TimeStep step = default(global::Alis.Aspect.Time.TimeStep);
+            var buoyancyController = CreateBuoyancyController();
+            TimeStep step = default(Aspect.Time.TimeStep);
 
             // Act
             buoyancyController.Step(
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void Draw_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var buoyancyController = this.CreateBuoyancyController();
+            var buoyancyController = CreateBuoyancyController();
             DebugDraw debugDraw = null;
 
             // Act
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

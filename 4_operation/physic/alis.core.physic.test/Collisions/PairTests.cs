@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The pair tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public PairTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +42,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void SetBuffered_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             pair.SetBuffered();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -60,14 +59,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void ClearBuffered_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             pair.ClearBuffered();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -77,14 +76,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void IsBuffered_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             var result = pair.IsBuffered();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -94,14 +93,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void SetRemoved_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             pair.SetRemoved();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -111,14 +110,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void ClearRemoved_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             pair.ClearRemoved();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -128,14 +127,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void IsRemoved_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             var result = pair.IsRemoved();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -145,14 +144,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void SetFinal_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             pair.SetFinal();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -162,14 +161,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void IsFinal_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var pair = this.CreatePair();
+            var pair = CreatePair();
 
             // Act
             var result = pair.IsFinal();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

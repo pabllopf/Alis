@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         /// </summary>
         public ContactConstraintPointTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void TestMethod1()
         {
             // Arrange
-            var contactConstraintPoint = this.CreateContactConstraintPoint();
+            var contactConstraintPoint = CreateContactConstraintPoint();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

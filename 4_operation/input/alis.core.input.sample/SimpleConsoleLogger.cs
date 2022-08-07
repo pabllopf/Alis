@@ -31,7 +31,7 @@ using System;
 using System.Reactive.Disposables;
 using Microsoft.Extensions.Logging;
 
-namespace HIDDevices.Sample
+namespace Alis.Core.Input.Sample
 {
     /// <summary>
     ///     The simple console logger class

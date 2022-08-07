@@ -30,13 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Alis.Core.Input;
 using HidSharp.Reports;
-using Usage = Alis.Core.Input.Usage;
 
 #pragma warning disable 618
 
-namespace DevDecoder.HIDDevices
+namespace Alis.Core.Input
 {
     /// <summary>
     ///     Class Control represents a single control (e.g. Button, slider, joystick axis) on a <see cref="Device" />.

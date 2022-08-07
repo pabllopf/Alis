@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     This is used for determining the state of contact points.

@@ -30,10 +30,10 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         /// </summary>
         public CircleContactTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockFixture = this.mockRepository.Create<Fixture>();
-            this.mockFixture = this.mockRepository.Create<Fixture>();
+            this.mockFixture = mockRepository.Create<Fixture>();
+            this.mockFixture = mockRepository.Create<Fixture>();
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Create_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var circleContact = this.CreateCircleContact();
+            var circleContact = CreateCircleContact();
             Fixture fixtureA = null;
             Fixture fixtureB = null;
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Destroy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var circleContact = this.CreateCircleContact();
+            var circleContact = CreateCircleContact();
             Contact contact = null;
 
             // Act
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

@@ -1,10 +1,8 @@
-
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The index array tests class
@@ -23,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public IndexArrayTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -44,14 +42,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void TestMethod1()
         {
             // Arrange
-            var indexArray = this.CreateIndexArray();
+            var indexArray = CreateIndexArray();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public DistanceJointTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockDistanceJointDef = this.mockRepository.Create<DistanceJointDef>();
+            mockDistanceJointDef = mockRepository.Create<DistanceJointDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         private DistanceJoint CreateDistanceJoint()
         {
             return new DistanceJoint(
-                this.mockDistanceJointDef.Object);
+                mockDistanceJointDef.Object);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var distanceJoint = this.CreateDistanceJoint();
+            var distanceJoint = CreateDistanceJoint();
             float invDt = 0;
 
             // Act
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionTorque_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var distanceJoint = this.CreateDistanceJoint();
+            var distanceJoint = CreateDistanceJoint();
             float invDt = 0;
 
             // Act
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

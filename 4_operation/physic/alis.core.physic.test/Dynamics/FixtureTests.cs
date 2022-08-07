@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public FixtureTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Create_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
+            var fixture = CreateFixture();
             BroadPhase broadPhase = null;
             Body body = null;
             XForm xf = default(global::Alis.Aspect.Math.XForm);
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Destroy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
+            var fixture = CreateFixture();
             BroadPhase broadPhase = null;
 
             // Act
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -87,14 +87,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
+            var fixture = CreateFixture();
 
             // Act
             fixture.Dispose();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ComputeMass_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
-            MassData massData = default(global::Alis.Core.Physic.Collision.Shapes.MassData);
+            var fixture = CreateFixture();
+            MassData massData = default(global::Alis.Core.Physic.Collisions.Shapes.MassData);
 
             // Act
             fixture.ComputeMass(
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ComputeSubmergedArea_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
+            var fixture = CreateFixture();
             Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
             float offset = 0;
             Vector2 c = default(global::Alis.Aspect.Math.Vector2);
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void TestPoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
+            var fixture = CreateFixture();
             Vector2 p = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -165,10 +165,10 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void TestSegment_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
+            var fixture = CreateFixture();
             float lambda = 0;
             Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
-            Segment segment = default(global::Alis.Core.Physic.Collision.Segment);
+            Segment segment = default(global::Alis.Core.Physic.Collisions.Segment);
             float maxLambda = 0;
 
             // Act
@@ -180,7 +180,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ComputeSweepRadius_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var fixture = this.CreateFixture();
+            var fixture = CreateFixture();
             Vector2 pivot = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

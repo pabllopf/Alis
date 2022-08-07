@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public ColorTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Set_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var color = this.CreateColor();
+            var color = CreateColor();
             float r = 0;
             float g = 0;
             float b = 0;
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public PrismaticJointTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockPrismaticJointDef = this.mockRepository.Create<PrismaticJointDef>();
+            mockPrismaticJointDef = mockRepository.Create<PrismaticJointDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         private PrismaticJoint CreatePrismaticJoint()
         {
             return new PrismaticJoint(
-                this.mockPrismaticJointDef.Object);
+                mockPrismaticJointDef.Object);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var prismaticJoint = this.CreatePrismaticJoint();
+            var prismaticJoint = CreatePrismaticJoint();
             float invDt = 0;
 
             // Act
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionTorque_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var prismaticJoint = this.CreatePrismaticJoint();
+            var prismaticJoint = CreatePrismaticJoint();
             float invDt = 0;
 
             // Act
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void EnableLimit_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var prismaticJoint = this.CreatePrismaticJoint();
+            var prismaticJoint = CreatePrismaticJoint();
             bool flag = false;
 
             // Act
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void SetLimits_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var prismaticJoint = this.CreatePrismaticJoint();
+            var prismaticJoint = CreatePrismaticJoint();
             float lower = 0;
             float upper = 0;
 
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void EnableMotor_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var prismaticJoint = this.CreatePrismaticJoint();
+            var prismaticJoint = CreatePrismaticJoint();
             bool flag = false;
 
             // Act
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void SetMaxMotorForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var prismaticJoint = this.CreatePrismaticJoint();
+            var prismaticJoint = CreatePrismaticJoint();
             float force = 0;
 
             // Act
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

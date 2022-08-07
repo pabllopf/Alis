@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     // Structures and functions used for computing contact points, distance
     // queries, and TOI queries.

@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public ContactImpulseTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void TestMethod1()
         {
             // Arrange
-            var contactImpulse = this.CreateContactImpulse();
+            var contactImpulse = CreateContactImpulse();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

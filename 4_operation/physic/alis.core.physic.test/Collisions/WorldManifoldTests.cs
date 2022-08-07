@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The world manifold tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public WorldManifoldTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +42,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void Clone_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var worldManifold = this.CreateWorldManifold();
+            var worldManifold = CreateWorldManifold();
 
             // Act
             var result = worldManifold.Clone();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -60,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void Initialize_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var worldManifold = this.CreateWorldManifold();
+            var worldManifold = CreateWorldManifold();
             Manifold manifold = null;
             XForm xfA = default(global::Alis.Aspect.Math.XForm);
             float radiusA = 0;
@@ -77,7 +76,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

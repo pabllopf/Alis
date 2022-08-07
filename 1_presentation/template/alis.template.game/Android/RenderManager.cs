@@ -63,8 +63,8 @@ namespace Alis.Template.Game.Android
 #if ANDROID
              Console.WriteLine("RenderManager on android");
             
-            GLES30.GlClearColor(red, green, blue, 1.0f);
-            GLES30.GlClear ((int)GLES30.GlColorBufferBit);
+            GLES20.GlClearColor(red, green, blue, 1.0f);
+            GLES20.GlClear ((int)GLES20.GlColorBufferBit);
 			
             red += 0.01f;
             if (red >= 1.0f)

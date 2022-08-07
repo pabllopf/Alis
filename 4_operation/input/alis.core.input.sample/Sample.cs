@@ -35,7 +35,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace HIDDevices.Sample
+namespace Alis.Core.Input.Sample
 {
     /// <summary>
     ///     The sample class

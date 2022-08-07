@@ -30,8 +30,8 @@
 using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -406,7 +406,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             input.SweepRadiusB = FixtureB.ComputeSweepRadius(sweepB.LocalCenter);
             input.Tolerance = Settings.LinearSlop;
 
-            return Collision.Collision.TimeOfImpact(input, FixtureA.Shape, FixtureB.Shape);
+            return Collision.TimeOfImpact(input, FixtureA.Shape, FixtureB.Shape);
         }
 
         /// <summary>

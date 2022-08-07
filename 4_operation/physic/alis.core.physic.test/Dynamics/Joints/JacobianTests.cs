@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public JacobianTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void SetZero_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var jacobian = this.CreateJacobian();
+            var jacobian = CreateJacobian();
 
             // Act
             jacobian.SetZero();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Set_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var jacobian = this.CreateJacobian();
+            var jacobian = CreateJacobian();
             Vector2 x1 = default(global::Alis.Aspect.Math.Vector2);
             float a1 = 0;
             Vector2 x2 = default(global::Alis.Aspect.Math.Vector2);
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Compute_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var jacobian = this.CreateJacobian();
+            var jacobian = CreateJacobian();
             Vector2 x1 = default(global::Alis.Aspect.Math.Vector2);
             float a1 = 0;
             Vector2 x2 = default(global::Alis.Aspect.Math.Vector2);
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

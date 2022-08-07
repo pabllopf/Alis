@@ -33,14 +33,12 @@ using System.Reactive.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Alis.Core.Input;
 using Alis.Core.Input.Controllers;
-using DevDecoder.HIDDevices.Usages;
 using DynamicData;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace HIDDevices.Sample.Samples
+namespace Alis.Core.Input.Sample.Samples
 {
     /// <summary>
     ///     The dependency injection sample class

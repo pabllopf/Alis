@@ -33,8 +33,8 @@ using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
 using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics.Contacts

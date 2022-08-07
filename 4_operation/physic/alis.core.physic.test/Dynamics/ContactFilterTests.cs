@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public ContactFilterTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ShouldCollide_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var contactFilter = this.CreateContactFilter();
+            var contactFilter = CreateContactFilter();
             Fixture fixtureA = null;
             Fixture fixtureB = null;
 
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void RayCollide_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var contactFilter = this.CreateContactFilter();
+            var contactFilter = CreateContactFilter();
             object userData = null;
             Fixture fixture = null;
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

@@ -31,9 +31,9 @@
 
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions.Shapes;
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     // GJK using Voronoi regions (Christer Ericson) and Barycentric coordinates.
 

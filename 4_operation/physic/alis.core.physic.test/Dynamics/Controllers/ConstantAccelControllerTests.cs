@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         /// </summary>
         public ConstantAccelControllerTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockConstantAccelControllerDef = this.mockRepository.Create<ConstantAccelControllerDef>();
+            mockConstantAccelControllerDef = mockRepository.Create<ConstantAccelControllerDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         private ConstantAccelController CreateConstantAccelController()
         {
             return new ConstantAccelController(
-                this.mockConstantAccelControllerDef.Object);
+                mockConstantAccelControllerDef.Object);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void Step_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var constantAccelController = this.CreateConstantAccelController();
-            TimeStep step = default(global::Alis.Aspect.Time.TimeStep);
+            var constantAccelController = CreateConstantAccelController();
+            TimeStep step = default(Aspect.Time.TimeStep);
 
             // Act
             constantAccelController.Step(
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

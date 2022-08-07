@@ -29,7 +29,7 @@
 
 using System;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Sample

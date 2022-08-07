@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions.Shapes;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision.Shapes
+namespace Alis.Core.Physic.Test.Collisions.Shapes
 {
     /// <summary>
     /// The edge shape tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         /// </summary>
         public EdgeShapeTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +42,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
 
             // Act
             edgeShape.Dispose();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -60,7 +59,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void Set_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             Vector2 v1 = default(global::Alis.Aspect.Math.Vector2);
             Vector2 v2 = default(global::Alis.Aspect.Math.Vector2);
 
@@ -71,7 +70,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -81,7 +80,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void TestPoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             XForm transform = default(global::Alis.Aspect.Math.XForm);
             Vector2 p = default(global::Alis.Aspect.Math.Vector2);
 
@@ -92,7 +91,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -102,11 +101,11 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void TestSegment_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             XForm transform = default(global::Alis.Aspect.Math.XForm);
             float lambda = 0;
             Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
-            Segment segment = default(global::Alis.Core.Physic.Collision.Segment);
+            Segment segment = default(global::Alis.Core.Physic.Collisions.Segment);
             float maxLambda = 0;
 
             // Act
@@ -119,7 +118,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -129,8 +128,8 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void ComputeAabb_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            var edgeShape = CreateEdgeShape();
+            Aabb aabb = default(global::Alis.Core.Physic.Collisions.Aabb);
             XForm transform = default(global::Alis.Aspect.Math.XForm);
 
             // Act
@@ -140,7 +139,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -150,8 +149,8 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void ComputeMass_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
-            MassData massData = default(global::Alis.Core.Physic.Collision.Shapes.MassData);
+            var edgeShape = CreateEdgeShape();
+            MassData massData = default(MassData);
             float density = 0;
 
             // Act
@@ -161,7 +160,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -171,7 +170,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void SetPrevEdge_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             EdgeShape edge = null;
             Vector2 cornerDir = default(global::Alis.Aspect.Math.Vector2);
             bool convex = false;
@@ -184,7 +183,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -194,7 +193,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void SetNextEdge_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             EdgeShape edge = null;
             Vector2 cornerDir = default(global::Alis.Aspect.Math.Vector2);
             bool convex = false;
@@ -207,7 +206,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -217,7 +216,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void ComputeSubmergedArea_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
             float offset = 0;
             XForm xf = default(global::Alis.Aspect.Math.XForm);
@@ -232,7 +231,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -242,7 +241,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void GetSupport_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             Vector2 d = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -251,7 +250,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -261,7 +260,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void GetSupportVertex_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             Vector2 d = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -270,7 +269,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -280,7 +279,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void GetVertex_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             int index = 0;
 
             // Act
@@ -289,7 +288,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -299,7 +298,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void ComputeSweepRadius_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = this.CreateEdgeShape();
+            var edgeShape = CreateEdgeShape();
             Vector2 pivot = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -308,7 +307,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

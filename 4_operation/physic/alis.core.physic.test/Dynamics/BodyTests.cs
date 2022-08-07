@@ -26,9 +26,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public BodyTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockWorld = this.mockRepository.Create<World>();
+            mockWorld = mockRepository.Create<World>();
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             return new Body(
                 TODO,
-                this.mockWorld.Object);
+                mockWorld.Object);
         }
 
         /// <summary>
@@ -49,14 +49,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             body.Dispose();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void CreateFixture_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             FixtureDef def = null;
 
             // Act
@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void DestroyFixture_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Fixture fixture = null;
 
             // Act
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -104,8 +104,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetMass_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
-            MassData massData = default(global::Alis.Core.Physic.Collision.Shapes.MassData);
+            var body = CreateBody();
+            MassData massData = default(global::Alis.Core.Physic.Collisions.Shapes.MassData);
 
             // Act
             body.SetMass(
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -123,14 +123,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetMassFromShapes_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             body.SetMassFromShapes();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetXForm_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 position = default(global::Alis.Aspect.Math.Vector2);
             float angle = 0;
 
@@ -151,7 +151,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetXForm_StateUnderTest_ExpectedBehavior1()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             XForm xf = default(global::Alis.Aspect.Math.XForm);
 
             // Act
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -180,14 +180,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetXForm_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetXForm();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetPosition_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 position = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -206,7 +206,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetAngle_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             float angle = 0;
 
             // Act
@@ -225,7 +225,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -235,14 +235,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetPosition_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetPosition();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -252,14 +252,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetAngle_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetAngle();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -269,14 +269,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetWorldCenter_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetWorldCenter();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -286,14 +286,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetLocalCenter_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetLocalCenter();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -303,7 +303,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetLinearVelocity_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 v = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -312,7 +312,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -322,14 +322,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetLinearVelocity_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetLinearVelocity();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetAngularVelocity_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             float w = 0;
 
             // Act
@@ -348,7 +348,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -358,14 +358,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetAngularVelocity_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetAngularVelocity();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -375,7 +375,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ApplyForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 force = default(global::Alis.Aspect.Math.Vector2);
             Vector2 point = default(global::Alis.Aspect.Math.Vector2);
 
@@ -386,7 +386,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -396,7 +396,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ApplyTorque_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             float torque = 0;
 
             // Act
@@ -405,7 +405,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void ApplyImpulse_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 impulse = default(global::Alis.Aspect.Math.Vector2);
             Vector2 point = default(global::Alis.Aspect.Math.Vector2);
 
@@ -426,7 +426,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -436,14 +436,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetMass_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetMass();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -453,14 +453,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetInertia_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetInertia();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -470,14 +470,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetMassData_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetMassData();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetWorldPoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 localPoint = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -496,7 +496,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -506,7 +506,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetWorldVector_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 localVector = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -515,7 +515,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -525,7 +525,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetLocalPoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 worldPoint = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -534,7 +534,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -544,7 +544,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetLocalVector_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 worldVector = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -553,7 +553,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -563,7 +563,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetLinearVelocityFromWorldPoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 worldPoint = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -572,7 +572,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetLinearVelocityFromLocalPoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             Vector2 localPoint = default(global::Alis.Aspect.Math.Vector2);
 
             // Act
@@ -591,7 +591,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -601,14 +601,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetLinearDamping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetLinearDamping();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -618,7 +618,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetLinearDamping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             float linearDamping = 0;
 
             // Act
@@ -627,7 +627,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -637,14 +637,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetAngularDamping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetAngularDamping();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -654,7 +654,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetAngularDamping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             float angularDamping = 0;
 
             // Act
@@ -663,7 +663,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -673,14 +673,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsBullet_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.IsBullet();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -690,7 +690,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetBullet_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             bool flag = false;
 
             // Act
@@ -699,7 +699,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -709,14 +709,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsFixedRotation_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.IsFixedRotation();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -726,7 +726,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetFixedRotation_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             bool fixedr = false;
 
             // Act
@@ -735,7 +735,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -745,14 +745,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsStatic_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.IsStatic();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -762,14 +762,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetStatic_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             body.SetStatic();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -779,14 +779,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsDynamic_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.IsDynamic();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -796,14 +796,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsFrozen_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.IsFrozen();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -813,14 +813,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsSleeping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.IsSleeping();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -830,14 +830,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsAllowSleeping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.IsAllowSleeping();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -847,7 +847,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void AllowSleeping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             bool flag = false;
 
             // Act
@@ -856,7 +856,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -866,14 +866,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void WakeUp_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             body.WakeUp();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -883,14 +883,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PutToSleep_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             body.PutToSleep();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -900,14 +900,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetFixtureList_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetFixtureList();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -917,14 +917,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetJointList_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetJointList();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -934,14 +934,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetControllerList_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetControllerList();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -951,14 +951,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetNext_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetNext();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -968,14 +968,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetUserData_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetUserData();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -985,7 +985,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetUserData_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
             object data = null;
 
             // Act
@@ -994,7 +994,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -1004,14 +1004,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void GetWorld_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var body = this.CreateBody();
+            var body = CreateBody();
 
             // Act
             var result = body.GetWorld();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

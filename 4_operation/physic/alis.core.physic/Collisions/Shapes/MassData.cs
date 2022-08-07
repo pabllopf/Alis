@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision.Shapes
+namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
     ///     This holds the mass data computed for a shape.

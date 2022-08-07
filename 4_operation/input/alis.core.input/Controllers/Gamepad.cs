@@ -31,7 +31,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Alis.Core.Input.Attributes;
 using Alis.Core.Input.Converters;
-using DevDecoder.HIDDevices.Usages;
 
 namespace Alis.Core.Input.Controllers
 {

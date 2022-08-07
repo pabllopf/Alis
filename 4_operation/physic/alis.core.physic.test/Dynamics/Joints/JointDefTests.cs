@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public JointDefTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void TestMethod1()
         {
             // Arrange
-            var jointDef = this.CreateJointDef();
+            var jointDef = CreateJointDef();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

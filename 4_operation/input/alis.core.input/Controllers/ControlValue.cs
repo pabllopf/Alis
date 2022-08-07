@@ -35,11 +35,11 @@ using DevDecoder.HIDDevices;
 namespace Alis.Core.Input.Controllers
 {
     /// <summary>
-    ///     Struct ControlValue holds the latest value of a <see cref="DevDecoder.HIDDevices.Control" /> for a
+    ///     Struct ControlValue holds the latest value of a <see cref="Input.Control" /> for a
     ///     <seealso cref="Controller" />.
     /// </summary>
     /// <seealso cref="Controller" />
-    /// <seealso cref="DevDecoder.HIDDevices.Control" />
+    /// <seealso cref="Input.Control" />
     /// <seealso cref="ControlChange" />
     /// <seealso cref="IEquatable{T}" />
     public readonly struct ControlValue : IEquatable<ControlValue>

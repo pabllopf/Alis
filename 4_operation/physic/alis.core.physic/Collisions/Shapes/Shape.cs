@@ -30,7 +30,7 @@
 using System;
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision.Shapes
+namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
     ///     A shape is used for collision detection. You can create a shape however you like.

@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public GearJointDefTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void TestMethod1()
         {
             // Arrange
-            var gearJointDef = this.CreateGearJointDef();
+            var gearJointDef = CreateGearJointDef();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

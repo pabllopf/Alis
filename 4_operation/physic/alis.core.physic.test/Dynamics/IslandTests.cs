@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public IslandTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockContactListener = this.mockRepository.Create<IContactListener>();
+            mockContactListener = mockRepository.Create<IContactListener>();
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Test.Dynamics
                 TODO,
                 TODO,
                 TODO,
-                this.mockContactListener.Object);
+                mockContactListener.Object);
         }
 
         /// <summary>
@@ -50,14 +50,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = this.CreateIsland();
+            var island = CreateIsland();
 
             // Act
             island.Dispose();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -67,14 +67,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Clear_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = this.CreateIsland();
+            var island = CreateIsland();
 
             // Act
             island.Clear();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Solve_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = this.CreateIsland();
-            TimeStep step = default(global::Alis.Aspect.Time.TimeStep);
+            var island = CreateIsland();
+            TimeStep step = default(Aspect.Time.TimeStep);
             Vector2 gravity = default(global::Alis.Aspect.Math.Vector2);
             bool allowSleep = false;
 
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -107,8 +107,8 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SolveToi_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = this.CreateIsland();
-            TimeStep subStep = default(global::Alis.Aspect.Time.TimeStep);
+            var island = CreateIsland();
+            TimeStep subStep = default(Aspect.Time.TimeStep);
 
             // Act
             island.SolveToi(
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Add_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = this.CreateIsland();
+            var island = CreateIsland();
             Body body = null;
 
             // Act
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Add_StateUnderTest_ExpectedBehavior1()
         {
             // Arrange
-            var island = this.CreateIsland();
+            var island = CreateIsland();
             Contact contact = null;
 
             // Act
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Add_StateUnderTest_ExpectedBehavior2()
         {
             // Arrange
-            var island = this.CreateIsland();
+            var island = CreateIsland();
             Joint joint = null;
 
             // Act
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Report_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = this.CreateIsland();
+            var island = CreateIsland();
             ContactConstraint[] constraints = null;
 
             // Act
@@ -192,7 +192,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

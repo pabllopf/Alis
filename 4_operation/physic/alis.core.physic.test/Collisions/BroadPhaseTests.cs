@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The broad phase tests class
@@ -25,9 +24,9 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public BroadPhaseTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockPairCallback = this.mockRepository.Create<PairCallback>();
+            mockPairCallback = mockRepository.Create<PairCallback>();
         }
 
         /// <summary>
@@ -38,7 +37,7 @@ namespace Alis.Core.Physic.Test.Collision
         {
             return new BroadPhase(
                 TODO,
-                this.mockPairCallback.Object);
+                mockPairCallback.Object);
         }
 
         /// <summary>
@@ -48,8 +47,8 @@ namespace Alis.Core.Physic.Test.Collision
         public void InRange_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            var broadPhase = CreateBroadPhase();
+            Aabb aabb = default(Aabb);
 
             // Act
             var result = broadPhase.InRange(
@@ -57,7 +56,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -67,8 +66,8 @@ namespace Alis.Core.Physic.Test.Collision
         public void CreateProxy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            var broadPhase = CreateBroadPhase();
+            Aabb aabb = default(Aabb);
             object userData = null;
 
             // Act
@@ -78,7 +77,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -88,7 +87,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void DestroyProxy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
+            var broadPhase = CreateBroadPhase();
             int proxyId = 0;
 
             // Act
@@ -97,7 +96,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -107,9 +106,9 @@ namespace Alis.Core.Physic.Test.Collision
         public void MoveProxy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
+            var broadPhase = CreateBroadPhase();
             int proxyId = 0;
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            Aabb aabb = default(Aabb);
 
             // Act
             broadPhase.MoveProxy(
@@ -118,7 +117,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -128,14 +127,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void Commit_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
+            var broadPhase = CreateBroadPhase();
 
             // Act
             broadPhase.Commit();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -145,7 +144,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void GetProxy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
+            var broadPhase = CreateBroadPhase();
             int proxyId = 0;
 
             // Act
@@ -154,7 +153,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -164,8 +163,8 @@ namespace Alis.Core.Physic.Test.Collision
         public void Query_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            var broadPhase = CreateBroadPhase();
+            Aabb aabb = default(Aabb);
             object[] userData = null;
             int maxCount = 0;
 
@@ -177,7 +176,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -187,8 +186,8 @@ namespace Alis.Core.Physic.Test.Collision
         public void QuerySegment_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
-            Segment segment = default(global::Alis.Core.Physic.Collision.Segment);
+            var broadPhase = CreateBroadPhase();
+            Segment segment = default(Segment);
             object[] userData = null;
             int maxCount = 0;
             SortKeyFunc sortKey = null;
@@ -202,7 +201,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -212,14 +211,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void Validate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = this.CreateBroadPhase();
+            var broadPhase = CreateBroadPhase();
 
             // Act
             broadPhase.Validate();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

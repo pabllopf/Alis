@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         /// </summary>
         public LineJointDefTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void Initialize_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var lineJointDef = this.CreateLineJointDef();
+            var lineJointDef = CreateLineJointDef();
             Body body1 = null;
             Body body2 = null;
             Vector2 anchor = default(global::Alis.Aspect.Math.Vector2);
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

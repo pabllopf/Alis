@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         /// </summary>
         public TensorDampingControllerTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void SetAxisAligned_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var tensorDampingController = this.CreateTensorDampingController();
+            var tensorDampingController = CreateTensorDampingController();
             float xDamping = 0;
             float yDamping = 0;
 
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -64,8 +64,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void Step_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var tensorDampingController = this.CreateTensorDampingController();
-            TimeStep step = default(global::Alis.Aspect.Time.TimeStep);
+            var tensorDampingController = CreateTensorDampingController();
+            TimeStep step = default(Aspect.Time.TimeStep);
 
             // Act
             tensorDampingController.Step(
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

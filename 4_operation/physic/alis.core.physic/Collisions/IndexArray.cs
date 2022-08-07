@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Aspect.Logging;
-
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     The index array

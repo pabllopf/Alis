@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public PositionTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void TestMethod1()
         {
             // Arrange
-            var position = this.CreatePosition();
+            var position = CreatePosition();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

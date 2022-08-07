@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions.Shapes;
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     The collision class

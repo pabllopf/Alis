@@ -32,7 +32,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision.Shapes
+namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
     ///     A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.

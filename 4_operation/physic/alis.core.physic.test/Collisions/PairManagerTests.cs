@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The pair manager tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public PairManagerTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +42,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void Initialize_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
             BroadPhase broadPhase = null;
             PairCallback callback = null;
 
@@ -54,7 +53,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -64,7 +63,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void AddBufferedPair_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
             int id1 = 0;
             int id2 = 0;
 
@@ -75,7 +74,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -85,7 +84,7 @@ namespace Alis.Core.Physic.Test.Collision
         public void RemoveBufferedPair_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
             int id1 = 0;
             int id2 = 0;
 
@@ -96,7 +95,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -106,14 +105,14 @@ namespace Alis.Core.Physic.Test.Collision
         public void Commit_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
 
             // Act
             manager.Commit();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -123,9 +122,9 @@ namespace Alis.Core.Physic.Test.Collision
         public void BufferedPairSortPredicate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
-            BufferedPair pair1 = default(global::Alis.Core.Physic.Collision.BufferedPair);
-            BufferedPair pair2 = default(global::Alis.Core.Physic.Collision.BufferedPair);
+            var manager = CreateManager();
+            BufferedPair pair1 = default(BufferedPair);
+            BufferedPair pair2 = default(BufferedPair);
 
             // Act
             var result = manager.BufferedPairSortPredicate(
@@ -134,7 +133,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

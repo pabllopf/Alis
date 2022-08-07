@@ -30,7 +30,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision.Shapes
+namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
     ///     A circle shape.

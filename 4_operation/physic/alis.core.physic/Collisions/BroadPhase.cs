@@ -52,7 +52,7 @@ Bullet (http:/www.bulletphysics.com).
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     The broad phase class

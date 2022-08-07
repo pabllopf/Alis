@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions.Shapes;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision.Shapes
+namespace Alis.Core.Physic.Test.Collisions.Shapes
 {
     /// <summary>
     /// The mass data tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         /// </summary>
         public MassDataTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +42,14 @@ namespace Alis.Core.Physic.Test.Collision.Shapes
         public void TestMethod1()
         {
             // Arrange
-            var massData = this.CreateMassData();
+            var massData = CreateMassData();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

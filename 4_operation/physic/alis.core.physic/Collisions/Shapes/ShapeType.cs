@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Collision.Shapes
+namespace Alis.Core.Physic.Collisions.Shapes
 {
     /// <summary>
     ///     The various collision shape types supported by Box2D.

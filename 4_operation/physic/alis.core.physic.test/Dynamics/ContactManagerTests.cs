@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public ContactManagerTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PairAdded_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
             object proxyUserDataA = null;
             object proxyUserDataB = null;
 
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PairRemoved_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
             object proxyUserData1 = null;
             object proxyUserData2 = null;
             object pairUserData = null;
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Destroy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
             Contact c = null;
 
             // Act
@@ -96,7 +96,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -106,14 +106,14 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Collide_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = this.CreateManager();
+            var manager = CreateManager();
 
             // Act
             manager.Collide();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

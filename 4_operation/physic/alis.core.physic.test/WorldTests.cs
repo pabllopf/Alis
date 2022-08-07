@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Test
         /// </summary>
         public WorldTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -73,14 +73,14 @@ namespace Alis.Core.Physic.Test
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             world.Dispose();
 
             // Assert
             Assert.Null(world.BroadPhase);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Test
         public void SetDestructionListener_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             DestructionListener listener = null;
 
             // Act
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Test
         public void SetBoundaryListener_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             BoundaryListener listener = null;
 
             // Act
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Test
         public void SetContactFilter_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             ContactFilter filter = null;
 
             // Act
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Test
         public void SetContactListener_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             IContactListener listener = null;
 
             // Act
@@ -156,7 +156,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Alis.Core.Physic.Test
         public void SetDebugDraw_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             DebugDraw debugDraw = null;
 
             // Act
@@ -175,7 +175,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -185,8 +185,8 @@ namespace Alis.Core.Physic.Test
         public void CreateBody_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
-            BodyDef def = default(global::Alis.Core.Physic.Dynamics.BodyDef);
+            var world = CreateWorld();
+            BodyDef def = default(BodyDef);
 
             // Act
             var result = world.CreateBody(
@@ -194,7 +194,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic.Test
         public void DestroyBody_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             Body b = null;
 
             // Act
@@ -213,7 +213,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Test
         public void CreateJoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             JointDef def = null;
 
             // Act
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Alis.Core.Physic.Test
         public void DestroyJoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             Joint j = null;
 
             // Act
@@ -251,7 +251,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Test
         public void AddController_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             Controller def = null;
 
             // Act
@@ -270,7 +270,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -280,7 +280,7 @@ namespace Alis.Core.Physic.Test
         public void RemoveController_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             Controller controller = null;
 
             // Act
@@ -289,7 +289,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -299,14 +299,14 @@ namespace Alis.Core.Physic.Test
         public void GetGroundBody_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetGroundBody();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -316,14 +316,14 @@ namespace Alis.Core.Physic.Test
         public void GetBodyList_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetBodyList();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -333,14 +333,14 @@ namespace Alis.Core.Physic.Test
         public void GetJointList_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetJointList();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -350,14 +350,14 @@ namespace Alis.Core.Physic.Test
         public void GetControllerList_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetControllerList();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -367,14 +367,14 @@ namespace Alis.Core.Physic.Test
         public void GetControllerCount_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetControllerCount();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -384,7 +384,7 @@ namespace Alis.Core.Physic.Test
         public void Refilter_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             Fixture fixture = null;
 
             // Act
@@ -393,7 +393,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -403,7 +403,7 @@ namespace Alis.Core.Physic.Test
         public void SetWarmStarting_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             bool flag = false;
 
             // Act
@@ -412,7 +412,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -422,7 +422,7 @@ namespace Alis.Core.Physic.Test
         public void SetContinuousPhysics_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             bool flag = false;
 
             // Act
@@ -431,7 +431,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -441,14 +441,14 @@ namespace Alis.Core.Physic.Test
         public void Validate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             world.Validate();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -458,14 +458,14 @@ namespace Alis.Core.Physic.Test
         public void GetProxyCount_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetProxyCount();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -475,14 +475,14 @@ namespace Alis.Core.Physic.Test
         public void GetPairCount_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetPairCount();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -492,14 +492,14 @@ namespace Alis.Core.Physic.Test
         public void GetBodyCount_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetBodyCount();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -509,14 +509,14 @@ namespace Alis.Core.Physic.Test
         public void GetJointCount_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetJointCount();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -526,14 +526,14 @@ namespace Alis.Core.Physic.Test
         public void GetContactCount_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
 
             // Act
             var result = world.GetContactCount();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -543,7 +543,7 @@ namespace Alis.Core.Physic.Test
         public void Step_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
+            var world = CreateWorld();
             float dt = 0;
             int velocityIterations = 0;
             int positionIteration = 0;
@@ -556,7 +556,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -566,8 +566,8 @@ namespace Alis.Core.Physic.Test
         public void Query_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            var world = CreateWorld();
+            Aabb aabb = default(Aabb);
             Fixture[] fixtures = null;
             int maxCount = 0;
 
@@ -579,7 +579,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -589,8 +589,8 @@ namespace Alis.Core.Physic.Test
         public void Raycast_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
-            Segment segment = default(global::Alis.Core.Physic.Collision.Segment);
+            var world = CreateWorld();
+            Segment segment = default(Segment);
             Fixture[] fixtures = null;
             int maxCount = 0;
             bool solidShapes = false;
@@ -606,7 +606,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -616,10 +616,10 @@ namespace Alis.Core.Physic.Test
         public void RaycastOne_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
-            Segment segment = default(global::Alis.Core.Physic.Collision.Segment);
+            var world = CreateWorld();
+            Segment segment = default(Segment);
             float lambda = 0;
-            Vector2 normal = default(global::Alis.Aspect.Math.Vector2);
+            Vector2 normal = default(Vector2);
             bool solidShapes = false;
             object userData = null;
 
@@ -633,7 +633,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -643,8 +643,8 @@ namespace Alis.Core.Physic.Test
         public void InRange_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = this.CreateWorld();
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            var world = CreateWorld();
+            Aabb aabb = default(Aabb);
 
             // Act
             var result = world.InRange(
@@ -652,7 +652,7 @@ namespace Alis.Core.Physic.Test
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

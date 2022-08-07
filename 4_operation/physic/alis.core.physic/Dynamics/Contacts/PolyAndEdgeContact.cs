@@ -29,8 +29,8 @@
 
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collision;
-using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Collisions.Shapes;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         private static void CollidePolyAndEdgeContact(ref Manifold manifold, Shape shape1, XForm xf1, Shape shape2,
             XForm xf2)
         {
-            Collision.Collision.CollidePolyAndEdge(ref manifold, (PolygonShape)shape1, xf1, (EdgeShape)shape2, xf2);
+            Collision.CollidePolyAndEdge(ref manifold, (PolygonShape)shape1, xf1, (EdgeShape)shape2, xf2);
         }
 
         /// <summary>

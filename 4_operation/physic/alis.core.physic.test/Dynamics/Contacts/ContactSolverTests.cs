@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         /// </summary>
         public ContactSolverTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -46,14 +46,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var contactSolver = this.CreateContactSolver();
+            var contactSolver = CreateContactSolver();
 
             // Act
             contactSolver.Dispose();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -63,8 +63,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void InitVelocityConstraints_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var contactSolver = this.CreateContactSolver();
-            TimeStep step = default(global::Alis.Aspect.Time.TimeStep);
+            var contactSolver = CreateContactSolver();
+            TimeStep step = default(Aspect.Time.TimeStep);
 
             // Act
             contactSolver.InitVelocityConstraints(
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -82,14 +82,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void SolveVelocityConstraints_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var contactSolver = this.CreateContactSolver();
+            var contactSolver = CreateContactSolver();
 
             // Act
             contactSolver.SolveVelocityConstraints();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -99,14 +99,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void FinalizeVelocityConstraints_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var contactSolver = this.CreateContactSolver();
+            var contactSolver = CreateContactSolver();
 
             // Act
             contactSolver.FinalizeVelocityConstraints();
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void SolvePositionConstraints_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var contactSolver = this.CreateContactSolver();
+            var contactSolver = CreateContactSolver();
             float baumgarte = 0;
 
             // Act
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

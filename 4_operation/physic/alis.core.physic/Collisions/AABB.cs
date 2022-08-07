@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     An axis aligned bounding box.

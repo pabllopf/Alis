@@ -29,7 +29,7 @@
 
 using System.ComponentModel;
 
-namespace DevDecoder.HIDDevices.Usages
+namespace Alis.Core.Input
 {
 #pragma warning disable CS0108
     /// <summary>

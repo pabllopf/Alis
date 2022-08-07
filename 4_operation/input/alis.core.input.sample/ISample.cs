@@ -31,7 +31,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HIDDevices.Sample
+namespace Alis.Core.Input.Sample
 {
     /// <summary>
     ///     The sample interface

@@ -25,9 +25,9 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         /// </summary>
         public GravityControllerTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
-            this.mockGravityControllerDef = this.mockRepository.Create<GravityControllerDef>();
+            mockGravityControllerDef = mockRepository.Create<GravityControllerDef>();
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         private GravityController CreateGravityController()
         {
             return new GravityController(
-                this.mockGravityControllerDef.Object);
+                mockGravityControllerDef.Object);
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void Step_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var gravityController = this.CreateGravityController();
-            TimeStep step = default(global::Alis.Aspect.Time.TimeStep);
+            var gravityController = CreateGravityController();
+            TimeStep step = default(Aspect.Time.TimeStep);
 
             // Act
             gravityController.Step(
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

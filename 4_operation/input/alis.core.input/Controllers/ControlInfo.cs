@@ -34,13 +34,13 @@ using DevDecoder.HIDDevices;
 namespace Alis.Core.Input.Controllers
 {
     /// <summary>
-    ///     Class ControlInfo is used to indicate the relationship between a <seealso cref="DevDecoder.HIDDevices.Control" />
+    ///     Class ControlInfo is used to indicate the relationship between a <seealso cref="Input.Control" />
     ///     and a
     ///     property on a <seealso cref="Controller" />.  These are normally generated automatically, but can be created
     ///     manually when creating a custom controller.
     /// </summary>
     /// <seealso cref="Controller" />
-    /// <seealso cref="DevDecoder.HIDDevices.Control" />
+    /// <seealso cref="Input.Control" />
     public class ControlInfo
     {
         /// <summary>

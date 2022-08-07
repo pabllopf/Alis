@@ -1,9 +1,8 @@
-using Alis.Core.Physic.Collision;
+using Alis.Core.Physic.Collisions;
 using Moq;
-using System;
 using Xunit;
 
-namespace Alis.Core.Physic.Test.Collision
+namespace Alis.Core.Physic.Test.Collisions
 {
     /// <summary>
     /// The aabb tests class
@@ -22,7 +21,7 @@ namespace Alis.Core.Physic.Test.Collision
         /// </summary>
         public AabbTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,9 +42,9 @@ namespace Alis.Core.Physic.Test.Collision
         public void Combine_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var aabb = this.CreateAabb();
-            Aabb aabb1 = default(global::Alis.Core.Physic.Collision.Aabb);
-            Aabb aabb2 = default(global::Alis.Core.Physic.Collision.Aabb);
+            var aabb = CreateAabb();
+            Aabb aabb1 = default(Aabb);
+            Aabb aabb2 = default(Aabb);
 
             // Act
             aabb.Combine(
@@ -54,7 +53,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -64,8 +63,8 @@ namespace Alis.Core.Physic.Test.Collision
         public void Contains_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var aabb = this.CreateAabb();
-            Aabb aabb = default(global::Alis.Core.Physic.Collision.Aabb);
+            var aabb = CreateAabb();
+            Aabb aabb = default(Aabb);
 
             // Act
             var result = aabb.Contains(
@@ -73,7 +72,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -83,9 +82,9 @@ namespace Alis.Core.Physic.Test.Collision
         public void RayCast_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var aabb = this.CreateAabb();
-            RayCastOutput output = default(global::Alis.Core.Physic.Collision.RayCastOutput);
-            RayCastInput input = default(global::Alis.Core.Physic.Collision.RayCastInput);
+            var aabb = CreateAabb();
+            RayCastOutput output = default(RayCastOutput);
+            RayCastInput input = default(RayCastInput);
 
             // Act
             aabb.RayCast(
@@ -94,7 +93,7 @@ namespace Alis.Core.Physic.Test.Collision
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

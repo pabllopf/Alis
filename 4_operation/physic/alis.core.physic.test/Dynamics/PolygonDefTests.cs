@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// </summary>
         public PolygonDefTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetAsBox_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var polygonDef = this.CreatePolygonDef();
+            var polygonDef = CreatePolygonDef();
             float hx = 0;
             float hy = 0;
 
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetAsBox_StateUnderTest_ExpectedBehavior1()
         {
             // Arrange
-            var polygonDef = this.CreatePolygonDef();
+            var polygonDef = CreatePolygonDef();
             float hx = 0;
             float hy = 0;
             Vector2 center = default(global::Alis.Aspect.Math.Vector2);
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Test.Dynamics
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

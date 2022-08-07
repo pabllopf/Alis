@@ -22,7 +22,7 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         /// </summary>
         public ConstantForceControllerDefTests()
         {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
+            mockRepository = new MockRepository(MockBehavior.Strict);
 
 
         }
@@ -43,14 +43,14 @@ namespace Alis.Core.Physic.Test.Dynamics.Controllers
         public void TestMethod1()
         {
             // Arrange
-            var constantForceControllerDef = this.CreateConstantForceControllerDef();
+            var constantForceControllerDef = CreateConstantForceControllerDef();
 
             // Act
 
 
             // Assert
             Assert.True(false);
-            this.mockRepository.VerifyAll();
+            mockRepository.VerifyAll();
         }
     }
 }

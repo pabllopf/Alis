@@ -31,11 +31,10 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using Alis.Core.Input;
 using Alis.Core.Input.Controllers;
 using Microsoft.Extensions.Logging;
 
-namespace HIDDevices.Sample.Samples
+namespace Alis.Core.Input.Sample.Samples
 {
     /// <summary>
     ///     The game loop sample class

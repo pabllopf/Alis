@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collision
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
     ///     This is used to compute the current state of a contact manifold.

@@ -31,10 +31,8 @@ using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using Alis.Core.Input;
-using DevDecoder.HIDDevices.Pages;
 
-namespace DevDecoder.HIDDevices
+namespace Alis.Core.Input
 {
 #pragma warning disable CS0108
     /// <summary>

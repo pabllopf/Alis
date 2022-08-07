@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Input;
-
-namespace DevDecoder.HIDDevices.Pages
+namespace Alis.Core.Input
 {
 #pragma warning disable CS0108
     /// <summary>
