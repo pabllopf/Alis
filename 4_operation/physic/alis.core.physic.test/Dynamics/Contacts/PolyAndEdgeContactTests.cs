@@ -20,10 +20,6 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         /// The mock fixture
         /// </summary>
         private Mock<Fixture> mockFixture;
-        /// <summary>
-        /// The mock fixture
-        /// </summary>
-        private Mock<Fixture> mockFixture;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PolyAndEdgeContactTests"/> class

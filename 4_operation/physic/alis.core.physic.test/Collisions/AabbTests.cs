@@ -64,8 +64,7 @@ namespace Alis.Core.Physic.Test.Collisions
         {
             // Arrange
             var aabb = CreateAabb();
-            Aabb aabb = default(Aabb);
-
+            
             // Act
             var result = aabb.Contains(
                 aabb);

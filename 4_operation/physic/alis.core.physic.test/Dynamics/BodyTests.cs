@@ -2,6 +2,8 @@ using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 using Moq;
 using System;
+using Alis.Aspect.Math;
+using Alis.Core.Physic.Collisions.Shapes;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics

@@ -1,6 +1,8 @@
 using Alis.Core.Physic.Dynamics.Joints;
 using Moq;
 using System;
+using Alis.Aspect.Math;
+using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Joints

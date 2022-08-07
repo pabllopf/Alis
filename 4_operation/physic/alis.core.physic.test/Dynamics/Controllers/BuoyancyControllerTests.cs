@@ -1,6 +1,8 @@
 using Alis.Core.Physic.Dynamics.Controllers;
 using Moq;
 using System;
+using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Controllers

@@ -1,6 +1,10 @@
 using Alis.Core.Physic.Dynamics;
 using Moq;
 using System;
+using Alis.Aspect.Math;
+using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Contacts;
+using Alis.Core.Physic.Dynamics.Joints;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics

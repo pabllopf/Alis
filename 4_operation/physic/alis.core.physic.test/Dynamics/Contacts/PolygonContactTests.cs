@@ -20,19 +20,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         /// The mock fixture
         /// </summary>
         private Mock<Fixture> mockFixture;
-        /// <summary>
-        /// The mock fixture
-        /// </summary>
-        private Mock<Fixture> mockFixture;
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="PolygonContactTests"/> class
         /// </summary>
         public PolygonContactTests()
         {
             mockRepository = new MockRepository(MockBehavior.Strict);
-
-            this.mockFixture = mockRepository.Create<Fixture>();
             this.mockFixture = mockRepository.Create<Fixture>();
         }
 

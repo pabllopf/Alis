@@ -1,6 +1,7 @@
 using Alis.Core.Physic.Dynamics.Contacts;
 using Moq;
 using System;
+using Alis.Aspect.Time;
 using Xunit;
 
 namespace Alis.Core.Physic.Test.Dynamics.Contacts
