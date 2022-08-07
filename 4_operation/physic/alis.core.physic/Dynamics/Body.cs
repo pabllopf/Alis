@@ -75,6 +75,11 @@ namespace Alis.Core.Physic.Dynamics
         internal int FixtureCount;
 
         /// <summary>
+        /// body data
+        /// </summary>
+        private BodyDef bodyDef;
+
+        /// <summary>
         ///     The fixture list
         /// </summary>
         internal Fixture FixtureList;
@@ -177,6 +182,8 @@ namespace Alis.Core.Physic.Dynamics
         internal Body(BodyDef bd, World world)
         {
             Box2DxDebug.Assert(world.Lock == false);
+
+            this.bodyDef = bd;
 
             Flags = 0;
 
