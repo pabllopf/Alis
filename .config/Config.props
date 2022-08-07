@@ -23,6 +23,7 @@
     
     <Import Project="$(SolutionDir).config/assembly/Company.props" />
     <Import Project="$(SolutionDir).config/assembly/FileVersion.props" />
+    <Import Project="$(SolutionDir).config/assembly/InternalsVisibleTo.props" />
     <Import Project="$(SolutionDir).config/assembly/NeutralLanguage.props" />
     <Import Project="$(SolutionDir).config/assembly/Product.props" />
 
