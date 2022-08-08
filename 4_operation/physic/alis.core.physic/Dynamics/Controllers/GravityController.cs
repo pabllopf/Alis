@@ -47,11 +47,17 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public readonly bool InvSqr;
 
         /// <summary>
+        /// Gravity controller
+        /// </summary>
+        private GravityControllerDef gravityControllerDef;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="GravityController" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public GravityController(GravityControllerDef def)
         {
+            gravityControllerDef = def;
             G = def.G;
             InvSqr = def.InvSqr;
         }

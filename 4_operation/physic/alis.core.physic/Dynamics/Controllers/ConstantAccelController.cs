@@ -43,12 +43,15 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// </summary>
         public Vector2 A;
 
+        private ConstantAccelControllerDef constantAccelControllerDef;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ConstantAccelController" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public ConstantAccelController(ConstantAccelControllerDef def)
         {
+            constantAccelControllerDef = def;
             A = def.A;
         }
 

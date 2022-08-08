@@ -44,11 +44,17 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         private readonly Vector2 f;
 
         /// <summary>
+        /// constant force controller
+        /// </summary>
+        private ConstantForceControllerDef constantForceControllerDef;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="ConstantForceController" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public ConstantForceController(ConstantForceControllerDef def)
         {
+            constantForceControllerDef = def;
             f = def.F;
         }
 

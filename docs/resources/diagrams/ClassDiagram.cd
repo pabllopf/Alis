@@ -1,36 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.CircleContact" Collapsed="true">
-    <Position X="6" Y="27.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.CircleContact">
+    <Position X="6.75" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAUAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\CircleContact.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.Contact" Collapsed="true">
-    <Position X="12" Y="26.5" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="Alis.Core.Physic.Dynamics.Contacts.Contact.CollisionFlags" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Dynamics\Contacts\Contact.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Delegate Name="Alis.Core.Physic.Dynamics.Contacts.Contact.CollideShapeDelegate" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Dynamics\Contacts\Contact.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Delegate>
-    </NestedTypes>
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.Contact">
+    <Position X="12.75" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CgwABgCIAAQAAAAAAAAAAgAAQgBIAlsAIAAAAIAEAAA=</HashCode>
-      <FileName>Dynamics\Contacts\Contact.cs</FileName>
+      <FileName>Dynamics\Contacts\CollisionFlags.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="manifold" />
+      <Property Name="Manifold" />
+      <Property Name="NodeB" />
+      <Property Name="NodeA" />
+      <Property Name="Next" />
+      <Property Name="Prev" />
+      <Property Name="FixtureA" />
+      <Property Name="FixtureB" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Contacts.ContactConstraint">
-    <Position X="3.5" Y="23" Width="1.5" />
+    <Position X="6.75" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAEAIAAAEoCAAAAAAAQAEAAAIAgEAAQAAAIAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\ContactConstraint.cs</FileName>
@@ -41,173 +36,199 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Contacts.ContactEdge">
-    <Position X="24.25" Y="7" Width="1.5" />
+    <Position X="22.75" Y="28.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BgAAAAAAAAAAAAAACAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\ContactEdge.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Contact" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Contacts.ContactSolver" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="23" Width="1.5" />
+    <Position X="3.75" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAACAgAAAAAAAAAAABAAAgAhAAAAAAAABAAAA=</HashCode>
       <FileName>Dynamics\Contacts\ContactSolver.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="Constraints" />
+      <Field Name="SPositionSolverManifold" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.EdgeAndCircleContact" Collapsed="true">
-    <Position X="15.5" Y="27.75" Width="1.75" />
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.EdgeAndCircleContact">
+    <Position X="16.25" Y="19.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAAAAAAAgAAA=</HashCode>
       <FileName>Dynamics\Contacts\EdgeAndCircleContact.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.NullContact" Collapsed="true">
-    <Position X="18" Y="27.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.NullContact">
+    <Position X="18.75" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\NullContact.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PolyAndCircleContact" Collapsed="true">
-    <Position X="8.25" Y="27.75" Width="1.75" />
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PolyAndCircleContact">
+    <Position X="9" Y="19.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAABAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\PolyAndCircleContact.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PolyAndEdgeContact" Collapsed="true">
-    <Position X="10.75" Y="27.75" Width="1.75" />
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PolyAndEdgeContact">
+    <Position X="11.5" Y="19.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAABAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\PolyAndEdgeContact.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PolygonContact" Collapsed="true">
-    <Position X="13.25" Y="27.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PolygonContact">
+    <Position X="14" Y="19.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABBAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\PolygonContact.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold" Collapsed="true">
-    <Position X="38.25" Y="2.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Contacts.PositionSolverManifold">
+    <Position X="0.5" Y="10" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgQAAAAAAAAAAAAAIAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Dynamics\Contacts\PositionSolverManifold.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.BuoyancyController" Collapsed="true">
-    <Position X="22" Y="21.75" Width="1.75" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.BuoyancyController">
+    <Position X="28.75" Y="25.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAFAAAIAgAAAAQAAAABAAAIAAAAIQAAAAAEgAA=</HashCode>
+      <HashCode>AAgAAAAFAAAIAgAAAAQAAAABAAAIAAAAIQAAAAAEgAA=</HashCode>
       <FileName>Dynamics\Controllers\BuoyancyController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="buoyancyControllerDef" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef" Collapsed="true">
-    <Position X="38.25" Y="0.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef">
+    <Position X="37.75" Y="21.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAFAAAIAAAAAAAAAAAFAAAIAAAAAQAAAAAEgAA=</HashCode>
       <FileName>Dynamics\Controllers\BuoyancyControllerDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantAccelController" Collapsed="true">
-    <Position X="24.5" Y="21.75" Width="2" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantAccelController">
+    <Position X="31.25" Y="25.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAIAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAIAAAIAAAAAA=</HashCode>
       <FileName>Dynamics\Controllers\ConstantAccelController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="constantAccelControllerDef" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantAccelControllerDef" Collapsed="true">
-    <Position X="33" Y="1.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantAccelControllerDef">
+    <Position X="31.5" Y="22.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Dynamics\Controllers\ConstantAccelControllerDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantForceController" Collapsed="true">
-    <Position X="27.25" Y="21.75" Width="2" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantForceController">
+    <Position X="34" Y="25.5" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAQIAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Controllers\ConstantForceController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="constantForceControllerDef" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantForceControllerDef" Collapsed="true">
-    <Position X="34.75" Y="1.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.ConstantForceControllerDef">
+    <Position X="37" Y="25.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Dynamics\Controllers\ConstantForceControllerDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.Controller" Collapsed="true">
-    <Position X="22.25" Y="20.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.Controller">
+    <Position X="29" Y="21" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAABDAAAgAIAAAAAAAAACAAAEIAIAABAAFAAAI=</HashCode>
       <FileName>Dynamics\Controllers\Controller.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="BodyList" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Controllers.ControllerEdge">
-    <Position X="15.75" Y="8.75" Width="1.5" />
+    <Position X="29.25" Y="30" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAQAMAAAAAAABAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Controllers\ControllerEdge.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Body" />
+      <Field Name="Controller" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.GravityController" Collapsed="true">
-    <Position X="17" Y="21.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.GravityController">
+    <Position X="23.75" Y="25.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAIAAACAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAIAAACAIAAAA=</HashCode>
       <FileName>Dynamics\Controllers\GravityController.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gravityControllerDef" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.GravityControllerDef" Collapsed="true">
-    <Position X="40" Y="1.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.GravityControllerDef">
+    <Position X="22.75" Y="30.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Dynamics\Controllers\GravityControllerDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Controllers.TensorDampingController" Collapsed="true">
-    <Position X="19.25" Y="21.75" Width="2" />
+  <Class Name="Alis.Core.Physic.Dynamics.Controllers.TensorDampingController">
+    <Position X="26" Y="25.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAIAAAAAAEQAA=</HashCode>
       <FileName>Dynamics\Controllers\TensorDampingController.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.DistanceJoint" Collapsed="true">
-    <Position X="10.5" Y="24.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.DistanceJoint">
+    <Position X="11.25" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABACBAgRAgAAAAAMAAAAABAQAAAgAAAAAAAACDAAA=</HashCode>
       <FileName>Dynamics\Joints\DistanceJoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.DistanceJointDef" Collapsed="true">
-    <Position X="21.5" Y="18.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.DistanceJointDef">
+    <Position X="27.25" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAABAAAQAAAAAAAABAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Joints\DistanceJointDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.GearJoint" Collapsed="true">
-    <Position X="15" Y="24.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.GearJoint">
+    <Position X="15.75" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAABAgBAgAAASgMAAQAIBAAAMAqgAAAAAAACAAAA=</HashCode>
       <FileName>Dynamics\Joints\GearJoint.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="jacobian" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.GearJointDef" Collapsed="true">
-    <Position X="26" Y="18.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.GearJointDef">
+    <Position X="31.75" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Joints\GearJointDef.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Joints.Joint">
-    <Position X="12.5" Y="17.5" Width="2" />
+    <Position X="13.25" Y="22" Width="2" />
     <TypeIdentifier>
       <HashCode>ooEAAABAgABgAEAAgMAhAAABAABAAkMAAQRAAAAIAEA=</HashCode>
       <FileName>Dynamics\Joints\Joint.cs</FileName>
@@ -218,15 +239,18 @@
       <Property Name="Node2" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.JointDef" Collapsed="true">
-    <Position X="23.75" Y="17.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.JointDef">
+    <Position X="29.5" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAIAAA=</HashCode>
       <FileName>Dynamics\Joints\JointDef.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Type" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Joints.JointEdge">
-    <Position X="15.75" Y="16" Width="1.5" />
+    <Position X="14.75" Y="36.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BgAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Joints\JointEdge.cs</FileName>
@@ -235,78 +259,84 @@
       <Field Name="Joint" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.LineJoint" Collapsed="true">
-    <Position X="8.25" Y="24.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.LineJoint">
+    <Position X="9" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>mBABEEBAgBhgAQgoAMgAAAADgABAAoAhAAEAAIQAhAE=</HashCode>
       <FileName>Dynamics\Joints\LineJoint.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="LimitState" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.LineJointDef" Collapsed="true">
-    <Position X="19.25" Y="18.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.LineJointDef">
+    <Position X="25" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>GAAAAAAAABAAAQAAAAAAAAAAAAAAAJAgAAAAAAQAgAA=</HashCode>
       <FileName>Dynamics\Joints\LineJointDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.MouseJoint" Collapsed="true">
-    <Position X="12.75" Y="24.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.MouseJoint">
+    <Position X="13.5" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABACBAgBAgAAAAAMAAACABAQQAAgAAAAAAgACBCAI=</HashCode>
       <FileName>Dynamics\Joints\MouseJoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.MouseJointDef" Collapsed="true">
-    <Position X="23.75" Y="18.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.MouseJointDef">
+    <Position X="29.5" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAAAAAAACAAAQAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Dynamics\Joints\MouseJointDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.PrismaticJoint" Collapsed="true">
-    <Position X="17.25" Y="24.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.PrismaticJoint">
+    <Position X="18" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>kAABFABAghhgEQioQNAAAAADgBAAAoAAQAAAAYQAhAA=</HashCode>
       <FileName>Dynamics\Joints\PrismaticJoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef" Collapsed="true">
-    <Position X="28.25" Y="18.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.PrismaticJointDef">
+    <Position X="34" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>GAAAAAAAABAAAQAAACAAAAAAAAAAAJAgAAAAAAQAgAA=</HashCode>
       <FileName>Dynamics\Joints\PrismaticJointDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.PulleyJoint" Collapsed="true">
-    <Position X="19.5" Y="24.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.PulleyJoint">
+    <Position X="20.25" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACBBABAgBAgAAASAMAAIGAhAACAFigAAAAgJQEAEAA=</HashCode>
       <FileName>Dynamics\Joints\PulleyJoint.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="LimitState1" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.PulleyJointDef" Collapsed="true">
-    <Position X="30.5" Y="18.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.PulleyJointDef">
+    <Position X="36.25" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAABAAAQASAAAAAGAAAAAAACAAAAAAIAEAAAA=</HashCode>
       <FileName>Dynamics\Joints\PulleyJointDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.RevoluteJoint" Collapsed="true">
-    <Position X="6" Y="24.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.RevoluteJoint">
+    <Position X="6.75" Y="29.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAADFBBAgBBwAAggQOBAAAABAAAAAoAAAAAABESAAAE=</HashCode>
       <FileName>Dynamics\Joints\RevoluteJoint.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef" Collapsed="true">
-    <Position X="17" Y="18.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Joints.RevoluteJointDef">
+    <Position X="22.75" Y="17" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAABAAAQAAACBAAAAAAAAEAIAAAAAAAAQAAAA=</HashCode>
       <FileName>Dynamics\Joints\RevoluteJointDef.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Body" BaseTypeListCollapsed="true">
-    <Position X="18.25" Y="1.75" Width="2.5" />
+    <Position X="31.75" Y="28.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>5ikUHYQ4AKwCCAhREgAACcgPYBoFU1NAEgQRAHC4sIE=</HashCode>
       <FileName>Dynamics\Body.cs</FileName>
@@ -322,36 +352,36 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.BoundaryListener" Collapsed="true">
-    <Position X="34.75" Y="0.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.BoundaryListener">
+    <Position X="16.25" Y="13.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\BoundaryListener.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.CircleDef" Collapsed="true">
-    <Position X="8" Y="32.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.CircleDef">
+    <Position X="25.75" Y="33" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\CircleDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.ContactFilter" Collapsed="true">
-    <Position X="36.5" Y="1.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.ContactFilter">
+    <Position X="16.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\ContactFilter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.ContactImpulse" Collapsed="true">
-    <Position X="38.25" Y="1.5" Width="1.5" />
+    <Position X="46.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\ContactImpulse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.ContactManager">
-    <Position X="5.5" Y="18.75" Width="1.75" />
+    <Position X="6.25" Y="24" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAEBABAAAAAAAAIAAAQAACBAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\ContactManager.cs</FileName>
@@ -361,7 +391,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.DebugDraw">
-    <Position X="21.5" Y="33" Width="1.5" />
+    <Position X="21.25" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AABABAAAAAAAAAAAAAQAAAAAAEAAABAIABABAGAAAAA=</HashCode>
       <FileName>Dynamics\DebugDraw.cs</FileName>
@@ -371,34 +401,34 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.DestructionListener">
-    <Position X="9" Y="9.5" Width="2.25" />
+    <Position X="22" Y="8.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\DestructionListener.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.EdgeDef" Collapsed="true">
-    <Position X="5.75" Y="32.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.EdgeDef">
+    <Position X="23.5" Y="33" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\EdgeDef.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.Fixture">
-    <Position X="13.5" Y="32.75" Width="2" />
+    <Position X="20" Y="23.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AgAECACAACAEAYAAAAABAQABABhFAEEAIAAACAAIAAA=</HashCode>
       <FileName>Dynamics\Fixture.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="Filter" />
       <Field Name="fixtureDef" />
+      <Field Name="Filter" />
       <Property Name="Shape" />
       <Property Name="ShapeType" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Dynamics.FixtureDef">
-    <Position X="8" Y="29.5" Width="1.5" />
+    <Position X="25.75" Y="30" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQAAAAAAAQABABAAAAEAAQAAAAAIAAA=</HashCode>
       <FileName>Dynamics\FixtureDef.cs</FileName>
@@ -408,73 +438,85 @@
       <Field Name="Type" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.Island" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="33" Y="2.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.Island" BaseTypeListCollapsed="true">
+    <Position X="16.75" Y="24.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAICAAAABSAAgAggAAAIAgAIAAAAAgiAABAAAABABCA=</HashCode>
       <FileName>Dynamics\Island.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
+    <ShowAsAssociation>
+      <Field Name="Listener" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="Positions" />
+      <Field Name="Velocities" />
+      <Field Name="Bodies" />
+      <Field Name="Joints" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Alis.Core.Physic.Dynamics.PolygonDef" Collapsed="true">
-    <Position X="10.25" Y="32.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Dynamics.PolygonDef">
+    <Position X="28" Y="33" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAEAAAAACAAAA=</HashCode>
       <FileName>Dynamics\PolygonDef.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.Shapes.CircleShape" Collapsed="true">
-    <Position X="13.75" Y="30.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.Shapes.CircleShape">
+    <Position X="23.5" Y="40.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAEAAAgAAAAAAECAAAFAgAAAAAACAAAAAA=</HashCode>
       <FileName>Collisions\Shapes\CircleShape.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.Shapes.EdgeShape" Collapsed="true">
-    <Position X="16" Y="30.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.Shapes.EdgeShape">
+    <Position X="25.75" Y="40.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAIiEUxQAgAACAAABCEIAFAgAAAACACAAAAAA=</HashCode>
       <FileName>Collisions\Shapes\EdgeShape.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.Shapes.PolygonShape" Collapsed="true">
-    <Position X="18.25" Y="30.75" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.Shapes.PolygonShape">
+    <Position X="28" Y="40.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAEAAEBIAgAAAAAAECgAAFAgAAEAAACACAAAA=</HashCode>
       <FileName>Collisions\Shapes\PolygonShape.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.Shapes.Shape" Collapsed="true">
-    <Position X="16" Y="29.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.Shapes.Shape">
+    <Position X="25.75" Y="36" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAEAACAEAAAgAAAAAAACAAAFAgAAAQAACAAAAAA=</HashCode>
       <FileName>Collisions\Shapes\Shape.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Type" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.Bound" Collapsed="true">
-    <Position X="33" Y="0.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.Bound">
+    <Position X="13.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAACAAAAAAAAAAAAAAAAAAAAAEAAAAABgAAAAABA=</HashCode>
       <FileName>Collisions\Bound.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Collisions.BoundValues" Collapsed="true">
-    <Position X="36.5" Y="0.5" Width="1.5" />
+    <Position X="41.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\BoundValues.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Collisions.Collision" Collapsed="true">
-    <Position X="40" Y="0.5" Width="1.5" />
+    <Position X="43" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QEAAAAAAAAAIAACEAAAAAAgEAAABAQBAAAABBAQiAAE=</HashCode>
       <FileName>Collisions\Collision.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.Collisions.Manifold">
-    <Position X="10" Y="21.75" Width="1.5" />
+    <Position X="9.75" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAEoAAAAAAAAAAAAAAAAgAAAQAAAAAAABA=</HashCode>
       <FileName>Collisions\Manifold.cs</FileName>
@@ -485,7 +527,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Physic.Collisions.ManifoldPoint">
-    <Position X="10" Y="18.75" Width="1.5" />
+    <Position X="6.75" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAEAAIAgAAAAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
       <FileName>Collisions\ManifoldPoint.cs</FileName>
@@ -494,43 +536,51 @@
       <Field Name="Id" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.Pair" Collapsed="true">
-    <Position X="34.75" Y="2.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.Pair">
+    <Position X="10.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAgAAAEAAAQAECIACAAAAAAAAAEAAAAAAAkAAAIAEA=</HashCode>
       <FileName>Collisions\Pair.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Status" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.PairCallback" Collapsed="true">
-    <Position X="5.5" Y="17.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.PairCallback">
+    <Position X="6.25" Y="22" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\PairCallback.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.PairManager" Collapsed="true">
-    <Position X="36.5" Y="2.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.PairManager">
+    <Position X="13.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAEAQcAgQAIDIQAAwAAAAACAAAAIKAEEAAAIAAAAQAA=</HashCode>
       <FileName>Collisions\PairManager.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="BroadPhase" />
+      <Field Name="PairBuffer" />
+      <Field Name="Pairs" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.Proxy" Collapsed="true">
-    <Position X="40" Y="2.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.Proxy">
+    <Position X="16.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAACAAAAAAAAAAAgAIAAAAAAAAAAAAAAAAAgIgAA=</HashCode>
       <FileName>Collisions\Proxy.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Physic.Collisions.WorldManifold" Collapsed="true">
-    <Position X="33" Y="3.5" Width="1.5" />
+  <Class Name="Alis.Core.Physic.Collisions.WorldManifold">
+    <Position X="36.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgQAAAAAAAAAAAAAIAAAAAAAAAAAAABA=</HashCode>
       <FileName>Collisions\WorldManifold.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Physic.World" BaseTypeListCollapsed="true">
-    <Position X="12.75" Y="4.25" Width="2" />
+    <Position X="18.5" Y="6.25" Width="2" />
     <TypeIdentifier>
       <HashCode>JiCSBgqMwmiYAAwSABbECBgKAiAAAMlA4BQUEggIgCU=</HashCode>
       <FileName>World.cs</FileName>
@@ -543,95 +593,144 @@
       <Field Name="controllerList" />
       <Field Name="destructionListener" />
       <Field Name="jointList" />
+      <Field Name="boundaryListener" />
+      <Field Name="BroadPhase" />
+      <Field Name="debugDraw" />
+      <Field Name="ContactFilter" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
+  <Class Name="Alis.Core.Physic.Collisions.BroadPhase">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAECCEACgAACCQFAIACBIAI4IAAhAEABQAASAAgA=</HashCode>
+      <FileName>Collisions\BroadPhase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Bounds" />
+      <Field Name="PairManager" />
+      <Field Name="ProxyPool" />
+      <Field Name="WorldAabb" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Alis.Aspect.Base.ObjectBase" Collapsed="true">
+    <Position X="43" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Alis.Aspect.Math.Constant" Collapsed="true">
+    <Position X="44.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Alis.Aspect.Math.Math">
+    <Position X="38" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Alis.Aspect.Math.Math.Convert" Collapsed="true">
+        <TypeIdentifier />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Alis.Aspect.Math.Settings" Collapsed="true">
+    <Position X="44.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Alis.Aspect.Math.Sweep" Collapsed="true">
+    <Position X="13.25" Y="40" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Alis.Aspect.Math.Vector2" Collapsed="true">
+    <Position X="46.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
   <Struct Name="Alis.Core.Physic.Dynamics.Contacts.ContactConstraintPoint" Collapsed="true">
-    <Position X="40" Y="4.75" Width="1.5" />
+    <Position X="44.75" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAACAAAAECAIAgAAQBAAEAAAAAAAAAAAAAAAAAAE=</HashCode>
       <FileName>Dynamics\Contacts\ContactConstraintPoint.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Dynamics.Contacts.ContactRegister" Collapsed="true">
-    <Position X="33" Y="5.75" Width="1.5" />
+    <Position X="46.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAgACAAAA=</HashCode>
       <FileName>Dynamics\Contacts\ContactRegister.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Alis.Core.Physic.Dynamics.Joints.Jacobian" Collapsed="true">
-    <Position X="40" Y="5.75" Width="1.5" />
+  <Struct Name="Alis.Core.Physic.Dynamics.Joints.Jacobian">
+    <Position X="20.75" Y="37.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAEAAAAAAABAAAAAAQAAAAAMAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Dynamics\Joints\Jacobian.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Alis.Core.Physic.Dynamics.BodyDef" Collapsed="true">
-    <Position X="24.25" Y="9.5" Width="1.5" />
+  <Struct Name="Alis.Core.Physic.Dynamics.BodyDef">
+    <Position X="35.75" Y="31" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAEAAAQAAAAAAAAwAAAAABABAAgAAAAAAEAQAAAIAAA=</HashCode>
       <FileName>Dynamics\BodyDef.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="MassData" />
+    </ShowAsAssociation>
   </Struct>
   <Struct Name="Alis.Core.Physic.Dynamics.Color" Collapsed="true">
-    <Position X="38.25" Y="4.75" Width="1.5" />
+    <Position X="43" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAIAQABAAAAAAA=</HashCode>
       <FileName>Dynamics\Color.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Dynamics.FilterData">
-    <Position X="10.5" Y="34.25" Width="1.5" />
+    <Position X="23.5" Y="22.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQABAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\FilterData.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Alis.Core.Physic.Dynamics.Position" Collapsed="true">
-    <Position X="34.75" Y="6.75" Width="1.5" />
+  <Struct Name="Alis.Core.Physic.Dynamics.Position">
+    <Position X="10.75" Y="25.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAQAA=</HashCode>
       <FileName>Dynamics\Position.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Alis.Core.Physic.Dynamics.Velocity" Collapsed="true">
-    <Position X="33" Y="8.75" Width="1.5" />
+  <Struct Name="Alis.Core.Physic.Dynamics.Velocity">
+    <Position X="16.75" Y="22.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAA=</HashCode>
       <FileName>Dynamics\Velocity.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Alis.Core.Physic.Collisions.Shapes.MassData" Collapsed="true">
-    <Position X="33" Y="6.75" Width="1.5" />
+  <Struct Name="Alis.Core.Physic.Collisions.Shapes.MassData">
+    <Position X="38.75" Y="32" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCIAAA=</HashCode>
       <FileName>Collisions\Shapes\MassData.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.Aabb">
-    <Position X="29.75" Y="4.25" Width="1.5" />
+    <Position X="19.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAIAAAAAAABAAgAAAAAAAEAAAAAAAABAAAYAAI=</HashCode>
       <FileName>Collisions\AABB.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Alis.Core.Physic.Collisions.BufferedPair" Collapsed="true">
-    <Position X="34.75" Y="4.75" Width="1.5" />
+  <Struct Name="Alis.Core.Physic.Collisions.BufferedPair">
+    <Position X="13.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAgAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\BufferedPair.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.ClipVertex" Collapsed="true">
-    <Position X="36.5" Y="4.75" Width="1.5" />
+    <Position X="41.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
       <FileName>Collisions\ClipVertex.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.ContactId">
-    <Position X="10" Y="16.25" Width="1.5" />
+    <Position X="3.75" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\ContactID.cs</FileName>
@@ -641,182 +740,185 @@
     </ShowAsAssociation>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.DistanceInput" Collapsed="true">
-    <Position X="34.75" Y="5.75" Width="1.5" />
+    <Position X="41.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAACAAQAAAAAAAAA=</HashCode>
       <FileName>Collisions\DistanceInput.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.DistanceOutput" Collapsed="true">
-    <Position X="36.5" Y="5.75" Width="1.5" />
+    <Position X="43" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAIAAAAAAABAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\DistanceOutput.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.Features">
-    <Position X="10" Y="13" Width="1.5" />
+    <Position X="0.75" Y="15" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACCAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\Features.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.IndexArray" Collapsed="true">
-    <Position X="38.25" Y="5.75" Width="1.5" />
+    <Position X="44.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACAAAAAAAIAACAAAAAAABAAAAAAA=</HashCode>
       <FileName>Collisions\IndexArray.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.RayCastInput" Collapsed="true">
-    <Position X="36.5" Y="6.75" Width="1.5" />
+    <Position X="46.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAECAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\RayCastInput.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.RayCastOutput" Collapsed="true">
-    <Position X="38.25" Y="6.75" Width="1.5" />
+    <Position X="41.25" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAIAAEAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\RayCastOutput.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.Segment" Collapsed="true">
-    <Position X="40" Y="6.75" Width="1.5" />
+    <Position X="43" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAACEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\Segment.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.SeparationFunction" Collapsed="true">
-    <Position X="33" Y="7.75" Width="1.5" />
+    <Position X="44.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAEAQAAAAAAAgAAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\SeparationFunction.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.Simplex" Collapsed="true">
-    <Position X="34.75" Y="7.75" Width="1.5" />
+    <Position X="46.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAgAAgAAABAQIAAAAAgACAAAQQAAAAAA=</HashCode>
       <FileName>Collisions\Simplex.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.SimplexCache" Collapsed="true">
-    <Position X="36.5" Y="7.75" Width="1.5" />
+    <Position X="41.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAEAAAAAAAA=</HashCode>
       <FileName>Collisions\SimplexCache.cs</FileName>
     </TypeIdentifier>
   </Struct>
   <Struct Name="Alis.Core.Physic.Collisions.SimplexVertex" Collapsed="true">
-    <Position X="38.25" Y="7.75" Width="1.5" />
+    <Position X="43" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAABAAAAAAAAgAAAAAAAAAAAAAAEAIAAIAAA=</HashCode>
       <FileName>Collisions\SimplexVertex.cs</FileName>
     </TypeIdentifier>
   </Struct>
-  <Struct Name="Alis.Core.Physic.Collisions.ToiInput" Collapsed="true">
-    <Position X="40" Y="7.75" Width="1.5" />
+  <Struct Name="Alis.Core.Physic.Collisions.ToiInput">
+    <Position X="13.25" Y="41.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAACAAAAAAABAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\TOIInput.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="SweepA" />
+    </ShowAsAssociation>
   </Struct>
-  <Interface Name="Alis.Core.Physic.Dynamics.IContactListener" Collapsed="true">
-    <Position X="9.5" Y="11.75" Width="1.5" />
+  <Interface Name="Alis.Core.Physic.Dynamics.IContactListener">
+    <Position X="15.25" Y="16.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAABAAAAgAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\IContactListener.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Enum Name="Alis.Core.Physic.Dynamics.Joints.JointType">
-    <Position X="7.75" Y="15.75" Width="1.5" />
+    <Position X="23.5" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAABAAAAABACAAAAAAAAEAAAAAAACAAAAAgAAI=</HashCode>
       <FileName>Dynamics\Joints\JointType.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Alis.Core.Physic.Dynamics.Joints.LimitState" Collapsed="true">
-    <Position X="33" Y="10" Width="1.5" />
+  <Enum Name="Alis.Core.Physic.Dynamics.Joints.LimitState">
+    <Position X="11.75" Y="35.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAQAAACAAAAAAAACAAA=</HashCode>
       <FileName>Dynamics\Joints\LimitState.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Alis.Core.Physic.Dynamics.BodyFlags" Collapsed="true">
-    <Position X="21.25" Y="0.5" Width="1.5" />
+  <Enum Name="Alis.Core.Physic.Dynamics.BodyFlags">
+    <Position X="35.75" Y="35.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAQAAQAAAAAAAAAAABAAAAAAAAAAAAAAAAAwAAA=</HashCode>
       <FileName>Dynamics\BodyFlags.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Alis.Core.Physic.Dynamics.BodyType" Collapsed="true">
-    <Position X="18.25" Y="0.5" Width="1.5" />
+  <Enum Name="Alis.Core.Physic.Dynamics.BodyType">
+    <Position X="28.75" Y="36" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAAAAAAAAAAABAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\BodyType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Alis.Core.Physic.Dynamics.DrawFlags">
-    <Position X="18.5" Y="34" Width="1.5" />
+    <Position X="25.25" Y="10.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAQgAEAAEACAAAAAAAAAAAgAAAIAAAAAAAAA=</HashCode>
       <FileName>Dynamics\DrawFlags.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Alis.Core.Physic.Collisions.Shapes.SegmentCollide" Collapsed="true">
-    <Position X="38.25" Y="10" Width="1.5" />
+    <Position X="43" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAIAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>Collisions\Shapes\SegmentCollide.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Alis.Core.Physic.Collisions.Shapes.ShapeType" Collapsed="true">
-    <Position X="10.5" Y="30.75" Width="1.5" />
+  <Enum Name="Alis.Core.Physic.Collisions.Shapes.ShapeType">
+    <Position X="23.5" Y="35.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAABCAAAAAAAAAAAAgAAQAAA=</HashCode>
       <FileName>Collisions\Shapes\ShapeType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Alis.Core.Physic.Collisions.ManifoldType" Collapsed="true">
-    <Position X="7" Y="23" Width="1.5" />
+    <Position X="9.75" Y="13.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\ManifoldType.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Enum Name="Alis.Core.Physic.Collisions.PairStatus" Collapsed="true">
-    <Position X="34.75" Y="10" Width="1.5" />
+  <Enum Name="Alis.Core.Physic.Collisions.PairStatus">
+    <Position X="7.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAABAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\PairStatus.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Alis.Core.Physic.Collisions.PointState" Collapsed="true">
-    <Position X="36.5" Y="10" Width="1.5" />
+    <Position X="41.25" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAACAA=</HashCode>
       <FileName>Collisions\PointState.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Delegate Name="Alis.Core.Physic.Dynamics.Contacts.ContactCreateFcn" Collapsed="true">
-    <Position X="33" Y="11" Width="1.5" />
+    <Position X="41.25" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\ContactCreateFcn.cs</FileName>
     </TypeIdentifier>
   </Delegate>
   <Delegate Name="Alis.Core.Physic.Dynamics.Contacts.ContactDestroyFcn" Collapsed="true">
-    <Position X="34.75" Y="11" Width="1.5" />
+    <Position X="43" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Dynamics\Contacts\ContactDestroyFcn.cs</FileName>
     </TypeIdentifier>
   </Delegate>
   <Delegate Name="Alis.Core.Physic.Collisions.SortKeyFunc" Collapsed="true">
-    <Position X="36.5" Y="11" Width="1.5" />
+    <Position X="44.75" Y="9" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Collisions\SortKeyFunc.cs</FileName>

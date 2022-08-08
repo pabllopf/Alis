@@ -65,11 +65,17 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public Vector2 Velocity;
 
         /// <summary>
+        /// Buoyancy controller
+        /// </summary>
+        private BuoyancyControllerDef buoyancyControllerDef;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="BuoyancyController" /> class
         /// </summary>
         /// <param name="buoyancyControllerDef">The buoyancy controller def</param>
         public BuoyancyController(BuoyancyControllerDef buoyancyControllerDef)
         {
+            this.buoyancyControllerDef = buoyancyControllerDef;
             Normal = buoyancyControllerDef.Normal;
             Offset = buoyancyControllerDef.Offset;
             Density = buoyancyControllerDef.Density;

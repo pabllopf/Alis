@@ -32,7 +32,7 @@ namespace Alis.Aspect.Base
     /// <summary>
     ///     The object base class
     /// </summary>
-    public class ObjectBase
+    public class ObjectBase : object
     {
         /// <summary>
         ///     The object base class
