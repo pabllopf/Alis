@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
@@ -40,39 +39,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     ///     AABB in the broad-phase (except if filtered). Therefore a contact object may exist
     ///     that has no contact points.
     /// </summary>
-    public abstract class Contact
+    public abstract partial class Contact
     {
-        /// <summary>
-        ///     The collision flags enum
-        /// </summary>
-        [Flags]
-        public enum CollisionFlags
-        {
-            /// <summary>
-            ///     The non solid collision flags
-            /// </summary>
-            NonSolid = 0x0001,
-
-            /// <summary>
-            ///     The slow collision flags
-            /// </summary>
-            Slow = 0x0002,
-
-            /// <summary>
-            ///     The island collision flags
-            /// </summary>
-            Island = 0x0004,
-
-            /// <summary>
-            ///     The toi collision flags
-            /// </summary>
-            Toi = 0x0008,
-
-            /// <summary>
-            ///     The touch collision flags
-            /// </summary>
-            Touch = 0x0010
-        }
 
         /// <summary>
         ///     The shape type count

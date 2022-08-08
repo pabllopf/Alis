@@ -49,6 +49,11 @@ namespace Alis.Core.Physic.Dynamics
         public float Density;
 
         /// <summary>
+        /// fixture 
+        /// </summary>
+        public FixtureDef fixtureDef;
+
+        /// <summary>
         ///     Contact filtering data. You must call b2World::Refilter to correct
         ///     existing contacts/non-contacts.
         /// </summary>
@@ -118,6 +123,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="def">The def</param>
         public void Create(BroadPhase broadPhase, Body body, XForm xf, FixtureDef def)
         {
+            fixtureDef = def;
             UserData = def.UserData;
             Friction = def.Friction;
             Restitution = def.Restitution;
