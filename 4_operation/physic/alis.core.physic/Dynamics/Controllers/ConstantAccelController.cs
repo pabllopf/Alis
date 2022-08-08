@@ -43,6 +43,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// </summary>
         public Vector2 A;
 
+        /// <summary>
+        /// The constant accel controller def
+        /// </summary>
         private ConstantAccelControllerDef constantAccelControllerDef;
 
         /// <summary>

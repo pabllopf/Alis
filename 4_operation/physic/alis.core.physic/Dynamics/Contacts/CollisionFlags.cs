@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -31,6 +31,9 @@ using System;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
+    /// <summary>
+    /// The contact class
+    /// </summary>
     public abstract partial class Contact
     {
         /// <summary>
