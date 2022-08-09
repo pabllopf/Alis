@@ -75,12 +75,12 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The boundary listener
         /// </summary>
-        private BoundaryListener boundaryListener;
+        public BoundaryListener BoundaryListener { get; private set; }
 
         /// <summary>
         ///     The broad phase
         /// </summary>
-        internal BroadPhase BroadPhase;
+        internal BroadPhase BroadPhase { get; set; }
 
         /// <summary>
         ///     The contact count
@@ -128,11 +128,6 @@ namespace Alis.Core.Physic
         ///     The destruction listener
         /// </summary>
         private DestructionListener destructionListener;
-
-        /// <summary>
-        ///     The gravity
-        /// </summary>
-        private Vector2 gravity;
 
         // This is used to compute the time step ratio to
         // support a variable time step.
@@ -191,7 +186,7 @@ namespace Alis.Core.Physic
         public World(Aabb worldAabb, Vector2 gravity, bool doSleep)
         {
             destructionListener = null;
-            boundaryListener = null;
+            BoundaryListener = null;
             ContactFilter = null;
             ContactListener = null;
             debugDraw = null;
@@ -208,7 +203,7 @@ namespace Alis.Core.Physic
             continuousPhysics = true;
 
             allowSleep = doSleep;
-            this.gravity = gravity;
+            this.Gravity = gravity;
 
             Lock = false;
 
@@ -225,11 +220,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Get\Set global gravity vector.
         /// </summary>
-        public Vector2 Gravity
-        {
-            get => gravity;
-            set => gravity = value;
-        }
+        public Vector2 Gravity { get; set; }
 
         /// <summary>
         ///     Destruct the world. All physics entities are destroyed.
@@ -260,7 +251,7 @@ namespace Alis.Core.Physic
         /// <param name="listener"></param>
         public void SetBoundaryListener(BoundaryListener listener)
         {
-            boundaryListener = listener;
+            BoundaryListener = listener;
         }
 
         /// <summary>
@@ -1010,7 +1001,7 @@ namespace Alis.Core.Physic
                         }
                     }
 
-                    island.Solve(step, gravity, allowSleep);
+                    island.Solve(step, Gravity, allowSleep);
 
                     // Post solve cleanup.
                     for (int i = 0; i < island.BodyCount; ++i)
@@ -1046,9 +1037,9 @@ namespace Alis.Core.Physic
                 bool inRange = b.SynchronizeFixtures();
 
                 // Did the body's shapes leave the world?
-                if (inRange == false && boundaryListener != null)
+                if (inRange == false && BoundaryListener != null)
                 {
-                    boundaryListener.Violation(b);
+                    BoundaryListener.Violation(b);
                 }
             }
 
@@ -1348,9 +1339,9 @@ namespace Alis.Core.Physic
                     bool inRange = b.SynchronizeFixtures();
 
                     // Did the body's fixtures leave the world?
-                    if (inRange == false && boundaryListener != null)
+                    if (inRange == false && BoundaryListener != null)
                     {
-                        boundaryListener.Violation(b);
+                        BoundaryListener.Violation(b);
                     }
 
                     // Invalidate all contact TOIs associated with this body. Some of these
