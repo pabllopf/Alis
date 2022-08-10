@@ -38,6 +38,7 @@ using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Exception;
 using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic
@@ -251,19 +252,10 @@ namespace Alis.Core.Physic
         /// <returns></returns>
         public Body CreateBody(BodyDef bodyDef)
         {
-            Box2DxDebug.Assert(Lock == false);
-            if (Lock)
-            {
-                return null;
-            }
-
-            Body b = new Body(bodyDef, this);
-
-            // Add to world doubly linked list.
-            BodyList.Add(b);
-            ++BodyCount;
-
-            return b;
+            if (Lock) throw new LockException();
+            Body body = new Body(bodyDef, this);
+            BodyList.Add(body);
+            return body;
         }
 
         /// <summary>
@@ -539,45 +531,6 @@ namespace Alis.Core.Physic
         }
 
         /// <summary>
-        ///     The world provides a single static ground body with no collision shapes.
-        ///     You can use this to simplify the creation of joints and static shapes.
-        /// </summary>
-        /// <returns></returns>
-        public Body GetGroundBody()
-        {
-            return GroundBody;
-        }
-
-
-        /// <summary>
-        ///     Get the world joint list. With the returned joint, use Joint.GetNext to get
-        ///     the next joint in the world list. A null joint indicates the end of the list.
-        /// </summary>
-        /// <returns>The head of the world joint list.</returns>
-        public Joint GetJointList()
-        {
-            return JointList;
-        }
-
-        /// <summary>
-        ///     Gets the controller list
-        /// </summary>
-        /// <returns>The controller list</returns>
-        public Controller GetControllerList()
-        {
-            return ControllerList;
-        }
-
-        /// <summary>
-        ///     Gets the controller count
-        /// </summary>
-        /// <returns>The controller count</returns>
-        public int GetControllerCount()
-        {
-            return ControllerCount;
-        }
-
-        /// <summary>
         ///     Re-filter a fixture. This re-runs contact filtering on a fixture.
         /// </summary>
         public void Refilter(Fixture fixture)
@@ -609,34 +562,7 @@ namespace Alis.Core.Physic
         {
             return BroadPhase.PairManager.PairCount;
         }
-
-        /// <summary>
-        ///     Get the number of bodies.
-        /// </summary>
-        /// <returns></returns>
-        public int GetBodyCount()
-        {
-            return BodyCount;
-        }
-
-        /// <summary>
-        ///     Get the number joints.
-        /// </summary>
-        /// <returns></returns>
-        public int GetJointCount()
-        {
-            return JointCount;
-        }
-
-        /// <summary>
-        ///     Get the number of contacts (each may have 0 or more contact points).
-        /// </summary>
-        /// <returns></returns>
-        public int GetContactCount()
-        {
-            return ContactCount;
-        }
-
+        
         /// <summary>
         ///     Take a time step. This performs collision detection, integration,
         ///     and constraint solution.

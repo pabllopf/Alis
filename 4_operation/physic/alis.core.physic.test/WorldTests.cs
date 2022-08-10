@@ -195,22 +195,7 @@ namespace Alis.Core.Physic.Test
             mockRepository.VerifyAll();
         }
 
-        /// <summary>
-        ///     Tests that get ground body state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetGroundBody_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            var result = world.GetGroundBody();
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
+   
 
         /// <summary>
         ///     Tests that get body list state under test expected behavior
@@ -229,56 +214,9 @@ namespace Alis.Core.Physic.Test
             mockRepository.VerifyAll();
         }
 
-        /// <summary>
-        ///     Tests that get joint list state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetJointList_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
+ 
 
-            // Act
-            var result = world.GetJointList();
 
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that get controller list state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetControllerList_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            var result = world.GetControllerList();
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that get controller count state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetControllerCount_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            var result = world.GetControllerCount();
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
 
         /// <summary>
         ///     Tests that refilter state under test expected behavior
@@ -350,56 +288,11 @@ namespace Alis.Core.Physic.Test
             mockRepository.VerifyAll();
         }
 
-        /// <summary>
-        ///     Tests that get body count state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetBodyCount_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
 
-            // Act
-            var result = world.GetBodyCount();
 
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
 
-        /// <summary>
-        ///     Tests that get joint count state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetJointCount_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
 
-            // Act
-            var result = world.GetJointCount();
 
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that get contact count state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetContactCount_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            var result = world.GetContactCount();
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
 
         /// <summary>
         ///     Tests that step state under test expected behavior

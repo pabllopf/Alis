@@ -64,20 +64,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public class PulleyJoint : Joint
     {
+
         /// <summary>
         ///     The min pulley length
         /// </summary>
-        public static readonly float MinPulleyLength = 2.0f;
+        public static float MinPulleyLength { get; } = 2.0f;
 
         /// <summary>
         ///     The limit state
         /// </summary>
-        public LimitState LimitState1;
-
-        /// <summary>
-        ///     The limit state
-        /// </summary>
-        public LimitState LimitState2;
+        public LimitState LimitState { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
@@ -86,7 +82,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public PulleyJoint(PulleyJointDef def)
             : base(def)
         {
-            Ground = Body1.GetWorld().GetGroundBody();
+            Ground = Body1.GetWorld().GroundBody;
             GroundAnchor1 = def.GroundAnchor1 - Ground.GetXForm().Position;
             GroundAnchor2 = def.GroundAnchor2 - Ground.GetXForm().Position;
             LocalAnchor1 = def.LocalAnchor1;
@@ -324,22 +320,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (length1 < MaxLength1)
             {
-                LimitState1 = LimitState.InactiveLimit;
+                LimitState = LimitState.InactiveLimit;
                 LimitImpulse1 = 0.0f;
             }
             else
             {
-                LimitState1 = LimitState.AtUpperLimit;
+                LimitState = LimitState.AtUpperLimit;
             }
 
             if (length2 < MaxLength2)
             {
-                LimitState2 = LimitState.InactiveLimit;
+                LimitState = LimitState.InactiveLimit;
                 LimitImpulse2 = 0.0f;
             }
             else
             {
-                LimitState2 = LimitState.AtUpperLimit;
+                LimitState = LimitState.AtUpperLimit;
             }
 
             // Compute effective mass.
@@ -410,7 +406,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 b2.AngularVelocity += b2.InvI * Vector2.Cross(r2, p2);
             }
 
-            if (LimitState1 == LimitState.AtUpperLimit)
+            if (LimitState == LimitState.AtUpperLimit)
             {
                 Vector2 v1 = b1.LinearVelocity + Vector2.Cross(b1.AngularVelocity, r1);
 
@@ -425,7 +421,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 b1.AngularVelocity += b1.InvI * Vector2.Cross(r1, p1);
             }
 
-            if (LimitState2 == LimitState.AtUpperLimit)
+            if (LimitState == LimitState.AtUpperLimit)
             {
                 Vector2 v2 = b2.LinearVelocity + Vector2.Cross(b2.AngularVelocity, r2);
 
@@ -507,7 +503,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 body2.SynchronizeTransform();
             }
 
-            if (LimitState1 == LimitState.AtUpperLimit)
+            if (LimitState == LimitState.AtUpperLimit)
             {
                 Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
                 Vector2 body1SweepC = body1.Sweep.C + mulR1;
@@ -536,7 +532,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 body1.SynchronizeTransform();
             }
 
-            if (LimitState2 == LimitState.AtUpperLimit)
+            if (LimitState == LimitState.AtUpperLimit)
             {
                 Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
                 Vector2 body2SweepC = body2.Sweep.C + mulR2;

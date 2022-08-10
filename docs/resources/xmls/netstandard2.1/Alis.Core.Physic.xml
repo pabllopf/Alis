@@ -5704,17 +5704,12 @@
                 useful to prevent one side of the pulley hitting the top.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MinPulleyLength">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MinPulleyLength">
             <summary>
                 The min pulley length
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitState1">
-            <summary>
-                The limit state
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitState2">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitState">
             <summary>
                 The limit state
             </summary>
@@ -6244,6 +6239,11 @@
                 The
             </summary>
         </member>
+        <member name="T:Alis.Core.Physic.Exception.LockException">
+            <summary>
+            Lock
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.World">
             <summary>
                 The world class manages all physics entities, dynamic simulation,
@@ -6440,32 +6440,6 @@
             </summary>
             <param name="controller">The controller</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.GetGroundBody">
-            <summary>
-                The world provides a single static ground body with no collision shapes.
-                You can use this to simplify the creation of joints and static shapes.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetJointList">
-            <summary>
-                Get the world joint list. With the returned joint, use Joint.GetNext to get
-                the next joint in the world list. A null joint indicates the end of the list.
-            </summary>
-            <returns>The head of the world joint list.</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetControllerList">
-            <summary>
-                Gets the controller list
-            </summary>
-            <returns>The controller list</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetControllerCount">
-            <summary>
-                Gets the controller count
-            </summary>
-            <returns>The controller count</returns>
-        </member>
         <member name="M:Alis.Core.Physic.World.Refilter(Alis.Core.Physic.Dynamics.Fixture)">
             <summary>
                 Re-filter a fixture. This re-runs contact filtering on a fixture.
@@ -6484,24 +6458,6 @@
         <member name="M:Alis.Core.Physic.World.GetPairCount">
             <summary>
                 Get the number of broad-phase pairs.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetBodyCount">
-            <summary>
-                Get the number of bodies.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetJointCount">
-            <summary>
-                Get the number joints.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetContactCount">
-            <summary>
-                Get the number of contacts (each may have 0 or more contact points).
             </summary>
             <returns></returns>
         </member>
