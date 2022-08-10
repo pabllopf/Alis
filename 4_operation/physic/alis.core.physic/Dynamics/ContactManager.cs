@@ -113,14 +113,7 @@ namespace Alis.Core.Physic.Dynamics
             bodyB = fixtureB.Body;
 
             // Insert into the world.
-            c.Prev = null;
-            c.Next = World.ContactList;
-            if (World.ContactList != null)
-            {
-                World.ContactList.Prev = c;
-            }
-
-            World.ContactList = c;
+            World.ContactList.Add(c);
 
             // Connect to island graph.
 
@@ -203,20 +196,7 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             // Remove from the world.
-            if (c.Prev != null)
-            {
-                c.Prev.Next = c.Next;
-            }
-
-            if (c.Next != null)
-            {
-                c.Next.Prev = c.Prev;
-            }
-
-            if (c == World.ContactList)
-            {
-                World.ContactList = c.Next;
-            }
+            World.ContactList.Remove(c);
 
             // Remove from body 1
             if (c.NodeA.Prev != null)
@@ -264,16 +244,16 @@ namespace Alis.Core.Physic.Dynamics
         public void Collide()
         {
             // Update awake contacts.
-            for (Contact c = World.ContactList; c != null; c = c.GetNext())
+            for (int i = 0; i < World.ContactList.Count; i++)
             {
-                Body bodyA = c.FixtureA.Body;
-                Body bodyB = c.FixtureB.Body;
+                Body bodyA = World.ContactList[i].FixtureA.Body;
+                Body bodyB = World.ContactList[i].FixtureB.Body;
                 if (bodyA.IsSleeping() && bodyB.IsSleeping())
                 {
                     continue;
                 }
 
-                c.Update(World.ContactListener);
+                World.ContactList[i].Update(World.ContactListener);
             }
         }
     }

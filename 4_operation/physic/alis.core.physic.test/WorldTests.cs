@@ -70,23 +70,6 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        ///     Tests that dispose state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void Dispose_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            world.Dispose();
-
-            // Assert
-            Assert.Null(world.BroadPhase);
-            mockRepository.VerifyAll();
-        }
-        
-        /// <summary>
         ///     Tests that create body state under test expected behavior
         /// </summary>
         [Fact]

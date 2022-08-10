@@ -47,7 +47,7 @@ namespace Alis.Core.Physic
     ///     The world class manages all physics entities, dynamic simulation,
     ///     and asynchronous queries.
     /// </summary>
-    public class World : IDisposable
+    public class World 
     {
         /// <summary>
         ///     The raycast normal
@@ -69,11 +69,10 @@ namespace Alis.Core.Physic
             DebugDraw = null;
 
             BodyList = new List<Body>();
-            ContactList = null;
-            JointList = null;
+            ContactList = new List<Contact>();
+            JointList = new List<Joint>();
             
             ContactCount = 0;
-            JointCount = 0;
 
             WarmStarting = true;
             ContinuousPhysics = true;
@@ -143,7 +142,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal Contact ContactList { get; set; }
+        internal List<Contact> ContactList { get; set; }
 
         /// <summary>
         ///     The contact listener
@@ -188,12 +187,12 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The joint count
         /// </summary>
-        public int JointCount { get; private set; }
+        public int JointCount { get => JointList.Count; }
 
         /// <summary>
         ///     The joint list
         /// </summary>
-        public Joint JointList { get; private set; }
+        public List<Joint> JointList { get; private set; }
 
         /// <summary>
         ///     The lock
@@ -226,21 +225,7 @@ namespace Alis.Core.Physic
         ///     Get\Set global gravity vector.
         /// </summary>
         public Vector2 Gravity { get; set; }
-
-        /// <summary>
-        ///     Destruct the world. All physics entities are destroyed.
-        /// </summary>
-        public void Dispose()
-        {
-            DestroyBody(GroundBody);
-            if (BroadPhase is IDisposable)
-            {
-                (BroadPhase as IDisposable).Dispose();
-            }
-
-            BroadPhase = null;
-        }
-
+        
         /// <summary>
         ///     Create a rigid body given a definition. No reference to the definition
         ///     is retained.
@@ -265,68 +250,8 @@ namespace Alis.Core.Physic
         /// <param name="body"></param>
         public void DestroyBody(Body body)
         {
-            Box2DxDebug.Assert(BodyCount > 0);
-            Box2DxDebug.Assert(Lock == false);
-            if (Lock)
-            {
-                return;
-            }
-
-            // Delete the attached joints.
-            JointEdge jn = null;
-            if (body.JointList != null)
-            {
-                jn = body.JointList;
-            }
-
-            while (jn != null)
-            {
-                JointEdge jn0 = jn;
-                jn = jn.Next;
-
-                if (Listener != null)
-                {
-                    Listener.SayGoodbye(jn0.Joint);
-                }
-
-                DestroyJoint(jn0.Joint);
-            }
-
-            //Detach controllers attached to this body
-            ControllerEdge ce = body.ControllerList;
-            while (ce != null)
-            {
-                ControllerEdge ce0 = ce;
-                ce = ce.NextController;
-
-                ce0.Controller.RemoveBody(body);
-            }
-
-            // Delete the attached fixtures. This destroys broad-phase
-            // proxies and pairs, leading to the destruction of contacts.
-            Fixture f = body.FixtureList;
-            while (f != null)
-            {
-                Fixture f0 = f;
-                f = f.Next;
-
-                if (Listener != null)
-                {
-                    Listener.SayGoodbye(f0);
-                }
-
-                f0.Destroy(BroadPhase);
-            }
-
-            // Remove world body list.
+            if (Lock) throw new LockException();
             BodyList.Remove(body);
-            
-            if (body is IDisposable)
-            {
-                (body as IDisposable).Dispose();
-            }
-
-            body = null;
         }
 
         /// <summary>
@@ -338,43 +263,32 @@ namespace Alis.Core.Physic
         /// <returns></returns>
         public Joint CreateJoint(JointDef jointDef)
         {
-            Box2DxDebug.Assert(Lock == false);
+            if (Lock) throw new LockException();
 
-            Joint j = Joint.Create(jointDef);
-
-            // Connect to the world list.
-            j.Prev = null;
-            j.Next = JointList;
-            if (JointList != null)
-            {
-                JointList.Prev = j;
-            }
-
-            JointList = j;
-            ++JointCount;
-
+            Joint joint = Joint.Create(jointDef);
+            
             // Connect to the bodies' doubly linked lists.
-            j.Node1.Joint = j;
-            j.Node1.Other = j.Body2;
-            j.Node1.Prev = null;
-            j.Node1.Next = j.Body1.JointList;
-            if (j.Body1.JointList != null)
+            joint.Node1.Joint = joint;
+            joint.Node1.Other = joint.Body2;
+            joint.Node1.Prev = null;
+            joint.Node1.Next = joint.Body1.JointList;
+            if (joint.Body1.JointList != null)
             {
-                j.Body1.JointList.Prev = j.Node1;
+                joint.Body1.JointList.Prev = joint.Node1;
             }
 
-            j.Body1.JointList = j.Node1;
+            joint.Body1.JointList = joint.Node1;
 
-            j.Node2.Joint = j;
-            j.Node2.Other = j.Body1;
-            j.Node2.Prev = null;
-            j.Node2.Next = j.Body2.JointList;
-            if (j.Body2.JointList != null)
+            joint.Node2.Joint = joint;
+            joint.Node2.Other = joint.Body1;
+            joint.Node2.Prev = null;
+            joint.Node2.Next = joint.Body2.JointList;
+            if (joint.Body2.JointList != null)
             {
-                j.Body2.JointList.Prev = j.Node2;
+                joint.Body2.JointList.Prev = joint.Node2;
             }
 
-            j.Body2.JointList = j.Node2;
+            joint.Body2.JointList = joint.Node2;
 
             // If the joint prevents collisions, then reset collision filtering.
             if (jointDef.CollideConnected == false)
@@ -387,86 +301,71 @@ namespace Alis.Core.Physic
                 }
             }
 
-            return j;
+            JointList.Add(joint);
+            
+            return joint;
         }
 
         /// <summary>
         ///     Destroy a joint. This may cause the connected bodies to begin colliding.
         ///     @warning This function is locked during callbacks.
         /// </summary>
-        /// <param name="j"></param>
-        public void DestroyJoint(Joint j)
+        /// <param name="joint"></param>
+        public void DestroyJoint(Joint joint)
         {
-            Box2DxDebug.Assert(Lock == false);
-
-            bool collideConnected = j.CollideConnected;
-
-            // Remove from the doubly linked list.
-            if (j.Prev != null)
-            {
-                j.Prev.Next = j.Next;
-            }
-
-            if (j.Next != null)
-            {
-                j.Next.Prev = j.Prev;
-            }
-
-            if (j == JointList)
-            {
-                JointList = j.Next;
-            }
-
+            if (Lock) throw new LockException();
+            
+            JointList.Remove(joint);
+            
+            bool collideConnected = joint.CollideConnected;
+            
             // Disconnect from island graph.
-            Body body1 = j.Body1;
-            Body body2 = j.Body2;
+            Body body1 = joint.Body1;
+            Body body2 = joint.Body2;
 
             // Wake up connected bodies.
             body1.WakeUp();
             body2.WakeUp();
 
             // Remove from body 1.
-            if (j.Node1.Prev != null)
+            if (joint.Node1.Prev != null)
             {
-                j.Node1.Prev.Next = j.Node1.Next;
+                joint.Node1.Prev.Next = joint.Node1.Next;
             }
 
-            if (j.Node1.Next != null)
+            if (joint.Node1.Next != null)
             {
-                j.Node1.Next.Prev = j.Node1.Prev;
+                joint.Node1.Next.Prev = joint.Node1.Prev;
             }
 
-            if (j.Node1 == body1.JointList)
+            if (joint.Node1 == body1.JointList)
             {
-                body1.JointList = j.Node1.Next;
+                body1.JointList = joint.Node1.Next;
             }
 
-            j.Node1.Prev = null;
-            j.Node1.Next = null;
+            joint.Node1.Prev = null;
+            joint.Node1.Next = null;
 
             // Remove from body 2
-            if (j.Node2.Prev != null)
+            if (joint.Node2.Prev != null)
             {
-                j.Node2.Prev.Next = j.Node2.Next;
+                joint.Node2.Prev.Next = joint.Node2.Next;
             }
 
-            if (j.Node2.Next != null)
+            if (joint.Node2.Next != null)
             {
-                j.Node2.Next.Prev = j.Node2.Prev;
+                joint.Node2.Next.Prev = joint.Node2.Prev;
             }
 
-            if (j.Node2 == body2.JointList)
+            if (joint.Node2 == body2.JointList)
             {
-                body2.JointList = j.Node2.Next;
+                body2.JointList = joint.Node2.Next;
             }
 
-            j.Node2.Prev = null;
-            j.Node2.Next = null;
+            joint.Node2.Prev = null;
+            joint.Node2.Next = null;
 
-            Joint.Destroy(j);
-
-            Box2DxDebug.Assert(JointCount > 0);
-            --JointCount;
+            Joint.Destroy(joint);
 
             // If the joint prevents collisions, then reset collision filtering.
             if (collideConnected == false)
@@ -718,14 +617,14 @@ namespace Alis.Core.Physic
                 BodyList[i].Flags &= ~BodyFlags.Island;
             }
 
-            for (Contact c = ContactList; c != null; c = c.Next)
+            for (int i = 0; i < ContactList.Count; i++)
             {
-                c.Flags &= ~Contact.CollisionFlags.Island;
+                ContactList[i].Flags &= ~Contact.CollisionFlags.Island;
             }
 
-            for (Joint j = JointList; j != null; j = j.Next)
+            for (int i = 0; i < JointList.Count; i++)
             {
-                j.IslandFlag = false;
+                JointList[i].IslandFlag = false;
             }
 
             // Build and simulate all awake islands.
@@ -904,15 +803,15 @@ namespace Alis.Core.Physic
                 b.Sweep.T0 = 0.0f;
             }*/
 
-            for (Contact c = ContactList; c != null; c = c.Next)
+            for (int i = 0; i < ContactList.Count; i++)
             {
                 // Invalidate TOI
-                c.Flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
+                ContactList[i].Flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
             }
 
-            for (Joint j = JointList; j != null; j = j.Next)
+            for (int j = 0; j < JointList.Count; j++)
             {
-                j.IslandFlag = false;
+                JointList[j].IslandFlag = false;
             }
 
             // Find TOI events and solve them.
@@ -922,9 +821,9 @@ namespace Alis.Core.Physic
                 Contact minContact = null;
                 float minToi = 1.0f;
 
-                for (Contact c = ContactList; c != null; c = c.Next)
+                for (int i = 0; i < ContactList.Count; i++)
                 {
-                    if ((int)(c.Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
+                    if ((int)(ContactList[i].Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
                     {
                         continue;
                     }
@@ -932,16 +831,16 @@ namespace Alis.Core.Physic
                     // TODO_ERIN keep a counter on the contact, only respond to M TOIs per contact.
 
                     float toi = 1.0f;
-                    if ((int)(c.Flags & Contact.CollisionFlags.Toi) == 1)
+                    if ((int)(ContactList[i].Flags & Contact.CollisionFlags.Toi) == 1)
                     {
                         // This contact has a valid cached TOI.
-                        toi = c.Toi;
+                        toi = ContactList[i].Toi;
                     }
                     else
                     {
                         // Compute the TOI for this contact.
-                        Fixture s1 = c.FixtureA;
-                        Fixture s2 = c.FixtureB;
+                        Fixture s1 = ContactList[i].FixtureA;
+                        Fixture s2 = ContactList[i].FixtureB;
                         Body b1 = s1.Body;
                         Body b2 = s2.Body;
 
@@ -967,7 +866,7 @@ namespace Alis.Core.Physic
                         Box2DxDebug.Assert(t0 < 1.0f);
 
                         // Compute the time of impact.
-                        toi = c.ComputeToi(b1.Sweep, b2.Sweep);
+                        toi = ContactList[i].ComputeToi(b1.Sweep, b2.Sweep);
                         //b2TimeOfImpact(c->m_fixtureA->GetShape(), b1->m_sweep, c->m_fixtureB->GetShape(), b2->m_sweep);
 
                         Box2DxDebug.Assert(0.0f <= toi && toi <= 1.0f);
@@ -980,14 +879,14 @@ namespace Alis.Core.Physic
                         }
 
 
-                        c.Toi = toi;
-                        c.Flags |= Contact.CollisionFlags.Toi;
+                        ContactList[i].Toi = toi;
+                        ContactList[i].Flags |= Contact.CollisionFlags.Toi;
                     }
 
                     if (Settings.FltEpsilon < toi && toi < minToi)
                     {
                         // This is the minimum TOI found so far.
-                        minContact = c;
+                        minContact = ContactList[i];
                         minToi = toi;
                     }
                 }
@@ -1340,11 +1239,11 @@ namespace Alis.Core.Physic
 
             if ((flags & DrawFlags.Joint) != 0)
             {
-                for (Joint j = JointList; j != null; j = j.GetNext())
+                for (int i = 0; i < JointList.Count; i++)
                 {
-                    if (j.GetType() != JointType.MouseJoint)
+                    if (JointList[i].GetType() != JointType.MouseJoint)
                     {
-                        DrawJoint(j);
+                        DrawJoint(JointList[i]);
                     }
                 }
             }
@@ -1451,8 +1350,9 @@ namespace Alis.Core.Physic
         /// <returns>The lambda</returns>
         private static float RaycastSortKey(object data)
         {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+            
             Fixture fixture = data as Fixture;
-            Box2DxDebug.Assert(fixture != null);
             Body body = fixture.Body;
             World world = body.GetWorld();
 

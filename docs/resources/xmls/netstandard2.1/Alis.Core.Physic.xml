@@ -6388,11 +6388,6 @@
                 Get\Set global gravity vector.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.Dispose">
-            <summary>
-                Destruct the world. All physics entities are destroyed.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.World.CreateBody(Alis.Core.Physic.Dynamics.BodyDef)">
             <summary>
                 Create a rigid body given a definition. No reference to the definition
@@ -6425,7 +6420,7 @@
                 Destroy a joint. This may cause the connected bodies to begin colliding.
                 @warning This function is locked during callbacks.
             </summary>
-            <param name="j"></param>
+            <param name="joint"></param>
         </member>
         <member name="M:Alis.Core.Physic.World.AddController(Alis.Core.Physic.Dynamics.Controllers.Controller)">
             <summary>
