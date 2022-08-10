@@ -49,7 +49,6 @@ namespace Alis.Core.Physic
     /// </summary>
     public class World : IDisposable
     {
-
         /// <summary>
         ///     The raycast normal
         /// </summary>
@@ -1444,8 +1443,7 @@ namespace Alis.Core.Physic
                 }
             }
         }
-
-        //Is it safe to pass private static function pointers?
+        
         /// <summary>
         ///     Raycasts the sort key using the specified data
         /// </summary>
