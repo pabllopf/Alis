@@ -72,8 +72,7 @@ namespace Alis.Core.Physic
             BodyList = new List<Body>();
             ContactList = null;
             JointList = null;
-
-            BodyCount = 0;
+            
             ContactCount = 0;
             JointCount = 0;
 
@@ -113,7 +112,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The body count
         /// </summary>
-        public int BodyCount { get; private set; }
+        public int BodyCount { get => BodyList.Count;}
 
         /// <summary>
         ///     The body list
@@ -322,8 +321,7 @@ namespace Alis.Core.Physic
 
             // Remove world body list.
             BodyList.Remove(body);
-
-            --BodyCount;
+            
             if (body is IDisposable)
             {
                 (body as IDisposable).Dispose();
