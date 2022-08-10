@@ -531,13 +531,13 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>The key</returns>
         private uint Hash(uint proxyId1, uint proxyId2)
         {
-            uint key = (proxyId2 << 16) | proxyId1;
+            uint key = proxyId2 << 16 | proxyId1;
             key = ~key + (key << 15);
-            key = key ^ (key >> 12);
+            key = key ^ key >> 12;
             key = key + (key << 2);
-            key = key ^ (key >> 4);
+            key = key ^ key >> 4;
             key = key * 2057;
-            key = key ^ (key >> 16);
+            key = key ^ key >> 16;
             return key;
         }
 

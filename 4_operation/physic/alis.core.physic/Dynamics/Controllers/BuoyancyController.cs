@@ -55,6 +55,11 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// If true, gravity is taken from the world instead of the gravity parameter.
         public readonly bool UseWorldGravity;
 
+        /// <summary>
+        ///     Buoyancy controller
+        /// </summary>
+        private BuoyancyControllerDef buoyancyControllerDef;
+
         /// Gravity vector, if the world's gravity is not used
         public Vector2 Gravity;
 
@@ -63,11 +68,6 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
         /// Fluid velocity, for drag calculations
         public Vector2 Velocity;
-
-        /// <summary>
-        /// Buoyancy controller
-        /// </summary>
-        private BuoyancyControllerDef buoyancyControllerDef;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BuoyancyController" /> class

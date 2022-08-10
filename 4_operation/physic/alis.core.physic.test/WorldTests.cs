@@ -85,102 +85,7 @@ namespace Alis.Core.Physic.Test
             Assert.Null(world.BroadPhase);
             mockRepository.VerifyAll();
         }
-
-        /// <summary>
-        ///     Tests that set destruction listener state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void SetDestructionListener_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            DestructionListener listener = null;
-
-            // Act
-            world.SetDestructionListener(
-                listener);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that set boundary listener state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void SetBoundaryListener_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            BoundaryListener listener = null;
-
-            // Act
-            world.SetBoundaryListener(
-                listener);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that set contact filter state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void SetContactFilter_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            ContactFilter filter = null;
-
-            // Act
-            world.SetContactFilter(
-                filter);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that set contact listener state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void SetContactListener_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            IContactListener listener = null;
-
-            // Act
-            world.SetContactListener(
-                listener);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that set debug draw state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void SetDebugDraw_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            DebugDraw debugDraw = null;
-
-            // Act
-            world.SetDebugDraw(
-                debugDraw);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
+        
         /// <summary>
         ///     Tests that create body state under test expected behavior
         /// </summary>
@@ -392,44 +297,7 @@ namespace Alis.Core.Physic.Test
             Assert.True(true);
             mockRepository.VerifyAll();
         }
-
-        /// <summary>
-        ///     Tests that set warm starting state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void SetWarmStarting_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            bool flag = false;
-
-            // Act
-            world.SetWarmStarting(
-                flag);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that set continuous physics state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void SetContinuousPhysics_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            bool flag = false;
-
-            // Act
-            world.SetContinuousPhysics(
-                flag);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
+        
 
         /// <summary>
         ///     Tests that validate state under test expected behavior

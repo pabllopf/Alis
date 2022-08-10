@@ -739,10 +739,10 @@ namespace Alis.Core.Physic.Collisions
             ushort proxyId;
 
             // TODO_ERIN implement fast float to ushort conversion.
-            startValues[0] = (ushort)((ushort)p1X & (BroadphaseMax - 1));
+            startValues[0] = (ushort)((ushort)p1X & BroadphaseMax - 1);
             startValues2[0] = (ushort)((ushort)p1X | 1);
 
-            startValues[1] = (ushort)((ushort)p1Y & (BroadphaseMax - 1));
+            startValues[1] = (ushort)((ushort)p1Y & BroadphaseMax - 1);
             startValues2[1] = (ushort)((ushort)p1Y | 1);
 
             //First deal with all the proxies that contain segment.p1
@@ -874,7 +874,7 @@ namespace Alis.Core.Physic.Collisions
                 for (;;)
                 {
                     Proxy proxy;
-                    if (sy == 0 || (sx != 0 && xProgress < yProgress))
+                    if (sy == 0 || sx != 0 && xProgress < yProgress)
                     {
                         if (xProgress > maxLambda)
                         {
@@ -1099,11 +1099,11 @@ namespace Alis.Core.Physic.Collisions
             // lower/upper bounds that would have equal values.
             // TODO_ERIN implement fast float to uint16 conversion.
             lowerValues[0] = (ushort)((ushort)(QuantizationFactor.X * (minVertex.X - WorldAabb.LowerBound.X)) &
-                                      (BroadphaseMax - 1));
+                                      BroadphaseMax - 1);
             upperValues[0] = (ushort)((ushort)(QuantizationFactor.X * (maxVertex.X - WorldAabb.LowerBound.X)) | 1);
 
             lowerValues[1] = (ushort)((ushort)(QuantizationFactor.Y * (minVertex.Y - WorldAabb.LowerBound.Y)) &
-                                      (BroadphaseMax - 1));
+                                      BroadphaseMax - 1);
             upperValues[1] = (ushort)((ushort)(QuantizationFactor.Y * (maxVertex.Y - WorldAabb.LowerBound.Y)) | 1);
         }
 
@@ -1364,7 +1364,7 @@ namespace Alis.Core.Physic.Collisions
             int high = count - 1;
             while (low <= high)
             {
-                int mid = (low + high) >> 1;
+                int mid = low + high >> 1;
                 if (bounds[mid].Value > value)
                 {
                     high = mid - 1;

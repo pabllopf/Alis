@@ -49,15 +49,15 @@ namespace Alis.Core.Physic.Dynamics
         public float Density;
 
         /// <summary>
-        /// fixture 
-        /// </summary>
-        public FixtureDef fixtureDef;
-
-        /// <summary>
         ///     Contact filtering data. You must call b2World::Refilter to correct
         ///     existing contacts/non-contacts.
         /// </summary>
         public FilterData Filter;
+
+        /// <summary>
+        ///     fixture
+        /// </summary>
+        public FixtureDef fixtureDef;
 
         /// <summary>
         ///     Friction coefficient, usually in the range [0,1].

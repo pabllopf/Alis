@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Contact.cs
+//  File:   CollisionFlags.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -32,7 +32,7 @@ using System;
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>
-    /// The contact class
+    ///     The contact class
     /// </summary>
     public abstract partial class Contact
     {

@@ -50,6 +50,51 @@ namespace Alis.Core.Physic
     {
 
         /// <summary>
+        ///     The raycast normal
+        /// </summary>
+        private Vector2 raycastNormal;
+
+        /// <summary>
+        ///     Construct a world object.
+        /// </summary>
+        /// <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
+        /// <param name="gravity">The world gravity vector.</param>
+        /// <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
+        public World(Aabb worldAabb, Vector2 gravity, bool doSleep)
+        {
+            Listener = null;
+            BoundaryListener = null;
+            Filter = null;
+            ContactListener = null;
+            DebugDraw = null;
+
+            BodyList = new List<Body>();
+            ContactList = null;
+            JointList = null;
+
+            BodyCount = 0;
+            ContactCount = 0;
+            JointCount = 0;
+
+            WarmStarting = true;
+            ContinuousPhysics = true;
+
+            AllowSleep = doSleep;
+            Gravity = gravity;
+
+            Lock = false;
+
+            InvDt0 = 0.0f;
+
+            ContactManager = new ContactManager();
+            ContactManager.World = this;
+            BroadPhase = new BroadPhase(worldAabb, ContactManager);
+
+            BodyDef bd = new BodyDef();
+            GroundBody = CreateBody(bd);
+        }
+
+        /// <summary>
         ///     The allow sleep
         /// </summary>
         public bool AllowSleep { get; }
@@ -157,11 +202,6 @@ namespace Alis.Core.Physic
         internal bool Lock { get; set; }
 
         /// <summary>
-        ///     The raycast normal
-        /// </summary>
-        private Vector2 raycastNormal;
-
-        /// <summary>
         ///     The raycast segment
         /// </summary>
         public Segment RaycastSegment { get; private set; }
@@ -184,46 +224,6 @@ namespace Alis.Core.Physic
         public bool WarmStarting { get; private set; }
 
         /// <summary>
-        ///     Construct a world object.
-        /// </summary>
-        /// <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
-        /// <param name="gravity">The world gravity vector.</param>
-        /// <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
-        public World(Aabb worldAabb, Vector2 gravity, bool doSleep)
-        {
-            Listener = null;
-            BoundaryListener = null;
-            Filter = null;
-            ContactListener = null;
-            DebugDraw = null;
-
-            BodyList = new List<Body>();
-            ContactList = null;
-            JointList = null;
-
-            BodyCount = 0;
-            ContactCount = 0;
-            JointCount = 0;
-
-            WarmStarting = true;
-            ContinuousPhysics = true;
-
-            AllowSleep = doSleep;
-            Gravity = gravity;
-
-            Lock = false;
-
-            InvDt0 = 0.0f;
-
-            ContactManager = new ContactManager();
-            ContactManager.World = this;
-            BroadPhase = new BroadPhase(worldAabb, ContactManager);
-
-            BodyDef bd = new BodyDef();
-            GroundBody = CreateBody(bd);
-        }
-
-        /// <summary>
         ///     Get\Set global gravity vector.
         /// </summary>
         public Vector2 Gravity { get; set; }
@@ -240,54 +240,6 @@ namespace Alis.Core.Physic
             }
 
             BroadPhase = null;
-        }
-
-        /// <summary>
-        ///     Register a destruction listener.
-        /// </summary>
-        /// <param name="listener"></param>
-        public void SetDestructionListener(DestructionListener listener)
-        {
-            Listener = listener;
-        }
-
-        /// <summary>
-        ///     Register a broad-phase boundary listener.
-        /// </summary>
-        /// <param name="listener"></param>
-        public void SetBoundaryListener(BoundaryListener listener)
-        {
-            BoundaryListener = listener;
-        }
-
-        /// <summary>
-        ///     Register a contact filter to provide specific control over collision.
-        ///     Otherwise the default filter is used (b2_defaultFilter).
-        /// </summary>
-        /// <param name="filter"></param>
-        public void SetContactFilter(ContactFilter filter)
-        {
-            Filter = filter;
-        }
-
-        /// <summary>
-        ///     Register a contact event listener
-        /// </summary>
-        /// <param name="listener"></param>
-        public void SetContactListener(IContactListener listener)
-        {
-            ContactListener = listener;
-        }
-
-        /// <summary>
-        ///     Register a routine for debug drawing. The debug draw functions are called
-        ///     inside the World.Step method, so make sure your renderer is ready to
-        ///     consume draw commands when you call Step().
-        /// </summary>
-        /// <param name="debugDraw"></param>
-        public void SetDebugDraw(DebugDraw debugDraw)
-        {
-            this.DebugDraw = debugDraw;
         }
 
         /// <summary>
@@ -630,24 +582,7 @@ namespace Alis.Core.Physic
         /// </summary>
         public void Refilter(Fixture fixture)
         {
-            Box2DxDebug.Assert(Lock == false);
             fixture.RefilterProxy(BroadPhase, fixture.Body.GetXForm());
-        }
-
-        /// <summary>
-        ///     Enable/disable warm starting. For testing.
-        /// </summary>
-        public void SetWarmStarting(bool flag)
-        {
-            WarmStarting = flag;
-        }
-
-        /// <summary>
-        ///     Enable/disable continuous physics. For testing.
-        /// </summary>
-        public void SetContinuousPhysics(bool flag)
-        {
-            ContinuousPhysics = flag;
         }
 
         /// <summary>
@@ -761,20 +696,7 @@ namespace Alis.Core.Physic
         /// @return the number of shapes found in aabb.
         public int Query(Aabb aabb, Fixture[] fixtures, int maxCount)
         {
-            //using (object[] results = new object[maxCount])
-            {
-                object[] results = new object[maxCount];
-
-                int count = BroadPhase.Query(aabb, results, maxCount);
-
-                for (int i = 0; i < count; ++i)
-                {
-                    fixtures[i] = (Fixture)results[i];
-                }
-
-                results = null;
-                return count;
-            }
+            return BroadPhase.Query(aabb, new object[maxCount], maxCount);
         }
 
         /// <summary>
@@ -991,110 +913,6 @@ namespace Alis.Core.Physic
                         }
                     }
                 }
-                
-                /*for (Body seed = BodyList; seed != null; seed = seed.Next)
-                {
-                    if ((seed.Flags & (BodyFlags.Island | BodyFlags.Sleep | BodyFlags.Frozen)) != 0)
-                    {
-                        continue;
-                    }
-
-                    if (seed.IsStatic())
-                    {
-                        continue;
-                    }
-
-                    // Reset island and stack.
-                    island.Clear();
-                    int stackCount = 0;
-                    stack[stackCount++] = seed;
-                    seed.Flags |= BodyFlags.Island;
-
-                    // Perform a depth first search (DFS) on the constraint graph.
-                    while (stackCount > 0)
-                    {
-                        // Grab the next body off the stack and add it to the island.
-                        Body b = stack[--stackCount];
-                        island.Add(b);
-
-                        // Make sure the body is awake.
-                        b.Flags &= ~BodyFlags.Sleep;
-
-                        // To keep islands as small as possible, we don't
-                        // propagate islands across static bodies.
-                        if (b.IsStatic())
-                        {
-                            continue;
-                        }
-
-                        // Search all contacts connected to this body.
-                        for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)
-                        {
-                            // Has this contact already been added to an island?
-                            if ((cn.Contact.Flags &
-                                 (Contact.CollisionFlags.Island | Contact.CollisionFlags.NonSolid)) != 0)
-                            {
-                                continue;
-                            }
-
-                            // Is this contact touching?
-                            if ((cn.Contact.Flags & Contact.CollisionFlags.Touch) == 0)
-                            {
-                                continue;
-                            }
-
-                            island.Add(cn.Contact);
-                            cn.Contact.Flags |= Contact.CollisionFlags.Island;
-
-                            Body other = cn.Other;
-
-                            // Was the other body already added to this island?
-                            if ((other.Flags & BodyFlags.Island) != 0)
-                            {
-                                continue;
-                            }
-
-                            Box2DxDebug.Assert(stackCount < stackSize);
-                            stack[stackCount++] = other;
-                            other.Flags |= BodyFlags.Island;
-                        }
-
-                        // Search all joints connect to this body.
-                        for (JointEdge jn = b.JointList; jn != null; jn = jn.Next)
-                        {
-                            if (jn.Joint.IslandFlag)
-                            {
-                                continue;
-                            }
-
-                            island.Add(jn.Joint);
-                            jn.Joint.IslandFlag = true;
-
-                            Body other = jn.Other;
-                            if ((other.Flags & BodyFlags.Island) != 0)
-                            {
-                                continue;
-                            }
-
-                            Box2DxDebug.Assert(stackCount < stackSize);
-                            stack[stackCount++] = other;
-                            other.Flags |= BodyFlags.Island;
-                        }
-                    }
-
-                    island.Solve(step, Gravity, AllowSleep);
-
-                    // Post solve cleanup.
-                    for (int i = 0; i < island.BodyCount; ++i)
-                    {
-                        // Allow static bodies to participate in other islands.
-                        Body b = island.Bodies[i];
-                        if (b.IsStatic())
-                        {
-                            b.Flags &= ~BodyFlags.Island;
-                        }
-                    }
-                }*/
 
                 stack = null;
             }
@@ -1123,30 +941,6 @@ namespace Alis.Core.Physic
                     BoundaryListener.Violation(BodyList[i]);
                 }
             }
-            
-            /*for (Body b = BodyList; b != null; b = b.GetNext())
-            {
-                if ((b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) != 0)
-                {
-                    continue;
-                }
-
-                if (b.IsStatic())
-                {
-                    continue;
-                }
-
-                // Update shapes (for broad-phase). If the shapes go out of
-                // the world AABB then shapes and contacts may be destroyed,
-                // including contacts that are
-                bool inRange = b.SynchronizeFixtures();
-
-                // Did the body's shapes leave the world?
-                if (inRange == false && BoundaryListener != null)
-                {
-                    BoundaryListener.Violation(b);
-                }
-            }*/
 
             // Commit shape proxy movements to the broad-phase so that new contacts are created.
             // Also, some contacts can be destroyed.
@@ -1180,7 +974,7 @@ namespace Alis.Core.Physic
                 BodyList[i].Flags &= ~BodyFlags.Island;
                 BodyList[i].Sweep.T0 = 0.0f;
             }
-            
+
             /*for (Body b = BodyList; b != null; b = b.Next)
             {
                 b.Flags &= ~BodyFlags.Island;
@@ -1600,7 +1394,7 @@ namespace Alis.Core.Physic
             {
                 bool core = (flags & DrawFlags.CoreShape) == DrawFlags.CoreShape;
 
-                for (int i =0; i < BodyList.Count; i++)
+                for (int i = 0; i < BodyList.Count; i++)
                 {
                     XForm xf = BodyList[i].GetXForm();
                     for (Fixture f = BodyList[i].GetFixtureList(); f != null; f = f.Next)
@@ -1619,26 +1413,6 @@ namespace Alis.Core.Physic
                         }
                     }
                 }
-                
-                /*for (Body b = BodyList; b != null; b = b.GetNext())
-                {
-                    XForm xf = b.GetXForm();
-                    for (Fixture f = b.GetFixtureList(); f != null; f = f.Next)
-                    {
-                        if (b.IsStatic())
-                        {
-                            DrawFixture(f, xf, new Color(0.5f, 0.9f, 0.5f), core);
-                        }
-                        else if (b.IsSleeping())
-                        {
-                            DrawFixture(f, xf, new Color(0.5f, 0.5f, 0.9f), core);
-                        }
-                        else
-                        {
-                            DrawFixture(f, xf, new Color(0.9f, 0.9f, 0.9f), core);
-                        }
-                    }
-                }*/
             }
 
             if ((flags & DrawFlags.Joint) != 0)
@@ -1744,13 +1518,6 @@ namespace Alis.Core.Physic
                     xf.Position = BodyList[i].GetWorldCenter();
                     DebugDraw.DrawXForm(xf);
                 }
-
-                /*for (Body b = BodyList; b != null; b = b.GetNext())
-                {
-                    XForm xf = b.GetXForm();
-                    xf.Position = b.GetWorldCenter();
-                    DebugDraw.DrawXForm(xf);
-                }*/
             }
         }
 
@@ -1795,9 +1562,6 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <returns>The bool</returns>
-        public bool InRange(Aabb aabb)
-        {
-            return BroadPhase.InRange(aabb);
-        }
+        public bool InRange(Aabb aabb) => BroadPhase.InRange(aabb);
     }
 }

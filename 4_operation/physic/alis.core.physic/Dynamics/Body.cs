@@ -60,6 +60,11 @@ namespace Alis.Core.Physic.Dynamics
         internal float AngularVelocity;
 
         /// <summary>
+        ///     body data
+        /// </summary>
+        private BodyDef bodyDef;
+
+        /// <summary>
         ///     The contact list
         /// </summary>
         internal ContactEdge ContactList;
@@ -73,11 +78,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     The fixture count
         /// </summary>
         internal int FixtureCount;
-
-        /// <summary>
-        /// body data
-        /// </summary>
-        private BodyDef bodyDef;
 
         /// <summary>
         ///     The fixture list
@@ -183,7 +183,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             Box2DxDebug.Assert(world.Lock == false);
 
-            this.bodyDef = bd;
+            bodyDef = bd;
 
             Flags = 0;
 

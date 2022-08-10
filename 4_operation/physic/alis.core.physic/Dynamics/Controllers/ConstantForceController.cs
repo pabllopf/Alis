@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         private readonly Vector2 f;
 
         /// <summary>
-        /// constant force controller
+        ///     constant force controller
         /// </summary>
         private ConstantForceControllerDef constantForceControllerDef;
 

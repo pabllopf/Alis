@@ -1944,6 +1944,11 @@
                 The angular velocity
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Body.bodyDef">
+            <summary>
+                body data
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.ContactList">
             <summary>
                 The contact list
@@ -1957,11 +1962,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Body.FixtureCount">
             <summary>
                 The fixture count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.bodyDef">
-            <summary>
-            body data
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.FixtureList">
@@ -2775,7 +2775,7 @@
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Contacts.Contact">
             <summary>
-            The contact class
+                The contact class
             </summary>
             <summary>
                 The class manages contact between two shapes. A contact exists for each overlapping
@@ -3427,6 +3427,11 @@
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.UseWorldGravity">
             If true, gravity is taken from the world instead of the gravity parameter.
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.buoyancyControllerDef">
+            <summary>
+                Buoyancy controller
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Gravity">
             Gravity vector, if the world's gravity is not used
         </member>
@@ -3435,11 +3440,6 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Velocity">
             Fluid velocity, for drag calculations
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.buoyancyControllerDef">
-            <summary>
-            Buoyancy controller
-            </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.#ctor(Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef)">
             <summary>
@@ -3509,7 +3509,7 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.ConstantAccelController.constantAccelControllerDef">
             <summary>
-            The constant accel controller def
+                The constant accel controller def
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Controllers.ConstantAccelController.#ctor(Alis.Core.Physic.Dynamics.Controllers.ConstantAccelControllerDef)">
@@ -3545,7 +3545,7 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.ConstantForceController.constantForceControllerDef">
             <summary>
-            constant force controller
+                constant force controller
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Controllers.ConstantForceController.#ctor(Alis.Core.Physic.Dynamics.Controllers.ConstantForceControllerDef)">
@@ -3707,7 +3707,7 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Controllers.GravityController.gravityControllerDef">
             <summary>
-            Gravity controller
+                Gravity controller
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Controllers.GravityController.#ctor(Alis.Core.Physic.Dynamics.Controllers.GravityControllerDef)">
@@ -3950,15 +3950,15 @@
                 Density, usually in kg/m^2.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture.fixtureDef">
-            <summary>
-            fixture 
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Fixture.Filter">
             <summary>
                 Contact filtering data. You must call b2World::Refilter to correct
                 existing contacts/non-contacts.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Fixture.fixtureDef">
+            <summary>
+                fixture
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Fixture.Friction">
@@ -6250,6 +6250,19 @@
                 and asynchronous queries.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.World.raycastNormal">
+            <summary>
+                The raycast normal
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Physic.Collisions.Aabb,Alis.Aspect.Math.Vector2,System.Boolean)">
+            <summary>
+                Construct a world object.
+            </summary>
+            <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
+            <param name="gravity">The world gravity vector.</param>
+            <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
+        </member>
         <member name="P:Alis.Core.Physic.World.AllowSleep">
             <summary>
                 The allow sleep
@@ -6350,11 +6363,6 @@
                 The lock
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.raycastNormal">
-            <summary>
-                The raycast normal
-            </summary>
-        </member>
         <member name="P:Alis.Core.Physic.World.RaycastSegment">
             <summary>
                 The raycast segment
@@ -6375,14 +6383,6 @@
                 The warm starting
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Physic.Collisions.Aabb,Alis.Aspect.Math.Vector2,System.Boolean)">
-            <summary>
-                Construct a world object.
-            </summary>
-            <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
-            <param name="gravity">The world gravity vector.</param>
-            <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
-        </member>
         <member name="P:Alis.Core.Physic.World.Gravity">
             <summary>
                 Get\Set global gravity vector.
@@ -6392,39 +6392,6 @@
             <summary>
                 Destruct the world. All physics entities are destroyed.
             </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SetDestructionListener(Alis.Core.Physic.Dynamics.DestructionListener)">
-            <summary>
-                Register a destruction listener.
-            </summary>
-            <param name="listener"></param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SetBoundaryListener(Alis.Core.Physic.Dynamics.BoundaryListener)">
-            <summary>
-                Register a broad-phase boundary listener.
-            </summary>
-            <param name="listener"></param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SetContactFilter(Alis.Core.Physic.Dynamics.ContactFilter)">
-            <summary>
-                Register a contact filter to provide specific control over collision.
-                Otherwise the default filter is used (b2_defaultFilter).
-            </summary>
-            <param name="filter"></param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SetContactListener(Alis.Core.Physic.Dynamics.IContactListener)">
-            <summary>
-                Register a contact event listener
-            </summary>
-            <param name="listener"></param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SetDebugDraw(Alis.Core.Physic.Dynamics.DebugDraw)">
-            <summary>
-                Register a routine for debug drawing. The debug draw functions are called
-                inside the World.Step method, so make sure your renderer is ready to
-                consume draw commands when you call Step().
-            </summary>
-            <param name="debugDraw"></param>
         </member>
         <member name="M:Alis.Core.Physic.World.CreateBody(Alis.Core.Physic.Dynamics.BodyDef)">
             <summary>
@@ -6502,16 +6469,6 @@
         <member name="M:Alis.Core.Physic.World.Refilter(Alis.Core.Physic.Dynamics.Fixture)">
             <summary>
                 Re-filter a fixture. This re-runs contact filtering on a fixture.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SetWarmStarting(System.Boolean)">
-            <summary>
-                Enable/disable warm starting. For testing.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SetContinuousPhysics(System.Boolean)">
-            <summary>
-                Enable/disable continuous physics. For testing.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.Validate">

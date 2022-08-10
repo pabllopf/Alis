@@ -47,7 +47,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         public readonly bool InvSqr;
 
         /// <summary>
-        /// Gravity controller
+        ///     Gravity controller
         /// </summary>
         private GravityControllerDef gravityControllerDef;
 
