@@ -317,7 +317,7 @@ namespace Alis.Core.Physic.Test
             var world = CreateWorld();
 
             // Act
-            var result = world.GetBodyList();
+            var result = world.BodyList;
 
             // Assert
             Assert.True(true);
