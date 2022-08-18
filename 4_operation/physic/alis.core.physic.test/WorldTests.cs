@@ -220,57 +220,7 @@ namespace Alis.Core.Physic.Test
         }
         
 
-        /// <summary>
-        ///     Tests that validate state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void Validate_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            world.Validate();
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that get proxy count state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetProxyCount_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            var result = world.GetProxyCount();
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
-        /// <summary>
-        ///     Tests that get pair count state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void GetPairCount_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-
-            // Act
-            var result = world.GetPairCount();
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
-
+        
 
 
 
@@ -376,24 +326,6 @@ namespace Alis.Core.Physic.Test
             Assert.True(true);
             mockRepository.VerifyAll();
         }
-
-        /// <summary>
-        ///     Tests that in range state under test expected behavior
-        /// </summary>
-        [Fact]
-        public void InRange_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var world = CreateWorld();
-            Aabb aabb = default(Aabb);
-
-            // Act
-            var result = world.InRange(
-                aabb);
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
+        
     }
 }

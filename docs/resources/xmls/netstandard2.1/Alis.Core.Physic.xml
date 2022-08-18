@@ -6426,7 +6426,7 @@
             <summary>
                 Adds the controller using the specified def
             </summary>
-            <param name="def">The def</param>
+            <param name="controller">The def</param>
             <returns>The def</returns>
         </member>
         <member name="M:Alis.Core.Physic.World.RemoveController(Alis.Core.Physic.Dynamics.Controllers.Controller)">
@@ -6434,27 +6434,6 @@
                 Removes the controller using the specified controller
             </summary>
             <param name="controller">The controller</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.Refilter(Alis.Core.Physic.Dynamics.Fixture)">
-            <summary>
-                Re-filter a fixture. This re-runs contact filtering on a fixture.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.Validate">
-            <summary>
-                Perform validation of internal data structures.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetProxyCount">
-            <summary>
-                Get the number of broad-phase proxies.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.GetPairCount">
-            <summary>
-                Get the number of broad-phase pairs.
-            </summary>
-            <returns></returns>
         </member>
         <member name="M:Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)">
             <summary>
@@ -6522,39 +6501,12 @@
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.DrawJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
-            <summary>
-                Draws the joint using the specified joint
-            </summary>
-            <param name="joint">The joint</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.DrawFixture(Alis.Core.Physic.Dynamics.Fixture,Alis.Aspect.Math.XForm,Alis.Core.Physic.Dynamics.Color,System.Boolean)">
-            <summary>
-                Draws the fixture using the specified fixture
-            </summary>
-            <param name="fixture">The fixture</param>
-            <param name="xf">The xf</param>
-            <param name="color">The color</param>
-            <param name="core">The core</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.DrawDebugData">
-            <summary>
-                Draws the debug data
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.World.RaycastSortKey(System.Object)">
             <summary>
                 Raycasts the sort key using the specified data
             </summary>
             <param name="data">The data</param>
             <returns>The lambda</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.InRange(Alis.Core.Physic.Collisions.Aabb)">
-            <summary>
-                Describes whether this instance in range
-            </summary>
-            <param name="aabb">The aabb</param>
-            <returns>The bool</returns>
         </member>
     </members>
 </doc>

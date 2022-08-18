@@ -71,6 +71,7 @@ namespace Alis.Core.Physic
             BodyList = new List<Body>();
             ContactList = new List<Contact>();
             JointList = new List<Joint>();
+            ControllerList = new List<Controller>();
             
             ContactCount = 0;
 
@@ -164,7 +165,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The controller list
         /// </summary>
-        public Controller ControllerList { get; private set; }
+        public List<Controller> ControllerList { get; private set; }
 
         /// <summary>
         ///     The debug draw
@@ -267,6 +268,7 @@ namespace Alis.Core.Physic
 
             Joint joint = Joint.Create(jointDef);
             
+            /*
             // Connect to the bodies' doubly linked lists.
             joint.Node1.Joint = joint;
             joint.Node1.Other = joint.Body2;
@@ -299,7 +301,7 @@ namespace Alis.Core.Physic
                 {
                     f.RefilterProxy(BroadPhase, b.GetXForm());
                 }
-            }
+            }*/
 
             JointList.Add(joint);
             
@@ -317,7 +319,7 @@ namespace Alis.Core.Physic
             
             JointList.Remove(joint);
             
-            bool collideConnected = joint.CollideConnected;
+           /* bool collideConnected = joint.CollideConnected;
             
             // Disconnect from island graph.
             Body body1 = joint.Body1;
@@ -376,29 +378,19 @@ namespace Alis.Core.Physic
                 {
                     f.RefilterProxy(BroadPhase, b.GetXForm());
                 }
-            }
+            }*/
         }
 
         /// <summary>
         ///     Adds the controller using the specified def
         /// </summary>
-        /// <param name="def">The def</param>
+        /// <param name="controller">The def</param>
         /// <returns>The def</returns>
-        public Controller AddController(Controller def)
+        public Controller AddController(Controller controller)
         {
-            def.Next = ControllerList;
-            def.Prev = null;
-            if (ControllerList != null)
-            {
-                ControllerList.Prev = def;
-            }
-
-            ControllerList = def;
-            ++ControllerCount;
-
-            def.World = this;
-
-            return def;
+            controller.World = this;
+            ControllerList.Add(controller);
+            return controller;
         }
 
         /// <summary>
@@ -407,56 +399,7 @@ namespace Alis.Core.Physic
         /// <param name="controller">The controller</param>
         public void RemoveController(Controller controller)
         {
-            Box2DxDebug.Assert(ControllerCount > 0);
-            if (controller.Next != null)
-            {
-                controller.Next.Prev = controller.Prev;
-            }
-
-            if (controller.Prev != null)
-            {
-                controller.Prev.Next = controller.Next;
-            }
-
-            if (controller == ControllerList)
-            {
-                ControllerList = controller.Next;
-            }
-
-            --ControllerCount;
-        }
-
-        /// <summary>
-        ///     Re-filter a fixture. This re-runs contact filtering on a fixture.
-        /// </summary>
-        public void Refilter(Fixture fixture)
-        {
-            fixture.RefilterProxy(BroadPhase, fixture.Body.GetXForm());
-        }
-
-        /// <summary>
-        ///     Perform validation of internal data structures.
-        /// </summary>
-        public void Validate()
-        {
-            BroadPhase.Validate();
-        }
-
-        /// <summary>
-        ///     Get the number of broad-phase proxies.
-        /// </summary>
-        public int GetProxyCount()
-        {
-            return BroadPhase.ProxyCount;
-        }
-
-        /// <summary>
-        ///     Get the number of broad-phase pairs.
-        /// </summary>
-        /// <returns></returns>
-        public int GetPairCount()
-        {
-            return BroadPhase.PairManager.PairCount;
+            ControllerList.Remove(controller);
         }
         
         /// <summary>
@@ -501,10 +444,7 @@ namespace Alis.Core.Physic
             {
                 SolveToi(step);
             }
-
-            // Draw debug information.
-            DrawDebugData();
-
+            
             InvDt0 = step.InvDt;
             Lock = false;
         }
@@ -603,9 +543,8 @@ namespace Alis.Core.Physic
         private void Solve(TimeStep step)
         {
             // Step all controlls
-            for (Controller controller = ControllerList; controller != null; controller = controller.Next)
-            {
-                controller.Step(step);
+            for (int i =0; i < ControllerList.Count; i++) {
+                ControllerList[i].Step(step);
             }
 
             // Size the island for the worst case.
@@ -1100,248 +1039,6 @@ namespace Alis.Core.Physic
 
             queue = null;
         }
-
-        /// <summary>
-        ///     Draws the joint using the specified joint
-        /// </summary>
-        /// <param name="joint">The joint</param>
-        private void DrawJoint(Joint joint)
-        {
-            Body b1 = joint.GetBody1();
-            Body b2 = joint.GetBody2();
-            XForm xf1 = b1.GetXForm();
-            XForm xf2 = b2.GetXForm();
-            Vector2 x1 = xf1.Position;
-            Vector2 x2 = xf2.Position;
-            Vector2 p1 = joint.Anchor1;
-            Vector2 p2 = joint.Anchor2;
-
-            Color color = new Color(0.5f, 0.8f, 0.8f);
-
-            switch (joint.GetType())
-            {
-                case JointType.DistanceJoint:
-                    DebugDraw.DrawSegment(p1, p2, color);
-                    break;
-
-                case JointType.PulleyJoint:
-                {
-                    PulleyJoint pulley = (PulleyJoint)joint;
-                    Vector2 s1 = pulley.GroundAnchorX1;
-                    Vector2 s2 = pulley.GroundAnchorX2;
-                    DebugDraw.DrawSegment(s1, p1, color);
-                    DebugDraw.DrawSegment(s2, p2, color);
-                    DebugDraw.DrawSegment(s1, s2, color);
-                }
-                    break;
-
-                case JointType.MouseJoint:
-                    // don't draw this
-                    break;
-
-                default:
-                    DebugDraw.DrawSegment(x1, p1, color);
-                    DebugDraw.DrawSegment(p1, p2, color);
-                    DebugDraw.DrawSegment(x2, p2, color);
-                    break;
-            }
-        }
-
-        /// <summary>
-        ///     Draws the fixture using the specified fixture
-        /// </summary>
-        /// <param name="fixture">The fixture</param>
-        /// <param name="xf">The xf</param>
-        /// <param name="color">The color</param>
-        /// <param name="core">The core</param>
-        private void DrawFixture(Fixture fixture, XForm xf, Color color, bool core)
-        {
-            Color coreColor = new Color(0.9f, 0.6f, 0.6f);
-
-            switch (fixture.ShapeType)
-            {
-                case ShapeType.CircleShape:
-                {
-                    CircleShape circle = (CircleShape)fixture.Shape;
-
-                    Vector2 center = Math.Mul(xf, circle.Position);
-                    float radius = circle.Radius;
-                    Vector2 axis = xf.R.Col1;
-
-                    DebugDraw.DrawSolidCircle(center, radius, axis, color);
-                }
-                    break;
-
-                case ShapeType.PolygonShape:
-                {
-                    PolygonShape poly = (PolygonShape)fixture.Shape;
-                    int vertexCount = poly.VertexCount;
-                    Vector2[] localVertices = poly.Vertices;
-
-                    Box2DxDebug.Assert(vertexCount <= Settings.MaxPolygonVertices);
-                    Vector2[] vertices = new Vector2[Settings.MaxPolygonVertices];
-
-                    for (int i = 0; i < vertexCount; ++i)
-                    {
-                        vertices[i] = Math.Mul(xf, localVertices[i]);
-                    }
-
-                    DebugDraw.DrawSolidPolygon(vertices, vertexCount, color);
-                }
-                    break;
-
-                case ShapeType.EdgeShape:
-                {
-                    EdgeShape edge = (EdgeShape)fixture.Shape;
-
-                    DebugDraw.DrawSegment(Math.Mul(xf, edge.Vertex1), Math.Mul(xf, edge.Vertex2), color);
-                }
-                    break;
-            }
-        }
-
-        /// <summary>
-        ///     Draws the debug data
-        /// </summary>
-        private void DrawDebugData()
-        {
-            if (DebugDraw == null)
-            {
-                return;
-            }
-
-            DrawFlags flags = DebugDraw.Flags;
-
-            if ((flags & DrawFlags.Shape) != 0)
-            {
-                bool core = (flags & DrawFlags.CoreShape) == DrawFlags.CoreShape;
-
-                for (int i = 0; i < BodyList.Count; i++)
-                {
-                    XForm xf = BodyList[i].GetXForm();
-                    for (Fixture f = BodyList[i].GetFixtureList(); f != null; f = f.Next)
-                    {
-                        if (BodyList[i].IsStatic())
-                        {
-                            DrawFixture(f, xf, new Color(0.5f, 0.9f, 0.5f), core);
-                        }
-                        else if (BodyList[i].IsSleeping())
-                        {
-                            DrawFixture(f, xf, new Color(0.5f, 0.5f, 0.9f), core);
-                        }
-                        else
-                        {
-                            DrawFixture(f, xf, new Color(0.9f, 0.9f, 0.9f), core);
-                        }
-                    }
-                }
-            }
-
-            if ((flags & DrawFlags.Joint) != 0)
-            {
-                for (int i = 0; i < JointList.Count; i++)
-                {
-                    if (JointList[i].GetType() != JointType.MouseJoint)
-                    {
-                        DrawJoint(JointList[i]);
-                    }
-                }
-            }
-
-            if ((flags & DrawFlags.Controller) != 0)
-            {
-                for (Controller c = ControllerList; c != null; c = c.GetNext())
-                {
-                    c.Draw(DebugDraw);
-                }
-            }
-
-            if ((flags & DrawFlags.Pair) != 0)
-            {
-                BroadPhase bp = BroadPhase;
-                Vector2 invQ = new Vector2();
-                invQ.Set(1.0f / bp.QuantizationFactor.X, 1.0f / bp.QuantizationFactor.Y);
-                Color color = new Color(0.9f, 0.9f, 0.3f);
-
-                for (int i = 0; i < PairManager.TableCapacity; ++i)
-                {
-                    ushort index = bp.PairManager.HashTable[i];
-                    while (index != PairManager.NullPair)
-                    {
-                        Pair pair = bp.PairManager.Pairs[index];
-                        Proxy p1 = bp.ProxyPool[pair.ProxyId1];
-                        Proxy p2 = bp.ProxyPool[pair.ProxyId2];
-
-                        Aabb b1 = new Aabb(), b2 = new Aabb();
-                        b1.LowerBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p1.LowerBounds[0]].Value;
-                        b1.LowerBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p1.LowerBounds[1]].Value;
-                        b1.UpperBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p1.UpperBounds[0]].Value;
-                        b1.UpperBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p1.UpperBounds[1]].Value;
-                        b2.LowerBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p2.LowerBounds[0]].Value;
-                        b2.LowerBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p2.LowerBounds[1]].Value;
-                        b2.UpperBound.X = bp.WorldAabb.LowerBound.X + invQ.X * bp.Bounds[0][p2.UpperBounds[0]].Value;
-                        b2.UpperBound.Y = bp.WorldAabb.LowerBound.Y + invQ.Y * bp.Bounds[1][p2.UpperBounds[1]].Value;
-
-                        Vector2 x1 = 0.5f * (b1.LowerBound + b1.UpperBound);
-                        Vector2 x2 = 0.5f * (b2.LowerBound + b2.UpperBound);
-
-                        DebugDraw.DrawSegment(x1, x2, color);
-
-                        index = pair.Next;
-                    }
-                }
-            }
-
-            if ((flags & DrawFlags.Aabb) != 0)
-            {
-                BroadPhase bp = BroadPhase;
-                Vector2 worldLower = bp.WorldAabb.LowerBound;
-                Vector2 worldUpper = bp.WorldAabb.UpperBound;
-
-                Vector2 invQ = new Vector2();
-                invQ.Set(1.0f / bp.QuantizationFactor.X, 1.0f / bp.QuantizationFactor.Y);
-                Color color = new Color(0.9f, 0.3f, 0.9f);
-                for (int i = 0; i < Settings.MaxProxies; ++i)
-                {
-                    Proxy p = bp.ProxyPool[i];
-                    if (p.IsValid == false)
-                    {
-                        continue;
-                    }
-
-                    Aabb b = new Aabb();
-                    b.LowerBound.X = worldLower.X + invQ.X * bp.Bounds[0][p.LowerBounds[0]].Value;
-                    b.LowerBound.Y = worldLower.Y + invQ.Y * bp.Bounds[1][p.LowerBounds[1]].Value;
-                    b.UpperBound.X = worldLower.X + invQ.X * bp.Bounds[0][p.UpperBounds[0]].Value;
-                    b.UpperBound.Y = worldLower.Y + invQ.Y * bp.Bounds[1][p.UpperBounds[1]].Value;
-
-                    Vector2[] vs1 = new Vector2[4];
-                    vs1[0].Set(b.LowerBound.X, b.LowerBound.Y);
-                    vs1[1].Set(b.UpperBound.X, b.LowerBound.Y);
-                    vs1[2].Set(b.UpperBound.X, b.UpperBound.Y);
-                    vs1[3].Set(b.LowerBound.X, b.UpperBound.Y);
-
-                    DebugDraw.DrawPolygon(vs1, 4, color);
-                }
-
-                Vector2[] vs = new Vector2[4];
-                vs[0].Set(worldLower.X, worldLower.Y);
-                vs[1].Set(worldUpper.X, worldLower.Y);
-                vs[2].Set(worldUpper.X, worldUpper.Y);
-                vs[3].Set(worldLower.X, worldUpper.Y);
-                DebugDraw.DrawPolygon(vs, 4, new Color(0.3f, 0.9f, 0.9f));
-            }
-
-            if ((flags & DrawFlags.CenterOfMass) != 0)
-            {
-                for (int i = 0; i < BodyList.Count; i++)
-                {
-                    XForm xf = BodyList[i].GetXForm();
-                    xf.Position = BodyList[i].GetWorldCenter();
-                    DebugDraw.DrawXForm(xf);
-                }
-            }
-        }
         
         /// <summary>
         ///     Raycasts the sort key using the specified data
@@ -1378,12 +1075,5 @@ namespace Alis.Core.Physic
 
             return lambda;
         }
-
-        /// <summary>
-        ///     Describes whether this instance in range
-        /// </summary>
-        /// <param name="aabb">The aabb</param>
-        /// <returns>The bool</returns>
-        public bool InRange(Aabb aabb) => BroadPhase.InRange(aabb);
     }
 }
