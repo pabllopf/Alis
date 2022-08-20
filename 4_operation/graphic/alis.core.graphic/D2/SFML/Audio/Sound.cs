@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Sound.cs
+//  File:Sound.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -65,9 +65,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         ////////////////////////////////////////////////////////////
         public Sound(SoundBuffer buffer) :
             base(sfSound_create())
-        {
-            SoundBuffer = buffer;
-        }
+            => SoundBuffer = buffer;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -77,9 +75,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         ////////////////////////////////////////////////////////////
         public Sound(Sound copy) :
             base(sfSound_copy(copy.CPointer))
-        {
-            SoundBuffer = copy.SoundBuffer;
-        }
+            => SoundBuffer = copy.SoundBuffer;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -275,20 +271,17 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return "[Sound]" +
-                   " Status(" + Status + ")" +
-                   " Loop(" + Loop + ")" +
-                   " Pitch(" + Pitch + ")" +
-                   " Volume(" + Volume + ")" +
-                   " Position(" + Position + ")" +
-                   " RelativeToListener(" + RelativeToListener + ")" +
-                   " MinDistance(" + MinDistance + ")" +
-                   " Attenuation(" + Attenuation + ")" +
-                   " PlayingOffset(" + PlayingOffset + ")" +
-                   " SoundBuffer(" + SoundBuffer + ")";
-        }
+        public override string ToString() => "[Sound]" +
+                                             " Status(" + Status + ")" +
+                                             " Loop(" + Loop + ")" +
+                                             " Pitch(" + Pitch + ")" +
+                                             " Volume(" + Volume + ")" +
+                                             " Position(" + Position + ")" +
+                                             " RelativeToListener(" + RelativeToListener + ")" +
+                                             " MinDistance(" + MinDistance + ")" +
+                                             " Attenuation(" + Attenuation + ")" +
+                                             " PlayingOffset(" + PlayingOffset + ")" +
+                                             " SoundBuffer(" + SoundBuffer + ")";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -305,8 +298,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         ///     Sfs the sound create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSound_create();
 
         /// <summary>
@@ -314,40 +306,35 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSound_copy(IntPtr Sound);
 
         /// <summary>
         ///     Sfs the sound destroy using the specified sound
         /// </summary>
         /// <param name="Sound">The sound</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_destroy(IntPtr Sound);
 
         /// <summary>
         ///     Sfs the sound play using the specified sound
         /// </summary>
         /// <param name="Sound">The sound</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_play(IntPtr Sound);
 
         /// <summary>
         ///     Sfs the sound pause using the specified sound
         /// </summary>
         /// <param name="Sound">The sound</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_pause(IntPtr Sound);
 
         /// <summary>
         ///     Sfs the sound stop using the specified sound
         /// </summary>
         /// <param name="Sound">The sound</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_stop(IntPtr Sound);
 
         /// <summary>
@@ -355,8 +342,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="Buffer">The buffer</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setBuffer(IntPtr Sound, IntPtr Buffer);
 
         /// <summary>
@@ -364,8 +350,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSound_getBuffer(IntPtr Sound);
 
         /// <summary>
@@ -373,8 +358,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="Loop">The loop</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setLoop(IntPtr Sound, bool Loop);
 
         /// <summary>
@@ -382,8 +366,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSound_getLoop(IntPtr Sound);
 
         /// <summary>
@@ -391,8 +374,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The sound status</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern SoundStatus sfSound_getStatus(IntPtr Sound);
 
         /// <summary>
@@ -400,8 +382,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="Pitch">The pitch</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setPitch(IntPtr Sound, float Pitch);
 
         /// <summary>
@@ -409,8 +390,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="Volume">The volume</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setVolume(IntPtr Sound, float Volume);
 
         /// <summary>
@@ -418,8 +398,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="position">The position</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setPosition(IntPtr Sound, Vector3f position);
 
         /// <summary>
@@ -427,8 +406,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="Relative">The relative</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setRelativeToListener(IntPtr Sound, bool Relative);
 
         /// <summary>
@@ -436,8 +414,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="MinDistance">The min distance</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setMinDistance(IntPtr Sound, float MinDistance);
 
         /// <summary>
@@ -445,8 +422,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="Attenuation">The attenuation</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setAttenuation(IntPtr Sound, float Attenuation);
 
         /// <summary>
@@ -454,8 +430,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <param name="TimeOffset">The time offset</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSound_setPlayingOffset(IntPtr Sound, Time TimeOffset);
 
         /// <summary>
@@ -463,8 +438,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfSound_getPitch(IntPtr Sound);
 
         /// <summary>
@@ -472,8 +446,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfSound_getVolume(IntPtr Sound);
 
         /// <summary>
@@ -481,8 +454,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The vector 3f</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector3f sfSound_getPosition(IntPtr Sound);
 
         /// <summary>
@@ -490,8 +462,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSound_isRelativeToListener(IntPtr Sound);
 
         /// <summary>
@@ -499,8 +470,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfSound_getMinDistance(IntPtr Sound);
 
         /// <summary>
@@ -508,8 +478,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfSound_getAttenuation(IntPtr Sound);
 
         /// <summary>
@@ -517,8 +486,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Sound">The sound</param>
         /// <returns>The systems time</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfSound_getPlayingOffset(IntPtr Sound);
     }
 }

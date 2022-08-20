@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   StreamAdaptor.cs
+//  File:StreamAdaptor.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         private long Read(IntPtr data, long size, IntPtr userData)
         {
             byte[] buffer = new byte[size];
-            int count = myStream.Read(buffer, 0, (int)size);
+            int count = myStream.Read(buffer, 0, (int) size);
             Marshal.Copy(buffer, 0, data, count);
             return count;
         }
@@ -143,10 +143,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="userData">User data -- unused</param>
         /// <returns>Actual position</returns>
         ////////////////////////////////////////////////////////////
-        private long Seek(long position, IntPtr userData)
-        {
-            return myStream.Seek(position, SeekOrigin.Begin);
-        }
+        private long Seek(long position, IntPtr userData) => myStream.Seek(position, SeekOrigin.Begin);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -155,10 +152,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="userData">User data -- unused</param>
         /// <returns>Current position in the stream</returns>
         ////////////////////////////////////////////////////////////
-        private long Tell(IntPtr userData)
-        {
-            return myStream.Position;
-        }
+        private long Tell(IntPtr userData) => myStream.Position;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -167,9 +161,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="userData">User data -- unused</param>
         /// <returns>Number of bytes in the stream</returns>
         ////////////////////////////////////////////////////////////
-        private long GetSize(IntPtr userData)
-        {
-            return myStream.Length;
-        }
+        private long GetSize(IntPtr userData) => myStream.Length;
     }
 }

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Program.cs
+//  File:Program.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Sample
 
             // Construct a world object, which will hold and simulate the rigid bodies.
             World world = new World(worldAabb, gravity, doSleep);
-            
+
             // Define the ground body.
             BodyDef groundBodyDef = new BodyDef();
             groundBodyDef.Position.Set(0.0f, -10.0f);
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Sample
             // Call the body factory which  creates the ground box shape.
             // The body is also added to the world.
             Body groundBody = new Body(groundBodyDef, world);
-            
+
             // Define the ground box shape.
             PolygonDef groundShapeDef = new PolygonDef();
 
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Sample
 
             // Add the ground shape to the ground body.
             groundBody.CreateFixture(groundShapeDef);
-            
+
             world.AddBody(groundBody);
 
             // Define the dynamic body. We set its position and call the body factory.
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Sample
             // Now tell the dynamic body to compute it's mass properties base
             // on its shape.
             body.SetMassFromShapes();
-            
+
             world.AddBody(body);
 
             // Prepare for simulation. Typically we use a time step of 1/60 of a

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   BufferPool.cs
+//  File:BufferPool.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -45,11 +45,6 @@ namespace Alis.Core.Network
     /// </summary>
     public class BufferPool : IBufferPool
     {
-        /// <summary>
-        ///     The default buffer size
-        /// </summary>
-        private const int DEFAULT_BUFFER_SIZE = 16384;
-
         /// <summary>
         ///     The buffer pool stack
         /// </summary>
@@ -76,6 +71,11 @@ namespace Alis.Core.Network
             _bufferSize = bufferSize;
             _bufferPoolStack = new ConcurrentStack<byte[]>();
         }
+
+        /// <summary>
+        ///     The default buffer size
+        /// </summary>
+        private const int DEFAULT_BUFFER_SIZE = 16384;
 
         /// <summary>
         ///     Gets a MemoryStream built from a buffer plucked from a thread safe pool
@@ -206,9 +206,7 @@ namespace Alis.Core.Network
             /// <returns>The async result</returns>
             public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback callback,
                 object state)
-            {
-                return _ms.BeginRead(buffer, offset, count, callback, state);
-            }
+                => _ms.BeginRead(buffer, offset, count, callback, state);
 
             /// <summary>
             ///     Begins the write using the specified buffer
@@ -221,9 +219,7 @@ namespace Alis.Core.Network
             /// <returns>The async result</returns>
             public override IAsyncResult BeginWrite(byte[] buffer, int offset, int count, AsyncCallback callback,
                 object state)
-            {
-                return _ms.BeginWrite(buffer, offset, count, callback, state);
-            }
+                => _ms.BeginWrite(buffer, offset, count, callback, state);
 
             /// <summary>
             ///     Closes this instance
@@ -231,7 +227,7 @@ namespace Alis.Core.Network
             public override void Close()
             {
                 // clear the buffer - we only need to clear up to the number of bytes we have already written
-                Array.Clear(_buffer, 0, (int)_ms.Position);
+                Array.Clear(_buffer, 0, (int) _ms.Position);
 
                 _ms.Close();
 
@@ -245,20 +241,14 @@ namespace Alis.Core.Network
             /// <param name="destination">The destination</param>
             /// <param name="bufferSize">The buffer size</param>
             /// <param name="cancellationToken">The cancellation token</param>
-            public override Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
-            {
-                return _ms.CopyToAsync(destination, bufferSize, cancellationToken);
-            }
+            public override Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken) => _ms.CopyToAsync(destination, bufferSize, cancellationToken);
 
             /// <summary>
             ///     Ends the read using the specified async result
             /// </summary>
             /// <param name="asyncResult">The async result</param>
             /// <returns>The int</returns>
-            public override int EndRead(IAsyncResult asyncResult)
-            {
-                return _ms.EndRead(asyncResult);
-            }
+            public override int EndRead(IAsyncResult asyncResult) => _ms.EndRead(asyncResult);
 
             /// <summary>
             ///     Ends the write using the specified async result
@@ -281,19 +271,13 @@ namespace Alis.Core.Network
             ///     Flushes the cancellation token
             /// </summary>
             /// <param name="cancellationToken">The cancellation token</param>
-            public override Task FlushAsync(CancellationToken cancellationToken)
-            {
-                return _ms.FlushAsync(cancellationToken);
-            }
+            public override Task FlushAsync(CancellationToken cancellationToken) => _ms.FlushAsync(cancellationToken);
 
             /// <summary>
             ///     Gets the buffer
             /// </summary>
             /// <returns>The byte array</returns>
-            public override byte[] GetBuffer()
-            {
-                return _buffer;
-            }
+            public override byte[] GetBuffer() => _buffer;
 
             /// <summary>
             ///     Reads the buffer
@@ -302,10 +286,7 @@ namespace Alis.Core.Network
             /// <param name="offset">The offset</param>
             /// <param name="count">The count</param>
             /// <returns>The int</returns>
-            public override int Read(byte[] buffer, int offset, int count)
-            {
-                return _ms.Read(buffer, offset, count);
-            }
+            public override int Read(byte[] buffer, int offset, int count) => _ms.Read(buffer, offset, count);
 
             /// <summary>
             ///     Enlarges the buffer if required using the specified count
@@ -320,13 +301,13 @@ namespace Alis.Core.Network
                 // we cannot fit the data into the existing buffer, time for a new buffer
                 if (count > _buffer.Length - _ms.Position)
                 {
-                    int position = (int)_ms.Position;
+                    int position = (int) _ms.Position;
 
                     // double the buffer size
-                    long newSize = (long)_buffer.Length * 2;
+                    long newSize = (long) _buffer.Length * 2;
 
                     // make sure the new size is big enough
-                    long requiredSize = (long)count + _buffer.Length - position;
+                    long requiredSize = (long) count + _buffer.Length - position;
 
                     if (requiredSize > int.MaxValue)
                     {
@@ -337,7 +318,7 @@ namespace Alis.Core.Network
                     if (requiredSize > newSize)
                     {
                         // compute the power of two larger than requiredSize. so 40000 => 65536
-                        long candidateSize = (long)Math.Pow(2, Math.Ceiling(Math.Log(requiredSize) / Math.Log(2)));
+                        long candidateSize = (long) Math.Pow(2, Math.Ceiling(Math.Log(requiredSize) / Math.Log(2)));
                         if (candidateSize > int.MaxValue)
                         {
                             newSize = requiredSize;
@@ -398,10 +379,7 @@ namespace Alis.Core.Network
             ///     Initializes the lifetime service
             /// </summary>
             /// <returns>The object</returns>
-            public override object InitializeLifetimeService()
-            {
-                return _ms.InitializeLifetimeService();
-            }
+            public override object InitializeLifetimeService() => _ms.InitializeLifetimeService();
 
             /// <summary>
             ///     Reads the buffer
@@ -413,18 +391,13 @@ namespace Alis.Core.Network
             /// <returns>A task containing the int</returns>
             public override Task<int> ReadAsync(byte[] buffer, int offset, int count,
                 CancellationToken cancellationToken)
-            {
-                return _ms.ReadAsync(buffer, offset, count, cancellationToken);
-            }
+                => _ms.ReadAsync(buffer, offset, count, cancellationToken);
 
             /// <summary>
             ///     Reads the byte
             /// </summary>
             /// <returns>The int</returns>
-            public override int ReadByte()
-            {
-                return _ms.ReadByte();
-            }
+            public override int ReadByte() => _ms.ReadByte();
 
             /// <summary>
             ///     Seeks the offset
@@ -432,28 +405,23 @@ namespace Alis.Core.Network
             /// <param name="offset">The offset</param>
             /// <param name="loc">The loc</param>
             /// <returns>The long</returns>
-            public override long Seek(long offset, SeekOrigin loc)
-            {
-                return _ms.Seek(offset, loc);
-            }
+            public override long Seek(long offset, SeekOrigin loc) => _ms.Seek(offset, loc);
 
             /// <summary>
             ///     Note: This will not make the MemoryStream any smaller, only larger
             /// </summary>
             public override void SetLength(long value)
             {
-                EnlargeBufferIfRequired((int)value);
+                EnlargeBufferIfRequired((int) value);
             }
 
             /// <summary>
             ///     Returns the array
             /// </summary>
             /// <returns>The byte array</returns>
-            public override byte[] ToArray()
-            {
+            public override byte[] ToArray() =>
                 // you should never call this
-                return _ms.ToArray();
-            }
+                _ms.ToArray();
 
 #if !NET45
             /// <summary>
@@ -463,7 +431,7 @@ namespace Alis.Core.Network
             /// <returns>The bool</returns>
             public override bool TryGetBuffer(out ArraySegment<byte> buffer)
             {
-                buffer = new ArraySegment<byte>(_buffer, 0, (int)_ms.Position);
+                buffer = new ArraySegment<byte>(_buffer, 0, (int) _ms.Position);
                 return true;
             }
 #endif

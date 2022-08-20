@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Usage.cs
+//  File:Usage.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -72,7 +72,7 @@ namespace Alis.Core.Input
         ///     Gets the full identifier
         /// </summary>
         /// <value>The full identifier.</value>
-        public uint FullId => (uint)((Page.Id << 16) + Id);
+        public uint FullId => (uint) ((Page.Id << 16) + Id);
 
         /// <summary>
         ///     Gets the name.
@@ -98,11 +98,8 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        public bool Equals(Usage other)
-        {
-            return !(other is null) &&
-                   (ReferenceEquals(this, other) || (Page.Equals(other.Page) && Id == other.Id));
-        }
+        public bool Equals(Usage other) => !(other is null) &&
+                                           (ReferenceEquals(this, other) || (Page.Equals(other.Page) && (Id == other.Id)));
 
 
         /// <summary>
@@ -110,10 +107,7 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="usage">The usage</param>
         /// <returns>The usage</returns>
-        public static Usage Get(Enum usage)
-        {
-            return Get(Convert.ToUInt32(usage));
-        }
+        public static Usage Get(Enum usage) => Get(Convert.ToUInt32(usage));
 
 
         /// <summary>
@@ -121,10 +115,7 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="fullId">The full id</param>
         /// <returns>The usage</returns>
-        public static Usage Get(uint fullId)
-        {
-            return UsagePage.Get(fullId).GetUsage((ushort)(fullId & 0xFFFF));
-        }
+        public static Usage Get(uint fullId) => UsagePage.Get(fullId).GetUsage((ushort) (fullId & 0xFFFF));
 
         /// <summary>
         ///     Implements the == operator.
@@ -132,10 +123,7 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(Usage left, Usage right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(Usage left, Usage right) => Equals(left, right);
 
         /// <summary>
         ///     Implements the != operator.
@@ -143,57 +131,36 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(Usage left, Usage right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(Usage left, Usage right) => !Equals(left, right);
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="Usage" /> to <see cref="System.UInt32" />.
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator uint(Usage usage)
-        {
-            return usage.FullId;
-        }
+        public static implicit operator uint(Usage usage) => usage.FullId;
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="System.UInt32" /> to <see cref="Usage" />.
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Usage(uint usage)
-        {
-            return Get(usage);
-        }
+        public static implicit operator Usage(uint usage) => Get(usage);
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="Enum" /> to <see cref="Usage" />.
         /// </summary>
         /// <param name="usage">The usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator Usage(Enum usage)
-        {
-            return Get(usage);
-        }
+        public static implicit operator Usage(Enum usage) => Get(usage);
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
-        {
-            return ReferenceEquals(this, obj) || (obj is Usage other && Equals(other));
-        }
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || (obj is Usage other && Equals(other));
 
         /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Page, Id);
-        }
+        public override int GetHashCode() => HashCode.Combine(Page, Id);
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return $"{Page} - {Name}";
-        }
+        public override string ToString() => $"{Page} - {Name}";
     }
 }

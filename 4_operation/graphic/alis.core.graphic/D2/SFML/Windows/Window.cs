@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Window.cs
+//  File:Window.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
             {
                 fixed (byte* titlePtr = titleAsUtf32)
                 {
-                    CPointer = sfWindow_createUnicode(mode, (IntPtr)titlePtr, style, ref settings);
+                    CPointer = sfWindow_createUnicode(mode, (IntPtr) titlePtr, style, ref settings);
                 }
             }
         }
@@ -212,7 +212,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
             {
                 fixed (byte* titlePtr = titleAsUtf32)
                 {
-                    sfWindow_setUnicodeTitle(CPointer, (IntPtr)titlePtr);
+                    sfWindow_setUnicodeTitle(CPointer, (IntPtr) titlePtr);
                 }
             }
         }
@@ -317,10 +317,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <returns>True if operation was successful, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public virtual bool SetActive()
-        {
-            return SetActive(true);
-        }
+        public virtual bool SetActive() => SetActive(true);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -330,10 +327,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="active">True to activate, false to deactivate (true by default)</param>
         /// <returns>True if operation was successful, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public virtual bool SetActive(bool active)
-        {
-            return sfWindow_setActive(CPointer, active);
-        }
+        public virtual bool SetActive(bool active) => sfWindow_setActive(CPointer, active);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -404,10 +398,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <returns>True if the window has focus, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public virtual bool HasFocus()
-        {
-            return sfWindow_hasFocus(CPointer);
-        }
+        public virtual bool HasFocus() => sfWindow_hasFocus(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -415,13 +406,10 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return "[Window]" +
-                   " Size(" + Size + ")" +
-                   " Position(" + Position + ")" +
-                   " Settings(" + Settings + ")";
-        }
+        public override string ToString() => "[Window]" +
+                                             " Size(" + Size + ")" +
+                                             " Position(" + Position + ")" +
+                                             " Settings(" + Settings + ")";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -430,10 +418,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="eventToFill">Variable to fill with the raw pointer to the event structure</param>
         /// <returns>True if there was an event, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        protected virtual bool PollEvent(out Event eventToFill)
-        {
-            return sfWindow_pollEvent(CPointer, out eventToFill);
-        }
+        protected virtual bool PollEvent(out Event eventToFill) => sfWindow_pollEvent(CPointer, out eventToFill);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -442,10 +427,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="eventToFill">Variable to fill with the raw pointer to the event structure</param>
         /// <returns>False if any error occured</returns>
         ////////////////////////////////////////////////////////////
-        protected virtual bool WaitEvent(out Event eventToFill)
-        {
-            return sfWindow_waitEvent(CPointer, out eventToFill);
-        }
+        protected virtual bool WaitEvent(out Event eventToFill) => sfWindow_waitEvent(CPointer, out eventToFill);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -455,10 +437,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <returns>Relative mouse position</returns>
         ////////////////////////////////////////////////////////////
-        public virtual Vector2i InternalGetMousePosition()
-        {
-            return sfMouse_getPosition(CPointer);
-        }
+        public virtual Vector2i InternalGetMousePosition() => sfMouse_getPosition(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -482,10 +461,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Finger">Finger index</param>
         /// <returns>Relative touch position</returns>
         ////////////////////////////////////////////////////////////
-        protected internal virtual Vector2i InternalGetTouchPosition(uint Finger)
-        {
-            return sfTouch_getPosition(Finger, CPointer);
-        }
+        protected internal virtual Vector2i InternalGetTouchPosition(uint Finger) => sfTouch_getPosition(Finger, CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -772,8 +748,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Style">The style</param>
         /// <param name="Params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfWindow_create(VideoMode Mode, string Title, Styles Style,
             ref ContextSettings Params);
 
@@ -785,8 +760,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Style">The style</param>
         /// <param name="Params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfWindow_createUnicode(VideoMode Mode, IntPtr Title, Styles Style,
             ref ContextSettings Params);
 
@@ -796,16 +770,14 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Handle">The handle</param>
         /// <param name="Params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfWindow_createFromHandle(IntPtr Handle, ref ContextSettings Params);
 
         /// <summary>
         ///     Sfs the window destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -813,16 +785,14 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfWindow_isOpen(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the window close using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_close(IntPtr CPointer);
 
         /// <summary>
@@ -831,8 +801,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="CPointer">The pointer</param>
         /// <param name="Evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfWindow_pollEvent(IntPtr CPointer, out Event Evt);
 
         /// <summary>
@@ -841,16 +810,14 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="CPointer">The pointer</param>
         /// <param name="Evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfWindow_waitEvent(IntPtr CPointer, out Event Evt);
 
         /// <summary>
         ///     Sfs the window display using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_display(IntPtr CPointer);
 
         /// <summary>
@@ -858,8 +825,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The context settings</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern ContextSettings sfWindow_getSettings(IntPtr CPointer);
 
         /// <summary>
@@ -867,8 +833,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfWindow_getPosition(IntPtr CPointer);
 
         /// <summary>
@@ -876,8 +841,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="position">The position</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setPosition(IntPtr CPointer, Vector2i position);
 
         /// <summary>
@@ -885,8 +849,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2u sfWindow_getSize(IntPtr CPointer);
 
         /// <summary>
@@ -894,8 +857,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="size">The size</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setSize(IntPtr CPointer, Vector2u size);
 
         /// <summary>
@@ -903,8 +865,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setTitle(IntPtr CPointer, string title);
 
         /// <summary>
@@ -912,8 +873,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setUnicodeTitle(IntPtr CPointer, IntPtr title);
 
         /// <summary>
@@ -923,8 +883,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Width">The width</param>
         /// <param name="Height">The height</param>
         /// <param name="Pixels">The pixels</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe void sfWindow_setIcon(IntPtr CPointer, uint Width, uint Height, byte* Pixels);
 
         /// <summary>
@@ -932,8 +891,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setVisible(IntPtr CPointer, bool visible);
 
         /// <summary>
@@ -941,8 +899,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Show">The show</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setMouseCursorVisible(IntPtr CPointer, bool Show);
 
         /// <summary>
@@ -950,8 +907,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="grabbed">The grabbed</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setMouseCursorGrabbed(IntPtr CPointer, bool grabbed);
 
         /// <summary>
@@ -959,8 +915,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="cursor">The cursor</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setMouseCursor(IntPtr CPointer, IntPtr cursor);
 
         /// <summary>
@@ -968,8 +923,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setVerticalSyncEnabled(IntPtr CPointer, bool Enable);
 
         /// <summary>
@@ -977,8 +931,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setKeyRepeatEnabled(IntPtr CPointer, bool Enable);
 
         /// <summary>
@@ -987,8 +940,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="CPointer">The pointer</param>
         /// <param name="Active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfWindow_setActive(IntPtr CPointer, bool Active);
 
         /// <summary>
@@ -996,8 +948,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Limit">The limit</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setFramerateLimit(IntPtr CPointer, uint Limit);
 
         /// <summary>
@@ -1005,8 +956,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfWindow_getFrameTime(IntPtr CPointer);
 
         /// <summary>
@@ -1014,8 +964,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Threshold">The threshold</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_setJoystickThreshold(IntPtr CPointer, float Threshold);
 
         /// <summary>
@@ -1023,16 +972,14 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfWindow_getSystemHandle(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the window request focus using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfWindow_requestFocus(IntPtr CPointer);
 
         /// <summary>
@@ -1040,8 +987,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfWindow_hasFocus(IntPtr CPointer);
 
         /// <summary>
@@ -1049,8 +995,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfMouse_getPosition(IntPtr CPointer);
 
         /// <summary>
@@ -1058,8 +1003,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfMouse_setPosition(Vector2i position, IntPtr CPointer);
 
         /// <summary>
@@ -1068,8 +1012,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Finger">The finger</param>
         /// <param name="RelativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2i sfTouch_getPosition(uint Finger, IntPtr RelativeTo);
     }
 }

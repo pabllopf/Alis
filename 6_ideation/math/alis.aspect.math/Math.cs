@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Math.cs
+//  File:Math.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -61,10 +61,7 @@ namespace Alis.Aspect.Math
         ///     This function is used to ensure that a floating point number is
         ///     not a NaN or infinity.
         /// </summary>
-        public static bool IsValid(float x)
-        {
-            return !(float.IsNaN(x) || float.IsNegativeInfinity(x) || float.IsPositiveInfinity(x));
-        }
+        public static bool IsValid(float x) => !(float.IsNaN(x) || float.IsNegativeInfinity(x) || float.IsPositiveInfinity(x));
 
         /// <summary>
         ///     This is a approximate yet fast inverse square-root.
@@ -85,10 +82,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
-        public static float Sqrt(float x)
-        {
-            return (float)System.Math.Sqrt(x);
-        }
+        public static float Sqrt(float x) => (float) System.Math.Sqrt(x);
 
         /// <summary>
         ///     Random number in range [-1,1]
@@ -136,7 +130,7 @@ namespace Alis.Aspect.Math
         /// <returns>The result</returns>
         public static bool IsPowerOfTwo(uint x)
         {
-            bool result = x > 0 && (x & (x - 1)) == 0;
+            bool result = (x > 0) && ((x & (x - 1)) == 0);
             return result;
         }
 
@@ -145,10 +139,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         /// <param name="a">The </param>
         /// <returns>The float</returns>
-        public static float Abs(float a)
-        {
-            return a > 0.0f ? a : -a;
-        }
+        public static float Abs(float a) => a > 0.0f ? a : -a;
 
         /// <summary>
         ///     Abses the a
@@ -180,10 +171,7 @@ namespace Alis.Aspect.Math
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        public static float Min(float a, float b)
-        {
-            return a < b ? a : b;
-        }
+        public static float Min(float a, float b) => a < b ? a : b;
 
         /// <summary>
         ///     Mins the a
@@ -191,10 +179,7 @@ namespace Alis.Aspect.Math
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        public static int Min(int a, int b)
-        {
-            return a < b ? a : b;
-        }
+        public static int Min(int a, int b) => a < b ? a : b;
 
         /// <summary>
         ///     Mins the a
@@ -216,10 +201,7 @@ namespace Alis.Aspect.Math
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        public static float Max(float a, float b)
-        {
-            return a > b ? a : b;
-        }
+        public static float Max(float a, float b) => a > b ? a : b;
 
         /// <summary>
         ///     Maxes the a
@@ -227,10 +209,7 @@ namespace Alis.Aspect.Math
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The int</returns>
-        public static int Max(int a, int b)
-        {
-            return a > b ? a : b;
-        }
+        public static int Max(int a, int b) => a > b ? a : b;
 
         /// <summary>
         ///     Maxes the a
@@ -253,10 +232,7 @@ namespace Alis.Aspect.Math
         /// <param name="low">The low</param>
         /// <param name="high">The high</param>
         /// <returns>The float</returns>
-        public static float Clamp(float a, float low, float high)
-        {
-            return Max(low, Min(a, high));
-        }
+        public static float Clamp(float a, float low, float high) => Max(low, Min(a, high));
 
         /// <summary>
         ///     Clamps the a
@@ -265,10 +241,7 @@ namespace Alis.Aspect.Math
         /// <param name="low">The low</param>
         /// <param name="high">The high</param>
         /// <returns>The int</returns>
-        public static int Clamp(int a, int low, int high)
-        {
-            return Max(low, Min(a, high));
-        }
+        public static int Clamp(int a, int low, int high) => Max(low, Min(a, high));
 
         /// <summary>
         ///     Clamps the a
@@ -277,10 +250,7 @@ namespace Alis.Aspect.Math
         /// <param name="low">The low</param>
         /// <param name="high">The high</param>
         /// <returns>The vec</returns>
-        public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high)
-        {
-            return Max(low, Min(a, high));
-        }
+        public static Vector2 Clamp(Vector2 a, Vector2 low, Vector2 high) => Max(low, Min(a, high));
 
         /// <summary>
         ///     Swaps the a
@@ -347,10 +317,7 @@ namespace Alis.Aspect.Math
         /// <param name="T">The </param>
         /// <param name="v">The </param>
         /// <returns>The vec</returns>
-        public static Vector2 Mul(XForm T, Vector2 v)
-        {
-            return T.Position + Mul(T.R, v);
-        }
+        public static Vector2 Mul(XForm T, Vector2 v) => T.Position + Mul(T.R, v);
 
         /// <summary>
         ///     Muls the t using the specified t
@@ -358,10 +325,7 @@ namespace Alis.Aspect.Math
         /// <param name="T">The </param>
         /// <param name="v">The </param>
         /// <returns>The vec</returns>
-        public static Vector2 MulT(XForm T, Vector2 v)
-        {
-            return MulT(T.R, v - T.Position);
-        }
+        public static Vector2 MulT(XForm T, Vector2 v) => MulT(T.R, v - T.Position);
 
         /// <summary>
         ///     Multiply a matrix times a vector.
@@ -378,10 +342,7 @@ namespace Alis.Aspect.Math
         /// <param name="y">The </param>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
-        public static float Atan2(float y, float x)
-        {
-            return (float)System.Math.Atan2(y, x);
-        }
+        public static float Atan2(float y, float x) => (float) System.Math.Atan2(y, x);
 
         /// <summary>
         ///     The convert

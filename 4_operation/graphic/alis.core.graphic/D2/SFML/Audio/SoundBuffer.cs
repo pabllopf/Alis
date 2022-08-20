@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   SoundBuffer.cs
+//  File:SoundBuffer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -129,7 +129,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
             {
                 fixed (short* SamplesPtr = samples)
                 {
-                    CPointer = sfSoundBuffer_createFromSamples(SamplesPtr, (uint)samples.Length, channelCount,
+                    CPointer = sfSoundBuffer_createFromSamples(SamplesPtr, (uint) samples.Length, channelCount,
                         sampleRate);
                 }
             }
@@ -201,10 +201,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="filename">Path of the sound file to write</param>
         /// <returns>True if saving has been successful</returns>
         ////////////////////////////////////////////////////////////
-        public bool SaveToFile(string filename)
-        {
-            return sfSoundBuffer_saveToFile(CPointer, filename);
-        }
+        public bool SaveToFile(string filename) => sfSoundBuffer_saveToFile(CPointer, filename);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -212,13 +209,10 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return "[SoundBuffer]" +
-                   " SampleRate(" + SampleRate + ")" +
-                   " ChannelCount(" + ChannelCount + ")" +
-                   " Duration(" + Duration + ")";
-        }
+        public override string ToString() => "[SoundBuffer]" +
+                                             " SampleRate(" + SampleRate + ")" +
+                                             " ChannelCount(" + ChannelCount + ")" +
+                                             " Duration(" + Duration + ")";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -236,8 +230,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Filename">The filename</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromFile(string Filename);
 
         /// <summary>
@@ -245,8 +238,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -255,8 +247,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="data">The data</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
@@ -267,8 +258,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="ChannelsCount">The channels count</param>
         /// <param name="SampleRate">The sample rate</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe IntPtr sfSoundBuffer_createFromSamples(short* Samples, uint SampleCount,
             uint ChannelsCount, uint SampleRate);
 
@@ -277,16 +267,14 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_copy(IntPtr SoundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer destroy using the specified sound buffer
         /// </summary>
         /// <param name="SoundBuffer">The sound buffer</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundBuffer_destroy(IntPtr SoundBuffer);
 
         /// <summary>
@@ -295,8 +283,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundBuffer">The sound buffer</param>
         /// <param name="Filename">The filename</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundBuffer_saveToFile(IntPtr SoundBuffer, string Filename);
 
         /// <summary>
@@ -304,8 +291,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_getSamples(IntPtr SoundBuffer);
 
         /// <summary>
@@ -313,8 +299,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getSampleCount(IntPtr SoundBuffer);
 
         /// <summary>
@@ -322,8 +307,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getSampleRate(IntPtr SoundBuffer);
 
         /// <summary>
@@ -331,8 +315,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getChannelCount(IntPtr SoundBuffer);
 
         /// <summary>
@@ -340,8 +323,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundBuffer">The sound buffer</param>
         /// <returns>The systems time</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfSoundBuffer_getDuration(IntPtr SoundBuffer);
     }
 }

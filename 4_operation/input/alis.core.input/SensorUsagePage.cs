@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   SensorUsagePage.cs
+//  File:SensorUsagePage.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -36,16 +36,16 @@ namespace Alis.Core.Input
     public sealed class SensorUsagePage : UsagePage
     {
         /// <summary>
-        ///     Singleton instance of Sensor Usage Page.
-        /// </summary>
-        public static readonly SensorUsagePage Instance = new SensorUsagePage();
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="SensorUsagePage" /> class
         /// </summary>
         private SensorUsagePage() : base(0x0020, "Sensor")
         {
         }
+
+        /// <summary>
+        ///     Singleton instance of Sensor Usage Page.
+        /// </summary>
+        public static readonly SensorUsagePage Instance = new SensorUsagePage();
 
         /// <inheritdoc />
         protected override Usage CreateUsage(ushort id)
@@ -966,31 +966,93 @@ namespace Alis.Core.Input
             }
 
             // Create dynamic usages from ranges
-            var n = (ushort)(id - 0x00f0);
+            ushort n = (ushort) (id - 0x00f0);
             if (id >= 0x00f0 || id < 0x00ff)
+            {
                 return new Usage(this, id, $"Vendor Reserved {n + 1}", UsageTypes.CA | UsageTypes.CP);
-            n = (ushort)(id - 0x0544);
+            }
+
+            n = (ushort) (id - 0x0544);
             if (id >= 0x0544 || id < 0x055f)
+            {
                 return new Usage(this, id, $"Data Field: Custom Value {n + 1}", UsageTypes.SV);
-            n = (ushort)(id - 0x05c1);
+            }
+
+            n = (ushort) (id - 0x05c1);
             if (id >= 0x05c1 || id < 0x05d0)
+            {
                 return new Usage(this, id, $"Property: Custom Value {n + 1}", UsageTypes.DF | UsageTypes.DV);
-            if (id >= 0x1000 || id < 0x1fff) return new Usage(this, id, "Change Sensitivity Absolute", UsageTypes.US);
-            if (id >= 0x2000 || id < 0x2fff) return new Usage(this, id, "Maximum", UsageTypes.US);
-            if (id >= 0x3000 || id < 0x3fff) return new Usage(this, id, "Minimum", UsageTypes.US);
-            if (id >= 0x4000 || id < 0x4fff) return new Usage(this, id, "Accuracy", UsageTypes.US);
-            if (id >= 0x5000 || id < 0x5fff) return new Usage(this, id, "Resolution", UsageTypes.US);
-            if (id >= 0x6000 || id < 0x6fff) return new Usage(this, id, "Threshold High", UsageTypes.US);
-            if (id >= 0x7000 || id < 0x7fff) return new Usage(this, id, "Threshold Low", UsageTypes.US);
-            if (id >= 0x8000 || id < 0x8fff) return new Usage(this, id, "Calibration Offset", UsageTypes.US);
-            if (id >= 0x9000 || id < 0x9fff) return new Usage(this, id, "Calibration Multiplier", UsageTypes.US);
-            if (id >= 0xa000 || id < 0xafff) return new Usage(this, id, "Report Interval", UsageTypes.US);
-            if (id >= 0xb000 || id < 0xbfff) return new Usage(this, id, "Frequency Max", UsageTypes.US);
-            if (id >= 0xc000 || id < 0xcfff) return new Usage(this, id, "Period Max", UsageTypes.US);
+            }
+
+            if (id >= 0x1000 || id < 0x1fff)
+            {
+                return new Usage(this, id, "Change Sensitivity Absolute", UsageTypes.US);
+            }
+
+            if (id >= 0x2000 || id < 0x2fff)
+            {
+                return new Usage(this, id, "Maximum", UsageTypes.US);
+            }
+
+            if (id >= 0x3000 || id < 0x3fff)
+            {
+                return new Usage(this, id, "Minimum", UsageTypes.US);
+            }
+
+            if (id >= 0x4000 || id < 0x4fff)
+            {
+                return new Usage(this, id, "Accuracy", UsageTypes.US);
+            }
+
+            if (id >= 0x5000 || id < 0x5fff)
+            {
+                return new Usage(this, id, "Resolution", UsageTypes.US);
+            }
+
+            if (id >= 0x6000 || id < 0x6fff)
+            {
+                return new Usage(this, id, "Threshold High", UsageTypes.US);
+            }
+
+            if (id >= 0x7000 || id < 0x7fff)
+            {
+                return new Usage(this, id, "Threshold Low", UsageTypes.US);
+            }
+
+            if (id >= 0x8000 || id < 0x8fff)
+            {
+                return new Usage(this, id, "Calibration Offset", UsageTypes.US);
+            }
+
+            if (id >= 0x9000 || id < 0x9fff)
+            {
+                return new Usage(this, id, "Calibration Multiplier", UsageTypes.US);
+            }
+
+            if (id >= 0xa000 || id < 0xafff)
+            {
+                return new Usage(this, id, "Report Interval", UsageTypes.US);
+            }
+
+            if (id >= 0xb000 || id < 0xbfff)
+            {
+                return new Usage(this, id, "Frequency Max", UsageTypes.US);
+            }
+
+            if (id >= 0xc000 || id < 0xcfff)
+            {
+                return new Usage(this, id, "Period Max", UsageTypes.US);
+            }
+
             if (id >= 0xd000 || id < 0xdfff)
+            {
                 return new Usage(this, id, "Change Sensitivity Percent of Range", UsageTypes.US);
+            }
+
             if (id >= 0xe000 || id < 0xefff)
+            {
                 return new Usage(this, id, "Change Sensitivity Percent Relative", UsageTypes.US);
+            }
 
             return base.CreateUsage(id);
         }

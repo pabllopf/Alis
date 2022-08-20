@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Text.cs
+//  File:Text.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -43,30 +43,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     ////////////////////////////////////////////////////////////
     public class Text : Transformable, Drawable
     {
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Enumerate the string drawing styles
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        [Flags]
-        public enum Styles
-        {
-            /// <summary>Regular characters, no style</summary>
-            Regular = 0,
-
-            /// <summary>Bold characters</summary>
-            Bold = 1 << 0,
-
-            /// <summary>Italic characters</summary>
-            Italic = 1 << 1,
-
-            /// <summary>Underlined characters</summary>
-            Underlined = 1 << 2,
-
-            /// <summary>Strike through characters</summary>
-            StrikeThrough = 1 << 3
-        }
-
         /// <summary>
         ///     The my font
         /// </summary>
@@ -209,7 +185,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
                 uint length = 0;
                 unsafe
                 {
-                    for (uint* ptr = (uint*)source.ToPointer(); *ptr != 0; ++ptr)
+                    for (uint* ptr = (uint*) source.ToPointer(); *ptr != 0; ++ptr)
                     {
                         length++;
                     }
@@ -233,7 +209,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
                 {
                     fixed (byte* ptr = utf32)
                     {
-                        sfText_setUnicodeString(CPointer, (IntPtr)ptr);
+                        sfText_setUnicodeString(CPointer, (IntPtr) ptr);
                     }
                 }
             }
@@ -300,6 +276,30 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
 
         ////////////////////////////////////////////////////////////
         /// <summary>
+        ///     Enumerate the string drawing styles
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        [Flags]
+        public enum Styles
+        {
+            /// <summary>Regular characters, no style</summary>
+            Regular = 0,
+
+            /// <summary>Bold characters</summary>
+            Bold = 1 << 0,
+
+            /// <summary>Italic characters</summary>
+            Italic = 1 << 1,
+
+            /// <summary>Underlined characters</summary>
+            Underlined = 1 << 2,
+
+            /// <summary>Strike through characters</summary>
+            StrikeThrough = 1 << 3
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
         ///     Draw the text to a render target
         /// </summary>
         /// <param name="target">Render target to draw to</param>
@@ -312,11 +312,11 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
 
             if (target is RenderWindow)
             {
-                sfRenderWindow_drawText(((RenderWindow)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderWindow_drawText(((RenderWindow) target).CPointer, CPointer, ref marshaledStates);
             }
             else if (target is RenderTexture)
             {
-                sfRenderTexture_drawText(((RenderTexture)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderTexture_drawText(((RenderTexture) target).CPointer, CPointer, ref marshaledStates);
             }
         }
 
@@ -329,10 +329,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="index">Index of the character</param>
         /// <returns>Position of the Index-th character (end of text if Index is out of range)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f FindCharacterPos(uint index)
-        {
-            return sfText_findCharacterPos(CPointer, index);
-        }
+        public Vector2f FindCharacterPos(uint index) => sfText_findCharacterPos(CPointer, index);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -345,10 +342,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Local bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetLocalBounds()
-        {
-            return sfText_getLocalBounds(CPointer);
-        }
+        public FloatRect GetLocalBounds() => sfText_getLocalBounds(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -361,12 +355,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Global bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetGlobalBounds()
-        {
+        public FloatRect GetGlobalBounds() =>
             // because we override the object's transform
             // we don't use the native getGlobalBounds function,
-            return Transform.TransformRect(GetLocalBounds());
-        }
+            Transform.TransformRect(GetLocalBounds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -374,17 +366,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return "[Text]" +
-                   " FillColor(" + FillColor + ")" +
-                   " OutlineColor(" + OutlineColor + ")" +
-                   " String(" + DisplayedString + ")" +
-                   " Font(" + Font + ")" +
-                   " CharacterSize(" + CharacterSize + ")" +
-                   " OutlineThickness(" + OutlineThickness + ")" +
-                   " Style(" + Style + ")";
-        }
+        public override string ToString() => "[Text]" +
+                                             " FillColor(" + FillColor + ")" +
+                                             " OutlineColor(" + OutlineColor + ")" +
+                                             " String(" + DisplayedString + ")" +
+                                             " Font(" + Font + ")" +
+                                             " CharacterSize(" + CharacterSize + ")" +
+                                             " OutlineThickness(" + OutlineThickness + ")" +
+                                             " Style(" + Style + ")";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -401,8 +390,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Sfs the text create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfText_create();
 
         /// <summary>
@@ -410,16 +398,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="Text">The text</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfText_copy(IntPtr Text);
 
         /// <summary>
         ///     Sfs the text destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -427,9 +413,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
-        [Obsolete]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
         private static extern void sfText_setColor(IntPtr CPointer, Color Color);
 
         /// <summary>
@@ -437,8 +421,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setFillColor(IntPtr CPointer, Color Color);
 
         /// <summary>
@@ -446,8 +429,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setOutlineColor(IntPtr CPointer, Color Color);
 
         /// <summary>
@@ -455,8 +437,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="thickness">The thickness</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setOutlineThickness(IntPtr CPointer, float thickness);
 
         /// <summary>
@@ -464,9 +445,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
-        [Obsolete]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity, Obsolete]
         private static extern Color sfText_getColor(IntPtr CPointer);
 
         /// <summary>
@@ -474,8 +453,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Color sfText_getFillColor(IntPtr CPointer);
 
         /// <summary>
@@ -483,8 +461,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Color sfText_getOutlineColor(IntPtr CPointer);
 
         /// <summary>
@@ -492,8 +469,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfText_getOutlineThickness(IntPtr CPointer);
 
         /// <summary>
@@ -502,8 +478,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Text">The text</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_drawText(IntPtr CPointer, IntPtr Text,
             ref RenderStates.MarshalData states);
 
@@ -513,8 +488,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Text">The text</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawText(IntPtr CPointer, IntPtr Text,
             ref RenderStates.MarshalData states);
 
@@ -523,8 +497,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Text">The text</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setUnicodeString(IntPtr CPointer, IntPtr Text);
 
         /// <summary>
@@ -532,8 +505,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Font">The font</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setFont(IntPtr CPointer, IntPtr Font);
 
         /// <summary>
@@ -541,8 +513,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Size">The size</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setCharacterSize(IntPtr CPointer, uint Size);
 
         /// <summary>
@@ -550,8 +521,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="spacingFactor">The spacing factor</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setLineSpacing(IntPtr CPointer, float spacingFactor);
 
         /// <summary>
@@ -559,8 +529,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="spacingFactor">The spacing factor</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setLetterSpacing(IntPtr CPointer, float spacingFactor);
 
         /// <summary>
@@ -568,8 +537,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Style">The style</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfText_setStyle(IntPtr CPointer, Styles Style);
 
         /// <summary>
@@ -577,8 +545,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfText_getString(IntPtr CPointer);
 
         /// <summary>
@@ -586,8 +553,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfText_getUnicodeString(IntPtr CPointer);
 
         /// <summary>
@@ -595,8 +561,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfText_getCharacterSize(IntPtr CPointer);
 
         /// <summary>
@@ -604,8 +569,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfText_getLetterSpacing(IntPtr CPointer);
 
         /// <summary>
@@ -613,8 +577,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfText_getLineSpacing(IntPtr CPointer);
 
         /// <summary>
@@ -622,8 +585,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The styles</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Styles sfText_getStyle(IntPtr CPointer);
 
         /// <summary>
@@ -631,8 +593,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfText_getRect(IntPtr CPointer);
 
         /// <summary>
@@ -641,8 +602,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Index">The index</param>
         /// <returns>The vector 2f</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2f sfText_findCharacterPos(IntPtr CPointer, uint Index);
 
         /// <summary>
@@ -650,8 +610,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfText_getLocalBounds(IntPtr CPointer);
     }
 }

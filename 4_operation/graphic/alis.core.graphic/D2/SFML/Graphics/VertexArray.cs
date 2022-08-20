@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   VertexArray.cs
+//  File:VertexArray.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -57,9 +57,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public VertexArray(PrimitiveType type) :
             base(sfVertexArray_create())
-        {
-            PrimitiveType = type;
-        }
+            => PrimitiveType = type;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -154,11 +152,11 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
 
             if (target is RenderWindow)
             {
-                sfRenderWindow_drawVertexArray(((RenderWindow)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderWindow_drawVertexArray(((RenderWindow) target).CPointer, CPointer, ref marshaledStates);
             }
             else if (target is RenderTexture)
             {
-                sfRenderTexture_drawVertexArray(((RenderTexture)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderTexture_drawVertexArray(((RenderTexture) target).CPointer, CPointer, ref marshaledStates);
             }
         }
 
@@ -214,8 +212,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Sfs the vertex array create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfVertexArray_create();
 
         /// <summary>
@@ -223,16 +220,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfVertexArray_copy(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the vertex array destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexArray_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -240,8 +235,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfVertexArray_getVertexCount(IntPtr CPointer);
 
         /// <summary>
@@ -250,16 +244,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="index">The index</param>
         /// <returns>The vertex</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe Vertex* sfVertexArray_getVertex(IntPtr CPointer, uint index);
 
         /// <summary>
         ///     Sfs the vertex array clear using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexArray_clear(IntPtr CPointer);
 
         /// <summary>
@@ -267,8 +259,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="vertexCount">The vertex count</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexArray_resize(IntPtr CPointer, uint vertexCount);
 
         /// <summary>
@@ -276,8 +267,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="vertex">The vertex</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexArray_append(IntPtr CPointer, Vertex vertex);
 
         /// <summary>
@@ -285,8 +275,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="type">The type</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexArray_setPrimitiveType(IntPtr CPointer, PrimitiveType type);
 
         /// <summary>
@@ -294,8 +283,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The primitive type</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern PrimitiveType sfVertexArray_getPrimitiveType(IntPtr CPointer);
 
         /// <summary>
@@ -303,8 +291,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfVertexArray_getBounds(IntPtr CPointer);
 
         /// <summary>
@@ -313,8 +300,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="VertexArray">The vertex array</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_drawVertexArray(IntPtr CPointer, IntPtr VertexArray,
             ref RenderStates.MarshalData states);
 
@@ -324,8 +310,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="VertexArray">The vertex array</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawVertexArray(IntPtr CPointer, IntPtr VertexArray,
             ref RenderStates.MarshalData states);
     }

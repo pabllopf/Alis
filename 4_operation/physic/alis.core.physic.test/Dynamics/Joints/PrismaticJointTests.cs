@@ -5,28 +5,29 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PrismaticJointTests.cs
+//  File:PrismaticJointTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
 using Alis.Core.Physic.Dynamics.Joints;
 using Moq;
 using Xunit;
@@ -62,11 +63,8 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         ///     Creates the prismatic joint
         /// </summary>
         /// <returns>The prismatic joint</returns>
-        private PrismaticJoint CreatePrismaticJoint()
-        {
-            return new PrismaticJoint(
-                mockPrismaticJointDef.Object);
-        }
+        private PrismaticJoint CreatePrismaticJoint() => new PrismaticJoint(
+            mockPrismaticJointDef.Object);
 
         /// <summary>
         ///     Tests that get reaction force state under test expected behavior
@@ -75,11 +73,11 @@ namespace Alis.Core.Physic.Test.Dynamics.Joints
         public void GetReactionForce_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var prismaticJoint = CreatePrismaticJoint();
+            PrismaticJoint prismaticJoint = CreatePrismaticJoint();
             float invDt = 0;
 
             // Act
-            var result = prismaticJoint.GetReactionForce(
+            Vector2 result = prismaticJoint.GetReactionForce(
                 invDt);
 
             // Assert

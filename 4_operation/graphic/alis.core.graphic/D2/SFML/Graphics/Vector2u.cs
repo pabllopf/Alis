@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Vector2u.cs
+//  File:Vector2u.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -61,10 +61,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 - v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2u operator -(Vector2u v1, Vector2u v2)
-        {
-            return new Vector2u(v1.X - v2.X, v1.Y - v2.Y);
-        }
+        public static Vector2u operator -(Vector2u v1, Vector2u v2) => new Vector2u(v1.X - v2.X, v1.Y - v2.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -74,10 +71,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 + v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2u operator +(Vector2u v1, Vector2u v2)
-        {
-            return new Vector2u(v1.X + v2.X, v1.Y + v2.Y);
-        }
+        public static Vector2u operator +(Vector2u v1, Vector2u v2) => new Vector2u(v1.X + v2.X, v1.Y + v2.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -87,10 +81,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="x">Scalar value</param>
         /// <returns>v * x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2u operator *(Vector2u v, uint x)
-        {
-            return new Vector2u(v.X * x, v.Y * x);
-        }
+        public static Vector2u operator *(Vector2u v, uint x) => new Vector2u(v.X * x, v.Y * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -100,10 +91,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v">Vector</param>
         /// <returns>x * v</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2u operator *(uint x, Vector2u v)
-        {
-            return new Vector2u(v.X * x, v.Y * x);
-        }
+        public static Vector2u operator *(uint x, Vector2u v) => new Vector2u(v.X * x, v.Y * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -113,10 +101,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="x">Scalar value</param>
         /// <returns>v / x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2u operator /(Vector2u v, uint x)
-        {
-            return new Vector2u(v.X / x, v.Y / x);
-        }
+        public static Vector2u operator /(Vector2u v, uint x) => new Vector2u(v.X / x, v.Y / x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -126,10 +111,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 == v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(Vector2u v1, Vector2u v2)
-        {
-            return v1.Equals(v2);
-        }
+        public static bool operator ==(Vector2u v1, Vector2u v2) => v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -139,10 +121,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 != v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(Vector2u v1, Vector2u v2)
-        {
-            return !v1.Equals(v2);
-        }
+        public static bool operator !=(Vector2u v1, Vector2u v2) => !v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -150,10 +129,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return $"[Vector2u] X({X}) Y({Y})";
-        }
+        public override string ToString() => $"[Vector2u] X({X}) Y({Y})";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -162,10 +138,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and vector are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj)
-        {
-            return obj is Vector2u && Equals((Vector2u)obj);
-        }
+        public override bool Equals(object obj) => obj is Vector2u && Equals((Vector2u) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -174,10 +147,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="other">Vector to check</param>
         /// <returns>Vectors are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Vector2u other)
-        {
-            return X == other.X && Y == other.Y;
-        }
+        public bool Equals(Vector2u other) => (X == other.X) && (Y == other.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -185,10 +155,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode()
-        {
-            return X.GetHashCode() ^ Y.GetHashCode();
-        }
+        public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -197,10 +164,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v">Vector being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator Vector2i(Vector2u v)
-        {
-            return new Vector2i((int)v.X, (int)v.Y);
-        }
+        public static explicit operator Vector2i(Vector2u v) => new Vector2i((int) v.X, (int) v.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -209,10 +173,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v">Vector being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator Vector2f(Vector2u v)
-        {
-            return new Vector2f(v.X, v.Y);
-        }
+        public static explicit operator Vector2f(Vector2u v) => new Vector2f(v.X, v.Y);
 
         /// <summary>X (horizontal) component of the vector</summary>
         public uint X;

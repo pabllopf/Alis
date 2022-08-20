@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Gamepad.cs
+//  File:Gamepad.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -52,9 +52,7 @@ namespace Alis.Core.Input.Controllers
         /// </summary>
         /// <value>The x.</value>
         /// <remarks>Note: By convention, -1 indicates left, and 1 indicates right.</remarks>
-        [Control(GenericDesktopPage.X)]
-        [Required]
-        [TypeConverter(typeof(SignedConverter))]
+        [Control(GenericDesktopPage.X), Required, TypeConverter(typeof(SignedConverter))]
         public double X => GetValue<double>();
 
         /// <summary>
@@ -62,9 +60,7 @@ namespace Alis.Core.Input.Controllers
         /// </summary>
         /// <value>The y.</value>
         /// <remarks>Note: By convention, -1 indicates up, and 1 indicates down.</remarks>
-        [Control(GenericDesktopPage.Y)]
-        [Required]
-        [TypeConverter(typeof(SignedConverter))]
+        [Control(GenericDesktopPage.Y), Required, TypeConverter(typeof(SignedConverter))]
         public double Y => GetValue<double>();
 
         /// <summary>
@@ -72,8 +68,7 @@ namespace Alis.Core.Input.Controllers
         /// </summary>
         /// <value>The rx.</value>
         /// <remarks>Note: By convention, -1 indicates left, and 1 indicates right.</remarks>
-        [Control(GenericDesktopPage.Rx)]
-        [TypeConverter(typeof(SignedConverter))]
+        [Control(GenericDesktopPage.Rx), TypeConverter(typeof(SignedConverter))]
         public double Rx => GetValue<double>();
 
         /// <summary>
@@ -81,24 +76,21 @@ namespace Alis.Core.Input.Controllers
         /// </summary>
         /// <value>The ry.</value>
         /// <remarks>Note: By convention, -1 indicates up, and 1 indicates down.</remarks>
-        [Control(GenericDesktopPage.Ry)]
-        [TypeConverter(typeof(SignedConverter))]
+        [Control(GenericDesktopPage.Ry), TypeConverter(typeof(SignedConverter))]
         public double Ry => GetValue<double>();
 
         /// <summary>
         ///     Gets a value indicating whether this <see cref="Gamepad">gamepad's</see> start button is pressed.
         /// </summary>
         /// <value><see langword="true" /> if start is pressed; otherwise, <see langword="false" />.</value>
-        [Control(GenericDesktopPage.Start, Weight = 2)]
-        [Control(ButtonPage.Button7)]
+        [Control(GenericDesktopPage.Start, Weight = 2), Control(ButtonPage.Button7)]
         public bool Start => GetValue<bool>();
 
         /// <summary>
         ///     Gets a value indicating whether this <see cref="Gamepad">gamepad's</see> select button is pressed.
         /// </summary>
         /// <value><see langword="true" /> if select is pressed; otherwise, <see langword="false" />.</value>
-        [Control(GenericDesktopPage.Select, Weight = 2)]
-        [Control(ButtonPage.Button6)]
+        [Control(GenericDesktopPage.Select, Weight = 2), Control(ButtonPage.Button6)]
         public bool Select => GetValue<bool>();
 
         /// <summary>
@@ -106,8 +98,7 @@ namespace Alis.Core.Input.Controllers
         /// </summary>
         /// <value>The left trigger.</value>
         /// <remarks>Note: 0 indicates not pressed, and 1 indicates fully depressed.</remarks>
-        [Control(GenericDesktopPage.Z)]
-        [TypeConverter(typeof(LeftTriggerConverter))]
+        [Control(GenericDesktopPage.Z), TypeConverter(typeof(LeftTriggerConverter))]
         public double LeftTrigger => GetValue<double>();
 
         /// <summary>
@@ -115,16 +106,14 @@ namespace Alis.Core.Input.Controllers
         /// </summary>
         /// <value>The right trigger.</value>
         /// <remarks>Note: 0 indicates not pressed, and 1 indicates fully depressed.</remarks>
-        [Control(GenericDesktopPage.Z)]
-        [TypeConverter(typeof(RightTriggerConverter))]
+        [Control(GenericDesktopPage.Z), TypeConverter(typeof(RightTriggerConverter))]
         public double RightTrigger => GetValue<double>();
 
         /// <summary>
         ///     Gets a value indicating whether the A Button is pressed.
         /// </summary>
         /// <value><see langword="true" /> if A Button is pressed; otherwise, <see langword="false" />.</value>
-        [Control(ButtonPage.Button0)]
-        [Required]
+        [Control(ButtonPage.Button0), Required]
         public bool AButton => GetValue<bool>();
 
         /// <summary>
@@ -180,8 +169,7 @@ namespace Alis.Core.Input.Controllers
         ///     Gets the hat direction.
         /// </summary>
         /// <value>The hat direction.</value>
-        [Control(GenericDesktopPage.HatSwitch)]
-        [TypeConverter(typeof(DirectionConverter))]
+        [Control(GenericDesktopPage.HatSwitch), TypeConverter(typeof(DirectionConverter))]
         public Direction Hat => GetValue<Direction>();
     }
 }

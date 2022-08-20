@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   WebSocketClientFactory.cs
+//  File:WebSocketClientFactory.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -76,10 +76,7 @@ namespace Alis.Core.Network
         ///     Used to get a memory stream. Feel free to implement your own buffer pool. MemoryStreams
         ///     will be disposed when no longer needed and can be returned to the pool.
         /// </param>
-        public WebSocketClientFactory(Func<MemoryStream> bufferFactory)
-        {
-            _bufferFactory = bufferFactory;
-        }
+        public WebSocketClientFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
 
         /// <summary>
         ///     Connect with default options
@@ -87,10 +84,7 @@ namespace Alis.Core.Network
         /// <param name="uri">The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)</param>
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
-        public async Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default)
-        {
-            return await ConnectAsync(uri, new WebSocketClientOptions(), token);
-        }
+        public async Task<WebSocket> ConnectAsync(Uri uri, CancellationToken token = default(CancellationToken)) => await ConnectAsync(uri, new WebSocketClientOptions(), token);
 
         /// <summary>
         ///     Connect with options specified
@@ -100,7 +94,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket instance</returns>
         public async Task<WebSocket> ConnectAsync(Uri uri, WebSocketClientOptions options,
-            CancellationToken token = default)
+            CancellationToken token = default(CancellationToken))
         {
             Guid guid = Guid.NewGuid();
             string host = uri.Host;
@@ -125,7 +119,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns></returns>
         public async Task<WebSocket> ConnectAsync(Stream responseStream, string secWebSocketKey,
-            WebSocketClientOptions options, CancellationToken token = default)
+            WebSocketClientOptions options, CancellationToken token = default(CancellationToken))
         {
             Guid guid = Guid.NewGuid();
             return await ConnectAsync(guid, responseStream, secWebSocketKey, options.KeepAliveInterval,
@@ -231,7 +225,7 @@ namespace Alis.Core.Network
 
             if (!responseCode.StartsWith("101 ", StringComparison.InvariantCultureIgnoreCase))
             {
-                string[] lines = responseHeader.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                string[] lines = responseHeader.Split(new[] {"\r\n"}, StringSplitOptions.None);
 
                 for (int i = 0; i < lines.Length; i++)
                 {

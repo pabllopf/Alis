@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Joystick.cs
+//  File:Joystick.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -88,10 +88,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="joystick">Index of the joystick to check</param>
         /// <returns>True if the joystick is connected, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsConnected(uint joystick)
-        {
-            return sfJoystick_isConnected(joystick);
-        }
+        public static bool IsConnected(uint joystick) => sfJoystick_isConnected(joystick);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -101,10 +98,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="joystick">Index of the joystick</param>
         /// <returns>Number of buttons supported by the joystick</returns>
         ////////////////////////////////////////////////////////////
-        public static uint GetButtonCount(uint joystick)
-        {
-            return sfJoystick_getButtonCount(joystick);
-        }
+        public static uint GetButtonCount(uint joystick) => sfJoystick_getButtonCount(joystick);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -115,10 +109,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="axis">Axis to check</param>
         /// <returns>True if the joystick supports the axis, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool HasAxis(uint joystick, Axis axis)
-        {
-            return sfJoystick_hasAxis(joystick, axis);
-        }
+        public static bool HasAxis(uint joystick, Axis axis) => sfJoystick_hasAxis(joystick, axis);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -129,10 +120,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="button">Button to check</param>
         /// <returns>True if the button is pressed, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsButtonPressed(uint joystick, uint button)
-        {
-            return sfJoystick_isButtonPressed(joystick, button);
-        }
+        public static bool IsButtonPressed(uint joystick, uint button) => sfJoystick_isButtonPressed(joystick, button);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -143,10 +131,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="axis">Axis to check</param>
         /// <returns>Current position of the axis, in range [-100 .. 100]</returns>
         ////////////////////////////////////////////////////////////
-        public static float GetAxisPosition(uint joystick, Axis axis)
-        {
-            return sfJoystick_getAxisPosition(joystick, axis);
-        }
+        public static float GetAxisPosition(uint joystick, Axis axis) => sfJoystick_getAxisPosition(joystick, axis);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -186,8 +171,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfJoystick_isConnected(uint joystick);
 
         /// <summary>
@@ -195,8 +179,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfJoystick_getButtonCount(uint joystick);
 
         /// <summary>
@@ -205,8 +188,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="joystick">The joystick</param>
         /// <param name="axis">The axis</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfJoystick_hasAxis(uint joystick, Axis axis);
 
         /// <summary>
@@ -215,8 +197,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="joystick">The joystick</param>
         /// <param name="button">The button</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfJoystick_isButtonPressed(uint joystick, uint button);
 
         /// <summary>
@@ -225,15 +206,13 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="joystick">The joystick</param>
         /// <param name="axis">The axis</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfJoystick_getAxisPosition(uint joystick, Axis axis);
 
         /// <summary>
         ///     Sfs the joystick update
         /// </summary>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfJoystick_update();
 
         /// <summary>
@@ -241,8 +220,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="joystick">The joystick</param>
         /// <returns>The identification marshal data</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IdentificationMarshalData sfJoystick_getIdentification(uint joystick);
 
         ////////////////////////////////////////////////////////////

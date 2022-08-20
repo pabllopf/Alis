@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Controller.cs
+//  File:Controller.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -51,12 +51,6 @@ namespace Alis.Core.Input.Controllers
     public partial class Controller : IReadOnlyCollection<ControlValue>, IDisposable
     {
         /// <summary>
-        ///     The type converter
-        /// </summary>
-        private static readonly ConcurrentDictionary<Type, TypeConverter> s_defaultConverters =
-            new ConcurrentDictionary<Type, TypeConverter>();
-
-        /// <summary>
         ///     The control value
         /// </summary>
         private readonly ConcurrentDictionary<string, ControlValue> _values =
@@ -80,11 +74,9 @@ namespace Alis.Core.Input.Controllers
         /// <summary>
         ///     Initializes a new instance of the <see cref="Controller" /> class
         /// </summary>
-        static Controller()
-        {
+        static Controller() =>
             // Register a default converter to boolean.
             s_defaultConverters[typeof(bool)] = BooleanConverter.Instance;
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Controller" /> class
@@ -95,7 +87,7 @@ namespace Alis.Core.Input.Controllers
         {
             Device = device;
             Mapping = controls.GroupBy(c => c.Control)
-                .ToDictionary(g => g.Key, g => (IReadOnlyList<ControlInfo>)g.ToArray());
+                .ToDictionary(g => g.Key, g => (IReadOnlyList<ControlInfo>) g.ToArray());
             _valuesSubject = new Subject<IList<ControlValue>>();
         }
 
@@ -136,7 +128,7 @@ namespace Alis.Core.Input.Controllers
         ///     Gets a value indicating whether this controller is connected.
         /// </summary>
         /// <value><see langword="true" /> if this controller is connected; otherwise, <see langword="false" />.</value>
-        public bool IsConnected => _subscription != null && Device.IsConnected;
+        public bool IsConnected => (_subscription != null) && Device.IsConnected;
 
         /// <summary>
         ///     Gets an observable of changes.
@@ -144,6 +136,12 @@ namespace Alis.Core.Input.Controllers
         /// <value>The changes.</value>
         /// <exception cref="ObjectDisposedException">The controller is disposed.</exception>
         public IObservable<IList<ControlValue>> Changes => _valuesSubject ?? throw new ObjectDisposedException(Name);
+
+        /// <summary>
+        ///     The type converter
+        /// </summary>
+        private static readonly ConcurrentDictionary<Type, TypeConverter> s_defaultConverters =
+            new ConcurrentDictionary<Type, TypeConverter>();
 
         /// <inheritdoc />
         public void Dispose()
@@ -153,16 +151,10 @@ namespace Alis.Core.Input.Controllers
         }
 
         /// <inheritdoc />
-        public IEnumerator<ControlValue> GetEnumerator()
-        {
-            return _values.Values.GetEnumerator();
-        }
+        public IEnumerator<ControlValue> GetEnumerator() => _values.Values.GetEnumerator();
 
         /// <inheritdoc />
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <inheritdoc />
         public int Count => _values.Count;
@@ -199,9 +191,9 @@ namespace Alis.Core.Input.Controllers
         /// <returns>The</returns>
         protected T GetValue<T>([CallerMemberName] string propertyName = null)
         {
-            if (!_values.TryGetValue(propertyName!, out var controlValue))
+            if (!_values.TryGetValue(propertyName!, out ControlValue controlValue))
             {
-                return default!;
+                return default(T)!;
             }
 
             if (!typeof(T).IsAssignableFrom(controlValue.Type))
@@ -210,8 +202,8 @@ namespace Alis.Core.Input.Controllers
                     typeof(T), controlValue.Type));
             }
 
-            var value = controlValue.Value;
-            return value is null ? default! : (T)value;
+            object value = controlValue.Value;
+            return value is null ? default(T)! : (T) value;
         }
 
         /// <summary>
@@ -238,22 +230,22 @@ namespace Alis.Core.Input.Controllers
         /// <exception cref="InvalidOperationException">No converter was found for a control.</exception>
         protected virtual void OnControlChange(IList<ControlChange> changes)
         {
-            var valueChanges = new List<ControlValue>(changes.Count);
-            foreach (var change in changes)
+            List<ControlValue> valueChanges = new List<ControlValue>(changes.Count);
+            foreach (ControlChange change in changes)
             {
-                if (!Mapping.TryGetValue(change.Control, out var list))
+                if (!Mapping.TryGetValue(change.Control, out IReadOnlyList<ControlInfo> list))
                 {
                     continue;
                 }
 
-                foreach (var controlInfo in list)
+                foreach (ControlInfo controlInfo in list)
                 {
                     object value;
                     // Find converter, or get default converter
-                    var converter = controlInfo.Converter ??
-                                    (s_defaultConverters.TryGetValue(controlInfo.Type, out var defaultConverter)
-                                        ? defaultConverter
-                                        : null);
+                    TypeConverter converter = controlInfo.Converter ??
+                                              (s_defaultConverters.TryGetValue(controlInfo.Type, out TypeConverter defaultConverter)
+                                                  ? defaultConverter
+                                                  : null);
 
                     if (converter is null)
                     {
@@ -283,7 +275,7 @@ namespace Alis.Core.Input.Controllers
                         value = converter.ConvertFrom(change.Value);
                     }
 
-                    var controlValue = new ControlValue(change, controlInfo, value);
+                    ControlValue controlValue = new ControlValue(change, controlInfo, value);
                     _values[controlInfo.PropertyName] = controlValue;
 
                     if (change.Timestamp > Timestamp)
@@ -337,10 +329,7 @@ namespace Alis.Core.Input.Controllers
         /// <typeparam name="T">The </typeparam>
         /// <param name="device">The device</param>
         /// <returns>The</returns>
-        public static T Create<T>(Device device) where T : Controller
-        {
-            return ControllerInfo.Get<T>()?.CreateController(device) as T;
-        }
+        public static T Create<T>(Device device) where T : Controller => ControllerInfo.Get<T>()?.CreateController(device) as T;
 
 
         /// <summary>
@@ -349,10 +338,7 @@ namespace Alis.Core.Input.Controllers
         /// <param name="device">The device</param>
         /// <param name="deviceType">The device type</param>
         /// <returns>The controller</returns>
-        public static Controller Create(Device device, Type deviceType)
-        {
-            return ControllerInfo.Get(deviceType)?.CreateController(device);
-        }
+        public static Controller Create(Device device, Type deviceType) => ControllerInfo.Get(deviceType)?.CreateController(device);
 
         /// <summary>
         ///     Registers a control creation delegate which creates controls for the specified controller type

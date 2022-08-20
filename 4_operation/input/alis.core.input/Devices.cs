@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Devices.cs
+//  File:Devices.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -123,24 +123,16 @@ namespace Alis.Core.Input
                                     throw new ObjectDisposedException(nameof(Devices));
 
         /// <inheritdoc />
-        public IObservable<Change<Device, string>> Watch(string key)
-        {
-            return _controllers?.Watch(key) ?? throw new ObjectDisposedException(nameof(Devices));
-        }
+        public IObservable<Change<Device, string>> Watch(string key) => _controllers?.Watch(key) ?? throw new ObjectDisposedException(nameof(Devices));
 
         /// <inheritdoc />
         public IObservable<IChangeSet<Device, string>> Connect(Func<Device, bool> predicate = null,
             bool suppressEmptyChangeSets = true)
-        {
-            return _controllers?.Connect(predicate, suppressEmptyChangeSets) ??
-                   throw new ObjectDisposedException(nameof(Devices));
-        }
+            => _controllers?.Connect(predicate, suppressEmptyChangeSets) ??
+               throw new ObjectDisposedException(nameof(Devices));
 
         /// <inheritdoc />
-        public IObservable<IChangeSet<Device, string>> Preview(Func<Device, bool> predicate = null)
-        {
-            return _controllers?.Preview(predicate) ?? throw new ObjectDisposedException(nameof(Devices));
-        }
+        public IObservable<IChangeSet<Device, string>> Preview(Func<Device, bool> predicate = null) => _controllers?.Preview(predicate) ?? throw new ObjectDisposedException(nameof(Devices));
 
         /// <inheritdoc />
         public IObservable<int> CountChanged
@@ -150,23 +142,23 @@ namespace Alis.Core.Input
         public void Dispose()
         {
             Interlocked.Exchange(ref _eventSubscription, null)?.Dispose();
-            var refreshingBehaviorSubject = Interlocked.Exchange(ref _refreshingBehaviorSubject, null);
+            BehaviorSubject<bool> refreshingBehaviorSubject = Interlocked.Exchange(ref _refreshingBehaviorSubject, null);
             if (refreshingBehaviorSubject != null)
             {
                 refreshingBehaviorSubject.OnCompleted();
                 refreshingBehaviorSubject.Dispose();
             }
 
-            var controllers = Interlocked.Exchange(ref _controllers, null);
+            SourceCache<Device, string> controllers = Interlocked.Exchange(ref _controllers, null);
             if (controllers is null)
             {
                 return;
             }
 
-            var toDispose = controllers.Items.ToArray();
+            Device[] toDispose = controllers.Items.ToArray();
             controllers.Clear();
             controllers?.Dispose();
-            foreach (var device in toDispose)
+            foreach (Device device in toDispose)
             {
                 // Note we only dispose controllers when we're disposed,
                 // otherwise we keep them so we can 'resurrect' them.
@@ -175,10 +167,7 @@ namespace Alis.Core.Input
         }
 
         /// <inheritdoc />
-        public Optional<Device> Lookup(string key)
-        {
-            return _controllers?.Lookup(key) ?? throw new ObjectDisposedException(nameof(Devices));
-        }
+        public Optional<Device> Lookup(string key) => _controllers?.Lookup(key) ?? throw new ObjectDisposedException(nameof(Devices));
 
         /// <inheritdoc />
         IEnumerable<string> IObservableCache<Device, string>.Keys
@@ -204,7 +193,7 @@ namespace Alis.Core.Input
             try
             {
                 // Get all existing values
-                var controllers = _controllers;
+                SourceCache<Device, string> controllers = _controllers;
                 if (controllers is null)
                 {
                     return;
@@ -213,17 +202,17 @@ namespace Alis.Core.Input
                 // Indicate we're in the process of refreshing.
                 _refreshingBehaviorSubject?.OnNext(true);
 
-                var existing = controllers.KeyValues.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+                Dictionary<string, Device> existing = controllers.KeyValues.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-                var added = new List<Device>();
-                var updated = new List<(Device existing, Device updated)>();
+                List<Device> added = new List<Device>();
+                List<(Device existing, Device updated)> updated = new List<(Device existing, Device updated)>();
 
-                var list = DeviceList.Local;
-                foreach (var hidDevice in list.GetHidDevices())
+                DeviceList list = DeviceList.Local;
+                foreach (HidDevice hidDevice in list.GetHidDevices())
                 {
                     try
                     {
-                        var rawReportDescriptor = hidDevice.GetRawReportDescriptor();
+                        byte[] rawReportDescriptor = hidDevice.GetRawReportDescriptor();
 #pragma warning disable IDE0018 // Inline variable declaration - required to coerce to nullable type.
                         // ReSharper disable once InlineOutVariableDeclaration
                         Device existingController;
@@ -243,7 +232,7 @@ namespace Alis.Core.Input
                             existingController = null;
                         }
 
-                        var device = new Device(this, hidDevice, rawReportDescriptor);
+                        Device device = new Device(this, hidDevice, rawReportDescriptor);
 
                         // Update collection with new device info
                         if (existingController is null)
@@ -271,19 +260,19 @@ namespace Alis.Core.Input
                     // Batch changes
                     controllers.Edit(cache =>
                     {
-                        foreach (var kvp in existing)
+                        foreach (KeyValuePair<string, Device> kvp in existing)
                         {
                             cache.RemoveKey(kvp.Key);
                             Console.WriteLine(kvp.Value.Name);
                         }
 
-                        foreach (var c in added)
+                        foreach (Device c in added)
                         {
                             cache.AddOrUpdate(c);
                             Console.WriteLine(c.Name);
                         }
 
-                        foreach (var t in updated)
+                        foreach ((Device existing, Device updated) t in updated)
                         {
                             cache.AddOrUpdate(t.updated);
                             // As the device definition has fundamentally changed,
@@ -309,12 +298,9 @@ namespace Alis.Core.Input
         ///     of cancellation.
         /// </param>
         /// <returns>An awaitable task that completes when the first load of devices has completed.</returns>
-        public Task<IChangeSet<Device, string>> LoadAsync(CancellationToken cancellationToken = default)
-        {
-            return (_controllers ?? throw new ObjectDisposedException(nameof(Devices)))
-                .Connect()
-                .FirstAsync()
-                .ToTask(cancellationToken);
-        }
+        public Task<IChangeSet<Device, string>> LoadAsync(CancellationToken cancellationToken = default(CancellationToken)) => (_controllers ?? throw new ObjectDisposedException(nameof(Devices)))
+            .Connect()
+            .FirstAsync()
+            .ToTask(cancellationToken);
     }
 }

@@ -1,4 +1,5 @@
 # Alis
+
 [![](docs/resources/banner/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
 [![Platform](https://shields.io/badge/Platform-Windows%20%7C%20OSX%20%7C%20Linux%20%7C%20IOS%20%7C%20Android-blue)]()
@@ -10,7 +11,6 @@
 <img src="https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis">
 > Develop the video games of your dreams.
 
-
 ## General Public License v3.0
 
 > Permissions of this strong copyleft license are conditioned on making available complete source code of licensed works
@@ -21,13 +21,12 @@
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/licence.md)
 
-
 ## Contributor Guide
+
 Thank you for investing your time in contributing to our project! Any contribution you make will be reflected.
 Read our Code of Conduct to keep our community approachable and respectable.
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/main/code_of_conduct.md)
-
 
 ## Contributor Covenant Code of Conduct
 

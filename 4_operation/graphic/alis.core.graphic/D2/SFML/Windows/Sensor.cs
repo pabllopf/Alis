@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Sensor.cs
+//  File:Sensor.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -75,10 +75,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Sensor">Sensor to check</param>
         /// <returns>True if the sensor is available, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsAvailable(Type Sensor)
-        {
-            return sfSensor_isAvailable(Sensor);
-        }
+        public static bool IsAvailable(Type Sensor) => sfSensor_isAvailable(Sensor);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -99,18 +96,14 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="Sensor">Sensor to check</param>
         /// <returns>The current sensor value</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f GetValue(Type Sensor)
-        {
-            return sfSensor_getValue(Sensor);
-        }
+        public static Vector3f GetValue(Type Sensor) => sfSensor_getValue(Sensor);
 
         /// <summary>
         ///     Describes whether sf sensor is available
         /// </summary>
         /// <param name="Sensor">The sensor</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSensor_isAvailable(Type Sensor);
 
         /// <summary>
@@ -118,8 +111,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="Sensor">The sensor</param>
         /// <param name="Enabled">The enabled</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSensor_setEnabled(Type Sensor, bool Enabled);
 
         /// <summary>
@@ -127,8 +119,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="Sensor">The sensor</param>
         /// <returns>The vector 3f</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector3f sfSensor_getValue(Type Sensor);
     }
 }

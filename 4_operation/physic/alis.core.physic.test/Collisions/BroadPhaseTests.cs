@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   BroadPhaseTests.cs
+//  File:BroadPhaseTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -62,12 +62,9 @@ namespace Alis.Core.Physic.Test.Collisions
         ///     Creates the broad phase
         /// </summary>
         /// <returns>The broad phase</returns>
-        private BroadPhase CreateBroadPhase()
-        {
-            return new BroadPhase(
-                new Aabb(),
-                mockPairCallback.Object);
-        }
+        private BroadPhase CreateBroadPhase() => new BroadPhase(
+            new Aabb(),
+            mockPairCallback.Object);
 
         /// <summary>
         ///     Tests that in range state under test expected behavior
@@ -76,11 +73,11 @@ namespace Alis.Core.Physic.Test.Collisions
         public void InRange_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            BroadPhase broadPhase = CreateBroadPhase();
             Aabb aabb = default(Aabb);
 
             // Act
-            var result = broadPhase.InRange(
+            bool result = broadPhase.InRange(
                 aabb);
 
             // Assert
@@ -95,12 +92,12 @@ namespace Alis.Core.Physic.Test.Collisions
         public void CreateProxy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            BroadPhase broadPhase = CreateBroadPhase();
             Aabb aabb = default(Aabb);
             object userData = null;
 
             // Act
-            var result = broadPhase.CreateProxy(
+            ushort result = broadPhase.CreateProxy(
                 aabb,
                 userData);
 
@@ -134,7 +131,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void MoveProxy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            BroadPhase broadPhase = CreateBroadPhase();
             int proxyId = 0;
             Aabb aabb = default(Aabb);
 
@@ -155,7 +152,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Commit_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            BroadPhase broadPhase = CreateBroadPhase();
 
             // Act
             broadPhase.Commit();
@@ -172,11 +169,11 @@ namespace Alis.Core.Physic.Test.Collisions
         public void GetProxy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            BroadPhase broadPhase = CreateBroadPhase();
             int proxyId = 0;
 
             // Act
-            var result = broadPhase.GetProxy(
+            Proxy result = broadPhase.GetProxy(
                 proxyId);
 
             // Assert
@@ -191,13 +188,13 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Query_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            BroadPhase broadPhase = CreateBroadPhase();
             Aabb aabb = default(Aabb);
             object[] userData = null;
             int maxCount = 0;
 
             // Act
-            var result = broadPhase.Query(
+            int result = broadPhase.Query(
                 aabb,
                 userData,
                 maxCount);
@@ -239,7 +236,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Validate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            BroadPhase broadPhase = CreateBroadPhase();
 
             // Act
             broadPhase.Validate();

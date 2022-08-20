@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Device.cs
+//  File:Device.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -39,6 +39,7 @@ using System.Threading;
 using DevDecoder.HIDDevices;
 using HidSharp;
 using HidSharp.Reports;
+using HidSharp.Reports.Input;
 using Microsoft.VisualStudio.Threading;
 
 namespace Alis.Core.Input
@@ -101,13 +102,13 @@ namespace Alis.Core.Input
             Name = GetName(device);
 
             _device = device;
-            var cancellationTokenSource = new CancellationTokenSource();
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
             _cancellationTokenSource = cancellationTokenSource;
             _connectedSubject = new BehaviorSubject<bool>(false);
 
             RawReportDescriptor = rawReportDescriptor;
-            var reportDescriptor = new ReportDescriptor(RawReportDescriptor);
-            var deviceItems = reportDescriptor.DeviceItems;
+            ReportDescriptor reportDescriptor = new ReportDescriptor(RawReportDescriptor);
+            IList<DeviceItem> deviceItems = reportDescriptor.DeviceItems;
 
             _usages = new HashSet<Usage>(deviceItems
                 .SelectMany(deviceItem =>
@@ -116,7 +117,7 @@ namespace Alis.Core.Input
                         .Select(Usage.Get)));
 
             // Create parsers
-            var inputParsers = deviceItems
+            Dictionary<DeviceItem, DeviceItemInputParser> inputParsers = deviceItems
                 .ToDictionary(i => i, i => i.CreateDeviceItemInputParser());
 
             // Find controls.
@@ -129,14 +130,14 @@ namespace Alis.Core.Input
             _cache = new Dictionary<Control, ControlChange>();
 
 #pragma warning disable CA1031 // Do not catch general exception types
-            var listener = Observable.Create<IList<ControlChange>>(
+            IObservable<IList<ControlChange>> listener = Observable.Create<IList<ControlChange>>(
                     async (observer, token) =>
                     {
                         // The observable token is only cancelled when all subscribers stop listening, and only
                         // 'best-efforts' are used.  We supplement with explicit disposal, which is triggered when
                         // a disconnect is detected.
-                        using var combinedToken = token.CombineWith(cancellationTokenSource.Token);
-                        var cancellationToken = combinedToken.Token;
+                        using CancellationTokenExtensions.CombinedCancellationToken combinedToken = token.CombineWith(cancellationTokenSource.Token);
+                        CancellationToken cancellationToken = combinedToken.Token;
                         if (cancellationToken.IsCancellationRequested)
                         {
                             observer.OnCompleted();
@@ -147,7 +148,7 @@ namespace Alis.Core.Input
                         HidStream stream;
                         try
                         {
-                            var options = new OpenConfiguration();
+                            OpenConfiguration options = new OpenConfiguration();
                             options.SetOption(OpenOption.Interruptible, true);
                             stream = device.Open();
                             stream.ReadTimeout = Timeout.Infinite;
@@ -171,15 +172,15 @@ namespace Alis.Core.Input
                         try
                         {
                             // Create buffer
-                            var buffer = new byte[_device.GetMaxInputReportLength()];
+                            byte[] buffer = new byte[_device.GetMaxInputReportLength()];
 
-                            var inputReceiver = reportDescriptor.CreateHidDeviceInputReceiver();
+                            HidDeviceInputReceiver inputReceiver = reportDescriptor.CreateHidDeviceInputReceiver();
 
                             inputReceiver.Start(stream);
                             Console.WriteLine(Name);
 
                             // Some devices spam changes, so we collect only the last value as quickly as possible.
-                            var batch = new Dictionary<(DataItem, int), (DataValue, long timestamp)>(_controls.Count);
+                            Dictionary<(DataItem, int), (DataValue, long timestamp)> batch = new Dictionary<(DataItem, int), (DataValue, long timestamp)>(_controls.Count);
                             while (!cancellationToken.IsCancellationRequested)
                             {
                                 await inputReceiver.WaitHandle;
@@ -189,11 +190,11 @@ namespace Alis.Core.Input
                                     break;
                                 }
 
-                                while (inputReceiver.TryRead(buffer, 0, out var report))
+                                while (inputReceiver.TryRead(buffer, 0, out Report report))
                                 {
-                                    var timestamp = Stopwatch.GetTimestamp();
+                                    long timestamp = Stopwatch.GetTimestamp();
 
-                                    foreach (var parser in inputParsers.Values)
+                                    foreach (DeviceItemInputParser parser in inputParsers.Values)
                                     {
                                         if (!parser.TryParseReport(buffer, 0, report))
                                         {
@@ -202,9 +203,9 @@ namespace Alis.Core.Input
 
                                         while (parser.HasChanged)
                                         {
-                                            var index = parser.GetNextChangedIndex();
-                                            var dataValue = parser.GetValue(index);
-                                            var dataItem = dataValue.DataItem;
+                                            int index = parser.GetNextChangedIndex();
+                                            DataValue dataValue = parser.GetValue(index);
+                                            DataItem dataItem = dataValue.DataItem;
                                             batch[(dataItem, index)] = (dataValue, timestamp);
                                         }
                                     }
@@ -217,21 +218,21 @@ namespace Alis.Core.Input
                                 }
 
                                 // Update cache with batch of changes.
-                                var batchList = new List<ControlChange>(batch.Count);
+                                List<ControlChange> batchList = new List<ControlChange>(batch.Count);
                                 lock (_cache)
                                 {
-                                    foreach (var tuple in batch
+                                    foreach ((Control control, (DataValue, long timestamp) value) tuple in batch
                                                  .Select(kvp => (
-                                                     control: _controls.TryGetValue(kvp.Key, out var control)
+                                                     control: _controls.TryGetValue(kvp.Key, out Control control)
                                                          ? control
                                                          : null,
                                                      value: kvp.Value))
                                                  .Where(t => t.control != null))
                                     {
-                                        var control = tuple.control!;
-                                        if (_cache.TryGetValue(control, out var controlChange))
+                                        Control control = tuple.control!;
+                                        if (_cache.TryGetValue(control, out ControlChange controlChange))
                                         {
-                                            var updatedChange = controlChange.Update(tuple.value);
+                                            ControlChange? updatedChange = controlChange.Update(tuple.value);
                                             if (updatedChange is null)
                                             {
                                                 continue;
@@ -337,10 +338,10 @@ namespace Alis.Core.Input
             {
                 // Subscribing to the connectionState subject itself doesn't initiate an attempt to connect, so will never produce results,
                 // unless there is a subscription to the _changes observable (exposed by this).  Therefore we subscribe to both.
-                var connectionState =
+                IDisposable connectionState =
                     (_connectedSubject ?? throw new ObjectDisposedException(nameof(Device))).Subscribe(cs =>
                         observer.OnNext(cs));
-                var changes = this.Subscribe();
+                IDisposable changes = this.Subscribe();
                 return new CompositeDisposable(connectionState, changes);
             });
 
@@ -363,10 +364,7 @@ namespace Alis.Core.Input
         public IEnumerable<Control> Controls => _controls.Values;
 
         /// <inheritdoc />
-        public IDisposable Subscribe(IObserver<IList<ControlChange>> observer)
-        {
-            return _changes.Subscribe(observer);
-        }
+        public IDisposable Subscribe(IObserver<IList<ControlChange>> observer) => _changes.Subscribe(observer);
 
         /// <inheritdoc />
         public IEnumerator<KeyValuePair<Control, ControlChange>> GetEnumerator()
@@ -377,14 +375,11 @@ namespace Alis.Core.Input
                 snapshot = _cache.ToArray();
             }
 
-            return ((IEnumerable<KeyValuePair<Control, ControlChange>>)snapshot).GetEnumerator();
+            return ((IEnumerable<KeyValuePair<Control, ControlChange>>) snapshot).GetEnumerator();
         }
 
         /// <inheritdoc />
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <inheritdoc />
         public int Count => _controls.Count;
@@ -443,7 +438,7 @@ namespace Alis.Core.Input
         internal void Dispose()
         {
             Interlocked.Exchange(ref _cancellationTokenSource, null)?.Dispose();
-            var connectedSubject = Interlocked.Exchange(ref _connectedSubject, null);
+            BehaviorSubject<bool> connectedSubject = Interlocked.Exchange(ref _connectedSubject, null);
             if (connectedSubject is null)
             {
                 return;
@@ -460,7 +455,7 @@ namespace Alis.Core.Input
         /// <returns>System.String.</returns>
         private static string GetName(HidDevice device)
         {
-            var manufacturer = string.Empty;
+            string manufacturer = string.Empty;
 #pragma warning disable CA1031 // Do not catch general exception types
             // ReSharper disable EmptyGeneralCatchClause
             try
@@ -471,7 +466,7 @@ namespace Alis.Core.Input
             {
             }
 
-            var productName = string.Empty;
+            string productName = string.Empty;
             try
             {
                 productName = device.GetProductName().Trim();
@@ -500,10 +495,7 @@ namespace Alis.Core.Input
         }
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
 
         /// <summary>
         ///     Gets a filtered observable of control changes.
@@ -516,7 +508,7 @@ namespace Alis.Core.Input
         public IObservable<IList<ControlChange>> Watch(Func<Control, bool> predicate = null)
         {
             return predicate is null
-                ? (IObservable<IList<ControlChange>>)this
+                ? (IObservable<IList<ControlChange>>) this
                 : this.Select(l => l.Where(change => predicate(change.Control)).ToList());
         }
     }

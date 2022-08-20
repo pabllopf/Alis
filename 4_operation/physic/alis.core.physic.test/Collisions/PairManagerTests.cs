@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PairManagerTests.cs
+//  File:PairManagerTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -47,19 +47,13 @@ namespace Alis.Core.Physic.Test.Collisions
         /// <summary>
         ///     Initializes a new instance of the <see cref="PairManagerTests" /> class
         /// </summary>
-        public PairManagerTests()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
+        public PairManagerTests() => mockRepository = new MockRepository(MockBehavior.Strict);
 
         /// <summary>
         ///     Creates the manager
         /// </summary>
         /// <returns>The pair manager</returns>
-        private PairManager CreateManager()
-        {
-            return new PairManager();
-        }
+        private PairManager CreateManager() => new PairManager();
 
         /// <summary>
         ///     Tests that initialize state under test expected behavior
@@ -68,7 +62,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Initialize_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = CreateManager();
+            PairManager manager = CreateManager();
             BroadPhase broadPhase = null;
             PairCallback callback = null;
 
@@ -89,7 +83,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void AddBufferedPair_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = CreateManager();
+            PairManager manager = CreateManager();
             int id1 = 0;
             int id2 = 0;
 
@@ -110,7 +104,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void RemoveBufferedPair_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = CreateManager();
+            PairManager manager = CreateManager();
             int id1 = 0;
             int id2 = 0;
 
@@ -148,12 +142,12 @@ namespace Alis.Core.Physic.Test.Collisions
         public void BufferedPairSortPredicate_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = CreateManager();
+            PairManager manager = CreateManager();
             BufferedPair pair1 = default(BufferedPair);
             BufferedPair pair2 = default(BufferedPair);
 
             // Act
-            var result = PairManager.BufferedPairSortPredicate(
+            int result = PairManager.BufferedPairSortPredicate(
                 pair1,
                 pair2);
 

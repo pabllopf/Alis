@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   SegmentTests.cs
+//  File:SegmentTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -48,19 +48,13 @@ namespace Alis.Core.Physic.Test.Collisions
         /// <summary>
         ///     Initializes a new instance of the <see cref="SegmentTests" /> class
         /// </summary>
-        public SegmentTests()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
+        public SegmentTests() => mockRepository = new MockRepository(MockBehavior.Strict);
 
         /// <summary>
         ///     Creates the segment
         /// </summary>
         /// <returns>The segment</returns>
-        private Segment CreateSegment()
-        {
-            return new Segment();
-        }
+        private Segment CreateSegment() => new Segment();
 
         /// <summary>
         ///     Tests that test segment state under test expected behavior
@@ -69,13 +63,13 @@ namespace Alis.Core.Physic.Test.Collisions
         public void TestSegment_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var segment = CreateSegment();
+            Segment segment = CreateSegment();
             float lambda = 0;
             Vector2 normal = default(Vector2);
             float maxLambda = 0;
 
             // Act
-            var result = segment.TestSegment(
+            bool result = segment.TestSegment(
                 out lambda,
                 out normal,
                 segment,

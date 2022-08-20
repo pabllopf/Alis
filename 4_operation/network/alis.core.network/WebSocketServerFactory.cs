@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   WebSocketServerFactory.cs
+//  File:WebSocketServerFactory.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -67,10 +67,7 @@ namespace Alis.Core.Network
         ///     Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
         /// </summary>
         /// <param name="bufferFactory"></param>
-        public WebSocketServerFactory(Func<MemoryStream> bufferFactory)
-        {
-            _bufferFactory = bufferFactory;
-        }
+        public WebSocketServerFactory(Func<MemoryStream> bufferFactory) => _bufferFactory = bufferFactory;
 
         /// <summary>
         ///     Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
@@ -79,7 +76,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>Http data read from the stream</returns>
         public async Task<WebSocketHttpContext> ReadHttpHeaderFromStreamAsync(Stream stream,
-            CancellationToken token = default)
+            CancellationToken token = default(CancellationToken))
         {
             string header = await HttpHelper.ReadHttpHeaderAsync(stream, token);
             string path = HttpHelper.GetPathFromHeader(header);
@@ -96,10 +93,8 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context,
-            CancellationToken token = default)
-        {
-            return await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
-        }
+            CancellationToken token = default(CancellationToken))
+            => await AcceptWebSocketAsync(context, new WebSocketServerOptions(), token);
 
         /// <summary>
         ///     Accept web socket with options specified
@@ -110,7 +105,7 @@ namespace Alis.Core.Network
         /// <param name="token">The optional cancellation token</param>
         /// <returns>A connected web socket</returns>
         public async Task<WebSocket> AcceptWebSocketAsync(WebSocketHttpContext context, WebSocketServerOptions options,
-            CancellationToken token = default)
+            CancellationToken token = default(CancellationToken))
         {
             Guid guid = Guid.NewGuid();
             Events.Log.AcceptWebSocketStarted(guid);

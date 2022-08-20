@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   IslandTests.cs
+//  File:IslandTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -66,14 +66,11 @@ namespace Alis.Core.Physic.Test.Dynamics
         ///     Creates the island
         /// </summary>
         /// <returns>The island</returns>
-        private Island CreateIsland()
-        {
-            return new Island(
-                10,
-                5,
-                1,
-                mockContactListener.Object);
-        }
+        private Island CreateIsland() => new Island(
+            10,
+            5,
+            1,
+            mockContactListener.Object);
 
         /// <summary>
         ///     Tests that dispose state under test expected behavior
@@ -82,7 +79,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = CreateIsland();
+            Island island = CreateIsland();
 
             // Act
             island.Dispose();
@@ -99,7 +96,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Clear_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = CreateIsland();
+            Island island = CreateIsland();
 
             // Act
             island.Clear();
@@ -116,7 +113,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Solve_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = CreateIsland();
+            Island island = CreateIsland();
             TimeStep step = default(TimeStep);
             Vector2 gravity = default(Vector2);
             bool allowSleep = false;
@@ -139,7 +136,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SolveToi_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = CreateIsland();
+            Island island = CreateIsland();
             TimeStep subStep = default(TimeStep);
 
             // Act
@@ -176,7 +173,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Add_StateUnderTest_ExpectedBehavior1()
         {
             // Arrange
-            var island = CreateIsland();
+            Island island = CreateIsland();
             Contact contact = null;
 
             // Act
@@ -195,7 +192,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Add_StateUnderTest_ExpectedBehavior2()
         {
             // Arrange
-            var island = CreateIsland();
+            Island island = CreateIsland();
             Joint joint = null;
 
             // Act
@@ -214,7 +211,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void Report_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var island = CreateIsland();
+            Island island = CreateIsland();
             ContactConstraint[] constraints = null;
 
             // Act

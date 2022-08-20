@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UsagePage.cs
+//  File:UsagePage.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -311,22 +311,13 @@ namespace Alis.Core.Input
         public static ICollection<UsagePage> All => s_pages.Values;
 
         /// <inheritdoc />
-        public IEnumerator<Usage> GetEnumerator()
-        {
-            return Usages.Values.GetEnumerator();
-        }
+        public IEnumerator<Usage> GetEnumerator() => Usages.Values.GetEnumerator();
 
         /// <inheritdoc />
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         /// <inheritdoc />
-        public bool Equals(UsagePage other)
-        {
-            return !(other is null) && (ReferenceEquals(this, other) || Id == other.Id);
-        }
+        public bool Equals(UsagePage other) => !(other is null) && (ReferenceEquals(this, other) || Id == other.Id);
 
 
         /// <summary>
@@ -347,10 +338,7 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="usage">The usage</param>
         /// <returns>The usage page</returns>
-        public static UsagePage Get(Enum usage)
-        {
-            return Get((ushort)(Convert.ToUInt32(usage) >> 16));
-        }
+        public static UsagePage Get(Enum usage) => Get((ushort) (Convert.ToUInt32(usage) >> 16));
 
 
         /// <summary>
@@ -358,10 +346,7 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="fullId">The full id</param>
         /// <returns>The usage page</returns>
-        public static UsagePage Get(uint fullId)
-        {
-            return Get((ushort)(fullId >> 16));
-        }
+        public static UsagePage Get(uint fullId) => Get((ushort) (fullId >> 16));
 
 
         /// <summary>
@@ -369,10 +354,7 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The usage</returns>
-        public Usage GetUsage(ushort id)
-        {
-            return Usages.GetOrAdd(id, CreateUsage);
-        }
+        public Usage GetUsage(ushort id) => Usages.GetOrAdd(id, CreateUsage);
 
 
         /// <summary>
@@ -380,26 +362,17 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The usage</returns>
-        protected virtual Usage CreateUsage(ushort id)
-        {
-            return new Usage(this, id, $"Undefined (0x{id:X2})", UsageTypes.None);
-        }
+        protected virtual Usage CreateUsage(ushort id) => new Usage(this, id, $"Undefined (0x{id:X2})", UsageTypes.None);
 
         /// <summary>
         ///     EXAMPLE
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public override bool Equals(object obj)
-        {
-            return ReferenceEquals(this, obj) || (obj is UsagePage other && Equals(other));
-        }
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || (obj is UsagePage other && Equals(other));
 
         /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return Id;
-        }
+        public override int GetHashCode() => Id;
 
         /// <summary>
         ///     Implements the == operator.
@@ -407,10 +380,7 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(UsagePage left, UsagePage right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(UsagePage left, UsagePage right) => Equals(left, right);
 
         /// <summary>
         ///     Implements the != operator.
@@ -418,45 +388,30 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(UsagePage left, UsagePage right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(UsagePage left, UsagePage right) => !Equals(left, right);
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="UsagePage" /> to <see cref="System.UInt16" />.
         /// </summary>
         /// <param name="page">The page.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator ushort(UsagePage page)
-        {
-            return page.Id;
-        }
+        public static implicit operator ushort(UsagePage page) => page.Id;
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="System.UInt16" /> to <see cref="UsagePage" />.
         /// </summary>
         /// <param name="page">The page.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator UsagePage(ushort page)
-        {
-            return Get(page);
-        }
+        public static implicit operator UsagePage(ushort page) => Get(page);
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="Enum" /> to <see cref="UsagePage" />.
         /// </summary>
         /// <param name="page">The page.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator UsagePage(Enum page)
-        {
-            return Get(page);
-        }
+        public static implicit operator UsagePage(Enum page) => Get(page);
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 }

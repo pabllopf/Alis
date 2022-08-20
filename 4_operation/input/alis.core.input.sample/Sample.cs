@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Sample.cs
+//  File:Sample.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -87,10 +87,7 @@ namespace Alis.Core.Input.Sample
         public IReadOnlyCollection<string> ShortNames => _shortNames;
 
         /// <inheritdoc />
-        public virtual Task ExecuteAsync(CancellationToken token = default)
-        {
-            return Task.Run(Execute, token);
-        }
+        public virtual Task ExecuteAsync(CancellationToken token = default(CancellationToken)) => Task.Run(Execute, token);
 
         /// <inheritdoc />
         public abstract string Description { get; }
@@ -108,10 +105,7 @@ namespace Alis.Core.Input.Sample
         /// <typeparam name="T">The </typeparam>
         /// <param name="logLevel">The log level</param>
         /// <returns>A logger of t</returns>
-        public static ILogger<T> CreateLogger<T>(LogLevel logLevel = LogLevel.Information)
-        {
-            return new SimpleConsoleLogger<T>(logLevel);
-        }
+        public static ILogger<T> CreateLogger<T>(LogLevel logLevel = LogLevel.Information) => new SimpleConsoleLogger<T>(logLevel);
 
         /// <summary>
         ///     Gets a friendly full name
@@ -120,9 +114,9 @@ namespace Alis.Core.Input.Sample
         /// <returns></returns>
         protected static string GetFullName(string typeName)
         {
-            var builder = new StringBuilder(typeName.Length + 5);
-            var first = true;
-            foreach (var c in typeName)
+            StringBuilder builder = new StringBuilder(typeName.Length + 5);
+            bool first = true;
+            foreach (char c in typeName)
             {
                 if (first)
                 {
@@ -136,7 +130,7 @@ namespace Alis.Core.Input.Sample
                 builder.Append(c);
             }
 
-            var fullName = builder.ToString();
+            string fullName = builder.ToString();
             if (fullName.EndsWith("Sample", StringComparison.InvariantCultureIgnoreCase))
             {
                 fullName = fullName[..^6].TrimEnd();
@@ -152,13 +146,13 @@ namespace Alis.Core.Input.Sample
         /// <returns>An array of short names.</returns>
         protected static HashSet<string> GetShortNames(string fullName)
         {
-            var shortNames = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
-            var initials = new StringBuilder();
-            var word = new StringBuilder();
-            var titleCase = new StringBuilder();
-            var afterSpace = true;
-            var firstWord = true;
-            foreach (var c in fullName)
+            HashSet<string> shortNames = new HashSet<string>(StringComparer.InvariantCultureIgnoreCase);
+            StringBuilder initials = new StringBuilder();
+            StringBuilder word = new StringBuilder();
+            StringBuilder titleCase = new StringBuilder();
+            bool afterSpace = true;
+            bool firstWord = true;
+            foreach (char c in fullName)
             {
                 if (char.GetUnicodeCategory(c) == UnicodeCategory.SpaceSeparator)
                 {
@@ -170,7 +164,7 @@ namespace Alis.Core.Input.Sample
                 if (afterSpace)
                 {
                     afterSpace = false;
-                    var ch = char.ToUpperInvariant(c);
+                    char ch = char.ToUpperInvariant(c);
                     initials.Append(ch);
                     titleCase.Append(ch);
                 }

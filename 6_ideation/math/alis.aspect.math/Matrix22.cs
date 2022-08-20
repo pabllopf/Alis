@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Matrix22.cs
+//  File:Matrix22.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         public Matrix22(float angle)
         {
-            float c = (float)System.Math.Cos(angle), s = (float)System.Math.Sin(angle);
+            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
             Col1.X = c;
             Col2.X = -s;
             Col1.Y = s;
@@ -92,7 +92,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         public void Set(float angle)
         {
-            float c = (float)System.Math.Cos(angle), s = (float)System.Math.Sin(angle);
+            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
             Col1.X = c;
             Col2.X = -s;
             Col1.Y = s;
@@ -124,20 +124,17 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Extract the angle from this matrix (assumed to be a rotation matrix).
         /// </summary>
-        public float GetAngle()
-        {
-            return (float)System.Math.Atan2(Col1.Y, Col1.X);
-        }
+        public float GetAngle() => (float) System.Math.Atan2(Col1.Y, Col1.X);
 
         /// <summary>
         ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
         /// </summary>
         public Matrix22 GetInverse()
         {
-            var col1X = Col1.X;
-            var col2X = Col2.X;
-            var col1Y = Col1.Y;
-            var col2Y = Col2.Y;
+            float col1X = Col1.X;
+            float col2X = Col2.X;
+            float col1Y = Col1.Y;
+            float col2Y = Col2.Y;
             Matrix22 matrix22 = new Matrix22();
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
@@ -155,10 +152,10 @@ namespace Alis.Aspect.Math
         /// </summary>
         public Vector2 Solve(Vector2 b)
         {
-            var col1X = Col1.X;
-            var col2X = Col2.X;
-            var col1Y = Col1.Y;
-            var col2Y = Col2.Y;
+            float col1X = Col1.X;
+            float col2X = Col2.X;
+            float col1Y = Col1.Y;
+            float col2Y = Col2.Y;
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;

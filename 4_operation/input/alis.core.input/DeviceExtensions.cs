@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DeviceExtensions.cs
+//  File:DeviceExtensions.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -58,7 +58,7 @@ namespace Alis.Core.Input
 #pragma warning disable CS8621 // Nullability of reference types in return type doesn't match the target delegate (possibly because of nullability attributes).
                 .Select(Input.Controllers.Controller.Create<T>)
 #pragma warning restore CS8621 // Nullability of reference types in return type doesn't match the target delegate (possibly because of nullability attributes).
-                .Where(controller => controller != null && (predicate is null || predicate(controller)));
+                .Where(controller => (controller != null) && (predicate is null || predicate(controller)));
 
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Input
                 .Flatten()
                 .Where(change => change.Reason == ChangeReason.Add)
                 .Select(change => Input.Controllers.Controller.Create(change.Current, controllerType)!)
-                .Where(controller => controller != null && (predicate is null || predicate(controller)));
+                .Where(controller => (controller != null) && (predicate is null || predicate(controller)));
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Alis.Core.Input
                 .Connect()
                 .Flatten()
                 .Where(change =>
-                    change.Reason != ChangeReason.Remove && (predicate is null || change.Current.Keys.Any(predicate)))
+                    (change.Reason != ChangeReason.Remove) && (predicate is null || change.Current.Keys.Any(predicate)))
                 .SelectMany(change => change.Current.Watch(predicate)
                     // Suppress errors so we don't stop listening on valid controllers - error will already have been logged.
                     .Catch((Exception _) => Observable.Empty<IList<ControlChange>>()))
@@ -116,7 +116,7 @@ namespace Alis.Core.Input
                         => devices.Connect(predicate)
                             .Flatten()
                             .SelectMany(change => change.Reason == ChangeReason.Remove
-                                ? new[] { (device: change.Current, isConnected: false) }.ToObservable()
+                                ? new[] {(device: change.Current, isConnected: false)}.ToObservable()
                                 : change.Current.ConnectionState.Select(isConnected =>
                                     (device: change.Current, isConnected)))
                             .Subscribe(tuple =>
@@ -199,9 +199,7 @@ namespace Alis.Core.Input
         public static bool UsagesAll(
             this Device device,
             params Usage[] usages)
-        {
-            return device.Usages.ContainsAll(usages);
-        }
+            => device.Usages.ContainsAll(usages);
 
 
         /// <summary>
@@ -255,10 +253,7 @@ namespace Alis.Core.Input
         /// <param name="device"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T Controller<T>(this Device device) where T : Controller
-        {
-            return Input.Controllers.Controller.Create<T>(device);
-        }
+        public static T Controller<T>(this Device device) where T : Controller => Input.Controllers.Controller.Create<T>(device);
 
 
         /// <summary>
@@ -267,10 +262,7 @@ namespace Alis.Core.Input
         /// <param name="device">The device</param>
         /// <param name="controllerType">The controller type</param>
         /// <returns>The controller</returns>
-        public static Controller Controller(this Device device, Type controllerType)
-        {
-            return Input.Controllers.Controller.Create(device, controllerType);
-        }
+        public static Controller Controller(this Device device, Type controllerType) => Input.Controllers.Controller.Create(device, controllerType);
 
 
         /// <summary>
@@ -280,10 +272,7 @@ namespace Alis.Core.Input
         /// <param name="enumerable">The enumerable</param>
         /// <param name="items">The items</param>
         /// <returns>The bool</returns>
-        public static bool ContainsAll<T>(this IEnumerable<T> enumerable, params T[] items)
-        {
-            return enumerable.ContainsAll(null!, items);
-        }
+        public static bool ContainsAll<T>(this IEnumerable<T> enumerable, params T[] items) => enumerable.ContainsAll(null!, items);
 
 
         /// <summary>
@@ -309,8 +298,8 @@ namespace Alis.Core.Input
                 return enumerable.Contains(items[0], comparer);
             }
 
-            var hashSet = new HashSet<T>(items, comparer);
-            foreach (var item in enumerable)
+            HashSet<T> hashSet = new HashSet<T>(items, comparer);
+            foreach (T item in enumerable)
             {
                 hashSet.Remove(item);
                 if (hashSet.Count < 1)

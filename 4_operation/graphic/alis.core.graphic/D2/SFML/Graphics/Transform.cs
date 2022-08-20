@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Transform.cs
+//  File:Transform.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -76,10 +76,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>A new transform which is the inverse of self</returns>
         ////////////////////////////////////////////////////////////
-        public Transform GetInverse()
-        {
-            return sfTransform_getInverse(ref this);
-        }
+        public Transform GetInverse() => sfTransform_getInverse(ref this);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -89,10 +86,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="y">Y coordinate of the point to transform</param>
         /// <returns>Transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f TransformPoint(float x, float y)
-        {
-            return TransformPoint(new Vector2f(x, y));
-        }
+        public Vector2f TransformPoint(float x, float y) => TransformPoint(new Vector2f(x, y));
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -101,10 +95,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Point to transform</param>
         /// <returns>Transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f TransformPoint(Vector2f point)
-        {
-            return sfTransform_transformPoint(ref this, point);
-        }
+        public Vector2f TransformPoint(Vector2f point) => sfTransform_transformPoint(ref this, point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -118,10 +109,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rectangle">Rectangle to transform</param>
         /// <returns>Transformed rectangle</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect TransformRect(FloatRect rectangle)
-        {
-            return sfTransform_transformRect(ref this, rectangle);
-        }
+        public FloatRect TransformRect(FloatRect rectangle) => sfTransform_transformRect(ref this, rectangle);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -268,10 +256,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and transform are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj)
-        {
-            return obj is Transform transform && Equals(transform);
-        }
+        public override bool Equals(object obj) => obj is Transform transform && Equals(transform);
 
         /// <summary>
         /// </summary>
@@ -280,7 +265,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         {
             unchecked
             {
-                var hashCode = m00.GetHashCode();
+                int hashCode = m00.GetHashCode();
                 hashCode = (hashCode * 397) ^ m01.GetHashCode();
                 hashCode = (hashCode * 397) ^ m02.GetHashCode();
                 hashCode = (hashCode * 397) ^ m10.GetHashCode();
@@ -302,10 +287,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">Transform to check</param>
         /// <returns>Transforms are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Transform transform)
-        {
-            return sfTransform_equal(ref this, ref transform);
-        }
+        public bool Equals(Transform transform) => sfTransform_equal(ref this, ref transform);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -331,10 +313,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="right">Right operand (the point to transform)</param>
         /// <returns>New transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2f operator *(Transform left, Vector2f right)
-        {
-            return left.TransformPoint(right);
-        }
+        public static Vector2f operator *(Transform left, Vector2f right) => left.TransformPoint(right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>The identity transform (does nothing)</summary>
@@ -350,17 +329,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return string.Format("[Transform]" +
-                                 " Matrix(" +
-                                 "{0}, {1}, {2}," +
-                                 "{3}, {4}, {5}," +
-                                 "{6}, {7}, {8}, )",
-                m00, m01, m02,
-                m10, m11, m12,
-                m20, m21, m22);
-        }
+        public override string ToString() => string.Format("[Transform]" +
+                                                           " Matrix(" +
+                                                           "{0}, {1}, {2}," +
+                                                           "{3}, {4}, {5}," +
+                                                           "{6}, {7}, {8}, )",
+            m00, m01, m02,
+            m10, m11, m12,
+            m20, m21, m22);
 
         /// <summary>
         ///     The 02
@@ -382,8 +358,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <returns>The transform</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Transform sfTransform_getInverse(ref Transform transform);
 
         /// <summary>
@@ -392,8 +367,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The vector 2f</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2f sfTransform_transformPoint(ref Transform transform, Vector2f point);
 
         /// <summary>
@@ -402,8 +376,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">The transform</param>
         /// <param name="rectangle">The rectangle</param>
         /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfTransform_transformRect(ref Transform transform, FloatRect rectangle);
 
         /// <summary>
@@ -411,8 +384,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <param name="other">The other</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_combine(ref Transform transform, ref Transform other);
 
         /// <summary>
@@ -421,8 +393,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">The transform</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_translate(ref Transform transform, float x, float y);
 
         /// <summary>
@@ -430,8 +401,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="transform">The transform</param>
         /// <param name="angle">The angle</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_rotate(ref Transform transform, float angle);
 
         /// <summary>
@@ -441,8 +411,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="angle">The angle</param>
         /// <param name="centerX">The center</param>
         /// <param name="centerY">The center</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_rotateWithCenter(ref Transform transform, float angle, float centerX,
             float centerY);
 
@@ -452,8 +421,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="transform">The transform</param>
         /// <param name="scaleX">The scale</param>
         /// <param name="scaleY">The scale</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_scale(ref Transform transform, float scaleX, float scaleY);
 
         /// <summary>
@@ -464,8 +432,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="scaleY">The scale</param>
         /// <param name="centerX">The center</param>
         /// <param name="centerY">The center</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTransform_scaleWithCenter(ref Transform transform, float scaleX, float scaleY,
             float centerX, float centerY);
 
@@ -475,8 +442,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfTransform_equal(ref Transform left, ref Transform right);
     }
 }

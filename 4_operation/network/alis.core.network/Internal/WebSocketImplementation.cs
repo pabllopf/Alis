@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   WebSocketImplementation.cs
+//  File:WebSocketImplementation.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -49,11 +49,6 @@ namespace Alis.Core.Network.Internal
     /// </summary>
     internal class WebSocketImplementation : WebSocket
     {
-        /// <summary>
-        ///     The max ping pong payload len
-        /// </summary>
-        private const int MAX_PING_PONG_PAYLOAD_LEN = 125;
-
         /// <summary>
         ///     The guid
         /// </summary>
@@ -211,6 +206,11 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         public TimeSpan KeepAliveInterval { get; }
 
+        /// <summary>
+        ///     The max ping pong payload len
+        /// </summary>
+        private const int MAX_PING_PONG_PAYLOAD_LEN = 125;
+
         public event EventHandler<PongEventArgs> Pong;
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace Alis.Core.Network.Internal
                             throw;
                         }
 
-                        bool endOfMessage = frame.IsFinBitSet && _readCursor.NumBytesLeftToRead == 0;
+                        bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
                         switch (frame.OpCode)
                         {
                             case WebSocketOpCode.ConnectionClose:
@@ -520,7 +520,7 @@ namespace Alis.Core.Network.Internal
         /// <returns>The payload to sent in the close frame</returns>
         private ArraySegment<byte> BuildClosePayload(WebSocketCloseStatus closeStatus, string statusDescription)
         {
-            byte[] statusBuffer = BitConverter.GetBytes((ushort)closeStatus);
+            byte[] statusBuffer = BitConverter.GetBytes((ushort) closeStatus);
             Array.Reverse(statusBuffer); // network byte order (big endian)
 
             if (statusDescription == null)
@@ -652,7 +652,7 @@ namespace Alis.Core.Network.Internal
                 buffer = new ArraySegment<byte>(array, 0, array.Length);
             }
 
-            return new ArraySegment<byte>(buffer.Array, buffer.Offset, (int)stream.Position);
+            return new ArraySegment<byte>(buffer.Array, buffer.Offset, (int) stream.Position);
 #endif
         }
 
@@ -726,7 +726,7 @@ namespace Alis.Core.Network.Internal
             catch (OperationCanceledException)
             {
                 // do not throw an exception because that will mask the original exception
-                Events.Log.CloseOutputAutoTimeoutCancelled(_guid, (int)timeSpan.TotalSeconds, closeStatus,
+                Events.Log.CloseOutputAutoTimeoutCancelled(_guid, (int) timeSpan.TotalSeconds, closeStatus,
                     statusDescription, ex.ToString());
             }
             catch (Exception closeException)

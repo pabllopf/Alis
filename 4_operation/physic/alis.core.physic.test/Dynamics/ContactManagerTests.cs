@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ContactManagerTests.cs
+//  File:ContactManagerTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -49,19 +49,13 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManagerTests" /> class
         /// </summary>
-        public ContactManagerTests()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
+        public ContactManagerTests() => mockRepository = new MockRepository(MockBehavior.Strict);
 
         /// <summary>
         ///     Creates the manager
         /// </summary>
         /// <returns>The contact manager</returns>
-        private ContactManager CreateManager()
-        {
-            return new ContactManager(new World(new Aabb(), Vector2.Zero, true));
-        }
+        private ContactManager CreateManager() => new ContactManager(new World(new Aabb(), Vector2.Zero, true));
 
         /// <summary>
         ///     Tests that pair added state under test expected behavior
@@ -92,7 +86,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PairRemoved_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var manager = CreateManager();
+            ContactManager manager = CreateManager();
             object proxyUserData1 = null;
             object proxyUserData2 = null;
             object pairUserData = null;

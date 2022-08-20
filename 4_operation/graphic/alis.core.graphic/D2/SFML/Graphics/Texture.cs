@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Texture.cs
+//  File:Texture.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -202,9 +202,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         internal Texture(IntPtr cPointer) :
             base(cPointer)
-        {
-            myExternal = true;
-        }
+            => myExternal = true;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -291,10 +289,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Image containing the texture's pixels</returns>
         ////////////////////////////////////////////////////////////
-        public Image CopyToImage()
-        {
-            return new Image(sfTexture_copyToImage(CPointer));
-        }
+        public Image CopyToImage() => new Image(sfTexture_copyToImage(CPointer));
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -441,10 +436,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </remarks>
         /// <returns>True if mipmap generation was successful, false if unsuccessful</returns>
         ////////////////////////////////////////////////////////////
-        public bool GenerateMipmap()
-        {
-            return sfTexture_generateMipmap(CPointer);
-        }
+        public bool GenerateMipmap() => sfTexture_generateMipmap(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -474,13 +466,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return "[Texture]" +
-                   " Size(" + Size + ")" +
-                   " Smooth(" + Smooth + ")" +
-                   " Repeated(" + Repeated + ")";
-        }
+        public override string ToString() => "[Texture]" +
+                                             " Size(" + Size + ")" +
+                                             " Smooth(" + Smooth + ")" +
+                                             " Repeated(" + Repeated + ")";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -512,8 +501,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfTexture_create(uint width, uint height);
 
         /// <summary>
@@ -522,8 +510,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="filename">The filename</param>
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfTexture_createFromFile(string filename, ref IntRect area);
 
         /// <summary>
@@ -532,8 +519,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="stream">The stream</param>
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfTexture_createFromStream(IntPtr stream, ref IntRect area);
 
         /// <summary>
@@ -542,8 +528,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="image">The image</param>
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfTexture_createFromImage(IntPtr image, ref IntRect area);
 
         /// <summary>
@@ -553,8 +538,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="size">The size</param>
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfTexture_createFromMemory(IntPtr data, ulong size, ref IntRect area);
 
         /// <summary>
@@ -562,16 +546,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfTexture_copy(IntPtr texture);
 
         /// <summary>
         ///     Sfs the texture destroy using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_destroy(IntPtr texture);
 
         /// <summary>
@@ -579,8 +561,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The vector 2u</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Vector2u sfTexture_getSize(IntPtr texture);
 
         /// <summary>
@@ -588,8 +569,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfTexture_copyToImage(IntPtr texture);
 
         /// <summary>
@@ -601,8 +581,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="height">The height</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe void sfTexture_updateFromPixels(IntPtr texture, byte* pixels, uint width,
             uint height, uint x, uint y);
 
@@ -613,8 +592,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="texture">The texture</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_updateFromTexture(IntPtr CPointer, IntPtr texture, uint x, uint y);
 
         /// <summary>
@@ -624,8 +602,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="image">The image</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_updateFromImage(IntPtr texture, IntPtr image, uint x, uint y);
 
         /// <summary>
@@ -635,8 +612,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="window">The window</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_updateFromWindow(IntPtr texture, IntPtr window, uint x, uint y);
 
         /// <summary>
@@ -646,8 +622,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="renderWindow">The render window</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void
             sfTexture_updateFromRenderWindow(IntPtr texture, IntPtr renderWindow, uint x, uint y);
 
@@ -655,8 +630,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Sfs the texture bind using the specified texture
         /// </summary>
         /// <param name="texture">The texture</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_bind(IntPtr texture);
 
         /// <summary>
@@ -664,8 +638,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <param name="smooth">The smooth</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_setSmooth(IntPtr texture, bool smooth);
 
         /// <summary>
@@ -673,8 +646,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfTexture_isSmooth(IntPtr texture);
 
         /// <summary>
@@ -682,8 +654,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <param name="sRgb">The rgb</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_setSrgb(IntPtr texture, bool sRgb);
 
         /// <summary>
@@ -691,8 +662,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfTexture_isSrgb(IntPtr texture);
 
         /// <summary>
@@ -700,8 +670,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <param name="repeated">The repeated</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_setRepeated(IntPtr texture, bool repeated);
 
         /// <summary>
@@ -709,8 +678,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfTexture_isRepeated(IntPtr texture);
 
         /// <summary>
@@ -718,8 +686,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="texture">The texture</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfTexture_generateMipmap(IntPtr texture);
 
         /// <summary>
@@ -727,8 +694,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="right">The right</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfTexture_swap(IntPtr CPointer, IntPtr right);
 
         /// <summary>
@@ -736,8 +702,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="shader">The shader</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfTexture_getNativeHandle(IntPtr shader);
 
         /// <summary>
@@ -746,16 +711,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="texture">The texture</param>
         /// <param name="rectangle">The rectangle</param>
         /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfTexture_getTexCoords(IntPtr texture, IntRect rectangle);
 
         /// <summary>
         ///     Sfs the texture get maximum size
         /// </summary>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfTexture_getMaximumSize();
     }
 }

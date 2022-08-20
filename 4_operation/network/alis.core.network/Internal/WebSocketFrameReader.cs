@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   WebSocketFrameReader.cs
+//  File:WebSocketFrameReader.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -106,13 +106,13 @@ namespace Alis.Core.Network.Internal
             byte finBitFlag = 0x80;
             byte opCodeFlag = 0x0F;
             bool isFinBitSet = (byte1 & finBitFlag) == finBitFlag;
-            WebSocketOpCode opCode = (WebSocketOpCode)(byte1 & opCodeFlag);
+            WebSocketOpCode opCode = (WebSocketOpCode) (byte1 & opCodeFlag);
 
             // read and process second byte
             byte maskFlag = 0x80;
             bool isMaskBitSet = (byte2 & maskFlag) == maskFlag;
             uint len = await ReadLength(byte2, smallBuffer, fromStream, cancellationToken);
-            int count = (int)len;
+            int count = (int) len;
             int minCount = CalculateNumBytesToRead(count, intoBuffer.Count);
             ArraySegment<byte> maskKey = new ArraySegment<byte>();
 
@@ -169,7 +169,7 @@ namespace Alis.Core.Network.Internal
                 int closeStatusCode = BitConverter.ToUInt16(buffer.Array, buffer.Offset);
                 if (Enum.IsDefined(typeof(WebSocketCloseStatus), closeStatusCode))
                 {
-                    closeStatus = (WebSocketCloseStatus)closeStatusCode;
+                    closeStatus = (WebSocketCloseStatus) closeStatusCode;
                 }
                 else
                 {
@@ -204,7 +204,7 @@ namespace Alis.Core.Network.Internal
             CancellationToken cancellationToken)
         {
             byte payloadLenFlag = 0x7F;
-            uint len = (uint)(byte2 & payloadLenFlag);
+            uint len = (uint) (byte2 & payloadLenFlag);
 
             // read a short length or a long length depending on the value of len
             if (len == 126)
@@ -213,7 +213,7 @@ namespace Alis.Core.Network.Internal
             }
             else if (len == 127)
             {
-                len = (uint)await BinaryReaderWriter.ReadULongExactly(fromStream, false, smallBuffer,
+                len = (uint) await BinaryReaderWriter.ReadULongExactly(fromStream, false, smallBuffer,
                     cancellationToken);
                 const uint
                     maxLen = 2147483648; // 2GB - not part of the spec but just a precaution. Send large volumes of data in smaller frames.

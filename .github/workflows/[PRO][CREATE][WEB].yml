@@ -4,7 +4,7 @@ name: "[PRO][CREATE][WEB]"
 on:
   schedule:
     - cron: '30 2 * * *'
-  
+
 jobs:
   Create_Web:
     runs-on: windows-latest
@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: develop
-          
+
       - name: Generate web
         run: .\\.tools\\doxygen\\doxygen.exe .\\.tools\\doxygen\\web_config
 
@@ -26,11 +26,11 @@ jobs:
       - name: git config core.autocrlf false
         run: git config core.autocrlf false
 
-      - name:  git add .
-        run:  git add .
+      - name: git add .
+        run: git add .
 
       - name: commit
         run: "git commit -m 'docs: create automatic web.'"
 
-      - name:  git push
-        run:  git push 
+      - name: git push
+        run: git push 

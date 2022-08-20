@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ControlChange.cs
+//  File:ControlChange.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -102,7 +102,7 @@ namespace Alis.Core.Input
         public TimeSpan Elapsed => Timestamp < 0
             ? Timeout.InfiniteTimeSpan
             : TimeSpan.FromSeconds(
-                (double)(Stopwatch.GetTimestamp() - Timestamp) / Stopwatch.Frequency);
+                (double) (Stopwatch.GetTimestamp() - Timestamp) / Stopwatch.Frequency);
 
         /// <summary>
         ///     Updates the value
@@ -111,31 +111,22 @@ namespace Alis.Core.Input
         /// <returns>The control change</returns>
         internal ControlChange? Update((DataValue value, long timestamp) value)
         {
-            var normalisedValue = Control.Normalise(value.value.GetLogicalValue());
+            double normalisedValue = Control.Normalise(value.value.GetLogicalValue());
             return normalisedValue.Equals(Value)
-                ? (ControlChange?)null
+                ? (ControlChange?) null
                 : new ControlChange(Control, Value, normalisedValue, value.timestamp);
         }
 
         /// <inheritdoc />
-        public bool Equals(ControlChange other)
-        {
-            return ReferenceEquals(Control, other.Control) &&
-                   PreviousValue.Equals(other.PreviousValue) &&
-                   Value.Equals(other.Value);
-        }
+        public bool Equals(ControlChange other) => ReferenceEquals(Control, other.Control) &&
+                                                   PreviousValue.Equals(other.PreviousValue) &&
+                                                   Value.Equals(other.Value);
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
-        {
-            return obj is ControlChange other && Equals(other);
-        }
+        public override bool Equals(object obj) => obj is ControlChange other && Equals(other);
 
         /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Control, PreviousValue, Value);
-        }
+        public override int GetHashCode() => HashCode.Combine(Control, PreviousValue, Value);
 
         /// <summary>
         ///     Implements the == operator.
@@ -143,10 +134,7 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(ControlChange left, ControlChange right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(ControlChange left, ControlChange right) => left.Equals(right);
 
         /// <summary>
         ///     Implements the != operator.
@@ -154,28 +142,19 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(ControlChange left, ControlChange right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(ControlChange left, ControlChange right) => !left.Equals(right);
 
         /// <summary>
         ///     Performs an implicit conversion from <see cref="ControlChange" /> to <see cref="System.Double" />.
         /// </summary>
         /// <param name="change">The change.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator double(ControlChange change)
-        {
-            return change.Value;
-        }
+        public static implicit operator double(ControlChange change) => change.Value;
 
         /// <summary>
         ///     Creates a change that simulates the current value having changed from <seealso cref="double.NaN" />.
         /// </summary>
         /// <returns></returns>
-        internal ControlChange Reset()
-        {
-            return new ControlChange(Control, double.NaN, Value, Timestamp);
-        }
+        internal ControlChange Reset() => new ControlChange(Control, double.NaN, Value, Timestamp);
     }
 }

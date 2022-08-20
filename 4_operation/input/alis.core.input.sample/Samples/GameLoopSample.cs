@@ -5,29 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   GameLoopSample.cs
+//  File:GameLoopSample.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -51,16 +52,16 @@ namespace Alis.Core.Input.Sample.Samples
         {
             // Create a singleton instance of the controllers object, that we should dispose
             // on closing the game, here we use a using block, but can obviously call controllers.Dispose()
-            using var devices = new Devices(CreateLogger<Devices>());
+            using Devices devices = new Devices(CreateLogger<Devices>());
 
             Logger.LogInformation("Press A Button to exit!");
 
             // Holds a reference to the current gamepad, which is set asynchronously as they are detected.
             Gamepad gamepad = null;
-            var batch = 0;
+            int batch = 0;
 
             // Controller to any gamepads as they are found
-            using var subscription = devices.Controllers<Gamepad>().Subscribe(g =>
+            using IDisposable subscription = devices.Controllers<Gamepad>().Subscribe(g =>
             {
                 // If we already have a connected gamepad ignore any more.
                 // ReSharper disable once AccessToDisposedClosure
@@ -81,14 +82,14 @@ namespace Alis.Core.Input.Sample.Samples
                 g.Connect();
                 batch = 0;
                 Logger.LogInformation($"{gamepad.Name} found!  Following controls were mapped:");
-                foreach (var (control, infos) in g.Mapping)
+                foreach ((Control control, IReadOnlyList<ControlInfo> infos) in g.Mapping)
                 {
                     Logger.LogInformation(
                         $"  {control.Name} => {string.Join(", ", infos.Select(info => info.PropertyName))}");
                 }
             });
 
-            var timestamp = 0L;
+            long timestamp = 0L;
             try
             {
                 // Our 'game loop'
@@ -98,20 +99,20 @@ namespace Alis.Core.Input.Sample.Samples
                     Thread.Sleep(15);
 
                     // If we haven't got a gamepad, or the current one isn't connected, wait for a connected gamepad.
-                    var currentGamepad = gamepad;
+                    Gamepad currentGamepad = gamepad;
                     if (currentGamepad?.IsConnected != true)
                     {
                         continue;
                     }
 
                     // Look for any changes since the last detected change.
-                    var changes = currentGamepad.ChangesSince(timestamp);
+                    IReadOnlyList<ControlValue> changes = currentGamepad.ChangesSince(timestamp);
                     if (changes.Count > 0)
                     {
-                        var logBuilder = new StringBuilder();
+                        StringBuilder logBuilder = new StringBuilder();
 
                         logBuilder.Append("Batch ").Append(++batch).AppendLine();
-                        foreach (var value in changes)
+                        foreach (ControlValue value in changes)
                         {
                             // We should update our timestamp to the last change we see.
                             if (timestamp < value.Timestamp)
@@ -119,7 +120,7 @@ namespace Alis.Core.Input.Sample.Samples
                                 timestamp = value.Timestamp;
                             }
 
-                            var valueStr = value.Value switch
+                            string valueStr = value.Value switch
                             {
                                 bool b => b ? "Pressed" : "Not Pressed",
                                 double d => d.ToString("F3"),

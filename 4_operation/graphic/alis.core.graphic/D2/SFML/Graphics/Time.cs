@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Time.cs
+//  File:Time.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -54,10 +54,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="seconds">Number of seconds</param>
         /// <returns>Time value constructed from the amount of seconds</returns>
         ////////////////////////////////////////////////////////////
-        public static Time FromSeconds(float seconds)
-        {
-            return sfSeconds(seconds);
-        }
+        public static Time FromSeconds(float seconds) => sfSeconds(seconds);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -66,10 +63,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="milliseconds">Number of milliseconds</param>
         /// <returns>Time value constructed from the amount of milliseconds</returns>
         ////////////////////////////////////////////////////////////
-        public static Time FromMilliseconds(int milliseconds)
-        {
-            return sfMilliseconds(milliseconds);
-        }
+        public static Time FromMilliseconds(int milliseconds) => sfMilliseconds(milliseconds);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -78,40 +72,28 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="microseconds">Number of microseconds</param>
         /// <returns>Time value constructed from the amount of microseconds</returns>
         ////////////////////////////////////////////////////////////
-        public static Time FromMicroseconds(long microseconds)
-        {
-            return sfMicroseconds(microseconds);
-        }
+        public static Time FromMicroseconds(long microseconds) => sfMicroseconds(microseconds);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Returns the time value as a number of seconds
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public float AsSeconds()
-        {
-            return sfTime_asSeconds(this);
-        }
+        public float AsSeconds() => sfTime_asSeconds(this);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Returns the time value as a number of milliseconds
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public int AsMilliseconds()
-        {
-            return sfTime_asMilliseconds(this);
-        }
+        public int AsMilliseconds() => sfTime_asMilliseconds(this);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Returns the time value as a number of microseconds
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public long AsMicroseconds()
-        {
-            return sfTime_asMicroseconds(this);
-        }
+        public long AsMicroseconds() => sfTime_asMicroseconds(this);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -119,10 +101,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Times are equal</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(Time left, Time right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(Time left, Time right) => left.Equals(right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -130,10 +109,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Times are not equal</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(Time left, Time right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(Time left, Time right) => !left.Equals(right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -142,10 +118,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and time are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj)
-        {
-            return obj is Time && Equals((Time)obj);
-        }
+        public override bool Equals(object obj) => obj is Time && Equals((Time) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -154,10 +127,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="other">Time to check</param>
         /// <returns>times are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Time other)
-        {
-            return microseconds == other.microseconds;
-        }
+        public bool Equals(Time other) => microseconds == other.microseconds;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -165,10 +135,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>True if left is lesser than right</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator <(Time left, Time right)
-        {
-            return left.AsMicroseconds() < right.AsMicroseconds();
-        }
+        public static bool operator <(Time left, Time right) => left.AsMicroseconds() < right.AsMicroseconds();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -176,10 +143,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>True if left is lesser or equal than right</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator <=(Time left, Time right)
-        {
-            return left.AsMicroseconds() <= right.AsMicroseconds();
-        }
+        public static bool operator <=(Time left, Time right) => left.AsMicroseconds() <= right.AsMicroseconds();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -187,10 +151,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>True if left is greater than right</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator >(Time left, Time right)
-        {
-            return left.AsMicroseconds() > right.AsMicroseconds();
-        }
+        public static bool operator >(Time left, Time right) => left.AsMicroseconds() > right.AsMicroseconds();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -198,10 +159,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>True if left is greater or equal than right</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator >=(Time left, Time right)
-        {
-            return left.AsMicroseconds() >= right.AsMicroseconds();
-        }
+        public static bool operator >=(Time left, Time right) => left.AsMicroseconds() >= right.AsMicroseconds();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -209,10 +167,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Difference of the two times values</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator -(Time left, Time right)
-        {
-            return FromMicroseconds(left.AsMicroseconds() - right.AsMicroseconds());
-        }
+        public static Time operator -(Time left, Time right) => FromMicroseconds(left.AsMicroseconds() - right.AsMicroseconds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -220,10 +175,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Sum of the two times values</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator +(Time left, Time right)
-        {
-            return FromMicroseconds(left.AsMicroseconds() + right.AsMicroseconds());
-        }
+        public static Time operator +(Time left, Time right) => FromMicroseconds(left.AsMicroseconds() + right.AsMicroseconds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -231,10 +183,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left multiplied by the right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator *(Time left, float right)
-        {
-            return FromSeconds(left.AsSeconds() * right);
-        }
+        public static Time operator *(Time left, float right) => FromSeconds(left.AsSeconds() * right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -242,10 +191,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left multiplied by the right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator *(Time left, long right)
-        {
-            return FromMicroseconds(left.AsMicroseconds() * right);
-        }
+        public static Time operator *(Time left, long right) => FromMicroseconds(left.AsMicroseconds() * right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -253,10 +199,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left multiplied by the right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator *(float left, Time right)
-        {
-            return FromSeconds(left * right.AsSeconds());
-        }
+        public static Time operator *(float left, Time right) => FromSeconds(left * right.AsSeconds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -264,10 +207,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left multiplied by the right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator *(long left, Time right)
-        {
-            return FromMicroseconds(left * right.AsMicroseconds());
-        }
+        public static Time operator *(long left, Time right) => FromMicroseconds(left * right.AsMicroseconds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -275,10 +215,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left divided by the right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator /(Time left, Time right)
-        {
-            return FromMicroseconds(left.AsMicroseconds() / right.AsMicroseconds());
-        }
+        public static Time operator /(Time left, Time right) => FromMicroseconds(left.AsMicroseconds() / right.AsMicroseconds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -286,10 +223,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left divided by the right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator /(Time left, float right)
-        {
-            return FromSeconds(left.AsSeconds() / right);
-        }
+        public static Time operator /(Time left, float right) => FromSeconds(left.AsSeconds() / right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -297,10 +231,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left divided by the right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator /(Time left, long right)
-        {
-            return FromMicroseconds(left.AsMicroseconds() / right);
-        }
+        public static Time operator /(Time left, long right) => FromMicroseconds(left.AsMicroseconds() / right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -308,10 +239,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>left modulo of right</returns>
         ////////////////////////////////////////////////////////////
-        public static Time operator %(Time left, Time right)
-        {
-            return FromMicroseconds(left.AsMicroseconds() % right.AsMicroseconds());
-        }
+        public static Time operator %(Time left, Time right) => FromMicroseconds(left.AsMicroseconds() % right.AsMicroseconds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -319,10 +247,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode()
-        {
-            return microseconds.GetHashCode();
-        }
+        public override int GetHashCode() => microseconds.GetHashCode();
 
         /// <summary>
         ///     The microseconds
@@ -334,8 +259,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="Amount">The amount</param>
         /// <returns>The time</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfSeconds(float Amount);
 
         /// <summary>
@@ -343,8 +267,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="Amount">The amount</param>
         /// <returns>The time</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfMilliseconds(int Amount);
 
         /// <summary>
@@ -352,8 +275,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="Amount">The amount</param>
         /// <returns>The time</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfMicroseconds(long Amount);
 
         /// <summary>
@@ -361,8 +283,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="time">The time</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfTime_asSeconds(Time time);
 
         /// <summary>
@@ -370,8 +291,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="time">The time</param>
         /// <returns>The int</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern int sfTime_asMilliseconds(Time time);
 
         /// <summary>
@@ -379,8 +299,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="time">The time</param>
         /// <returns>The long</returns>
-        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.system, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern long sfTime_asMicroseconds(Time time);
     }
 }

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ControllerInfo.cs
+//  File:ControllerInfo.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -50,17 +50,6 @@ namespace Alis.Core.Input.Controllers
         private class ControllerInfo
         {
             /// <summary>
-            ///     The controller info
-            /// </summary>
-            private static readonly ConcurrentDictionary<Type, ControllerInfo> s_infos =
-                new ConcurrentDictionary<Type, ControllerInfo>();
-
-            /// <summary>
-            ///     The control info
-            /// </summary>
-            private static readonly Type[] s_constructorTypes = { typeof(Device), typeof(ControlInfo[]) };
-
-            /// <summary>
             ///     The create controller
             /// </summary>
             public readonly CreateControllerDelegate<Controller> CreateController;
@@ -71,9 +60,7 @@ namespace Alis.Core.Input.Controllers
             /// <param name="createControllerDelegate">The create controller delegate</param>
             private ControllerInfo(
                 CreateControllerDelegate<Controller> createControllerDelegate)
-            {
-                CreateController = createControllerDelegate;
-            }
+                => CreateController = createControllerDelegate;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="ControllerInfo" /> class
@@ -88,13 +75,24 @@ namespace Alis.Core.Input.Controllers
             {
                 CreateController = device =>
                 {
-                    var mapping = GetMapping(device, deviceAttributes, propertyData);
+                    ControlInfo[] mapping = GetMapping(device, deviceAttributes, propertyData);
                     return mapping is null ||
-                           !(constructor.Invoke(new object[] { device, mapping }) is Controller controller)
+                           !(constructor.Invoke(new object[] {device, mapping}) is Controller controller)
                         ? null
                         : controller;
                 };
             }
+
+            /// <summary>
+            ///     The controller info
+            /// </summary>
+            private static readonly ConcurrentDictionary<Type, ControllerInfo> s_infos =
+                new ConcurrentDictionary<Type, ControllerInfo>();
+
+            /// <summary>
+            ///     The control info
+            /// </summary>
+            private static readonly Type[] s_constructorTypes = {typeof(Device), typeof(ControlInfo[])};
 
             // ReSharper disable once MemberHidesStaticFromOuterClass
             /// <summary>
@@ -114,10 +112,7 @@ namespace Alis.Core.Input.Controllers
             /// </summary>
             /// <typeparam name="T">The </typeparam>
             /// <returns>The controller info</returns>
-            public static ControllerInfo Get<T>() where T : Controller
-            {
-                return Get(typeof(T));
-            }
+            public static ControllerInfo Get<T>() where T : Controller => Get(typeof(T));
 
             /// <summary>
             ///     Gets the type
@@ -128,7 +123,7 @@ namespace Alis.Core.Input.Controllers
             /// <returns>The controller info</returns>
             public static ControllerInfo Get(Type type)
             {
-                if (s_infos.TryGetValue(type, out var controllerInfo))
+                if (s_infos.TryGetValue(type, out ControllerInfo controllerInfo))
                 {
                     return controllerInfo;
                 }
@@ -140,7 +135,7 @@ namespace Alis.Core.Input.Controllers
                 }
 
                 // Check for a valid constructor on the type
-                var constructor = type.GetConstructor(
+                ConstructorInfo constructor = type.GetConstructor(
                     BindingFlags.CreateInstance | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
                     null,
                     s_constructorTypes,
@@ -152,13 +147,13 @@ namespace Alis.Core.Input.Controllers
                         string.Format(Resources.ControllerInvalidConstructor, type));
                 }
 
-                var deviceAttributes = (IReadOnlyList<DeviceAttribute>)type
+                IReadOnlyList<DeviceAttribute> deviceAttributes = (IReadOnlyList<DeviceAttribute>) type
                     .GetCustomAttributes(typeof(DeviceAttribute), true)
                     .OfType<DeviceAttribute>()
                     .ToArray();
 
                 // Grab all attributes on control properties
-                var propertyData = (IReadOnlyDictionary<string, PropertyData>)type
+                IReadOnlyDictionary<string, PropertyData> propertyData = (IReadOnlyDictionary<string, PropertyData>) type
                     .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                     .ToDictionary(property => property.Name, property => new PropertyData(property));
 
@@ -183,17 +178,17 @@ namespace Alis.Core.Input.Controllers
                     return null;
                 }
 
-                var controlCount = device.Count;
-                var mapping = new List<ControlInfo>(controlCount);
-                var controlScores = new Dictionary<Control, uint>(controlCount);
-                foreach (var (propertyName, attributes) in controlPropertyAttributes)
+                int controlCount = device.Count;
+                List<ControlInfo> mapping = new List<ControlInfo>(controlCount);
+                Dictionary<Control, uint> controlScores = new Dictionary<Control, uint>(controlCount);
+                foreach ((string propertyName, PropertyData attributes) in controlPropertyAttributes)
                 {
-                    foreach (var control in device.Keys)
+                    foreach (Control control in device.Keys)
                     {
-                        foreach (var controlAttribute in attributes.Controls.Where(controlAttribute =>
+                        foreach (ControlAttribute controlAttribute in attributes.Controls.Where(controlAttribute =>
                                      controlAttribute.Matches(control)))
                         {
-                            if (!controlScores.TryGetValue(control, out var score))
+                            if (!controlScores.TryGetValue(control, out uint score))
                             {
                                 score = 0;
                             }
@@ -202,7 +197,7 @@ namespace Alis.Core.Input.Controllers
                         }
                     }
 
-                    var bestMatch = controlScores
+                    Control bestMatch = controlScores
                         .Where(kvp => kvp.Value > 0)
                         .OrderByDescending(kvp => kvp.Value)
                         .Select(kvp => kvp.Key)
@@ -231,12 +226,6 @@ namespace Alis.Core.Input.Controllers
             private class PropertyData
             {
                 /// <summary>
-                ///     The type converter
-                /// </summary>
-                private static readonly ConcurrentDictionary<Type, TypeConverter> s_converterCache =
-                    new ConcurrentDictionary<Type, TypeConverter>();
-
-                /// <summary>
                 ///     The controls
                 /// </summary>
                 public readonly IReadOnlyList<ControlAttribute> Controls;
@@ -264,7 +253,7 @@ namespace Alis.Core.Input.Controllers
                 {
                     ReturnType = propertyInfo.PropertyType;
 
-                    var converterType = propertyInfo.GetCustomAttributes(typeof(TypeConverterAttribute), true)
+                    Type converterType = propertyInfo.GetCustomAttributes(typeof(TypeConverterAttribute), true)
                         .OfType<TypeConverterAttribute>()
                         .Select(attribute => Type.GetType(attribute.ConverterTypeName))
                         .FirstOrDefault();
@@ -274,10 +263,10 @@ namespace Alis.Core.Input.Controllers
                         Converter = s_converterCache.GetOrAdd(converterType, t =>
                         {
                             // Optimisation, look for a static field called 'Instance' that returns an IControlConverter.
-                            var instanceFieldInfo =
+                            FieldInfo instanceFieldInfo =
                                 t.GetField("Instance", BindingFlags.Public | BindingFlags.Static);
                             TypeConverter typeConverter = null;
-                            if (instanceFieldInfo != null &&
+                            if ((instanceFieldInfo != null) &&
                                 typeof(TypeConverter).IsAssignableFrom(instanceFieldInfo.FieldType))
                             {
                                 // Try to get the converter from the static instance
@@ -313,6 +302,12 @@ namespace Alis.Core.Input.Controllers
                         .OfType<RequiredAttribute>()
                         .Any();
                 }
+
+                /// <summary>
+                ///     The type converter
+                /// </summary>
+                private static readonly ConcurrentDictionary<Type, TypeConverter> s_converterCache =
+                    new ConcurrentDictionary<Type, TypeConverter>();
             }
         }
     }

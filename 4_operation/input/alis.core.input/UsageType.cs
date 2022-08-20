@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   UsageType.cs
+//  File:UsageType.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -40,6 +40,46 @@ namespace Alis.Core.Input
     /// <seealso cref="IEquatable{UsageType}" />
     public sealed class UsageType : IEquatable<UsageType>
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="UsageType" /> class
+        /// </summary>
+        /// <param name="usageTypes">The usage types</param>
+        /// <param name="usageTypeGroup">The usage type group</param>
+        /// <param name="name">The name</param>
+        /// <param name="description">The description</param>
+        private UsageType(UsageTypes usageTypes, UsageTypeGroup usageTypeGroup, string name, string description)
+        {
+            UsageTypes = usageTypes;
+            UsageTypeGroup = usageTypeGroup;
+            Name = name;
+            Description = description;
+            s_usageTypes[usageTypes] = new[] {this};
+        }
+
+        /// <summary>
+        ///     Gets the associated usage types enum.
+        /// </summary>
+        /// <value>The usage types.</value>
+        public UsageTypes UsageTypes { get; }
+
+        /// <summary>
+        ///     Gets the usage type group.
+        /// </summary>
+        /// <value>The usage type group.</value>
+        public UsageTypeGroup UsageTypeGroup { get; }
+
+        /// <summary>
+        ///     Gets the name.
+        /// </summary>
+        /// <value>The name.</value>
+        public string Name { get; }
+
+        /// <summary>
+        ///     Gets the description.
+        /// </summary>
+        /// <value>The description.</value>
+        public string Description { get; }
+
         /// <summary>
         ///     The usage type
         /// </summary>
@@ -137,64 +177,15 @@ namespace Alis.Core.Input
         public static readonly UsageType UM = new UsageType(UsageTypes.UM, UsageTypeGroup.Collections, "UM",
             "Usage Modifier");
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="UsageType" /> class
-        /// </summary>
-        /// <param name="usageTypes">The usage types</param>
-        /// <param name="usageTypeGroup">The usage type group</param>
-        /// <param name="name">The name</param>
-        /// <param name="description">The description</param>
-        private UsageType(UsageTypes usageTypes, UsageTypeGroup usageTypeGroup, string name, string description)
-        {
-            UsageTypes = usageTypes;
-            UsageTypeGroup = usageTypeGroup;
-            Name = name;
-            Description = description;
-            s_usageTypes[usageTypes] = new[] { this };
-        }
-
-        /// <summary>
-        ///     Gets the associated usage types enum.
-        /// </summary>
-        /// <value>The usage types.</value>
-        public UsageTypes UsageTypes { get; }
-
-        /// <summary>
-        ///     Gets the usage type group.
-        /// </summary>
-        /// <value>The usage type group.</value>
-        public UsageTypeGroup UsageTypeGroup { get; }
-
-        /// <summary>
-        ///     Gets the name.
-        /// </summary>
-        /// <value>The name.</value>
-        public string Name { get; }
-
-        /// <summary>
-        ///     Gets the description.
-        /// </summary>
-        /// <value>The description.</value>
-        public string Description { get; }
+        /// <inheritdoc />
+        public bool Equals(UsageType other) => !(other is null) &&
+                                               (ReferenceEquals(this, other) || UsageTypes == other.UsageTypes);
 
         /// <inheritdoc />
-        public bool Equals(UsageType other)
-        {
-            return !(other is null) &&
-                   (ReferenceEquals(this, other) || UsageTypes == other.UsageTypes);
-        }
+        public override bool Equals(object obj) => ReferenceEquals(this, obj) || (obj is UsageType other && Equals(other));
 
         /// <inheritdoc />
-        public override bool Equals(object obj)
-        {
-            return ReferenceEquals(this, obj) || (obj is UsageType other && Equals(other));
-        }
-
-        /// <inheritdoc />
-        public override int GetHashCode()
-        {
-            return (int)UsageTypes;
-        }
+        public override int GetHashCode() => (int) UsageTypes;
 
         /// <summary>
         ///     Implements the == operator.
@@ -202,10 +193,7 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator ==(UsageType left, UsageType right)
-        {
-            return Equals(left, right);
-        }
+        public static bool operator ==(UsageType left, UsageType right) => Equals(left, right);
 
         /// <summary>
         ///     Implements the != operator.
@@ -213,10 +201,7 @@ namespace Alis.Core.Input
         /// <param name="left">The left.</param>
         /// <param name="right">The right.</param>
         /// <returns>The result of the operator.</returns>
-        public static bool operator !=(UsageType left, UsageType right)
-        {
-            return !Equals(left, right);
-        }
+        public static bool operator !=(UsageType left, UsageType right) => !Equals(left, right);
 
         /// <summary>
         ///     Gets the specified usage types from the flag enum.
@@ -230,9 +215,9 @@ namespace Alis.Core.Input
                     usageTypes,
                     u =>
                         Enum.GetValues(typeof(UsageTypes)).Cast<UsageTypes>()
-                            .Where(flag => flag != 0 && (u & flag) != 0)
+                            .Where(flag => (flag != 0) && ((u & flag) != 0))
                             .Select(ut =>
-                                s_usageTypes.TryGetValue(ut, out var usageType) ? usageType.SingleOrDefault() : null!)
+                                s_usageTypes.TryGetValue(ut, out IReadOnlyCollection<UsageType> usageType) ? usageType.SingleOrDefault() : null!)
                             .Where(ut => ut != null)
                             .ToArray())
                 : Array.Empty<UsageType>();
@@ -243,15 +228,9 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="usageType">Type of the usage.</param>
         /// <returns>The result of the conversion.</returns>
-        public static implicit operator UsageTypes(UsageType usageType)
-        {
-            return usageType.UsageTypes;
-        }
+        public static implicit operator UsageTypes(UsageType usageType) => usageType.UsageTypes;
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 }

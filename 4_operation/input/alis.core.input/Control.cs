@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Control.cs
+//  File:Control.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -85,11 +85,13 @@ namespace Alis.Core.Input
             FullName = string.Join(", ", _usages.Select(u => u.FullName));
 
             // Calculate button number (if any)
-            var b = _usages.FirstOrDefault(u => u.Page == UsagePage.Button)?.Id;
+            ushort? b = _usages.FirstOrDefault(u => u.Page == UsagePage.Button)?.Id;
             if (b.HasValue)
             {
                 if (b.Value > 0)
-                    b = (ushort)(b.Value - 1);
+                {
+                    b = (ushort) (b.Value - 1);
+                }
             }
 
             ButtonNumber = b;
@@ -238,17 +240,11 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The double</returns>
-        internal double Normalise(int value)
-        {
-            return value < _minimumValue || value > _maximumValue
-                ? DataItem.HasNullState ? double.NaN : 0D
-                : (value - _minimumValue) / (double)(_maximumValue - _minimumValue);
-        }
+        internal double Normalise(int value) => value < _minimumValue || value > _maximumValue
+            ? DataItem.HasNullState ? double.NaN : 0D
+            : (value - _minimumValue) / (double) (_maximumValue - _minimumValue);
 
         /// <inheritdoc />
-        public override string ToString()
-        {
-            return FullName;
-        }
+        public override string ToString() => FullName;
     }
 }

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   WorldManifoldTests.cs
+//  File:WorldManifoldTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -47,19 +47,13 @@ namespace Alis.Core.Physic.Test.Collisions
         /// <summary>
         ///     Initializes a new instance of the <see cref="WorldManifoldTests" /> class
         /// </summary>
-        public WorldManifoldTests()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
+        public WorldManifoldTests() => mockRepository = new MockRepository(MockBehavior.Strict);
 
         /// <summary>
         ///     Creates the world manifold
         /// </summary>
         /// <returns>The world manifold</returns>
-        private WorldManifold CreateWorldManifold()
-        {
-            return new WorldManifold();
-        }
+        private WorldManifold CreateWorldManifold() => new WorldManifold();
 
         /// <summary>
         ///     Tests that clone state under test expected behavior
@@ -68,10 +62,10 @@ namespace Alis.Core.Physic.Test.Collisions
         public void Clone_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var worldManifold = CreateWorldManifold();
+            WorldManifold worldManifold = CreateWorldManifold();
 
             // Act
-            var result = worldManifold.Clone();
+            WorldManifold result = worldManifold.Clone();
 
             // Assert
             Assert.True(true);

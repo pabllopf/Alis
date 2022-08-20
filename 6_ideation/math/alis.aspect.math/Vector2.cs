@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Vector2.cs
+//  File:Vector2.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -39,10 +39,7 @@ namespace Alis.Aspect.Math
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        public bool Equals(Vector2 other)
-        {
-            return X.Equals(other.X) && Y.Equals(other.Y);
-        }
+        public bool Equals(Vector2 other) => X.Equals(other.X) && Y.Equals(other.Y);
 
         /// <summary>
         ///     Describes whether this instance equals
@@ -56,7 +53,7 @@ namespace Alis.Aspect.Math
                 return false;
             }
 
-            return obj is Vector2 && Equals((Vector2)obj);
+            return obj is Vector2 && Equals((Vector2) obj);
         }
 
         /// <summary>
@@ -162,19 +159,13 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Get the length of this vector (the norm).
         /// </summary>
-        public float Length()
-        {
-            return (float)System.Math.Sqrt(X * X + Y * Y);
-        }
+        public float Length() => (float) System.Math.Sqrt(X * X + Y * Y);
 
         /// <summary>
         ///     Get the length squared. For performance, use this instead of
         ///     Length (if possible).
         /// </summary>
-        public float LengthSquared()
-        {
-            return X * X + Y * Y;
-        }
+        public float LengthSquared() => X * X + Y * Y;
 
         /// <summary>
         ///     Convert this vector into a unit vector. Returns the length.
@@ -265,20 +256,14 @@ namespace Alis.Aspect.Math
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator ==(Vector2 a, Vector2 b)
-        {
-            return a.X == b.X && a.Y == b.Y;
-        }
+        public static bool operator ==(Vector2 a, Vector2 b) => (a.X == b.X) && (a.Y == b.Y);
 
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator !=(Vector2 a, Vector2 b)
-        {
-            return a.X != b.X || a.Y != b.Y;
-        }
+        public static bool operator !=(Vector2 a, Vector2 b) => a.X != b.X || a.Y != b.Y;
 
         /// <summary>
         ///     Gets the value of the zero
@@ -288,18 +273,12 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Peform the dot product on two vectors.
         /// </summary>
-        public static float Dot(Vector2 a, Vector2 b)
-        {
-            return a.X * b.X + a.Y * b.Y;
-        }
+        public static float Dot(Vector2 a, Vector2 b) => a.X * b.X + a.Y * b.Y;
 
         /// <summary>
         ///     Perform the cross product on two vectors. In 2D this produces a scalar.
         /// </summary>
-        public static float Cross(Vector2 a, Vector2 b)
-        {
-            return a.X * b.Y - a.Y * b.X;
-        }
+        public static float Cross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
 
         /// <summary>
         ///     Perform the cross product on a vector and a scalar.

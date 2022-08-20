@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   SoundRecorder.cs
+//  File:SoundRecorder.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -148,10 +148,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         ///     Please note that only one capture can happen at the same time.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public bool Start()
-        {
-            return Start(44100);
-        }
+        public bool Start() => Start(44100);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -165,10 +162,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="sampleRate"> Sound frequency; the more samples, the higher the quality (44100 by default = CD quality)</param>
         ////////////////////////////////////////////////////////////
-        public bool Start(uint sampleRate)
-        {
-            return sfSoundRecorder_start(CPointer, sampleRate);
-        }
+        public bool Start(uint sampleRate) => sfSoundRecorder_start(CPointer, sampleRate);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -186,10 +180,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return "[SoundRecorder]" + " SampleRate(" + SampleRate + ")";
-        }
+        public override string ToString() => "[SoundRecorder]" + " SampleRate(" + SampleRate + ")";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -201,11 +192,9 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <returns>False to abort recording audio data, true to continue</returns>
         ////////////////////////////////////////////////////////////
-        protected virtual bool OnStart()
-        {
+        protected virtual bool OnStart() =>
             // Does nothing by default
-            return true;
-        }
+            true;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -257,10 +246,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="Name">The name of the audio capture device</param>
         /// <returns>True, if it was able to set the requested device</returns>
         ////////////////////////////////////////////////////////////
-        public bool SetDevice(string Name)
-        {
-            return sfSoundRecorder_setDevice(CPointer, Name);
-        }
+        public bool SetDevice(string Name) => sfSoundRecorder_setDevice(CPointer, Name);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -268,10 +254,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <returns>The name of the current audio capture device</returns>
         ////////////////////////////////////////////////////////////
-        public string GetDevice()
-        {
-            return Marshal.PtrToStringAnsi(sfSoundRecorder_getDevice(CPointer));
-        }
+        public string GetDevice() => Marshal.PtrToStringAnsi(sfSoundRecorder_getDevice(CPointer));
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -310,8 +293,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="OnStop">The on stop</param>
         /// <param name="UserData">The user data</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundRecorder_create(StartCallback OnStart, ProcessCallback OnProcess,
             StopCallback OnStop, IntPtr UserData);
 
@@ -319,8 +301,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         ///     Sfs the sound recorder destroy using the specified sound recorder
         /// </summary>
         /// <param name="SoundRecorder">The sound recorder</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_destroy(IntPtr SoundRecorder);
 
         /// <summary>
@@ -329,16 +310,14 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundRecorder">The sound recorder</param>
         /// <param name="SampleRate">The sample rate</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundRecorder_start(IntPtr SoundRecorder, uint SampleRate);
 
         /// <summary>
         ///     Sfs the sound recorder stop using the specified sound recorder
         /// </summary>
         /// <param name="SoundRecorder">The sound recorder</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_stop(IntPtr SoundRecorder);
 
         /// <summary>
@@ -346,16 +325,14 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundRecorder">The sound recorder</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundRecorder_getSampleRate(IntPtr SoundRecorder);
 
         /// <summary>
         ///     Describes whether sf sound recorder is available
         /// </summary>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundRecorder_isAvailable();
 
         /// <summary>
@@ -363,8 +340,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundRecorder">The sound recorder</param>
         /// <param name="Interval">The interval</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_setProcessingInterval(IntPtr SoundRecorder, Time Interval);
 
         /// <summary>
@@ -372,16 +348,14 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="Count">The count</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe IntPtr* sfSoundRecorder_getAvailableDevices(out uint Count);
 
         /// <summary>
         ///     Sfs the sound recorder get default device
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundRecorder_getDefaultDevice();
 
         /// <summary>
@@ -390,8 +364,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="SoundRecorder">The sound recorder</param>
         /// <param name="Name">The name</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundRecorder_setDevice(IntPtr SoundRecorder, string Name);
 
         /// <summary>
@@ -399,8 +372,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundRecorder">The sound recorder</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundRecorder_getDevice(IntPtr SoundRecorder);
 
         /// <summary>
@@ -408,8 +380,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundRecorder">The sound recorder</param>
         /// <param name="channelCount">The channel count</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_setChannelCount(IntPtr SoundRecorder, uint channelCount);
 
         /// <summary>
@@ -417,8 +388,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// </summary>
         /// <param name="SoundRecorder">The sound recorder</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundRecorder_getChannelCount(IntPtr SoundRecorder);
 
         /// <summary>

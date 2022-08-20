@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Font.cs
+//  File:Font.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -128,10 +128,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="outlineThickness">Thickness of outline (when != 0 the glyph will not be filled)</param>
         /// <returns>The glyph corresponding to the character</returns>
         ////////////////////////////////////////////////////////////
-        public Glyph GetGlyph(uint codePoint, uint characterSize, bool bold, float outlineThickness)
-        {
-            return sfFont_getGlyph(CPointer, codePoint, characterSize, bold, outlineThickness);
-        }
+        public Glyph GetGlyph(uint codePoint, uint characterSize, bool bold, float outlineThickness) => sfFont_getGlyph(CPointer, codePoint, characterSize, bold, outlineThickness);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -142,10 +139,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="characterSize">Character size</param>
         /// <returns>Kerning offset, in pixels</returns>
         ////////////////////////////////////////////////////////////
-        public float GetKerning(uint first, uint second, uint characterSize)
-        {
-            return sfFont_getKerning(CPointer, first, second, characterSize);
-        }
+        public float GetKerning(uint first, uint second, uint characterSize) => sfFont_getKerning(CPointer, first, second, characterSize);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -154,10 +148,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="characterSize">Character size</param>
         /// <returns>Line spacing, in pixels</returns>
         ////////////////////////////////////////////////////////////
-        public float GetLineSpacing(uint characterSize)
-        {
-            return sfFont_getLineSpacing(CPointer, characterSize);
-        }
+        public float GetLineSpacing(uint characterSize) => sfFont_getLineSpacing(CPointer, characterSize);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -166,10 +157,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="characterSize">Character size</param>
         /// <returns>Underline position, in pixels</returns>
         ////////////////////////////////////////////////////////////
-        public float GetUnderlinePosition(uint characterSize)
-        {
-            return sfFont_getUnderlinePosition(CPointer, characterSize);
-        }
+        public float GetUnderlinePosition(uint characterSize) => sfFont_getUnderlinePosition(CPointer, characterSize);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -178,10 +166,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="characterSize">Character size</param>
         /// <returns>Underline thickness, in pixels</returns>
         ////////////////////////////////////////////////////////////
-        public float GetUnderlineThickness(uint characterSize)
-        {
-            return sfFont_getUnderlineThickness(CPointer, characterSize);
-        }
+        public float GetUnderlineThickness(uint characterSize) => sfFont_getUnderlineThickness(CPointer, characterSize);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -218,10 +203,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return nameof(Font);
-        }
+        public override string ToString() => nameof(Font);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -262,8 +244,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="Filename">The filename</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_createFromFile(string Filename);
 
         /// <summary>
@@ -271,8 +252,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -281,8 +261,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
@@ -290,16 +269,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="Font">The font</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_copy(IntPtr Font);
 
         /// <summary>
         ///     Sfs the font destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfFont_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -311,8 +288,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="bold">The bold</param>
         /// <param name="outlineThickness">The outline thickness</param>
         /// <returns>The glyph</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Glyph sfFont_getGlyph(IntPtr CPointer, uint codePoint, uint characterSize, bool bold,
             float outlineThickness);
 
@@ -324,8 +300,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="second">The second</param>
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getKerning(IntPtr CPointer, uint first, uint second, uint characterSize);
 
         /// <summary>
@@ -334,8 +309,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getLineSpacing(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -344,8 +318,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getUnderlinePosition(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -354,8 +327,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="characterSize">The character size</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfFont_getUnderlineThickness(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -364,8 +336,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="characterSize">The character size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfFont_getTexture(IntPtr CPointer, uint characterSize);
 
         /// <summary>
@@ -373,8 +344,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The info marshal data</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern InfoMarshalData sfFont_getInfo(IntPtr CPointer);
 
         ////////////////////////////////////////////////////////////

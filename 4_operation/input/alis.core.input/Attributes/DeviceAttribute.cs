@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DeviceAttribute.cs
+//  File:DeviceAttribute.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -56,10 +56,7 @@ namespace Alis.Core.Input.Attributes
         ///     Initializes a new instance of the <see cref="DeviceAttribute" /> class.
         /// </summary>
         /// <param name="usages">The usages, all of which must match.</param>
-        public DeviceAttribute(params object[] usages)
-        {
-            Usages = usages.OfType<Enum>().Select(Usage.Get).ToArray();
-        }
+        public DeviceAttribute(params object[] usages) => Usages = usages.OfType<Enum>().Select(Usage.Get).ToArray();
 
         /// <summary>
         ///     Gets a list of valid usages, of which the device must match all.
@@ -84,13 +81,13 @@ namespace Alis.Core.Input.Attributes
         /// <returns>The bool</returns>
         internal bool Matches(Device device)
         {
-            if ((ProductId > 0 && device.ProductId != ProductId) ||
+            if (((ProductId > 0) && (device.ProductId != ProductId)) ||
                 !Usages.All(usage => device.Usages.Contains(usage)))
             {
                 return false;
             }
 
-            var releaseNumberRegex = _releaseNumberRegex;
+            Regex releaseNumberRegex = _releaseNumberRegex;
             if (releaseNumberRegex is null)
             {
                 if (string.IsNullOrWhiteSpace(ReleaseNumberRegex))

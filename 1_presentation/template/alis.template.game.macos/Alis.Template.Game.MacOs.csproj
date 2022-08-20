@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net6.0-macos</TargetFramework>
-      <!--<RuntimeIdentifier>osx-arm64</RuntimeIdentifier>-->
-    <OutputType>Exe</OutputType>
-    <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
-    <StartupObject>Alis.Template.Game.MacOs.MainClass</StartupObject>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0-macos</TargetFramework>
+        <!--<RuntimeIdentifier>osx-arm64</RuntimeIdentifier>-->
+        <OutputType>Exe</OutputType>
+        <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
+        <StartupObject>Alis.Template.Game.MacOs.MainClass</StartupObject>
+    </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)1_presentation/template/alis.template.game/Alis.Template.Game.csproj" />
+        <ProjectReference Include="$(SolutionDir)1_presentation/template/alis.template.game/Alis.Template.Game.csproj"/>
     </ItemGroup>
 </Project>

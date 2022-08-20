@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   MyGLRenderer.cs
+//  File:MyGLRenderer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -42,14 +42,14 @@ namespace Alis.Template.Game.Android
     internal class MyGLRenderer : Object, GLSurfaceView.IRenderer
     {
         /// <summary>
-        ///     The tag
-        /// </summary>
-        private static string TAG = "MyGLRenderer";
-
-        /// <summary>
         ///     The proj matrix
         /// </summary>
         private float[] mProjMatrix = new float[16];
+
+        /// <summary>
+        ///     The tag
+        /// </summary>
+        private static string TAG = "MyGLRenderer";
 
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Alis.Template.Game.Android
             // such as screen rotation
             GLES20.GlViewport(0, 0, width, height);
 
-            float ratio = (float)width / height;
+            float ratio = (float) width / height;
 
             // this projection matrix is applied to object coordinates
             // in the onDrawFrame() method

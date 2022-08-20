@@ -5,29 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DependencyInjectionSample.cs
+//  File:DependencyInjectionSample.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
@@ -51,33 +52,33 @@ namespace Alis.Core.Input.Sample.Samples
             "Demonstrates configuration of controllers in a dependency injection scenario.";
 
         /// <inheritdoc />
-        public override async Task ExecuteAsync(CancellationToken token = default)
+        public override async Task ExecuteAsync(CancellationToken token = default(CancellationToken))
         {
             // Create an example service provider (this may be done by your framework code already)
-            var serviceCollection = new ServiceCollection();
+            ServiceCollection serviceCollection = new ServiceCollection();
             ConfigureServices(serviceCollection);
 
             // NOTE: ServiceProvider should be disposed asynchronously by most frameworks, however many examples don't show this,
             // Devices also supports asynchronous disposal, and so should be disposed automatically by the service provider
             // when it is disposed.  If you create a Devices object yourself, also use await using to ensure correct disposal.
-            await using var serviceProvider = serviceCollection.BuildServiceProvider();
+            await using ServiceProvider serviceProvider = serviceCollection.BuildServiceProvider();
 
             // Get the logger
-            var logger = serviceProvider.GetService<ILogger<DependencyInjectionSample>>();
+            ILogger<DependencyInjectionSample> logger = serviceProvider.GetService<ILogger<DependencyInjectionSample>>();
 
             // Grab the controllers service
-            var controllers = serviceProvider.GetService<Devices>()!;
+            Devices controllers = serviceProvider.GetService<Devices>()!;
 
             // Subscribe to changes in controllers
-            using var subscription1 = controllers
+            using IDisposable subscription1 = controllers
                 .ControlUsagesAll(GenericDesktopPage.X, ButtonPage.Button9)
                 //.Connect()
                 .Subscribe(changeSet =>
                 {
-                    var logBuilder = new StringBuilder();
+                    StringBuilder logBuilder = new StringBuilder();
                     logBuilder.AppendLine("Devices updated:");
-                    var first = true;
-                    foreach (var change in changeSet)
+                    bool first = true;
+                    foreach (Change<Device, string> change in changeSet)
                     {
                         if (first)
                         {
@@ -88,7 +89,7 @@ namespace Alis.Core.Input.Sample.Samples
                             logBuilder.AppendLine(null);
                         }
 
-                        var device = change.Current;
+                        Device device = change.Current;
                         logBuilder.Append("  The ")
                             .Append(device)
                             .Append(" Device  was ");
@@ -120,19 +121,19 @@ namespace Alis.Core.Input.Sample.Samples
                 });
 
             // Subscribe to all button control changes
-            var batch = 0;
-            using var subscription2 = controllers
+            int batch = 0;
+            using IDisposable subscription2 = controllers
                 // Watch for control changes only
                 .ControlChanges()
                 .Subscribe(changes =>
                 {
                     // Log the changes and look for a press of Button 1 on any controller.
-                    var logBuilder = new StringBuilder();
+                    StringBuilder logBuilder = new StringBuilder();
                     logBuilder.Append("Batch ").Append(++batch).AppendLine(":");
-                    foreach (var group in changes.GroupBy(c => c.Control.Device))
+                    foreach (IGrouping<Device, ControlChange> group in changes.GroupBy(c => c.Control.Device))
                     {
                         logBuilder.Append("  ").Append(group.Key).AppendLine(":");
-                        foreach (var change in group)
+                        foreach (ControlChange change in group)
                         {
                             logBuilder
                                 .Append("    ")
@@ -151,8 +152,8 @@ namespace Alis.Core.Input.Sample.Samples
                 });
 
             // Subscribe to just button 1 change events, and trigger a task completion source when any are pressed.
-            var button0PressedTcs = new TaskCompletionSource<bool>();
-            using var subscription3 = controllers
+            TaskCompletionSource<bool> button0PressedTcs = new TaskCompletionSource<bool>();
+            using IDisposable subscription3 = controllers
                 // Watch for button one changes only
                 .ControlChanges(c => c.ButtonNumber == 0)
                 //&& !c.Device.Usages.Contains(65538u))
@@ -165,15 +166,15 @@ namespace Alis.Core.Input.Sample.Samples
                 });
 
             // Subscribe to a specific controller type
-            var gamepadBatch = 0;
-            using var gamepadSubscription = controllers
+            int gamepadBatch = 0;
+            using IDisposable gamepadSubscription = controllers
                 .Controllers<Gamepad>()
                 .Do(gamepad =>
                 {
-                    var logBuilder = new StringBuilder();
+                    StringBuilder logBuilder = new StringBuilder();
                     logBuilder.Append(gamepad.Name)
                         .AppendLine(" found!  Following controls were mapped:");
-                    foreach (var (control, infos) in gamepad.Mapping)
+                    foreach ((Control control, IReadOnlyList<ControlInfo> infos) in gamepad.Mapping)
                     {
                         logBuilder.Append("  ")
                             .Append(control.Name)
@@ -189,11 +190,11 @@ namespace Alis.Core.Input.Sample.Samples
                 .SelectMany(gamepad => gamepad.Changes)
                 .Subscribe(changes =>
                 {
-                    var logBuilder = new StringBuilder();
+                    StringBuilder logBuilder = new StringBuilder();
                     logBuilder.Append("Gamepad Batch ").Append(++gamepadBatch).AppendLine(":");
-                    foreach (var change in changes)
+                    foreach (ControlValue change in changes)
                     {
-                        var valueStr = change.Value switch
+                        string valueStr = change.Value switch
                         {
                             bool b => b ? "Pressed" : "Not Pressed",
                             double d => d.ToString("F3"),

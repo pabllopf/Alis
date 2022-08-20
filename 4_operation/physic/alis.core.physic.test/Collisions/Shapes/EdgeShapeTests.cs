@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   EdgeShapeTests.cs
+//  File:EdgeShapeTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -49,19 +49,13 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         /// <summary>
         ///     Initializes a new instance of the <see cref="EdgeShapeTests" /> class
         /// </summary>
-        public EdgeShapeTests()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
+        public EdgeShapeTests() => mockRepository = new MockRepository(MockBehavior.Strict);
 
         /// <summary>
         ///     Creates the edge shape
         /// </summary>
         /// <returns>The edge shape</returns>
-        private EdgeShape CreateEdgeShape()
-        {
-            return new EdgeShape();
-        }
+        private EdgeShape CreateEdgeShape() => new EdgeShape();
 
         /// <summary>
         ///     Tests that dispose state under test expected behavior
@@ -70,7 +64,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void Dispose_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
 
             // Act
             edgeShape.Dispose();
@@ -87,7 +81,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void Set_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             Vector2 v1 = default(Vector2);
             Vector2 v2 = default(Vector2);
 
@@ -108,12 +102,12 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void TestPoint_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             XForm transform = default(XForm);
             Vector2 p = default(Vector2);
 
             // Act
-            var result = edgeShape.TestPoint(
+            bool result = edgeShape.TestPoint(
                 transform,
                 p);
 
@@ -129,7 +123,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void TestSegment_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             XForm transform = default(XForm);
             float lambda = 0;
             Vector2 normal = default(Vector2);
@@ -137,7 +131,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
             float maxLambda = 0;
 
             // Act
-            var result = edgeShape.TestSegment(
+            SegmentCollide result = edgeShape.TestSegment(
                 transform,
                 out lambda,
                 out normal,
@@ -156,7 +150,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ComputeAabb_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             Aabb aabb = default(Aabb);
             XForm transform = default(XForm);
 
@@ -177,7 +171,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ComputeMass_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             MassData massData = default(MassData);
             float density = 0;
 
@@ -198,7 +192,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void SetPrevEdge_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             EdgeShape edge = null;
             Vector2 cornerDir = default(Vector2);
             bool convex = false;
@@ -221,7 +215,7 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void SetNextEdge_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             EdgeShape edge = null;
             Vector2 cornerDir = default(Vector2);
             bool convex = false;
@@ -244,14 +238,14 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ComputeSubmergedArea_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             Vector2 normal = default(Vector2);
             float offset = 0;
             XForm xf = default(XForm);
             Vector2 c = default(Vector2);
 
             // Act
-            var result = edgeShape.ComputeSubmergedArea(
+            float result = edgeShape.ComputeSubmergedArea(
                 normal,
                 offset,
                 xf,
@@ -269,11 +263,11 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void GetSupport_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             Vector2 d = default(Vector2);
 
             // Act
-            var result = edgeShape.GetSupport(
+            int result = edgeShape.GetSupport(
                 d);
 
             // Assert
@@ -288,11 +282,11 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void GetSupportVertex_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             Vector2 d = default(Vector2);
 
             // Act
-            var result = edgeShape.GetSupportVertex(
+            Vector2 result = edgeShape.GetSupportVertex(
                 d);
 
             // Assert
@@ -307,11 +301,11 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void GetVertex_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             int index = 0;
 
             // Act
-            var result = edgeShape.GetVertex(
+            Vector2 result = edgeShape.GetVertex(
                 index);
 
             // Assert
@@ -326,11 +320,11 @@ namespace Alis.Core.Physic.Test.Collisions.Shapes
         public void ComputeSweepRadius_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var edgeShape = CreateEdgeShape();
+            EdgeShape edgeShape = CreateEdgeShape();
             Vector2 pivot = default(Vector2);
 
             // Act
-            var result = edgeShape.ComputeSweepRadius(
+            float result = edgeShape.ComputeSweepRadius(
                 pivot);
 
             // Assert

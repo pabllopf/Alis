@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   FloatRect.cs
+//  File:FloatRect.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -84,7 +84,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
             float minY = Math.Min(Top, Top + Height);
             float maxY = Math.Max(Top, Top + Height);
 
-            return x >= minX && x < maxX && y >= minY && y < maxY;
+            return (x >= minX) && (x < maxX) && (y >= minY) && (y < maxY);
         }
 
         ////////////////////////////////////////////////////////////
@@ -131,7 +131,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
             float interBottom = Math.Min(r1MaxY, r2MaxY);
 
             // If the intersection is valid (positive non zero area), then there is an intersection
-            if (interLeft < interRight && interTop < interBottom)
+            if ((interLeft < interRight) && (interTop < interBottom))
             {
                 overlap.Left = interLeft;
                 overlap.Top = interTop;
@@ -153,14 +153,11 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString()
-        {
-            return "[FloatRect]" +
-                   " Left(" + Left + ")" +
-                   " Top(" + Top + ")" +
-                   " Width(" + Width + ")" +
-                   " Height(" + Height + ")";
-        }
+        public override string ToString() => "[FloatRect]" +
+                                             " Left(" + Left + ")" +
+                                             " Top(" + Top + ")" +
+                                             " Width(" + Width + ")" +
+                                             " Height(" + Height + ")";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -169,10 +166,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and rectangle are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj)
-        {
-            return obj is FloatRect && Equals((FloatRect)obj);
-        }
+        public override bool Equals(object obj) => obj is FloatRect && Equals((FloatRect) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -181,13 +175,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="other">Rectangle to check</param>
         /// <returns>Rectangles are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(FloatRect other)
-        {
-            return Left == other.Left &&
-                   Top == other.Top &&
-                   Width == other.Width &&
-                   Height == other.Height;
-        }
+        public bool Equals(FloatRect other) => (Left == other.Left) &&
+                                               (Top == other.Top) &&
+                                               (Width == other.Width) &&
+                                               (Height == other.Height);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -195,13 +186,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode()
-        {
-            return unchecked((int)((uint)Left ^
-                                   (((uint)Top << 13) | ((uint)Top >> 19)) ^
-                                   (((uint)Width << 26) | ((uint)Width >> 6)) ^
-                                   (((uint)Height << 7) | ((uint)Height >> 25))));
-        }
+        public override int GetHashCode() => unchecked((int) ((uint) Left ^
+                                                              (((uint) Top << 13) | ((uint) Top >> 19)) ^
+                                                              (((uint) Width << 26) | ((uint) Width >> 6)) ^
+                                                              (((uint) Height << 7) | ((uint) Height >> 25))));
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -211,10 +199,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="r2">Second rect</param>
         /// <returns>r1 == r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(FloatRect r1, FloatRect r2)
-        {
-            return r1.Equals(r2);
-        }
+        public static bool operator ==(FloatRect r1, FloatRect r2) => r1.Equals(r2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -224,10 +209,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="r2">Second rect</param>
         /// <returns>r1 != r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(FloatRect r1, FloatRect r2)
-        {
-            return !r1.Equals(r2);
-        }
+        public static bool operator !=(FloatRect r1, FloatRect r2) => !r1.Equals(r2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -236,13 +218,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="r">Rectangle being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator IntRect(FloatRect r)
-        {
-            return new IntRect((int)r.Left,
-                (int)r.Top,
-                (int)r.Width,
-                (int)r.Height);
-        }
+        public static explicit operator IntRect(FloatRect r) => new IntRect((int) r.Left,
+            (int) r.Top,
+            (int) r.Width,
+            (int) r.Height);
 
         /// <summary>Left coordinate of the rectangle</summary>
         public float Left;

@@ -5,28 +5,29 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   WorldTests.cs
+//  File:WorldTests.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
@@ -48,26 +49,20 @@ namespace Alis.Core.Physic.Test
         /// <summary>
         ///     Initializes a new instance of the <see cref="WorldTests" /> class
         /// </summary>
-        public WorldTests()
-        {
-            mockRepository = new MockRepository(MockBehavior.Strict);
-        }
+        public WorldTests() => mockRepository = new MockRepository(MockBehavior.Strict);
 
         /// <summary>
         ///     Creates the world
         /// </summary>
         /// <returns>The world</returns>
-        private World CreateWorld()
-        {
-            return new World(
-                new Aabb
-                {
-                    LowerBound = new Vector2(-100.0f),
-                    UpperBound = new Vector2(-100.0f)
-                },
-                new Vector2(0.0f, -10.0f),
-                true);
-        }
+        private World CreateWorld() => new World(
+            new Aabb
+            {
+                LowerBound = new Vector2(-100.0f),
+                UpperBound = new Vector2(-100.0f)
+            },
+            new Vector2(0.0f, -10.0f),
+            true);
 
         /// <summary>
         ///     Tests that create body state under test expected behavior
@@ -177,7 +172,6 @@ namespace Alis.Core.Physic.Test
             mockRepository.VerifyAll();
         }
 
-   
 
         /// <summary>
         ///     Tests that get body list state under test expected behavior
@@ -186,18 +180,15 @@ namespace Alis.Core.Physic.Test
         public void GetBodyList_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = CreateWorld();
+            World world = CreateWorld();
 
             // Act
-            var result = world.BodyList;
+            List<Body> result = world.BodyList;
 
             // Assert
             Assert.True(true);
             mockRepository.VerifyAll();
         }
-
- 
-
 
 
         /// <summary>
@@ -217,13 +208,6 @@ namespace Alis.Core.Physic.Test
             Assert.True(true);
             mockRepository.VerifyAll();
         }
-        
-
-        
-
-
-
-
 
 
         /// <summary>
@@ -233,7 +217,7 @@ namespace Alis.Core.Physic.Test
         public void Step_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = CreateWorld();
+            World world = CreateWorld();
             float dt = 0;
             int velocityIterations = 0;
             int positionIteration = 0;
@@ -256,13 +240,13 @@ namespace Alis.Core.Physic.Test
         public void Query_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var world = CreateWorld();
+            World world = CreateWorld();
             Aabb aabb = default(Aabb);
             Fixture[] fixtures = null;
             int maxCount = 0;
 
             // Act
-            var result = world.Query(
+            int result = world.Query(
                 aabb,
                 fixtures,
                 maxCount);
@@ -325,6 +309,5 @@ namespace Alis.Core.Physic.Test
             Assert.True(true);
             mockRepository.VerifyAll();
         }
-        
     }
 }

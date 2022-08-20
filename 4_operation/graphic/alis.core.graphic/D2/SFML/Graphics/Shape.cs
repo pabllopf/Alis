@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Shape.cs
+//  File:Shape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -165,11 +165,11 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
 
             if (target is RenderWindow)
             {
-                sfRenderWindow_drawShape(((RenderWindow)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderWindow_drawShape(((RenderWindow) target).CPointer, CPointer, ref marshaledStates);
             }
             else if (target is RenderTexture)
             {
-                sfRenderTexture_drawShape(((RenderTexture)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderTexture_drawShape(((RenderTexture) target).CPointer, CPointer, ref marshaledStates);
             }
         }
 
@@ -205,10 +205,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Local bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetLocalBounds()
-        {
-            return sfShape_getLocalBounds(CPointer);
-        }
+        public FloatRect GetLocalBounds() => sfShape_getLocalBounds(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -221,12 +218,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Global bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetGlobalBounds()
-        {
+        public FloatRect GetGlobalBounds() =>
             // because we override the object's transform
             // we don't use the native getGlobalBounds function,
-            return Transform.TransformRect(GetLocalBounds());
-        }
+            Transform.TransformRect(GetLocalBounds());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -257,20 +252,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Callback passed to the C API
         /// </summary>
         ////////////////////////////////////////////////////////////
-        private uint InternalGetPointCount(IntPtr userData)
-        {
-            return GetPointCount();
-        }
+        private uint InternalGetPointCount(IntPtr userData) => GetPointCount();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Callback passed to the C API
         /// </summary>
         ////////////////////////////////////////////////////////////
-        private Vector2f InternalGetPoint(uint index, IntPtr userData)
-        {
-            return GetPoint(index);
-        }
+        private Vector2f InternalGetPoint(uint index, IntPtr userData) => GetPoint(index);
 
         /// <summary>
         ///     Sfs the shape create using the specified get point count
@@ -279,8 +268,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="getPoint">The get point</param>
         /// <param name="userData">The user data</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfShape_create(GetPointCountCallbackType getPointCount,
             GetPointCallbackType getPoint, IntPtr userData);
 
@@ -289,16 +277,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="Shape">The shape</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfShape_copy(IntPtr Shape);
 
         /// <summary>
         ///     Sfs the shape destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShape_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -307,8 +293,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Texture">The texture</param>
         /// <param name="AdjustToNewSize">The adjust to new size</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShape_setTexture(IntPtr CPointer, IntPtr Texture, bool AdjustToNewSize);
 
         /// <summary>
@@ -316,8 +301,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Rect">The rect</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShape_setTextureRect(IntPtr CPointer, IntRect Rect);
 
         /// <summary>
@@ -325,8 +309,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The int rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntRect sfShape_getTextureRect(IntPtr CPointer);
 
         /// <summary>
@@ -334,8 +317,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShape_setFillColor(IntPtr CPointer, Color Color);
 
         /// <summary>
@@ -343,8 +325,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Color sfShape_getFillColor(IntPtr CPointer);
 
         /// <summary>
@@ -352,8 +333,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShape_setOutlineColor(IntPtr CPointer, Color Color);
 
         /// <summary>
@@ -361,8 +341,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Color sfShape_getOutlineColor(IntPtr CPointer);
 
         /// <summary>
@@ -370,8 +349,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="Thickness">The thickness</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShape_setOutlineThickness(IntPtr CPointer, float Thickness);
 
         /// <summary>
@@ -379,8 +357,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern float sfShape_getOutlineThickness(IntPtr CPointer);
 
         /// <summary>
@@ -388,16 +365,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern FloatRect sfShape_getLocalBounds(IntPtr CPointer);
 
         /// <summary>
         ///     Sfs the shape update using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfShape_update(IntPtr CPointer);
 
         /// <summary>
@@ -406,8 +381,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Shape">The shape</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_drawShape(IntPtr CPointer, IntPtr Shape,
             ref RenderStates.MarshalData states);
 
@@ -417,8 +391,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="Shape">The shape</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawShape(IntPtr CPointer, IntPtr Shape,
             ref RenderStates.MarshalData states);
 

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   BlendMode.cs
+//  File:BlendMode.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -163,10 +163,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Blend Modes are equal</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(BlendMode left, BlendMode right)
-        {
-            return left.Equals(right);
-        }
+        public static bool operator ==(BlendMode left, BlendMode right) => left.Equals(right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -174,10 +171,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Blend Modes are not equal</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(BlendMode left, BlendMode right)
-        {
-            return !left.Equals(right);
-        }
+        public static bool operator !=(BlendMode left, BlendMode right) => !left.Equals(right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -186,10 +180,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and blend mode are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj)
-        {
-            return obj is BlendMode && Equals((BlendMode)obj);
-        }
+        public override bool Equals(object obj) => obj is BlendMode && Equals((BlendMode) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -198,15 +189,12 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="other">Blend Mode to check</param>
         /// <returns>blend modes are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(BlendMode other)
-        {
-            return ColorSrcFactor == other.ColorSrcFactor &&
-                   ColorDstFactor == other.ColorDstFactor &&
-                   ColorEquation == other.ColorEquation &&
-                   AlphaSrcFactor == other.AlphaSrcFactor &&
-                   AlphaDstFactor == other.AlphaDstFactor &&
-                   AlphaEquation == other.AlphaEquation;
-        }
+        public bool Equals(BlendMode other) => (ColorSrcFactor == other.ColorSrcFactor) &&
+                                               (ColorDstFactor == other.ColorDstFactor) &&
+                                               (ColorEquation == other.ColorEquation) &&
+                                               (AlphaSrcFactor == other.AlphaSrcFactor) &&
+                                               (AlphaDstFactor == other.AlphaDstFactor) &&
+                                               (AlphaEquation == other.AlphaEquation);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -214,15 +202,12 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode()
-        {
-            return ColorSrcFactor.GetHashCode() ^
-                   ColorDstFactor.GetHashCode() ^
-                   ColorEquation.GetHashCode() ^
-                   AlphaSrcFactor.GetHashCode() ^
-                   AlphaDstFactor.GetHashCode() ^
-                   AlphaEquation.GetHashCode();
-        }
+        public override int GetHashCode() => ColorSrcFactor.GetHashCode() ^
+                                             ColorDstFactor.GetHashCode() ^
+                                             ColorEquation.GetHashCode() ^
+                                             AlphaSrcFactor.GetHashCode() ^
+                                             AlphaDstFactor.GetHashCode() ^
+                                             AlphaEquation.GetHashCode();
 
         /// <summary>Source blending factor for the color channels</summary>
         public Factor ColorSrcFactor;

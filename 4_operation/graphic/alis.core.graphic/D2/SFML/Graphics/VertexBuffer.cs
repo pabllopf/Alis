@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   VertexBuffer.cs
+//  File:VertexBuffer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -39,35 +39,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     /// <seealso cref="Drawable" />
     public class VertexBuffer : ObjectBase, Drawable
     {
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Usage specifiers
-        ///     If data is going to be updated once or more every frame,
-        ///     set the usage to Stream. If data is going
-        ///     to be set once and used for a long time without being
-        ///     modified, set the usage to Static.
-        ///     For everything else Dynamic should
-        ///     be a good compromise.
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        public enum UsageSpecifier
-        {
-            /// <summary>
-            ///     The stream usage specifier
-            /// </summary>
-            Stream,
-
-            /// <summary>
-            ///     The dynamic usage specifier
-            /// </summary>
-            Dynamic,
-
-            /// <summary>
-            ///     The static usage specifier
-            /// </summary>
-            Static
-        }
-
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Create a new vertex buffer with a specific
@@ -147,6 +118,35 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
 
         ////////////////////////////////////////////////////////////
         /// <summary>
+        ///     Usage specifiers
+        ///     If data is going to be updated once or more every frame,
+        ///     set the usage to Stream. If data is going
+        ///     to be set once and used for a long time without being
+        ///     modified, set the usage to Static.
+        ///     For everything else Dynamic should
+        ///     be a good compromise.
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        public enum UsageSpecifier
+        {
+            /// <summary>
+            ///     The stream usage specifier
+            /// </summary>
+            Stream,
+
+            /// <summary>
+            ///     The dynamic usage specifier
+            /// </summary>
+            Dynamic,
+
+            /// <summary>
+            ///     The static usage specifier
+            /// </summary>
+            Static
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
         ///     Draw the vertex buffer to a render target
         /// </summary>
         /// <param name="target">Render target to draw to</param>
@@ -158,11 +158,11 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
 
             if (target is RenderWindow)
             {
-                sfRenderWindow_drawVertexBuffer(((RenderWindow)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderWindow_drawVertexBuffer(((RenderWindow) target).CPointer, CPointer, ref marshaledStates);
             }
             else if (target is RenderTexture)
             {
-                sfRenderTexture_drawVertexBuffer(((RenderTexture)target).CPointer, CPointer, ref marshaledStates);
+                sfRenderTexture_drawVertexBuffer(((RenderTexture) target).CPointer, CPointer, ref marshaledStates);
             }
         }
 
@@ -220,10 +220,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="vertices">Array of vertices to copy to the buffer</param>
         ////////////////////////////////////////////////////////////
-        public bool Update(Vertex[] vertices)
-        {
-            return Update(vertices, (uint)vertices.Length, 0);
-        }
+        public bool Update(Vertex[] vertices) => Update(vertices, (uint) vertices.Length, 0);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -246,10 +243,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="vertices">Array of vertices to copy to the buffer</param>
         /// <param name="offset">Offset in the buffer to copy to</param>
         ////////////////////////////////////////////////////////////
-        public bool Update(Vertex[] vertices, uint offset)
-        {
-            return Update(vertices, (uint)vertices.Length, offset);
-        }
+        public bool Update(Vertex[] vertices, uint offset) => Update(vertices, (uint) vertices.Length, offset);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -257,10 +251,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="other">Vertex buffer whose contents to copy into first vertex buffer</param>
         ////////////////////////////////////////////////////////////
-        public bool Update(VertexBuffer other)
-        {
-            return sfVertexBuffer_updateFromVertexBuffer(CPointer, other.CPointer);
-        }
+        public bool Update(VertexBuffer other) => sfVertexBuffer_updateFromVertexBuffer(CPointer, other.CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -291,8 +282,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="type">The type</param>
         /// <param name="usage">The usage</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfVertexBuffer_create(uint vertexCount, PrimitiveType type, UsageSpecifier usage);
 
         /// <summary>
@@ -300,16 +290,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="copy">The copy</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfVertexBuffer_copy(IntPtr copy);
 
         /// <summary>
         ///     Sfs the vertex buffer destroy using the specified c pointer
         /// </summary>
         /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_destroy(IntPtr CPointer);
 
         /// <summary>
@@ -317,8 +305,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfVertexBuffer_getVertexCount(IntPtr CPointer);
 
         /// <summary>
@@ -329,8 +316,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="vertexCount">The vertex count</param>
         /// <param name="offset">The offset</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe bool sfVertexBuffer_update(IntPtr CPointer, Vertex* vertices, uint vertexCount,
             uint offset);
 
@@ -340,8 +326,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfVertexBuffer_updateFromVertexBuffer(IntPtr CPointer, IntPtr other);
 
         /// <summary>
@@ -349,8 +334,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="other">The other</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_swap(IntPtr CPointer, IntPtr other);
 
         /// <summary>
@@ -358,8 +342,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfVertexBuffer_getNativeHandle(IntPtr CPointer);
 
         /// <summary>
@@ -367,8 +350,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="primitiveType">The primitive type</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_setPrimitiveType(IntPtr CPointer, PrimitiveType primitiveType);
 
         /// <summary>
@@ -376,8 +358,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The primitive type</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern PrimitiveType sfVertexBuffer_getPrimitiveType(IntPtr CPointer);
 
         /// <summary>
@@ -385,8 +366,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <param name="usageType">The usage type</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfVertexBuffer_setUsage(IntPtr CPointer, UsageSpecifier usageType);
 
         /// <summary>
@@ -394,16 +374,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="CPointer">The pointer</param>
         /// <returns>The usage specifier</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern UsageSpecifier sfVertexBuffer_getUsage(IntPtr CPointer);
 
         /// <summary>
         ///     Describes whether sf vertex buffer is available
         /// </summary>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfVertexBuffer_isAvailable();
 
         /// <summary>
@@ -412,8 +390,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="VertexArray">The vertex array</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_drawVertexBuffer(IntPtr CPointer, IntPtr VertexArray,
             ref RenderStates.MarshalData states);
 
@@ -423,8 +400,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="CPointer">The pointer</param>
         /// <param name="VertexBuffer">The vertex buffer</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl)]
-        [SuppressUnmanagedCodeSecurity]
+        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderTexture_drawVertexBuffer(IntPtr CPointer, IntPtr VertexBuffer,
             ref RenderStates.MarshalData states);
     }
