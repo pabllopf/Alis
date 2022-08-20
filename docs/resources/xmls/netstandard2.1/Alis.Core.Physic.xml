@@ -6097,11 +6097,6 @@
                 and asynchronous queries.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.raycastNormal">
-            <summary>
-                The raycast normal
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Physic.Collisions.Aabb,Alis.Aspect.Math.Vector2,System.Boolean)">
             <summary>
                 Construct a world object.
@@ -6280,42 +6275,6 @@
             @param maxCount the capacity of the shapes array.
             @return the number of shapes found in aabb.
         </member>
-        <member name="M:Alis.Core.Physic.World.Raycast(Alis.Core.Physic.Collisions.Segment,Alis.Core.Physic.Dynamics.Fixture[]@,System.Int32,System.Boolean,System.Object)">
-            <summary>
-                Query the world for all shapes that intersect a given segment. You provide a shap
-                pointer buffer of specified size. The number of shapes found is returned, and the buffer
-                is filled in order of intersection.
-            </summary>
-            <param name="segment">
-                Defines the begin and end point of the ray cast, from p1 to p2.
-                Use Segment.Extend to create (semi-)infinite rays.
-            </param>
-            <param name="fixtures">The fixtures.</param>
-            <param name="maxCount">The capacity of the shapes array.</param>
-            <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
-            <param name="userData">
-                Passed through the worlds contact filter, with method RayCollide. This can be used to filter
-                valid shapes.
-            </param>
-            <returns>The number of shapes found</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RaycastOne(Alis.Core.Physic.Collisions.Segment,System.Single@,Alis.Aspect.Math.Vector2@,System.Boolean,System.Object)">
-            <summary>
-                Performs a raycast as with Raycast, finding the first intersecting shape.
-            </summary>
-            <param name="segment">
-                Defines the begin and end point of the ray cast, from p1 to p2.
-                Use Segment.Extend to create (semi-)infinite rays.
-            </param>
-            <param name="lambda">
-                Returns the hit fraction. You can use this to compute the contact point
-                p = (1 - lambda) * segment.p1 + lambda * segment.p2.
-            </param>
-            <param name="normal">Returns the normal at the contact point. If there is no intersection, the normal is not set.</param>
-            <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
-            <param name="userData"></param>
-            <returns>Returns the colliding shape shape, or null if not found.</returns>
-        </member>
         <member name="M:Alis.Core.Physic.World.Solve(Alis.Aspect.Time.TimeStep)">
             <summary>
                 Solves the step
@@ -6327,13 +6286,6 @@
                 Solves the toi using the specified step
             </summary>
             <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RaycastSortKey(System.Object)">
-            <summary>
-                Raycasts the sort key using the specified data
-            </summary>
-            <param name="data">The data</param>
-            <returns>The lambda</returns>
         </member>
     </members>
 </doc>

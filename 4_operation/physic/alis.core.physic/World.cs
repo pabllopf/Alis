@@ -49,11 +49,6 @@ namespace Alis.Core.Physic
     public class World 
     {
         /// <summary>
-        ///     The raycast normal
-        /// </summary>
-        private Vector2 raycastNormal;
-
-        /// <summary>
         ///     Construct a world object.
         /// </summary>
         /// <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
@@ -420,80 +415,6 @@ namespace Alis.Core.Physic
         public int Query(Aabb aabb, Fixture[] fixtures, int maxCount)
         {
             return BroadPhase.Query(aabb, new object[maxCount], maxCount);
-        }
-
-        /// <summary>
-        ///     Query the world for all shapes that intersect a given segment. You provide a shap
-        ///     pointer buffer of specified size. The number of shapes found is returned, and the buffer
-        ///     is filled in order of intersection.
-        /// </summary>
-        /// <param name="segment">
-        ///     Defines the begin and end point of the ray cast, from p1 to p2.
-        ///     Use Segment.Extend to create (semi-)infinite rays.
-        /// </param>
-        /// <param name="fixtures">The fixtures.</param>
-        /// <param name="maxCount">The capacity of the shapes array.</param>
-        /// <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
-        /// <param name="userData">
-        ///     Passed through the worlds contact filter, with method RayCollide. This can be used to filter
-        ///     valid shapes.
-        /// </param>
-        /// <returns>The number of shapes found</returns>
-        public int Raycast(Segment segment, out Fixture[] fixtures, int maxCount, bool solidShapes, object userData)
-        {
-            RaycastSegment = segment;
-            RaycastUserData = userData;
-            RaycastSolidShape = solidShapes;
-
-            object[] results = new object[maxCount];
-            fixtures = new Fixture[maxCount];
-            int count = BroadPhase.QuerySegment(segment, results, maxCount, RaycastSortKey);
-
-            for (int i = 0; i < count; ++i)
-            {
-                fixtures[i] = (Fixture)results[i];
-            }
-
-            return count;
-        }
-
-        /// <summary>
-        ///     Performs a raycast as with Raycast, finding the first intersecting shape.
-        /// </summary>
-        /// <param name="segment">
-        ///     Defines the begin and end point of the ray cast, from p1 to p2.
-        ///     Use Segment.Extend to create (semi-)infinite rays.
-        /// </param>
-        /// <param name="lambda">
-        ///     Returns the hit fraction. You can use this to compute the contact point
-        ///     p = (1 - lambda) * segment.p1 + lambda * segment.p2.
-        /// </param>
-        /// <param name="normal">Returns the normal at the contact point. If there is no intersection, the normal is not set.</param>
-        /// <param name="solidShapes">Determines if shapes that the ray starts in are counted as hits.</param>
-        /// <param name="userData"></param>
-        /// <returns>Returns the colliding shape shape, or null if not found.</returns>
-        public Fixture RaycastOne(Segment segment, out float lambda, out Vector2 normal, bool solidShapes,
-            object userData)
-        {
-            int maxCount = 1;
-            Fixture[] fixture;
-            lambda = 0.0f;
-            normal = new Vector2();
-
-            int count = Raycast(segment, out fixture, maxCount, solidShapes, userData);
-
-            if (count == 0)
-            {
-                return null;
-            }
-
-            Box2DxDebug.Assert(count == 1);
-
-            //Redundantly do TestSegment a second time, as the previous one's results are inaccessible
-
-            fixture[0].TestSegment(out lambda, out normal, segment, 1);
-            //We already know it returns true
-            return fixture[0];
         }
 
         // Find islands, integrate and solve constraints, solve position constraints
@@ -987,42 +908,6 @@ namespace Alis.Core.Physic
             }
 
             queue = null;
-        }
-        
-        /// <summary>
-        ///     Raycasts the sort key using the specified data
-        /// </summary>
-        /// <param name="data">The data</param>
-        /// <returns>The lambda</returns>
-        private static float RaycastSortKey(object data)
-        {
-            if (data == null) throw new ArgumentNullException(nameof(data));
-            
-            Fixture fixture = data as Fixture;
-            Body body = fixture.Body;
-            World world = body.GetWorld();
-
-            if (world.ContactFilter != null && !world.ContactFilter.RayCollide(world.RaycastUserData, fixture))
-            {
-                return -1;
-            }
-
-            float lambda;
-
-            SegmentCollide collide =
-                fixture.TestSegment(out lambda, out world.raycastNormal, world.RaycastSegment, 1);
-
-            if (world.RaycastSolidShape && collide == SegmentCollide.MissCollide)
-            {
-                return -1;
-            }
-
-            if (!world.RaycastSolidShape && collide != SegmentCollide.HitCollide)
-            {
-                return -1;
-            }
-
-            return lambda;
         }
     }
 }
