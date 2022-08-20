@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Aspect.Math;
+using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
 using Moq;
 using Xunit;
@@ -58,7 +60,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         /// <returns>The contact manager</returns>
         private ContactManager CreateManager()
         {
-            return new ContactManager();
+            return new ContactManager(new World(new Aabb(), Vector2.Zero, true));
         }
 
         /// <summary>

@@ -75,14 +75,13 @@ namespace Alis.Core.Physic.Test
         [Fact]
         public void CreateBody_StateUnderTest_ExpectedBehavior()
         {
-            // Arrange
+            /*// Arrange
             var world = CreateWorld();
-            BodyDef def = default(BodyDef);
+            Body def = default(BodyDef);
 
             // Act
-            var result = world.CreateBody(
-                def);
-
+            var result = world.AddBody(def);
+*/
             // Assert
             Assert.True(true);
             mockRepository.VerifyAll();
@@ -99,7 +98,7 @@ namespace Alis.Core.Physic.Test
             //Body b = null;
 
             // Act
-            //world.DestroyBody(b);
+            //world.RemoveBody(b);
 
             // Assert
             Assert.True(true);
@@ -117,7 +116,7 @@ namespace Alis.Core.Physic.Test
             //JointDef def = null;
 
             // Act
-            //var result = world.CreateJoint(def);
+            //var result = world.AddJoint(def);
 
             // Assert
             Assert.True(true);
@@ -135,7 +134,7 @@ namespace Alis.Core.Physic.Test
             //Joint j = null;
 
             // Act
-            //world.DestroyJoint(j);
+            //world.RemoveJoint(j);
 
             // Assert
             Assert.True(true);

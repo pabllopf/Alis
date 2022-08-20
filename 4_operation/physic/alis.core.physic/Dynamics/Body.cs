@@ -40,7 +40,7 @@ using Math = Alis.Aspect.Math.Math;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    ///     A rigid body. These are created via World.CreateBody.
+    ///     A rigid body. These are created via World.AddBody.
     /// </summary>
     public class Body : IDisposable
     {
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="bd">The bd</param>
         /// <param name="world">The world</param>
-        internal Body(BodyDef bd, World world)
+        public Body(BodyDef bd, World world)
         {
             //Box2DxDebug.Assert(world.Lock == false);
 

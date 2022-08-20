@@ -66,8 +66,8 @@ namespace Alis.Core.Physic.Sample
 
             // Call the body factory which  creates the ground box shape.
             // The body is also added to the world.
-            Body groundBody = world.CreateBody(groundBodyDef);
-
+            Body groundBody = new Body(groundBodyDef, world);
+            
             // Define the ground box shape.
             PolygonDef groundShapeDef = new PolygonDef();
 
@@ -76,11 +76,13 @@ namespace Alis.Core.Physic.Sample
 
             // Add the ground shape to the ground body.
             groundBody.CreateFixture(groundShapeDef);
+            
+            world.AddBody(groundBody);
 
             // Define the dynamic body. We set its position and call the body factory.
             BodyDef bodyDef = new BodyDef();
             bodyDef.Position.Set(0.0f, 4.0f);
-            Body body = world.CreateBody(bodyDef);
+            Body body = new Body(bodyDef, world);
 
             // Define another box shape for our dynamic body.
             PolygonDef shapeDef = new PolygonDef();
@@ -98,6 +100,8 @@ namespace Alis.Core.Physic.Sample
             // Now tell the dynamic body to compute it's mass properties base
             // on its shape.
             body.SetMassFromShapes();
+            
+            world.AddBody(body);
 
             // Prepare for simulation. Typically we use a time step of 1/60 of a
             // second (60Hz) and 10 iterations. This provides a high quality simulation

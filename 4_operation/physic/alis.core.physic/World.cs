@@ -27,18 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
-using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic
 {
@@ -65,127 +62,77 @@ namespace Alis.Core.Physic
             ControllerList = new List<Controller>();
             
             WarmStarting = true;
-            ContinuousPhysics = true;
 
             AllowSleep = allowSleep;
             Gravity = gravity;
             
             InvDt0 = 0.0f;
 
-            ContactManager = new ContactManager
-            {
-                World = this
-            };
-            
-            BroadPhase = new BroadPhase(worldAabb, ContactManager);
+            ContactManager = new ContactManager(this);
 
-            BodyDef bd = new BodyDef();
-            GroundBody = CreateBody(bd);
+            BroadPhase = new BroadPhase(worldAabb, ContactManager);
+            GroundBody = new Body(new BodyDef(), this);
         }
 
         /// <summary>
         ///     The allow sleep
         /// </summary>
-        public bool AllowSleep { get; }
+        private bool AllowSleep { get; }
 
         /// <summary>
         ///     The contact manager
         /// </summary>
-        public ContactManager ContactManager { get; }
+        private ContactManager ContactManager { get; }
 
         /// <summary>
-        ///     The ground body
+        ///     The ground bodyDef
         /// </summary>
         public Body GroundBody { get; }
 
         /// <summary>
-        ///     The body count
+        ///     The bodyDef list
         /// </summary>
-        public int BodyCount { get => BodyList.Count;}
-
-        /// <summary>
-        ///     The body list
-        /// </summary>
-        public List<Body> BodyList { get; private set; }
+        public List<Body> BodyList { get; }
         
         /// <summary>
         ///     The broad phase
         /// </summary>
-        internal BroadPhase BroadPhase { get; set; }
-
-        /// <summary>
-        ///     The contact count
-        /// </summary>
-        internal int ContactCount { get => ContactList.Count;}
+        internal BroadPhase BroadPhase { get; }
 
         /// <summary>
         ///     The contact filter
         /// </summary>
-        internal ContactFilter ContactFilter { get; set; }
-
-        // Do not access
-
+        internal ContactFilter ContactFilter { get; }
+        
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal List<Contact> ContactList { get; set; }
+        internal List<Contact> ContactList { get; }
 
         /// <summary>
         ///     The contact listener
         /// </summary>
-        internal IContactListener ContactListener { get; set; }
-
-        // This is for debugging the solver.
-
-        /// <summary>
-        ///     The continuous physics
-        /// </summary>
-        public bool ContinuousPhysics { get; private set; }
-
-        /// <summary>
-        ///     The controller count
-        /// </summary>
-        public int ControllerCount { get => ControllerList.Count; }
-
+        internal IContactListener ContactListener { get; }
+        
         /// <summary>
         ///     The controller list
         /// </summary>
-        public List<Controller> ControllerList { get; private set; }
+        private List<Controller> ControllerList { get; set; }
         
         /// <summary>
         ///     The inv dt0
         /// </summary>
-        public float InvDt0 { get; private set; }
-
-        /// <summary>
-        ///     The joint count
-        /// </summary>
-        public int JointCount { get => JointList.Count; }
+        private float InvDt0 { get; set; }
 
         /// <summary>
         ///     The joint list
         /// </summary>
-        public List<Joint> JointList { get; private set; }
-        
-        /// <summary>
-        ///     The raycast segment
-        /// </summary>
-        public Segment RaycastSegment { get; private set; }
-
-        /// <summary>
-        ///     The raycast solid shape
-        /// </summary>
-        public bool RaycastSolidShape { get; private set; }
-
-        /// <summary>
-        ///     The raycast user data
-        /// </summary>
-        public object RaycastUserData { get; private set; }
+        private List<Joint> JointList { get; set; }
         
         /// <summary>
         ///     The warm starting
         /// </summary>
-        public bool WarmStarting { get; private set; }
+        private bool WarmStarting { get; set; }
 
         /// <summary>
         ///     Get\Set global gravity vector.
@@ -193,174 +140,52 @@ namespace Alis.Core.Physic
         public Vector2 Gravity { get; set; }
         
         /// <summary>
-        ///     Create a rigid body given a definition. No reference to the definition
+        ///     Create a rigid bodyDef given a definition. No reference to the definition
         ///     is retained.
         ///     @warning This function is locked during callbacks.
         /// </summary>
-        /// <param name="bodyDef"></param>
+        /// <param name="body"></param>
         /// <returns></returns>
-        public Body CreateBody(BodyDef bodyDef)
-        {
-            Body body = new Body(bodyDef, this);
-            BodyList.Add(body);
-            return body;
-        }
-
+        public void AddBody(Body body) => BodyList.Add(body);
+        
         /// <summary>
-        ///     Destroy a rigid body given a definition. No reference to the definition
+        ///     Destroy a rigid bodyDef given a definition. No reference to the definition
         ///     is retained. This function is locked during callbacks.
         ///     @warning This automatically deletes all associated shapes and joints.
         ///     @warning This function is locked during callbacks.
         /// </summary>
         /// <param name="body"></param>
-        public void DestroyBody(Body body)
-        {
-            BodyList.Remove(body);
-        }
+        public void RemoveBody(Body body) => BodyList.Remove(body);
 
         /// <summary>
         ///     Create a joint to constrain bodies together. No reference to the definition
         ///     is retained. This may cause the connected bodies to cease colliding.
         ///     @warning This function is locked during callbacks.
         /// </summary>
-        /// <param name="jointDef"></param>
+        /// <param name="joint"></param>
         /// <returns></returns>
-        public Joint CreateJoint(JointDef jointDef)
-        {
-            Joint joint = Joint.Create(jointDef);
-            
-            /*
-            // Connect to the bodies' doubly linked lists.
-            joint.Node1.Joint = joint;
-            joint.Node1.Other = joint.Body2;
-            joint.Node1.Prev = null;
-            joint.Node1.Next = joint.Body1.JointList;
-            if (joint.Body1.JointList != null)
-            {
-                joint.Body1.JointList.Prev = joint.Node1;
-            }
-
-            joint.Body1.JointList = joint.Node1;
-
-            joint.Node2.Joint = joint;
-            joint.Node2.Other = joint.Body1;
-            joint.Node2.Prev = null;
-            joint.Node2.Next = joint.Body2.JointList;
-            if (joint.Body2.JointList != null)
-            {
-                joint.Body2.JointList.Prev = joint.Node2;
-            }
-
-            joint.Body2.JointList = joint.Node2;
-
-            // If the joint prevents collisions, then reset collision filtering.
-            if (jointDef.CollideConnected == false)
-            {
-                // Reset the proxies on the body with the minimum number of shapes.
-                Body b = jointDef.Body1.FixtureCount < jointDef.Body2.FixtureCount ? jointDef.Body1 : jointDef.Body2;
-                for (Fixture f = b.FixtureList; f != null; f = f.Next)
-                {
-                    f.RefilterProxy(BroadPhase, b.GetXForm());
-                }
-            }*/
-
-            JointList.Add(joint);
-            
-            return joint;
-        }
+        public void AddJoint(Joint joint) => JointList.Add(joint);
 
         /// <summary>
         ///     Destroy a joint. This may cause the connected bodies to begin colliding.
         ///     @warning This function is locked during callbacks.
         /// </summary>
         /// <param name="joint"></param>
-        public void DestroyJoint(Joint joint)
-        {
-            JointList.Remove(joint);
-            
-           /* bool collideConnected = joint.CollideConnected;
-            
-            // Disconnect from island graph.
-            Body body1 = joint.Body1;
-            Body body2 = joint.Body2;
-
-            // Wake up connected bodies.
-            body1.WakeUp();
-            body2.WakeUp();
-
-            // Remove from body 1.
-            if (joint.Node1.Prev != null)
-            {
-                joint.Node1.Prev.Next = joint.Node1.Next;
-            }
-
-            if (joint.Node1.Next != null)
-            {
-                joint.Node1.Next.Prev = joint.Node1.Prev;
-            }
-
-            if (joint.Node1 == body1.JointList)
-            {
-                body1.JointList = joint.Node1.Next;
-            }
-
-            joint.Node1.Prev = null;
-            joint.Node1.Next = null;
-
-            // Remove from body 2
-            if (joint.Node2.Prev != null)
-            {
-                joint.Node2.Prev.Next = joint.Node2.Next;
-            }
-
-            if (joint.Node2.Next != null)
-            {
-                joint.Node2.Next.Prev = joint.Node2.Prev;
-            }
-
-            if (joint.Node2 == body2.JointList)
-            {
-                body2.JointList = joint.Node2.Next;
-            }
-
-            joint.Node2.Prev = null;
-            joint.Node2.Next = null;
-
-            Joint.Destroy(joint);
-
-            // If the joint prevents collisions, then reset collision filtering.
-            if (collideConnected == false)
-            {
-                // Reset the proxies on the body with the minimum number of shapes.
-                Body b = body1.FixtureCount < body2.FixtureCount ? body1 : body2;
-                for (Fixture f = b.FixtureList; f != null; f = f.Next)
-                {
-                    f.RefilterProxy(BroadPhase, b.GetXForm());
-                }
-            }*/
-        }
+        public void RemoveJoint(Joint joint) => JointList.Remove(joint);
 
         /// <summary>
         ///     Adds the controller using the specified def
         /// </summary>
         /// <param name="controller">The def</param>
         /// <returns>The def</returns>
-        public Controller AddController(Controller controller)
-        {
-            controller.World = this;
-            ControllerList.Add(controller);
-            return controller;
-        }
+        public void AddController(Controller controller) => ControllerList.Add(controller);
 
         /// <summary>
         ///     Removes the controller using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
-        public void RemoveController(Controller controller)
-        {
-            ControllerList.Remove(controller);
-        }
-        
+        public void RemoveController(Controller controller) => ControllerList.Remove(controller);
+
         /// <summary>
         ///     Take a time step. This performs collision detection, integration,
         ///     and constraint solution.
@@ -370,23 +195,16 @@ namespace Alis.Core.Physic
         /// <param name="positionIteration">The position iteration.</param>
         public void Step(float dt, int velocityIterations, int positionIteration)
         {
-            TimeStep step = new TimeStep();
-            step.Dt = dt;
-            step.VelocityIterations = velocityIterations;
-            step.PositionIterations = positionIteration;
-            if (dt > 0.0f)
+            TimeStep step = new TimeStep
             {
-                step.InvDt = 1.0f / dt;
-            }
-            else
-            {
-                step.InvDt = 0.0f;
-            }
-
-            step.DtRatio = InvDt0 * dt;
-
-            step.WarmStarting = WarmStarting;
-
+                Dt = dt,
+                InvDt = dt > 0.0f ? 1.0f / dt : 0.0f,
+                DtRatio = InvDt0 * dt,
+                VelocityIterations = velocityIterations,
+                PositionIterations = positionIteration,
+                WarmStarting = WarmStarting
+            };
+            
             // Update contacts.
             ContactManager.Collide();
 
@@ -394,11 +212,6 @@ namespace Alis.Core.Physic
             if (step.Dt > 0.0f)
             {
                 Solve(step);
-            }
-
-            // Handle TOI events.
-            if (ContinuousPhysics && step.Dt > 0.0f)
-            {
                 SolveToi(step);
             }
             
@@ -412,10 +225,7 @@ namespace Alis.Core.Physic
         /// @param shapes a user allocated shape pointer array of size maxCount (or greater).
         /// @param maxCount the capacity of the shapes array.
         /// @return the number of shapes found in aabb.
-        public int Query(Aabb aabb, Fixture[] fixtures, int maxCount)
-        {
-            return BroadPhase.Query(aabb, new object[maxCount], maxCount);
-        }
+        public int Query(Aabb aabb, Fixture[] fixtures, int maxCount) => BroadPhase.Query(aabb, new object[maxCount], maxCount);
 
         // Find islands, integrate and solve constraints, solve position constraints
         /// <summary>
@@ -424,13 +234,13 @@ namespace Alis.Core.Physic
         /// <param name="step">The step</param>
         private void Solve(TimeStep step)
         {
-            // Step all controlls
+            // Step all controller list
             for (int i =0; i < ControllerList.Count; i++) {
                 ControllerList[i].Step(step);
             }
 
             // Size the island for the worst case.
-            Island island = new Island(BodyCount, ContactCount, JointCount, ContactListener);
+            Island island = new Island(BodyList.Count, ContactList.Count, JointList.Count, ContactListener);
 
             // Clear all the island flags.
             for (int i = 0; i < BodyList.Count; i++)
@@ -449,7 +259,7 @@ namespace Alis.Core.Physic
             }
 
             // Build and simulate all awake islands.
-            int stackSize = BodyCount;
+            int stackSize = BodyList.Count;
             {
                 Body[] stack = new Body[stackSize];
 
@@ -474,11 +284,11 @@ namespace Alis.Core.Physic
                     // Perform a depth first search (DFS) on the constraint graph.
                     while (stackCount > 0)
                     {
-                        // Grab the next body off the stack and add it to the island.
+                        // Grab the next bodyDef off the stack and add it to the island.
                         Body b = stack[--stackCount];
                         island.Add(b);
 
-                        // Make sure the body is awake.
+                        // Make sure the bodyDef is awake.
                         b.Flags &= ~BodyFlags.Sleep;
 
                         // To keep islands as small as possible, we don't
@@ -488,7 +298,7 @@ namespace Alis.Core.Physic
                             continue;
                         }
 
-                        // Search all contacts connected to this body.
+                        // Search all contacts connected to this bodyDef.
                         for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)
                         {
                             // Has this contact already been added to an island?
@@ -509,7 +319,7 @@ namespace Alis.Core.Physic
 
                             Body other = cn.Other;
 
-                            // Was the other body already added to this island?
+                            // Was the other bodyDef already added to this island?
                             if ((other.Flags & BodyFlags.Island) != 0)
                             {
                                 continue;
@@ -520,7 +330,7 @@ namespace Alis.Core.Physic
                             other.Flags |= BodyFlags.Island;
                         }
 
-                        // Search all joints connect to this body.
+                        // Search all joints connect to this bodyDef.
                         for (JointEdge jn = b.JointList; jn != null; jn = jn.Next)
                         {
                             if (jn.Joint.IslandFlag)
@@ -556,8 +366,6 @@ namespace Alis.Core.Physic
                         }
                     }
                 }
-
-                stack = null;
             }
 
             // Synchronize shapes, check for out of range bodies.
@@ -576,7 +384,7 @@ namespace Alis.Core.Physic
                 // Update shapes (for broad-phase). If the shapes go out of
                 // the world AABB then shapes and contacts may be destroyed,
                 // including contacts that are
-                bool inRange = BodyList[i].SynchronizeFixtures();
+                BodyList[i].SynchronizeFixtures();
             }
 
             // Commit shape proxy movements to the broad-phase so that new contacts are created.
@@ -592,18 +400,21 @@ namespace Alis.Core.Physic
         private void SolveToi(TimeStep step)
         {
             // Reserve an island and a queue for TOI island solution.
-            Island island = new Island(BodyCount, Settings.MaxToiContactsPerIsland, Settings.MaxToiJointsPerIsland,
+            Island island = new Island(
+                BodyList.Count, 
+                Settings.MaxToiContactsPerIsland, 
+                Settings.MaxToiJointsPerIsland,
                 ContactListener);
 
             //Simple one pass queue
             //Relies on the fact that we're only making one pass
-            //through and each body can only be pushed/popped once.
+            //through and each bodyDef can only be pushed/popped once.
             //To push: 
             //  queue[queueStart+queueSize++] = newElement;
             //To pop: 
             //	poppedElement = queue[queueStart++];
             //  --queueSize;
-            int queueCapacity = BodyCount;
+            int queueCapacity = BodyList.Count;
             Body[] queue = new Body[queueCapacity];
 
             for (int i = 0; i < BodyList.Count; i++)
@@ -611,13 +422,7 @@ namespace Alis.Core.Physic
                 BodyList[i].Flags &= ~BodyFlags.Island;
                 BodyList[i].Sweep.T0 = 0.0f;
             }
-
-            /*for (Body b = BodyList; b != null; b = b.Next)
-            {
-                b.Flags &= ~BodyFlags.Island;
-                b.Sweep.T0 = 0.0f;
-            }*/
-
+            
             for (int i = 0; i < ContactList.Count; i++)
             {
                 // Invalidate TOI
@@ -645,7 +450,7 @@ namespace Alis.Core.Physic
 
                     // TODO_ERIN keep a counter on the contact, only respond to M TOIs per contact.
 
-                    float toi = 1.0f;
+                    float toi;
                     if ((int)(ContactList[i].Flags & Contact.CollisionFlags.Toi) == 1)
                     {
                         // This contact has a valid cached TOI.
@@ -749,13 +554,13 @@ namespace Alis.Core.Physic
                 // Perform a breadth first search (BFS) on the contact/joint graph.
                 while (queueSize > 0)
                 {
-                    // Grab the next body off the stack and add it to the island.
+                    // Grab the next bodyDef off the stack and add it to the island.
                     Body b = queue[queueStart++];
                     --queueSize;
 
                     island.Add(b);
 
-                    // Make sure the body is awake.
+                    // Make sure the bodyDef is awake.
                     b.Flags &= ~BodyFlags.Sleep;
 
                     // To keep islands as small as possible, we don't
@@ -765,7 +570,7 @@ namespace Alis.Core.Physic
                         continue;
                     }
 
-                    // Search all contacts connected to this body.
+                    // Search all contacts connected to this bodyDef.
                     for (ContactEdge cEdge = b.ContactList; cEdge != null; cEdge = cEdge.Next)
                     {
                         // Does the TOI island still have space for contacts?
@@ -790,10 +595,10 @@ namespace Alis.Core.Physic
                         island.Add(cEdge.Contact);
                         cEdge.Contact.Flags |= Contact.CollisionFlags.Island;
 
-                        // Update other body.
+                        // Update other bodyDef.
                         Body other = cEdge.Other;
 
-                        // Was the other body already added to this island?
+                        // Was the other bodyDef already added to this island?
                         if ((int)(other.Flags & BodyFlags.Island) == 1)
                         {
                             continue;
@@ -878,9 +683,9 @@ namespace Alis.Core.Physic
                     // Update fixtures (for broad-phase). If the fixtures go out of
                     // the world AABB then fixtures and contacts may be destroyed,
                     // including contacts that are
-                    bool inRange = b.SynchronizeFixtures();
+                    b.SynchronizeFixtures();
                     
-                    // Invalidate all contact TOIs associated with this body. Some of these
+                    // Invalidate all contact TOIs associated with this bodyDef. Some of these
                     // may not be in the island because they were not touching.
                     for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)
                     {
@@ -906,8 +711,6 @@ namespace Alis.Core.Physic
                 // Also, some contacts can be destroyed.
                 BroadPhase.Commit();
             }
-
-            queue = null;
         }
     }
 }

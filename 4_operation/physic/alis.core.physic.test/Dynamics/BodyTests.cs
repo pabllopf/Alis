@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             body.Dispose();
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             FixtureDef def = null;
 
             // Act
@@ -115,7 +115,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Fixture fixture = null;
 
             // Act
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             MassData massData = default(MassData);
 
             // Act
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             body.SetMassFromShapes();
@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 position = default(Vector2);
             float angle = 0;
 
@@ -195,7 +195,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             XForm xf = default(XForm);
 
             // Act
@@ -216,7 +216,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetXForm();
@@ -235,7 +235,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 position = default(Vector2);
 
             // Act
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             float angle = 0;
 
             // Act
@@ -275,7 +275,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetPosition();
@@ -293,7 +293,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetAngle();
@@ -311,7 +311,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetWorldCenter();
@@ -329,7 +329,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetLocalCenter();
@@ -346,7 +346,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetLinearVelocity_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            /* var body = CreateBody();
+            /* var body = AddBody();
              Vector2 v = default(Vector2);
  
              // Act
@@ -366,7 +366,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetLinearVelocity();
@@ -384,7 +384,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             float w = 0;
 
             // Act
@@ -404,7 +404,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetAngularVelocity();
@@ -422,7 +422,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 force = default(Vector2);
             Vector2 point = default(Vector2);
 
@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             float torque = 0;
 
             // Act
@@ -465,7 +465,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 impulse = default(Vector2);
             Vector2 point = default(Vector2);
 
@@ -487,7 +487,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetMass();
@@ -505,7 +505,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetInertia();
@@ -524,7 +524,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetMassData();
@@ -542,7 +542,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 localPoint = default(Vector2);
 
             // Act
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 localVector = default(Vector2);
 
             // Act
@@ -582,7 +582,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 worldPoint = default(Vector2);
 
             // Act
@@ -602,7 +602,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 worldVector = default(Vector2);
 
             // Act
@@ -622,7 +622,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 worldPoint = default(Vector2);
 
             // Act
@@ -642,7 +642,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             Vector2 localPoint = default(Vector2);
 
             // Act
@@ -662,7 +662,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetLinearDamping();
@@ -680,7 +680,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             float linearDamping = 0;
 
             // Act
@@ -700,7 +700,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetAngularDamping();
@@ -718,7 +718,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             float angularDamping = 0;
 
             // Act
@@ -738,7 +738,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.IsBullet();
@@ -755,7 +755,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void SetBullet_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            /*var body = CreateBody();
+            /*var body = AddBody();
             bool flag = false;
 
             // Act
@@ -774,7 +774,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsFixedRotation_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            //var body = CreateBody();
+            //var body = AddBody();
 
             // Act
             //var result = body.IsFixedRotation();
@@ -792,7 +792,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             bool fixedr = false;
 
             // Act
@@ -812,7 +812,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.IsStatic();
@@ -830,7 +830,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             body.SetStatic();
@@ -848,7 +848,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.IsDynamic();
@@ -866,7 +866,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.IsFrozen();
@@ -883,7 +883,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void IsSleeping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            //var body = CreateBody();
+            //var body = AddBody();
 
             // Act
             //var result = body.IsSleeping();
@@ -901,7 +901,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.IsAllowSleeping();
@@ -918,7 +918,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void AllowSleeping_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            /*var body = CreateBody();
+            /*var body = AddBody();
             bool flag = false;
 
             // Act
@@ -938,7 +938,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             body.WakeUp();
@@ -955,7 +955,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         public void PutToSleep_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            //var body = CreateBody();
+            //var body = AddBody();
 
             // Act
             //body.PutToSleep();
@@ -973,7 +973,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetFixtureList();
@@ -991,7 +991,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetJointList();
@@ -1009,7 +1009,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetControllerList();
@@ -1027,7 +1027,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetNext();
@@ -1045,7 +1045,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetUserData();
@@ -1063,7 +1063,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
             object data = null;
 
             // Act
@@ -1083,7 +1083,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             /*
             // Arrange
-            var body = CreateBody();
+            var body = AddBody();
 
             // Act
             var result = body.GetWorld();

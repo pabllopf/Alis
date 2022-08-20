@@ -58,10 +58,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="ContactManager" /> class
         /// </summary>
-        public ContactManager()
+        public ContactManager(World world)
         {
+            World = world;
+            NullContact = new NullContact();
         }
-
+        
         // This is a callback from the broadphase when two AABB proxies begin
         // to overlap. We create a Contact to manage the narrow phase.
         /// <summary>

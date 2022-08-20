@@ -1926,7 +1926,7 @@
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Body">
             <summary>
-                A rigid body. These are created via World.CreateBody.
+                A rigid body. These are created via World.AddBody.
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.world">
@@ -2688,7 +2688,7 @@
                 The world
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.ContactManager.#ctor">
+        <member name="M:Alis.Core.Physic.Dynamics.ContactManager.#ctor(Alis.Core.Physic.World)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.ContactManager" /> class
             </summary>
@@ -6117,27 +6117,17 @@
         </member>
         <member name="P:Alis.Core.Physic.World.GroundBody">
             <summary>
-                The ground body
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.BodyCount">
-            <summary>
-                The body count
+                The ground bodyDef
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.BodyList">
             <summary>
-                The body list
+                The bodyDef list
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.BroadPhase">
             <summary>
                 The broad phase
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.ContactCount">
-            <summary>
-                The contact count
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.ContactFilter">
@@ -6155,16 +6145,6 @@
                 The contact listener
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.ContinuousPhysics">
-            <summary>
-                The continuous physics
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.ControllerCount">
-            <summary>
-                The controller count
-            </summary>
-        </member>
         <member name="P:Alis.Core.Physic.World.ControllerList">
             <summary>
                 The controller list
@@ -6175,29 +6155,9 @@
                 The inv dt0
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.JointCount">
-            <summary>
-                The joint count
-            </summary>
-        </member>
         <member name="P:Alis.Core.Physic.World.JointList">
             <summary>
                 The joint list
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.RaycastSegment">
-            <summary>
-                The raycast segment
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.RaycastSolidShape">
-            <summary>
-                The raycast solid shape
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.RaycastUserData">
-            <summary>
-                The raycast user data
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.WarmStarting">
@@ -6210,34 +6170,34 @@
                 Get\Set global gravity vector.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.CreateBody(Alis.Core.Physic.Dynamics.BodyDef)">
+        <member name="M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
-                Create a rigid body given a definition. No reference to the definition
+                Create a rigid bodyDef given a definition. No reference to the definition
                 is retained.
                 @warning This function is locked during callbacks.
             </summary>
-            <param name="bodyDef"></param>
+            <param name="body"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.DestroyBody(Alis.Core.Physic.Dynamics.Body)">
+        <member name="M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
-                Destroy a rigid body given a definition. No reference to the definition
+                Destroy a rigid bodyDef given a definition. No reference to the definition
                 is retained. This function is locked during callbacks.
                 @warning This automatically deletes all associated shapes and joints.
                 @warning This function is locked during callbacks.
             </summary>
             <param name="body"></param>
         </member>
-        <member name="M:Alis.Core.Physic.World.CreateJoint(Alis.Core.Physic.Dynamics.Joints.JointDef)">
+        <member name="M:Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>
                 Create a joint to constrain bodies together. No reference to the definition
                 is retained. This may cause the connected bodies to cease colliding.
                 @warning This function is locked during callbacks.
             </summary>
-            <param name="jointDef"></param>
+            <param name="joint"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.DestroyJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
+        <member name="M:Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>
                 Destroy a joint. This may cause the connected bodies to begin colliding.
                 @warning This function is locked during callbacks.
