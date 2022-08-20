@@ -36,7 +36,7 @@ namespace Alis.Core.Input
     ///     VESA Virtual Controls Usage Page.
     /// </summary>
     [Description("VESA Virtual Controls Usage Page")]
-    public enum VESAVirtualPage : uint
+    public enum VesaVirtualPage : uint
     {
         /// <summary>
         ///     Undefined Usage.

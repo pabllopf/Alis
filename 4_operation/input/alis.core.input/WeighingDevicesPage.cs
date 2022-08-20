@@ -66,42 +66,42 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Scale Class II Metric Usage.
         /// </summary>
-        [Description("Scale Class II Metric")] ScaleClassIIMetric = 0x008d0023,
+        [Description("Scale Class II Metric")] ScaleClassIiMetric = 0x008d0023,
 
         /// <summary>
         ///     Scale Class III Metric Usage.
         /// </summary>
         [Description("Scale Class III Metric")]
-        ScaleClassIIIMetric = 0x008d0024,
+        ScaleClassIiiMetric = 0x008d0024,
 
         /// <summary>
         ///     Scale Class IIIL Metric Usage.
         /// </summary>
         [Description("Scale Class IIIL Metric")]
-        ScaleClassIIILMetric = 0x008d0025,
+        ScaleClassIiilMetric = 0x008d0025,
 
         /// <summary>
         ///     Scale Class IV Metric Usage.
         /// </summary>
-        [Description("Scale Class IV Metric")] ScaleClassIVMetric = 0x008d0026,
+        [Description("Scale Class IV Metric")] ScaleClassIvMetric = 0x008d0026,
 
         /// <summary>
         ///     Scale Class III English Usage.
         /// </summary>
         [Description("Scale Class III English")]
-        ScaleClassIIIEnglish = 0x008d0027,
+        ScaleClassIiiEnglish = 0x008d0027,
 
         /// <summary>
         ///     Scale Class IIIL English Usage.
         /// </summary>
         [Description("Scale Class IIIL English")]
-        ScaleClassIIILEnglish = 0x008d0028,
+        ScaleClassIiilEnglish = 0x008d0028,
 
         /// <summary>
         ///     Scale Class IV English Usage.
         /// </summary>
         [Description("Scale Class IV English")]
-        ScaleClassIVEnglish = 0x008d0029,
+        ScaleClassIvEnglish = 0x008d0029,
 
         /// <summary>
         ///     Scale Class Generic Usage.

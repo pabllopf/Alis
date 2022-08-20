@@ -31,7 +31,6 @@ using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;

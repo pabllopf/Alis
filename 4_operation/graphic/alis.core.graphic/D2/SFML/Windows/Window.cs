@@ -108,11 +108,11 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <summary>
         ///     Create the window from an existing control
         /// </summary>
-        /// <param name="Handle">Platform-specific handle of the control</param>
+        /// <param name="handle">Platform-specific handle of the control</param>
         /// <param name="settings">Creation parameters</param>
         ////////////////////////////////////////////////////////////
-        public Window(IntPtr Handle, ContextSettings settings) :
-            base(sfWindow_createFromHandle(Handle, ref settings))
+        public Window(IntPtr handle, ContextSettings settings) :
+            base(sfWindow_createFromHandle(handle, ref settings))
         {
         }
 
@@ -151,7 +151,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ///     Position of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public virtual Vector2i Position
+        public virtual Vector2I Position
         {
             get => sfWindow_getPosition(CPointer);
             set => sfWindow_setPosition(CPointer, value);
@@ -162,7 +162,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ///     Size of the rendering region of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public virtual Vector2u Size
+        public virtual Vector2U Size
         {
             get => sfWindow_getSize(CPointer);
             set => sfWindow_setSize(CPointer, value);
@@ -229,9 +229,9 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         {
             unsafe
             {
-                fixed (byte* PixelsPtr = pixels)
+                fixed (byte* pixelsPtr = pixels)
                 {
-                    sfWindow_setIcon(CPointer, width, height, PixelsPtr);
+                    sfWindow_setIcon(CPointer, width, height, pixelsPtr);
                 }
             }
         }
@@ -437,7 +437,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <returns>Relative mouse position</returns>
         ////////////////////////////////////////////////////////////
-        public virtual Vector2i InternalGetMousePosition() => sfMouse_getPosition(CPointer);
+        public virtual Vector2I InternalGetMousePosition() => sfMouse_getPosition(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -447,7 +447,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="position">Relative mouse position</param>
         ////////////////////////////////////////////////////////////
-        protected internal virtual void InternalSetMousePosition(Vector2i position)
+        protected internal virtual void InternalSetMousePosition(Vector2I position)
         {
             sfMouse_setPosition(position, CPointer);
         }
@@ -458,10 +458,10 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ///     This function is protected because it is called by another class of
         ///     another module, it is not meant to be called by users.
         /// </summary>
-        /// <param name="Finger">Finger index</param>
+        /// <param name="finger">Finger index</param>
         /// <returns>Relative touch position</returns>
         ////////////////////////////////////////////////////////////
-        protected internal virtual Vector2i InternalGetTouchPosition(uint Finger) => sfTouch_getPosition(Finger, CPointer);
+        protected internal virtual Vector2I InternalGetTouchPosition(uint finger) => sfTouch_getPosition(finger, CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -743,276 +743,276 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <summary>
         ///     Sfs the window create using the specified mode
         /// </summary>
-        /// <param name="Mode">The mode</param>
-        /// <param name="Title">The title</param>
-        /// <param name="Style">The style</param>
-        /// <param name="Params">The params</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="title">The title</param>
+        /// <param name="style">The style</param>
+        /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfWindow_create(VideoMode Mode, string Title, Styles Style,
-            ref ContextSettings Params);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfWindow_create(VideoMode mode, string title, Styles style,
+            ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the window create unicode using the specified mode
         /// </summary>
-        /// <param name="Mode">The mode</param>
-        /// <param name="Title">The title</param>
-        /// <param name="Style">The style</param>
-        /// <param name="Params">The params</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="title">The title</param>
+        /// <param name="style">The style</param>
+        /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfWindow_createUnicode(VideoMode Mode, IntPtr Title, Styles Style,
-            ref ContextSettings Params);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfWindow_createUnicode(VideoMode mode, IntPtr title, Styles style,
+            ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the window create from handle using the specified handle
         /// </summary>
-        /// <param name="Handle">The handle</param>
-        /// <param name="Params">The params</param>
+        /// <param name="handle">The handle</param>
+        /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfWindow_createFromHandle(IntPtr Handle, ref ContextSettings Params);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfWindow_createFromHandle(IntPtr handle, ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the window destroy using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_destroy(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_destroy(IntPtr cPointer);
 
         /// <summary>
         ///     Describes whether sf window is open
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfWindow_isOpen(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfWindow_isOpen(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window close using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_close(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_close(IntPtr cPointer);
 
         /// <summary>
         ///     Describes whether sf window poll event
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Evt">The evt</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfWindow_pollEvent(IntPtr CPointer, out Event Evt);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfWindow_pollEvent(IntPtr cPointer, out Event evt);
 
         /// <summary>
         ///     Describes whether sf window wait event
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Evt">The evt</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfWindow_waitEvent(IntPtr CPointer, out Event Evt);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfWindow_waitEvent(IntPtr cPointer, out Event evt);
 
         /// <summary>
         ///     Sfs the window display using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_display(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_display(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window get settings using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The context settings</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern ContextSettings sfWindow_getSettings(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern ContextSettings sfWindow_getSettings(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window get position using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2i sfWindow_getPosition(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2I sfWindow_getPosition(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window set position using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="position">The position</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setPosition(IntPtr CPointer, Vector2i position);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setPosition(IntPtr cPointer, Vector2I position);
 
         /// <summary>
         ///     Sfs the window get size using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2u sfWindow_getSize(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2U sfWindow_getSize(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window set size using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="size">The size</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setSize(IntPtr CPointer, Vector2u size);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setSize(IntPtr cPointer, Vector2U size);
 
         /// <summary>
         ///     Sfs the window set title using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setTitle(IntPtr CPointer, string title);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setTitle(IntPtr cPointer, string title);
 
         /// <summary>
         ///     Sfs the window set unicode title using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setUnicodeTitle(IntPtr CPointer, IntPtr title);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setUnicodeTitle(IntPtr cPointer, IntPtr title);
 
         /// <summary>
         ///     Sfs the window set icon using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Width">The width</param>
-        /// <param name="Height">The height</param>
-        /// <param name="Pixels">The pixels</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfWindow_setIcon(IntPtr CPointer, uint Width, uint Height, byte* Pixels);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="pixels">The pixels</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern unsafe void sfWindow_setIcon(IntPtr cPointer, uint width, uint height, byte* pixels);
 
         /// <summary>
         ///     Sfs the window set visible using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setVisible(IntPtr CPointer, bool visible);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setVisible(IntPtr cPointer, bool visible);
 
         /// <summary>
         ///     Sfs the window set mouse cursor visible using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Show">The show</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setMouseCursorVisible(IntPtr CPointer, bool Show);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="show">The show</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setMouseCursorVisible(IntPtr cPointer, bool show);
 
         /// <summary>
         ///     Sfs the window set mouse cursor grabbed using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="grabbed">The grabbed</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setMouseCursorGrabbed(IntPtr CPointer, bool grabbed);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setMouseCursorGrabbed(IntPtr cPointer, bool grabbed);
 
         /// <summary>
         ///     Sfs the window set mouse cursor using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="cursor">The cursor</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setMouseCursor(IntPtr CPointer, IntPtr cursor);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setMouseCursor(IntPtr cPointer, IntPtr cursor);
 
         /// <summary>
         ///     Sfs the window set vertical sync enabled using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setVerticalSyncEnabled(IntPtr CPointer, bool Enable);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="enable">The enable</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setVerticalSyncEnabled(IntPtr cPointer, bool enable);
 
         /// <summary>
         ///     Sfs the window set key repeat enabled using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setKeyRepeatEnabled(IntPtr CPointer, bool Enable);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="enable">The enable</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setKeyRepeatEnabled(IntPtr cPointer, bool enable);
 
         /// <summary>
         ///     Describes whether sf window set active
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Active">The active</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfWindow_setActive(IntPtr CPointer, bool Active);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfWindow_setActive(IntPtr cPointer, bool active);
 
         /// <summary>
         ///     Sfs the window set framerate limit using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Limit">The limit</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setFramerateLimit(IntPtr CPointer, uint Limit);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="limit">The limit</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setFramerateLimit(IntPtr cPointer, uint limit);
 
         /// <summary>
         ///     Sfs the window get frame time using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfWindow_getFrameTime(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern uint sfWindow_getFrameTime(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window set joystick threshold using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Threshold">The threshold</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setJoystickThreshold(IntPtr CPointer, float Threshold);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="threshold">The threshold</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_setJoystickThreshold(IntPtr cPointer, float threshold);
 
         /// <summary>
         ///     Sfs the window get system handle using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfWindow_getSystemHandle(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfWindow_getSystemHandle(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window request focus using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_requestFocus(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfWindow_requestFocus(IntPtr cPointer);
 
         /// <summary>
         ///     Describes whether sf window has focus
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfWindow_hasFocus(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfWindow_hasFocus(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the mouse get position using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2i sfMouse_getPosition(IntPtr CPointer);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2I sfMouse_getPosition(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the mouse set position using the specified position
         /// </summary>
         /// <param name="position">The position</param>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMouse_setPosition(Vector2i position, IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMouse_setPosition(Vector2I position, IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the touch get position using the specified finger
         /// </summary>
-        /// <param name="Finger">The finger</param>
-        /// <param name="RelativeTo">The relative to</param>
+        /// <param name="finger">The finger</param>
+        /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2i sfTouch_getPosition(uint Finger, IntPtr RelativeTo);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2I sfTouch_getPosition(uint finger, IntPtr relativeTo);
     }
 }

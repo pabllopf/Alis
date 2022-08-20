@@ -4953,12 +4953,6 @@
                 Wrapper for pixel shaders
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Shader.CurrentTexture">
-            <summary>
-                Special value that can be passed to SetParameter,
-                and that represents the texture of the object being drawn
-            </summary>
-        </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Shader.myTextures">
             <summary>
                 The texture
@@ -5041,6 +5035,12 @@
                     code or SFML will result in a context switch.
                 </para>
             </remarks>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Shader.CurrentTexture">
+            <summary>
+                Special value that can be passed to SetParameter,
+                and that represents the texture of the object being drawn
+            </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.FromString(System.String,System.String,System.String)">
             <summary>
@@ -6207,26 +6207,6 @@
                 See also the note on coordinates and undistorted rendering in SFML.Graphics.Transformable.
             </remarks>
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles">
-            <summary>
-                Enumerate the string drawing styles
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Regular">
-            <summary>Regular characters, no style</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Bold">
-            <summary>Bold characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Italic">
-            <summary>Italic characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Underlined">
-            <summary>Underlined characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.StrikeThrough">
-            <summary>Strike through characters</summary>
-        </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.myFont">
             <summary>
                 The my font
@@ -6328,6 +6308,26 @@
             <summary>
                 Style of the text (see Styles enum)
             </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles">
+            <summary>
+                Enumerate the string drawing styles
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Regular">
+            <summary>Regular characters, no style</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Bold">
+            <summary>Bold characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Italic">
+            <summary>Italic characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Underlined">
+            <summary>Underlined characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.StrikeThrough">
+            <summary>Strike through characters</summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Text.Draw(Alis.Core.Graphic.D2.SFML.Graphics.RenderTarget,Alis.Core.Graphic.D2.SFML.Graphics.RenderStates)">
             <summary>
@@ -8481,32 +8481,6 @@
             <seealso cref="T:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase" />
             <seealso cref="T:Alis.Core.Graphic.D2.SFML.Graphics.Drawable" />
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier">
-            <summary>
-                Usage specifiers
-                If data is going to be updated once or more every frame,
-                set the usage to Stream. If data is going
-                to be set once and used for a long time without being
-                modified, set the usage to Static.
-                For everything else Dynamic should
-                be a good compromise.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Stream">
-            <summary>
-                The stream usage specifier
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Dynamic">
-            <summary>
-                The dynamic usage specifier
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Static">
-            <summary>
-                The static usage specifier
-            </summary>
-        </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.#ctor(System.UInt32,Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType,Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier)">
             <summary>
                 Create a new vertex buffer with a specific
@@ -8554,6 +8528,32 @@
         <member name="P:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.Usage">
             <summary>
                 The usage specifier for the vertex buffer
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier">
+            <summary>
+                Usage specifiers
+                If data is going to be updated once or more every frame,
+                set the usage to Stream. If data is going
+                to be set once and used for a long time without being
+                modified, set the usage to Static.
+                For everything else Dynamic should
+                be a good compromise.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Stream">
+            <summary>
+                The stream usage specifier
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Dynamic">
+            <summary>
+                The dynamic usage specifier
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Static">
+            <summary>
+                The static usage specifier
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.Draw(Alis.Core.Graphic.D2.SFML.Graphics.RenderTarget,Alis.Core.Graphic.D2.SFML.Graphics.RenderStates)">
@@ -9035,11 +9035,6 @@
                 This class defines a .NET interface to an SFML OpenGL Context
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Context.ourGlobalContext">
-            <summary>
-                The our global context
-            </summary>
-        </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Context.myThis">
             <summary>
                 The zero
@@ -9058,6 +9053,11 @@
         <member name="P:Alis.Core.Graphic.D2.SFML.Windows.Context.Global">
             <summary>
                 Global helper context
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Context.ourGlobalContext">
+            <summary>
+                The our global context
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Context.Finalize">
@@ -9184,6 +9184,39 @@
             </summary>
             <seealso cref="T:Alis.Core.Graphic.D2.SFML.Graphics.ObjectBase" />
         </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(Alis.Core.Graphic.D2.SFML.Windows.Cursor.CursorType)">
+            <summary>
+                Create a native system cursor
+                Refer to the list of cursor available on each system
+                (see CursorType) to know whether a given cursor is
+                expected to load successfully or is not supported by
+                the operating system.
+            </summary>
+            <param name="type">System cursor type</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(System.Byte[],Alis.Core.Graphic.D2.SFML.Graphics.Vector2u,Alis.Core.Graphic.D2.SFML.Graphics.Vector2u)">
+            <summary>
+                Create a cursor with the provided image
+                Pixels must be an array of width by height pixels
+                in 32-bit RGBA format. If not, this will cause undefined behavior.
+                If pixels is null or either width or height are 0,
+                the current cursor is left unchanged and the function will
+                return false.
+                In addition to specifying the pixel data, you can also
+                specify the location of the hotspot of the cursor. The
+                hotspot is the pixel coordinate within the cursor image
+                which will be located exactly where the mouse pointer
+                position is. Any mouse actions that are performed will
+                return the window/screen location of the hotspot.
+                Warning: On Unix, the pixels are mapped into a monochrome
+                bitmap: pixels with an alpha channel to 0 are
+                transparent, black if the RGB channel are close
+                to zero, and white otherwise.
+            </summary>
+            <param name="pixels">Array of pixels of the image</param>
+            <param name="size">Width and height of the image</param>
+            <param name="hotspot">(x,y) location of the hotspot</param>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Cursor.CursorType">
             <summary>
                 Enumeration of possibly available native system cursor types
@@ -9292,39 +9325,6 @@
                 Mac OS:  Yes
                 Linux:   Yes
             </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(Alis.Core.Graphic.D2.SFML.Windows.Cursor.CursorType)">
-            <summary>
-                Create a native system cursor
-                Refer to the list of cursor available on each system
-                (see CursorType) to know whether a given cursor is
-                expected to load successfully or is not supported by
-                the operating system.
-            </summary>
-            <param name="type">System cursor type</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(System.Byte[],Alis.Core.Graphic.D2.SFML.Graphics.Vector2u,Alis.Core.Graphic.D2.SFML.Graphics.Vector2u)">
-            <summary>
-                Create a cursor with the provided image
-                Pixels must be an array of width by height pixels
-                in 32-bit RGBA format. If not, this will cause undefined behavior.
-                If pixels is null or either width or height are 0,
-                the current cursor is left unchanged and the function will
-                return false.
-                In addition to specifying the pixel data, you can also
-                specify the location of the hotspot of the cursor. The
-                hotspot is the pixel coordinate within the cursor image
-                which will be located exactly where the mouse pointer
-                position is. Any mouse actions that are performed will
-                return the window/screen location of the hotspot.
-                Warning: On Unix, the pixels are mapped into a monochrome
-                bitmap: pixels with an alpha channel to 0 are
-                transparent, black if the RGB channel are close
-                to zero, and white otherwise.
-            </summary>
-            <param name="pixels">Array of pixels of the image</param>
-            <param name="size">Width and height of the image</param>
-            <param name="hotspot">(x,y) location of the hotspot</param>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.Destroy(System.Boolean)">
             <summary>

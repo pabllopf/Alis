@@ -46,7 +46,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     iName Usage.
         /// </summary>
-        [Description("iName")] IName = 0x00840001,
+        [Description("iName")] Name = 0x00840001,
 
         /// <summary>
         ///     Present Status Usage.
@@ -61,7 +61,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     UPS Usage.
         /// </summary>
-        [Description("UPS")] UPS = 0x00840004,
+        [Description("UPS")] Ups = 0x00840004,
 
         /// <summary>
         ///     Power Supply Usage.
@@ -81,7 +81,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Battery System ID Usage.
         /// </summary>
-        [Description("Battery System ID")] BatterySystemID = 0x00840011,
+        [Description("Battery System ID")] BatterySystemId = 0x00840011,
 
         /// <summary>
         ///     Battery Usage.
@@ -91,7 +91,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Battery ID Usage.
         /// </summary>
-        [Description("Battery ID")] BatteryID = 0x00840013,
+        [Description("Battery ID")] BatteryId = 0x00840013,
 
         /// <summary>
         ///     Charger Usage.
@@ -101,7 +101,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Charger ID Usage.
         /// </summary>
-        [Description("Charger ID")] ChargerID = 0x00840015,
+        [Description("Charger ID")] ChargerId = 0x00840015,
 
         /// <summary>
         ///     Power Converter Usage.
@@ -111,7 +111,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Power Converter ID Usage.
         /// </summary>
-        [Description("Power Converter ID")] PowerConverterID = 0x00840017,
+        [Description("Power Converter ID")] PowerConverterId = 0x00840017,
 
         /// <summary>
         ///     Outlet System Usage.
@@ -121,7 +121,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Outlet System ID Usage.
         /// </summary>
-        [Description("Outlet System ID")] OutletSystemID = 0x00840019,
+        [Description("Outlet System ID")] OutletSystemId = 0x00840019,
 
         /// <summary>
         ///     Input Usage.
@@ -131,7 +131,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Input ID Usage.
         /// </summary>
-        [Description("Input ID")] InputID = 0x0084001b,
+        [Description("Input ID")] InputId = 0x0084001b,
 
         /// <summary>
         ///     Output Usage.
@@ -141,7 +141,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Output ID Usage.
         /// </summary>
-        [Description("Output ID")] OutputID = 0x0084001d,
+        [Description("Output ID")] OutputId = 0x0084001d,
 
         /// <summary>
         ///     Flow Usage.
@@ -151,7 +151,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Flow ID Usage.
         /// </summary>
-        [Description("Flow ID")] FlowID = 0x0084001f,
+        [Description("Flow ID")] FlowId = 0x0084001f,
 
         /// <summary>
         ///     Outlet Usage.
@@ -161,7 +161,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Outlet ID Usage.
         /// </summary>
-        [Description("Outlet ID")] OutletID = 0x00840021,
+        [Description("Outlet ID")] OutletId = 0x00840021,
 
         /// <summary>
         ///     Gang Usage.
@@ -176,12 +176,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Gang ID Usage.
         /// </summary>
-        [Description("Gang ID")] GangID = 0x00840023,
+        [Description("Gang ID")] GangId = 0x00840023,
 
         /// <summary>
         ///     Power Summary ID Usage.
         /// </summary>
-        [Description("Power Summary ID")] PowerSummaryID = 0x00840023,
+        [Description("Power Summary ID")] PowerSummaryId = 0x00840023,
 
         /// <summary>
         ///     Voltage Usage.
@@ -424,16 +424,16 @@ namespace Alis.Core.Input
         /// <summary>
         ///     iManufacturer Usage.
         /// </summary>
-        [Description("iManufacturer")] IManufacturer = 0x008400fd,
+        [Description("iManufacturer")] Manufacturer = 0x008400fd,
 
         /// <summary>
         ///     iProduct Usage.
         /// </summary>
-        [Description("iProduct")] IProduct = 0x008400fe,
+        [Description("iProduct")] Product = 0x008400fe,
 
         /// <summary>
         ///     iSerialNumber Usage.
         /// </summary>
-        [Description("iSerialNumber")] ISerialNumber = 0x008400ff
+        [Description("iSerialNumber")] SerialNumber = 0x008400ff
     }
 }

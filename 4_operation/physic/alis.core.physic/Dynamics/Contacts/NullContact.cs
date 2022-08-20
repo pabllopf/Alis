@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Collisions.Shape;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <param name="xf1">The xf</param>
         /// <param name="shape2">The shape</param>
         /// <param name="xf2">The xf</param>
-        private static void Collide(ref Manifold manifold, Shape shape1, XForm xf1, Shape shape2, XForm xf2)
+        private static void Collide(ref Manifold manifold, IShape shape1, XForm xf1, IShape shape2, XForm xf2)
         {
         }
     }

@@ -34,14 +34,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     ///     Abstract base class for render targets (renderwindow, renderimage)
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public interface RenderTarget
+    public interface IRenderTarget
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Size of the rendering region of the target
         /// </summary>
         ////////////////////////////////////////////////////////////
-        Vector2u Size { get; }
+        Vector2U Size { get; }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2f MapPixelToCoords(Vector2i point);
+        Vector2F MapPixelToCoords(Vector2I point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -111,7 +111,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        Vector2f MapPixelToCoords(Vector2i point, View view);
+        Vector2F MapPixelToCoords(Vector2I point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -125,7 +125,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2i MapCoordsToPixel(Vector2f point);
+        Vector2I MapCoordsToPixel(Vector2F point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -146,7 +146,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        Vector2i MapCoordsToPixel(Vector2f point, View view);
+        Vector2I MapCoordsToPixel(Vector2F point, View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -169,7 +169,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="drawable">Object to draw</param>
         ////////////////////////////////////////////////////////////
-        void Draw(Drawable drawable);
+        void Draw(IDrawable drawable);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="drawable">Object to draw</param>
         /// <param name="states">Render states to use for drawing</param>
         ////////////////////////////////////////////////////////////
-        void Draw(Drawable drawable, RenderStates states);
+        void Draw(IDrawable drawable, RenderStates states);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -248,7 +248,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     function if you do so.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        void PushGLStates();
+        void PushGlStates();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -257,7 +257,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     description of these functions.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        void PopGLStates();
+        void PopGlStates();
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -277,6 +277,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     // OpenGL code here...
         /// </summary>
         ////////////////////////////////////////////////////////////
-        void ResetGLStates();
+        void ResetGlStates();
     }
 }

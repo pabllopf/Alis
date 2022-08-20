@@ -134,8 +134,8 @@ namespace Alis.Template.Game.Ios
 
             mtkView.ClearColor = new MTLClearColor(0.5f, 0.5f, 0.5f, 1.0f);
 
-            bool deviceSupportsMPS = MPSKernel.Supports(mtkView.Device);
-            if (!deviceSupportsMPS)
+            bool deviceSupportsMps = MPSKernel.Supports(mtkView.Device);
+            if (!deviceSupportsMps)
             {
                 return;
             }

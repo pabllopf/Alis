@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Collisions.Shape;
 
 namespace Alis.Core.Physic.Collisions
 {
@@ -68,8 +68,8 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="shapeB">The shape</param>
         /// <param name="transformB">The transform</param>
         internal unsafe void Initialize(SimplexCache* cache,
-            Shape shapeA, XForm transformA,
-            Shape shapeB, XForm transformB)
+            IShape shapeA, XForm transformA,
+            IShape shapeB, XForm transformB)
         {
             ShapeA = shapeA;
             ShapeB = shapeB;
@@ -190,12 +190,12 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The shape
         /// </summary>
-        internal Shape ShapeA;
+        internal IShape ShapeA;
 
         /// <summary>
         ///     The shape
         /// </summary>
-        internal Shape ShapeB;
+        internal IShape ShapeB;
 
         /// <summary>
         ///     The face type

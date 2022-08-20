@@ -36,7 +36,7 @@ namespace Alis.Core.Input
     ///     Magnetic Stripe Reading (MSR) Devices Usage Page.
     /// </summary>
     [Description("Magnetic Stripe Reading (MSR) Devices Usage Page")]
-    public enum MagneticStripeReadingMSRDevicesPage : uint
+    public enum MagneticStripeReadingMsrDevicesPage : uint
     {
         /// <summary>
         ///     Undefined Usage.
@@ -46,7 +46,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     MSR Device Read-Only Usage.
         /// </summary>
-        [Description("MSR Device Read-Only")] MSRDeviceReadOnly = 0x008e0001,
+        [Description("MSR Device Read-Only")] MsrDeviceReadOnly = 0x008e0001,
 
         /*
          * Range: 0x0011 -> 0x0013
@@ -71,7 +71,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Track JIS Length Usage.
         /// </summary>
-        [Description("Track JIS Length")] TrackJISLength = 0x008e0014,
+        [Description("Track JIS Length")] TrackJisLength = 0x008e0014,
 
         /// <summary>
         ///     Track Data Usage.
@@ -101,6 +101,6 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Track JIS Data Usage.
         /// </summary>
-        [Description("Track JIS Data")] TrackJISData = 0x008e0024
+        [Description("Track JIS Data")] TrackJisData = 0x008e0024
     }
 }

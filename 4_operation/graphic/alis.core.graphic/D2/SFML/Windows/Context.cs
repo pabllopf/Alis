@@ -68,19 +68,19 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         {
             get
             {
-                if (ourGlobalContext == null)
+                if (_ourGlobalContext == null)
                 {
-                    ourGlobalContext = new Context();
+                    _ourGlobalContext = new Context();
                 }
 
-                return ourGlobalContext;
+                return _ourGlobalContext;
             }
         }
 
         /// <summary>
         ///     The our global context
         /// </summary>
-        private static Context ourGlobalContext;
+        private static Context _ourGlobalContext;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -113,31 +113,31 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ///     Sfs the context create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfContext_create();
 
         /// <summary>
         ///     Sfs the context destroy using the specified view
         /// </summary>
-        /// <param name="View">The view</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfContext_destroy(IntPtr View);
+        /// <param name="view">The view</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfContext_destroy(IntPtr view);
 
         /// <summary>
         ///     Describes whether sf context set active
         /// </summary>
-        /// <param name="View">The view</param>
-        /// <param name="Active">The active</param>
+        /// <param name="view">The view</param>
+        /// <param name="active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfContext_setActive(IntPtr View, bool Active);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfContext_setActive(IntPtr view, bool active);
 
         /// <summary>
         ///     Sfs the context get settings using the specified view
         /// </summary>
-        /// <param name="View">The view</param>
+        /// <param name="view">The view</param>
         /// <returns>The context settings</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern ContextSettings sfContext_getSettings(IntPtr View);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern ContextSettings sfContext_getSettings(IntPtr view);
     }
 }

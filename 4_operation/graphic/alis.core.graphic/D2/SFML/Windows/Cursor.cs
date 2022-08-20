@@ -73,7 +73,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="pixels">Array of pixels of the image</param>
         /// <param name="size">Width and height of the image</param>
         /// <param name="hotspot">(x,y) location of the hotspot</param>
-        public Cursor(byte[] pixels, Vector2u size, Vector2u hotspot)
+        public Cursor(byte[] pixels, Vector2U size, Vector2U hotspot)
             : base((IntPtr) 0)
         {
             unsafe
@@ -209,7 +209,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfCursor_createFromSystem(CursorType type);
 
         /// <summary>
@@ -219,14 +219,14 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="size">The size</param>
         /// <param name="hotspot">The hotspot</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfCursor_createFromPixels(IntPtr pixels, Vector2u size, Vector2u hotspot);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfCursor_createFromPixels(IntPtr pixels, Vector2U size, Vector2U hotspot);
 
         /// <summary>
         ///     Sfs the cursor destroy using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfCursor_destroy(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfCursor_destroy(IntPtr cPointer);
     }
 }

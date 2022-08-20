@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ShapeType.cs
+//  File:SegmentCollide.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,36 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Collisions.Shapes
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     The various collision shape types supported by Box2D.
+    ///     Returns code from TestSegment
     /// </summary>
-    public enum ShapeType
+    public enum SegmentCollide
     {
         /// <summary>
-        ///     The unknown shape shape type
+        ///     The start inside collide segment collide
         /// </summary>
-        UnknownShape = -1,
+        StartInsideCollide = -1,
 
         /// <summary>
-        ///     The circle shape shape type
+        ///     The miss collide segment collide
         /// </summary>
-        CircleShape,
+        MissCollide = 0,
 
         /// <summary>
-        ///     The polygon shape shape type
+        ///     The hit collide segment collide
         /// </summary>
-        PolygonShape,
-
-        /// <summary>
-        ///     The edge shape shape type
-        /// </summary>
-        EdgeShape,
-
-        /// <summary>
-        ///     The shape type count shape type
-        /// </summary>
-        ShapeTypeCount
+        HitCollide = 1
     }
 }

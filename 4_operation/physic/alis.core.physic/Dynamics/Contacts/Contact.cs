@@ -30,7 +30,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Collisions.Shape;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -385,10 +385,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;
-            Shape shapeA = FixtureA.Shape;
-            Shape shapeB = FixtureB.Shape;
+            IShape shapeA = FixtureA.Shape;
+            IShape shapeB = FixtureB.Shape;
 
-            worldManifold.Initialize(Manifold, bodyA.GetXForm(), shapeA.Radius, bodyB.GetXForm(), shapeB.Radius);
+            worldManifold.Initialize(Manifold, bodyA.GetXForm(), shapeA.GetRadius(), bodyB.GetXForm(), shapeB.GetRadius());
         }
 
         /// <summary>
@@ -400,6 +400,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The collide shape delegate
         /// </summary>
         internal delegate void CollideShapeDelegate(
-            ref Manifold manifold, Shape circle1, XForm xf1, Shape circle2, XForm xf2);
+            ref Manifold manifold, IShape circle1, XForm xf1, IShape circle2, XForm xf2);
     }
 }

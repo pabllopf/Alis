@@ -263,14 +263,14 @@ namespace Alis.Core.Input
                 case 0x00db: return new Usage(this, id, "Keypad Octal", UsageTypes.Sel);
                 case 0x00dc: return new Usage(this, id, "Keypad Decimal", UsageTypes.Sel);
                 case 0x00dd: return new Usage(this, id, "Keypad Hexadecimal", UsageTypes.Sel);
-                case 0x00e0: return new Usage(this, id, "LeftCtrl", UsageTypes.DF);
-                case 0x00e1: return new Usage(this, id, "LeftShift", UsageTypes.DF);
-                case 0x00e2: return new Usage(this, id, "LeftAlt", UsageTypes.DF);
-                case 0x00e3: return new Usage(this, id, "LeftGUI", UsageTypes.DF);
-                case 0x00e4: return new Usage(this, id, "RightCtrl", UsageTypes.DF);
-                case 0x00e5: return new Usage(this, id, "RightShift", UsageTypes.DF);
-                case 0x00e6: return new Usage(this, id, "RightAlt", UsageTypes.DF);
-                case 0x00e7: return new Usage(this, id, "RightGUI", UsageTypes.DF);
+                case 0x00e0: return new Usage(this, id, "LeftCtrl", UsageTypes.Df);
+                case 0x00e1: return new Usage(this, id, "LeftShift", UsageTypes.Df);
+                case 0x00e2: return new Usage(this, id, "LeftAlt", UsageTypes.Df);
+                case 0x00e3: return new Usage(this, id, "LeftGUI", UsageTypes.Df);
+                case 0x00e4: return new Usage(this, id, "RightCtrl", UsageTypes.Df);
+                case 0x00e5: return new Usage(this, id, "RightShift", UsageTypes.Df);
+                case 0x00e6: return new Usage(this, id, "RightAlt", UsageTypes.Df);
+                case 0x00e7: return new Usage(this, id, "RightGUI", UsageTypes.Df);
             }
 
             return base.CreateUsage(id);

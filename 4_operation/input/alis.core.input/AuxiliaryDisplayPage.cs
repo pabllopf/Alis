@@ -62,7 +62,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     ASCII Character Set Usage.
         /// </summary>
-        [Description("ASCII Character Set")] ASCIICharacterSet = 0x00140021,
+        [Description("ASCII Character Set")] AsciiCharacterSet = 0x00140021,
 
         /// <summary>
         ///     Data Read Back Usage.
@@ -374,7 +374,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Soft Button ID Usage.
         /// </summary>
-        [Description("Soft Button ID")] SoftButtonID = 0x00140091,
+        [Description("Soft Button ID")] SoftButtonId = 0x00140091,
 
         /// <summary>
         ///     Soft Button Side Usage.

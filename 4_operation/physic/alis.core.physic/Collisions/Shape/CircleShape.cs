@@ -30,13 +30,23 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collisions.Shapes
+namespace Alis.Core.Physic.Collisions.Shape
 {
     /// <summary>
     ///     A circle shape.
     /// </summary>
-    public class CircleShape : Shape
+    public class CircleShape : IShape
     {
+        /// <summary>
+        ///     The radius
+        /// </summary>
+        public float Radius { get; set; }
+
+        /// <summary>
+        ///     The unknown shape
+        /// </summary>
+        public ShapeType ShapeType { get; set; }
+
         // Position
         /// <summary>
         ///     The position
@@ -46,7 +56,11 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
-        public CircleShape() => Type = ShapeType.CircleShape;
+        public CircleShape(float radius)
+        {
+            Radius = radius;
+            ShapeType = ShapeType.CircleShape;
+        }
 
         /// <summary>
         ///     Get the vertex count.
@@ -59,7 +73,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(XForm transform, Vector2 p)
+        public bool TestPoint(XForm transform, Vector2 p)
         {
             Vector2 center = transform.Position + Math.Mul(transform.R, Position);
             Vector2 d = p - center;
@@ -79,7 +93,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <param name="segment">The segment</param>
         /// <param name="maxLambda">The max lambda</param>
         /// <returns>The segment collide</returns>
-        public override SegmentCollide TestSegment(XForm transform, out float lambda, out Vector2 normal,
+        public SegmentCollide TestSegment(XForm transform, out float lambda, out Vector2 normal,
             Segment segment,
             float maxLambda)
         {
@@ -130,7 +144,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
-        public override void ComputeAabb(out Aabb aabb, XForm transform)
+        public  void ComputeAabb(out Aabb aabb, XForm transform)
         {
             aabb = new Aabb();
 
@@ -144,7 +158,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         /// <param name="massData">The mass data</param>
         /// <param name="density">The density</param>
-        public override void ComputeMass(out MassData massData, float density)
+        public  void ComputeMass(out MassData massData, float density)
         {
             massData = new MassData();
 
@@ -163,7 +177,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <param name="xf">The xf</param>
         /// <param name="c">The </param>
         /// <returns>The area</returns>
-        public override float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c)
+        public float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c)
         {
             Vector2 p = Math.Mul(xf, Position);
             float l = -(Vector2.Dot(normal, p) - offset);
@@ -197,17 +211,17 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <summary>
         ///     Get the supporting vertex index in the given direction.
         /// </summary>
-        public override int GetSupport(Vector2 d) => 0;
+        public  int GetSupport(Vector2 d) => 0;
 
         /// <summary>
         ///     Get the supporting vertex in the given direction.
         /// </summary>
-        public override Vector2 GetSupportVertex(Vector2 d) => Position;
+        public  Vector2 GetSupportVertex(Vector2 d) => Position;
 
         /// <summary>
         ///     Get a vertex by index. Used by Distance.
         /// </summary>
-        public override Vector2 GetVertex(int index)
+        public  Vector2 GetVertex(int index)
         {
             Box2DxDebug.Assert(index == 0);
             return Position;
@@ -218,6 +232,26 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         /// <param name="pivot">The pivot</param>
         /// <returns>The float</returns>
-        public override float ComputeSweepRadius(Vector2 pivot) => Vector2.Distance(Position, pivot);
+        public  float ComputeSweepRadius(Vector2 pivot) => Vector2.Distance(Position, pivot);
+
+        /// <summary>
+        /// dispose 
+        /// </summary>
+        public void Dispose()
+        {
+            
+        }
+        
+        /// <summary>
+        /// return the radius of the polygon
+        /// </summary>
+        /// <returns></returns>
+        public float GetRadius() => Radius;
+
+        /// <summary>
+        /// return the shape type.
+        /// </summary>
+        /// <returns></returns>
+        public ShapeType GetShapeType() => ShapeType;
     }
 }

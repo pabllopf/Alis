@@ -53,30 +53,30 @@ namespace Alis.Core.Input
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "Background Controls", UsageTypes.CA);
-                case 0x0020: return new Usage(this, id, "Battery Strength", UsageTypes.DV);
-                case 0x0021: return new Usage(this, id, "Wireless Channel", UsageTypes.DV);
-                case 0x0022: return new Usage(this, id, "Wireless ID", UsageTypes.DV);
-                case 0x0023: return new Usage(this, id, "Discover Wireless Control", UsageTypes.OSC);
-                case 0x0024: return new Usage(this, id, "Security Code Character Entered", UsageTypes.OSC);
-                case 0x0025: return new Usage(this, id, "Security Code Character Erased", UsageTypes.OSC);
-                case 0x0026: return new Usage(this, id, "Security Code Cleared", UsageTypes.OSC);
-                case 0x0027: return new Usage(this, id, "Sequence ID", UsageTypes.DV);
-                case 0x0028: return new Usage(this, id, "Sequence ID Reset", UsageTypes.DF);
-                case 0x0029: return new Usage(this, id, "RF Signal Strength", UsageTypes.DV);
-                case 0x002a: return new Usage(this, id, "Software Version", UsageTypes.CL);
-                case 0x002b: return new Usage(this, id, "Protocol Version", UsageTypes.CL);
-                case 0x002c: return new Usage(this, id, "Hardware Version", UsageTypes.CL);
-                case 0x002d: return new Usage(this, id, "Major", UsageTypes.SV);
-                case 0x002e: return new Usage(this, id, "Minor", UsageTypes.SV);
-                case 0x002f: return new Usage(this, id, "Revision", UsageTypes.SV);
+                case 0x0001: return new Usage(this, id, "Background Controls", UsageTypes.Ca);
+                case 0x0020: return new Usage(this, id, "Battery Strength", UsageTypes.Dv);
+                case 0x0021: return new Usage(this, id, "Wireless Channel", UsageTypes.Dv);
+                case 0x0022: return new Usage(this, id, "Wireless ID", UsageTypes.Dv);
+                case 0x0023: return new Usage(this, id, "Discover Wireless Control", UsageTypes.Osc);
+                case 0x0024: return new Usage(this, id, "Security Code Character Entered", UsageTypes.Osc);
+                case 0x0025: return new Usage(this, id, "Security Code Character Erased", UsageTypes.Osc);
+                case 0x0026: return new Usage(this, id, "Security Code Cleared", UsageTypes.Osc);
+                case 0x0027: return new Usage(this, id, "Sequence ID", UsageTypes.Dv);
+                case 0x0028: return new Usage(this, id, "Sequence ID Reset", UsageTypes.Df);
+                case 0x0029: return new Usage(this, id, "RF Signal Strength", UsageTypes.Dv);
+                case 0x002a: return new Usage(this, id, "Software Version", UsageTypes.Cl);
+                case 0x002b: return new Usage(this, id, "Protocol Version", UsageTypes.Cl);
+                case 0x002c: return new Usage(this, id, "Hardware Version", UsageTypes.Cl);
+                case 0x002d: return new Usage(this, id, "Major", UsageTypes.Sv);
+                case 0x002e: return new Usage(this, id, "Minor", UsageTypes.Sv);
+                case 0x002f: return new Usage(this, id, "Revision", UsageTypes.Sv);
                 case 0x0030: return new Usage(this, id, "Handedness", UsageTypes.NAry);
                 case 0x0031: return new Usage(this, id, "Either Hand", UsageTypes.Sel);
                 case 0x0032: return new Usage(this, id, "Left Hand", UsageTypes.Sel);
                 case 0x0033: return new Usage(this, id, "Right Hand", UsageTypes.Sel);
                 case 0x0034: return new Usage(this, id, "Both Hands", UsageTypes.Sel);
-                case 0x0040: return new Usage(this, id, "Grip Pose Offset", UsageTypes.CP);
-                case 0x0041: return new Usage(this, id, "Pointer Pose Offset", UsageTypes.CP);
+                case 0x0040: return new Usage(this, id, "Grip Pose Offset", UsageTypes.Cp);
+                case 0x0041: return new Usage(this, id, "Pointer Pose Offset", UsageTypes.Cp);
             }
 
             return base.CreateUsage(id);

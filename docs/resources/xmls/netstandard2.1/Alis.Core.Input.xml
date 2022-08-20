@@ -154,14 +154,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.ArcadeUsagePage.Instance">
-            <summary>
-                Singleton instance of Arcade Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.ArcadeUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.ArcadeUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.ArcadeUsagePage.Instance">
+            <summary>
+                Singleton instance of Arcade Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.ArcadeUsagePage.CreateUsage(System.UInt16)">
@@ -642,14 +642,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.AuxiliaryDisplayUsagePage.Instance">
-            <summary>
-                Singleton instance of AuxiliaryDisplay Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.AuxiliaryDisplayUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.AuxiliaryDisplayUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.AuxiliaryDisplayUsagePage.Instance">
+            <summary>
+                Singleton instance of AuxiliaryDisplay Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.AuxiliaryDisplayUsagePage.CreateUsage(System.UInt16)">
@@ -1635,14 +1635,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.BarCodeScannerUsagePage.Instance">
-            <summary>
-                Singleton instance of BarCodeScanner Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.BarCodeScannerUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.BarCodeScannerUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.BarCodeScannerUsagePage.Instance">
+            <summary>
+                Singleton instance of BarCodeScanner Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.BarCodeScannerUsagePage.CreateUsage(System.UInt16)">
@@ -2118,14 +2118,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.BatterySystemUsagePage.Instance">
-            <summary>
-                Singleton instance of BatterySystem Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.BatterySystemUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.BatterySystemUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.BatterySystemUsagePage.Instance">
+            <summary>
+                Singleton instance of BatterySystem Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.BatterySystemUsagePage.CreateUsage(System.UInt16)">
@@ -2351,14 +2351,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.BrailleDisplayUsagePage.Instance">
-            <summary>
-                Singleton instance of BrailleDisplay Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.BrailleDisplayUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.BrailleDisplayUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.BrailleDisplayUsagePage.Instance">
+            <summary>
+                Singleton instance of BrailleDisplay Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.BrailleDisplayUsagePage.CreateUsage(System.UInt16)">
@@ -2459,14 +2459,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.ButtonUsagePage.Instance">
-            <summary>
-                Singleton instance of Button Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.ButtonUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.ButtonUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.ButtonUsagePage.Instance">
+            <summary>
+                Singleton instance of Button Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.ButtonUsagePage.CreateUsage(System.UInt16)">
@@ -2497,14 +2497,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.CameraControlUsagePage.Instance">
-            <summary>
-                Singleton instance of CameraControl Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.CameraControlUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.CameraControlUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.CameraControlUsagePage.Instance">
+            <summary>
+                Singleton instance of CameraControl Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.CameraControlUsagePage.CreateUsage(System.UInt16)">
@@ -4775,14 +4775,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.ConsumerUsagePage.Instance">
-            <summary>
-                Singleton instance of Consumer Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.ConsumerUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.ConsumerUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.ConsumerUsagePage.Instance">
+            <summary>
+                Singleton instance of Consumer Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.ConsumerUsagePage.CreateUsage(System.UInt16)">
@@ -5134,11 +5134,6 @@
                 The controller class
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.Controllers.Controller.s_defaultConverters">
-            <summary>
-                The type converter
-            </summary>
-        </member>
         <member name="F:Alis.Core.Input.Controllers.Controller._values">
             <summary>
                 The control value
@@ -5216,6 +5211,11 @@
             </summary>
             <value>The changes.</value>
             <exception cref="T:System.ObjectDisposedException">The controller is disposed.</exception>
+        </member>
+        <member name="F:Alis.Core.Input.Controllers.Controller.s_defaultConverters">
+            <summary>
+                The type converter
+            </summary>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.Dispose">
             <inheritdoc />
@@ -5327,16 +5327,6 @@
                 The controller info class
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.s_infos">
-            <summary>
-                The controller info
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.s_constructorTypes">
-            <summary>
-                The control info
-            </summary>
-        </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.CreateController">
             <summary>
                 The create controller
@@ -5355,6 +5345,16 @@
             <param name="constructor">The constructor</param>
             <param name="deviceAttributes">The device attributes</param>
             <param name="propertyData">The property data</param>
+        </member>
+        <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.s_infos">
+            <summary>
+                The controller info
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.s_constructorTypes">
+            <summary>
+                The control info
+            </summary>
         </member>
         <member name="M:Alis.Core.Input.Controllers.Controller.ControllerInfo.Register(System.Type,Alis.Core.Input.Controllers.CreateControllerDelegate{Alis.Core.Input.Controllers.Controller})">
             <summary>
@@ -5393,11 +5393,6 @@
                 The property data class
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.s_converterCache">
-            <summary>
-                The type converter
-            </summary>
-        </member>
         <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.Controls">
             <summary>
                 The controls
@@ -5423,6 +5418,11 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData" /> class
             </summary>
             <param name="propertyInfo">The property info</param>
+        </member>
+        <member name="F:Alis.Core.Input.Controllers.Controller.ControllerInfo.PropertyData.s_converterCache">
+            <summary>
+                The type converter
+            </summary>
         </member>
         <member name="T:Alis.Core.Input.Controllers.ControlValue">
             <summary>
@@ -5655,14 +5655,14 @@
                 Implements <see cref="T:Alis.Core.Input.Converters.ControlConverter`1" />.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.Converters.BooleanConverter.Instance">
-            <summary>
-                The singleton instance of the converter.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.Converters.BooleanConverter.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.BooleanConverter" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Converters.BooleanConverter.Instance">
+            <summary>
+                The singleton instance of the converter.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Converters.BooleanConverter.Convert(System.Globalization.CultureInfo,System.Double)">
@@ -5749,14 +5749,14 @@
             <seealso cref="T:Alis.Core.Input.Converters.ControlConverter`1" />
             <seealso cref="T:Alis.Core.Input.Converters.Direction" />
         </member>
-        <member name="F:Alis.Core.Input.Converters.DirectionConverter.Instance">
-            <summary>
-                The singleton instance of the converter.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.Converters.DirectionConverter.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.DirectionConverter" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Converters.DirectionConverter.Instance">
+            <summary>
+                The singleton instance of the converter.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.Converters.DirectionConverter.Convert(System.Globalization.CultureInfo,System.Double)">
@@ -5775,14 +5775,14 @@
             <seealso cref="T:Alis.Core.Input.Converters.ControlConverter`1" />
             <seealso cref="T:Alis.Core.Input.Converters.RangeConverter" />
         </member>
-        <member name="F:Alis.Core.Input.Converters.LeftTriggerConverter.Instance">
-            <summary>
-                The singleton instance of the converter.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.Converters.LeftTriggerConverter.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.LeftTriggerConverter" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Converters.LeftTriggerConverter.Instance">
+            <summary>
+                The singleton instance of the converter.
             </summary>
         </member>
         <member name="T:Alis.Core.Input.Converters.RangeConverter">
@@ -5849,14 +5849,14 @@
             <seealso cref="T:Alis.Core.Input.Converters.ControlConverter`1" />
             <seealso cref="T:Alis.Core.Input.Converters.RangeConverter" />
         </member>
-        <member name="F:Alis.Core.Input.Converters.RightTriggerConverter.Instance">
-            <summary>
-                The singleton instance of the converter.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.Converters.RightTriggerConverter.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.RightTriggerConverter" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Converters.RightTriggerConverter.Instance">
+            <summary>
+                The singleton instance of the converter.
             </summary>
         </member>
         <member name="T:Alis.Core.Input.Converters.SignedConverter">
@@ -5868,14 +5868,14 @@
             <seealso cref="T:Alis.Core.Input.Converters.ControlConverter`1" />
             <seealso cref="T:Alis.Core.Input.Converters.RangeConverter" />
         </member>
-        <member name="F:Alis.Core.Input.Converters.SignedConverter.Instance">
-            <summary>
-                The singleton instance of the converter.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.Converters.SignedConverter.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.Converters.SignedConverter" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Converters.SignedConverter.Instance">
+            <summary>
+                The singleton instance of the converter.
             </summary>
         </member>
         <member name="T:Alis.Core.Input.Device">
@@ -6761,14 +6761,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.DigitizerUsagePage.Instance">
-            <summary>
-                Singleton instance of Digitizer Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.DigitizerUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.DigitizerUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.DigitizerUsagePage.Instance">
+            <summary>
+                Singleton instance of Digitizer Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.DigitizerUsagePage.CreateUsage(System.UInt16)">
@@ -6778,61 +6778,6 @@
             <summary>
                 Class Event. This class cannot be inherited.
                 Each event contains a description of every log event that can be raised by this library.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.s_all">
-            <summary>
-                The event
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.RefreshFailure">
-            <summary>
-                The refresh failure event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceCreationFailure">
-            <summary>
-                The device creation failure event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceAdd">
-            <summary>
-                The device add event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceRemove">
-            <summary>
-                The device remove event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceUpdate">
-            <summary>
-                The device update event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceConnectionFailed">
-            <summary>
-                The device connection failed event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceConnected">
-            <summary>
-                The device connected event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceError">
-            <summary>
-                The device error event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.DeviceConnectionClosed">
-            <summary>
-                The device connection closed event.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.Event.s_idCounter">
-            <summary>
-                The idcounter
             </summary>
         </member>
         <member name="F:Alis.Core.Input.Event._descriptionResource">
@@ -6893,6 +6838,61 @@
                 Gets a collection of all events raised by this library.
             </summary>
             <value>All events.</value>
+        </member>
+        <member name="F:Alis.Core.Input.Event.s_all">
+            <summary>
+                The event
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.RefreshFailure">
+            <summary>
+                The refresh failure event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceCreationFailure">
+            <summary>
+                The device creation failure event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceAdd">
+            <summary>
+                The device add event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceRemove">
+            <summary>
+                The device remove event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceUpdate">
+            <summary>
+                The device update event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceConnectionFailed">
+            <summary>
+                The device connection failed event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceConnected">
+            <summary>
+                The device connected event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceError">
+            <summary>
+                The device error event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.DeviceConnectionClosed">
+            <summary>
+                The device connection closed event.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Event.s_idCounter">
+            <summary>
+                The idcounter
+            </summary>
         </member>
         <member name="M:Alis.Core.Input.Event.TryGet(System.Int32,Alis.Core.Input.Event@)">
             <summary>
@@ -7119,14 +7119,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.EyeAndHeadTrackersUsagePage.Instance">
-            <summary>
-                Singleton instance of EyeAndHeadTrackers Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.EyeAndHeadTrackersUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.EyeAndHeadTrackersUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.EyeAndHeadTrackersUsagePage.Instance">
+            <summary>
+                Singleton instance of EyeAndHeadTrackers Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.EyeAndHeadTrackersUsagePage.CreateUsage(System.UInt16)">
@@ -7162,14 +7162,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.FastIDentityOnlineAllianceUsagePage.Instance">
-            <summary>
-                Singleton instance of FastIDentityOnlineAlliance Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.FastIDentityOnlineAllianceUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.FastIDentityOnlineAllianceUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.FastIDentityOnlineAllianceUsagePage.Instance">
+            <summary>
+                Singleton instance of FastIDentityOnlineAlliance Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.FastIDentityOnlineAllianceUsagePage.CreateUsage(System.UInt16)">
@@ -7335,14 +7335,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.GameUsagePage.Instance">
-            <summary>
-                Singleton instance of Game Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.GameUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.GameUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.GameUsagePage.Instance">
+            <summary>
+                Singleton instance of Game Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.GameUsagePage.CreateUsage(System.UInt16)">
@@ -7928,14 +7928,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.GenericDesktopUsagePage.Instance">
-            <summary>
-                Singleton instance of GenericDesktop Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.GenericDesktopUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.GenericDesktopUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.GenericDesktopUsagePage.Instance">
+            <summary>
+                Singleton instance of GenericDesktop Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.GenericDesktopUsagePage.CreateUsage(System.UInt16)">
@@ -8076,14 +8076,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.GenericDeviceUsagePage.Instance">
-            <summary>
-                Singleton instance of GenericDevice Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.GenericDeviceUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.GenericDeviceUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.GenericDeviceUsagePage.Instance">
+            <summary>
+                Singleton instance of GenericDevice Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.GenericDeviceUsagePage.CreateUsage(System.UInt16)">
@@ -8249,14 +8249,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.HapticsUsagePage.Instance">
-            <summary>
-                Singleton instance of Haptics Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.HapticsUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.HapticsUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.HapticsUsagePage.Instance">
+            <summary>
+                Singleton instance of Haptics Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.HapticsUsagePage.CreateUsage(System.UInt16)">
@@ -9347,14 +9347,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.KeyboardKeypadUsagePage.Instance">
-            <summary>
-                Singleton instance of KeyboardKeypad Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.KeyboardKeypadUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.KeyboardKeypadUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.KeyboardKeypadUsagePage.Instance">
+            <summary>
+                Singleton instance of KeyboardKeypad Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.KeyboardKeypadUsagePage.CreateUsage(System.UInt16)">
@@ -9850,14 +9850,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.LEDsUsagePage.Instance">
-            <summary>
-                Singleton instance of LEDs Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.LEDsUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.LEDsUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.LEDsUsagePage.Instance">
+            <summary>
+                Singleton instance of LEDs Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.LEDsUsagePage.CreateUsage(System.UInt16)">
@@ -10123,14 +10123,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.LightingAndIlluminationUsagePage.Instance">
-            <summary>
-                Singleton instance of LightingAndIllumination Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.LightingAndIlluminationUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.LightingAndIlluminationUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.LightingAndIlluminationUsagePage.Instance">
+            <summary>
+                Singleton instance of LightingAndIllumination Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.LightingAndIlluminationUsagePage.CreateUsage(System.UInt16)">
@@ -10201,14 +10201,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.MagneticStripeReadingMSRDevicesUsagePage.Instance">
-            <summary>
-                Singleton instance of MagneticStripeReadingMSRDevices Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.MagneticStripeReadingMSRDevicesUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.MagneticStripeReadingMSRDevicesUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.MagneticStripeReadingMSRDevicesUsagePage.Instance">
+            <summary>
+                Singleton instance of MagneticStripeReadingMSRDevices Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.MagneticStripeReadingMSRDevicesUsagePage.CreateUsage(System.UInt16)">
@@ -10374,14 +10374,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.MedicalInstrumentsUsagePage.Instance">
-            <summary>
-                Singleton instance of MedicalInstruments Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.MedicalInstrumentsUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.MedicalInstrumentsUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.MedicalInstrumentsUsagePage.Instance">
+            <summary>
+                Singleton instance of MedicalInstruments Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.MedicalInstrumentsUsagePage.CreateUsage(System.UInt16)">
@@ -10482,14 +10482,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.MonitorEnumeratedValuesUsagePage.Instance">
-            <summary>
-                Singleton instance of MonitorEnumeratedValues Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.MonitorEnumeratedValuesUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.MonitorEnumeratedValuesUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.MonitorEnumeratedValuesUsagePage.Instance">
+            <summary>
+                Singleton instance of MonitorEnumeratedValues Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.MonitorEnumeratedValuesUsagePage.CreateUsage(System.UInt16)">
@@ -10525,14 +10525,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.MonitorReservedUsagePage.Instance">
-            <summary>
-                Singleton instance of MonitorReserved Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.MonitorReservedUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.MonitorReservedUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.MonitorReservedUsagePage.Instance">
+            <summary>
+                Singleton instance of MonitorReserved Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.MonitorReservedUsagePage.CreateUsage(System.UInt16)">
@@ -10543,14 +10543,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.MonitorUsagePage.Instance">
-            <summary>
-                Singleton instance of Monitor Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.MonitorUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.MonitorUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.MonitorUsagePage.Instance">
+            <summary>
+                Singleton instance of Monitor Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.MonitorUsagePage.CreateUsage(System.UInt16)">
@@ -10651,14 +10651,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.OrdinalUsagePage.Instance">
-            <summary>
-                Singleton instance of Ordinal Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.OrdinalUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.OrdinalUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.OrdinalUsagePage.Instance">
+            <summary>
+                Singleton instance of Ordinal Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.OrdinalUsagePage.CreateUsage(System.UInt16)">
@@ -11204,14 +11204,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.PhysicalInterfaceDeviceUsagePage.Instance">
-            <summary>
-                Singleton instance of PhysicalInterfaceDevice Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.PhysicalInterfaceDeviceUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.PhysicalInterfaceDeviceUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.PhysicalInterfaceDeviceUsagePage.Instance">
+            <summary>
+                Singleton instance of PhysicalInterfaceDevice Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.PhysicalInterfaceDeviceUsagePage.CreateUsage(System.UInt16)">
@@ -11622,14 +11622,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.PowerDeviceUsagePage.Instance">
-            <summary>
-                Singleton instance of PowerDevice Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.PowerDeviceUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.PowerDeviceUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.PowerDeviceUsagePage.Instance">
+            <summary>
+                Singleton instance of PowerDevice Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.PowerDeviceUsagePage.CreateUsage(System.UInt16)">
@@ -11650,14 +11650,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.ReservedPointOfSaleUsagePage.Instance">
-            <summary>
-                Singleton instance of ReservedPointOfSale Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.ReservedPointOfSaleUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.ReservedPointOfSaleUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.ReservedPointOfSaleUsagePage.Instance">
+            <summary>
+                Singleton instance of ReservedPointOfSale Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.ReservedPointOfSaleUsagePage.CreateUsage(System.UInt16)">
@@ -16048,14 +16048,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.SensorUsagePage.Instance">
-            <summary>
-                Singleton instance of Sensor Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.SensorUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.SensorUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SensorUsagePage.Instance">
+            <summary>
+                Singleton instance of Sensor Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.SensorUsagePage.CreateUsage(System.UInt16)">
@@ -16331,14 +16331,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.SimulationUsagePage.Instance">
-            <summary>
-                Singleton instance of Simulation Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.SimulationUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.SimulationUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SimulationUsagePage.Instance">
+            <summary>
+                Singleton instance of Simulation Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.SimulationUsagePage.CreateUsage(System.UInt16)">
@@ -16529,14 +16529,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.SportUsagePage.Instance">
-            <summary>
-                Singleton instance of Sport Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.SportUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.SportUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SportUsagePage.Instance">
+            <summary>
+                Singleton instance of Sport Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.SportUsagePage.CreateUsage(System.UInt16)">
@@ -17047,14 +17047,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.TelephonyUsagePage.Instance">
-            <summary>
-                Singleton instance of Telephony Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.TelephonyUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.TelephonyUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.TelephonyUsagePage.Instance">
+            <summary>
+                Singleton instance of Telephony Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.TelephonyUsagePage.CreateUsage(System.UInt16)">
@@ -17075,14 +17075,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.UnicodeUsagePage.Instance">
-            <summary>
-                Singleton instance of Unicode Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.UnicodeUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.UnicodeUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.UnicodeUsagePage.Instance">
+            <summary>
+                Singleton instance of Unicode Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.UnicodeUsagePage.CreateUsage(System.UInt16)">
@@ -17533,6 +17533,39 @@
             </summary>
             <seealso cref="T:System.IEquatable`1" />
         </member>
+        <member name="M:Alis.Core.Input.UsageType.#ctor(Alis.Core.Input.UsageTypes,Alis.Core.Input.UsageTypeGroup,System.String,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Input.UsageType" /> class
+            </summary>
+            <param name="usageTypes">The usage types</param>
+            <param name="usageTypeGroup">The usage type group</param>
+            <param name="name">The name</param>
+            <param name="description">The description</param>
+        </member>
+        <member name="P:Alis.Core.Input.UsageType.UsageTypes">
+            <summary>
+                Gets the associated usage types enum.
+            </summary>
+            <value>The usage types.</value>
+        </member>
+        <member name="P:Alis.Core.Input.UsageType.UsageTypeGroup">
+            <summary>
+                Gets the usage type group.
+            </summary>
+            <value>The usage type group.</value>
+        </member>
+        <member name="P:Alis.Core.Input.UsageType.Name">
+            <summary>
+                Gets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Alis.Core.Input.UsageType.Description">
+            <summary>
+                Gets the description.
+            </summary>
+            <value>The description.</value>
+        </member>
         <member name="F:Alis.Core.Input.UsageType.s_usageTypes">
             <summary>
                 The usage type
@@ -17617,39 +17650,6 @@
             <summary>
                 The Usage Modifier usage type.
             </summary>
-        </member>
-        <member name="M:Alis.Core.Input.UsageType.#ctor(Alis.Core.Input.UsageTypes,Alis.Core.Input.UsageTypeGroup,System.String,System.String)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Input.UsageType" /> class
-            </summary>
-            <param name="usageTypes">The usage types</param>
-            <param name="usageTypeGroup">The usage type group</param>
-            <param name="name">The name</param>
-            <param name="description">The description</param>
-        </member>
-        <member name="P:Alis.Core.Input.UsageType.UsageTypes">
-            <summary>
-                Gets the associated usage types enum.
-            </summary>
-            <value>The usage types.</value>
-        </member>
-        <member name="P:Alis.Core.Input.UsageType.UsageTypeGroup">
-            <summary>
-                Gets the usage type group.
-            </summary>
-            <value>The usage type group.</value>
-        </member>
-        <member name="P:Alis.Core.Input.UsageType.Name">
-            <summary>
-                Gets the name.
-            </summary>
-            <value>The name.</value>
-        </member>
-        <member name="P:Alis.Core.Input.UsageType.Description">
-            <summary>
-                Gets the description.
-            </summary>
-            <value>The description.</value>
         </member>
         <member name="M:Alis.Core.Input.UsageType.Equals(Alis.Core.Input.UsageType)">
             <inheritdoc />
@@ -18044,14 +18044,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.VESAVirtualUsagePage.Instance">
-            <summary>
-                Singleton instance of VESAVirtual Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.VESAVirtualUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.VESAVirtualUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.VESAVirtualUsagePage.Instance">
+            <summary>
+                Singleton instance of VESAVirtual Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.VESAVirtualUsagePage.CreateUsage(System.UInt16)">
@@ -18132,14 +18132,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.VRUsagePage.Instance">
-            <summary>
-                Singleton instance of VR Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.VRUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.VRUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.VRUsagePage.Instance">
+            <summary>
+                Singleton instance of VR Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.VRUsagePage.CreateUsage(System.UInt16)">
@@ -18390,14 +18390,14 @@
                 Base class for all usage pages.
             </summary>
         </member>
-        <member name="F:Alis.Core.Input.WeighingDevicesUsagePage.Instance">
-            <summary>
-                Singleton instance of WeighingDevices Usage Page.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Input.WeighingDevicesUsagePage.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Input.WeighingDevicesUsagePage" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.WeighingDevicesUsagePage.Instance">
+            <summary>
+                Singleton instance of WeighingDevices Usage Page.
             </summary>
         </member>
         <member name="M:Alis.Core.Input.WeighingDevicesUsagePage.CreateUsage(System.UInt16)">

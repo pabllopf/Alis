@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Collisions.Shape;
 
 namespace Alis.Core.Physic.Collisions
 {
@@ -66,7 +66,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="transformA">The transform</param>
         /// <param name="shapeB">The shape</param>
         /// <param name="transformB">The transform</param>
-        internal unsafe void ReadCache(SimplexCache* cache, Shape shapeA, XForm transformA, Shape shapeB,
+        internal unsafe void ReadCache(SimplexCache* cache, IShape shapeA, XForm transformA, IShape shapeB,
             XForm transformB)
         {
             Box2DxDebug.Assert((0 <= cache->Count) && (cache->Count <= 3));

@@ -46,7 +46,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         /// <summary>
         ///     The buffer size
         /// </summary>
-        private const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
+        private const int BufferSize = 1 * 1024 * 1024 * 1024; // 1GB
 
         /// <summary>
         ///     Runs this instance
@@ -79,7 +79,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         /// <param name="webSocket">The web socket</param>
         private async Task Send(WebSocket webSocket)
         {
-            byte[] array = new byte[BUFFER_SIZE];
+            byte[] array = new byte[BufferSize];
             ArraySegment<byte> buffer = new ArraySegment<byte>(array);
             await webSocket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
         }
@@ -91,7 +91,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         /// <returns>A task containing the long</returns>
         private async Task<long> ReadAll(WebSocket webSocket)
         {
-            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[BUFFER_SIZE]);
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[BufferSize]);
             long len = 0;
             while (true)
             {

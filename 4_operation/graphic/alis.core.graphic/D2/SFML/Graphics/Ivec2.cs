@@ -40,9 +40,9 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Implicit cast from <see cref="Vector2i" /> to <see cref="Ivec2" />
+        ///     Implicit cast from <see cref="Vector2I" /> to <see cref="Ivec2" />
         /// </summary>
-        public static implicit operator Ivec2(Vector2i vec) => new Ivec2(vec);
+        public static implicit operator Ivec2(Vector2I vec) => new Ivec2(vec);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -59,11 +59,11 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
 
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Ivec2" /> from a standard SFML <see cref="Vector2i" />
+        ///     Construct the <see cref="Ivec2" /> from a standard SFML <see cref="Vector2I" />
         /// </summary>
         /// <param name="vec">A standard SFML 2D integer vector</param>
         ////////////////////////////////////////////////////////////
-        public Ivec2(Vector2i vec)
+        public Ivec2(Vector2I vec)
         {
             X = vec.X;
             Y = vec.Y;

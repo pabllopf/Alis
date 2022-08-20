@@ -80,7 +80,7 @@ namespace Alis.Core.Network.Sample.Server
         /// <summary>
         ///     The buffer size
         /// </summary>
-        private const int BUFFER_SIZE = 4 * 1024 * 1024; // 4MB
+        private const int BufferSize = 4 * 1024 * 1024; // 4MB
 
         /// <summary>
         ///     Disposes this instance
@@ -224,7 +224,7 @@ namespace Alis.Core.Network.Sample.Server
         /// <param name="token">The token</param>
         public async Task RespondToWebSocketRequestAsync(WebSocket webSocket, CancellationToken token)
         {
-            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[BUFFER_SIZE]);
+            ArraySegment<byte> buffer = new ArraySegment<byte>(new byte[BufferSize]);
 
             while (true)
             {
@@ -236,10 +236,10 @@ namespace Alis.Core.Network.Sample.Server
                     break;
                 }
 
-                if (result.Count > BUFFER_SIZE)
+                if (result.Count > BufferSize)
                 {
                     await webSocket.CloseAsync(WebSocketCloseStatus.MessageTooBig,
-                        $"Web socket frame cannot exceed buffer size of {BUFFER_SIZE:#,##0} bytes. Send multiple frames instead.",
+                        $"Web socket frame cannot exceed buffer size of {BufferSize:#,##0} bytes. Send multiple frames instead.",
                         token);
                     break;
                 }

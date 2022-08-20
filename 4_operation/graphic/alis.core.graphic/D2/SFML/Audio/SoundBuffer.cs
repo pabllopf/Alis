@@ -127,9 +127,9 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         {
             unsafe
             {
-                fixed (short* SamplesPtr = samples)
+                fixed (short* samplesPtr = samples)
                 {
-                    CPointer = sfSoundBuffer_createFromSamples(SamplesPtr, (uint) samples.Length, channelCount,
+                    CPointer = sfSoundBuffer_createFromSamples(samplesPtr, (uint) samples.Length, channelCount,
                         sampleRate);
                 }
             }
@@ -185,9 +185,9 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         {
             get
             {
-                short[] SamplesArray = new short[sfSoundBuffer_getSampleCount(CPointer)];
-                Marshal.Copy(sfSoundBuffer_getSamples(CPointer), SamplesArray, 0, SamplesArray.Length);
-                return SamplesArray;
+                short[] samplesArray = new short[sfSoundBuffer_getSampleCount(CPointer)];
+                Marshal.Copy(sfSoundBuffer_getSamples(CPointer), samplesArray, 0, samplesArray.Length);
+                return samplesArray;
             }
         }
 
@@ -228,17 +228,17 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <summary>
         ///     Sfs the sound buffer create from file using the specified filename
         /// </summary>
-        /// <param name="Filename">The filename</param>
+        /// <param name="filename">The filename</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfSoundBuffer_createFromFile(string Filename);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfSoundBuffer_createFromFile(string filename);
 
         /// <summary>
         ///     Sfs the sound buffer create from stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -247,83 +247,83 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="data">The data</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
         ///     Sfs the sound buffer create from samples using the specified samples
         /// </summary>
-        /// <param name="Samples">The samples</param>
-        /// <param name="SampleCount">The sample count</param>
-        /// <param name="ChannelsCount">The channels count</param>
-        /// <param name="SampleRate">The sample rate</param>
+        /// <param name="samples">The samples</param>
+        /// <param name="sampleCount">The sample count</param>
+        /// <param name="channelsCount">The channels count</param>
+        /// <param name="sampleRate">The sample rate</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe IntPtr sfSoundBuffer_createFromSamples(short* Samples, uint SampleCount,
-            uint ChannelsCount, uint SampleRate);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern unsafe IntPtr sfSoundBuffer_createFromSamples(short* samples, uint sampleCount,
+            uint channelsCount, uint sampleRate);
 
         /// <summary>
         ///     Sfs the sound buffer copy using the specified sound buffer
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
+        /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfSoundBuffer_copy(IntPtr SoundBuffer);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfSoundBuffer_copy(IntPtr soundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer destroy using the specified sound buffer
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSoundBuffer_destroy(IntPtr SoundBuffer);
+        /// <param name="soundBuffer">The sound buffer</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfSoundBuffer_destroy(IntPtr soundBuffer);
 
         /// <summary>
         ///     Describes whether sf sound buffer save to file
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
-        /// <param name="Filename">The filename</param>
+        /// <param name="soundBuffer">The sound buffer</param>
+        /// <param name="filename">The filename</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfSoundBuffer_saveToFile(IntPtr SoundBuffer, string Filename);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfSoundBuffer_saveToFile(IntPtr soundBuffer, string filename);
 
         /// <summary>
         ///     Sfs the sound buffer get samples using the specified sound buffer
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
+        /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfSoundBuffer_getSamples(IntPtr SoundBuffer);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfSoundBuffer_getSamples(IntPtr soundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer get sample count using the specified sound buffer
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
+        /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfSoundBuffer_getSampleCount(IntPtr SoundBuffer);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern uint sfSoundBuffer_getSampleCount(IntPtr soundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer get sample rate using the specified sound buffer
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
+        /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfSoundBuffer_getSampleRate(IntPtr SoundBuffer);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern uint sfSoundBuffer_getSampleRate(IntPtr soundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer get channel count using the specified sound buffer
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
+        /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfSoundBuffer_getChannelCount(IntPtr SoundBuffer);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern uint sfSoundBuffer_getChannelCount(IntPtr soundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer get duration using the specified sound buffer
         /// </summary>
-        /// <param name="SoundBuffer">The sound buffer</param>
+        /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The systems time</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfSoundBuffer_getDuration(IntPtr SoundBuffer);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Time sfSoundBuffer_getDuration(IntPtr soundBuffer);
     }
 }

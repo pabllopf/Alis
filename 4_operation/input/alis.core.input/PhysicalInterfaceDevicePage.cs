@@ -73,7 +73,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     ROM Flag Usage.
         /// </summary>
-        [Description("ROM Flag")] ROMFlag = 0x000f0024,
+        [Description("ROM Flag")] RomFlag = 0x000f0024,
 
         /// <summary>
         ///     Effect Type Usage.
@@ -83,62 +83,62 @@ namespace Alis.Core.Input
         /// <summary>
         ///     ET Constant Force Usage.
         /// </summary>
-        [Description("ET Constant Force")] ETConstantForce = 0x000f0026,
+        [Description("ET Constant Force")] EtConstantForce = 0x000f0026,
 
         /// <summary>
         ///     ET Ramp Usage.
         /// </summary>
-        [Description("ET Ramp")] ETRamp = 0x000f0027,
+        [Description("ET Ramp")] EtRamp = 0x000f0027,
 
         /// <summary>
         ///     ET Custom Force Data Usage.
         /// </summary>
-        [Description("ET Custom Force Data")] ETCustomForceData = 0x000f0028,
+        [Description("ET Custom Force Data")] EtCustomForceData = 0x000f0028,
 
         /// <summary>
         ///     ET Square Usage.
         /// </summary>
-        [Description("ET Square")] ETSquare = 0x000f0030,
+        [Description("ET Square")] EtSquare = 0x000f0030,
 
         /// <summary>
         ///     ET Sine Usage.
         /// </summary>
-        [Description("ET Sine")] ETSine = 0x000f0031,
+        [Description("ET Sine")] EtSine = 0x000f0031,
 
         /// <summary>
         ///     ET Triangle Usage.
         /// </summary>
-        [Description("ET Triangle")] ETTriangle = 0x000f0032,
+        [Description("ET Triangle")] EtTriangle = 0x000f0032,
 
         /// <summary>
         ///     ET Sawtooth Up Usage.
         /// </summary>
-        [Description("ET Sawtooth Up")] ETSawtoothUp = 0x000f0033,
+        [Description("ET Sawtooth Up")] EtSawtoothUp = 0x000f0033,
 
         /// <summary>
         ///     ET Sawtooth Down Usage.
         /// </summary>
-        [Description("ET Sawtooth Down")] ETSawtoothDown = 0x000f0034,
+        [Description("ET Sawtooth Down")] EtSawtoothDown = 0x000f0034,
 
         /// <summary>
         ///     ET Spring Usage.
         /// </summary>
-        [Description("ET Spring")] ETSpring = 0x000f0040,
+        [Description("ET Spring")] EtSpring = 0x000f0040,
 
         /// <summary>
         ///     ET Damper Usage.
         /// </summary>
-        [Description("ET Damper")] ETDamper = 0x000f0041,
+        [Description("ET Damper")] EtDamper = 0x000f0041,
 
         /// <summary>
         ///     ET Inertia Usage.
         /// </summary>
-        [Description("ET Inertia")] ETInertia = 0x000f0042,
+        [Description("ET Inertia")] EtInertia = 0x000f0042,
 
         /// <summary>
         ///     ET Friction Usage.
         /// </summary>
-        [Description("ET Friction")] ETFriction = 0x000f0043,
+        [Description("ET Friction")] EtFriction = 0x000f0043,
 
         /// <summary>
         ///     Duration Usage.
@@ -225,7 +225,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     CP Offset Usage.
         /// </summary>
-        [Description("CP Offset")] CPOffset = 0x000f0060,
+        [Description("CP Offset")] CpOffset = 0x000f0060,
 
         /// <summary>
         ///     Positive Coefficient Usage.
@@ -387,23 +387,23 @@ namespace Alis.Core.Input
         /// <summary>
         ///     PID Pool Report Usage.
         /// </summary>
-        [Description("PID Pool Report")] PIDPoolReport = 0x000f007f,
+        [Description("PID Pool Report")] PidPoolReport = 0x000f007f,
 
         /// <summary>
         ///     RAM Pool Size Usage.
         /// </summary>
-        [Description("RAM Pool Size")] RAMPoolSize = 0x000f0080,
+        [Description("RAM Pool Size")] RamPoolSize = 0x000f0080,
 
         /// <summary>
         ///     ROM Pool Size Usage.
         /// </summary>
-        [Description("ROM Pool Size")] ROMPoolSize = 0x000f0081,
+        [Description("ROM Pool Size")] RomPoolSize = 0x000f0081,
 
         /// <summary>
         ///     ROM Effect Block Count Usage.
         /// </summary>
         [Description("ROM Effect Block Count")]
-        ROMEffectBlockCount = 0x000f0082,
+        RomEffectBlockCount = 0x000f0082,
 
         /// <summary>
         ///     Simultaneous Effects Max Usage.
@@ -419,7 +419,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     PID Pool Move Report Usage.
         /// </summary>
-        [Description("PID Pool Move Report")] PIDPoolMoveReport = 0x000f0085,
+        [Description("PID Pool Move Report")] PidPoolMoveReport = 0x000f0085,
 
         /// <summary>
         ///     Move Source Usage.
@@ -439,7 +439,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     PID Block Load Report Usage.
         /// </summary>
-        [Description("PID Block Load Report")] PIDBlockLoadReport = 0x000f0089,
+        [Description("PID Block Load Report")] PidBlockLoadReport = 0x000f0089,
 
         /// <summary>
         ///     Block Load Status Usage.
@@ -469,7 +469,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     PID Block Free Report Usage.
         /// </summary>
-        [Description("PID Block Free Report")] PIDBlockFreeReport = 0x000f0090,
+        [Description("PID Block Free Report")] PidBlockFreeReport = 0x000f0090,
 
         /// <summary>
         ///     Type Specific Block Handle Usage.
@@ -480,7 +480,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     PID State Report Usage.
         /// </summary>
-        [Description("PID State Report")] PIDStateReport = 0x000f0092,
+        [Description("PID State Report")] PidStateReport = 0x000f0092,
 
         /// <summary>
         ///     Effect Playing Usage.
@@ -491,42 +491,42 @@ namespace Alis.Core.Input
         ///     PID Device Control Report Usage.
         /// </summary>
         [Description("PID Device Control Report")]
-        PIDDeviceControlReport = 0x000f0095,
+        PidDeviceControlReport = 0x000f0095,
 
         /// <summary>
         ///     PID Device Control Usage.
         /// </summary>
-        [Description("PID Device Control")] PIDDeviceControl = 0x000f0096,
+        [Description("PID Device Control")] PidDeviceControl = 0x000f0096,
 
         /// <summary>
         ///     DC Enable Actuators Usage.
         /// </summary>
-        [Description("DC Enable Actuators")] DCEnableActuators = 0x000f0097,
+        [Description("DC Enable Actuators")] DcEnableActuators = 0x000f0097,
 
         /// <summary>
         ///     DC Disable Actuators Usage.
         /// </summary>
-        [Description("DC Disable Actuators")] DCDisableActuators = 0x000f0098,
+        [Description("DC Disable Actuators")] DcDisableActuators = 0x000f0098,
 
         /// <summary>
         ///     DC Stop All Effects Usage.
         /// </summary>
-        [Description("DC Stop All Effects")] DCStopAllEffects = 0x000f0099,
+        [Description("DC Stop All Effects")] DcStopAllEffects = 0x000f0099,
 
         /// <summary>
         ///     DC Device Reset Usage.
         /// </summary>
-        [Description("DC Device Reset")] DCDeviceReset = 0x000f009a,
+        [Description("DC Device Reset")] DcDeviceReset = 0x000f009a,
 
         /// <summary>
         ///     DC Device Pause Usage.
         /// </summary>
-        [Description("DC Device Pause")] DCDevicePause = 0x000f009b,
+        [Description("DC Device Pause")] DcDevicePause = 0x000f009b,
 
         /// <summary>
         ///     DC Device Continue Usage.
         /// </summary>
-        [Description("DC Device Continue")] DCDeviceContinue = 0x000f009c,
+        [Description("DC Device Continue")] DcDeviceContinue = 0x000f009c,
 
         /// <summary>
         ///     Device Paused Usage.
@@ -584,6 +584,6 @@ namespace Alis.Core.Input
         /// <summary>
         ///     RAM Pool Available Usage.
         /// </summary>
-        [Description("RAM Pool Available")] RAMPoolAvailable = 0x000f00ac
+        [Description("RAM Pool Available")] RamPoolAvailable = 0x000f00ac
     }
 }

@@ -51,7 +51,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     VCR/Acquisition Usage.
         /// </summary>
-        [Description("VCR/Acquisition")] VCRAcquisition = 0x00400020,
+        [Description("VCR/Acquisition")] VcrAcquisition = 0x00400020,
 
         /// <summary>
         ///     Freeze/Thaw Usage.

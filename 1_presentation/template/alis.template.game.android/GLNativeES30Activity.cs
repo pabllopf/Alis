@@ -43,12 +43,12 @@ namespace Alis.Template.Game.Android
     /// </summary>
     /// <seealso cref="Activity" />
     [Activity(ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden, MainLauncher = true)]
-    public class GLNativeES30Activity : Activity
+    public class GlNativeEs30Activity : Activity
     {
         /// <summary>
         ///     The gl view
         /// </summary>
-        private GLSurfaceView mGLView;
+        private GLSurfaceView mGlView;
 
         /// <summary>
         ///     Ons the create using the specified bundle
@@ -65,8 +65,8 @@ namespace Alis.Template.Game.Android
 
             // Create a GLSurfaceView instance and set it
             // as the ContentView for this Activity
-            mGLView = new MyGLSurfaceView(this);
-            SetContentView(mGLView);
+            mGlView = new MyGlSurfaceView(this);
+            SetContentView(mGlView);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Template.Game.Android
             // If your OpenGL application is memory intensive,
             // you should consider de-allocating objects that
             // consume significant memory here.
-            mGLView.OnPause();
+            mGlView.OnPause();
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Alis.Template.Game.Android
             // The following call resumes a paused rendering thread.
             // If you de-allocated graphic objects for onPause()
             // this is a good place to re-allocate them.
-            mGLView.OnResume();
+            mGlView.OnResume();
         }
     }
 }

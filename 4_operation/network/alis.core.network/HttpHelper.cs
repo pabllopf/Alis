@@ -48,7 +48,7 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The http get header regex
         /// </summary>
-        private const string HTTP_GET_HEADER_REGEX = @"^GET(.*)HTTP\/1\.1";
+        private const string HttpGetHeaderRegex = @"^GET(.*)HTTP\/1\.1";
 
         /// <summary>
         ///     Calculates a random WebSocket key that can be used to initiate a WebSocket handshake
@@ -122,7 +122,7 @@ namespace Alis.Core.Network
         /// <returns>True if this is an http WebSocket upgrade response</returns>
         public static bool IsWebSocketUpgradeRequest(string header)
         {
-            Regex getRegex = new Regex(HTTP_GET_HEADER_REGEX, RegexOptions.IgnoreCase);
+            Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase);
             Match getRegexMatch = getRegex.Match(header);
 
             if (getRegexMatch.Success)
@@ -143,7 +143,7 @@ namespace Alis.Core.Network
         /// <returns>The path</returns>
         public static string GetPathFromHeader(string httpHeader)
         {
-            Regex getRegex = new Regex(HTTP_GET_HEADER_REGEX, RegexOptions.IgnoreCase);
+            Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase);
             Match getRegexMatch = getRegex.Match(httpHeader);
 
             if (getRegexMatch.Success)
@@ -168,11 +168,11 @@ namespace Alis.Core.Network
 
             if (match.Success)
             {
-                const int MAX_LEN = 2048;
-                if (match.Length > MAX_LEN)
+                const int maxLen = 2048;
+                if (match.Length > maxLen)
                 {
                     throw new EntityTooLargeException(
-                        $"Sec-WebSocket-Protocol exceeded the maximum of length of {MAX_LEN}");
+                        $"Sec-WebSocket-Protocol exceeded the maximum of length of {maxLen}");
                 }
 
                 // extract a csv list of sub protocols (in order of highest preference first)

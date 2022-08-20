@@ -106,7 +106,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Height of POV Usage.
         /// </summary>
-        [Description("Height of POV")] HeightOfPOV = 0x00050029,
+        [Description("Height of POV")] HeightOfPov = 0x00050029,
 
         /// <summary>
         ///     Flipper Usage.

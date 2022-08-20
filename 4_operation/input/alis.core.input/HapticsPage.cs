@@ -98,7 +98,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Waveform Vendor ID Usage.
         /// </summary>
-        [Description("Waveform Vendor ID")] WaveformVendorID = 0x000e0027,
+        [Description("Waveform Vendor ID")] WaveformVendorId = 0x000e0027,
 
         /// <summary>
         ///     Waveform Cutoff Time Usage.

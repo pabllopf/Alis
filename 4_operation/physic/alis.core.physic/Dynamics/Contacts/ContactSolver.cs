@@ -34,7 +34,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Collisions.Shape;
 using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
@@ -79,10 +79,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 Fixture fixtureA = contact.FixtureA;
                 Fixture fixtureB = contact.FixtureB;
-                Shape shapeA = fixtureA.Shape;
-                Shape shapeB = fixtureB.Shape;
-                float radiusA = shapeA.Radius;
-                float radiusB = shapeB.Radius;
+                IShape shapeA = fixtureA.Shape;
+                IShape shapeB = fixtureB.Shape;
+                float radiusA = shapeA.GetRadius();
+                float radiusB = shapeB.GetRadius();
                 Body bodyA = fixtureA.Body;
                 Body bodyB = fixtureB.Body;
                 Manifold manifold = contact.Manifold;

@@ -53,13 +53,13 @@ namespace Alis.Core.Input
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "Braille Display", UsageTypes.CA);
+                case 0x0001: return new Usage(this, id, "Braille Display", UsageTypes.Ca);
                 case 0x0002: return new Usage(this, id, "Braille Row", UsageTypes.NAry);
-                case 0x0003: return new Usage(this, id, "8 Dot Braille Cell", UsageTypes.DV);
-                case 0x0004: return new Usage(this, id, "6 Dot Braille Cell", UsageTypes.DV);
-                case 0x0005: return new Usage(this, id, "Number of Braille Cells", UsageTypes.DV);
+                case 0x0003: return new Usage(this, id, "8 Dot Braille Cell", UsageTypes.Dv);
+                case 0x0004: return new Usage(this, id, "6 Dot Braille Cell", UsageTypes.Dv);
+                case 0x0005: return new Usage(this, id, "Number of Braille Cells", UsageTypes.Dv);
                 case 0x0006: return new Usage(this, id, "Screen Reader Control", UsageTypes.NAry);
-                case 0x0007: return new Usage(this, id, "Screen Reader Identifier", UsageTypes.DV);
+                case 0x0007: return new Usage(this, id, "Screen Reader Identifier", UsageTypes.Dv);
                 case 0x00fa: return new Usage(this, id, "Router Set 1", UsageTypes.NAry);
                 case 0x00fb: return new Usage(this, id, "Router Set 2", UsageTypes.NAry);
                 case 0x00fc: return new Usage(this, id, "Router Set 3", UsageTypes.NAry);

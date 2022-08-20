@@ -161,7 +161,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Caller ID Usage.
         /// </summary>
-        [Description("Caller ID")] CallerID = 0x000b0030,
+        [Description("Caller ID")] CallerId = 0x000b0030,
 
         /// <summary>
         ///     Speed Dial Usage.
@@ -377,7 +377,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Phone Key Caller ID Usage.
         /// </summary>
-        [Description("Phone Key Caller ID")] PhoneKeyCallerID = 0x000b00c1,
+        [Description("Phone Key Caller ID")] PhoneKeyCallerId = 0x000b00c1,
 
         /// <summary>
         ///     Phone Key Settings Usage.
@@ -424,7 +424,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     PSTN Ring Tone Usage.
         /// </summary>
-        [Description("PSTN Ring Tone")] PSTNRingTone = 0x000b00f9,
+        [Description("PSTN Ring Tone")] PstnRingTone = 0x000b00f9,
 
         /// <summary>
         ///     Host Ring Tone Usage.
@@ -533,7 +533,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Address Book ID Usage.
         /// </summary>
-        [Description("Address Book ID")] AddressBookID = 0x000b0147,
+        [Description("Address Book ID")] AddressBookId = 0x000b0147,
 
         /// <summary>
         ///     Call Duration Usage.

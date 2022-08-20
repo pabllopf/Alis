@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         ///     The window
         /// </summary>
-        private static RenderWindow window;
+        private static RenderWindow _window;
 
         /// <summary>
         ///     Main the args
@@ -50,14 +50,14 @@ namespace Alis.Core.Graphic.Sample
         public static void Main(string[] args)
         {
             Console.WriteLine("Start");
-            window = new RenderWindow(new VideoMode(800, 600), "SFML window");
-            window.SetVisible(true);
-            window.Closed += WindowOnClosed;
-            while (window.IsOpen)
+            _window = new RenderWindow(new VideoMode(800, 600), "SFML window");
+            _window.SetVisible(true);
+            _window.Closed += WindowOnClosed;
+            while (_window.IsOpen)
             {
-                window.DispatchEvents();
-                window.Clear(Color.Red);
-                window.Display();
+                _window.DispatchEvents();
+                _window.Clear(Color.Red);
+                _window.Display();
             }
         }
 
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.Sample
         /// <param name="e">The </param>
         private static void WindowOnClosed(object sender, EventArgs e)
         {
-            window.Close();
+            _window.Close();
             Console.WriteLine("Close");
         }
     }

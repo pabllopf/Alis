@@ -371,37 +371,37 @@ namespace Alis.Core.Input
         ///     UTF8 Character Gesture Encoding Usage.
         /// </summary>
         [Description("UTF8 Character Gesture Encoding")]
-        UTF8CharacterGestureEncoding = 0x000d0065,
+        Utf8CharacterGestureEncoding = 0x000d0065,
 
         /// <summary>
         ///     UTF16 Little Endian Character Gesture Encoding Usage.
         /// </summary>
         [Description("UTF16 Little Endian Character Gesture Encoding")]
-        UTF16LittleEndianCharacterGestureEncoding = 0x000d0066,
+        Utf16LittleEndianCharacterGestureEncoding = 0x000d0066,
 
         /// <summary>
         ///     UTF16 Big Endian Character Gesture Encoding Usage.
         /// </summary>
         [Description("UTF16 Big Endian Character Gesture Encoding")]
-        UTF16BigEndianCharacterGestureEncoding = 0x000d0067,
+        Utf16BigEndianCharacterGestureEncoding = 0x000d0067,
 
         /// <summary>
         ///     UTF32 Little Endian Character Gesture Encoding Usage.
         /// </summary>
         [Description("UTF32 Little Endian Character Gesture Encoding")]
-        UTF32LittleEndianCharacterGestureEncoding = 0x000d0068,
+        Utf32LittleEndianCharacterGestureEncoding = 0x000d0068,
 
         /// <summary>
         ///     UTF32 Big Endian Character Gesture Encoding Usage.
         /// </summary>
         [Description("UTF32 Big Endian Character Gesture Encoding")]
-        UTF32BigEndianCharacterGestureEncoding = 0x000d0069,
+        Utf32BigEndianCharacterGestureEncoding = 0x000d0069,
 
         /// <summary>
         ///     Capacitive Heat Map Protocol Vendor ID Usage.
         /// </summary>
         [Description("Capacitive Heat Map Protocol Vendor ID")]
-        CapacitiveHeatMapProtocolVendorID = 0x000d006a,
+        CapacitiveHeatMapProtocolVendorId = 0x000d006a,
 
         /// <summary>
         ///     Capacitive Heat Map Protocol Version Usage.
@@ -441,12 +441,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Transducer Vendor ID Usage.
         /// </summary>
-        [Description("Transducer Vendor ID")] TransducerVendorID = 0x000d0091,
+        [Description("Transducer Vendor ID")] TransducerVendorId = 0x000d0091,
 
         /// <summary>
         ///     Transducer Product ID Usage.
         /// </summary>
-        [Description("Transducer Product ID")] TransducerProductID = 0x000d0092,
+        [Description("Transducer Product ID")] TransducerProductId = 0x000d0092,
 
         /// <summary>
         ///     Device Supported Protocols Usage.
@@ -468,12 +468,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Wacom AES Protocol Usage.
         /// </summary>
-        [Description("Wacom AES Protocol")] WacomAESProtocol = 0x000d0096,
+        [Description("Wacom AES Protocol")] WacomAesProtocol = 0x000d0096,
 
         /// <summary>
         ///     USI Protocol Usage.
         /// </summary>
-        [Description("USI Protocol")] USIProtocol = 0x000d0097,
+        [Description("USI Protocol")] UsiProtocol = 0x000d0097,
 
         /// <summary>
         ///     Microsoft Pen Protocol Usage.

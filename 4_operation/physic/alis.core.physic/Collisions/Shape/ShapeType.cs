@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MassData.cs
+//  File:ShapeType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Aspect.Math;
-
-namespace Alis.Core.Physic.Collisions.Shapes
+namespace Alis.Core.Physic.Collisions.Shape
 {
     /// <summary>
-    ///     This holds the mass data computed for a shape.
+    ///     The various collision shape types supported by Box2D.
     /// </summary>
-    public struct MassData
+    public enum ShapeType
     {
         /// <summary>
-        ///     The mass of the shape, usually in kilograms.
+        ///     The unknown shape shape type
         /// </summary>
-        public float Mass;
+        UnknownShape = -1,
 
         /// <summary>
-        ///     The position of the shape's centroid relative to the shape's origin.
+        ///     The circle shape shape type
         /// </summary>
-        public Vector2 Center;
+        CircleShape,
 
         /// <summary>
-        ///     The rotational inertia of the shape.
+        ///     The polygon shape shape type
         /// </summary>
-        public float I;
+        PolygonShape,
+
+        /// <summary>
+        ///     The edge shape shape type
+        /// </summary>
+        EdgeShape,
+
+        /// <summary>
+        ///     The shape type count shape type
+        /// </summary>
+        ShapeTypeCount
     }
 }

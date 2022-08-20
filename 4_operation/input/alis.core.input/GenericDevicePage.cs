@@ -61,7 +61,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Wireless ID Usage.
         /// </summary>
-        [Description("Wireless ID")] WirelessID = 0x00060022,
+        [Description("Wireless ID")] WirelessId = 0x00060022,
 
         /// <summary>
         ///     Discover Wireless Control Usage.
@@ -89,17 +89,17 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Sequence ID Usage.
         /// </summary>
-        [Description("Sequence ID")] SequenceID = 0x00060027,
+        [Description("Sequence ID")] SequenceId = 0x00060027,
 
         /// <summary>
         ///     Sequence ID Reset Usage.
         /// </summary>
-        [Description("Sequence ID Reset")] SequenceIDReset = 0x00060028,
+        [Description("Sequence ID Reset")] SequenceIdReset = 0x00060028,
 
         /// <summary>
         ///     RF Signal Strength Usage.
         /// </summary>
-        [Description("RF Signal Strength")] RFSignalStrength = 0x00060029,
+        [Description("RF Signal Strength")] RfSignalStrength = 0x00060029,
 
         /// <summary>
         ///     Software Version Usage.

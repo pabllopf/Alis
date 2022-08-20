@@ -86,13 +86,13 @@ namespace Alis.Core.Input.Controllers
             /// <summary>
             ///     The controller info
             /// </summary>
-            private static readonly ConcurrentDictionary<Type, ControllerInfo> s_infos =
+            private static readonly ConcurrentDictionary<Type, ControllerInfo> SInfos =
                 new ConcurrentDictionary<Type, ControllerInfo>();
 
             /// <summary>
             ///     The control info
             /// </summary>
-            private static readonly Type[] s_constructorTypes = {typeof(Device), typeof(ControlInfo[])};
+            private static readonly Type[] SConstructorTypes = {typeof(Device), typeof(ControlInfo[])};
 
             // ReSharper disable once MemberHidesStaticFromOuterClass
             /// <summary>
@@ -104,7 +104,7 @@ namespace Alis.Core.Input.Controllers
                 Type type,
                 CreateControllerDelegate<Controller> createControllerDelegate)
             {
-                s_infos[type] = new ControllerInfo(createControllerDelegate);
+                SInfos[type] = new ControllerInfo(createControllerDelegate);
             }
 
             /// <summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Input.Controllers
             /// <returns>The controller info</returns>
             public static ControllerInfo Get(Type type)
             {
-                if (s_infos.TryGetValue(type, out ControllerInfo controllerInfo))
+                if (SInfos.TryGetValue(type, out ControllerInfo controllerInfo))
                 {
                     return controllerInfo;
                 }
@@ -138,7 +138,7 @@ namespace Alis.Core.Input.Controllers
                 ConstructorInfo constructor = type.GetConstructor(
                     BindingFlags.CreateInstance | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic,
                     null,
-                    s_constructorTypes,
+                    SConstructorTypes,
                     null);
 
                 if (constructor is null)
@@ -157,7 +157,7 @@ namespace Alis.Core.Input.Controllers
                     .GetProperties(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
                     .ToDictionary(property => property.Name, property => new PropertyData(property));
 
-                return s_infos.GetOrAdd(type, new ControllerInfo(constructor, deviceAttributes, propertyData));
+                return SInfos.GetOrAdd(type, new ControllerInfo(constructor, deviceAttributes, propertyData));
             }
 
             /// <summary>
@@ -260,7 +260,7 @@ namespace Alis.Core.Input.Controllers
 
                     if (converterType != null)
                     {
-                        Converter = s_converterCache.GetOrAdd(converterType, t =>
+                        Converter = SConverterCache.GetOrAdd(converterType, t =>
                         {
                             // Optimisation, look for a static field called 'Instance' that returns an IControlConverter.
                             FieldInfo instanceFieldInfo =
@@ -306,7 +306,7 @@ namespace Alis.Core.Input.Controllers
                 /// <summary>
                 ///     The type converter
                 /// </summary>
-                private static readonly ConcurrentDictionary<Type, TypeConverter> s_converterCache =
+                private static readonly ConcurrentDictionary<Type, TypeConverter> SConverterCache =
                     new ConcurrentDictionary<Type, TypeConverter>();
             }
         }

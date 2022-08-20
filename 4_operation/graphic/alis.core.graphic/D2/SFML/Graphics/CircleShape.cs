@@ -139,13 +139,13 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="index">Index of the point to get, in range [0 .. PointCount - 1]</param>
         /// <returns>index-th point of the shape</returns>
         ////////////////////////////////////////////////////////////
-        public override Vector2f GetPoint(uint index)
+        public override Vector2F GetPoint(uint index)
         {
             float angle = (float) (index * 2 * Math.PI / myPointCount - Math.PI / 2);
             float x = (float) Math.Cos(angle) * myRadius;
             float y = (float) Math.Sin(angle) * myRadius;
 
-            return new Vector2f(myRadius + x, myRadius + y);
+            return new Vector2F(myRadius + x, myRadius + y);
         }
     }
 }

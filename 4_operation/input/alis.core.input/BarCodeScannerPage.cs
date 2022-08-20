@@ -104,13 +104,13 @@ namespace Alis.Core.Input
         ///     UPC/EAN Control Report Usage.
         /// </summary>
         [Description("UPC/EAN Control Report")]
-        UPCEANControlReport = 0x008c0016,
+        UpceanControlReport = 0x008c0016,
 
         /// <summary>
         ///     EAN 2/3 Label Control Report Usage.
         /// </summary>
         [Description("EAN 2/3 Label Control Report")]
-        EAN23LabelControlReport = 0x008c0017,
+        Ean23LabelControlReport = 0x008c0017,
 
         /// <summary>
         ///     Code 39 Control Report Usage.
@@ -134,7 +134,7 @@ namespace Alis.Core.Input
         ///     MSI Plessey Control Report Usage.
         /// </summary>
         [Description("MSI Plessey Control Report")]
-        MSIPlesseyControlReport = 0x008c001b,
+        MsiPlesseyControlReport = 0x008c001b,
 
         /// <summary>
         ///     Codabar Control Report Usage.
@@ -298,7 +298,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Prefix AIMI Usage.
         /// </summary>
-        [Description("Prefix AIMI")] PrefixAIMI = 0x008c0050,
+        [Description("Prefix AIMI")] PrefixAimi = 0x008c0050,
 
         /// <summary>
         ///     Prefix None Usage.
@@ -410,7 +410,7 @@ namespace Alis.Core.Input
         ///     Commit Parameters to NVM Usage.
         /// </summary>
         [Description("Commit Parameters to NVM")]
-        CommitParametersToNVM = 0x008c006d,
+        CommitParametersToNvm = 0x008c006d,
 
         /// <summary>
         ///     Parameter Scanning Usage.
@@ -458,7 +458,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Good Read LED Usage.
         /// </summary>
-        [Description("Good Read LED")] GoodReadLED = 0x008c007d,
+        [Description("Good Read LED")] GoodReadLed = 0x008c007d,
 
         /// <summary>
         ///     Good Read Tone Frequency Usage.
@@ -516,110 +516,110 @@ namespace Alis.Core.Input
         /// <summary>
         ///     GRWTI After Decode Usage.
         /// </summary>
-        [Description("GRWTI After Decode")] GRWTIAfterDecode = 0x008c0089,
+        [Description("GRWTI After Decode")] GrwtiAfterDecode = 0x008c0089,
 
         /// <summary>
         ///     GRWTI Beep/Lamp after transmit Usage.
         /// </summary>
         [Description("GRWTI Beep/Lamp after transmit")]
-        GRWTIBeepLampAfterTransmit = 0x008c008a,
+        GrwtiBeepLampAfterTransmit = 0x008c008a,
 
         /// <summary>
         ///     GRWTI No Beep/Lamp use at all Usage.
         /// </summary>
         [Description("GRWTI No Beep/Lamp use at all")]
-        GRWTINoBeepLampUseAtAll = 0x008c008b,
+        GrwtiNoBeepLampUseAtAll = 0x008c008b,
 
         /// <summary>
         ///     Bookland EAN Usage.
         /// </summary>
-        [Description("Bookland EAN")] BooklandEAN = 0x008c0091,
+        [Description("Bookland EAN")] BooklandEan = 0x008c0091,
 
         /// <summary>
         ///     Convert EAN 8 to 13 Type Usage.
         /// </summary>
         [Description("Convert EAN 8 to 13 Type")]
-        ConvertEAN8To13Type = 0x008c0092,
+        ConvertEan8To13Type = 0x008c0092,
 
         /// <summary>
         ///     Convert UPC A to EAN-13 Usage.
         /// </summary>
         [Description("Convert UPC A to EAN-13")]
-        ConvertUPCAToEAN13 = 0x008c0093,
+        ConvertUpcaToEan13 = 0x008c0093,
 
         /// <summary>
         ///     Convert UPC-E to A Usage.
         /// </summary>
-        [Description("Convert UPC-E to A")] ConvertUPCEToA = 0x008c0094,
+        [Description("Convert UPC-E to A")] ConvertUpceToA = 0x008c0094,
 
         /// <summary>
         ///     EAN-13 Usage.
         /// </summary>
-        [Description("EAN-13")] EAN13 = 0x008c0095,
+        [Description("EAN-13")] Ean13 = 0x008c0095,
 
         /// <summary>
         ///     EAN-8 Usage.
         /// </summary>
-        [Description("EAN-8")] EAN8 = 0x008c0096,
+        [Description("EAN-8")] Ean8 = 0x008c0096,
 
         /// <summary>
         ///     EAN-99 128_Mandatory Usage.
         /// </summary>
-        [Description("EAN-99 128_Mandatory")] EAN99128_Mandatory = 0x008c0097,
+        [Description("EAN-99 128_Mandatory")] Ean99128Mandatory = 0x008c0097,
 
         /// <summary>
         ///     EAN-99 P5/128_Optional Usage.
         /// </summary>
         [Description("EAN-99 P5/128_Optional")]
-        EAN99P5128_Optional = 0x008c0098,
+        Ean99P5128Optional = 0x008c0098,
 
         /// <summary>
         ///     UPC/EAN Usage.
         /// </summary>
-        [Description("UPC/EAN")] UPCEAN = 0x008c009a,
+        [Description("UPC/EAN")] Upcean = 0x008c009a,
 
         /// <summary>
         ///     UPC/EAN Coupon Code Usage.
         /// </summary>
-        [Description("UPC/EAN Coupon Code")] UPCEANCouponCode = 0x008c009b,
+        [Description("UPC/EAN Coupon Code")] UpceanCouponCode = 0x008c009b,
 
         /// <summary>
         ///     UPC/EAN Periodicals Usage.
         /// </summary>
-        [Description("UPC/EAN Periodicals")] UPCEANPeriodicals = 0x008c009c,
+        [Description("UPC/EAN Periodicals")] UpceanPeriodicals = 0x008c009c,
 
         /// <summary>
         ///     UPC-A Usage.
         /// </summary>
-        [Description("UPC-A")] UPCA = 0x008c009d,
+        [Description("UPC-A")] Upca = 0x008c009d,
 
         /// <summary>
         ///     UPC-A with 128 Mandatory Usage.
         /// </summary>
         [Description("UPC-A with 128 Mandatory")]
-        UPCAWith128Mandatory = 0x008c009e,
+        UpcaWith128Mandatory = 0x008c009e,
 
         /// <summary>
         ///     UPC-A with 128 Optional Usage.
         /// </summary>
         [Description("UPC-A with 128 Optional")]
-        UPCAWith128Optional = 0x008c009f,
+        UpcaWith128Optional = 0x008c009f,
 
         /// <summary>
         ///     UPC-A with P5 Optional Usage.
         /// </summary>
         [Description("UPC-A with P5 Optional")]
-        UPCAWithP5Optional = 0x008c00a0,
+        UpcaWithP5Optional = 0x008c00a0,
 
         /// <summary>
         ///     UPC-E Usage.
         /// </summary>
-        [Description("UPC-E")] UPCE = 0x008c00a1,
+        [Description("UPC-E")] Upce = 0x008c00a1,
 
         /// <summary>
         ///     UPC-E1 Usage.
         /// </summary>
-        [Description("UPC-E1")] UPCE1 = 0x008c00a2,
+        [Description("UPC-E1")] Upce1 = 0x008c00a2,
 
         /// <summary>
         ///     Periodical Usage.
@@ -697,54 +697,54 @@ namespace Alis.Core.Input
         /// <summary>
         ///     EAN Two Label Usage.
         /// </summary>
-        [Description("EAN Two Label")] EANTwoLabel = 0x008c00b7,
+        [Description("EAN Two Label")] EanTwoLabel = 0x008c00b7,
 
         /// <summary>
         ///     EAN Three Label Usage.
         /// </summary>
-        [Description("EAN Three Label")] EANThreeLabel = 0x008c00b8,
+        [Description("EAN Three Label")] EanThreeLabel = 0x008c00b8,
 
         /// <summary>
         ///     EAN 8 Flag Digit 1 Usage.
         /// </summary>
-        [Description("EAN 8 Flag Digit 1")] EAN8FlagDigit1 = 0x008c00b9,
+        [Description("EAN 8 Flag Digit 1")] Ean8FlagDigit1 = 0x008c00b9,
 
         /// <summary>
         ///     EAN 8 Flag Digit 2 Usage.
         /// </summary>
-        [Description("EAN 8 Flag Digit 2")] EAN8FlagDigit2 = 0x008c00ba,
+        [Description("EAN 8 Flag Digit 2")] Ean8FlagDigit2 = 0x008c00ba,
 
         /// <summary>
         ///     EAN 8 Flag Digit 3 Usage.
         /// </summary>
-        [Description("EAN 8 Flag Digit 3")] EAN8FlagDigit3 = 0x008c00bb,
+        [Description("EAN 8 Flag Digit 3")] Ean8FlagDigit3 = 0x008c00bb,
 
         /// <summary>
         ///     EAN 13 Flag Digit 1 Usage.
         /// </summary>
-        [Description("EAN 13 Flag Digit 1")] EAN13FlagDigit1 = 0x008c00bc,
+        [Description("EAN 13 Flag Digit 1")] Ean13FlagDigit1 = 0x008c00bc,
 
         /// <summary>
         ///     EAN 13 Flag Digit 2 Usage.
         /// </summary>
-        [Description("EAN 13 Flag Digit 2")] EAN13FlagDigit2 = 0x008c00bd,
+        [Description("EAN 13 Flag Digit 2")] Ean13FlagDigit2 = 0x008c00bd,
 
         /// <summary>
         ///     EAN 13 Flag Digit 3 Usage.
         /// </summary>
-        [Description("EAN 13 Flag Digit 3")] EAN13FlagDigit3 = 0x008c00be,
+        [Description("EAN 13 Flag Digit 3")] Ean13FlagDigit3 = 0x008c00be,
 
         /// <summary>
         ///     Add EAN 2/3 Label Definition Usage.
         /// </summary>
         [Description("Add EAN 2/3 Label Definition")]
-        AddEAN23LabelDefinition = 0x008c00bf,
+        AddEan23LabelDefinition = 0x008c00bf,
 
         /// <summary>
         ///     Clear all EAN 2/3 Label Definitions Usage.
         /// </summary>
         [Description("Clear all EAN 2/3 Label Definitions")]
-        ClearAllEAN23LabelDefinitions = 0x008c00c0,
+        ClearAllEan23LabelDefinitions = 0x008c00c0,
 
         /// <summary>
         ///     Codabar Usage.
@@ -769,7 +769,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Full ASCII Conversion Usage.
         /// </summary>
-        [Description("Full ASCII Conversion")] FullASCIIConversion = 0x008c00c9,
+        [Description("Full ASCII Conversion")] FullAsciiConversion = 0x008c00c9,
 
         /// <summary>
         ///     Interleaved 2 of 5 Usage.
@@ -784,12 +784,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     MSI/Plessey Usage.
         /// </summary>
-        [Description("MSI/Plessey")] MSIPlessey = 0x008c00cc,
+        [Description("MSI/Plessey")] MsiPlessey = 0x008c00cc,
 
         /// <summary>
         ///     Standard 2 of 5 IATA Usage.
         /// </summary>
-        [Description("Standard 2 of 5 IATA")] Standard2Of5IATA = 0x008c00cd,
+        [Description("Standard 2 of 5 IATA")] Standard2Of5Iata = 0x008c00cd,
 
         /// <summary>
         ///     Standard 2 of 5 Usage.
@@ -809,7 +809,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     UCC/EAN-128 Usage.
         /// </summary>
-        [Description("UCC/EAN-128")] UCCEAN128 = 0x008c00d5,
+        [Description("UCC/EAN-128")] Uccean128 = 0x008c00d5,
 
         /// <summary>
         ///     Check Digit Usage.
@@ -825,37 +825,37 @@ namespace Alis.Core.Input
         ///     Check Digit Enable Interleaved 2 of 5 OPCC Usage.
         /// </summary>
         [Description("Check Digit Enable Interleaved 2 of 5 OPCC")]
-        CheckDigitEnableInterleaved2Of5OPCC = 0x008c00d8,
+        CheckDigitEnableInterleaved2Of5Opcc = 0x008c00d8,
 
         /// <summary>
         ///     Check Digit Enable Interleaved 2 of 5 USS Usage.
         /// </summary>
         [Description("Check Digit Enable Interleaved 2 of 5 USS")]
-        CheckDigitEnableInterleaved2Of5USS = 0x008c00d9,
+        CheckDigitEnableInterleaved2Of5Uss = 0x008c00d9,
 
         /// <summary>
         ///     Check Digit Enable Standard 2 of 5 OPCC Usage.
         /// </summary>
         [Description("Check Digit Enable Standard 2 of 5 OPCC")]
-        CheckDigitEnableStandard2Of5OPCC = 0x008c00da,
+        CheckDigitEnableStandard2Of5Opcc = 0x008c00da,
 
         /// <summary>
         ///     Check Digit Enable Standard 2 of 5 USS Usage.
         /// </summary>
         [Description("Check Digit Enable Standard 2 of 5 USS")]
-        CheckDigitEnableStandard2Of5USS = 0x008c00db,
+        CheckDigitEnableStandard2Of5Uss = 0x008c00db,
 
         /// <summary>
         ///     Check Digit Enable One MSI Plessey Usage.
         /// </summary>
         [Description("Check Digit Enable One MSI Plessey")]
-        CheckDigitEnableOneMSIPlessey = 0x008c00dc,
+        CheckDigitEnableOneMsiPlessey = 0x008c00dc,
 
         /// <summary>
         ///     Check Digit Enable Two MSI Plessey Usage.
         /// </summary>
         [Description("Check Digit Enable Two MSI Plessey")]
-        CheckDigitEnableTwoMSIPlessey = 0x008c00dd,
+        CheckDigitEnableTwoMsiPlessey = 0x008c00dd,
 
         /// <summary>
         ///     Check Digit Codabar Enable Usage.
@@ -970,19 +970,19 @@ namespace Alis.Core.Input
         /// <summary>
         ///     DL Method Read any Usage.
         /// </summary>
-        [Description("DL Method Read any")] DLMethodReadAny = 0x008c010b,
+        [Description("DL Method Read any")] DlMethodReadAny = 0x008c010b,
 
         /// <summary>
         ///     DL Method Check in Range Usage.
         /// </summary>
         [Description("DL Method Check in Range")]
-        DLMethodCheckInRange = 0x008c010c,
+        DlMethodCheckInRange = 0x008c010c,
 
         /// <summary>
         ///     DL Method Check for Discrete Usage.
         /// </summary>
         [Description("DL Method Check for Discrete")]
-        DLMethodCheckForDiscrete = 0x008c010d,
+        DlMethodCheckForDiscrete = 0x008c010d,
 
         /// <summary>
         ///     Aztec Code Usage.
@@ -992,7 +992,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     BC412 Usage.
         /// </summary>
-        [Description("BC412")] BC412 = 0x008c0111,
+        [Description("BC412")] Bc412 = 0x008c0111,
 
         /// <summary>
         ///     Channel Code Usage.
@@ -1037,12 +1037,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     MicroPDF Usage.
         /// </summary>
-        [Description("MicroPDF")] MicroPDF = 0x008c011a,
+        [Description("MicroPDF")] MicroPdf = 0x008c011a,
 
         /// <summary>
         ///     PDF-417 Usage.
         /// </summary>
-        [Description("PDF-417")] PDF417 = 0x008c011b,
+        [Description("PDF-417")] Pdf417 = 0x008c011b,
 
         /// <summary>
         ///     PosiCode Usage.
@@ -1052,7 +1052,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     QR Code Usage.
         /// </summary>
-        [Description("QR Code")] QRCode = 0x008c011d,
+        [Description("QR Code")] QrCode = 0x008c011d,
 
         /// <summary>
         ///     SuperCode Usage.
@@ -1067,7 +1067,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     USD-5 (Slug Code) Usage.
         /// </summary>
-        [Description("USD-5 (Slug Code)")] USD5SlugCode = 0x008c0120,
+        [Description("USD-5 (Slug Code)")] Usd5SlugCode = 0x008c0120,
 
         /// <summary>
         ///     VeriCode Usage.

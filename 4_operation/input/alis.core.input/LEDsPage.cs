@@ -36,7 +36,7 @@ namespace Alis.Core.Input
     ///     LEDs Usage Page.
     /// </summary>
     [Description("LEDs Usage Page")]
-    public enum LEDsPage : uint
+    public enum LeDsPage : uint
     {
         /// <summary>
         ///     Undefined Usage.
@@ -141,12 +141,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     CAV Usage.
         /// </summary>
-        [Description("CAV")] CAV = 0x00080014,
+        [Description("CAV")] Cav = 0x00080014,
 
         /// <summary>
         ///     CLV Usage.
         /// </summary>
-        [Description("CLV")] CLV = 0x00080015,
+        [Description("CLV")] Clv = 0x00080015,
 
         /// <summary>
         ///     Recording Format Detect Usage.
@@ -182,7 +182,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Battery OK Usage.
         /// </summary>
-        [Description("Battery OK")] BatteryOK = 0x0008001c,
+        [Description("Battery OK")] BatteryOk = 0x0008001c,
 
         /// <summary>
         ///     Battery Low Usage.
@@ -456,27 +456,27 @@ namespace Alis.Core.Input
         /// <summary>
         ///     RGB LED Usage.
         /// </summary>
-        [Description("RGB LED")] RGBLED = 0x00080052,
+        [Description("RGB LED")] Rgbled = 0x00080052,
 
         /// <summary>
         ///     Red LED Channel Usage.
         /// </summary>
-        [Description("Red LED Channel")] RedLEDChannel = 0x00080053,
+        [Description("Red LED Channel")] RedLedChannel = 0x00080053,
 
         /// <summary>
         ///     Green LED Channel Usage.
         /// </summary>
-        [Description("Green LED Channel")] GreenLEDChannel = 0x00080054,
+        [Description("Green LED Channel")] GreenLedChannel = 0x00080054,
 
         /// <summary>
         ///     Blue LED Channel Usage.
         /// </summary>
-        [Description("Blue LED Channel")] BlueLEDChannel = 0x00080055,
+        [Description("Blue LED Channel")] BlueLedChannel = 0x00080055,
 
         /// <summary>
         ///     LED Intensity Usage.
         /// </summary>
-        [Description("LED Intensity")] LEDIntensity = 0x00080056,
+        [Description("LED Intensity")] LedIntensity = 0x00080056,
 
         /// <summary>
         ///     Player Indicator Usage.

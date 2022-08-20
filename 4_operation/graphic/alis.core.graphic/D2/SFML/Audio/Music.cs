@@ -187,7 +187,7 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         ///     The default position of a sound is (0, 0, 0).
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector3f Position
+        public Vector3F Position
         {
             get => sfMusic_getPosition(CPointer);
             set => sfMusic_setPosition(CPointer, value);
@@ -358,17 +358,17 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <summary>
         ///     Sfs the music create from file using the specified filename
         /// </summary>
-        /// <param name="Filename">The filename</param>
+        /// <param name="filename">The filename</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfMusic_createFromFile(string Filename);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfMusic_createFromFile(string filename);
 
         /// <summary>
         ///     Sfs the music create from stream using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfMusic_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -377,213 +377,213 @@ namespace Alis.Core.Graphic.D2.SFML.Audio
         /// <param name="data">The data</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfMusic_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
         ///     Sfs the music destroy using the specified music stream
         /// </summary>
-        /// <param name="MusicStream">The music stream</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_destroy(IntPtr MusicStream);
+        /// <param name="musicStream">The music stream</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_destroy(IntPtr musicStream);
 
         /// <summary>
         ///     Sfs the music play using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_play(IntPtr Music);
+        /// <param name="music">The music</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_play(IntPtr music);
 
         /// <summary>
         ///     Sfs the music pause using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_pause(IntPtr Music);
+        /// <param name="music">The music</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_pause(IntPtr music);
 
         /// <summary>
         ///     Sfs the music stop using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_stop(IntPtr Music);
+        /// <param name="music">The music</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_stop(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get status using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The sound status</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern SoundStatus sfMusic_getStatus(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern SoundStatus sfMusic_getStatus(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get duration using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The systems time</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfMusic_getDuration(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Time sfMusic_getDuration(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get loop points using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The time span</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern TimeSpan sfMusic_getLoopPoints(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern TimeSpan sfMusic_getLoopPoints(IntPtr music);
 
         /// <summary>
         ///     Sfs the music set loop points using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <param name="timePoints">The time points</param>
         /// <returns>The time span</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern TimeSpan sfMusic_setLoopPoints(IntPtr Music, TimeSpan timePoints);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern TimeSpan sfMusic_setLoopPoints(IntPtr music, TimeSpan timePoints);
 
         /// <summary>
         ///     Sfs the music get channel count using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfMusic_getChannelCount(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern uint sfMusic_getChannelCount(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get sample rate using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfMusic_getSampleRate(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern uint sfMusic_getSampleRate(IntPtr music);
 
         /// <summary>
         ///     Sfs the music set pitch using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        /// <param name="Pitch">The pitch</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setPitch(IntPtr Music, float Pitch);
+        /// <param name="music">The music</param>
+        /// <param name="pitch">The pitch</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setPitch(IntPtr music, float pitch);
 
         /// <summary>
         ///     Sfs the music set loop using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        /// <param name="Loop">The loop</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setLoop(IntPtr Music, bool Loop);
+        /// <param name="music">The music</param>
+        /// <param name="loop">The loop</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setLoop(IntPtr music, bool loop);
 
         /// <summary>
         ///     Sfs the music set volume using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        /// <param name="Volume">The volume</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setVolume(IntPtr Music, float Volume);
+        /// <param name="music">The music</param>
+        /// <param name="volume">The volume</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setVolume(IntPtr music, float volume);
 
         /// <summary>
         ///     Sfs the music set position using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <param name="position">The position</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setPosition(IntPtr Music, Vector3f position);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setPosition(IntPtr music, Vector3F position);
 
         /// <summary>
         ///     Sfs the music set relative to listener using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        /// <param name="Relative">The relative</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setRelativeToListener(IntPtr Music, bool Relative);
+        /// <param name="music">The music</param>
+        /// <param name="relative">The relative</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setRelativeToListener(IntPtr music, bool relative);
 
         /// <summary>
         ///     Sfs the music set min distance using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        /// <param name="MinDistance">The min distance</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setMinDistance(IntPtr Music, float MinDistance);
+        /// <param name="music">The music</param>
+        /// <param name="minDistance">The min distance</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setMinDistance(IntPtr music, float minDistance);
 
         /// <summary>
         ///     Sfs the music set attenuation using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        /// <param name="Attenuation">The attenuation</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setAttenuation(IntPtr Music, float Attenuation);
+        /// <param name="music">The music</param>
+        /// <param name="attenuation">The attenuation</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setAttenuation(IntPtr music, float attenuation);
 
         /// <summary>
         ///     Sfs the music set playing offset using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
-        /// <param name="TimeOffset">The time offset</param>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setPlayingOffset(IntPtr Music, Time TimeOffset);
+        /// <param name="music">The music</param>
+        /// <param name="timeOffset">The time offset</param>
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMusic_setPlayingOffset(IntPtr music, Time timeOffset);
 
         /// <summary>
         ///     Describes whether sf music get loop
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfMusic_getLoop(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfMusic_getLoop(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get pitch using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern float sfMusic_getPitch(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern float sfMusic_getPitch(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get volume using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern float sfMusic_getVolume(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern float sfMusic_getVolume(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get position using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The vector 3f</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector3f sfMusic_getPosition(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector3F sfMusic_getPosition(IntPtr music);
 
         /// <summary>
         ///     Describes whether sf music is relative to listener
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfMusic_isRelativeToListener(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfMusic_isRelativeToListener(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get min distance using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern float sfMusic_getMinDistance(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern float sfMusic_getMinDistance(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get attenuation using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The float</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern float sfMusic_getAttenuation(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern float sfMusic_getAttenuation(IntPtr music);
 
         /// <summary>
         ///     Sfs the music get playing offset using the specified music
         /// </summary>
-        /// <param name="Music">The music</param>
+        /// <param name="music">The music</param>
         /// <returns>The systems time</returns>
-        [DllImport(CSFML.audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Time sfMusic_getPlayingOffset(IntPtr Music);
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Time sfMusic_getPlayingOffset(IntPtr music);
 
         /// <summary>
         ///     The time span

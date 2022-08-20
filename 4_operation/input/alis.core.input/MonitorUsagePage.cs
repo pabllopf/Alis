@@ -53,7 +53,7 @@ namespace Alis.Core.Input
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "Monitor Control", UsageTypes.CA);
+                case 0x0001: return new Usage(this, id, "Monitor Control", UsageTypes.Ca);
             }
 
             return base.CreateUsage(id);

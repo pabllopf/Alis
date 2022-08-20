@@ -33,19 +33,19 @@ namespace Alis.Core.Input
     /// <summary>
     ///     Base class for all usage pages.
     /// </summary>
-    public sealed class VRUsagePage : UsagePage
+    public sealed class VrUsagePage : UsagePage
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="VRUsagePage" /> class
+        ///     Initializes a new instance of the <see cref="VrUsagePage" /> class
         /// </summary>
-        private VRUsagePage() : base(0x0003, "VR")
+        private VrUsagePage() : base(0x0003, "VR")
         {
         }
 
         /// <summary>
         ///     Singleton instance of VR Usage Page.
         /// </summary>
-        public static readonly VRUsagePage Instance = new VRUsagePage();
+        public static readonly VrUsagePage Instance = new VrUsagePage();
 
         /// <inheritdoc />
         protected override Usage CreateUsage(ushort id)
@@ -53,18 +53,18 @@ namespace Alis.Core.Input
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "Belt", UsageTypes.CA);
-                case 0x0002: return new Usage(this, id, "Body Suit", UsageTypes.CA);
-                case 0x0003: return new Usage(this, id, "Flexor", UsageTypes.CP);
-                case 0x0004: return new Usage(this, id, "Glove", UsageTypes.CA);
-                case 0x0005: return new Usage(this, id, "Head Tracker", UsageTypes.CP);
-                case 0x0006: return new Usage(this, id, "Head Mounted Display", UsageTypes.CA);
-                case 0x0007: return new Usage(this, id, "Hand Tracker", UsageTypes.CA);
-                case 0x0008: return new Usage(this, id, "Oculometer", UsageTypes.CA);
-                case 0x0009: return new Usage(this, id, "Vest", UsageTypes.CA);
-                case 0x000a: return new Usage(this, id, "Animatronic Device", UsageTypes.CA);
-                case 0x0020: return new Usage(this, id, "Stereo Enable", UsageTypes.OOC);
-                case 0x0021: return new Usage(this, id, "Display Enable", UsageTypes.OOC);
+                case 0x0001: return new Usage(this, id, "Belt", UsageTypes.Ca);
+                case 0x0002: return new Usage(this, id, "Body Suit", UsageTypes.Ca);
+                case 0x0003: return new Usage(this, id, "Flexor", UsageTypes.Cp);
+                case 0x0004: return new Usage(this, id, "Glove", UsageTypes.Ca);
+                case 0x0005: return new Usage(this, id, "Head Tracker", UsageTypes.Cp);
+                case 0x0006: return new Usage(this, id, "Head Mounted Display", UsageTypes.Ca);
+                case 0x0007: return new Usage(this, id, "Hand Tracker", UsageTypes.Ca);
+                case 0x0008: return new Usage(this, id, "Oculometer", UsageTypes.Ca);
+                case 0x0009: return new Usage(this, id, "Vest", UsageTypes.Ca);
+                case 0x000a: return new Usage(this, id, "Animatronic Device", UsageTypes.Ca);
+                case 0x0020: return new Usage(this, id, "Stereo Enable", UsageTypes.Ooc);
+                case 0x0021: return new Usage(this, id, "Display Enable", UsageTypes.Ooc);
             }
 
             return base.CreateUsage(id);

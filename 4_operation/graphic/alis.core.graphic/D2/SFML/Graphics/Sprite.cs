@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     ///     See also the note on coordinates and undistorted rendering in SFML.Graphics.Transformable.
     /// </remarks>
     ////////////////////////////////////////////////////////////
-    public class Sprite : Transformable, Drawable
+    public class Sprite : Transformable, IDrawable
     {
         /// <summary>
         ///     The my texture
@@ -142,7 +142,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="target">Render target to draw to</param>
         /// <param name="states">Current render states</param>
         ////////////////////////////////////////////////////////////
-        public void Draw(RenderTarget target, RenderStates states)
+        public void Draw(IRenderTarget target, RenderStates states)
         {
             states.Transform *= Transform;
             RenderStates.MarshalData marshaledStates = states.Marshal();
@@ -209,91 +209,91 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Sfs the sprite create
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSprite_create();
 
         /// <summary>
         ///     Sfs the sprite copy using the specified sprite
         /// </summary>
-        /// <param name="Sprite">The sprite</param>
+        /// <param name="sprite">The sprite</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfSprite_copy(IntPtr Sprite);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfSprite_copy(IntPtr sprite);
 
         /// <summary>
         ///     Sfs the sprite destroy using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSprite_destroy(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_destroy(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the sprite set color using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Color">The color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSprite_setColor(IntPtr CPointer, Color Color);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="color">The color</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_setColor(IntPtr cPointer, Color color);
 
         /// <summary>
         ///     Sfs the sprite get color using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The color</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Color sfSprite_getColor(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Color sfSprite_getColor(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window draw sprite using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Sprite">The sprite</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="sprite">The sprite</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_drawSprite(IntPtr CPointer, IntPtr Sprite,
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_drawSprite(IntPtr cPointer, IntPtr sprite,
             ref RenderStates.MarshalData states);
 
         /// <summary>
         ///     Sfs the render texture draw sprite using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Sprite">The sprite</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="sprite">The sprite</param>
         /// <param name="states">The states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderTexture_drawSprite(IntPtr CPointer, IntPtr Sprite,
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderTexture_drawSprite(IntPtr cPointer, IntPtr sprite,
             ref RenderStates.MarshalData states);
 
         /// <summary>
         ///     Sfs the sprite set texture using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Texture">The texture</param>
-        /// <param name="AdjustToNewSize">The adjust to new size</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSprite_setTexture(IntPtr CPointer, IntPtr Texture, bool AdjustToNewSize);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="texture">The texture</param>
+        /// <param name="adjustToNewSize">The adjust to new size</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_setTexture(IntPtr cPointer, IntPtr texture, bool adjustToNewSize);
 
         /// <summary>
         ///     Sfs the sprite set texture rect using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Rect">The rect</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSprite_setTextureRect(IntPtr CPointer, IntRect Rect);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="rect">The rect</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfSprite_setTextureRect(IntPtr cPointer, IntRect rect);
 
         /// <summary>
         ///     Sfs the sprite get texture rect using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The int rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntRect sfSprite_getTextureRect(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntRect sfSprite_getTextureRect(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the sprite get local bounds using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfSprite_getLocalBounds(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern FloatRect sfSprite_getLocalBounds(IntPtr cPointer);
     }
 }

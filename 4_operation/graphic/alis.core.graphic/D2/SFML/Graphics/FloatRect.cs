@@ -64,7 +64,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="position">Position of the top-left corner of the rectangle</param>
         /// <param name="size">Size of the rectangle</param>
         ////////////////////////////////////////////////////////////
-        public FloatRect(Vector2f position, Vector2f size)
+        public FloatRect(Vector2F position, Vector2F size)
             : this(position.X, position.Y, size.X, size.Y)
         {
         }

@@ -39,7 +39,7 @@ namespace Alis.Template.Game.Android
     /// </summary>
     /// <seealso cref="Java.Lang.Object" />
     /// <seealso cref="GLSurfaceView.IRenderer" />
-    internal class MyGLRenderer : Object, GLSurfaceView.IRenderer
+    internal class MyGlRenderer : Object, GLSurfaceView.IRenderer
     {
         /// <summary>
         ///     The proj matrix
@@ -49,7 +49,7 @@ namespace Alis.Template.Game.Android
         /// <summary>
         ///     The tag
         /// </summary>
-        private static string TAG = "MyGLRenderer";
+        private static string _tag = "MyGLRenderer";
 
 
         /// <summary>

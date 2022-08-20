@@ -58,7 +58,7 @@ namespace Alis.Core.Network
         /// <summary>
         ///     Initializes a new instance of the <see cref="BufferPool" /> class
         /// </summary>
-        public BufferPool() : this(DEFAULT_BUFFER_SIZE)
+        public BufferPool() : this(DefaultBufferSize)
         {
         }
 
@@ -75,7 +75,7 @@ namespace Alis.Core.Network
         /// <summary>
         ///     The default buffer size
         /// </summary>
-        private const int DEFAULT_BUFFER_SIZE = 16384;
+        private const int DefaultBufferSize = 16384;
 
         /// <summary>
         ///     Gets a MemoryStream built from a buffer plucked from a thread safe pool

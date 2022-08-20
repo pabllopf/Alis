@@ -127,16 +127,16 @@ namespace Alis.Core.Network
             Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase);
 
             // check the version. Support version 13 and above
-            const int WebSocketVersion = 13;
+            const int webSocketVersion = 13;
             Match match = webSocketVersionRegex.Match(httpHeader);
             if (match.Success)
             {
                 int secWebSocketVersion = Convert.ToInt32(match.Groups[1].Value.Trim());
-                if (secWebSocketVersion < WebSocketVersion)
+                if (secWebSocketVersion < webSocketVersion)
                 {
                     throw new WebSocketVersionNotSupportedException(string.Format(
                         "WebSocket Version {0} not suported. Must be {1} or above", secWebSocketVersion,
-                        WebSocketVersion));
+                        webSocketVersion));
                 }
             }
             else

@@ -79,11 +79,11 @@ namespace Alis.Core.Input
         /// <param name="descriptionResource">The description resource</param>
         private Event(LogLevel level, string messageResource, string descriptionResource = null)
         {
-            _id = s_idCounter++;
+            _id = _sIdCounter++;
             Level = level;
             _messageResource = messageResource;
             _descriptionResource = descriptionResource ?? messageResource;
-            s_all[_id] = this;
+            SAll[_id] = this;
         }
 
         /// <summary>
@@ -108,12 +108,12 @@ namespace Alis.Core.Input
         ///     Gets a collection of all events raised by this library.
         /// </summary>
         /// <value>All events.</value>
-        public static IReadOnlyCollection<Event> All => s_all.Values;
+        public static IReadOnlyCollection<Event> All => SAll.Values;
 
         /// <summary>
         ///     The event
         /// </summary>
-        private static readonly Dictionary<int, Event> s_all = new Dictionary<int, Event>();
+        private static readonly Dictionary<int, Event> SAll = new Dictionary<int, Event>();
 
         /// <summary>
         ///     The refresh failure event.
@@ -174,7 +174,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     The idcounter
         /// </summary>
-        private static int s_idCounter = 3500;
+        private static int _sIdCounter = 3500;
 
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Alis.Core.Input
         /// <param name="id"></param>
         /// <param name="event"></param>
         /// <returns></returns>
-        public static bool TryGet(int id, out Event @event) => s_all.TryGetValue(id, out @event);
+        public static bool TryGet(int id, out Event @event) => SAll.TryGetValue(id, out @event);
 
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace Alis.Core.Input
         /// </summary>
         /// <param name="id">The id</param>
         /// <returns>The event</returns>
-        public static Event Get(int id) => s_all.TryGetValue(id, out Event @event) ? @event : null;
+        public static Event Get(int id) => SAll.TryGetValue(id, out Event @event) ? @event : null;
 
 
         /// <summary>

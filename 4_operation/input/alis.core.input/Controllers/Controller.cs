@@ -76,7 +76,7 @@ namespace Alis.Core.Input.Controllers
         /// </summary>
         static Controller() =>
             // Register a default converter to boolean.
-            s_defaultConverters[typeof(bool)] = BooleanConverter.Instance;
+            SDefaultConverters[typeof(bool)] = BooleanConverter.Instance;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Controller" /> class
@@ -140,7 +140,7 @@ namespace Alis.Core.Input.Controllers
         /// <summary>
         ///     The type converter
         /// </summary>
-        private static readonly ConcurrentDictionary<Type, TypeConverter> s_defaultConverters =
+        private static readonly ConcurrentDictionary<Type, TypeConverter> SDefaultConverters =
             new ConcurrentDictionary<Type, TypeConverter>();
 
         /// <inheritdoc />
@@ -243,7 +243,7 @@ namespace Alis.Core.Input.Controllers
                     object value;
                     // Find converter, or get default converter
                     TypeConverter converter = controlInfo.Converter ??
-                                              (s_defaultConverters.TryGetValue(controlInfo.Type, out TypeConverter defaultConverter)
+                                              (SDefaultConverters.TryGetValue(controlInfo.Type, out TypeConverter defaultConverter)
                                                   ? defaultConverter
                                                   : null);
 
@@ -370,7 +370,7 @@ namespace Alis.Core.Input.Controllers
         /// <exception cref="ArgumentOutOfRangeException">The supplied converter must implement IControlConverter&lt;&gt;</exception>
         public static void RegisterDefaultTypeConverter(Type type, TypeConverter converter)
         {
-            s_defaultConverters[type] = converter;
+            SDefaultConverters[type] = converter;
         }
     }
 }

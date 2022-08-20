@@ -53,9 +53,9 @@ namespace Alis.Core.Input
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "U2F Authenticator Device", UsageTypes.CA);
-                case 0x0020: return new Usage(this, id, "Input Report Data", UsageTypes.DV);
-                case 0x0021: return new Usage(this, id, "Output Report Data", UsageTypes.DV);
+                case 0x0001: return new Usage(this, id, "U2F Authenticator Device", UsageTypes.Ca);
+                case 0x0020: return new Usage(this, id, "Input Report Data", UsageTypes.Dv);
+                case 0x0021: return new Usage(this, id, "Output Report Data", UsageTypes.Dv);
             }
 
             return base.CreateUsage(id);

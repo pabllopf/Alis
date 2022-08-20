@@ -51,7 +51,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     POSTFail Usage.
         /// </summary>
-        [Description("POSTFail")] POSTFail = 0x00070002,
+        [Description("POSTFail")] PostFail = 0x00070002,
 
         /// <summary>
         ///     ErrorUndefined Usage.
@@ -61,182 +61,182 @@ namespace Alis.Core.Input
         /// <summary>
         ///     a A Usage.
         /// </summary>
-        [Description("a A")] AA = 0x00070004,
+        [Description("a A")] Aa = 0x00070004,
 
         /// <summary>
         ///     b B Usage.
         /// </summary>
-        [Description("b B")] BB = 0x00070005,
+        [Description("b B")] Bb = 0x00070005,
 
         /// <summary>
         ///     c C Usage.
         /// </summary>
-        [Description("c C")] CC = 0x00070006,
+        [Description("c C")] Cc = 0x00070006,
 
         /// <summary>
         ///     d D Usage.
         /// </summary>
-        [Description("d D")] DD = 0x00070007,
+        [Description("d D")] Dd = 0x00070007,
 
         /// <summary>
         ///     e E Usage.
         /// </summary>
-        [Description("e E")] EE = 0x00070008,
+        [Description("e E")] Ee = 0x00070008,
 
         /// <summary>
         ///     f F Usage.
         /// </summary>
-        [Description("f F")] FF = 0x00070009,
+        [Description("f F")] Ff = 0x00070009,
 
         /// <summary>
         ///     g G Usage.
         /// </summary>
-        [Description("g G")] GG = 0x0007000a,
+        [Description("g G")] Gg = 0x0007000a,
 
         /// <summary>
         ///     h H Usage.
         /// </summary>
-        [Description("h H")] HH = 0x0007000b,
+        [Description("h H")] Hh = 0x0007000b,
 
         /// <summary>
         ///     i I Usage.
         /// </summary>
-        [Description("i I")] II = 0x0007000c,
+        [Description("i I")] Ii = 0x0007000c,
 
         /// <summary>
         ///     j J Usage.
         /// </summary>
-        [Description("j J")] JJ = 0x0007000d,
+        [Description("j J")] Jj = 0x0007000d,
 
         /// <summary>
         ///     k K Usage.
         /// </summary>
-        [Description("k K")] KK = 0x0007000e,
+        [Description("k K")] Kk = 0x0007000e,
 
         /// <summary>
         ///     l L Usage.
         /// </summary>
-        [Description("l L")] LL = 0x0007000f,
+        [Description("l L")] Ll = 0x0007000f,
 
         /// <summary>
         ///     m M Usage.
         /// </summary>
-        [Description("m M")] MM = 0x00070010,
+        [Description("m M")] Mm = 0x00070010,
 
         /// <summary>
         ///     n N Usage.
         /// </summary>
-        [Description("n N")] NN = 0x00070011,
+        [Description("n N")] Nn = 0x00070011,
 
         /// <summary>
         ///     o O Usage.
         /// </summary>
-        [Description("o O")] OO = 0x00070012,
+        [Description("o O")] Oo = 0x00070012,
 
         /// <summary>
         ///     p P Usage.
         /// </summary>
-        [Description("p P")] PP = 0x00070013,
+        [Description("p P")] Pp = 0x00070013,
 
         /// <summary>
         ///     q Q Usage.
         /// </summary>
-        [Description("q Q")] QQ = 0x00070014,
+        [Description("q Q")] Qq = 0x00070014,
 
         /// <summary>
         ///     r R Usage.
         /// </summary>
-        [Description("r R")] RR = 0x00070015,
+        [Description("r R")] Rr = 0x00070015,
 
         /// <summary>
         ///     s S Usage.
         /// </summary>
-        [Description("s S")] SS = 0x00070016,
+        [Description("s S")] Ss = 0x00070016,
 
         /// <summary>
         ///     t T Usage.
         /// </summary>
-        [Description("t T")] TT = 0x00070017,
+        [Description("t T")] Tt = 0x00070017,
 
         /// <summary>
         ///     u U Usage.
         /// </summary>
-        [Description("u U")] UU = 0x00070018,
+        [Description("u U")] Uu = 0x00070018,
 
         /// <summary>
         ///     v V Usage.
         /// </summary>
-        [Description("v V")] VV = 0x00070019,
+        [Description("v V")] Vv = 0x00070019,
 
         /// <summary>
         ///     w W Usage.
         /// </summary>
-        [Description("w W")] WW = 0x0007001a,
+        [Description("w W")] Ww = 0x0007001a,
 
         /// <summary>
         ///     x X Usage.
         /// </summary>
-        [Description("x X")] XX = 0x0007001b,
+        [Description("x X")] Xx = 0x0007001b,
 
         /// <summary>
         ///     y Y Usage.
         /// </summary>
-        [Description("y Y")] YY = 0x0007001c,
+        [Description("y Y")] Yy = 0x0007001c,
 
         /// <summary>
         ///     z Z Usage.
         /// </summary>
-        [Description("z Z")] ZZ = 0x0007001d,
+        [Description("z Z")] Zz = 0x0007001d,
 
         /// <summary>
         ///     1 ! Usage.
         /// </summary>
-        [Description("1 !")] KeyboardKeypad_1 = 0x0007001e,
+        [Description("1 !")] KeyboardKeypad1 = 0x0007001e,
 
         /// <summary>
         ///     2 @ Usage.
         /// </summary>
-        [Description("2 @")] KeyboardKeypad_2 = 0x0007001f,
+        [Description("2 @")] KeyboardKeypad2 = 0x0007001f,
 
         /// <summary>
         ///     3 # Usage.
         /// </summary>
-        [Description("3 #")] KeyboardKeypad_3 = 0x00070020,
+        [Description("3 #")] KeyboardKeypad3 = 0x00070020,
 
         /// <summary>
         ///     4 $ Usage.
         /// </summary>
-        [Description("4 $")] KeyboardKeypad_4 = 0x00070021,
+        [Description("4 $")] KeyboardKeypad4 = 0x00070021,
 
         /// <summary>
         ///     5 % Usage.
         /// </summary>
-        [Description("5 %")] KeyboardKeypad_5 = 0x00070022,
+        [Description("5 %")] KeyboardKeypad5 = 0x00070022,
 
         /// <summary>
         ///     6 ^ Usage.
         /// </summary>
-        [Description("6 ^")] KeyboardKeypad_6 = 0x00070023,
+        [Description("6 ^")] KeyboardKeypad6 = 0x00070023,
 
         /// <summary>
         ///     7 & Usage.
         /// </summary>
-        [Description("7 &")] KeyboardKeypad_7 = 0x00070024,
+        [Description("7 &")] KeyboardKeypad7 = 0x00070024,
 
         /// <summary>
         ///     8 * Usage.
         /// </summary>
-        [Description("8 *")] KeyboardKeypad_8 = 0x00070025,
+        [Description("8 *")] KeyboardKeypad8 = 0x00070025,
 
         /// <summary>
         ///     9 ( Usage.
         /// </summary>
-        [Description("9 (")] KeyboardKeypad_9 = 0x00070026,
+        [Description("9 (")] KeyboardKeypad9 = 0x00070026,
 
         /// <summary>
         ///     0 ) Usage.
         /// </summary>
-        [Description("0 )")] KeyboardKeypad_0 = 0x00070027,
+        [Description("0 )")] KeyboardKeypad0 = 0x00070027,
 
         /// <summary>
         ///     Enter Usage.
@@ -271,57 +271,57 @@ namespace Alis.Core.Input
         /// <summary>
         ///     = + Usage.
         /// </summary>
-        [Description("= +")] KeyboardKeypad_ = 0x0007002e,
+        [Description("= +")] KeyboardKeypad = 0x0007002e,
 
         /// <summary>
         ///     [ { Usage.
         /// </summary>
-        [Description("[ {")] KeyboardKeypad_10 = 0x0007002f,
+        [Description("[ {")] KeyboardKeypad10 = 0x0007002f,
 
         /// <summary>
         ///     ] } Usage.
         /// </summary>
-        [Description("] }")] KeyboardKeypad_11 = 0x00070030,
+        [Description("] }")] KeyboardKeypad11 = 0x00070030,
 
         /// <summary>
         ///     \ | Usage.
         /// </summary>
-        [Description("\\ |")] KeyboardKeypad_12 = 0x00070031,
+        [Description("\\ |")] KeyboardKeypad12 = 0x00070031,
 
         /// <summary>
         ///     # ~ Usage.
         /// </summary>
-        [Description("# ~")] KeyboardKeypad_13 = 0x00070032,
+        [Description("# ~")] KeyboardKeypad13 = 0x00070032,
 
         /// <summary>
         ///     ; : Usage.
         /// </summary>
-        [Description("; :")] KeyboardKeypad_14 = 0x00070033,
+        [Description("; :")] KeyboardKeypad14 = 0x00070033,
 
         /// <summary>
         ///     ' " Usage.
         /// </summary>
-        [Description("' \"")] KeyboardKeypad_15 = 0x00070034,
+        [Description("' \"")] KeyboardKeypad15 = 0x00070034,
 
         /// <summary>
         ///     ` ´ Usage.
         /// </summary>
-        [Description("` ´")] KeyboardKeypad_16 = 0x00070035,
+        [Description("` ´")] KeyboardKeypad16 = 0x00070035,
 
         /// <summary>
         ///     , < Usage.
         /// </summary>
-        [Description(", <")] KeyboardKeypad_17 = 0x00070036,
+        [Description(", <")] KeyboardKeypad17 = 0x00070036,
 
         /// <summary>
         ///     . > Usage.
         /// </summary>
-        [Description(". >")] KeyboardKeypad_18 = 0x00070037,
+        [Description(". >")] KeyboardKeypad18 = 0x00070037,
 
         /// <summary>
         ///     / ? Usage.
         /// </summary>
-        [Description("/ ?")] KeyboardKeypad_19 = 0x00070038,
+        [Description("/ ?")] KeyboardKeypad19 = 0x00070038,
 
         /// <summary>
         ///     CapsLock Usage.
@@ -541,7 +541,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Non-US \| Usage.
         /// </summary>
-        [Description("Non-US \\|")] NonUS = 0x00070064,
+        [Description("Non-US \\|")] NonUs = 0x00070064,
 
         /// <summary>
         ///     Application Usage.
@@ -771,47 +771,47 @@ namespace Alis.Core.Input
         /// <summary>
         ///     LANG1 Usage.
         /// </summary>
-        [Description("LANG1")] LANG1 = 0x00070090,
+        [Description("LANG1")] Lang1 = 0x00070090,
 
         /// <summary>
         ///     LANG2 Usage.
         /// </summary>
-        [Description("LANG2")] LANG2 = 0x00070091,
+        [Description("LANG2")] Lang2 = 0x00070091,
 
         /// <summary>
         ///     LANG3 Usage.
         /// </summary>
-        [Description("LANG3")] LANG3 = 0x00070092,
+        [Description("LANG3")] Lang3 = 0x00070092,
 
         /// <summary>
         ///     LANG4 Usage.
         /// </summary>
-        [Description("LANG4")] LANG4 = 0x00070093,
+        [Description("LANG4")] Lang4 = 0x00070093,
 
         /// <summary>
         ///     LANG5 Usage.
         /// </summary>
-        [Description("LANG5")] LANG5 = 0x00070094,
+        [Description("LANG5")] Lang5 = 0x00070094,
 
         /// <summary>
         ///     LANG6 Usage.
         /// </summary>
-        [Description("LANG6")] LANG6 = 0x00070095,
+        [Description("LANG6")] Lang6 = 0x00070095,
 
         /// <summary>
         ///     LANG7 Usage.
         /// </summary>
-        [Description("LANG7")] LANG7 = 0x00070096,
+        [Description("LANG7")] Lang7 = 0x00070096,
 
         /// <summary>
         ///     LANG8 Usage.
         /// </summary>
-        [Description("LANG8")] LANG8 = 0x00070097,
+        [Description("LANG8")] Lang8 = 0x00070097,
 
         /// <summary>
         ///     LANG9 Usage.
         /// </summary>
-        [Description("LANG9")] LANG9 = 0x00070098,
+        [Description("LANG9")] Lang9 = 0x00070098,
 
         /// <summary>
         ///     Alternate Erase Usage.
@@ -966,7 +966,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Keypad XOR Usage.
         /// </summary>
-        [Description("Keypad XOR")] KeypadXOR = 0x000700c2,
+        [Description("Keypad XOR")] KeypadXor = 0x000700c2,
 
         /// <summary>
         ///     Keypad ^ Usage.
@@ -1121,7 +1121,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     LeftGUI Usage.
         /// </summary>
-        [Description("LeftGUI")] LeftGUI = 0x000700e3,
+        [Description("LeftGUI")] LeftGui = 0x000700e3,
 
         /// <summary>
         ///     RightCtrl Usage.
@@ -1141,6 +1141,6 @@ namespace Alis.Core.Input
         /// <summary>
         ///     RightGUI Usage.
         /// </summary>
-        [Description("RightGUI")] RightGUI = 0x000700e7
+        [Description("RightGUI")] RightGui = 0x000700e7
     }
 }

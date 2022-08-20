@@ -177,12 +177,12 @@ namespace Alis.Core.Input
         ///     Display Manufacturer ID Usage.
         /// </summary>
         [Description("Display Manufacturer ID")]
-        DisplayManufacturerID = 0x00120200,
+        DisplayManufacturerId = 0x00120200,
 
         /// <summary>
         ///     Display Product ID Usage.
         /// </summary>
-        [Description("Display Product ID")] DisplayProductID = 0x00120201,
+        [Description("Display Product ID")] DisplayProductId = 0x00120201,
 
         /// <summary>
         ///     Display Serial Number Usage.

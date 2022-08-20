@@ -76,17 +76,17 @@ namespace Alis.Core.Input
         /// <summary>
         ///     +10 Usage.
         /// </summary>
-        [Description("+10")] Consumer_10 = 0x000c0020,
+        [Description("+10")] Consumer10 = 0x000c0020,
 
         /// <summary>
         ///     +100 Usage.
         /// </summary>
-        [Description("+100")] Consumer_100 = 0x000c0021,
+        [Description("+100")] Consumer100 = 0x000c0021,
 
         /// <summary>
         ///     AM/PM Usage.
         /// </summary>
-        [Description("AM/PM")] AMPM = 0x000c0022,
+        [Description("AM/PM")] Ampm = 0x000c0022,
 
         /// <summary>
         ///     Power Usage.
@@ -186,7 +186,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     VCR/TV Usage.
         /// </summary>
-        [Description("VCR/TV")] VCRTV = 0x000c0063,
+        [Description("VCR/TV")] Vcrtv = 0x000c0063,
 
         /// <summary>
         ///     Broadcast Mode Usage.
@@ -392,17 +392,17 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Media Select TV Usage.
         /// </summary>
-        [Description("Media Select TV")] MediaSelectTV = 0x000c0089,
+        [Description("Media Select TV")] MediaSelectTv = 0x000c0089,
 
         /// <summary>
         ///     Media Select WWW Usage.
         /// </summary>
-        [Description("Media Select WWW")] MediaSelectWWW = 0x000c008a,
+        [Description("Media Select WWW")] MediaSelectWww = 0x000c008a,
 
         /// <summary>
         ///     Media Select DVD Usage.
         /// </summary>
-        [Description("Media Select DVD")] MediaSelectDVD = 0x000c008b,
+        [Description("Media Select DVD")] MediaSelectDvd = 0x000c008b,
 
         /// <summary>
         ///     Media Select Telephone Usage.
@@ -435,12 +435,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Media Select CD Usage.
         /// </summary>
-        [Description("Media Select CD")] MediaSelectCD = 0x000c0091,
+        [Description("Media Select CD")] MediaSelectCd = 0x000c0091,
 
         /// <summary>
         ///     Media Select VCR Usage.
         /// </summary>
-        [Description("Media Select VCR")] MediaSelectVCR = 0x000c0092,
+        [Description("Media Select VCR")] MediaSelectVcr = 0x000c0092,
 
         /// <summary>
         ///     Media Select Tuner Usage.
@@ -501,12 +501,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Media Select SAP Usage.
         /// </summary>
-        [Description("Media Select SAP")] MediaSelectSAP = 0x000c009e,
+        [Description("Media Select SAP")] MediaSelectSap = 0x000c009e,
 
         /// <summary>
         ///     VCR Plus Usage.
         /// </summary>
-        [Description("VCR Plus")] VCRPlus = 0x000c00a0,
+        [Description("VCR Plus")] VcrPlus = 0x000c00a0,
 
         /// <summary>
         ///     Once Usage.
@@ -791,7 +791,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     MPX Usage.
         /// </summary>
-        [Description("MPX")] MPX = 0x000c00e8,
+        [Description("MPX")] Mpx = 0x000c00e8,
 
         /// <summary>
         ///     Volume Increment Usage.
@@ -1028,1146 +1028,1146 @@ namespace Alis.Core.Input
         ///     AL Launch Button Configuration Tool Usage.
         /// </summary>
         [Description("AL Launch Button Configuration Tool")]
-        ALLaunchButtonConfigurationTool = 0x000c0181,
+        AlLaunchButtonConfigurationTool = 0x000c0181,
 
         /// <summary>
         ///     AL Programmable Button Configuration Usage.
         /// </summary>
         [Description("AL Programmable Button Configuration")]
-        ALProgrammableButtonConfiguration = 0x000c0182,
+        AlProgrammableButtonConfiguration = 0x000c0182,
 
         /// <summary>
         ///     AL Consumer Control Configuration Usage.
         /// </summary>
         [Description("AL Consumer Control Configuration")]
-        ALConsumerControlConfiguration = 0x000c0183,
+        AlConsumerControlConfiguration = 0x000c0183,
 
         /// <summary>
         ///     AL Word Processor Usage.
         /// </summary>
-        [Description("AL Word Processor")] ALWordProcessor = 0x000c0184,
+        [Description("AL Word Processor")] AlWordProcessor = 0x000c0184,
 
         /// <summary>
         ///     AL Text Editor Usage.
         /// </summary>
-        [Description("AL Text Editor")] ALTextEditor = 0x000c0185,
+        [Description("AL Text Editor")] AlTextEditor = 0x000c0185,
 
         /// <summary>
         ///     AL Spreadsheet Usage.
         /// </summary>
-        [Description("AL Spreadsheet")] ALSpreadsheet = 0x000c0186,
+        [Description("AL Spreadsheet")] AlSpreadsheet = 0x000c0186,
 
         /// <summary>
         ///     AL Graphics Editor Usage.
         /// </summary>
-        [Description("AL Graphics Editor")] ALGraphicsEditor = 0x000c0187,
+        [Description("AL Graphics Editor")] AlGraphicsEditor = 0x000c0187,
 
         /// <summary>
         ///     AL Presentation App Usage.
         /// </summary>
-        [Description("AL Presentation App")] ALPresentationApp = 0x000c0188,
+        [Description("AL Presentation App")] AlPresentationApp = 0x000c0188,
 
         /// <summary>
         ///     AL Database App Usage.
         /// </summary>
-        [Description("AL Database App")] ALDatabaseApp = 0x000c0189,
+        [Description("AL Database App")] AlDatabaseApp = 0x000c0189,
 
         /// <summary>
         ///     AL Email Reader Usage.
         /// </summary>
-        [Description("AL Email Reader")] ALEmailReader = 0x000c018a,
+        [Description("AL Email Reader")] AlEmailReader = 0x000c018a,
 
         /// <summary>
         ///     AL Newsreader Usage.
         /// </summary>
-        [Description("AL Newsreader")] ALNewsreader = 0x000c018b,
+        [Description("AL Newsreader")] AlNewsreader = 0x000c018b,
 
         /// <summary>
         ///     AL Voicemail Usage.
         /// </summary>
-        [Description("AL Voicemail")] ALVoicemail = 0x000c018c,
+        [Description("AL Voicemail")] AlVoicemail = 0x000c018c,
 
         /// <summary>
         ///     AL Contacts/Address Book Usage.
         /// </summary>
         [Description("AL Contacts/Address Book")]
-        ALContactsAddressBook = 0x000c018d,
+        AlContactsAddressBook = 0x000c018d,
 
         /// <summary>
         ///     AL Calendar/Schedule Usage.
         /// </summary>
-        [Description("AL Calendar/Schedule")] ALCalendarSchedule = 0x000c018e,
+        [Description("AL Calendar/Schedule")] AlCalendarSchedule = 0x000c018e,
 
         /// <summary>
         ///     AL Task/Project Manager Usage.
         /// </summary>
         [Description("AL Task/Project Manager")]
-        ALTaskProjectManager = 0x000c018f,
+        AlTaskProjectManager = 0x000c018f,
 
         /// <summary>
         ///     AL Log/Journal/Timecard Usage.
         /// </summary>
         [Description("AL Log/Journal/Timecard")]
-        ALLogJournalTimecard = 0x000c0190,
+        AlLogJournalTimecard = 0x000c0190,
 
         /// <summary>
         ///     AL Checkbook/Finance Usage.
         /// </summary>
-        [Description("AL Checkbook/Finance")] ALCheckbookFinance = 0x000c0191,
+        [Description("AL Checkbook/Finance")] AlCheckbookFinance = 0x000c0191,
 
         /// <summary>
         ///     AL Calculator Usage.
         /// </summary>
-        [Description("AL Calculator")] ALCalculator = 0x000c0192,
+        [Description("AL Calculator")] AlCalculator = 0x000c0192,
 
         /// <summary>
         ///     AL A/V Capture/Playback Usage.
         /// </summary>
         [Description("AL A/V Capture/Playback")]
-        ALAVCapturePlayback = 0x000c0193,
+        AlavCapturePlayback = 0x000c0193,
 
         /// <summary>
         ///     AL Local Machine Browser Usage.
         /// </summary>
         [Description("AL Local Machine Browser")]
-        ALLocalMachineBrowser = 0x000c0194,
+        AlLocalMachineBrowser = 0x000c0194,
 
         /// <summary>
         ///     AL LAN/WAN Browser Usage.
         /// </summary>
-        [Description("AL LAN/WAN Browser")] ALLANWANBrowser = 0x000c0195,
+        [Description("AL LAN/WAN Browser")] AllanwanBrowser = 0x000c0195,
 
         /// <summary>
         ///     AL Internet Browser Usage.
         /// </summary>
-        [Description("AL Internet Browser")] ALInternetBrowser = 0x000c0196,
+        [Description("AL Internet Browser")] AlInternetBrowser = 0x000c0196,
 
         /// <summary>
         ///     AL Remote Networking/ISP Connect Usage.
         /// </summary>
         [Description("AL Remote Networking/ISP Connect")]
-        ALRemoteNetworkingISPConnect = 0x000c0197,
+        AlRemoteNetworkingIspConnect = 0x000c0197,
 
         /// <summary>
         ///     AL Network Conference Usage.
         /// </summary>
-        [Description("AL Network Conference")] ALNetworkConference = 0x000c0198,
+        [Description("AL Network Conference")] AlNetworkConference = 0x000c0198,
 
         /// <summary>
         ///     AL Network Chat Usage.
         /// </summary>
-        [Description("AL Network Chat")] ALNetworkChat = 0x000c0199,
+        [Description("AL Network Chat")] AlNetworkChat = 0x000c0199,
 
         /// <summary>
         ///     AL Telephony/Dialer Usage.
         /// </summary>
-        [Description("AL Telephony/Dialer")] ALTelephonyDialer = 0x000c019a,
+        [Description("AL Telephony/Dialer")] AlTelephonyDialer = 0x000c019a,
 
         /// <summary>
         ///     AL Logon Usage.
         /// </summary>
-        [Description("AL Logon")] ALLogon = 0x000c019b,
+        [Description("AL Logon")] AlLogon = 0x000c019b,
 
         /// <summary>
         ///     AL Logoff Usage.
         /// </summary>
-        [Description("AL Logoff")] ALLogoff = 0x000c019c,
+        [Description("AL Logoff")] AlLogoff = 0x000c019c,
 
         /// <summary>
         ///     AL Logon/Logoff Usage.
         /// </summary>
-        [Description("AL Logon/Logoff")] ALLogonLogoff = 0x000c019d,
+        [Description("AL Logon/Logoff")] AlLogonLogoff = 0x000c019d,
 
         /// <summary>
         ///     AL Terminal Lock/Screensaver Usage.
         /// </summary>
         [Description("AL Terminal Lock/Screensaver")]
-        ALTerminalLockScreensaver = 0x000c019e,
+        AlTerminalLockScreensaver = 0x000c019e,
 
         /// <summary>
         ///     AL Control Panel Usage.
         /// </summary>
-        [Description("AL Control Panel")] ALControlPanel = 0x000c019f,
+        [Description("AL Control Panel")] AlControlPanel = 0x000c019f,
 
         /// <summary>
         ///     AL Command Line Processor/Run Usage.
         /// </summary>
         [Description("AL Command Line Processor/Run")]
-        ALCommandLineProcessorRun = 0x000c01a0,
+        AlCommandLineProcessorRun = 0x000c01a0,
 
         /// <summary>
         ///     AL Process/Task Manager Usage.
         /// </summary>
         [Description("AL Process/Task Manager")]
-        ALProcessTaskManager = 0x000c01a1,
+        AlProcessTaskManager = 0x000c01a1,
 
         /// <summary>
         ///     AL Select Task/Application Usage.
         /// </summary>
         [Description("AL Select Task/Application")]
-        ALSelectTaskApplication = 0x000c01a2,
+        AlSelectTaskApplication = 0x000c01a2,
 
         /// <summary>
         ///     AL Next Task/Application Usage.
         /// </summary>
         [Description("AL Next Task/Application")]
-        ALNextTaskApplication = 0x000c01a3,
+        AlNextTaskApplication = 0x000c01a3,
 
         /// <summary>
         ///     AL Previous Task/Application Usage.
         /// </summary>
         [Description("AL Previous Task/Application")]
-        ALPreviousTaskApplication = 0x000c01a4,
+        AlPreviousTaskApplication = 0x000c01a4,
 
         /// <summary>
         ///     AL Preemptive Halt Task/Application Usage.
         /// </summary>
         [Description("AL Preemptive Halt Task/Application")]
-        ALPreemptiveHaltTaskApplication = 0x000c01a5,
+        AlPreemptiveHaltTaskApplication = 0x000c01a5,
 
         /// <summary>
         ///     AL Integrated Help Center Usage.
         /// </summary>
         [Description("AL Integrated Help Center")]
-        ALIntegratedHelpCenter = 0x000c01a6,
+        AlIntegratedHelpCenter = 0x000c01a6,
 
         /// <summary>
         ///     AL Documents Usage.
         /// </summary>
-        [Description("AL Documents")] ALDocuments = 0x000c01a7,
+        [Description("AL Documents")] AlDocuments = 0x000c01a7,
 
         /// <summary>
         ///     AL Thesaurus Usage.
         /// </summary>
-        [Description("AL Thesaurus")] ALThesaurus = 0x000c01a8,
+        [Description("AL Thesaurus")] AlThesaurus = 0x000c01a8,
 
         /// <summary>
         ///     AL Dictionary Usage.
         /// </summary>
-        [Description("AL Dictionary")] ALDictionary = 0x000c01a9,
+        [Description("AL Dictionary")] AlDictionary = 0x000c01a9,
 
         /// <summary>
         ///     AL Desktop Usage.
         /// </summary>
-        [Description("AL Desktop")] ALDesktop = 0x000c01aa,
+        [Description("AL Desktop")] AlDesktop = 0x000c01aa,
 
         /// <summary>
         ///     AL Spell Check Usage.
         /// </summary>
-        [Description("AL Spell Check")] ALSpellCheck = 0x000c01ab,
+        [Description("AL Spell Check")] AlSpellCheck = 0x000c01ab,
 
         /// <summary>
         ///     AL Grammar Check Usage.
         /// </summary>
-        [Description("AL Grammar Check")] ALGrammarCheck = 0x000c01ac,
+        [Description("AL Grammar Check")] AlGrammarCheck = 0x000c01ac,
 
         /// <summary>
         ///     AL Wireless Status Usage.
         /// </summary>
-        [Description("AL Wireless Status")] ALWirelessStatus = 0x000c01ad,
+        [Description("AL Wireless Status")] AlWirelessStatus = 0x000c01ad,
 
         /// <summary>
         ///     AL Keyboard Layout Usage.
         /// </summary>
-        [Description("AL Keyboard Layout")] ALKeyboardLayout = 0x000c01ae,
+        [Description("AL Keyboard Layout")] AlKeyboardLayout = 0x000c01ae,
 
         /// <summary>
         ///     AL Virus Protection Usage.
         /// </summary>
-        [Description("AL Virus Protection")] ALVirusProtection = 0x000c01af,
+        [Description("AL Virus Protection")] AlVirusProtection = 0x000c01af,
 
         /// <summary>
         ///     AL Encryption Usage.
         /// </summary>
-        [Description("AL Encryption")] ALEncryption = 0x000c01b0,
+        [Description("AL Encryption")] AlEncryption = 0x000c01b0,
 
         /// <summary>
         ///     AL Screen Saver Usage.
         /// </summary>
-        [Description("AL Screen Saver")] ALScreenSaver = 0x000c01b1,
+        [Description("AL Screen Saver")] AlScreenSaver = 0x000c01b1,
 
         /// <summary>
         ///     AL Alarms Usage.
         /// </summary>
-        [Description("AL Alarms")] ALAlarms = 0x000c01b2,
+        [Description("AL Alarms")] AlAlarms = 0x000c01b2,
 
         /// <summary>
         ///     AL Clock Usage.
         /// </summary>
-        [Description("AL Clock")] ALClock = 0x000c01b3,
+        [Description("AL Clock")] AlClock = 0x000c01b3,
 
         /// <summary>
         ///     AL File Browser Usage.
         /// </summary>
-        [Description("AL File Browser")] ALFileBrowser = 0x000c01b4,
+        [Description("AL File Browser")] AlFileBrowser = 0x000c01b4,
 
         /// <summary>
         ///     AL Power Status Usage.
         /// </summary>
-        [Description("AL Power Status")] ALPowerStatus = 0x000c01b5,
+        [Description("AL Power Status")] AlPowerStatus = 0x000c01b5,
 
         /// <summary>
         ///     AL Image Browser Usage.
         /// </summary>
-        [Description("AL Image Browser")] ALImageBrowser = 0x000c01b6,
+        [Description("AL Image Browser")] AlImageBrowser = 0x000c01b6,
 
         /// <summary>
         ///     AL Audio Browser Usage.
         /// </summary>
-        [Description("AL Audio Browser")] ALAudioBrowser = 0x000c01b7,
+        [Description("AL Audio Browser")] AlAudioBrowser = 0x000c01b7,
 
         /// <summary>
         ///     AL Movie Browser Usage.
         /// </summary>
-        [Description("AL Movie Browser")] ALMovieBrowser = 0x000c01b8,
+        [Description("AL Movie Browser")] AlMovieBrowser = 0x000c01b8,
 
         /// <summary>
         ///     AL Digital Rights Manager Usage.
         /// </summary>
         [Description("AL Digital Rights Manager")]
-        ALDigitalRightsManager = 0x000c01b9,
+        AlDigitalRightsManager = 0x000c01b9,
 
         /// <summary>
         ///     AL Digital Wallet Usage.
         /// </summary>
-        [Description("AL Digital Wallet")] ALDigitalWallet = 0x000c01ba,
+        [Description("AL Digital Wallet")] AlDigitalWallet = 0x000c01ba,
 
         /// <summary>
         ///     AL Instant Messaging Usage.
         /// </summary>
-        [Description("AL Instant Messaging")] ALInstantMessaging = 0x000c01bc,
+        [Description("AL Instant Messaging")] AlInstantMessaging = 0x000c01bc,
 
         /// <summary>
         ///     AL OEM Features/Tips/Tutorial Browser Usage.
         /// </summary>
         [Description("AL OEM Features/Tips/Tutorial Browser")]
-        ALOEMFeaturesTipsTutorialBrowser = 0x000c01bd,
+        AloemFeaturesTipsTutorialBrowser = 0x000c01bd,
 
         /// <summary>
         ///     AL OEM Help Usage.
         /// </summary>
-        [Description("AL OEM Help")] ALOEMHelp = 0x000c01be,
+        [Description("AL OEM Help")] AloemHelp = 0x000c01be,
 
         /// <summary>
         ///     AL Online Community Usage.
         /// </summary>
-        [Description("AL Online Community")] ALOnlineCommunity = 0x000c01bf,
+        [Description("AL Online Community")] AlOnlineCommunity = 0x000c01bf,
 
         /// <summary>
         ///     AL Entertainment Content Browser Usage.
         /// </summary>
         [Description("AL Entertainment Content Browser")]
-        ALEntertainmentContentBrowser = 0x000c01c0,
+        AlEntertainmentContentBrowser = 0x000c01c0,
 
         /// <summary>
         ///     AL Online Shopping Browser Usage.
         /// </summary>
         [Description("AL Online Shopping Browser")]
-        ALOnlineShoppingBrowser = 0x000c01c1,
+        AlOnlineShoppingBrowser = 0x000c01c1,
 
         /// <summary>
         ///     AL SmartCard Information/Help Usage.
         /// </summary>
         [Description("AL SmartCard Information/Help")]
-        ALSmartCardInformationHelp = 0x000c01c2,
+        AlSmartCardInformationHelp = 0x000c01c2,
 
         /// <summary>
         ///     AL Market Monitor/Finance Browser Usage.
         /// </summary>
         [Description("AL Market Monitor/Finance Browser")]
-        ALMarketMonitorFinanceBrowser = 0x000c01c3,
+        AlMarketMonitorFinanceBrowser = 0x000c01c3,
 
         /// <summary>
         ///     AL Customized Corporate News Browser Usage.
         /// </summary>
         [Description("AL Customized Corporate News Browser")]
-        ALCustomizedCorporateNewsBrowser = 0x000c01c4,
+        AlCustomizedCorporateNewsBrowser = 0x000c01c4,
 
         /// <summary>
         ///     AL Online Activity Browser Usage.
         /// </summary>
         [Description("AL Online Activity Browser")]
-        ALOnlineActivityBrowser = 0x000c01c5,
+        AlOnlineActivityBrowser = 0x000c01c5,
 
         /// <summary>
         ///     AL Research/Search Browser Usage.
         /// </summary>
         [Description("AL Research/Search Browser")]
-        ALResearchSearchBrowser = 0x000c01c6,
+        AlResearchSearchBrowser = 0x000c01c6,
 
         /// <summary>
         ///     AL Audio Player Usage.
         /// </summary>
-        [Description("AL Audio Player")] ALAudioPlayer = 0x000c01c7,
+        [Description("AL Audio Player")] AlAudioPlayer = 0x000c01c7,
 
         /// <summary>
         ///     AL Message Status Usage.
         /// </summary>
-        [Description("AL Message Status")] ALMessageStatus = 0x000c01c8,
+        [Description("AL Message Status")] AlMessageStatus = 0x000c01c8,
 
         /// <summary>
         ///     AL Contact Sync Usage.
         /// </summary>
-        [Description("AL Contact Sync")] ALContactSync = 0x000c01c9,
+        [Description("AL Contact Sync")] AlContactSync = 0x000c01c9,
 
         /// <summary>
         ///     AL Navigation Usage.
         /// </summary>
-        [Description("AL Navigation")] ALNavigation = 0x000c01ca,
+        [Description("AL Navigation")] AlNavigation = 0x000c01ca,
 
         /// <summary>
         ///     AL Context-aware desktop assistant Usage.
         /// </summary>
         [Description("AL Context-aware desktop assistant")]
-        ALContextawareDesktopAssistant = 0x000c01cb,
+        AlContextawareDesktopAssistant = 0x000c01cb,
 
         /// <summary>
         ///     Generic GUI Application Controls Usage.
         /// </summary>
         [Description("Generic GUI Application Controls")]
-        GenericGUIApplicationControls = 0x000c0200,
+        GenericGuiApplicationControls = 0x000c0200,
 
         /// <summary>
         ///     AC New Usage.
         /// </summary>
-        [Description("AC New")] ACNew = 0x000c0201,
+        [Description("AC New")] AcNew = 0x000c0201,
 
         /// <summary>
         ///     AC Open Usage.
         /// </summary>
-        [Description("AC Open")] ACOpen = 0x000c0202,
+        [Description("AC Open")] AcOpen = 0x000c0202,
 
         /// <summary>
         ///     AC Close Usage.
         /// </summary>
-        [Description("AC Close")] ACClose = 0x000c0203,
+        [Description("AC Close")] AcClose = 0x000c0203,
 
         /// <summary>
         ///     AC Exit Usage.
         /// </summary>
-        [Description("AC Exit")] ACExit = 0x000c0204,
+        [Description("AC Exit")] AcExit = 0x000c0204,
 
         /// <summary>
         ///     AC Maximize Usage.
         /// </summary>
-        [Description("AC Maximize")] ACMaximize = 0x000c0205,
+        [Description("AC Maximize")] AcMaximize = 0x000c0205,
 
         /// <summary>
         ///     AC Minimize Usage.
         /// </summary>
-        [Description("AC Minimize")] ACMinimize = 0x000c0206,
+        [Description("AC Minimize")] AcMinimize = 0x000c0206,
 
         /// <summary>
         ///     AC Save Usage.
         /// </summary>
-        [Description("AC Save")] ACSave = 0x000c0207,
+        [Description("AC Save")] AcSave = 0x000c0207,
 
         /// <summary>
         ///     AC Print Usage.
         /// </summary>
-        [Description("AC Print")] ACPrint = 0x000c0208,
+        [Description("AC Print")] AcPrint = 0x000c0208,
 
         /// <summary>
         ///     AC Properties Usage.
         /// </summary>
-        [Description("AC Properties")] ACProperties = 0x000c0209,
+        [Description("AC Properties")] AcProperties = 0x000c0209,
 
         /// <summary>
         ///     AC Undo Usage.
         /// </summary>
-        [Description("AC Undo")] ACUndo = 0x000c021a,
+        [Description("AC Undo")] AcUndo = 0x000c021a,
 
         /// <summary>
         ///     AC Copy Usage.
         /// </summary>
-        [Description("AC Copy")] ACCopy = 0x000c021b,
+        [Description("AC Copy")] AcCopy = 0x000c021b,
 
         /// <summary>
         ///     AC Cut Usage.
         /// </summary>
-        [Description("AC Cut")] ACCut = 0x000c021c,
+        [Description("AC Cut")] AcCut = 0x000c021c,
 
         /// <summary>
         ///     AC Paste Usage.
         /// </summary>
-        [Description("AC Paste")] ACPaste = 0x000c021d,
+        [Description("AC Paste")] AcPaste = 0x000c021d,
 
         /// <summary>
         ///     AC Select All Usage.
         /// </summary>
-        [Description("AC Select All")] ACSelectAll = 0x000c021e,
+        [Description("AC Select All")] AcSelectAll = 0x000c021e,
 
         /// <summary>
         ///     AC Find Usage.
         /// </summary>
-        [Description("AC Find")] ACFind = 0x000c021f,
+        [Description("AC Find")] AcFind = 0x000c021f,
 
         /// <summary>
         ///     AC Find and Replace Usage.
         /// </summary>
-        [Description("AC Find and Replace")] ACFindAndReplace = 0x000c0220,
+        [Description("AC Find and Replace")] AcFindAndReplace = 0x000c0220,
 
         /// <summary>
         ///     AC Search Usage.
         /// </summary>
-        [Description("AC Search")] ACSearch = 0x000c0221,
+        [Description("AC Search")] AcSearch = 0x000c0221,
 
         /// <summary>
         ///     AC Go To Usage.
         /// </summary>
-        [Description("AC Go To")] ACGoTo = 0x000c0222,
+        [Description("AC Go To")] AcGoTo = 0x000c0222,
 
         /// <summary>
         ///     AC Home Usage.
         /// </summary>
-        [Description("AC Home")] ACHome = 0x000c0223,
+        [Description("AC Home")] AcHome = 0x000c0223,
 
         /// <summary>
         ///     AC Back Usage.
         /// </summary>
-        [Description("AC Back")] ACBack = 0x000c0224,
+        [Description("AC Back")] AcBack = 0x000c0224,
 
         /// <summary>
         ///     AC Forward Usage.
         /// </summary>
-        [Description("AC Forward")] ACForward = 0x000c0225,
+        [Description("AC Forward")] AcForward = 0x000c0225,
 
         /// <summary>
         ///     AC Stop Usage.
         /// </summary>
-        [Description("AC Stop")] ACStop = 0x000c0226,
+        [Description("AC Stop")] AcStop = 0x000c0226,
 
         /// <summary>
         ///     AC Refresh Usage.
         /// </summary>
-        [Description("AC Refresh")] ACRefresh = 0x000c0227,
+        [Description("AC Refresh")] AcRefresh = 0x000c0227,
 
         /// <summary>
         ///     AC Previous Link Usage.
         /// </summary>
-        [Description("AC Previous Link")] ACPreviousLink = 0x000c0228,
+        [Description("AC Previous Link")] AcPreviousLink = 0x000c0228,
 
         /// <summary>
         ///     AC Next Link Usage.
         /// </summary>
-        [Description("AC Next Link")] ACNextLink = 0x000c0229,
+        [Description("AC Next Link")] AcNextLink = 0x000c0229,
 
         /// <summary>
         ///     AC Bookmarks Usage.
         /// </summary>
-        [Description("AC Bookmarks")] ACBookmarks = 0x000c022a,
+        [Description("AC Bookmarks")] AcBookmarks = 0x000c022a,
 
         /// <summary>
         ///     AC History Usage.
         /// </summary>
-        [Description("AC History")] ACHistory = 0x000c022b,
+        [Description("AC History")] AcHistory = 0x000c022b,
 
         /// <summary>
         ///     AC Subscriptions Usage.
         /// </summary>
-        [Description("AC Subscriptions")] ACSubscriptions = 0x000c022c,
+        [Description("AC Subscriptions")] AcSubscriptions = 0x000c022c,
 
         /// <summary>
         ///     AC Zoom In Usage.
         /// </summary>
-        [Description("AC Zoom In")] ACZoomIn = 0x000c022d,
+        [Description("AC Zoom In")] AcZoomIn = 0x000c022d,
 
         /// <summary>
         ///     AC Zoom Out Usage.
         /// </summary>
-        [Description("AC Zoom Out")] ACZoomOut = 0x000c022e,
+        [Description("AC Zoom Out")] AcZoomOut = 0x000c022e,
 
         /// <summary>
         ///     AC Zoom Usage.
         /// </summary>
-        [Description("AC Zoom")] ACZoom = 0x000c022f,
+        [Description("AC Zoom")] AcZoom = 0x000c022f,
 
         /// <summary>
         ///     AC Full Screen View Usage.
         /// </summary>
-        [Description("AC Full Screen View")] ACFullScreenView = 0x000c0230,
+        [Description("AC Full Screen View")] AcFullScreenView = 0x000c0230,
 
         /// <summary>
         ///     AC Normal View Usage.
         /// </summary>
-        [Description("AC Normal View")] ACNormalView = 0x000c0231,
+        [Description("AC Normal View")] AcNormalView = 0x000c0231,
 
         /// <summary>
         ///     AC View Toggle Usage.
         /// </summary>
-        [Description("AC View Toggle")] ACViewToggle = 0x000c0232,
+        [Description("AC View Toggle")] AcViewToggle = 0x000c0232,
 
         /// <summary>
         ///     AC Scroll Up Usage.
         /// </summary>
-        [Description("AC Scroll Up")] ACScrollUp = 0x000c0233,
+        [Description("AC Scroll Up")] AcScrollUp = 0x000c0233,
 
         /// <summary>
         ///     AC Scroll Down Usage.
         /// </summary>
-        [Description("AC Scroll Down")] ACScrollDown = 0x000c0234,
+        [Description("AC Scroll Down")] AcScrollDown = 0x000c0234,
 
         /// <summary>
         ///     AC Scroll Usage.
         /// </summary>
-        [Description("AC Scroll")] ACScroll = 0x000c0235,
+        [Description("AC Scroll")] AcScroll = 0x000c0235,
 
         /// <summary>
         ///     AC Pan Left Usage.
         /// </summary>
-        [Description("AC Pan Left")] ACPanLeft = 0x000c0236,
+        [Description("AC Pan Left")] AcPanLeft = 0x000c0236,
 
         /// <summary>
         ///     AC Pan Right Usage.
         /// </summary>
-        [Description("AC Pan Right")] ACPanRight = 0x000c0237,
+        [Description("AC Pan Right")] AcPanRight = 0x000c0237,
 
         /// <summary>
         ///     AC Pan Usage.
         /// </summary>
-        [Description("AC Pan")] ACPan = 0x000c0238,
+        [Description("AC Pan")] AcPan = 0x000c0238,
 
         /// <summary>
         ///     AC New Window Usage.
         /// </summary>
-        [Description("AC New Window")] ACNewWindow = 0x000c0239,
+        [Description("AC New Window")] AcNewWindow = 0x000c0239,
 
         /// <summary>
         ///     AC Tile Horizontally Usage.
         /// </summary>
-        [Description("AC Tile Horizontally")] ACTileHorizontally = 0x000c023a,
+        [Description("AC Tile Horizontally")] AcTileHorizontally = 0x000c023a,
 
         /// <summary>
         ///     AC Tile Vertically Usage.
         /// </summary>
-        [Description("AC Tile Vertically")] ACTileVertically = 0x000c023b,
+        [Description("AC Tile Vertically")] AcTileVertically = 0x000c023b,
 
         /// <summary>
         ///     AC Format Usage.
         /// </summary>
-        [Description("AC Format")] ACFormat = 0x000c023c,
+        [Description("AC Format")] AcFormat = 0x000c023c,
 
         /// <summary>
         ///     AC Edit Usage.
         /// </summary>
-        [Description("AC Edit")] ACEdit = 0x000c023d,
+        [Description("AC Edit")] AcEdit = 0x000c023d,
 
         /// <summary>
         ///     AC Bold Usage.
         /// </summary>
-        [Description("AC Bold")] ACBold = 0x000c023e,
+        [Description("AC Bold")] AcBold = 0x000c023e,
 
         /// <summary>
         ///     AC Italics Usage.
         /// </summary>
-        [Description("AC Italics")] ACItalics = 0x000c023f,
+        [Description("AC Italics")] AcItalics = 0x000c023f,
 
         /// <summary>
         ///     AC Underline Usage.
         /// </summary>
-        [Description("AC Underline")] ACUnderline = 0x000c0240,
+        [Description("AC Underline")] AcUnderline = 0x000c0240,
 
         /// <summary>
         ///     AC Strikethrough Usage.
         /// </summary>
-        [Description("AC Strikethrough")] ACStrikethrough = 0x000c0241,
+        [Description("AC Strikethrough")] AcStrikethrough = 0x000c0241,
 
         /// <summary>
         ///     AC Subscript Usage.
         /// </summary>
-        [Description("AC Subscript")] ACSubscript = 0x000c0242,
+        [Description("AC Subscript")] AcSubscript = 0x000c0242,
 
         /// <summary>
         ///     AC Superscript Usage.
         /// </summary>
-        [Description("AC Superscript")] ACSuperscript = 0x000c0243,
+        [Description("AC Superscript")] AcSuperscript = 0x000c0243,
 
         /// <summary>
         ///     AC All Caps Usage.
         /// </summary>
-        [Description("AC All Caps")] ACAllCaps = 0x000c0244,
+        [Description("AC All Caps")] AcAllCaps = 0x000c0244,
 
         /// <summary>
         ///     AC Rotate Usage.
         /// </summary>
-        [Description("AC Rotate")] ACRotate = 0x000c0245,
+        [Description("AC Rotate")] AcRotate = 0x000c0245,
 
         /// <summary>
         ///     AC Resize Usage.
         /// </summary>
-        [Description("AC Resize")] ACResize = 0x000c0246,
+        [Description("AC Resize")] AcResize = 0x000c0246,
 
         /// <summary>
         ///     AC Flip Horizontal Usage.
         /// </summary>
-        [Description("AC Flip Horizontal")] ACFlipHorizontal = 0x000c0247,
+        [Description("AC Flip Horizontal")] AcFlipHorizontal = 0x000c0247,
 
         /// <summary>
         ///     AC Vertical Usage.
         /// </summary>
-        [Description("AC Vertical")] ACVertical = 0x000c0248,
+        [Description("AC Vertical")] AcVertical = 0x000c0248,
 
         /// <summary>
         ///     AC Mirror Horizontal Usage.
         /// </summary>
-        [Description("AC Mirror Horizontal")] ACMirrorHorizontal = 0x000c0249,
+        [Description("AC Mirror Horizontal")] AcMirrorHorizontal = 0x000c0249,
 
         /// <summary>
         ///     AC Mirror Vertical Usage.
         /// </summary>
-        [Description("AC Mirror Vertical")] ACMirrorVertical = 0x000c024a,
+        [Description("AC Mirror Vertical")] AcMirrorVertical = 0x000c024a,
 
         /// <summary>
         ///     AC Font Select Usage.
         /// </summary>
-        [Description("AC Font Select")] ACFontSelect = 0x000c024b,
+        [Description("AC Font Select")] AcFontSelect = 0x000c024b,
 
         /// <summary>
         ///     AC Font Color Usage.
         /// </summary>
-        [Description("AC Font Color")] ACFontColor = 0x000c024c,
+        [Description("AC Font Color")] AcFontColor = 0x000c024c,
 
         /// <summary>
         ///     AC Font Size Usage.
         /// </summary>
-        [Description("AC Font Size")] ACFontSize = 0x000c024d,
+        [Description("AC Font Size")] AcFontSize = 0x000c024d,
 
         /// <summary>
         ///     AC Justify Left Usage.
         /// </summary>
-        [Description("AC Justify Left")] ACJustifyLeft = 0x000c024e,
+        [Description("AC Justify Left")] AcJustifyLeft = 0x000c024e,
 
         /// <summary>
         ///     AC Justify Center H Usage.
         /// </summary>
-        [Description("AC Justify Center H")] ACJustifyCenterH = 0x000c024f,
+        [Description("AC Justify Center H")] AcJustifyCenterH = 0x000c024f,
 
         /// <summary>
         ///     AC Justify Right Usage.
         /// </summary>
-        [Description("AC Justify Right")] ACJustifyRight = 0x000c0250,
+        [Description("AC Justify Right")] AcJustifyRight = 0x000c0250,
 
         /// <summary>
         ///     AC Justify Block H Usage.
         /// </summary>
-        [Description("AC Justify Block H")] ACJustifyBlockH = 0x000c0251,
+        [Description("AC Justify Block H")] AcJustifyBlockH = 0x000c0251,
 
         /// <summary>
         ///     AC Justify Top Usage.
         /// </summary>
-        [Description("AC Justify Top")] ACJustifyTop = 0x000c0252,
+        [Description("AC Justify Top")] AcJustifyTop = 0x000c0252,
 
         /// <summary>
         ///     AC Justify Center V Usage.
         /// </summary>
-        [Description("AC Justify Center V")] ACJustifyCenterV = 0x000c0253,
+        [Description("AC Justify Center V")] AcJustifyCenterV = 0x000c0253,
 
         /// <summary>
         ///     AC Justify Bottom Usage.
         /// </summary>
-        [Description("AC Justify Bottom")] ACJustifyBottom = 0x000c0254,
+        [Description("AC Justify Bottom")] AcJustifyBottom = 0x000c0254,
 
         /// <summary>
         ///     AC Justify Block V Usage.
         /// </summary>
-        [Description("AC Justify Block V")] ACJustifyBlockV = 0x000c0255,
+        [Description("AC Justify Block V")] AcJustifyBlockV = 0x000c0255,
 
         /// <summary>
         ///     AC Indent Decrease Usage.
         /// </summary>
-        [Description("AC Indent Decrease")] ACIndentDecrease = 0x000c0256,
+        [Description("AC Indent Decrease")] AcIndentDecrease = 0x000c0256,
 
         /// <summary>
         ///     AC Indent Increase Usage.
         /// </summary>
-        [Description("AC Indent Increase")] ACIndentIncrease = 0x000c0257,
+        [Description("AC Indent Increase")] AcIndentIncrease = 0x000c0257,
 
         /// <summary>
         ///     AC Numbered List Usage.
         /// </summary>
-        [Description("AC Numbered List")] ACNumberedList = 0x000c0258,
+        [Description("AC Numbered List")] AcNumberedList = 0x000c0258,
 
         /// <summary>
         ///     AC Restart Numbering Usage.
         /// </summary>
-        [Description("AC Restart Numbering")] ACRestartNumbering = 0x000c0259,
+        [Description("AC Restart Numbering")] AcRestartNumbering = 0x000c0259,
 
         /// <summary>
         ///     AC Bulleted List Usage.
         /// </summary>
-        [Description("AC Bulleted List")] ACBulletedList = 0x000c025a,
+        [Description("AC Bulleted List")] AcBulletedList = 0x000c025a,
 
         /// <summary>
         ///     AC Promote Usage.
         /// </summary>
-        [Description("AC Promote")] ACPromote = 0x000c025b,
+        [Description("AC Promote")] AcPromote = 0x000c025b,
 
         /// <summary>
         ///     AC Demote Usage.
         /// </summary>
-        [Description("AC Demote")] ACDemote = 0x000c025c,
+        [Description("AC Demote")] AcDemote = 0x000c025c,
 
         /// <summary>
         ///     AC Yes Usage.
         /// </summary>
-        [Description("AC Yes")] ACYes = 0x000c025d,
+        [Description("AC Yes")] AcYes = 0x000c025d,
 
         /// <summary>
         ///     AC No Usage.
         /// </summary>
-        [Description("AC No")] ACNo = 0x000c025e,
+        [Description("AC No")] AcNo = 0x000c025e,
 
         /// <summary>
         ///     AC Cancel Usage.
         /// </summary>
-        [Description("AC Cancel")] ACCancel = 0x000c025f,
+        [Description("AC Cancel")] AcCancel = 0x000c025f,
 
         /// <summary>
         ///     AC Catalog Usage.
         /// </summary>
-        [Description("AC Catalog")] ACCatalog = 0x000c0260,
+        [Description("AC Catalog")] AcCatalog = 0x000c0260,
 
         /// <summary>
         ///     AC Buy/Checkout Usage.
         /// </summary>
-        [Description("AC Buy/Checkout")] ACBuyCheckout = 0x000c0261,
+        [Description("AC Buy/Checkout")] AcBuyCheckout = 0x000c0261,
 
         /// <summary>
         ///     AC Add to Cart Usage.
         /// </summary>
-        [Description("AC Add to Cart")] ACAddToCart = 0x000c0262,
+        [Description("AC Add to Cart")] AcAddToCart = 0x000c0262,
 
         /// <summary>
         ///     AC Expand Usage.
         /// </summary>
-        [Description("AC Expand")] ACExpand = 0x000c0263,
+        [Description("AC Expand")] AcExpand = 0x000c0263,
 
         /// <summary>
         ///     AC Expand All Usage.
         /// </summary>
-        [Description("AC Expand All")] ACExpandAll = 0x000c0264,
+        [Description("AC Expand All")] AcExpandAll = 0x000c0264,
 
         /// <summary>
         ///     AC Collapse Usage.
         /// </summary>
-        [Description("AC Collapse")] ACCollapse = 0x000c0265,
+        [Description("AC Collapse")] AcCollapse = 0x000c0265,
 
         /// <summary>
         ///     AC Collapse All Usage.
         /// </summary>
-        [Description("AC Collapse All")] ACCollapseAll = 0x000c0266,
+        [Description("AC Collapse All")] AcCollapseAll = 0x000c0266,
 
         /// <summary>
         ///     AC Print Preview Usage.
         /// </summary>
-        [Description("AC Print Preview")] ACPrintPreview = 0x000c0267,
+        [Description("AC Print Preview")] AcPrintPreview = 0x000c0267,
 
         /// <summary>
         ///     AC Paste Special Usage.
         /// </summary>
-        [Description("AC Paste Special")] ACPasteSpecial = 0x000c0268,
+        [Description("AC Paste Special")] AcPasteSpecial = 0x000c0268,
 
         /// <summary>
         ///     AC Insert Mode Usage.
         /// </summary>
-        [Description("AC Insert Mode")] ACInsertMode = 0x000c0269,
+        [Description("AC Insert Mode")] AcInsertMode = 0x000c0269,
 
         /// <summary>
         ///     AC Delete Usage.
         /// </summary>
-        [Description("AC Delete")] ACDelete = 0x000c026a,
+        [Description("AC Delete")] AcDelete = 0x000c026a,
 
         /// <summary>
         ///     AC Lock Usage.
         /// </summary>
-        [Description("AC Lock")] ACLock = 0x000c026b,
+        [Description("AC Lock")] AcLock = 0x000c026b,
 
         /// <summary>
         ///     AC Unlock Usage.
         /// </summary>
-        [Description("AC Unlock")] ACUnlock = 0x000c026c,
+        [Description("AC Unlock")] AcUnlock = 0x000c026c,
 
         /// <summary>
         ///     AC Protect Usage.
         /// </summary>
-        [Description("AC Protect")] ACProtect = 0x000c026d,
+        [Description("AC Protect")] AcProtect = 0x000c026d,
 
         /// <summary>
         ///     AC Unprotect Usage.
         /// </summary>
-        [Description("AC Unprotect")] ACUnprotect = 0x000c026e,
+        [Description("AC Unprotect")] AcUnprotect = 0x000c026e,
 
         /// <summary>
         ///     AC Attach Comment Usage.
         /// </summary>
-        [Description("AC Attach Comment")] ACAttachComment = 0x000c026f,
+        [Description("AC Attach Comment")] AcAttachComment = 0x000c026f,
 
         /// <summary>
         ///     AC Delete Comment Usage.
         /// </summary>
-        [Description("AC Delete Comment")] ACDeleteComment = 0x000c0270,
+        [Description("AC Delete Comment")] AcDeleteComment = 0x000c0270,
 
         /// <summary>
         ///     AC View Comment Usage.
         /// </summary>
-        [Description("AC View Comment")] ACViewComment = 0x000c0271,
+        [Description("AC View Comment")] AcViewComment = 0x000c0271,
 
         /// <summary>
         ///     AC Select Word Usage.
         /// </summary>
-        [Description("AC Select Word")] ACSelectWord = 0x000c0272,
+        [Description("AC Select Word")] AcSelectWord = 0x000c0272,
 
         /// <summary>
         ///     AC Select Sentence Usage.
         /// </summary>
-        [Description("AC Select Sentence")] ACSelectSentence = 0x000c0273,
+        [Description("AC Select Sentence")] AcSelectSentence = 0x000c0273,
 
         /// <summary>
         ///     AC Select Paragraph Usage.
         /// </summary>
-        [Description("AC Select Paragraph")] ACSelectParagraph = 0x000c0274,
+        [Description("AC Select Paragraph")] AcSelectParagraph = 0x000c0274,
 
         /// <summary>
         ///     AC Select Column Usage.
         /// </summary>
-        [Description("AC Select Column")] ACSelectColumn = 0x000c0275,
+        [Description("AC Select Column")] AcSelectColumn = 0x000c0275,
 
         /// <summary>
         ///     AC Select Row Usage.
         /// </summary>
-        [Description("AC Select Row")] ACSelectRow = 0x000c0276,
+        [Description("AC Select Row")] AcSelectRow = 0x000c0276,
 
         /// <summary>
         ///     AC Select Table Usage.
         /// </summary>
-        [Description("AC Select Table")] ACSelectTable = 0x000c0277,
+        [Description("AC Select Table")] AcSelectTable = 0x000c0277,
 
         /// <summary>
         ///     AC Select Object Usage.
         /// </summary>
-        [Description("AC Select Object")] ACSelectObject = 0x000c0278,
+        [Description("AC Select Object")] AcSelectObject = 0x000c0278,
 
         /// <summary>
         ///     AC Redo/Repeat Usage.
         /// </summary>
-        [Description("AC Redo/Repeat")] ACRedoRepeat = 0x000c0279,
+        [Description("AC Redo/Repeat")] AcRedoRepeat = 0x000c0279,
 
         /// <summary>
         ///     AC Sort Usage.
         /// </summary>
-        [Description("AC Sort")] ACSort = 0x000c027a,
+        [Description("AC Sort")] AcSort = 0x000c027a,
 
         /// <summary>
         ///     AC Sort Ascending Usage.
         /// </summary>
-        [Description("AC Sort Ascending")] ACSortAscending = 0x000c027b,
+        [Description("AC Sort Ascending")] AcSortAscending = 0x000c027b,
 
         /// <summary>
         ///     AC Sort Descending Usage.
         /// </summary>
-        [Description("AC Sort Descending")] ACSortDescending = 0x000c027c,
+        [Description("AC Sort Descending")] AcSortDescending = 0x000c027c,
 
         /// <summary>
         ///     AC Filter Usage.
         /// </summary>
-        [Description("AC Filter")] ACFilter = 0x000c027d,
+        [Description("AC Filter")] AcFilter = 0x000c027d,
 
         /// <summary>
         ///     AC Set Clock Usage.
         /// </summary>
-        [Description("AC Set Clock")] ACSetClock = 0x000c027e,
+        [Description("AC Set Clock")] AcSetClock = 0x000c027e,
 
         /// <summary>
         ///     AC View Clock Usage.
         /// </summary>
-        [Description("AC View Clock")] ACViewClock = 0x000c027f,
+        [Description("AC View Clock")] AcViewClock = 0x000c027f,
 
         /// <summary>
         ///     AC Select Time Zone Usage.
         /// </summary>
-        [Description("AC Select Time Zone")] ACSelectTimeZone = 0x000c0280,
+        [Description("AC Select Time Zone")] AcSelectTimeZone = 0x000c0280,
 
         /// <summary>
         ///     AC Edit Time Zones Usage.
         /// </summary>
-        [Description("AC Edit Time Zones")] ACEditTimeZones = 0x000c0281,
+        [Description("AC Edit Time Zones")] AcEditTimeZones = 0x000c0281,
 
         /// <summary>
         ///     AC Set Alarm Usage.
         /// </summary>
-        [Description("AC Set Alarm")] ACSetAlarm = 0x000c0282,
+        [Description("AC Set Alarm")] AcSetAlarm = 0x000c0282,
 
         /// <summary>
         ///     AC Clear Alarm Usage.
         /// </summary>
-        [Description("AC Clear Alarm")] ACClearAlarm = 0x000c0283,
+        [Description("AC Clear Alarm")] AcClearAlarm = 0x000c0283,
 
         /// <summary>
         ///     AC Snooze Alarm Usage.
         /// </summary>
-        [Description("AC Snooze Alarm")] ACSnoozeAlarm = 0x000c0284,
+        [Description("AC Snooze Alarm")] AcSnoozeAlarm = 0x000c0284,
 
         /// <summary>
         ///     AC Reset Alarm Usage.
         /// </summary>
-        [Description("AC Reset Alarm")] ACResetAlarm = 0x000c0285,
+        [Description("AC Reset Alarm")] AcResetAlarm = 0x000c0285,
 
         /// <summary>
         ///     AC Synchronize Usage.
         /// </summary>
-        [Description("AC Synchronize")] ACSynchronize = 0x000c0286,
+        [Description("AC Synchronize")] AcSynchronize = 0x000c0286,
 
         /// <summary>
         ///     AC Send/Receive Usage.
         /// </summary>
-        [Description("AC Send/Receive")] ACSendReceive = 0x000c0287,
+        [Description("AC Send/Receive")] AcSendReceive = 0x000c0287,
 
         /// <summary>
         ///     AC Send To Usage.
         /// </summary>
-        [Description("AC Send To")] ACSendTo = 0x000c0288,
+        [Description("AC Send To")] AcSendTo = 0x000c0288,
 
         /// <summary>
         ///     AC Reply Usage.
         /// </summary>
-        [Description("AC Reply")] ACReply = 0x000c0289,
+        [Description("AC Reply")] AcReply = 0x000c0289,
 
         /// <summary>
         ///     AC Reply All Usage.
         /// </summary>
-        [Description("AC Reply All")] ACReplyAll = 0x000c028a,
+        [Description("AC Reply All")] AcReplyAll = 0x000c028a,
 
         /// <summary>
         ///     AC Forward Msg Usage.
         /// </summary>
-        [Description("AC Forward Msg")] ACForwardMsg = 0x000c028b,
+        [Description("AC Forward Msg")] AcForwardMsg = 0x000c028b,
 
         /// <summary>
         ///     AC Send Usage.
         /// </summary>
-        [Description("AC Send")] ACSend = 0x000c028c,
+        [Description("AC Send")] AcSend = 0x000c028c,
 
         /// <summary>
         ///     AC Attach File Usage.
         /// </summary>
-        [Description("AC Attach File")] ACAttachFile = 0x000c028d,
+        [Description("AC Attach File")] AcAttachFile = 0x000c028d,
 
         /// <summary>
         ///     AC Upload Usage.
         /// </summary>
-        [Description("AC Upload")] ACUpload = 0x000c028e,
+        [Description("AC Upload")] AcUpload = 0x000c028e,
 
         /// <summary>
         ///     AC Download (Save Target As) Usage.
         /// </summary>
         [Description("AC Download (Save Target As)")]
-        ACDownloadSaveTargetAs = 0x000c028f,
+        AcDownloadSaveTargetAs = 0x000c028f,
 
         /// <summary>
         ///     AC Set Borders Usage.
         /// </summary>
-        [Description("AC Set Borders")] ACSetBorders = 0x000c0290,
+        [Description("AC Set Borders")] AcSetBorders = 0x000c0290,
 
         /// <summary>
         ///     AC Insert Row Usage.
         /// </summary>
-        [Description("AC Insert Row")] ACInsertRow = 0x000c0291,
+        [Description("AC Insert Row")] AcInsertRow = 0x000c0291,
 
         /// <summary>
         ///     AC Insert Column Usage.
         /// </summary>
-        [Description("AC Insert Column")] ACInsertColumn = 0x000c0292,
+        [Description("AC Insert Column")] AcInsertColumn = 0x000c0292,
 
         /// <summary>
         ///     AC Insert File Usage.
         /// </summary>
-        [Description("AC Insert File")] ACInsertFile = 0x000c0293,
+        [Description("AC Insert File")] AcInsertFile = 0x000c0293,
 
         /// <summary>
         ///     AC Insert Picture Usage.
         /// </summary>
-        [Description("AC Insert Picture")] ACInsertPicture = 0x000c0294,
+        [Description("AC Insert Picture")] AcInsertPicture = 0x000c0294,
 
         /// <summary>
         ///     AC Insert Object Usage.
         /// </summary>
-        [Description("AC Insert Object")] ACInsertObject = 0x000c0295,
+        [Description("AC Insert Object")] AcInsertObject = 0x000c0295,
 
         /// <summary>
         ///     AC Insert Symbol Usage.
         /// </summary>
-        [Description("AC Insert Symbol")] ACInsertSymbol = 0x000c0296,
+        [Description("AC Insert Symbol")] AcInsertSymbol = 0x000c0296,
 
         /// <summary>
         ///     AC Save and Close Usage.
         /// </summary>
-        [Description("AC Save and Close")] ACSaveAndClose = 0x000c0297,
+        [Description("AC Save and Close")] AcSaveAndClose = 0x000c0297,
 
         /// <summary>
         ///     AC Rename Usage.
         /// </summary>
-        [Description("AC Rename")] ACRename = 0x000c0298,
+        [Description("AC Rename")] AcRename = 0x000c0298,
 
         /// <summary>
         ///     AC Merge Usage.
         /// </summary>
-        [Description("AC Merge")] ACMerge = 0x000c0299,
+        [Description("AC Merge")] AcMerge = 0x000c0299,
 
         /// <summary>
         ///     AC Split Usage.
         /// </summary>
-        [Description("AC Split")] ACSplit = 0x000c029a,
+        [Description("AC Split")] AcSplit = 0x000c029a,
 
         /// <summary>
         ///     AC Distribute Horizontally Usage.
         /// </summary>
         [Description("AC Distribute Horizontally")]
-        ACDistributeHorizontally = 0x000c029b,
+        AcDistributeHorizontally = 0x000c029b,
 
         /// <summary>
         ///     AC Distribute Vertically Usage.
         /// </summary>
         [Description("AC Distribute Vertically")]
-        ACDistributeVertically = 0x000c029c,
+        AcDistributeVertically = 0x000c029c,
 
         /// <summary>
         ///     AC Next Keyboard Layout Select Usage.
         /// </summary>
         [Description("AC Next Keyboard Layout Select")]
-        ACNextKeyboardLayoutSelect = 0x000c029d,
+        AcNextKeyboardLayoutSelect = 0x000c029d,
 
         /// <summary>
         ///     AC Navigation Guidance Usage.
         /// </summary>
         [Description("AC Navigation Guidance")]
-        ACNavigationGuidance = 0x000c029e,
+        AcNavigationGuidance = 0x000c029e,
 
         /// <summary>
         ///     AC Desktop Show All Windows Usage.
         /// </summary>
         [Description("AC Desktop Show All Windows")]
-        ACDesktopShowAllWindows = 0x000c029f,
+        AcDesktopShowAllWindows = 0x000c029f,
 
         /// <summary>
         ///     AC Soft Key Left Usage.
         /// </summary>
-        [Description("AC Soft Key Left")] ACSoftKeyLeft = 0x000c02a0,
+        [Description("AC Soft Key Left")] AcSoftKeyLeft = 0x000c02a0,
 
         /// <summary>
         ///     AC Soft Key Right Usage.
         /// </summary>
-        [Description("AC Soft Key Right")] ACSoftKeyRight = 0x000c02a1,
+        [Description("AC Soft Key Right")] AcSoftKeyRight = 0x000c02a1,
 
         /// <summary>
         ///     AC Desktop Show All Applications Usage.
         /// </summary>
         [Description("AC Desktop Show All Applications")]
-        ACDesktopShowAllApplications = 0x000c02a2,
+        AcDesktopShowAllApplications = 0x000c02a2,
 
         /// <summary>
         ///     AC Idle Keep Alive Usage.
         /// </summary>
-        [Description("AC Idle Keep Alive")] ACIdleKeepAlive = 0x000c02b0,
+        [Description("AC Idle Keep Alive")] AcIdleKeepAlive = 0x000c02b0,
 
         /// <summary>
         ///     Extended Keyboard Attributes Collection Usage.
@@ -2201,7 +2201,7 @@ namespace Alis.Core.Input
         ///     Keyboard IETF Language Tag Index Usage.
         /// </summary>
         [Description("Keyboard IETF Language Tag Index")]
-        KeyboardIETFLanguageTagIndex = 0x000c02c5,
+        KeyboardIetfLanguageTagIndex = 0x000c02c5,
 
         /// <summary>
         ///     Implemented Keyboard Input Assist Controls Usage.

@@ -52,7 +52,7 @@ namespace Alis.Template.Game.Android
         /// <summary>
         ///     The blue
         /// </summary>
-        private static float red, green, blue;
+        private static float _red, _green, _blue;
 
         /// <summary>
         ///     Ons the draw frame
@@ -62,41 +62,41 @@ namespace Alis.Template.Game.Android
 #if ANDROID
              Console.WriteLine("RenderManager on android");
             
-            GLES30.GlClearColor(red, green, blue, 1.0f);
-            GLES30.GlClear ((int)GLES30.GlColorBufferBit);
+            GLES20.GlClearColor(_red, _green, _blue, 1.0f);
+            GLES20.GlClear ((int)GLES20.GlColorBufferBit);
 			
-            red += 0.01f;
-            if (red >= 1.0f)
-                red -= 1.0f;
-            green += 0.02f;
-            if (green >= 1.0f)
-                green -= 1.0f;
-            blue += 0.03f;
-            if (blue >= 1.0f)
-                blue -= 1.0f;
+            _red += 0.01f;
+            if (_red >= 1.0f)
+                _red -= 1.0f;
+            _green += 0.02f;
+            if (_green >= 1.0f)
+                _green -= 1.0f;
+            _blue += 0.03f;
+            if (_blue >= 1.0f)
+                _blue -= 1.0f;
 #endif
 
 #if WINDOWS || LINUX
             GL.Clear(ClearBufferMask.ColorBufferBit);
             
-            GL.ClearColor(red, green, blue, 1.0f);
+            GL.ClearColor(_red, _green, _blue, 1.0f);
             
-            red += 0.01f;
-            if (red >= 1.0f)
-                red -= 1.0f;
-            green += 0.02f;
-            if (green >= 1.0f)
-                green -= 1.0f;
-            blue += 0.03f;
-            if (blue >= 1.0f)
-                blue -= 1.0f;
+            _red += 0.01f;
+            if (_red >= 1.0f)
+                _red -= 1.0f;
+            _green += 0.02f;
+            if (_green >= 1.0f)
+                _green -= 1.0f;
+            _blue += 0.03f;
+            if (_blue >= 1.0f)
+                _blue -= 1.0f;
 #endif
         }
 
 #if OSX || IOS
         public static void OnDrawFrame(MTKView view, IMTLCommandQueue commandQueue)
         {
-            view.ClearColor = new MTLClearColor(red, green, blue, 1.0f);
+            view.ClearColor = new MTLClearColor(_red, _green, _blue, 1.0f);
 
             // Create a new command buffer for each renderpass to the current drawable
             IMTLCommandBuffer commandBuffer = commandQueue.CommandBuffer();
@@ -115,22 +115,22 @@ namespace Alis.Template.Game.Android
 
             commandBuffer.Commit();
 
-            red += 0.01f;
-            if (red >= 1.0f)
+            _red += 0.01f;
+            if (_red >= 1.0f)
             {
-                red -= 1.0f;
+                _red -= 1.0f;
             }
 
-            green += 0.02f;
-            if (green >= 1.0f)
+            _green += 0.02f;
+            if (_green >= 1.0f)
             {
-                green -= 1.0f;
+                _green -= 1.0f;
             }
 
-            blue += 0.03f;
-            if (blue >= 1.0f)
+            _blue += 0.03f;
+            if (_blue >= 1.0f)
             {
-                blue -= 1.0f;
+                _blue -= 1.0f;
             }
         }
 #endif

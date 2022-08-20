@@ -47,27 +47,27 @@ namespace Alis.Core.Input
         /// <summary>
         ///     The Linear Control usage type.
         /// </summary>
-        [Description("Linear Control")] LC,
+        [Description("Linear Control")] Lc,
 
         /// <summary>
         ///     The On/Off Control usage type.
         /// </summary>
-        [Description("On/Off Control")] OOC,
+        [Description("On/Off Control")] Ooc,
 
         /// <summary>
         ///     The Momentary Control usage type.
         /// </summary>
-        [Description("Momentary Control")] MC,
+        [Description("Momentary Control")] Mc,
 
         /// <summary>
         ///     The One Shot Control usage type.
         /// </summary>
-        [Description("One Shot Control")] OSC,
+        [Description("One Shot Control")] Osc,
 
         /// <summary>
         ///     The Re-trigger Control usage type.
         /// </summary>
-        [Description("Re-trigger Control")] RTC,
+        [Description("Re-trigger Control")] Rtc,
 
         /// <summary>
         ///     The Selector usage type.
@@ -77,22 +77,22 @@ namespace Alis.Core.Input
         /// <summary>
         ///     The Static Value usage type.
         /// </summary>
-        [Description("Static Value")] SV,
+        [Description("Static Value")] Sv,
 
         /// <summary>
         ///     The Static Flag usage type.
         /// </summary>
-        [Description("Static Flag")] SF,
+        [Description("Static Flag")] Sf,
 
         /// <summary>
         ///     The Dynamic Value usage type.
         /// </summary>
-        [Description("Dynamic Value")] DV,
+        [Description("Dynamic Value")] Dv,
 
         /// <summary>
         ///     The Dynamic Flag usage type.
         /// </summary>
-        [Description("Dynamic Flag")] DF,
+        [Description("Dynamic Flag")] Df,
 
         /// <summary>
         ///     The Named Array usage type.
@@ -103,26 +103,26 @@ namespace Alis.Core.Input
         ///     The Application Collection usage type.
         /// </summary>
         [Description("Application Collection")]
-        CA,
+        Ca,
 
         /// <summary>
         ///     The Logical Collection usage type.
         /// </summary>
-        [Description("Logical Collection")] CL,
+        [Description("Logical Collection")] Cl,
 
         /// <summary>
         ///     The Physical Collection usage type.
         /// </summary>
-        [Description("Physical Collection")] CP,
+        [Description("Physical Collection")] Cp,
 
         /// <summary>
         ///     The Usage Switch usage type.
         /// </summary>
-        [Description("Usage Switch")] US,
+        [Description("Usage Switch")] Us,
 
         /// <summary>
         ///     The Usage Modifier usage type.
         /// </summary>
-        [Description("Usage Modifier")] UM
+        [Description("Usage Modifier")] Um
     }
 }

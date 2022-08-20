@@ -53,8 +53,8 @@ namespace Alis.Core.Input
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0020: return new Usage(this, id, "Camera Auto-focus", UsageTypes.OSC);
-                case 0x0021: return new Usage(this, id, "Camera Shutter", UsageTypes.OSC);
+                case 0x0020: return new Usage(this, id, "Camera Auto-focus", UsageTypes.Osc);
+                case 0x0021: return new Usage(this, id, "Camera Shutter", UsageTypes.Osc);
             }
 
             return base.CreateUsage(id);

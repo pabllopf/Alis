@@ -30,38 +30,26 @@
 using System;
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Collisions.Shapes
+namespace Alis.Core.Physic.Collisions.Shape
 {
     /// <summary>
     ///     A shape is used for collision detection. You can create a shape however you like.
     ///     Shapes used for simulation in World are created automatically when a Fixture is created.
     /// </summary>
-    public abstract class Shape : IDisposable
+    public interface IShape : IDisposable
     {
         /// <summary>
-        ///     The radius
+        /// Return the radius of the shape.
         /// </summary>
-        internal float Radius;
-
+        /// <returns></returns>
+        public float GetRadius();
+        
         /// <summary>
-        ///     The unknown shape
+        /// Return the type of the shape. You can use this to down cast to the concrete shape.
         /// </summary>
-        protected ShapeType Type = ShapeType.UnknownShape;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Shape" /> class
-        /// </summary>
-        protected Shape()
-        {
-        }
-
-        /// <summary>
-        ///     Disposes this instance
-        /// </summary>
-        public virtual void Dispose()
-        {
-        }
-
+        /// <returns></returns>
+        public ShapeType GetShapeType();
+        
         /// <summary>
         ///     Test a point for containment in this shape. This only works for convex shapes.
         /// </summary>

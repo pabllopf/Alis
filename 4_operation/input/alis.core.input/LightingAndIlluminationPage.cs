@@ -97,7 +97,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Lamp ID Usage.
         /// </summary>
-        [Description("Lamp ID")] LampID = 0x00590021,
+        [Description("Lamp ID")] LampId = 0x00590021,
 
         /// <summary>
         ///     Lamp Attributes Response Report Usage.
@@ -201,12 +201,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Lamp ID Start Usage.
         /// </summary>
-        [Description("Lamp ID Start")] LampIDStart = 0x00590061,
+        [Description("Lamp ID Start")] LampIdStart = 0x00590061,
 
         /// <summary>
         ///     Lamp ID End Usage.
         /// </summary>
-        [Description("Lamp ID End")] LampIDEnd = 0x00590062,
+        [Description("Lamp ID End")] LampIdEnd = 0x00590062,
 
         /// <summary>
         ///     Lamp Array Control Report Usage.

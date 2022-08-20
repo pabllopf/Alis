@@ -72,54 +72,54 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <summary>
         ///     Check if a sensor is available on the underlying platform
         /// </summary>
-        /// <param name="Sensor">Sensor to check</param>
+        /// <param name="sensor">Sensor to check</param>
         /// <returns>True if the sensor is available, false otherwise</returns>
         ////////////////////////////////////////////////////////////
-        public static bool IsAvailable(Type Sensor) => sfSensor_isAvailable(Sensor);
+        public static bool IsAvailable(Type sensor) => sfSensor_isAvailable(sensor);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Enable or disable a sensor
         /// </summary>
-        /// <param name="Sensor">Sensor to check</param>
-        /// <param name="Enabled">True to enable, false to disable</param>
+        /// <param name="sensor">Sensor to check</param>
+        /// <param name="enabled">True to enable, false to disable</param>
         ////////////////////////////////////////////////////////////
-        public static void SetEnabled(Type Sensor, bool Enabled)
+        public static void SetEnabled(Type sensor, bool enabled)
         {
-            sfSensor_setEnabled(Sensor, Enabled);
+            sfSensor_setEnabled(sensor, enabled);
         }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Get the current sensor value
         /// </summary>
-        /// <param name="Sensor">Sensor to check</param>
+        /// <param name="sensor">Sensor to check</param>
         /// <returns>The current sensor value</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f GetValue(Type Sensor) => sfSensor_getValue(Sensor);
+        public static Vector3F GetValue(Type sensor) => sfSensor_getValue(sensor);
 
         /// <summary>
         ///     Describes whether sf sensor is available
         /// </summary>
-        /// <param name="Sensor">The sensor</param>
+        /// <param name="sensor">The sensor</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfSensor_isAvailable(Type Sensor);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfSensor_isAvailable(Type sensor);
 
         /// <summary>
         ///     Sfs the sensor set enabled using the specified sensor
         /// </summary>
-        /// <param name="Sensor">The sensor</param>
-        /// <param name="Enabled">The enabled</param>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSensor_setEnabled(Type Sensor, bool Enabled);
+        /// <param name="sensor">The sensor</param>
+        /// <param name="enabled">The enabled</param>
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfSensor_setEnabled(Type sensor, bool enabled);
 
         /// <summary>
         ///     Sfs the sensor get value using the specified sensor
         /// </summary>
-        /// <param name="Sensor">The sensor</param>
+        /// <param name="sensor">The sensor</param>
         /// <returns>The vector 3f</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector3f sfSensor_getValue(Type Sensor);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector3F sfSensor_getValue(Type sensor);
     }
 }

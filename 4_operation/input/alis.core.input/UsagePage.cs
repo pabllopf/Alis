@@ -43,17 +43,17 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Dictionary of all defined usage pages.
         /// </summary>
-        private static ConcurrentDictionary<ushort, UsagePage> s_pages =
+        private static ConcurrentDictionary<ushort, UsagePage> _sPages =
             new ConcurrentDictionary<ushort, UsagePage>
             {
                 [0x0001] = GenericDesktopUsagePage.Instance,
                 [0x0002] = SimulationUsagePage.Instance,
-                [0x0003] = VRUsagePage.Instance,
+                [0x0003] = VrUsagePage.Instance,
                 [0x0004] = SportUsagePage.Instance,
                 [0x0005] = GameUsagePage.Instance,
                 [0x0006] = GenericDeviceUsagePage.Instance,
                 [0x0007] = KeyboardKeypadUsagePage.Instance,
-                [0x0008] = LEDsUsagePage.Instance,
+                [0x0008] = LeDsUsagePage.Instance,
                 [0x0009] = ButtonUsagePage.Instance,
                 [0x000a] = OrdinalUsagePage.Instance,
                 [0x000b] = TelephonyUsagePage.Instance,
@@ -70,13 +70,13 @@ namespace Alis.Core.Input
                 [0x0059] = LightingAndIlluminationUsagePage.Instance,
                 [0x0080] = MonitorUsagePage.Instance,
                 [0x0081] = MonitorEnumeratedValuesUsagePage.Instance,
-                [0x0082] = VESAVirtualUsagePage.Instance,
+                [0x0082] = VesaVirtualUsagePage.Instance,
                 [0x0083] = MonitorReservedUsagePage.Instance,
                 [0x0084] = PowerDeviceUsagePage.Instance,
                 [0x0085] = BatterySystemUsagePage.Instance,
                 [0x008c] = BarCodeScannerUsagePage.Instance,
                 [0x008d] = WeighingDevicesUsagePage.Instance,
-                [0x008e] = MagneticStripeReadingMSRDevicesUsagePage.Instance,
+                [0x008e] = MagneticStripeReadingMsrDevicesUsagePage.Instance,
                 [0x008f] = ReservedPointOfSaleUsagePage.Instance,
                 [0x0090] = CameraControlUsagePage.Instance,
                 [0x0091] = ArcadeUsagePage.Instance,
@@ -96,7 +96,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     VR Controls Usage Page.
         /// </summary>
-        public static readonly VRUsagePage VR = VRUsagePage.Instance;
+        public static readonly VrUsagePage Vr = VrUsagePage.Instance;
 
         /// <summary>
         ///     Sport Controls Usage Page.
@@ -121,7 +121,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     LEDs Usage Page.
         /// </summary>
-        public static readonly LEDsUsagePage LEDs = LEDsUsagePage.Instance;
+        public static readonly LeDsUsagePage LeDs = LeDsUsagePage.Instance;
 
         /// <summary>
         ///     Button Usage Page.
@@ -209,7 +209,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     VESA Virtual Controls Usage Page.
         /// </summary>
-        public static readonly VESAVirtualUsagePage VESAVirtual = VESAVirtualUsagePage.Instance;
+        public static readonly VesaVirtualUsagePage VesaVirtual = VesaVirtualUsagePage.Instance;
 
         /// <summary>
         ///     Monitor Reserved Usage Page.
@@ -239,8 +239,8 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Magnetic Stripe Reading (MSR) Devices Usage Page.
         /// </summary>
-        public static readonly MagneticStripeReadingMSRDevicesUsagePage MagneticStripeReadingMSRDevices =
-            MagneticStripeReadingMSRDevicesUsagePage.Instance;
+        public static readonly MagneticStripeReadingMsrDevicesUsagePage MagneticStripeReadingMsrDevices =
+            MagneticStripeReadingMsrDevicesUsagePage.Instance;
 
         /// <summary>
         ///     Reserved Point of Sale Usage Page.
@@ -308,7 +308,7 @@ namespace Alis.Core.Input
         ///     Gets all currently available usage pages.
         /// </summary>
         /// <returns>A collection of usage pages.</returns>
-        public static ICollection<UsagePage> All => s_pages.Values;
+        public static ICollection<UsagePage> All => _sPages.Values;
 
         /// <inheritdoc />
         public IEnumerator<Usage> GetEnumerator() => Usages.Values.GetEnumerator();
@@ -327,7 +327,7 @@ namespace Alis.Core.Input
         /// <returns>The usage page</returns>
         public static UsagePage Get(ushort id)
         {
-            return s_pages.GetOrAdd(id, i => i < 0xFF00
+            return _sPages.GetOrAdd(id, i => i < 0xFF00
                 ? new UsagePage(i, $"Reserved (0x{id:X2})")
                 : new UsagePage(i, $"Vendor-defined (0x{id:X2})"));
         }

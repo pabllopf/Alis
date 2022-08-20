@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     ///     2D rendering
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public class RenderWindow : Window, RenderTarget
+    public class RenderWindow : Window, IRenderTarget
     {
         /// <summary>
         ///     The my default view
@@ -144,7 +144,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Position of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public override Vector2i Position
+        public override Vector2I Position
         {
             get => sfRenderWindow_getPosition(CPointer);
             set => sfRenderWindow_setPosition(CPointer, value);
@@ -162,7 +162,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Size of the rendering region of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public override Vector2u Size
+        public override Vector2U Size
         {
             get => sfRenderWindow_getSize(CPointer);
             set => sfRenderWindow_setSize(CPointer, value);
@@ -236,7 +236,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f MapPixelToCoords(Vector2i point) => MapPixelToCoords(point, GetView());
+        public Vector2F MapPixelToCoords(Vector2I point) => MapPixelToCoords(point, GetView());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -260,7 +260,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2f MapPixelToCoords(Vector2i point, View view) => sfRenderWindow_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        public Vector2F MapPixelToCoords(Vector2I point, View view) => sfRenderWindow_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -274,7 +274,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2i MapCoordsToPixel(Vector2f point) => MapCoordsToPixel(point, GetView());
+        public Vector2I MapCoordsToPixel(Vector2F point) => MapCoordsToPixel(point, GetView());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -295,7 +295,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2i MapCoordsToPixel(Vector2f point, View view) => sfRenderWindow_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        public Vector2I MapCoordsToPixel(Vector2F point, View view) => sfRenderWindow_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -303,7 +303,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="drawable">Object to draw</param>
         ////////////////////////////////////////////////////////////
-        public void Draw(Drawable drawable)
+        public void Draw(IDrawable drawable)
         {
             Draw(drawable, RenderStates.Default);
         }
@@ -315,7 +315,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="drawable">Object to draw</param>
         /// <param name="states">Render states to use for drawing</param>
         ////////////////////////////////////////////////////////////
-        public void Draw(Drawable drawable, RenderStates states)
+        public void Draw(IDrawable drawable, RenderStates states)
         {
             drawable.Draw(this, states);
         }
@@ -413,12 +413,12 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///         It is provided for convenience, but the best results will
         ///         be achieved if you handle OpenGL states yourself (because
         ///         you know which states have really changed, and need to be
-        ///         saved and restored). Take a look at the <seealso cref="ResetGLStates" />
+        ///         saved and restored). Take a look at the <seealso cref="ResetGlStates" />
         ///         function if you do so.
         ///     </para>
         /// </remarks>
         ////////////////////////////////////////////////////////////
-        public void PushGLStates()
+        public void PushGlStates()
         {
             sfRenderWindow_pushGLStates(CPointer);
         }
@@ -426,11 +426,11 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Restore the previously saved OpenGL render states and matrices.
-        ///     See the description of <seealso cref="PushGLStates" /> to get a detailed
+        ///     See the description of <seealso cref="PushGlStates" /> to get a detailed
         ///     description of these functions.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public void PopGLStates()
+        public void PopGlStates()
         {
             sfRenderWindow_popGLStates(CPointer);
         }
@@ -456,7 +456,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     // OpenGL code here...
         /// </example>
         ////////////////////////////////////////////////////////////
-        public void ResetGLStates()
+        public void ResetGlStates()
         {
             sfRenderWindow_resetGLStates(CPointer);
         }
@@ -505,9 +505,9 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         {
             unsafe
             {
-                fixed (byte* PixelsPtr = pixels)
+                fixed (byte* pixelsPtr = pixels)
                 {
-                    sfRenderWindow_setIcon(CPointer, width, height, PixelsPtr);
+                    sfRenderWindow_setIcon(CPointer, width, height, pixelsPtr);
                 }
             }
         }
@@ -705,7 +705,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Relative mouse position</returns>
         ////////////////////////////////////////////////////////////
-        public override Vector2i InternalGetMousePosition() => sfMouse_getPositionRenderWindow(CPointer);
+        public override Vector2I InternalGetMousePosition() => sfMouse_getPositionRenderWindow(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -715,7 +715,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="position">Relative mouse position</param>
         ////////////////////////////////////////////////////////////
-        protected internal override void InternalSetMousePosition(Vector2i position)
+        protected internal override void InternalSetMousePosition(Vector2I position)
         {
             sfMouse_setPositionRenderWindow(position, CPointer);
         }
@@ -726,10 +726,10 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     This function is protected because it is called by another class of
         ///     another module, it is not meant to be called by users.
         /// </summary>
-        /// <param name="Finger">Finger index</param>
+        /// <param name="finger">Finger index</param>
         /// <returns>Relative touch position</returns>
         ////////////////////////////////////////////////////////////
-        protected internal override Vector2i InternalGetTouchPosition(uint Finger) => sfTouch_getPositionRenderWindow(Finger, CPointer);
+        protected internal override Vector2I InternalGetTouchPosition(uint finger) => sfTouch_getPositionRenderWindow(finger, CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -761,395 +761,395 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <summary>
         ///     Sfs the render window create using the specified mode
         /// </summary>
-        /// <param name="Mode">The mode</param>
-        /// <param name="Title">The title</param>
-        /// <param name="Style">The style</param>
-        /// <param name="Params">The params</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="title">The title</param>
+        /// <param name="style">The style</param>
+        /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_create(VideoMode Mode, string Title, Styles Style,
-            ref ContextSettings Params);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfRenderWindow_create(VideoMode mode, string title, Styles style,
+            ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the render window create unicode using the specified mode
         /// </summary>
-        /// <param name="Mode">The mode</param>
-        /// <param name="Title">The title</param>
-        /// <param name="Style">The style</param>
-        /// <param name="Params">The params</param>
+        /// <param name="mode">The mode</param>
+        /// <param name="title">The title</param>
+        /// <param name="style">The style</param>
+        /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode Mode, IntPtr Title, Styles Style,
-            ref ContextSettings Params);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfRenderWindow_createUnicode(VideoMode mode, IntPtr title, Styles style,
+            ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the render window create from handle using the specified handle
         /// </summary>
-        /// <param name="Handle">The handle</param>
-        /// <param name="Params">The params</param>
+        /// <param name="handle">The handle</param>
+        /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_createFromHandle(IntPtr Handle, ref ContextSettings Params);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfRenderWindow_createFromHandle(IntPtr handle, ref ContextSettings @params);
 
         /// <summary>
         ///     Sfs the render window destroy using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_destroy(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_destroy(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window close using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_close(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_close(IntPtr cPointer);
 
         /// <summary>
         ///     Describes whether sf render window is open
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfRenderWindow_isOpen(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfRenderWindow_isOpen(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window get settings using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The context settings</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern ContextSettings sfRenderWindow_getSettings(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern ContextSettings sfRenderWindow_getSettings(IntPtr cPointer);
 
         /// <summary>
         ///     Describes whether sf render window poll event
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Evt">The evt</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfRenderWindow_pollEvent(IntPtr CPointer, out Event Evt);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfRenderWindow_pollEvent(IntPtr cPointer, out Event evt);
 
         /// <summary>
         ///     Describes whether sf render window wait event
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Evt">The evt</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="evt">The evt</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfRenderWindow_waitEvent(IntPtr CPointer, out Event Evt);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfRenderWindow_waitEvent(IntPtr cPointer, out Event evt);
 
         /// <summary>
         ///     Sfs the render window get position using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2i sfRenderWindow_getPosition(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2I sfRenderWindow_getPosition(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window set position using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="position">The position</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setPosition(IntPtr CPointer, Vector2i position);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setPosition(IntPtr cPointer, Vector2I position);
 
         /// <summary>
         ///     Sfs the render window get size using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2u sfRenderWindow_getSize(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2U sfRenderWindow_getSize(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window set size using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="size">The size</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setSize(IntPtr CPointer, Vector2u size);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setSize(IntPtr cPointer, Vector2U size);
 
         /// <summary>
         ///     Sfs the render window set title using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setTitle(IntPtr CPointer, string title);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setTitle(IntPtr cPointer, string title);
 
         /// <summary>
         ///     Sfs the render window set unicode title using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="title">The title</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setUnicodeTitle(IntPtr CPointer, IntPtr title);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setUnicodeTitle(IntPtr cPointer, IntPtr title);
 
         /// <summary>
         ///     Sfs the render window set icon using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Width">The width</param>
-        /// <param name="Height">The height</param>
-        /// <param name="Pixels">The pixels</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        /// <param name="pixels">The pixels</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe void
-            sfRenderWindow_setIcon(IntPtr CPointer, uint Width, uint Height, byte* Pixels);
+            sfRenderWindow_setIcon(IntPtr cPointer, uint width, uint height, byte* pixels);
 
         /// <summary>
         ///     Sfs the render window set visible using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setVisible(IntPtr CPointer, bool visible);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setVisible(IntPtr cPointer, bool visible);
 
         /// <summary>
         ///     Sfs the render window set vertical sync enabled using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setVerticalSyncEnabled(IntPtr CPointer, bool Enable);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="enable">The enable</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setVerticalSyncEnabled(IntPtr cPointer, bool enable);
 
         /// <summary>
         ///     Sfs the render window set mouse cursor visible using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="visible">The visible</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setMouseCursorVisible(IntPtr CPointer, bool visible);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setMouseCursorVisible(IntPtr cPointer, bool visible);
 
         /// <summary>
         ///     Sfs the render window set mouse cursor grabbed using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="grabbed">The grabbed</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setMouseCursorGrabbed(IntPtr CPointer, bool grabbed);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setMouseCursorGrabbed(IntPtr cPointer, bool grabbed);
 
         /// <summary>
         ///     Sfs the render window set mouse cursor using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="cursor">The cursor</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfRenderWindow_setMouseCursor(IntPtr window, IntPtr cursor);
 
         /// <summary>
         ///     Sfs the render window set key repeat enabled using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Enable">The enable</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setKeyRepeatEnabled(IntPtr CPointer, bool Enable);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="enable">The enable</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setKeyRepeatEnabled(IntPtr cPointer, bool enable);
 
         /// <summary>
         ///     Sfs the render window set framerate limit using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Limit">The limit</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setFramerateLimit(IntPtr CPointer, uint Limit);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="limit">The limit</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setFramerateLimit(IntPtr cPointer, uint limit);
 
         /// <summary>
         ///     Sfs the render window set joystick threshold using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Threshold">The threshold</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setJoystickThreshold(IntPtr CPointer, float Threshold);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="threshold">The threshold</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setJoystickThreshold(IntPtr cPointer, float threshold);
 
         /// <summary>
         ///     Describes whether sf render window set active
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="Active">The active</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="active">The active</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfRenderWindow_setActive(IntPtr CPointer, bool Active);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfRenderWindow_setActive(IntPtr cPointer, bool active);
 
         /// <summary>
         ///     Sfs the render window request focus using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_requestFocus(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_requestFocus(IntPtr cPointer);
 
         /// <summary>
         ///     Describes whether sf render window has focus
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfRenderWindow_hasFocus(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfRenderWindow_hasFocus(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window display using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_display(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_display(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window get system handle using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_getSystemHandle(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfRenderWindow_getSystemHandle(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window clear using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="ClearColor">The clear color</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_clear(IntPtr CPointer, Color ClearColor);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="clearColor">The clear color</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_clear(IntPtr cPointer, Color clearColor);
 
         /// <summary>
         ///     Sfs the render window set view using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="View">The view</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setView(IntPtr CPointer, IntPtr View);
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="view">The view</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_setView(IntPtr cPointer, IntPtr view);
 
         /// <summary>
         ///     Sfs the render window get view using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_getView(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfRenderWindow_getView(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window get default view using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_getDefaultView(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfRenderWindow_getDefaultView(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window get viewport using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        /// <param name="TargetView">The target view</param>
+        /// <param name="cPointer">The pointer</param>
+        /// <param name="targetView">The target view</param>
         /// <returns>The int rect</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntRect sfRenderWindow_getViewport(IntPtr CPointer, IntPtr TargetView);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntRect sfRenderWindow_getViewport(IntPtr cPointer, IntPtr targetView);
 
         /// <summary>
         ///     Sfs the render window map pixel to coords using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="point">The point</param>
-        /// <param name="View">The view</param>
+        /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2f sfRenderWindow_mapPixelToCoords(IntPtr CPointer, Vector2i point, IntPtr View);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2F sfRenderWindow_mapPixelToCoords(IntPtr cPointer, Vector2I point, IntPtr view);
 
         /// <summary>
         ///     Sfs the render window map coords to pixel using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="point">The point</param>
-        /// <param name="View">The view</param>
+        /// <param name="view">The view</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2i sfRenderWindow_mapCoordsToPixel(IntPtr CPointer, Vector2f point, IntPtr View);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2I sfRenderWindow_mapCoordsToPixel(IntPtr cPointer, Vector2F point, IntPtr view);
 
         /// <summary>
         ///     Sfs the render window draw primitives using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <param name="vertexPtr">The vertex ptr</param>
         /// <param name="vertexCount">The vertex count</param>
         /// <param name="type">The type</param>
         /// <param name="renderStates">The render states</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfRenderWindow_drawPrimitives(IntPtr CPointer, Vertex* vertexPtr,
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern unsafe void sfRenderWindow_drawPrimitives(IntPtr cPointer, Vertex* vertexPtr,
             uint vertexCount, PrimitiveType type, ref RenderStates.MarshalData renderStates);
 
         /// <summary>
         ///     Sfs the render window push gl states using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_pushGLStates(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_pushGLStates(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window pop gl states using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_popGLStates(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_popGLStates(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window reset gl states using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_resetGLStates(IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfRenderWindow_resetGLStates(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window capture using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfRenderWindow_capture(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern IntPtr sfRenderWindow_capture(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the mouse get position render window using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2i sfMouse_getPositionRenderWindow(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2I sfMouse_getPositionRenderWindow(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the mouse set position render window using the specified position
         /// </summary>
         /// <param name="position">The position</param>
-        /// <param name="CPointer">The pointer</param>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMouse_setPositionRenderWindow(Vector2i position, IntPtr CPointer);
+        /// <param name="cPointer">The pointer</param>
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern void sfMouse_setPositionRenderWindow(Vector2I position, IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the touch get position render window using the specified finger
         /// </summary>
-        /// <param name="Finger">The finger</param>
-        /// <param name="RelativeTo">The relative to</param>
+        /// <param name="finger">The finger</param>
+        /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2i sfTouch_getPositionRenderWindow(uint Finger, IntPtr RelativeTo);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern Vector2I sfTouch_getPositionRenderWindow(uint finger, IntPtr relativeTo);
 
         /// <summary>
         ///     Describes whether sf render window save gl states
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfRenderWindow_saveGLStates(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfRenderWindow_saveGLStates(IntPtr cPointer);
 
         /// <summary>
         ///     Describes whether sf render window restore gl states
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfRenderWindow_restoreGLStates(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfRenderWindow_restoreGLStates(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window get frame time using the specified c pointer
         /// </summary>
-        /// <param name="CPointer">The pointer</param>
+        /// <param name="cPointer">The pointer</param>
         /// <returns>The uint</returns>
-        [DllImport(CSFML.graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern uint sfRenderWindow_getFrameTime(IntPtr CPointer);
+        [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern uint sfRenderWindow_getFrameTime(IntPtr cPointer);
     }
 }

@@ -177,8 +177,8 @@ namespace Alis.Core.Network.Sample.Client.Complex
         private async Task ReceiveLoop()
         {
             // the recArray should be large enough to at least receive control frames like Ping and Close frames (with payload)
-            const int MIN_BUFFER_SIZE = 510;
-            int size = _maxNumBytesPerMessage < MIN_BUFFER_SIZE ? MIN_BUFFER_SIZE : _maxNumBytesPerMessage;
+            const int minBufferSize = 510;
+            int size = _maxNumBytesPerMessage < minBufferSize ? minBufferSize : _maxNumBytesPerMessage;
             byte[] recArray = new byte[size];
             ArraySegment<byte> recBuffer = new ArraySegment<byte>(recArray);
 

@@ -43,7 +43,7 @@ namespace Alis.Template.Game.Desktop
         /// <summary>
         ///     The blue
         /// </summary>
-        private static float red, green, blue;
+        private static float _red, _green, _blue;
 
         /// <summary>
         ///     Main the args

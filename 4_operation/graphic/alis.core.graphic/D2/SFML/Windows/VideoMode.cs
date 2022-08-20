@@ -88,15 +88,15 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
             {
                 unsafe
                 {
-                    uint Count;
-                    VideoMode* ModesPtr = sfVideoMode_getFullscreenModes(out Count);
-                    VideoMode[] Modes = new VideoMode[Count];
-                    for (uint i = 0; i < Count; ++i)
+                    uint count;
+                    VideoMode* modesPtr = sfVideoMode_getFullscreenModes(out count);
+                    VideoMode[] modes = new VideoMode[count];
+                    for (uint i = 0; i < count; ++i)
                     {
-                        Modes[i] = ModesPtr[i];
+                        modes[i] = modesPtr[i];
                     }
 
-                    return Modes;
+                    return modes;
                 }
             }
         }
@@ -132,23 +132,23 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ///     Sfs the video mode get desktop mode
         /// </summary>
         /// <returns>The video mode</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern VideoMode sfVideoMode_getDesktopMode();
 
         /// <summary>
         ///     Sfs the video mode get fullscreen modes using the specified count
         /// </summary>
-        /// <param name="Count">The count</param>
+        /// <param name="count">The count</param>
         /// <returns>The video mode</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe VideoMode* sfVideoMode_getFullscreenModes(out uint Count);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern unsafe VideoMode* sfVideoMode_getFullscreenModes(out uint count);
 
         /// <summary>
         ///     Describes whether sf video mode is valid
         /// </summary>
-        /// <param name="Mode">The mode</param>
+        /// <param name="mode">The mode</param>
         /// <returns>The bool</returns>
-        [DllImport(CSFML.window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern bool sfVideoMode_isValid(VideoMode Mode);
+        [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
+        private static extern bool sfVideoMode_isValid(VideoMode mode);
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SegmentCollide.cs
+//  File:MassData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Collisions.Shapes
+using Alis.Aspect.Math;
+
+namespace Alis.Core.Physic.Collisions
 {
     /// <summary>
-    ///     Returns code from TestSegment
+    ///     This holds the mass data computed for a shape.
     /// </summary>
-    public enum SegmentCollide
+    public struct MassData
     {
         /// <summary>
-        ///     The start inside collide segment collide
+        ///     The mass of the shape, usually in kilograms.
         /// </summary>
-        StartInsideCollide = -1,
+        public float Mass;
 
         /// <summary>
-        ///     The miss collide segment collide
+        ///     The position of the shape's centroid relative to the shape's origin.
         /// </summary>
-        MissCollide = 0,
+        public Vector2 Center;
 
         /// <summary>
-        ///     The hit collide segment collide
+        ///     The rotational inertia of the shape.
         /// </summary>
-        HitCollide = 1
+        public float I;
     }
 }

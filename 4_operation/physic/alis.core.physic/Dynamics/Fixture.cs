@@ -30,7 +30,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Collisions.Shape;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -57,7 +57,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     fixture
         /// </summary>
-        public FixtureDef fixtureDef;
+        public FixtureDef FixtureDef;
 
         /// <summary>
         ///     Friction coefficient, usually in the range [0,1].
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the child shape. You can modify the child shape, however you should not change the
         ///     number of vertices because this will crash some collision caching mechanisms.
         /// </summary>
-        public Shape Shape { get; protected set; }
+        public IShape Shape { get; protected set; }
 
         /// <summary>
         ///     Get the type of this shape. You can use this to down cast to the concrete shape.
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="def">The def</param>
         public void Create(BroadPhase broadPhase, Body body, XForm xf, FixtureDef def)
         {
-            fixtureDef = def;
+            FixtureDef = def;
             UserData = def.UserData;
             Friction = def.Friction;
             Restitution = def.Restitution;
@@ -140,10 +140,9 @@ namespace Alis.Core.Physic.Dynamics
             {
                 case ShapeType.CircleShape:
                 {
-                    CircleShape circle = new CircleShape();
                     CircleDef circleDef = (CircleDef) def;
+                    CircleShape circle = new CircleShape(circleDef.Radius);
                     circle.Position = circleDef.LocalPosition;
-                    circle.Radius = circleDef.Radius;
                     Shape = circle;
                 }
                     break;

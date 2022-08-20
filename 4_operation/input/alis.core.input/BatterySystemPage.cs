@@ -46,47 +46,47 @@ namespace Alis.Core.Input
         /// <summary>
         ///     SMB Battery Mode Usage.
         /// </summary>
-        [Description("SMB Battery Mode")] SMBBatteryMode = 0x00850001,
+        [Description("SMB Battery Mode")] SmbBatteryMode = 0x00850001,
 
         /// <summary>
         ///     SMB Battery Status Usage.
         /// </summary>
-        [Description("SMB Battery Status")] SMBBatteryStatus = 0x00850002,
+        [Description("SMB Battery Status")] SmbBatteryStatus = 0x00850002,
 
         /// <summary>
         ///     SMB Alarm Warning Usage.
         /// </summary>
-        [Description("SMB Alarm Warning")] SMBAlarmWarning = 0x00850003,
+        [Description("SMB Alarm Warning")] SmbAlarmWarning = 0x00850003,
 
         /// <summary>
         ///     SMB Charger Mode Usage.
         /// </summary>
-        [Description("SMB Charger Mode")] SMBChargerMode = 0x00850004,
+        [Description("SMB Charger Mode")] SmbChargerMode = 0x00850004,
 
         /// <summary>
         ///     SMB Charger Status Usage.
         /// </summary>
-        [Description("SMB Charger Status")] SMBChargerStatus = 0x00850005,
+        [Description("SMB Charger Status")] SmbChargerStatus = 0x00850005,
 
         /// <summary>
         ///     SMB Charger Spec Info Usage.
         /// </summary>
-        [Description("SMB Charger Spec Info")] SMBChargerSpecInfo = 0x00850006,
+        [Description("SMB Charger Spec Info")] SmbChargerSpecInfo = 0x00850006,
 
         /// <summary>
         ///     SMB Selector State Usage.
         /// </summary>
-        [Description("SMB Selector State")] SMBSelectorState = 0x00850007,
+        [Description("SMB Selector State")] SmbSelectorState = 0x00850007,
 
         /// <summary>
         ///     SMB Selector Presets Usage.
         /// </summary>
-        [Description("SMB Selector Presets")] SMBSelectorPresets = 0x00850008,
+        [Description("SMB Selector Presets")] SmbSelectorPresets = 0x00850008,
 
         /// <summary>
         ///     SMB Selector Info Usage.
         /// </summary>
-        [Description("SMB Selector Info")] SMBSelectorInfo = 0x00850009,
+        [Description("SMB Selector Info")] SmbSelectorInfo = 0x00850009,
 
         /*
          * Range: 0x0010 -> 0x0014
@@ -126,7 +126,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Connection To SMBus Usage.
         /// </summary>
-        [Description("Connection To SMBus")] ConnectionToSMBus = 0x00850015,
+        [Description("Connection To SMBus")] ConnectionToSmBus = 0x00850015,
 
         /// <summary>
         ///     Output Connection Usage.
@@ -151,7 +151,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     OK To Use Usage.
         /// </summary>
-        [Description("OK To Use")] OKToUse = 0x0085001a,
+        [Description("OK To Use")] OkToUse = 0x0085001a,
 
         /// <summary>
         ///     Battery Supported Usage.
@@ -259,12 +259,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     At Rate OK Usage.
         /// </summary>
-        [Description("At Rate OK")] AtRateOK = 0x00850049,
+        [Description("At Rate OK")] AtRateOk = 0x00850049,
 
         /// <summary>
         ///     SMB Error Code Usage.
         /// </summary>
-        [Description("SMB Error Code")] SMBErrorCode = 0x0085004a,
+        [Description("SMB Error Code")] SmbErrorCode = 0x0085004a,
 
         /// <summary>
         ///     Need Replacement Usage.
@@ -374,17 +374,17 @@ namespace Alis.Core.Input
         /// <summary>
         ///     iManufacturer Usage.
         /// </summary>
-        [Description("iManufacturer")] IManufacturer = 0x00850087,
+        [Description("iManufacturer")] Manufacturer = 0x00850087,
 
         /// <summary>
         ///     iDeviceName Usage.
         /// </summary>
-        [Description("iDeviceName")] IDeviceName = 0x00850088,
+        [Description("iDeviceName")] DeviceName = 0x00850088,
 
         /// <summary>
         ///     iDeviceChemistry Usage.
         /// </summary>
-        [Description("iDeviceChemistry")] IDeviceChemistry = 0x00850089,
+        [Description("iDeviceChemistry")] DeviceChemistry = 0x00850089,
 
         /// <summary>
         ///     Manufacturer Data Usage.
@@ -417,7 +417,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     iOEMInformation Usage.
         /// </summary>
-        [Description("iOEMInformation")] IOEMInformation = 0x0085008f,
+        [Description("iOEMInformation")] IoemInformation = 0x0085008f,
 
         /// <summary>
         ///     Inhibit Charge Usage.
@@ -437,7 +437,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     AC Present Usage.
         /// </summary>
-        [Description("AC Present")] ACPresent = 0x008500d0,
+        [Description("AC Present")] AcPresent = 0x008500d0,
 
         /// <summary>
         ///     Battery Present Usage.

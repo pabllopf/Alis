@@ -389,7 +389,7 @@
             <param name="offset">The offset</param>
             <returns>The num out</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.CollideCircles(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.CircleShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.CircleShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.CollideCircles(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.CircleShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.CircleShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the circles using the specified manifold
             </summary>
@@ -399,7 +399,7 @@
             <param name="circle2">The circle</param>
             <param name="xf2">The xf</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.CollidePolygonAndCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.CircleShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.CollidePolygonAndCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.CircleShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the polygon and circle using the specified manifold
             </summary>
@@ -409,7 +409,7 @@
             <param name="circle">The circle</param>
             <param name="xf2">The xf</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.CollideEdgeAndCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.EdgeShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.CircleShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.CollideEdgeAndCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.CircleShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the edge and circle using the specified manifold
             </summary>
@@ -419,7 +419,7 @@
             <param name="circle">The circle</param>
             <param name="transformB">The transform</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.CollidePolyAndEdge(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.EdgeShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.CollidePolyAndEdge(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the poly and edge using the specified manifold
             </summary>
@@ -429,17 +429,17 @@
             <param name="edge">The edge</param>
             <param name="transformB">The transform</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.EdgeSeparation(Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm,System.Int32,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.EdgeSeparation(Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm,System.Int32,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Find the separation between poly1 and poly2 for a give edge normal on poly1.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.FindMaxSeparation(System.Int32@,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.FindMaxSeparation(System.Int32@,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Find the max separation between poly1 and poly2 using edge normals from poly1.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.FindIncidentEdge(Alis.Core.Physic.Collisions.ClipVertex[]@,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm,System.Int32,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.FindIncidentEdge(Alis.Core.Physic.Collisions.ClipVertex[]@,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm,System.Int32,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Finds the incident edge using the specified c
             </summary>
@@ -450,7 +450,7 @@
             <param name="poly2">The poly</param>
             <param name="xf2">The xf</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.CollidePolygons(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.PolygonShape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.CollidePolygons(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.PolygonShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the polygons using the specified manifold
             </summary>
@@ -460,14 +460,14 @@
             <param name="polyB">The poly</param>
             <param name="xfB">The xf</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.Distance(Alis.Core.Physic.Collisions.DistanceOutput@,Alis.Core.Physic.Collisions.SimplexCache@,Alis.Core.Physic.Collisions.DistanceInput@,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Core.Physic.Collisions.Shapes.Shape)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.Distance(Alis.Core.Physic.Collisions.DistanceOutput@,Alis.Core.Physic.Collisions.SimplexCache@,Alis.Core.Physic.Collisions.DistanceInput@,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Core.Physic.Collisions.Shape.IShape)">
             <summary>
                 Compute the closest points between two shapes. Supports any combination of:
                 CircleShape, PolygonShape, EdgeShape. The simplex cache is input/output.
                 On the first call set SimplexCache.Count to zero.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Collision.TimeOfImpact(Alis.Core.Physic.Collisions.ToiInput,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Core.Physic.Collisions.Shapes.Shape)">
+        <member name="M:Alis.Core.Physic.Collisions.Collision.TimeOfImpact(Alis.Core.Physic.Collisions.ToiInput,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Core.Physic.Collisions.Shape.IShape)">
             <summary>
                 Compute the time when two shapes begin to touch or touch at a closer distance.
                 TOI considers the shape radii. It attempts to have the radii overlap by the tolerance.
@@ -691,6 +691,26 @@
         <member name="F:Alis.Core.Physic.Collisions.ManifoldType.FaceB">
             <summary>
                 The face manifold type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Collisions.MassData">
+            <summary>
+                This holds the mass data computed for a shape.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.MassData.Mass">
+            <summary>
+                The mass of the shape, usually in kilograms.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.MassData.Center">
+            <summary>
+                The position of the shape's centroid relative to the shape's origin.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.MassData.I">
+            <summary>
+                The rotational inertia of the shape.
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collisions.Pair">
@@ -1104,6 +1124,26 @@
                 The ending point.
             </summary>
         </member>
+        <member name="T:Alis.Core.Physic.Collisions.SegmentCollide">
+            <summary>
+                Returns code from TestSegment
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.SegmentCollide.StartInsideCollide">
+            <summary>
+                The start inside collide segment collide
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.SegmentCollide.MissCollide">
+            <summary>
+                The miss collide segment collide
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.SegmentCollide.HitCollide">
+            <summary>
+                The hit collide segment collide
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Collisions.SeparationFunction">
             <summary>
                 The separation function
@@ -1129,7 +1169,7 @@
                 The face type
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.SeparationFunction.Initialize(Alis.Core.Physic.Collisions.SimplexCache*,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.SeparationFunction.Initialize(Alis.Core.Physic.Collisions.SimplexCache*,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Initializes the cache
             </summary>
@@ -1172,27 +1212,37 @@
                 The axis
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Collisions.Shapes.CircleShape">
+        <member name="T:Alis.Core.Physic.Collisions.Shape.CircleShape">
             <summary>
                 A circle shape.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.CircleShape.Position">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.Radius">
+            <summary>
+                The radius
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.ShapeType">
+            <summary>
+                The unknown shape
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.Shape.CircleShape.Position">
             <summary>
                 The position
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.#ctor">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.#ctor(System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shapes.CircleShape" /> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shape.CircleShape" /> class
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.CircleShape.VertexCount">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.VertexCount">
             <summary>
                 Get the vertex count.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -1200,7 +1250,7 @@
             <param name="p">The </param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
             <summary>
                 Tests the segment using the specified transform
             </summary>
@@ -1211,21 +1261,21 @@
             <param name="maxLambda">The max lambda</param>
             <returns>The segment collide</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
             <summary>
                 Computes the aabb using the specified aabb
             </summary>
             <param name="aabb">The aabb</param>
             <param name="transform">The transform</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.ComputeMass(Alis.Core.Physic.Collisions.Shapes.MassData@,System.Single)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.ComputeMass(Alis.Core.Physic.Collisions.MassData@,System.Single)">
             <summary>
                 Computes the mass using the specified mass data
             </summary>
             <param name="massData">The mass data</param>
             <param name="density">The density</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
             <summary>
                 Computes the submerged area using the specified normal
             </summary>
@@ -1235,107 +1285,134 @@
             <param name="c">The </param>
             <returns>The area</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.GetSupport(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.GetSupport(Alis.Aspect.Math.Vector2)">
             <summary>
                 Get the supporting vertex index in the given direction.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
             <summary>
                 Get the supporting vertex in the given direction.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.GetVertex(System.Int32)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.GetVertex(System.Int32)">
             <summary>
                 Get a vertex by index. Used by Distance.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.CircleShape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
             <summary>
                 Computes the sweep radius using the specified pivot
             </summary>
             <param name="pivot">The pivot</param>
             <returns>The float</returns>
         </member>
-        <member name="T:Alis.Core.Physic.Collisions.Shapes.EdgeShape">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.Dispose">
+            <summary>
+            dispose 
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.GetRadius">
+            <summary>
+            return the radius of the polygon
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.GetShapeType">
+            <summary>
+            return the shape type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Alis.Core.Physic.Collisions.Shape.EdgeShape">
             <summary>
                 The edge shape class
             </summary>
-            <seealso cref="T:Alis.Core.Physic.Collisions.Shapes.Shape" />
+            <seealso cref="T:Alis.Core.Physic.Collisions.Shape.IShape" />
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.EdgeShape.NextEdge">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Radius">
+            <summary>
+                The radius
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.ShapeType">
+            <summary>
+                The unknown shape
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.Shape.EdgeShape.NextEdge">
             <summary>
                 The next edge
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.EdgeShape.PrevEdge">
+        <member name="F:Alis.Core.Physic.Collisions.Shape.EdgeShape.PrevEdge">
             <summary>
                 The prev edge
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.#ctor">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shapes.EdgeShape" /> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shape.EdgeShape" /> class
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Length">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Length">
             <summary>
                 Gets the value of the length
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Vertex1">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Vertex1">
             <summary>
                 Gets the value of the vertex 1
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Vertex2">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Vertex2">
             <summary>
                 Gets the value of the vertex 2
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.NormalVector">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.NormalVector">
             <summary>
                 Gets the value of the normal vector
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.DirectionVector">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.DirectionVector">
             <summary>
                 Gets the value of the direction vector
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Corner1Vector">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Corner1Vector">
             <summary>
                 Gets the value of the corner 1 vector
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Corner2Vector">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Corner2Vector">
             <summary>
                 Gets the value of the corner 2 vector
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Corner1IsConvex">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Corner1IsConvex">
             <summary>
                 Gets the value of the corner 1 is convex
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Corner2IsConvex">
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Corner2IsConvex">
             <summary>
                 Gets the value of the corner 2 is convex
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Dispose">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.Dispose">
             <summary>
                 Disposes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.Set(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.Set(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Sets the v 1
             </summary>
             <param name="v1">The </param>
             <param name="v2">The </param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -1343,7 +1420,7 @@
             <param name="p">The </param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
             <summary>
                 Tests the segment using the specified transform
             </summary>
@@ -1354,21 +1431,21 @@
             <param name="maxLambda">The max lambda</param>
             <returns>The segment collide</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
             <summary>
                 Computes the aabb using the specified aabb
             </summary>
             <param name="aabb">The aabb</param>
             <param name="transform">The transform</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.ComputeMass(Alis.Core.Physic.Collisions.Shapes.MassData@,System.Single)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.ComputeMass(Alis.Core.Physic.Collisions.MassData@,System.Single)">
             <summary>
                 Computes the mass using the specified mass data
             </summary>
             <param name="massData">The mass data</param>
             <param name="density">The density</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.SetPrevEdge(Alis.Core.Physic.Collisions.Shapes.EdgeShape,Alis.Aspect.Math.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.SetPrevEdge(Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Aspect.Math.Vector2,System.Boolean)">
             <summary>
                 Sets the prev edge using the specified edge
             </summary>
@@ -1376,7 +1453,7 @@
             <param name="cornerDir">The corner dir</param>
             <param name="convex">The convex</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.SetNextEdge(Alis.Core.Physic.Collisions.Shapes.EdgeShape,Alis.Aspect.Math.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.SetNextEdge(Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Aspect.Math.Vector2,System.Boolean)">
             <summary>
                 Sets the next edge using the specified edge
             </summary>
@@ -1384,7 +1461,7 @@
             <param name="cornerDir">The corner dir</param>
             <param name="convex">The convex</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
             <summary>
                 Computes the submerged area using the specified normal
             </summary>
@@ -1394,237 +1471,65 @@
             <param name="c">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.GetSupport(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.GetSupport(Alis.Aspect.Math.Vector2)">
             <summary>
                 Gets the support using the specified d
             </summary>
             <param name="d">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
             <summary>
                 Gets the support vertex using the specified d
             </summary>
             <param name="d">The </param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.GetVertex(System.Int32)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.GetVertex(System.Int32)">
             <summary>
                 Gets the vertex using the specified index
             </summary>
             <param name="index">The index</param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.EdgeShape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.GetRadius">
+            <summary>
+            return the radius of the polygon
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.GetShapeType">
+            <summary>
+            return the shape type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
             <summary>
                 Computes the sweep radius using the specified pivot
             </summary>
             <param name="pivot">The pivot</param>
             <returns>The float</returns>
         </member>
-        <member name="T:Alis.Core.Physic.Collisions.Shapes.MassData">
-            <summary>
-                This holds the mass data computed for a shape.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.MassData.Mass">
-            <summary>
-                The mass of the shape, usually in kilograms.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.MassData.Center">
-            <summary>
-                The position of the shape's centroid relative to the shape's origin.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.MassData.I">
-            <summary>
-                The rotational inertia of the shape.
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Collisions.Shapes.PolygonShape">
-            <summary>
-                A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shapes.PolygonShape" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.PolygonShape.Centroid">
-            <summary>
-                The centroid
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.PolygonShape.Normals">
-            <summary>
-                The max polygon vertices
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.PolygonShape.VertexCount">
-            <summary>
-                Gets the value of the vertex count
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shapes.PolygonShape.Vertices">
-            <summary>
-                Gets the value of the vertices
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.Set(Alis.Aspect.Math.Vector2[],System.Int32)">
-            <summary>
-                Copy vertices. This assumes the vertices define a convex polygon.
-                It is assumed that the exterior is the the right of each edge.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.SetAsBox(System.Single,System.Single)">
-            <summary>
-                Build vertices to represent an axis-aligned box.
-            </summary>
-            <param name="hx">The half-width</param>
-            <param name="hy">The half-height.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.SetAsBox(System.Single,System.Single,Alis.Aspect.Math.Vector2,System.Single)">
-            <summary>
-                Build vertices to represent an oriented box.
-            </summary>
-            <param name="hx">The half-width</param>
-            <param name="hy">The half-height.</param>
-            <param name="center">The center of the box in local coordinates.</param>
-            <param name="angle">The rotation of the box in local coordinates.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.SetAsEdge(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
-            <summary>
-                Sets the as edge using the specified v 1
-            </summary>
-            <param name="v1">The </param>
-            <param name="v2">The </param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
-            <summary>
-                Describes whether this instance test point
-            </summary>
-            <param name="xf">The xf</param>
-            <param name="p">The </param>
-            <returns>The bool</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
-            <summary>
-                Tests the segment using the specified xf
-            </summary>
-            <param name="xf">The xf</param>
-            <param name="lambda">The lambda</param>
-            <param name="normal">The normal</param>
-            <param name="segment">The segment</param>
-            <param name="maxLambda">The max lambda</param>
-            <returns>The segment collide</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
-            <summary>
-                Computes the aabb using the specified aabb
-            </summary>
-            <param name="aabb">The aabb</param>
-            <param name="xf">The xf</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.ComputeMass(Alis.Core.Physic.Collisions.Shapes.MassData@,System.Single)">
-            <summary>
-                Computes the mass using the specified mass data
-            </summary>
-            <param name="massData">The mass data</param>
-            <param name="denstity">The denstity</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
-            <summary>
-                Computes the submerged area using the specified normal
-            </summary>
-            <param name="normal">The normal</param>
-            <param name="offset">The offset</param>
-            <param name="xf">The xf</param>
-            <param name="c">The </param>
-            <returns>The area</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
-            <summary>
-                Computes the sweep radius using the specified pivot
-            </summary>
-            <param name="pivot">The pivot</param>
-            <returns>The float</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.GetSupport(Alis.Aspect.Math.Vector2)">
-            <summary>
-                Get the supporting vertex index in the given direction.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
-            <summary>
-                Gets the support vertex using the specified d
-            </summary>
-            <param name="d">The </param>
-            <returns>The vec</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.GetVertex(System.Int32)">
-            <summary>
-                Gets the vertex using the specified index
-            </summary>
-            <param name="index">The index</param>
-            <returns>The vec</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.PolygonShape.ComputeCentroid(Alis.Aspect.Math.Vector2[],System.Int32)">
-            <summary>
-                Computes the centroid using the specified vs
-            </summary>
-            <param name="vs">The vs</param>
-            <param name="count">The count</param>
-            <returns>The </returns>
-        </member>
-        <member name="T:Alis.Core.Physic.Collisions.Shapes.SegmentCollide">
-            <summary>
-                Returns code from TestSegment
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.SegmentCollide.StartInsideCollide">
-            <summary>
-                The start inside collide segment collide
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.SegmentCollide.MissCollide">
-            <summary>
-                The miss collide segment collide
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.SegmentCollide.HitCollide">
-            <summary>
-                The hit collide segment collide
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Collisions.Shapes.Shape">
+        <member name="T:Alis.Core.Physic.Collisions.Shape.IShape">
             <summary>
                 A shape is used for collision detection. You can create a shape however you like.
                 Shapes used for simulation in World are created automatically when a Fixture is created.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.Shape.Radius">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.GetRadius">
             <summary>
-                The radius
+            Return the radius of the shape.
             </summary>
+            <returns></returns>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.Shape.Type">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.GetShapeType">
             <summary>
-                The unknown shape
+            Return the type of the shape. You can use this to down cast to the concrete shape.
             </summary>
+            <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shapes.Shape" /> class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.Dispose">
-            <summary>
-                Disposes this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
             <summary>
                 Test a point for containment in this shape. This only works for convex shapes.
             </summary>
@@ -1632,7 +1537,7 @@
             <param name="p">A point in world coordinates.</param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
             <summary>
                 Perform a ray cast against this shape.
             </summary>
@@ -1648,14 +1553,14 @@
             <param name="segment">Defines the begin and end point of the ray cast.</param>
             <param name="maxLambda">A number typically in the range [0,1].</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
             <summary>
                 Given a transform, compute the associated axis aligned bounding box for this shape.
             </summary>
             <param name="aabb">Returns the axis aligned box.</param>
             <param name="xf">The world transform of the shape.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.ComputeMass(Alis.Core.Physic.Collisions.Shapes.MassData@,System.Single)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.ComputeMass(Alis.Core.Physic.Collisions.MassData@,System.Single)">
             <summary>
                 Compute the mass properties of this shape using its dimensions and density.
                 The inertia tensor is computed about the local origin, not the centroid.
@@ -1663,7 +1568,7 @@
             <param name="massData">Returns the mass data for this shape</param>
             <param name="density"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
             <summary>
                 Compute the volume and centroid of this shape intersected with a half plane.
             </summary>
@@ -1673,60 +1578,223 @@
             <param name="c">Returns the centroid.</param>
             <returns>The total volume less than offset along normal.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
             <summary>
                 Compute the sweep radius. This is used for conservative advancement (continuous collision detection).
             </summary>
             <param name="pivot">Pivot is the pivot point for rotation.</param>
             <returns>The distance of the furthest point from the pivot.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.GetVertex(System.Int32)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.GetVertex(System.Int32)">
             <summary>
                 Gets the vertex using the specified index
             </summary>
             <param name="index">The index</param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.GetSupport(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.GetSupport(Alis.Aspect.Math.Vector2)">
             <summary>
                 Gets the support using the specified d
             </summary>
             <param name="d">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shapes.Shape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
             <summary>
                 Gets the support vertex using the specified d
             </summary>
             <param name="d">The </param>
             <returns>The vec</returns>
         </member>
-        <member name="T:Alis.Core.Physic.Collisions.Shapes.ShapeType">
+        <member name="T:Alis.Core.Physic.Collisions.Shape.PolygonShape">
+            <summary>
+                A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.Radius">
+            <summary>
+                The radius
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.ShapeType">
+            <summary>
+                The unknown shape
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shape.PolygonShape" /> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.Centroid">
+            <summary>
+                The centroid
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.Normals">
+            <summary>
+                The max polygon vertices
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.VertexCount">
+            <summary>
+                Gets the value of the vertex count
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.Vertices">
+            <summary>
+                Gets the value of the vertices
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.Set(Alis.Aspect.Math.Vector2[],System.Int32)">
+            <summary>
+                Copy vertices. This assumes the vertices define a convex polygon.
+                It is assumed that the exterior is the the right of each edge.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsBox(System.Single,System.Single)">
+            <summary>
+                Build vertices to represent an axis-aligned box.
+            </summary>
+            <param name="hx">The half-width</param>
+            <param name="hy">The half-height.</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsBox(System.Single,System.Single,Alis.Aspect.Math.Vector2,System.Single)">
+            <summary>
+                Build vertices to represent an oriented box.
+            </summary>
+            <param name="hx">The half-width</param>
+            <param name="hy">The half-height.</param>
+            <param name="center">The center of the box in local coordinates.</param>
+            <param name="angle">The rotation of the box in local coordinates.</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsEdge(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+            <summary>
+                Sets the as edge using the specified v 1
+            </summary>
+            <param name="v1">The </param>
+            <param name="v2">The </param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.GetRadius">
+            <summary>
+            return the radius of the polygon
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.GetShapeType">
+            <summary>
+            return the shape type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.TestPoint(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
+            <summary>
+                Describes whether this instance test point
+            </summary>
+            <param name="xf">The xf</param>
+            <param name="p">The </param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.TestSegment(Alis.Aspect.Math.XForm,System.Single@,Alis.Aspect.Math.Vector2@,Alis.Core.Physic.Collisions.Segment,System.Single)">
+            <summary>
+                Tests the segment using the specified xf
+            </summary>
+            <param name="xf">The xf</param>
+            <param name="lambda">The lambda</param>
+            <param name="normal">The normal</param>
+            <param name="segment">The segment</param>
+            <param name="maxLambda">The max lambda</param>
+            <returns>The segment collide</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.ComputeAabb(Alis.Core.Physic.Collisions.Aabb@,Alis.Aspect.Math.XForm)">
+            <summary>
+                Computes the aabb using the specified aabb
+            </summary>
+            <param name="aabb">The aabb</param>
+            <param name="xf">The xf</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.ComputeMass(Alis.Core.Physic.Collisions.MassData@,System.Single)">
+            <summary>
+                Computes the mass using the specified mass data
+            </summary>
+            <param name="massData">The mass data</param>
+            <param name="denstity">The denstity</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.ComputeSubmergedArea(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2@)">
+            <summary>
+                Computes the submerged area using the specified normal
+            </summary>
+            <param name="normal">The normal</param>
+            <param name="offset">The offset</param>
+            <param name="xf">The xf</param>
+            <param name="c">The </param>
+            <returns>The area</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.ComputeSweepRadius(Alis.Aspect.Math.Vector2)">
+            <summary>
+                Computes the sweep radius using the specified pivot
+            </summary>
+            <param name="pivot">The pivot</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.GetSupport(Alis.Aspect.Math.Vector2)">
+            <summary>
+                Get the supporting vertex index in the given direction.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.GetSupportVertex(Alis.Aspect.Math.Vector2)">
+            <summary>
+                Gets the support vertex using the specified d
+            </summary>
+            <param name="d">The </param>
+            <returns>The vec</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.GetVertex(System.Int32)">
+            <summary>
+                Gets the vertex using the specified index
+            </summary>
+            <param name="index">The index</param>
+            <returns>The vec</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.ComputeCentroid(Alis.Aspect.Math.Vector2[],System.Int32)">
+            <summary>
+                Computes the centroid using the specified vs
+            </summary>
+            <param name="vs">The vs</param>
+            <param name="count">The count</param>
+            <returns>The </returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.Dispose">
+            <summary>
+            dispose 
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Collisions.Shape.ShapeType">
             <summary>
                 The various collision shape types supported by Box2D.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.ShapeType.UnknownShape">
+        <member name="F:Alis.Core.Physic.Collisions.Shape.ShapeType.UnknownShape">
             <summary>
                 The unknown shape shape type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.ShapeType.CircleShape">
+        <member name="F:Alis.Core.Physic.Collisions.Shape.ShapeType.CircleShape">
             <summary>
                 The circle shape shape type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.ShapeType.PolygonShape">
+        <member name="F:Alis.Core.Physic.Collisions.Shape.ShapeType.PolygonShape">
             <summary>
                 The polygon shape shape type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.ShapeType.EdgeShape">
+        <member name="F:Alis.Core.Physic.Collisions.Shape.ShapeType.EdgeShape">
             <summary>
                 The edge shape shape type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.Shapes.ShapeType.ShapeTypeCount">
+        <member name="F:Alis.Core.Physic.Collisions.Shape.ShapeType.ShapeTypeCount">
             <summary>
                 The shape type count shape type
             </summary>
@@ -1756,7 +1824,7 @@
                 The count
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Simplex.ReadCache(Alis.Core.Physic.Collisions.SimplexCache*,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Collisions.Simplex.ReadCache(Alis.Core.Physic.Collisions.SimplexCache*,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Reads the cache using the specified cache
             </summary>
@@ -2100,7 +2168,7 @@
             </summary>
             <param name="fixture">The fixture to be removed.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.SetMass(Alis.Core.Physic.Collisions.Shapes.MassData)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.SetMass(Alis.Core.Physic.Collisions.MassData)">
             <summary>
                 Set the mass properties. Note that this changes the center of mass position.
                 If you are not sure how to compute mass properties, use SetMassFromShapes.
@@ -2733,7 +2801,7 @@
             <param name="fixtureA">The fixture</param>
             <param name="fixtureB">The fixture</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.CircleContact.CollideCircles(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.CircleContact.CollideCircles(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the circles using the specified manifold
             </summary>
@@ -2885,7 +2953,7 @@
                 The shape type count
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.AddType(Alis.Core.Physic.Dynamics.Contacts.ContactCreateFcn,Alis.Core.Physic.Dynamics.Contacts.ContactDestroyFcn,Alis.Core.Physic.Collisions.Shapes.ShapeType,Alis.Core.Physic.Collisions.Shapes.ShapeType)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.AddType(Alis.Core.Physic.Dynamics.Contacts.ContactCreateFcn,Alis.Core.Physic.Dynamics.Contacts.ContactDestroyFcn,Alis.Core.Physic.Collisions.Shape.ShapeType,Alis.Core.Physic.Collisions.Shape.ShapeType)">
             <summary>
                 Adds the type using the specified create fcn
             </summary>
@@ -3206,7 +3274,7 @@
             <param name="fixtureA">The fixture</param>
             <param name="fixtureB">The fixture</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.EdgeAndCircleContact.CollideEdgeAndCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.EdgeAndCircleContact.CollideEdgeAndCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the edge and circle using the specified manifold
             </summary>
@@ -3241,7 +3309,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Contacts.NullContact" /> class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.NullContact.Collide(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.NullContact.Collide(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the manifold
             </summary>
@@ -3264,7 +3332,7 @@
             <param name="fixtureA">The fixture</param>
             <param name="fixtureB">The fixture</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.PolyAndCircleContact.CollidePolygonCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.PolyAndCircleContact.CollidePolygonCircle(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the polygon circle using the specified manifold
             </summary>
@@ -3301,7 +3369,7 @@
             <param name="fixtureA">The fixture</param>
             <param name="fixtureB">The fixture</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.PolyAndEdgeContact.CollidePolyAndEdgeContact(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.PolyAndEdgeContact.CollidePolyAndEdgeContact(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the poly and edge contact using the specified manifold
             </summary>
@@ -3338,7 +3406,7 @@
             <param name="fixtureA">The fixture</param>
             <param name="fixtureB">The fixture</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Contacts.PolygonContact.CollidePolygons(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shapes.Shape,Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Dynamics.Contacts.PolygonContact.CollidePolygons(Alis.Core.Physic.Collisions.Manifold@,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm,Alis.Core.Physic.Collisions.Shape.IShape,Alis.Aspect.Math.XForm)">
             <summary>
                 Collides the polygons using the specified manifold
             </summary>
@@ -3803,7 +3871,7 @@
                 existing contacts/non-contacts.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Fixture.fixtureDef">
+        <member name="F:Alis.Core.Physic.Dynamics.Fixture.FixtureDef">
             <summary>
                 fixture
             </summary>
@@ -3896,7 +3964,7 @@
                 Disposes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Fixture.ComputeMass(Alis.Core.Physic.Collisions.Shapes.MassData@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Fixture.ComputeMass(Alis.Core.Physic.Collisions.MassData@)">
             <summary>
                 Compute the mass properties of this shape using its dimensions and density.
                 The inertia tensor is computed about the local origin, not the centroid.

@@ -53,20 +53,20 @@ namespace Alis.Core.Input
             switch (id)
             {
                 case 0x0000: return new Usage(this, id, "Undefined", UsageTypes.None);
-                case 0x0001: return new Usage(this, id, "Baseball Bat", UsageTypes.CA);
-                case 0x0002: return new Usage(this, id, "Golf Club", UsageTypes.CA);
-                case 0x0003: return new Usage(this, id, "Rowing Machine", UsageTypes.CA);
-                case 0x0004: return new Usage(this, id, "Treadmill", UsageTypes.CA);
-                case 0x0030: return new Usage(this, id, "Oar", UsageTypes.DV);
-                case 0x0031: return new Usage(this, id, "Slope", UsageTypes.DV);
-                case 0x0032: return new Usage(this, id, "Rate", UsageTypes.DV);
-                case 0x0033: return new Usage(this, id, "Stick Speed", UsageTypes.DV);
-                case 0x0034: return new Usage(this, id, "Stick Face Angle", UsageTypes.DV);
-                case 0x0035: return new Usage(this, id, "Stick Heel/Toe", UsageTypes.DV);
-                case 0x0036: return new Usage(this, id, "Stick Follow Through", UsageTypes.DV);
-                case 0x0037: return new Usage(this, id, "Stick Tempo", UsageTypes.DV);
+                case 0x0001: return new Usage(this, id, "Baseball Bat", UsageTypes.Ca);
+                case 0x0002: return new Usage(this, id, "Golf Club", UsageTypes.Ca);
+                case 0x0003: return new Usage(this, id, "Rowing Machine", UsageTypes.Ca);
+                case 0x0004: return new Usage(this, id, "Treadmill", UsageTypes.Ca);
+                case 0x0030: return new Usage(this, id, "Oar", UsageTypes.Dv);
+                case 0x0031: return new Usage(this, id, "Slope", UsageTypes.Dv);
+                case 0x0032: return new Usage(this, id, "Rate", UsageTypes.Dv);
+                case 0x0033: return new Usage(this, id, "Stick Speed", UsageTypes.Dv);
+                case 0x0034: return new Usage(this, id, "Stick Face Angle", UsageTypes.Dv);
+                case 0x0035: return new Usage(this, id, "Stick Heel/Toe", UsageTypes.Dv);
+                case 0x0036: return new Usage(this, id, "Stick Follow Through", UsageTypes.Dv);
+                case 0x0037: return new Usage(this, id, "Stick Tempo", UsageTypes.Dv);
                 case 0x0038: return new Usage(this, id, "Stick Type", UsageTypes.NAry);
-                case 0x0039: return new Usage(this, id, "Stick Height", UsageTypes.DV);
+                case 0x0039: return new Usage(this, id, "Stick Height", UsageTypes.Dv);
                 case 0x0050: return new Usage(this, id, "Putter", UsageTypes.Sel);
                 case 0x0051: return new Usage(this, id, "1 Iron", UsageTypes.Sel);
                 case 0x0052: return new Usage(this, id, "2 Iron", UsageTypes.Sel);

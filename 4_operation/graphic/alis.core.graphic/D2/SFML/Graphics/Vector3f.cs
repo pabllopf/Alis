@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector3f : IEquatable<Vector3f>
+    public struct Vector3F : IEquatable<Vector3F>
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="y">Y coordinate</param>
         /// <param name="z">Z coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vector3f(float x, float y, float z)
+        public Vector3F(float x, float y, float z)
         {
             X = x;
             Y = y;
@@ -63,7 +63,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v">Vector to negate</param>
         /// <returns>-v</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f operator -(Vector3f v) => new Vector3f(-v.X, -v.Y, -v.Z);
+        public static Vector3F operator -(Vector3F v) => new Vector3F(-v.X, -v.Y, -v.Z);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 - v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f operator -(Vector3f v1, Vector3f v2) => new Vector3f(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+        public static Vector3F operator -(Vector3F v1, Vector3F v2) => new Vector3F(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 + v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f operator +(Vector3f v1, Vector3f v2) => new Vector3f(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+        public static Vector3F operator +(Vector3F v1, Vector3F v2) => new Vector3F(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="x">Scalar value</param>
         /// <returns>v * x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f operator *(Vector3f v, float x) => new Vector3f(v.X * x, v.Y * x, v.Z * x);
+        public static Vector3F operator *(Vector3F v, float x) => new Vector3F(v.X * x, v.Y * x, v.Z * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v">Vector</param>
         /// <returns>x * v</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f operator *(float x, Vector3f v) => new Vector3f(v.X * x, v.Y * x, v.Z * x);
+        public static Vector3F operator *(float x, Vector3F v) => new Vector3F(v.X * x, v.Y * x, v.Z * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="x">Scalar value</param>
         /// <returns>v / x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3f operator /(Vector3f v, float x) => new Vector3f(v.X / x, v.Y / x, v.Z / x);
+        public static Vector3F operator /(Vector3F v, float x) => new Vector3F(v.X / x, v.Y / x, v.Z / x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 == v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(Vector3f v1, Vector3f v2) => v1.Equals(v2);
+        public static bool operator ==(Vector3F v1, Vector3F v2) => v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -133,7 +133,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="v2">Second vector</param>
         /// <returns>v1 != v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(Vector3f v1, Vector3f v2) => !v1.Equals(v2);
+        public static bool operator !=(Vector3F v1, Vector3F v2) => !v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -150,7 +150,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="obj">Object to check</param>
         /// <returns>Object and vector are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is Vector3f && Equals((Vector3f) obj);
+        public override bool Equals(object obj) => obj is Vector3F && Equals((Vector3F) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -159,7 +159,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="other">Vector to check</param>
         /// <returns>Vectors are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Vector3f other) => (X == other.X) && (Y == other.Y) && (Z == other.Z);
+        public bool Equals(Vector3F other) => (X == other.X) && (Y == other.Y) && (Z == other.Z);
 
         ////////////////////////////////////////////////////////////
         /// <summary>

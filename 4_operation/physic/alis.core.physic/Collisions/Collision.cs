@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Collisions.Shapes;
+using Alis.Core.Physic.Collisions.Shape;
 
 namespace Alis.Core.Physic.Collisions
 {
@@ -202,7 +202,7 @@ namespace Alis.Core.Physic.Collisions
 
             Vector2 d = p2 - p1;
             float distSqr = Vector2.Dot(d, d);
-            float radius = circle1.Radius + circle2.Radius;
+            float radius = circle1.GetRadius() + circle2.GetRadius();
             if (distSqr > radius * radius)
             {
                 return;
@@ -237,7 +237,7 @@ namespace Alis.Core.Physic.Collisions
             // Find the min separating edge.
             int normalIndex = 0;
             float separation = -Settings.FltMax;
-            float radius = polygon.Radius + circle.Radius;
+            float radius = polygon.GetRadius() + circle.GetRadius();
             int vertexCount = polygon.VertexCount;
             Vector2[] vertices = polygon.Vertices;
             Vector2[] normals = polygon.Normals;
@@ -344,7 +344,7 @@ namespace Alis.Core.Physic.Collisions
             Vector2 normal = edge.NormalVector;
             Vector2 v1 = edge.Vertex1;
             Vector2 v2 = edge.Vertex2;
-            float radius = edge.Radius + circle.Radius;
+            float radius = edge.GetRadius() + circle.GetRadius();
 
             // Barycentric coordinates
             float u1 = Vector2.Dot(cLocal - v1, v2 - v1);
@@ -614,7 +614,7 @@ namespace Alis.Core.Physic.Collisions
             PolygonShape polyA, XForm xfA, PolygonShape polyB, XForm xfB)
         {
             manifold.PointCount = 0;
-            float totalRadius = polyA.Radius + polyB.Radius;
+            float totalRadius = polyA.GetRadius() + polyB.GetRadius();
 
             int edgeA = 0;
             float separationA = FindMaxSeparation(ref edgeA, polyA, xfA, polyB, xfB);
@@ -734,7 +734,7 @@ namespace Alis.Core.Physic.Collisions
         ///     On the first call set SimplexCache.Count to zero.
         /// </summary>
         public static unsafe void Distance(out DistanceOutput output, ref SimplexCache cache, ref DistanceInput input,
-            Shape shapeA, Shape shapeB)
+            IShape shapeA, IShape shapeB)
         {
             output = new DistanceOutput();
 
@@ -873,8 +873,8 @@ namespace Alis.Core.Physic.Collisions
             // Apply radii if requested.
             if (input.UseRadii)
             {
-                float rA = shapeA.Radius;
-                float rB = shapeB.Radius;
+                float rA = shapeA.GetRadius();
+                float rB = shapeB.GetRadius();
 
                 if ((output.Distance > rA + rB) && (output.Distance > Settings.FltEpsilon))
                 {
@@ -910,7 +910,7 @@ namespace Alis.Core.Physic.Collisions
         ///     The fraction between [0,1] in which the shapes first touch.
         ///     fraction=0 means the shapes begin touching/overlapped, and fraction=1 means the shapes don't touch.
         /// </returns>
-        public static float TimeOfImpact(ToiInput input, Shape shapeA, Shape shapeB)
+        public static float TimeOfImpact(ToiInput input, IShape shapeA, IShape shapeB)
         {
             Sweep sweepA = input.SweepA;
             Sweep sweepB = input.SweepB;
@@ -918,7 +918,7 @@ namespace Alis.Core.Physic.Collisions
             Box2DxDebug.Assert(sweepA.T0 == sweepB.T0);
             Box2DxDebug.Assert(1.0f - sweepA.T0 > Settings.FltEpsilon);
 
-            float radius = shapeA.Radius + shapeB.Radius;
+            float radius = shapeA.GetRadius() + shapeB.GetRadius();
             float tolerance = input.Tolerance;
 
             float alpha = 0.0f;

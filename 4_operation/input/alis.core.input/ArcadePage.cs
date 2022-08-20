@@ -47,7 +47,7 @@ namespace Alis.Core.Input
         ///     General Purpose IO Card Usage.
         /// </summary>
         [Description("General Purpose IO Card")]
-        GeneralPurposeIOCard = 0x00910001,
+        GeneralPurposeIoCard = 0x00910001,
 
         /// <summary>
         ///     Coin Door Usage.
@@ -152,12 +152,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     I/O Direction Mapping Usage.
         /// </summary>
-        [Description("I/O Direction Mapping")] IODirectionMapping = 0x00910047,
+        [Description("I/O Direction Mapping")] IoDirectionMapping = 0x00910047,
 
         /// <summary>
         ///     Set I/O Direction Usage.
         /// </summary>
-        [Description("Set I/O Direction")] SetIODirection = 0x00910048,
+        [Description("Set I/O Direction")] SetIoDirection = 0x00910048,
 
         /// <summary>
         ///     Extended Optical Input State Usage.

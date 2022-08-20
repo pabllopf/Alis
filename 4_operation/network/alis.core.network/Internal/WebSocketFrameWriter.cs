@@ -46,13 +46,13 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     Initializes a new instance of the <see cref="WebSocketFrameWriter" /> class
         /// </summary>
-        static WebSocketFrameWriter() => _random = new Random((int) DateTime.Now.Ticks);
+        static WebSocketFrameWriter() => Random = new Random((int) DateTime.Now.Ticks);
 
         /// <summary>
         ///     This is used for data masking so that web proxies don't cache the data
         ///     Therefore, there are no cryptographic concerns
         /// </summary>
-        private static readonly Random _random;
+        private static readonly Random Random;
 
         /// <summary>
         ///     No async await stuff here because we are dealing with a memory stream
@@ -96,7 +96,7 @@ namespace Alis.Core.Network.Internal
             if (isClient)
             {
                 byte[] maskKey = new byte[WebSocketFrameCommon.MaskKeyLength];
-                _random.NextBytes(maskKey);
+                Random.NextBytes(maskKey);
                 memoryStream.Write(maskKey, 0, maskKey.Length);
 
                 // mask the payload

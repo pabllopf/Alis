@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     /// <summary>
     ///     The csfml class
     /// </summary>
-    public static class CSFML
+    public static class Csfml
     {
 #if WIN
         /// <summary>
@@ -79,22 +79,22 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "./runtimes/osx.11.0-arm64/native/libcsfml-audio.dylib";
+        public const string Audio = "./runtimes/osx.11.0-arm64/native/libcsfml-audio.dylib";
 
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string graphics = "./runtimes/osx.11.0-arm64/native/libcsfml-graphics.dylib";
+        public const string Graphics = "./runtimes/osx.11.0-arm64/native/libcsfml-graphics.dylib";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "./runtimes/osx.11.0-arm64/native/libcsfml-system.dylib";
+        public const string System = "./runtimes/osx.11.0-arm64/native/libcsfml-system.dylib";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string window = "./runtimes/osx.11.0-arm64/native/libcsfml-window.dylib";
+        public const string Window = "./runtimes/osx.11.0-arm64/native/libcsfml-window.dylib";
 #elif OSX64
         /// <summary>
         ///     The audio

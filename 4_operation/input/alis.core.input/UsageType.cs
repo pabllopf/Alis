@@ -53,7 +53,7 @@ namespace Alis.Core.Input
             UsageTypeGroup = usageTypeGroup;
             Name = name;
             Description = description;
-            s_usageTypes[usageTypes] = new[] {this};
+            SUsageTypes[usageTypes] = new[] {this};
         }
 
         /// <summary>
@@ -84,36 +84,36 @@ namespace Alis.Core.Input
         ///     The usage type
         /// </summary>
         private static readonly ConcurrentDictionary<UsageTypes, IReadOnlyCollection<UsageType>>
-            s_usageTypes = new ConcurrentDictionary<UsageTypes, IReadOnlyCollection<UsageType>>();
+            SUsageTypes = new ConcurrentDictionary<UsageTypes, IReadOnlyCollection<UsageType>>();
 
         /// <summary>
         ///     The Linear Control usage type.
         /// </summary>
-        public static readonly UsageType LC = new UsageType(UsageTypes.LC, UsageTypeGroup.Controls, "LC",
+        public static readonly UsageType Lc = new UsageType(UsageTypes.Lc, UsageTypeGroup.Controls, "LC",
             "Linear Control");
 
         /// <summary>
         ///     The On/Off Control usage type.
         /// </summary>
-        public static readonly UsageType OOC = new UsageType(UsageTypes.OOC, UsageTypeGroup.Controls, "OOC",
+        public static readonly UsageType Ooc = new UsageType(UsageTypes.Ooc, UsageTypeGroup.Controls, "OOC",
             "On/Off Control");
 
         /// <summary>
         ///     The Momentary Control usage type.
         /// </summary>
-        public static readonly UsageType MC = new UsageType(UsageTypes.MC, UsageTypeGroup.Controls, "MC",
+        public static readonly UsageType Mc = new UsageType(UsageTypes.Mc, UsageTypeGroup.Controls, "MC",
             "Momentary Control");
 
         /// <summary>
         ///     The One Shot Control usage type.
         /// </summary>
-        public static readonly UsageType OSC = new UsageType(UsageTypes.OSC, UsageTypeGroup.Controls, "OSC",
+        public static readonly UsageType Osc = new UsageType(UsageTypes.Osc, UsageTypeGroup.Controls, "OSC",
             "One Shot Control");
 
         /// <summary>
         ///     The Re-trigger Control usage type.
         /// </summary>
-        public static readonly UsageType RTC = new UsageType(UsageTypes.RTC, UsageTypeGroup.Controls, "RTC",
+        public static readonly UsageType Rtc = new UsageType(UsageTypes.Rtc, UsageTypeGroup.Controls, "RTC",
             "Re-trigger Control");
 
         /// <summary>
@@ -124,22 +124,22 @@ namespace Alis.Core.Input
         /// <summary>
         ///     The Static Value usage type.
         /// </summary>
-        public static readonly UsageType SV = new UsageType(UsageTypes.SV, UsageTypeGroup.Data, "SV", "Static Value");
+        public static readonly UsageType Sv = new UsageType(UsageTypes.Sv, UsageTypeGroup.Data, "SV", "Static Value");
 
         /// <summary>
         ///     The Static Flag usage type.
         /// </summary>
-        public static readonly UsageType SF = new UsageType(UsageTypes.SF, UsageTypeGroup.Data, "SF", "Static Flag");
+        public static readonly UsageType Sf = new UsageType(UsageTypes.Sf, UsageTypeGroup.Data, "SF", "Static Flag");
 
         /// <summary>
         ///     The Dynamic Value usage type.
         /// </summary>
-        public static readonly UsageType DV = new UsageType(UsageTypes.DV, UsageTypeGroup.Data, "DV", "Dynamic Value");
+        public static readonly UsageType Dv = new UsageType(UsageTypes.Dv, UsageTypeGroup.Data, "DV", "Dynamic Value");
 
         /// <summary>
         ///     The Dynamic Flag usage type.
         /// </summary>
-        public static readonly UsageType DF = new UsageType(UsageTypes.DF, UsageTypeGroup.Data, "DF", "Dynamic Flag");
+        public static readonly UsageType Df = new UsageType(UsageTypes.Df, UsageTypeGroup.Data, "DF", "Dynamic Flag");
 
         /// <summary>
         ///     The Named Array usage type.
@@ -150,31 +150,31 @@ namespace Alis.Core.Input
         /// <summary>
         ///     The Application Collection usage type.
         /// </summary>
-        public static readonly UsageType CA = new UsageType(UsageTypes.CA, UsageTypeGroup.Collections, "CA",
+        public static readonly UsageType Ca = new UsageType(UsageTypes.Ca, UsageTypeGroup.Collections, "CA",
             "Application Collection");
 
         /// <summary>
         ///     The Logical Collection usage type.
         /// </summary>
-        public static readonly UsageType CL = new UsageType(UsageTypes.CL, UsageTypeGroup.Collections, "CL",
+        public static readonly UsageType Cl = new UsageType(UsageTypes.Cl, UsageTypeGroup.Collections, "CL",
             "Logical Collection");
 
         /// <summary>
         ///     The Physical Collection usage type.
         /// </summary>
-        public static readonly UsageType CP = new UsageType(UsageTypes.CP, UsageTypeGroup.Collections, "CP",
+        public static readonly UsageType Cp = new UsageType(UsageTypes.Cp, UsageTypeGroup.Collections, "CP",
             "Physical Collection");
 
         /// <summary>
         ///     The Usage Switch usage type.
         /// </summary>
-        public static readonly UsageType US = new UsageType(UsageTypes.US, UsageTypeGroup.Controls, "US",
+        public static readonly UsageType Us = new UsageType(UsageTypes.Us, UsageTypeGroup.Controls, "US",
             "Usage Switch");
 
         /// <summary>
         ///     The Usage Modifier usage type.
         /// </summary>
-        public static readonly UsageType UM = new UsageType(UsageTypes.UM, UsageTypeGroup.Collections, "UM",
+        public static readonly UsageType Um = new UsageType(UsageTypes.Um, UsageTypeGroup.Collections, "UM",
             "Usage Modifier");
 
         /// <inheritdoc />
@@ -211,13 +211,13 @@ namespace Alis.Core.Input
         public static IReadOnlyCollection<UsageType> Get(UsageTypes usageTypes)
         {
             return usageTypes > UsageTypes.None
-                ? s_usageTypes.GetOrAdd(
+                ? SUsageTypes.GetOrAdd(
                     usageTypes,
                     u =>
                         Enum.GetValues(typeof(UsageTypes)).Cast<UsageTypes>()
                             .Where(flag => (flag != 0) && ((u & flag) != 0))
                             .Select(ut =>
-                                s_usageTypes.TryGetValue(ut, out IReadOnlyCollection<UsageType> usageType) ? usageType.SingleOrDefault() : null!)
+                                SUsageTypes.TryGetValue(ut, out IReadOnlyCollection<UsageType> usageType) ? usageType.SingleOrDefault() : null!)
                             .Where(ut => ut != null)
                             .ToArray())
                 : Array.Empty<UsageType>();

@@ -282,7 +282,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Location: GPS Usage.
         /// </summary>
-        [Description("Location: GPS")] LocationGPS = 0x00200053,
+        [Description("Location: GPS")] LocationGps = 0x00200053,
 
         /// <summary>
         ///     Location: Lookup Usage.
@@ -537,12 +537,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Scanner: RFID Usage.
         /// </summary>
-        [Description("Scanner: RFID")] ScannerRFID = 0x00200092,
+        [Description("Scanner: RFID")] ScannerRfid = 0x00200092,
 
         /// <summary>
         ///     Scanner: NFC Usage.
         /// </summary>
-        [Description("Scanner: NFC")] ScannerNFC = 0x00200093,
+        [Description("Scanner: NFC")] ScannerNfc = 0x00200093,
 
         /// <summary>
         ///     Time Usage.
@@ -758,7 +758,7 @@ namespace Alis.Core.Input
         ///     Property: Persistent Unique ID Usage.
         /// </summary>
         [Description("Property: Persistent Unique ID")]
-        PropertyPersistentUniqueID = 0x00200302,
+        PropertyPersistentUniqueId = 0x00200302,
 
         /// <summary>
         ///     Property: Sensor Status Usage.
@@ -897,7 +897,7 @@ namespace Alis.Core.Input
         ///     Property: Maximum FIFO Events Usage.
         /// </summary>
         [Description("Property: Maximum FIFO Events")]
-        PropertyMaximumFIFOEvents = 0x0020031a,
+        PropertyMaximumFifoEvents = 0x0020031a,
 
         /// <summary>
         ///     Property: Report Latency Usage.
@@ -909,7 +909,7 @@ namespace Alis.Core.Input
         ///     Property: Flush FIFO Events Usage.
         /// </summary>
         [Description("Property: Flush FIFO Events")]
-        PropertyFlushFIFOEvents = 0x0020031c,
+        PropertyFlushFifoEvents = 0x0020031c,
 
         /// <summary>
         ///     Property: Maximum Power Consumption Usage.
@@ -943,7 +943,7 @@ namespace Alis.Core.Input
         ///     Data Field: Differential Reference Station ID Usage.
         /// </summary>
         [Description("Data Field: Differential Reference Station ID")]
-        DataFieldDifferentialReferenceStationID = 0x00200403,
+        DataFieldDifferentialReferenceStationId = 0x00200403,
 
         /// <summary>
         ///     Data Field: Altitude Ellipsoid Error Usage.
@@ -973,7 +973,7 @@ namespace Alis.Core.Input
         ///     Data Field: Differential GPS Data Age Usage.
         /// </summary>
         [Description("Data Field: Differential GPS Data Age")]
-        DataFieldDifferentialGPSDataAge = 0x00200408,
+        DataFieldDifferentialGpsDataAge = 0x00200408,
 
         /// <summary>
         ///     Data Field: Error Radius Usage.
@@ -1002,19 +1002,19 @@ namespace Alis.Core.Input
         ///     Data Field: GPS Operation Mode Usage.
         /// </summary>
         [Description("Data Field: GPS Operation Mode")]
-        DataFieldGPSOperationMode = 0x0020040d,
+        DataFieldGpsOperationMode = 0x0020040d,
 
         /// <summary>
         ///     Data Field: GPS Selection Mode Usage.
         /// </summary>
         [Description("Data Field: GPS Selection Mode")]
-        DataFieldGPSSelectionMode = 0x0020040e,
+        DataFieldGpsSelectionMode = 0x0020040e,
 
         /// <summary>
         ///     Data Field: GPS Status Usage.
         /// </summary>
         [Description("Data Field: GPS Status")]
-        DataFieldGPSStatus = 0x0020040f,
+        DataFieldGpsStatus = 0x0020040f,
 
         /// <summary>
         ///     Data Field: Position Dilution of Precision Usage.
@@ -1095,13 +1095,13 @@ namespace Alis.Core.Input
         ///     Data Field: Satellites in View PRNs Usage.
         /// </summary>
         [Description("Data Field: Satellites in View PRNs")]
-        DataFieldSatellitesInViewPRNs = 0x0020041d,
+        DataFieldSatellitesInViewPrNs = 0x0020041d,
 
         /// <summary>
         ///     Data Field: Satellites in View S/N Ratios Usage.
         /// </summary>
         [Description("Data Field: Satellites in View S/N Ratios")]
-        DataFieldSatellitesInViewSNRatios = 0x0020041e,
+        DataFieldSatellitesInViewSnRatios = 0x0020041e,
 
         /// <summary>
         ///     Data Field: Satellites Used Count Usage.
@@ -1113,13 +1113,13 @@ namespace Alis.Core.Input
         ///     Data Field: Satellites Used PRNs Usage.
         /// </summary>
         [Description("Data Field: Satellites Used PRNs")]
-        DataFieldSatellitesUsedPRNs = 0x00200420,
+        DataFieldSatellitesUsedPrNs = 0x00200420,
 
         /// <summary>
         ///     Data Field: NMEA Sentence Usage.
         /// </summary>
         [Description("Data Field: NMEA Sentence")]
-        DataFieldNMEASentence = 0x00200421,
+        DataFieldNmeaSentence = 0x00200421,
 
         /// <summary>
         ///     Data Field: Address Line 1 Usage.
@@ -1148,7 +1148,7 @@ namespace Alis.Core.Input
         ///     Data Field: Country or Region (ISO 3166) Usage.
         /// </summary>
         [Description("Data Field: Country or Region (ISO 3166)")]
-        DataFieldCountryOrRegionISO3166 = 0x00200426,
+        DataFieldCountryOrRegionIso3166 = 0x00200426,
 
         /// <summary>
         ///     Data Field: Postal Code Usage.
@@ -1208,7 +1208,7 @@ namespace Alis.Core.Input
         ///     Data Field: Equivalent CO2 Usage.
         /// </summary>
         [Description("Data Field: Equivalent CO2")]
-        DataFieldEquivalentCO2 = 0x00200438,
+        DataFieldEquivalentCo2 = 0x00200438,
 
         /// <summary>
         ///     Data Field: Volatile Organic Compound Concentration Usage.
@@ -1619,13 +1619,13 @@ namespace Alis.Core.Input
         ///     Data Field: Heart Rate (HeartbeatsPM) Usage.
         /// </summary>
         [Description("Data Field: Heart Rate (HeartbeatsPM)")]
-        DataFieldHeartRateHeartbeatsPM = 0x002004b8,
+        DataFieldHeartRateHeartbeatsPm = 0x002004b8,
 
         /// <summary>
         ///     Data Field: Resting Heart Rate (HeartbeatsPM) Usage.
         /// </summary>
         [Description("Data Field: Resting Heart Rate (HeartbeatsPM)")]
-        DataFieldRestingHeartRateHeartbeatsPM = 0x002004b9,
+        DataFieldRestingHeartRateHeartbeatsPm = 0x002004b9,
 
         /// <summary>
         ///     Data Field: Heartbeat Interval Usage.
@@ -1690,7 +1690,7 @@ namespace Alis.Core.Input
         ///     Data Field: Consumer IR Sentence Receive Usage.
         /// </summary>
         [Description("Data Field: Consumer IR Sentence Receive")]
-        DataFieldConsumerIRSentenceReceive = 0x002004d6,
+        DataFieldConsumerIrSentenceReceive = 0x002004d6,
 
         /// <summary>
         ///     Data Field: Infrared Light Usage.
@@ -1748,7 +1748,7 @@ namespace Alis.Core.Input
         ///     Property: Consumer IR Sentence Send Usage.
         /// </summary>
         [Description("Property: Consumer IR Sentence Send")]
-        PropertyConsumerIRSentenceSend = 0x002004e1,
+        PropertyConsumerIrSentenceSend = 0x002004e1,
 
         /// <summary>
         ///     Property: Auto Brightness Preferred Usage.
@@ -1771,13 +1771,13 @@ namespace Alis.Core.Input
         ///     Data Field: RFID Tag 40 Bit Usage.
         /// </summary>
         [Description("Data Field: RFID Tag 40 Bit")]
-        DataFieldRFIDTag40Bit = 0x002004f1,
+        DataFieldRfidTag40Bit = 0x002004f1,
 
         /// <summary>
         ///     Data Field: NFC Sentence Receive Usage.
         /// </summary>
         [Description("Data Field: NFC Sentence Receive")]
-        DataFieldNFCSentenceReceive = 0x002004f2,
+        DataFieldNfcSentenceReceive = 0x002004f2,
 
         /// <summary>
         ///     Property: Scanner Usage.
@@ -1788,7 +1788,7 @@ namespace Alis.Core.Input
         ///     Property: NFC Sentence Send Usage.
         /// </summary>
         [Description("Property: NFC Sentence Send")]
-        PropertyNFCSentenceSend = 0x002004f9,
+        PropertyNfcSentenceSend = 0x002004f9,
 
         /// <summary>
         ///     Data Field: Electrical Usage.
@@ -1914,7 +1914,7 @@ namespace Alis.Core.Input
         ///     Property: Time Zone Offset from UTC Usage.
         /// </summary>
         [Description("Property: Time Zone Offset from UTC")]
-        PropertyTimeZoneOffsetFromUTC = 0x00200531,
+        PropertyTimeZoneOffsetFromUtc = 0x00200531,
 
         /// <summary>
         ///     Property: Time Zone Name Usage.
@@ -2072,37 +2072,37 @@ namespace Alis.Core.Input
         ///     Data Field: Generic GUID or PROPERTYKEY Usage.
         /// </summary>
         [Description("Data Field: Generic GUID or PROPERTYKEY")]
-        DataFieldGenericGUIDOrPROPERTYKEY = 0x00200561,
+        DataFieldGenericGuidOrPropertykey = 0x00200561,
 
         /// <summary>
         ///     Data Field: Generic Category GUID Usage.
         /// </summary>
         [Description("Data Field: Generic Category GUID")]
-        DataFieldGenericCategoryGUID = 0x00200562,
+        DataFieldGenericCategoryGuid = 0x00200562,
 
         /// <summary>
         ///     Data Field: Generic Type GUID Usage.
         /// </summary>
         [Description("Data Field: Generic Type GUID")]
-        DataFieldGenericTypeGUID = 0x00200563,
+        DataFieldGenericTypeGuid = 0x00200563,
 
         /// <summary>
         ///     Data Field: Generic Event PROPERTYKEY Usage.
         /// </summary>
         [Description("Data Field: Generic Event PROPERTYKEY")]
-        DataFieldGenericEventPROPERTYKEY = 0x00200564,
+        DataFieldGenericEventPropertykey = 0x00200564,
 
         /// <summary>
         ///     Data Field: Generic Property PROPERTYKEY Usage.
         /// </summary>
         [Description("Data Field: Generic Property PROPERTYKEY")]
-        DataFieldGenericPropertyPROPERTYKEY = 0x00200565,
+        DataFieldGenericPropertyPropertykey = 0x00200565,
 
         /// <summary>
         ///     Data Field: Generic Data Field PROPERTYKEY Usage.
         /// </summary>
         [Description("Data Field: Generic Data Field PROPERTYKEY")]
-        DataFieldGenericDataFieldPROPERTYKEY = 0x00200566,
+        DataFieldGenericDataFieldPropertykey = 0x00200566,
 
         /// <summary>
         ///     Data Field: Generic Event Usage.
@@ -2138,31 +2138,31 @@ namespace Alis.Core.Input
         ///     Data Field: Generic GUID or PROPERTYKEY kind Usage.
         /// </summary>
         [Description("Data Field: Generic GUID or PROPERTYKEY kind")]
-        DataFieldGenericGUIDOrPROPERTYKEYKind = 0x0020056c,
+        DataFieldGenericGuidOrPropertykeyKind = 0x0020056c,
 
         /// <summary>
         ///     Data Field: Generic GUID Usage.
         /// </summary>
         [Description("Data Field: Generic GUID")]
-        DataFieldGenericGUID = 0x0020056d,
+        DataFieldGenericGuid = 0x0020056d,
 
         /// <summary>
         ///     Data Field: Generic PROPERTYKEY Usage.
         /// </summary>
         [Description("Data Field: Generic PROPERTYKEY")]
-        DataFieldGenericPROPERTYKEY = 0x0020056e,
+        DataFieldGenericPropertykey = 0x0020056e,
 
         /// <summary>
         ///     Data Field: Generic Top Level Collection ID Usage.
         /// </summary>
         [Description("Data Field: Generic Top Level Collection ID")]
-        DataFieldGenericTopLevelCollectionID = 0x0020056f,
+        DataFieldGenericTopLevelCollectionId = 0x0020056f,
 
         /// <summary>
         ///     Data Field: Generic Report ID Usage.
         /// </summary>
         [Description("Data Field: Generic Report ID")]
-        DataFieldGenericReportID = 0x00200570,
+        DataFieldGenericReportId = 0x00200570,
 
         /// <summary>
         ///     Data Field: Generic Report Item Position Index Usage.
@@ -2174,7 +2174,7 @@ namespace Alis.Core.Input
         ///     Data Field: Generic Firmware VARTYPE Usage.
         /// </summary>
         [Description("Data Field: Generic Firmware VARTYPE")]
-        DataFieldGenericFirmwareVARTYPE = 0x00200572,
+        DataFieldGenericFirmwareVartype = 0x00200572,
 
         /// <summary>
         ///     Data Field: Generic Unit of Measure Usage.
@@ -2304,7 +2304,7 @@ namespace Alis.Core.Input
         ///     Data Field: Custom Type ID Usage.
         /// </summary>
         [Description("Data Field: Custom Type ID")]
-        DataFieldCustomTypeID = 0x002005b0,
+        DataFieldCustomTypeId = 0x002005b0,
 
         /// <summary>
         ///     Property: Custom Usage.
@@ -2812,12 +2812,12 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Fix Quality: GPS Usage.
         /// </summary>
-        [Description("Fix Quality: GPS")] FixQualityGPS = 0x00200871,
+        [Description("Fix Quality: GPS")] FixQualityGps = 0x00200871,
 
         /// <summary>
         ///     Fix Quality: DGPS Usage.
         /// </summary>
-        [Description("Fix Quality: DGPS")] FixQualityDGPS = 0x00200872,
+        [Description("Fix Quality: DGPS")] FixQualityDgps = 0x00200872,
 
         /// <summary>
         ///     Fix Type: No Fix Usage.
@@ -2828,19 +2828,19 @@ namespace Alis.Core.Input
         ///     Fix Type: GPS SPS Mode, Fix Valid Usage.
         /// </summary>
         [Description("Fix Type: GPS SPS Mode, Fix Valid")]
-        FixTypeGPSSPSModeFixValid = 0x00200881,
+        FixTypeGpsspsModeFixValid = 0x00200881,
 
         /// <summary>
         ///     Fix Type: DGPS SPS Mode, Fix Valid Usage.
         /// </summary>
         [Description("Fix Type: DGPS SPS Mode, Fix Valid")]
-        FixTypeDGPSSPSModeFixValid = 0x00200882,
+        FixTypeDgpsspsModeFixValid = 0x00200882,
 
         /// <summary>
         ///     Fix Type: GPS PPS Mode, Fix Valid Usage.
         /// </summary>
         [Description("Fix Type: GPS PPS Mode, Fix Valid")]
-        FixTypeGPSPPSModeFixValid = 0x00200883,
+        FixTypeGpsppsModeFixValid = 0x00200883,
 
         /// <summary>
         ///     Fix Type: Real Time Kinematic Usage.
@@ -2851,7 +2851,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Fix Type: Float RTK Usage.
         /// </summary>
-        [Description("Fix Type: Float RTK")] FixTypeFloatRTK = 0x00200885,
+        [Description("Fix Type: Float RTK")] FixTypeFloatRtk = 0x00200885,
 
         /// <summary>
         ///     Fix Type: Estimated (dead reckoned) Usage.
@@ -2875,61 +2875,61 @@ namespace Alis.Core.Input
         ///     GPS Operation Mode: Manual Usage.
         /// </summary>
         [Description("GPS Operation Mode: Manual")]
-        GPSOperationModeManual = 0x00200890,
+        GpsOperationModeManual = 0x00200890,
 
         /// <summary>
         ///     GPS Operation Mode: Automatic Usage.
         /// </summary>
         [Description("GPS Operation Mode: Automatic")]
-        GPSOperationModeAutomatic = 0x00200891,
+        GpsOperationModeAutomatic = 0x00200891,
 
         /// <summary>
         ///     GPS Selection Mode: Autonomous Usage.
         /// </summary>
         [Description("GPS Selection Mode: Autonomous")]
-        GPSSelectionModeAutonomous = 0x002008a0,
+        GpsSelectionModeAutonomous = 0x002008a0,
 
         /// <summary>
         ///     GPS Selection Mode: DGPS Usage.
         /// </summary>
         [Description("GPS Selection Mode: DGPS")]
-        GPSSelectionModeDGPS = 0x002008a1,
+        GpsSelectionModeDgps = 0x002008a1,
 
         /// <summary>
         ///     GPS Selection Mode: Estimated (dead reckoned) Usage.
         /// </summary>
         [Description("GPS Selection Mode: Estimated (dead reckoned)")]
-        GPSSelectionModeEstimatedDeadReckoned = 0x002008a2,
+        GpsSelectionModeEstimatedDeadReckoned = 0x002008a2,
 
         /// <summary>
         ///     GPS Selection Mode: Manual Input Usage.
         /// </summary>
         [Description("GPS Selection Mode: Manual Input")]
-        GPSSelectionModeManualInput = 0x002008a3,
+        GpsSelectionModeManualInput = 0x002008a3,
 
         /// <summary>
         ///     GPS Selection Mode: Simulator Usage.
         /// </summary>
         [Description("GPS Selection Mode: Simulator")]
-        GPSSelectionModeSimulator = 0x002008a4,
+        GpsSelectionModeSimulator = 0x002008a4,
 
         /// <summary>
         ///     GPS Selection Mode: Data Not Valid Usage.
         /// </summary>
         [Description("GPS Selection Mode: Data Not Valid")]
-        GPSSelectionModeDataNotValid = 0x002008a5,
+        GpsSelectionModeDataNotValid = 0x002008a5,
 
         /// <summary>
         ///     GPS Status: Data Valid Usage.
         /// </summary>
         [Description("GPS Status: Data Valid")]
-        GPSStatusDataValid = 0x002008b0,
+        GpsStatusDataValid = 0x002008b0,
 
         /// <summary>
         ///     GPS Status: Data Not Valid Usage.
         /// </summary>
         [Description("GPS Status: Data Not Valid")]
-        GPSStatusDataNotValid = 0x002008b1,
+        GpsStatusDataNotValid = 0x002008b1,
 
         /// <summary>
         ///     Day of Week: Sunday Usage.
@@ -3020,19 +3020,19 @@ namespace Alis.Core.Input
         ///     Simple Orientation Direction: Rotated 90 Degrees CCW Usage.
         /// </summary>
         [Description("Simple Orientation Direction: Rotated 90 Degrees CCW")]
-        SimpleOrientationDirectionRotated90DegreesCCW = 0x002008f1,
+        SimpleOrientationDirectionRotated90DegreesCcw = 0x002008f1,
 
         /// <summary>
         ///     Simple Orientation Direction: Rotated 180 Degrees CCW Usage.
         /// </summary>
         [Description("Simple Orientation Direction: Rotated 180 Degrees CCW")]
-        SimpleOrientationDirectionRotated180DegreesCCW = 0x002008f2,
+        SimpleOrientationDirectionRotated180DegreesCcw = 0x002008f2,
 
         /// <summary>
         ///     Simple Orientation Direction: Rotated 270 Degrees CCW Usage.
         /// </summary>
         [Description("Simple Orientation Direction: Rotated 270 Degrees CCW")]
-        SimpleOrientationDirectionRotated270DegreesCCW = 0x002008f3,
+        SimpleOrientationDirectionRotated270DegreesCcw = 0x002008f3,
 
         /// <summary>
         ///     Simple Orientation Direction: Face Up Usage.
@@ -3049,277 +3049,277 @@ namespace Alis.Core.Input
         /// <summary>
         ///     VT_NULL: Empty Usage.
         /// </summary>
-        [Description("VT_NULL: Empty")] VT_NULLEmpty = 0x00200900,
+        [Description("VT_NULL: Empty")] VtNullEmpty = 0x00200900,
 
         /// <summary>
         ///     VT_BOOL: Boolean Usage.
         /// </summary>
-        [Description("VT_BOOL: Boolean")] VT_BOOLBoolean = 0x00200901,
+        [Description("VT_BOOL: Boolean")] VtBoolBoolean = 0x00200901,
 
         /// <summary>
         ///     VT_UI1: Byte Usage.
         /// </summary>
-        [Description("VT_UI1: Byte")] VT_UI1Byte = 0x00200902,
+        [Description("VT_UI1: Byte")] VtUi1Byte = 0x00200902,
 
         /// <summary>
         ///     VT_I1: Character Usage.
         /// </summary>
-        [Description("VT_I1: Character")] VT_I1Character = 0x00200903,
+        [Description("VT_I1: Character")] VtI1Character = 0x00200903,
 
         /// <summary>
         ///     VT_UI2: Unsigned Short Usage.
         /// </summary>
         [Description("VT_UI2: Unsigned Short")]
-        VT_UI2UnsignedShort = 0x00200904,
+        VtUi2UnsignedShort = 0x00200904,
 
         /// <summary>
         ///     VT_I2: Short Usage.
         /// </summary>
-        [Description("VT_I2: Short")] VT_I2Short = 0x00200905,
+        [Description("VT_I2: Short")] VtI2Short = 0x00200905,
 
         /// <summary>
         ///     VT_UI4: Unsigned Long Usage.
         /// </summary>
-        [Description("VT_UI4: Unsigned Long")] VT_UI4UnsignedLong = 0x00200906,
+        [Description("VT_UI4: Unsigned Long")] VtUi4UnsignedLong = 0x00200906,
 
         /// <summary>
         ///     VT_I4: Long Usage.
         /// </summary>
-        [Description("VT_I4: Long")] VT_I4Long = 0x00200907,
+        [Description("VT_I4: Long")] VtI4Long = 0x00200907,
 
         /// <summary>
         ///     VT_UI8: Unsigned Long Long Usage.
         /// </summary>
         [Description("VT_UI8: Unsigned Long Long")]
-        VT_UI8UnsignedLongLong = 0x00200908,
+        VtUi8UnsignedLongLong = 0x00200908,
 
         /// <summary>
         ///     VT_I8: Long Long Usage.
         /// </summary>
-        [Description("VT_I8: Long Long")] VT_I8LongLong = 0x00200909,
+        [Description("VT_I8: Long Long")] VtI8LongLong = 0x00200909,
 
         /// <summary>
         ///     VT_R4: Float Usage.
         /// </summary>
-        [Description("VT_R4: Float")] VT_R4Float = 0x0020090a,
+        [Description("VT_R4: Float")] VtR4Float = 0x0020090a,
 
         /// <summary>
         ///     VT_R8: Double Usage.
         /// </summary>
-        [Description("VT_R8: Double")] VT_R8Double = 0x0020090b,
+        [Description("VT_R8: Double")] VtR8Double = 0x0020090b,
 
         /// <summary>
         ///     VT_WSTR: Wide String Usage.
         /// </summary>
-        [Description("VT_WSTR: Wide String")] VT_WSTRWideString = 0x0020090c,
+        [Description("VT_WSTR: Wide String")] VtWstrWideString = 0x0020090c,
 
         /// <summary>
         ///     VT_STR: Narrow String Usage.
         /// </summary>
-        [Description("VT_STR: Narrow String")] VT_STRNarrowString = 0x0020090d,
+        [Description("VT_STR: Narrow String")] VtStrNarrowString = 0x0020090d,
 
         /// <summary>
         ///     VT_CLSID: Guid Usage.
         /// </summary>
-        [Description("VT_CLSID: Guid")] VT_CLSIDGuid = 0x0020090e,
+        [Description("VT_CLSID: Guid")] VtClsidGuid = 0x0020090e,
 
         /// <summary>
         ///     VT_VECTOR|VT_UI1: Opaque Structure Usage.
         /// </summary>
         [Description("VT_VECTOR|VT_UI1: Opaque Structure")]
-        VT_VECTORVT_UI1OpaqueStructure = 0x0020090f,
+        VtVectorvtUi1OpaqueStructure = 0x0020090f,
 
         /// <summary>
         ///     VT_F16E0: HID 16-bit Float e0 Usage.
         /// </summary>
         [Description("VT_F16E0: HID 16-bit Float e0")]
-        VT_F16E0HID16bitFloatE0 = 0x00200910,
+        VtF16E0Hid16BitFloatE0 = 0x00200910,
 
         /// <summary>
         ///     VT_F16E1: HID 16-bit Float e1 Usage.
         /// </summary>
         [Description("VT_F16E1: HID 16-bit Float e1")]
-        VT_F16E1HID16bitFloatE1 = 0x00200911,
+        VtF16E1Hid16BitFloatE1 = 0x00200911,
 
         /// <summary>
         ///     VT_F16E2: HID 16-bit Float e2 Usage.
         /// </summary>
         [Description("VT_F16E2: HID 16-bit Float e2")]
-        VT_F16E2HID16bitFloatE2 = 0x00200912,
+        VtF16E2Hid16BitFloatE2 = 0x00200912,
 
         /// <summary>
         ///     VT_F16E3: HID 16-bit Float e3 Usage.
         /// </summary>
         [Description("VT_F16E3: HID 16-bit Float e3")]
-        VT_F16E3HID16bitFloatE3 = 0x00200913,
+        VtF16E3Hid16BitFloatE3 = 0x00200913,
 
         /// <summary>
         ///     VT_F16E4: HID 16-bit Float e4 Usage.
         /// </summary>
         [Description("VT_F16E4: HID 16-bit Float e4")]
-        VT_F16E4HID16bitFloatE4 = 0x00200914,
+        VtF16E4Hid16BitFloatE4 = 0x00200914,
 
         /// <summary>
         ///     VT_F16E5: HID 16-bit Float e5 Usage.
         /// </summary>
         [Description("VT_F16E5: HID 16-bit Float e5")]
-        VT_F16E5HID16bitFloatE5 = 0x00200915,
+        VtF16E5Hid16BitFloatE5 = 0x00200915,
 
         /// <summary>
         ///     VT_F16E6: HID 16-bit Float e6 Usage.
         /// </summary>
         [Description("VT_F16E6: HID 16-bit Float e6")]
-        VT_F16E6HID16bitFloatE6 = 0x00200916,
+        VtF16E6Hid16BitFloatE6 = 0x00200916,
 
         /// <summary>
         ///     VT_F16E7: HID 16-bit Float e7 Usage.
         /// </summary>
         [Description("VT_F16E7: HID 16-bit Float e7")]
-        VT_F16E7HID16bitFloatE7 = 0x00200917,
+        VtF16E7Hid16BitFloatE7 = 0x00200917,
 
         /// <summary>
         ///     VT_F16E8: HID 16-bit Float e-8 Usage.
         /// </summary>
         [Description("VT_F16E8: HID 16-bit Float e-8")]
-        VT_F16E8HID16bitFloatE8 = 0x00200918,
+        VtF16E8Hid16BitFloatE8 = 0x00200918,
 
         /// <summary>
         ///     VT_F16E9: HID 16-bit Float e-7 Usage.
         /// </summary>
         [Description("VT_F16E9: HID 16-bit Float e-7")]
-        VT_F16E9HID16bitFloatE7 = 0x00200919,
+        VtF16E9Hid16BitFloatE7 = 0x00200919,
 
         /// <summary>
         ///     VT_F16EA: HID 16-bit Float e-6 Usage.
         /// </summary>
         [Description("VT_F16EA: HID 16-bit Float e-6")]
-        VT_F16EAHID16bitFloatE6 = 0x0020091a,
+        VtF16Eahid16BitFloatE6 = 0x0020091a,
 
         /// <summary>
         ///     VT_F16EB: HID 16-bit Float e-5 Usage.
         /// </summary>
         [Description("VT_F16EB: HID 16-bit Float e-5")]
-        VT_F16EBHID16bitFloatE5 = 0x0020091b,
+        VtF16Ebhid16BitFloatE5 = 0x0020091b,
 
         /// <summary>
         ///     VT_F16EC: HID 16-bit Float e-4 Usage.
         /// </summary>
         [Description("VT_F16EC: HID 16-bit Float e-4")]
-        VT_F16ECHID16bitFloatE4 = 0x0020091c,
+        VtF16Echid16BitFloatE4 = 0x0020091c,
 
         /// <summary>
         ///     VT_F16ED: HID 16-bit Float e-3 Usage.
         /// </summary>
         [Description("VT_F16ED: HID 16-bit Float e-3")]
-        VT_F16EDHID16bitFloatE3 = 0x0020091d,
+        VtF16Edhid16BitFloatE3 = 0x0020091d,
 
         /// <summary>
         ///     VT_F16EE: HID 16-bit Float e-2 Usage.
         /// </summary>
         [Description("VT_F16EE: HID 16-bit Float e-2")]
-        VT_F16EEHID16bitFloatE2 = 0x0020091e,
+        VtF16Eehid16BitFloatE2 = 0x0020091e,
 
         /// <summary>
         ///     VT_F16EF: HID 16-bit Float e-1 Usage.
         /// </summary>
         [Description("VT_F16EF: HID 16-bit Float e-1")]
-        VT_F16EFHID16bitFloatE1 = 0x0020091f,
+        VtF16Efhid16BitFloatE1 = 0x0020091f,
 
         /// <summary>
         ///     VT_F32E0: HID 32-bit Float e0 Usage.
         /// </summary>
         [Description("VT_F32E0: HID 32-bit Float e0")]
-        VT_F32E0HID32bitFloatE0 = 0x00200920,
+        VtF32E0Hid32BitFloatE0 = 0x00200920,
 
         /// <summary>
         ///     VT_F32E1: HID 32-bit Float e1 Usage.
         /// </summary>
         [Description("VT_F32E1: HID 32-bit Float e1")]
-        VT_F32E1HID32bitFloatE1 = 0x00200921,
+        VtF32E1Hid32BitFloatE1 = 0x00200921,
 
         /// <summary>
         ///     VT_F32E2: HID 32-bit Float e2 Usage.
         /// </summary>
         [Description("VT_F32E2: HID 32-bit Float e2")]
-        VT_F32E2HID32bitFloatE2 = 0x00200922,
+        VtF32E2Hid32BitFloatE2 = 0x00200922,
 
         /// <summary>
         ///     VT_F32E3: HID 32-bit Float e3 Usage.
         /// </summary>
         [Description("VT_F32E3: HID 32-bit Float e3")]
-        VT_F32E3HID32bitFloatE3 = 0x00200923,
+        VtF32E3Hid32BitFloatE3 = 0x00200923,
 
         /// <summary>
         ///     VT_F32E4: HID 32-bit Float e4 Usage.
         /// </summary>
         [Description("VT_F32E4: HID 32-bit Float e4")]
-        VT_F32E4HID32bitFloatE4 = 0x00200924,
+        VtF32E4Hid32BitFloatE4 = 0x00200924,
 
         /// <summary>
         ///     VT_F32E5: HID 32-bit Float e5 Usage.
         /// </summary>
         [Description("VT_F32E5: HID 32-bit Float e5")]
-        VT_F32E5HID32bitFloatE5 = 0x00200925,
+        VtF32E5Hid32BitFloatE5 = 0x00200925,
 
         /// <summary>
         ///     VT_F32E6: HID 32-bit Float e6 Usage.
         /// </summary>
         [Description("VT_F32E6: HID 32-bit Float e6")]
-        VT_F32E6HID32bitFloatE6 = 0x00200926,
+        VtF32E6Hid32BitFloatE6 = 0x00200926,
 
         /// <summary>
         ///     VT_F32E7: HID 32-bit Float e7 Usage.
         /// </summary>
         [Description("VT_F32E7: HID 32-bit Float e7")]
-        VT_F32E7HID32bitFloatE7 = 0x00200927,
+        VtF32E7Hid32BitFloatE7 = 0x00200927,
 
         /// <summary>
         ///     VT_F32E8: HID 32-bit Float e-8 Usage.
         /// </summary>
         [Description("VT_F32E8: HID 32-bit Float e-8")]
-        VT_F32E8HID32bitFloatE8 = 0x00200928,
+        VtF32E8Hid32BitFloatE8 = 0x00200928,
 
         /// <summary>
         ///     VT_F32E9: HID 32-bit Float e-7 Usage.
         /// </summary>
         [Description("VT_F32E9: HID 32-bit Float e-7")]
-        VT_F32E9HID32bitFloatE7 = 0x00200929,
+        VtF32E9Hid32BitFloatE7 = 0x00200929,
 
         /// <summary>
         ///     VT_F32EA: HID 32-bit Float e-6 Usage.
         /// </summary>
         [Description("VT_F32EA: HID 32-bit Float e-6")]
-        VT_F32EAHID32bitFloatE6 = 0x0020092a,
+        VtF32Eahid32BitFloatE6 = 0x0020092a,
 
         /// <summary>
         ///     VT_F32EB: HID 32-bit Float e-5 Usage.
         /// </summary>
         [Description("VT_F32EB: HID 32-bit Float e-5")]
-        VT_F32EBHID32bitFloatE5 = 0x0020092b,
+        VtF32Ebhid32BitFloatE5 = 0x0020092b,
 
         /// <summary>
         ///     VT_F32EC: HID 32-bit Float e-4 Usage.
         /// </summary>
         [Description("VT_F32EC: HID 32-bit Float e-4")]
-        VT_F32ECHID32bitFloatE4 = 0x0020092c,
+        VtF32Echid32BitFloatE4 = 0x0020092c,
 
         /// <summary>
         ///     VT_F32ED: HID 32-bit Float e-3 Usage.
         /// </summary>
         [Description("VT_F32ED: HID 32-bit Float e-3")]
-        VT_F32EDHID32bitFloatE3 = 0x0020092d,
+        VtF32Edhid32BitFloatE3 = 0x0020092d,
 
         /// <summary>
         ///     VT_F32EE: HID 32-bit Float e-2 Usage.
         /// </summary>
         [Description("VT_F32EE: HID 32-bit Float e-2")]
-        VT_F32EEHID32bitFloatE2 = 0x0020092e,
+        VtF32Eehid32BitFloatE2 = 0x0020092e,
 
         /// <summary>
         ///     VT_F32EF: HID 32-bit Float e-1 Usage.
         /// </summary>
         [Description("VT_F32EF: HID 32-bit Float e-1")]
-        VT_F32EFHID32bitFloatE1 = 0x0020092f,
+        VtF32Efhid32BitFloatE1 = 0x0020092f,
 
         /// <summary>
         ///     Activity Type: Unknown Usage.

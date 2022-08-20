@@ -82,7 +82,7 @@ namespace Alis.Core.Input
         ///     Tablet PC System Controls Usage.
         /// </summary>
         [Description("Tablet PC System Controls")]
-        TabletPCSystemControls = 0x00010009,
+        TabletPcSystemControls = 0x00010009,
 
         /// <summary>
         ///     Water Cooling Device Usage.
@@ -511,7 +511,7 @@ namespace Alis.Core.Input
         ///     System Display LCD Autoscale Usage.
         /// </summary>
         [Description("System Display LCD Autoscale")]
-        SystemDisplayLCDAutoscale = 0x000100b7,
+        SystemDisplayLcdAutoscale = 0x000100b7,
 
         /// <summary>
         ///     Sensor Zone Usage.
@@ -521,7 +521,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     RPM Usage.
         /// </summary>
-        [Description("RPM")] RPM = 0x000100c1,
+        [Description("RPM")] Rpm = 0x000100c1,
 
         /// <summary>
         ///     Coolant Level Usage.
@@ -552,7 +552,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Wireless Radio LED Usage.
         /// </summary>
-        [Description("Wireless Radio LED")] WirelessRadioLED = 0x000100c7,
+        [Description("Wireless Radio LED")] WirelessRadioLed = 0x000100c7,
 
         /// <summary>
         ///     Wireless Radio Slider Switch Usage.
@@ -581,13 +581,13 @@ namespace Alis.Core.Input
         ///     Dockable Device Unique ID Usage.
         /// </summary>
         [Description("Dockable Device Unique ID")]
-        DockableDeviceUniqueID = 0x000100d0,
+        DockableDeviceUniqueId = 0x000100d0,
 
         /// <summary>
         ///     Dockable Device Vendor ID Usage.
         /// </summary>
         [Description("Dockable Device Vendor ID")]
-        DockableDeviceVendorID = 0x000100d1,
+        DockableDeviceVendorId = 0x000100d1,
 
         /// <summary>
         ///     Dockable Device Primary Usage Page Usage.
@@ -599,7 +599,7 @@ namespace Alis.Core.Input
         ///     Dockable Device Primary Usage ID Usage.
         /// </summary>
         [Description("Dockable Device Primary Usage ID")]
-        DockableDevicePrimaryUsageID = 0x000100d3,
+        DockableDevicePrimaryUsageId = 0x000100d3,
 
         /// <summary>
         ///     Dockable Device Docking State Usage.
@@ -622,7 +622,7 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Call Active LED Usage.
         /// </summary>
-        [Description("Call Active LED")] CallActiveLED = 0x000100e0,
+        [Description("Call Active LED")] CallActiveLed = 0x000100e0,
 
         /// <summary>
         ///     Call Mute Toggle Usage.
@@ -632,6 +632,6 @@ namespace Alis.Core.Input
         /// <summary>
         ///     Call Mute LED Usage.
         /// </summary>
-        [Description("Call Mute LED")] CallMuteLED = 0x000100e2
+        [Description("Call Mute LED")] CallMuteLed = 0x000100e2
     }
 }

@@ -36,7 +36,7 @@ namespace Alis.Core.Input
     ///     VR Controls Usage Page.
     /// </summary>
     [Description("VR Controls Usage Page")]
-    public enum VRPage : uint
+    public enum VrPage : uint
     {
         /// <summary>
         ///     Undefined Usage.
