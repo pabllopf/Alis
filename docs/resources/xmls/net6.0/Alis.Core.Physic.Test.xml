@@ -3148,36 +3148,6 @@
             </summary>
             <returns>The world</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.Dispose_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that dispose state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.SetDestructionListener_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set destruction listener state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.SetBoundaryListener_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set boundary listener state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.SetContactFilter_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set contact filter state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.SetContactListener_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set contact listener state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.SetDebugDraw_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set debug draw state under test expected behavior
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Test.WorldTests.CreateBody_StateUnderTest_ExpectedBehavior">
             <summary>
                 Tests that create body state under test expected behavior
@@ -3208,74 +3178,14 @@
                 Tests that remove controller state under test expected behavior
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetGroundBody_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get ground body state under test expected behavior
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Test.WorldTests.GetBodyList_StateUnderTest_ExpectedBehavior">
             <summary>
                 Tests that get body list state under test expected behavior
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetJointList_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get joint list state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetControllerList_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get controller list state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetControllerCount_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get controller count state under test expected behavior
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Test.WorldTests.Refilter_StateUnderTest_ExpectedBehavior">
             <summary>
                 Tests that refilter state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.SetWarmStarting_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set warm starting state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.SetContinuousPhysics_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set continuous physics state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.Validate_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that validate state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetProxyCount_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get proxy count state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetPairCount_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get pair count state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetBodyCount_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get body count state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetJointCount_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get joint count state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.GetContactCount_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that get contact count state under test expected behavior
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Test.WorldTests.Step_StateUnderTest_ExpectedBehavior">
@@ -3296,11 +3206,6 @@
         <member name="M:Alis.Core.Physic.Test.WorldTests.RaycastOne_StateUnderTest_ExpectedBehavior">
             <summary>
                 Tests that raycast one state under test expected behavior
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTests.InRange_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that in range state under test expected behavior
             </summary>
         </member>
     </members>

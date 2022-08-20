@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="world">The world</param>
         internal Body(BodyDef bd, World world)
         {
-            Box2DxDebug.Assert(world.Lock == false);
+            //Box2DxDebug.Assert(world.Lock == false);
 
             bodyDef = bd;
 
@@ -275,7 +275,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void Dispose()
         {
-            Box2DxDebug.Assert(world.Lock == false);
+            //Box2DxDebug.Assert(world.Lock == false);
             // shapes and joints are destroyed in World.Destroy
         }
 
@@ -340,11 +340,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="def">The fixture definition.</param>
         public Fixture CreateFixture(FixtureDef def)
         {
-            Box2DxDebug.Assert(world.Lock == false);
-            if (world.Lock)
-            {
-                return null;
-            }
+            //Box2DxDebug.Assert(world.Lock == false);
+            //if (world.Lock)
+            //{
+            //    return null;
+            //}
 
             BroadPhase broadPhase = world.BroadPhase;
 
@@ -369,11 +369,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="fixture">The fixture to be removed.</param>
         public void DestroyFixture(Fixture fixture)
         {
-            Box2DxDebug.Assert(world.Lock == false);
+            /*Box2DxDebug.Assert(world.Lock == false);
             if (world.Lock)
             {
                 return;
-            }
+            }*/
 
             Box2DxDebug.Assert(fixture.Body == this);
 
@@ -415,11 +415,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="massData">The mass properties.</param>
         public void SetMass(MassData massData)
         {
-            Box2DxDebug.Assert(world.Lock == false);
+            /*Box2DxDebug.Assert(world.Lock == false);
             if (world.Lock)
             {
                 return;
-            }
+            }*/
 
             InvMass = 0.0f;
             I = 0.0f;
@@ -471,11 +471,11 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public void SetMassFromShapes()
         {
-            Box2DxDebug.Assert(world.Lock == false);
+            /*Box2DxDebug.Assert(world.Lock == false);
             if (world.Lock)
             {
                 return;
-            }
+            }*/
 
             // Compute mass data from shapes. Each shape has its own density.
             Mass = 0.0f;
@@ -552,11 +552,11 @@ namespace Alis.Core.Physic.Dynamics
         /// </returns>
         public bool SetXForm(Vector2 position, float angle)
         {
-            Box2DxDebug.Assert(world.Lock == false);
+            /*Box2DxDebug.Assert(world.Lock == false);
             if (world.Lock)
             {
                 return true;
-            }
+            }*/
 
             if (IsFrozen())
             {

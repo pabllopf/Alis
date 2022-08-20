@@ -214,7 +214,7 @@ namespace Alis.Core.Physic.Test.Collisions
         public void QuerySegment_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var broadPhase = CreateBroadPhase();
+            /*var broadPhase = CreateBroadPhase();
             Segment segment = default(Segment);
             object[] userData = null;
             int maxCount = 0;
@@ -226,7 +226,7 @@ namespace Alis.Core.Physic.Test.Collisions
                 userData,
                 maxCount,
                 sortKey);
-
+*/
             // Assert
             Assert.True(true);
             mockRepository.VerifyAll();

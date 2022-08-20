@@ -37,16 +37,11 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The static body type
         /// </summary>
-        Static,
+        Static = 0,
 
         /// <summary>
         ///     The dynamic body type
         /// </summary>
-        Dynamic,
-
-        /// <summary>
-        ///     The max types body type
-        /// </summary>
-        MaxTypes
+        Dynamic = 1
     }
 }

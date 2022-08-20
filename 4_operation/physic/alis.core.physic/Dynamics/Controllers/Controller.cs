@@ -103,14 +103,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         ///     Controllers override this to implement per-step functionality.
         /// </summary>
         public abstract void Step(TimeStep step);
-
-        /// <summary>
-        ///     Controllers override this to provide debug drawing.
-        /// </summary>
-        public virtual void Draw(DebugDraw debugDraw)
-        {
-        }
-
+        
         /// <summary>
         ///     Adds a body to the controller list.
         /// </summary>

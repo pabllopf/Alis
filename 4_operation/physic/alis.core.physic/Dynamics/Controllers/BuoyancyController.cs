@@ -161,20 +161,5 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 body.ApplyTorque(-body.GetInertia() / body.GetMass() * area * body.GetAngularVelocity() * angularDrag);
             }
         }
-
-        /// <summary>
-        ///     Draws the debug draw
-        /// </summary>
-        /// <param name="debugDraw">The debug draw</param>
-        public override void Draw(DebugDraw debugDraw)
-        {
-            float r = 1000;
-            Vector2 p1 = Offset * Normal + Vector2.Cross(Normal, r);
-            Vector2 p2 = Offset * Normal - Vector2.Cross(Normal, r);
-
-            Color color = new Color(0, 0, 0.8f);
-
-            debugDraw.DrawSegment(p1, p2, color);
-        }
     }
 }

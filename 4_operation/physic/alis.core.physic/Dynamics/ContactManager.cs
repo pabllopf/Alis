@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics
                 return NullContact;
             }
 
-            if (World.Filter != null && World.Filter.ShouldCollide(fixtureA, fixtureB) == false)
+            if (World.ContactFilter != null && World.ContactFilter.ShouldCollide(fixtureA, fixtureB) == false)
             {
                 return NullContact;
             }
@@ -143,7 +143,7 @@ namespace Alis.Core.Physic.Dynamics
 
             bodyB.ContactList = c.NodeB;
 
-            ++World.ContactCount;
+            //++World.ContactCount;
             return c;
         }
 
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Dynamics
 
             // Call the factory.
             Contact.Destroy(ref c);
-            --World.ContactCount;
+            //--World.ContactCount;
         }
 
         // This is the top level collision call for the time step. Here

@@ -2578,22 +2578,6 @@
                 The dynamic body type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.BodyType.MaxTypes">
-            <summary>
-                The max types body type
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.BoundaryListener">
-            <summary>
-                This is called when a body's shape passes outside of the world boundary.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.BoundaryListener.Violation(Alis.Core.Physic.Dynamics.Body)">
-            <summary>
-                This is called for each body that leaves the world boundary.
-                @warning you can't modify the world inside this callback.
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Dynamics.CircleDef">
             <summary>
                 This structure is used to build a fixture with a circle shape.
@@ -3453,12 +3437,6 @@
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.BuoyancyController.Draw(Alis.Core.Physic.Dynamics.DebugDraw)">
-            <summary>
-                Draws the debug draw
-            </summary>
-            <param name="debugDraw">The debug draw</param>
-        </member>
         <member name="T:Alis.Core.Physic.Dynamics.Controllers.BuoyancyControllerDef">
             <summary>
                 This class is used to build buoyancy controllers
@@ -3620,11 +3598,6 @@
                 Controllers override this to implement per-step functionality.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.Draw(Alis.Core.Physic.Dynamics.DebugDraw)">
-            <summary>
-                Controllers override this to provide debug drawing.
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.AddBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
                 Adds a body to the controller list.
@@ -3766,132 +3739,6 @@
                 Steps the step
             </summary>
             <param name="step">The step</param>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.DebugDraw">
-            <summary>
-                Implement and register this class with a b2World to provide debug drawing of physics
-                entities in your game.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DebugDraw.DrawFlags">
-            <summary>
-                The draw flags
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.DebugDraw" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.DebugDraw.Flags">
-            <summary>
-                Gets or sets the value of the flags
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.AppendFlags(Alis.Core.Physic.Dynamics.DrawFlags)">
-            <summary>
-                Append flags to the current flags.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.ClearFlags(Alis.Core.Physic.Dynamics.DrawFlags)">
-            <summary>
-                Clear flags from the current flags.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.DrawPolygon(Alis.Aspect.Math.Vector2[],System.Int32,Alis.Core.Physic.Dynamics.Color)">
-            <summary>
-                Draw a closed polygon provided in CCW order.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.DrawSolidPolygon(Alis.Aspect.Math.Vector2[],System.Int32,Alis.Core.Physic.Dynamics.Color)">
-            <summary>
-                Draw a solid closed polygon provided in CCW order.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.DrawCircle(Alis.Aspect.Math.Vector2,System.Single,Alis.Core.Physic.Dynamics.Color)">
-            <summary>
-                Draw a circle.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.DrawSolidCircle(Alis.Aspect.Math.Vector2,System.Single,Alis.Aspect.Math.Vector2,Alis.Core.Physic.Dynamics.Color)">
-            <summary>
-                Draw a solid circle.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.DrawSegment(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Core.Physic.Dynamics.Color)">
-            <summary>
-                Draw a line segment.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DebugDraw.DrawXForm(Alis.Aspect.Math.XForm)">
-            <summary>
-                Draw a transform. Choose your own length scale.
-            </summary>
-            <param name="xf">A transform.</param>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.DestructionListener">
-            <summary>
-                Joints and shapes are destroyed when their associated
-                body is destroyed. Implement this listener so that you
-                may nullify references to these joints and shapes.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DestructionListener.SayGoodbye(Alis.Core.Physic.Dynamics.Joints.Joint)">
-            <summary>
-                Called when any joint is about to be destroyed due
-                to the destruction of one of its attached bodies.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.DestructionListener.SayGoodbye(Alis.Core.Physic.Dynamics.Fixture)">
-            <summary>
-                Called when any shape is about to be destroyed due
-                to the destruction of its parent body.
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.DrawFlags">
-            <summary>
-                The draw flags enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Shape">
-            <summary>
-                The shape draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Joint">
-            <summary>
-                The joint draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.CoreShape">
-            <summary>
-                The core shape draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Aabb">
-            <summary>
-                The aabb draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Obb">
-            <summary>
-                The obb draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Pair">
-            <summary>
-                The pair draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.CenterOfMass">
-            <summary>
-                The center of mass draw flags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.DrawFlags.Controller">
-            <summary>
-                The controller draw flags
-            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.EdgeDef">
             <summary>
@@ -6261,7 +6108,7 @@
             </summary>
             <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
             <param name="gravity">The world gravity vector.</param>
-            <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
+            <param name="allowSleep">Improve performance by not simulating inactive bodies.</param>
         </member>
         <member name="P:Alis.Core.Physic.World.AllowSleep">
             <summary>
@@ -6288,11 +6135,6 @@
                 The body list
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.BoundaryListener">
-            <summary>
-                The boundary listener
-            </summary>
-        </member>
         <member name="P:Alis.Core.Physic.World.BroadPhase">
             <summary>
                 The broad phase
@@ -6303,7 +6145,7 @@
                 The contact count
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.Filter">
+        <member name="P:Alis.Core.Physic.World.ContactFilter">
             <summary>
                 The contact filter
             </summary>
@@ -6333,16 +6175,6 @@
                 The controller list
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.DebugDraw">
-            <summary>
-                The debug draw
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.Listener">
-            <summary>
-                The destruction listener
-            </summary>
-        </member>
         <member name="P:Alis.Core.Physic.World.InvDt0">
             <summary>
                 The inv dt0
@@ -6356,11 +6188,6 @@
         <member name="P:Alis.Core.Physic.World.JointList">
             <summary>
                 The joint list
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.Lock">
-            <summary>
-                The lock
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.RaycastSegment">

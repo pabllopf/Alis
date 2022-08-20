@@ -38,7 +38,6 @@ using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Exception;
 using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic
@@ -59,34 +58,30 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="worldAabb">A bounding box that completely encompasses all your shapes.</param>
         /// <param name="gravity">The world gravity vector.</param>
-        /// <param name="doSleep">Improve performance by not simulating inactive bodies.</param>
-        public World(Aabb worldAabb, Vector2 gravity, bool doSleep)
+        /// <param name="allowSleep">Improve performance by not simulating inactive bodies.</param>
+        public World(Aabb worldAabb, Vector2 gravity, bool allowSleep)
         {
-            Listener = null;
-            BoundaryListener = null;
-            Filter = null;
-            ContactListener = null;
-            DebugDraw = null;
-
+            ContactFilter = new ContactFilter();
+            ContactListener = default(IContactListener);
+            
             BodyList = new List<Body>();
             ContactList = new List<Contact>();
             JointList = new List<Joint>();
             ControllerList = new List<Controller>();
             
-            ContactCount = 0;
-
             WarmStarting = true;
             ContinuousPhysics = true;
 
-            AllowSleep = doSleep;
+            AllowSleep = allowSleep;
             Gravity = gravity;
-
-            Lock = false;
-
+            
             InvDt0 = 0.0f;
 
-            ContactManager = new ContactManager();
-            ContactManager.World = this;
+            ContactManager = new ContactManager
+            {
+                World = this
+            };
+            
             BroadPhase = new BroadPhase(worldAabb, ContactManager);
 
             BodyDef bd = new BodyDef();
@@ -117,12 +112,7 @@ namespace Alis.Core.Physic
         ///     The body list
         /// </summary>
         public List<Body> BodyList { get; private set; }
-
-        /// <summary>
-        ///     The boundary listener
-        /// </summary>
-        public BoundaryListener BoundaryListener { get; private set; }
-
+        
         /// <summary>
         ///     The broad phase
         /// </summary>
@@ -131,12 +121,12 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The contact count
         /// </summary>
-        internal int ContactCount { get; set; }
+        internal int ContactCount { get => ContactList.Count;}
 
         /// <summary>
         ///     The contact filter
         /// </summary>
-        internal ContactFilter Filter { get; set; }
+        internal ContactFilter ContactFilter { get; set; }
 
         // Do not access
 
@@ -160,26 +150,13 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The controller count
         /// </summary>
-        public int ControllerCount { get; private set; }
+        public int ControllerCount { get => ControllerList.Count; }
 
         /// <summary>
         ///     The controller list
         /// </summary>
         public List<Controller> ControllerList { get; private set; }
-
-        /// <summary>
-        ///     The debug draw
-        /// </summary>
-        public DebugDraw DebugDraw { get; private set; }
-
-        /// <summary>
-        ///     The destruction listener
-        /// </summary>
-        public DestructionListener Listener { get; private set; }
-
-        // This is used to compute the time step ratio to
-        // support a variable time step.
-
+        
         /// <summary>
         ///     The inv dt0
         /// </summary>
@@ -194,12 +171,7 @@ namespace Alis.Core.Physic
         ///     The joint list
         /// </summary>
         public List<Joint> JointList { get; private set; }
-
-        /// <summary>
-        ///     The lock
-        /// </summary>
-        internal bool Lock { get; set; }
-
+        
         /// <summary>
         ///     The raycast segment
         /// </summary>
@@ -214,9 +186,7 @@ namespace Alis.Core.Physic
         ///     The raycast user data
         /// </summary>
         public object RaycastUserData { get; private set; }
-
-        // This is for debugging the solver.
-
+        
         /// <summary>
         ///     The warm starting
         /// </summary>
@@ -236,7 +206,6 @@ namespace Alis.Core.Physic
         /// <returns></returns>
         public Body CreateBody(BodyDef bodyDef)
         {
-            if (Lock) throw new LockException();
             Body body = new Body(bodyDef, this);
             BodyList.Add(body);
             return body;
@@ -251,7 +220,6 @@ namespace Alis.Core.Physic
         /// <param name="body"></param>
         public void DestroyBody(Body body)
         {
-            if (Lock) throw new LockException();
             BodyList.Remove(body);
         }
 
@@ -264,8 +232,6 @@ namespace Alis.Core.Physic
         /// <returns></returns>
         public Joint CreateJoint(JointDef jointDef)
         {
-            if (Lock) throw new LockException();
-
             Joint joint = Joint.Create(jointDef);
             
             /*
@@ -315,8 +281,6 @@ namespace Alis.Core.Physic
         /// <param name="joint"></param>
         public void DestroyJoint(Joint joint)
         {
-            if (Lock) throw new LockException();
-            
             JointList.Remove(joint);
             
            /* bool collideConnected = joint.CollideConnected;
@@ -411,8 +375,6 @@ namespace Alis.Core.Physic
         /// <param name="positionIteration">The position iteration.</param>
         public void Step(float dt, int velocityIterations, int positionIteration)
         {
-            Lock = true;
-
             TimeStep step = new TimeStep();
             step.Dt = dt;
             step.VelocityIterations = velocityIterations;
@@ -446,7 +408,6 @@ namespace Alis.Core.Physic
             }
             
             InvDt0 = step.InvDt;
-            Lock = false;
         }
 
         /// Query the world for all shapes that potentially overlap the
@@ -695,12 +656,6 @@ namespace Alis.Core.Physic
                 // the world AABB then shapes and contacts may be destroyed,
                 // including contacts that are
                 bool inRange = BodyList[i].SynchronizeFixtures();
-
-                // Did the body's shapes leave the world?
-                if (inRange == false && BoundaryListener != null)
-                {
-                    BoundaryListener.Violation(BodyList[i]);
-                }
             }
 
             // Commit shape proxy movements to the broad-phase so that new contacts are created.
@@ -1003,13 +958,7 @@ namespace Alis.Core.Physic
                     // the world AABB then fixtures and contacts may be destroyed,
                     // including contacts that are
                     bool inRange = b.SynchronizeFixtures();
-
-                    // Did the body's fixtures leave the world?
-                    if (inRange == false && BoundaryListener != null)
-                    {
-                        BoundaryListener.Violation(b);
-                    }
-
+                    
                     // Invalidate all contact TOIs associated with this body. Some of these
                     // may not be in the island because they were not touching.
                     for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)
@@ -1053,7 +1002,7 @@ namespace Alis.Core.Physic
             Body body = fixture.Body;
             World world = body.GetWorld();
 
-            if (world.Filter != null && !world.Filter.RayCollide(world.RaycastUserData, fixture))
+            if (world.ContactFilter != null && !world.ContactFilter.RayCollide(world.RaycastUserData, fixture))
             {
                 return -1;
             }

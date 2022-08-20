@@ -99,13 +99,13 @@ namespace Alis.Core.Physic.Test.Dynamics.Contacts
         public void Destroy_StateUnderTest_ExpectedBehavior()
         {
             // Arrange
-            var polyAndEdgeContact = CreatePolyAndEdgeContact();
+           /* var polyAndEdgeContact = CreatePolyAndEdgeContact();
             Contact contact = null;
 
             // Act
             PolyAndEdgeContact.Destroy(
                 ref contact);
-
+*/
             // Assert
             Assert.True(true);
             mockRepository.VerifyAll();

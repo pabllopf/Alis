@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Sample
 
             // Construct a world object, which will hold and simulate the rigid bodies.
             World world = new World(worldAabb, gravity, doSleep);
-
+            
             // Define the ground body.
             BodyDef groundBodyDef = new BodyDef();
             groundBodyDef.Position.Set(0.0f, -10.0f);

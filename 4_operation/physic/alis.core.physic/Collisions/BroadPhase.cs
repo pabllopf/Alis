@@ -1277,7 +1277,7 @@ namespace Alis.Core.Physic.Collisions
         private unsafe void AddProxyResult(ushort proxyId, Proxy proxy, int maxCount, SortKeyFunc sortKey)
         {
             float key = sortKey(proxy.UserData);
-            //Filter proxies on positive keys
+            //ContactFilter proxies on positive keys
             if (key < 0)
             {
                 return;
@@ -1320,7 +1320,7 @@ namespace Alis.Core.Physic.Collisions
 		public void AddProxyResult(ushort proxyId, Proxy proxy, int maxCount, SortKeyFunc sortKey)
 		{
 			float key = sortKey(proxy.UserData);
-			//Filter proxies on positive keys
+			//ContactFilter proxies on positive keys
 			if (key < 0)
 				return;
 			//Merge the new key into the sorted list.
