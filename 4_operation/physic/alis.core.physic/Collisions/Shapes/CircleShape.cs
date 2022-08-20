@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   CircleShape.cs
+//  File:CircleShape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -46,10 +46,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <summary>
         ///     Initializes a new instance of the <see cref="CircleShape" /> class
         /// </summary>
-        public CircleShape()
-        {
-            Type = ShapeType.CircleShape;
-        }
+        public CircleShape() => Type = ShapeType.CircleShape;
 
         /// <summary>
         ///     Get the vertex count.
@@ -116,7 +113,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
             float a = -(c + Math.Sqrt(sigma));
 
             // Is the intersection point on the segment?
-            if (0.0f <= a && a <= maxLambda * rr)
+            if ((0.0f <= a) && (a <= maxLambda * rr))
             {
                 a /= rr;
                 lambda = a;
@@ -187,9 +184,9 @@ namespace Alis.Core.Physic.Collisions.Shapes
             //Magic
             float r2 = Radius * Radius;
             float l2 = l * l;
-            float area = r2 * ((float)System.Math.Asin(l / Radius) + Settings.Pi / 2) +
+            float area = r2 * ((float) System.Math.Asin(l / Radius) + Settings.Pi / 2) +
                          l * Math.Sqrt(r2 - l2);
-            float com = -2.0f / 3.0f * (float)System.Math.Pow(r2 - l2, 1.5f) / area;
+            float com = -2.0f / 3.0f * (float) System.Math.Pow(r2 - l2, 1.5f) / area;
 
             c.X = p.X + normal.X * com;
             c.Y = p.Y + normal.Y * com;
@@ -200,18 +197,12 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <summary>
         ///     Get the supporting vertex index in the given direction.
         /// </summary>
-        public override int GetSupport(Vector2 d)
-        {
-            return 0;
-        }
+        public override int GetSupport(Vector2 d) => 0;
 
         /// <summary>
         ///     Get the supporting vertex in the given direction.
         /// </summary>
-        public override Vector2 GetSupportVertex(Vector2 d)
-        {
-            return Position;
-        }
+        public override Vector2 GetSupportVertex(Vector2 d) => Position;
 
         /// <summary>
         ///     Get a vertex by index. Used by Distance.
@@ -227,9 +218,6 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         /// <param name="pivot">The pivot</param>
         /// <returns>The float</returns>
-        public override float ComputeSweepRadius(Vector2 pivot)
-        {
-            return Vector2.Distance(Position, pivot);
-        }
+        public override float ComputeSweepRadius(Vector2 pivot) => Vector2.Distance(Position, pivot);
     }
 }

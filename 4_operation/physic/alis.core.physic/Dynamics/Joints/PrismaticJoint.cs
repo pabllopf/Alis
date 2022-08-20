@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PrismaticJoint.cs
+//  File:PrismaticJoint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -326,20 +326,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * (Impulse.X * Perp + (MotorForce + Impulse.Z) * Axis);
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * (Impulse.X * Perp + (MotorForce + Impulse.Z) * Axis);
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * Impulse.Y;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * Impulse.Y;
 
         /// <summary>
         ///     Enable/disable the joint limit.
@@ -523,7 +517,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float w2 = b2.AngularVelocity;
 
             // Solve linear motor constraint.
-            if (IsMotorEnabled && LimitState != LimitState.EqualLimits)
+            if (IsMotorEnabled && (LimitState != LimitState.EqualLimits))
             {
                 float cdot = Vector2.Dot(Axis, v2 - v1) + A2 * w2 - a1 * w1;
                 float impulse = MotorMass * (motorSpeedx - cdot);
@@ -547,7 +541,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             cdot1.X = Vector2.Dot(Perp, v2 - v1) + s2 * w2 - s1 * w1;
             cdot1.Y = w2 - w1;
 
-            if (IsLimitEnabled && LimitState != LimitState.InactiveLimit)
+            if (IsLimitEnabled && (LimitState != LimitState.InactiveLimit))
             {
                 // Solve prismatic and limit constraint in block form.
                 float cdot2;
@@ -626,13 +620,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float body2SweepA = body2.Sweep.A;
 
             // Solve linear limit constraint.
-            var linearError = 0.0f;
+            float linearError = 0.0f;
             float angularError;
             bool active = false;
             float c2 = 0.0f;
 
-            var mat22R1 = new Matrix22(body1SweepA);
-            var mat22R2 = new Matrix22(body2SweepA);
+            Matrix22 mat22R1 = new Matrix22(body1SweepA);
+            Matrix22 mat22R2 = new Matrix22(body2SweepA);
 
             Vector2 r1 = Box2DXMath.Mul(mat22R1, LocalAnchor1 - LocalCenter1);
             Vector2 r2 = Box2DXMath.Mul(mat22R2, LocalAnchor2 - LocalCenter2);
@@ -742,7 +736,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             body1.SynchronizeTransform();
             body2.SynchronizeTransform();
 
-            return linearError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }

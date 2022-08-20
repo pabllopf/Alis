@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Segment.cs
+//  File:Segment.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -74,12 +74,12 @@ namespace Alis.Core.Physic.Collisions
                 Vector2 b = s - P1;
                 float a = Vector2.Dot(b, n);
 
-                if (0.0f <= a && a <= maxLambda * denom)
+                if ((0.0f <= a) && (a <= maxLambda * denom))
                 {
                     float mu2 = -r.X * b.Y + r.Y * b.X;
 
                     // Does the segment intersect this segment?
-                    if (-kSlop * denom <= mu2 && mu2 <= denom * (1.0f + kSlop))
+                    if ((-kSlop * denom <= mu2) && (mu2 <= denom * (1.0f + kSlop)))
                     {
                         a /= denom;
                         n.Normalize();

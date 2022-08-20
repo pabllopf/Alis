@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   EdgeShape.cs
+//  File:EdgeShape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -146,10 +146,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="p">The </param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(XForm transform, Vector2 p)
-        {
-            return false;
-        }
+        public override bool TestPoint(XForm transform, Vector2 p) => false;
 
         /// <summary>
         ///     Tests the segment using the specified transform
@@ -179,12 +176,12 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 Vector2 b = segment.P1 - v1;
                 float a = Vector2.Dot(b, n);
 
-                if (0.0f <= a && a <= maxLambda * denom)
+                if ((0.0f <= a) && (a <= maxLambda * denom))
                 {
                     float mu2 = -r.X * b.Y + r.Y * b.X;
 
                     // Does the segment intersect this segment?
-                    if (-kSlop * denom <= mu2 && mu2 <= denom * (1.0f + kSlop))
+                    if ((-kSlop * denom <= mu2) && (mu2 <= denom * (1.0f + kSlop)))
                     {
                         a /= denom;
                         n.Normalize();
@@ -309,20 +306,14 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The int</returns>
-        public override int GetSupport(Vector2 d)
-        {
-            return Vector2.Dot(Vertex1, d) > Vector2.Dot(Vertex2, d) ? 0 : 1;
-        }
+        public override int GetSupport(Vector2 d) => Vector2.Dot(Vertex1, d) > Vector2.Dot(Vertex2, d) ? 0 : 1;
 
         /// <summary>
         ///     Gets the support vertex using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The vec</returns>
-        public override Vector2 GetSupportVertex(Vector2 d)
-        {
-            return Vector2.Dot(Vertex1, d) > Vector2.Dot(Vertex2, d) ? Vertex1 : Vertex2;
-        }
+        public override Vector2 GetSupportVertex(Vector2 d) => Vector2.Dot(Vertex1, d) > Vector2.Dot(Vertex2, d) ? Vertex1 : Vertex2;
 
         /// <summary>
         ///     Gets the vertex using the specified index
@@ -331,7 +322,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <returns>The vec</returns>
         public override Vector2 GetVertex(int index)
         {
-            Box2DxDebug.Assert(0 <= index && index < 2);
+            Box2DxDebug.Assert((0 <= index) && (index < 2));
             return index == 0 ? Vertex1 : Vertex2;
         }
 

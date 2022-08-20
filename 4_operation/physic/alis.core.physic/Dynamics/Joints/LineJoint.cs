@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   LineJoint.cs
+//  File:LineJoint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -249,20 +249,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * (Impulse.X * Perp + (MotorImpulse + Impulse.Y) * Axis);
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * (Impulse.X * Perp + (MotorImpulse + Impulse.Y) * Axis);
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt"></param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt)
-        {
-            return 0.0f;
-        }
+        public override float GetReactionTorque(float invDt) => 0.0f;
 
         /// <summary>
         ///     Get the current joint translation, usually in meters.
@@ -309,10 +303,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Is the joint limit enabled?
         /// </summary>
-        public bool IsLimitEnabled()
-        {
-            return EnableLimitx;
-        }
+        public bool IsLimitEnabled() => EnableLimitx;
 
         /// <summary>
         ///     Enable/disable the joint limit.
@@ -327,18 +318,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the lower joint limit, usually in meters.
         /// </summary>
-        public float GetLowerLimit()
-        {
-            return LowerTranslation;
-        }
+        public float GetLowerLimit() => LowerTranslation;
 
         /// <summary>
         ///     Get the upper joint limit, usually in meters.
         /// </summary>
-        public float GetUpperLimit()
-        {
-            return UpperTranslation;
-        }
+        public float GetUpperLimit() => UpperTranslation;
 
         /// <summary>
         ///     Set the joint limits, usually in meters.
@@ -355,10 +340,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Is the joint motor enabled?
         /// </summary>
-        public bool IsMotorEnabled()
-        {
-            return EnableMotorx;
-        }
+        public bool IsMotorEnabled() => EnableMotorx;
 
         /// <summary>
         ///     Enable/disable the joint motor.
@@ -393,18 +375,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the current motor force, usually in N.
         /// </summary>
-        public float GetMotorForce()
-        {
-            return MotorImpulse;
-        }
+        public float GetMotorForce() => MotorImpulse;
 
         /// <summary>
         ///     Get the motor speed, usually in meters per second.
         /// </summary>
-        public float GetMotorSpeed()
-        {
-            return MotorSpeed;
-        }
+        public float GetMotorSpeed() => MotorSpeed;
 
         /// <summary>
         ///     Inits the velocity constraints using the specified step
@@ -538,7 +514,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float w2 = b2.AngularVelocity;
 
             // Solve linear motor constraint.
-            if (EnableMotorx && LimitState != LimitState.EqualLimits)
+            if (EnableMotorx && (LimitState != LimitState.EqualLimits))
             {
                 float cdot = Vector2.Dot(Axis, v2 - v1) + A2 * w2 - A1 * w1;
                 float impulse = MotorMass * (MotorSpeed - cdot);
@@ -560,7 +536,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float cdot1 = Vector2.Dot(Perp, v2 - v1) + s2 * w2 - S1 * w1;
 
-            if (EnableLimitx && LimitState != LimitState.InactiveLimit)
+            if (EnableLimitx && (LimitState != LimitState.InactiveLimit))
             {
                 // Solve prismatic and limit constraint in block form.
                 float cdot2 = Vector2.Dot(Axis, v2 - v1) + A2 * w2 - A1 * w1;
@@ -640,8 +616,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bool active = false;
             float clamp = 0.0f;
 
-            var mat22 = new Matrix22(a1);
-            var mat23 = new Matrix22(a2);
+            Matrix22 mat22 = new Matrix22(a1);
+            Matrix22 mat23 = new Matrix22(a2);
 
             Vector2 r1 = Math.Mul(mat22, LocalAnchor1 - LocalCenter1);
             Vector2 r2 = Math.Mul(mat23, LocalAnchor2 - LocalCenter2);
@@ -739,7 +715,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();
 
-            return linearError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }

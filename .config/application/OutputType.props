@@ -7,7 +7,7 @@
     ">
         <OutputType>Exe</OutputType>
     </PropertyGroup>
-    
+
     <PropertyGroup Condition="
     $(AssemblyName.Contains('Test')) == false AND 
     $(AssemblyName.Contains('App')) == false AND

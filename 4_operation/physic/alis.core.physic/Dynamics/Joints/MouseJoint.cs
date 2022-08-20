@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   MouseJoint.cs
+//  File:MouseJoint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -135,10 +135,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param>The inv dt</param>
         /// <param name="invDt"></param>
         /// <returns>The vec</returns>
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * Impulse;
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * Impulse;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
@@ -146,10 +143,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param>The inv dt</param>
         /// <param name="invDt"></param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * 0.0f;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * 0.0f;
 
         /// <summary>
         ///     Use this to update the target point.
@@ -261,9 +255,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="baumgarte">The baumgarte</param>
         /// <returns>The bool</returns>
-        internal override bool SolvePositionConstraints(float baumgarte)
-        {
-            return true;
-        }
+        internal override bool SolvePositionConstraints(float baumgarte) => true;
     }
 }

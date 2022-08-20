@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PolygonShape.cs
+//  File:PolygonShape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// </summary>
         public void Set(Vector2[] vertices, int count)
         {
-            Box2DxDebug.Assert(3 <= count && count <= Settings.MaxPolygonVertices);
+            Box2DxDebug.Assert((3 <= count) && (count <= Settings.MaxPolygonVertices));
             VertexCount = count;
 
             int i;
@@ -342,14 +342,14 @@ namespace Alis.Core.Physic.Collisions.Shapes
                     // lower < numerator / denominator, where denominator < 0
                     // Since denominator < 0, we have to flip the inequality:
                     // lower < numerator / denominator <==> denominator * lower > numerator.
-                    if (denominator < 0.0f && numerator < lower * denominator)
+                    if ((denominator < 0.0f) && (numerator < lower * denominator))
                     {
                         // Increase lower.
                         // The segment enters this half-space.
                         lower = numerator / denominator;
                         index = i;
                     }
-                    else if (denominator > 0.0f && numerator < upper * denominator)
+                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
                     {
                         // Decrease upper.
                         // The segment exits this half-space.
@@ -363,7 +363,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
                 }
             }
 
-            Box2DxDebug.Assert(0.0f <= lower && lower <= maxLambda);
+            Box2DxDebug.Assert((0.0f <= lower) && (lower <= maxLambda));
 
             if (index >= 0)
             {
@@ -696,7 +696,7 @@ namespace Alis.Core.Physic.Collisions.Shapes
         /// <returns>The vec</returns>
         public override Vector2 GetVertex(int index)
         {
-            Box2DxDebug.Assert(0 <= index && index < VertexCount);
+            Box2DxDebug.Assert((0 <= index) && (index < VertexCount));
             return Vertices[index];
         }
 

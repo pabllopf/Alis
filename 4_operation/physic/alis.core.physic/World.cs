@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   World.cs
+//  File:World.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ namespace Alis.Core.Physic
     ///     The world class manages all physics entities, dynamic simulation,
     ///     and asynchronous queries.
     /// </summary>
-    public class World 
+    public class World
     {
         /// <summary>
         ///     Construct a world object.
@@ -55,17 +55,17 @@ namespace Alis.Core.Physic
         {
             ContactFilter = new ContactFilter();
             ContactListener = default(IContactListener);
-            
+
             BodyList = new List<Body>();
             ContactList = new List<Contact>();
             JointList = new List<Joint>();
             ControllerList = new List<Controller>();
-            
+
             WarmStarting = true;
 
             AllowSleep = allowSleep;
             Gravity = gravity;
-            
+
             InvDt0 = 0.0f;
 
             ContactManager = new ContactManager(this);
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic
         ///     The bodyDef list
         /// </summary>
         public List<Body> BodyList { get; }
-        
+
         /// <summary>
         ///     The broad phase
         /// </summary>
@@ -103,7 +103,7 @@ namespace Alis.Core.Physic
         ///     The contact filter
         /// </summary>
         internal ContactFilter ContactFilter { get; }
-        
+
         /// <summary>
         ///     The contact list
         /// </summary>
@@ -113,12 +113,12 @@ namespace Alis.Core.Physic
         ///     The contact listener
         /// </summary>
         internal IContactListener ContactListener { get; }
-        
+
         /// <summary>
         ///     The controller list
         /// </summary>
         private List<Controller> ControllerList { get; set; }
-        
+
         /// <summary>
         ///     The inv dt0
         /// </summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic
         ///     The joint list
         /// </summary>
         private List<Joint> JointList { get; set; }
-        
+
         /// <summary>
         ///     The warm starting
         /// </summary>
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic
         ///     Get\Set global gravity vector.
         /// </summary>
         public Vector2 Gravity { get; set; }
-        
+
         /// <summary>
         ///     Create a rigid bodyDef given a definition. No reference to the definition
         ///     is retained.
@@ -147,7 +147,7 @@ namespace Alis.Core.Physic
         /// <param name="body"></param>
         /// <returns></returns>
         public void AddBody(Body body) => BodyList.Add(body);
-        
+
         /// <summary>
         ///     Destroy a rigid bodyDef given a definition. No reference to the definition
         ///     is retained. This function is locked during callbacks.
@@ -204,7 +204,7 @@ namespace Alis.Core.Physic
                 PositionIterations = positionIteration,
                 WarmStarting = WarmStarting
             };
-            
+
             // Update contacts.
             ContactManager.Collide();
 
@@ -214,7 +214,7 @@ namespace Alis.Core.Physic
                 Solve(step);
                 SolveToi(step);
             }
-            
+
             InvDt0 = step.InvDt;
         }
 
@@ -235,7 +235,8 @@ namespace Alis.Core.Physic
         private void Solve(TimeStep step)
         {
             // Step all controller list
-            for (int i =0; i < ControllerList.Count; i++) {
+            for (int i = 0; i < ControllerList.Count; i++)
+            {
                 ControllerList[i].Step(step);
             }
 
@@ -401,8 +402,8 @@ namespace Alis.Core.Physic
         {
             // Reserve an island and a queue for TOI island solution.
             Island island = new Island(
-                BodyList.Count, 
-                Settings.MaxToiContactsPerIsland, 
+                BodyList.Count,
+                Settings.MaxToiContactsPerIsland,
                 Settings.MaxToiJointsPerIsland,
                 ContactListener);
 
@@ -422,7 +423,7 @@ namespace Alis.Core.Physic
                 BodyList[i].Flags &= ~BodyFlags.Island;
                 BodyList[i].Sweep.T0 = 0.0f;
             }
-            
+
             for (int i = 0; i < ContactList.Count; i++)
             {
                 // Invalidate TOI
@@ -443,7 +444,7 @@ namespace Alis.Core.Physic
 
                 for (int i = 0; i < ContactList.Count; i++)
                 {
-                    if ((int)(ContactList[i].Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
+                    if ((int) (ContactList[i].Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
                     {
                         continue;
                     }
@@ -451,7 +452,7 @@ namespace Alis.Core.Physic
                     // TODO_ERIN keep a counter on the contact, only respond to M TOIs per contact.
 
                     float toi;
-                    if ((int)(ContactList[i].Flags & Contact.CollisionFlags.Toi) == 1)
+                    if ((int) (ContactList[i].Flags & Contact.CollisionFlags.Toi) == 1)
                     {
                         // This contact has a valid cached TOI.
                         toi = ContactList[i].Toi;
@@ -489,10 +490,10 @@ namespace Alis.Core.Physic
                         toi = ContactList[i].ComputeToi(b1.Sweep, b2.Sweep);
                         //b2TimeOfImpact(c->m_fixtureA->GetShape(), b1->m_sweep, c->m_fixtureB->GetShape(), b2->m_sweep);
 
-                        Box2DxDebug.Assert(0.0f <= toi && toi <= 1.0f);
+                        Box2DxDebug.Assert((0.0f <= toi) && (toi <= 1.0f));
 
                         // If the TOI is in range ...
-                        if (0.0f < toi && toi < 1.0f)
+                        if ((0.0f < toi) && (toi < 1.0f))
                         {
                             // Interpolate on the actual range.
                             toi = Math.Min((1.0f - toi) * t0 + toi, 1.0f);
@@ -503,7 +504,7 @@ namespace Alis.Core.Physic
                         ContactList[i].Flags |= Contact.CollisionFlags.Toi;
                     }
 
-                    if (Settings.FltEpsilon < toi && toi < minToi)
+                    if ((Settings.FltEpsilon < toi) && (toi < minToi))
                     {
                         // This is the minimum TOI found so far.
                         minContact = ContactList[i];
@@ -580,8 +581,8 @@ namespace Alis.Core.Physic
                         }
 
                         // Has this contact already been added to an island? Skip slow or non-solid contacts.
-                        if ((int)(cEdge.Contact.Flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.Slow |
-                                                         Contact.CollisionFlags.NonSolid)) != 0)
+                        if ((int) (cEdge.Contact.Flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.Slow |
+                                                          Contact.CollisionFlags.NonSolid)) != 0)
                         {
                             continue;
                         }
@@ -599,7 +600,7 @@ namespace Alis.Core.Physic
                         Body other = cEdge.Other;
 
                         // Was the other bodyDef already added to this island?
-                        if ((int)(other.Flags & BodyFlags.Island) == 1)
+                        if ((int) (other.Flags & BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -635,7 +636,7 @@ namespace Alis.Core.Physic
 
                         Body other = jEdge.Other;
 
-                        if ((int)(other.Flags & BodyFlags.Island) == 1)
+                        if ((int) (other.Flags & BodyFlags.Island) == 1)
                         {
                             continue;
                         }
@@ -670,7 +671,7 @@ namespace Alis.Core.Physic
                     Body b = island.Bodies[i];
                     b.Flags &= ~BodyFlags.Island;
 
-                    if ((int)(b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) == 1)
+                    if ((int) (b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) == 1)
                     {
                         continue;
                     }
@@ -684,7 +685,7 @@ namespace Alis.Core.Physic
                     // the world AABB then fixtures and contacts may be destroyed,
                     // including contacts that are
                     b.SynchronizeFixtures();
-                    
+
                     // Invalidate all contact TOIs associated with this bodyDef. Some of these
                     // may not be in the island because they were not touching.
                     for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)

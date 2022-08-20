@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Body.cs
+//  File:Body.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -250,12 +250,12 @@ namespace Alis.Core.Physic.Dynamics
 
             I = bd.MassData.I;
 
-            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
+            if ((I > 0.0f) && ((Flags & BodyFlags.FixedRotation) == 0))
             {
                 InvI = 1.0f / I;
             }
 
-            if (InvMass == 0.0f && InvI == 0.0f)
+            if ((InvMass == 0.0f) && (InvI == 0.0f))
             {
                 type = BodyType.Static;
             }
@@ -434,7 +434,7 @@ namespace Alis.Core.Physic.Dynamics
 
             I = massData.I;
 
-            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
+            if ((I > 0.0f) && ((Flags & BodyFlags.FixedRotation) == 0))
             {
                 InvI = 1.0f / I;
             }
@@ -444,7 +444,7 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
 
             BodyType oldType = type;
-            if (InvMass == 0.0f && InvI == 0.0f)
+            if ((InvMass == 0.0f) && (InvI == 0.0f))
             {
                 type = BodyType.Static;
             }
@@ -500,7 +500,7 @@ namespace Alis.Core.Physic.Dynamics
                 center *= InvMass;
             }
 
-            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
+            if ((I > 0.0f) && ((Flags & BodyFlags.FixedRotation) == 0))
             {
                 // Center the inertia about the center of mass.
                 I -= Mass * Vector2.Dot(center, center);
@@ -518,7 +518,7 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
 
             BodyType oldType = type;
-            if (InvMass == 0.0f && InvI == 0.0f)
+            if ((InvMass == 0.0f) && (InvI == 0.0f))
             {
                 type = BodyType.Static;
             }
@@ -607,19 +607,13 @@ namespace Alis.Core.Physic.Dynamics
         ///     False if the movement put a shape outside the world. In this case the
         ///     body is automatically frozen.
         /// </returns>
-        public bool SetXForm(XForm xf)
-        {
-            return SetXForm(xf.Position, xf.GetAngle());
-        }
+        public bool SetXForm(XForm xf) => SetXForm(xf.Position, xf.GetAngle());
 
         /// <summary>
         ///     Get the body transform for the body's origin.
         /// </summary>
         /// <returns>Return the world transform of the body's origin.</returns>
-        public XForm GetXForm()
-        {
-            return Xf;
-        }
+        public XForm GetXForm() => Xf;
 
         /// <summary>
         ///     Set the world body origin position.
@@ -643,37 +637,25 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the world body origin position.
         /// </summary>
         /// <returns>Return the world position of the body's origin.</returns>
-        public Vector2 GetPosition()
-        {
-            return Xf.Position;
-        }
+        public Vector2 GetPosition() => Xf.Position;
 
         /// <summary>
         ///     Get the angle in radians.
         /// </summary>
         /// <returns>Return the current world rotation angle in radians.</returns>
-        public float GetAngle()
-        {
-            return Sweep.A;
-        }
+        public float GetAngle() => Sweep.A;
 
         /// <summary>
         ///     Get the world position of the center of mass.
         /// </summary>
         /// <returns></returns>
-        public Vector2 GetWorldCenter()
-        {
-            return Sweep.C;
-        }
+        public Vector2 GetWorldCenter() => Sweep.C;
 
         /// <summary>
         ///     Get the local position of the center of mass.
         /// </summary>
         /// <returns></returns>
-        public Vector2 GetLocalCenter()
-        {
-            return Sweep.LocalCenter;
-        }
+        public Vector2 GetLocalCenter() => Sweep.LocalCenter;
 
         /// <summary>
         ///     Set the linear velocity of the center of mass.
@@ -688,10 +670,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the linear velocity of the center of mass.
         /// </summary>
         /// <returns>Return the linear velocity of the center of mass.</returns>
-        public Vector2 GetLinearVelocity()
-        {
-            return LinearVelocity;
-        }
+        public Vector2 GetLinearVelocity() => LinearVelocity;
 
         /// <summary>
         ///     Sets the angular velocity.
@@ -706,10 +685,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the angular velocity.
         /// </summary>
         /// <returns>Return the angular velocity in radians/second.</returns>
-        public float GetAngularVelocity()
-        {
-            return AngularVelocity;
-        }
+        public float GetAngularVelocity() => AngularVelocity;
 
         /// <summary>
         ///     Apply a force at a world point. If the force is not
@@ -767,19 +743,13 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the total mass of the body.
         /// </summary>
         /// <returns>Return the mass, usually in kilograms (kg).</returns>
-        public float GetMass()
-        {
-            return Mass;
-        }
+        public float GetMass() => Mass;
 
         /// <summary>
         ///     Get the central rotational inertia of the body.
         /// </summary>
         /// <returns>Return the rotational inertia, usually in kg-m^2.</returns>
-        public float GetInertia()
-        {
-            return I;
-        }
+        public float GetInertia() => I;
 
         /// <summary>
         ///     Get the mass data of the body.
@@ -799,69 +769,48 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>Return the same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(Vector2 localPoint)
-        {
-            return Math.Mul(Xf, localPoint);
-        }
+        public Vector2 GetWorldPoint(Vector2 localPoint) => Math.Mul(Xf, localPoint);
 
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>Return the same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(Vector2 localVector)
-        {
-            return Math.Mul(Xf.R, localVector);
-        }
+        public Vector2 GetWorldVector(Vector2 localVector) => Math.Mul(Xf.R, localVector);
 
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>Return the corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(Vector2 worldPoint)
-        {
-            return Math.MulT(Xf, worldPoint);
-        }
+        public Vector2 GetLocalPoint(Vector2 worldPoint) => Math.MulT(Xf, worldPoint);
 
         /// <summary>
         ///     Gets a local vector given a world vector.
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>Return the corresponding local vector.</returns>
-        public Vector2 GetLocalVector(Vector2 worldVector)
-        {
-            return Math.MulT(Xf.R, worldVector);
-        }
+        public Vector2 GetLocalVector(Vector2 worldVector) => Math.MulT(Xf.R, worldVector);
 
         /// <summary>
         ///     Get the world linear velocity of a world point attached to this body.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint)
-        {
-            return LinearVelocity + Vector2.Cross(AngularVelocity, worldPoint - Sweep.C);
-        }
+        public Vector2 GetLinearVelocityFromWorldPoint(Vector2 worldPoint) => LinearVelocity + Vector2.Cross(AngularVelocity, worldPoint - Sweep.C);
 
         /// <summary>
         ///     Get the world velocity of a local point.
         /// </summary>
         /// <param name="localPoint">A point in local coordinates.</param>
         /// <returns>The world velocity of a point.</returns>
-        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint)
-        {
-            return GetLinearVelocityFromWorldPoint(GetWorldPoint(localPoint));
-        }
+        public Vector2 GetLinearVelocityFromLocalPoint(Vector2 localPoint) => GetLinearVelocityFromWorldPoint(GetWorldPoint(localPoint));
 
         /// <summary>
         ///     Gets the linear damping
         /// </summary>
         /// <returns>The linear damping</returns>
-        public float GetLinearDamping()
-        {
-            return LinearDamping;
-        }
+        public float GetLinearDamping() => LinearDamping;
 
         /// <summary>
         ///     Sets the linear damping using the specified linear damping
@@ -876,10 +825,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Gets the angular damping
         /// </summary>
         /// <returns>The angular damping</returns>
-        public float GetAngularDamping()
-        {
-            return AngularDamping;
-        }
+        public float GetAngularDamping() => AngularDamping;
 
         /// <summary>
         ///     Sets the angular damping using the specified angular damping
@@ -894,10 +840,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Is this body treated like a bullet for continuous collision detection?
         /// </summary>
         /// <returns></returns>
-        public bool IsBullet()
-        {
-            return (Flags & BodyFlags.Bullet) == BodyFlags.Bullet;
-        }
+        public bool IsBullet() => (Flags & BodyFlags.Bullet) == BodyFlags.Bullet;
 
         /// <summary>
         ///     Should this body be treated like a bullet for continuous collision detection?
@@ -919,10 +862,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Describes whether this instance is fixed rotation
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsFixedRotation()
-        {
-            return (Flags & BodyFlags.FixedRotation) == BodyFlags.FixedRotation;
-        }
+        public bool IsFixedRotation() => (Flags & BodyFlags.FixedRotation) == BodyFlags.FixedRotation;
 
         /// <summary>
         ///     Sets the fixed rotation using the specified fixedr
@@ -951,10 +891,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Is this body static (immovable)?
         /// </summary>
         /// <returns></returns>
-        public bool IsStatic()
-        {
-            return type == BodyType.Static;
-        }
+        public bool IsStatic() => type == BodyType.Static;
 
         /// <summary>
         ///     Sets the static
@@ -982,37 +919,25 @@ namespace Alis.Core.Physic.Dynamics
         ///     Is this body dynamic (movable)?
         /// </summary>
         /// <returns></returns>
-        public bool IsDynamic()
-        {
-            return type == BodyType.Dynamic;
-        }
+        public bool IsDynamic() => type == BodyType.Dynamic;
 
         /// <summary>
         ///     Is this body frozen?
         /// </summary>
         /// <returns></returns>
-        public bool IsFrozen()
-        {
-            return (Flags & BodyFlags.Frozen) == BodyFlags.Frozen;
-        }
+        public bool IsFrozen() => (Flags & BodyFlags.Frozen) == BodyFlags.Frozen;
 
         /// <summary>
         ///     Is this body sleeping (not simulating).
         /// </summary>
         /// <returns></returns>
-        public bool IsSleeping()
-        {
-            return (Flags & BodyFlags.Sleep) == BodyFlags.Sleep;
-        }
+        public bool IsSleeping() => (Flags & BodyFlags.Sleep) == BodyFlags.Sleep;
 
         /// <summary>
         ///     Describes whether this instance is allow sleeping
         /// </summary>
         /// <returns>The bool</returns>
-        public bool IsAllowSleeping()
-        {
-            return (Flags & BodyFlags.AllowSleep) == BodyFlags.AllowSleep;
-        }
+        public bool IsAllowSleeping() => (Flags & BodyFlags.AllowSleep) == BodyFlags.AllowSleep;
 
         /// <summary>
         ///     You can disable sleeping on this body.
@@ -1058,46 +983,31 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the list of all fixtures attached to this body.
         /// </summary>
         /// <returns></returns>
-        public Fixture GetFixtureList()
-        {
-            return FixtureList;
-        }
+        public Fixture GetFixtureList() => FixtureList;
 
         /// <summary>
         ///     Get the list of all joints attached to this body.
         /// </summary>
         /// <returns></returns>
-        public JointEdge GetJointList()
-        {
-            return JointList;
-        }
+        public JointEdge GetJointList() => JointList;
 
         /// <summary>
         ///     Gets the controller list
         /// </summary>
         /// <returns>The controller list</returns>
-        public ControllerEdge GetControllerList()
-        {
-            return ControllerList;
-        }
+        public ControllerEdge GetControllerList() => ControllerList;
 
         /// <summary>
         ///     Get the next body in the world's body list.
         /// </summary>
         /// <returns></returns>
-        public Body GetNext()
-        {
-            return Next;
-        }
+        public Body GetNext() => Next;
 
         /// <summary>
         ///     Get the user data pointer that was provided in the body definition.
         /// </summary>
         /// <returns></returns>
-        public object GetUserData()
-        {
-            return userData;
-        }
+        public object GetUserData() => userData;
 
         /// <summary>
         ///     Set the user data. Use this to store your application specific data.
@@ -1112,10 +1022,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Get the parent world of this body.
         /// </summary>
         /// <returns></returns>
-        public World GetWorld()
-        {
-            return world;
-        }
+        public World GetWorld() => world;
 
         /// <summary>
         ///     Synchronizes the transform

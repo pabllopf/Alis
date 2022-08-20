@@ -7,13 +7,13 @@
         <IsPackable>false</IsPackable>
     </PropertyGroup>
 
-  <PropertyGroup Condition="$(AssemblyName.Contains('Template')) == true">
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <PropertyGroup Condition="$(AssemblyName.Contains('Template')) == true">
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="$(AssemblyName.Contains('App')) == true">
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <PropertyGroup Condition="$(AssemblyName.Contains('App')) == true">
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Test')) == false AND $(AssemblyName.Contains('Sample')) == false AND $(AssemblyName.Contains('Template')) == false AND $(AssemblyName.Contains('App')) == false">
         <IsPackable>true</IsPackable>

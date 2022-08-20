@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ContactSolver.cs
+//  File:ContactSolver.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -45,11 +45,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     /// <seealso cref="IDisposable" />
     public class ContactSolver : IDisposable
     {
-        /// <summary>
-        ///     The position solver manifold
-        /// </summary>
-        private static readonly PositionSolverManifold SPositionSolverManifold = new PositionSolverManifold();
-
         /// <summary>
         ///     The constraints
         /// </summary>
@@ -219,6 +214,11 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         ///     The constraint count
         /// </summary>
         public int ConstraintCount { get; }
+
+        /// <summary>
+        ///     The position solver manifold
+        /// </summary>
+        private static readonly PositionSolverManifold SPositionSolverManifold = new PositionSolverManifold();
 
         /// <summary>
         ///     Disposes this instance
@@ -396,7 +396,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             ContactConstraintPoint* cp2 = &pointsPtr[1];
 
                             Vector2 a = new Vector2(cp1->NormalImpulse, cp2->NormalImpulse);
-                            Box2DxDebug.Assert(a.X >= 0.0f && a.Y >= 0.0f);
+                            Box2DxDebug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
 
                             // Relative velocity at contact
                             Vector2 dv1 = vB + Vector2.Cross(wB, cp1->Rb) - vA - Vector2.Cross(wA, cp1->Ra);
@@ -427,7 +427,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 //
                                 Vector2 x = -Math.Mul(c.NormalMass, b);
 
-                                if (x.X >= 0.0f && x.Y >= 0.0f)
+                                if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                                 {
                                     // Resubstitute for the incremental impulse
                                     Vector2 d = x - a;
@@ -473,7 +473,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 */
                                 vn2 = c.K.Col1.Y * x.X + b.Y;
 
-                                if (x.X >= 0.0f && vn2 >= 0.0f)
+                                if ((x.X >= 0.0f) && (vn2 >= 0.0f))
                                 {
                                     // Resubstitute for the incremental impulse
                                     Vector2 d = x - a;
@@ -517,7 +517,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 vn2 = 0.0f;
 */
 
-                                if (x.Y >= 0.0f && vn1 >= 0.0f)
+                                if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
                                 {
                                     // Resubstitute for the incremental impulse
                                     Vector2 d = x - a;
@@ -557,7 +557,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 vn1 = b.X;
                                 vn2 = b.Y;
 
-                                if (vn1 >= 0.0f && vn2 >= 0.0f)
+                                if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
                                 {
                                     // Resubstitute for the incremental impulse
                                     Vector2 d = x - a;

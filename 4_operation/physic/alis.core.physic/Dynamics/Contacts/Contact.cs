@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Contact.cs
+//  File:Contact.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -41,13 +41,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     /// </summary>
     public abstract partial class Contact
     {
-
-        /// <summary>
-        ///     The shape type count
-        /// </summary>
-        public static readonly ContactRegister[][] SRegisters =
-            new ContactRegister[(int)ShapeType.ShapeTypeCount][ /*(int)ShapeType.ShapeTypeCount*/];
-
         /// <summary>
         ///     The collide shape function
         /// </summary>
@@ -157,6 +150,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public Fixture FixtureB { get; }
 
         /// <summary>
+        ///     The shape type count
+        /// </summary>
+        public static readonly ContactRegister[][] SRegisters =
+            new ContactRegister[(int) ShapeType.ShapeTypeCount][ /*(int)ShapeType.ShapeTypeCount*/];
+
+        /// <summary>
         ///     Adds the type using the specified create fcn
         /// </summary>
         /// <param name="createFcn">The create fcn</param>
@@ -166,23 +165,23 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public static void AddType(ContactCreateFcn createFcn, ContactDestroyFcn contactDestroyFcn,
             ShapeType type1, ShapeType type2)
         {
-            Box2DxDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
-            Box2DxDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert((ShapeType.UnknownShape < type1) && (type1 < ShapeType.ShapeTypeCount));
+            Box2DxDebug.Assert((ShapeType.UnknownShape < type2) && (type2 < ShapeType.ShapeTypeCount));
 
-            if (SRegisters[(int)type1] == null)
+            if (SRegisters[(int) type1] == null)
             {
-                SRegisters[(int)type1] = new ContactRegister[(int)ShapeType.ShapeTypeCount];
+                SRegisters[(int) type1] = new ContactRegister[(int) ShapeType.ShapeTypeCount];
             }
 
-            SRegisters[(int)type1][(int)type2].CreateFcn = createFcn;
-            SRegisters[(int)type1][(int)type2].DestroyFcn = contactDestroyFcn;
-            SRegisters[(int)type1][(int)type2].Primary = true;
+            SRegisters[(int) type1][(int) type2].CreateFcn = createFcn;
+            SRegisters[(int) type1][(int) type2].DestroyFcn = contactDestroyFcn;
+            SRegisters[(int) type1][(int) type2].Primary = true;
 
             if (type1 != type2)
             {
-                SRegisters[(int)type2][(int)type1].CreateFcn = createFcn;
-                SRegisters[(int)type2][(int)type1].DestroyFcn = contactDestroyFcn;
-                SRegisters[(int)type2][(int)type1].Primary = false;
+                SRegisters[(int) type2][(int) type1].CreateFcn = createFcn;
+                SRegisters[(int) type2][(int) type1].DestroyFcn = contactDestroyFcn;
+                SRegisters[(int) type2][(int) type1].Primary = false;
             }
         }
 
@@ -218,13 +217,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ShapeType type1 = fixtureA.ShapeType;
             ShapeType type2 = fixtureB.ShapeType;
 
-            Box2DxDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
-            Box2DxDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert((ShapeType.UnknownShape < type1) && (type1 < ShapeType.ShapeTypeCount));
+            Box2DxDebug.Assert((ShapeType.UnknownShape < type2) && (type2 < ShapeType.ShapeTypeCount));
 
-            ContactCreateFcn createFcn = SRegisters[(int)type1][(int)type2].CreateFcn;
+            ContactCreateFcn createFcn = SRegisters[(int) type1][(int) type2].CreateFcn;
             if (createFcn != null)
             {
-                if (SRegisters[(int)type1][(int)type2].Primary)
+                if (SRegisters[(int) type1][(int) type2].Primary)
                 {
                     return createFcn(fixtureA, fixtureB);
                 }
@@ -252,10 +251,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ShapeType typeA = contact.FixtureA.ShapeType;
             ShapeType typeB = contact.FixtureB.ShapeType;
 
-            Box2DxDebug.Assert(ShapeType.UnknownShape < typeA && typeA < ShapeType.ShapeTypeCount);
-            Box2DxDebug.Assert(ShapeType.UnknownShape < typeB && typeB < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert((ShapeType.UnknownShape < typeA) && (typeA < ShapeType.ShapeTypeCount));
+            Box2DxDebug.Assert((ShapeType.UnknownShape < typeB) && (typeB < ShapeType.ShapeTypeCount));
 
-            ContactDestroyFcn destroyFcn = SRegisters[(int)typeA][(int)typeB].DestroyFcn;
+            ContactDestroyFcn destroyFcn = SRegisters[(int) typeA][(int) typeB].DestroyFcn;
             destroyFcn(ref contact);
         }
 
@@ -275,7 +274,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             int oldCount = oldManifold.PointCount;
             int newCount = Manifold.PointCount;
 
-            if (newCount == 0 && oldCount > 0)
+            if ((newCount == 0) && (oldCount > 0))
             {
                 bodyA.WakeUp();
                 bodyB.WakeUp();
@@ -313,7 +312,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
             }
 
-            if (oldCount == 0 && newCount > 0)
+            if ((oldCount == 0) && (newCount > 0))
             {
                 Flags |= CollisionFlags.Touch;
                 if (listener != null)
@@ -322,7 +321,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
             }
 
-            if (oldCount > 0 && newCount == 0)
+            if ((oldCount > 0) && (newCount == 0))
             {
                 Flags &= ~CollisionFlags.Touch;
                 if (listener != null)
@@ -395,10 +394,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Get the next contact in the world's contact list.
         /// </summary>
-        public Contact GetNext()
-        {
-            return Next;
-        }
+        public Contact GetNext() => Next;
 
         /// <summary>
         ///     The collide shape delegate

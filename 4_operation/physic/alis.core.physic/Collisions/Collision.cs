@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Collision.cs
+//  File:Collision.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -429,7 +429,7 @@ namespace Alis.Core.Physic.Collisions
             int count2 = poly2.VertexCount;
             Vector2[] vertices2 = poly2.Vertices;
 
-            Box2DxDebug.Assert(0 <= edge1 && edge1 < count1);
+            Box2DxDebug.Assert((0 <= edge1) && (edge1 < count1));
 
             // Convert normal from poly1's frame into poly2's frame.
             Vector2 normal1World = Math.Mul(xf1.R, normals1[edge1]);
@@ -495,7 +495,7 @@ namespace Alis.Core.Physic.Collisions
             int bestEdge;
             float bestSeparation;
             int increment;
-            if (sPrev > s && sPrev > sNext)
+            if ((sPrev > s) && (sPrev > sNext))
             {
                 increment = -1;
                 bestEdge = prevEdge;
@@ -561,7 +561,7 @@ namespace Alis.Core.Physic.Collisions
             Vector2[] vertices2 = poly2.Vertices;
             Vector2[] normals2 = poly2.Normals;
 
-            Box2DxDebug.Assert(0 <= edge1 && edge1 < count1);
+            Box2DxDebug.Assert((0 <= edge1) && (edge1 < count1));
 
             // Get the normal of the reference edge in poly2's frame.
             Vector2 normal1 = Math.MulT(xf2.R, Math.Mul(xf1.R, normals1[edge1]));
@@ -586,13 +586,13 @@ namespace Alis.Core.Physic.Collisions
             c = new ClipVertex[2];
 
             c[0].V = Math.Mul(xf2, vertices2[i1]);
-            c[0].Id.Features.ReferenceEdge = (byte)edge1;
-            c[0].Id.Features.IncidentEdge = (byte)i1;
+            c[0].Id.Features.ReferenceEdge = (byte) edge1;
+            c[0].Id.Features.IncidentEdge = (byte) i1;
             c[0].Id.Features.IncidentVertex = 0;
 
             c[1].V = Math.Mul(xf2, vertices2[i2]);
-            c[1].Id.Features.ReferenceEdge = (byte)edge1;
-            c[1].Id.Features.IncidentEdge = (byte)i2;
+            c[1].Id.Features.ReferenceEdge = (byte) edge1;
+            c[1].Id.Features.IncidentEdge = (byte) i2;
             c[1].Id.Features.IncidentVertex = 1;
         }
 
@@ -838,7 +838,7 @@ namespace Alis.Core.Physic.Collisions
                 bool duplicate = false;
                 for (i = 0; i < lastCount; ++i)
                 {
-                    if (vertex->IndexA == lastA[i] && vertex->IndexB == lastB[i])
+                    if ((vertex->IndexA == lastA[i]) && (vertex->IndexB == lastB[i]))
                     {
                         duplicate = true;
                         break;
@@ -876,7 +876,7 @@ namespace Alis.Core.Physic.Collisions
                 float rA = shapeA.Radius;
                 float rB = shapeB.Radius;
 
-                if (output.Distance > rA + rB && output.Distance > Settings.FltEpsilon)
+                if ((output.Distance > rA + rB) && (output.Distance > Settings.FltEpsilon))
                 {
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.

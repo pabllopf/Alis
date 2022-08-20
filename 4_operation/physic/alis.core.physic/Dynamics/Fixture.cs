@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Fixture.cs
+//  File:Fixture.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -78,10 +78,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Initializes a new instance of the <see cref="Fixture" /> class
         /// </summary>
-        public Fixture()
-        {
-            ProxyId = PairManager.NullProxy;
-        }
+        public Fixture() => ProxyId = PairManager.NullProxy;
 
         /// <summary>
         ///     The proxy id
@@ -144,7 +141,7 @@ namespace Alis.Core.Physic.Dynamics
                 case ShapeType.CircleShape:
                 {
                     CircleShape circle = new CircleShape();
-                    CircleDef circleDef = (CircleDef)def;
+                    CircleDef circleDef = (CircleDef) def;
                     circle.Position = circleDef.LocalPosition;
                     circle.Radius = circleDef.Radius;
                     Shape = circle;
@@ -154,7 +151,7 @@ namespace Alis.Core.Physic.Dynamics
                 case ShapeType.PolygonShape:
                 {
                     PolygonShape polygon = new PolygonShape();
-                    PolygonDef polygonDef = (PolygonDef)def;
+                    PolygonDef polygonDef = (PolygonDef) def;
                     polygon.Set(polygonDef.Vertices, polygonDef.VertexCount);
                     Shape = polygon;
                 }
@@ -163,7 +160,7 @@ namespace Alis.Core.Physic.Dynamics
                 case ShapeType.EdgeShape:
                 {
                     EdgeShape edge = new EdgeShape();
-                    EdgeDef edgeDef = (EdgeDef)def;
+                    EdgeDef edgeDef = (EdgeDef) def;
                     edge.Set(edgeDef.Vertex1, edgeDef.Vertex2);
                     Shape = edge;
                 }
@@ -297,19 +294,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="offset">Offset the surface offset along normal.</param>
         /// <param name="c">Returns the centroid.</param>
         /// <returns>The total volume less than offset along normal.</returns>
-        public float ComputeSubmergedArea(Vector2 normal, float offset, out Vector2 c)
-        {
-            return Shape.ComputeSubmergedArea(normal, offset, Body.GetXForm(), out c);
-        }
+        public float ComputeSubmergedArea(Vector2 normal, float offset, out Vector2 c) => Shape.ComputeSubmergedArea(normal, offset, Body.GetXForm(), out c);
 
         /// <summary>
         ///     Test a point for containment in this fixture. This only works for convex shapes.
         /// </summary>
         /// <param name="p">A point in world coordinates.</param>
-        public bool TestPoint(Vector2 p)
-        {
-            return Shape.TestPoint(Body.GetXForm(), p);
-        }
+        public bool TestPoint(Vector2 p) => Shape.TestPoint(Body.GetXForm(), p);
 
         /// <summary>
         ///     Perform a ray cast against this shape.
@@ -324,17 +315,11 @@ namespace Alis.Core.Physic.Dynamics
         /// </param>
         /// <param name="segment">Defines the begin and end point of the ray cast.</param>
         /// <param name="maxLambda">A number typically in the range [0,1].</param>
-        public SegmentCollide TestSegment(out float lambda, out Vector2 normal, Segment segment, float maxLambda)
-        {
-            return Shape.TestSegment(Body.GetXForm(), out lambda, out normal, segment, maxLambda);
-        }
+        public SegmentCollide TestSegment(out float lambda, out Vector2 normal, Segment segment, float maxLambda) => Shape.TestSegment(Body.GetXForm(), out lambda, out normal, segment, maxLambda);
 
         /// <summary>
         ///     Get the maximum radius about the parent body's center of mass.
         /// </summary>
-        public float ComputeSweepRadius(Vector2 pivot)
-        {
-            return Shape.ComputeSweepRadius(pivot);
-        }
+        public float ComputeSweepRadius(Vector2 pivot) => Shape.ComputeSweepRadius(pivot);
     }
 }

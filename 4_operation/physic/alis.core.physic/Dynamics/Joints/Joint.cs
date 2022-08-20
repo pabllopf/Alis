@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Joint.cs
+//  File:Joint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -153,28 +153,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the type of the concrete joint.
         /// </summary>
-        public new JointType GetType()
-        {
-            return Type;
-        }
+        public new JointType GetType() => Type;
 
         /// <summary>
         ///     Get the first body attached to this joint.
         /// </summary>
         /// <returns></returns>
-        public Body GetBody1()
-        {
-            return Body1;
-        }
+        public Body GetBody1() => Body1;
 
         /// <summary>
         ///     Get the second body attached to this joint.
         /// </summary>
         /// <returns></returns>
-        public Body GetBody2()
-        {
-            return Body2;
-        }
+        public Body GetBody2() => Body2;
 
         /// <summary>
         ///     Get the reaction force on body2 at the joint anchor.
@@ -190,10 +181,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Get the next joint the world joint list.
         /// </summary>
         /// <returns></returns>
-        public Joint GetNext()
-        {
-            return Next;
-        }
+        public Joint GetNext() => Next;
 
         /// <summary>
         ///     Creates the def
@@ -208,37 +196,37 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 case JointType.DistanceJoint:
                 {
-                    joint = new DistanceJoint((DistanceJointDef)def);
+                    joint = new DistanceJoint((DistanceJointDef) def);
                 }
                     break;
                 case JointType.MouseJoint:
                 {
-                    joint = new MouseJoint((MouseJointDef)def);
+                    joint = new MouseJoint((MouseJointDef) def);
                 }
                     break;
                 case JointType.PrismaticJoint:
                 {
-                    joint = new PrismaticJoint((PrismaticJointDef)def);
+                    joint = new PrismaticJoint((PrismaticJointDef) def);
                 }
                     break;
                 case JointType.RevoluteJoint:
                 {
-                    joint = new RevoluteJoint((RevoluteJointDef)def);
+                    joint = new RevoluteJoint((RevoluteJointDef) def);
                 }
                     break;
                 case JointType.PulleyJoint:
                 {
-                    joint = new PulleyJoint((PulleyJointDef)def);
+                    joint = new PulleyJoint((PulleyJointDef) def);
                 }
                     break;
                 case JointType.GearJoint:
                 {
-                    joint = new GearJoint((GearJointDef)def);
+                    joint = new GearJoint((GearJointDef) def);
                 }
                     break;
                 case JointType.LineJoint:
                 {
-                    joint = new LineJoint((LineJointDef)def);
+                    joint = new LineJoint((LineJointDef) def);
                 }
                     break;
                 default:

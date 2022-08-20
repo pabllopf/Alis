@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   RevoluteJoint.cs
+//  File:RevoluteJoint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -208,10 +208,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param>The inv dt</param>
         /// <param name="invDt"></param>
         /// <returns>The vec</returns>
-        public override Vector2 GetReactionForce(float invDt)
-        {
-            return invDt * new Vector2(Impulse.X, Impulse.Y);
-        }
+        public override Vector2 GetReactionForce(float invDt) => invDt * new Vector2(Impulse.X, Impulse.Y);
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
@@ -219,10 +216,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param>The inv dt</param>
         /// <param name="invDt"></param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt)
-        {
-            return invDt * Impulse.Z;
-        }
+        public override float GetReactionTorque(float invDt) => invDt * Impulse.Z;
 
         /// <summary>
         ///     Enable/disable the joint limit.
@@ -407,7 +401,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float i1 = b1.InvI, i2 = b2.InvI;
 
             //Solve motor constraint.
-            if (IsMotorEnabled && State != LimitState.EqualLimits)
+            if (IsMotorEnabled && (State != LimitState.EqualLimits))
             {
                 float cdot = w2 - w1 - MotorSpeed;
                 float impulse = MotorMass * -cdot;
@@ -421,7 +415,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
 
             //Solve limit constraint.
-            if (IsLimitEnabled && State != LimitState.InactiveLimit)
+            if (IsLimitEnabled && (State != LimitState.InactiveLimit))
             {
                 Vector2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
                 Vector2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
@@ -510,7 +504,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float positionError = 0.0f;
 
             // Solve angular limit constraint.
-            if (IsLimitEnabled && State != LimitState.InactiveLimit)
+            if (IsLimitEnabled && (State != LimitState.InactiveLimit))
             {
                 float angle = body2.Sweep.A - body1.Sweep.A - ReferenceAngle;
                 float limitImpulse = 0.0f;
@@ -608,7 +602,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 body2.SynchronizeTransform();
             }
 
-            return positionError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (positionError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }
