@@ -792,26 +792,6 @@
                 The pair manager class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullPair">
-            <summary>
-                The ushrt max
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullProxy">
-            <summary>
-                The ushrt max
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableCapacity">
-            <summary>
-                The max pairs
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableMask">
-            <summary>
-                The table capacity
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collisions.PairManager.HashTable">
             <summary>
                 The table capacity
@@ -855,6 +835,26 @@
         <member name="M:Alis.Core.Physic.Collisions.PairManager.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.PairManager" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullPair">
+            <summary>
+                The ushrt max
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullProxy">
+            <summary>
+                The ushrt max
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableCapacity">
+            <summary>
+                The max pairs
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableMask">
+            <summary>
+                The table capacity
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.PairManager.Initialize(Alis.Core.Physic.Collisions.BroadPhase,Alis.Core.Physic.Collisions.PairCallback)">
@@ -2797,11 +2797,6 @@
                 The touch collision flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.SRegisters">
-            <summary>
-                The shape type count
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollideShapeFunction">
             <summary>
                 The collide shape function
@@ -2883,6 +2878,11 @@
         <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.FixtureB">
             <summary>
                 Get the second fixture in this contact.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.SRegisters">
+            <summary>
+                The shape type count
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.AddType(Alis.Core.Physic.Dynamics.Contacts.ContactCreateFcn,Alis.Core.Physic.Dynamics.Contacts.ContactDestroyFcn,Alis.Core.Physic.Collisions.Shapes.ShapeType,Alis.Core.Physic.Collisions.Shapes.ShapeType)">
@@ -3137,11 +3137,6 @@
             </summary>
             <seealso cref="T:System.IDisposable" />
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.SPositionSolverManifold">
-            <summary>
-                The position solver manifold
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Constraints">
             <summary>
                 The constraints
@@ -3163,6 +3158,11 @@
         <member name="P:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.ConstraintCount">
             <summary>
                 The constraint count
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.SPositionSolverManifold">
+            <summary>
+                The position solver manifold
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Dispose">
@@ -5551,6 +5551,12 @@
                 useful to prevent one side of the pulley hitting the top.
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Joints.PulleyJointDef)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PulleyJoint" /> class
+            </summary>
+            <param name="def">The def</param>
+        </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MinPulleyLength">
             <summary>
                 The min pulley length
@@ -5560,12 +5566,6 @@
             <summary>
                 The limit state
             </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Joints.PulleyJointDef)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PulleyJoint" /> class
-            </summary>
-            <param name="def">The def</param>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Ground">
             <summary>
@@ -6088,7 +6088,7 @@
         </member>
         <member name="T:Alis.Core.Physic.Exception.LockException">
             <summary>
-            Lock
+                Lock
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.World">
