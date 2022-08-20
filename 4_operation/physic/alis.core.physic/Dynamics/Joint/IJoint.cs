@@ -30,6 +30,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -272,7 +273,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         internal void ComputeXForm(ref XForm xf, Vector2 center, Vector2 localCenter, float angle)
         {
             xf.R.Set(angle);
-            xf.Position = center - Math.Mul(xf.R, localCenter);
+            xf.Position = center - Helper.Mul(xf.R, localCenter);
         }
     }
 }

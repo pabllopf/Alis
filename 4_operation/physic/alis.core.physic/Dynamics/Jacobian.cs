@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Dynamics.Joint
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
     ///     The jacobian

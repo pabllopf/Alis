@@ -29,6 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -64,7 +65,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             T.Col2.Y = -yDamping;
             if (xDamping > 0 || yDamping > 0)
             {
-                maxTimestep = 1 / Math.Max(xDamping, yDamping);
+                maxTimestep = 1 / Helper.Max(xDamping, yDamping);
             }
             else
             {
@@ -97,7 +98,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                     continue;
                 }
 
-                Vector2 damping = body.GetWorldVector(Math.Mul(T, body.GetLocalVector(body.GetLinearVelocity())));
+                Vector2 damping = body.GetWorldVector(Helper.Mul(T, body.GetLocalVector(body.GetLinearVelocity())));
                 body.SetLinearVelocity(body.GetLinearVelocity() + timestep * damping);
             }
         }

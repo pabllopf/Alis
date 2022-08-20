@@ -86,8 +86,8 @@ namespace Alis.Core.Physic.Collisions
                     v->IndexB = cache->IndexB[i];
                     Vector2 wALocal = shapeA.GetVertex(v->IndexA);
                     Vector2 wBLocal = shapeB.GetVertex(v->IndexB);
-                    v->Wa = Math.Mul(transformA, wALocal);
-                    v->Wb = Math.Mul(transformB, wBLocal);
+                    v->Wa = Helper.Mul(transformA, wALocal);
+                    v->Wb = Helper.Mul(transformB, wBLocal);
                     v->W = v->Wb - v->Wa;
                     v->A = 0.0f;
                 }
@@ -113,8 +113,8 @@ namespace Alis.Core.Physic.Collisions
                     v->IndexB = 0;
                     Vector2 wALocal = shapeA.GetVertex(0);
                     Vector2 wBLocal = shapeB.GetVertex(0);
-                    v->Wa = Math.Mul(transformA, wALocal);
-                    v->Wb = Math.Mul(transformB, wBLocal);
+                    v->Wa = Helper.Mul(transformA, wALocal);
+                    v->Wb = Helper.Mul(transformB, wBLocal);
                     v->W = v->Wb - v->Wa;
                     Count = 1;
                 }

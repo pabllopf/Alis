@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BodyFlags.cs
+//  File:FixtureDef.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,44 +27,65 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Physic.Collisions.Shape;
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Core.Physic.Dynamics.Fixtures
 {
     /// <summary>
-    ///     The body flags enum
+    ///     A fixture definition is used to create a fixture. This class defines an
+    ///     abstract fixture definition. You can reuse fixture definitions safely.
     /// </summary>
-    [Flags]
-    public enum BodyFlags
+    public class FixtureDef
     {
         /// <summary>
-        ///     The frozen body flags
+        ///     A sensor shape collects contact information but never generates a collision response.
         /// </summary>
-        Frozen = 0x0002,
+        public readonly bool IsSensor;
 
         /// <summary>
-        ///     The island body flags
+        ///     The restitution (elasticity) usually in the range [0,1].
         /// </summary>
-        Island = 0x0004,
+        public readonly float Restitution;
 
         /// <summary>
-        ///     The sleep body flags
+        ///     Use this to store application specific fixture data.
         /// </summary>
-        Sleep = 0x0008,
+        public readonly object UserData;
 
         /// <summary>
-        ///     The allow sleep body flags
+        ///     The density, usually in kg/m^2.
         /// </summary>
-        AllowSleep = 0x0010,
+        public float Density;
 
         /// <summary>
-        ///     The bullet body flags
+        ///     Contact filtering data.
         /// </summary>
-        Bullet = 0x0020,
+        public FilterData Filter;
 
         /// <summary>
-        ///     The fixed rotation body flags
+        ///     The friction coefficient, usually in the range [0,1].
         /// </summary>
-        FixedRotation = 0x0040
+        public float Friction;
+
+        /// <summary>
+        ///     Holds the shape type for down-casting.
+        /// </summary>
+        public ShapeType Type;
+
+        /// <summary>
+        ///     The constructor sets the default fixture definition values.
+        /// </summary>
+        public FixtureDef()
+        {
+            Type = ShapeType.UnknownShape;
+            UserData = null;
+            Friction = 0.2f;
+            Restitution = 0.0f;
+            Density = 0.0f;
+            Filter.CategoryBits = 0x0001;
+            Filter.MaskBits = 0xFFFF;
+            Filter.GroupIndex = 0;
+            IsSensor = false;
+        }
     }
 }

@@ -49,11 +49,10 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
-    using Box2DXMath = Math;
-
     /// <summary>
     ///     The pulley joint is connected to two bodies and two fixed ground points.
     ///     The pulley supports a ratio such that:
@@ -237,8 +236,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             constant = def.Length1 + Ratio * def.Length2;
 
-            maxLength1 = Math.Min(def.MaxLength1, Constant - Ratio * MinPulleyLength);
-            maxLength2 = Math.Min(def.MaxLength2, (Constant - MinPulleyLength) / Ratio);
+            maxLength1 = Helper.Min(def.MaxLength1, Constant - Ratio * MinPulleyLength);
+            maxLength2 = Helper.Min(def.MaxLength2, (Constant - MinPulleyLength) / Ratio);
 
             Impulse = 0.0f;
             LimitImpulse1 = 0.0f;
@@ -600,8 +599,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             Body body1 = Body1;
             Body body2 = Body2;
 
-            Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-            Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+            Vector2 mulR1 = Helper.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+            Vector2 mulR2 = Helper.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
             Vector2 body1SweepC = body1.Sweep.C + mulR1;
             Vector2 body2SweepC = body2.Sweep.C + mulR2;
@@ -736,8 +735,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             Body b1 = Body1;
             Body b2 = Body2;
 
-            Vector2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vector2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
             if (State == LimitState.AtUpperLimit)
             {
@@ -747,7 +746,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 float cdot = -Vector2.Dot(U1, v1) - Ratio * Vector2.Dot(U2, v2);
                 float impulse = PulleyMass * -cdot;
                 float oldImpulse = Impulse;
-                Impulse = Box2DXMath.Max(0.0f, Impulse + impulse);
+                Impulse = Helper.Max(0.0f, Impulse + impulse);
                 impulse = Impulse - oldImpulse;
 
                 Vector2 p1 = -impulse * U1;
@@ -765,7 +764,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 float cdot = -Vector2.Dot(U1, v1);
                 float impulse = -LimitMass1 * cdot;
                 float oldImpulse = LimitImpulse1;
-                LimitImpulse1 = Box2DXMath.Max(0.0f, LimitImpulse1 + impulse);
+                LimitImpulse1 = Helper.Max(0.0f, LimitImpulse1 + impulse);
                 impulse = LimitImpulse1 - oldImpulse;
 
                 Vector2 p1 = -impulse * U1;
@@ -780,7 +779,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 float cdot = -Vector2.Dot(U2, v2);
                 float impulse = -LimitMass2 * cdot;
                 float oldImpulse = LimitImpulse2;
-                LimitImpulse2 = Box2DXMath.Max(0.0f, LimitImpulse2 + impulse);
+                LimitImpulse2 = Helper.Max(0.0f, LimitImpulse2 + impulse);
                 impulse = LimitImpulse2 - oldImpulse;
 
                 Vector2 p2 = -impulse * U2;
@@ -806,8 +805,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             if (State == LimitState.AtUpperLimit)
             {
-                Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-                Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+                Vector2 mulR1 = Helper.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+                Vector2 mulR2 = Helper.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
                 Vector2 body1SweepC = body1.Sweep.C + mulR1;
                 Vector2 body2SweepC = body2.Sweep.C + mulR2;
@@ -838,9 +837,9 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 }
 
                 float c = Constant - length1 - Ratio * length2;
-                linearError = Box2DXMath.Max(linearError, -c);
+                linearError = Helper.Max(linearError, -c);
 
-                c = Box2DXMath.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
+                c = Helper.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
                 float impulse = -PulleyMass * c;
 
                 Vector2 p1 = -impulse * U1;
@@ -857,7 +856,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             if (LimitState == LimitState.AtUpperLimit)
             {
-                Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+                Vector2 mulR1 = Helper.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
                 Vector2 body1SweepC = body1.Sweep.C + mulR1;
 
                 U1 = body1SweepC - groundAnchor1;
@@ -873,8 +872,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 }
 
                 float c = MaxLength1 - length1;
-                linearError = Box2DXMath.Max(linearError, -c);
-                c = Box2DXMath.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
+                linearError = Helper.Max(linearError, -c);
+                c = Helper.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
                 float impulse = -LimitMass1 * c;
 
                 Vector2 p1 = -impulse * U1;
@@ -886,7 +885,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             if (LimitState == LimitState.AtUpperLimit)
             {
-                Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+                Vector2 mulR2 = Helper.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
                 Vector2 body2SweepC = body2.Sweep.C + mulR2;
 
                 U2 = body2SweepC - groundAnchor2;
@@ -902,8 +901,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 }
 
                 float c = MaxLength2 - length2;
-                linearError = Box2DXMath.Max(linearError, -c);
-                c = Box2DXMath.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
+                linearError = Helper.Max(linearError, -c);
+                c = Helper.Clamp(c + Settings.LinearSlop, -Settings.MaxLinearCorrection, 0.0f);
                 float impulse = -LimitMass2 * c;
 
                 Vector2 p2 = -impulse * U2;

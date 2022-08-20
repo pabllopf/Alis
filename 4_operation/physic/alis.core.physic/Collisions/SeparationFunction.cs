@@ -81,8 +81,8 @@ namespace Alis.Core.Physic.Collisions
                 FaceType = Type.Points;
                 Vector2 localPointA = ShapeA.GetVertex(cache->IndexA[0]);
                 Vector2 localPointB = ShapeB.GetVertex(cache->IndexB[0]);
-                Vector2 pointA = Math.Mul(transformA, localPointA);
-                Vector2 pointB = Math.Mul(transformB, localPointB);
+                Vector2 pointA = Helper.Mul(transformA, localPointA);
+                Vector2 pointB = Helper.Mul(transformB, localPointB);
                 Axis = pointB - pointA;
                 Axis.Normalize();
             }
@@ -97,9 +97,9 @@ namespace Alis.Core.Physic.Collisions
                 Axis = Vector2.Cross(localPointA2 - localPointA1, 1.0f);
                 Axis.Normalize();
 
-                Vector2 normal = Math.Mul(transformA.R, Axis);
-                Vector2 pointA = Math.Mul(transformA, LocalPoint);
-                Vector2 pointB = Math.Mul(transformB, localPointB);
+                Vector2 normal = Helper.Mul(transformA.R, Axis);
+                Vector2 pointA = Helper.Mul(transformA, LocalPoint);
+                Vector2 pointB = Helper.Mul(transformB, localPointB);
 
                 float s = Vector2.Dot(pointB - pointA, normal);
                 if (s < 0.0f)
@@ -119,9 +119,9 @@ namespace Alis.Core.Physic.Collisions
                 Axis = Vector2.Cross(localPointB2 - localPointB1, 1.0f);
                 Axis.Normalize();
 
-                Vector2 normal = Math.Mul(transformB.R, Axis);
-                Vector2 pointB = Math.Mul(transformB, LocalPoint);
-                Vector2 pointA = Math.Mul(transformA, localPointA);
+                Vector2 normal = Helper.Mul(transformB.R, Axis);
+                Vector2 pointB = Helper.Mul(transformB, LocalPoint);
+                Vector2 pointA = Helper.Mul(transformA, localPointA);
 
                 float s = Vector2.Dot(pointA - pointB, normal);
                 if (s < 0.0f)
@@ -143,25 +143,25 @@ namespace Alis.Core.Physic.Collisions
             {
                 case Type.Points:
                 {
-                    Vector2 axisA = Math.MulT(transformA.R, Axis);
-                    Vector2 axisB = Math.MulT(transformB.R, -Axis);
+                    Vector2 axisA = Helper.MulT(transformA.R, Axis);
+                    Vector2 axisB = Helper.MulT(transformB.R, -Axis);
                     Vector2 localPointA = ShapeA.GetSupportVertex(axisA);
                     Vector2 localPointB = ShapeB.GetSupportVertex(axisB);
-                    Vector2 pointA = Math.Mul(transformA, localPointA);
-                    Vector2 pointB = Math.Mul(transformB, localPointB);
+                    Vector2 pointA = Helper.Mul(transformA, localPointA);
+                    Vector2 pointB = Helper.Mul(transformB, localPointB);
                     float separation = Vector2.Dot(pointB - pointA, Axis);
                     return separation;
                 }
 
                 case Type.FaceA:
                 {
-                    Vector2 normal = Math.Mul(transformA.R, Axis);
-                    Vector2 pointA = Math.Mul(transformA, LocalPoint);
+                    Vector2 normal = Helper.Mul(transformA.R, Axis);
+                    Vector2 pointA = Helper.Mul(transformA, LocalPoint);
 
-                    Vector2 axisB = Math.MulT(transformB.R, -normal);
+                    Vector2 axisB = Helper.MulT(transformB.R, -normal);
 
                     Vector2 localPointB = ShapeB.GetSupportVertex(axisB);
-                    Vector2 pointB = Math.Mul(transformB, localPointB);
+                    Vector2 pointB = Helper.Mul(transformB, localPointB);
 
                     float separation = Vector2.Dot(pointB - pointA, normal);
                     return separation;
@@ -169,13 +169,13 @@ namespace Alis.Core.Physic.Collisions
 
                 case Type.FaceB:
                 {
-                    Vector2 normal = Math.Mul(transformB.R, Axis);
-                    Vector2 pointB = Math.Mul(transformB, LocalPoint);
+                    Vector2 normal = Helper.Mul(transformB.R, Axis);
+                    Vector2 pointB = Helper.Mul(transformB, LocalPoint);
 
-                    Vector2 axisA = Math.MulT(transformA.R, -normal);
+                    Vector2 axisA = Helper.MulT(transformA.R, -normal);
 
                     Vector2 localPointA = ShapeA.GetSupportVertex(axisA);
-                    Vector2 pointA = Math.Mul(transformA, localPointA);
+                    Vector2 pointA = Helper.Mul(transformA, localPointA);
 
                     float separation = Vector2.Dot(pointA - pointB, normal);
                     return separation;

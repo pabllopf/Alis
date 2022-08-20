@@ -30,6 +30,7 @@
 using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {

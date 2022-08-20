@@ -29,6 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Fixtures;
 using Moq;
 using Xunit;
 

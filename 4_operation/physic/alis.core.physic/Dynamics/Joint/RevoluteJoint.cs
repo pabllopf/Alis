@@ -43,11 +43,10 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
-    using Box2DXMath = Math;
-
     /// <summary>
     ///     A revolute joint constrains to bodies to share a common point while they
     ///     are free to rotate about the point. The relative rotation about the shared
@@ -578,8 +577,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             }
 
             // Compute the effective mass matrix.
-            Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-            Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+            Vector2 mulR1 = Helper.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+            Vector2 mulR2 = Helper.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
             // J = [-I -r1_skew I r2_skew]
             //     [ 0       -1 0       1]
@@ -630,7 +629,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             if (IsLimitEnabled)
             {
                 float jointAngle = body2.Sweep.A - body1.Sweep.A - ReferenceAngle;
-                if (Box2DXMath.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.AngularSlop)
+                if (Helper.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.AngularSlop)
                 {
                     State = LimitState.EqualLimits;
                 }
@@ -733,7 +732,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 float impulse = MotorMass * -cdot;
                 float oldImpulse = MotorTorque;
                 float maxImpulse = step.Dt * MaxMotorTorque;
-                MotorTorque = Box2DXMath.Clamp(MotorTorque + impulse, -maxImpulse, maxImpulse);
+                MotorTorque = Helper.Clamp(MotorTorque + impulse, -maxImpulse, maxImpulse);
                 impulse = MotorTorque - oldImpulse;
 
                 w1 -= i1 * impulse;
@@ -743,8 +742,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             //Solve limit constraint.
             if (IsLimitEnabled && (State != LimitState.InactiveLimit))
             {
-                Vector2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-                Vector2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+                Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
                 // Solve point-to-point constraint
                 Vector2 cdot1 = v2 + Vector2.Cross(w2, r2) - v1 - Vector2.Cross(w1, r1);
@@ -792,8 +791,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             }
             else
             {
-                Vector2 r1 = Box2DXMath.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-                Vector2 r2 = Box2DXMath.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+                Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
                 // Solve point-to-point constraint
                 Vector2 cdot = v2 + Vector2.Cross(w2, r2) - v1 - Vector2.Cross(w1, r1);
@@ -838,9 +837,9 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 if (State == LimitState.EqualLimits)
                 {
                     // Prevent large angular corrections
-                    float c = Box2DXMath.Clamp(angle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
+                    float c = Helper.Clamp(angle, -Settings.MaxAngularCorrection, Settings.MaxAngularCorrection);
                     limitImpulse = -MotorMass * c;
-                    angularError = Box2DXMath.Abs(c);
+                    angularError = Helper.Abs(c);
                 }
                 else if (State == LimitState.AtLowerLimit)
                 {
@@ -848,7 +847,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                     angularError = -c;
 
                     // Prevent large angular corrections and allow some slop.
-                    c = Box2DXMath.Clamp(c + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
+                    c = Helper.Clamp(c + Settings.AngularSlop, -Settings.MaxAngularCorrection, 0.0f);
                     limitImpulse = -MotorMass * c;
                 }
                 else if (State == LimitState.AtUpperLimit)
@@ -857,7 +856,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                     angularError = c;
 
                     // Prevent large angular corrections and allow some slop.
-                    c = Box2DXMath.Clamp(c - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
+                    c = Helper.Clamp(c - Settings.AngularSlop, 0.0f, Settings.MaxAngularCorrection);
                     limitImpulse = -MotorMass * c;
                 }
 
@@ -870,8 +869,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             // Solve point-to-point constraint.
             {
-                Vector2 mulR1 = Box2DXMath.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-                Vector2 mulR2 = Box2DXMath.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+                Vector2 mulR1 = Helper.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+                Vector2 mulR2 = Helper.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
 
                 Vector2 body2SweepC = body2.Sweep.C + mulR2 - body1.Sweep.C - mulR1;
                 positionError = body2SweepC.Length();

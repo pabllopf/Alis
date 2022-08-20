@@ -77,7 +77,7 @@ namespace Alis.Aspect.Math
             xf.R.Set(angle);
 
             // Shift to origin
-            xf.Position -= Math.Mul(xf.R, LocalCenter);
+            xf.Position -= Helper.Mul(xf.R, LocalCenter);
         }
 
         /// <summary>

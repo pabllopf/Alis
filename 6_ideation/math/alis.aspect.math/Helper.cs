@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Math.cs
+//  File:Helper.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,7 +35,7 @@ namespace Alis.Aspect.Math
     /// <summary>
     ///     The math class
     /// </summary>
-    public class Math
+    public class Helper
     {
         /// <summary>
         ///     The ushrt max

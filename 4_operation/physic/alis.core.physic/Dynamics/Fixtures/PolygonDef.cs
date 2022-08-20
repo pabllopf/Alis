@@ -30,7 +30,7 @@
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions.Shape;
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Core.Physic.Dynamics.Fixtures
 {
     /// <summary>
     ///     Convex polygon. The vertices must be ordered so that the outside of
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics
 
             for (int i = 0; i < VertexCount; ++i)
             {
-                Vertices[i] = Math.Mul(xf, Vertices[i]);
+                Vertices[i] = Helper.Mul(xf, Vertices[i]);
             }
         }
     }

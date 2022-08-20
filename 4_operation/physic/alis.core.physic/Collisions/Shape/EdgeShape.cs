@@ -168,8 +168,8 @@ namespace Alis.Core.Physic.Collisions.Shape
             float maxLambda)
         {
             Vector2 r = segment.P2 - segment.P1;
-            Vector2 v1 = Math.Mul(transform, Vertex1);
-            Vector2 d = Math.Mul(transform, Vertex2) - v1;
+            Vector2 v1 = Helper.Mul(transform, Vertex1);
+            Vector2 d = Helper.Mul(transform, Vertex2) - v1;
             Vector2 n = Vector2.Cross(d, 1.0f);
 
             float kSlop = 100.0f * Settings.FltEpsilon;
@@ -210,12 +210,12 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <param name="transform">The transform</param>
         public void ComputeAabb(out Aabb aabb, XForm transform)
         {
-            Vector2 v1 = Math.Mul(transform, Vertex1);
-            Vector2 v2 = Math.Mul(transform, Vertex2);
+            Vector2 v1 = Helper.Mul(transform, Vertex1);
+            Vector2 v2 = Helper.Mul(transform, Vertex2);
 
             Vector2 r = new Vector2(Radius, Radius);
-            aabb.LowerBound = Math.Min(v1, v2) - r;
-            aabb.UpperBound = Math.Max(v1, v2) + r;
+            aabb.LowerBound = Helper.Min(v1, v2) - r;
+            aabb.UpperBound = Helper.Max(v1, v2) + r;
         }
 
         /// <summary>
@@ -271,8 +271,8 @@ namespace Alis.Core.Physic.Collisions.Shape
             Vector2 v0 = offset * normal;
             //b2Vec2 v0 = xf.position + (offset - b2Dot(normal, xf.position)) * normal;
 
-            Vector2 v1 = Math.Mul(xf, Vertex1);
-            Vector2 v2 = Math.Mul(xf, Vertex2);
+            Vector2 v1 = Helper.Mul(xf, Vertex1);
+            Vector2 v2 = Helper.Mul(xf, Vertex2);
 
             float d1 = Vector2.Dot(normal, v1) - offset;
             float d2 = Vector2.Dot(normal, v2) - offset;
@@ -353,7 +353,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         {
             float ds1 = Vector2.DistanceSquared(Vertex1, pivot);
             float ds2 = Vector2.DistanceSquared(Vertex2, pivot);
-            return Math.Sqrt(Math.Max(ds1, ds2));
+            return Helper.Sqrt(Helper.Max(ds1, ds2));
         }
     }
 }

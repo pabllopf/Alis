@@ -38,6 +38,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -173,7 +174,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             UserData = def.UserData;
             
             Target = def.Target;
-            localAnchor = Math.MulT(Body2.GetXForm(), Target);
+            localAnchor = Helper.MulT(Body2.GetXForm(), Target);
 
             maxForce = def.MaxForce;
             Impulse.SetZero();
@@ -448,7 +449,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             Beta = step.Dt * stiffness * Gamma;
 
             // Compute the effective mass matrix.
-            Vector2 effectiveMass = Math.Mul(body2.GetXForm().R, LocalAnchor - body2.GetLocalCenter());
+            Vector2 effectiveMass = Helper.Mul(body2.GetXForm().R, LocalAnchor - body2.GetLocalCenter());
 
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
@@ -518,11 +519,11 @@ namespace Alis.Core.Physic.Dynamics.Joint
         {
             Body b = Body2;
 
-            Vector2 r = Math.Mul(b.GetXForm().R, LocalAnchor - b.GetLocalCenter());
+            Vector2 r = Helper.Mul(b.GetXForm().R, LocalAnchor - b.GetLocalCenter());
 
             // Cdot = v + cross(w, r)
             Vector2 cdot = b.LinearVelocity + Vector2.Cross(b.AngularVelocity, r);
-            Vector2 impulse = Math.Mul(Mass, -(cdot + Beta * C + Gamma * Impulse));
+            Vector2 impulse = Helper.Mul(Mass, -(cdot + Beta * C + Gamma * Impulse));
 
             Vector2 oldImpulse = Impulse;
             Impulse += impulse;

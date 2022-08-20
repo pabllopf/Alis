@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PositionTests.cs
+//  File:BodyType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,49 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics;
-using Moq;
-using Xunit;
-
-namespace Alis.Core.Physic.Test.Dynamics
+namespace Alis.Core.Physic.Dynamics.Bodys
 {
     /// <summary>
-    ///     The position tests class
+    ///     Body type
     /// </summary>
-    public class PositionTests
+    public enum BodyType
     {
         /// <summary>
-        ///     The mock repository
+        ///     The static body type
         /// </summary>
-        private MockRepository mockRepository;
-
+        Static = 0,
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PositionTests" /> class
+        ///     The dynamic body type
         /// </summary>
-        public PositionTests() => mockRepository = new MockRepository(MockBehavior.Strict);
-
-        /// <summary>
-        ///     Creates the position
-        /// </summary>
-        /// <returns>The position</returns>
-        private Position CreatePosition() => new Position();
-
-        /// <summary>
-        ///     Tests that test method 1
-        /// </summary>
-        [Fact]
-        public void TestMethod1()
-        {
-            // Arrange
-            Position position = CreatePosition();
-
-            // Act
-
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
+        Dynamic = 1
     }
 }

@@ -50,6 +50,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -517,7 +518,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         public float GetReactionTorque(float invDt)
         {
             // TODO_ERIN not tested
-            Vector2 r = Math.Mul(Body2.GetXForm().R, LocalAnchor2 - Body2.GetLocalCenter());
+            Vector2 r = Helper.Mul(Body2.GetXForm().R, LocalAnchor2 - Body2.GetLocalCenter());
             Vector2 p = Impulse * jacobian.Linear2;
             float l = Impulse * jacobian.Angular2 - Vector2.Cross(r, p);
             return invDt * l;
@@ -544,8 +545,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             }
             else
             {
-                Vector2 ug = Math.Mul(g1.GetXForm().R, Prismatic1.LocalXAxis1);
-                Vector2 r = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+                Vector2 ug = Helper.Mul(g1.GetXForm().R, Prismatic1.LocalXAxis1);
+                Vector2 r = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
                 float crug = Vector2.Cross(r, ug);
                 jacobian.Linear1 = -ug;
                 jacobian.Angular1 = -crug;
@@ -559,8 +560,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             }
             else
             {
-                Vector2 ug = Math.Mul(g2.GetXForm().R, Prismatic2.LocalXAxis1);
-                Vector2 r = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+                Vector2 ug = Helper.Mul(g2.GetXForm().R, Prismatic2.LocalXAxis1);
+                Vector2 r = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
                 float crug = Vector2.Cross(r, ug);
                 jacobian.Linear2 = -Ratio * ug;
                 jacobian.Angular2 = -Ratio * crug;

@@ -75,7 +75,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <returns>The bool</returns>
         public bool TestPoint(XForm transform, Vector2 p)
         {
-            Vector2 center = transform.Position + Math.Mul(transform.R, Position);
+            Vector2 center = transform.Position + Helper.Mul(transform.R, Position);
             Vector2 d = p - center;
             return Vector2.Dot(d, d) <= Radius * Radius;
         }
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Collisions.Shape
             lambda = 0f;
             normal = Vector2.Zero;
 
-            Vector2 position = transform.Position + Math.Mul(transform.R, Position);
+            Vector2 position = transform.Position + Helper.Mul(transform.R, Position);
             Vector2 s = segment.P1 - position;
             float b = Vector2.Dot(s, s) - Radius * Radius;
 
@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Collisions.Shape
             }
 
             // Find the point of intersection of the line with the circle.
-            float a = -(c + Math.Sqrt(sigma));
+            float a = -(c + Helper.Sqrt(sigma));
 
             // Is the intersection point on the segment?
             if ((0.0f <= a) && (a <= maxLambda * rr))
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         {
             aabb = new Aabb();
 
-            Vector2 p = transform.Position + Math.Mul(transform.R, Position);
+            Vector2 p = transform.Position + Helper.Mul(transform.R, Position);
             aabb.LowerBound.Set(p.X - Radius, p.Y - Radius);
             aabb.UpperBound.Set(p.X + Radius, p.Y + Radius);
         }
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <returns>The area</returns>
         public float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c)
         {
-            Vector2 p = Math.Mul(xf, Position);
+            Vector2 p = Helper.Mul(xf, Position);
             float l = -(Vector2.Dot(normal, p) - offset);
             if (l < -Radius + Settings.FltEpsilon)
             {
@@ -199,7 +199,7 @@ namespace Alis.Core.Physic.Collisions.Shape
             float r2 = Radius * Radius;
             float l2 = l * l;
             float area = r2 * ((float) System.Math.Asin(l / Radius) + Settings.Pi / 2) +
-                         l * Math.Sqrt(r2 - l2);
+                         l * Helper.Sqrt(r2 - l2);
             float com = -2.0f / 3.0f * (float) System.Math.Pow(r2 - l2, 1.5f) / area;
 
             c.X = p.X + normal.X * com;

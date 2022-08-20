@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Physic.Dynamics.Bodys;
+
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>

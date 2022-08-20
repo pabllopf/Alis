@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BodyType.cs
+//  File:BodyFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Dynamics
+using System;
+
+namespace Alis.Core.Physic.Dynamics.Bodys
 {
     /// <summary>
-    ///     Body type
+    ///     The body flags enum
     /// </summary>
-    public enum BodyType
+    [Flags]
+    public enum BodyFlags
     {
         /// <summary>
-        ///     The static body type
+        ///     The frozen body flags
         /// </summary>
-        Static = 0,
+        Frozen = 0x0002,
 
         /// <summary>
-        ///     The dynamic body type
+        ///     The island body flags
         /// </summary>
-        Dynamic = 1
+        Island = 0x0004,
+
+        /// <summary>
+        ///     The sleep body flags
+        /// </summary>
+        Sleep = 0x0008,
+
+        /// <summary>
+        ///     The allow sleep body flags
+        /// </summary>
+        AllowSleep = 0x0010,
+
+        /// <summary>
+        ///     The bullet body flags
+        /// </summary>
+        Bullet = 0x0020,
+
+        /// <summary>
+        ///     The fixed rotation body flags
+        /// </summary>
+        FixedRotation = 0x0040
     }
 }

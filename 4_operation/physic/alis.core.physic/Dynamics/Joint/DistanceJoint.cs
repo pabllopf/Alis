@@ -30,6 +30,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -361,8 +362,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             Body b2 = body2;
 
             // Compute the effective mass matrix.
-            Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
             U = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             // Handle singularity.
@@ -450,14 +451,14 @@ namespace Alis.Core.Physic.Dynamics.Joint
             Body b1 = body1;
             Body b2 = body2;
 
-            Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
             Vector2 d = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             float length = d.Normalize();
             float c = length - this.length;
-            c = Math.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+            c = Helper.Clamp(c, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
 
             float impulse = -Mass * c;
             U = d;
@@ -494,8 +495,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             Body b1 = body1;
             Body b2 = body2;
 
-            Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
-            Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
+            Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
+            Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
 
             // Cdot = dot(u, v + cross(w, r))
             Vector2 v1 = b1.LinearVelocity + Vector2.Cross(b1.AngularVelocity, r1);

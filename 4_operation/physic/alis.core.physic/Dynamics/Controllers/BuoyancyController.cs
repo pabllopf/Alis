@@ -29,6 +29,8 @@
 
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -142,7 +144,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
                 areac.X /= area;
                 areac.Y /= area;
-                //Vec2 localCentroid = Math.MulT(body.GetXForm(), areac);
+                //Vec2 localCentroid = Helper.MulT(body.GetXForm(), areac);
                 massc.X /= mass;
                 massc.Y /= mass;
                 if (area < Settings.FltEpsilon)

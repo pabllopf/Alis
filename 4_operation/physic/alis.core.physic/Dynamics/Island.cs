@@ -149,9 +149,9 @@ using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joint;
-using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -427,9 +427,9 @@ namespace Alis.Core.Physic.Dynamics
 
                     if ((b.Flags & BodyFlags.AllowSleep) == 0 ||
 #if TARGET_FLOAT32_IS_FIXED
-						Common.Math.Abs(b._angularVelocity) > Settings.AngularSleepTolerance ||
-						Common.Math.Abs(b._linearVelocity.X) > Settings.LinearSleepTolerance ||
-						Common.Math.Abs(b._linearVelocity.Y) > Settings.LinearSleepTolerance)
+						Common.Helper.Abs(b._angularVelocity) > Settings.AngularSleepTolerance ||
+						Common.Helper.Abs(b._linearVelocity.X) > Settings.LinearSleepTolerance ||
+						Common.Helper.Abs(b._linearVelocity.Y) > Settings.LinearSleepTolerance)
 #else
                         b.AngularVelocity * b.AngularVelocity > angTolSqr ||
                         Vector2.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)

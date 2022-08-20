@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:EdgeDef.cs
+//  File:Position.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -26,30 +26,21 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using Alis.Aspect.Math;
-using Alis.Core.Physic.Collisions.Shape;
-
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Aspect.Math
 {
     /// <summary>
-    ///     This structure is used to build a chain of edges.
+    ///     The position
     /// </summary>
-    public class EdgeDef : FixtureDef
+    public struct Position
     {
         /// <summary>
-        ///     The start vertex.
+        ///     The
         /// </summary>
-        public Vector2 Vertex1;
+        public Vector2 X;
 
         /// <summary>
-        ///     The end vertex.
+        ///     The
         /// </summary>
-        public Vector2 Vertex2;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="EdgeDef" /> class
-        /// </summary>
-        public EdgeDef() => Type = ShapeType.EdgeShape;
+        public float A;
     }
 }

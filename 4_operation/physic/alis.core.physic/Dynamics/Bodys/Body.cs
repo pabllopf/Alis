@@ -33,10 +33,10 @@ using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
+using Alis.Core.Physic.Dynamics.Fixtures;
 using Alis.Core.Physic.Dynamics.Joint;
-using Math = Alis.Aspect.Math.Math;
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Core.Physic.Dynamics.Bodys
 {
     /// <summary>
     ///     A rigid body. These are created via World.AddBody.
@@ -214,7 +214,7 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.LocalCenter = bd.MassData.Center;
             Sweep.T0 = 1.0f;
             Sweep.A0 = Sweep.A = bd.Angle;
-            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
+            Sweep.C0 = Sweep.C = Helper.Mul(Xf, Sweep.LocalCenter);
 
             //_jointList = null;
             //_contactList = null;
@@ -286,7 +286,7 @@ namespace Alis.Core.Physic.Dynamics
         {
             XForm xf1 = new XForm();
             xf1.R.Set(Sweep.A0);
-            xf1.Position = Sweep.C0 - Math.Mul(xf1.R, Sweep.LocalCenter);
+            xf1.Position = Sweep.C0 - Helper.Mul(xf1.R, Sweep.LocalCenter);
 
             bool inRange = true;
             for (Fixture f = FixtureList; f != null; f = f.Next)
@@ -440,7 +440,7 @@ namespace Alis.Core.Physic.Dynamics
 
             // Move center of mass.
             Sweep.LocalCenter = massData.Center;
-            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
+            Sweep.C0 = Sweep.C = Helper.Mul(Xf, Sweep.LocalCenter);
 
             BodyType oldType = type;
             if ((InvMass == 0.0f) && (InvI == 0.0f))
@@ -514,7 +514,7 @@ namespace Alis.Core.Physic.Dynamics
 
             // Move center of mass.
             Sweep.LocalCenter = center;
-            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
+            Sweep.C0 = Sweep.C = Helper.Mul(Xf, Sweep.LocalCenter);
 
             BodyType oldType = type;
             if ((InvMass == 0.0f) && (InvI == 0.0f))
@@ -565,7 +565,7 @@ namespace Alis.Core.Physic.Dynamics
             Xf.R.Set(angle);
             Xf.Position = position;
 
-            Sweep.C0 = Sweep.C = Math.Mul(Xf, Sweep.LocalCenter);
+            Sweep.C0 = Sweep.C = Helper.Mul(Xf, Sweep.LocalCenter);
             Sweep.A0 = Sweep.A = angle;
 
             bool freeze = false;
@@ -768,28 +768,28 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localPoint">A point on the body measured relative the the body's origin.</param>
         /// <returns>Return the same point expressed in world coordinates.</returns>
-        public Vector2 GetWorldPoint(Vector2 localPoint) => Math.Mul(Xf, localPoint);
+        public Vector2 GetWorldPoint(Vector2 localPoint) => Helper.Mul(Xf, localPoint);
 
         /// <summary>
         ///     Get the world coordinates of a vector given the local coordinates.
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>Return the same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(Vector2 localVector) => Math.Mul(Xf.R, localVector);
+        public Vector2 GetWorldVector(Vector2 localVector) => Helper.Mul(Xf.R, localVector);
 
         /// <summary>
         ///     Gets a local point relative to the body's origin given a world point.
         /// </summary>
         /// <param name="worldPoint">A point in world coordinates.</param>
         /// <returns>Return the corresponding local point relative to the body's origin.</returns>
-        public Vector2 GetLocalPoint(Vector2 worldPoint) => Math.MulT(Xf, worldPoint);
+        public Vector2 GetLocalPoint(Vector2 worldPoint) => Helper.MulT(Xf, worldPoint);
 
         /// <summary>
         ///     Gets a local vector given a world vector.
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>Return the corresponding local vector.</returns>
-        public Vector2 GetLocalVector(Vector2 worldVector) => Math.MulT(Xf.R, worldVector);
+        public Vector2 GetLocalVector(Vector2 worldVector) => Helper.MulT(Xf.R, worldVector);
 
         /// <summary>
         ///     Get the world linear velocity of a world point attached to this body.
@@ -1029,7 +1029,7 @@ namespace Alis.Core.Physic.Dynamics
         internal void SynchronizeTransform()
         {
             Xf.R.Set(Sweep.A);
-            Xf.Position = Sweep.C - Math.Mul(Xf.R, Sweep.LocalCenter);
+            Xf.Position = Sweep.C - Helper.Mul(Xf.R, Sweep.LocalCenter);
         }
 
         /// <summary>

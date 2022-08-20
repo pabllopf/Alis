@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Position.cs
+//  File:Velocity.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -26,24 +26,21 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using Alis.Aspect.Math;
-
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Aspect.Math
 {
     /// <summary>
-    ///     The position
+    ///     The velocity
     /// </summary>
-    public struct Position
+    public struct Velocity
     {
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 X;
+        public Vector2 V;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float A;
+        public float W;
     }
 }

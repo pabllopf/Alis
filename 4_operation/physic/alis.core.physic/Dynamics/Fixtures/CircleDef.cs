@@ -30,7 +30,7 @@
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions.Shape;
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Core.Physic.Dynamics.Fixtures
 {
     /// <summary>
     ///     This structure is used to build a fixture with a circle shape.

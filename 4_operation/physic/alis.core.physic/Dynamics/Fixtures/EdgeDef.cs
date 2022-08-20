@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:VelocityTests.cs
+//  File:EdgeDef.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,49 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics;
-using Moq;
-using Xunit;
+using Alis.Aspect.Math;
+using Alis.Core.Physic.Collisions.Shape;
 
-namespace Alis.Core.Physic.Test.Dynamics
+namespace Alis.Core.Physic.Dynamics.Fixtures
 {
     /// <summary>
-    ///     The velocity tests class
+    ///     This structure is used to build a chain of edges.
     /// </summary>
-    public class VelocityTests
+    public class EdgeDef : FixtureDef
     {
         /// <summary>
-        ///     The mock repository
+        ///     The start vertex.
         /// </summary>
-        private MockRepository mockRepository;
-
+        public Vector2 Vertex1;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="VelocityTests" /> class
+        ///     The end vertex.
         /// </summary>
-        public VelocityTests() => mockRepository = new MockRepository(MockBehavior.Strict);
+        public Vector2 Vertex2;
 
         /// <summary>
-        ///     Creates the velocity
+        ///     Initializes a new instance of the <see cref="EdgeDef" /> class
         /// </summary>
-        /// <returns>The velocity</returns>
-        private Velocity CreateVelocity() => new Velocity();
-
-        /// <summary>
-        ///     Tests that test method 1
-        /// </summary>
-        [Fact]
-        public void TestMethod1()
-        {
-            // Arrange
-            Velocity velocity = CreateVelocity();
-
-            // Act
-
-
-            // Assert
-            Assert.True(true);
-            mockRepository.VerifyAll();
-        }
+        public EdgeDef() => Type = ShapeType.EdgeShape;
     }
 }

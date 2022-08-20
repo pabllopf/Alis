@@ -97,11 +97,10 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
-    using Box2DXMath = Math;
-
     /// <summary>
     ///     A prismatic joint. This joint provides one degree of freedom: translation
     ///     along an axis fixed in body1. Relative rotation is prevented. You can
@@ -490,8 +489,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 Body body1 = Body1;
                 Body body2 = Body2;
 
-                Vector2 mul1 = Math.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
-                Vector2 mul2 = Math.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
+                Vector2 mul1 = Helper.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
+                Vector2 mul2 = Helper.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
                 Vector2 point1 = body1.Sweep.C + mul1;
                 Vector2 point2 = body2.Sweep.C + mul2;
                 Vector2 distance = point2 - point1;
@@ -644,8 +643,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             XForm xf2 = b2.GetXForm();
 
             // Compute the effective masses.
-            Vector2 r1 = Box2DXMath.Mul(xf1.R, LocalAnchor1 - LocalCenter1);
-            Vector2 r2 = Box2DXMath.Mul(xf2.R, LocalAnchor2 - LocalCenter2);
+            Vector2 r1 = Helper.Mul(xf1.R, LocalAnchor1 - LocalCenter1);
+            Vector2 r2 = Helper.Mul(xf2.R, LocalAnchor2 - LocalCenter2);
             Vector2 d = b2.Sweep.C + r2 - b1.Sweep.C - r1;
 
             InvMass1 = b1.InvMass;
@@ -655,7 +654,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             // Compute motor Jacobian and effective mass.
             {
-                Axis = Box2DXMath.Mul(xf1.R, LocalXAxis1);
+                Axis = Helper.Mul(xf1.R, LocalXAxis1);
                 a1 = Vector2.Cross(d + r1, Axis);
                 A2 = Vector2.Cross(r2, Axis);
 
@@ -666,7 +665,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             // Prismatic constraint.
             {
-                Perp = Box2DXMath.Mul(xf1.R, LocalYAxis1);
+                Perp = Helper.Mul(xf1.R, LocalYAxis1);
 
                 s1 = Vector2.Cross(d + r1, Perp);
                 s2 = Vector2.Cross(r2, Perp);
@@ -690,7 +689,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             if (IsLimitEnabled)
             {
                 float jointTranslation = Vector2.Dot(Axis, d);
-                if (Box2DXMath.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.LinearSlop)
+                if (Helper.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.LinearSlop)
                 {
                     LimitState = LimitState.EqualLimits;
                 }
@@ -795,7 +794,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 float impulse = MotorMass * (motorSpeedx - cdot);
                 float oldImpulse = MotorForce;
                 float maxImpulse = step.Dt * MaxMotorForce;
-                MotorForce = Box2DXMath.Clamp(MotorForce + impulse, -maxImpulse, maxImpulse);
+                MotorForce = Helper.Clamp(MotorForce + impulse, -maxImpulse, maxImpulse);
                 impulse = MotorForce - oldImpulse;
 
                 Vector2 p = impulse * Axis;
@@ -826,11 +825,11 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
                 if (LimitState == LimitState.AtLowerLimit)
                 {
-                    Impulse.Z = Box2DXMath.Max(Impulse.Z, 0.0f);
+                    Impulse.Z = Helper.Max(Impulse.Z, 0.0f);
                 }
                 else if (LimitState == LimitState.AtUpperLimit)
                 {
-                    Impulse.Z = Box2DXMath.Min(Impulse.Z, 0.0f);
+                    Impulse.Z = Helper.Min(Impulse.Z, 0.0f);
                 }
 
                 // f2(1:2) = invK(1:2,1:2) * (-Cdot(1:2) - K(1:2,3) * (f2(3) - f1(3))) + f1(1:2)
@@ -900,29 +899,29 @@ namespace Alis.Core.Physic.Dynamics.Joint
             Matrix22 mat22R1 = new Matrix22(body1SweepA);
             Matrix22 mat22R2 = new Matrix22(body2SweepA);
 
-            Vector2 r1 = Box2DXMath.Mul(mat22R1, LocalAnchor1 - LocalCenter1);
-            Vector2 r2 = Box2DXMath.Mul(mat22R2, LocalAnchor2 - LocalCenter2);
+            Vector2 r1 = Helper.Mul(mat22R1, LocalAnchor1 - LocalCenter1);
+            Vector2 r2 = Helper.Mul(mat22R2, LocalAnchor2 - LocalCenter2);
             Vector2 distance = body2SweepC + r2 - body1SweepC - r1;
 
             if (IsLimitEnabled)
             {
-                Axis = Box2DXMath.Mul(mat22R1, LocalXAxis1);
+                Axis = Helper.Mul(mat22R1, LocalXAxis1);
 
                 a1 = Vector2.Cross(distance + r1, Axis);
                 A2 = Vector2.Cross(r2, Axis);
 
                 float translation = Vector2.Dot(Axis, distance);
-                if (Box2DXMath.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.LinearSlop)
+                if (Helper.Abs(UpperLimit - LowerLimit) < 2.0f * Settings.LinearSlop)
                 {
                     // Prevent large angular corrections
-                    c2 = Box2DXMath.Clamp(translation, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
-                    linearError = Box2DXMath.Abs(translation);
+                    c2 = Helper.Clamp(translation, -Settings.MaxLinearCorrection, Settings.MaxLinearCorrection);
+                    linearError = Helper.Abs(translation);
                     active = true;
                 }
                 else if (translation <= LowerLimit)
                 {
                     // Prevent large linear corrections and allow some slop.
-                    c2 = Box2DXMath.Clamp(translation - LowerLimit + Settings.LinearSlop,
+                    c2 = Helper.Clamp(translation - LowerLimit + Settings.LinearSlop,
                         -Settings.MaxLinearCorrection, 0.0f);
                     linearError = LowerLimit - translation;
                     active = true;
@@ -930,14 +929,14 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 else if (translation >= UpperLimit)
                 {
                     // Prevent large linear corrections and allow some slop.
-                    c2 = Box2DXMath.Clamp(translation - UpperLimit - Settings.LinearSlop, 0.0f,
+                    c2 = Helper.Clamp(translation - UpperLimit - Settings.LinearSlop, 0.0f,
                         Settings.MaxLinearCorrection);
                     linearError = translation - UpperLimit;
                     active = true;
                 }
             }
 
-            Perp = Box2DXMath.Mul(mat22R1, LocalYAxis1);
+            Perp = Helper.Mul(mat22R1, LocalYAxis1);
 
             s1 = Vector2.Cross(distance + r1, Perp);
             s2 = Vector2.Cross(r2, Perp);
@@ -947,8 +946,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
             c1.X = Vector2.Dot(Perp, distance);
             c1.Y = body2SweepA - body1SweepA - refAngle;
 
-            linearError = Box2DXMath.Max(linearError, Box2DXMath.Abs(c1.X));
-            angularError = Box2DXMath.Abs(c1.Y);
+            linearError = Helper.Max(linearError, Helper.Abs(c1.X));
+            angularError = Helper.Abs(c1.Y);
 
             if (active)
             {

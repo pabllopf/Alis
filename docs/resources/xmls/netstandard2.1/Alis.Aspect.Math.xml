@@ -52,60 +52,60 @@
         <member name="F:Alis.Aspect.Math.Constant.Tau">
             <summary>Represents the value of pi times two(6.28318548). This is an alias of TwoPi.</summary>
         </member>
-        <member name="T:Alis.Aspect.Math.Math">
+        <member name="T:Alis.Aspect.Math.Helper">
             <summary>
                 The math class
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Math.UshrtMax">
+        <member name="F:Alis.Aspect.Math.Helper.UshrtMax">
             <summary>
                 The ushrt max
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Math.UcharMax">
+        <member name="F:Alis.Aspect.Math.Helper.UcharMax">
             <summary>
                 The uchar max
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Math.RandLimit">
+        <member name="F:Alis.Aspect.Math.Helper.RandLimit">
             <summary>
                 The rand limit
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Math.SRnd">
+        <member name="F:Alis.Aspect.Math.Helper.SRnd">
             <summary>
                 The random
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.IsValid(System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.IsValid(System.Single)">
             <summary>
                 This function is used to ensure that a floating point number is
                 not a NaN or infinity.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.InvSqrt(System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.InvSqrt(System.Single)">
             <summary>
                 This is a approximate yet fast inverse square-root.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Sqrt(System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.Sqrt(System.Single)">
             <summary>
                 Sqrts the x
             </summary>
             <param name="x">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Random">
+        <member name="M:Alis.Aspect.Math.Helper.Random">
             <summary>
                 Random number in range [-1,1]
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Random(System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.Random(System.Single,System.Single)">
             <summary>
                 Random floating point number in range [lo, hi]
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.NextPowerOfTwo(System.UInt32)">
+        <member name="M:Alis.Aspect.Math.Helper.NextPowerOfTwo(System.UInt32)">
             <summary>
                 "Next Largest Power of 2
                 Given a binary integer value x, the next largest power of 2 can be computed by a SWAR algorithm
@@ -114,35 +114,35 @@
                 largest power of 2. For a 32-bit value:"
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.IsPowerOfTwo(System.UInt32)">
+        <member name="M:Alis.Aspect.Math.Helper.IsPowerOfTwo(System.UInt32)">
             <summary>
                 Describes whether is power of two
             </summary>
             <param name="x">The </param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Abs(System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.Abs(System.Single)">
             <summary>
                 Abses the a
             </summary>
             <param name="a">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.Abs(Alis.Aspect.Math.Vector2)">
             <summary>
                 Abses the a
             </summary>
             <param name="a">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Abs(Alis.Aspect.Math.Matrix22)">
+        <member name="M:Alis.Aspect.Math.Helper.Abs(Alis.Aspect.Math.Matrix22)">
             <summary>
                 Abses the a
             </summary>
             <param name="a">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Min(System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.Min(System.Single,System.Single)">
             <summary>
                 Mins the a
             </summary>
@@ -150,7 +150,7 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Min(System.Int32,System.Int32)">
+        <member name="M:Alis.Aspect.Math.Helper.Min(System.Int32,System.Int32)">
             <summary>
                 Mins the a
             </summary>
@@ -158,7 +158,7 @@
             <param name="b">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Min(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.Min(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Mins the a
             </summary>
@@ -166,7 +166,7 @@
             <param name="b">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Max(System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.Max(System.Single,System.Single)">
             <summary>
                 Maxes the a
             </summary>
@@ -174,7 +174,7 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Max(System.Int32,System.Int32)">
+        <member name="M:Alis.Aspect.Math.Helper.Max(System.Int32,System.Int32)">
             <summary>
                 Maxes the a
             </summary>
@@ -182,7 +182,7 @@
             <param name="b">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Max(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.Max(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Maxes the a
             </summary>
@@ -190,7 +190,7 @@
             <param name="b">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Clamp(System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.Clamp(System.Single,System.Single,System.Single)">
             <summary>
                 Clamps the a
             </summary>
@@ -199,7 +199,7 @@
             <param name="high">The high</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Clamp(System.Int32,System.Int32,System.Int32)">
+        <member name="M:Alis.Aspect.Math.Helper.Clamp(System.Int32,System.Int32,System.Int32)">
             <summary>
                 Clamps the a
             </summary>
@@ -208,7 +208,7 @@
             <param name="high">The high</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Clamp(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.Clamp(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Clamps the a
             </summary>
@@ -217,7 +217,7 @@
             <param name="high">The high</param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Swap``1(``0@,``0@)">
+        <member name="M:Alis.Aspect.Math.Helper.Swap``1(``0@,``0@)">
             <summary>
                 Swaps the a
             </summary>
@@ -225,29 +225,29 @@
             <param name="a">The </param>
             <param name="b">The </param>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.Mul(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Vector2)">
             <summary>
                 Multiply a matrix times a vector. If a rotation matrix is provided,
                 then this transforms the vector from one frame to another.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.MulT(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Vector2)">
             <summary>
                 Multiply a matrix transpose times a vector. If a rotation matrix is provided,
                 then this transforms the vector from one frame to another (inverse transform).
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Matrix22)">
+        <member name="M:Alis.Aspect.Math.Helper.Mul(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Matrix22)">
             <summary>
                 A * B
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Matrix22)">
+        <member name="M:Alis.Aspect.Math.Helper.MulT(Alis.Aspect.Math.Matrix22,Alis.Aspect.Math.Matrix22)">
             <summary>
                 A^T * B
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.Mul(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
             <summary>
                 Muls the t
             </summary>
@@ -255,7 +255,7 @@
             <param name="v">The </param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.MulT(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Aspect.Math.Helper.MulT(Alis.Aspect.Math.XForm,Alis.Aspect.Math.Vector2)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -263,12 +263,12 @@
             <param name="v">The </param>
             <returns>The vec</returns>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Mul(Alis.Aspect.Math.Matrix33,Alis.Aspect.Math.Vector3)">
+        <member name="M:Alis.Aspect.Math.Helper.Mul(Alis.Aspect.Math.Matrix33,Alis.Aspect.Math.Vector3)">
             <summary>
                 Multiply a matrix times a vector.
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Math.Math.Atan2(System.Single,System.Single)">
+        <member name="M:Alis.Aspect.Math.Helper.Atan2(System.Single,System.Single)">
             <summary>
                 Atans the 2 using the specified y
             </summary>
@@ -276,17 +276,17 @@
             <param name="x">The </param>
             <returns>The float</returns>
         </member>
-        <member name="T:Alis.Aspect.Math.Math.Convert">
+        <member name="T:Alis.Aspect.Math.Helper.Convert">
             <summary>
                 The convert
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Math.Convert.x">
+        <member name="F:Alis.Aspect.Math.Helper.Convert.x">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Math.Math.Convert.i">
+        <member name="F:Alis.Aspect.Math.Helper.Convert.i">
             <summary>
                 The
             </summary>
@@ -412,6 +412,21 @@
         <member name="P:Alis.Aspect.Math.Matrix33.Col3">
             <summary>
                 The col
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Math.Position">
+            <summary>
+                The position
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Math.Position.X">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Math.Position.A">
+            <summary>
+                The
             </summary>
         </member>
         <member name="T:Alis.Aspect.Math.Settings">
@@ -896,6 +911,21 @@
             </summary>
         </member>
         <member name="F:Alis.Aspect.Math.Vector3.Z">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.Math.Velocity">
+            <summary>
+                The velocity
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Math.Velocity.V">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Aspect.Math.Velocity.W">
             <summary>
                 The
             </summary>

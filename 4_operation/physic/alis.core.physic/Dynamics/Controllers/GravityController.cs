@@ -29,6 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
+using Alis.Core.Physic.Dynamics.Bodys;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -84,7 +85,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                             continue;
                         }
 
-                        Vector2 f = G / r2 / Math.Sqrt(r2) * body1.GetMass() * body2.GetMass() * d;
+                        Vector2 f = G / r2 / Helper.Sqrt(r2) * body1.GetMass() * body2.GetMass() * d;
                         body1.ApplyForce(f, body1.GetWorldCenter());
                         body2.ApplyForce(-1.0f * f, body2.GetWorldCenter());
                     }

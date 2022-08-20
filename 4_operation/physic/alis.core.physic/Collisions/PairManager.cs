@@ -36,7 +36,6 @@
 using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Collisions
 {
@@ -90,7 +89,7 @@ namespace Alis.Core.Physic.Collisions
         /// </summary>
         public PairManager()
         {
-            Box2DxDebug.Assert(Math.IsPowerOfTwo((uint) TableCapacity));
+            Box2DxDebug.Assert(Helper.IsPowerOfTwo((uint) TableCapacity));
             Box2DxDebug.Assert(TableCapacity >= Settings.MaxPairs);
             for (int i = 0; i < TableCapacity; ++i)
             {
@@ -116,12 +115,12 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The ushrt max
         /// </summary>
-        public static readonly ushort NullPair = Math.UshrtMax;
+        public static readonly ushort NullPair = Helper.UshrtMax;
 
         /// <summary>
         ///     The ushrt max
         /// </summary>
-        public static readonly ushort NullProxy = Math.UshrtMax;
+        public static readonly ushort NullProxy = Helper.UshrtMax;
 
         /// <summary>
         ///     The max pairs
@@ -310,7 +309,7 @@ namespace Alis.Core.Physic.Collisions
         {
             if (proxyId1 > proxyId2)
             {
-                Math.Swap(ref proxyId1, ref proxyId2);
+                Helper.Swap(ref proxyId1, ref proxyId2);
             }
 
             uint hash = (uint) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
@@ -355,7 +354,7 @@ namespace Alis.Core.Physic.Collisions
         {
             if (proxyId1 > proxyId2)
             {
-                Math.Swap(ref proxyId1, ref proxyId2);
+                Helper.Swap(ref proxyId1, ref proxyId2);
             }
 
             int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);
@@ -398,7 +397,7 @@ namespace Alis.Core.Physic.Collisions
 
             if (proxyId1 > proxyId2)
             {
-                Math.Swap(ref proxyId1, ref proxyId2);
+                Helper.Swap(ref proxyId1, ref proxyId2);
             }
 
             int hash = (int) (Hash((uint) proxyId1, (uint) proxyId2) & TableMask);

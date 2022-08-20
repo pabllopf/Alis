@@ -67,8 +67,8 @@ namespace Alis.Core.Physic.Collisions
         /// Combine two AABBs into this one.
         public void Combine(Aabb aabb1, Aabb aabb2)
         {
-            LowerBound = Math.Min(aabb1.LowerBound, aabb2.LowerBound);
-            UpperBound = Math.Max(aabb1.UpperBound, aabb2.UpperBound);
+            LowerBound = Helper.Min(aabb1.LowerBound, aabb2.LowerBound);
+            UpperBound = Helper.Max(aabb1.UpperBound, aabb2.UpperBound);
         }
 
         /// Does this aabb contain the provided AABB.
@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Collisions
 
             Vector2 p = input.P1;
             Vector2 d = input.P2 - input.P1;
-            Vector2 absD = Math.Abs(d);
+            Vector2 absD = Helper.Abs(d);
 
             Vector2 normal = new Vector2(0);
 
@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Collisions
 
                     if (t1 > t2)
                     {
-                        Math.Swap(ref t1, ref t2);
+                        Helper.Swap(ref t1, ref t2);
                         s = 1.0f;
                     }
 
@@ -135,7 +135,7 @@ namespace Alis.Core.Physic.Collisions
                     }
 
                     // Pull the max down
-                    tmax = Math.Min(tmax, t2);
+                    tmax = Helper.Min(tmax, t2);
 
                     if (tmin > tmax)
                     {

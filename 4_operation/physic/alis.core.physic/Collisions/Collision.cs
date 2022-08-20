@@ -42,7 +42,7 @@ namespace Alis.Core.Physic.Collisions
         /// <summary>
         ///     The uchar max
         /// </summary>
-        public static readonly byte NullFeature = Math.UcharMax;
+        public static readonly byte NullFeature = Helper.UcharMax;
 
         /// <summary>
         ///     The max toi iters
@@ -195,8 +195,8 @@ namespace Alis.Core.Physic.Collisions
         {
             manifold.PointCount = 0;
 
-            Vector2 p1 = Math.Mul(xf1, circle1.Position);
-            Vector2 p2 = Math.Mul(xf2, circle2.Position);
+            Vector2 p1 = Helper.Mul(xf1, circle1.Position);
+            Vector2 p2 = Helper.Mul(xf2, circle2.Position);
 
             Vector2 d = p2 - p1;
             float distSqr = Vector2.Dot(d, d);
@@ -229,8 +229,8 @@ namespace Alis.Core.Physic.Collisions
             manifold.PointCount = 0;
 
             // Compute circle position in the frame of the polygon.
-            Vector2 c = Math.Mul(xf2, circle.Position);
-            Vector2 cLocal = Math.MulT(xf1, c);
+            Vector2 c = Helper.Mul(xf2, circle.Position);
+            Vector2 cLocal = Helper.MulT(xf1, c);
 
             // Find the min separating edge.
             int normalIndex = 0;
@@ -338,7 +338,7 @@ namespace Alis.Core.Physic.Collisions
             CircleShape circle, XForm transformB)
         {
             manifold.PointCount = 0;
-            Vector2 cLocal = Math.MulT(transformA, Math.Mul(transformB, circle.Position));
+            Vector2 cLocal = Helper.MulT(transformA, Helper.Mul(transformB, circle.Position));
             Vector2 normal = edge.NormalVector;
             Vector2 v1 = edge.Vertex1;
             Vector2 v2 = edge.Vertex2;
@@ -430,8 +430,8 @@ namespace Alis.Core.Physic.Collisions
             Box2DxDebug.Assert((0 <= edge1) && (edge1 < count1));
 
             // Convert normal from poly1's frame into poly2's frame.
-            Vector2 normal1World = Math.Mul(xf1.R, normals1[edge1]);
-            Vector2 normal1 = Math.MulT(xf2.R, normal1World);
+            Vector2 normal1World = Helper.Mul(xf1.R, normals1[edge1]);
+            Vector2 normal1 = Helper.MulT(xf2.R, normal1World);
 
             // Find support vertex on poly2 for -normal.
             int index = 0;
@@ -446,8 +446,8 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
-            Vector2 v1 = Math.Mul(xf1, vertices1[edge1]);
-            Vector2 v2 = Math.Mul(xf2, vertices2[index]);
+            Vector2 v1 = Helper.Mul(xf1, vertices1[edge1]);
+            Vector2 v2 = Helper.Mul(xf2, vertices2[index]);
             float separation = Vector2.Dot(v2 - v1, normal1World);
             return separation;
         }
@@ -462,8 +462,8 @@ namespace Alis.Core.Physic.Collisions
             Vector2[] normals1 = poly1.Normals;
 
             // Vector pointing from the centroid of poly1 to the centroid of poly2.
-            Vector2 d = Math.Mul(xf2, poly2.Centroid) - Math.Mul(xf1, poly1.Centroid);
-            Vector2 dLocal1 = Math.MulT(xf1.R, d);
+            Vector2 d = Helper.Mul(xf2, poly2.Centroid) - Helper.Mul(xf1, poly1.Centroid);
+            Vector2 dLocal1 = Helper.MulT(xf1.R, d);
 
             // Find edge normal on poly1 that has the largest projection onto d.
             int edge = 0;
@@ -562,7 +562,7 @@ namespace Alis.Core.Physic.Collisions
             Box2DxDebug.Assert((0 <= edge1) && (edge1 < count1));
 
             // Get the normal of the reference edge in poly2's frame.
-            Vector2 normal1 = Math.MulT(xf2.R, Math.Mul(xf1.R, normals1[edge1]));
+            Vector2 normal1 = Helper.MulT(xf2.R, Helper.Mul(xf1.R, normals1[edge1]));
 
             // Find the incident edge on poly2.
             int index = 0;
@@ -583,12 +583,12 @@ namespace Alis.Core.Physic.Collisions
 
             c = new ClipVertex[2];
 
-            c[0].V = Math.Mul(xf2, vertices2[i1]);
+            c[0].V = Helper.Mul(xf2, vertices2[i1]);
             c[0].Id.Features.ReferenceEdge = (byte) edge1;
             c[0].Id.Features.IncidentEdge = (byte) i1;
             c[0].Id.Features.IncidentVertex = 0;
 
-            c[1].V = Math.Mul(xf2, vertices2[i2]);
+            c[1].V = Helper.Mul(xf2, vertices2[i2]);
             c[1].Id.Features.ReferenceEdge = (byte) edge1;
             c[1].Id.Features.IncidentEdge = (byte) i2;
             c[1].Id.Features.IncidentVertex = 1;
@@ -672,12 +672,12 @@ namespace Alis.Core.Physic.Collisions
             localNormal.Normalize();
             Vector2 planePoint = 0.5f * (v11 + v12);
 
-            Vector2 sideNormal = Math.Mul(xf1.R, v12 - v11);
+            Vector2 sideNormal = Helper.Mul(xf1.R, v12 - v11);
             sideNormal.Normalize();
             Vector2 frontNormal = Vector2.Cross(sideNormal, 1.0f);
 
-            v11 = Math.Mul(xf1, v11);
-            v12 = Math.Mul(xf1, v12);
+            v11 = Helper.Mul(xf1, v11);
+            v12 = Helper.Mul(xf1, v12);
 
             float frontOffset = Vector2.Dot(frontNormal, v11);
             float sideOffset1 = -Vector2.Dot(sideNormal, v11);
@@ -716,7 +716,7 @@ namespace Alis.Core.Physic.Collisions
                 if (separation <= totalRadius)
                 {
                     ManifoldPoint cp = manifold.Points[pointCount];
-                    cp.LocalPoint = Math.MulT(xf2, clipPoints2[i].V);
+                    cp.LocalPoint = Helper.MulT(xf2, clipPoints2[i].V);
                     cp.Id = clipPoints2[i].Id;
                     cp.Id.Features.Flip = flip;
                     ++pointCount;
@@ -812,11 +812,11 @@ namespace Alis.Core.Physic.Collisions
 
                 // Compute a tentative new simplex vertex using support points.
                 SimplexVertex* vertex = vertices + simplex.Count;
-                vertex->IndexA = shapeA.GetSupport(Math.MulT(transformA.R, p));
-                vertex->Wa = Math.Mul(transformA, shapeA.GetVertex(vertex->IndexA));
+                vertex->IndexA = shapeA.GetSupport(Helper.MulT(transformA.R, p));
+                vertex->Wa = Helper.Mul(transformA, shapeA.GetVertex(vertex->IndexA));
                 //Vec2 wBLocal;
-                vertex->IndexB = shapeB.GetSupport(Math.MulT(transformB.R, -p));
-                vertex->Wb = Math.Mul(transformB, shapeB.GetVertex(vertex->IndexB));
+                vertex->IndexB = shapeB.GetSupport(Helper.MulT(transformB.R, -p));
+                vertex->Wb = Helper.Mul(transformB, shapeB.GetVertex(vertex->IndexB));
                 vertex->W = vertex->Wb - vertex->Wa;
 
                 // Iteration count is equated to the number of support point calls.
@@ -969,11 +969,11 @@ namespace Alis.Core.Physic.Collisions
                     // to create additional clearance.
                     if (separation > radius)
                     {
-                        target = Math.Max(radius - tolerance, 0.75f * radius);
+                        target = Helper.Max(radius - tolerance, 0.75f * radius);
                     }
                     else
                     {
-                        target = Math.Max(separation - tolerance, 0.02f * radius);
+                        target = Helper.Max(separation - tolerance, 0.02f * radius);
                     }
                 }
 
@@ -1053,7 +1053,7 @@ namespace Alis.Core.Physic.Collisions
 
                         float f = fcn.Evaluate(xfA, xfB);
 
-                        if (Math.Abs(f - target) < 0.025f * tolerance)
+                        if (Helper.Abs(f - target) < 0.025f * tolerance)
                         {
                             newAlpha = x;
                             break;
@@ -1076,7 +1076,7 @@ namespace Alis.Core.Physic.Collisions
                         Box2DxDebug.Assert(rootIterCount < 50);
                     }
 
-                    MaxToiRootIters = Math.Max(MaxToiRootIters, rootIterCount);
+                    MaxToiRootIters = Helper.Max(MaxToiRootIters, rootIterCount);
                 }
 
                 // Ensure significant advancement.
@@ -1095,7 +1095,7 @@ namespace Alis.Core.Physic.Collisions
                 }
             }
 
-            MaxToiIters = Math.Max(MaxToiIters, iter);
+            MaxToiIters = Helper.Max(MaxToiIters, iter);
 
             return alpha;
         }

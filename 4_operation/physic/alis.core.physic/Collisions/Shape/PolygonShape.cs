@@ -107,10 +107,10 @@ namespace Alis.Core.Physic.Collisions.Shape
                 float cross = Vec2.Cross(_normals[i - 1], _normals[i]);
 
                 // Keep asinf happy.
-                cross = Common.Math.Clamp(cross, -1.0f, 1.0f);
+                cross = Common.Helper.Clamp(cross, -1.0f, 1.0f);
 
                 // You have consecutive edges that are almost parallel on your polygon.
-                float angle = (float)System.Math.Asin(cross);
+                float angle = (float)System.Helper.Asin(cross);
                 Box2DXDebug.Assert(angle > Settings.AngularSlop);
             }
 #endif
@@ -265,8 +265,8 @@ namespace Alis.Core.Physic.Collisions.Shape
             // Transform vertices and normals.
             for (int i = 0; i < VertexCount; ++i)
             {
-                Vertices[i] = Math.Mul(xf, Vertices[i]);
-                Normals[i] = Math.Mul(xf.R, Normals[i]);
+                Vertices[i] = Helper.Mul(xf, Vertices[i]);
+                Normals[i] = Helper.Mul(xf.R, Normals[i]);
             }
         }
 
@@ -306,7 +306,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <returns>The bool</returns>
         public bool TestPoint(XForm xf, Vector2 p)
         {
-            Vector2 pLocal = Math.MulT(xf.R, p - xf.Position);
+            Vector2 pLocal = Helper.MulT(xf.R, p - xf.Position);
 
             int vc = VertexCount;
             for (int i = 0; i < vc; ++i)
@@ -338,8 +338,8 @@ namespace Alis.Core.Physic.Collisions.Shape
 
             float lower = 0.0f, upper = maxLambda;
 
-            Vector2 p1 = Math.MulT(xf.R, segment.P1 - xf.Position);
-            Vector2 p2 = Math.MulT(xf.R, segment.P2 - xf.Position);
+            Vector2 p1 = Helper.MulT(xf.R, segment.P1 - xf.Position);
+            Vector2 p2 = Helper.MulT(xf.R, segment.P2 - xf.Position);
             Vector2 d = p2 - p1;
             int index = -1;
 
@@ -390,7 +390,7 @@ namespace Alis.Core.Physic.Collisions.Shape
             if (index >= 0)
             {
                 lambda = lower;
-                normal = Math.Mul(xf.R, Normals[index]);
+                normal = Helper.Mul(xf.R, Normals[index]);
                 return SegmentCollide.HitCollide;
             }
 
@@ -405,14 +405,14 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <param name="xf">The xf</param>
         public void ComputeAabb(out Aabb aabb, XForm xf)
         {
-            Vector2 lower = Math.Mul(xf, Vertices[0]);
+            Vector2 lower = Helper.Mul(xf, Vertices[0]);
             Vector2 upper = lower;
 
             for (int i = 1; i < VertexCount; ++i)
             {
-                Vector2 v = Math.Mul(xf, Vertices[i]);
-                lower = Math.Min(lower, v);
-                upper = Math.Max(upper, v);
+                Vector2 v = Helper.Mul(xf, Vertices[i]);
+                lower = Helper.Min(lower, v);
+                upper = Helper.Max(upper, v);
             }
 
             Vector2 r = new Vector2(Radius);
@@ -525,7 +525,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         public float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c)
         {
             //Transform plane into shape co-ordinates
-            Vector2 normalL = Math.MulT(xf.R, normal);
+            Vector2 normalL = Helper.MulT(xf.R, normal);
             float offsetL = offset - Vector2.Dot(normal, xf.Position);
 
             float[] depths = new float[Settings.MaxPolygonVertices];
@@ -570,7 +570,7 @@ namespace Alis.Core.Physic.Collisions.Shape
                         //Completely submerged
                         MassData md;
                         ComputeMass(out md, 1f);
-                        c = Math.Mul(xf, md.Center);
+                        c = Helper.Mul(xf, md.Center);
                         return md.Mass;
                     }
 
@@ -646,7 +646,7 @@ namespace Alis.Core.Physic.Collisions.Shape
             //Normalize and transform centroid
             center *= 1.0f / area;
 
-            c = Math.Mul(xf, center);
+            c = Helper.Mul(xf, center);
 
             return area;
         }
@@ -663,10 +663,10 @@ namespace Alis.Core.Physic.Collisions.Shape
             float sr = Vector2.DistanceSquared(Vertices[0], pivot);
             for (int i = 1; i < vCount; ++i)
             {
-                sr = Math.Max(sr, Vector2.DistanceSquared(Vertices[i], pivot));
+                sr = Helper.Max(sr, Vector2.DistanceSquared(Vertices[i], pivot));
             }
 
-            return Math.Sqrt(sr);
+            return Helper.Sqrt(sr);
         }
 
         /// <summary>
@@ -805,8 +805,8 @@ namespace Alis.Core.Physic.Collisions.Shape
                     Vec2 r = new Vec2();
                     r.X = Vec2.Dot(ux, d);
                     r.Y = Vec2.Dot(uy, d);
-                    lower = Common.Math.Min(lower, r);
-                    upper = Common.Math.Max(upper, r);
+                    lower = Common.Helper.Min(lower, r);
+                    upper = Common.Helper.Max(upper, r);
                 }
 
                 float area = (upper.X - lower.X) * (upper.Y - lower.Y);
@@ -816,7 +816,7 @@ namespace Alis.Core.Physic.Collisions.Shape
                     obb.R.Col1 = ux;
                     obb.R.Col2 = uy;
                     Vec2 center = 0.5f * (lower + upper);
-                    obb.Center = root + Common.Math.Mul(obb.R, center);
+                    obb.Center = root + Common.Helper.Mul(obb.R, center);
                     obb.Extents = 0.5f * (upper - lower);
                 }
             }

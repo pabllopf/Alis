@@ -188,7 +188,7 @@ namespace Alis.Aspect.Math
         /// <summary>
         ///     Does this vector contain finite coordinates?
         /// </summary>
-        public bool IsValid => Math.IsValid(X) && Math.IsValid(Y);
+        public bool IsValid => Helper.IsValid(X) && Helper.IsValid(Y);
 
         /// <summary>
         ///     Negate this vector.

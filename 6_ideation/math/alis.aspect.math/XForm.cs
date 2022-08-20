@@ -73,7 +73,7 @@ namespace Alis.Aspect.Math
         }
 
         /// Calculate the angle that the rotation matrix represents.
-        public float GetAngle() => Math.Atan2(R.Col1.Y, R.Col1.X);
+        public float GetAngle() => Helper.Atan2(R.Col1.Y, R.Col1.X);
 
         /// <summary>
         ///     Gets the value of the identity

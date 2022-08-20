@@ -33,8 +33,10 @@ using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Bodys;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
+using Alis.Core.Physic.Dynamics.Fixtures;
 using Alis.Core.Physic.Dynamics.Joint;
 
 namespace Alis.Core.Physic
@@ -496,7 +498,7 @@ namespace Alis.Core.Physic
                         if ((0.0f < toi) && (toi < 1.0f))
                         {
                             // Interpolate on the actual range.
-                            toi = Math.Min((1.0f - toi) * t0 + toi, 1.0f);
+                            toi = Helper.Min((1.0f - toi) * t0 + toi, 1.0f);
                         }
 
 

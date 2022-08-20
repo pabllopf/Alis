@@ -31,8 +31,9 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shape;
+using Alis.Core.Physic.Dynamics.Bodys;
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Core.Physic.Dynamics.Fixtures
 {
     /// <summary>
     ///     A fixture is used to attach a shape to a body for collision detection. A fixture

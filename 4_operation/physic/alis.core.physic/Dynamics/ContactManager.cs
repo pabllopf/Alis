@@ -28,7 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Dynamics.Bodys;
 using Alis.Core.Physic.Dynamics.Contacts;
+using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Dynamics
 {

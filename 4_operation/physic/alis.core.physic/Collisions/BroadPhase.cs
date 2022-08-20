@@ -60,12 +60,12 @@ namespace Alis.Core.Physic.Collisions
     public class BroadPhase
     {
 #if TARGET_FLOAT32_IS_FIXED
-		public static readonly ushort BROADPHASE_MAX = (Common.Math.USHRT_MAX/2);
+		public static readonly ushort BROADPHASE_MAX = (Common.Helper.USHRT_MAX/2);
 #else
         /// <summary>
         ///     The max
         /// </summary>
-        private static readonly ushort BroadphaseMax = Math.UshrtMax;
+        private static readonly ushort BroadphaseMax = Helper.UshrtMax;
 #endif
 
         /// <summary>
@@ -198,8 +198,8 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>The bool</returns>
         public bool InRange(Aabb aabb)
         {
-            Vector2 d = Math.Max(aabb.LowerBound - WorldAabb.UpperBound, WorldAabb.LowerBound - aabb.UpperBound);
-            return Math.Max(d.X, d.Y) < 0.0f;
+            Vector2 d = Helper.Max(aabb.LowerBound - WorldAabb.UpperBound, WorldAabb.LowerBound - aabb.UpperBound);
+            return Helper.Max(d.X, d.Y) < 0.0f;
         }
 
         // Create and destroy proxies. These call Flush first.
@@ -507,7 +507,7 @@ namespace Alis.Core.Physic.Collisions
                         }
 
                         --proxy1.LowerBounds[axis];
-                        Math.Swap(ref bounds[index], ref bounds[index - 1]);
+                        Helper.Swap(ref bounds[index], ref bounds[index - 1]);
                         --index;
                     }
                 }
@@ -542,7 +542,7 @@ namespace Alis.Core.Physic.Collisions
                         }
 
                         ++proxy1.UpperBounds[axis];
-                        Math.Swap(ref bounds[index], ref bounds[index + 1]);
+                        Helper.Swap(ref bounds[index], ref bounds[index + 1]);
                         ++index;
                     }
                 }
@@ -582,7 +582,7 @@ namespace Alis.Core.Physic.Collisions
                         }
 
                         ++proxy1.LowerBounds[axis];
-                        Math.Swap(ref bounds[index], ref bounds[index + 1]);
+                        Helper.Swap(ref bounds[index], ref bounds[index + 1]);
                         ++index;
                     }
                 }
@@ -618,7 +618,7 @@ namespace Alis.Core.Physic.Collisions
                         }
 
                         --proxy1.UpperBounds[axis];
-                        Math.Swap(ref bounds[index], ref bounds[index - 1]);
+                        Helper.Swap(ref bounds[index], ref bounds[index - 1]);
                         --index;
                     }
                 }
@@ -1092,8 +1092,8 @@ namespace Alis.Core.Physic.Collisions
             Box2DxDebug.Assert(aabb.UpperBound.X >= aabb.LowerBound.X);
             Box2DxDebug.Assert(aabb.UpperBound.Y >= aabb.LowerBound.Y);
 
-            Vector2 minVertex = Math.Clamp(aabb.LowerBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
-            Vector2 maxVertex = Math.Clamp(aabb.UpperBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
+            Vector2 minVertex = Helper.Clamp(aabb.LowerBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
+            Vector2 maxVertex = Helper.Clamp(aabb.UpperBound, WorldAabb.LowerBound, WorldAabb.UpperBound);
 
             // Bump lower bounds downs and upper bounds up. This ensures correct sorting of
             // lower/upper bounds that would have equal values.

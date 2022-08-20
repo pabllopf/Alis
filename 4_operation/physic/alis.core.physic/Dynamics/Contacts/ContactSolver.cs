@@ -35,7 +35,8 @@ using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shape;
-using Math = Alis.Aspect.Math.Math;
+using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -322,7 +323,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                             // b2Clamp the accumulated force
                             float maxFriction = friction * ccp->NormalImpulse;
-                            float newImpulse = Math.Clamp(ccp->TangentImpulse + lambda, -maxFriction, maxFriction);
+                            float newImpulse = Helper.Clamp(ccp->TangentImpulse + lambda, -maxFriction, maxFriction);
                             lambda = newImpulse - ccp->TangentImpulse;
 
                             // Apply contact impulse
@@ -350,7 +351,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             float lambda = -ccp.NormalMass * (vn - ccp.VelocityBias);
 
                             // Clamp the accumulated impulse
-                            float newImpulse = Math.Max(ccp.NormalImpulse + lambda, 0.0f);
+                            float newImpulse = Helper.Max(ccp.NormalImpulse + lambda, 0.0f);
                             lambda = newImpulse - ccp.NormalImpulse;
 
                             // Apply contact impulse
@@ -409,7 +410,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             Vector2 b;
                             b.X = vn1 - cp1->VelocityBias;
                             b.Y = vn2 - cp2->VelocityBias;
-                            b -= Math.Mul(c.K, a);
+                            b -= Helper.Mul(c.K, a);
 
                             //const float k_errorTol = 1e-3f;
                             //B2_NOT_USED(k_errorTol);
@@ -425,7 +426,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 //
                                 // x' = - inv(A) * b'
                                 //
-                                Vector2 x = -Math.Mul(c.NormalMass, b);
+                                Vector2 x = -Helper.Mul(c.NormalMass, b);
 
                                 if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                                 {
@@ -454,8 +455,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 									vn1 = Vec2.Dot(dv1, normal);
 									vn2 = Vec2.Dot(dv2, normal);
 
-									Box2DXDebug.Assert(Common.Math.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
-									Box2DXDebug.Assert(Common.Math.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
+									Box2DXDebug.Assert(Common.Helper.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
+									Box2DXDebug.Assert(Common.Helper.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
 #endif
                                     break;
                                 }
@@ -498,7 +499,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 									// Compute normal velocity
 									vn1 = Vec2.Dot(dv1, normal);
 
-									Box2DXDebug.Assert(Common.Math.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
+									Box2DXDebug.Assert(Common.Helper.Abs(vn1 - cp1.VelocityBias) < k_errorTol);
 #endif
                                     break;
                                 }
@@ -542,7 +543,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 									// Compute normal velocity
 									vn2 = Vec2.Dot(dv2, normal);
 
-									Box2DXDebug.Assert(Common.Math.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
+									Box2DXDebug.Assert(Common.Helper.Abs(vn2 - cp2.VelocityBias) < k_errorTol);
 #endif
                                     break;
                                 }
@@ -641,10 +642,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     Vector2 rB = point - bodyB.Sweep.C;
 
                     // Track max constraint error.
-                    minSeparation = Math.Min(minSeparation, separation);
+                    minSeparation = Helper.Min(minSeparation, separation);
 
                     // Prevent large corrections and allow slop.
-                    float clamp = baumgarte * Math.Clamp(separation + Settings.LinearSlop,
+                    float clamp = baumgarte * Helper.Clamp(separation + Settings.LinearSlop,
                         -Settings.MaxLinearCorrection,
                         0.0f);
 
