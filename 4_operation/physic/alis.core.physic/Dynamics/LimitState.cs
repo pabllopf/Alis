@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JointEdge.cs
+//  File:LimitState.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
-    ///     A joint edge is used to connect bodies and joints together
-    ///     in a joint graph where each body is a node and each joint
-    ///     is an edge. A joint edge belongs to a doubly linked list
-    ///     maintained in each attached body. Each joint has two joint
-    ///     nodes, one for each attached body.
+    ///     The limit state enum
     /// </summary>
-    public class JointEdge
+    public enum LimitState
     {
         /// <summary>
-        ///     The joint.
+        ///     The inactive limit limit state
         /// </summary>
-        public Joint Joint;
+        InactiveLimit,
 
         /// <summary>
-        ///     The next joint edge in the body's joint list.
+        ///     The at lower limit limit state
         /// </summary>
-        public JointEdge Next;
+        AtLowerLimit,
 
         /// <summary>
-        ///     Provides quick access to the other body attached.
+        ///     The at upper limit limit state
         /// </summary>
-        public Body Other;
+        AtUpperLimit,
 
         /// <summary>
-        ///     The previous joint edge in the body's joint list.
+        ///     The equal limits limit state
         /// </summary>
-        public JointEdge Prev;
+        EqualLimits
     }
 }

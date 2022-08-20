@@ -31,19 +31,15 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
     ///     The base joint class. Joints are used to constraint two bodies together in
     ///     various fashions. Some joints also feature limits and motors.
     /// </summary>
-    public abstract class Joint
+    public interface IJoint
     {
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Joint" /> class
-        /// </summary>
-        /// <param name="def">The def</param>
-        protected Joint(JointDef def)
+        /*protected Joint(JointDef def)
         {
             Type = def.Type;
             Prev = null;
@@ -53,84 +49,84 @@ namespace Alis.Core.Physic.Dynamics.Joints
             CollideConnected = def.CollideConnected;
             IslandFlag = false;
             UserData = def.UserData;
-        }
+        }*/
 
         /// <summary>
         ///     The type
         /// </summary>
-        protected JointType Type { get; }
+        public JointType Type { get; set; }
 
         /// <summary>
         ///     The prev
         /// </summary>
-        internal Joint Prev { get; set; }
+        public IJoint Prev { get; set; }
 
         /// <summary>
         ///     The next
         /// </summary>
-        internal Joint Next { get; set; }
+        public IJoint Next { get; set; }
 
         /// <summary>
         ///     The joint edge
         /// </summary>
-        internal JointEdge Node1 { get; } = new JointEdge();
+        public JointEdge Node1 { get; }
 
         /// <summary>
         ///     The joint edge
         /// </summary>
-        internal JointEdge Node2 { get; } = new JointEdge();
+        public JointEdge Node2 { get; }
 
         /// <summary>
         ///     The body
         /// </summary>
-        internal Body Body1 { get; set; }
+        public Body Body1 { get; set; }
 
         /// <summary>
         ///     The body
         /// </summary>
-        internal Body Body2 { get; set; }
+        public Body Body2 { get; set; }
 
         /// <summary>
         ///     The island flag
         /// </summary>
-        internal bool IslandFlag { get; set; }
+        public bool IslandFlag { get; set; }
 
         /// <summary>
         ///     The collide connected
         /// </summary>
-        internal bool CollideConnected { get; }
+        public bool CollideConnected { get; }
 
         // Cache here per time step to reduce cache misses.
 
         /// <summary>
         ///     The local center
         /// </summary>
-        protected Vector2 LocalCenter1 { get; set; }
+        public Vector2 LocalCenter1 { get; set; }
 
         /// <summary>
         ///     The local center
         /// </summary>
-        protected Vector2 LocalCenter2 { get; set; }
+        public Vector2 LocalCenter2 { get; set; }
 
         /// <summary>
         ///     The inv
         /// </summary>
-        protected float InvMass1 { get; set; }
+        public float InvMass1 { get; set; }
 
         /// <summary>
         ///     The inv
         /// </summary>
-        protected float InvI1 { get; set; }
+        public float InvI1 { get; set; }
 
         /// <summary>
         ///     The inv
         /// </summary>
-        protected float InvMass2 { get; set; }
+        public float InvMass2 { get; set; }
 
         /// <summary>
         ///     The inv
         /// </summary>
-        protected float InvI2 { get; set; }
+        public float InvI2 { get; set; }
 
         /// <summary>
         ///     Get the anchor point on body1 in world coordinates.
@@ -153,7 +149,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the type of the concrete joint.
         /// </summary>
-        public new JointType GetType() => Type;
+        public JointType GetType() => Type;
 
         /// <summary>
         ///     Get the first body attached to this joint.
@@ -181,16 +177,16 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Get the next joint the world joint list.
         /// </summary>
         /// <returns></returns>
-        public Joint GetNext() => Next;
+        public IJoint GetNext() => Next;
 
         /// <summary>
         ///     Creates the def
         /// </summary>
         /// <param name="def">The def</param>
         /// <returns>The joint</returns>
-        internal static Joint Create(JointDef def)
+        internal static IJoint Create(JointDef def)
         {
-            Joint joint = null;
+            IJoint joint = null;
 
             switch (def.Type)
             {
@@ -241,7 +237,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Destroys the joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        internal static void Destroy(Joint joint)
+        internal static void Destroy(IJoint joint)
         {
             joint = null;
         }

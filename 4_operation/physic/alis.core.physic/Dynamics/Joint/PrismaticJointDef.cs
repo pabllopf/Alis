@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LineJointDef.cs
+//  File:PrismaticJointDef.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,17 +29,17 @@
 
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
-    ///     Line joint definition. This requires defining a line of
+    ///     Prismatic joint definition. This requires defining a line of
     ///     motion using an axis and an anchor point. The definition uses local
     ///     anchor points and a local axis so that the initial configuration
     ///     can violate the constraint slightly. The joint translation is zero
     ///     when the local anchor points coincide in world space. Using local
     ///     anchors and a local axis helps when saving and loading a game.
     /// </summary>
-    public class LineJointDef : JointDef
+    public class PrismaticJointDef : JointDef
     {
         /// <summary>
         ///     Enable/disable the joint limit.
@@ -87,14 +87,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAxis1;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="LineJointDef" /> class
+        ///     The constrained angle between the bodies: body2_angle - body1_angle.
         /// </summary>
-        public LineJointDef()
+        public float ReferenceAngle;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="PrismaticJointDef" /> class
+        /// </summary>
+        public PrismaticJointDef()
         {
-            Type = JointType.LineJoint;
+            Type = JointType.PrismaticJoint;
             LocalAnchor1.SetZero();
             LocalAnchor2.SetZero();
             LocalAxis1.Set(1.0f, 0.0f);
+            ReferenceAngle = 0.0f;
             EnableLimit = false;
             LowerTranslation = 0.0f;
             UpperTranslation = 0.0f;
@@ -114,6 +120,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             LocalAnchor1 = body1.GetLocalPoint(anchor);
             LocalAnchor2 = body2.GetLocalPoint(anchor);
             LocalAxis1 = body1.GetLocalVector(axis);
+            ReferenceAngle = body2.GetAngle() - body1.GetAngle();
         }
     }
 }

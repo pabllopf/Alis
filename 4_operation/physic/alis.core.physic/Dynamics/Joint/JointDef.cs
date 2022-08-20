@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LimitState.cs
+//  File:JointDef.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,31 +27,48 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
-    ///     The limit state enum
+    ///     Joint definitions are used to construct joints.
     /// </summary>
-    public enum LimitState
+    public class JointDef
     {
         /// <summary>
-        ///     The inactive limit limit state
+        ///     Use this to attach application specific data to your joints.
         /// </summary>
-        InactiveLimit,
+        public readonly object UserData;
 
         /// <summary>
-        ///     The at lower limit limit state
+        ///     The first attached body.
         /// </summary>
-        AtLowerLimit,
+        public Body Body1;
 
         /// <summary>
-        ///     The at upper limit limit state
+        ///     The second attached body.
         /// </summary>
-        AtUpperLimit,
+        public Body Body2;
 
         /// <summary>
-        ///     The equal limits limit state
+        ///     Set this flag to true if the attached bodies should collide.
         /// </summary>
-        EqualLimits
+        public bool CollideConnected;
+
+        /// <summary>
+        ///     The joint type is set automatically for concrete joint types.
+        /// </summary>
+        public JointType Type;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="JointDef" /> class
+        /// </summary>
+        public JointDef()
+        {
+            Type = JointType.UnknownJoint;
+            UserData = null;
+            Body1 = null;
+            Body2 = null;
+            CollideConnected = false;
+        }
     }
 }

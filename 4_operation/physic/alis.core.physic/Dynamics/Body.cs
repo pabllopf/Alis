@@ -33,7 +33,7 @@ using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
-using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Dynamics.Joint;
 using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics

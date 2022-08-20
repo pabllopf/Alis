@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Jacobian.cs
+//  File:JointEdge.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,69 +27,35 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Aspect.Math;
-
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
-    ///     The jacobian
+    ///     A joint edge is used to connect bodies and joints together
+    ///     in a joint graph where each body is a node and each joint
+    ///     is an edge. A joint edge belongs to a doubly linked list
+    ///     maintained in each attached body. Each joint has two joint
+    ///     nodes, one for each attached body.
     /// </summary>
-    public struct Jacobian
+    public class JointEdge
     {
         /// <summary>
-        ///     The linear
+        ///     The joint.
         /// </summary>
-        public Vector2 Linear1;
+        public IJoint Joint;
 
         /// <summary>
-        ///     The angular
+        ///     The next joint edge in the body's joint list.
         /// </summary>
-        public float Angular1;
+        public JointEdge Next;
 
         /// <summary>
-        ///     The linear
+        ///     Provides quick access to the other body attached.
         /// </summary>
-        public Vector2 Linear2;
+        public Body Other;
 
         /// <summary>
-        ///     The angular
+        ///     The previous joint edge in the body's joint list.
         /// </summary>
-        public float Angular2;
-
-        /// <summary>
-        ///     Sets the zero
-        /// </summary>
-        public void SetZero()
-        {
-            Linear1.SetZero();
-            Angular1 = 0.0f;
-            Linear2.SetZero();
-            Angular2 = 0.0f;
-        }
-
-        /// <summary>
-        ///     Sets the x 1
-        /// </summary>
-        /// <param name="x1">The </param>
-        /// <param name="a1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="a2">The </param>
-        public void Set(Vector2 x1, float a1, Vector2 x2, float a2)
-        {
-            Linear1 = x1;
-            Angular1 = a1;
-            Linear2 = x2;
-            Angular2 = a2;
-        }
-
-        /// <summary>
-        ///     Computes the x 1
-        /// </summary>
-        /// <param name="x1">The </param>
-        /// <param name="a1">The </param>
-        /// <param name="x2">The </param>
-        /// <param name="a2">The </param>
-        /// <returns>The float</returns>
-        public float Compute(Vector2 x1, float a1, Vector2 x2, float a2) => Vector2.Dot(Linear1, x1) + Angular1 * a1 + Vector2.Dot(Linear2, x2) + Angular2 * a2;
+        public JointEdge Prev;
     }
 }

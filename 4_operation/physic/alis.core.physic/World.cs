@@ -35,7 +35,7 @@ using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
-using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Dynamics.Joint;
 
 namespace Alis.Core.Physic
 {
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic
 
             BodyList = new List<Body>();
             ContactList = new List<Contact>();
-            JointList = new List<Joint>();
+            JointList = new List<IJoint>();
             ControllerList = new List<Controller>();
 
             WarmStarting = true;
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The joint list
         /// </summary>
-        private List<Joint> JointList { get; set; }
+        private List<IJoint> JointList { get; set; }
 
         /// <summary>
         ///     The warm starting
@@ -164,14 +164,14 @@ namespace Alis.Core.Physic
         /// </summary>
         /// <param name="joint"></param>
         /// <returns></returns>
-        public void AddJoint(Joint joint) => JointList.Add(joint);
+        public void AddJoint(IJoint joint) => JointList.Add(joint);
 
         /// <summary>
         ///     Destroy a joint. This may cause the connected bodies to begin colliding.
         ///     @warning This function is locked during callbacks.
         /// </summary>
         /// <param name="joint"></param>
-        public void RemoveJoint(Joint joint) => JointList.Remove(joint);
+        public void RemoveJoint(IJoint joint) => JointList.Remove(joint);
 
         /// <summary>
         ///     Adds the controller using the specified def
@@ -704,7 +704,7 @@ namespace Alis.Core.Physic
                 for (int i = 0; i < island.JointCount; ++i)
                 {
                     // Allow joints to participate in future TOI islands.
-                    Joint j = island.Joints[i];
+                    IJoint j = island.Joints[i];
                     j.IslandFlag = false;
                 }
 

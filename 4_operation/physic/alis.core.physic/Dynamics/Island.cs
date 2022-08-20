@@ -150,7 +150,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Dynamics.Contacts;
-using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Dynamics.Joint;
 using Math = Alis.Aspect.Math.Math;
 
 namespace Alis.Core.Physic.Dynamics
@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The joints
         /// </summary>
-        public Joint[] Joints;
+        public IJoint[] Joints;
 
         /// <summary>
         ///     The position iteration count
@@ -246,7 +246,7 @@ namespace Alis.Core.Physic.Dynamics
 
             Bodies = new Body[bodyCapacity];
             Contacts = new Contact[contactCapacity];
-            Joints = new Joint[jointCapacity];
+            Joints = new IJoint[jointCapacity];
 
             Velocities = new Velocity[this.bodyCapacity];
             Positions = new Position[this.bodyCapacity];
@@ -580,7 +580,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     Adds the joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        public void Add(Joint joint)
+        public void Add(IJoint joint)
         {
             Box2DxDebug.Assert(JointCount < JointCapacity);
             Joints[JointCount++] = joint;

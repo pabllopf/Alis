@@ -33,11 +33,9 @@ using Alis.Core.Physic.Collisions.Shape;
 
 namespace Alis.Core.Physic.Collisions
 {
-    // Structures and functions used for computing contact points, distance
-    // queries, and TOI queries.
-
     /// <summary>
-    ///     The collision class
+    ///     Structures and functions used for computing contact points, distance
+    ///     queries, and TOI queries.
     /// </summary>
     public static class Collision
     {

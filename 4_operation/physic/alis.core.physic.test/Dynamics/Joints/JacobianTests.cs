@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Dynamics.Joint;
 using Moq;
 using Xunit;
 

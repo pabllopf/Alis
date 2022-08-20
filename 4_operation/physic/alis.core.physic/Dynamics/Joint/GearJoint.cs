@@ -51,7 +51,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
     ///     A gear joint is used to connect two joints together. Either joint
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     @warning The revolute and prismatic joints must be attached to
     ///     fixed bodies (which must be body1 on those joints).
     /// </summary>
-    public class GearJoint : Joint
+    public class GearJoint : IJoint
     {
         /// <summary>
         ///     The
@@ -72,12 +72,143 @@ namespace Alis.Core.Physic.Dynamics.Joints
         private Jacobian jacobian;
 
         /// <summary>
+        /// The ground
+        /// </summary>
+        private readonly Body ground1;
+        /// <summary>
+        /// The ground
+        /// </summary>
+        private readonly Body ground2;
+        /// <summary>
+        /// The revolute
+        /// </summary>
+        private readonly RevoluteJoint revolute1;
+        /// <summary>
+        /// The prismatic
+        /// </summary>
+        private readonly PrismaticJoint prismatic1;
+        /// <summary>
+        /// The revolute
+        /// </summary>
+        private readonly RevoluteJoint revolute2;
+        /// <summary>
+        /// The prismatic
+        /// </summary>
+        private readonly PrismaticJoint prismatic2;
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        private readonly Vector2 groundAnchor1;
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        private readonly Vector2 groundAnchor2;
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        private readonly Vector2 localAnchor1;
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        private readonly Vector2 localAnchor2;
+        /// <summary>
+        /// The constant
+        /// </summary>
+        private readonly float constant;
+        /// <summary>
+        /// The mass
+        /// </summary>
+        private float mass;
+        /// <summary>
+        /// The impulse
+        /// </summary>
+        private float impulse;
+        /// <summary>
+        /// The type
+        /// </summary>
+        private JointType type;
+        /// <summary>
+        /// The prev
+        /// </summary>
+        private IJoint prev;
+        /// <summary>
+        /// The next
+        /// </summary>
+        private IJoint next;
+        /// <summary>
+        /// The node
+        /// </summary>
+        private readonly JointEdge node1;
+        /// <summary>
+        /// The node
+        /// </summary>
+        private readonly JointEdge node2;
+        /// <summary>
+        /// The body
+        /// </summary>
+        private Body body1;
+        /// <summary>
+        /// The body
+        /// </summary>
+        private Body body2;
+        /// <summary>
+        /// The island flag
+        /// </summary>
+        private bool islandFlag;
+        /// <summary>
+        /// The collide connected
+        /// </summary>
+        private readonly bool collideConnected;
+        /// <summary>
+        /// The local center
+        /// </summary>
+        private Vector2 localCenter1;
+        /// <summary>
+        /// The local center
+        /// </summary>
+        private Vector2 localCenter2;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
+        private float invMass1;
+        /// <summary>
+        /// The inv
+        /// </summary>
+        private float invI1;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
+        private float invMass2;
+        /// <summary>
+        /// The inv
+        /// </summary>
+        private float invI2;
+        /// <summary>
+        /// The user data
+        /// </summary>
+        private object userData;
+        /// <summary>
+        /// The ratio
+        /// </summary>
+        private float ratio;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="GearJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public GearJoint(GearJointDef def)
-            : base(def)
         {
+            type = def.Type;
+            prev = null;
+            next = null;
+            body1 = def.Body1;
+            body2 = def.Body2;
+            node1 = new JointEdge();
+            node2 = new JointEdge();
+            collideConnected = def.CollideConnected;
+            islandFlag = false;
+            UserData = def.UserData;
+            
             JointType type1 = def.Joint1.GetType();
             JointType type2 = def.Joint2.GetType();
 
@@ -86,50 +217,50 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Box2DxDebug.Assert(def.Joint1.GetBody1().IsStatic());
             Box2DxDebug.Assert(def.Joint2.GetBody1().IsStatic());
 
-            Revolute1 = null;
-            Prismatic1 = null;
-            Revolute2 = null;
-            Prismatic2 = null;
+            revolute1 = null;
+            prismatic1 = null;
+            revolute2 = null;
+            prismatic2 = null;
 
             float coordinate1, coordinate2;
 
-            Ground1 = def.Joint1.GetBody1();
+            ground1 = def.Joint1.GetBody1();
             Body1 = def.Joint1.GetBody2();
             if (type1 == JointType.RevoluteJoint)
             {
-                Revolute1 = (RevoluteJoint) def.Joint1;
-                GroundAnchor1 = Revolute1.LocalAnchor1;
-                LocalAnchor1 = Revolute1.LocalAnchor2;
+                revolute1 = (RevoluteJoint) def.Joint1;
+                groundAnchor1 = Revolute1.LocalAnchor1;
+                localAnchor1 = Revolute1.LocalAnchor2;
                 coordinate1 = Revolute1.JointAngleX;
             }
             else
             {
-                Prismatic1 = (PrismaticJoint) def.Joint1;
-                GroundAnchor1 = Prismatic1.LocalAnchor1;
-                LocalAnchor1 = Prismatic1.LocalAnchor2;
+                prismatic1 = (PrismaticJoint) def.Joint1;
+                groundAnchor1 = Prismatic1.LocalAnchor1;
+                localAnchor1 = Prismatic1.LocalAnchor2;
                 coordinate1 = Prismatic1.JointTranslation;
             }
 
-            Ground2 = def.Joint2.GetBody1();
+            ground2 = def.Joint2.GetBody1();
             Body2 = def.Joint2.GetBody2();
             if (type2 == JointType.RevoluteJoint)
             {
-                Revolute2 = (RevoluteJoint) def.Joint2;
-                GroundAnchor2 = Revolute2.LocalAnchor1;
-                LocalAnchor2 = Revolute2.LocalAnchor2;
+                revolute2 = (RevoluteJoint) def.Joint2;
+                groundAnchor2 = Revolute2.LocalAnchor1;
+                localAnchor2 = Revolute2.LocalAnchor2;
                 coordinate2 = Revolute2.JointAngleX;
             }
             else
             {
-                Prismatic2 = (PrismaticJoint) def.Joint2;
-                GroundAnchor2 = Prismatic2.LocalAnchor1;
-                LocalAnchor2 = Prismatic2.LocalAnchor2;
+                prismatic2 = (PrismaticJoint) def.Joint2;
+                groundAnchor2 = Prismatic2.LocalAnchor1;
+                localAnchor2 = Prismatic2.LocalAnchor2;
                 coordinate2 = Prismatic2.JointTranslation;
             }
 
             Ratio = def.Ratio;
 
-            Constant = coordinate1 + Ratio * coordinate2;
+            constant = coordinate1 + Ratio * coordinate2;
 
             Impulse = 0.0f;
         }
@@ -137,97 +268,241 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The ground
         /// </summary>
-        public Body Ground1 { get; }
+        public Body Ground1 => ground1;
 
         /// <summary>
         ///     The ground
         /// </summary>
-        public Body Ground2 { get; }
+        public Body Ground2 => ground2;
 
         // One of these is NULL.
 
         /// <summary>
         ///     The revolute
         /// </summary>
-        public RevoluteJoint Revolute1 { get; }
+        public RevoluteJoint Revolute1 => revolute1;
 
         /// <summary>
         ///     The prismatic
         /// </summary>
-        public PrismaticJoint Prismatic1 { get; }
+        public PrismaticJoint Prismatic1 => prismatic1;
 
         // One of these is NULL.
 
         /// <summary>
         ///     The revolute
         /// </summary>
-        public RevoluteJoint Revolute2 { get; }
+        public RevoluteJoint Revolute2 => revolute2;
 
         /// <summary>
         ///     The prismatic
         /// </summary>
-        public PrismaticJoint Prismatic2 { get; }
+        public PrismaticJoint Prismatic2 => prismatic2;
 
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vector2 GroundAnchor1 { get; }
+        public Vector2 GroundAnchor1 => groundAnchor1;
 
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vector2 GroundAnchor2 { get; }
+        public Vector2 GroundAnchor2 => groundAnchor2;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vector2 LocalAnchor1 { get; }
+        public Vector2 LocalAnchor1 => localAnchor1;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vector2 LocalAnchor2 { get; }
+        public Vector2 LocalAnchor2 => localAnchor2;
 
         /// <summary>
         ///     The constant
         /// </summary>
-        public float Constant { get; }
+        public float Constant => constant;
 
         // Effective mass
 
         /// <summary>
         ///     The mass
         /// </summary>
-        public float Mass { get; set; }
+        public float Mass
+        {
+            get => mass;
+            set => mass = value;
+        }
 
         // Impulse for accumulation/warm starting.
 
         /// <summary>
         ///     The impulse
         /// </summary>
-        public float Impulse { get; set; }
+        public float Impulse
+        {
+            get => impulse;
+            set => impulse = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the type
+        /// </summary>
+        public JointType Type
+        {
+            get => type;
+            set => type = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the prev
+        /// </summary>
+        public IJoint Prev
+        {
+            get => prev;
+            set => prev = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the next
+        /// </summary>
+        public IJoint Next
+        {
+            get => next;
+            set => next = value;
+        }
+
+        /// <summary>
+        /// Gets the value of the node 1
+        /// </summary>
+        public JointEdge Node1 => node1;
+
+        /// <summary>
+        /// Gets the value of the node 2
+        /// </summary>
+        public JointEdge Node2 => node2;
+
+        /// <summary>
+        /// Gets or sets the value of the body 1
+        /// </summary>
+        public Body Body1
+        {
+            get => body1;
+            set => body1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the body 2
+        /// </summary>
+        public Body Body2
+        {
+            get => body2;
+            set => body2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the island flag
+        /// </summary>
+        public bool IslandFlag
+        {
+            get => islandFlag;
+            set => islandFlag = value;
+        }
+
+        /// <summary>
+        /// Gets the value of the collide connected
+        /// </summary>
+        public bool CollideConnected => collideConnected;
+
+        /// <summary>
+        /// Gets or sets the value of the local center 1
+        /// </summary>
+        public Vector2 LocalCenter1
+        {
+            get => localCenter1;
+            set => localCenter1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the local center 2
+        /// </summary>
+        public Vector2 LocalCenter2
+        {
+            get => localCenter2;
+            set => localCenter2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv mass 1
+        /// </summary>
+        public float InvMass1
+        {
+            get => invMass1;
+            set => invMass1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv i 1
+        /// </summary>
+        public float InvI1
+        {
+            get => invI1;
+            set => invI1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv mass 2
+        /// </summary>
+        public float InvMass2
+        {
+            get => invMass2;
+            set => invMass2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv i 2
+        /// </summary>
+        public float InvI2
+        {
+            get => invI2;
+            set => invI2 = value;
+        }
 
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+        public Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+        public Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+
+        /// <summary>
+        /// Gets or sets the value of the user data
+        /// </summary>
+        public object UserData
+        {
+            get => userData;
+            set => userData = value;
+        }
 
         /// <summary>
         ///     Get the gear ratio.
         /// </summary>
-        public float Ratio { get; set; }
+        public float Ratio
+        {
+            get => ratio;
+            set => ratio = value;
+        }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vector2 GetReactionForce(float invDt)
+        public Vector2 GetReactionForce(float invDt)
         {
             // TODO_ERIN not tested
             Vector2 p = Impulse * jacobian.Linear2;
@@ -239,7 +514,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt)
+        public float GetReactionTorque(float invDt)
         {
             // TODO_ERIN not tested
             Vector2 r = Math.Mul(Body2.GetXForm().R, LocalAnchor2 - Body2.GetLocalCenter());
@@ -252,7 +527,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Inits the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal override void InitVelocityConstraints(TimeStep step)
+        internal void InitVelocityConstraints(TimeStep step)
         {
             Body g1 = Ground1;
             Body g2 = Ground2;
@@ -311,10 +586,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
+        /// Solves the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.SolveVelocityConstraints(TimeStep step)
+        {
+            SolveVelocityConstraints(step);
+        }
+
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="baumgarte">The baumgarte</param>
+        /// <returns>The bool</returns>
+        bool IJoint.SolvePositionConstraints(float baumgarte) => SolvePositionConstraints(baumgarte);
+
+        /// <summary>
+        /// Inits the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.InitVelocityConstraints(TimeStep step)
+        {
+            InitVelocityConstraints(step);
+        }
+
+        /// <summary>
         ///     Solves the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal override void SolveVelocityConstraints(TimeStep step)
+        internal void SolveVelocityConstraints(TimeStep step)
         {
             Body b1 = Body1;
             Body b2 = Body2;
@@ -336,7 +636,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="baumgarte">The baumgarte</param>
         /// <returns>The bool</returns>
-        internal override bool SolvePositionConstraints(float baumgarte)
+        internal bool SolvePositionConstraints(float baumgarte)
         {
             float linearError = 0.0f;
 

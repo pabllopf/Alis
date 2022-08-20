@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JointType.cs
+//  File:MouseJointDef.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,51 +27,49 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Dynamics.Joints
+using Alis.Aspect.Math;
+
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
-    ///     The joint type enum
+    ///     Mouse joint definition. This requires a world target point,
+    ///     tuning parameters, and the time step.
     /// </summary>
-    public enum JointType
+    public class MouseJointDef : JointDef
     {
         /// <summary>
-        ///     The unknown joint joint type
+        ///     Initializes a new instance of the <see cref="MouseJointDef" /> class
         /// </summary>
-        UnknownJoint,
+        public MouseJointDef()
+        {
+            Type = JointType.MouseJoint;
+            Target.Set(0.0f, 0.0f);
+            MaxForce = 0.0f;
+            FrequencyHz = 5.0f;
+            DampingRatio = 0.7f;
+        }
 
         /// <summary>
-        ///     The revolute joint joint type
+        ///     The initial world target point. This is assumed
+        ///     to coincide with the body anchor initially.
         /// </summary>
-        RevoluteJoint,
+        public Vector2 Target { get; }
 
         /// <summary>
-        ///     The prismatic joint joint type
+        ///     The maximum constraint force that can be exerted
+        ///     to move the candidate body. Usually you will express
+        ///     as some multiple of the weight (multiplier * mass * gravity).
         /// </summary>
-        PrismaticJoint,
+        public float MaxForce { get; }
 
         /// <summary>
-        ///     The distance joint joint type
+        ///     The response speed.
         /// </summary>
-        DistanceJoint,
+        public float FrequencyHz { get; }
 
         /// <summary>
-        ///     The pulley joint joint type
+        ///     The damping ratio. 0 = no damping, 1 = critical damping.
         /// </summary>
-        PulleyJoint,
-
-        /// <summary>
-        ///     The mouse joint joint type
-        /// </summary>
-        MouseJoint,
-
-        /// <summary>
-        ///     The gear joint joint type
-        /// </summary>
-        GearJoint,
-
-        /// <summary>
-        ///     The line joint joint type
-        /// </summary>
-        LineJoint
+        public float DampingRatio { get; }
     }
 }

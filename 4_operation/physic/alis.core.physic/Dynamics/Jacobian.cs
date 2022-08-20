@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:JointDef.cs
+//  File:Jacobian.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,48 +27,69 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Dynamics.Joints
+using Alis.Aspect.Math;
+
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
-    ///     Joint definitions are used to construct joints.
+    ///     The jacobian
     /// </summary>
-    public class JointDef
+    public struct Jacobian
     {
         /// <summary>
-        ///     Use this to attach application specific data to your joints.
+        ///     The linear
         /// </summary>
-        public readonly object UserData;
+        public Vector2 Linear1;
 
         /// <summary>
-        ///     The first attached body.
+        ///     The angular
         /// </summary>
-        public Body Body1;
+        public float Angular1;
 
         /// <summary>
-        ///     The second attached body.
+        ///     The linear
         /// </summary>
-        public Body Body2;
+        public Vector2 Linear2;
 
         /// <summary>
-        ///     Set this flag to true if the attached bodies should collide.
+        ///     The angular
         /// </summary>
-        public bool CollideConnected;
+        public float Angular2;
 
         /// <summary>
-        ///     The joint type is set automatically for concrete joint types.
+        ///     Sets the zero
         /// </summary>
-        public JointType Type;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="JointDef" /> class
-        /// </summary>
-        public JointDef()
+        public void SetZero()
         {
-            Type = JointType.UnknownJoint;
-            UserData = null;
-            Body1 = null;
-            Body2 = null;
-            CollideConnected = false;
+            Linear1.SetZero();
+            Angular1 = 0.0f;
+            Linear2.SetZero();
+            Angular2 = 0.0f;
         }
+
+        /// <summary>
+        ///     Sets the x 1
+        /// </summary>
+        /// <param name="x1">The </param>
+        /// <param name="a1">The </param>
+        /// <param name="x2">The </param>
+        /// <param name="a2">The </param>
+        public void Set(Vector2 x1, float a1, Vector2 x2, float a2)
+        {
+            Linear1 = x1;
+            Angular1 = a1;
+            Linear2 = x2;
+            Angular2 = a2;
+        }
+
+        /// <summary>
+        ///     Computes the x 1
+        /// </summary>
+        /// <param name="x1">The </param>
+        /// <param name="a1">The </param>
+        /// <param name="x2">The </param>
+        /// <param name="a2">The </param>
+        /// <returns>The float</returns>
+        public float Compute(Vector2 x1, float a1, Vector2 x2, float a2) => Vector2.Dot(Linear1, x1) + Angular1 * a1 + Vector2.Dot(Linear2, x2) + Angular2 * a2;
     }
 }

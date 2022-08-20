@@ -31,7 +31,7 @@ using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Contacts;
-using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Dynamics.Joint;
 using Moq;
 using Xunit;
 
@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         {
             // Arrange
             Island island = CreateIsland();
-            Joint joint = null;
+            IJoint joint = null;
 
             // Act
             island.Add(

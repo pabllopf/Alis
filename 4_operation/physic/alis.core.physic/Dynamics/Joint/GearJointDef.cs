@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
     ///     Gear joint definition. This definition requires two existing
@@ -39,12 +39,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The first revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public readonly Joint Joint1;
+        public readonly IJoint Joint1;
 
         /// <summary>
         ///     The second revolute/prismatic joint attached to the gear joint.
         /// </summary>
-        public readonly Joint Joint2;
+        public readonly IJoint Joint2;
 
         /// <summary>
         ///     The gear ratio.

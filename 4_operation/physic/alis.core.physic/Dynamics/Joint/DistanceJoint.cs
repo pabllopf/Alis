@@ -27,33 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-// 1-D constrained system
-// m (v2 - v1) = lambda
-// v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
-// x2 = x1 + h * v2
-
-// 1-D mass-damper-spring system
-// m (v2 - v1) + h * d * v2 + h * k * 
-
-// C = norm(p2 - p1) - L
-// u = (p2 - p1) / norm(p2 - p1)
-// Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-// J = [-u -cross(r1, u) u cross(r2, u)]
-// K = J * invM * JT
-//   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
-
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
     ///     A distance joint constrains two points on two bodies
     ///     to remain at a fixed distance from each other. You can view
     ///     this as a massless, rigid rod.
+    /// 1-D constrained system
+    /// m (v2 - v1) = lambda
+    /// v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
+    /// x2 = x1 + h * v2
+    /// 1-D mass-damper-spring system
+    /// m (v2 - v1) + h * d * v2 + h * k * 
+    /// C = norm(p2 - p1) - L
+    /// u = (p2 - p1) / norm(p2 - p1)
+    /// Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+    /// J = [-u -cross(r1, u) u cross(r2, u)]
+    /// K = J * invM * JT
+    ///   = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
     /// </summary>
-    public class DistanceJoint : Joint
+    public class DistanceJoint : IJoint
     {
         /// <summary>
         ///     The damping ratio
@@ -107,12 +104,87 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 U;
 
         /// <summary>
+        /// The type
+        /// </summary>
+        private JointType type;
+        /// <summary>
+        /// The prev
+        /// </summary>
+        private IJoint prev;
+        /// <summary>
+        /// The next
+        /// </summary>
+        private IJoint next;
+        /// <summary>
+        /// The node
+        /// </summary>
+        private readonly JointEdge node1;
+        /// <summary>
+        /// The node
+        /// </summary>
+        private readonly JointEdge node2;
+        /// <summary>
+        /// The body
+        /// </summary>
+        private Body body1;
+        /// <summary>
+        /// The body
+        /// </summary>
+        private Body body2;
+        /// <summary>
+        /// The island flag
+        /// </summary>
+        private bool islandFlag;
+        /// <summary>
+        /// The collide connected
+        /// </summary>
+        private readonly bool collideConnected;
+        /// <summary>
+        /// The local center
+        /// </summary>
+        private Vector2 localCenter1;
+        /// <summary>
+        /// The local center
+        /// </summary>
+        private Vector2 localCenter2;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
+        private float invMass1;
+        /// <summary>
+        /// The inv
+        /// </summary>
+        private float invI1;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
+        private float invMass2;
+        /// <summary>
+        /// The inv
+        /// </summary>
+        private float invI2;
+        /// <summary>
+        /// The user data
+        /// </summary>
+        private object userData;
+
+        /// <summary>
         ///     Initializes a new instance of the <see cref="DistanceJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public DistanceJoint(DistanceJointDef def)
-            : base(def)
         {
+            type = def.Type;
+            prev = null;
+            next = null;
+            body1 = def.Body1;
+            body2 = def.Body2;
+            node1 = new JointEdge();
+            node2 = new JointEdge();
+            collideConnected = def.CollideConnected;
+            islandFlag = false;
+            UserData = def.UserData;
+            
             LocalAnchor1 = def.LocalAnchor1;
             LocalAnchor2 = def.LocalAnchor2;
             length = def.Length;
@@ -124,37 +196,169 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
+        /// Gets or sets the value of the type
+        /// </summary>
+        JointType IJoint.Type
+        {
+            get => type;
+            set => type = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the prev
+        /// </summary>
+        IJoint IJoint.Prev
+        {
+            get => prev;
+            set => prev = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the next
+        /// </summary>
+        IJoint IJoint.Next
+        {
+            get => next;
+            set => next = value;
+        }
+
+        /// <summary>
+        /// Gets the value of the node 1
+        /// </summary>
+        JointEdge IJoint.Node1 => node1;
+
+        /// <summary>
+        /// Gets the value of the node 2
+        /// </summary>
+        JointEdge IJoint.Node2 => node2;
+
+        /// <summary>
+        /// Gets or sets the value of the body 1
+        /// </summary>
+        Body IJoint.Body1
+        {
+            get => body1;
+            set => body1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the body 2
+        /// </summary>
+        Body IJoint.Body2
+        {
+            get => body2;
+            set => body2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the island flag
+        /// </summary>
+        bool IJoint.IslandFlag
+        {
+            get => islandFlag;
+            set => islandFlag = value;
+        }
+
+        /// <summary>
+        /// Gets the value of the collide connected
+        /// </summary>
+        bool IJoint.CollideConnected => collideConnected;
+
+        /// <summary>
+        /// Gets or sets the value of the local center 1
+        /// </summary>
+        Vector2 IJoint.LocalCenter1
+        {
+            get => localCenter1;
+            set => localCenter1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the local center 2
+        /// </summary>
+        Vector2 IJoint.LocalCenter2
+        {
+            get => localCenter2;
+            set => localCenter2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv mass 1
+        /// </summary>
+        float IJoint.InvMass1
+        {
+            get => invMass1;
+            set => invMass1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv i 1
+        /// </summary>
+        float IJoint.InvI1
+        {
+            get => invI1;
+            set => invI1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv mass 2
+        /// </summary>
+        float IJoint.InvMass2
+        {
+            get => invMass2;
+            set => invMass2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv i 2
+        /// </summary>
+        float IJoint.InvI2
+        {
+            get => invI2;
+            set => invI2 = value;
+        }
+
+        /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+        public Vector2 Anchor1 => body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+        public Vector2 Anchor2 => body2.GetWorldPoint(LocalAnchor2);
+
+        /// <summary>
+        ///    Gets the value user data.
+        /// </summary>
+        public object UserData
+        {
+            get => userData;
+            set => userData = value;
+        }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vector2 GetReactionForce(float invDt) => invDt * Impulse * U;
+        public Vector2 GetReactionForce(float invDt) => invDt * Impulse * U;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt) => 0.0f;
+        public float GetReactionTorque(float invDt) => 0.0f;
 
         /// <summary>
         ///     Inits the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal override void InitVelocityConstraints(TimeStep step)
+        internal void InitVelocityConstraints(TimeStep step)
         {
-            Body b1 = Body1;
-            Body b2 = Body2;
+            Body b1 = body1;
+            Body b2 = body2;
 
             // Compute the effective mass matrix.
             Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
@@ -215,11 +419,27 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
+        /// Solves the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.SolveVelocityConstraints(TimeStep step)
+        {
+            SolveVelocityConstraints(step);
+        }
+
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="baumgarte">The baumgarte</param>
+        /// <returns>The bool</returns>
+        bool IJoint.SolvePositionConstraints(float baumgarte) => SolvePositionConstraints(baumgarte);
+
+        /// <summary>
         ///     Describes whether this instance solve position constraints
         /// </summary>
         /// <param name="baumgarte">The baumgarte</param>
         /// <returns>The bool</returns>
-        internal override bool SolvePositionConstraints(float baumgarte)
+        internal bool SolvePositionConstraints(float baumgarte)
         {
             if (FrequencyHz > 0.0f)
             {
@@ -227,8 +447,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 return true;
             }
 
-            Body b1 = Body1;
-            Body b2 = Body2;
+            Body b1 = body1;
+            Body b2 = body2;
 
             Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
             Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
@@ -255,15 +475,24 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
+        /// Inits the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.InitVelocityConstraints(TimeStep step)
+        {
+            InitVelocityConstraints(step);
+        }
+
+        /// <summary>
         ///     Solves the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal override void SolveVelocityConstraints(TimeStep step)
+        internal void SolveVelocityConstraints(TimeStep step)
         {
             //B2_NOT_USED(step);
 
-            Body b1 = Body1;
-            Body b2 = Body2;
+            Body b1 = body1;
+            Body b2 = body2;
 
             Vector2 r1 = Math.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
             Vector2 r2 = Math.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());

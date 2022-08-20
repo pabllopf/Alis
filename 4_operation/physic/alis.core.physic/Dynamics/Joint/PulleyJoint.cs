@@ -50,7 +50,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     using Box2DXMath = Math;
 
@@ -62,28 +62,183 @@ namespace Alis.Core.Physic.Dynamics.Joints
     ///     The pulley also enforces a maximum length limit on both sides. This is
     ///     useful to prevent one side of the pulley hitting the top.
     /// </summary>
-    public class PulleyJoint : Joint
+    public class PulleyJoint : IJoint
     {
+        /// <summary>
+        /// The min pulley length
+        /// </summary>
+        private static readonly float MinPulleyLength1 = 2.0f;
+        /// <summary>
+        /// The limit state
+        /// </summary>
+        private LimitState limitState;
+        /// <summary>
+        /// The ground
+        /// </summary>
+        private readonly Body ground;
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        private readonly Vector2 groundAnchor1;
+        /// <summary>
+        /// The ground anchor
+        /// </summary>
+        private readonly Vector2 groundAnchor2;
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        private readonly Vector2 localAnchor1;
+        /// <summary>
+        /// The local anchor
+        /// </summary>
+        private readonly Vector2 localAnchor2;
+        /// <summary>
+        /// The 
+        /// </summary>
+        private Vector2 u1;
+        /// <summary>
+        /// The 
+        /// </summary>
+        private Vector2 u2;
+        /// <summary>
+        /// The constant
+        /// </summary>
+        private readonly float constant;
+        /// <summary>
+        /// The max length
+        /// </summary>
+        private readonly float maxLength1;
+        /// <summary>
+        /// The max length
+        /// </summary>
+        private readonly float maxLength2;
+        /// <summary>
+        /// The pulley mass
+        /// </summary>
+        private float pulleyMass;
+        /// <summary>
+        /// The limit mass
+        /// </summary>
+        private float limitMass1;
+        /// <summary>
+        /// The limit mass
+        /// </summary>
+        private float limitMass2;
+        /// <summary>
+        /// The impulse
+        /// </summary>
+        private float impulse;
+        /// <summary>
+        /// The limit impulse
+        /// </summary>
+        private float limitImpulse1;
+        /// <summary>
+        /// The limit impulse
+        /// </summary>
+        private float limitImpulse2;
+        /// <summary>
+        /// The state
+        /// </summary>
+        private LimitState state;
+        /// <summary>
+        /// The type
+        /// </summary>
+        private JointType type;
+        /// <summary>
+        /// The prev
+        /// </summary>
+        private IJoint prev;
+        /// <summary>
+        /// The next
+        /// </summary>
+        private IJoint next;
+        /// <summary>
+        /// The node
+        /// </summary>
+        private readonly JointEdge node1;
+        /// <summary>
+        /// The node
+        /// </summary>
+        private readonly JointEdge node2;
+        /// <summary>
+        /// The body
+        /// </summary>
+        private Body body1;
+        /// <summary>
+        /// The body
+        /// </summary>
+        private Body body2;
+        /// <summary>
+        /// The island flag
+        /// </summary>
+        private bool islandFlag;
+        /// <summary>
+        /// The collide connected
+        /// </summary>
+        private readonly bool collideConnected;
+        /// <summary>
+        /// The local center
+        /// </summary>
+        private Vector2 localCenter1;
+        /// <summary>
+        /// The local center
+        /// </summary>
+        private Vector2 localCenter2;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
+        private float invMass1;
+        /// <summary>
+        /// The inv
+        /// </summary>
+        private float invI1;
+        /// <summary>
+        /// The inv mass
+        /// </summary>
+        private float invMass2;
+        /// <summary>
+        /// The inv
+        /// </summary>
+        private float invI2;
+        /// <summary>
+        /// The user data
+        /// </summary>
+        private object userData;
+        /// <summary>
+        /// The ratio
+        /// </summary>
+        private float ratio;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
         /// </summary>
         /// <param name="def">The def</param>
         public PulleyJoint(PulleyJointDef def)
-            : base(def)
         {
-            Ground = Body1.GetWorld().GroundBody;
-            GroundAnchor1 = def.GroundAnchor1 - Ground.GetXForm().Position;
-            GroundAnchor2 = def.GroundAnchor2 - Ground.GetXForm().Position;
-            LocalAnchor1 = def.LocalAnchor1;
-            LocalAnchor2 = def.LocalAnchor2;
+            type = def.Type;
+            prev = null;
+            next = null;
+            body1 = def.Body1;
+            body2 = def.Body2;
+            node1 = new JointEdge();
+            node2 = new JointEdge();
+            collideConnected = def.CollideConnected;
+            islandFlag = false;
+            UserData = def.UserData;
+            
+            ground = Body1.GetWorld().GroundBody;
+            groundAnchor1 = def.GroundAnchor1 - Ground.GetXForm().Position;
+            groundAnchor2 = def.GroundAnchor2 - Ground.GetXForm().Position;
+            localAnchor1 = def.LocalAnchor1;
+            localAnchor2 = def.LocalAnchor2;
 
             Box2DxDebug.Assert(def.Ratio != 0.0f);
             Ratio = def.Ratio;
 
-            Constant = def.Length1 + Ratio * def.Length2;
+            constant = def.Length1 + Ratio * def.Length2;
 
-            MaxLength1 = Math.Min(def.MaxLength1, Constant - Ratio * MinPulleyLength);
-            MaxLength2 = Math.Min(def.MaxLength2, (Constant - MinPulleyLength) / Ratio);
+            maxLength1 = Math.Min(def.MaxLength1, Constant - Ratio * MinPulleyLength);
+            maxLength2 = Math.Min(def.MaxLength2, (Constant - MinPulleyLength) / Ratio);
 
             Impulse = 0.0f;
             LimitImpulse1 = 0.0f;
@@ -93,111 +248,283 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The min pulley length
         /// </summary>
-        public static float MinPulleyLength { get; } = 2.0f;
+        public static float MinPulleyLength => MinPulleyLength1;
 
         /// <summary>
         ///     The limit state
         /// </summary>
-        public LimitState LimitState { get; set; }
+        public LimitState LimitState
+        {
+            get => limitState;
+            set => limitState = value;
+        }
 
         /// <summary>
         ///     The ground
         /// </summary>
-        public Body Ground { get; }
+        public Body Ground => ground;
 
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vector2 GroundAnchor1 { get; }
+        public Vector2 GroundAnchor1 => groundAnchor1;
 
         /// <summary>
         ///     The ground anchor
         /// </summary>
-        public Vector2 GroundAnchor2 { get; }
+        public Vector2 GroundAnchor2 => groundAnchor2;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vector2 LocalAnchor1 { get; }
+        public Vector2 LocalAnchor1 => localAnchor1;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        public Vector2 LocalAnchor2 { get; }
+        public Vector2 LocalAnchor2 => localAnchor2;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 U1 { get; set; }
+        public Vector2 U1
+        {
+            get => u1;
+            set => u1 = value;
+        }
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 U2 { get; set; }
+        public Vector2 U2
+        {
+            get => u2;
+            set => u2 = value;
+        }
 
         /// <summary>
         ///     The constant
         /// </summary>
-        public float Constant { get; }
+        public float Constant => constant;
 
         /// <summary>
         ///     The max length
         /// </summary>
-        public float MaxLength1 { get; }
+        public float MaxLength1 => maxLength1;
 
         /// <summary>
         ///     The max length
         /// </summary>
-        public float MaxLength2 { get; }
+        public float MaxLength2 => maxLength2;
 
         // Effective masses
 
         /// <summary>
         ///     The pulley mass
         /// </summary>
-        public float PulleyMass { get; set; }
+        public float PulleyMass
+        {
+            get => pulleyMass;
+            set => pulleyMass = value;
+        }
 
         /// <summary>
         ///     The limit mass
         /// </summary>
-        public float LimitMass1 { get; set; }
+        public float LimitMass1
+        {
+            get => limitMass1;
+            set => limitMass1 = value;
+        }
 
         /// <summary>
         ///     The limit mass
         /// </summary>
-        public float LimitMass2 { get; set; }
+        public float LimitMass2
+        {
+            get => limitMass2;
+            set => limitMass2 = value;
+        }
 
         // Impulses for accumulation/warm starting.
 
         /// <summary>
         ///     The impulse
         /// </summary>
-        public float Impulse { get; set; }
+        public float Impulse
+        {
+            get => impulse;
+            set => impulse = value;
+        }
 
         /// <summary>
         ///     The limit impulse
         /// </summary>
-        public float LimitImpulse1 { get; set; }
+        public float LimitImpulse1
+        {
+            get => limitImpulse1;
+            set => limitImpulse1 = value;
+        }
 
         /// <summary>
         ///     The limit impulse
         /// </summary>
-        public float LimitImpulse2 { get; set; }
+        public float LimitImpulse2
+        {
+            get => limitImpulse2;
+            set => limitImpulse2 = value;
+        }
 
         /// <summary>
         ///     The state
         /// </summary>
-        public LimitState State { get; set; }
+        public LimitState State
+        {
+            get => state;
+            set => state = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the type
+        /// </summary>
+        public JointType Type
+        {
+            get => type;
+            set => type = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the prev
+        /// </summary>
+        public IJoint Prev
+        {
+            get => prev;
+            set => prev = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the next
+        /// </summary>
+        public IJoint Next
+        {
+            get => next;
+            set => next = value;
+        }
+
+        /// <summary>
+        /// Gets the value of the node 1
+        /// </summary>
+        public JointEdge Node1 => node1;
+
+        /// <summary>
+        /// Gets the value of the node 2
+        /// </summary>
+        public JointEdge Node2 => node2;
+
+        /// <summary>
+        /// Gets or sets the value of the body 1
+        /// </summary>
+        public Body Body1
+        {
+            get => body1;
+            set => body1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the body 2
+        /// </summary>
+        public Body Body2
+        {
+            get => body2;
+            set => body2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the island flag
+        /// </summary>
+        public bool IslandFlag
+        {
+            get => islandFlag;
+            set => islandFlag = value;
+        }
+
+        /// <summary>
+        /// Gets the value of the collide connected
+        /// </summary>
+        public bool CollideConnected => collideConnected;
+
+        /// <summary>
+        /// Gets or sets the value of the local center 1
+        /// </summary>
+        public Vector2 LocalCenter1
+        {
+            get => localCenter1;
+            set => localCenter1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the local center 2
+        /// </summary>
+        public Vector2 LocalCenter2
+        {
+            get => localCenter2;
+            set => localCenter2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv mass 1
+        /// </summary>
+        public float InvMass1
+        {
+            get => invMass1;
+            set => invMass1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv i 1
+        /// </summary>
+        public float InvI1
+        {
+            get => invI1;
+            set => invI1 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv mass 2
+        /// </summary>
+        public float InvMass2
+        {
+            get => invMass2;
+            set => invMass2 = value;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the inv i 2
+        /// </summary>
+        public float InvI2
+        {
+            get => invI2;
+            set => invI2 = value;
+        }
 
         /// <summary>
         ///     Gets the value of the anchor 1
         /// </summary>
-        public override Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+        public  Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
 
         /// <summary>
         ///     Gets the value of the anchor 2
         /// </summary>
-        public override Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+        public  Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+
+        /// <summary>
+        /// Gets or sets the value of the user data
+        /// </summary>
+        public object UserData
+        {
+            get => userData;
+            set => userData = value;
+        }
 
         /// <summary>
         ///     Get the first ground anchor.
@@ -240,14 +567,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Get the pulley ratio.
         /// </summary>
-        public float Ratio { get; set; }
+        public float Ratio
+        {
+            get => ratio;
+            set => ratio = value;
+        }
 
         /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vec</returns>
-        public override Vector2 GetReactionForce(float invDt)
+        public  Vector2 GetReactionForce(float invDt)
         {
             Vector2 p = Impulse * U2;
             return invDt * p;
@@ -258,13 +589,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
-        public override float GetReactionTorque(float invDt) => 0.0f;
+        public  float GetReactionTorque(float invDt) => 0.0f;
 
         /// <summary>
         ///     Inits the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal override void InitVelocityConstraints(TimeStep step)
+        internal  void InitVelocityConstraints(TimeStep step)
         {
             Body body1 = Body1;
             Body body2 = Body2;
@@ -372,10 +703,35 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>
+        /// Solves the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.SolveVelocityConstraints(TimeStep step)
+        {
+            SolveVelocityConstraints(step);
+        }
+
+        /// <summary>
+        /// Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="baumgarte">The baumgarte</param>
+        /// <returns>The bool</returns>
+        bool IJoint.SolvePositionConstraints(float baumgarte) => SolvePositionConstraints(baumgarte);
+
+        /// <summary>
+        /// Inits the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.InitVelocityConstraints(TimeStep step)
+        {
+            InitVelocityConstraints(step);
+        }
+
+        /// <summary>
         ///     Solves the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal override void SolveVelocityConstraints(TimeStep step)
+        internal void SolveVelocityConstraints(TimeStep step)
         {
             Body b1 = Body1;
             Body b2 = Body2;
@@ -438,7 +794,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="baumgarte">The baumgarte</param>
         /// <returns>The bool</returns>
-        internal override bool SolvePositionConstraints(float baumgarte)
+        internal  bool SolvePositionConstraints(float baumgarte)
         {
             Body body1 = Body1;
             Body body2 = Body2;

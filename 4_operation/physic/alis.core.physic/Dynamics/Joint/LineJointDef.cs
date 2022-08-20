@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RevoluteJointDef.cs
+//  File:LineJointDef.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,53 +29,47 @@
 
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
-    ///     Revolute joint definition. This requires defining an
-    ///     anchor point where the bodies are joined. The definition
-    ///     uses local anchor points so that the initial configuration
-    ///     can violate the constraint slightly. You also need to
-    ///     specify the initial relative angle for joint limits. This
-    ///     helps when saving and loading a game.
-    ///     The local anchor points are measured from the body's origin
-    ///     rather than the center of mass because:
-    ///     1. you might not know where the center of mass will be.
-    ///     2. if you add/remove shapes from a body and recompute the mass,
-    ///     the joints will be broken.
+    ///     Line joint definition. This requires defining a line of
+    ///     motion using an axis and an anchor point. The definition uses local
+    ///     anchor points and a local axis so that the initial configuration
+    ///     can violate the constraint slightly. The joint translation is zero
+    ///     when the local anchor points coincide in world space. Using local
+    ///     anchors and a local axis helps when saving and loading a game.
     /// </summary>
-    public class RevoluteJointDef : JointDef
+    public class LineJointDef : JointDef
     {
         /// <summary>
-        ///     A flag to enable joint limits.
+        ///     Enable/disable the joint limit.
         /// </summary>
         public readonly bool EnableLimit;
 
         /// <summary>
-        ///     A flag to enable the joint motor.
+        ///     Enable/disable the joint motor.
         /// </summary>
         public readonly bool EnableMotor;
 
         /// <summary>
-        ///     The lower angle for the joint limit (radians).
+        ///     The lower translation limit, usually in meters.
         /// </summary>
-        public readonly float LowerAngle;
+        public readonly float LowerTranslation;
 
         /// <summary>
-        ///     The maximum motor torque used to achieve the desired motor speed.
-        ///     Usually in N-m.
+        ///     The maximum motor torque, usually in N-m.
         /// </summary>
-        public readonly float MaxMotorTorque;
+        public readonly float MaxMotorForce;
 
         /// <summary>
-        ///     The desired motor speed. Usually in radians per second.
+        ///     The desired motor speed in radians per second.
         /// </summary>
         public readonly float MotorSpeed;
 
         /// <summary>
-        ///     The upper angle for the joint limit (radians).
+        ///     The upper translation limit, usually in meters.
         /// </summary>
-        public readonly float UpperAngle;
+        public readonly float UpperTranslation;
 
         /// <summary>
         ///     The local anchor point relative to body1's origin.
@@ -88,38 +82,38 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public Vector2 LocalAnchor2;
 
         /// <summary>
-        ///     The body2 angle minus body1 angle in the reference state (radians).
+        ///     The local translation axis in body1.
         /// </summary>
-        public float ReferenceAngle;
+        public Vector2 LocalAxis1;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RevoluteJointDef" /> class
+        ///     Initializes a new instance of the <see cref="LineJointDef" /> class
         /// </summary>
-        public RevoluteJointDef()
+        public LineJointDef()
         {
-            Type = JointType.RevoluteJoint;
-            LocalAnchor1.Set(0.0f, 0.0f);
-            LocalAnchor2.Set(0.0f, 0.0f);
-            ReferenceAngle = 0.0f;
-            LowerAngle = 0.0f;
-            UpperAngle = 0.0f;
-            MaxMotorTorque = 0.0f;
-            MotorSpeed = 0.0f;
+            Type = JointType.LineJoint;
+            LocalAnchor1.SetZero();
+            LocalAnchor2.SetZero();
+            LocalAxis1.Set(1.0f, 0.0f);
             EnableLimit = false;
+            LowerTranslation = 0.0f;
+            UpperTranslation = 0.0f;
             EnableMotor = false;
+            MaxMotorForce = 0.0f;
+            MotorSpeed = 0.0f;
         }
 
         /// <summary>
-        ///     Initialize the bodies, anchors, and reference angle using the world
-        ///     anchor.
+        ///     Initialize the bodies, anchors, axis, and reference angle using the world
+        ///     anchor and world axis.
         /// </summary>
-        public void Initialize(Body body1, Body body2, Vector2 anchor)
+        public void Initialize(Body body1, Body body2, Vector2 anchor, Vector2 axis)
         {
             Body1 = body1;
             Body2 = body2;
             LocalAnchor1 = body1.GetLocalPoint(anchor);
             LocalAnchor2 = body2.GetLocalPoint(anchor);
-            ReferenceAngle = body2.GetAngle() - body1.GetAngle();
+            LocalAxis1 = body1.GetLocalVector(axis);
         }
     }
 }

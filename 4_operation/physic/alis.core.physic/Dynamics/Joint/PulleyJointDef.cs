@@ -30,7 +30,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 
-namespace Alis.Core.Physic.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joint
 {
     /// <summary>
     ///     Pulley joint definition. This requires two ground anchors,
