@@ -1,24 +1,262 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Alis.ConsoleGame" Collapsed="true">
-    <Position X="1.75" Y="3" Width="1.5" />
+    <Position X="0.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>ConsoleGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.SoundGame" Collapsed="true">
-    <Position X="3.5" Y="3" Width="1.5" />
+    <Position X="5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>SoundGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.VideoGame" Collapsed="true">
-    <Position X="1.75" Y="4" Width="1.5" />
+    <Position X="2.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>VideoGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.GameBase" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\GameBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Animation" Collapsed="true">
+    <Position X="31" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Animation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Animator" Collapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Animator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.AreaLight" Collapsed="true">
+    <Position X="19.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\AreaLight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.AudioClip" Collapsed="true">
+    <Position X="32.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\AudioClip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.AudioSource" Collapsed="true">
+    <Position X="26.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\AudioSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.BoxCollider2D" Collapsed="true">
+    <Position X="12.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\BoxCollider2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Camera" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Camera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.CircleCollider" Collapsed="true">
+    <Position X="15" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\CircleCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Collider" Collapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Collider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Component" Collapsed="true">
+    <Position X="15" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQhAAAIQiAABAAAEIAACAQEAABAAAAAIAAgAEIAAMA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Component.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.CubeMesh" Collapsed="true">
+    <Position X="32.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\CubeMesh.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.DirectionalLight" Collapsed="true">
+    <Position X="17.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\DirectionalLight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Image" Collapsed="true">
+    <Position X="31" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Light" Collapsed="true">
+    <Position X="20.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Light.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Mesh" Collapsed="true">
+    <Position X="28.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Mesh.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Particle" Collapsed="true">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Particle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.PhysicalBody" Collapsed="true">
+    <Position X="10.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\PhysicalBody.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.PointLight" Collapsed="true">
+    <Position X="21.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\PointLight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.SphereMesh" Collapsed="true">
+    <Position X="28.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\SphereMesh.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.SpotLight" Collapsed="true">
+    <Position X="24" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\SpotLight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Components.Sprite" Collapsed="true">
+    <Position X="3.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Sprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Entities.GameObject" Collapsed="true">
+    <Position X="34.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entities\GameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Entities.Scene" Collapsed="true">
+    <Position X="32.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entities\Scene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Entities.Transform" Collapsed="true">
+    <Position X="36.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entities\Transform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Settings.Setting" Collapsed="true">
+    <Position X="34.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Settings\Setting.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.ComponentDontExits" Collapsed="true">
+    <Position X="34.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\ComponentDontExits.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.ComponentInstancieIsTheSame" Collapsed="true">
+    <Position X="36.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\ComponentInstancieIsTheSame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.ComponentTypeAlredyExist" Collapsed="true">
+    <Position X="31" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\ComponentTypeAlredyExist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.GameObjectIsFull" Collapsed="true">
+    <Position X="36.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\GameObjectIsFull.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.IndexOutOfBounds" Collapsed="true">
+    <Position X="32.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\IndexOutOfBounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.LimitOfComponents" Collapsed="true">
+    <Position X="34.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\LimitOfComponents.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.MaxSceneGame" Collapsed="true">
+    <Position X="36.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\MaxSceneGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Exceptions.NullArgumentException" Collapsed="true">
+    <Position X="31" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Exceptions\NullArgumentException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

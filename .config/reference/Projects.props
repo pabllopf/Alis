@@ -6,10 +6,13 @@
     -->
 
     <ItemGroup
-        Condition="
+    Condition="
         $(AssemblyName.Equals('Alis.App.Engine')) OR
         $(AssemblyName.Equals('Alis.App.Installer'))">
-        <ProjectReference Include="$(SolutionDir)2_application/alis/alis/Alis.csproj"/>
+        <Compile Include="$(SolutionDir)2_application/alis/alis/**/*.cs" LinkBase="Alis"/>
+        <Compile Remove="$(SolutionDir)2_application/alis/alis/*.csproj"/>
+        <Compile Remove="$(SolutionDir)2_application/alis/alis/obj/**"/>
+        <Compile Remove="$(SolutionDir)2_application/alis/alis/bin/**"/>
     </ItemGroup>
 
     <ItemGroup
@@ -28,9 +31,14 @@
     2_application
     -->
     <ItemGroup
-        Condition="$(AssemblyName.Equals('Alis'))">
-        <ProjectReference Include="$(SolutionDir)3_structuration/core/alis.core/Alis.Core.csproj"/>
+   Condition="
+        $(AssemblyName.Equals('Alis'))">
+        <Compile Include="$(SolutionDir)3_structuration/core/alis.core/**/*.cs" LinkBase="Core"/>
+        <Compile Remove="$(SolutionDir)3_structuration/core/alis.core/*.csproj"/>
+        <Compile Remove="$(SolutionDir)3_structuration/core/alis.core/obj/**"/>
+        <Compile Remove="$(SolutionDir)3_structuration/core/alis.core/bin/**"/>
     </ItemGroup>
+    
     <ItemGroup
         Condition="
         $(AssemblyName.Equals('Alis.Test'))">
