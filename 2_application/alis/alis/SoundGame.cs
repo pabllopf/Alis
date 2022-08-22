@@ -34,8 +34,15 @@ using System.Text;
 
 namespace Alis
 {
+    /// <summary>
+    /// The sound game class
+    /// </summary>
+    /// <seealso cref="GameBase"/>
     public class SoundGame : GameBase
     {
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
         public override void Run()
         {
         }
