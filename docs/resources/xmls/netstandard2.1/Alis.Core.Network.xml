@@ -34,7 +34,7 @@
             </summary>
             <param name="bufferSize">The buffer size</param>
         </member>
-        <member name="F:Alis.Core.Network.BufferPool.DEFAULT_BUFFER_SIZE">
+        <member name="F:Alis.Core.Network.BufferPool.DefaultBufferSize">
             <summary>
                 The default buffer size
             </summary>
@@ -481,7 +481,7 @@
                 The http helper class
             </summary>
         </member>
-        <member name="F:Alis.Core.Network.HttpHelper.HTTP_GET_HEADER_REGEX">
+        <member name="F:Alis.Core.Network.HttpHelper.HttpGetHeaderRegex">
             <summary>
                 The http get header regex
             </summary>
@@ -1058,7 +1058,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketFrameWriter" /> class
             </summary>
         </member>
-        <member name="F:Alis.Core.Network.Internal.WebSocketFrameWriter._random">
+        <member name="F:Alis.Core.Network.Internal.WebSocketFrameWriter.Random">
             <summary>
                 This is used for data masking so that web proxies don't cache the data
                 Therefore, there are no cryptographic concerns
@@ -1198,7 +1198,7 @@
                 Gets the value of the keep alive interval
             </summary>
         </member>
-        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation.MAX_PING_PONG_PAYLOAD_LEN">
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation.MaxPingPongPayloadLen">
             <summary>
                 The max ping pong payload len
             </summary>

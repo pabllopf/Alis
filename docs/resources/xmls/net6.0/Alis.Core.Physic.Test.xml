@@ -1411,32 +1411,6 @@
                 Tests that test method 1
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Test.Dynamics.ColorTests">
-            <summary>
-                The color tests class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Test.Dynamics.ColorTests.mockRepository">
-            <summary>
-                The mock repository
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.ColorTests.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Test.Dynamics.ColorTests" /> class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.ColorTests.CreateColor">
-            <summary>
-                Creates the color
-            </summary>
-            <returns>The color</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.ColorTests.Set_StateUnderTest_ExpectedBehavior">
-            <summary>
-                Tests that set state under test expected behavior
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Test.Dynamics.ContactFilterTests">
             <summary>
                 The contact filter tests class
@@ -3073,58 +3047,6 @@
         <member name="M:Alis.Core.Physic.Test.Dynamics.PolygonDefTests.SetAsBox_StateUnderTest_ExpectedBehavior1">
             <summary>
                 Tests that set as box state under test expected behavior 1
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Test.Dynamics.PositionTests">
-            <summary>
-                The position tests class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Test.Dynamics.PositionTests.mockRepository">
-            <summary>
-                The mock repository
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.PositionTests.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Test.Dynamics.PositionTests" /> class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.PositionTests.CreatePosition">
-            <summary>
-                Creates the position
-            </summary>
-            <returns>The position</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.PositionTests.TestMethod1">
-            <summary>
-                Tests that test method 1
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Test.Dynamics.VelocityTests">
-            <summary>
-                The velocity tests class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Test.Dynamics.VelocityTests.mockRepository">
-            <summary>
-                The mock repository
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.VelocityTests.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Test.Dynamics.VelocityTests" /> class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.VelocityTests.CreateVelocity">
-            <summary>
-                Creates the velocity
-            </summary>
-            <returns>The velocity</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Test.Dynamics.VelocityTests.TestMethod1">
-            <summary>
-                Tests that test method 1
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Test.WorldTests">
