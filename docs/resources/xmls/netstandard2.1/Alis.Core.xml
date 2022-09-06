@@ -424,8 +424,15 @@
             </summary>
             <seealso cref="T:System.Exception" />
         </member>
-        <member name="T:Alis.Core.Game">
-            <summary>Define the main logic of game made with ALIS.</summary>
+        <member name="T:Alis.Core.GameBase">
+            <summary>
+            Define a game.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.GameBase.Run">
+            <summary>
+            Run program
+            </summary>
         </member>
         <member name="T:Alis.Core.Settings.Setting">
             <summary>

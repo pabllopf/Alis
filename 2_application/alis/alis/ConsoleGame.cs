@@ -41,10 +41,11 @@ namespace Alis
     public class ConsoleGame : GameBase
     {
         /// <summary>
-        /// Runs this instance
+        /// 
         /// </summary>
         public override void Run()
         {
+            
         }
     }
 }

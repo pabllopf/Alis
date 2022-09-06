@@ -9,7 +9,7 @@
                 The program class
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.Program.window">
+        <member name="F:Alis.Core.Graphic.Sample.Program._window">
             <summary>
                 The window
             </summary>

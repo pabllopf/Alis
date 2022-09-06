@@ -160,22 +160,22 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "runtimes/win-x64/native/csfml-audio";
+        public const string Audio = "runtimes/win-x64/native/csfml-audio";
 
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string graphics = "runtimes/win-x64/native/csfml-graphics";
+        public const string Graphics = "runtimes/win-x64/native/csfml-graphics";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "runtimes/win-x64/native/csfml-system";
+        public const string System = "runtimes/win-x64/native/csfml-system";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string window = "runtimes/win-x64/native/csfml-window";
+        public const string Window = "runtimes/win-x64/native/csfml-window";
 #endif
     }
 }

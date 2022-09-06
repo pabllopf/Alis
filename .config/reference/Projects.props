@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-
-    <!--
-    1_presentation
-    -->
-
+   
     <ItemGroup
     Condition="
         $(AssemblyName.Equals('Alis.App.Engine')) OR
         $(AssemblyName.Equals('Alis.App.Installer'))">
         <Compile Include="$(SolutionDir)2_application/alis/alis/**/*.cs" LinkBase="Alis"/>
-        <Compile Remove="$(SolutionDir)2_application/alis/alis/*.csproj"/>
-        <Compile Remove="$(SolutionDir)2_application/alis/alis/obj/**"/>
-        <Compile Remove="$(SolutionDir)2_application/alis/alis/bin/**"/>
+        <Compile Include="$(SolutionDir)3_structuration/core/alis.core/**/*.cs" LinkBase="Alis/Core"/>
     </ItemGroup>
 
     <ItemGroup
@@ -34,9 +28,6 @@
    Condition="
         $(AssemblyName.Equals('Alis'))">
         <Compile Include="$(SolutionDir)3_structuration/core/alis.core/**/*.cs" LinkBase="Core"/>
-        <Compile Remove="$(SolutionDir)3_structuration/core/alis.core/*.csproj"/>
-        <Compile Remove="$(SolutionDir)3_structuration/core/alis.core/obj/**"/>
-        <Compile Remove="$(SolutionDir)3_structuration/core/alis.core/bin/**"/>
     </ItemGroup>
     
     <ItemGroup
@@ -357,4 +348,10 @@
     </ItemGroup>
 
 
+    <!--Delete files to compiler-->
+    <ItemGroup>
+        <Compile Remove="$(SolutionDir)/**/*.csproj"/>
+        <Compile Remove="$(SolutionDir)/**/obj/**"/>
+        <Compile Remove="$(SolutionDir)/**/bin/**"/>
+    </ItemGroup>
 </Project>
