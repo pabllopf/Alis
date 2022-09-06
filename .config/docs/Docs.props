@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
+    <!--
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('Sample')) == false">
@@ -8,4 +9,5 @@
         <None Include="$(SolutionDir)docs/resources/logo/logo.png" LinkBase="Docs" Pack="true" PackagePath="Docs/" CopyToOutputDirectory="Always"/>
         <None Include="$(SolutionDir)docs/resources/diagrams/ClassDiagram.cd" LinkBase="Docs" Pack="true" PackagePath="Docs/"/>
     </ItemGroup>
+    -->
 </Project>

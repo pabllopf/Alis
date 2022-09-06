@@ -9,5 +9,15 @@
                 The example default class
             </summary>
         </member>
+        <member name="M:Alis.Core.Ads.ExampleDefault.example">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Alis.Aspect.ExampleClass">
+            <summary>
+                The example class
+            </summary>
+        </member>
     </members>
 </doc>
