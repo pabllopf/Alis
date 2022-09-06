@@ -1,50 +1,9 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Alis.Core.Ai</name>
+        <name>Alis.Core.Aspect</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Ai.ExampleDefault">
-            <summary>
-                The example default class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Color">
-            <summary>
-                Color for debug drawing. Each value has the range [0,1].
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Color.r">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Color.g">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Color.b">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Color.#ctor(System.Single,System.Single,System.Single)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Color" /> class
-            </summary>
-            <param name="r">The </param>
-            <param name="g">The </param>
-            <param name="b">The </param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Color.Set(System.Single,System.Single,System.Single)">
-            <summary>
-                Sets the r
-            </summary>
-            <param name="r">The </param>
-            <param name="g">The </param>
-            <param name="b">The </param>
-        </member>
         <member name="T:Alis.Aspect.ExampleClass">
             <summary>
                 The example class
@@ -1585,6 +1544,42 @@
             <summary>
                 The warm starting
             </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Dynamics.Color">
+            <summary>
+                Color for debug drawing. Each value has the range [0,1].
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Color.r">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Color.g">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Color.b">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Color.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Color" /> class
+            </summary>
+            <param name="r">The </param>
+            <param name="g">The </param>
+            <param name="b">The </param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Color.Set(System.Single,System.Single,System.Single)">
+            <summary>
+                Sets the r
+            </summary>
+            <param name="r">The </param>
+            <param name="g">The </param>
+            <param name="b">The </param>
         </member>
     </members>
 </doc>
