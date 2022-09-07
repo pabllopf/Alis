@@ -1,16 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
+    <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="OpenTK.Windowing.Desktop" Version="4.7.4"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="$(SolutionDir)1_presentation/template/alis.template.game/Alis.Template.Game.csproj"/>
-    </ItemGroup>
-
 </Project>

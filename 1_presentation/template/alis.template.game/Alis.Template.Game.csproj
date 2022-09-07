@@ -1,53 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
+    <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
-        <TargetFrameworks>$(TargetFrameworks);</TargetFrameworks>
+        <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
-
-    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
-        <TargetFrameworks>$(TargetFrameworks);net6.0;net6.0-ios;net6.0-android;net6.0-macos</TargetFrameworks>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx'))">
-        <TargetFrameworks>$(TargetFrameworks);net6.0;net6.0-ios;net6.0-android;net6.0-macos</TargetFrameworks>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
-        <TargetFrameworks>$(TargetFrameworks);net6.0-android;</TargetFrameworks>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(TargetFramework)' == 'net6.0'">
-        <DefineConstants>$(DefineConstants);WINDOWS;LINUX</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$(TargetFramework.Contains('-linux'))">
-        <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$(TargetFramework.Contains('-android'))">
-        <DefineConstants>$(DefineConstants); ANDROID</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
-        <DefineConstants>$(DefineConstants); IOS</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="$(TargetFramework.Contains('-macos'))">
-        <DefineConstants>$(DefineConstants); OSX</DefineConstants>
-    </PropertyGroup>
-
-
-    <ItemGroup Condition=" ( '$(TargetFramework)' == 'net6.0' AND &#xD;&#xA;        '$(TargetFramework)' != 'netstandard2.1' AND &#xD;&#xA;        '$(TargetFramework)' != 'net6.0-android' AND &#xD;&#xA;        '$(TargetFramework)' != 'net6.0-ios' AND &#xD;&#xA;        '$(TargetFramework)' != 'net6.0-macos' ) AND &#xD;&#xA;        ( $([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('windows')) OR $([MSBuild]::IsOSPlatform('linux')) )">
-        <PackageReference Include="OpenTK.Graphics" Version="4.7.4"/>
-    </ItemGroup>
-
-    <ItemGroup Condition=" ( '$(TargetFramework)' == 'netstandard2.1' AND &#xD;&#xA;         '$(TargetFramework)' != 'net6.0' AND &#xD;&#xA;        '$(TargetFramework)' != 'net6.0-android' AND &#xD;&#xA;        '$(TargetFramework)' != 'net6.0-ios' AND &#xD;&#xA;        '$(TargetFramework)' != 'net6.0-macos' ) AND &#xD;&#xA;        ( $([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('windows')) OR $([MSBuild]::IsOSPlatform('linux')) )">
-        <PackageReference Include="OpenTK.Graphics" Version="4.7.4"/>
-    </ItemGroup>
-
-    <!--
-    <ItemGroup>
-      <ProjectReference Include="..\..\..\2_application\alis\alis\Alis.csproj" />
-    </ItemGroup>
-    -->
 </Project>
