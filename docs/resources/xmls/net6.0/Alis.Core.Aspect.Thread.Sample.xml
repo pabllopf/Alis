@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Alis.Core.Input.Sample</name>
+        <name>Alis.Core.Aspect.Thread.Sample</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Input.Sample.Program">
+        <member name="T:Alis.Aspect.Thread.Sample.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:Alis.Core.Input.Sample.Program.Main(System.String[])">
+        <member name="M:Alis.Aspect.Thread.Sample.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

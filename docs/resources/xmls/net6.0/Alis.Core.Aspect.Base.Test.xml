@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Alis.Core.Aspect.Test</name>
+        <name>Alis.Core.Aspect.Base.Test</name>
     </assembly>
     <members>
     </members>

@@ -28,9 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace Alis.Core.Input.Sample
 {
@@ -43,56 +40,9 @@ namespace Alis.Core.Input.Sample
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        private static async Task Main(string[] args)
+        private static void Main(string[] args)
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-
-            ISample[] samples = assembly
-                .GetTypes()
-                .Where(t => !t.IsAbstract &&
-                            (t.IsValueType ||
-                             (t.GetInterfaces().Contains(typeof(ISample)) &&
-                              (t.GetConstructor(Type.EmptyTypes) != null))))
-                .Select(Activator.CreateInstance)
-                .OfType<ISample>()
-                .ToArray();
-
-            ISample sample;
-            if (args.Length != 1 ||
-                (sample = Array.Find(samples, s => s.ShortNames.Contains(args[0]))) is null)
-            {
-                string assemblyName = assembly.GetName().Name;
-                // We appear to have a cry for help!
-                //Console.WriteLine(Resources.SampleExecutor, assemblyName);
-                Console.WriteLine();
-
-                do
-                {
-                    //Console.WriteLine(Resources.SelectSample);
-
-                    // Create instances of all sample classes
-                    foreach (ISample s in samples)
-                    {
-                        Console.WriteLine(
-                            //Resources.SampleDescription, Environment.NewLine,
-                            string.Join('|', s.ShortNames),
-                            s.FullName,
-                            s.Description);
-                    }
-
-                    if (!Environment.UserInteractive)
-                    {
-                        return;
-                    }
-
-                    string option = Console.ReadLine();
-                    sample = Array.Find(samples, s => s.ShortNames.Contains(option));
-                } while (sample is null);
-            }
-
-            //Console.WriteLine(Resources.RunningSample, sample.FullName);
-            Console.WriteLine();
-            await sample.ExecuteAsync().ConfigureAwait(false);
+            Console.WriteLine("Hello");
         }
     }
 }

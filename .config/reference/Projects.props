@@ -19,24 +19,25 @@
         $(AssemblyName.Equals('Alis.App.Installer.Test'))">
         <ProjectReference Include="$(SolutionDir)1_presentation/installer/alis.app.installer/Alis.App.Installer.csproj"/>
     </ItemGroup>
+
     
     <ItemGroup
    Condition="
         $(AssemblyName.Equals('Alis'))">
         <Compile Include="$(SolutionDir)3_structuration/core/alis.core/**/*.cs" LinkBase="Core"/>
 
-        <Compile Include="$(SolutionDir)4_operation/ads/alis.core.ads/**/*.cs" LinkBase="Core/Ads"/>
-        <Compile Include="$(SolutionDir)4_operation/ai/alis.core.ai/**/*.cs" LinkBase="Core/Ai"/>
-        <Compile Include="$(SolutionDir)4_operation/audio/alis.core.audio/**/*.cs" LinkBase="Core/Audio"/>
-        <Compile Include="$(SolutionDir)4_operation/cloud/alis.core.cloud/**/*.cs" LinkBase="Core/Cloud"/>
-        <Compile Include="$(SolutionDir)4_operation/database/alis.core.database/**/*.cs" LinkBase="Core/Database"/>
-        <Compile Include="$(SolutionDir)4_operation/diagnostic/alis.core.diagnostic/**/*.cs" LinkBase="Core/Diagnostic"/>
-        <Compile Include="$(SolutionDir)4_operation/graphic/alis.core.graphic/**/*.cs" LinkBase="Core/Graphic"/>
-        <Compile Include="$(SolutionDir)4_operation/input/alis.core.input/**/*.cs" LinkBase="Core/Input"/>
-        <Compile Include="$(SolutionDir)4_operation/network/alis.core.network/**/*.cs" LinkBase="Core/Network"/>
-        <Compile Include="$(SolutionDir)4_operation/output/alis.core.output/**/*.cs" LinkBase="Core/Output"/>
-        <Compile Include="$(SolutionDir)4_operation/physic/alis.core.physic/**/*.cs" LinkBase="Core/Physic"/>
-        <Compile Include="$(SolutionDir)4_operation/updater/alis.core.updater/**/*.cs" LinkBase="Core/Updater"/>
+        <Compile Include="$(SolutionDir)4_operation/ads/alis.core.ads/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/ai/alis.core.ai/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/audio/alis.core.audio/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/cloud/alis.core.cloud/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/database/alis.core.database/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/diagnostic/alis.core.diagnostic/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/graphic/alis.core.graphic/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/input/alis.core.input/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/network/alis.core.network/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/output/alis.core.output/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/physic/alis.core.physic/**/*.cs" LinkBase="Core"/>
+        <Compile Include="$(SolutionDir)4_operation/updater/alis.core.updater/**/*.cs" LinkBase="Core"/>
 
         <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Core/Aspect"/>
 
@@ -425,8 +426,13 @@
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
         <ProjectReference Include="$(ProjectDir)/../$(NameTest)/$(NameTest).csproj"/>
     </ItemGroup>
-    <ItemGroup Condition="$(AssemblyName.Contains('Sample'))">
+    
+    <ItemGroup Condition="$(AssemblyName.Contains('Sample')) AND $(AssemblyName.Contains('Alis.Sample')) == False">
         <ProjectReference Include="$(ProjectDir)/../$(NameSample)/$(NameSample).csproj"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Alis.Sample'))">
+        <ProjectReference Include="$(ProjectDir)/../../alis/Alis.csproj"/>
     </ItemGroup>
     
     <ItemGroup>

@@ -478,11 +478,6 @@
             Run program
             </summary>
         </member>
-        <member name="T:Alis.Core.Settings.Setting">
-            <summary>
-                The setting class
-            </summary>
-        </member>
         <member name="T:Alis.Core.Systems.System">
             <summary>Define a system.</summary>
         </member>
