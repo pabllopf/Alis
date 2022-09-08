@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
-
     <ItemGroup
     Condition="
         $(AssemblyName.Equals('Alis.App.Engine')) OR
@@ -39,17 +38,17 @@
         <Compile Include="$(SolutionDir)4_operation/physic/alis.core.physic/**/*.cs" LinkBase="Core/Physic"/>
         <Compile Include="$(SolutionDir)4_operation/updater/alis.core.updater/**/*.cs" LinkBase="Core/Updater"/>
 
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Core/Aspect"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Core/Aspect"/>
 
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Core/Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Core/Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Core/Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Core/Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Core/Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Core/Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Core/Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Core/Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Core/Aspect/Time"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Core/Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Core/Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Core/Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Core/Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Core/Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Core/Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Core/Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Core/Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Core/Aspect/Time"/>
         
     </ItemGroup>
     
@@ -65,9 +64,6 @@
         <ProjectReference Include="$(SolutionDir)2_application/alis/alis/Alis.csproj"/>
     </ItemGroup>
 
-    <!--
-   3_structuration
-   -->
 
     <PropertyGroup Condition="$(AssemblyName.Equals('Alis.Core'))">
         <RootNamespace>Alis.Core</RootNamespace>
@@ -89,17 +85,17 @@
         <Compile Include="$(SolutionDir)4_operation/physic/alis.core.physic/**/*.cs" LinkBase="Physic"/>
         <Compile Include="$(SolutionDir)4_operation/updater/alis.core.updater/**/*.cs" LinkBase="Updater"/>
 
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
 
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
 
     <ItemGroup
@@ -109,28 +105,23 @@
         ">
         <ProjectReference Include="$(SolutionDir)3_structuration/core/alis.core/Alis.Core.csproj"/>
     </ItemGroup>
-
-
-    <!--
-   4_operation
-   -->
-
+    
     <PropertyGroup Condition="$(AssemblyName.Equals('Alis.Core.Ads'))">
         <RootNamespace>Alis.Core</RootNamespace>
     </PropertyGroup>
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Ads'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     
     
@@ -149,16 +140,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Ai'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     
     <ItemGroup
@@ -175,16 +166,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Audio'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     <ItemGroup
         Condition="
@@ -200,16 +191,16 @@
     </PropertyGroup>
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Cloud'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     
     <ItemGroup
@@ -226,16 +217,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Database'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     
     <ItemGroup
@@ -252,16 +243,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Diagnostic'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     
     <ItemGroup
@@ -278,16 +269,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Graphic'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     <ItemGroup
         Condition="
@@ -305,16 +296,16 @@
 
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Input'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     <ItemGroup
         Condition="
@@ -330,16 +321,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Network'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     <ItemGroup
         Condition="
@@ -356,16 +347,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Output'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     <ItemGroup
         Condition="
@@ -381,24 +372,16 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Physic'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Core.Physic.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Physic.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)4_operation/physic/alis.core.physic/Alis.Core.Physic.csproj"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
     
     <PropertyGroup Condition="$(AssemblyName.Equals('Alis.Core.Updater'))">
@@ -407,127 +390,44 @@
     
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Updater'))">
-        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.aspect/**/*.cs" LinkBase="Aspect"/>
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Aspect"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Aspect/Time"/>
     </ItemGroup>
-    
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Core.Updater.Sample')) OR
-        $(AssemblyName.Equals('Alis.Core.Updater.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)4_operation/updater/alis.core.updater/Alis.Core.Updater.csproj"/>
-    </ItemGroup>
-
-
-    <!--
-   5_declaration
-   -->
 
     <ItemGroup
         Condition="$(AssemblyName.Equals('Alis.Core.Aspect'))">
-        <Compile Include="$(SolutionDir)6_ideation/base/alis.aspect.base/**/*.cs" LinkBase="Base"/>
-        <Compile Include="$(SolutionDir)6_ideation/data/alis.aspect.data/**/*.cs" LinkBase="Date"/>
-        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/**/*.cs" LinkBase="Fluent"/>
-        <Compile Include="$(SolutionDir)6_ideation/math/alis.aspect.math/**/*.cs" LinkBase="Math"/>
-        <Compile Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/**/*.cs" LinkBase="Logging"/>
-        <Compile Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/**/*.cs" LinkBase="Memory"/>
-        <Compile Include="$(SolutionDir)6_ideation/security/alis.aspect.security/**/*.cs" LinkBase="Security"/>
-        <Compile Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/**/*.cs" LinkBase="Thead"/>
-        <Compile Include="$(SolutionDir)6_ideation/time/alis.aspect.time/**/*.cs" LinkBase="Time"/>
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Time"/>
     </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)5_declaration/aspect/alis.aspect/Alis.Aspect.csproj"/>
+    
+    <PropertyGroup Condition="$(AssemblyName.Contains('Test'))">
+        <NameTest>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Test', ''))</NameTest>
+    </PropertyGroup>
+    <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">
+        <NameSample>$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Sample', ''))</NameSample>
+    </PropertyGroup>
+    
+    <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
+        <ProjectReference Include="$(ProjectDir)/../$(NameTest)/$(NameTest).csproj"/>
     </ItemGroup>
-
-    <!--
-    6_ideation
-    -->
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Base.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Base.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/base/alis.aspect.base/Alis.Core.Aspect.Base.csproj"/>
+    <ItemGroup Condition="$(AssemblyName.Contains('Sample'))">
+        <ProjectReference Include="$(ProjectDir)/../$(NameSample)/$(NameSample).csproj"/>
     </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Data.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Data.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/data/alis.aspect.data/Alis.Aspect.Data.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Fluent.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Fluent.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/fluent/alis.aspect.fluent/Alis.Aspect.Fluent.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Logging.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Logging.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/logging/alis.aspect.logging/Alis.Aspect.Logging.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Math.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Math.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/math/alis.aspect.math/Alis.Aspect.Math.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Memory.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Memory.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/memory/alis.aspect.memory/Alis.Aspect.Memory.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Security.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Security.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/security/alis.aspect.security/Alis.Aspect.Security.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Thread.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Thread.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/thread/alis.aspect.thread/Alis.Aspect.Thread.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.Aspect.Time.Sample')) OR
-        $(AssemblyName.Equals('Alis.Aspect.Time.Test')) 
-        ">
-        <ProjectReference Include="$(SolutionDir)6_ideation/time/alis.aspect.time/Alis.Aspect.Time.csproj"/>
-    </ItemGroup>
-
     
     <ItemGroup>
         <Compile Remove="$(SolutionDir)/**/*.csproj"/>
