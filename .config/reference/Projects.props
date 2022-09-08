@@ -2,25 +2,37 @@
 <Project>
     <ItemGroup
     Condition="
-        $(AssemblyName.Equals('Alis.App.Engine')) OR
-        $(AssemblyName.Equals('Alis.App.Installer'))">
+        $(AssemblyName.Equals('Alis.App.Engine'))">
         <Compile Include="$(SolutionDir)2_application/alis/alis/**/*.cs" LinkBase="Alis"/>
+        
         <Compile Include="$(SolutionDir)3_structuration/core/alis.core/**/*.cs" LinkBase="Alis/Core"/>
+
+        <Compile Include="$(SolutionDir)4_operation/ads/alis.core.ads/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/ai/alis.core.ai/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/audio/alis.core.audio/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/cloud/alis.core.cloud/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/database/alis.core.database/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/diagnostic/alis.core.diagnostic/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/graphic/alis.core.graphic/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/input/alis.core.input/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/network/alis.core.network/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/output/alis.core.output/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/physic/alis.core.physic/**/*.cs" LinkBase="Alis/Core"/>
+        <Compile Include="$(SolutionDir)4_operation/updater/alis.core.updater/**/*.cs" LinkBase="Alis/Core"/>
+
+        <Compile Include="$(SolutionDir)5_declaration/aspect/alis.core.aspect/**/*.cs" LinkBase="Alis/Core/Aspect"/>
+
+        <Compile Include="$(SolutionDir)6_ideation/base/alis.core.aspect.base/**/*.cs" LinkBase="Alis/Core/Aspect/Base"/>
+        <Compile Include="$(SolutionDir)6_ideation/data/alis.core.aspect.data/**/*.cs" LinkBase="Alis/Core/Aspect/Date"/>
+        <Compile Include="$(SolutionDir)6_ideation/fluent/alis.core.aspect.fluent/**/*.cs" LinkBase="Alis/Core/Aspect/Fluent"/>
+        <Compile Include="$(SolutionDir)6_ideation/math/alis.core.aspect.math/**/*.cs" LinkBase="Alis/Core/Aspect/Math"/>
+        <Compile Include="$(SolutionDir)6_ideation/logging/alis.core.aspect.logging/**/*.cs" LinkBase="Alis/Core/Aspect/Logging"/>
+        <Compile Include="$(SolutionDir)6_ideation/memory/alis.core.aspect.memory/**/*.cs" LinkBase="Alis/Core/Aspect/Memory"/>
+        <Compile Include="$(SolutionDir)6_ideation/security/alis.core.aspect.security/**/*.cs" LinkBase="Alis/Core/Aspect/Security"/>
+        <Compile Include="$(SolutionDir)6_ideation/thread/alis.core.aspect.thread/**/*.cs" LinkBase="Alis/Core/Aspect/Thead"/>
+        <Compile Include="$(SolutionDir)6_ideation/time/alis.core.aspect.time/**/*.cs" LinkBase="Alis/Core/Aspect/Time"/>
     </ItemGroup>
 
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.App.Engine.Test')) ">
-        <ProjectReference Include="$(SolutionDir)1_presentation/engine/alis.app.engine/Alis.App.Engine.csproj"/>
-    </ItemGroup>
-
-    <ItemGroup
-        Condition="
-        $(AssemblyName.Equals('Alis.App.Installer.Test'))">
-        <ProjectReference Include="$(SolutionDir)1_presentation/installer/alis.app.installer/Alis.App.Installer.csproj"/>
-    </ItemGroup>
-
-    
     <ItemGroup
    Condition="
         $(AssemblyName.Equals('Alis'))">
