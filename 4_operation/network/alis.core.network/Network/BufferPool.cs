@@ -379,6 +379,7 @@ namespace Alis.Core.Network
             ///     Initializes the lifetime service
             /// </summary>
             /// <returns>The object</returns>
+            [Obsolete("Obsolete")]
             public override object InitializeLifetimeService() => _ms.InitializeLifetimeService();
 
             /// <summary>
