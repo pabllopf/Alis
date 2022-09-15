@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Aspect.Base.Sample
 {
     /// <summary>
@@ -40,6 +42,7 @@ namespace Alis.Aspect.Base.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Console.WriteLine("Hola");
         }
     }
 }

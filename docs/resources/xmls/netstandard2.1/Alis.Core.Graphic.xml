@@ -11410,12 +11410,12 @@
                 The example class
             </summary>
         </member>
-        <member name="T:Alis.Aspect.Base.ObjectBase">
+        <member name="T:Alis.Aspect.Base.AlisObject">
             <summary>
                 The object base class
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Base.ObjectBase.GetHashCode(System.Object)">
+        <member name="M:Alis.Aspect.Base.AlisObject.GetHashCode(System.Object)">
             <summary>
                 The object base class
             </summary>

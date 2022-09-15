@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Aspect.Base
 {
     /// <summary>
     ///     The object base class
     /// </summary>
-    public class ObjectBase : object
+    public class AlisObject : object
     {
         /// <summary>
         ///     The object base class
