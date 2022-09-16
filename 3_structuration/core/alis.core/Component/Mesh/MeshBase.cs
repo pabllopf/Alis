@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PointLight.cs
+//  File:Mesh.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,32 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Mesh
 {
     /// <summary>
-    ///     The point light class
+    ///     The mesh class
     /// </summary>
-    /// <seealso cref="Light" />
-    public class PointLight : Light
+    /// <seealso cref="ComponentBase" />
+    public abstract class MeshBase : ComponentBase
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

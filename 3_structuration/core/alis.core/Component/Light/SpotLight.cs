@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Collider.cs
+//  File:SpotLight.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components
+using System;
+
+namespace Alis.Core.Components.Light
 {
     /// <summary>
-    ///     The collider class
+    ///     The spot light class
     /// </summary>
-    /// <seealso cref="Component" />
-    public abstract class Collider : Component
+    /// <seealso cref="LightBase" />
+    public class SpotLight : LightBase
     {
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -32,7 +32,7 @@ using Alis.Core.Entities;
 namespace Alis.Core.Components
 {
     /// <summary>Define a general component.</summary>
-    public abstract class Component
+    public abstract class ComponentBase
     {
         /// <summary>
         ///     Gets or sets the value of the is active

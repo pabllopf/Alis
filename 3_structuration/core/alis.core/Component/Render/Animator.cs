@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CubeMesh.cs
+//  File:Animator.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components
+using System;
+using System.Collections.Generic;
+
+namespace Alis.Core.Components.Render
 {
     /// <summary>
-    ///     The cube mesh class
+    ///     The animator class
     /// </summary>
-    public class CubeMesh
+    public class Animator : ComponentBase
     {
+        /// <summary>
+        /// animations
+        /// </summary>
+        public List<Animation> animations;
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public override void Start()
+        {
+            //throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+       
+        public override void Update()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

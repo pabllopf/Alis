@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Particle.cs
+//  File:CubeMesh.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,32 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Mesh
 {
     /// <summary>
-    ///     The particle class
+    ///     The cube mesh class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class Particle : Component
+    public class BoxMesh : MeshBase
     {
         /// <summary>
-        ///     Starts this instance
+        /// Starts this instance
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            throw new NotImplementedException();
+            //throw new global::System.NotImplementedException();
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Updates this instance
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            throw new NotImplementedException();
+            //throw new global::System.NotImplementedException();
         }
     }
 }

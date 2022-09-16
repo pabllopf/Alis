@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicalBody.cs
+//  File:Image.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,32 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Render
 {
     /// <summary>
-    ///     The physical body class
+    ///     The image class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class PhysicalBody : Component
+    public class Image
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

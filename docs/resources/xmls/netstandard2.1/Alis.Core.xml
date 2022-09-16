@@ -18,31 +18,11 @@
             <summary>
                 Starts this instance
             </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.Animator.Update">
             <summary>
                 Updates this instance
             </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="T:Alis.Core.Components.AreaLight">
-            <summary>
-                The area light class
-            </summary>
-            <seealso cref="T:Alis.Core.Components.Light" />
-        </member>
-        <member name="M:Alis.Core.Components.AreaLight.Start">
-            <summary>
-                Starts this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Alis.Core.Components.AreaLight.Update">
-            <summary>
-                Updates this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="T:Alis.Core.Components.AudioClip">
             <summary>
@@ -55,6 +35,11 @@
             </summary>
             <seealso cref="T:Alis.Core.Components.Component" />
         </member>
+        <member name="F:Alis.Core.Components.AudioSource.audioClip">
+            <summary>
+            The audio clip
+            </summary>
+        </member>
         <member name="M:Alis.Core.Components.AudioSource.Start">
             <summary>
                 Starts this instance
@@ -62,24 +47,6 @@
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.AudioSource.Update">
-            <summary>
-                Updates this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="T:Alis.Core.Components.BoxCollider2D">
-            <summary>
-                The box collider class
-            </summary>
-            <seealso cref="T:Alis.Core.Components.Collider" />
-        </member>
-        <member name="M:Alis.Core.Components.BoxCollider2D.Start">
-            <summary>
-                Starts this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Alis.Core.Components.BoxCollider2D.Update">
             <summary>
                 Updates this instance
             </summary>
@@ -95,33 +62,47 @@
             <summary>
                 Starts this instance
             </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
         <member name="M:Alis.Core.Components.Camera.Update">
             <summary>
                 Updates this instance
             </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:Alis.Core.Components.CircleCollider">
+        <member name="T:Alis.Core.Components.Collider.BoxCollider">
             <summary>
-                The circle collider class
+                The box collider class
             </summary>
-            <seealso cref="T:Alis.Core.Components.Collider" />
+            <seealso cref="T:Alis.Core.Components.Collider.ColliderBase" />
         </member>
-        <member name="M:Alis.Core.Components.CircleCollider.Start">
+        <member name="M:Alis.Core.Components.Collider.BoxCollider.Start">
             <summary>
                 Starts this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="M:Alis.Core.Components.CircleCollider.Update">
+        <member name="M:Alis.Core.Components.Collider.BoxCollider.Update">
             <summary>
                 Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:Alis.Core.Components.Collider">
+        <member name="T:Alis.Core.Components.Collider.CircleCollider">
+            <summary>
+                The circle collider class
+            </summary>
+            <seealso cref="T:Alis.Core.Components.Collider.ColliderBase" />
+        </member>
+        <member name="M:Alis.Core.Components.Collider.CircleCollider.Start">
+            <summary>
+                Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Components.Collider.CircleCollider.Update">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Components.Collider.ColliderBase">
             <summary>
                 The collider class
             </summary>
@@ -217,41 +198,123 @@
         <member name="M:Alis.Core.Components.Component.Exit">
             <summary>Exits this instance.</summary>
         </member>
-        <member name="T:Alis.Core.Components.CubeMesh">
-            <summary>
-                The cube mesh class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Components.DirectionalLight">
-            <summary>
-                The directional light class
-            </summary>
-            <seealso cref="T:Alis.Core.Components.Light" />
-        </member>
-        <member name="M:Alis.Core.Components.DirectionalLight.Start">
-            <summary>
-                Starts this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Alis.Core.Components.DirectionalLight.Update">
-            <summary>
-                Updates this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
         <member name="T:Alis.Core.Components.Image">
             <summary>
                 The image class
             </summary>
         </member>
-        <member name="T:Alis.Core.Components.Light">
+        <member name="T:Alis.Core.Components.Light.AreaLight">
+            <summary>
+                The area light class
+            </summary>
+            <seealso cref="T:Alis.Core.Components.Light.LightBase" />
+        </member>
+        <member name="M:Alis.Core.Components.Light.AreaLight.Start">
+            <summary>
+                Starts this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Components.Light.AreaLight.Update">
+            <summary>
+                Updates this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Core.Components.Light.DirectionalLight">
+            <summary>
+                The directional light class
+            </summary>
+            <seealso cref="T:Alis.Core.Components.Light.LightBase" />
+        </member>
+        <member name="M:Alis.Core.Components.Light.DirectionalLight.Start">
+            <summary>
+                Starts this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Components.Light.DirectionalLight.Update">
+            <summary>
+                Updates this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Core.Components.Light.LightBase">
             <summary>
                 The light class
             </summary>
             <seealso cref="T:Alis.Core.Components.Component" />
         </member>
-        <member name="T:Alis.Core.Components.Mesh">
+        <member name="T:Alis.Core.Components.Light.PointLight">
+            <summary>
+                The point light class
+            </summary>
+            <seealso cref="T:Alis.Core.Components.Light.LightBase" />
+        </member>
+        <member name="M:Alis.Core.Components.Light.PointLight.Start">
+            <summary>
+                Starts this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Components.Light.PointLight.Update">
+            <summary>
+                Updates this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Core.Components.Light.SpotLight">
+            <summary>
+                The spot light class
+            </summary>
+            <seealso cref="T:Alis.Core.Components.Light.LightBase" />
+        </member>
+        <member name="M:Alis.Core.Components.Light.SpotLight.Start">
+            <summary>
+                Starts this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Components.Light.SpotLight.Update">
+            <summary>
+                Updates this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Core.Components.Mesh.BoxMesh">
+            <summary>
+                The cube mesh class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Components.Mesh.BoxMesh.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Components.Mesh.BoxMesh.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Components.Mesh.CircleMesh">
+            <summary>
+                The sphere mesh class
+            </summary>
+            <seealso cref="T:Alis.Core.Components.Mesh.MeshBase" />
+        </member>
+        <member name="M:Alis.Core.Components.Mesh.CircleMesh.Start">
+            <summary>
+                Starts this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Components.Mesh.CircleMesh.Update">
+            <summary>
+                Updates this instance
+            </summary>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Core.Components.Mesh.MeshBase">
             <summary>
                 The mesh class
             </summary>
@@ -293,65 +356,16 @@
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:Alis.Core.Components.PointLight">
-            <summary>
-                The point light class
-            </summary>
-            <seealso cref="T:Alis.Core.Components.Light" />
-        </member>
-        <member name="M:Alis.Core.Components.PointLight.Start">
-            <summary>
-                Starts this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Alis.Core.Components.PointLight.Update">
-            <summary>
-                Updates this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="T:Alis.Core.Components.SphereMesh">
-            <summary>
-                The sphere mesh class
-            </summary>
-            <seealso cref="T:Alis.Core.Components.Mesh" />
-        </member>
-        <member name="M:Alis.Core.Components.SphereMesh.Start">
-            <summary>
-                Starts this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Alis.Core.Components.SphereMesh.Update">
-            <summary>
-                Updates this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="T:Alis.Core.Components.SpotLight">
-            <summary>
-                The spot light class
-            </summary>
-            <seealso cref="T:Alis.Core.Components.Light" />
-        </member>
-        <member name="M:Alis.Core.Components.SpotLight.Start">
-            <summary>
-                Starts this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Alis.Core.Components.SpotLight.Update">
-            <summary>
-                Updates this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
         <member name="T:Alis.Core.Components.Sprite">
             <summary>
                 The sprite class
             </summary>
             <seealso cref="T:Alis.Core.Components.Component" />
+        </member>
+        <member name="F:Alis.Core.Components.Sprite.image">
+            <summary>
+            The image
+            </summary>
         </member>
         <member name="M:Alis.Core.Components.Sprite.Start">
             <summary>
@@ -368,9 +382,29 @@
         <member name="T:Alis.Core.Entities.GameObject">
             <summary>Represent a object of the game.</summary>
         </member>
+        <member name="F:Alis.Core.Entities.GameObject.components">
+            <summary>
+            The components
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entities.GameObject.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Entities.GameObject"/> class
+            </summary>
+        </member>
         <member name="T:Alis.Core.Entities.Scene">
             <summary>
                 The scene class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Entities.Scene.gameObjects">
+            <summary>
+            The game objects
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entities.Scene.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Entities.Scene"/> class
             </summary>
         </member>
         <member name="T:Alis.Core.Entities.Transform">
@@ -429,42 +463,588 @@
             Define a game.
             </summary>
         </member>
+        <member name="F:Alis.Core.GameBase.systems">
+            <summary>
+            List of systems
+            </summary>
+        </member>
+        <member name="F:Alis.Core.GameBase.isActive">
+            <summary>
+            Active game
+            </summary>
+        </member>
+        <member name="M:Alis.Core.GameBase.#ctor">
+            <summary>
+            Game base constructor
+            </summary>
+        </member>
         <member name="M:Alis.Core.GameBase.Run">
             <summary>
             Run program
             </summary>
         </member>
-        <member name="T:Alis.Core.Systems.System">
-            <summary>Define a system.</summary>
+        <member name="T:Alis.Core.Manager.AudioManager">
+            <summary>
+            The audio manager class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
         </member>
-        <member name="M:Alis.Core.Systems.System.Awake">
+        <member name="M:Alis.Core.Manager.AudioManager.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Manager.GraphicManager">
+            <summary>
+            The graphic manager class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Manager.ManagerBase">
+            <summary>
+            Manager base
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.ManagerBase.Awake">
             <summary>Awakes this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.Start">
+        <member name="M:Alis.Core.Manager.ManagerBase.Start">
             <summary>Starts this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.BeforeUpdate">
+        <member name="M:Alis.Core.Manager.ManagerBase.BeforeUpdate">
             <summary>Befores the update.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.Update">
+        <member name="M:Alis.Core.Manager.ManagerBase.Update">
             <summary>Updates this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.AfterUpdate">
+        <member name="M:Alis.Core.Manager.ManagerBase.AfterUpdate">
             <summary>Afters the update.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.FixedUpdate">
+        <member name="M:Alis.Core.Manager.ManagerBase.FixedUpdate">
             <summary>Fixeds the update.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.DispatchEvents">
+        <member name="M:Alis.Core.Manager.ManagerBase.DispatchEvents">
             <summary>Dispatches the events.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.Reset">
+        <member name="M:Alis.Core.Manager.ManagerBase.Reset">
             <summary>Resets this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.Stop">
+        <member name="M:Alis.Core.Manager.ManagerBase.Stop">
             <summary>Stops this instance.</summary>
         </member>
-        <member name="M:Alis.Core.Systems.System.Exit">
+        <member name="M:Alis.Core.Manager.ManagerBase.Exit">
+            <summary>Exits this instance.</summary>
+        </member>
+        <member name="T:Alis.Core.Manager.PhysicManager">
+            <summary>
+            The physic manager class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Manager.SceneManager">
+            <summary>
+            Scene manager
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.SceneManager.scenes">
+            <summary>
+            Scene list
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.System.AudioSystem">
+            <summary>
+            The audio system class
+            </summary>
+            <seealso cref="T:Alis.Core.System.SystemBase"/>
+        </member>
+        <member name="F:Alis.Core.System.AudioSystem.audioManager">
+            <summary>
+            The audio manager
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.System.AudioSystem"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.AudioSystem.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.System.GraphicSystem">
+            <summary>
+            The graphic system class
+            </summary>
+            <seealso cref="T:Alis.Core.System.SystemBase"/>
+        </member>
+        <member name="F:Alis.Core.System.GraphicSystem.graphicManager">
+            <summary>
+            The graphic manager
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.System.GraphicSystem"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.GraphicSystem.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.System.PhysicSystem">
+            <summary>
+            The physic system class
+            </summary>
+            <seealso cref="T:Alis.Core.System.SystemBase"/>
+        </member>
+        <member name="F:Alis.Core.System.PhysicSystem.physicManager">
+            <summary>
+            The physic manager
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.System.PhysicSystem"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.PhysicSystem.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.System.SceneSystem">
+            <summary>
+            Scene system
+            </summary>
+        </member>
+        <member name="F:Alis.Core.System.SceneSystem.sceneManager">
+            <summary>
+            scene manager
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.#ctor">
+            <summary>
+            constructor 
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.AfterUpdate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.Awake">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SceneSystem.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.System.SystemBase">
+            <summary>Define a system.</summary>
+        </member>
+        <member name="F:Alis.Core.System.SystemBase.managerBase">
+            <summary>
+            manager base
+            </summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.Awake">
+            <summary>Awakes this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.BeforeUpdate">
+            <summary>Befores the update.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.AfterUpdate">
+            <summary>Afters the update.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.FixedUpdate">
+            <summary>Fixeds the update.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.DispatchEvents">
+            <summary>Dispatches the events.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.Reset">
+            <summary>Resets this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.Stop">
+            <summary>Stops this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.System.SystemBase.Exit">
             <summary>Exits this instance.</summary>
         </member>
         <member name="T:Alis.Core.Ads.ExampleDefault">
@@ -13782,7 +14362,7 @@
             <summary>
                 The output system class
             </summary>
-            <seealso cref="N:System" />
+            <seealso cref="N:Alis.Core.System" />
         </member>
         <member name="M:Alis.Core.Output.OutputSystem.#ctor">
             <summary>
@@ -21473,11 +22053,6 @@
             <param name="r">The </param>
             <param name="g">The </param>
             <param name="b">The </param>
-        </member>
-        <member name="T:Alis.Core.Physic.Exception.LockException">
-            <summary>
-                Lock
-            </summary>
         </member>
         <member name="T:Alis.Core.Physic.World">
             <summary>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█ 
 //
 //  -------------------------------------------------------------------------- 
-//  File:GraphicSystem.cs 
+//  File:Class1.cs 
 //  
 //  Author:Pablo Perdomo Falcón 
 //  Web:https://www.pabllopf.dev/  
@@ -27,32 +27,18 @@
 //  
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alis.Core.System
+namespace Alis.Core.Manager
 {
     /// <summary>
-    /// The graphic system class
+    /// The audio manager class
     /// </summary>
-    /// <seealso cref="SystemBase"/>
-    internal class GraphicSystem : SystemBase
+    /// <seealso cref="ManagerBase"/>
+    public class AudioManager : ManagerBase
     {
-        /// <summary>
-        /// The graphic manager
-        /// </summary>
-        public GraphicManager graphicManager = new GraphicManager();
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GraphicSystem"/> class
-        /// </summary>
-        public GraphicSystem() 
-        {
-            managerBase = graphicManager;
-        }
-
         /// <summary>
         /// Afters the update
         /// </summary>

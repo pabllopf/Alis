@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Animator.cs
+//  File:PhysicalBody.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,16 +29,18 @@
 
 using System;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Body
 {
     /// <summary>
-    ///     The animator class
+    ///     The physical body class
     /// </summary>
-    public class Animator : Component
+    /// <seealso cref="ComponentBase" />
+    public class BodyBase : ComponentBase
     {
         /// <summary>
         ///     Starts this instance
         /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
             //throw new NotImplementedException();
@@ -47,7 +49,7 @@ namespace Alis.Core.Components
         /// <summary>
         ///     Updates this instance
         /// </summary>
-       
+        /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
             //throw new NotImplementedException();

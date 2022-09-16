@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Light.cs
+//  File:Sprite.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,38 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components
+using System;
+
+namespace Alis.Core.Components.Render
 {
     /// <summary>
-    ///     The light class
+    ///     The sprite class
     /// </summary>
-    /// <seealso cref="Component" />
-    public abstract class Light : Component
+    /// <seealso cref="ComponentBase" />
+    public class Sprite : RenderBase
     {
+
+        /// <summary>
+        /// The image
+        /// </summary>
+        public Image image;
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
+        {
+            //throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }

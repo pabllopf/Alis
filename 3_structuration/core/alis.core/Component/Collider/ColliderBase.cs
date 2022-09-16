@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSource.cs
+//  File:Collider.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,32 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Collider
 {
     /// <summary>
-    ///     The audio source class
+    ///     The collider class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class AudioSource : Component
+    /// <seealso cref="ComponentBase" />
+    public abstract class ColliderBase : ComponentBase
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AreaLight.cs
+//  File:Particle.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Particle
 {
     /// <summary>
-    ///     The area light class
+    ///     The particle class
     /// </summary>
-    /// <seealso cref="Light" />
-    public class AreaLight : Light
+    /// <seealso cref="ComponentBase" />
+    public class ParticleBase : ComponentBase
     {
         /// <summary>
         ///     Starts this instance
@@ -43,7 +43,7 @@ namespace Alis.Core.Components
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Components
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

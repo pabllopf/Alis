@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:CircleCollider.cs
+//  File:BoxCollider2D.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,30 +29,30 @@
 
 using System;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Collider
 {
     /// <summary>
-    ///     The circle collider class
+    ///     The box collider class
     /// </summary>
-    /// <seealso cref="Collider" />
-    public class CircleCollider : Collider
+    /// <seealso cref="ColliderBase" />
+    public class BoxCollider : ColliderBase
     {
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        
+        /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-           // throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-       
+        /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-           // throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

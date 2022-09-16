@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sprite.cs
+//  File:Camera.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,30 +29,30 @@
 
 using System;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Render
 {
     /// <summary>
-    ///     The sprite class
+    ///     The camera class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class Sprite : Component
+    /// <seealso cref="ComponentBase" />
+    public class Camera : ComponentBase
     {
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public override void Start()
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
+        
         public override void Update()
         {
-            throw new NotImplementedException();
+           // throw new NotImplementedException();
         }
     }
 }

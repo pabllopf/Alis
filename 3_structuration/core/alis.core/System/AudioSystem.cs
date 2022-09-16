@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█ 
 //
 //  -------------------------------------------------------------------------- 
-//  File:GraphicSystem.cs 
+//  File:AudioSystem.cs 
 //  
 //  Author:Pablo Perdomo Falcón 
 //  Web:https://www.pabllopf.dev/  
@@ -35,22 +35,22 @@ using System.Text;
 namespace Alis.Core.System
 {
     /// <summary>
-    /// The graphic system class
+    /// The audio system class
     /// </summary>
     /// <seealso cref="SystemBase"/>
-    internal class GraphicSystem : SystemBase
+    internal class AudioSystem : SystemBase
     {
         /// <summary>
-        /// The graphic manager
+        /// The audio manager
         /// </summary>
-        public GraphicManager graphicManager = new GraphicManager();
+        public AudioManager audioManager = new AudioManager();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GraphicSystem"/> class
+        /// Initializes a new instance of the <see cref="AudioSystem"/> class
         /// </summary>
-        public GraphicSystem() 
+        public AudioSystem() 
         {
-            managerBase = graphicManager;
+            managerBase = audioManager;
         }
 
         /// <summary>

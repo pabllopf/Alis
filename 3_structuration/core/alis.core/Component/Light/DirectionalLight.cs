@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Light
 {
     /// <summary>
     ///     The directional light class
     /// </summary>
-    /// <seealso cref="Light" />
-    public class DirectionalLight : Light
+    /// <seealso cref="LightBase" />
+    public class DirectionalLight : LightBase
     {
         /// <summary>
         ///     Starts this instance

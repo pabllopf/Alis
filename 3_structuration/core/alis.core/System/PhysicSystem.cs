@@ -27,6 +27,7 @@
 //  
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Manager;
 using Alis.Core.System;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,19 @@ namespace Alis.Core.System
     /// <seealso cref="SystemBase"/>
     internal class PhysicSystem : SystemBase
     {
+        /// <summary>
+        /// The physic manager
+        /// </summary>
+        public PhysicManager physicManager = new PhysicManager();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PhysicSystem"/> class
+        /// </summary>
+        public PhysicSystem() 
+        {
+            managerBase = physicManager;
+        }
+
         /// <summary>
         /// Afters the update
         /// </summary>

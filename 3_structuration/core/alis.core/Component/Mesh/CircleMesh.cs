@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Mesh
 {
     /// <summary>
     ///     The sphere mesh class
     /// </summary>
-    /// <seealso cref="Mesh" />
-    public class SphereMesh : Mesh
+    /// <seealso cref="MeshBase" />
+    public class CircleMesh : MeshBase
     {
         /// <summary>
         ///     Starts this instance
@@ -43,7 +43,7 @@ namespace Alis.Core.Components
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Alis.Core.Components
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
     }
 }

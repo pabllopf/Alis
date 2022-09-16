@@ -4,7 +4,4 @@
     <PropertyGroup>
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
-    <ItemGroup>
-      <Folder Include="Docs\" />
-    </ItemGroup>
 </Project>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SpotLight.cs
+//  File:Light.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,32 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Light
 {
     /// <summary>
-    ///     The spot light class
+    ///     The light class
     /// </summary>
-    /// <seealso cref="Light" />
-    public class SpotLight : Light
+    /// <seealso cref="ComponentBase" />
+    public abstract class LightBase : ComponentBase
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

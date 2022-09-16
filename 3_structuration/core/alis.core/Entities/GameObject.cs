@@ -27,10 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Components;
+using System.Collections.Generic;
+
 namespace Alis.Core.Entities
 {
     /// <summary>Represent a object of the game.</summary>
     public class GameObject
     {
+        /// <summary>
+        /// The components
+        /// </summary>
+        public List<ComponentBase> components;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameObject"/> class
+        /// </summary>
+        public GameObject() 
+        {
+            components = new List<ComponentBase>();
+        }
     }
 }

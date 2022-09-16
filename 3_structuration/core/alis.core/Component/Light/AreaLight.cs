@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Image.cs
+//  File:AreaLight.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components
+using System;
+
+namespace Alis.Core.Components.Light
 {
     /// <summary>
-    ///     The image class
+    ///     The area light class
     /// </summary>
-    public class Image
+    /// <seealso cref="LightBase" />
+    public class AreaLight : LightBase
     {
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

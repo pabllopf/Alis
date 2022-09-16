@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Camera.cs
+//  File:PointLight.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,30 +29,30 @@
 
 using System;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Light
 {
     /// <summary>
-    ///     The camera class
+    ///     The point light class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class Camera : Component
+    /// <seealso cref="LightBase" />
+    public class PointLight : LightBase
     {
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        
+        /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-           // throw new NotImplementedException();
+            throw new NotImplementedException();
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        
+        /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-           // throw new NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

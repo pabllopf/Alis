@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Mesh.cs
+//  File:Animation.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components
+namespace Alis.Core.Components.Render
 {
     /// <summary>
-    ///     The mesh class
+    ///     The animation class
     /// </summary>
-    /// <seealso cref="Component" />
-    public abstract class Mesh : Component
+    public class Animation
     {
     }
 }

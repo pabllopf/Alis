@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Animation.cs
+//  File:AudioSource.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,12 +27,37 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Components
 {
     /// <summary>
-    ///     The animation class
+    ///     The audio source class
     /// </summary>
-    public class Animation
+    /// <seealso cref="ComponentBase" />
+    public class AudioSource : ComponentBase
     {
+        /// <summary>
+        /// The audio clip
+        /// </summary>
+        public AudioClip audioClip;
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Start()
+        {
+            //throw new NotImplementedException();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        public override void Update()
+        {
+            //throw new NotImplementedException();
+        }
     }
 }
