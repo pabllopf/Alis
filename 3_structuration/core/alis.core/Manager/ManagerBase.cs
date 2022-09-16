@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█ 
 //
 //  -------------------------------------------------------------------------- 
-//  File:VideoGame.cs 
+//  File:ManagerBase.cs 
 //  
 //  Author:Pablo Perdomo Falcón 
 //  Web:https://www.pabllopf.dev/  
@@ -27,50 +27,45 @@
 //  
 //  --------------------------------------------------------------------------
 
-using Alis.Core;
-using Alis.Core.System;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Alis
+namespace Alis.Core.Manager
 {
     /// <summary>
-    /// The video game class
+    /// Manager base
     /// </summary>
-    /// <seealso cref="GameBase"/>
-    public class VideoGame : GameBase
+    public abstract class ManagerBase
     {
-        /// <summary>
-        /// Video game 
-        /// </summary>
-        public VideoGame() 
-        {
-            systems = new List<SystemBase>()
-            {
-                new PhysicSystem(),
-            };
+        /// <summary>Awakes this instance.</summary>
+        public abstract void Awake();
 
-            isActive = false;
-        }
+        /// <summary>Starts this instance.</summary>
+        public abstract void Start();
 
-        /// <summary>
-        /// Runs this instance
-        /// </summary>
-        public override void Run()
-        {
-            isActive = true;
-            systems.ForEach(i => i.Awake());
-            systems.ForEach(i => i.Start());
-            while (isActive) 
-            {
-                systems.ForEach(i => i.BeforeUpdate());
-                systems.ForEach(i => i.Update());
-                systems.ForEach(i => i.AfterUpdate());
+        /// <summary>Befores the update.</summary>
+        public abstract void BeforeUpdate();
 
-                systems.ForEach(i => i.FixedUpdate());
-                systems.ForEach(i => i.DispatchEvents());
-            }
-        }
+        /// <summary>Updates this instance.</summary>
+        public abstract void Update();
+
+        /// <summary>Afters the update.</summary>
+        public abstract void AfterUpdate();
+
+        /// <summary>Fixeds the update.</summary>
+        public abstract void FixedUpdate();
+
+        /// <summary>Dispatches the events.</summary>
+        public abstract void DispatchEvents();
+
+        /// <summary>Resets this instance.</summary>
+        public abstract void Reset();
+
+        /// <summary>Stops this instance.</summary>
+        public abstract void Stop();
+
+        /// <summary>Exits this instance.</summary>
+        public abstract void Exit();
     }
 }

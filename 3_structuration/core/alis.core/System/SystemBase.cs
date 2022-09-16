@@ -27,11 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems
+using Alis.Core.Manager;
+
+namespace Alis.Core.System
 {
     /// <summary>Define a system.</summary>
-    public abstract class System
+    public abstract class SystemBase
     {
+        /// <summary>
+        /// manager base
+        /// </summary>
+        public ManagerBase managerBase;
+
         /// <summary>Awakes this instance.</summary>
         public abstract void Awake();
 

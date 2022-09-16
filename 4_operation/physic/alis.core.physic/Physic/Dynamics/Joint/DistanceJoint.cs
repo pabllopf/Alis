@@ -31,6 +31,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Dynamics.Bodys;
+using System;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -472,7 +473,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             b1.SynchronizeTransform();
             b2.SynchronizeTransform();
 
-            return System.Math.Abs(c) < Settings.LinearSlop;
+            return Math.Abs(c) < Settings.LinearSlop;
         }
 
         /// <summary>

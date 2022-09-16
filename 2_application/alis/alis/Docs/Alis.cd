@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Alis.ConsoleGame" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ConsoleGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.SoundGame" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>SoundGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.VideoGame" Collapsed="true">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>VideoGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.System.PhysicSystem">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\PhysicSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.GameBase">
+    <Position X="2" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAAAAI=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\GameBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="systems" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Alis.Core.System.GraphicSystem">
+    <Position X="5.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\GraphicSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Manager.ManagerBase">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Manager\ManagerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.System.SystemBase">
+    <Position X="5.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAQiAABAAAAIAAABAAAAAAAAAAIAAAAAAAAEA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\SystemBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="managerBase" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Alis.Core.Manager.SceneManager">
+    <Position X="1" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Manager\SceneManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.System.SceneSystem">
+    <Position X="1" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAABAAAAEA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\SceneSystem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="sceneManager" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

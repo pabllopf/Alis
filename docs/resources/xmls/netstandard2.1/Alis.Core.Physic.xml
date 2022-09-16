@@ -7689,11 +7689,6 @@
             <param name="g">The </param>
             <param name="b">The </param>
         </member>
-        <member name="T:Alis.Core.Physic.Exception.LockException">
-            <summary>
-                Lock
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.World">
             <summary>
                 The world class manages all physics entities, dynamic simulation,

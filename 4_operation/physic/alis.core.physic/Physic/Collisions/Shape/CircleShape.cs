@@ -29,6 +29,7 @@
 
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
+using System;
 
 namespace Alis.Core.Physic.Collisions.Shape
 {
@@ -198,9 +199,9 @@ namespace Alis.Core.Physic.Collisions.Shape
             //Magic
             float r2 = Radius * Radius;
             float l2 = l * l;
-            float area = r2 * ((float) System.Math.Asin(l / Radius) + Settings.Pi / 2) +
+            float area = r2 * ((float) Math.Asin(l / Radius) + Settings.Pi / 2) +
                          l * Helper.Sqrt(r2 - l2);
-            float com = -2.0f / 3.0f * (float) System.Math.Pow(r2 - l2, 1.5f) / area;
+            float com = -2.0f / 3.0f * (float) Math.Pow(r2 - l2, 1.5f) / area;
 
             c.X = p.X + normal.X * com;
             c.Y = p.Y + normal.Y * com;

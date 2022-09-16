@@ -42,7 +42,12 @@ namespace Alis.Sample.Rogue
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello");
+            Console.WriteLine("Start game");
+
+            VideoGame game = new VideoGame();
+            game.Run();
+
+            Console.WriteLine("End game");
         }
     }
 }
