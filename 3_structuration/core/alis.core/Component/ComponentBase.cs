@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
+using Alis.Core.Entity;
 
-namespace Alis.Core.Components
+namespace Alis.Core.Component
 {
     /// <summary>Define a general component.</summary>
     public abstract class ComponentBase

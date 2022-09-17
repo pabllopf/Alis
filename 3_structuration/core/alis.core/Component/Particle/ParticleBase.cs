@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Components.Particle
+namespace Alis.Core.Component.Particle
 {
     /// <summary>
     ///     The particle class

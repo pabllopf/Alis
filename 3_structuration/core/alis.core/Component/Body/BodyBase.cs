@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Components.Body
+namespace Alis.Core.Component.Body
 {
     /// <summary>
     ///     The physical body class

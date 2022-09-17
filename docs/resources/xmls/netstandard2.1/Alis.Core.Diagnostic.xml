@@ -45,6 +45,17 @@
             <param name="g">The </param>
             <param name="b">The </param>
         </member>
+        <member name="T:Alis.Core.Aspect.Logging.Logger">
+            <summary>
+            The logger class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Log(System.String)">
+            <summary>
+            Logs the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
         <member name="T:Alis.Aspect.ExampleClass">
             <summary>
                 The example class

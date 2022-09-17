@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Components.Collider
+namespace Alis.Core.Component.Collider
 {
     /// <summary>
     ///     The circle collider class

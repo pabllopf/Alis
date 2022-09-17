@@ -27,10 +27,8 @@
 //  
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entities;
-using System;
+using Alis.Core.Entity;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Alis.Core.Manager
 {

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Bodys;
 using Moq;
 using Xunit;

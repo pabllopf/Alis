@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Components.Collider
+namespace Alis.Core.Component.Collider
 {
     /// <summary>
     ///     The box collider class

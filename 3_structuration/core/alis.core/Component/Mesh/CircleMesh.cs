@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Components.Mesh
+namespace Alis.Core.Component.Mesh
 {
     /// <summary>
     ///     The sphere mesh class

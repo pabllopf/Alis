@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components
+namespace Alis.Core.Component.Audio
 {
     /// <summary>
     ///     The audio clip class

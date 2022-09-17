@@ -28,9 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Manager;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Alis.Core.System
 {

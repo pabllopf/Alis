@@ -27,9 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Components.Render
+namespace Alis.Core.Component.Render
 {
     /// <summary>
     ///     The camera class

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components.Mesh
+namespace Alis.Core.Component.Mesh
 {
     /// <summary>
     ///     The cube mesh class

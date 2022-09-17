@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Components.Light
+namespace Alis.Core.Component.Light
 {
     /// <summary>
     ///     The spot light class

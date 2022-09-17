@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
   <Class Name="Alis.ConsoleGame">
-    <Position X="0.75" Y="0.75" Width="1.5" />
+    <Position X="10.75" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>ConsoleGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.SoundGame">
-    <Position X="4.5" Y="0.75" Width="1.5" />
+    <Position X="15.25" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>SoundGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.VideoGame">
-    <Position X="2.5" Y="0.75" Width="1.5" />
+    <Position X="13" Y="15.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>VideoGame.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.System.PhysicSystem">
-    <Position X="3.25" Y="7" Width="1.5" />
+    <Position X="3" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAQAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\PhysicSystem.cs</FileName>
@@ -32,7 +32,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.GameBase">
-    <Position X="2" Y="4" Width="1.5" />
+    <Position X="13" Y="13" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAAAAI=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\GameBase.cs</FileName>
@@ -42,7 +42,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Alis.Core.System.GraphicSystem">
-    <Position X="5.25" Y="7" Width="1.5" />
+    <Position X="5.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQqAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\GraphicSystem.cs</FileName>
@@ -52,14 +52,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Manager.ManagerBase">
-    <Position X="9" Y="3.5" Width="1.5" />
+    <Position X="14" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Manager\ManagerBase.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.System.SystemBase">
-    <Position X="5.5" Y="3.5" Width="1.5" />
+    <Position X="4" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAABAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\SystemBase.cs</FileName>
@@ -69,7 +69,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Manager.SceneManager">
-    <Position X="1" Y="10.75" Width="1.5" />
+    <Position X="10.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAIAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Manager\SceneManager.cs</FileName>
@@ -78,66 +78,8 @@
       <Field Name="scenes" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Alis.Core.Entities.Scene">
-    <Position X="1" Y="15" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entities\Scene.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Field Name="gameObjects" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Alis.Core.Entities.GameObject">
-    <Position X="4.5" Y="15" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entities\GameObject.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Field Name="components" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="Alis.Core.Components.Render.Animation" Collapsed="true">
-    <Position X="6.75" Y="23.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Render\Animation.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Components.Body.BodyBase" Collapsed="true">
-    <Position X="13.5" Y="21.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Body\BodyBase.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Components.AudioClip" Collapsed="true">
-    <Position X="24.5" Y="23.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Audio\AudioClip.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Components.AudioSource">
-    <Position X="24.5" Y="21" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Audio\AudioSource.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Field Name="audioClip" />
-    </ShowAsAssociation>
-  </Class>
-  <Class Name="Alis.Core.Components.Render.Image" Collapsed="true">
-    <Position X="16.5" Y="24.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Render\Image.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Alis.Core.System.AudioSystem">
-    <Position X="7.25" Y="7" Width="1.5" />
+    <Position X="7.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\AudioSystem.cs</FileName>
@@ -147,28 +89,28 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Alis.Core.Manager.AudioManager">
-    <Position X="7.25" Y="10.75" Width="1.5" />
+    <Position X="17.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Manager\AudioManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Manager.GraphicManager">
-    <Position X="5.25" Y="10.75" Width="1.5" />
+    <Position X="15.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Manager\GraphicManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.Manager.PhysicManager">
-    <Position X="3" Y="10.75" Width="1.5" />
+    <Position X="13" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAAAAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Manager\PhysicManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Alis.Core.System.SceneSystem">
-    <Position X="1" Y="7" Width="1.5" />
+    <Position X="0.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQgAAAAQiAABAAAAIAAAAAAAAAAAAAAIAAABAAAAEA=</HashCode>
       <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\System\SceneSystem.cs</FileName>
@@ -177,129 +119,197 @@
       <Field Name="sceneManager" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Components.Render.Sprite">
-    <Position X="16.5" Y="22.25" Width="1.5" />
+  <Class Name="Alis.Core.Component.Audio.AudioClip" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Render\Sprite.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Audio\AudioClip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Audio.AudioSource">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Audio\AudioSource.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="image" />
+      <Field Name="audioClip" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Alis.Core.Components.Render.RenderBase" Collapsed="true">
-    <Position X="16.5" Y="21.25" Width="1.5" />
+  <Class Name="Alis.Core.Component.Body.BodyBase" Collapsed="true">
+    <Position X="26.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Render\RenderBase.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Body\BodyBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Mesh.MeshBase" Collapsed="true">
-    <Position X="20" Y="21" Width="1.5" />
+  <Class Name="Alis.Core.Component.Collider.BoxCollider" Collapsed="true">
+    <Position X="19.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Collider\BoxCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Collider.CircleCollider" Collapsed="true">
+    <Position X="22" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Collider\CircleCollider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Collider.ColliderBase" Collapsed="true">
+    <Position X="21" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Mesh\MeshBase.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Collider\ColliderBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Mesh.BoxMesh" Collapsed="true">
-    <Position X="20.5" Y="23.5" Width="1.5" />
+  <Class Name="Alis.Core.Component.Light.AreaLight" Collapsed="true">
+    <Position X="6.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Mesh\BoxMesh.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Light\AreaLight.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Mesh.CircleMesh" Collapsed="true">
-    <Position X="18.5" Y="23.5" Width="1.5" />
+  <Class Name="Alis.Core.Component.Light.DirectionalLight" Collapsed="true">
+    <Position X="10.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Mesh\CircleMesh.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Light\DirectionalLight.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Light.AreaLight" Collapsed="true">
-    <Position X="23.75" Y="26.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Light\AreaLight.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Components.Light.PointLight" Collapsed="true">
-    <Position X="25.75" Y="26.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Light\PointLight.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Components.Light.SpotLight" Collapsed="true">
-    <Position X="29.75" Y="26.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Light\SpotLight.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Alis.Core.Components.Light.LightBase" Collapsed="true">
-    <Position X="26.75" Y="21" Width="1.5" />
+  <Class Name="Alis.Core.Component.Light.LightBase" Collapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Light\LightBase.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Light\LightBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Light.DirectionalLight" Collapsed="true">
-    <Position X="27.75" Y="26.5" Width="1.5" />
+  <Class Name="Alis.Core.Component.Light.PointLight" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Light\DirectionalLight.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Light\PointLight.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Collider.BoxCollider" Collapsed="true">
-    <Position X="34" Y="22.75" Width="1.5" />
+  <Class Name="Alis.Core.Component.Light.SpotLight" Collapsed="true">
+    <Position X="13" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Collider\BoxCollider.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Light\SpotLight.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Collider.CircleCollider" Collapsed="true">
-    <Position X="31.25" Y="22.75" Width="1.5" />
+  <Class Name="Alis.Core.Component.Mesh.BoxMesh" Collapsed="true">
+    <Position X="1.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Collider\CircleCollider.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Mesh\BoxMesh.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Collider.ColliderBase" Collapsed="true">
-    <Position X="32.25" Y="21" Width="1.5" />
+  <Class Name="Alis.Core.Component.Mesh.CircleMesh" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Mesh\CircleMesh.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Mesh.MeshBase" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Collider\ColliderBase.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Mesh\MeshBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Render.Animator">
-    <Position X="6.5" Y="21.25" Width="1.5" />
+  <Class Name="Alis.Core.Component.Particle.ParticleBase" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Particle\ParticleBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Render.Animation" Collapsed="true">
+    <Position X="31" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Render\Animation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Render.Animator">
+    <Position X="31" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Render\Animator.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Render\Animator.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Field Name="animations" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Alis.Core.Components.ComponentBase">
-    <Position X="12.75" Y="15" Width="1.5" />
+  <Class Name="Alis.Core.Component.Render.Camera" Collapsed="true">
+    <Position X="28.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Render\Camera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Render.Image" Collapsed="true">
+    <Position X="24.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Render\Image.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Render.RenderBase" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Render\RenderBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alis.Core.Component.Render.Sprite">
+    <Position X="24.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\Render\Sprite.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="image" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Alis.Core.Component.ComponentBase" Collapsed="true">
+    <Position X="16.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQhAAAIQiAABAAAEIAACAQEAABAAAAAIAAgAEIAAMA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\ComponentBase.cs</FileName>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Component\ComponentBase.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Alis.Core.Components.Particle.ParticleBase" Collapsed="true">
-    <Position X="29.25" Y="21.25" Width="1.5" />
+  <Class Name="Alis.Core.Entity.GameObject">
+    <Position X="12.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Particle\ParticleBase.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entitie\GameObject.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="transform" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="components" />
+    </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="Alis.Core.Components.Render.Camera" Collapsed="true">
-    <Position X="26.5" Y="23.25" Width="1.5" />
+  <Class Name="Alis.Core.Entity.Scene">
+    <Position X="10.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Components\Render\Camera.cs</FileName>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entitie\Scene.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="gameObjects" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Alis.Core.Entity.Transform">
+    <Position X="12.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\pablo\Desktop\Alis\3_structuration\core\alis.core\Entitie\Transform.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

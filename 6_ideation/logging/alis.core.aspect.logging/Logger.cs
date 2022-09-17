@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█ 
 //
 //  -------------------------------------------------------------------------- 
-//  File:SoundGame.cs 
+//  File:Logger.cs 
 //  
 //  Author:Pablo Perdomo Falcón 
 //  Web:https://www.pabllopf.dev/  
@@ -27,21 +27,23 @@
 //  
 //  --------------------------------------------------------------------------
 
-using Alis.Core;
+using System;
+using System.Diagnostics;
 
-namespace Alis
+namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    /// The sound game class
+    /// The logger class
     /// </summary>
-    /// <seealso cref="GameBase"/>
-    public class SoundGame : GameBase
+    public static class Logger
     {
         /// <summary>
-        /// Runs this instance
+        /// Logs the message
         /// </summary>
-        public override void Run()
+        /// <param name="message">The message</param>
+        public static void Log(string message) 
         {
+            Console.WriteLine($"LOG: {message}");
         }
     }
 }

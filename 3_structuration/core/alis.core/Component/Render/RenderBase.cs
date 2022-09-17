@@ -27,17 +27,13 @@
 //  
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Alis.Core.Components.Render
+namespace Alis.Core.Component.Render
 {
     /// <summary>
     /// The render base class
     /// </summary>
     /// <seealso cref="ComponentBase"/>
-    public class RenderBase : ComponentBase
+    public abstract class RenderBase : ComponentBase
     {
         /// <summary>
         /// Starts this instance

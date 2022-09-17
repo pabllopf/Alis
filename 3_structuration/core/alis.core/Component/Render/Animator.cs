@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 
-namespace Alis.Core.Components.Render
+namespace Alis.Core.Component.Render
 {
     /// <summary>
     ///     The animator class

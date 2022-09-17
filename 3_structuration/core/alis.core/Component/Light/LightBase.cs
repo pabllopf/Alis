@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Components.Light
+namespace Alis.Core.Component.Light
 {
     /// <summary>
     ///     The light class

@@ -29,9 +29,7 @@
 
 using Alis.Core;
 using Alis.Core.System;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Alis
 {
@@ -49,6 +47,9 @@ namespace Alis
             systems = new List<SystemBase>()
             {
                 new PhysicSystem(),
+                new GraphicSystem(),
+                new SceneSystem(),
+                new AudioSystem(),
             };
 
             isActive = false;

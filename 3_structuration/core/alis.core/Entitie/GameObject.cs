@@ -27,14 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Components;
+using Alis.Core.Component;
 using System.Collections.Generic;
 
-namespace Alis.Core.Entities
+namespace Alis.Core.Entity
 {
     /// <summary>Represent a object of the game.</summary>
     public class GameObject
     {
+        /// <summary>
+        /// The transform
+        /// </summary>
+        public Transform transform;
+
         /// <summary>
         /// The components
         /// </summary>

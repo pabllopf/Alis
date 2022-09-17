@@ -28,10 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Manager;
-using Alis.Core.System;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.System
 {
@@ -54,18 +51,19 @@ namespace Alis.Core.System
             managerBase = physicManager;
         }
 
-        /// <summary>
-        /// Afters the update
-        /// </summary>
-        public override void AfterUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
+       
         /// <summary>
         /// Awakes this instance
         /// </summary>
         public override void Awake()
+        {
+            Logger.Log("PhysicSystem::Awake");
+        }
+
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public override void Start()
         {
             //throw new NotImplementedException();
         }
@@ -79,6 +77,22 @@ namespace Alis.Core.System
         }
 
         /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public override void Update()
+        {
+            //throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Afters the update
+        /// </summary>
+        public override void AfterUpdate()
+        {
+            //throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Dispatches the events
         /// </summary>
         public override void DispatchEvents()
@@ -86,13 +100,6 @@ namespace Alis.Core.System
             //throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-            //throw new NotImplementedException();
-        }
 
         /// <summary>
         /// Fixeds the update
@@ -111,14 +118,6 @@ namespace Alis.Core.System
         }
 
         /// <summary>
-        /// Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Stops this instance
         /// </summary>
         public override void Stop()
@@ -127,11 +126,12 @@ namespace Alis.Core.System
         }
 
         /// <summary>
-        /// Updates this instance
+        /// Exits this instance
         /// </summary>
-        public override void Update()
+        public override void Exit()
         {
             //throw new NotImplementedException();
         }
+
     }
 }
