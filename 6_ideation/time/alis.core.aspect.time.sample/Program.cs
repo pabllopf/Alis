@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Aspect.Time.Sample
+namespace Alis.Core.Aspect.Time.Sample
 {
     /// <summary>
     ///     The program class

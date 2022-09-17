@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Fluent
+namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
     ///     The build interface

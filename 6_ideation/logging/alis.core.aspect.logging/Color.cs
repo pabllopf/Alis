@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Dynamics
+namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
     ///     Color for debug drawing. Each value has the range [0,1].

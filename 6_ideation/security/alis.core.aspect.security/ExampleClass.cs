@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Security
+namespace Alis.Core.Aspect.Security
 {
     /// <summary>
     ///     The example class

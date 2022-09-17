@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Aspect.Fluent.Sample
+namespace Alis.Core.Aspect.Fluent.Sample
 {
     /// <summary>
     ///     The program class

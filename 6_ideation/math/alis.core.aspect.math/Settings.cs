@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Math
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
     ///     The settings class

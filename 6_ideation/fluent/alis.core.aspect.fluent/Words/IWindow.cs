@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Fluent.Words
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
     ///     The window interface

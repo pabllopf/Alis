@@ -30,7 +30,7 @@
 using System;
 using System.Diagnostics;
 
-namespace Alis.Aspect.Logging
+namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
     ///     The box dx debug class

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Memory.Sample
+namespace Alis.Core.Aspect.Memory.Sample
 {
     /// <summary>
     ///     The program class

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Thread
+namespace Alis.Core.Aspect.Thread
 {
     /// <summary>
     ///     The example class

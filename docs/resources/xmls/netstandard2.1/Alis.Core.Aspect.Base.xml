@@ -4,12 +4,12 @@
         <name>Alis.Core.Aspect.Base</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Base.AlisObject">
+        <member name="T:Alis.Core.Aspect.Base.AlisObject">
             <summary>
                 The object base class
             </summary>
         </member>
-        <member name="M:Alis.Aspect.Base.AlisObject.GetHashCode(System.Object)">
+        <member name="M:Alis.Core.Aspect.Base.AlisObject.GetHashCode(System.Object)">
             <summary>
                 The object base class
             </summary>

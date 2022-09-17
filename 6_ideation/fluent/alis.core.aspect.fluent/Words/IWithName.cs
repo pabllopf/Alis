@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Fluent.Words
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>Define the word "Name" </summary>
     /// <typeparam name="TBuilder">The type of the uilder.</typeparam>

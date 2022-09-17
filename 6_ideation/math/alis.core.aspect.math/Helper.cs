@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Aspect.Math
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
     ///     The math class

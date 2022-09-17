@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Logging.Sample
+namespace Alis.Core.Aspect.Logging.Sample
 {
     /// <summary>
     ///     The program class

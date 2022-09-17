@@ -16422,174 +16422,174 @@
             point count, impulses, etc. The radii must come from the shapes
             that generated the manifold.
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Bodys.Body">
+        <member name="T:Alis.Core.Physic.Dynamics.Body.BodyBase">
             <summary>
                 A rigid body. These are created via World.AddBody.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.world">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.world">
             <summary>
                 The world
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.AngularDamping">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.AngularDamping">
             <summary>
                 The angular damping
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.AngularVelocity">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.AngularVelocity">
             <summary>
                 The angular velocity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.bodyDef">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.bodyDef">
             <summary>
                 body data
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.ContactList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.ContactList">
             <summary>
                 The contact list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.ControllerList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.ControllerList">
             <summary>
                 The controller list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.FixtureCount">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.FixtureCount">
             <summary>
                 The fixture count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.FixtureList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.FixtureList">
             <summary>
                 The fixture list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Flags">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Flags">
             <summary>
                 The flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Force">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Force">
             <summary>
                 The force
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.I">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.I">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.InvI">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.InvI">
             <summary>
                 The inv
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.InvMass">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.InvMass">
             <summary>
                 The inv mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.IslandIndex">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.IslandIndex">
             <summary>
                 The island index
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.JointList">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.JointList">
             <summary>
                 The joint list
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.LinearDamping">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.LinearDamping">
             <summary>
                 The linear damping
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.LinearVelocity">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.LinearVelocity">
             <summary>
                 The linear velocity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Mass">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Mass">
             <summary>
                 The mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Next">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Next">
             <summary>
                 The next
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Prev">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Prev">
             <summary>
                 The prev
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.SleepTime">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.SleepTime">
             <summary>
                 The sleep time
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Sweep">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Sweep">
             <summary>
                 The sweep
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Torque">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Torque">
             <summary>
                 The torque
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.type">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.type">
             <summary>
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.userData">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.userData">
             <summary>
                 The user data
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.Body.Xf">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyBase.Xf">
             <summary>
                 The xf
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.#ctor(Alis.Core.Physic.Dynamics.Bodys.BodyDef,Alis.Core.Physic.World)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.#ctor(Alis.Core.Physic.Dynamics.Body.BodyDef,Alis.Core.Physic.World)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Bodys.Body" /> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Body.BodyBase" /> class
             </summary>
             <param name="bd">The bd</param>
             <param name="world">The world</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.Dispose">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.Dispose">
             <summary>
                 Disposes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SynchronizeFixtures">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SynchronizeFixtures">
             <summary>
                 Describes whether this instance synchronize fixtures
             </summary>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsConnected(Alis.Core.Physic.Dynamics.Bodys.Body)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsConnected(Alis.Core.Physic.Dynamics.Body.BodyBase)">
             <summary>
                 Describes whether this instance is connected
             </summary>
             <param name="other">The other</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.CreateFixture(Alis.Core.Physic.Dynamics.Fixtures.FixtureDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.CreateFixture(Alis.Core.Physic.Dynamics.Fixtures.FixtureDef)">
             <summary>
                 Creates a fixture and attach it to this body.
                 @warning This function is locked during callbacks.
             </summary>
             <param name="def">The fixture definition.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.DestroyFixture(Alis.Core.Physic.Dynamics.Fixtures.Fixture)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.DestroyFixture(Alis.Core.Physic.Dynamics.Fixtures.Fixture)">
             <summary>
                 Destroy a fixture. This removes the fixture from the broad-phase and
                 therefore destroys any contacts associated with this fixture. All fixtures
@@ -16598,7 +16598,7 @@
             </summary>
             <param name="fixture">The fixture to be removed.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetMass(Alis.Core.Physic.Collisions.MassData)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetMass(Alis.Core.Physic.Collisions.MassData)">
             <summary>
                 Set the mass properties. Note that this changes the center of mass position.
                 If you are not sure how to compute mass properties, use SetMassFromShapes.
@@ -16606,14 +16606,14 @@
             </summary>
             <param name="massData">The mass properties.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetMassFromShapes">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetMassFromShapes">
             <summary>
                 Compute the mass properties from the attached shapes. You typically call this
                 after adding all the shapes. If you add or remove shapes later, you may want
                 to call this again. Note that this changes the center of mass position.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetXForm(Alis.Aspect.Math.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetXForm(Alis.Aspect.Math.Vector2,System.Single)">
             <summary>
                 Set the position of the body's origin and rotation (radians).
                 This breaks any contacts and wakes the other bodies.
@@ -16628,7 +16628,7 @@
                 body is automatically frozen.
             </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetXForm(Alis.Aspect.Math.XForm)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetXForm(Alis.Aspect.Math.XForm)">
             <summary>
                 Set the position of the body's origin and rotation (radians).
                 This breaks any contacts and wakes the other bodies.
@@ -16641,73 +16641,73 @@
                 body is automatically frozen.
             </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetXForm">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetXForm">
             <summary>
                 Get the body transform for the body's origin.
             </summary>
             <returns>Return the world transform of the body's origin.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetPosition(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetPosition(Alis.Aspect.Math.Vector2)">
             <summary>
                 Set the world body origin position.
             </summary>
             <param name="position">The new position of the body.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetAngle(System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetAngle(System.Single)">
             <summary>
                 Set the world body angle.
             </summary>
             <param name="angle">The new angle of the body.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetPosition">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetPosition">
             <summary>
                 Get the world body origin position.
             </summary>
             <returns>Return the world position of the body's origin.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetAngle">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetAngle">
             <summary>
                 Get the angle in radians.
             </summary>
             <returns>Return the current world rotation angle in radians.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetWorldCenter">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetWorldCenter">
             <summary>
                 Get the world position of the center of mass.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetLocalCenter">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetLocalCenter">
             <summary>
                 Get the local position of the center of mass.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetLinearVelocity(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetLinearVelocity(Alis.Aspect.Math.Vector2)">
             <summary>
                 Set the linear velocity of the center of mass.
             </summary>
             <param name="v">The new linear velocity of the center of mass.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetLinearVelocity">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetLinearVelocity">
             <summary>
                 Get the linear velocity of the center of mass.
             </summary>
             <returns>Return the linear velocity of the center of mass.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetAngularVelocity(System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetAngularVelocity(System.Single)">
             <summary>
                 Sets the angular velocity.
             </summary>
             <param name="w">The w.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetAngularVelocity">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetAngularVelocity">
             <summary>
                 Get the angular velocity.
             </summary>
             <returns>Return the angular velocity in radians/second.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.ApplyForce(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.ApplyForce(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Apply a force at a world point. If the force is not
                 applied at the center of mass, it will generate a torque and
@@ -16716,7 +16716,7 @@
             <param name="force">The world force vector, usually in Newtons (N).</param>
             <param name="point">The world position of the point of application.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.ApplyTorque(System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.ApplyTorque(System.Single)">
             <summary>
                 Apply a torque. This affects the angular velocity
                 without affecting the linear velocity of the center of mass.
@@ -16724,7 +16724,7 @@
             </summary>
             <param name="torque">Torque about the z-axis (out of the screen), usually in N-m.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.ApplyImpulse(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.ApplyImpulse(Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Apply an impulse at a point. This immediately modifies the velocity.
                 It also modifies the angular velocity if the point of application
@@ -16733,292 +16733,292 @@
             <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
             <param name="point">The world position of the point of application.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetMass">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetMass">
             <summary>
                 Get the total mass of the body.
             </summary>
             <returns>Return the mass, usually in kilograms (kg).</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetInertia">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetInertia">
             <summary>
                 Get the central rotational inertia of the body.
             </summary>
             <returns>Return the rotational inertia, usually in kg-m^2.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetMassData">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetMassData">
             <summary>
                 Get the mass data of the body.
             </summary>
             <returns>A struct containing the mass, inertia and center of the body.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetWorldPoint(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetWorldPoint(Alis.Aspect.Math.Vector2)">
             <summary>
                 Get the world coordinates of a point given the local coordinates.
             </summary>
             <param name="localPoint">A point on the body measured relative the the body's origin.</param>
             <returns>Return the same point expressed in world coordinates.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetWorldVector(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetWorldVector(Alis.Aspect.Math.Vector2)">
             <summary>
                 Get the world coordinates of a vector given the local coordinates.
             </summary>
             <param name="localVector">A vector fixed in the body.</param>
             <returns>Return the same vector expressed in world coordinates.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetLocalPoint(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetLocalPoint(Alis.Aspect.Math.Vector2)">
             <summary>
                 Gets a local point relative to the body's origin given a world point.
             </summary>
             <param name="worldPoint">A point in world coordinates.</param>
             <returns>Return the corresponding local point relative to the body's origin.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetLocalVector(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetLocalVector(Alis.Aspect.Math.Vector2)">
             <summary>
                 Gets a local vector given a world vector.
             </summary>
             <param name="worldVector">A vector in world coordinates.</param>
             <returns>Return the corresponding local vector.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetLinearVelocityFromWorldPoint(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetLinearVelocityFromWorldPoint(Alis.Aspect.Math.Vector2)">
             <summary>
                 Get the world linear velocity of a world point attached to this body.
             </summary>
             <param name="worldPoint">A point in world coordinates.</param>
             <returns>The world velocity of a point.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetLinearVelocityFromLocalPoint(Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetLinearVelocityFromLocalPoint(Alis.Aspect.Math.Vector2)">
             <summary>
                 Get the world velocity of a local point.
             </summary>
             <param name="localPoint">A point in local coordinates.</param>
             <returns>The world velocity of a point.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetLinearDamping">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetLinearDamping">
             <summary>
                 Gets the linear damping
             </summary>
             <returns>The linear damping</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetLinearDamping(System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetLinearDamping(System.Single)">
             <summary>
                 Sets the linear damping using the specified linear damping
             </summary>
             <param name="linearDamping">The linear damping</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetAngularDamping">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetAngularDamping">
             <summary>
                 Gets the angular damping
             </summary>
             <returns>The angular damping</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetAngularDamping(System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetAngularDamping(System.Single)">
             <summary>
                 Sets the angular damping using the specified angular damping
             </summary>
             <param name="angularDamping">The angular damping</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsBullet">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsBullet">
             <summary>
                 Is this body treated like a bullet for continuous collision detection?
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetBullet(System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetBullet(System.Boolean)">
             <summary>
                 Should this body be treated like a bullet for continuous collision detection?
             </summary>
             <param name="flag"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsFixedRotation">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsFixedRotation">
             <summary>
                 Describes whether this instance is fixed rotation
             </summary>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetFixedRotation(System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetFixedRotation(System.Boolean)">
             <summary>
                 Sets the fixed rotation using the specified fixedr
             </summary>
             <param name="fixedr">The fixedr</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsStatic">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsStatic">
             <summary>
                 Is this body static (immovable)?
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetStatic">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetStatic">
             <summary>
                 Sets the static
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsDynamic">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsDynamic">
             <summary>
                 Is this body dynamic (movable)?
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsFrozen">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsFrozen">
             <summary>
                 Is this body frozen?
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsSleeping">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsSleeping">
             <summary>
                 Is this body sleeping (not simulating).
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.IsAllowSleeping">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.IsAllowSleeping">
             <summary>
                 Describes whether this instance is allow sleeping
             </summary>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.AllowSleeping(System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.AllowSleeping(System.Boolean)">
             <summary>
                 You can disable sleeping on this body.
             </summary>
             <param name="flag"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.WakeUp">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.WakeUp">
             <summary>
                 Wake up this body so it will begin simulating.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.PutToSleep">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.PutToSleep">
             <summary>
                 Put this body to sleep so it will stop simulating.
                 This also sets the velocity to zero.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetFixtureList">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetFixtureList">
             <summary>
                 Get the list of all fixtures attached to this body.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetJointList">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetJointList">
             <summary>
                 Get the list of all joints attached to this body.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetControllerList">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetControllerList">
             <summary>
                 Gets the controller list
             </summary>
             <returns>The controller list</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetNext">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetNext">
             <summary>
                 Get the next body in the world's body list.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetUserData">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetUserData">
             <summary>
                 Get the user data pointer that was provided in the body definition.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SetUserData(System.Object)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SetUserData(System.Object)">
             <summary>
                 Set the user data. Use this to store your application specific data.
             </summary>
             <param name="data"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.GetWorld">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.GetWorld">
             <summary>
                 Get the parent world of this body.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.SynchronizeTransform">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.SynchronizeTransform">
             <summary>
                 Synchronizes the transform
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.Body.Advance(System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyBase.Advance(System.Single)">
             <summary>
                 Advances the t
             </summary>
             <param name="t">The </param>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Bodys.BodyDef">
+        <member name="T:Alis.Core.Physic.Dynamics.Body.BodyDef">
             <summary>
                 A body definition holds all the data needed to construct a rigid body.
                 You can safely re-use body definitions.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Bodys.BodyDef.#ctor(System.Byte)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.BodyDef.#ctor(System.Byte)">
             <summary>
                 This constructor sets the body definition default values.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.MassData">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.MassData">
             <summary>
                 You can use this to initialized the mass properties of the body.
                 If you prefer, you can set the mass properties after the shapes
                 have been added using Body.SetMassFromShapes.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.UserData">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.UserData">
             <summary>
                 Use this to store application specific body data.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.Position">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.Position">
             <summary>
                 The world position of the body. Avoid creating bodies at the origin
                 since this can lead to many overlapping shapes.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.Angle">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.Angle">
             <summary>
                 The world angle of the body in radians.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.LinearVelocity">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.LinearVelocity">
             The linear velocity of the body in world co-ordinates.
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.AngularVelocity">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.AngularVelocity">
             <summary>
                 The angular velocity
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.LinearDamping">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.LinearDamping">
             <summary>
                 Linear damping is use to reduce the linear velocity. The damping parameter
                 can be larger than 1.0f but the damping effect becomes sensitive to the
                 time step when the damping parameter is large.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.AngularDamping">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.AngularDamping">
             <summary>
                 Angular damping is use to reduce the angular velocity. The damping parameter
                 can be larger than 1.0f but the damping effect becomes sensitive to the
                 time step when the damping parameter is large.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.AllowSleep">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.AllowSleep">
             <summary>
                 Set this flag to false if this body should never fall asleep. Note that
                 this increases CPU usage.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.IsSleeping">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.IsSleeping">
             <summary>
                 Is this body initially sleeping?
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.FixedRotation">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.FixedRotation">
             <summary>
                 Should this body be prevented from rotating? Useful for characters.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyDef.IsBullet">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyDef.IsBullet">
             <summary>
                 Is this a fast moving body that should be prevented from tunneling through
                 other moving bodies? Note that all bodies are prevented from tunneling through
@@ -17026,52 +17026,52 @@
                 @warning You should use this flag sparingly since it increases processing time.
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Bodys.BodyFlags">
+        <member name="T:Alis.Core.Physic.Dynamics.Body.BodyFlags">
             <summary>
                 The body flags enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyFlags.Frozen">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Frozen">
             <summary>
                 The frozen body flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyFlags.Island">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Island">
             <summary>
                 The island body flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyFlags.Sleep">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Sleep">
             <summary>
                 The sleep body flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyFlags.AllowSleep">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.AllowSleep">
             <summary>
                 The allow sleep body flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyFlags.Bullet">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.Bullet">
             <summary>
                 The bullet body flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyFlags.FixedRotation">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyFlags.FixedRotation">
             <summary>
                 The fixed rotation body flags
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Bodys.BodyType">
+        <member name="T:Alis.Core.Physic.Dynamics.Body.BodyType">
             <summary>
                 Body type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyType.Static">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyType.Static">
             <summary>
                 The static body type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Bodys.BodyType.Dynamic">
+        <member name="F:Alis.Core.Physic.Dynamics.Body.BodyType.Dynamic">
             <summary>
                 The dynamic body type
             </summary>
@@ -17199,44 +17199,41 @@
             </summary>
             <param name="contact">The contact</param>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Contacts.Contact">
-            <summary>
-                The contact class
-            </summary>
-            <summary>
-                The class manages contact between two shapes. A contact exists for each overlapping
-                AABB in the broad-phase (except if filtered). Therefore a contact object may exist
-                that has no contact points.
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Contacts.Contact.CollisionFlags">
+        <member name="T:Alis.Core.Physic.Dynamics.Contacts.CollisionFlags">
             <summary>
                 The collision flags enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollisionFlags.NonSolid">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.CollisionFlags.NonSolid">
             <summary>
                 The non solid collision flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollisionFlags.Slow">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.CollisionFlags.Slow">
             <summary>
                 The slow collision flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollisionFlags.Island">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.CollisionFlags.Island">
             <summary>
                 The island collision flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollisionFlags.Toi">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.CollisionFlags.Toi">
             <summary>
                 The toi collision flags
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollisionFlags.Touch">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.CollisionFlags.Touch">
             <summary>
                 The touch collision flags
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Dynamics.Contacts.Contact">
+            <summary>
+                The class manages contact between two shapes. A contact exists for each overlapping
+                AABB in the broad-phase (except if filtered). Therefore a contact object may exist
+                that has no contact points.
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollideShapeFunction">
@@ -17399,12 +17396,12 @@
                 The max manifold points
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.BodyA">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.BodyBaseA">
             <summary>
                 The body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.BodyB">
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactConstraint.BodyBaseB">
             <summary>
                 The body
             </summary>
@@ -18040,12 +18037,12 @@
                 Controllers override this to implement per-step functionality.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.AddBody(Alis.Core.Physic.Dynamics.Bodys.Body)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.AddBody(Alis.Core.Physic.Dynamics.Body.BodyBase)">
             <summary>
                 Adds a body to the controller list.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.RemoveBody(Alis.Core.Physic.Dynamics.Bodys.Body)">
+        <member name="M:Alis.Core.Physic.Dynamics.Controllers.Controller.RemoveBody(Alis.Core.Physic.Dynamics.Body.BodyBase)">
             <summary>
                 Removes a body from the controller list.
             </summary>
@@ -18076,7 +18073,7 @@
                 in a bipartite graph.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.Body">
+        <member name="F:Alis.Core.Physic.Dynamics.Controllers.ControllerEdge.BodyBase">
             <summary>
                 The body
             </summary>
@@ -18317,17 +18314,17 @@
                 Get the next fixture in the parent body's fixture list.
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Fixtures.Fixture.Body">
+        <member name="P:Alis.Core.Physic.Dynamics.Fixtures.Fixture.BodyBase">
             <summary>
                 Get the parent body of this fixture. This is NULL if the fixture is not attached.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Fixtures.Fixture.Create(Alis.Core.Physic.Collisions.BroadPhase,Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Aspect.Math.XForm,Alis.Core.Physic.Dynamics.Fixtures.FixtureDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Fixtures.Fixture.Create(Alis.Core.Physic.Collisions.BroadPhase,Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Aspect.Math.XForm,Alis.Core.Physic.Dynamics.Fixtures.FixtureDef)">
             <summary>
                 Creates the broad phase
             </summary>
             <param name="broadPhase">The broad phase</param>
-            <param name="body">The body</param>
+            <param name="bodyBase">The body</param>
             <param name="xf">The xf</param>
             <param name="def">The def</param>
         </member>
@@ -18625,11 +18622,11 @@
             </summary>
             <param name="subStep">The sub step</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Island.Add(Alis.Core.Physic.Dynamics.Bodys.Body)">
+        <member name="M:Alis.Core.Physic.Dynamics.Island.Add(Alis.Core.Physic.Dynamics.Body.BodyBase)">
             <summary>
                 Adds the body
             </summary>
-            <param name="body">The body</param>
+            <param name="bodyBase">The body</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Island.Add(Alis.Core.Physic.Dynamics.Contacts.Contact)">
             <summary>
@@ -19035,7 +19032,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joint.DistanceJointDef" /> class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJointDef.Initialize(Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJointDef.Initialize(Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Initialize the bodies, anchors, and length using the world anchors.
             </summary>
@@ -20202,7 +20199,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joint.LineJointDef" /> class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJointDef.Initialize(Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJointDef.Initialize(Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Initialize the bodies, anchors, axis, and reference angle using the world
                 anchor and world axis.
@@ -21051,7 +21048,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joint.PrismaticJointDef" /> class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJointDef.Initialize(Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJointDef.Initialize(Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2)">
             <summary>
                 Initialize the bodies, anchors, axis, and reference angle using the world
                 anchor and world axis.
@@ -21572,7 +21569,7 @@
                 The maximum length of the segment attached to body2.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJointDef.Initialize(Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJointDef.Initialize(Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,Alis.Aspect.Math.Vector2,System.Single)">
             Initialize the bodies, anchors, lengths, max lengths, and ratio using the world anchors.
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint">
@@ -22051,7 +22048,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joint.RevoluteJointDef" /> class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJointDef.Initialize(Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Core.Physic.Dynamics.Bodys.Body,Alis.Aspect.Math.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJointDef.Initialize(Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Core.Physic.Dynamics.Body.BodyBase,Alis.Aspect.Math.Vector2)">
             <summary>
                 Initialize the bodies, anchors, and reference angle using the world
                 anchor.
@@ -22142,7 +22139,7 @@
                 The contact manager
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.GroundBody">
+        <member name="P:Alis.Core.Physic.World.GroundBodyBase">
             <summary>
                 The ground bodyDef
             </summary>
@@ -22197,23 +22194,23 @@
                 Get\Set global gravity vector.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Bodys.Body)">
+        <member name="M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body.BodyBase)">
             <summary>
                 Create a rigid bodyDef given a definition. No reference to the definition
                 is retained.
                 @warning This function is locked during callbacks.
             </summary>
-            <param name="body"></param>
+            <param name="bodyBase"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Bodys.Body)">
+        <member name="M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body.BodyBase)">
             <summary>
                 Destroy a rigid bodyDef given a definition. No reference to the definition
                 is retained. This function is locked during callbacks.
                 @warning This automatically deletes all associated shapes and joints.
                 @warning This function is locked during callbacks.
             </summary>
-            <param name="body"></param>
+            <param name="bodyBase"></param>
         </member>
         <member name="M:Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joint.IJoint)">
             <summary>

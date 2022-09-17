@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Memory
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
     ///     The example class

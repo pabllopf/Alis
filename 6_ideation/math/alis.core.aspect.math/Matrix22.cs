@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Math
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
     ///     A 2-by-2 matrix. Stored in column-major order.

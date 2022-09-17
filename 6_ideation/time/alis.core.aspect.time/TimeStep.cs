@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Aspect.Time
+namespace Alis.Core.Aspect.Time
 {
     /// <summary>
     ///     The time step

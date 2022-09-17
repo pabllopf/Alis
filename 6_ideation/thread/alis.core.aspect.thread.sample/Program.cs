@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Aspect.Thread.Sample
+namespace Alis.Core.Aspect.Thread.Sample
 {
     /// <summary>
     ///     The program class
