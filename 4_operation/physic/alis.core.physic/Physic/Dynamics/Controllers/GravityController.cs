@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -74,10 +74,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             {
                 for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
                 {
-                    Body body1 = i.Body;
+                    BodyBase body1 = i.BodyBase;
                     for (ControllerEdge j = BodyList; j != i; j = j.NextBody)
                     {
-                        Body body2 = j.Body;
+                        BodyBase body2 = j.BodyBase;
                         Vector2 d = body2.GetWorldCenter() - body1.GetWorldCenter();
                         float r2 = d.LengthSquared();
                         if (r2 < Settings.FltEpsilon)
@@ -95,10 +95,10 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             {
                 for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
                 {
-                    Body body1 = i.Body;
+                    BodyBase body1 = i.BodyBase;
                     for (ControllerEdge j = BodyList; j != i; j = j.NextBody)
                     {
-                        Body body2 = j.Body;
+                        BodyBase body2 = j.BodyBase;
                         Vector2 d = body2.GetWorldCenter() - body1.GetWorldCenter();
                         float r2 = d.LengthSquared();
                         if (r2 < Settings.FltEpsilon)

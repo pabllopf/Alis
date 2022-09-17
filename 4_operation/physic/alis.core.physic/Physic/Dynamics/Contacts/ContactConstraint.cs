@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -46,12 +46,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     The body
         /// </summary>
-        public Body BodyA;
+        public BodyBase BodyBaseA;
 
         /// <summary>
         ///     The body
         /// </summary>
-        public Body BodyB;
+        public BodyBase BodyBaseB;
 
         /// <summary>
         ///     The friction

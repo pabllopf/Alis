@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Fixtures;
 using Moq;
 using Xunit;
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Test
             World world = CreateWorld();
 
             // Act
-            List<Body> result = world.BodyList;
+            List<BodyBase> result = world.BodyList;
 
             // Assert
             Assert.True(true);

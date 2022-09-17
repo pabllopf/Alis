@@ -31,7 +31,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shape;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Fixtures
 {
@@ -110,16 +110,16 @@ namespace Alis.Core.Physic.Dynamics.Fixtures
         /// <summary>
         ///     Get the parent body of this fixture. This is NULL if the fixture is not attached.
         /// </summary>
-        public Body Body { get; internal set; }
+        public BodyBase BodyBase { get; internal set; }
 
         /// <summary>
         ///     Creates the broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
-        /// <param name="body">The body</param>
+        /// <param name="bodyBase">The body</param>
         /// <param name="xf">The xf</param>
         /// <param name="def">The def</param>
-        public void Create(BroadPhase broadPhase, Body body, XForm xf, FixtureDef def)
+        public void Create(BroadPhase broadPhase, BodyBase bodyBase, XForm xf, FixtureDef def)
         {
             FixtureDef = def;
             UserData = def.UserData;
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Dynamics.Fixtures
             Restitution = def.Restitution;
             Density = def.Density;
 
-            Body = body;
+            BodyBase = bodyBase;
             Next = null;
 
             Filter = def.Filter;
@@ -294,13 +294,13 @@ namespace Alis.Core.Physic.Dynamics.Fixtures
         /// <param name="offset">Offset the surface offset along normal.</param>
         /// <param name="c">Returns the centroid.</param>
         /// <returns>The total volume less than offset along normal.</returns>
-        public float ComputeSubmergedArea(Vector2 normal, float offset, out Vector2 c) => Shape.ComputeSubmergedArea(normal, offset, Body.GetXForm(), out c);
+        public float ComputeSubmergedArea(Vector2 normal, float offset, out Vector2 c) => Shape.ComputeSubmergedArea(normal, offset, BodyBase.GetXForm(), out c);
 
         /// <summary>
         ///     Test a point for containment in this fixture. This only works for convex shapes.
         /// </summary>
         /// <param name="p">A point in world coordinates.</param>
-        public bool TestPoint(Vector2 p) => Shape.TestPoint(Body.GetXForm(), p);
+        public bool TestPoint(Vector2 p) => Shape.TestPoint(BodyBase.GetXForm(), p);
 
         /// <summary>
         ///     Perform a ray cast against this shape.
@@ -315,7 +315,7 @@ namespace Alis.Core.Physic.Dynamics.Fixtures
         /// </param>
         /// <param name="segment">Defines the begin and end point of the ray cast.</param>
         /// <param name="maxLambda">A number typically in the range [0,1].</param>
-        public SegmentCollide TestSegment(out float lambda, out Vector2 normal, Segment segment, float maxLambda) => Shape.TestSegment(Body.GetXForm(), out lambda, out normal, segment, maxLambda);
+        public SegmentCollide TestSegment(out float lambda, out Vector2 normal, Segment segment, float maxLambda) => Shape.TestSegment(BodyBase.GetXForm(), out lambda, out normal, segment, maxLambda);
 
         /// <summary>
         ///     Get the maximum radius about the parent body's center of mass.

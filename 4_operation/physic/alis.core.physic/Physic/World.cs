@@ -33,7 +33,7 @@ using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Fixtures;
@@ -58,7 +58,7 @@ namespace Alis.Core.Physic
             ContactFilter = new ContactFilter();
             ContactListener = default(IContactListener);
 
-            BodyList = new List<Body>();
+            BodyList = new List<BodyBase>();
             ContactList = new List<Contact>();
             JointList = new List<IJoint>();
             ControllerList = new List<Controller>();
@@ -73,7 +73,7 @@ namespace Alis.Core.Physic
             ContactManager = new ContactManager(this);
 
             BroadPhase = new BroadPhase(worldAabb, ContactManager);
-            GroundBody = new Body(new BodyDef(), this);
+            GroundBodyBase = new BodyBase(new BodyDef(), this);
         }
 
         /// <summary>
@@ -89,12 +89,12 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The ground bodyDef
         /// </summary>
-        public Body GroundBody { get; }
+        public BodyBase GroundBodyBase { get; }
 
         /// <summary>
         ///     The bodyDef list
         /// </summary>
-        public List<Body> BodyList { get; }
+        public List<BodyBase> BodyList { get; }
 
         /// <summary>
         ///     The broad phase
@@ -146,9 +146,9 @@ namespace Alis.Core.Physic
         ///     is retained.
         ///     @warning This function is locked during callbacks.
         /// </summary>
-        /// <param name="body"></param>
+        /// <param name="bodyBase"></param>
         /// <returns></returns>
-        public void AddBody(Body body) => BodyList.Add(body);
+        public void AddBody(BodyBase bodyBase) => BodyList.Add(bodyBase);
 
         /// <summary>
         ///     Destroy a rigid bodyDef given a definition. No reference to the definition
@@ -156,8 +156,8 @@ namespace Alis.Core.Physic
         ///     @warning This automatically deletes all associated shapes and joints.
         ///     @warning This function is locked during callbacks.
         /// </summary>
-        /// <param name="body"></param>
-        public void RemoveBody(Body body) => BodyList.Remove(body);
+        /// <param name="bodyBase"></param>
+        public void RemoveBody(BodyBase bodyBase) => BodyList.Remove(bodyBase);
 
         /// <summary>
         ///     Create a joint to constrain bodies together. No reference to the definition
@@ -253,7 +253,7 @@ namespace Alis.Core.Physic
 
             for (int i = 0; i < ContactList.Count; i++)
             {
-                ContactList[i].Flags &= ~Contact.CollisionFlags.Island;
+                ContactList[i].Flags &= ~CollisionFlags.Island;
             }
 
             for (int i = 0; i < JointList.Count; i++)
@@ -264,7 +264,7 @@ namespace Alis.Core.Physic
             // Build and simulate all awake islands.
             int stackSize = BodyList.Count;
             {
-                Body[] stack = new Body[stackSize];
+                BodyBase[] stack = new BodyBase[stackSize];
 
                 for (int j = 0; j < BodyList.Count; j++)
                 {
@@ -288,7 +288,7 @@ namespace Alis.Core.Physic
                     while (stackCount > 0)
                     {
                         // Grab the next bodyDef off the stack and add it to the island.
-                        Body b = stack[--stackCount];
+                        BodyBase b = stack[--stackCount];
                         island.Add(b);
 
                         // Make sure the bodyDef is awake.
@@ -306,21 +306,21 @@ namespace Alis.Core.Physic
                         {
                             // Has this contact already been added to an island?
                             if ((cn.Contact.Flags &
-                                 (Contact.CollisionFlags.Island | Contact.CollisionFlags.NonSolid)) != 0)
+                                 (CollisionFlags.Island | CollisionFlags.NonSolid)) != 0)
                             {
                                 continue;
                             }
 
                             // Is this contact touching?
-                            if ((cn.Contact.Flags & Contact.CollisionFlags.Touch) == 0)
+                            if ((cn.Contact.Flags & CollisionFlags.Touch) == 0)
                             {
                                 continue;
                             }
 
                             island.Add(cn.Contact);
-                            cn.Contact.Flags |= Contact.CollisionFlags.Island;
+                            cn.Contact.Flags |= CollisionFlags.Island;
 
-                            Body other = cn.Other;
+                            BodyBase other = cn.Other;
 
                             // Was the other bodyDef already added to this island?
                             if ((other.Flags & BodyFlags.Island) != 0)
@@ -344,7 +344,7 @@ namespace Alis.Core.Physic
                             island.Add(jn.Joint);
                             jn.Joint.IslandFlag = true;
 
-                            Body other = jn.Other;
+                            BodyBase other = jn.Other;
                             if ((other.Flags & BodyFlags.Island) != 0)
                             {
                                 continue;
@@ -362,7 +362,7 @@ namespace Alis.Core.Physic
                     for (int i = 0; i < island.BodyCount; ++i)
                     {
                         // Allow static bodies to participate in other islands.
-                        Body b = island.Bodies[i];
+                        BodyBase b = island.Bodies[i];
                         if (b.IsStatic())
                         {
                             b.Flags &= ~BodyFlags.Island;
@@ -418,7 +418,7 @@ namespace Alis.Core.Physic
             //	poppedElement = queue[queueStart++];
             //  --queueSize;
             int queueCapacity = BodyList.Count;
-            Body[] queue = new Body[queueCapacity];
+            BodyBase[] queue = new BodyBase[queueCapacity];
 
             for (int i = 0; i < BodyList.Count; i++)
             {
@@ -429,7 +429,7 @@ namespace Alis.Core.Physic
             for (int i = 0; i < ContactList.Count; i++)
             {
                 // Invalidate TOI
-                ContactList[i].Flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
+                ContactList[i].Flags &= ~(CollisionFlags.Toi | CollisionFlags.Island);
             }
 
             for (int j = 0; j < JointList.Count; j++)
@@ -446,7 +446,7 @@ namespace Alis.Core.Physic
 
                 for (int i = 0; i < ContactList.Count; i++)
                 {
-                    if ((int) (ContactList[i].Flags & (Contact.CollisionFlags.Slow | Contact.CollisionFlags.NonSolid)) == 1)
+                    if ((int) (ContactList[i].Flags & (CollisionFlags.Slow | CollisionFlags.NonSolid)) == 1)
                     {
                         continue;
                     }
@@ -454,7 +454,7 @@ namespace Alis.Core.Physic
                     // TODO_ERIN keep a counter on the contact, only respond to M TOIs per contact.
 
                     float toi;
-                    if ((int) (ContactList[i].Flags & Contact.CollisionFlags.Toi) == 1)
+                    if ((int) (ContactList[i].Flags & CollisionFlags.Toi) == 1)
                     {
                         // This contact has a valid cached TOI.
                         toi = ContactList[i].Toi;
@@ -464,8 +464,8 @@ namespace Alis.Core.Physic
                         // Compute the TOI for this contact.
                         Fixture s1 = ContactList[i].FixtureA;
                         Fixture s2 = ContactList[i].FixtureB;
-                        Body b1 = s1.Body;
-                        Body b2 = s2.Body;
+                        BodyBase b1 = s1.BodyBase;
+                        BodyBase b2 = s2.BodyBase;
 
                         if ((b1.IsStatic() || b1.IsSleeping()) && (b2.IsStatic() || b2.IsSleeping()))
                         {
@@ -503,7 +503,7 @@ namespace Alis.Core.Physic
 
 
                         ContactList[i].Toi = toi;
-                        ContactList[i].Flags |= Contact.CollisionFlags.Toi;
+                        ContactList[i].Flags |= CollisionFlags.Toi;
                     }
 
                     if ((Settings.FltEpsilon < toi) && (toi < minToi))
@@ -523,16 +523,16 @@ namespace Alis.Core.Physic
                 // Advance the bodies to the TOI.
                 Fixture f1 = minContact.FixtureA;
                 Fixture f2 = minContact.FixtureB;
-                Body b3 = f1.Body;
-                Body b4 = f2.Body;
+                BodyBase b3 = f1.BodyBase;
+                BodyBase b4 = f2.BodyBase;
                 b3.Advance(minToi);
                 b4.Advance(minToi);
 
                 // The TOI contact likely has some new contact points.
                 minContact.Update(ContactListener);
-                minContact.Flags &= ~Contact.CollisionFlags.Toi;
+                minContact.Flags &= ~CollisionFlags.Toi;
 
-                if ((minContact.Flags & Contact.CollisionFlags.Touch) == 0)
+                if ((minContact.Flags & CollisionFlags.Touch) == 0)
                 {
                     // This shouldn't happen. Numerical error?
                     //b2Assert(false);
@@ -540,7 +540,7 @@ namespace Alis.Core.Physic
                 }
 
                 // Build the TOI island. We need a dynamic seed.
-                Body seed = b3;
+                BodyBase seed = b3;
                 if (seed.IsStatic())
                 {
                     seed = b4;
@@ -558,7 +558,7 @@ namespace Alis.Core.Physic
                 while (queueSize > 0)
                 {
                     // Grab the next bodyDef off the stack and add it to the island.
-                    Body b = queue[queueStart++];
+                    BodyBase b = queue[queueStart++];
                     --queueSize;
 
                     island.Add(b);
@@ -583,23 +583,23 @@ namespace Alis.Core.Physic
                         }
 
                         // Has this contact already been added to an island? Skip slow or non-solid contacts.
-                        if ((int) (cEdge.Contact.Flags & (Contact.CollisionFlags.Island | Contact.CollisionFlags.Slow |
-                                                          Contact.CollisionFlags.NonSolid)) != 0)
+                        if ((int) (cEdge.Contact.Flags & (CollisionFlags.Island | CollisionFlags.Slow |
+                                                          CollisionFlags.NonSolid)) != 0)
                         {
                             continue;
                         }
 
                         // Is this contact touching? For performance we are not updating this contact.
-                        if ((cEdge.Contact.Flags & Contact.CollisionFlags.Touch) == 0)
+                        if ((cEdge.Contact.Flags & CollisionFlags.Touch) == 0)
                         {
                             continue;
                         }
 
                         island.Add(cEdge.Contact);
-                        cEdge.Contact.Flags |= Contact.CollisionFlags.Island;
+                        cEdge.Contact.Flags |= CollisionFlags.Island;
 
                         // Update other bodyDef.
-                        Body other = cEdge.Other;
+                        BodyBase other = cEdge.Other;
 
                         // Was the other bodyDef already added to this island?
                         if ((int) (other.Flags & BodyFlags.Island) == 1)
@@ -636,7 +636,7 @@ namespace Alis.Core.Physic
 
                         jEdge.Joint.IslandFlag = true;
 
-                        Body other = jEdge.Other;
+                        BodyBase other = jEdge.Other;
 
                         if ((int) (other.Flags & BodyFlags.Island) == 1)
                         {
@@ -670,7 +670,7 @@ namespace Alis.Core.Physic
                 for (int i = 0; i < island.BodyCount; ++i)
                 {
                     // Allow bodies to participate in future TOI islands.
-                    Body b = island.Bodies[i];
+                    BodyBase b = island.Bodies[i];
                     b.Flags &= ~BodyFlags.Island;
 
                     if ((int) (b.Flags & (BodyFlags.Sleep | BodyFlags.Frozen)) == 1)
@@ -692,7 +692,7 @@ namespace Alis.Core.Physic
                     // may not be in the island because they were not touching.
                     for (ContactEdge cn = b.ContactList; cn != null; cn = cn.Next)
                     {
-                        cn.Contact.Flags &= ~Contact.CollisionFlags.Toi;
+                        cn.Contact.Flags &= ~CollisionFlags.Toi;
                     }
                 }
 
@@ -700,7 +700,7 @@ namespace Alis.Core.Physic
                 {
                     // Allow contacts to participate in future TOI islands.
                     Contact c = island.Contacts[i];
-                    c.Flags &= ~(Contact.CollisionFlags.Toi | Contact.CollisionFlags.Island);
+                    c.Flags &= ~(CollisionFlags.Toi | CollisionFlags.Island);
                 }
 
                 for (int i = 0; i < island.JointCount; ++i)

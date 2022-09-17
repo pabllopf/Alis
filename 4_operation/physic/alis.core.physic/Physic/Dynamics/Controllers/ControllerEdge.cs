@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -40,7 +40,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         ///     The body
         /// </summary>
-        public Body Body; // the body
+        public BodyBase BodyBase; // the body
 
         /// <summary>
         ///     The controller

@@ -49,7 +49,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// The ground
         /// </summary>
-        private readonly Body ground;
+        private readonly BodyBase ground;
         /// <summary>
         /// The ground anchor
         /// </summary>
@@ -162,11 +162,11 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// The body
         /// </summary>
-        private Body body1;
+        private BodyBase body1;
         /// <summary>
         /// The body
         /// </summary>
-        private Body body2;
+        private BodyBase body2;
         /// <summary>
         /// The island flag
         /// </summary>
@@ -225,7 +225,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             islandFlag = false;
             UserData = def.UserData;
             
-            ground = Body1.GetWorld().GroundBody;
+            ground = Body1.GetWorld().GroundBodyBase;
             groundAnchor1 = def.GroundAnchor1 - Ground.GetXForm().Position;
             groundAnchor2 = def.GroundAnchor2 - Ground.GetXForm().Position;
             localAnchor1 = def.LocalAnchor1;
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         ///     The ground
         /// </summary>
-        public Body Ground => ground;
+        public BodyBase Ground => ground;
 
         /// <summary>
         ///     The ground anchor
@@ -423,7 +423,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// Gets or sets the value of the body 1
         /// </summary>
-        public Body Body1
+        public BodyBase Body1
         {
             get => body1;
             set => body1 = value;
@@ -432,7 +432,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// Gets or sets the value of the body 2
         /// </summary>
-        public Body Body2
+        public BodyBase Body2
         {
             get => body2;
             set => body2 = value;
@@ -596,8 +596,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <param name="step">The step</param>
         internal  void InitVelocityConstraints(TimeStep step)
         {
-            Body body1 = Body1;
-            Body body2 = Body2;
+            BodyBase body1 = Body1;
+            BodyBase body2 = Body2;
 
             Vector2 mulR1 = Helper.Mul(body1.GetXForm().R, LocalAnchor1 - body1.GetLocalCenter());
             Vector2 mulR2 = Helper.Mul(body2.GetXForm().R, LocalAnchor2 - body2.GetLocalCenter());
@@ -732,8 +732,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <param name="step">The step</param>
         internal void SolveVelocityConstraints(TimeStep step)
         {
-            Body b1 = Body1;
-            Body b2 = Body2;
+            BodyBase b1 = Body1;
+            BodyBase b2 = Body2;
 
             Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
             Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
@@ -795,8 +795,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <returns>The bool</returns>
         internal  bool SolvePositionConstraints(float baumgarte)
         {
-            Body body1 = Body1;
-            Body body2 = Body2;
+            BodyBase body1 = Body1;
+            BodyBase body2 = Body2;
 
             Vector2 groundAnchor1 = Ground.GetXForm().Position + GroundAnchor1;
             Vector2 groundAnchor2 = Ground.GetXForm().Position + GroundAnchor2;

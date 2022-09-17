@@ -35,7 +35,7 @@ using Alis.Aspect.Math;
 using Alis.Aspect.Time;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shape;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
@@ -84,26 +84,26 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 IShape shapeB = fixtureB.Shape;
                 float radiusA = shapeA.GetRadius();
                 float radiusB = shapeB.GetRadius();
-                Body bodyA = fixtureA.Body;
-                Body bodyB = fixtureB.Body;
+                BodyBase bodyBaseA = fixtureA.BodyBase;
+                BodyBase bodyBaseB = fixtureB.BodyBase;
                 Manifold manifold = contact.Manifold;
 
                 float friction = Settings.MixFriction(fixtureA.Friction, fixtureB.Friction);
                 float restitution = Settings.MixRestitution(fixtureA.Restitution, fixtureB.Restitution);
 
-                Vector2 vA = bodyA.LinearVelocity;
-                Vector2 vB = bodyB.LinearVelocity;
-                float wA = bodyA.AngularVelocity;
-                float wB = bodyB.AngularVelocity;
+                Vector2 vA = bodyBaseA.LinearVelocity;
+                Vector2 vB = bodyBaseB.LinearVelocity;
+                float wA = bodyBaseA.AngularVelocity;
+                float wB = bodyBaseB.AngularVelocity;
 
                 Box2DxDebug.Assert(manifold.PointCount > 0);
 
                 WorldManifold worldManifold = new WorldManifold();
-                worldManifold.Initialize(manifold, bodyA.Xf, radiusA, bodyB.Xf, radiusB);
+                worldManifold.Initialize(manifold, bodyBaseA.Xf, radiusA, bodyBaseB.Xf, radiusB);
 
                 ContactConstraint cc = Constraints[i];
-                cc.BodyA = bodyA;
-                cc.BodyB = bodyB;
+                cc.BodyBaseA = bodyBaseA;
+                cc.BodyBaseB = bodyBaseB;
                 cc.Manifold = manifold;
                 cc.Normal = worldManifold.Normal;
                 cc.PointCount = manifold.PointCount;
@@ -129,21 +129,21 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                             ccp->LocalPoint = cp.LocalPoint;
 
-                            ccp->Ra = worldManifold.Points[j] - bodyA.Sweep.C;
-                            ccp->Rb = worldManifold.Points[j] - bodyB.Sweep.C;
+                            ccp->Ra = worldManifold.Points[j] - bodyBaseA.Sweep.C;
+                            ccp->Rb = worldManifold.Points[j] - bodyBaseB.Sweep.C;
 
                             float rnA = Vector2.Cross(ccp->Ra, cc.Normal);
                             float rnB = Vector2.Cross(ccp->Rb, cc.Normal);
                             rnA *= rnA;
                             rnB *= rnB;
 
-                            float kNormal = bodyA.InvMass + bodyB.InvMass + bodyA.InvI * rnA + bodyB.InvI * rnB;
+                            float kNormal = bodyBaseA.InvMass + bodyBaseB.InvMass + bodyBaseA.InvI * rnA + bodyBaseB.InvI * rnB;
 
                             Box2DxDebug.Assert(kNormal > Settings.FltEpsilon);
                             ccp->NormalMass = 1.0f / kNormal;
 
-                            float kEqualized = bodyA.Mass * bodyA.InvMass + bodyB.Mass * bodyB.InvMass;
-                            kEqualized += bodyA.Mass * bodyA.InvI * rnA + bodyB.Mass * bodyB.InvI * rnB;
+                            float kEqualized = bodyBaseA.Mass * bodyBaseA.InvMass + bodyBaseB.Mass * bodyBaseB.InvMass;
+                            kEqualized += bodyBaseA.Mass * bodyBaseA.InvI * rnA + bodyBaseB.Mass * bodyBaseB.InvI * rnB;
 
                             Box2DxDebug.Assert(kEqualized > Settings.FltEpsilon);
                             ccp->EqualizedMass = 1.0f / kEqualized;
@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             rtA *= rtA;
                             rtB *= rtB;
 
-                            float kTangent = bodyA.InvMass + bodyB.InvMass + bodyA.InvI * rtA + bodyB.InvI * rtB;
+                            float kTangent = bodyBaseA.InvMass + bodyBaseB.InvMass + bodyBaseA.InvI * rtA + bodyBaseB.InvI * rtB;
 
                             Box2DxDebug.Assert(kTangent > Settings.FltEpsilon);
                             ccp->TangentMass = 1.0f / kTangent;
@@ -176,10 +176,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             ContactConstraintPoint* ccp1 = &ccPointsPtr[0];
                             ContactConstraintPoint* ccp2 = &ccPointsPtr[1];
 
-                            float invMassA = bodyA.InvMass;
-                            float invIa = bodyA.InvI;
-                            float invMassB = bodyB.InvMass;
-                            float invIb = bodyB.InvI;
+                            float invMassA = bodyBaseA.InvMass;
+                            float invIa = bodyBaseA.InvI;
+                            float invMassB = bodyBaseB.InvMass;
+                            float invIb = bodyBaseB.InvI;
 
                             float rn1A = Vector2.Cross(ccp1->Ra, cc.Normal);
                             float rn1B = Vector2.Cross(ccp1->Rb, cc.Normal);
@@ -242,12 +242,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 {
                     ContactConstraint c = Constraints[i];
 
-                    Body bodyA = c.BodyA;
-                    Body bodyB = c.BodyB;
-                    float invMassA = bodyA.InvMass;
-                    float invIa = bodyA.InvI;
-                    float invMassB = bodyB.InvMass;
-                    float invIb = bodyB.InvI;
+                    BodyBase bodyBaseA = c.BodyBaseA;
+                    BodyBase bodyBaseB = c.BodyBaseB;
+                    float invMassA = bodyBaseA.InvMass;
+                    float invIa = bodyBaseA.InvI;
+                    float invMassB = bodyBaseB.InvMass;
+                    float invIb = bodyBaseB.InvI;
                     Vector2 normal = c.Normal;
                     Vector2 tangent = Vector2.Cross(normal, 1.0f);
 
@@ -261,10 +261,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                                 ccp->NormalImpulse *= step.DtRatio;
                                 ccp->TangentImpulse *= step.DtRatio;
                                 Vector2 p = ccp->NormalImpulse * normal + ccp->TangentImpulse * tangent;
-                                bodyA.AngularVelocity -= invIa * Vector2.Cross(ccp->Ra, p);
-                                bodyA.LinearVelocity -= invMassA * p;
-                                bodyB.AngularVelocity += invIb * Vector2.Cross(ccp->Rb, p);
-                                bodyB.LinearVelocity += invMassB * p;
+                                bodyBaseA.AngularVelocity -= invIa * Vector2.Cross(ccp->Ra, p);
+                                bodyBaseA.LinearVelocity -= invMassA * p;
+                                bodyBaseB.AngularVelocity += invIb * Vector2.Cross(ccp->Rb, p);
+                                bodyBaseB.LinearVelocity += invMassB * p;
                             }
                         }
                         else
@@ -289,16 +289,16 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             for (int i = 0; i < ConstraintCount; ++i)
             {
                 ContactConstraint c = Constraints[i];
-                Body bodyA = c.BodyA;
-                Body bodyB = c.BodyB;
-                float wA = bodyA.AngularVelocity;
-                float wB = bodyB.AngularVelocity;
-                Vector2 vA = bodyA.LinearVelocity;
-                Vector2 vB = bodyB.LinearVelocity;
-                float invMassA = bodyA.InvMass;
-                float invIa = bodyA.InvI;
-                float invMassB = bodyB.InvMass;
-                float invIb = bodyB.InvI;
+                BodyBase bodyBaseA = c.BodyBaseA;
+                BodyBase bodyBaseB = c.BodyBaseB;
+                float wA = bodyBaseA.AngularVelocity;
+                float wB = bodyBaseB.AngularVelocity;
+                Vector2 vA = bodyBaseA.LinearVelocity;
+                Vector2 vB = bodyBaseB.LinearVelocity;
+                float invMassA = bodyBaseA.InvMass;
+                float invIa = bodyBaseA.InvI;
+                float invMassB = bodyBaseB.InvMass;
+                float invIb = bodyBaseB.InvI;
                 Vector2 normal = c.Normal;
                 Vector2 tangent = Vector2.Cross(normal, 1.0f);
                 float friction = c.Friction;
@@ -582,10 +582,10 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                             }
                         }
 
-                        bodyA.LinearVelocity = vA;
-                        bodyA.AngularVelocity = wA;
-                        bodyB.LinearVelocity = vB;
-                        bodyB.AngularVelocity = wB;
+                        bodyBaseA.LinearVelocity = vA;
+                        bodyBaseA.AngularVelocity = wA;
+                        bodyBaseB.LinearVelocity = vB;
+                        bodyBaseB.AngularVelocity = wB;
                     }
                 }
             }
@@ -621,13 +621,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             for (int i = 0; i < ConstraintCount; ++i)
             {
                 ContactConstraint c = Constraints[i];
-                Body bodyA = c.BodyA;
-                Body bodyB = c.BodyB;
+                BodyBase bodyBaseA = c.BodyBaseA;
+                BodyBase bodyBaseB = c.BodyBaseB;
 
-                float invMassA = bodyA.Mass * bodyA.InvMass;
-                float invIa = bodyA.Mass * bodyA.InvI;
-                float invMassB = bodyB.Mass * bodyB.InvMass;
-                float invIb = bodyB.Mass * bodyB.InvI;
+                float invMassA = bodyBaseA.Mass * bodyBaseA.InvMass;
+                float invIa = bodyBaseA.Mass * bodyBaseA.InvI;
+                float invMassB = bodyBaseB.Mass * bodyBaseB.InvMass;
+                float invIb = bodyBaseB.Mass * bodyBaseB.InvI;
 
                 SPositionSolverManifold.Initialize(c);
                 Vector2 normal = SPositionSolverManifold.Normal;
@@ -638,8 +638,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                     Vector2 point = SPositionSolverManifold.Points[j];
                     float separation = SPositionSolverManifold.Separations[j];
 
-                    Vector2 rA = point - bodyA.Sweep.C;
-                    Vector2 rB = point - bodyB.Sweep.C;
+                    Vector2 rA = point - bodyBaseA.Sweep.C;
+                    Vector2 rB = point - bodyBaseB.Sweep.C;
 
                     // Track max constraint error.
                     minSeparation = Helper.Min(minSeparation, separation);
@@ -654,13 +654,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                     Vector2 p = impulse * normal;
 
-                    bodyA.Sweep.C -= invMassA * p;
-                    bodyA.Sweep.A -= invIa * Vector2.Cross(rA, p);
-                    bodyA.SynchronizeTransform();
+                    bodyBaseA.Sweep.C -= invMassA * p;
+                    bodyBaseA.Sweep.A -= invIa * Vector2.Cross(rA, p);
+                    bodyBaseA.SynchronizeTransform();
 
-                    bodyB.Sweep.C += invMassB * p;
-                    bodyB.Sweep.A += invIb * Vector2.Cross(rB, p);
-                    bodyB.SynchronizeTransform();
+                    bodyBaseB.Sweep.C += invMassB * p;
+                    bodyBaseB.Sweep.A += invIb * Vector2.Cross(rB, p);
+                    bodyBaseB.SynchronizeTransform();
                 }
             }
 

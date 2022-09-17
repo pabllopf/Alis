@@ -30,7 +30,7 @@
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 
-namespace Alis.Core.Physic.Dynamics.Bodys
+namespace Alis.Core.Physic.Dynamics.Body
 {
     /// <summary>
     ///     A body definition holds all the data needed to construct a rigid body.

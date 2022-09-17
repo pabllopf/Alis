@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
@@ -108,8 +108,8 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
             for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
-                Body body = i.Body;
-                if (body.IsSleeping())
+                BodyBase bodyBase = i.BodyBase;
+                if (bodyBase.IsSleeping())
                 {
                     //Buoyancy force is just a function of position,
                     //so unlike most forces, it is safe to ignore sleeping bodes
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 Vector2 massc = new Vector2(0, 0);
                 float area = 0;
                 float mass = 0;
-                for (Fixture shape = body.GetFixtureList(); shape != null; shape = shape.Next)
+                for (Fixture shape = bodyBase.GetFixtureList(); shape != null; shape = shape.Next)
                 {
                     Vector2 sc;
                     float sarea = shape.ComputeSubmergedArea(Normal, Offset, out sc);
@@ -154,13 +154,13 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
                 //Buoyancy
                 Vector2 buoyancyForce = -Density * area * Gravity;
-                body.ApplyForce(buoyancyForce, massc);
+                bodyBase.ApplyForce(buoyancyForce, massc);
                 //Linear drag
-                Vector2 dragForce = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
+                Vector2 dragForce = bodyBase.GetLinearVelocityFromWorldPoint(areac) - Velocity;
                 dragForce *= -LinearDrag * area;
-                body.ApplyForce(dragForce, areac);
+                bodyBase.ApplyForce(dragForce, areac);
                 //Angular drag
-                body.ApplyTorque(-body.GetInertia() / body.GetMass() * area * body.GetAngularVelocity() * angularDrag);
+                bodyBase.ApplyTorque(-bodyBase.GetInertia() / bodyBase.GetMass() * area * bodyBase.GetAngularVelocity() * angularDrag);
             }
         }
     }

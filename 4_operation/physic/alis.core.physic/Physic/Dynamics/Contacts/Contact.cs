@@ -31,7 +31,7 @@ using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Collisions.Shape;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     ///     AABB in the broad-phase (except if filtered). Therefore a contact object may exist
     ///     that has no contact points.
     /// </summary>
-    public abstract partial class Contact
+    public abstract class Contact
     {
         /// <summary>
         ///     The collide shape function
@@ -246,8 +246,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             if (contact.Manifold.PointCount > 0)
             {
-                contact.FixtureA.Body.WakeUp();
-                contact.FixtureB.Body.WakeUp();
+                contact.FixtureA.BodyBase.WakeUp();
+                contact.FixtureB.BodyBase.WakeUp();
             }
 
             ShapeType typeA = contact.FixtureA.ShapeType;
@@ -270,20 +270,20 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
             Evaluate();
 
-            Body bodyA = FixtureA.Body;
-            Body bodyB = FixtureB.Body;
+            BodyBase bodyBaseA = FixtureA.BodyBase;
+            BodyBase bodyBaseB = FixtureB.BodyBase;
 
             int oldCount = oldManifold.PointCount;
             int newCount = Manifold.PointCount;
 
             if ((newCount == 0) && (oldCount > 0))
             {
-                bodyA.WakeUp();
-                bodyB.WakeUp();
+                bodyBaseA.WakeUp();
+                bodyBaseB.WakeUp();
             }
 
             // Slow contacts don't generate TOI events.
-            if (bodyA.IsStatic() || bodyA.IsBullet() || bodyB.IsStatic() || bodyB.IsBullet())
+            if (bodyBaseA.IsStatic() || bodyBaseA.IsBullet() || bodyBaseB.IsStatic() || bodyBaseB.IsBullet())
             {
                 Flags &= ~CollisionFlags.Slow;
             }
@@ -352,12 +352,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// </summary>
         public void Evaluate()
         {
-            Body bodyA = FixtureA.Body;
-            Body bodyB = FixtureB.Body;
+            BodyBase bodyBaseA = FixtureA.BodyBase;
+            BodyBase bodyBaseB = FixtureB.BodyBase;
 
             Box2DxDebug.Assert(CollideShapeFunction != null);
 
-            CollideShapeFunction(ref manifold, FixtureA.Shape, bodyA.GetXForm(), FixtureB.Shape, bodyB.GetXForm());
+            CollideShapeFunction(ref manifold, FixtureA.Shape, bodyBaseA.GetXForm(), FixtureB.Shape, bodyBaseB.GetXForm());
         }
 
         /// <summary>
@@ -385,12 +385,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         {
             worldManifold = new WorldManifold();
 
-            Body bodyA = FixtureA.Body;
-            Body bodyB = FixtureB.Body;
+            BodyBase bodyBaseA = FixtureA.BodyBase;
+            BodyBase bodyBaseB = FixtureB.BodyBase;
             IShape shapeA = FixtureA.Shape;
             IShape shapeB = FixtureB.Shape;
 
-            worldManifold.Initialize(Manifold, bodyA.GetXForm(), shapeA.GetRadius(), bodyB.GetXForm(), shapeB.GetRadius());
+            worldManifold.Initialize(Manifold, bodyBaseA.GetXForm(), shapeA.GetRadius(), bodyBaseB.GetXForm(), shapeB.GetRadius());
         }
 
         /// <summary>

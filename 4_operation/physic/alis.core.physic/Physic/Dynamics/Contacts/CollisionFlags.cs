@@ -32,40 +32,34 @@ using System;
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
     /// <summary>
-    ///     The contact class
+    ///     The collision flags enum
     /// </summary>
-    public abstract partial class Contact
+    [Flags]
+    public enum CollisionFlags
     {
         /// <summary>
-        ///     The collision flags enum
+        ///     The non solid collision flags
         /// </summary>
-        [Flags]
-        public enum CollisionFlags
-        {
-            /// <summary>
-            ///     The non solid collision flags
-            /// </summary>
-            NonSolid = 0x0001,
+        NonSolid = 0x0001,
 
-            /// <summary>
-            ///     The slow collision flags
-            /// </summary>
-            Slow = 0x0002,
+        /// <summary>
+        ///     The slow collision flags
+        /// </summary>
+        Slow = 0x0002,
 
-            /// <summary>
-            ///     The island collision flags
-            /// </summary>
-            Island = 0x0004,
+        /// <summary>
+        ///     The island collision flags
+        /// </summary>
+        Island = 0x0004,
 
-            /// <summary>
-            ///     The toi collision flags
-            /// </summary>
-            Toi = 0x0008,
+        /// <summary>
+        ///     The toi collision flags
+        /// </summary>
+        Toi = 0x0008,
 
-            /// <summary>
-            ///     The touch collision flags
-            /// </summary>
-            Touch = 0x0010
-        }
+        /// <summary>
+        ///     The touch collision flags
+        /// </summary>
+        Touch = 0x0010
     }
 }

@@ -50,7 +50,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -75,11 +75,11 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// The ground
         /// </summary>
-        private readonly Body ground1;
+        private readonly BodyBase ground1;
         /// <summary>
         /// The ground
         /// </summary>
-        private readonly Body ground2;
+        private readonly BodyBase ground2;
         /// <summary>
         /// The revolute
         /// </summary>
@@ -147,11 +147,11 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// The body
         /// </summary>
-        private Body body1;
+        private BodyBase body1;
         /// <summary>
         /// The body
         /// </summary>
-        private Body body2;
+        private BodyBase body2;
         /// <summary>
         /// The island flag
         /// </summary>
@@ -269,12 +269,12 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         ///     The ground
         /// </summary>
-        public Body Ground1 => ground1;
+        public BodyBase Ground1 => ground1;
 
         /// <summary>
         ///     The ground
         /// </summary>
-        public Body Ground2 => ground2;
+        public BodyBase Ground2 => ground2;
 
         // One of these is NULL.
 
@@ -387,7 +387,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// Gets or sets the value of the body 1
         /// </summary>
-        public Body Body1
+        public BodyBase Body1
         {
             get => body1;
             set => body1 = value;
@@ -396,7 +396,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// Gets or sets the value of the body 2
         /// </summary>
-        public Body Body2
+        public BodyBase Body2
         {
             get => body2;
             set => body2 = value;
@@ -530,10 +530,10 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <param name="step">The step</param>
         internal void InitVelocityConstraints(TimeStep step)
         {
-            Body g1 = Ground1;
-            Body g2 = Ground2;
-            Body b1 = Body1;
-            Body b2 = Body2;
+            BodyBase g1 = Ground1;
+            BodyBase g2 = Ground2;
+            BodyBase b1 = Body1;
+            BodyBase b2 = Body2;
 
             float k = 0.0f;
             jacobian.SetZero();
@@ -617,8 +617,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <param name="step">The step</param>
         internal void SolveVelocityConstraints(TimeStep step)
         {
-            Body b1 = Body1;
-            Body b2 = Body2;
+            BodyBase b1 = Body1;
+            BodyBase b2 = Body2;
 
             float cdot = jacobian.Compute(b1.LinearVelocity, b1.AngularVelocity, b2.LinearVelocity,
                 b2.AngularVelocity);
@@ -641,8 +641,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         {
             float linearError = 0.0f;
 
-            Body b1 = Body1;
-            Body b2 = Body2;
+            BodyBase b1 = Body1;
+            BodyBase b2 = Body2;
 
             float coordinate1, coordinate2;
             if (Revolute1 != null)

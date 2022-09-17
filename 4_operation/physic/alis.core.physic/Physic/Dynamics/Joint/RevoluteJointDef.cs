@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         ///     Initialize the bodies, anchors, and reference angle using the world
         ///     anchor.
         /// </summary>
-        public void Initialize(Body body1, Body body2, Vector2 anchor)
+        public void Initialize(BodyBase body1, BodyBase body2, Vector2 anchor)
         {
             Body1 = body1;
             Body2 = body2;

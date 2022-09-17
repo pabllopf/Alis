@@ -36,12 +36,12 @@ using Alis.Core.Physic.Dynamics.Controllers;
 using Alis.Core.Physic.Dynamics.Fixtures;
 using Alis.Core.Physic.Dynamics.Joint;
 
-namespace Alis.Core.Physic.Dynamics.Bodys
+namespace Alis.Core.Physic.Dynamics.Body
 {
     /// <summary>
     ///     A rigid body. These are created via World.AddBody.
     /// </summary>
-    public class Body : IDisposable
+    public class BodyBase : IDisposable
     {
         /// <summary>
         ///     The world
@@ -136,12 +136,12 @@ namespace Alis.Core.Physic.Dynamics.Bodys
         /// <summary>
         ///     The next
         /// </summary>
-        internal Body Next;
+        internal BodyBase Next;
 
         /// <summary>
         ///     The prev
         /// </summary>
-        internal Body Prev;
+        internal BodyBase Prev;
 
         /// <summary>
         ///     The sleep time
@@ -174,11 +174,11 @@ namespace Alis.Core.Physic.Dynamics.Bodys
         internal XForm Xf; // the body origin transform
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Body" /> class
+        ///     Initializes a new instance of the <see cref="BodyBase" /> class
         /// </summary>
         /// <param name="bd">The bd</param>
         /// <param name="world">The world</param>
-        public Body(BodyDef bd, World world)
+        public BodyBase(BodyDef bd, World world)
         {
             //Box2DxDebug.Assert(world.Lock == false);
 
@@ -319,7 +319,7 @@ namespace Alis.Core.Physic.Dynamics.Bodys
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
-        internal bool IsConnected(Body other)
+        internal bool IsConnected(BodyBase other)
         {
             for (JointEdge jn = JointList; jn != null; jn = jn.Next)
             {
@@ -354,7 +354,7 @@ namespace Alis.Core.Physic.Dynamics.Bodys
             FixtureList = fixture;
             ++FixtureCount;
 
-            fixture.Body = this;
+            fixture.BodyBase = this;
 
             return fixture;
         }
@@ -374,7 +374,7 @@ namespace Alis.Core.Physic.Dynamics.Bodys
                 return;
             }*/
 
-            Box2DxDebug.Assert(fixture.Body == this);
+            Box2DxDebug.Assert(fixture.BodyBase == this);
 
             // Remove the fixture from this body's singly linked list.
             Box2DxDebug.Assert(FixtureCount > 0);
@@ -399,7 +399,7 @@ namespace Alis.Core.Physic.Dynamics.Bodys
             BroadPhase broadPhase = world.BroadPhase;
 
             fixture.Destroy(broadPhase);
-            fixture.Body = null;
+            fixture.BodyBase = null;
             fixture.Next = null;
 
             --FixtureCount;
@@ -1000,7 +1000,7 @@ namespace Alis.Core.Physic.Dynamics.Bodys
         ///     Get the next body in the world's body list.
         /// </summary>
         /// <returns></returns>
-        public Body GetNext() => Next;
+        public BodyBase GetNext() => Next;
 
         /// <summary>
         ///     Get the user data pointer that was provided in the body definition.

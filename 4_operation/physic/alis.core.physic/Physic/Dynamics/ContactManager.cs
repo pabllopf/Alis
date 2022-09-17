@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Fixtures;
 
@@ -79,20 +79,20 @@ namespace Alis.Core.Physic.Dynamics
             Fixture fixtureA = proxyUserDataA as Fixture;
             Fixture fixtureB = proxyUserDataB as Fixture;
 
-            Body bodyA = fixtureA.Body;
-            Body bodyB = fixtureB.Body;
+            BodyBase bodyBaseA = fixtureA.BodyBase;
+            BodyBase bodyBaseB = fixtureB.BodyBase;
 
-            if (bodyA.IsStatic() && bodyB.IsStatic())
+            if (bodyBaseA.IsStatic() && bodyBaseB.IsStatic())
             {
                 return NullContact;
             }
 
-            if (fixtureA.Body == fixtureB.Body)
+            if (fixtureA.BodyBase == fixtureB.BodyBase)
             {
                 return NullContact;
             }
 
-            if (bodyB.IsConnected(bodyA))
+            if (bodyBaseB.IsConnected(bodyBaseA))
             {
                 return NullContact;
             }
@@ -113,8 +113,8 @@ namespace Alis.Core.Physic.Dynamics
             // Contact creation may swap shapes.
             fixtureA = c.FixtureA;
             fixtureB = c.FixtureB;
-            bodyA = fixtureA.Body;
-            bodyB = fixtureB.Body;
+            bodyBaseA = fixtureA.BodyBase;
+            bodyBaseB = fixtureB.BodyBase;
 
             // Insert into the world.
             World.ContactList.Add(c);
@@ -123,29 +123,29 @@ namespace Alis.Core.Physic.Dynamics
 
             // Connect to body 1
             c.NodeA.Contact = c;
-            c.NodeA.Other = bodyB;
+            c.NodeA.Other = bodyBaseB;
 
             c.NodeA.Prev = null;
-            c.NodeA.Next = bodyA.ContactList;
-            if (bodyA.ContactList != null)
+            c.NodeA.Next = bodyBaseA.ContactList;
+            if (bodyBaseA.ContactList != null)
             {
-                bodyA.ContactList.Prev = c.NodeA;
+                bodyBaseA.ContactList.Prev = c.NodeA;
             }
 
-            bodyA.ContactList = c.NodeA;
+            bodyBaseA.ContactList = c.NodeA;
 
             // Connect to body 2
             c.NodeB.Contact = c;
-            c.NodeB.Other = bodyA;
+            c.NodeB.Other = bodyBaseA;
 
             c.NodeB.Prev = null;
-            c.NodeB.Next = bodyB.ContactList;
-            if (bodyB.ContactList != null)
+            c.NodeB.Next = bodyBaseB.ContactList;
+            if (bodyBaseB.ContactList != null)
             {
-                bodyB.ContactList.Prev = c.NodeB;
+                bodyBaseB.ContactList.Prev = c.NodeB;
             }
 
-            bodyB.ContactList = c.NodeB;
+            bodyBaseB.ContactList = c.NodeB;
 
             //++World.ContactCount;
             return c;
@@ -188,8 +188,8 @@ namespace Alis.Core.Physic.Dynamics
         {
             Fixture fixtureA = c.FixtureA;
             Fixture fixtureB = c.FixtureB;
-            Body bodyA = fixtureA.Body;
-            Body bodyB = fixtureB.Body;
+            BodyBase bodyBaseA = fixtureA.BodyBase;
+            BodyBase bodyBaseB = fixtureB.BodyBase;
 
             if (c.Manifold.PointCount > 0)
             {
@@ -213,9 +213,9 @@ namespace Alis.Core.Physic.Dynamics
                 c.NodeA.Next.Prev = c.NodeA.Prev;
             }
 
-            if (c.NodeA == bodyA.ContactList)
+            if (c.NodeA == bodyBaseA.ContactList)
             {
-                bodyA.ContactList = c.NodeA.Next;
+                bodyBaseA.ContactList = c.NodeA.Next;
             }
 
             // Remove from body 2
@@ -229,9 +229,9 @@ namespace Alis.Core.Physic.Dynamics
                 c.NodeB.Next.Prev = c.NodeB.Prev;
             }
 
-            if (c.NodeB == bodyB.ContactList)
+            if (c.NodeB == bodyBaseB.ContactList)
             {
-                bodyB.ContactList = c.NodeB.Next;
+                bodyBaseB.ContactList = c.NodeB.Next;
             }
 
             // Call the factory.
@@ -250,9 +250,9 @@ namespace Alis.Core.Physic.Dynamics
             // Update awake contacts.
             for (int i = 0; i < World.ContactList.Count; i++)
             {
-                Body bodyA = World.ContactList[i].FixtureA.Body;
-                Body bodyB = World.ContactList[i].FixtureB.Body;
-                if (bodyA.IsSleeping() && bodyB.IsSleeping())
+                BodyBase bodyBaseA = World.ContactList[i].FixtureA.BodyBase;
+                BodyBase bodyBaseB = World.ContactList[i].FixtureB.BodyBase;
+                if (bodyBaseA.IsSleeping() && bodyBaseB.IsSleeping())
                 {
                     continue;
                 }

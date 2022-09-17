@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         public float MaxLength2 { get; set; }
 
         /// Initialize the bodies, anchors, lengths, max lengths, and ratio using the world anchors.
-        public void Initialize(Body body1, Body body2,
+        public void Initialize(BodyBase body1, BodyBase body2,
             Vector2 groundAnchor1, Vector2 groundAnchor2,
             Vector2 anchor1, Vector2 anchor2,
             float ratio)

@@ -43,7 +43,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -117,11 +117,11 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// The body
         /// </summary>
-        private Body body1;
+        private BodyBase body1;
         /// <summary>
         /// The body
         /// </summary>
-        private Body body2;
+        private BodyBase body2;
         /// <summary>
         /// The island flag
         /// </summary>
@@ -314,7 +314,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// Gets or sets the value of the body 1
         /// </summary>
-        public Body Body1
+        public BodyBase Body1
         {
             get => body1;
             set => body1 = value;
@@ -323,7 +323,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         /// Gets or sets the value of the body 2
         /// </summary>
-        public Body Body2
+        public BodyBase Body2
         {
             get => body2;
             set => body2 = value;
@@ -423,8 +423,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         {
             get
             {
-                Body b1 = Body1;
-                Body b2 = Body2;
+                BodyBase b1 = Body1;
+                BodyBase b2 = Body2;
                 return b2.Sweep.A - b1.Sweep.A - ReferenceAngle;
             }
         }
@@ -437,8 +437,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         {
             get
             {
-                Body b1 = Body1;
-                Body b2 = Body2;
+                BodyBase b1 = Body1;
+                BodyBase b2 = Body2;
                 return b2.AngularVelocity - b1.AngularVelocity;
             }
         }
@@ -566,8 +566,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <param name="step">The step</param>
         internal void InitVelocityConstraints(TimeStep step)
         {
-            Body body1 = Body1;
-            Body body2 = Body2;
+            BodyBase body1 = Body1;
+            BodyBase body2 = Body2;
 
             if (IsMotorEnabled || IsLimitEnabled)
             {
@@ -714,8 +714,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <param name="step">The step</param>
         internal void SolveVelocityConstraints(TimeStep step)
         {
-            Body b1 = Body1;
-            Body b2 = Body2;
+            BodyBase b1 = Body1;
+            BodyBase b2 = Body2;
 
             Vector2 v1 = b1.LinearVelocity;
             float w1 = b1.AngularVelocity;
@@ -822,8 +822,8 @@ namespace Alis.Core.Physic.Dynamics.Joint
         {
             // TODO_ERIN block solve with limit.
 
-            Body body1 = Body1;
-            Body body2 = Body2;
+            BodyBase body1 = Body1;
+            BodyBase body2 = Body2;
 
             float angularError = 0.0f;
             float positionError = 0.0f;

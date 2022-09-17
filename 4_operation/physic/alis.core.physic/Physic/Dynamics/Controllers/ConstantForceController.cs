@@ -29,7 +29,7 @@
 
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -68,13 +68,13 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             //B2_NOT_USED(step);
             for (ControllerEdge i = BodyList; i != null; i = i.NextBody)
             {
-                Body body = i.Body;
-                if (body.IsSleeping())
+                BodyBase bodyBase = i.BodyBase;
+                if (bodyBase.IsSleeping())
                 {
                     continue;
                 }
 
-                body.ApplyForce(f, body.GetWorldCenter());
+                bodyBase.ApplyForce(f, bodyBase.GetWorldCenter());
             }
         }
     }

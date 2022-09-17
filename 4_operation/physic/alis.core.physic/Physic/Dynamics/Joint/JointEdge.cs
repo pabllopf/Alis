@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         ///     Provides quick access to the other body attached.
         /// </summary>
-        public Body Other;
+        public BodyBase Other;
 
         /// <summary>
         ///     The previous joint edge in the body's joint list.

@@ -65,8 +65,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             {
                 case ManifoldType.Circles:
                 {
-                    Vector2 pointA = cc.BodyA.GetWorldPoint(cc.LocalPoint);
-                    Vector2 pointB = cc.BodyB.GetWorldPoint(cc.Points[0].LocalPoint);
+                    Vector2 pointA = cc.BodyBaseA.GetWorldPoint(cc.LocalPoint);
+                    Vector2 pointB = cc.BodyBaseB.GetWorldPoint(cc.Points[0].LocalPoint);
                     if (Vector2.DistanceSquared(pointA, pointB) > Settings.FltEpsilonSquared)
                     {
                         Normal = pointB - pointA;
@@ -84,12 +84,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 case ManifoldType.FaceA:
                 {
-                    Normal = cc.BodyA.GetWorldVector(cc.LocalPlaneNormal);
-                    Vector2 planePoint = cc.BodyA.GetWorldPoint(cc.LocalPoint);
+                    Normal = cc.BodyBaseA.GetWorldVector(cc.LocalPlaneNormal);
+                    Vector2 planePoint = cc.BodyBaseA.GetWorldPoint(cc.LocalPoint);
 
                     for (int i = 0; i < cc.PointCount; ++i)
                     {
-                        Vector2 clipPoint = cc.BodyB.GetWorldPoint(cc.Points[i].LocalPoint);
+                        Vector2 clipPoint = cc.BodyBaseB.GetWorldPoint(cc.Points[i].LocalPoint);
                         Separations[i] = Vector2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
                         Points[i] = clipPoint;
                     }
@@ -98,12 +98,12 @@ namespace Alis.Core.Physic.Dynamics.Contacts
 
                 case ManifoldType.FaceB:
                 {
-                    Normal = cc.BodyB.GetWorldVector(cc.LocalPlaneNormal);
-                    Vector2 planePoint = cc.BodyB.GetWorldPoint(cc.LocalPoint);
+                    Normal = cc.BodyBaseB.GetWorldVector(cc.LocalPlaneNormal);
+                    Vector2 planePoint = cc.BodyBaseB.GetWorldPoint(cc.LocalPoint);
 
                     for (int i = 0; i < cc.PointCount; ++i)
                     {
-                        Vector2 clipPoint = cc.BodyA.GetWorldPoint(cc.Points[i].LocalPoint);
+                        Vector2 clipPoint = cc.BodyBaseA.GetWorldPoint(cc.Points[i].LocalPoint);
                         Separations[i] = Vector2.Dot(clipPoint - planePoint, Normal) - cc.Radius;
                         Points[i] = clipPoint;
                     }

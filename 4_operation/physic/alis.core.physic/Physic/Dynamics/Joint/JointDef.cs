@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -44,12 +44,12 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         ///     The first attached body.
         /// </summary>
-        public Body Body1;
+        public BodyBase Body1;
 
         /// <summary>
         ///     The second attached body.
         /// </summary>
-        public Body Body2;
+        public BodyBase Body2;
 
         /// <summary>
         ///     Set this flag to true if the attached bodies should collide.

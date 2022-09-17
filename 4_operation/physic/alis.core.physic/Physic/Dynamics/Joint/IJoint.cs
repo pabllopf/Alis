@@ -30,7 +30,7 @@
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Joint
 {
@@ -80,12 +80,12 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         ///     The body
         /// </summary>
-        public Body Body1 { get; set; }
+        public BodyBase Body1 { get; set; }
 
         /// <summary>
         ///     The body
         /// </summary>
-        public Body Body2 { get; set; }
+        public BodyBase Body2 { get; set; }
 
         /// <summary>
         ///     The island flag
@@ -156,13 +156,13 @@ namespace Alis.Core.Physic.Dynamics.Joint
         ///     Get the first body attached to this joint.
         /// </summary>
         /// <returns></returns>
-        public Body GetBody1() => Body1;
+        public BodyBase GetBody1() => Body1;
 
         /// <summary>
         ///     Get the second body attached to this joint.
         /// </summary>
         /// <returns></returns>
-        public Body GetBody2() => Body2;
+        public BodyBase GetBody2() => Body2;
 
         /// <summary>
         ///     Get the reaction force on body2 at the joint anchor.

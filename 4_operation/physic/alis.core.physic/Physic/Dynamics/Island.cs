@@ -149,7 +149,7 @@ using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Math;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Alis.Core.Physic.Dynamics.Joint;
 
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The bodies
         /// </summary>
-        public Body[] Bodies;
+        public BodyBase[] Bodies;
 
         /// <summary>
         ///     The body count
@@ -244,7 +244,7 @@ namespace Alis.Core.Physic.Dynamics
 
             Listener = listener;
 
-            Bodies = new Body[bodyCapacity];
+            Bodies = new BodyBase[bodyCapacity];
             Contacts = new Contact[contactCapacity];
             Joints = new IJoint[jointCapacity];
 
@@ -286,7 +286,7 @@ namespace Alis.Core.Physic.Dynamics
             // Integrate velocities and apply damping.
             for (int i = 0; i < BodyCount; ++i)
             {
-                Body b = Bodies[i];
+                BodyBase b = Bodies[i];
 
                 if (b.IsStatic())
                 {
@@ -339,7 +339,7 @@ namespace Alis.Core.Physic.Dynamics
             // Integrate positions.
             for (int i = 0; i < BodyCount; ++i)
             {
-                Body b = Bodies[i];
+                BodyBase b = Bodies[i];
 
                 if (b.IsStatic())
                 {
@@ -413,7 +413,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 for (int i = 0; i < BodyCount; ++i)
                 {
-                    Body b = Bodies[i];
+                    BodyBase b = Bodies[i];
                     if (b.InvMass == 0.0f)
                     {
                         continue;
@@ -449,7 +449,7 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     for (int i = 0; i < BodyCount; ++i)
                     {
-                        Body b = Bodies[i];
+                        BodyBase b = Bodies[i];
                         b.Flags |= BodyFlags.Sleep;
                         b.LinearVelocity = Vector2.Zero;
                         b.AngularVelocity = 0.0f;
@@ -492,7 +492,7 @@ namespace Alis.Core.Physic.Dynamics
             // Integrate positions.
             for (int i = 0; i < BodyCount; ++i)
             {
-                Body b = Bodies[i];
+                BodyBase b = Bodies[i];
 
                 if (b.IsStatic())
                 {
@@ -558,12 +558,12 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     Adds the body
         /// </summary>
-        /// <param name="body">The body</param>
-        public void Add(Body body)
+        /// <param name="bodyBase">The body</param>
+        public void Add(BodyBase bodyBase)
         {
             Box2DxDebug.Assert(BodyCount < bodyCapacity);
-            body.IslandIndex = BodyCount;
-            Bodies[BodyCount++] = body;
+            bodyBase.IslandIndex = BodyCount;
+            Bodies[BodyCount++] = bodyBase;
         }
 
         /// <summary>

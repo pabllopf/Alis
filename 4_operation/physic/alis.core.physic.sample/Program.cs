@@ -30,7 +30,7 @@
 using System;
 using Alis.Aspect.Math;
 using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Sample
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Sample
 
             // Call the body factory which  creates the ground box shape.
             // The body is also added to the world.
-            Body groundBody = new Body(groundBodyDef, world);
+            BodyBase groundBodyBase = new BodyBase(groundBodyDef, world);
 
             // Define the ground box shape.
             PolygonDef groundShapeDef = new PolygonDef();
@@ -76,14 +76,14 @@ namespace Alis.Core.Physic.Sample
             groundShapeDef.SetAsBox(50.0f, 10.0f);
 
             // Add the ground shape to the ground body.
-            groundBody.CreateFixture(groundShapeDef);
+            groundBodyBase.CreateFixture(groundShapeDef);
 
-            world.AddBody(groundBody);
+            world.AddBody(groundBodyBase);
 
             // Define the dynamic body. We set its position and call the body factory.
             BodyDef bodyDef = new BodyDef();
             bodyDef.Position.Set(0.0f, 4.0f);
-            Body body = new Body(bodyDef, world);
+            BodyBase bodyBase = new BodyBase(bodyDef, world);
 
             // Define another box shape for our dynamic body.
             PolygonDef shapeDef = new PolygonDef();
@@ -96,13 +96,13 @@ namespace Alis.Core.Physic.Sample
             shapeDef.Friction = 0.3f;
 
             // Add the shape to the body.
-            body.CreateFixture(shapeDef);
+            bodyBase.CreateFixture(shapeDef);
 
             // Now tell the dynamic body to compute it's mass properties base
             // on its shape.
-            body.SetMassFromShapes();
+            bodyBase.SetMassFromShapes();
 
-            world.AddBody(body);
+            world.AddBody(bodyBase);
 
             // Prepare for simulation. Typically we use a time step of 1/60 of a
             // second (60Hz) and 10 iterations. This provides a high quality simulation
@@ -119,8 +119,8 @@ namespace Alis.Core.Physic.Sample
                 world.Step(timeStep, velocityIterations, positionIterations);
 
                 // Now print the position and angle of the body.
-                Vector2 position = body.GetPosition();
-                float angle = body.GetAngle();
+                Vector2 position = bodyBase.GetPosition();
+                float angle = bodyBase.GetAngle();
 
                 Console.WriteLine(
                     "Step: {3} - X: {0}, Y: {1}, Angle: {2}", position.X.ToString(), position.Y.ToString(),

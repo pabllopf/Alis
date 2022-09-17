@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Contacts
 {
@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         /// <summary>
         ///     Provides quick access to the other body attached.
         /// </summary>
-        public Body Other;
+        public BodyBase Other;
 
         /// <summary>
         ///     The previous contact edge in the body's contact list.

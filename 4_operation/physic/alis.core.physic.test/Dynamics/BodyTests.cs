@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 using Moq;
 using Xunit;
 
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Test.Dynamics
         ///     Creates the body
         /// </summary>
         /// <returns>The body</returns>
-        private Body CreateBody() => new Body(
+        private BodyBase CreateBody() => new BodyBase(
             new BodyDef(),
             mockWorld.Object);
 

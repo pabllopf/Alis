@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Physic.Dynamics.Bodys
+namespace Alis.Core.Physic.Dynamics.Body
 {
     /// <summary>
     ///     The body flags enum

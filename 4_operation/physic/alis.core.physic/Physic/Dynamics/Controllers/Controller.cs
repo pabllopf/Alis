@@ -30,7 +30,7 @@
 using System;
 using Alis.Aspect.Logging;
 using Alis.Aspect.Time;
-using Alis.Core.Physic.Dynamics.Bodys;
+using Alis.Core.Physic.Dynamics.Body;
 
 namespace Alis.Core.Physic.Dynamics.Controllers
 {
@@ -108,11 +108,11 @@ namespace Alis.Core.Physic.Dynamics.Controllers
         /// <summary>
         ///     Adds a body to the controller list.
         /// </summary>
-        public void AddBody(Body body)
+        public void AddBody(BodyBase bodyBase)
         {
             ControllerEdge edge = new ControllerEdge();
 
-            edge.Body = body;
+            edge.BodyBase = bodyBase;
             edge.Controller = this;
 
             //Add edge to controller list
@@ -127,27 +127,27 @@ namespace Alis.Core.Physic.Dynamics.Controllers
             ++BodyCount;
 
             //Add edge to body list
-            edge.NextController = body.ControllerList;
+            edge.NextController = bodyBase.ControllerList;
             edge.PrevController = null;
-            if (body.ControllerList != null)
+            if (bodyBase.ControllerList != null)
             {
-                body.ControllerList.PrevController = edge;
+                bodyBase.ControllerList.PrevController = edge;
             }
 
-            body.ControllerList = edge;
+            bodyBase.ControllerList = edge;
         }
 
         /// <summary>
         ///     Removes a body from the controller list.
         /// </summary>
-        public void RemoveBody(Body body)
+        public void RemoveBody(BodyBase bodyBase)
         {
             //Assert that the controller is not empty
             Box2DxDebug.Assert(BodyCount > 0);
 
             //Find the corresponding edge
             ControllerEdge edge = BodyList;
-            while ((edge != null) && (edge.Body != body))
+            while ((edge != null) && (edge.BodyBase != bodyBase))
             {
                 edge = edge.NextBody;
             }
@@ -184,9 +184,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 edge.NextController.PrevController = edge.PrevController;
             }
 
-            if (edge == body.ControllerList)
+            if (edge == bodyBase.ControllerList)
             {
-                body.ControllerList = edge.NextController;
+                bodyBase.ControllerList = edge.NextController;
             }
 
             //Free the edge
@@ -217,9 +217,9 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                     edge.NextController.PrevController = edge.PrevController;
                 }
 
-                if (edge == edge.Body.ControllerList)
+                if (edge == edge.BodyBase.ControllerList)
                 {
-                    edge.Body.ControllerList = edge.NextController;
+                    edge.BodyBase.ControllerList = edge.NextController;
                 }
 
                 //Free the edge
