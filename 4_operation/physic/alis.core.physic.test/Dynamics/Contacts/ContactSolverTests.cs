@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Aspect.Time;
+using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Dynamics.Contacts;
 using Moq;
 using Xunit;

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Aspect.Math;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Collisions;
 using Alis.Core.Physic.Dynamics.Body;
 using Alis.Core.Physic.Dynamics.Fixtures;

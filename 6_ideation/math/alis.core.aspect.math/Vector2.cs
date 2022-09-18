@@ -159,7 +159,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Get the length of this vector (the norm).
         /// </summary>
-        public float Length() => (float) System.Math.Sqrt(X * X + Y * Y);
+        public float Length() => (float) global::System.Math.Sqrt(X * X + Y * Y);
 
         /// <summary>
         ///     Get the length squared. For performance, use this instead of

@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
-        public static float Sqrt(float x) => (float) System.Math.Sqrt(x);
+        public static float Sqrt(float x) => (float) global::System.Math.Sqrt(x);
 
         /// <summary>
         ///     Random number in range [-1,1]
@@ -342,7 +342,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="y">The </param>
         /// <param name="x">The </param>
         /// <returns>The float</returns>
-        public static float Atan2(float y, float x) => (float) System.Math.Atan2(y, x);
+        public static float Atan2(float y, float x) => (float) global::System.Math.Atan2(y, x);
 
         /// <summary>
         ///     The convert

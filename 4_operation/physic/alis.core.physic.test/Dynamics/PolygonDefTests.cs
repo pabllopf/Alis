@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Aspect.Math;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Dynamics.Fixtures;
 using Moq;
 using Xunit;

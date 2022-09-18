@@ -4,7 +4,7 @@
         <name>Alis.Core.Aspect.Thread</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Thread.ExampleClass">
+        <member name="T:Alis.Core.Aspect.Thread.ExampleClass">
             <summary>
                 The example class
             </summary>

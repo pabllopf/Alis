@@ -4,37 +4,37 @@
         <name>Alis.Core.Aspect.Time</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Time.TimeStep">
+        <member name="T:Alis.Core.Aspect.Time.TimeStep">
             <summary>
                 The time step
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Time.TimeStep.Dt">
+        <member name="F:Alis.Core.Aspect.Time.TimeStep.Dt">
             <summary>
                 The dt
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Time.TimeStep.InvDt">
+        <member name="F:Alis.Core.Aspect.Time.TimeStep.InvDt">
             <summary>
                 The inv dt
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Time.TimeStep.DtRatio">
+        <member name="F:Alis.Core.Aspect.Time.TimeStep.DtRatio">
             <summary>
                 The dt ratio
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Time.TimeStep.VelocityIterations">
+        <member name="F:Alis.Core.Aspect.Time.TimeStep.VelocityIterations">
             <summary>
                 The velocity iterations
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Time.TimeStep.PositionIterations">
+        <member name="F:Alis.Core.Aspect.Time.TimeStep.PositionIterations">
             <summary>
                 The position iterations
             </summary>
         </member>
-        <member name="F:Alis.Aspect.Time.TimeStep.WarmStarting">
+        <member name="F:Alis.Core.Aspect.Time.TimeStep.WarmStarting">
             <summary>
                 The warm starting
             </summary>

@@ -229,7 +229,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Friction mixing law. Feel free to customize this.
         /// </summary>
-        public static float MixFriction(float friction1, float friction2) => (float) System.Math.Sqrt(friction1 * friction2);
+        public static float MixFriction(float friction1, float friction2) => (float) global::System.Math.Sqrt(friction1 * friction2);
 
         /// <summary>
         ///     Restitution mixing law. Feel free to customize this.

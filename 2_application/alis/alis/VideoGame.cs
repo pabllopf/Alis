@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core;
-using Alis.Core.System;
-using System.Collections.Generic;
 
 namespace Alis
 {
@@ -44,13 +42,7 @@ namespace Alis
         /// </summary>
         public VideoGame() 
         {
-            systems = new List<SystemBase>()
-            {
-                new PhysicSystem(),
-                new GraphicSystem(),
-                new SceneSystem(),
-                new AudioSystem(),
-            };
+
 
             isActive = false;
         }
@@ -60,18 +52,6 @@ namespace Alis
         /// </summary>
         public override void Run()
         {
-            isActive = true;
-            systems.ForEach(i => i.Awake());
-            systems.ForEach(i => i.Start());
-            while (isActive) 
-            {
-                systems.ForEach(i => i.BeforeUpdate());
-                systems.ForEach(i => i.Update());
-                systems.ForEach(i => i.AfterUpdate());
-
-                systems.ForEach(i => i.FixedUpdate());
-                systems.ForEach(i => i.DispatchEvents());
-            }
         }
     }
 }

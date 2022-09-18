@@ -4,7 +4,7 @@
         <name>Alis.Core.Aspect.Security</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Security.ExampleClass">
+        <member name="T:Alis.Core.Aspect.Security.ExampleClass">
             <summary>
                 The example class
             </summary>

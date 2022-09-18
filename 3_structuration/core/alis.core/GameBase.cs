@@ -26,8 +26,7 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 //  
 //  --------------------------------------------------------------------------
-using Alis.Core.System;
-using System.Collections.Generic;
+
 
 namespace Alis.Core
 {
@@ -37,19 +36,10 @@ namespace Alis.Core
     public abstract class GameBase
     {
         /// <summary>
-        /// List of systems
-        /// </summary>
-        public List<SystemBase> systems;
-
-        /// <summary>
         /// Active game
         /// </summary>
         public bool isActive;
 
-        /// <summary>
-        /// Game base constructor
-        /// </summary>
-        public GameBase() => systems = new List<SystemBase>();
 
         /// <summary>
         /// Run program

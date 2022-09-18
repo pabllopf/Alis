@@ -4,7 +4,7 @@
         <name>Alis.Core.Aspect.Data</name>
     </assembly>
     <members>
-        <member name="T:Alis.Aspect.Data.ExampleClass">
+        <member name="T:Alis.Core.Aspect.Data.ExampleClass">
             <summary>
                 The example class
             </summary>

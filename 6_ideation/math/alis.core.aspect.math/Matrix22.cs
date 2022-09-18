@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         public Matrix22(float angle)
         {
-            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
+            float c = (float) global::System.Math.Cos(angle), s = (float) global::System.Math.Sin(angle);
             Col1.X = c;
             Col2.X = -s;
             Col1.Y = s;
@@ -92,7 +92,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         public void Set(float angle)
         {
-            float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
+            float c = (float) global::System.Math.Cos(angle), s = (float) global::System.Math.Sin(angle);
             Col1.X = c;
             Col2.X = -s;
             Col1.Y = s;
@@ -124,7 +124,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Extract the angle from this matrix (assumed to be a rotation matrix).
         /// </summary>
-        public float GetAngle() => (float) System.Math.Atan2(Col1.Y, Col1.X);
+        public float GetAngle() => (float) global::System.Math.Atan2(Col1.Y, Col1.X);
 
         /// <summary>
         ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
