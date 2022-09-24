@@ -6,14 +6,31 @@
     <members>
         <member name="T:Alis.Core.Audio.Sample.Program">
             <summary>
-                The program class
+            The program class
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.Sample.Program.Main(System.String[])">
             <summary>
-                Main the args
+            Main the args
             </summary>
             <param name="args">The args</param>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.Program.ShowFileEntryPrompt">
+            <summary>
+            Shows the file entry prompt
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.Program.ShowInstruction">
+            <summary>
+            Shows the instruction
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.Program.OnPlaybackFinished(System.Object,System.EventArgs)">
+            <summary>
+            Ons the playback finished using the specified sender
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The </param>
         </member>
     </members>
 </doc>

@@ -838,10 +838,22 @@
             The title
             </summary>
         </member>
+        <member name="F:Alis.Core.Manager.GraphicManager.backGroundColor">
+            <summary>
+            The blue
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.GraphicManager.Init">
             <summary>
             Inits this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.WindowOnClosed(System.Object,System.EventArgs)">
+            <summary>
+            Windows the on closed using the specified sender
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Manager.GraphicManager.Start">
             <summary>

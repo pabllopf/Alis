@@ -54,6 +54,9 @@ namespace Alis.Core.Manager
         /// </summary>
         private string title = "Default";
         
+        /// <summary>
+        /// The blue
+        /// </summary>
         private Color backGroundColor = Color.Blue;
         
         /// <summary>
@@ -70,6 +73,11 @@ namespace Alis.Core.Manager
             window.Closed += WindowOnClosed;
         }
 
+        /// <summary>
+        /// Windows the on closed using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void WindowOnClosed(object sender, EventArgs e)
         {
             GameBase.IsRunning = false;
@@ -140,9 +148,7 @@ namespace Alis.Core.Manager
         {
             //throw new NotImplementedException();
         }
-
-       
-
+        
         /// <summary>
         /// Stops this instance
         /// </summary>
