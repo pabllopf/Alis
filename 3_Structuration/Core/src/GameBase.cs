@@ -42,7 +42,7 @@ namespace Alis.Core
         /// <summary>
         /// Active game
         /// </summary>
-        public bool IsRunning;
+        internal static bool IsRunning;
         
         /// <summary>
         /// The manager base

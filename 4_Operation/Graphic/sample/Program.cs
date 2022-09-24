@@ -55,6 +55,9 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         const string TITLE = "Alis.Core.Graphic.Sample";
         
+        /// <summary>
+        /// The blue
+        /// </summary>
         private static byte _red, _green, _blue;
         
         /// <summary>

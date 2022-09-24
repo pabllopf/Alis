@@ -24,6 +24,21 @@
             The title
             </summary>
         </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._red">
+            <summary>
+            The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._green">
+            <summary>
+            The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._blue">
+            <summary>
+            The blue
+            </summary>
+        </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
             <summary>
             Main the args

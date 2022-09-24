@@ -27,6 +27,10 @@
 //  
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Graphic.D2.SFML.Windows;
+
 namespace Alis.Core.Manager
 {
     /// <summary>
@@ -36,6 +40,50 @@ namespace Alis.Core.Manager
     public class GraphicManager : ManagerBase
     {
         /// <summary>
+        /// The window
+        /// </summary>
+        private RenderWindow window;
+
+        /// <summary>
+        /// The video mode
+        /// </summary>
+        private VideoMode videoMode;
+
+        /// <summary>
+        /// The title
+        /// </summary>
+        private string title = "Default";
+        
+        private Color backGroundColor = Color.Blue;
+        
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        internal override void Init()
+        {
+            videoMode = new VideoMode(640, 480);
+            window = new RenderWindow(videoMode, title);
+            
+            window.SetVerticalSyncEnabled(true);
+            window.SetFramerateLimit(60);
+            
+            window.Closed += WindowOnClosed;
+        }
+
+        private void WindowOnClosed(object sender, EventArgs e)
+        {
+            GameBase.IsRunning = false;
+        }
+
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public override void Start()
+        {
+            
+        }
+        
+        /// <summary>
         /// Afters the update
         /// </summary>
         public override void AfterUpdate()
@@ -43,13 +91,7 @@ namespace Alis.Core.Manager
             //throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Inits this instance
-        /// </summary>
-        internal override void Init()
-        {
-            
-        }
+       
 
         /// <summary>
         /// Awakes this instance
@@ -99,13 +141,7 @@ namespace Alis.Core.Manager
             //throw new NotImplementedException();
         }
 
-        /// <summary>
-        /// Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-            //throw new NotImplementedException();
-        }
+       
 
         /// <summary>
         /// Stops this instance
@@ -120,7 +156,12 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Update()
         {
-            //throw new NotImplementedException();
+            if (window.IsOpen)
+            {
+                window.DispatchEvents();
+                window.Clear(backGroundColor);
+                window.Display();
+            }
         }
     }
 }
