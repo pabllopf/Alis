@@ -9,12 +9,6 @@
         <DefineConstants>$(DefineConstants);OSXARM64</DefineConstants>
     </PropertyGroup>
 
-    <ItemGroup>
-        <None Update="$(ProjectDir)/runtimes/**" LinkBase="runtimes"
-              CopyToOutputDirectory="Always"
-              CopyToPublishDirectory="Always"/>
-    </ItemGroup>
-
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>

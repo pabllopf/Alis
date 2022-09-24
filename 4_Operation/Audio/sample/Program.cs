@@ -18,7 +18,7 @@ namespace Alis.Core.Audio.Sample
 
             Console.WriteLine("Welcome to the demo of NetCoreAudio package");
             ShowFileEntryPrompt();
-            var fileName = Console.ReadLine();
+            var fileName = "./Assets/menu.wav";
             ShowInstruction();
 
             while (true)

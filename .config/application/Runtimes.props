@@ -1,3 +1,13 @@
 <Project>
+    <ItemGroup>
+        <None Update="$(ProjectDir)/runtimes/**" LinkBase="runtimes"
+              CopyToOutputDirectory="Always"
+              CopyToPublishDirectory="Always"/>
+    </ItemGroup>
 
+    <ItemGroup>
+        <None Update="$(ProjectDir)/Assets/**" LinkBase="Assets"
+              CopyToOutputDirectory="Always"
+              CopyToPublishDirectory="Always"/>
+    </ItemGroup>
 </Project>
