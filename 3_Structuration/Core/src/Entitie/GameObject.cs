@@ -38,19 +38,19 @@ namespace Alis.Core.Entitie
         /// <summary>
         /// The transform
         /// </summary>
-        public Transform transform;
+        public Transform Transform;
 
         /// <summary>
         /// The components
         /// </summary>
-        public List<ComponentBase> components;
+        public List<ComponentBase> Components;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameObject"/> class
         /// </summary>
         public GameObject() 
         {
-            components = new List<ComponentBase>();
+            Components = new List<ComponentBase>();
         }
     }
 }

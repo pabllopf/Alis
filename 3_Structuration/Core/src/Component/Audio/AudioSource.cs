@@ -40,7 +40,7 @@ namespace Alis.Core.Component.Audio
         /// <summary>
         /// The audio clip
         /// </summary>
-        public AudioClip audioClip;
+        public AudioClip AudioClip;
 
         /// <summary>
         ///     Starts this instance

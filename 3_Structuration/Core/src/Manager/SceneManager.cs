@@ -40,7 +40,7 @@ namespace Alis.Core.Manager
         /// <summary>
         /// Scene list
         /// </summary>
-        public List<Scene> scenes = new List<Scene>();
+        public List<Scene> Scenes = new List<Scene>();
 
         /// <summary>
         /// Afters the update

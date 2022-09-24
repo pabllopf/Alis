@@ -39,14 +39,14 @@ namespace Alis.Core.Entitie
         /// <summary>
         /// The game objects
         /// </summary>
-        public List<GameObject> gameObjects;
+        public List<GameObject> GameObjects;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Scene"/> class
         /// </summary>
         public Scene() 
         {
-            gameObjects = new List<GameObject>();
+            GameObjects = new List<GameObject>();
         
         }
     }

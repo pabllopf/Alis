@@ -39,7 +39,7 @@ namespace Alis.Core.Component.Render
         /// <summary>
         /// animations
         /// </summary>
-        public List<Animation> animations;
+        public List<Animation> Animations;
 
         /// <summary>
         ///     Starts this instance

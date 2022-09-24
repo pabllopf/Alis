@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 
 
+using System.Collections.Generic;
+using Alis.Core.Manager;
+
 namespace Alis.Core
 {
     /// <summary>
@@ -38,8 +41,12 @@ namespace Alis.Core
         /// <summary>
         /// Active game
         /// </summary>
-        public bool isActive;
-
+        public bool IsRunning;
+        
+        /// <summary>
+        /// The manager base
+        /// </summary>
+        public List<ManagerBase> Managers = new List<ManagerBase>(); 
 
         /// <summary>
         /// Run program

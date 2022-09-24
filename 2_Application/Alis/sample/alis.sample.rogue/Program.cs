@@ -43,9 +43,8 @@ namespace Alis.Sample.Rogue
         public static void Main(string[] args)
         {
             Console.WriteLine("Start game");
-
-            VideoGame game = new VideoGame();
-            game.Run();
+            
+            new VideoGame().Run();
 
             Console.WriteLine("End game");
         }

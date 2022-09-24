@@ -41,7 +41,7 @@ namespace Alis.Core.Component.Render
         /// <summary>
         /// The image
         /// </summary>
-        public Image image;
+        public Image Image;
 
         /// <summary>
         ///     Starts this instance

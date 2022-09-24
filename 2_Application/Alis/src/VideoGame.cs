@@ -27,7 +27,9 @@
 //  
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core;
+using Alis.Core.Manager;
 
 namespace Alis
 {
@@ -40,11 +42,16 @@ namespace Alis
         /// <summary>
         /// Video game 
         /// </summary>
-        public VideoGame() 
+        public VideoGame()
         {
-
-
-            isActive = false;
+            IsRunning = false;
+            Managers = new List<ManagerBase>()
+            {
+                new AudioManager(),
+                new PhysicManager(),
+                new GraphicManager(),
+                new SceneManager(),
+            };
         }
 
         /// <summary>
@@ -52,6 +59,21 @@ namespace Alis
         /// </summary>
         public override void Run()
         {
+            Managers.ForEach(i => i.Awake());
+            Managers.ForEach(i => i.Start());
+
+            while (IsRunning)
+            {
+                Managers.ForEach(i => i.BeforeUpdate());
+                Managers.ForEach(i => i.Update());
+                Managers.ForEach(i => i.AfterUpdate());
+                Managers.ForEach(i => i.DispatchEvents());
+                
+                Managers.ForEach(i => i.FixedUpdate());
+            }
+            
+            Managers.ForEach(i => i.Stop());
+            Managers.ForEach(i => i.Exit());
         }
     }
 }

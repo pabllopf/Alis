@@ -33,7 +33,7 @@ namespace Alis.Core.Manager
     /// The graphic manager class
     /// </summary>
     /// <seealso cref="ManagerBase"/>
-    internal class GraphicManager : ManagerBase
+    public class GraphicManager : ManagerBase
     {
         /// <summary>
         /// Afters the update

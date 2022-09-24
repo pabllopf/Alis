@@ -33,7 +33,7 @@ namespace Alis.Core.Manager
     /// The physic manager class
     /// </summary>
     /// <seealso cref="ManagerBase"/>
-    internal class PhysicManager : ManagerBase
+    public class PhysicManager : ManagerBase
     {
         /// <summary>
         /// Afters the update
