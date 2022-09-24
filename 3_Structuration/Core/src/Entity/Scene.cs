@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Entity
 {
@@ -37,17 +38,121 @@ namespace Alis.Core.Entity
     public class Scene
     {
         /// <summary>
+        /// Gets or sets the value of the name
+        /// </summary>
+        public string Name { get; set; } = "Scene Default";
+
+        /// <summary>
         /// The game objects
         /// </summary>
-        public List<GameObject> GameObjects;
+        private List<GameObject> gameObjects;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Scene"/> class
         /// </summary>
         public Scene() 
         {
-            GameObjects = new List<GameObject>();
-        
+            gameObjects = new List<GameObject>();
+        }
+
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        internal void Init()
+        {
+            for (int i =0;i < gameObjects.Count;i++) 
+            {
+                Logger.Log($"Scene::Init::GameObject'{gameObjects[i].Name}'");
+            }
+        }
+
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public void Awake()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Awake());
+        }
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Start());
+        }
+
+        /// <summary>
+        ///     Before run the update
+        /// </summary>
+        public void BeforeUpdate()
+        {
+            gameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Update());
+        }
+
+        /// <summary>
+        ///     Afters the update
+        /// </summary>
+        public void AfterUpdate()
+        {
+            gameObjects.ForEach(gameObject => gameObject.AfterUpdate());
+        }
+
+        /// <summary>
+        ///     Update every frame.
+        /// </summary>
+        public void FixedUpdate()
+        {
+            gameObjects.ForEach(gameObject => gameObject.FixedUpdate());
+        }
+
+        /// <summary>
+        ///     Dispatches the events
+        /// </summary>
+        public void DispatchEvents()
+        {
+            gameObjects.ForEach(gameObject => gameObject.DispatchEvents());
+        }
+
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public void Reset()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Reset());
+        }
+
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        public void Stop()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Stop());
+        }
+
+        /// <summary>
+        ///     Exits this instance
+        /// </summary>
+        public void Exit()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Exit());
+        }
+
+        /// <summary>
+        /// Adds the game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        public void Add(GameObject gameObject)
+        {
+            gameObjects.Add(gameObject);
         }
     }
 }

@@ -34,6 +34,11 @@ namespace Alis.Core.Manager
     /// </summary>
     public abstract class ManagerBase
     {
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        internal abstract void Init();
+        
         /// <summary>Awakes this instance.</summary>
         public abstract void Awake();
 

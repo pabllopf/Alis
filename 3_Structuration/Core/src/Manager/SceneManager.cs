@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Manager
@@ -43,11 +44,29 @@ namespace Alis.Core.Manager
         public List<Scene> Scenes = new List<Scene>();
 
         /// <summary>
-        /// Afters the update
+        /// The current scene
         /// </summary>
-        public override void AfterUpdate()
+        private Scene currentScene;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SceneManager"/> class
+        /// </summary>
+        public SceneManager()
         {
-            //throw new NotImplementedException();
+            Scenes = new List<Scene>();
+            currentScene = new Scene();
+        }
+
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        internal override void Init()
+        {
+            if (Scenes.Count > 0)
+            {
+                currentScene = Scenes[0];
+            }
+            currentScene.Init();
         }
 
         /// <summary>
@@ -55,71 +74,59 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Awake()
         {
-            //throw new NotImplementedException();
+            for (int i = 0; i < Scenes.Count; i++)
+            {
+                Logger.Log($"SceneManager::Awake::Scene::'{Scenes[i].Name}'");
+            }
+            
+            Logger.Log($"SceneManager::Awake::currentScene::'{currentScene.Name}'");
+            
+            currentScene.Awake();
         }
-
-        /// <summary>
-        /// Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-            //throw new NotImplementedException();
-        }
-
+        
         /// <summary>
         /// Starts this instance
         /// </summary>
-        public override void Start()
-        {
-            //throw new NotImplementedException();
-        }
-
+        public override void Start() => currentScene.Start();
+        
         /// <summary>
-        /// Stops this instance
+        /// Before the update
         /// </summary>
-        public override void Stop()
-        {
-            //throw new NotImplementedException();
-        }
+        public override void BeforeUpdate() => currentScene.BeforeUpdate();
 
         /// <summary>
         /// Updates this instance
         /// </summary>
-        public override void Update()
-        {
-            //throw new NotImplementedException();
-        }
+        public override void Update() => currentScene.Update();
+
+        /// <summary>
+        /// Afters the update
+        /// </summary>
+        public override void AfterUpdate() => currentScene.AfterUpdate();
+
+        /// <summary>
+        /// Dispatches the events
+        /// </summary>
+        public override void DispatchEvents() => currentScene.DispatchEvents();
+        
+        /// <summary>
+        /// Fix the update
+        /// </summary>
+        public override void FixedUpdate() => currentScene.FixedUpdate();
+
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
+        public override void Reset() => currentScene.Reset();
+        
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
+        public override void Stop() => currentScene.Stop();
+
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public override void Exit() => currentScene.Exit();
     }
 }

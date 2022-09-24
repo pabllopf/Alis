@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:VideoGameBuilder.cs
+//  File:SceneBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,40 +30,52 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Builder;
+using Alis.Core.Entity;
 using Alis.Core.Manager;
 
-namespace Alis.Builder
+namespace Alis.Core.Builder
 {
     /// <summary>
-    /// The video game builder class
+    /// The scene builder class
     /// </summary>
-    /// <seealso cref="IBuild{VideoGame}"/>
-    public class VideoGameBuilder :
-        IBuild<VideoGame>,
-        IManager<VideoGameBuilder, SceneManager, Func<SceneManagerBuilder, SceneManager>>
+    /// <seealso cref="IBuild{Scene}"/>
+    public class SceneBuilder :
+        IBuild<Scene>,
+        IName<SceneBuilder, string>,
+        IAdd<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
     {
-        /// <summary>Gets or sets the video game.</summary>
-        /// <value>The video game.</value>
-        private VideoGame VideoGame { get; } = new VideoGame();
-
-        /// <summary>Builds this instance.</summary>
-        /// <returns></returns>
-        public VideoGame Build() => VideoGame;
-        
         /// <summary>
-        /// Managers the value
+        /// Gets the value of the scene
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
+        private Scene Scene { get; } = new Scene();
+
+        /// <summary>
+        /// Names the value
+        /// </summary>
         /// <param name="value">The value</param>
-        /// <returns>The video game builder</returns>
-        public VideoGameBuilder Manager<T>(Func<SceneManagerBuilder, SceneManager> value) where T : SceneManager
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Name(string value)
         {
-            VideoGame.SetManager(value.Invoke(new SceneManagerBuilder()));
+            Scene.Name = value;
             return this;
         }
         
-        /// <summary>Runs this instance.</summary>
-        public void Run() => VideoGame.Run();
+        /// <summary>
+        /// Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) where T : GameObject
+        {
+            Scene.Add(value.Invoke(new GameObjectBuilder()));
+            return this;
+        }
+        
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The scene</returns>
+        public Scene Build() => Scene;
     }
 }

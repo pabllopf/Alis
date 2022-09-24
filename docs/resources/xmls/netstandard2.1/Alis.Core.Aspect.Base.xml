@@ -9,6 +9,16 @@
                 The object base class
             </summary>
         </member>
+        <member name="F:Alis.Core.Aspect.Base.AlisObject.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.AlisObject.Tag">
+            <summary>
+            The tag
+            </summary>
+        </member>
         <member name="M:Alis.Core.Aspect.Base.AlisObject.GetHashCode(System.Object)">
             <summary>
                 The object base class

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
+using System;
 using System.Collections.Generic;
 using Alis.Core.Manager;
 
@@ -55,6 +56,7 @@ namespace Alis.Core
         {
             IsRunning = true;
             
+            Managers.ForEach(i => i.Init());
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
 
@@ -72,6 +74,35 @@ namespace Alis.Core
             Managers.ForEach(i => i.Exit());
             
             IsRunning = false;
+        }
+
+        /// <summary>
+        /// Gets the manager using the specified type
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The manager base</returns>
+        public T FindManager<T>() where T : ManagerBase
+        {
+            return (T)Managers.FindLast(i => i.GetType() == typeof(T));
+        }
+        
+        /// <summary>
+        /// Sets the manager using the specified manager
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="manager">The manager</param>
+        public void SetManager<T>(T manager) where T : ManagerBase
+        {
+            for (int i =0;i < Managers.Count;i++) 
+            {
+                if (Managers[i].GetType() == manager.GetType())
+                {
+                    Managers[i] = manager;
+                    return;
+                }
+            }
+            
+            Managers.Add(manager);
         }
     }
 }

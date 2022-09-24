@@ -44,6 +44,14 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
+        /// Inits this instance
+        /// </summary>
+        internal override void Init()
+        {
+            
+        }
+
+        /// <summary>
         /// Awakes this instance
         /// </summary>
         public override void Awake()

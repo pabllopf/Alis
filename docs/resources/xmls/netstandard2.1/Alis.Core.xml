@@ -4,6 +4,100 @@
         <name>Alis.Core</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Builder.GameObjectBuilder">
+            <summary>
+                The game object builder class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Builder.GameObjectBuilder.GameObject">
+            <summary>
+                Gets or sets the value of the game object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.GameObjectBuilder.Add``1(Alis.Core.Component.ComponentBase)">
+            <summary>
+                Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.GameObjectBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The game object</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.GameObjectBuilder.Name(System.String)">
+            <summary>
+                Names the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.GameObjectBuilder.Transform(Alis.Core.Entity.Transform)">
+            <summary>
+                Transforms the transform
+            </summary>
+            <param name="transform">The transform</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="T:Alis.Core.Builder.SceneBuilder">
+            <summary>
+            The scene builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="P:Alis.Core.Builder.SceneBuilder.Scene">
+            <summary>
+            Gets the value of the scene
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.SceneBuilder.Name(System.String)">
+            <summary>
+            Names the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The scene builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.SceneBuilder.Add``1(System.Func{Alis.Core.Builder.GameObjectBuilder,Alis.Core.Entity.GameObject})">
+            <summary>
+            Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The scene builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.SceneBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The scene</returns>
+        </member>
+        <member name="T:Alis.Core.Builder.SceneManagerBuilder">
+            <summary>
+            The scene manager builder class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Builder.SceneManagerBuilder.SceneManager">
+            <summary>
+            Gets the value of the scene manager
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.SceneManagerBuilder.Add``1(System.Func{Alis.Core.Builder.SceneBuilder,Alis.Core.Entity.Scene})">
+            <summary>
+            Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The scene builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.SceneManagerBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The scene manager</returns>
+        </member>
         <member name="T:Alis.Core.Component.Audio.AudioClip">
             <summary>
                 The audio clip class
@@ -108,7 +202,7 @@
                 Gets or sets the value of the game object
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.AttachTo(Alis.Core.Entitie.GameObject)">
+        <member name="M:Alis.Core.Component.ComponentBase.AttachTo(Alis.Core.Entity.GameObject)">
             <summary>
                 Attaches the to using the specified game object
             </summary>
@@ -400,41 +494,173 @@
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
         </member>
-        <member name="T:Alis.Core.Entitie.GameObject">
+        <member name="T:Alis.Core.Entity.GameObject">
             <summary>Represent a object of the game.</summary>
         </member>
-        <member name="F:Alis.Core.Entitie.GameObject.Transform">
+        <member name="F:Alis.Core.Entity.GameObject.Transform">
             <summary>
             The transform
             </summary>
         </member>
-        <member name="F:Alis.Core.Entitie.GameObject.Components">
+        <member name="F:Alis.Core.Entity.GameObject.components">
             <summary>
             The components
             </summary>
         </member>
-        <member name="M:Alis.Core.Entitie.GameObject.#ctor">
+        <member name="M:Alis.Core.Entity.GameObject.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Entitie.GameObject"/> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Entity.GameObject"/> class
             </summary>
         </member>
-        <member name="T:Alis.Core.Entitie.Scene">
+        <member name="M:Alis.Core.Entity.GameObject.Add(Alis.Core.Component.ComponentBase)">
+            <summary>
+            Adds the component
+            </summary>
+            <param name="component">The component</param>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Remove(Alis.Core.Component.ComponentBase)">
+            <summary>
+            Removes the component
+            </summary>
+            <param name="component">The component</param>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Awake">
+            <summary>Awakes this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Start">
+            <summary>Starts this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.BeforeUpdate">
+            <summary>Befores the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Update">
+            <summary>Updates this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.AfterUpdate">
+            <summary>Afters the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.FixedUpdate">
+            <summary>Afters the update.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.DispatchEvents">
+            <summary>
+                Dispatches the events.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Stop">
+            <summary>Stops this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Reset">
+            <summary>Resets this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Exit">
+            <summary>Exits this instance.</summary>
+        </member>
+        <member name="T:Alis.Core.Entity.Scene">
             <summary>
                 The scene class
             </summary>
         </member>
-        <member name="F:Alis.Core.Entitie.Scene.GameObjects">
+        <member name="P:Alis.Core.Entity.Scene.Name">
+            <summary>
+            Gets or sets the value of the name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Entity.Scene.gameObjects">
             <summary>
             The game objects
             </summary>
         </member>
-        <member name="M:Alis.Core.Entitie.Scene.#ctor">
+        <member name="M:Alis.Core.Entity.Scene.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Entitie.Scene"/> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Entity.Scene"/> class
             </summary>
         </member>
-        <member name="T:Alis.Core.Entitie.Transform">
+        <member name="M:Alis.Core.Entity.Scene.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.Awake">
+            <summary>
+                Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.Start">
+            <summary>
+                Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.BeforeUpdate">
+            <summary>
+                Before run the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.Update">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.AfterUpdate">
+            <summary>
+                Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.FixedUpdate">
+            <summary>
+                Update every frame.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.DispatchEvents">
+            <summary>
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.Reset">
+            <summary>
+                Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.Stop">
+            <summary>
+                Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.Exit">
+            <summary>
+                Exits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Scene.Add(Alis.Core.Entity.GameObject)">
+            <summary>
+            Adds the game object
+            </summary>
+            <param name="gameObject">The game object</param>
+        </member>
+        <member name="T:Alis.Core.Entity.Transform">
             <summary>Control the object space in the game.</summary>
+        </member>
+        <member name="F:Alis.Core.Entity.Transform.Position">
+            <summary>
+            The position
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Entity.Transform.Rotation">
+            <summary>
+            The rotation
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Entity.Transform.Scale">
+            <summary>
+            The scale
+            </summary>
         </member>
         <member name="T:Alis.Core.Exceptions.ComponentDontExits">
             <summary>
@@ -504,6 +730,20 @@
             Run program
             </summary>
         </member>
+        <member name="M:Alis.Core.GameBase.FindManager``1">
+            <summary>
+            Gets the manager using the specified type
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <returns>The manager base</returns>
+        </member>
+        <member name="M:Alis.Core.GameBase.SetManager``1(``0)">
+            <summary>
+            Sets the manager using the specified manager
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="manager">The manager</param>
+        </member>
         <member name="T:Alis.Core.Manager.AudioManager">
             <summary>
             The audio manager class
@@ -513,6 +753,11 @@
         <member name="M:Alis.Core.Manager.AudioManager.AfterUpdate">
             <summary>
             Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.AudioManager.Init">
+            <summary>
+            Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.AudioManager.Awake">
@@ -571,6 +816,11 @@
             Afters the update
             </summary>
         </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.GraphicManager.Awake">
             <summary>
             Awakes this instance
@@ -621,6 +871,11 @@
             Manager base
             </summary>
         </member>
+        <member name="M:Alis.Core.Manager.ManagerBase.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.ManagerBase.Awake">
             <summary>Awakes this instance.</summary>
         </member>
@@ -660,6 +915,11 @@
         <member name="M:Alis.Core.Manager.PhysicManager.AfterUpdate">
             <summary>
             Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.PhysicManager.Init">
+            <summary>
+            Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.PhysicManager.Awake">
@@ -717,9 +977,19 @@
             Scene list
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.SceneManager.AfterUpdate">
+        <member name="F:Alis.Core.Manager.SceneManager.currentScene">
             <summary>
-            Afters the update
+            The current scene
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Manager.SceneManager"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Init">
+            <summary>
+            Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.SceneManager.Awake">
@@ -727,9 +997,24 @@
             Awakes this instance
             </summary>
         </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.SceneManager.BeforeUpdate">
             <summary>
-            Befores the update
+            Before the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.AfterUpdate">
+            <summary>
+            Afters the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.SceneManager.DispatchEvents">
@@ -737,14 +1022,9 @@
             Dispatches the events
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.SceneManager.Exit">
-            <summary>
-            Exits this instance
-            </summary>
-        </member>
         <member name="M:Alis.Core.Manager.SceneManager.FixedUpdate">
             <summary>
-            Fixeds the update
+            Fix the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.SceneManager.Reset">
@@ -752,19 +1032,14 @@
             Resets this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.SceneManager.Start">
-            <summary>
-            Starts this instance
-            </summary>
-        </member>
         <member name="M:Alis.Core.Manager.SceneManager.Stop">
             <summary>
             Stops this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.SceneManager.Update">
+        <member name="M:Alis.Core.Manager.SceneManager.Exit">
             <summary>
-            Updates this instance
+            Exits this instance
             </summary>
         </member>
     </members>

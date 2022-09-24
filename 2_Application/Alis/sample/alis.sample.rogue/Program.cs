@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Entity;
+using Alis.Core.Manager;
 
 namespace Alis.Sample.Rogue
 {
@@ -46,6 +48,14 @@ namespace Alis.Sample.Rogue
             
             VideoGame
                 .Builder()
+                .Manager<SceneManager>(sceneManager => sceneManager
+                    .Add<Scene>(scene => scene
+                        .Name("Main Menu")
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Player")
+                            .Build())
+                        .Build())
+                    .Build())
                 .Run();
 
             Console.WriteLine("End game");
