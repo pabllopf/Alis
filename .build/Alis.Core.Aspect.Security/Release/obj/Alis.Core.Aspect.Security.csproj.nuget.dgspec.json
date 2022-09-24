@@ -1,0 +1,61 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/pablo/Desktop/Alis/6_Ideation/Security/src/Alis.Core.Aspect.Security.csproj": {}
+  },
+  "projects": {
+    "/Users/pablo/Desktop/Alis/6_Ideation/Security/src/Alis.Core.Aspect.Security.csproj": {
+      "version": "0.0.4",
+      "restore": {
+        "projectUniqueName": "/Users/pablo/Desktop/Alis/6_Ideation/Security/src/Alis.Core.Aspect.Security.csproj",
+        "projectName": "Alis.Core.Aspect.Security",
+        "projectPath": "/Users/pablo/Desktop/Alis/6_Ideation/Security/src/Alis.Core.Aspect.Security.csproj",
+        "packagesPath": "/Users/pablo/.nuget/packages/",
+        "outputPath": "/Users/pablo/Desktop/Alis/.build/Alis.Core.Aspect.Security/Release/obj/",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "/Users/pablo/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {},
+          "https://dotnetfeed.blob.core.windows.net/dotnet-core/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.1": {
+            "targetAlias": "netstandard2.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true
+        }
+      },
+      "frameworks": {
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.401/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
