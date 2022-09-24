@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneBuilder.cs
+//  File:AudioSourceBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,55 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Entity;
-using Alis.Core.Manager;
+using Alis.Core.Component.Audio;
 
-namespace Alis.Core.Builder
+namespace Alis.Core.Builder.Component.Audio
 {
     /// <summary>
-    /// The scene builder class
+    /// The audio source builder class
     /// </summary>
-    /// <seealso cref="IBuild{Scene}"/>
-    public class SceneBuilder :
-        IBuild<Scene>,
-        IName<SceneBuilder, string>,
-        IAdd<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
+    /// <seealso cref="IBuild{AudioSource}"/>
+    public class AudioSourceBuilder:
+        IBuild<AudioSource>
     {
         /// <summary>
-        /// Gets the value of the scene
+        /// Gets or sets the value of the audio source
         /// </summary>
-        private Scene Scene { get; } = new Scene();
-
-        /// <summary>
-        /// Names the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneBuilder Name(string value)
-        {
-            Scene.Name = value;
-            return this;
-        }
-        
-        /// <summary>
-        /// Adds the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) where T : GameObject
-        {
-            Scene.Add(value.Invoke(new GameObjectBuilder()));
-            return this;
-        }
-        
+        private AudioSource AudioSource { get; set; } = new AudioSource();
+ 
         /// <summary>
         /// Builds this instance
         /// </summary>
-        /// <returns>The scene</returns>
-        public Scene Build() => Scene;
+        /// <returns>The audio source</returns>
+        public AudioSource Build() => AudioSource;
     }
 }

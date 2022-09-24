@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Entity
@@ -35,13 +36,8 @@ namespace Alis.Core.Entity
     /// <summary>
     ///     The scene class
     /// </summary>
-    public class Scene
+    public class Scene : AlisObject
     {
-        /// <summary>
-        /// Gets or sets the value of the name
-        /// </summary>
-        public string Name { get; set; } = "Scene Default";
-
         /// <summary>
         /// The game objects
         /// </summary>

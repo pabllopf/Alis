@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Builder;
 using Alis.Core;
 using Alis.Core.Manager;
 
@@ -50,5 +51,11 @@ namespace Alis
                 new SceneManager(),
             };
         }
+  
+        /// <summary>
+        /// Builders
+        /// </summary>
+        /// <returns>The sound game builder</returns>
+        public static SoundGameBuilder Builder() => new SoundGameBuilder();
     }
 }

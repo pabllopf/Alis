@@ -4,17 +4,34 @@
         <name>Alis.Core</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Builder.GameObjectBuilder">
+        <member name="T:Alis.Core.Builder.Component.Audio.AudioSourceBuilder">
+            <summary>
+            The audio source builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="P:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.AudioSource">
+            <summary>
+            Gets or sets the value of the audio source
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The audio source</returns>
+        </member>
+        <member name="T:Alis.Core.Builder.Entity.GameObjectBuilder">
             <summary>
                 The game object builder class
             </summary>
         </member>
-        <member name="P:Alis.Core.Builder.GameObjectBuilder.GameObject">
+        <member name="P:Alis.Core.Builder.Entity.GameObjectBuilder.GameObject">
             <summary>
                 Gets or sets the value of the game object
             </summary>
         </member>
-        <member name="M:Alis.Core.Builder.GameObjectBuilder.Add``1(Alis.Core.Component.ComponentBase)">
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Add``1(Alis.Core.Component.ComponentBase)">
             <summary>
                 Adds the value
             </summary>
@@ -22,45 +39,45 @@
             <param name="value">The value</param>
             <returns>The game object builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.GameObjectBuilder.Build">
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Build">
             <summary>
                 Builds this instance
             </summary>
             <returns>The game object</returns>
         </member>
-        <member name="M:Alis.Core.Builder.GameObjectBuilder.Name(System.String)">
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Name(System.String)">
             <summary>
                 Names the value
             </summary>
             <param name="value">The value</param>
             <returns>The game object builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.GameObjectBuilder.Transform(Alis.Core.Entity.Transform)">
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Transform(Alis.Core.Entity.Transform)">
             <summary>
                 Transforms the transform
             </summary>
             <param name="transform">The transform</param>
             <returns>The game object builder</returns>
         </member>
-        <member name="T:Alis.Core.Builder.SceneBuilder">
+        <member name="T:Alis.Core.Builder.Entity.SceneBuilder">
             <summary>
             The scene builder class
             </summary>
             <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
         </member>
-        <member name="P:Alis.Core.Builder.SceneBuilder.Scene">
+        <member name="P:Alis.Core.Builder.Entity.SceneBuilder.Scene">
             <summary>
             Gets the value of the scene
             </summary>
         </member>
-        <member name="M:Alis.Core.Builder.SceneBuilder.Name(System.String)">
+        <member name="M:Alis.Core.Builder.Entity.SceneBuilder.Name(System.String)">
             <summary>
             Names the value
             </summary>
             <param name="value">The value</param>
             <returns>The scene builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.SceneBuilder.Add``1(System.Func{Alis.Core.Builder.GameObjectBuilder,Alis.Core.Entity.GameObject})">
+        <member name="M:Alis.Core.Builder.Entity.SceneBuilder.Add``1(System.Func{Alis.Core.Builder.Entity.GameObjectBuilder,Alis.Core.Entity.GameObject})">
             <summary>
             Adds the value
             </summary>
@@ -68,23 +85,23 @@
             <param name="value">The value</param>
             <returns>The scene builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.SceneBuilder.Build">
+        <member name="M:Alis.Core.Builder.Entity.SceneBuilder.Build">
             <summary>
             Builds this instance
             </summary>
             <returns>The scene</returns>
         </member>
-        <member name="T:Alis.Core.Builder.SceneManagerBuilder">
+        <member name="T:Alis.Core.Builder.Manager.SceneManagerBuilder">
             <summary>
             The scene manager builder class
             </summary>
         </member>
-        <member name="P:Alis.Core.Builder.SceneManagerBuilder.SceneManager">
+        <member name="P:Alis.Core.Builder.Manager.SceneManagerBuilder.SceneManager">
             <summary>
             Gets the value of the scene manager
             </summary>
         </member>
-        <member name="M:Alis.Core.Builder.SceneManagerBuilder.Add``1(System.Func{Alis.Core.Builder.SceneBuilder,Alis.Core.Entity.Scene})">
+        <member name="M:Alis.Core.Builder.Manager.SceneManagerBuilder.Add``1(System.Func{Alis.Core.Builder.Entity.SceneBuilder,Alis.Core.Entity.Scene})">
             <summary>
             Adds the value
             </summary>
@@ -92,7 +109,7 @@
             <param name="value">The value</param>
             <returns>The scene builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.SceneManagerBuilder.Build">
+        <member name="M:Alis.Core.Builder.Manager.SceneManagerBuilder.Build">
             <summary>
             Builds this instance
             </summary>
@@ -568,11 +585,6 @@
                 The scene class
             </summary>
         </member>
-        <member name="P:Alis.Core.Entity.Scene.Name">
-            <summary>
-            Gets or sets the value of the name
-            </summary>
-        </member>
         <member name="F:Alis.Core.Entity.Scene.gameObjects">
             <summary>
             The game objects
@@ -972,7 +984,7 @@
             Scene manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.SceneManager.Scenes">
+        <member name="F:Alis.Core.Manager.SceneManager.scenes">
             <summary>
             Scene list
             </summary>
@@ -1041,6 +1053,12 @@
             <summary>
             Exits this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.SceneManager.Add(Alis.Core.Entity.Scene)">
+            <summary>
+            Adds the scene
+            </summary>
+            <param name="scene">The scene</param>
         </member>
     </members>
 </doc>

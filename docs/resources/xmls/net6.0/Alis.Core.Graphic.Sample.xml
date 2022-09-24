@@ -9,23 +9,26 @@
                 The program class
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.Program._window">
+        <member name="F:Alis.Core.Graphic.Sample.Program.WIDTH">
             <summary>
-                The window
+            The width
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.HEIGHT">
+            <summary>
+            The height
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.TITLE">
+            <summary>
+            The title
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
             <summary>
-                Main the args
+            Main the args
             </summary>
             <param name="args">The args</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.WindowOnClosed(System.Object,System.EventArgs)">
-            <summary>
-                Windows the on closed using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
         </member>
     </members>
 </doc>

@@ -30,7 +30,7 @@
 using System;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
-
+using RenderWindow = Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow;
 
 
 namespace Alis.Core.Graphic.Sample
@@ -41,37 +41,52 @@ namespace Alis.Core.Graphic.Sample
     public class Program
     {
         /// <summary>
-        ///     The window
+        /// The width
         /// </summary>
-        private static RenderWindow _window;
-
+        const int WIDTH = 640;
+        
         /// <summary>
-        ///     Main the args
+        /// The height
+        /// </summary>
+        const int HEIGHT = 480;
+        
+        /// <summary>
+        /// The title
+        /// </summary>
+        const string TITLE = "Alis.Core.Graphic.Sample";
+        
+        private static byte _red, _green, _blue;
+        
+        /// <summary>
+        /// Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            Console.WriteLine("Start");
-            _window = new RenderWindow(new VideoMode(800, 600), "SFML window");
-            _window.SetVisible(true);
-            _window.Closed += WindowOnClosed;
-            while (_window.IsOpen)
-            {
-                _window.DispatchEvents();
-                _window.Clear(Color.Red);
-                _window.Display();
-            }
-        }
+            VideoMode mode = new VideoMode(WIDTH, HEIGHT);
+            RenderWindow window = new RenderWindow(mode, TITLE);
+            
+            window.SetVerticalSyncEnabled(true);
+            window.SetFramerateLimit(60);
 
-        /// <summary>
-        ///     Windows the on closed using the specified sender
-        /// </summary>
-        /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
-        private static void WindowOnClosed(object sender, EventArgs e)
-        {
-            _window.Close();
-            Console.WriteLine("Close");
+            window.Closed += (sender, args) => window.Close();
+
+            while (window.IsOpen)
+            {
+                window.DispatchEvents();
+                window.Clear(new Color(_red, _green, _blue));
+                window.Display();
+                
+                _red += 1;
+                if (_red >= 100)
+                    _red -= 1;
+                _green += 2;
+                if (_green >= 100)
+                    _green -= 1;
+                _blue += 3;
+                if (_blue >= 100)
+                    _blue -= 1;
+            }
         }
     }
 }

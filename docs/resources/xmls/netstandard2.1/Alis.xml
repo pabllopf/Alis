@@ -62,7 +62,7 @@
             <summary>Builds this instance.</summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Builder.VideoGameBuilder.Manager``1(System.Func{Alis.Core.Builder.SceneManagerBuilder,Alis.Core.Manager.SceneManager})">
+        <member name="M:Alis.Builder.VideoGameBuilder.Manager``1(System.Func{Alis.Core.Builder.Manager.SceneManagerBuilder,Alis.Core.Manager.SceneManager})">
             <summary>
             Managers the value
             </summary>
@@ -84,6 +84,12 @@
             
             </summary>
         </member>
+        <member name="M:Alis.ConsoleGame.Builder">
+            <summary>
+            Builders
+            </summary>
+            <returns>The console game builder</returns>
+        </member>
         <member name="T:Alis.SoundGame">
             <summary>
             The sound game class
@@ -94,6 +100,12 @@
             <summary>
             Runs this instance
             </summary>
+        </member>
+        <member name="M:Alis.SoundGame.Builder">
+            <summary>
+            Builders
+            </summary>
+            <returns>The sound game builder</returns>
         </member>
         <member name="T:Alis.VideoGame">
             <summary>

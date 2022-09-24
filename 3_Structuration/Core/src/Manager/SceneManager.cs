@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Net.Mail;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
 
@@ -41,7 +42,7 @@ namespace Alis.Core.Manager
         /// <summary>
         /// Scene list
         /// </summary>
-        public List<Scene> Scenes = new List<Scene>();
+        private List<Scene> scenes;
 
         /// <summary>
         /// The current scene
@@ -53,7 +54,7 @@ namespace Alis.Core.Manager
         /// </summary>
         public SceneManager()
         {
-            Scenes = new List<Scene>();
+            scenes = new List<Scene>();
             currentScene = new Scene();
         }
 
@@ -62,9 +63,9 @@ namespace Alis.Core.Manager
         /// </summary>
         internal override void Init()
         {
-            if (Scenes.Count > 0)
+            if (scenes.Count > 0)
             {
-                currentScene = Scenes[0];
+                currentScene = scenes[0];
             }
             currentScene.Init();
         }
@@ -74,9 +75,9 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Awake()
         {
-            for (int i = 0; i < Scenes.Count; i++)
+            for (int i = 0; i < scenes.Count; i++)
             {
-                Logger.Log($"SceneManager::Awake::Scene::'{Scenes[i].Name}'");
+                Logger.Log($"SceneManager::Awake::Scene::'{scenes[i].Name}'");
             }
             
             Logger.Log($"SceneManager::Awake::currentScene::'{currentScene.Name}'");
@@ -128,5 +129,11 @@ namespace Alis.Core.Manager
         /// Exits this instance
         /// </summary>
         public override void Exit() => currentScene.Exit();
+
+        /// <summary>
+        /// Adds the scene
+        /// </summary>
+        /// <param name="scene">The scene</param>
+        public void Add(Scene scene) => scenes.Add(scene);
     }
 }

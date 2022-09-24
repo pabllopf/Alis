@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Builder;
 using Alis.Core;
 using Alis.Core.Manager;
 
@@ -51,5 +52,11 @@ namespace Alis
                 new SceneManager(),
             };
         }
+        
+        /// <summary>
+        /// Builders
+        /// </summary>
+        /// <returns>The console game builder</returns>
+        public static ConsoleGameBuilder Builder() => new ConsoleGameBuilder();
     }
 }

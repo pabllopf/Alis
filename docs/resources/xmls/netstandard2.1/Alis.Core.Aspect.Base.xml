@@ -9,12 +9,12 @@
                 The object base class
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Base.AlisObject.Name">
+        <member name="P:Alis.Core.Aspect.Base.AlisObject.Name">
             <summary>
             The name
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Base.AlisObject.Tag">
+        <member name="P:Alis.Core.Aspect.Base.AlisObject.Tag">
             <summary>
             The tag
             </summary>

@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Builder;
 using Alis.Core;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Manager;
 
 namespace Alis
@@ -59,7 +60,5 @@ namespace Alis
         /// </summary>
         /// <returns>The video game builder</returns>
         public static VideoGameBuilder Builder() => new VideoGameBuilder();
-
-        
     }
 }

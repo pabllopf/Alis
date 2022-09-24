@@ -37,12 +37,12 @@ namespace Alis.Core.Aspect.Base
         /// <summary>
         /// The name
         /// </summary>
-        public string Name;
+        public string Name { get; set; } = "Default Name";
 
         /// <summary>
         /// The tag
         /// </summary>
-        public string Tag;
+        public string Tag  { get; set; } = "Default Tag";
         
         /// <summary>
         ///     The object base class

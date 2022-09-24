@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameObjectBuilder.cs
+//  File:SceneBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,64 +27,54 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Component;
 using Alis.Core.Entity;
 
-namespace Alis.Core.Builder
+namespace Alis.Core.Builder.Entity
 {
     /// <summary>
-    ///     The game object builder class
+    /// The scene builder class
     /// </summary>
-    public class GameObjectBuilder :
-        IBuild<GameObject>,
-        IName<GameObjectBuilder, string>,
-        IAdd<GameObjectBuilder, ComponentBase, ComponentBase>
+    /// <seealso cref="IBuild{Scene}"/>
+    public class SceneBuilder :
+        IBuild<Scene>,
+        IName<SceneBuilder, string>,
+        IAdd<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
     {
         /// <summary>
-        ///     Gets or sets the value of the game object
+        /// Gets the value of the scene
         /// </summary>
-        private GameObject GameObject { get; } = new GameObject();
+        private Scene Scene { get; } = new Scene();
 
         /// <summary>
-        ///     Adds the value
+        /// Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Name(string value)
+        {
+            Scene.Name = value;
+            return this;
+        }
+        
+        /// <summary>
+        /// Adds the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Add<T>(ComponentBase value) where T : ComponentBase
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) where T : GameObject
         {
-            GameObject.Add(value);
+            Scene.Add(value.Invoke(new GameObjectBuilder()));
             return this;
         }
-
+        
         /// <summary>
-        ///     Builds this instance
+        /// Builds this instance
         /// </summary>
-        /// <returns>The game object</returns>
-        public GameObject Build() => GameObject;
-
-        /// <summary>
-        ///     Names the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Name(string value)
-        {
-            GameObject.Name = value;
-            return this;
-        }
-
-        /// <summary>
-        ///     Transforms the transform
-        /// </summary>
-        /// <param name="transform">The transform</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Transform(Transform transform)
-        {
-            GameObject.Transform = transform;
-            return this;
-        }
+        /// <returns>The scene</returns>
+        public Scene Build() => Scene;
     }
 }

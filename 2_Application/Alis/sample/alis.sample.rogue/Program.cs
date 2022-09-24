@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Component.Audio;
+using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Manager;
 
@@ -53,6 +55,7 @@ namespace Alis.Sample.Rogue
                         .Name("Main Menu")
                         .Add<GameObject>(gameObject => gameObject
                             .Name("Player")
+                            .Add<AudioSource>(new AudioSource())
                             .Build())
                         .Build())
                     .Build())

@@ -30,11 +30,11 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Component;
+using Alis.Core.Builder.Entity;
 using Alis.Core.Entity;
 using Alis.Core.Manager;
 
-namespace Alis.Core.Builder
+namespace Alis.Core.Builder.Manager
 {
     /// <summary>
     /// The scene manager builder class
@@ -56,7 +56,7 @@ namespace Alis.Core.Builder
         /// <returns>The scene builder</returns>
         public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value) where T : Scene
         {
-            SceneManager.Scenes.Add(value.Invoke(new SceneBuilder()));
+            SceneManager.Add(value.Invoke(new SceneBuilder()));
             return this;
         }
 
