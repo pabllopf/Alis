@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Entitie;
+using Alis.Core.Entity;
 
 namespace Alis.Core.Manager
 {

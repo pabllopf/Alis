@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Builder;
 using Alis.Core;
 using Alis.Core.Manager;
 
@@ -44,7 +45,6 @@ namespace Alis
         /// </summary>
         public VideoGame()
         {
-            IsRunning = false;
             Managers = new List<ManagerBase>()
             {
                 new AudioManager(),
@@ -55,25 +55,9 @@ namespace Alis
         }
 
         /// <summary>
-        /// Runs this instance
+        /// Builders
         /// </summary>
-        public override void Run()
-        {
-            Managers.ForEach(i => i.Awake());
-            Managers.ForEach(i => i.Start());
-
-            while (IsRunning)
-            {
-                Managers.ForEach(i => i.BeforeUpdate());
-                Managers.ForEach(i => i.Update());
-                Managers.ForEach(i => i.AfterUpdate());
-                Managers.ForEach(i => i.DispatchEvents());
-                
-                Managers.ForEach(i => i.FixedUpdate());
-            }
-            
-            Managers.ForEach(i => i.Stop());
-            Managers.ForEach(i => i.Exit());
-        }
+        /// <returns>The video game builder</returns>
+        public static VideoGameBuilder Builder() => new VideoGameBuilder();
     }
 }

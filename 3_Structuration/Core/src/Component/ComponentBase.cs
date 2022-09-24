@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entitie;
+using Alis.Core.Entity;
 
 namespace Alis.Core.Component
 {

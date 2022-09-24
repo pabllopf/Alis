@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Scene.cs
+//  File:GameObject.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,26 +28,46 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Base;
+using Alis.Core.Builder;
+using Alis.Core.Component;
 
-namespace Alis.Core.Entitie
+namespace Alis.Core.Entity
 {
-    /// <summary>
-    ///     The scene class
-    /// </summary>
-    public class Scene
+    /// <summary>Represent a object of the game.</summary>
+    public class GameObject : AlisObject
     {
         /// <summary>
-        /// The game objects
+        /// The transform
         /// </summary>
-        public List<GameObject> GameObjects;
+        public Transform Transform;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Scene"/> class
+        /// The components
         /// </summary>
-        public Scene() 
-        {
-            GameObjects = new List<GameObject>();
-        
-        }
+        private List<ComponentBase> components;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameObject"/> class
+        /// </summary>
+        public GameObject() => components = new List<ComponentBase>();
+
+        /// <summary>
+        /// Adds the component
+        /// </summary>
+        /// <param name="component">The component</param>
+        public void Add(ComponentBase component) => components.Add(component);
+
+        /// <summary>
+        /// Removes the component
+        /// </summary>
+        /// <param name="component">The component</param>
+        public void Remove(ComponentBase component) => components.Remove(component);
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Builder() => new GameObjectBuilder();
     }
 }

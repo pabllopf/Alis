@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GameObject.cs
+//  File:SoundGameBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,30 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Core.Component;
+using Alis.Core.Aspect.Fluent;
 
-namespace Alis.Core.Entitie
+namespace Alis.Builder
 {
-    /// <summary>Represent a object of the game.</summary>
-    public class GameObject
+    /// <summary>
+    /// The sound game builder class
+    /// </summary>
+    /// <seealso cref="IBuild{VideoGame}"/>
+    public class SoundGameBuilder :
+        IBuild<SoundGame>
     {
         /// <summary>
-        /// The transform
+        /// Gets the value of the sound game
         /// </summary>
-        public Transform Transform;
-
+        private SoundGame SoundGame { get; } = new SoundGame();
+        
         /// <summary>
-        /// The components
+        /// Builds this instance
         /// </summary>
-        public List<ComponentBase> Components;
-
+        /// <returns>The sound game</returns>
+        public SoundGame Build() => SoundGame;
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameObject"/> class
+        /// Runs this instance
         /// </summary>
-        public GameObject() 
-        {
-            Components = new List<ComponentBase>();
-        }
+        public void Run() => SoundGame.Run();
     }
 }

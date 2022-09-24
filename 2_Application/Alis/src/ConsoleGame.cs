@@ -27,7 +27,9 @@
 //  
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core;
+using Alis.Core.Manager;
 
 namespace Alis
 {
@@ -42,7 +44,12 @@ namespace Alis
         /// </summary>
         public override void Run()
         {
-            
+            Managers = new List<ManagerBase>()
+            {
+                new AudioManager(),
+                new PhysicManager(),
+                new SceneManager(),
+            };
         }
     }
 }

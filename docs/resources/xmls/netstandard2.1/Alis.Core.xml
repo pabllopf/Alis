@@ -15,7 +15,7 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
-        <member name="F:Alis.Core.Component.Audio.AudioSource.audioClip">
+        <member name="F:Alis.Core.Component.Audio.AudioSource.AudioClip">
             <summary>
             The audio clip
             </summary>
@@ -325,7 +325,7 @@
                 The animator class
             </summary>
         </member>
-        <member name="F:Alis.Core.Component.Render.Animator.animations">
+        <member name="F:Alis.Core.Component.Render.Animator.Animations">
             <summary>
             animations
             </summary>
@@ -383,7 +383,7 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
-        <member name="F:Alis.Core.Component.Render.Sprite.image">
+        <member name="F:Alis.Core.Component.Render.Sprite.Image">
             <summary>
             The image
             </summary>
@@ -403,12 +403,12 @@
         <member name="T:Alis.Core.Entitie.GameObject">
             <summary>Represent a object of the game.</summary>
         </member>
-        <member name="F:Alis.Core.Entitie.GameObject.transform">
+        <member name="F:Alis.Core.Entitie.GameObject.Transform">
             <summary>
             The transform
             </summary>
         </member>
-        <member name="F:Alis.Core.Entitie.GameObject.components">
+        <member name="F:Alis.Core.Entitie.GameObject.Components">
             <summary>
             The components
             </summary>
@@ -423,7 +423,7 @@
                 The scene class
             </summary>
         </member>
-        <member name="F:Alis.Core.Entitie.Scene.gameObjects">
+        <member name="F:Alis.Core.Entitie.Scene.GameObjects">
             <summary>
             The game objects
             </summary>
@@ -489,12 +489,12 @@
             Define a game.
             </summary>
         </member>
-        <member name="F:Alis.Core.GameBase.isRunning">
+        <member name="F:Alis.Core.GameBase.IsRunning">
             <summary>
             Active game
             </summary>
         </member>
-        <member name="F:Alis.Core.GameBase.managers">
+        <member name="F:Alis.Core.GameBase.Managers">
             <summary>
             The manager base
             </summary>
@@ -712,7 +712,7 @@
             Scene manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.SceneManager.scenes">
+        <member name="F:Alis.Core.Manager.SceneManager.Scenes">
             <summary>
             Scene list
             </summary>

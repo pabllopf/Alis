@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AlisObject.cs
+//  File:ConsoleGameBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Base
+using Alis.Core.Aspect.Fluent;
+
+namespace Alis.Builder
 {
+
     /// <summary>
-    ///     The object base class
+    /// The console game builder class
     /// </summary>
-    public class AlisObject : object
+    /// <seealso cref="IBuild{ConsoleGame}"/>
+    public class ConsoleGameBuilder :
+        IBuild<ConsoleGame>
     {
         /// <summary>
-        /// The name
+        /// Gets the value of the console game
         /// </summary>
-        public string Name;
-
-        /// <summary>
-        /// The tag
-        /// </summary>
-        public string Tag;
+        private ConsoleGame ConsoleGame { get; } = new ConsoleGame();
         
         /// <summary>
-        ///     The object base class
+        /// Builds this instance
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static int GetHashCode(object obj) => obj?.GetHashCode() ?? 0;
+        /// <returns>The console game</returns>
+        public ConsoleGame Build() => ConsoleGame;
+        
+        /// <summary>
+        /// Runs this instance
+        /// </summary>
+        public void Run() => ConsoleGame.Run();
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Transform.cs
+//  File:Scene.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,10 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Entitie
+using System.Collections.Generic;
+
+namespace Alis.Core.Entity
 {
-    /// <summary>Control the object space in the game.</summary>
-    public class Transform
+    /// <summary>
+    ///     The scene class
+    /// </summary>
+    public class Scene
     {
+        /// <summary>
+        /// The game objects
+        /// </summary>
+        public List<GameObject> GameObjects;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Scene"/> class
+        /// </summary>
+        public Scene() 
+        {
+            GameObjects = new List<GameObject>();
+        
+        }
     }
 }

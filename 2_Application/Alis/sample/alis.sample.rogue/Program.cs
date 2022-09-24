@@ -44,7 +44,9 @@ namespace Alis.Sample.Rogue
         {
             Console.WriteLine("Start game");
             
-            new VideoGame().Run();
+            VideoGame
+                .Builder()
+                .Run();
 
             Console.WriteLine("End game");
         }

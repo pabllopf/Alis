@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AlisObject.cs
+//  File:Transform.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Base
+using Alis.Core.Aspect.Math;
+
+namespace Alis.Core.Entity
 {
-    /// <summary>
-    ///     The object base class
-    /// </summary>
-    public class AlisObject : object
+    /// <summary>Control the object space in the game.</summary>
+    public class Transform
     {
         /// <summary>
-        /// The name
+        /// The position
         /// </summary>
-        public string Name;
-
-        /// <summary>
-        /// The tag
-        /// </summary>
-        public string Tag;
+        public Vector2 Position;
         
         /// <summary>
-        ///     The object base class
+        /// The rotation
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static int GetHashCode(object obj) => obj?.GetHashCode() ?? 0;
+        public float Rotation;
+        
+        /// <summary>
+        /// The scale
+        /// </summary>
+        public Vector2 Scale;
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AlisObject.cs
+//  File:VideoGameBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Base
+using Alis.Core.Aspect.Fluent;
+
+namespace Alis.Builder
 {
     /// <summary>
-    ///     The object base class
+    /// The video game builder class
     /// </summary>
-    public class AlisObject : object
+    /// <seealso cref="IBuild{VideoGame}"/>
+    public class VideoGameBuilder :
+        IBuild<VideoGame>
     {
-        /// <summary>
-        /// The name
-        /// </summary>
-        public string Name;
+        /// <summary>Gets or sets the video game.</summary>
+        /// <value>The video game.</value>
+        private VideoGame VideoGame { get; } = new VideoGame();
 
-        /// <summary>
-        /// The tag
-        /// </summary>
-        public string Tag;
-        
-        /// <summary>
-        ///     The object base class
-        /// </summary>
-        /// <param name="obj"></param>
+        /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public static int GetHashCode(object obj) => obj?.GetHashCode() ?? 0;
+        public VideoGame Build() => VideoGame;
+        
+        /// <summary>Runs this instance.</summary>
+        public void Run() => VideoGame.Run();
     }
 }

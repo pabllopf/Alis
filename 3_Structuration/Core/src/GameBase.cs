@@ -46,11 +46,32 @@ namespace Alis.Core
         /// <summary>
         /// The manager base
         /// </summary>
-        public List<ManagerBase> Managers = new List<ManagerBase>(); 
+        protected List<ManagerBase> Managers = new List<ManagerBase>();
 
         /// <summary>
         /// Run program
         /// </summary>
-        public abstract void Run();
+        public virtual void Run()
+        {
+            IsRunning = true;
+            
+            Managers.ForEach(i => i.Awake());
+            Managers.ForEach(i => i.Start());
+
+            while (IsRunning)
+            {
+                Managers.ForEach(i => i.BeforeUpdate());
+                Managers.ForEach(i => i.Update());
+                Managers.ForEach(i => i.AfterUpdate());
+                Managers.ForEach(i => i.DispatchEvents());
+                
+                Managers.ForEach(i => i.FixedUpdate());
+            }
+            
+            Managers.ForEach(i => i.Stop());
+            Managers.ForEach(i => i.Exit());
+            
+            IsRunning = false;
+        }
     }
 }
