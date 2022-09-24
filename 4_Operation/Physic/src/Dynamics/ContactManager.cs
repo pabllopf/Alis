@@ -1,0 +1,264 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ContactManager.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+using Alis.Core.Physic.Collisions;
+using Alis.Core.Physic.Dynamics.Body;
+using Alis.Core.Physic.Dynamics.Contacts;
+using Alis.Core.Physic.Dynamics.Fixtures;
+
+namespace Alis.Core.Physic.Dynamics
+{
+    /// <summary>
+    ///     The contact manager class
+    /// </summary>
+    /// <seealso cref="PairCallback" />
+    public class ContactManager : PairCallback
+    {
+        /// <summary>
+        ///     The destroy immediate
+        /// </summary>
+        public bool DestroyImmediate;
+
+        // This lets us provide broadphase proxy pair user data for
+        // contacts that shouldn't exist.
+        /// <summary>
+        ///     The null contact
+        /// </summary>
+        public NullContact NullContact;
+
+        /// <summary>
+        ///     The world
+        /// </summary>
+        public World World;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ContactManager" /> class
+        /// </summary>
+        public ContactManager(World world)
+        {
+            World = world;
+            NullContact = new NullContact();
+        }
+
+        // This is a callback from the broadphase when two AABB proxies begin
+        // to overlap. We create a Contact to manage the narrow phase.
+        /// <summary>
+        ///     Pairs the added using the specified proxy user data a
+        /// </summary>
+        /// <param name="proxyUserDataA">The proxy user data</param>
+        /// <param name="proxyUserDataB">The proxy user data</param>
+        /// <returns>The </returns>
+        public override object PairAdded(object proxyUserDataA, object proxyUserDataB)
+        {
+            Fixture fixtureA = proxyUserDataA as Fixture;
+            Fixture fixtureB = proxyUserDataB as Fixture;
+
+            BodyBase bodyBaseA = fixtureA.BodyBase;
+            BodyBase bodyBaseB = fixtureB.BodyBase;
+
+            if (bodyBaseA.IsStatic() && bodyBaseB.IsStatic())
+            {
+                return NullContact;
+            }
+
+            if (fixtureA.BodyBase == fixtureB.BodyBase)
+            {
+                return NullContact;
+            }
+
+            if (bodyBaseB.IsConnected(bodyBaseA))
+            {
+                return NullContact;
+            }
+
+            if ((World.ContactFilter != null) && (World.ContactFilter.ShouldCollide(fixtureA, fixtureB) == false))
+            {
+                return NullContact;
+            }
+
+            // Call the factory.
+            Contact c = Contact.Create(fixtureA, fixtureB);
+
+            if (c == null)
+            {
+                return NullContact;
+            }
+
+            // Contact creation may swap shapes.
+            fixtureA = c.FixtureA;
+            fixtureB = c.FixtureB;
+            bodyBaseA = fixtureA.BodyBase;
+            bodyBaseB = fixtureB.BodyBase;
+
+            // Insert into the world.
+            World.ContactList.Add(c);
+
+            // Connect to island graph.
+
+            // Connect to body 1
+            c.NodeA.Contact = c;
+            c.NodeA.Other = bodyBaseB;
+
+            c.NodeA.Prev = null;
+            c.NodeA.Next = bodyBaseA.ContactList;
+            if (bodyBaseA.ContactList != null)
+            {
+                bodyBaseA.ContactList.Prev = c.NodeA;
+            }
+
+            bodyBaseA.ContactList = c.NodeA;
+
+            // Connect to body 2
+            c.NodeB.Contact = c;
+            c.NodeB.Other = bodyBaseA;
+
+            c.NodeB.Prev = null;
+            c.NodeB.Next = bodyBaseB.ContactList;
+            if (bodyBaseB.ContactList != null)
+            {
+                bodyBaseB.ContactList.Prev = c.NodeB;
+            }
+
+            bodyBaseB.ContactList = c.NodeB;
+
+            //++World.ContactCount;
+            return c;
+        }
+
+        // This is a callback from the broadphase when two AABB proxies cease
+        // to overlap. We retire the Contact.
+        /// <summary>
+        ///     Pairs the removed using the specified proxy user data 1
+        /// </summary>
+        /// <param name="proxyUserData1">The proxy user data</param>
+        /// <param name="proxyUserData2">The proxy user data</param>
+        /// <param name="pairUserData">The pair user data</param>
+        public override void PairRemoved(object proxyUserData1, object proxyUserData2, object pairUserData)
+        {
+            //B2_NOT_USED(proxyUserData1);
+            //B2_NOT_USED(proxyUserData2);
+
+            if (pairUserData == null)
+            {
+                return;
+            }
+
+            Contact c = pairUserData as Contact;
+            if (c == NullContact)
+            {
+                return;
+            }
+
+            // An attached body is being destroyed, we must destroy this contact
+            // immediately to avoid orphaned shape pointers.
+            Destroy(c);
+        }
+
+        /// <summary>
+        ///     Destroys the c
+        /// </summary>
+        /// <param name="c">The </param>
+        public void Destroy(Contact c)
+        {
+            Fixture fixtureA = c.FixtureA;
+            Fixture fixtureB = c.FixtureB;
+            BodyBase bodyBaseA = fixtureA.BodyBase;
+            BodyBase bodyBaseB = fixtureB.BodyBase;
+
+            if (c.Manifold.PointCount > 0)
+            {
+                if (World.ContactListener != null)
+                {
+                    World.ContactListener.EndContact(c);
+                }
+            }
+
+            // Remove from the world.
+            World.ContactList.Remove(c);
+
+            // Remove from body 1
+            if (c.NodeA.Prev != null)
+            {
+                c.NodeA.Prev.Next = c.NodeA.Next;
+            }
+
+            if (c.NodeA.Next != null)
+            {
+                c.NodeA.Next.Prev = c.NodeA.Prev;
+            }
+
+            if (c.NodeA == bodyBaseA.ContactList)
+            {
+                bodyBaseA.ContactList = c.NodeA.Next;
+            }
+
+            // Remove from body 2
+            if (c.NodeB.Prev != null)
+            {
+                c.NodeB.Prev.Next = c.NodeB.Next;
+            }
+
+            if (c.NodeB.Next != null)
+            {
+                c.NodeB.Next.Prev = c.NodeB.Prev;
+            }
+
+            if (c.NodeB == bodyBaseB.ContactList)
+            {
+                bodyBaseB.ContactList = c.NodeB.Next;
+            }
+
+            // Call the factory.
+            Contact.Destroy(ref c);
+            //--World.ContactCount;
+        }
+
+        // This is the top level collision call for the time step. Here
+        // all the narrow phase collision is processed for the world
+        // contact list.
+        /// <summary>
+        ///     Collides this instance
+        /// </summary>
+        public void Collide()
+        {
+            // Update awake contacts.
+            for (int i = 0; i < World.ContactList.Count; i++)
+            {
+                BodyBase bodyBaseA = World.ContactList[i].FixtureA.BodyBase;
+                BodyBase bodyBaseB = World.ContactList[i].FixtureB.BodyBase;
+                if (bodyBaseA.IsSleeping() && bodyBaseB.IsSleeping())
+                {
+                    continue;
+                }
+
+                World.ContactList[i].Update(World.ContactListener);
+            }
+        }
+    }
+}

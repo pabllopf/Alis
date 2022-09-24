@@ -1,0 +1,7 @@
+<Project>
+    <PropertyGroup>
+        <PackageReleaseNotes>
+            <![CDATA[To see the last release notes visit the official web "alisengine.com".]]>
+        </PackageReleaseNotes>
+    </PropertyGroup>
+</Project>

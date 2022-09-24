@@ -1,0 +1,43 @@
+
+/*=================================================================
+  Item counter section
+==================================================================*/
+
+.counters-item {
+  padding-bottom: 30px;
+  color:#444;
+  position: relative;
+  &.kill-border:before {
+    background: none;
+  }
+  &:before {
+    background: #e5e5e5;
+    content: "";
+    margin-top: -27.5px;
+    height: 55px;
+    width: 1px;
+    position: absolute;
+    right: -15px;
+    top: 50%;
+  }
+  > div {
+    margin: 6px 0;
+  }
+  span {
+    display: inline;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 50px;
+  }
+  i {
+    font-size:40px;
+    display: inline-block;
+    color:$primary-color;
+  }
+  h3 {
+    font-size: 18px;
+    margin: 0;
+    color:#666;
+  }
+}
+

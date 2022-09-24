@@ -1,0 +1,28 @@
+var class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape =
+[
+    [ "EdgeShape", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a6729d11ce11ceb7cbf5cfe5a603bd20f", null ],
+    [ "Dispose", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a777868c43457c01968df0dc5c2cbf54a", null ],
+    [ "Set", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#afd3197fbaab467c79d103003791ed33c", null ],
+    [ "TestPoint", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a4cbcfc67ee250dd28e70b896a1f9e01d", null ],
+    [ "TestSegment", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ad80687336f80c9fa2d0de4f18bee2d9a", null ],
+    [ "ComputeAabb", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a5705937dcde3eb49833db6f7dd096b0a", null ],
+    [ "ComputeMass", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a7dfba0fcfc10f487fea631c827d55346", null ],
+    [ "SetPrevEdge", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a69545d2af23372f0b910c4bbdb38bf32", null ],
+    [ "SetNextEdge", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a376481e70bb032f9ab02f8861eec85f8", null ],
+    [ "ComputeSubmergedArea", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ad961dc845d323a0b395ccba296d81405", null ],
+    [ "GetSupport", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ac027710e81ec2071ee68a7525676d987", null ],
+    [ "GetSupportVertex", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#aa6a78ac2582fa24fdc05a28b58f0637b", null ],
+    [ "GetVertex", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#acc40f697dfd3d34faf866086513f7bdb", null ],
+    [ "ComputeSweepRadius", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a63054d872f825fd6774476eb0f6049a8", null ],
+    [ "NextEdge", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ace11ba13b7f4f185ed741350758e9576", null ],
+    [ "PrevEdge", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a41959c49d6e4de8169a632a673d88893", null ],
+    [ "Length", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a3eb87b34ae33f7fc335b05f61d150149", null ],
+    [ "Vertex1", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a568b047b87c0a75933862197f499101f", null ],
+    [ "Vertex2", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ad48b7d06b5221b0fc5a451e5c39603fb", null ],
+    [ "NormalVector", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a8a31d986db3db543fc76981727e89e21", null ],
+    [ "DirectionVector", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a1f4cebaa6950e3392eff122afd4e8955", null ],
+    [ "Corner1Vector", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a76e90e51a4aba9cfffa9b5bb1987c2e0", null ],
+    [ "Corner2Vector", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#ac9e7da1d36875a7a47b235e1d6f251f7", null ],
+    [ "Corner1IsConvex", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a533270ddc76627da7ac3dffba5ef7ace", null ],
+    [ "Corner2IsConvex", "d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#a738e9104074e3de0c4f60e1f503aa0de", null ]
+];

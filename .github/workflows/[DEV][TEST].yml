@@ -1,0 +1,127 @@
+# Run test of the framework.
+name: "[DEV][TEST]"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  CommentCode:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install macos android ios
+
+      - name: Install tool
+        run: dotnet tool install --global dotnet-document --version 0.1.4-alpha
+
+      - name: Comment code
+        run: dotnet document apply ./alis.sln
+
+      - name: create a file to save the log
+        run: date > ./.publish/generated.txt
+
+      - name: Commit the changes of document code
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git config core.autocrlf false
+          git add .
+          git commit -m "generated automatic comments on code by actions"
+          git push
+
+  Fast_Test:
+    needs: CommentCode
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install macos android ios
+
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+
+  Linux_Latest:
+    needs: Fast_Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install macos android
+
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+
+  Macos_Latest:
+    needs: Fast_Test
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install macos android ios
+
+      - name: Dotnet test
+        run: dotnet test alis.sln
+
+  Windows_Latest:
+    needs: Fast_Test
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install macos android ios
+
+      - name: Dotnet test
+        run: dotnet test alis.sln
+        
+    

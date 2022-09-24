@@ -1,0 +1,19 @@
+<Project>
+    <PropertyGroup Condition="
+    $(AssemblyName.Contains('Test')) == true OR
+    $(AssemblyName.Contains('Sample')) == true OR
+    $(AssemblyName.Contains('App')) == true OR
+    $(AssemblyName.Contains('Template')) == true
+    ">
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="
+    $(AssemblyName.Contains('Test')) == false AND 
+    $(AssemblyName.Contains('App')) == false AND
+    $(AssemblyName.Contains('Template')) == false AND
+    $(AssemblyName.Contains('Sample')) == false
+    ">
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+</Project>

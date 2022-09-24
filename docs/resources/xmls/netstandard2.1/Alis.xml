@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.ConsoleGame">
+            <summary>
+            The console game class
+            </summary>
+            <seealso cref="T:Alis.Core.GameBase"/>
+        </member>
+        <member name="M:Alis.ConsoleGame.Run">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Alis.SoundGame">
+            <summary>
+            The sound game class
+            </summary>
+            <seealso cref="T:Alis.Core.GameBase"/>
+        </member>
+        <member name="M:Alis.SoundGame.Run">
+            <summary>
+            Runs this instance
+            </summary>
+        </member>
+        <member name="T:Alis.VideoGame">
+            <summary>
+            The video game class
+            </summary>
+            <seealso cref="T:Alis.Core.GameBase"/>
+        </member>
+        <member name="M:Alis.VideoGame.#ctor">
+            <summary>
+            Video game 
+            </summary>
+        </member>
+        <member name="M:Alis.VideoGame.Run">
+            <summary>
+            Runs this instance
+            </summary>
+        </member>
+    </members>
+</doc>

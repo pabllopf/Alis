@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Aspect.Base</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Aspect.Base.ObjectBase">
+            <summary>
+                The object base class
+            </summary>
+        </member>
+        <member name="M:Alis.Aspect.Base.ObjectBase.GetHashCode(System.Object)">
+            <summary>
+               The object base class
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

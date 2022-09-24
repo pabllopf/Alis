@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created by yFiles WPF 3.2.0.2-->
+<graphml xmlns:y="http://www.yworks.com/xml/yfiles-common/3.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/3.0" xmlns:xps="http://schemas.microsoft.com/xps/2005/06" xmlns:ywpf="http://www.yworks.com/xml/yfiles-wpf/3.0/xaml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml.wpf/3.0/ygraphml.xsd " xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key id="d0" attr.type="boolean" attr.name="Expanded" for="node" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/Expanded">
+    <default>true</default>
+  </key>
+  <key id="d1" attr.type="string" attr.name="type" for="node" />
+  <key id="d2" attr.type="string" attr.name="path" for="node" />
+  <key id="d3" attr.type="string" attr.name="display_name" for="node" />
+  <key id="d4" attr.name="NodeLabels" for="node" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeLabels" />
+  <key id="d5" attr.name="NodeGeometry" for="node" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeGeometry" />
+  <key id="d6" attr.name="UserTags" for="all" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/UserTags" />
+  <key id="d7" attr.name="NodeStyle" for="node" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeStyle" />
+  <key id="d8" attr.name="NodeViewState" for="node" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/1.1/NodeViewState" />
+  <key id="d9" attr.type="string" attr.name="dependency_type" for="edge" />
+  <key id="d10" attr.name="EdgeLabels" for="edge" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeLabels" />
+  <key id="d11" attr.name="EdgeGeometry" for="edge" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeGeometry" />
+  <key id="d12" attr.name="EdgeStyle" for="edge" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeStyle" />
+  <key id="d13" attr.name="EdgeViewState" for="edge" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/1.1/EdgeViewState" />
+  <key id="d14" attr.name="PortLabels" for="port" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortLabels" />
+  <key id="d15" attr.name="PortLocationParameter" for="port" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortLocationParameter">
+    <default />
+  </key>
+  <key id="d16" attr.name="PortStyle" for="port" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortStyle">
+    <default>
+      <x:Static Member="y:VoidPortStyle.Instance" />
+    </default>
+  </key>
+  <key id="d17" attr.name="PortViewState" for="port" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/1.1/PortViewState" />
+  <key id="d18" attr.name="SharedData" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/SharedData" />
+  <data key="d18">
+    <y:SharedData />
+  </data>
+  <graph id="G">
+    <node id="n0">
+      <data key="d1"><![CDATA[0]]></data>
+      <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis]]></data>
+      <data key="d3"><![CDATA[1_Presentation]]></data>
+      <data key="d4" />
+      <data key="d5">
+        <y:RectD X="-100" Y="-299" Width="587" Height="614" />
+      </data>
+      <data key="d6" />
+      <data key="d7">
+        <ywpf:CollapsibleNodeStyleDecorator ButtonStyle="{y:GraphMLReference 1}" ButtonPlacement="{x:Static y:InteriorLabelModel.NorthWest}" Insets="50,90,50,50">
+          <ywpf:ShapeNodeStyle Brush="#FF252525">
+            <ywpf:ShapeNodeStyle.Pen>
+              <Pen Brush="#FF0C0C0C" Thickness="1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+            </ywpf:ShapeNodeStyle.Pen>
+          </ywpf:ShapeNodeStyle>
+        </ywpf:CollapsibleNodeStyleDecorator>
+      </data>
+      <graph id="n0:">
+        <node id="n0::n0">
+          <data key="d1"><![CDATA[0]]></data>
+          <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis]]></data>
+          <data key="d3"><![CDATA[Template]]></data>
+          <data key="d4" />
+          <data key="d5">
+            <y:RectD X="-50" Y="-209" Width="487" Height="474" />
+          </data>
+          <data key="d6" />
+          <data key="d7">
+            <ywpf:CollapsibleNodeStyleDecorator ButtonStyle="{y:GraphMLReference 1}" ButtonPlacement="{x:Static y:InteriorLabelModel.NorthWest}" Insets="50,90,50,50">
+              <ywpf:ShapeNodeStyle Brush="#FF323232">
+                <ywpf:ShapeNodeStyle.Pen>
+                  <Pen Brush="#FF191919" Thickness="1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                </ywpf:ShapeNodeStyle.Pen>
+              </ywpf:ShapeNodeStyle>
+            </ywpf:CollapsibleNodeStyleDecorator>
+          </data>
+          <graph id="n0::n0:">
+            <node id="n0::n0::n0">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\1_presentation\template\Alis.Template.Android]]></data>
+              <data key="d3"><![CDATA[Alis.Template.Android]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="0" Y="0" Width="387" Height="90" />
+              </data>
+              <data key="d6" />
+              <data key="d7" />
+              <port name="p0">
+                <data key="d15" />
+              </port>
+            </node>
+            <node id="n0::n0::n1">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\1_presentation\template\Alis.Template.IOS]]></data>
+              <data key="d3"><![CDATA[Alis.Template.IOS]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="47" Y="-119" Width="327" Height="90" />
+              </data>
+              <data key="d6" />
+              <data key="d7" />
+              <port name="p0">
+                <data key="d15" />
+              </port>
+            </node>
+            <node id="n0::n0::n2">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\1_presentation\template\Alis.Template.MacOS]]></data>
+              <data key="d3"><![CDATA[Alis.Template.MacOS]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="5" Y="125" Width="375" Height="90" />
+              </data>
+              <data key="d6" />
+              <data key="d7" />
+            </node>
+          </graph>
+        </node>
+      </graph>
+    </node>
+    <node id="n1">
+      <data key="d1"><![CDATA[0]]></data>
+      <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis]]></data>
+      <data key="d3"><![CDATA[2_Application]]></data>
+      <data key="d4" />
+      <data key="d5">
+        <y:RectD X="695.125" Y="-630.5" Width="1520" Height="923" />
+      </data>
+      <data key="d6" />
+      <data key="d7">
+        <ywpf:CollapsibleNodeStyleDecorator ButtonStyle="{y:GraphMLReference 1}" ButtonPlacement="{x:Static y:InteriorLabelModel.NorthWest}" Insets="50,90,50,50">
+          <ywpf:ShapeNodeStyle Brush="#FF0C0C0C">
+            <ywpf:ShapeNodeStyle.Pen>
+              <Pen Brush="#FF000000" Thickness="1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+            </ywpf:ShapeNodeStyle.Pen>
+          </ywpf:ShapeNodeStyle>
+        </ywpf:CollapsibleNodeStyleDecorator>
+      </data>
+      <graph id="n1:">
+        <node id="n1::n0">
+          <data key="d1"><![CDATA[0]]></data>
+          <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis]]></data>
+          <data key="d3"><![CDATA[Alis]]></data>
+          <data key="d4" />
+          <data key="d5">
+            <y:RectD X="745.125" Y="-540.5" Width="1420" Height="783" />
+          </data>
+          <data key="d6" />
+          <data key="d7">
+            <ywpf:CollapsibleNodeStyleDecorator ButtonStyle="{y:GraphMLReference 1}" ButtonPlacement="{x:Static y:InteriorLabelModel.NorthWest}" Insets="50,90,50,50">
+              <ywpf:ShapeNodeStyle Brush="#FF1A1A1A">
+                <ywpf:ShapeNodeStyle.Pen>
+                  <Pen Brush="#FF000000" Thickness="1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                </ywpf:ShapeNodeStyle.Pen>
+              </ywpf:ShapeNodeStyle>
+            </ywpf:CollapsibleNodeStyleDecorator>
+          </data>
+          <graph id="n1::n0:">
+            <node id="n1::n0::n0">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\2_application\alis\alis.test.benchmark]]></data>
+              <data key="d3"><![CDATA[Alis.Test.Benchmark]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="795.125" Y="82" Width="359" Height="90" />
+              </data>
+              <data key="d6" />
+              <data key="d7" />
+              <port name="p0">
+                <data key="d15" />
+              </port>
+            </node>
+            <node id="n1::n0::n1">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\2_application\alis\alis.test.integration]]></data>
+              <data key="d3"><![CDATA[Alis.Test.Integration]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="795.125" Y="-170" Width="358" Height="90" />
+              </data>
+              <data key="d6" />
+              <data key="d7" />
+              <port name="p0">
+                <data key="d15" />
+              </port>
+            </node>
+            <node id="n1::n0::n2">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\2_application\alis\Alis.Test.Unit]]></data>
+              <data key="d3"><![CDATA[Alis.Test.Unit]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="985.125" Y="-44" Width="267" Height="90" />
+              </data>
+              <data key="d6" />
+              <data key="d7" />
+              <port name="p0">
+                <data key="d15" />
+              </port>
+            </node>
+            <node id="n1::n0::n3">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\2_application\Alis\Alis]]></data>
+              <data key="d3"><![CDATA[Alis]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="801.125" Y="-44" Width="147" Height="90" />
+              </data>
+              <data key="d6" />
+              <data key="d7" />
+              <port name="p0">
+                <data key="d15" />
+              </port>
+              <port name="p1">
+                <data key="d15" />
+              </port>
+              <port name="p2">
+                <data key="d15" />
+              </port>
+              <port name="p3">
+                <data key="d15" />
+              </port>
+              <port name="p4">
+                <data key="d15" />
+              </port>
+              <port name="p5">
+                <data key="d15" />
+              </port>
+              <port name="p6">
+                <data key="d15" />
+              </port>
+            </node>
+            <node id="n1::n0::n4">
+              <data key="d1"><![CDATA[0]]></data>
+              <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis]]></data>
+              <data key="d3"><![CDATA[Alis.Sample]]></data>
+              <data key="d4" />
+              <data key="d5">
+                <y:RectD X="1447.125" Y="-450.5" Width="668" Height="643" />
+              </data>
+              <data key="d6" />
+              <data key="d7">
+                <ywpf:CollapsibleNodeStyleDecorator ButtonStyle="{y:GraphMLReference 1}" ButtonPlacement="{x:Static y:InteriorLabelModel.NorthWest}" Insets="50,90,50,50">
+                  <ywpf:ShapeNodeStyle Brush="#FF252525">
+                    <ywpf:ShapeNodeStyle.Pen>
+                      <Pen Brush="#FF0C0C0C" Thickness="1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                    </ywpf:ShapeNodeStyle.Pen>
+                  </ywpf:ShapeNodeStyle>
+                </ywpf:CollapsibleNodeStyleDecorator>
+              </data>
+              <graph id="n1::n0::n4:">
+                <node id="n1::n0::n4::n0">
+                  <data key="d1"><![CDATA[0]]></data>
+                  <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis]]></data>
+                  <data key="d3"><![CDATA[D2]]></data>
+                  <data key="d4" />
+                  <data key="d5">
+                    <y:RectD X="1497.125" Y="-87.5" Width="568" Height="230" />
+                  </data>
+                  <data key="d6" />
+                  <data key="d7">
+                    <ywpf:CollapsibleNodeStyleDecorator ButtonStyle="{y:GraphMLReference 1}" ButtonPlacement="{x:Static y:InteriorLabelModel.NorthWest}" Insets="50,90,50,50">
+                      <ywpf:ShapeNodeStyle Brush="#FF323232">
+                        <ywpf:ShapeNodeStyle.Pen>
+                          <Pen Brush="#FF191919" Thickness="1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                        </ywpf:ShapeNodeStyle.Pen>
+                      </ywpf:ShapeNodeStyle>
+                    </ywpf:CollapsibleNodeStyleDecorator>
+                  </data>
+                  <graph id="n1::n0::n4::n0:">
+                    <node id="n1::n0::n4::n0::n0">
+                      <data key="d1"><![CDATA[0]]></data>
+                      <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\2_application\alis\alis.sample\d2\alis.sample.d2.simplegame]]></data>
+                      <data key="d3"><![CDATA[Alis.Sample.D2.SimpleGame]]></data>
+                      <data key="d4" />
+                      <data key="d5">
+                        <y:RectD X="1547.125" Y="2.5" Width="468" Height="90" />
+                      </data>
+                      <data key="d6" />
+                      <data key="d7" />
+                      <port name="p0">
+                        <data key="d15" />
+                      </port>
+                    </node>
+                  </graph>
+                </node>
+                <node id="n1::n0::n4::n1">
+                  <data key="d1"><![CDATA[0]]></data>
+                  <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis]]></data>
+                  <data key="d3"><![CDATA[D3]]></data>
+                  <data key="d4" />
+                  <data key="d5">
+                    <y:RectD X="1497.125" Y="-360.5" Width="568" Height="230" />
+                  </data>
+                  <data key="d6" />
+                  <data key="d7">
+                    <ywpf:CollapsibleNodeStyleDecorator ButtonStyle="{y:GraphMLReference 1}" ButtonPlacement="{x:Static y:InteriorLabelModel.NorthWest}" Insets="50,90,50,50">
+                      <ywpf:ShapeNodeStyle Brush="#FF323232">
+                        <ywpf:ShapeNodeStyle.Pen>
+                          <Pen Brush="#FF191919" Thickness="1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                        </ywpf:ShapeNodeStyle.Pen>
+                      </ywpf:ShapeNodeStyle>
+                    </ywpf:CollapsibleNodeStyleDecorator>
+                  </data>
+                  <graph id="n1::n0::n4::n1:">
+                    <node id="n1::n0::n4::n1::n0">
+                      <data key="d1"><![CDATA[0]]></data>
+                      <data key="d2"><![CDATA[C:\Users\pablo\Desktop\Alis\New Version\Alis\2_application\alis\alis.sample\d3\alis.sample.d3.simplegame]]></data>
+                      <data key="d3"><![CDATA[Alis.Sample.D3.SimpleGame]]></data>
+                      <data key="d4" />
+                      <data key="d5">
+                        <y:RectD X="1547.125" Y="-270.5" Width="468" Height="90" />
+                      </data>
+                      <data key="d6" />
+                      <data key="d7" />
+                      <port name="p0">
+                        <data key="d15" />
+                      </port>
+                    </node>
+                  </graph>
+                </node>
+              </graph>
+            </node>
+            <edge id="n1::n0::e0" source="n1::n0::n4::n0::n0" target="n1::n0::n3" sourceport="p0" targetport="p2">
+              <data key="d9"><![CDATA[Direct]]></data>
+              <data key="d11" />
+              <data key="d12" />
+              <data key="d6" />
+            </edge>
+            <edge id="n1::n0::e1" source="n1::n0::n4::n1::n0" target="n1::n0::n3" sourceport="p0" targetport="p3">
+              <data key="d9"><![CDATA[Direct]]></data>
+              <data key="d11" />
+              <data key="d12" />
+              <data key="d6" />
+            </edge>
+            <edge id="n1::n0::e2" source="n1::n0::n0" target="n1::n0::n3" sourceport="p0" targetport="p4">
+              <data key="d9"><![CDATA[Direct]]></data>
+              <data key="d12" />
+              <data key="d6" />
+            </edge>
+            <edge id="n1::n0::e3" source="n1::n0::n1" target="n1::n0::n3" sourceport="p0" targetport="p5">
+              <data key="d9"><![CDATA[Direct]]></data>
+              <data key="d12" />
+              <data key="d6" />
+            </edge>
+            <edge id="n1::n0::e4" source="n1::n0::n2" target="n1::n0::n3" sourceport="p0" targetport="p6">
+              <data key="d9"><![CDATA[Direct]]></data>
+              <data key="d12">
+                <ywpf:PolylineEdgeStyle SourceArrow="None">
+                  <ywpf:PolylineEdgeStyle.Pen>
+                    <Pen Brush="#FF5B90BF" Thickness="2" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                  </ywpf:PolylineEdgeStyle.Pen>
+                  <ywpf:PolylineEdgeStyle.TargetArrow>
+                    <ywpf:Arrow Brush="#FF5B90BF" CropLength="1" Type="Triangle" IsFrozen="True">
+                      <ywpf:Arrow.Pen>
+                        <Pen Brush="#FF5B90BF" Thickness="3" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                      </ywpf:Arrow.Pen>
+                    </ywpf:Arrow>
+                  </ywpf:PolylineEdgeStyle.TargetArrow>
+                </ywpf:PolylineEdgeStyle>
+              </data>
+              <data key="d6" />
+            </edge>
+          </graph>
+        </node>
+      </graph>
+    </node>
+    <edge id="e0" source="n0::n0::n0" target="n1::n0::n3" sourceport="p0" targetport="p0">
+      <data key="d9"><![CDATA[Direct]]></data>
+      <data key="d12" />
+      <data key="d6" />
+    </edge>
+    <edge id="e1" source="n0::n0::n1" target="n1::n0::n3" sourceport="p0" targetport="p1">
+      <data key="d9"><![CDATA[Direct]]></data>
+      <data key="d12" />
+      <data key="d6" />
+    </edge>
+  </graph>
+</graphml>

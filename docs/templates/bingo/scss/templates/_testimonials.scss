@@ -1,0 +1,46 @@
+
+/*=================================================================
+  Testimonial section
+==================================================================*/
+
+.testimonial {
+  padding-top: 100px;
+  background: $primary-color;
+  position: relative;
+  padding-bottom: 0px;
+  margin-bottom: 80px;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    bottom: 0;
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+  }
+  .item {
+    i {
+      font-size: 60px;
+      color: $light;
+      margin-bottom: 50px;
+      display: inline-block;
+    }
+    .client-details {
+      padding-bottom: 30px;
+      p {
+        font-size: 17px;
+        color: $light;
+        font-weight: 200;
+        padding: 0 10%;
+      }
+    }
+    .client-thumb img {
+      display: inline-block;
+      border-radius: 100%;
+      width: 150px;
+      height:auto;
+    }
+  }
+}
