@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:LogLevel.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,31 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Component.Audio;
-using Alis.Core.Component.Render;
-using Alis.Core.Entity;
-using Alis.Core.Manager;
-
-namespace Alis.Sample.Rogue
+namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    ///     The program class
+    ///     The log level enum
     /// </summary>
-    public class Program
+    public enum LogLevel
     {
         /// <summary>
-        ///     Main the args
+        ///     The info log level
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Start game");
-            
-            VideoGame.Builder()
-                .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(scene => scene
-                        .Name("Main Menu")
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Player")
-                            .Transform(transform => transform
-                                .Position(100, 100)
-                                .Rotation(180)
-                                .Scale(3,1)
-                                .Build())
-                            .Add<Sprite>(i => i
-                                .Depth(2)
-                                .Build())
-                            .Build())
-                        .Build())
-                    .Build())
-                .Run();
+        Info = 0,
 
-            Console.WriteLine("End game");
-        }
+        /// <summary>
+        ///     The log log level
+        /// </summary>
+        Log = 1,
+
+        /// <summary>
+        ///     The normal log level
+        /// </summary>
+        Normal = 3,
+
+        /// <summary>
+        ///     The critical log level
+        /// </summary>
+        Critical = 4
     }
 }

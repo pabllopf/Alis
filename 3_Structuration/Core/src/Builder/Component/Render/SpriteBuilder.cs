@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:SpriteBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,40 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Component.Audio;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Component.Render;
-using Alis.Core.Entity;
-using Alis.Core.Manager;
 
-namespace Alis.Sample.Rogue
+namespace Alis.Core.Builder.Component.Render
 {
     /// <summary>
-    ///     The program class
+    /// The sprite builder class
     /// </summary>
-    public class Program
+    /// <seealso cref="IBuild{Sprite}"/>
+    public class SpriteBuilder : 
+        IBuild<Sprite>,
+        IDepth<SpriteBuilder, int>
     {
         /// <summary>
-        ///     Main the args
+        /// The sprite
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Start game");
-            
-            VideoGame.Builder()
-                .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(scene => scene
-                        .Name("Main Menu")
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Player")
-                            .Transform(transform => transform
-                                .Position(100, 100)
-                                .Rotation(180)
-                                .Scale(3,1)
-                                .Build())
-                            .Add<Sprite>(i => i
-                                .Depth(2)
-                                .Build())
-                            .Build())
-                        .Build())
-                    .Build())
-                .Run();
+        private Sprite sprite = new Sprite();
+        
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The sprite</returns>
+        public Sprite Build() => sprite;
 
-            Console.WriteLine("End game");
+        /// <summary>
+        /// Depths the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The sprite builder</returns>
+        public SpriteBuilder Depth(int value)
+        {
+            sprite.Depth = value;
+            return this;
         }
     }
 }

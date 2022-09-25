@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Manager;
+using Alis.Core.Setting;
 
 namespace Alis.Core
 {
@@ -43,6 +43,11 @@ namespace Alis.Core
         /// Active game
         /// </summary>
         internal static bool IsRunning;
+
+        /// <summary>
+        /// Gets the value of the setting
+        /// </summary>
+        public static SettingBase Setting { get; } = new SettingBase();
 
         /// <summary>
         /// The time manager

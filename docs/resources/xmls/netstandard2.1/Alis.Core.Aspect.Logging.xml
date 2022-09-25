@@ -84,5 +84,36 @@
             </summary>
             <param name="message">The message</param>
         </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Trace(System.String)">
+            <summary>
+            Traces the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.LogLevel">
+            <summary>
+                The log level enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Info">
+            <summary>
+                The info log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Log">
+            <summary>
+                The log log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Normal">
+            <summary>
+                The normal log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Critical">
+            <summary>
+                The critical log level
+            </summary>
+        </member>
     </members>
 </doc>

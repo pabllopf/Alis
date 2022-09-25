@@ -27,9 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Builder.Component.Render;
 using Alis.Core.Component;
+using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Builder.Entity
@@ -40,12 +43,14 @@ namespace Alis.Core.Builder.Entity
     public class GameObjectBuilder :
         IBuild<GameObject>,
         IName<GameObjectBuilder, string>,
-        IAdd<GameObjectBuilder, ComponentBase, ComponentBase>
+        IAdd<GameObjectBuilder, ComponentBase, ComponentBase>,
+        ITransform<GameObjectBuilder, Func<TransformBuilder,Transform>>,
+        IAdd<GameObjectBuilder, Sprite, Func<SpriteBuilder,Sprite>>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
-        private GameObject GameObject { get; } = new GameObject();
+        private GameObject gameObject = new GameObject();
 
         /// <summary>
         ///     Adds the value
@@ -55,7 +60,8 @@ namespace Alis.Core.Builder.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Add<T>(ComponentBase value) where T : ComponentBase
         {
-            GameObject.Add(value);
+            gameObject.Add(value);
+            value.AttachTo(gameObject);
             return this;
         }
 
@@ -63,7 +69,7 @@ namespace Alis.Core.Builder.Entity
         ///     Builds this instance
         /// </summary>
         /// <returns>The game object</returns>
-        public GameObject Build() => GameObject;
+        public GameObject Build() => gameObject;
 
         /// <summary>
         ///     Names the value
@@ -72,18 +78,32 @@ namespace Alis.Core.Builder.Entity
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Name(string value)
         {
-            GameObject.Name = value;
+            gameObject.Name = value;
             return this;
         }
 
         /// <summary>
-        ///     Transforms the transform
+        /// Transforms the value
         /// </summary>
-        /// <param name="transform">The transform</param>
+        /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Transform(Transform transform)
+        public GameObjectBuilder Transform(Func<TransformBuilder, Transform> value)
         {
-            GameObject.Transform = transform;
+            gameObject.Transform = value.Invoke(new TransformBuilder());
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Add<T>(Func<SpriteBuilder, Sprite> value) where T : Sprite
+        {
+            Sprite sprite = value.Invoke(new SpriteBuilder());
+            gameObject.Add(sprite);
+            sprite.AttachTo(gameObject);
             return this;
         }
     }

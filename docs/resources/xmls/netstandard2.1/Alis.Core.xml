@@ -21,12 +21,36 @@
             </summary>
             <returns>The audio source</returns>
         </member>
+        <member name="T:Alis.Core.Builder.Component.Render.SpriteBuilder">
+            <summary>
+            The sprite builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="F:Alis.Core.Builder.Component.Render.SpriteBuilder.sprite">
+            <summary>
+            The sprite
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The sprite</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.Depth(System.Int32)">
+            <summary>
+            Depths the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The sprite builder</returns>
+        </member>
         <member name="T:Alis.Core.Builder.Entity.GameObjectBuilder">
             <summary>
                 The game object builder class
             </summary>
         </member>
-        <member name="P:Alis.Core.Builder.Entity.GameObjectBuilder.GameObject">
+        <member name="F:Alis.Core.Builder.Entity.GameObjectBuilder.gameObject">
             <summary>
                 Gets or sets the value of the game object
             </summary>
@@ -52,11 +76,19 @@
             <param name="value">The value</param>
             <returns>The game object builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Transform(Alis.Core.Entity.Transform)">
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Transform(System.Func{Alis.Core.Builder.Entity.TransformBuilder,Alis.Core.Entity.Transform})">
             <summary>
-                Transforms the transform
+            Transforms the value
             </summary>
-            <param name="transform">The transform</param>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Add``1(System.Func{Alis.Core.Builder.Component.Render.SpriteBuilder,Alis.Core.Component.Render.Sprite})">
+            <summary>
+            Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
             <returns>The game object builder</returns>
         </member>
         <member name="T:Alis.Core.Builder.Entity.SceneBuilder">
@@ -90,6 +122,46 @@
             Builds this instance
             </summary>
             <returns>The scene</returns>
+        </member>
+        <member name="T:Alis.Core.Builder.Entity.TransformBuilder">
+            <summary>
+            The transform builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="F:Alis.Core.Builder.Entity.TransformBuilder.transform">
+            <summary>
+            The transform
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The transform</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Position(System.Single,System.Single)">
+            <summary>
+            Positions the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The transform builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Rotation(System.Single)">
+            <summary>
+            Rotations the angle
+            </summary>
+            <param name="angle">The angle</param>
+            <returns>The transform builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Scale(System.Single,System.Single)">
+            <summary>
+            Scales the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The transform builder</returns>
         </member>
         <member name="T:Alis.Core.Builder.Manager.SceneManagerBuilder">
             <summary>
@@ -235,6 +307,11 @@
         </member>
         <member name="M:Alis.Core.Component.ComponentBase.Disable">
             <summary>Disables this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Component.ComponentBase.Init">
+            <summary>
+            Inits this instance
+            </summary>
         </member>
         <member name="M:Alis.Core.Component.ComponentBase.Awake">
             <summary>Awakes this instance.</summary>
@@ -494,9 +571,39 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
+        <member name="P:Alis.Core.Component.Render.Sprite.Depth">
+            <summary>
+                The level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Component.Render.Sprite.sprite">
+            <summary>
+                The sprite
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Component.Render.Sprite.texturePath">
+            <summary>
+                The texture path
+            </summary>
+        </member>
         <member name="F:Alis.Core.Component.Render.Sprite.Image">
             <summary>
             The image
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Component.Render.Sprite.size">
+            <summary>
+            The size
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Sprite.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Sprite.Awake">
+            <summary>
+            Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Sprite.Start">
@@ -510,6 +617,11 @@
                 Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Sprite.Exit">
+            <summary>
+            Exits this instance
+            </summary>
         </member>
         <member name="T:Alis.Core.Entity.GameObject">
             <summary>Represent a object of the game.</summary>
@@ -546,6 +658,11 @@
             Builders this instance
             </summary>
             <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Init">
+            <summary>
+            Inits this instance
+            </summary>
         </member>
         <member name="M:Alis.Core.Entity.GameObject.Awake">
             <summary>Awakes this instance.</summary>
@@ -659,17 +776,17 @@
         <member name="T:Alis.Core.Entity.Transform">
             <summary>Control the object space in the game.</summary>
         </member>
-        <member name="F:Alis.Core.Entity.Transform.Position">
+        <member name="P:Alis.Core.Entity.Transform.Position">
             <summary>
             The position
             </summary>
         </member>
-        <member name="F:Alis.Core.Entity.Transform.Rotation">
+        <member name="P:Alis.Core.Entity.Transform.Rotation">
             <summary>
             The rotation
             </summary>
         </member>
-        <member name="F:Alis.Core.Entity.Transform.Scale">
+        <member name="P:Alis.Core.Entity.Transform.Scale">
             <summary>
             The scale
             </summary>
@@ -730,6 +847,16 @@
         <member name="F:Alis.Core.GameBase.IsRunning">
             <summary>
             Active game
+            </summary>
+        </member>
+        <member name="P:Alis.Core.GameBase.Setting">
+            <summary>
+            Gets the value of the setting
+            </summary>
+        </member>
+        <member name="F:Alis.Core.GameBase.timeManager">
+            <summary>
+            The time manager
             </summary>
         </member>
         <member name="F:Alis.Core.GameBase.Managers">
@@ -823,24 +950,14 @@
             </summary>
             <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
         </member>
-        <member name="F:Alis.Core.Manager.GraphicManager.window">
+        <member name="F:Alis.Core.Manager.GraphicManager.renderWindow">
             <summary>
-            The window
+            The renderWindow
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.GraphicManager.videoMode">
+        <member name="P:Alis.Core.Manager.GraphicManager.Sprites">
             <summary>
-            The video mode
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.GraphicManager.title">
-            <summary>
-            The title
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.GraphicManager.backGroundColor">
-            <summary>
-            The blue
+            Gets or sets the value of the sprites
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.GraphicManager.Init">
@@ -848,26 +965,14 @@
             Inits this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.GraphicManager.WindowOnClosed(System.Object,System.EventArgs)">
+        <member name="M:Alis.Core.Manager.GraphicManager.Awake">
             <summary>
-            Windows the on closed using the specified sender
+            Awakes this instance
             </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Manager.GraphicManager.Start">
             <summary>
             Starts this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.GraphicManager.AfterUpdate">
-            <summary>
-            Afters the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.GraphicManager.Awake">
-            <summary>
-            Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.GraphicManager.BeforeUpdate">
@@ -875,14 +980,19 @@
             Befores the update
             </summary>
         </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.GraphicManager.DispatchEvents">
             <summary>
             Dispatches the events
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.GraphicManager.Exit">
-            <summary>
-            Exits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.GraphicManager.FixedUpdate">
@@ -900,10 +1010,29 @@
             Stops this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.GraphicManager.Update">
+        <member name="M:Alis.Core.Manager.GraphicManager.Exit">
             <summary>
-            Updates this instance
+            Exits this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.RenderWindowOnClosed(System.Object,System.EventArgs)">
+            <summary>
+            Windows the on closed using the specified sender
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The </param>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.Attach(Alis.Core.Component.Render.Sprite)">
+            <summary>
+            Attaches the sprite
+            </summary>
+            <param name="sprite">The sprite</param>
+        </member>
+        <member name="M:Alis.Core.Manager.GraphicManager.UnAttach(Alis.Core.Component.Render.Sprite)">
+            <summary>
+            Uns the attach using the specified sprite
+            </summary>
+            <param name="sprite">The sprite</param>
         </member>
         <member name="T:Alis.Core.Manager.ManagerBase">
             <summary>
@@ -1086,6 +1215,185 @@
             Adds the scene
             </summary>
             <param name="scene">The scene</param>
+        </member>
+        <member name="T:Alis.Core.Manager.TimeManager">
+            <summary>
+            The time manager class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Manager.TimeManager"/> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.Timer">
+            <summary>
+                Gets the value of the timer
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.FixedTime">
+            <summary>
+                Gets or sets the value of the fixed time
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.TimeScale">
+            <summary>
+                Gets or sets the value of the time scale
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.FrameCount">
+            <summary>
+                Gets or sets the value of the frame count
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.CurrentFrame">
+            <summary>
+                Gets or sets the value of the current frame
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.FixedDeltaTime">
+            <summary>
+                Gets or sets the value of the fixed delta time
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.MaximumFramesPerSecond">
+            <summary>
+                Gets or sets the value of the maximum frames per second
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.TimeStep">
+            <summary>
+                Gets or sets the value of the time step
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.TimeManager.MaximunAllowedTimeStep">
+            <summary>
+                Gets or sets the value of the maximun allowed time step
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.SyncFixedDeltaTime">
+            <summary>
+                Syncs the fixed delta time
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.IsNewFrame">
+            <summary>
+                Describes whether this instance is new frame
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.UpdateTimeStep">
+            <summary>
+                Updates the time step
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.CounterFrames">
+            <summary>
+                Counters the frames
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.UpdateFixedTime">
+            <summary>
+                Updates the fixed time
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.TimeManager.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Setting.DebugSetting">
+            <summary>
+                The debug class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.DebugSetting.Level">
+            <summary>
+                The log level
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Setting.GeneralSetting">
+            <summary>Define a </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.GeneralSetting.GameName">
+            <summary>
+            Gets or sets the value of the game name
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.GeneralSetting.Author">
+            <summary>
+            Gets or sets the value of the author
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.GeneralSetting.Description">
+            <summary>
+            Gets or sets the value of the description
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Setting.SettingBase">
+            <summary>
+            The setting base class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.SettingBase.Debug">
+            <summary>
+                The debug
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.SettingBase.General">
+            <summary>
+                The general
+            </summary>
         </member>
     </members>
 </doc>

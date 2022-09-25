@@ -41,7 +41,7 @@ namespace Alis.Core.Entity
         /// <summary>
         /// The transform
         /// </summary>
-        public Transform Transform;
+        public Transform Transform = new Transform();
 
         /// <summary>
         /// The components
@@ -70,6 +70,11 @@ namespace Alis.Core.Entity
         /// </summary>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Builder() => new GameObjectBuilder();
+        
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public void Init() => components.ForEach(component => component.Init());
         
         /// <summary>Awakes this instance.</summary>
         public void Awake() => components.ForEach(component => component.Awake());

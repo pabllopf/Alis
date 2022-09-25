@@ -19,6 +19,11 @@
             The tag
             </summary>
         </member>
+        <member name="P:Alis.Core.Aspect.Base.AlisObject.IsActive">
+            <summary>
+            Gets or sets the value of the is active
+            </summary>
+        </member>
         <member name="M:Alis.Core.Aspect.Base.AlisObject.GetHashCode(System.Object)">
             <summary>
                 The object base class

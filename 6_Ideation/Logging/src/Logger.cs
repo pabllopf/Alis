@@ -44,5 +44,14 @@ namespace Alis.Core.Aspect.Logging
         {
             Console.WriteLine($"LOG: {message}");
         }
+
+        /// <summary>
+        /// Traces the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Trace(string message)
+        {
+            Console.WriteLine($"TRACE: {message}");
+        }
     }
 }

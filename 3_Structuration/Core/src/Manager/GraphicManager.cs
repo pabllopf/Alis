@@ -28,8 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
+using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Core.Manager
 {
@@ -40,105 +43,61 @@ namespace Alis.Core.Manager
     public class GraphicManager : ManagerBase
     {
         /// <summary>
-        /// The window
+        /// The renderWindow
         /// </summary>
-        private RenderWindow window;
-
-        /// <summary>
-        /// The video mode
-        /// </summary>
-        private VideoMode videoMode;
-
-        /// <summary>
-        /// The title
-        /// </summary>
-        private string title = "Default";
+        private RenderWindow renderWindow;
         
         /// <summary>
-        /// The blue
+        /// Gets or sets the value of the sprites
         /// </summary>
-        private Color backGroundColor = Color.Blue;
+        private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
         
         /// <summary>
         /// Inits this instance
         /// </summary>
         internal override void Init()
         {
-            videoMode = new VideoMode(640, 480);
-            window = new RenderWindow(videoMode, title);
-            
-            //window.SetVerticalSyncEnabled(true);
-            //window.SetFramerateLimit(60);
-            
-            window.Closed += WindowOnClosed;
-        }
-
-        /// <summary>
-        /// Windows the on closed using the specified sender
-        /// </summary>
-        /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
-        private void WindowOnClosed(object sender, EventArgs e)
-        {
-            GameBase.IsRunning = false;
-        }
-
-        /// <summary>
-        /// Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-            
+            renderWindow = new RenderWindow(new VideoMode(640, 480), $"{GameBase.Setting.General.GameName} by {GameBase.Setting.General.Author}");
+            renderWindow.Closed += RenderWindowOnClosed;
         }
         
-        /// <summary>
-        /// Afters the update
-        /// </summary>
-        public override void AfterUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-       
-
         /// <summary>
         /// Awakes this instance
         /// </summary>
         public override void Awake()
         {
-            //throw new NotImplementedException();
         }
+        
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public override void Start() => Sprites = Sprites.OrderBy(o => o.Depth).ToList();
 
         /// <summary>
         /// Befores the update
         /// </summary>
-        public override void BeforeUpdate()
-        {
-            //throw new NotImplementedException();
-        }
+        public override void BeforeUpdate() => renderWindow.Clear(Color.Blue);
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public override void Update() => Sprites.ForEach(i => renderWindow.Draw(i.sprite));
+
+        /// <summary>
+        /// Afters the update
+        /// </summary>
+        public override void AfterUpdate() => renderWindow.Display();
 
         /// <summary>
         /// Dispatches the events
         /// </summary>
-        public override void DispatchEvents()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-            //throw new NotImplementedException();
-        }
-
+        public override void DispatchEvents() => renderWindow.DispatchEvents();
+        
         /// <summary>
         /// Fixeds the update
         /// </summary>
         public override void FixedUpdate()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -146,7 +105,6 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Reset()
         {
-            //throw new NotImplementedException();
         }
         
         /// <summary>
@@ -154,20 +112,41 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Stop()
         {
-            //throw new NotImplementedException();
+        }
+        
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public override void Exit() => renderWindow.Close();
+
+        /// <summary>
+        /// Windows the on closed using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
+        private void RenderWindowOnClosed(object sender, EventArgs e)
+        {
+            GameBase.IsRunning = false;
         }
 
         /// <summary>
-        /// Updates this instance
+        /// Attaches the sprite
         /// </summary>
-        public override void Update()
+        /// <param name="sprite">The sprite</param>
+        public static void Attach(Sprite sprite)
         {
-            if (window.IsOpen)
-            {
-                window.DispatchEvents();
-                window.Clear(backGroundColor);
-                window.Display();
-            }
+            Sprites.Add(sprite);
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+        }
+        
+        /// <summary>
+        /// Uns the attach using the specified sprite
+        /// </summary>
+        /// <param name="sprite">The sprite</param>
+        public static void UnAttach(Sprite sprite)
+        {
+            Sprites.Remove(sprite);
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
     }
 }

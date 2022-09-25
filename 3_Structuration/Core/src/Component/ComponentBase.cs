@@ -77,6 +77,13 @@ namespace Alis.Core.Component
         {
         }
 
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public virtual void Init()
+        {
+        }
+        
         /// <summary>Awakes this instance.</summary>
         public virtual void Awake()
         {

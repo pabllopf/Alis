@@ -43,7 +43,12 @@ namespace Alis.Core.Aspect.Base
         /// The tag
         /// </summary>
         public string Tag  { get; set; } = "Default Tag";
-        
+
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; } = true;
+
         /// <summary>
         ///     The object base class
         /// </summary>

@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
+using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Manager;
 
 namespace Alis.Core.Component.Render
 {
@@ -37,11 +40,49 @@ namespace Alis.Core.Component.Render
     /// <seealso cref="ComponentBase" />
     public class Sprite : RenderBase
     {
+        /// <summary>
+        ///     The level
+        /// </summary>
+        public int Depth { get; set; } = 0;
 
+        /// <summary>
+        ///     The sprite
+        /// </summary>
+        public Alis.Core.Graphic.D2.SFML.Graphics.Sprite sprite;
+
+        /// <summary>
+        ///     The texture path
+        /// </summary>
+        public string texturePath;
+        
         /// <summary>
         /// The image
         /// </summary>
         public Image Image;
+
+        /// <summary>
+        /// The size
+        /// </summary>
+        private Vector2F size;
+
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public override void Init()
+        {
+            texturePath = "/Users/pablo/Desktop/Alis/2_Application/Alis/sample/alis.sample.rogue/Assets/tile000.png";
+            sprite = new Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
+            size = new Vector2F(sprite.TextureRect.Width, sprite.TextureRect.Height);
+            Logger.Log($"Sprite::init::render::{texturePath}");
+        }
+
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            GraphicManager.Attach(this);
+        }
 
         /// <summary>
         ///     Starts this instance
@@ -49,7 +90,11 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            //throw new NotImplementedException();
+            sprite.Position = new Vector2F(
+                (GameObject.Transform.Position.X) - (size.X / 2),
+                (GameObject.Transform.Position.Y) - (size.Y / 2));
+            sprite.Rotation = GameObject.Transform.Rotation;
+            sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>
@@ -58,7 +103,19 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            //throw new NotImplementedException();
+            sprite.Position =  new Vector2F(
+                (GameObject.Transform.Position.X) - (size.X / 2),
+                (GameObject.Transform.Position.Y) - (size.Y / 2));
+            sprite.Rotation = GameObject.Transform.Rotation;
+            sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+        }
+
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public override void Exit()
+        {
+            GraphicManager.UnAttach(this);
         }
     }
 }

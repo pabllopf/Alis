@@ -60,6 +60,7 @@ namespace Alis.Core.Entity
             {
                 Logger.Log($"Scene::Init::GameObject'{gameObjects[i].Name}'");
             }
+            gameObjects.ForEach(gameObject => gameObject.Init());
         }
 
         /// <summary>

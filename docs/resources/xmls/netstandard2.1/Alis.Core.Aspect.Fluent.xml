@@ -98,6 +98,18 @@
             </summary>
             <returns>The</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IDepth`2">
+            <summary>
+            The depth interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IDepth`2.Depth(`1)">
+            <summary>
+            Depths the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IDescription`2">
             <summary>
                 The description interface
@@ -254,18 +266,17 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
-        <member name="T:Alis.Core.Aspect.Fluent.Words.IPosition`4">
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IPosition2D`3">
             <summary>
                 The position interface
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Fluent.Words.IPosition`4.Position(`1,`2,`3)">
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IPosition2D`3.Position(`1,`2)">
             <summary>
-                Positions the x
+            Positions the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
-            <param name="z">The </param>
             <returns>The builder</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IResolution`3">
@@ -303,18 +314,17 @@
                 Runs this instance
             </summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Fluent.Words.IScale`4">
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IScale2D`3">
             <summary>
                 The scale interface
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Fluent.Words.IScale`4.Scale(`1,`2,`3)">
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IScale2D`3.Scale(`1,`2)">
             <summary>
-                Scales the x
+            Scales the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
-            <param name="z">The </param>
             <returns>The builder</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IScreenMode`2">

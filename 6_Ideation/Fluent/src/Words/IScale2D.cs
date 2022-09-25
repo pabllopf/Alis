@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IPosition.cs
+//  File:IScale2D.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,17 +30,16 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The position interface
+    ///     The scale interface
     /// </summary>
-    public interface IPosition<out TBuilder, in TArgument1, in TArgument2, in TArgument3>
+    public interface IScale2D<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        ///     Positions the x
+        /// Scales the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
-        /// <param name="z">The </param>
         /// <returns>The builder</returns>
-        TBuilder Position(TArgument1 x, TArgument2 y, TArgument3 z);
+        TBuilder Scale(TArgument1 x, TArgument2 y);
     }
 }

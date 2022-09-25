@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:SettingBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Component.Audio;
-using Alis.Core.Component.Render;
-using Alis.Core.Entity;
-using Alis.Core.Manager;
+using Alis.Core.Aspect.Logging;
 
-namespace Alis.Sample.Rogue
+namespace Alis.Core.Setting
 {
     /// <summary>
-    ///     The program class
+    /// The setting base class
     /// </summary>
-    public class Program
+    public class SettingBase
     {
         /// <summary>
-        ///     Main the args
+        ///     The debug
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Start game");
-            
-            VideoGame.Builder()
-                .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(scene => scene
-                        .Name("Main Menu")
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Player")
-                            .Transform(transform => transform
-                                .Position(100, 100)
-                                .Rotation(180)
-                                .Scale(3,1)
-                                .Build())
-                            .Add<Sprite>(i => i
-                                .Depth(2)
-                                .Build())
-                            .Build())
-                        .Build())
-                    .Build())
-                .Run();
+        public DebugSetting Debug { get; set; } = new DebugSetting();
 
-            Console.WriteLine("End game");
-        }
+        /// <summary>
+        ///     The general
+        /// </summary>
+        public GeneralSetting General { get; set; } = new GeneralSetting();
     }
 }

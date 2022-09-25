@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:IDepth.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,47 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Component.Audio;
-using Alis.Core.Component.Render;
-using Alis.Core.Entity;
-using Alis.Core.Manager;
-
-namespace Alis.Sample.Rogue
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The program class
+    /// The depth interface
     /// </summary>
-    public class Program
+    public interface IDepth<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Main the args
+        /// Depths the value
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("Start game");
-            
-            VideoGame.Builder()
-                .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(scene => scene
-                        .Name("Main Menu")
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("Player")
-                            .Transform(transform => transform
-                                .Position(100, 100)
-                                .Rotation(180)
-                                .Scale(3,1)
-                                .Build())
-                            .Add<Sprite>(i => i
-                                .Depth(2)
-                                .Build())
-                            .Build())
-                        .Build())
-                    .Build())
-                .Run();
-
-            Console.WriteLine("End game");
-        }
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder Depth(TArgument value);
     }
 }
+        
