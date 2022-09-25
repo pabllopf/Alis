@@ -30,8 +30,10 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Builder.Component.Audio;
 using Alis.Core.Builder.Component.Render;
 using Alis.Core.Component;
+using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 
@@ -45,7 +47,8 @@ namespace Alis.Core.Builder.Entity
         IName<GameObjectBuilder, string>,
         IAdd<GameObjectBuilder, ComponentBase, ComponentBase>,
         ITransform<GameObjectBuilder, Func<TransformBuilder,Transform>>,
-        IAdd<GameObjectBuilder, Sprite, Func<SpriteBuilder,Sprite>>
+        IAdd<GameObjectBuilder, Sprite, Func<SpriteBuilder,Sprite>>,
+        IAdd<GameObjectBuilder, AudioSource, Func<AudioSourceBuilder,AudioSource>>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
@@ -104,6 +107,20 @@ namespace Alis.Core.Builder.Entity
             Sprite sprite = value.Invoke(new SpriteBuilder());
             gameObject.Add(sprite);
             sprite.AttachTo(gameObject);
+            return this;
+        }
+
+        /// <summary>
+        /// Adds the value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder Add<T>(Func<AudioSourceBuilder, AudioSource> value) where T : AudioSource
+        {
+            AudioSource audioSource = value.Invoke(new AudioSourceBuilder());
+            gameObject.Add(audioSource);
+            audioSource.AttachTo(gameObject);
             return this;
         }
     }

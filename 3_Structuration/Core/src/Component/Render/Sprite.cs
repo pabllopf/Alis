@@ -70,7 +70,6 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Init()
         {
-            texturePath = "/Users/pablo/Desktop/Alis/2_Application/Alis/sample/alis.sample.rogue/Assets/tile000.png";
             sprite = new Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
             size = new Vector2F(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Logger.Log($"Sprite::init::render::{texturePath}");

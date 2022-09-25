@@ -390,6 +390,18 @@
             <param name="y">The </param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.ITexture`2">
+            <summary>
+            The texture interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.ITexture`2.Texture(`1)">
+            <summary>
+            Textures the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.ITime`2">
             <summary>
                 The time interface

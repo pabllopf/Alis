@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SpriteBuilder.cs
+//  File:BodyBaseBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,52 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Component.Render;
-
-namespace Alis.Core.Builder.Component.Render
+namespace Alis.Core.Builder.Component.Body
 {
     /// <summary>
-    /// The sprite builder class
+    /// The rigid body builder class
     /// </summary>
-    /// <seealso cref="IBuild{Sprite}"/>
-    public class SpriteBuilder : 
-        IBuild<Sprite>,
-        IDepth<SpriteBuilder, int>,
-        ITexture<SpriteBuilder, string>
+    public class RigidBodyBuilder
     {
-        /// <summary>
-        /// The sprite
-        /// </summary>
-        private Sprite sprite = new Sprite();
         
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The sprite</returns>
-        public Sprite Build() => sprite;
-
-        /// <summary>
-        /// Depths the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The sprite builder</returns>
-        public SpriteBuilder Depth(int value)
-        {
-            sprite.Depth = value;
-            return this;
-        }
-        
-        /// <summary>
-        /// Textures the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The sprite builder</returns>
-        public SpriteBuilder Texture(string value)
-        {
-            sprite.texturePath = value;
-            return this;
-        }
     }
 }

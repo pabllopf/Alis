@@ -57,10 +57,27 @@ namespace Alis.Sample.Rogue
                             .Transform(transform => transform
                                 .Position(100, 100)
                                 .Rotation(180)
-                                .Scale(3,1)
+                                .Scale(3,3)
                                 .Build())
                             .Add<Sprite>(i => i
+                                .Texture("/Users/pablo/Desktop/Alis/2_Application/Alis/sample/alis.sample.rogue/Assets/tile000.png")
                                 .Depth(2)
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gb=> gb
+                            .Name("Player 2")
+                            .Transform(i => i
+                                .Position(100, 100)
+                                .Rotation(90)
+                                .Scale(3, 3)
+                                .Build())
+                            .Add<Sprite>(i => i
+                                .Texture("/Users/pablo/Desktop/Alis/2_Application/Alis/sample/alis.sample.rogue/Assets/tile003.png")
+                                .Depth(0)
+                                .Build())
+                            .Add<AudioSource>(i => i
+                                .Build())
+                            .Add<AudioSource>(i => i
                                 .Build())
                             .Build())
                         .Build())

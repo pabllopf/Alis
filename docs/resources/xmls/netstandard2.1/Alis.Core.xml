@@ -45,6 +45,13 @@
             <param name="value">The value</param>
             <returns>The sprite builder</returns>
         </member>
+        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.Texture(System.String)">
+            <summary>
+            Textures the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The sprite builder</returns>
+        </member>
         <member name="T:Alis.Core.Builder.Entity.GameObjectBuilder">
             <summary>
                 The game object builder class
@@ -84,6 +91,14 @@
             <returns>The game object builder</returns>
         </member>
         <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Add``1(System.Func{Alis.Core.Builder.Component.Render.SpriteBuilder,Alis.Core.Component.Render.Sprite})">
+            <summary>
+            Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Add``1(System.Func{Alis.Core.Builder.Component.Audio.AudioSourceBuilder,Alis.Core.Component.Audio.AudioSource})">
             <summary>
             Adds the value
             </summary>
