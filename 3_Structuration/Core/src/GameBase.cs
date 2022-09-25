@@ -43,6 +43,11 @@ namespace Alis.Core
         /// Active game
         /// </summary>
         internal static bool IsRunning;
+
+        /// <summary>
+        /// The time manager
+        /// </summary>
+        internal TimeManager timeManager = new TimeManager();
         
         /// <summary>
         /// The manager base
@@ -62,12 +67,28 @@ namespace Alis.Core
 
             while (IsRunning)
             {
-                Managers.ForEach(i => i.BeforeUpdate());
-                Managers.ForEach(i => i.Update());
-                Managers.ForEach(i => i.AfterUpdate());
-                Managers.ForEach(i => i.DispatchEvents());
+                timeManager.SyncFixedDeltaTime();
+
+                if (timeManager.IsNewFrame())
+                {
+                    timeManager.UpdateTimeStep();
+                    
+                    for (int i = 0;i < timeManager.MaximunAllowedTimeStep;i++) 
+                    {
+                        Managers.ForEach(i => i.BeforeUpdate());
+                        Managers.ForEach(i => i.Update());
+                        Managers.ForEach(i => i.AfterUpdate());
+                        
+                    }
+                    
+                    Managers.ForEach(i => i.FixedUpdate());
                 
-                Managers.ForEach(i => i.FixedUpdate());
+                    Managers.ForEach(i => i.DispatchEvents()); 
+                
+                    timeManager.CounterFrames();
+                }
+
+                timeManager.UpdateFixedTime();
             }
             
             Managers.ForEach(i => i.Stop());

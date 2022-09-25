@@ -67,8 +67,8 @@ namespace Alis.Core.Manager
             videoMode = new VideoMode(640, 480);
             window = new RenderWindow(videoMode, title);
             
-            window.SetVerticalSyncEnabled(true);
-            window.SetFramerateLimit(60);
+            //window.SetVerticalSyncEnabled(true);
+            //window.SetFramerateLimit(60);
             
             window.Closed += WindowOnClosed;
         }
