@@ -4,251 +4,251 @@
         <name>Alis.Core.Audio</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Audio.Interfaces.IPlayer">
+        <member name="T:Alis.Core.Audio.Native.Interfaces.IPlayer">
             <summary>
             The player interface
             </summary>
         </member>
-        <member name="E:Alis.Core.Audio.Interfaces.IPlayer.PlaybackFinished">
+        <member name="E:Alis.Core.Audio.Native.Interfaces.IPlayer.PlaybackFinished">
             <summary>
             playback
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Interfaces.IPlayer.Playing">
+        <member name="P:Alis.Core.Audio.Native.Interfaces.IPlayer.Playing">
             <summary>
             Gets the value of the playing
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Interfaces.IPlayer.Paused">
+        <member name="P:Alis.Core.Audio.Native.Interfaces.IPlayer.Paused">
             <summary>
             Gets the value of the paused
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Interfaces.IPlayer.Play(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Interfaces.IPlayer.Play(System.String)">
             <summary>
             Plays the file name
             </summary>
             <param name="fileName">The file name</param>
         </member>
-        <member name="M:Alis.Core.Audio.Interfaces.IPlayer.Pause">
+        <member name="M:Alis.Core.Audio.Native.Interfaces.IPlayer.Pause">
             <summary>
             Pauses this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Interfaces.IPlayer.Resume">
+        <member name="M:Alis.Core.Audio.Native.Interfaces.IPlayer.Resume">
             <summary>
             Resumes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Interfaces.IPlayer.Stop">
+        <member name="M:Alis.Core.Audio.Native.Interfaces.IPlayer.Stop">
             <summary>
             Stops this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Interfaces.IPlayer.SetVolume(System.Byte)">
+        <member name="M:Alis.Core.Audio.Native.Interfaces.IPlayer.SetVolume(System.Byte)">
             <summary>
             Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
         </member>
-        <member name="T:Alis.Core.Audio.Player">
+        <member name="T:Alis.Core.Audio.Native.Player">
             <summary>
             The player class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.Interfaces.IPlayer"/>
+            <seealso cref="T:Alis.Core.Audio.Native.Interfaces.IPlayer"/>
         </member>
-        <member name="F:Alis.Core.Audio.Player._internalPlayer">
+        <member name="F:Alis.Core.Audio.Native.Player._internalPlayer">
             <summary>
             The internal player
             </summary>
         </member>
-        <member name="E:Alis.Core.Audio.Player.PlaybackFinished">
+        <member name="E:Alis.Core.Audio.Native.Player.PlaybackFinished">
             <summary>
             Internally, sets Playing flag to false. Additional handlers can be attached to it to handle any custom logic.
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Player.Playing">
+        <member name="P:Alis.Core.Audio.Native.Player.Playing">
             <summary>
             Indicates that the audio is currently playing.
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Player.Paused">
+        <member name="P:Alis.Core.Audio.Native.Player.Paused">
             <summary>
             Indicates that the audio playback is currently paused.
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Player.#ctor">
+        <member name="M:Alis.Core.Audio.Native.Player.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.Player"/> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.Native.Player"/> class
             </summary>
             <exception cref="T:System.Exception">No implementation exist for the current OS</exception>
         </member>
-        <member name="M:Alis.Core.Audio.Player.Play(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Player.Play(System.String)">
             <summary>
             Will stop any current playback and will start playing the specified audio file. The fileName parameter can be an absolute path or a path relative to the directory where the library is located. Sets Playing flag to true. Sets Paused flag to false.
             </summary>
             <param name="fileName"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Audio.Player.Pause">
+        <member name="M:Alis.Core.Audio.Native.Player.Pause">
             <summary>
             Pauses any ongong playback. Sets Paused flag to true. Doesn't modify Playing flag.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Audio.Player.Resume">
+        <member name="M:Alis.Core.Audio.Native.Player.Resume">
             <summary>
             Resumes any paused playback. Sets Paused flag to false. Doesn't modify Playing flag.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Audio.Player.Stop">
+        <member name="M:Alis.Core.Audio.Native.Player.Stop">
             <summary>
             Stops any current playback and clears the buffer. Sets Playing and Paused flags to false.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Audio.Player.OnPlaybackFinished(System.Object,System.EventArgs)">
+        <member name="M:Alis.Core.Audio.Native.Player.OnPlaybackFinished(System.Object,System.EventArgs)">
             <summary>
             Ons the playback finished using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
-        <member name="M:Alis.Core.Audio.Player.SetVolume(System.Byte)">
+        <member name="M:Alis.Core.Audio.Native.Player.SetVolume(System.Byte)">
             <summary>
             Sets the playing volume as percent
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Alis.Core.Audio.Players.LinuxPlayer">
+        <member name="T:Alis.Core.Audio.Native.Players.LinuxPlayer">
             <summary>
             The linux player class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.Players.UnixPlayerBase"/>
-            <seealso cref="T:Alis.Core.Audio.Interfaces.IPlayer"/>
+            <seealso cref="T:Alis.Core.Audio.Native.Players.UnixPlayerBase"/>
+            <seealso cref="T:Alis.Core.Audio.Native.Interfaces.IPlayer"/>
         </member>
-        <member name="M:Alis.Core.Audio.Players.LinuxPlayer.GetBashCommand(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Players.LinuxPlayer.GetBashCommand(System.String)">
             <summary>
             Gets the bash command using the specified file name
             </summary>
             <param name="fileName">The file name</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Audio.Players.LinuxPlayer.SetVolume(System.Byte)">
+        <member name="M:Alis.Core.Audio.Native.Players.LinuxPlayer.SetVolume(System.Byte)">
             <summary>
             Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Percent can't exceed 100</exception>
         </member>
-        <member name="T:Alis.Core.Audio.Players.MacPlayer">
+        <member name="T:Alis.Core.Audio.Native.Players.MacPlayer">
             <summary>
             The mac player class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.Players.UnixPlayerBase"/>
-            <seealso cref="T:Alis.Core.Audio.Interfaces.IPlayer"/>
+            <seealso cref="T:Alis.Core.Audio.Native.Players.UnixPlayerBase"/>
+            <seealso cref="T:Alis.Core.Audio.Native.Interfaces.IPlayer"/>
         </member>
-        <member name="M:Alis.Core.Audio.Players.MacPlayer.GetBashCommand(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Players.MacPlayer.GetBashCommand(System.String)">
             <summary>
             Gets the bash command using the specified file name
             </summary>
             <param name="fileName">The file name</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Audio.Players.MacPlayer.SetVolume(System.Byte)">
+        <member name="M:Alis.Core.Audio.Native.Players.MacPlayer.SetVolume(System.Byte)">
             <summary>
             Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Percent can't exceed 100</exception>
         </member>
-        <member name="T:Alis.Core.Audio.Players.UnixPlayerBase">
+        <member name="T:Alis.Core.Audio.Native.Players.UnixPlayerBase">
             <summary>
             The unix player base class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.Interfaces.IPlayer"/>
+            <seealso cref="T:Alis.Core.Audio.Native.Interfaces.IPlayer"/>
         </member>
-        <member name="F:Alis.Core.Audio.Players.UnixPlayerBase._process">
+        <member name="F:Alis.Core.Audio.Native.Players.UnixPlayerBase._process">
             <summary>
             The process
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.Players.UnixPlayerBase.PauseProcessCommand">
+        <member name="F:Alis.Core.Audio.Native.Players.UnixPlayerBase.PauseProcessCommand">
             <summary>
             The pause process command
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.Players.UnixPlayerBase.ResumeProcessCommand">
+        <member name="F:Alis.Core.Audio.Native.Players.UnixPlayerBase.ResumeProcessCommand">
             <summary>
             The resume process command
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Players.UnixPlayerBase.Playing">
+        <member name="P:Alis.Core.Audio.Native.Players.UnixPlayerBase.Playing">
             <summary>
             Gets or sets the value of the playing
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Players.UnixPlayerBase.Paused">
+        <member name="P:Alis.Core.Audio.Native.Players.UnixPlayerBase.Paused">
             <summary>
             Gets or sets the value of the paused
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.GetBashCommand(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.GetBashCommand(System.String)">
             <summary>
             Gets the bash command using the specified file name
             </summary>
             <param name="fileName">The file name</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.Play(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.Play(System.String)">
             <summary>
             Plays the file name
             </summary>
             <param name="fileName">The file name</param>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.Pause">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.Pause">
             <summary>
             Pauses this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.Resume">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.Resume">
             <summary>
             Resumes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.Stop">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.Stop">
             <summary>
             Stops this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.StartBashProcess(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.StartBashProcess(System.String)">
             <summary>
             Starts the bash process using the specified command
             </summary>
             <param name="command">The command</param>
             <returns>The process</returns>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.HandlePlaybackFinished(System.Object,System.EventArgs)">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.HandlePlaybackFinished(System.Object,System.EventArgs)">
             <summary>
             Handles the playback finished using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
-        <member name="M:Alis.Core.Audio.Players.UnixPlayerBase.SetVolume(System.Byte)">
+        <member name="M:Alis.Core.Audio.Native.Players.UnixPlayerBase.SetVolume(System.Byte)">
             <summary>
             Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
         </member>
-        <member name="T:Alis.Core.Audio.Players.WindowsPlayer">
+        <member name="T:Alis.Core.Audio.Native.Players.WindowsPlayer">
             <summary>
             The windows player class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.Interfaces.IPlayer"/>
+            <seealso cref="T:Alis.Core.Audio.Native.Interfaces.IPlayer"/>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.mciSendString(System.String,System.Text.StringBuilder,System.Int32,System.IntPtr)">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.mciSendString(System.String,System.Text.StringBuilder,System.Int32,System.IntPtr)">
             <summary>
             Mcis the send string using the specified command
             </summary>
@@ -258,7 +258,7 @@
             <param name="hwndCallback">The hwnd callback</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.mciGetErrorString(System.Int32,System.Text.StringBuilder,System.Int32)">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.mciGetErrorString(System.Int32,System.Text.StringBuilder,System.Int32)">
             <summary>
             Mcis the get error string using the specified error code
             </summary>
@@ -267,7 +267,7 @@
             <param name="errorTextSize">The error text size</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.waveOutSetVolume(System.IntPtr,System.UInt32)">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.waveOutSetVolume(System.IntPtr,System.UInt32)">
             <summary>
             Waves the out set volume using the specified hwo
             </summary>
@@ -275,92 +275,1792 @@
             <param name="dwVolume">The dw volume</param>
             <returns>The int</returns>
         </member>
-        <member name="F:Alis.Core.Audio.Players.WindowsPlayer._playbackTimer">
+        <member name="F:Alis.Core.Audio.Native.Players.WindowsPlayer._playbackTimer">
             <summary>
             The playback timer
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.Players.WindowsPlayer._playStopwatch">
+        <member name="F:Alis.Core.Audio.Native.Players.WindowsPlayer._playStopwatch">
             <summary>
             The play stopwatch
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.Players.WindowsPlayer._fileName">
+        <member name="F:Alis.Core.Audio.Native.Players.WindowsPlayer._fileName">
             <summary>
             The file name
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Players.WindowsPlayer.Playing">
+        <member name="P:Alis.Core.Audio.Native.Players.WindowsPlayer.Playing">
             <summary>
             Gets or sets the value of the playing
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Players.WindowsPlayer.Paused">
+        <member name="P:Alis.Core.Audio.Native.Players.WindowsPlayer.Paused">
             <summary>
             Gets or sets the value of the paused
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.Play(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.Play(System.String)">
             <summary>
             Plays the file name
             </summary>
             <param name="fileName">The file name</param>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.Pause">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.Pause">
             <summary>
             Pauses this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.Resume">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.Resume">
             <summary>
             Resumes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.Stop">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.Stop">
             <summary>
             Stops this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.HandlePlaybackFinished(System.Object,System.Timers.ElapsedEventArgs)">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.HandlePlaybackFinished(System.Object,System.Timers.ElapsedEventArgs)">
             <summary>
             Handles the playback finished using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.ExecuteMsiCommand(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.ExecuteMsiCommand(System.String)">
             <summary>
             Executes the msi command using the specified command string
             </summary>
             <param name="commandString">The command string</param>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:Alis.Core.Audio.Players.WindowsPlayer.SetVolume(System.Byte)">
+        <member name="M:Alis.Core.Audio.Native.Players.WindowsPlayer.SetVolume(System.Byte)">
             <summary>
             Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
         </member>
-        <member name="T:Alis.Core.Audio.Utils.FileUtil">
+        <member name="T:Alis.Core.Audio.Native.Utils.FileUtil">
             <summary>
             The file util class
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.Utils.FileUtil.TempDirName">
+        <member name="F:Alis.Core.Audio.Native.Utils.FileUtil.TempDirName">
             <summary>
             The temp dir name
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Utils.FileUtil.CheckFileToPlay(System.String)">
+        <member name="M:Alis.Core.Audio.Native.Utils.FileUtil.CheckFileToPlay(System.String)">
             <summary>
             Checks the file to play using the specified original file name
             </summary>
             <param name="originalFileName">The original file name</param>
             <returns>The file name to return</returns>
         </member>
-        <member name="M:Alis.Core.Audio.Utils.FileUtil.ClearTempFiles">
+        <member name="M:Alis.Core.Audio.Native.Utils.FileUtil.ClearTempFiles">
             <summary>
             Clears the temp files
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.Listener">
+            <summary>
+                The audio listener is the point in the scene
+                from where all the sounds are heard
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Listener.GlobalVolume">
+            <summary>
+                The volume is a number between 0 and 100; it is combined with
+                the individual volume of each sound / music.
+                The default value for the volume is 100 (maximum).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Listener.Position">
+            <summary>
+                3D position of the listener (default is (0, 0, 0))
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Listener.Direction">
+            <summary>
+                The direction (also called "at vector") is the vector
+                pointing forward from the listener's perspective. Together
+                with the up vector, it defines the 3D orientation of the
+                listener in the scene. The direction vector doesn't
+                have to be normalized.
+                The default listener's direction is (0, 0, -1).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Listener.UpVector">
+            <summary>
+                The up vector is the vector that points upward from the
+                listener's perspective. Together with the direction, it
+                defines the 3D orientation of the listener in the scene.
+                The up vector doesn't have to be normalized.
+                The default listener's up vector is (0, 1, 0). It is usually
+                not necessary to change it, especially in 2D scenarios.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setGlobalVolume(System.Single)">
+            <summary>
+                Sfs the listener set global volume using the specified volume
+            </summary>
+            <param name="volume">The volume</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_getGlobalVolume">
+            <summary>
+                Sfs the listener get global volume
+            </summary>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setPosition(Alis.Core.Aspect.Math.SFML.Vector3F)">
+            <summary>
+                Sfs the listener set position using the specified position
+            </summary>
+            <param name="position">The position</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_getPosition">
+            <summary>
+                Sfs the listener get position
+            </summary>
+            <returns>The vector 3f</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setDirection(Alis.Core.Aspect.Math.SFML.Vector3F)">
+            <summary>
+                Sfs the listener set direction using the specified direction
+            </summary>
+            <param name="direction">The direction</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_getDirection">
+            <summary>
+                Sfs the listener get direction
+            </summary>
+            <returns>The vector 3f</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_setUpVector(Alis.Core.Aspect.Math.SFML.Vector3F)">
+            <summary>
+                Sfs the listener set up vector using the specified up vector
+            </summary>
+            <param name="upVector">The up vector</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Listener.sfListener_getUpVector">
+            <summary>
+                Sfs the listener get up vector
+            </summary>
+            <returns>The vector 3f</returns>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.Music">
+            <summary>
+                Streamed music played from an audio file
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.Music.myStream">
+            <summary>
+                The my stream
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.#ctor(System.String)">
+            <summary>
+                Constructs a music from an audio file
+            </summary>
+            <param name="filename">Path of the music file to open</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.#ctor(System.IO.Stream)">
+            <summary>
+                Constructs a music from a custom stream
+            </summary>
+            <param name="stream">Source stream to read from</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.#ctor(System.Byte[])">
+            <summary>
+                Constructs a music from an audio file in memory
+            </summary>
+            <param name="bytes">Byte array containing the file contents</param>
+            <exception cref="T:Alis.Core.Aspect.Memory.SFML.LoadingFailedException" />
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.SampleRate">
+            <summary>
+                Sample rate of the music.
+                The sample rate is the number of audio samples played per
+                second. The higher, the better the quality.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.ChannelCount">
+            <summary>
+                Number of channels (1 = mono, 2 = stereo)
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.Status">
+            <summary>
+                Current status of the music (see SoundStatus enum)
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.Duration">
+            <summary>
+                Total duration of the music
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.Loop">
+            <summary>
+                Flag if the music should loop after reaching the end.
+                If set, the music will restart from beginning after
+                reaching the end and so on, until it is stopped or
+                Loop = false is set.
+                The default looping state for music is false.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.Pitch">
+            <summary>
+                Pitch of the music.
+                The pitch represents the perceived fundamental frequency
+                of a sound; thus you can make a sound more acute or grave
+                by changing its pitch. A side effect of changing the pitch
+                is to modify the playing speed of the sound as well.
+                The default value for the pitch is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.Volume">
+            <summary>
+                Volume of the music.
+                The volume is a value between 0 (mute) and 100 (full volume).
+                The default value for the volume is 100.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.Position">
+            <summary>
+                3D position of the music in the audio scene.
+                Only sounds with one channel (mono sounds) can be
+                spatialized.
+                The default position of a sound is (0, 0, 0).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.RelativeToListener">
+            <summary>
+                Make the music's position relative to the listener or absolute.
+                Making a sound relative to the listener will ensure that it will always
+                be played the same way regardless the position of the listener.
+                This can be useful for non-spatialized sounds, sounds that are
+                produced by the listener, or sounds attached to it.
+                The default value is false (position is absolute).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.MinDistance">
+            <summary>
+                Minimum distance of the music.
+                The "minimum distance" of a sound is the maximum
+                distance at which it is heard at its maximum volume. Further
+                than the minimum distance, it will start to fade out according
+                to its attenuation factor. A value of 0 ("inside the head
+                of the listener") is an invalid value and is forbidden.
+                The default value of the minimum distance is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.Attenuation">
+            <summary>
+                Attenuation factor of the music.
+                The attenuation is a multiplicative factor which makes
+                the music more or less loud according to its distance
+                from the listener. An attenuation of 0 will produce a
+                non-attenuated sound, i.e. its volume will always be the same
+                whether it is heard from near or from far. On the other hand,
+                an attenuation value such as 100 will make the sound fade out
+                very quickly as it gets further from the listener.
+                The default value of the attenuation is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.PlayingOffset">
+            <summary>
+                Current playing position of the music.
+                The playing position can be changed when the music is
+                either paused or playing.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Music.LoopPoints">
+            <summary>
+                Current loop points of the music.
+                Since setting performs some adjustments on the
+                provided values and rounds them to internal samples, getting this
+                value later is not guaranteed to return the same times passed
+                into it. However, it is guaranteed to return times that will map
+                to the valid internal samples of this Music if they are later
+                set again.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.Play">
+            <summary>
+                Start or resume playing the audio stream.
+                This function starts the stream if it was stopped, resumes
+                it if it was paused, and restarts it from beginning if it
+                was it already playing.
+                This function uses its own thread so that it doesn't block
+                the rest of the program while the stream is played.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.Pause">
+            <summary>
+                Pause the audio stream.
+                This function pauses the stream if it was playing,
+                otherwise (stream already paused or stopped) it has no effect.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.Stop">
+            <summary>
+                Stop playing the audio stream.
+                This function stops the stream if it was playing or paused,
+                and does nothing if it was already stopped.
+                It also resets the playing position (unlike Pause()).
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.Destroy(System.Boolean)">
+            <summary>
+                Handle the destruction of the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_createFromFile(System.String)">
+            <summary>
+                Sfs the music create from file using the specified filename
+            </summary>
+            <param name="filename">The filename</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_createFromStream(System.IntPtr)">
+            <summary>
+                Sfs the music create from stream using the specified stream
+            </summary>
+            <param name="stream">The stream</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_createFromMemory(System.IntPtr,System.UInt64)">
+            <summary>
+                Sfs the music create from memory using the specified data
+            </summary>
+            <param name="data">The data</param>
+            <param name="size">The size</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_destroy(System.IntPtr)">
+            <summary>
+                Sfs the music destroy using the specified music stream
+            </summary>
+            <param name="musicStream">The music stream</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_play(System.IntPtr)">
+            <summary>
+                Sfs the music play using the specified music
+            </summary>
+            <param name="music">The music</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_pause(System.IntPtr)">
+            <summary>
+                Sfs the music pause using the specified music
+            </summary>
+            <param name="music">The music</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_stop(System.IntPtr)">
+            <summary>
+                Sfs the music stop using the specified music
+            </summary>
+            <param name="music">The music</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getStatus(System.IntPtr)">
+            <summary>
+                Sfs the music get status using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The sound status</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getDuration(System.IntPtr)">
+            <summary>
+                Sfs the music get duration using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The systems time</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getLoopPoints(System.IntPtr)">
+            <summary>
+                Sfs the music get loop points using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The time span</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setLoopPoints(System.IntPtr,Alis.Core.Audio.SFML.Music.TimeSpan)">
+            <summary>
+                Sfs the music set loop points using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="timePoints">The time points</param>
+            <returns>The time span</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getChannelCount(System.IntPtr)">
+            <summary>
+                Sfs the music get channel count using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getSampleRate(System.IntPtr)">
+            <summary>
+                Sfs the music get sample rate using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setPitch(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the music set pitch using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="pitch">The pitch</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setLoop(System.IntPtr,System.Boolean)">
+            <summary>
+                Sfs the music set loop using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="loop">The loop</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setVolume(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the music set volume using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="volume">The volume</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setPosition(System.IntPtr,Alis.Core.Aspect.Math.SFML.Vector3F)">
+            <summary>
+                Sfs the music set position using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="position">The position</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setRelativeToListener(System.IntPtr,System.Boolean)">
+            <summary>
+                Sfs the music set relative to listener using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="relative">The relative</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setMinDistance(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the music set min distance using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="minDistance">The min distance</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setAttenuation(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the music set attenuation using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="attenuation">The attenuation</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_setPlayingOffset(System.IntPtr,Alis.Core.Aspect.Time.Time)">
+            <summary>
+                Sfs the music set playing offset using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <param name="timeOffset">The time offset</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getLoop(System.IntPtr)">
+            <summary>
+                Describes whether sf music get loop
+            </summary>
+            <param name="music">The music</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getPitch(System.IntPtr)">
+            <summary>
+                Sfs the music get pitch using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getVolume(System.IntPtr)">
+            <summary>
+                Sfs the music get volume using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getPosition(System.IntPtr)">
+            <summary>
+                Sfs the music get position using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The vector 3f</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_isRelativeToListener(System.IntPtr)">
+            <summary>
+                Describes whether sf music is relative to listener
+            </summary>
+            <param name="music">The music</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getMinDistance(System.IntPtr)">
+            <summary>
+                Sfs the music get min distance using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getAttenuation(System.IntPtr)">
+            <summary>
+                Sfs the music get attenuation using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Music.sfMusic_getPlayingOffset(System.IntPtr)">
+            <summary>
+                Sfs the music get playing offset using the specified music
+            </summary>
+            <param name="music">The music</param>
+            <returns>The systems time</returns>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.Music.TimeSpan">
+            <summary>
+                The time span
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.Music.TimeSpan.offset">
+            <summary>
+                The offset
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.Music.TimeSpan.length">
+            <summary>
+                The length
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.Sound">
+            <summary>
+                Regular sound that can be played in the audio environment
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.Sound.myBuffer">
+            <summary>
+                The my buffer
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.#ctor">
+            <summary>
+                Default constructor (invalid sound)
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.#ctor(Alis.Core.Audio.SFML.SoundBuffer)">
+            <summary>
+                Construct the sound with a buffer
+            </summary>
+            <param name="buffer">Sound buffer containing the audio data to play with the sound</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.#ctor(Alis.Core.Audio.SFML.Sound)">
+            <summary>
+                Construct the sound from another source
+            </summary>
+            <param name="copy">Sound to copy</param>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.SoundBuffer">
+            <summary>
+                Buffer containing the sound data to play through the sound.
+                It is important to note that the sound buffer is not copied,
+                thus the SoundBuffer instance must remain alive as long
+                as it is attached to the sound.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.Status">
+            <summary>
+                Current status of the sound (see SoundStatus enum)
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.Loop">
+            <summary>
+                Flag if the sound should loop after reaching the end.
+                If set, the sound will restart from beginning after
+                reaching the end and so on, until it is stopped or
+                Loop = false is set.
+                The default looping state for sounds is false.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.Pitch">
+            <summary>
+                Pitch of the sound.
+                The pitch represents the perceived fundamental frequency
+                of a sound; thus you can make a sound more acute or grave
+                by changing its pitch. A side effect of changing the pitch
+                is to modify the playing speed of the sound as well.
+                The default value for the pitch is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.Volume">
+            <summary>
+                Volume of the sound.
+                The volume is a value between 0 (mute) and 100 (full volume).
+                The default value for the volume is 100.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.PlayingOffset">
+            <summary>
+                Current playing position of the sound.
+                The playing position can be changed when the sound is
+                either paused or playing.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.Position">
+            <summary>
+                3D position of the sound in the audio scene.
+                Only sounds with one channel (mono sounds) can be
+                spatialized.
+                The default position of a sound is (0, 0, 0).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.RelativeToListener">
+            <summary>
+                Make the music's position relative to the listener or absolute.
+                Making a sound relative to the listener will ensure that it will always
+                be played the same way regardless the position of the listener.
+                This can be useful for non-spatialized sounds, sounds that are
+                produced by the listener, or sounds attached to it.
+                The default value is false (position is absolute).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.MinDistance">
+            <summary>
+                Minimum distance of the sound.
+                The "minimum distance" of a sound is the maximum
+                distance at which it is heard at its maximum volume. Further
+                than the minimum distance, it will start to fade out according
+                to its attenuation factor. A value of 0 ("inside the head
+                of the listener") is an invalid value and is forbidden.
+                The default value of the minimum distance is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.Sound.Attenuation">
+            <summary>
+                Attenuation factor of the music.
+                The attenuation is a multiplicative factor which makes
+                the music more or less loud according to its distance
+                from the listener. An attenuation of 0 will produce a
+                non-attenuated sound, i.e. its volume will always be the same
+                whether it is heard from near or from far. On the other hand,
+                an attenuation value such as 100 will make the sound fade out
+                very quickly as it gets further from the listener.
+                The default value of the attenuation is 1.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.Play">
+            <summary>
+                Start or resume playing the sound.
+                This function starts the stream if it was stopped, resumes
+                it if it was paused, and restarts it from beginning if it
+                was it already playing.
+                This function uses its own thread so that it doesn't block
+                the rest of the program while the sound is played.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.Pause">
+            <summary>
+                Pause the sound.
+                This function pauses the sound if it was playing,
+                otherwise (sound already paused or stopped) it has no effect.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.Stop">
+            <summary>
+                Stop playing the sound.
+                This function stops the sound if it was playing or paused,
+                and does nothing if it was already stopped.
+                It also resets the playing position (unlike pause()).
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.Destroy(System.Boolean)">
+            <summary>
+                Handle the destruction of the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_create">
+            <summary>
+                Sfs the sound create
+            </summary>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_copy(System.IntPtr)">
+            <summary>
+                Sfs the sound copy using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_destroy(System.IntPtr)">
+            <summary>
+                Sfs the sound destroy using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_play(System.IntPtr)">
+            <summary>
+                Sfs the sound play using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_pause(System.IntPtr)">
+            <summary>
+                Sfs the sound pause using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_stop(System.IntPtr)">
+            <summary>
+                Sfs the sound stop using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setBuffer(System.IntPtr,System.IntPtr)">
+            <summary>
+                Sfs the sound set buffer using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="buffer">The buffer</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getBuffer(System.IntPtr)">
+            <summary>
+                Sfs the sound get buffer using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setLoop(System.IntPtr,System.Boolean)">
+            <summary>
+                Sfs the sound set loop using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="loop">The loop</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getLoop(System.IntPtr)">
+            <summary>
+                Describes whether sf sound get loop
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getStatus(System.IntPtr)">
+            <summary>
+                Sfs the sound get status using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The sound status</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setPitch(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound set pitch using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="pitch">The pitch</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setVolume(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound set volume using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="volume">The volume</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setPosition(System.IntPtr,Alis.Core.Aspect.Math.SFML.Vector3F)">
+            <summary>
+                Sfs the sound set position using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="position">The position</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setRelativeToListener(System.IntPtr,System.Boolean)">
+            <summary>
+                Sfs the sound set relative to listener using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="relative">The relative</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setMinDistance(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound set min distance using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="minDistance">The min distance</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setAttenuation(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound set attenuation using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="attenuation">The attenuation</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_setPlayingOffset(System.IntPtr,Alis.Core.Aspect.Time.Time)">
+            <summary>
+                Sfs the sound set playing offset using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <param name="timeOffset">The time offset</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getPitch(System.IntPtr)">
+            <summary>
+                Sfs the sound get pitch using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getVolume(System.IntPtr)">
+            <summary>
+                Sfs the sound get volume using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getPosition(System.IntPtr)">
+            <summary>
+                Sfs the sound get position using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The vector 3f</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_isRelativeToListener(System.IntPtr)">
+            <summary>
+                Describes whether sf sound is relative to listener
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getMinDistance(System.IntPtr)">
+            <summary>
+                Sfs the sound get min distance using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getAttenuation(System.IntPtr)">
+            <summary>
+                Sfs the sound get attenuation using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.Sound.sfSound_getPlayingOffset(System.IntPtr)">
+            <summary>
+                Sfs the sound get playing offset using the specified sound
+            </summary>
+            <param name="sound">The sound</param>
+            <returns>The systems time</returns>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundBuffer">
+            <summary>
+                Storage for audio samples defining a sound
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.#ctor(System.String)">
+            <summary>
+                Construct a sound buffer from a file
+                Here is a complete list of all the supported audio formats:
+                ogg, wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam,
+                w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64.
+            </summary>
+            <param name="filename">Path of the sound file to load</param>
+            <exception cref="T:Alis.Core.Aspect.Memory.SFML.LoadingFailedException" />
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.#ctor(System.IO.Stream)">
+            <summary>
+                Construct a sound buffer from a custom stream.
+                Here is a complete list of all the supported audio formats:
+                ogg, wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam,
+                w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64.
+            </summary>
+            <param name="stream">Source stream to read from</param>
+            <exception cref="T:Alis.Core.Aspect.Memory.SFML.LoadingFailedException" />
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.#ctor(System.Byte[])">
+            <summary>
+                Construct a sound buffer from a file in memory.
+                Here is a complete list of all the supported audio formats:
+                ogg, wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam,
+                w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64.
+            </summary>
+            <param name="bytes">Byte array containing the file contents</param>
+            <exception cref="T:Alis.Core.Aspect.Memory.SFML.LoadingFailedException" />
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.#ctor(System.Int16[],System.UInt32,System.UInt32)">
+            <summary>
+                Construct a sound buffer from an array of samples
+            </summary>
+            <param name="samples">Array of samples</param>
+            <param name="channelCount">Channel count</param>
+            <param name="sampleRate">Sample rate</param>
+            <exception cref="T:Alis.Core.Aspect.Memory.SFML.LoadingFailedException" />
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.#ctor(Alis.Core.Audio.SFML.SoundBuffer)">
+            <summary>
+                Construct a sound buffer from another sound buffer
+            </summary>
+            <param name="copy">Sound buffer to copy</param>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundBuffer.SampleRate">
+            <summary>
+                Sample rate of the sound buffer.
+                The sample rate is the number of audio samples played per
+                second. The higher, the better the quality.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundBuffer.ChannelCount">
+            <summary>
+                Number of channels (1 = mono, 2 = stereo)
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundBuffer.Duration">
+            <summary>
+                Total duration of the buffer
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundBuffer.Samples">
+            <summary>
+                Array of audio samples stored in the buffer.
+                The format of the returned samples is 16 bits signed integer
+                (sf::Int16).
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.SaveToFile(System.String)">
+            <summary>
+                Save the sound buffer to an audio file.
+                Here is a complete list of all the supported audio formats:
+                ogg, wav, flac, aiff, au, raw, paf, svx, nist, voc, ircam,
+                w64, mat4, mat5 pvf, htk, sds, avr, sd2, caf, wve, mpc2k, rf64.
+            </summary>
+            <param name="filename">Path of the sound file to write</param>
+            <returns>True if saving has been successful</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.Destroy(System.Boolean)">
+            <summary>
+                Handle the destruction of the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_createFromFile(System.String)">
+            <summary>
+                Sfs the sound buffer create from file using the specified filename
+            </summary>
+            <param name="filename">The filename</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_createFromStream(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer create from stream using the specified stream
+            </summary>
+            <param name="stream">The stream</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_createFromMemory(System.IntPtr,System.UInt64)">
+            <summary>
+                Sfs the sound buffer create from memory using the specified data
+            </summary>
+            <param name="data">The data</param>
+            <param name="size">The size</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_createFromSamples(System.Int16*,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>
+                Sfs the sound buffer create from samples using the specified samples
+            </summary>
+            <param name="samples">The samples</param>
+            <param name="sampleCount">The sample count</param>
+            <param name="channelsCount">The channels count</param>
+            <param name="sampleRate">The sample rate</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_copy(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer copy using the specified sound buffer
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_destroy(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer destroy using the specified sound buffer
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_saveToFile(System.IntPtr,System.String)">
+            <summary>
+                Describes whether sf sound buffer save to file
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+            <param name="filename">The filename</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_getSamples(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer get samples using the specified sound buffer
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_getSampleCount(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer get sample count using the specified sound buffer
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_getSampleRate(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer get sample rate using the specified sound buffer
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_getChannelCount(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer get channel count using the specified sound buffer
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBuffer.sfSoundBuffer_getDuration(System.IntPtr)">
+            <summary>
+                Sfs the sound buffer get duration using the specified sound buffer
+            </summary>
+            <param name="soundBuffer">The sound buffer</param>
+            <returns>The systems time</returns>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundBufferRecorder">
+            <summary>
+                Specialized SoundRecorder which saves the captured
+                audio data into a sound buffer
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundBufferRecorder.mySamplesArray">
+            <summary>
+                The list
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundBufferRecorder.mySoundBuffer">
+            <summary>
+                The my sound buffer
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundBufferRecorder.SoundBuffer">
+            <summary>
+                Sound buffer containing the captured audio data
+                The sound buffer is valid only after the capture has ended.
+                This function provides a reference to the internal
+                sound buffer, but you should make a copy of it if you want
+                to make any modifications to it.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBufferRecorder.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBufferRecorder.OnStart">
+            <summary>
+                Called when a new capture starts
+            </summary>
+            <returns>False to abort recording audio data, true to continue</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBufferRecorder.OnProcessSamples(System.Int16[])">
+            <summary>
+                Process a new chunk of recorded samples
+            </summary>
+            <param name="samples">Array of samples to process</param>
+            <returns>False to stop recording audio data, true to continue</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundBufferRecorder.OnStop">
+            <summary>
+                Called when the current capture stops
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundRecorder">
+            <summary>
+                Base class intended for capturing sound data
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundRecorder.myProcessCallback">
+            <summary>
+                The my process callback
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundRecorder.myStartCallback">
+            <summary>
+                The my start callback
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundRecorder.myStopCallback">
+            <summary>
+                The my stop callback
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.#ctor">
+            <summary>
+                Default constructor
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundRecorder.SampleRate">
+            <summary>
+                Sample rate of the sound recorder.
+            </summary>
+            <remarks>
+                The sample rate defines the number of audio samples
+                captured per second. The higher, the better the quality
+                (for example, 44100 samples/sec is CD quality).
+            </remarks>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundRecorder.ChannelCount">
+            <summary>
+                Get/Set the channel count of the audio capture device
+            </summary>
+            <remarks>
+                This method allows you to specify the number of channels
+                used for recording. Currently only 16-bit mono (1) and
+                16-bit stereo (2) are supported.
+            </remarks>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundRecorder.IsAvailable">
+            <summary>
+                Check if the system supports audio capture.
+            </summary>
+            <remarks>
+                This function should always be called before using
+                the audio capture features. If it returns false, then
+                any attempt to use the SoundRecorder or one of its derived
+                classes will fail.
+            </remarks>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundRecorder.AvailableDevices">
+            <summary>
+                Get the list of the names of all available audio capture devices
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundRecorder.DefaultDevice">
+            <summary>
+                Get the name of the default audio capture device
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.Start">
+            <summary>
+                Start the capture using the default sample rate (44100 Hz).
+                Please note that only one capture can happen at the same time.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.Start(System.UInt32)">
+            <summary>
+                Start the capture.
+                The sampleRate parameter defines the number of audio samples
+                captured per second. The higher, the better the quality
+                (for example, 44100 samples/sec is CD quality).
+                This function uses its own thread so that it doesn't block
+                the rest of the program while the capture runs.
+                Please note that only one capture can happen at the same time.
+            </summary>
+            <param name="sampleRate"> Sound frequency; the more samples, the higher the quality (44100 by default = CD quality)</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.Stop">
+            <summary>
+                Stop the capture
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.OnStart">
+            <summary>
+                Start capturing audio data.
+                This virtual function may be overridden by a derived class
+                if something has to be done every time a new capture
+                starts. If not, this function can be ignored; the default
+                implementation does nothing.
+            </summary>
+            <returns>False to abort recording audio data, true to continue</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.OnProcessSamples(System.Int16[])">
+            <summary>
+                Process a new chunk of recorded samples.
+                This virtual function is called every time a new chunk of
+                recorded data is available. The derived class can then do
+                whatever it wants with it (storing it, playing it, sending
+                it over the network, etc.).
+            </summary>
+            <param name="samples">Array of samples to process</param>
+            <returns>False to stop recording audio data, true to continue</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.OnStop">
+            <summary>
+                Stop capturing audio data.
+                This virtual function may be overridden by a derived class
+                if something has to be done every time the capture
+                ends. If not, this function can be ignored; the default
+                implementation does nothing.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.SetProcessingInterval(Alis.Core.Aspect.Time.Time)">
+            <summary>
+                The processing interval controls the period
+                between calls to the onProcessSamples function. You may
+                want to use a small interval if you want to process the
+                recorded data in real time, for example.
+                Note: this is only a hint, the actual period may vary.
+                So don't rely on this parameter to implement precise timing.
+                The default processing interval is 100 ms.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.SetDevice(System.String)">
+            <summary>
+                Set the audio capture device
+            </summary>
+            <param name="name">The name of the audio capture device</param>
+            <returns>True, if it was able to set the requested device</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.GetDevice">
+            <summary>
+                Get the name of the current audio capture device
+            </summary>
+            <returns>The name of the current audio capture device</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.Destroy(System.Boolean)">
+            <summary>
+                Handle the destruction of the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.ProcessSamples(System.IntPtr,System.UInt32,System.IntPtr)">
+            <summary>
+                Function called directly by the C library ; convert
+                arguments and forward them to the internal virtual function
+            </summary>
+            <param name="samples">Pointer to the array of samples</param>
+            <param name="nbSamples">Number of samples in the array</param>
+            <param name="userData">User data -- unused</param>
+            <returns>False to stop recording audio data, true to continue</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_create(Alis.Core.Audio.SFML.SoundRecorder.StartCallback,Alis.Core.Audio.SFML.SoundRecorder.ProcessCallback,Alis.Core.Audio.SFML.SoundRecorder.StopCallback,System.IntPtr)">
+            <summary>
+                Sfs the sound recorder create using the specified on start
+            </summary>
+            <param name="onStart">The on start</param>
+            <param name="onProcess">The on process</param>
+            <param name="onStop">The on stop</param>
+            <param name="userData">The user data</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_destroy(System.IntPtr)">
+            <summary>
+                Sfs the sound recorder destroy using the specified sound recorder
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_start(System.IntPtr,System.UInt32)">
+            <summary>
+                Describes whether sf sound recorder start
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+            <param name="sampleRate">The sample rate</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_stop(System.IntPtr)">
+            <summary>
+                Sfs the sound recorder stop using the specified sound recorder
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_getSampleRate(System.IntPtr)">
+            <summary>
+                Sfs the sound recorder get sample rate using the specified sound recorder
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_isAvailable">
+            <summary>
+                Describes whether sf sound recorder is available
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_setProcessingInterval(System.IntPtr,Alis.Core.Aspect.Time.Time)">
+            <summary>
+                Sfs the sound recorder set processing interval using the specified sound recorder
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+            <param name="interval">The interval</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_getAvailableDevices(System.UInt32@)">
+            <summary>
+                Sfs the sound recorder get available devices using the specified count
+            </summary>
+            <param name="count">The count</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_getDefaultDevice">
+            <summary>
+                Sfs the sound recorder get default device
+            </summary>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_setDevice(System.IntPtr,System.String)">
+            <summary>
+                Describes whether sf sound recorder set device
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+            <param name="name">The name</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_getDevice(System.IntPtr)">
+            <summary>
+                Sfs the sound recorder get device using the specified sound recorder
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_setChannelCount(System.IntPtr,System.UInt32)">
+            <summary>
+                Sfs the sound recorder set channel count using the specified sound recorder
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+            <param name="channelCount">The channel count</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundRecorder.sfSoundRecorder_getChannelCount(System.IntPtr)">
+            <summary>
+                Sfs the sound recorder get channel count using the specified sound recorder
+            </summary>
+            <param name="soundRecorder">The sound recorder</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundRecorder.StartCallback">
+            <summary>
+                The start callback
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundRecorder.ProcessCallback">
+            <summary>
+                The process callback
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundRecorder.StopCallback">
+            <summary>
+                The stop callback
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundStatus">
+            <summary>
+                Enumeration of all possible sound states
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStatus.Stopped">
+            <summary>Sound is not playing</summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStatus.Paused">
+            <summary>Sound is paused</summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStatus.Playing">
+            <summary>Sound is playing</summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundStream">
+            <summary>
+                Abstract base class for streamed audio sources
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStream.myGetDataCallback">
+            <summary>
+                The my get data callback
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStream.mySeekCallback">
+            <summary>
+                The my seek callback
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStream.myTempBuffer">
+            <summary>
+                The my temp buffer
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.#ctor">
+            <summary>
+                Default constructor
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.SampleRate">
+            <summary>
+                Sample rate of the stream
+                The sample rate is the number of audio samples played per
+                second. The higher, the better the quality.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.ChannelCount">
+            <summary>
+                Number of channels (1 = mono, 2 = stereo)
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.Status">
+            <summary>
+                Current status of the sound stream (see SoundStatus enum)
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.Loop">
+            <summary>
+                Flag if the music should loop after reaching the end.
+                If set, the music will restart from beginning after
+                reaching the end and so on, until it is stopped or
+                Loop = false is set.
+                The default looping state for music is false.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.Pitch">
+            <summary>
+                Pitch of the stream.
+                The pitch represents the perceived fundamental frequency
+                of a sound; thus you can make a sound more acute or grave
+                by changing its pitch. A side effect of changing the pitch
+                is to modify the playing speed of the sound as well.
+                The default value for the pitch is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.Volume">
+            <summary>
+                Volume of the stream.
+                The volume is a value between 0 (mute) and 100 (full volume).
+                The default value for the volume is 100.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.Position">
+            <summary>
+                3D position of the stream in the audio scene.
+                Only sounds with one channel (mono sounds) can be
+                spatialized.
+                The default position of a sound is (0, 0, 0).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.RelativeToListener">
+            <summary>
+                Make the stream's position relative to the listener or absolute.
+                Making a sound relative to the listener will ensure that it will always
+                be played the same way regardless the position of the listener.
+                This can be useful for non-spatialized sounds, sounds that are
+                produced by the listener, or sounds attached to it.
+                The default value is false (position is absolute).
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.MinDistance">
+            <summary>
+                Minimum distance of the music.
+                The "minimum distance" of a sound is the maximum
+                distance at which it is heard at its maximum volume. Further
+                than the minimum distance, it will start to fade out according
+                to its attenuation factor. A value of 0 ("inside the head
+                of the listener") is an invalid value and is forbidden.
+                The default value of the minimum distance is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.Attenuation">
+            <summary>
+                Attenuation factor of the stream.
+                The attenuation is a multiplicative factor which makes
+                the music more or less loud according to its distance
+                from the listener. An attenuation of 0 will produce a
+                non-attenuated sound, i.e. its volume will always be the same
+                whether it is heard from near or from far. On the other hand,
+                an attenuation value such as 100 will make the sound fade out
+                very quickly as it gets further from the listener.
+                The default value of the attenuation is 1.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.SFML.SoundStream.PlayingOffset">
+            <summary>
+                Current playing position of the stream.
+                The playing position can be changed when the music is
+                either paused or playing.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.Play">
+            <summary>
+                Start or resume playing the audio stream.
+                This function starts the stream if it was stopped, resumes
+                it if it was paused, and restarts it from beginning if it
+                was it already playing.
+                This function uses its own thread so that it doesn't block
+                the rest of the program while the stream is played.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.Pause">
+            <summary>
+                Pause the audio stream.
+                This function pauses the stream if it was playing,
+                otherwise (stream already paused or stopped) it has no effect.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.Stop">
+            <summary>
+                Stop playing the audio stream.
+                This function stops the stream if it was playing or paused,
+                and does nothing if it was already stopped.
+                It also resets the playing position (unlike pause()).
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.Initialize(System.UInt32,System.UInt32)">
+            <summary>
+                Set the audio stream parameters, you must call it before Play()
+            </summary>
+            <param name="channelCount">Number of channels</param>
+            <param name="sampleRate">Sample rate, in samples per second</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.OnGetData(System.Int16[]@)">
+            <summary>
+                Virtual function called each time new audio data is needed to feed the stream
+            </summary>
+            <param name="samples">Array of samples to fill for the stream</param>
+            <returns>True to continue playback, false to stop</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.OnSeek(Alis.Core.Aspect.Time.Time)">
+            <summary>
+                Virtual function called to seek into the stream
+            </summary>
+            <param name="timeOffset">New position</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.Destroy(System.Boolean)">
+            <summary>
+                Handle the destruction of the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.GetData(Alis.Core.Audio.SFML.SoundStream.Chunk@,System.IntPtr)">
+            <summary>
+                Called each time new audio data is needed to feed the stream
+            </summary>
+            <param name="dataChunk">Data chunk to fill with new audio samples</param>
+            <param name="userData">User data -- unused</param>
+            <returns>True to continue playback, false to stop</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.Seek(Alis.Core.Aspect.Time.Time,System.IntPtr)">
+            <summary>
+                Called to seek in the stream
+            </summary>
+            <param name="timeOffset">New position</param>
+            <param name="userData">User data -- unused</param>
+            <returns>If false is returned, the playback is aborted</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_create(Alis.Core.Audio.SFML.SoundStream.GetDataCallbackType,Alis.Core.Audio.SFML.SoundStream.SeekCallbackType,System.UInt32,System.UInt32,System.IntPtr)">
+            <summary>
+                Sfs the sound stream create using the specified on get data
+            </summary>
+            <param name="onGetData">The on get data</param>
+            <param name="onSeek">The on seek</param>
+            <param name="channelCount">The channel count</param>
+            <param name="sampleRate">The sample rate</param>
+            <param name="userData">The user data</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_destroy(System.IntPtr)">
+            <summary>
+                Sfs the sound stream destroy using the specified sound stream stream
+            </summary>
+            <param name="soundStreamStream">The sound stream stream</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_play(System.IntPtr)">
+            <summary>
+                Sfs the sound stream play using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_pause(System.IntPtr)">
+            <summary>
+                Sfs the sound stream pause using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_stop(System.IntPtr)">
+            <summary>
+                Sfs the sound stream stop using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getStatus(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get status using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The sound status</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getChannelCount(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get channel count using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getSampleRate(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get sample rate using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The uint</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setLoop(System.IntPtr,System.Boolean)">
+            <summary>
+                Sfs the sound stream set loop using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="loop">The loop</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setPitch(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound stream set pitch using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="pitch">The pitch</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setVolume(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound stream set volume using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="volume">The volume</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setPosition(System.IntPtr,Alis.Core.Aspect.Math.SFML.Vector3F)">
+            <summary>
+                Sfs the sound stream set position using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="position">The position</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setRelativeToListener(System.IntPtr,System.Boolean)">
+            <summary>
+                Sfs the sound stream set relative to listener using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="relative">The relative</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setMinDistance(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound stream set min distance using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="minDistance">The min distance</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setAttenuation(System.IntPtr,System.Single)">
+            <summary>
+                Sfs the sound stream set attenuation using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="attenuation">The attenuation</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_setPlayingOffset(System.IntPtr,Alis.Core.Aspect.Time.Time)">
+            <summary>
+                Sfs the sound stream set playing offset using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <param name="timeOffset">The time offset</param>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getLoop(System.IntPtr)">
+            <summary>
+                Describes whether sf sound stream get loop
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getPitch(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get pitch using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getVolume(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get volume using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getPosition(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get position using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The vector 3f</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_isRelativeToListener(System.IntPtr)">
+            <summary>
+                Describes whether sf sound stream is relative to listener
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getMinDistance(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get min distance using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getAttenuation(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get attenuation using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Audio.SFML.SoundStream.sfSoundStream_getPlayingOffset(System.IntPtr)">
+            <summary>
+                Sfs the sound stream get playing offset using the specified sound stream
+            </summary>
+            <param name="soundStream">The sound stream</param>
+            <returns>The systems time</returns>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundStream.Chunk">
+            <summary>
+                Structure mapping the C library arguments passed to the data callback
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStream.Chunk.samples">
+            <summary>
+                The samples
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SFML.SoundStream.Chunk.sampleCount">
+            <summary>
+                The sample count
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundStream.GetDataCallbackType">
+            <summary>
+                The get data callback type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SFML.SoundStream.SeekCallbackType">
+            <summary>
+                The seek callback type
             </summary>
         </member>
     </members>

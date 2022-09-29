@@ -31,5 +31,50 @@
             <param name="obj"></param>
             <returns></returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Base.ObjectBase">
+            <summary>
+                The ObjectBase class is an abstract base for every
+                SFML object. It's meant for internal use only
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.ObjectBase.myCPointer">
+            <summary>
+                The zero
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.ObjectBase.#ctor(System.IntPtr)">
+            <summary>
+                Construct the object from a pointer to the C library object
+            </summary>
+            <param name="cPointer">Internal pointer to the object in the C libraries</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Base.ObjectBase.CPointer">
+            <summary>
+                Access to the internal pointer of the object.
+                For internal use only
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Dispose">
+            <summary>
+                Explicitly dispose the object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Finalize">
+            <summary>
+                Dispose the object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Dispose(System.Boolean)">
+            <summary>
+                Destroy the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Destroy(System.Boolean)">
+            <summary>
+                Destroy the object (implementation is left to each derived class)
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
+        </member>
     </members>
 </doc>

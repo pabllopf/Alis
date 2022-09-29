@@ -1,7 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="$(SolutionDir).config/Config.props"/>
+    <Import Project="$(SolutionDir).config/Config.props" />
     <PropertyGroup>
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="runtimes\osx-x64\native\libcsfml-audio.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-audio.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-audio.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-graphics.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-graphics.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-graphics.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-system.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-system.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-system.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-window.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-window.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-x64\native\libcsfml-window.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-audio.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-audio.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-audio.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-graphics.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-graphics.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-graphics.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-network.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-network.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-network.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-system.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-system.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-system.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-window.2.5.1.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-window.2.5.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx.11.0-arm64\native\libcsfml-window.dylib">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x64\native\csfml-audio.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x64\native\csfml-graphics.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x64\native\csfml-network.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x64\native\csfml-system.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x64\native\csfml-window.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x86\native\csfml-audio.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x86\native\csfml-graphics.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x86\native\csfml-network.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x86\native\csfml-system.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\win-x86\native\csfml-window.dll">
+        <LinkBase>runtimes\</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
 </Project>

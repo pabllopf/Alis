@@ -29,6 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.SFML;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {

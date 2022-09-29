@@ -4,10 +4,170 @@
         <name>Alis.Core.Aspect.Memory</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Aspect.Memory.ExampleClass">
+        <member name="T:Alis.Core.Aspect.Memory.SFML.InputStream">
             <summary>
-                The example class
+                Structure that contains InputStream callbacks
+                (directly maps to a CSFML sfInputStream)
             </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.SFML.InputStream.ReadCallbackType">
+            <summary>
+                Type of callback to read data from the current stream
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.SFML.InputStream.SeekCallbackType">
+            <summary>
+                Type of callback to seek the current stream's position
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.SFML.InputStream.TellCallbackType">
+            <summary>
+                Type of callback to return the current stream's position
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.SFML.InputStream.GetSizeCallbackType">
+            <summary>
+                Type of callback to return the current stream's size
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.SFML.InputStream.Read">
+            <summary>
+                Function that is called to read data from the stream
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.SFML.InputStream.Seek">
+            <summary>
+                Function that is called to seek the stream
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.SFML.InputStream.Tell">
+            <summary>
+                Function that is called to return the positon
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.SFML.InputStream.GetSize">
+            <summary>
+                Function that is called to return the size
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.SFML.LoadingFailedException">
+            <summary>
+                Exception thrown by SFML whenever loading a resource fails
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.LoadingFailedException.#ctor">
+            <summary>
+                Default constructor (unknown error)
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.LoadingFailedException.#ctor(System.String)">
+            <summary>
+                Failure to load a resource from memory
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.LoadingFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+                Failure to load a resource from memory
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+            <param name="innerException">Exception which is the cause ofthe current exception</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.LoadingFailedException.#ctor(System.String,System.String)">
+            <summary>
+                Failure to load a resource from a file
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+            <param name="filename">Path of the file</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.LoadingFailedException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+                Failure to load a resource from a file
+            </summary>
+            <param name="resourceName">Name of the resource</param>
+            <param name="filename">Path of the file</param>
+            <param name="innerException">Exception which is the cause ofthe current exception</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.SFML.StreamAdaptor">
+            <summary>
+                Adapts a System.IO.Stream to be usable as a SFML InputStream
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.myInputStream">
+            <summary>
+                The my input stream
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.myInputStreamPtr">
+            <summary>
+                The my input stream ptr
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.myStream">
+            <summary>
+                The my stream
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.#ctor(System.IO.Stream)">
+            <summary>
+                Construct from a System.IO.Stream
+            </summary>
+            <param name="stream">Stream to adapt</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.InputStreamPtr">
+            <summary>
+                The pointer to the CSFML InputStream structure
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.Dispose">
+            <summary>
+                Explicitly dispose the object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.Finalize">
+            <summary>
+                Dispose the object
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.Dispose(System.Boolean)">
+            <summary>
+                Destroy the object
+            </summary>
+            <param name="disposing">Is the GC disposing the object, or is it an explicit call ?</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.Read(System.IntPtr,System.Int64,System.IntPtr)">
+            <summary>
+                Called to read from the stream
+            </summary>
+            <param name="data">Where to copy the read bytes</param>
+            <param name="size">Size to read, in bytes</param>
+            <param name="userData">User data -- unused</param>
+            <returns>Number of bytes read</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.Seek(System.Int64,System.IntPtr)">
+            <summary>
+                Called to set the read position in the stream
+            </summary>
+            <param name="position">New read position</param>
+            <param name="userData">User data -- unused</param>
+            <returns>Actual position</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.Tell(System.IntPtr)">
+            <summary>
+                Get the current read position in the stream
+            </summary>
+            <param name="userData">User data -- unused</param>
+            <returns>Current position in the stream</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.SFML.StreamAdaptor.GetSize(System.IntPtr)">
+            <summary>
+                Called to get the total size of the stream
+            </summary>
+            <param name="userData">User data -- unused</param>
+            <returns>Number of bytes in the stream</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.SFML.SuppressUnmanagedCodeSecurityAttribute">
+            <summary>Allows managed code to call into unmanaged code without a stack walk. This class cannot be inherited.</summary>
         </member>
     </members>
 </doc>

@@ -31,6 +31,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base;
+using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Memory.SFML;
 using Alis.Core.Graphic.D2.SFML.Windows;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics

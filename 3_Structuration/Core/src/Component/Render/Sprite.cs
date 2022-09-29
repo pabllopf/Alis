@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager;
 
