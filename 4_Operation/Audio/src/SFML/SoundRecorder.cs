@@ -30,8 +30,9 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base;
-using Alis.Core.Aspect.Time;
-using Csfml = Alis.Core.Aspect.Math.SFML.Native.Csfml;
+using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Settings;
+
 
 namespace Alis.Core.Audio.SFML
 {
@@ -295,7 +296,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="onStop">The on stop</param>
         /// <param name="userData">The user data</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundRecorder_create(StartCallback onStart, ProcessCallback onProcess,
             StopCallback onStop, IntPtr userData);
 
@@ -303,7 +304,7 @@ namespace Alis.Core.Audio.SFML
         ///     Sfs the sound recorder destroy using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_destroy(IntPtr soundRecorder);
 
         /// <summary>
@@ -312,14 +313,14 @@ namespace Alis.Core.Audio.SFML
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="sampleRate">The sample rate</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundRecorder_start(IntPtr soundRecorder, uint sampleRate);
 
         /// <summary>
         ///     Sfs the sound recorder stop using the specified sound recorder
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_stop(IntPtr soundRecorder);
 
         /// <summary>
@@ -327,14 +328,14 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundRecorder_getSampleRate(IntPtr soundRecorder);
 
         /// <summary>
         ///     Describes whether sf sound recorder is available
         /// </summary>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundRecorder_isAvailable();
 
         /// <summary>
@@ -342,7 +343,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="interval">The interval</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_setProcessingInterval(IntPtr soundRecorder, Time interval);
 
         /// <summary>
@@ -350,14 +351,14 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="count">The count</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe IntPtr* sfSoundRecorder_getAvailableDevices(out uint count);
 
         /// <summary>
         ///     Sfs the sound recorder get default device
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundRecorder_getDefaultDevice();
 
         /// <summary>
@@ -366,7 +367,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="name">The name</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundRecorder_setDevice(IntPtr soundRecorder, string name);
 
         /// <summary>
@@ -374,7 +375,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundRecorder_getDevice(IntPtr soundRecorder);
 
         /// <summary>
@@ -382,7 +383,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <param name="channelCount">The channel count</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundRecorder_setChannelCount(IntPtr soundRecorder, uint channelCount);
 
         /// <summary>
@@ -390,7 +391,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundRecorder">The sound recorder</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Math.SFML.Native.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundRecorder_getChannelCount(IntPtr soundRecorder);
 
         /// <summary>

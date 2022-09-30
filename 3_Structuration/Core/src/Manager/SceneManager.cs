@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Net.Mail;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
 

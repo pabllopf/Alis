@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
-
 namespace Alis.Core.Setting
 {
     /// <summary>

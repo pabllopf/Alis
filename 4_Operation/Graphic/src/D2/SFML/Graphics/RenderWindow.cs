@@ -30,6 +30,8 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Windows;
 

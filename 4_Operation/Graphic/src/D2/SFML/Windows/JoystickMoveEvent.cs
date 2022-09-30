@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         public uint JoystickId;
 
         /// <summary>Joystick axis (see JoyAxis enum)</summary>
-        public Joystick.Axis Axis;
+        public Axis Axis;
 
         /// <summary>Current position of the axis</summary>
         public float Position;

@@ -31,9 +31,11 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base;
-using Alis.Core.Aspect.Memory.SFML;
-using Alis.Core.Aspect.Time;
-using Csfml = Alis.Core.Aspect.Math.SFML.Native.Csfml;
+using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Exceptions;
+using Alis.Core.Aspect.Base.Settings;
+using Alis.Core.Aspect.Memory.Streams.SFML;
+
 
 namespace Alis.Core.Audio.SFML
 {
@@ -233,7 +235,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="filename">The filename</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromFile(string filename);
 
         /// <summary>
@@ -241,7 +243,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="stream">The stream</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromStream(IntPtr stream);
 
         /// <summary>
@@ -250,7 +252,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="data">The data</param>
         /// <param name="size">The size</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_createFromMemory(IntPtr data, ulong size);
 
         /// <summary>
@@ -261,7 +263,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="channelsCount">The channels count</param>
         /// <param name="sampleRate">The sample rate</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern unsafe IntPtr sfSoundBuffer_createFromSamples(short* samples, uint sampleCount,
             uint channelsCount, uint sampleRate);
 
@@ -270,14 +272,14 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_copy(IntPtr soundBuffer);
 
         /// <summary>
         ///     Sfs the sound buffer destroy using the specified sound buffer
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfSoundBuffer_destroy(IntPtr soundBuffer);
 
         /// <summary>
@@ -286,7 +288,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="soundBuffer">The sound buffer</param>
         /// <param name="filename">The filename</param>
         /// <returns>The bool</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern bool sfSoundBuffer_saveToFile(IntPtr soundBuffer, string filename);
 
         /// <summary>
@@ -294,7 +296,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The int ptr</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern IntPtr sfSoundBuffer_getSamples(IntPtr soundBuffer);
 
         /// <summary>
@@ -302,7 +304,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getSampleCount(IntPtr soundBuffer);
 
         /// <summary>
@@ -310,7 +312,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getSampleRate(IntPtr soundBuffer);
 
         /// <summary>
@@ -318,7 +320,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The uint</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern uint sfSoundBuffer_getChannelCount(IntPtr soundBuffer);
 
         /// <summary>
@@ -326,7 +328,7 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="soundBuffer">The sound buffer</param>
         /// <returns>The systems time</returns>
-        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), Aspect.Memory.SFML.SuppressUnmanagedCodeSecurity]
+        [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfSoundBuffer_getDuration(IntPtr soundBuffer);
     }
 }

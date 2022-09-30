@@ -29,7 +29,8 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Settings;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {
@@ -38,39 +39,9 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     ///     Give access to the real-time state of the joysticks
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public static class Joystick
+    public static partial class Joystick
     {
         ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Axes supported by SFML joysticks
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        public enum Axis
-        {
-            /// <summary>The X axis</summary>
-            X,
-
-            /// <summary>The Y axis</summary>
-            Y,
-
-            /// <summary>The Z axis</summary>
-            Z,
-
-            /// <summary>The R axis</summary>
-            R,
-
-            /// <summary>The U axis</summary>
-            U,
-
-            /// <summary>The V axis</summary>
-            V,
-
-            /// <summary>The X axis of the point-of-view hat</summary>
-            PovX,
-
-            /// <summary>TheY axis of the point-of-view hat</summary>
-            PovY
-        }
 
         /// <summary>Maximum number of supported joysticks</summary>
         public static readonly uint Count = 8;

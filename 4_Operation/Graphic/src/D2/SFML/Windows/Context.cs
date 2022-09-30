@@ -29,7 +29,8 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Settings;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {

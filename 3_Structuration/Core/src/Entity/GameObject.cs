@@ -29,7 +29,6 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Base;
-using Alis.Core.Builder;
 using Alis.Core.Builder.Entity;
 using Alis.Core.Component;
 

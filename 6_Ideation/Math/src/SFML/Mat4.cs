@@ -84,35 +84,7 @@ namespace Alis.Core.Aspect.Math.SFML
             array[15] = a33;
         }
 
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the <see cref="Mat3" /> from a SFML <see cref="Transform" /> and expand it to a 4x4 matrix
-        /// </summary>
-        /// <param name="transform">A SFML <see cref="Transform" /></param>
-        ////////////////////////////////////////////////////////////
-        public Mat4(Transform transform)
-        {
-            // swapping to column-major (OpenGL) from row-major (SFML) order
-            // in addition, filling in the blanks (from expanding to a mat4) with values from
-            // an identity matrix
-            array[0] = transform.m00;
-            array[4] = transform.m01;
-            array[8] = 0;
-            array[12] = transform.m02;
-            array[1] = transform.m10;
-            array[5] = transform.m11;
-            array[9] = 0;
-            array[13] = transform.m12;
-            array[2] = 0;
-            array[6] = 0;
-            array[10] = 1;
-            array[14] = 0;
-            array[3] = transform.m20;
-            array[7] = transform.m21;
-            array[11] = 0;
-            array[15] = transform.m22;
-        }
-
+        
         // column major!
         /// <summary>
         ///     The array

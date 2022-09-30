@@ -74,6 +74,10 @@ namespace Alis.Core.Graphic.Sample
 
             window.Closed += (sender, args) => window.Close();
 
+            //string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
+            //Music music = new Music(fileName);
+            //music.Play();
+            
             while (window.IsOpen)
             {
                 window.DispatchEvents();

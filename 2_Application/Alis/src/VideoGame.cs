@@ -30,7 +30,6 @@
 using System.Collections.Generic;
 using Alis.Builder;
 using Alis.Core;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Manager;
 
 namespace Alis

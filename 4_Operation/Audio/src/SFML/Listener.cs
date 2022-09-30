@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base.Attributes;
+using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.SFML;
-using Alis.Core.Aspect.Math.SFML.Native;
 
 namespace Alis.Core.Audio.SFML
 {

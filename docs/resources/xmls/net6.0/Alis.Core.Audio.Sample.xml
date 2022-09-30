@@ -15,6 +15,16 @@
             </summary>
             <param name="args">The args</param>
         </member>
+        <member name="M:Alis.Core.Audio.Sample.Program.TestSFMLAudio">
+            <summary>
+            Tests the sfml audio
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.Program.TestNativeAudio">
+            <summary>
+            Tests the native audio
+            </summary>
+        </member>
         <member name="M:Alis.Core.Audio.Sample.Program.ShowFileEntryPrompt">
             <summary>
             Shows the file entry prompt
