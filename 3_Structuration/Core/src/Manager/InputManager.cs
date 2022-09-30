@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,55 +35,88 @@ namespace Alis.Core.Manager
     public class InputManager : ManagerBase
     {
 
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
         internal override void Init()
         {
             
         }
 
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
         public override void Awake()
         {
            
         }
 
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
         public override void Start()
         {
            
         }
 
+        /// <summary>
+        /// Befores the update
+        /// </summary>
         public override void BeforeUpdate()
         {
             
         }
 
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
         public override void Update()
         {
         }
 
+        /// <summary>
+        /// Afters the update
+        /// </summary>
         public override void AfterUpdate()
         {
          
         }
 
+        /// <summary>
+        /// Fixeds the update
+        /// </summary>
         public override void FixedUpdate()
         {
             
         }
 
+        /// <summary>
+        /// Dispatches the events
+        /// </summary>
         public override void DispatchEvents()
         {
          
         }
 
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
         public override void Reset()
         {
             
         }
 
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
         public override void Stop()
         {
             
         }
 
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
         public override void Exit()
         {
         }
