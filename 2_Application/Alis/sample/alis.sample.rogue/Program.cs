@@ -60,7 +60,7 @@ namespace Alis.Sample.Rogue
                                 .Scale(3,3)
                                 .Build())
                             .Add<Sprite>(i => i
-                                .Texture("/Users/pablo/Desktop/Alis/2_Application/Alis/sample/alis.sample.rogue/Assets/tile000.png")
+                                .Texture(Environment.CurrentDirectory +  "/Assets/tile000.png")
                                 .Depth(2)
                                 .Build())
                             .Build())
@@ -72,7 +72,7 @@ namespace Alis.Sample.Rogue
                                 .Scale(3, 3)
                                 .Build())
                             .Add<Sprite>(i => i
-                                .Texture("/Users/pablo/Desktop/Alis/2_Application/Alis/sample/alis.sample.rogue/Assets/tile003.png")
+                                .Texture(Environment.CurrentDirectory +  "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
                             .Add<AudioSource>(i => i

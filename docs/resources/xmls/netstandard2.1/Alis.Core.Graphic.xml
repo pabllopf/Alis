@@ -6833,17 +6833,6 @@
         <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Button.ButtonCount">
             <summary>Keep last -- the total number of mouse buttons</summary>
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Wheel">
-            <summary>
-                Mouse wheels
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Wheel.VerticalWheel">
-            <summary>The vertical mouse wheel</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Wheel.HorizontalWheel">
-            <summary>The horizontal mouse wheel</summary>
-        </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Mouse.IsButtonPressed(Alis.Core.Graphic.D2.SFML.Windows.Mouse.Button)">
             <summary>
                 Check if a mouse button is pressed
@@ -6905,6 +6894,17 @@
             </summary>
             <param name="position">The position</param>
             <param name="relativeTo">The relative to</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Wheel">
+            <summary>
+                Mouse wheels
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Wheel.VerticalWheel">
+            <summary>The vertical mouse wheel</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Wheel.HorizontalWheel">
+            <summary>The horizontal mouse wheel</summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent">
             <summary>

@@ -47,6 +47,7 @@ namespace Alis
         {
             Managers = new List<ManagerBase>()
             {
+                new InputManager(),
                 new AudioManager(),
                 new SceneManager(),
             };

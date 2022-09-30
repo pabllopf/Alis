@@ -21,6 +21,36 @@
             </summary>
             <returns>The audio source</returns>
         </member>
+        <member name="T:Alis.Core.Builder.Component.Body.RigidBodyBuilder">
+            <summary>
+            The rigid body builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Collider.BoxColliderBuilder">
+            <summary>
+            The box collider builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Collider.CircleColliderBuilder">
+            <summary>
+            The circle collider builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Light.DirectionalLightBuilder">
+            <summary>
+            The directional light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Render.AnimatorBuilder">
+            <summary>
+            The animator builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Render.CameraBuilder">
+            <summary>
+            The camera builder class
+            </summary>
+        </member>
         <member name="T:Alis.Core.Builder.Component.Render.SpriteBuilder">
             <summary>
             The sprite builder class
@@ -247,6 +277,12 @@
                 Updates this instance
             </summary>
             <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="T:Alis.Core.Component.Body.RigidBody">
+            <summary>
+            The rigid body class
+            </summary>
+            <seealso cref="T:Alis.Core.Component.Body.BodyBase"/>
         </member>
         <member name="T:Alis.Core.Component.Collider.BoxCollider">
             <summary>
@@ -499,6 +535,12 @@
                 The mesh class
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase" />
+        </member>
+        <member name="T:Alis.Core.Component.Particle.ExplosionParticle">
+            <summary>
+            The explosion particle class
+            </summary>
+            <seealso cref="T:Alis.Core.Component.Particle.ParticleBase"/>
         </member>
         <member name="T:Alis.Core.Component.Particle.ParticleBase">
             <summary>

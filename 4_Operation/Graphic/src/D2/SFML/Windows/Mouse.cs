@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     ///     Give access to the real-time state of the mouse
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public static class Mouse
+    public static partial class Mouse
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -68,18 +68,6 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         }
 
         ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Mouse wheels
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        public enum Wheel
-        {
-            /// <summary>The vertical mouse wheel</summary>
-            VerticalWheel,
-
-            /// <summary>The horizontal mouse wheel</summary>
-            HorizontalWheel
-        }
 
         ////////////////////////////////////////////////////////////
         /// <summary>
