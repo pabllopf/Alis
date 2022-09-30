@@ -17,7 +17,7 @@ jobs:
         ref: develop
 
     - name: Setup dotnet
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v3
       with:
         dotnet-version: |
           2.1.x
@@ -52,7 +52,7 @@ jobs:
         with:
           ref: develop
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: |
             2.1.x
@@ -72,7 +72,7 @@ jobs:
         with:
           ref: develop
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: |
             2.1.x
@@ -92,7 +92,7 @@ jobs:
         with:
           ref: develop
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: |
             2.1.x
@@ -111,7 +111,7 @@ jobs:
         with:
           ref: develop
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: |
             2.1.x
