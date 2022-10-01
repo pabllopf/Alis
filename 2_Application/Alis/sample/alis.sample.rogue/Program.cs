@@ -71,13 +71,15 @@ namespace Alis.Sample.Rogue
                                 .Rotation(90)
                                 .Scale(3, 3)
                                 .Build())
-                            .Add<Sprite>(i => i
+                            .Add<Sprite>(sprite => sprite
                                 .Texture(Environment.CurrentDirectory +  "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
-                            .Add<AudioSource>(i => i
-                                .Build())
-                            .Add<AudioSource>(i => i
+                            .Add<PlayerMovement>(new PlayerMovement())
+                            .Add<AudioSource>(audioSource => audioSource
+                                .Set<AudioClip>(audioClip => audioClip
+                                    .FilePath(Environment.CurrentDirectory +  "/Assets/menu.wav")
+                                    .Build())
                                 .Build())
                             .Build())
                         .Build())

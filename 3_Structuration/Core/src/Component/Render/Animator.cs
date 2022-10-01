@@ -28,13 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Render
 {
     /// <summary>
     ///     The animator class
     /// </summary>
-    public class Animator : ComponentBase
+    public class Animator : IComponent
     {
         /// <summary>
         /// animations
@@ -42,20 +43,32 @@ namespace Alis.Core.Component.Render
         public List<Animation> Animations;
 
         /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        bool IComponent.Destroyed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
+        GameObject IComponent.GameObject { get; set; }
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start()
+        public void Start()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-       
-        public override void Update()
+        public void Update()
         {
-            //throw new NotImplementedException();
         }
     }
 }

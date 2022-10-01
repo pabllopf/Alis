@@ -45,24 +45,24 @@ namespace Alis.Core.Entity
         /// <summary>
         /// The components
         /// </summary>
-        private List<ComponentBase> components;
+        private List<IComponent> components;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GameObject"/> class
         /// </summary>
-        public GameObject() => components = new List<ComponentBase>();
+        public GameObject() => components = new List<IComponent>();
 
         /// <summary>
         /// Adds the component
         /// </summary>
         /// <param name="component">The component</param>
-        public void Add(ComponentBase component) => components.Add(component);
+        public void Add<T>(T component) => components.Add(component as IComponent);
 
         /// <summary>
         /// Removes the component
         /// </summary>
         /// <param name="component">The component</param>
-        public void Remove(ComponentBase component) => components.Remove(component);
+        public void Remove<T>(T component) => components.Remove(component as IComponent);
 
         /// <summary>
         /// Builders this instance

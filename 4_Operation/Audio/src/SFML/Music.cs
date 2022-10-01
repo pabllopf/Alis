@@ -46,7 +46,7 @@ namespace Alis.Core.Audio.SFML
     /// </summary>
     ////////////////////////////////////////////////////////////
     
-    public class Music : ObjectBase
+    internal class Music : ObjectBase
     {
         /// <summary>
         ///     The my stream

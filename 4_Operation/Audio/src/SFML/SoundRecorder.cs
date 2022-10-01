@@ -41,7 +41,7 @@ namespace Alis.Core.Audio.SFML
     ///     Base class intended for capturing sound data
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public abstract class SoundRecorder : ObjectBase
+    internal abstract class SoundRecorder : ObjectBase
     {
         /// <summary>
         ///     The my process callback

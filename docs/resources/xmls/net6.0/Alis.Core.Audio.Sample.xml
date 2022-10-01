@@ -4,6 +4,41 @@
         <name>Alis.Core.Audio.Sample</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Audio.Sample.AudioClip">
+            <summary>
+                The audio clip class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioClip.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.Sample.AudioClip"/> class
+            </summary>
+            <param name="fullPathAudio">The full path audio</param>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioClip.#ctor(System.String,Alis.Core.Audio.AudioBackendType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.Sample.AudioClip"/> class
+            </summary>
+            <param name="fullPathAudio">The full path audio</param>
+            <param name="audioBackendType">The audio backend type</param>
+        </member>
+        <member name="T:Alis.Core.Audio.Sample.AudioRecorder">
+            <summary>
+            The audio recorder class
+            </summary>
+            <seealso cref="T:Alis.Core.Audio.AudioRecorderBase"/>
+        </member>
+        <member name="T:Alis.Core.Audio.Sample.AudioSource">
+            <summary>
+            The audio source class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioSource.#ctor(Alis.Core.Audio.AudioClipBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.Sample.AudioSource"/> class
+            </summary>
+            <param name="audioClipBase">The audio clip base</param>
+        </member>
         <member name="T:Alis.Core.Audio.Sample.Program">
             <summary>
             The program class
@@ -14,33 +49,6 @@
             Main the args
             </summary>
             <param name="args">The args</param>
-        </member>
-        <member name="M:Alis.Core.Audio.Sample.Program.TestSFMLAudio">
-            <summary>
-            Tests the sfml audio
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.Sample.Program.TestNativeAudio">
-            <summary>
-            Tests the native audio
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.Sample.Program.ShowFileEntryPrompt">
-            <summary>
-            Shows the file entry prompt
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.Sample.Program.ShowInstruction">
-            <summary>
-            Shows the instruction
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.Sample.Program.OnPlaybackFinished(System.Object,System.EventArgs)">
-            <summary>
-            Ons the playback finished using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
         </member>
     </members>
 </doc>

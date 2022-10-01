@@ -27,13 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Entity;
+
 namespace Alis.Core.Component.Mesh
 {
     /// <summary>
     ///     The mesh class
     /// </summary>
-    /// <seealso cref="ComponentBase" />
-    public abstract class MeshBase : ComponentBase
+    /// <seealso cref="IComponent" />
+    public abstract class MeshBase : IComponent
     {
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        bool IComponent.Destroyed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
+        GameObject IComponent.GameObject { get; set; }
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start()
+        {
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update()
+        {
+        }
     }
 }

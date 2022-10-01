@@ -34,20 +34,5 @@ namespace Alis.Core.Component.Mesh
     /// </summary>
     public class BoxMesh : MeshBase
     {
-        /// <summary>
-        /// Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-            //throw new global::System.NotImplementedException();
-        }
-
-        /// <summary>
-        /// Updates this instance
-        /// </summary>
-        public override void Update()
-        {
-            //throw new global::System.NotImplementedException();
-        }
     }
 }

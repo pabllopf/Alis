@@ -37,7 +37,7 @@ namespace Alis.Core.Audio.SFML
     ///     audio data into a sound buffer
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public class SoundBufferRecorder : SoundRecorder
+    internal class SoundBufferRecorder : SoundRecorder
     {
         /// <summary>
         ///     The list

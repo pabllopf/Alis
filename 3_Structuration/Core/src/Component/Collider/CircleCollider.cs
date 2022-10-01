@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Entity;
+
 namespace Alis.Core.Component.Collider
 {
     /// <summary>
@@ -35,22 +37,6 @@ namespace Alis.Core.Component.Collider
     /// <seealso cref="ColliderBase" />
     public class CircleCollider : ColliderBase
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
         
-        public override void Start()
-        {
-           // throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-       
-        public override void Update()
-        {
-           // throw new NotImplementedException();
-        }
     }
 }

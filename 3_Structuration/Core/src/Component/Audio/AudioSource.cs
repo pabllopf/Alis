@@ -28,36 +28,57 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Audio;
+using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Audio
 {
     /// <summary>
-    ///     The audio source class
+    /// The audio source class
     /// </summary>
-    /// <seealso cref="ComponentBase" />
-    public class AudioSource : ComponentBase
+    public class AudioSource : AudioSourceBase, IComponent
     {
         /// <summary>
-        /// The audio clip
+        /// Gets or sets the value of the audio clip
         /// </summary>
-        public AudioClip AudioClip;
+        public AudioClip AudioClip { get; set; }
 
         /// <summary>
-        ///     Starts this instance
+        /// Initializes a new instance of the <see cref="AudioSource"/> class
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
+        /// <param name="audioClip">The audio clip base</param>
+        public AudioSource(AudioClip audioClip) : base(audioClip)
         {
-            //throw new NotImplementedException();
+            AudioClip = audioClip;
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Gets or sets the value of the is active
         /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
+        public bool IsActive { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        public bool Destroyed { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
+        public GameObject GameObject { get; set; }
+        
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public void Start()
         {
-            //throw new NotImplementedException();
+            Play();
+            Console.WriteLine($"Play sound: '{AudioClip.FullPathAudio}'");
+        }
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public void Update()
+        {
         }
     }
 }

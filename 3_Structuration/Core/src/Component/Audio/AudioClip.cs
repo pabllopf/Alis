@@ -27,12 +27,59 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Audio;
+using Alis.Core.Entity;
+
 namespace Alis.Core.Component.Audio
 {
     /// <summary>
     ///     The audio clip class
     /// </summary>
-    public class AudioClip
+    public  class AudioClip : AudioClipBase, IComponent
     {
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        public bool Destroyed { get; set; }
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
+        public GameObject GameObject { get; set; }
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Start()
+        {
+        }
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        /// <exception cref="System.NotImplementedException"></exception>
+        public void Update()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioClip"/> class
+        /// </summary>
+        /// <param name="fullPathAudio">The full path audio</param>
+        public AudioClip(string fullPathAudio) : base(fullPathAudio)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioClip"/> class
+        /// </summary>
+        /// <param name="fullPathAudio">The full path audio</param>
+        /// <param name="audioBackendType">The audio backend type</param>
+        public AudioClip(string fullPathAudio, AudioBackendType audioBackendType) : base(fullPathAudio, audioBackendType)
+        {
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace Alis.Core.Audio.SFML
     ///     Enumeration of all possible sound states
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public enum SoundStatus
+    internal enum SoundStatus
     {
         /// <summary>Sound is not playing</summary>
         Stopped,

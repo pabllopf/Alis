@@ -40,7 +40,7 @@ namespace Alis.Core.Audio.SFML
     ///     from where all the sounds are heard
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public class Listener
+    internal class Listener
     {
         ////////////////////////////////////////////////////////////
         /// <summary>

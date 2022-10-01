@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager;
 
@@ -38,8 +39,8 @@ namespace Alis.Core.Component.Render
     /// <summary>
     ///     The sprite class
     /// </summary>
-    /// <seealso cref="ComponentBase" />
-    public class Sprite : RenderBase
+    /// <seealso cref="IComponent" />
+    public class Sprite : IComponent
     {
         /// <summary>
         ///     The level
@@ -67,9 +68,24 @@ namespace Alis.Core.Component.Render
         private Vector2F size;
 
         /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        public bool Destroyed { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
+        public GameObject GameObject { get; set; }
+
+        /// <summary>
         /// Inits this instance
         /// </summary>
-        public override void Init()
+        public void Init()
         {
             sprite = new Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
             size = new Vector2F(sprite.TextureRect.Width, sprite.TextureRect.Height);
@@ -79,16 +95,16 @@ namespace Alis.Core.Component.Render
         /// <summary>
         /// Awakes this instance
         /// </summary>
-        public override void Awake()
+        public void Awake()
         {
             GraphicManager.Attach(this);
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
+        public void Start()
         {
             sprite.Position = new Vector2F(
                 (GameObject.Transform.Position.X) - (size.X / 2),
@@ -101,7 +117,7 @@ namespace Alis.Core.Component.Render
         ///     Updates this instance
         /// </summary>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
+        public void Update()
         {
             sprite.Position =  new Vector2F(
                 (GameObject.Transform.Position.X) - (size.X / 2),
@@ -113,7 +129,7 @@ namespace Alis.Core.Component.Render
         /// <summary>
         /// Exits this instance
         /// </summary>
-        public override void Exit()
+        public void Exit()
         {
             GraphicManager.UnAttach(this);
         }

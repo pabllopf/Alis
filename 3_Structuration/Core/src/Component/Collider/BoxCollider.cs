@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Collider
 {
@@ -37,22 +38,5 @@ namespace Alis.Core.Component.Collider
     /// <seealso cref="ColliderBase" />
     public class BoxCollider : ColliderBase
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
-        {
-            //throw new NotImplementedException();
-        }
     }
 }

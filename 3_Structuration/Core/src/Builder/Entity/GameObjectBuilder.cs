@@ -55,8 +55,9 @@ namespace Alis.Core.Builder.Entity
         /// </summary>
         private GameObject gameObject = new GameObject();
 
+        
         /// <summary>
-        ///     Adds the value
+        /// Adds the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -106,7 +107,7 @@ namespace Alis.Core.Builder.Entity
         {
             Sprite sprite = value.Invoke(new SpriteBuilder());
             gameObject.Add(sprite);
-            sprite.AttachTo(gameObject);
+            sprite.GameObject = gameObject;
             return this;
         }
 
@@ -120,7 +121,7 @@ namespace Alis.Core.Builder.Entity
         {
             AudioSource audioSource = value.Invoke(new AudioSourceBuilder());
             gameObject.Add(audioSource);
-            audioSource.AttachTo(gameObject);
+            audioSource.GameObject = gameObject;
             return this;
         }
     }

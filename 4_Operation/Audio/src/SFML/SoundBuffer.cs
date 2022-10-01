@@ -44,7 +44,7 @@ namespace Alis.Core.Audio.SFML
     ///     Storage for audio samples defining a sound
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public class SoundBuffer : ObjectBase
+    internal class SoundBuffer : ObjectBase
     {
         ////////////////////////////////////////////////////////////
         /// <summary>

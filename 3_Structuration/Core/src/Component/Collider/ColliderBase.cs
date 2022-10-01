@@ -27,13 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Entity;
+
 namespace Alis.Core.Component.Collider
 {
     /// <summary>
     ///     The collider class
     /// </summary>
-    /// <seealso cref="ComponentBase" />
-    public abstract class ColliderBase : ComponentBase
+    /// <seealso cref="IComponent" />
+    public abstract class ColliderBase : IComponent
     {
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        bool IComponent.Destroyed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
+        public GameObject GameObject { get; set; }
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public void Start()
+        {
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public void Update()
+        {
+        }
     }
 }

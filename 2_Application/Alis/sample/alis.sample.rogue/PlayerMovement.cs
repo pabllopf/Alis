@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
+using Alis.Core.Entity;
 
 namespace Alis.Sample.Rogue
 {
@@ -37,9 +38,16 @@ namespace Alis.Sample.Rogue
     /// </summary>
     public class PlayerMovement : ComponentBase
     {
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            
+        }
 
         /// <summary>
-        /// 
+        /// Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -47,28 +55,11 @@ namespace Alis.Sample.Rogue
         }
 
         /// <summary>
-        /// 
+        /// Updates this instance
         /// </summary>
         public override void Update()
         {
-            
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="key"></param>
-        public override void OnReleaseKey(string key)
-        {
-            if (key.Equals("Up"))
-            {
-                GameObject.Transform.Position += new Vector2(0, 1);
-            }
-
-            if (key.Equals("Down"))
-            {
-                GameObject.Transform.Position += new Vector2(0, -1);
-            }
+           
         }
     }
 }

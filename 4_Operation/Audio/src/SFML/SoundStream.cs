@@ -41,7 +41,7 @@ namespace Alis.Core.Audio.SFML
     ///     Abstract base class for streamed audio sources
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public abstract class SoundStream : ObjectBase
+    internal abstract class SoundStream : ObjectBase
     {
         /// <summary>
         ///     The my get data callback

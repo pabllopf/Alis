@@ -27,30 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Entity;
+
 namespace Alis.Core.Component.Render
 {
     /// <summary>
     ///     The camera class
     /// </summary>
-    /// <seealso cref="ComponentBase" />
-    public class Camera : ComponentBase
+    /// <seealso cref="IComponent" />
+    public class Camera : IComponent
     {
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        bool IComponent.Destroyed { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the game object
+        /// </summary>
+        GameObject IComponent.GameObject { get; set; }
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        
-        public override void Start()
+        public void Start()
         {
-           // throw new NotImplementedException();
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        
-        public override void Update()
+        public void Update()
         {
-           // throw new NotImplementedException();
         }
     }
 }

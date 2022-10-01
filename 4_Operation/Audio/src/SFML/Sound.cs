@@ -43,7 +43,7 @@ namespace Alis.Core.Audio.SFML
     ///     Regular sound that can be played in the audio environment
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public class Sound : ObjectBase
+    internal class Sound : ObjectBase
     {
         /// <summary>
         ///     The my buffer

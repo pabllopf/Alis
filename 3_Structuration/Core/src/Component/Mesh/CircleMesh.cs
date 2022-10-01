@@ -37,22 +37,5 @@ namespace Alis.Core.Component.Mesh
     /// <seealso cref="MeshBase" />
     public class CircleMesh : MeshBase
     {
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Start()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Updates this instance
-        /// </summary>
-        /// <exception cref="NotImplementedException"></exception>
-        public override void Update()
-        {
-            //throw new NotImplementedException();
-        }
     }
 }

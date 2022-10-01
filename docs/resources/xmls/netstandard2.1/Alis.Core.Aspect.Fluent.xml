@@ -122,6 +122,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IFilePath`2">
+            <summary>
+            The file path interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IFilePath`2.FilePath(`1)">
+            <summary>
+            Files the path using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IGeneral`2">
             <summary>
                 The general interface

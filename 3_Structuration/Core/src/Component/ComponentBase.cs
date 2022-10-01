@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Component.cs
+//  File:ComponentBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,40 +31,34 @@ using Alis.Core.Entity;
 
 namespace Alis.Core.Component
 {
-    /// <summary>Define a general component.</summary>
-    public abstract class ComponentBase
+    /// <summary>
+    /// The component base class
+    /// </summary>
+    /// <seealso cref="IComponent"/>
+    public abstract class ComponentBase : IComponent
     {
         /// <summary>
-        ///     Gets or sets the value of the is active
+        /// Gets or sets the value of the is active
         /// </summary>
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the destroyed
+        /// </summary>
+        public bool Destroyed { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the destroyed
+        /// Gets or sets the value of the game object
         /// </summary>
-        internal bool Destroyed { get; set; }
-
+        public GameObject GameObject { get; set; }
+        
         /// <summary>
-        ///     Gets or sets the value of the game object
-        /// </summary>
-        public GameObject GameObject { get; internal set; } = new GameObject();
-
-        /// <summary>
-        ///     Attaches the to using the specified game object
+        /// Attaches the to using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void AttachTo(GameObject gameObject)
         {
             GameObject = gameObject;
-        }
-
-        /// <summary>
-        ///     Ons the destroy
-        /// </summary>
-        internal void OnDestroy()
-        {
-            Destroyed = true;
-            IsActive = false;
         }
 
         /// <summary>Enables this instance.</summary>
