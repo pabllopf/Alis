@@ -88,7 +88,7 @@ namespace Alis.Sample.Rogue
                                 .IsActive(true)
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(Environment.CurrentDirectory +  "/Assets/menu.wav")
+                                    .FilePath(Environment.CurrentDirectory +  "\\Assets\\menu.wav")
                                     .Volume(100.0f)
                                     .Mute(false)
                                     .Build())

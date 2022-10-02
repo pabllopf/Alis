@@ -48,10 +48,10 @@ namespace Alis
             Managers = new List<ManagerBase>()
             {
                 new InputManager(),
-                new AudioManager(),
                 new PhysicManager(),
                 new GraphicManager(),
                 new SceneManager(),
+                new AudioManager(),
             };
         }
 

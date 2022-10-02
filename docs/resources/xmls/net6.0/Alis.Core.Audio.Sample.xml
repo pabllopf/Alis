@@ -38,26 +38,6 @@
             Resumes this instance
             </summary>
         </member>
-        <member name="P:Alis.Core.Audio.Sample.AudioClip.IsLooping">
-            <summary>
-            Gets or sets the value of the is looping
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.Sample.AudioClip.IsMute">
-            <summary>
-            Gets or sets the value of the is mute
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.Sample.AudioClip.IsPlaying">
-            <summary>
-            Gets or sets the value of the is playing
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.Sample.AudioClip.Volume">
-            <summary>
-            Gets or sets the value of the volume
-            </summary>
-        </member>
         <member name="T:Alis.Core.Audio.Sample.AudioSource">
             <summary>
             The audio source class
