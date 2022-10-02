@@ -6,8 +6,9 @@
     <members>
         <member name="T:Alis.Core.Audio.Sample.AudioClip">
             <summary>
-                The audio clip class
+            The audio clip class
             </summary>
+            <seealso cref="T:Alis.Core.Audio.AudioClipBase"/>
         </member>
         <member name="M:Alis.Core.Audio.Sample.AudioClip.#ctor(System.String)">
             <summary>
@@ -22,22 +23,91 @@
             <param name="fullPathAudio">The full path audio</param>
             <param name="audioBackendType">The audio backend type</param>
         </member>
-        <member name="T:Alis.Core.Audio.Sample.AudioRecorder">
+        <member name="M:Alis.Core.Audio.Sample.AudioClip.Play">
             <summary>
-            The audio recorder class
+            Plays this instance
             </summary>
-            <seealso cref="T:Alis.Core.Audio.AudioRecorderBase"/>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioClip.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioClip.Resume">
+            <summary>
+            Resumes this instance
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioClip.IsLooping">
+            <summary>
+            Gets or sets the value of the is looping
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioClip.IsMute">
+            <summary>
+            Gets or sets the value of the is mute
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioClip.IsPlaying">
+            <summary>
+            Gets or sets the value of the is playing
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioClip.Volume">
+            <summary>
+            Gets or sets the value of the volume
+            </summary>
         </member>
         <member name="T:Alis.Core.Audio.Sample.AudioSource">
             <summary>
             The audio source class
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.Sample.AudioSource.#ctor(Alis.Core.Audio.AudioClipBase)">
+        <member name="M:Alis.Core.Audio.Sample.AudioSource.#ctor(Alis.Core.Audio.Sample.AudioClip)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Audio.Sample.AudioSource"/> class
             </summary>
-            <param name="audioClipBase">The audio clip base</param>
+            <param name="audioClip">The audio clip</param>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioSource.AudioClip">
+            <summary>
+            Gets or sets the value of the audio clip
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioSource.IsPlaying">
+            <summary>
+            Gets the value of the is playing
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioSource.Mute">
+            <summary>
+            Gets or sets the value of the mute
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioSource.Loop">
+            <summary>
+            Gets or sets the value of the loop
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Sample.AudioSource.Volume">
+            <summary>
+            Gets or sets the value of the volume
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioSource.Play">
+            <summary>
+            Plays this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioSource.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Sample.AudioSource.Resume">
+            <summary>
+            Resumes this instance
+            </summary>
         </member>
         <member name="T:Alis.Core.Audio.Sample.Program">
             <summary>
