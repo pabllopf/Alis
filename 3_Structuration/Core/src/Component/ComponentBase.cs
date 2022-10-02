@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ComponentBase.cs
+//  File:Component.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,38 +27,47 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Builder.Component;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Component
 {
-    /// <summary>
-    /// The component base class
-    /// </summary>
-    /// <seealso cref="IComponent"/>
-    public abstract class ComponentBase : IComponent
+    /// <summary>Define a general component.</summary>
+    public abstract class ComponentBase : IBuilder<ComponentBaseBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the is active
+        /// Game Object.
         /// </summary>
-        public bool IsActive { get; set; }
+        internal GameObject GameObject { get; set; }
         
         /// <summary>
-        /// Gets or sets the value of the destroyed
+        /// Attaches the game object using the specified game object
+        /// </summary>
+        /// <param name="gameObject">The game object</param>
+        internal void AttachGameObject(GameObject gameObject)
+        {
+            GameObject = gameObject;
+        }
+        
+        /// <summary>
+        ///     Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the destroyed
         /// </summary>
         public bool Destroyed { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the game object
+        ///     Ons the destroy
         /// </summary>
-        public GameObject GameObject { get; set; }
-        
-        /// <summary>
-        /// Attaches the to using the specified game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        public void AttachTo(GameObject gameObject)
+        internal void OnDestroy()
         {
-            GameObject = gameObject;
+            Destroyed = true;
+            IsActive = false;
         }
 
         /// <summary>Enables this instance.</summary>
@@ -155,6 +164,15 @@ namespace Alis.Core.Component
         /// <summary>Exits this instance.</summary>
         public virtual void Exit()
         {
+        }
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The component base builder</returns>
+        public ComponentBaseBuilder Builder()
+        {
+            return new ComponentBaseBuilder(this);
         }
     }
 }

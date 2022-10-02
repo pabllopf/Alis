@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioRecorder.cs
+//  File:ExplosionParticleBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,14 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio.Sample
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Component.Particle;
+
+namespace Alis.Core.Builder.Component.Particle
 {
     /// <summary>
-    /// The audio recorder class
+    /// The explosion particle builder class
     /// </summary>
-    /// <seealso cref="AudioRecorderBase"/>
-    public class AudioRecorder: AudioRecorderBase
+    /// <seealso cref="ComponentBaseBuilder"/>
+    /// <seealso cref="IBuild{ExplosionParticle}"/>
+    public class ExplosionParticleBuilder:
+        IBuild<ExplosionParticle>
     {
-       
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The explosion particle</returns>
+        public ExplosionParticle Build() => new ExplosionParticle();
     }
 }

@@ -28,43 +28,16 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Audio;
-using Alis.Core.Entity;
+using Alis.Core.Builder.Component.Audio;
 
 namespace Alis.Core.Component.Audio
 {
     /// <summary>
-    ///     The audio clip class
+    /// The audio clip class
     /// </summary>
-    public  class AudioClip : AudioClipBase, IComponent
+    /// <seealso cref="AudioClipBase"/>
+    public class AudioClip : AudioClipBase
     {
-        /// <summary>
-        /// Gets or sets the value of the is active
-        /// </summary>
-        public bool IsActive { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the destroyed
-        /// </summary>
-        public bool Destroyed { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the game object
-        /// </summary>
-        public GameObject GameObject { get; set; }
-        /// <summary>
-        /// Starts this instance
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Start()
-        {
-        }
-
-        /// <summary>
-        /// Updates this instance
-        /// </summary>
-        /// <exception cref="System.NotImplementedException"></exception>
-        public void Update()
-        {
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioClip"/> class
         /// </summary>
@@ -81,5 +54,55 @@ namespace Alis.Core.Component.Audio
         public AudioClip(string fullPathAudio, AudioBackendType audioBackendType) : base(fullPathAudio, audioBackendType)
         {
         }
+
+        /// <summary>
+        /// Plays this instance
+        /// </summary>
+        internal new void Play()
+        {
+            base.Play();
+        }
+        
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
+        internal new void Stop()
+        {
+            base.Stop();
+        }
+        
+        /// <summary>
+        /// Resumes this instance
+        /// </summary>
+        internal new void Resume()
+        {
+            base.Resume();
+        }
+        
+        /// <summary>
+        /// Gets or sets the value of the is looping
+        /// </summary>
+        internal new bool IsLooping { get => base.IsLooping; set => base.IsLooping = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is mute
+        /// </summary>
+        internal new bool IsMute { get => base.IsMute; set => base.IsMute = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is playing
+        /// </summary>
+        internal new bool IsPlaying { get => base.IsPlaying; set => base.IsPlaying = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the volume
+        /// </summary>
+        internal new float Volume { get => base.Volume; set => base.Volume = value; }
+        
+        /// <summary>
+        /// Builders
+        /// </summary>
+        /// <returns>The audio clip builder</returns>
+        public static AudioClipBuilder Builder() => new AudioClipBuilder();
     }
 }

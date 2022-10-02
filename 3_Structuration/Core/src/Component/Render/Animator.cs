@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Builder.Component.Render;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Render
@@ -35,40 +37,27 @@ namespace Alis.Core.Component.Render
     /// <summary>
     ///     The animator class
     /// </summary>
-    public class Animator : IComponent
+    public class Animator : ComponentBase, IBuilder<AnimatorBuilder>
     {
         /// <summary>
-        /// animations
+        /// Starts this instance
         /// </summary>
-        public List<Animation> Animations;
+        public override void Start()
+        {
+            
+        }
 
         /// <summary>
-        /// Gets or sets the value of the is active
+        /// Updates this instance
         /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the destroyed
-        /// </summary>
-        bool IComponent.Destroyed { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the game object
-        /// </summary>
-        GameObject IComponent.GameObject { get; set; }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public void Start()
+        public override void Update()
         {
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Builders this instance
         /// </summary>
-        public void Update()
-        {
-        }
+        /// <returns>The animator builder</returns>
+        public new AnimatorBuilder Builder() => new AnimatorBuilder();
     }
 }

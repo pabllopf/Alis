@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSourceBuilder.cs
+//  File:RecordSourceBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Component.Audio;
-
-namespace Alis.Core.Builder.Component.Audio
+namespace Alis.Core.Audio
 {
     /// <summary>
-    /// The audio source builder class
+    /// The audio recorder interface
     /// </summary>
-    /// <seealso cref="IBuild{AudioSource}"/>
-    public class AudioSourceBuilder:
-        IBuild<AudioSource>,
-        ISet<AudioSourceBuilder, AudioClip, Func<AudioClipBuilder,AudioClip>>
+    public interface IAudioRecorder
     {
-        /// <summary>
-        /// Gets or sets the value of the audio source
-        /// </summary>
-        private AudioSource AudioSource { get; set; } = new AudioSource(new AudioClip(""));
- 
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The audio source</returns>
-        public AudioSource Build() => AudioSource;
-    
-    /// <summary>
-        /// Sets the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The audio source builder</returns>
-        public AudioSourceBuilder Set<T>(Func<AudioClipBuilder, AudioClip> value) where T : AudioClip
-        {
-            AudioSource.AudioClip = value.Invoke(new AudioClipBuilder());
-            return this;
-        }
+        
     }
 }

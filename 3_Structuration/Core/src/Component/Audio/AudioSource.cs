@@ -27,58 +27,88 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Audio;
-using Alis.Core.Entity;
+using Alis.Core.Builder.Component.Audio;
 
 namespace Alis.Core.Component.Audio
 {
     /// <summary>
     /// The audio source class
     /// </summary>
-    public class AudioSource : AudioSourceBase, IComponent
+    public class AudioSource : ComponentBase, IAudioSource<AudioClip>, IBuilder<AudioSourceBuilder>
     {
-        /// <summary>
-        /// Gets or sets the value of the audio clip
-        /// </summary>
-        public AudioClip AudioClip { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioSource"/> class
         /// </summary>
-        /// <param name="audioClip">The audio clip base</param>
-        public AudioSource(AudioClip audioClip) : base(audioClip)
-        {
-            AudioClip = audioClip;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the is active
-        /// </summary>
-        public bool IsActive { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the destroyed
-        /// </summary>
-        public bool Destroyed { get; set; }
-        /// <summary>
-        /// Gets or sets the value of the game object
-        /// </summary>
-        public GameObject GameObject { get; set; }
+        /// <param name="audioClip">The audio clip</param>
+        public AudioSource(AudioClip audioClip) => AudioClip = audioClip;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioSource"/> class
+        /// </summary>
+        public AudioSource() => AudioClip = new AudioClip("");
+
         /// <summary>
         /// Starts this instance
         /// </summary>
-        public void Start()
+        public override void Start()
         {
             Play();
-            Console.WriteLine($"Play sound: '{AudioClip.FullPathAudio}'");
         }
 
         /// <summary>
         /// Updates this instance
         /// </summary>
-        public void Update()
+        public override void Update()
         {
+
         }
+
+        /// <summary>
+        /// Gets or sets the value of the audio clip
+        /// </summary>
+        public AudioClip AudioClip { get; set; }
+        
+        /// <summary>
+        /// Gets the value of the is playing
+        /// </summary>
+        public bool IsPlaying => AudioClip.IsPlaying;
+
+        /// <summary>
+        /// Gets or sets the value of the mute
+        /// </summary>
+        public bool Mute { get => AudioClip.IsMute; set => AudioClip.IsMute = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the loop
+        /// </summary>
+        public bool Loop { get => AudioClip.IsLooping; set => AudioClip.IsLooping = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the volume
+        /// </summary>
+        public float Volume { get => AudioClip.Volume; set => AudioClip.Volume = value; }
+        
+        /// <summary>
+        /// Plays this instance
+        /// </summary>
+        public void Play() => AudioClip.Play();
+
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
+        public new void Stop() => AudioClip.Stop();
+
+        /// <summary>
+        /// Resumes this instance
+        /// </summary>
+        public void Resume() => AudioClip.Resume();
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The audio source builder</returns>
+        public new AudioSourceBuilder Builder() => new AudioSourceBuilder();
     }
 }

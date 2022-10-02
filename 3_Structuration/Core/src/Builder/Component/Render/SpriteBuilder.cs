@@ -37,7 +37,7 @@ namespace Alis.Core.Builder.Component.Render
     /// The sprite builder class
     /// </summary>
     /// <seealso cref="IBuild{Sprite}"/>
-    public class SpriteBuilder : 
+    public class SpriteBuilder:
         IBuild<Sprite>,
         IDepth<SpriteBuilder, int>,
         ITexture<SpriteBuilder, string>

@@ -34,35 +34,21 @@ namespace Alis.Core.Component.Collider
     /// <summary>
     ///     The collider class
     /// </summary>
-    /// <seealso cref="IComponent" />
-    public abstract class ColliderBase : IComponent
+    /// <seealso cref="ComponentBase" />
+    public abstract class ColliderBase : ComponentBase
     {
         /// <summary>
-        /// Gets or sets the value of the is active
+        /// Starts this instance
         /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the destroyed
-        /// </summary>
-        bool IComponent.Destroyed { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the game object
-        /// </summary>
-        public GameObject GameObject { get; set; }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public void Start()
+        public override void Start()
         {
+            
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Updates this instance
         /// </summary>
-        public void Update()
+        public override void Update()
         {
         }
     }

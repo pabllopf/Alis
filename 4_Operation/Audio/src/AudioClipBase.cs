@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioClipBase.cs
+//  File:AudioClip.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -54,27 +54,65 @@ namespace Alis.Core.Audio
         /// <param name="fullPathAudio">The full path audio</param>
         public AudioClipBase(string fullPathAudio)
         {
-            FullPathAudio = fullPathAudio;
+            FullPathAudioFile = fullPathAudio;
             AudioBackendType = AudioBackendType.SFML;
+            IsActive = false; 
+            IsPlaying = false;
             if (!fullPathAudio.Equals(""))
             {
                 music = new Music(fullPathAudio);
                 Console.WriteLine($"Init music: '{fullPathAudio}'");
+                IsActive = true;
             }
         }
         
+        /// <summary>
+        /// Gets or sets the value of the is active
+        /// </summary>
+        protected bool IsActive { get;}
+        
+        /// <summary>
+        /// Gets or sets the value of the sample rate
+        /// </summary>
+        public int SampleRate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the channel count
+        /// </summary>
+        public int ChannelCount { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the duration
+        /// </summary>
+        public float Duration { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the pitch
+        /// </summary>
+        public int Pitch { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is mute
+        /// </summary>
+        protected bool IsMute { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is playing
+        /// </summary>
+        protected bool IsPlaying { get; set; }
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioClipBase"/> class
         /// </summary>
         /// <param name="fullPathAudio">The full path audio</param>
         /// <param name="audioBackendType">The audio backend type</param>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        public AudioClipBase(string fullPathAudio, AudioBackendType audioBackendType)
+        protected AudioClipBase(string fullPathAudio, AudioBackendType audioBackendType)
         {
-            FullPathAudio = fullPathAudio;
+            FullPathAudioFile = fullPathAudio;
             AudioBackendType = audioBackendType;
-
+            IsActive = false; 
+            IsPlaying = false;
             if (!fullPathAudio.Equals(""))
             {
                 switch (AudioBackendType)
@@ -88,13 +126,15 @@ namespace Alis.Core.Audio
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+
+                IsActive = true;
             }
         }
-
+        
         /// <summary>
-        /// Gets the value of the full path audio
+        /// Gets or sets the value of the full path audio file
         /// </summary>
-        public string FullPathAudio { get; }
+        public string FullPathAudioFile { get; set; }
 
         /// <summary>
         /// Gets the value of the audio backend type
@@ -102,14 +142,24 @@ namespace Alis.Core.Audio
         public AudioBackendType AudioBackendType { get; }
 
         /// <summary>
+        /// Gets or sets the value of the is loopping
+        /// </summary>
+        protected bool IsLooping { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value of the volume
+        /// </summary>
+        protected float Volume { get; set; }
+
+        /// <summary>
         /// Plays this instance
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        internal void Play()
+        protected void Play()
         {
-            Console.WriteLine($"Init Music::play pass here'{FullPathAudio}'"); 
+            Console.WriteLine($"Init Music::play pass here'{FullPathAudioFile}'"); 
             
-            if (!FullPathAudio.Equals(""))
+            if (!FullPathAudioFile.Equals(""))
             {
                 switch (AudioBackendType)
                 {
@@ -118,11 +168,13 @@ namespace Alis.Core.Audio
                         Console.WriteLine("Init Music::play");
                         break;
                     case AudioBackendType.OS:
-                        player.Play(FullPathAudio).Wait();
+                        player.Play(FullPathAudioFile).Wait();
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+
+                IsPlaying = true;
             }
         }
         
@@ -130,9 +182,9 @@ namespace Alis.Core.Audio
         /// Stops this instance
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        internal void Stop()
+        protected void Stop()
         {
-            if (!FullPathAudio.Equals(""))
+            if (!FullPathAudioFile.Equals(""))
             {
                 switch (AudioBackendType)
                 {
@@ -145,6 +197,7 @@ namespace Alis.Core.Audio
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                IsPlaying = false;
             }
         }
         
@@ -152,9 +205,9 @@ namespace Alis.Core.Audio
         /// Resumes this instance
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
-        internal void Resume()
+        protected void Resume()
         {
-            if (!FullPathAudio.Equals(""))
+            if (!FullPathAudioFile.Equals(""))
             {
                 switch (AudioBackendType)
                 {
@@ -162,11 +215,12 @@ namespace Alis.Core.Audio
                         music.Play();
                         break;
                     case AudioBackendType.OS:
-                        player.Play(FullPathAudio).Wait();
+                        player.Play(FullPathAudioFile).Wait();
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+                IsPlaying = true;
             }
         }
     }

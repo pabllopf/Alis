@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Builder.Component.Render;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
@@ -59,7 +61,8 @@ namespace Alis.Sample.Rogue
                                 .Rotation(180)
                                 .Scale(3,3)
                                 .Build())
-                            .Add<Sprite>(i => i
+                            .AddComponent<Sprite>(sprite => sprite
+                                .Builder()
                                 .Texture(Environment.CurrentDirectory +  "/Assets/tile000.png")
                                 .Depth(2)
                                 .Build())
@@ -71,12 +74,16 @@ namespace Alis.Sample.Rogue
                                 .Rotation(90)
                                 .Scale(3, 3)
                                 .Build())
-                            .Add<Sprite>(sprite => sprite
+                            .AddComponent<Sprite>(i => i
+                                .Builder()
                                 .Texture(Environment.CurrentDirectory +  "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
-                            .Add<PlayerMovement>(new PlayerMovement())
-                            .Add<AudioSource>(audioSource => audioSource
+                            .AddComponent<PlayerMovement>(i => i
+                                .Builder()
+                                .Build())
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
                                 .Set<AudioClip>(audioClip => audioClip
                                     .FilePath(Environment.CurrentDirectory +  "/Assets/menu.wav")
                                     .Build())
@@ -85,6 +92,8 @@ namespace Alis.Sample.Rogue
                         .Build())
                     .Build())
                 .Run();
+                
+            
 
             Console.WriteLine("End game");
         }

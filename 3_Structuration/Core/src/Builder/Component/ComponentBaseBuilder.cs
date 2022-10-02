@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RecordSourceBase.cs
+//  File:ComponentBaseBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio
+using System;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Component;
+
+namespace Alis.Core.Builder.Component
 {
     /// <summary>
-    /// The record source base class
+    /// The component base builder class
     /// </summary>
-    public abstract class AudioRecorderBase
+    public class ComponentBaseBuilder
     {
+        /// <summary>
+        /// The component base
+        /// </summary>
+        private ComponentBase componentBase;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComponentBaseBuilder"/> class
+        /// </summary>
+        /// <param name="componentBase">The component base</param>
+        public ComponentBaseBuilder(ComponentBase componentBase)
+        {
+            this.componentBase = componentBase;
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ComponentBaseBuilder"/> class
+        /// </summary>
+        public ComponentBaseBuilder()
+        {
+        }
+
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The component base</returns>
+        public ComponentBase Build() => (ComponentBase)Activator.CreateInstance(componentBase.GetType());
     }
 }

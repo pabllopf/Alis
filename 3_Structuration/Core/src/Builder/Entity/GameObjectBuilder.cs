@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Builder.Component;
 using Alis.Core.Builder.Component.Audio;
 using Alis.Core.Builder.Component.Render;
 using Alis.Core.Component;
@@ -45,29 +46,13 @@ namespace Alis.Core.Builder.Entity
     public class GameObjectBuilder :
         IBuild<GameObject>,
         IName<GameObjectBuilder, string>,
-        IAdd<GameObjectBuilder, ComponentBase, ComponentBase>,
-        ITransform<GameObjectBuilder, Func<TransformBuilder,Transform>>,
-        IAdd<GameObjectBuilder, Sprite, Func<SpriteBuilder,Sprite>>,
-        IAdd<GameObjectBuilder, AudioSource, Func<AudioSourceBuilder,AudioSource>>
+        IAddComponent<GameObjectBuilder, ComponentBase>,
+        ITransform<GameObjectBuilder, Func<TransformBuilder,Transform>>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
         private GameObject gameObject = new GameObject();
-
-        
-        /// <summary>
-        /// Adds the value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder Add<T>(ComponentBase value) where T : ComponentBase
-        {
-            gameObject.Add(value);
-            value.AttachTo(gameObject);
-            return this;
-        }
 
         /// <summary>
         ///     Builds this instance
@@ -97,32 +82,33 @@ namespace Alis.Core.Builder.Entity
             return this;
         }
 
+        
         /// <summary>
-        /// Adds the value
+        /// Adds the component using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Add<T>(Func<SpriteBuilder, Sprite> value) where T : Sprite
+        public GameObjectBuilder AddComponent<T>(Func<T, ComponentBase> value) where T : ComponentBase
         {
-            Sprite sprite = value.Invoke(new SpriteBuilder());
-            gameObject.Add(sprite);
-            sprite.GameObject = gameObject;
-            return this;
+            ComponentBase componentBase = value.Invoke((T) Activator.CreateInstance(typeof(T)));
+            gameObject.Add(componentBase);
+            componentBase.AttachGameObject(gameObject);
+            return this;   
         }
 
         /// <summary>
-        /// Adds the value
+        /// Adds the component using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
-        public GameObjectBuilder Add<T>(Func<AudioSourceBuilder, AudioSource> value) where T : AudioSource
+        public GameObjectBuilder AddComponent<T>(T value) where T : ComponentBase
         {
-            AudioSource audioSource = value.Invoke(new AudioSourceBuilder());
-            gameObject.Add(audioSource);
-            audioSource.GameObject = gameObject;
-            return this;
+            ComponentBase componentBase = (T) Activator.CreateInstance(typeof(T));
+            gameObject.Add(componentBase);
+            componentBase.AttachGameObject(gameObject);
+            return this; 
         }
     }
 }

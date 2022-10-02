@@ -35,35 +35,21 @@ namespace Alis.Core.Component.Particle
     /// <summary>
     ///     The particle class
     /// </summary>
-    /// <seealso cref="IComponent" />
-    public class ParticleBase : IComponent
+    /// <seealso cref="ComponentBase" />
+    public class ParticleBase : ComponentBase
     {
         /// <summary>
-        /// Gets or sets the value of the is active
+        /// Starts this instance
         /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the destroyed
-        /// </summary>
-        bool IComponent.Destroyed { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the game object
-        /// </summary>
-        GameObject IComponent.GameObject { get; set; }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public void Start()
+        public override void Start()
         {
+            
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Updates this instance
         /// </summary>
-        public void Update()
+        public override void Update()
         {
         }
     }

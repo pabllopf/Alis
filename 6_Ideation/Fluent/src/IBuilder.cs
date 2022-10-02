@@ -27,17 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
     ///     The builder interface
     /// </summary>
-    public interface IBuilder<out TOrigin>
+    public interface IBuilder<out T>
     {
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The</returns>
-        TOrigin Builder();
+        public T Builder();
     }
 }

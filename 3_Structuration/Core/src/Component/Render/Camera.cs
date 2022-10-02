@@ -27,43 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Builder.Component.Render;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Render
 {
     /// <summary>
-    ///     The camera class
+    /// The camera class
     /// </summary>
-    /// <seealso cref="IComponent" />
-    public class Camera : IComponent
+    /// <seealso cref="ComponentBase"/>
+    public class Camera : ComponentBase, IBuilder<CameraBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the is active
+        /// Starts this instance
         /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the destroyed
-        /// </summary>
-        bool IComponent.Destroyed { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the game object
-        /// </summary>
-        GameObject IComponent.GameObject { get; set; }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public void Start()
+        public override void Start()
         {
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Updates this instance
         /// </summary>
-        public void Update()
+        public override void Update()
         {
         }
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The camera builder</returns>
+        public new CameraBuilder Builder() => new CameraBuilder();
     }
 }

@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
+using Alis.Core.Component.Audio;
 using Alis.Core.Entity;
 
 namespace Alis.Sample.Rogue
@@ -39,19 +40,10 @@ namespace Alis.Sample.Rogue
     public class PlayerMovement : ComponentBase
     {
         /// <summary>
-        /// Awakes this instance
-        /// </summary>
-        public override void Awake()
-        {
-            
-        }
-
-        /// <summary>
         /// Starts this instance
         /// </summary>
         public override void Start()
         {
-            
         }
 
         /// <summary>
@@ -59,7 +51,6 @@ namespace Alis.Sample.Rogue
         /// </summary>
         public override void Update()
         {
-           
         }
     }
 }

@@ -39,6 +39,27 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IAddComponent`2">
+            <summary>
+            The add component class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IAddComponent`2.AddComponent``1(System.Func{``0,`1})">
+            <summary>
+            Adds the component using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IAddComponent`2.AddComponent``1(``0)">
+            <summary>
+            Adds the component using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAuthor`2">
             <summary>
                 The author interface

@@ -30,9 +30,10 @@
 namespace Alis.Core.Audio.Sample
 {
     /// <summary>
-    ///     The audio clip class
+    /// The audio clip class
     /// </summary>
-    public  class AudioClip : AudioClipBase
+    /// <seealso cref="AudioClipBase"/>
+    public class AudioClip : AudioClipBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioClip"/> class
@@ -50,5 +51,49 @@ namespace Alis.Core.Audio.Sample
         public AudioClip(string fullPathAudio, AudioBackendType audioBackendType) : base(fullPathAudio, audioBackendType)
         {
         }
+
+        /// <summary>
+        /// Plays this instance
+        /// </summary>
+        internal new void Play()
+        {
+            base.Play();
+        }
+        
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
+        internal new void Stop()
+        {
+            base.Stop();
+        }
+        
+        /// <summary>
+        /// Resumes this instance
+        /// </summary>
+        internal new void Resume()
+        {
+            base.Resume();
+        }
+        
+        /// <summary>
+        /// Gets or sets the value of the is looping
+        /// </summary>
+        internal new bool IsLooping { get => base.IsLooping; set => base.IsLooping = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is mute
+        /// </summary>
+        internal new bool IsMute { get => base.IsMute; set => base.IsMute = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the is playing
+        /// </summary>
+        internal new bool IsPlaying { get => base.IsPlaying; set => base.IsPlaying = value; }
+        
+        /// <summary>
+        /// Gets or sets the value of the volume
+        /// </summary>
+        internal new float Volume { get => base.Volume; set => base.Volume = value; }
     }
 }

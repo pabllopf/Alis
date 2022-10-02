@@ -28,6 +28,23 @@
             <param name="value">The value</param>
             <returns>The audio clip builder</returns>
         </member>
+        <member name="T:Alis.Core.Builder.Component.Audio.AudioRecorderBuilder">
+            <summary>
+            The audio recorder builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="F:Alis.Core.Builder.Component.Audio.AudioRecorderBuilder.audioRecorder">
+            <summary>
+            The audio recorder
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Audio.AudioRecorderBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The audio recorder</returns>
+        </member>
         <member name="T:Alis.Core.Builder.Component.Audio.AudioSourceBuilder">
             <summary>
             The audio source builder class
@@ -68,10 +85,50 @@
             The circle collider builder class
             </summary>
         </member>
+        <member name="T:Alis.Core.Builder.Component.ComponentBaseBuilder">
+            <summary>
+            The component base builder class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Builder.Component.ComponentBaseBuilder.componentBase">
+            <summary>
+            The component base
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.ComponentBaseBuilder.#ctor(Alis.Core.Component.ComponentBase)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder"/> class
+            </summary>
+            <param name="componentBase">The component base</param>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.ComponentBaseBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.ComponentBaseBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The component base</returns>
+        </member>
         <member name="T:Alis.Core.Builder.Component.Light.DirectionalLightBuilder">
             <summary>
             The directional light builder class
             </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Particle.ExplosionParticleBuilder">
+            <summary>
+            The explosion particle builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder"/>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Particle.ExplosionParticleBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The explosion particle</returns>
         </member>
         <member name="T:Alis.Core.Builder.Component.Render.AnimatorBuilder">
             <summary>
@@ -124,14 +181,6 @@
                 Gets or sets the value of the game object
             </summary>
         </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Add``1(Alis.Core.Component.ComponentBase)">
-            <summary>
-            Adds the value
-            </summary>
-            <typeparam name="T">The </typeparam>
-            <param name="value">The value</param>
-            <returns>The game object builder</returns>
-        </member>
         <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Build">
             <summary>
                 Builds this instance
@@ -152,17 +201,17 @@
             <param name="value">The value</param>
             <returns>The game object builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Add``1(System.Func{Alis.Core.Builder.Component.Render.SpriteBuilder,Alis.Core.Component.Render.Sprite})">
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.AddComponent``1(System.Func{``0,Alis.Core.Component.ComponentBase})">
             <summary>
-            Adds the value
+            Adds the component using the specified value
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="value">The value</param>
             <returns>The game object builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Add``1(System.Func{Alis.Core.Builder.Component.Audio.AudioSourceBuilder,Alis.Core.Component.Audio.AudioSource})">
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.AddComponent``1(``0)">
             <summary>
-            Adds the value
+            Adds the component using the specified value
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="value">The value</param>
@@ -266,35 +315,9 @@
         </member>
         <member name="T:Alis.Core.Component.Audio.AudioClip">
             <summary>
-                The audio clip class
+            The audio clip class
             </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioClip.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioClip.Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioClip.GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Component.Audio.AudioClip.Start">
-            <summary>
-            Starts this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
-        </member>
-        <member name="M:Alis.Core.Component.Audio.AudioClip.Update">
-            <summary>
-            Updates this instance
-            </summary>
-            <exception cref="T:System.NotImplementedException"></exception>
+            <seealso cref="T:Alis.Core.Audio.AudioClipBase"/>
         </member>
         <member name="M:Alis.Core.Component.Audio.AudioClip.#ctor(System.String)">
             <summary>
@@ -309,26 +332,52 @@
             <param name="fullPathAudio">The full path audio</param>
             <param name="audioBackendType">The audio backend type</param>
         </member>
+        <member name="M:Alis.Core.Component.Audio.AudioClip.Play">
+            <summary>
+            Plays this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Audio.AudioClip.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Audio.AudioClip.Resume">
+            <summary>
+            Resumes this instance
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioClip.IsLooping">
+            <summary>
+            Gets or sets the value of the is looping
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioClip.IsMute">
+            <summary>
+            Gets or sets the value of the is mute
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioClip.IsPlaying">
+            <summary>
+            Gets or sets the value of the is playing
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioClip.Volume">
+            <summary>
+            Gets or sets the value of the volume
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Audio.AudioClip.Builder">
+            <summary>
+            Builders
+            </summary>
+            <returns>The audio clip builder</returns>
+        </member>
         <member name="T:Alis.Core.Component.Audio.AudioRecorder">
             <summary>
             The audio recorder class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.AudioRecorderBase"/>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioRecorder.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioRecorder.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioRecorder.Alis#Core#Component#IComponent#GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
+            <seealso cref="T:Alis.Core.Audio.IAudioRecorder"/>
         </member>
         <member name="M:Alis.Core.Component.Audio.AudioRecorder.Start">
             <summary>
@@ -340,35 +389,26 @@
             Updates this instance
             </summary>
         </member>
+        <member name="M:Alis.Core.Component.Audio.AudioRecorder.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The audio recorder builder</returns>
+        </member>
         <member name="T:Alis.Core.Component.Audio.AudioSource">
             <summary>
             The audio source class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioSource.AudioClip">
-            <summary>
-            Gets or sets the value of the audio clip
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Audio.AudioSource.#ctor(Alis.Core.Component.Audio.AudioClip)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Component.Audio.AudioSource"/> class
             </summary>
-            <param name="audioClip">The audio clip base</param>
+            <param name="audioClip">The audio clip</param>
         </member>
-        <member name="P:Alis.Core.Component.Audio.AudioSource.IsActive">
+        <member name="M:Alis.Core.Component.Audio.AudioSource.#ctor">
             <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioSource.Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioSource.GameObject">
-            <summary>
-            Gets or sets the value of the game object
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Audio.AudioSource"/> class
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Audio.AudioSource.Start">
@@ -381,35 +421,66 @@
             Updates this instance
             </summary>
         </member>
+        <member name="P:Alis.Core.Component.Audio.AudioSource.AudioClip">
+            <summary>
+            Gets or sets the value of the audio clip
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioSource.IsPlaying">
+            <summary>
+            Gets the value of the is playing
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioSource.Mute">
+            <summary>
+            Gets or sets the value of the mute
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioSource.Loop">
+            <summary>
+            Gets or sets the value of the loop
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioSource.Volume">
+            <summary>
+            Gets or sets the value of the volume
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Audio.AudioSource.Play">
+            <summary>
+            Plays this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Audio.AudioSource.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Audio.AudioSource.Resume">
+            <summary>
+            Resumes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Audio.AudioSource.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The audio source builder</returns>
+        </member>
         <member name="T:Alis.Core.Component.Body.BodyBase">
             <summary>
                 The physical body class
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent" />
-        </member>
-        <member name="P:Alis.Core.Component.Body.BodyBase.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Body.BodyBase.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Body.BodyBase.Alis#Core#Component#IComponent#GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
+            <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Body.BodyBase.Start">
             <summary>
-                Starts this instance
+            Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Body.BodyBase.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Body.RigidBody">
@@ -417,6 +488,12 @@
             The rigid body class
             </summary>
             <seealso cref="T:Alis.Core.Component.Body.BodyBase"/>
+        </member>
+        <member name="M:Alis.Core.Component.Body.RigidBody.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The rigid body builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Collider.BoxCollider">
             <summary>
@@ -434,59 +511,46 @@
             <summary>
                 The collider class
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent" />
-        </member>
-        <member name="P:Alis.Core.Component.Collider.ColliderBase.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Collider.ColliderBase.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Collider.ColliderBase.GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
+            <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Collider.ColliderBase.Start">
             <summary>
-                Starts this instance
+            Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Collider.ColliderBase.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.ComponentBase">
+            <summary>Define a general component.</summary>
+        </member>
+        <member name="P:Alis.Core.Component.ComponentBase.GameObject">
             <summary>
-            The component base class
+            Game Object.
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent"/>
+        </member>
+        <member name="M:Alis.Core.Component.ComponentBase.AttachGameObject(Alis.Core.Entity.GameObject)">
+            <summary>
+            Attaches the game object using the specified game object
+            </summary>
+            <param name="gameObject">The game object</param>
         </member>
         <member name="P:Alis.Core.Component.ComponentBase.IsActive">
             <summary>
-            Gets or sets the value of the is active
+                Gets or sets the value of the is active
             </summary>
         </member>
         <member name="P:Alis.Core.Component.ComponentBase.Destroyed">
             <summary>
-            Gets or sets the value of the destroyed
+                Gets or sets the value of the destroyed
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.ComponentBase.GameObject">
+        <member name="M:Alis.Core.Component.ComponentBase.OnDestroy">
             <summary>
-            Gets or sets the value of the game object
+                Ons the destroy
             </summary>
-        </member>
-        <member name="M:Alis.Core.Component.ComponentBase.AttachTo(Alis.Core.Entity.GameObject)">
-            <summary>
-            Attaches the to using the specified game object
-            </summary>
-            <param name="gameObject">The game object</param>
         </member>
         <member name="M:Alis.Core.Component.ComponentBase.Enable">
             <summary>Enables this instance.</summary>
@@ -554,100 +618,11 @@
         <member name="M:Alis.Core.Component.ComponentBase.Exit">
             <summary>Exits this instance.</summary>
         </member>
-        <member name="T:Alis.Core.Component.IComponent">
-            <summary>Define a general component.</summary>
-        </member>
-        <member name="P:Alis.Core.Component.IComponent.IsActive">
+        <member name="M:Alis.Core.Component.ComponentBase.Builder">
             <summary>
-                Gets or sets the value of the is active
+            Builders this instance
             </summary>
-        </member>
-        <member name="P:Alis.Core.Component.IComponent.Destroyed">
-            <summary>
-                Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.IComponent.GameObject">
-            <summary>
-                Gets or sets the value of the game object
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.AttachTo(Alis.Core.Entity.GameObject)">
-            <summary>
-            Attaches the to using the specified game object
-            </summary>
-            <param name="gameObject">The game object</param>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.OnDestroy">
-            <summary>
-                Ons the destroy
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Enable">
-            <summary>Enables this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Disable">
-            <summary>Disables this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Init">
-            <summary>
-            Inits this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Awake">
-            <summary>Awakes this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Start">
-            <summary>Starts this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.BeforeUpdate">
-            <summary>Befores the update.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Update">
-            <summary>Updates this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.AfterUpdate">
-            <summary>Afters the update.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.FixedUpdate">
-            <summary>Fixeds the update.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.DispatchEvents">
-            <summary>
-                Dispatches the events
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Stop">
-            <summary>Stops this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Reset">
-            <summary>Resets this instance.</summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Destroy">
-            <summary>
-                Destroys this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.OnPressKey(System.String)">
-            <summary>
-                Ons the press key using the specified key
-            </summary>
-            <param name="key">The key</param>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.OnPressDownKey(System.String)">
-            <summary>
-                Ons the press down key using the specified key
-            </summary>
-            <param name="key">The key</param>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.OnReleaseKey(System.String)">
-            <summary>
-                Ons the release key using the specified key
-            </summary>
-            <param name="key">The key</param>
-        </member>
-        <member name="M:Alis.Core.Component.IComponent.Exit">
-            <summary>Exits this instance.</summary>
+            <returns>The component base builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Light.AreaLight">
             <summary>
@@ -665,31 +640,16 @@
             <summary>
                 The light class
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent" />
-        </member>
-        <member name="P:Alis.Core.Component.Light.LightBase.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Light.LightBase.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Light.LightBase.Alis#Core#Component#IComponent#GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
+            <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Light.LightBase.Start">
             <summary>
-                Starts this instance
+            Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Light.LightBase.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Light.PointLight">
@@ -719,31 +679,16 @@
             <summary>
                 The mesh class
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent" />
-        </member>
-        <member name="P:Alis.Core.Component.Mesh.MeshBase.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Mesh.MeshBase.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Mesh.MeshBase.Alis#Core#Component#IComponent#GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
+            <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Mesh.MeshBase.Start">
             <summary>
-                Starts this instance
+            Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Mesh.MeshBase.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Particle.ExplosionParticle">
@@ -752,35 +697,26 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.Particle.ParticleBase"/>
         </member>
+        <member name="M:Alis.Core.Component.Particle.ExplosionParticle.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The explosion particle builder</returns>
+        </member>
         <member name="T:Alis.Core.Component.Particle.ParticleBase">
             <summary>
                 The particle class
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent" />
-        </member>
-        <member name="P:Alis.Core.Component.Particle.ParticleBase.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Particle.ParticleBase.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Particle.ParticleBase.Alis#Core#Component#IComponent#GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
+            <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
         <member name="M:Alis.Core.Component.Particle.ParticleBase.Start">
             <summary>
-                Starts this instance
+            Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Particle.ParticleBase.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Render.Animation">
@@ -793,66 +729,43 @@
                 The animator class
             </summary>
         </member>
-        <member name="F:Alis.Core.Component.Render.Animator.Animations">
-            <summary>
-            animations
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Animator.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Animator.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Animator.Alis#Core#Component#IComponent#GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
-        </member>
         <member name="M:Alis.Core.Component.Render.Animator.Start">
             <summary>
-                Starts this instance
+            Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animator.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The animator builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Render.Camera">
             <summary>
-                The camera class
+            The camera class
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent" />
-        </member>
-        <member name="P:Alis.Core.Component.Render.Camera.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Camera.Alis#Core#Component#IComponent#Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Camera.Alis#Core#Component#IComponent#GameObject">
-            <summary>
-            Gets or sets the value of the game object
-            </summary>
+            <seealso cref="T:Alis.Core.Component.ComponentBase"/>
         </member>
         <member name="M:Alis.Core.Component.Render.Camera.Start">
             <summary>
-                Starts this instance
+            Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Camera.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Camera.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The camera builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Render.Image">
             <summary>
@@ -861,9 +774,9 @@
         </member>
         <member name="T:Alis.Core.Component.Render.Sprite">
             <summary>
-                The sprite class
+            The sprite class
             </summary>
-            <seealso cref="T:Alis.Core.Component.IComponent" />
+            <seealso cref="T:Alis.Core.Component.ComponentBase"/>
         </member>
         <member name="P:Alis.Core.Component.Render.Sprite.Depth">
             <summary>
@@ -888,21 +801,6 @@
         <member name="F:Alis.Core.Component.Render.Sprite.size">
             <summary>
             The size
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Sprite.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Sprite.Destroyed">
-            <summary>
-            Gets or sets the value of the destroyed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Render.Sprite.GameObject">
-            <summary>
-            Gets or sets the value of the game object
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Sprite.Init">
@@ -931,6 +829,12 @@
             <summary>
             Exits this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Sprite.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The sprite builder</returns>
         </member>
         <member name="T:Alis.Core.Entity.GameObject">
             <summary>Represent a object of the game.</summary>

@@ -27,29 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Audio
 {
     /// <summary>
-    /// The audio source base class
+    /// The audio source interface
     /// </summary>
-    public abstract class AudioSourceBase
+    public interface IAudioSource<T>
     {
         /// <summary>
-        /// The audio clip base
+        /// Gets or sets the value of the audio clip base
         /// </summary>
-        private AudioClipBase AudioClip { get; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSourceBase"/> class
-        /// </summary>
-        /// <param name="audioClipBase">The audio clip base</param>
-        public AudioSourceBase(AudioClipBase audioClipBase)
-        {
-            this.AudioClip = audioClipBase;
-        }
-        
+        public T AudioClip { get; set; } 
+
         /// <summary>
         /// Gets the value of the is playing
         /// </summary>
@@ -69,45 +58,20 @@ namespace Alis.Core.Audio
         /// Gets or sets the value of the volume
         /// </summary>
         public float Volume { get; set; }
-
-        /// <summary>
-        /// Sets or gets the value of the priority
-        /// </summary>
-        public int Priority { set; get; }
-
-        /// <summary>
-        /// Gets or sets the value of the sample rate
-        /// </summary>
-        public int SampleRate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the channel count
-        /// </summary>
-        public int ChannelCount { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the duration
-        /// </summary>
-        public float Duration { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the pitch
-        /// </summary>
-        public int Pitch { get; set; }
         
         /// <summary>
         /// Plays this instance
         /// </summary>
-        public void Play() => AudioClip.Play();
+        public void Play();
 
         /// <summary>
         /// Stops this instance
         /// </summary>
-        public void Stop() => AudioClip.Stop();
-        
+        public void Stop();
+
         /// <summary>
         /// Resumes this instance
         /// </summary>
-        public void Resume() => AudioClip.Resume();
+        public void Resume();
     }
 }

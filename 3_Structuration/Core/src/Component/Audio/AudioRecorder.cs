@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Audio;
+using Alis.Core.Builder.Component.Audio;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Audio
@@ -35,37 +37,27 @@ namespace Alis.Core.Component.Audio
     /// <summary>
     /// The audio recorder class
     /// </summary>
-    /// <seealso cref="AudioRecorderBase"/>
-    public class AudioRecorder: AudioRecorderBase, IComponent
+    /// <seealso cref="IAudioRecorder"/>
+    public class AudioRecorder: ComponentBase, IAudioRecorder, IBuilder<AudioRecorderBuilder>
     {
-        /// <summary>
-        /// Gets or sets the value of the is active
-        /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the destroyed
-        /// </summary>
-        bool IComponent.Destroyed { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the game object
-        /// </summary>
-        GameObject IComponent.GameObject { get; set; }
-
         /// <summary>
         /// Starts this instance
         /// </summary>
-        public void Start()
+        public override void Start()
         {
-
         }
 
         /// <summary>
         /// Updates this instance
         /// </summary>
-        public void Update()
+        public override void Update()
         {
         }
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The audio recorder builder</returns>
+        public new AudioRecorderBuilder Builder() => new AudioRecorderBuilder();
     }
 }
