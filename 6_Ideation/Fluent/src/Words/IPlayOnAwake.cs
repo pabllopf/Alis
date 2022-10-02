@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITexture.cs
+//  File:IPlayOnAwake.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,15 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The texture interface
+    /// The play on awake interface
     /// </summary>
-    public interface ITexture<out TBuilder, in TArgument>
+    public interface IPlayOnAwake<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Textures the value
+        /// Plays the on awake using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
-        TBuilder Texture(TArgument value);
+        TBuilder PlayOnAwake(TArgument value);
     }
 }

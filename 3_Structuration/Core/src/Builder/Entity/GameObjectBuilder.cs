@@ -47,7 +47,8 @@ namespace Alis.Core.Builder.Entity
         IBuild<GameObject>,
         IName<GameObjectBuilder, string>,
         IAddComponent<GameObjectBuilder, ComponentBase>,
-        ITransform<GameObjectBuilder, Func<TransformBuilder,Transform>>
+        ITransform<GameObjectBuilder, Func<TransformBuilder,Transform>>,
+        IWithTag<GameObjectBuilder, string>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
@@ -109,6 +110,17 @@ namespace Alis.Core.Builder.Entity
             gameObject.Add(componentBase);
             componentBase.AttachGameObject(gameObject);
             return this; 
+        }
+
+        /// <summary>
+        /// Adds the tag using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder WithTag(string value)
+        {
+            gameObject.Tag = value;
+            return this;
         }
     }
 }

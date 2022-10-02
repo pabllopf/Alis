@@ -39,7 +39,9 @@ namespace Alis.Core.Builder.Component.Audio
     /// <seealso cref="IBuild{AudioClip}"/>
     public class AudioClipBuilder :
         IBuild<AudioClip>,
-        IFilePath<AudioClipBuilder, string>
+        IFilePath<AudioClipBuilder, string>,
+        IVolume<AudioClipBuilder, float>,
+        IMute<AudioClipBuilder, bool>
     {
         /// <summary>
         /// The audio clip
@@ -59,7 +61,29 @@ namespace Alis.Core.Builder.Component.Audio
         /// <returns>The audio clip builder</returns>
         public AudioClipBuilder FilePath(string value)
         {
-            AudioClip = new AudioClip(value);
+            AudioClip.FullPathAudioFile = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Volumes the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio clip builder</returns>
+        public AudioClipBuilder Volume(float value)
+        {
+            AudioClip.Volume = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Mutes the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio clip builder</returns>
+        public AudioClipBuilder Mute(bool value)
+        {
+            AudioClip.IsMute = value;
             return this;
         }
     }

@@ -40,7 +40,7 @@ namespace Alis.Core.Builder.Component.Render
     public class SpriteBuilder:
         IBuild<Sprite>,
         IDepth<SpriteBuilder, int>,
-        ITexture<SpriteBuilder, string>
+        ISetTexture<SpriteBuilder, string>
     {
         /// <summary>
         /// The sprite
@@ -69,7 +69,7 @@ namespace Alis.Core.Builder.Component.Render
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The sprite builder</returns>
-        public SpriteBuilder Texture(string value)
+        public SpriteBuilder SetTexture(string value)
         {
             sprite.texturePath = value;
             return this;

@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Audio;
 using Alis.Core.Builder.Component.Audio;
 
@@ -78,27 +79,7 @@ namespace Alis.Core.Component.Audio
         {
             base.Resume();
         }
-        
-        /// <summary>
-        /// Gets or sets the value of the is looping
-        /// </summary>
-        internal new bool IsLooping { get => base.IsLooping; set => base.IsLooping = value; }
-        
-        /// <summary>
-        /// Gets or sets the value of the is mute
-        /// </summary>
-        internal new bool IsMute { get => base.IsMute; set => base.IsMute = value; }
-        
-        /// <summary>
-        /// Gets or sets the value of the is playing
-        /// </summary>
-        internal new bool IsPlaying { get => base.IsPlaying; set => base.IsPlaying = value; }
-        
-        /// <summary>
-        /// Gets or sets the value of the volume
-        /// </summary>
-        internal new float Volume { get => base.Volume; set => base.Volume = value; }
-        
+
         /// <summary>
         /// Builders
         /// </summary>

@@ -63,12 +63,13 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
-                                .Texture(Environment.CurrentDirectory +  "/Assets/tile000.png")
+                                .SetTexture(Environment.CurrentDirectory +  "/Assets/tile000.png")
                                 .Depth(2)
                                 .Build())
                             .Build())
                         .Add<GameObject>(gb=> gb
                             .Name("Player 2")
+                            .WithTag("Players")
                             .Transform(i => i
                                 .Position(100, 100)
                                 .Rotation(90)
@@ -76,7 +77,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(i => i
                                 .Builder()
-                                .Texture(Environment.CurrentDirectory +  "/Assets/tile003.png")
+                                .SetTexture(Environment.CurrentDirectory +  "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
                             .AddComponent<PlayerMovement>(i => i
@@ -84,8 +85,12 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
-                                .Set<AudioClip>(audioClip => audioClip
+                                .IsActive(true)
+                                .PlayOnAwake(true)
+                                .SetAudioClip(audioClip => audioClip
                                     .FilePath(Environment.CurrentDirectory +  "/Assets/menu.wav")
+                                    .Volume(100.0f)
+                                    .Mute(false)
                                     .Build())
                                 .Build())
                             .Build())

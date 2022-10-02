@@ -51,6 +51,16 @@ namespace Alis.Core.Entity
         /// Initializes a new instance of the <see cref="GameObject"/> class
         /// </summary>
         public GameObject() => components = new List<ComponentBase>();
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GameObject"/> class
+        /// </summary>
+        /// <param name="name">The name</param>
+        public GameObject(string name)
+        {
+            Name = name;
+            components = new List<ComponentBase>();
+        }
 
         /// <summary>
         /// Adds the component
@@ -107,5 +117,37 @@ namespace Alis.Core.Entity
 
         /// <summary>Exits this instance.</summary>
         public void Exit() => components.ForEach(component => component.Exit());
+
+        /// <summary>
+        /// Creates the primitive
+        /// </summary>
+        public static void CreatePrimitive()
+        {
+            
+        }
+        
+        /// <summary>
+        /// Finds
+        /// </summary>
+        public static GameObject Find(string name)
+        {
+            return new GameObject(name);
+        }
+        
+        /// <summary>
+        /// Finds the game objects with tag
+        /// </summary>
+        public static void FindGameObjectsWithTag()
+        {
+            
+        }
+
+        /// <summary>
+        /// Finds the with tag
+        /// </summary>
+        public static void FindWithTag()
+        {
+            
+        }
     }
 }

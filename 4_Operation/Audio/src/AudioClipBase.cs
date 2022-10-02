@@ -56,20 +56,13 @@ namespace Alis.Core.Audio
         {
             FullPathAudioFile = fullPathAudio;
             AudioBackendType = AudioBackendType.SFML;
-            IsActive = false; 
             IsPlaying = false;
             if (!fullPathAudio.Equals(""))
             {
                 music = new Music(fullPathAudio);
                 Console.WriteLine($"Init music: '{fullPathAudio}'");
-                IsActive = true;
             }
         }
-        
-        /// <summary>
-        /// Gets or sets the value of the is active
-        /// </summary>
-        protected bool IsActive { get;}
         
         /// <summary>
         /// Gets or sets the value of the sample rate
@@ -94,12 +87,12 @@ namespace Alis.Core.Audio
         /// <summary>
         /// Gets or sets the value of the is mute
         /// </summary>
-        protected bool IsMute { get; set; }
+        public bool IsMute { get; set; }
         
         /// <summary>
         /// Gets or sets the value of the is playing
         /// </summary>
-        protected bool IsPlaying { get; set; }
+        public bool IsPlaying { get; set; }
         
         /// <summary>
         /// Initializes a new instance of the <see cref="AudioClipBase"/> class
@@ -111,7 +104,6 @@ namespace Alis.Core.Audio
         {
             FullPathAudioFile = fullPathAudio;
             AudioBackendType = audioBackendType;
-            IsActive = false; 
             IsPlaying = false;
             if (!fullPathAudio.Equals(""))
             {
@@ -126,8 +118,6 @@ namespace Alis.Core.Audio
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
-
-                IsActive = true;
             }
         }
         
@@ -139,17 +129,17 @@ namespace Alis.Core.Audio
         /// <summary>
         /// Gets the value of the audio backend type
         /// </summary>
-        public AudioBackendType AudioBackendType { get; }
+        public AudioBackendType AudioBackendType { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the is loopping
         /// </summary>
-        protected bool IsLooping { get; set; }
+        public bool IsLooping { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the volume
         /// </summary>
-        protected float Volume { get; set; }
+        public float Volume { get; set; } = 100.0f;
 
         /// <summary>
         /// Plays this instance
@@ -157,13 +147,18 @@ namespace Alis.Core.Audio
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected void Play()
         {
-            Console.WriteLine($"Init Music::play pass here'{FullPathAudioFile}'"); 
+            Console.WriteLine($"Init Music::play pass here'{FullPathAudioFile}'");
             
             if (!FullPathAudioFile.Equals(""))
             {
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.SFML:
+                        Console.WriteLine($"Volume={Volume}");
+
+                        music ??= new Music(FullPathAudioFile);
+
+                        music.Volume = Volume;
                         music.Play();
                         Console.WriteLine("Init Music::play");
                         break;
@@ -189,6 +184,8 @@ namespace Alis.Core.Audio
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.SFML:
+                        music ??= new Music(FullPathAudioFile);
+                        music.Volume = Volume;
                         music.Stop();
                         break;
                     case AudioBackendType.OS:
@@ -212,6 +209,8 @@ namespace Alis.Core.Audio
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.SFML:
+                        music ??= new Music(FullPathAudioFile);
+                        music.Volume = Volume;
                         music.Play();
                         break;
                     case AudioBackendType.OS:

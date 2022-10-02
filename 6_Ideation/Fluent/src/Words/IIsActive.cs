@@ -35,12 +35,6 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IIsActive<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Ises the active
-        /// </summary>
-        /// <returns>The builder</returns>
-        TBuilder IsActive();
-
-        /// <summary>
         ///     Ises the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>

@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Builder.Component;
 using Alis.Core.Entity;
@@ -40,7 +39,7 @@ namespace Alis.Core.Component
         /// <summary>
         /// Game Object.
         /// </summary>
-        internal GameObject GameObject { get; set; }
+        public GameObject GameObject { get; set; }
         
         /// <summary>
         /// Attaches the game object using the specified game object
@@ -49,12 +48,24 @@ namespace Alis.Core.Component
         internal void AttachGameObject(GameObject gameObject)
         {
             GameObject = gameObject;
+            Tag = GameObject.Tag;
+            Transform = GameObject.Transform;
         }
         
         /// <summary>
         ///     Gets or sets the value of the is active
         /// </summary>
         public bool IsActive { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the tag
+        /// </summary>
+        public string Tag { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the tag
+        /// </summary>
+        public Transform Transform { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the destroyed
@@ -173,6 +184,38 @@ namespace Alis.Core.Component
         public ComponentBaseBuilder Builder()
         {
             return new ComponentBaseBuilder(this);
+        }
+
+        /// <summary>
+        /// Destroys the immediate
+        /// </summary>
+        public static void DestroyImmediate()
+        {
+            
+        }
+        
+        /// <summary>
+        /// Donts the destroy on load
+        /// </summary>
+        public static void DontDestroyOnLoad()
+        {
+            
+        }
+        
+        /// <summary>
+        /// Finds the object of type
+        /// </summary>
+        public static void FindObjectOfType()
+        {
+            
+        }
+        
+        /// <summary>
+        /// Finds the objects of type
+        /// </summary>
+        public static void FindObjectsOfType()
+        {
+            
         }
     }
 }

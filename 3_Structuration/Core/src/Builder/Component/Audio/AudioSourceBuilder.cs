@@ -40,28 +40,54 @@ namespace Alis.Core.Builder.Component.Audio
     /// <seealso cref="IBuild{AudioSource}"/>
     public class AudioSourceBuilder:
         IBuild<AudioSource>,
-        ISet<AudioSourceBuilder, AudioClip, Func<AudioClipBuilder,AudioClip>>
+        IIsActive<AudioSourceBuilder, bool>,
+        ISetAudioClip<AudioSourceBuilder, Func<AudioClipBuilder,AudioClip>>,
+        IPlayOnAwake<AudioSourceBuilder, bool>
     {
         /// <summary>
         /// Gets or sets the value of the audio source
         /// </summary>
-        private AudioSource AudioSource { get; set; } = new AudioSource(new AudioClip(""));
- 
+        private AudioSource audioSource = new AudioSource();
+        
         /// <summary>
         /// Builds this instance
         /// </summary>
         /// <returns>The audio source</returns>
-        public AudioSource Build() => AudioSource;
-    
-    /// <summary>
-        /// Sets the value
+        public AudioSource Build()
+        {
+            return audioSource;
+        }
+
+        /// <summary>
+        /// Sets the audio clip using the specified value
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The audio source builder</returns>
-        public AudioSourceBuilder Set<T>(Func<AudioClipBuilder, AudioClip> value) where T : AudioClip
+        public AudioSourceBuilder SetAudioClip(Func<AudioClipBuilder, AudioClip> value)
         {
-            AudioSource.AudioClip = value.Invoke(new AudioClipBuilder());
+            audioSource.AudioClip = value.Invoke(new AudioClipBuilder());
+            return this;
+        }
+
+        /// <summary>
+        /// Ises the active using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio source builder</returns>
+        public AudioSourceBuilder IsActive(bool value)
+        {
+            audioSource.IsActive = value;
+            return this;
+        }
+        
+        /// <summary>
+        /// Plays the on awake using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio source builder</returns>
+        public AudioSourceBuilder PlayOnAwake(bool value)
+        {
+            audioSource.PlayOnAwake = value;
             return this;
         }
     }

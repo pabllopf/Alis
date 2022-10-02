@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Audio;
 using Alis.Core.Builder.Component.Audio;
@@ -48,6 +49,14 @@ namespace Alis.Core.Component.Audio
         /// Initializes a new instance of the <see cref="AudioSource"/> class
         /// </summary>
         public AudioSource() => AudioClip = new AudioClip("");
+
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            
+        }
 
         /// <summary>
         /// Starts this instance
@@ -76,6 +85,11 @@ namespace Alis.Core.Component.Audio
         public bool IsPlaying => AudioClip.IsPlaying;
 
         /// <summary>
+        /// Gets or sets the value of the play on awake
+        /// </summary>
+        public bool PlayOnAwake { get; set; }
+
+        /// <summary>
         /// Gets or sets the value of the mute
         /// </summary>
         public bool Mute { get => AudioClip.IsMute; set => AudioClip.IsMute = value; }
@@ -84,12 +98,20 @@ namespace Alis.Core.Component.Audio
         /// Gets or sets the value of the loop
         /// </summary>
         public bool Loop { get => AudioClip.IsLooping; set => AudioClip.IsLooping = value; }
-        
+
         /// <summary>
         /// Gets or sets the value of the volume
         /// </summary>
-        public float Volume { get => AudioClip.Volume; set => AudioClip.Volume = value; }
-        
+        public float Volume
+        {
+            get => AudioClip.Volume;
+            set
+            {
+                Console.WriteLine($"Write volume={value}");
+                AudioClip.Volume = value;
+            }
+        }
+
         /// <summary>
         /// Plays this instance
         /// </summary>

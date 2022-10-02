@@ -40,11 +40,6 @@
             </summary>
             <param name="fullPathAudio">The full path audio</param>
         </member>
-        <member name="P:Alis.Core.Audio.AudioClipBase.IsActive">
-            <summary>
-            Gets or sets the value of the is active
-            </summary>
-        </member>
         <member name="P:Alis.Core.Audio.AudioClipBase.SampleRate">
             <summary>
             Gets or sets the value of the sample rate
@@ -139,6 +134,11 @@
         <member name="P:Alis.Core.Audio.IAudioSource`1.IsPlaying">
             <summary>
             Gets the value of the is playing
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.IAudioSource`1.PlayOnAwake">
+            <summary>
+            Gets or sets the value of the play on awake
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.IAudioSource`1.Mute">

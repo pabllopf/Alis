@@ -28,6 +28,20 @@
             <param name="value">The value</param>
             <returns>The audio clip builder</returns>
         </member>
+        <member name="M:Alis.Core.Builder.Component.Audio.AudioClipBuilder.Volume(System.Single)">
+            <summary>
+            Volumes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio clip builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Audio.AudioClipBuilder.Mute(System.Boolean)">
+            <summary>
+            Mutes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio clip builder</returns>
+        </member>
         <member name="T:Alis.Core.Builder.Component.Audio.AudioRecorderBuilder">
             <summary>
             The audio recorder builder class
@@ -51,7 +65,7 @@
             </summary>
             <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
         </member>
-        <member name="P:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.AudioSource">
+        <member name="F:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.audioSource">
             <summary>
             Gets or sets the value of the audio source
             </summary>
@@ -62,11 +76,24 @@
             </summary>
             <returns>The audio source</returns>
         </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.Set``1(System.Func{Alis.Core.Builder.Component.Audio.AudioClipBuilder,Alis.Core.Component.Audio.AudioClip})">
+        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.SetAudioClip(System.Func{Alis.Core.Builder.Component.Audio.AudioClipBuilder,Alis.Core.Component.Audio.AudioClip})">
             <summary>
-            Sets the value
+            Sets the audio clip using the specified value
             </summary>
-            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The audio source builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.IsActive(System.Boolean)">
+            <summary>
+            Ises the active using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio source builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.PlayOnAwake(System.Boolean)">
+            <summary>
+            Plays the on awake using the specified value
+            </summary>
             <param name="value">The value</param>
             <returns>The audio source builder</returns>
         </member>
@@ -112,9 +139,34 @@
             </summary>
             <returns>The component base</returns>
         </member>
+        <member name="T:Alis.Core.Builder.Component.Light.AreaLightBuilder">
+            <summary>
+            The area light builder class
+            </summary>
+        </member>
         <member name="T:Alis.Core.Builder.Component.Light.DirectionalLightBuilder">
             <summary>
             The directional light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Light.PointLightBuilder">
+            <summary>
+            The point light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Light.SpotLightBuilder">
+            <summary>
+            The spot light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Mesh.BoxMeshBuilder">
+            <summary>
+            The box mesh builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Builder.Component.Mesh.CircleMeshBuilder">
+            <summary>
+            The circle mesh builder class
             </summary>
         </member>
         <member name="T:Alis.Core.Builder.Component.Particle.ExplosionParticleBuilder">
@@ -164,7 +216,7 @@
             <param name="value">The value</param>
             <returns>The sprite builder</returns>
         </member>
-        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.Texture(System.String)">
+        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.SetTexture(System.String)">
             <summary>
             Textures the value
             </summary>
@@ -214,6 +266,13 @@
             Adds the component using the specified value
             </summary>
             <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.WithTag(System.String)">
+            <summary>
+            Adds the tag using the specified value
+            </summary>
             <param name="value">The value</param>
             <returns>The game object builder</returns>
         </member>
@@ -347,26 +406,6 @@
             Resumes this instance
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.Audio.AudioClip.IsLooping">
-            <summary>
-            Gets or sets the value of the is looping
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioClip.IsMute">
-            <summary>
-            Gets or sets the value of the is mute
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioClip.IsPlaying">
-            <summary>
-            Gets or sets the value of the is playing
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Audio.AudioClip.Volume">
-            <summary>
-            Gets or sets the value of the volume
-            </summary>
-        </member>
         <member name="M:Alis.Core.Component.Audio.AudioClip.Builder">
             <summary>
             Builders
@@ -411,6 +450,11 @@
             Initializes a new instance of the <see cref="T:Alis.Core.Component.Audio.AudioSource"/> class
             </summary>
         </member>
+        <member name="M:Alis.Core.Component.Audio.AudioSource.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Component.Audio.AudioSource.Start">
             <summary>
             Starts this instance
@@ -429,6 +473,11 @@
         <member name="P:Alis.Core.Component.Audio.AudioSource.IsPlaying">
             <summary>
             Gets the value of the is playing
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Audio.AudioSource.PlayOnAwake">
+            <summary>
+            Gets or sets the value of the play on awake
             </summary>
         </member>
         <member name="P:Alis.Core.Component.Audio.AudioSource.Mute">
@@ -542,6 +591,16 @@
                 Gets or sets the value of the is active
             </summary>
         </member>
+        <member name="P:Alis.Core.Component.ComponentBase.Tag">
+            <summary>
+            Gets or sets the value of the tag
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.ComponentBase.Transform">
+            <summary>
+            Gets or sets the value of the tag
+            </summary>
+        </member>
         <member name="P:Alis.Core.Component.ComponentBase.Destroyed">
             <summary>
                 Gets or sets the value of the destroyed
@@ -623,6 +682,26 @@
             Builders this instance
             </summary>
             <returns>The component base builder</returns>
+        </member>
+        <member name="M:Alis.Core.Component.ComponentBase.DestroyImmediate">
+            <summary>
+            Destroys the immediate
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.ComponentBase.DontDestroyOnLoad">
+            <summary>
+            Donts the destroy on load
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.ComponentBase.FindObjectOfType">
+            <summary>
+            Finds the object of type
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.ComponentBase.FindObjectsOfType">
+            <summary>
+            Finds the objects of type
+            </summary>
         </member>
         <member name="T:Alis.Core.Component.Light.AreaLight">
             <summary>
@@ -854,6 +933,12 @@
             Initializes a new instance of the <see cref="T:Alis.Core.Entity.GameObject"/> class
             </summary>
         </member>
+        <member name="M:Alis.Core.Entity.GameObject.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Entity.GameObject"/> class
+            </summary>
+            <param name="name">The name</param>
+        </member>
         <member name="M:Alis.Core.Entity.GameObject.Add``1(``0)">
             <summary>
             Adds the component
@@ -909,6 +994,26 @@
         </member>
         <member name="M:Alis.Core.Entity.GameObject.Exit">
             <summary>Exits this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.CreatePrimitive">
+            <summary>
+            Creates the primitive
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.Find(System.String)">
+            <summary>
+            Finds
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.FindGameObjectsWithTag">
+            <summary>
+            Finds the game objects with tag
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.FindWithTag">
+            <summary>
+            Finds the with tag
+            </summary>
         </member>
         <member name="T:Alis.Core.Entity.Scene">
             <summary>

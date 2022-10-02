@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSourceBase.cs
+//  File:IMute.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,56 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Audio
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The audio source interface
+    /// The mute interface
     /// </summary>
-    public interface IAudioSource<T>
+    public interface IMute<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Gets or sets the value of the audio clip base
+        /// Mutes the value
         /// </summary>
-        public T AudioClip { get; set; } 
-
-        /// <summary>
-        /// Gets the value of the is playing
-        /// </summary>
-        public bool IsPlaying { get;}
-        
-        /// <summary>
-        /// Gets or sets the value of the play on awake
-        /// </summary>
-        public bool PlayOnAwake { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the mute
-        /// </summary>
-        public bool Mute { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the loop
-        /// </summary>
-        public bool Loop { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the volume
-        /// </summary>
-        public float Volume { get; set; }
-        
-        /// <summary>
-        /// Plays this instance
-        /// </summary>
-        public void Play();
-
-        /// <summary>
-        /// Stops this instance
-        /// </summary>
-        public void Stop();
-
-        /// <summary>
-        /// Resumes this instance
-        /// </summary>
-        public void Resume();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder Mute(TArgument value);
     }
 }

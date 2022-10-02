@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
 using Alis.Core.Component.Audio;
@@ -43,7 +44,8 @@ namespace Alis.Sample.Rogue
         /// Starts this instance
         /// </summary>
         public override void Start()
-        {
+        { 
+            Console.WriteLine($"Tag:object:{Tag}");
         }
 
         /// <summary>
