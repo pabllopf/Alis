@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -38,6 +38,9 @@ namespace Alis.Core.Builder.Setting
     public class SettingBuilder:
         IBuild<SettingBase>
     {
+        /// <summary>
+        /// The setting base
+        /// </summary>
         private SettingBase settingBase = new SettingBase();
         
         /// <summary>
