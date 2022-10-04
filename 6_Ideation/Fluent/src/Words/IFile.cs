@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The file interface
+    ///     The file interface
     /// </summary>
     public interface IFile<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Files the value
+        ///     Files the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

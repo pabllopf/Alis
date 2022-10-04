@@ -35,17 +35,17 @@ namespace Alis.Core.Entity
     public class Transform
     {
         /// <summary>
-        /// The position
+        ///     The position
         /// </summary>
         public Vector2 Position { get; set; } = Vector2.Zero;
-        
+
         /// <summary>
-        /// The rotation
+        ///     The rotation
         /// </summary>
         public float Rotation { get; set; } = 0;
 
         /// <summary>
-        /// The scale
+        ///     The scale
         /// </summary>
         public Vector2 Scale { get; set; } = new Vector2(1, 1);
     }

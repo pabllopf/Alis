@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The play on awake interface
+    ///     The play on awake interface
     /// </summary>
     public interface IPlayOnAwake<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Plays the on awake using the specified value
+        ///     Plays the on awake using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

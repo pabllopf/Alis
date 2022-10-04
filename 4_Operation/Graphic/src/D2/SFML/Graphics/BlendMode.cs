@@ -189,12 +189,12 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="other">Blend Mode to check</param>
         /// <returns>blend modes are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(BlendMode other) => (ColorSrcFactor == other.ColorSrcFactor) &&
-                                               (ColorDstFactor == other.ColorDstFactor) &&
-                                               (ColorEquation == other.ColorEquation) &&
-                                               (AlphaSrcFactor == other.AlphaSrcFactor) &&
-                                               (AlphaDstFactor == other.AlphaDstFactor) &&
-                                               (AlphaEquation == other.AlphaEquation);
+        public bool Equals(BlendMode other) => ColorSrcFactor == other.ColorSrcFactor &&
+                                               ColorDstFactor == other.ColorDstFactor &&
+                                               ColorEquation == other.ColorEquation &&
+                                               AlphaSrcFactor == other.AlphaSrcFactor &&
+                                               AlphaDstFactor == other.AlphaDstFactor &&
+                                               AlphaEquation == other.AlphaEquation;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

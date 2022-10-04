@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     ///     Give access to the real-time state of the joysticks
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public static partial class Joystick
+    public static class Joystick
     {
         ////////////////////////////////////////////////////////////
 

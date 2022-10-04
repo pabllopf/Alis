@@ -28,8 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Builder.Component.Render;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
@@ -51,8 +49,8 @@ namespace Alis.Sample.Rogue
             Console.WriteLine("Start game");
 
             GameObject gameObject = new GameObject();
-            
-            
+
+
             VideoGame.Builder()
                 .Settings(i => i
                     .Build())
@@ -64,15 +62,15 @@ namespace Alis.Sample.Rogue
                             .Transform(transform => transform
                                 .Position(100, 100)
                                 .Rotation(180)
-                                .Scale(3,3)
+                                .Scale(3, 3)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
-                                .SetTexture(Environment.CurrentDirectory +  "/Assets/tile000.png")
+                                .SetTexture(Environment.CurrentDirectory + "/Assets/tile000.png")
                                 .Depth(2)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(gb=> gb
+                        .Add<GameObject>(gb => gb
                             .Name("Player 2")
                             .WithTag("Players")
                             .Transform(i => i
@@ -82,7 +80,7 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Sprite>(i => i
                                 .Builder()
-                                .SetTexture(Environment.CurrentDirectory +  "/Assets/tile003.png")
+                                .SetTexture(Environment.CurrentDirectory + "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
                             .AddComponent<PlayerMovement>(i => i
@@ -93,7 +91,7 @@ namespace Alis.Sample.Rogue
                                 .IsActive(true)
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(Environment.CurrentDirectory +  "/Assets/menu.wav")
+                                    .FilePath(Environment.CurrentDirectory + "/Assets/menu.wav")
                                     .Volume(100.0f)
                                     .Mute(false)
                                     .Build())
@@ -102,8 +100,7 @@ namespace Alis.Sample.Rogue
                         .Build())
                     .Build())
                 .Run();
-                
-            
+
 
             Console.WriteLine("End game");
         }

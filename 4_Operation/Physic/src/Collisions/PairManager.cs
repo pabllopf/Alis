@@ -44,6 +44,27 @@ namespace Alis.Core.Physic.Collisions
     /// </summary>
     public class PairManager
     {
+
+        /// <summary>
+        ///     The ushrt max
+        /// </summary>
+        public static readonly ushort NullPair = Helper.UshrtMax;
+
+        /// <summary>
+        ///     The ushrt max
+        /// </summary>
+        public static readonly ushort NullProxy = Helper.UshrtMax;
+
+        /// <summary>
+        ///     The max pairs
+        /// </summary>
+        public static readonly int TableCapacity = Settings.MaxPairs; // must be a power of two
+
+        /// <summary>
+        ///     The table capacity
+        /// </summary>
+        public static readonly int TableMask = TableCapacity - 1;
+
         /// <summary>
         ///     The table capacity
         /// </summary>
@@ -113,26 +134,6 @@ namespace Alis.Core.Physic.Collisions
         }
 
         /// <summary>
-        ///     The ushrt max
-        /// </summary>
-        public static readonly ushort NullPair = Helper.UshrtMax;
-
-        /// <summary>
-        ///     The ushrt max
-        /// </summary>
-        public static readonly ushort NullProxy = Helper.UshrtMax;
-
-        /// <summary>
-        ///     The max pairs
-        /// </summary>
-        public static readonly int TableCapacity = Settings.MaxPairs; // must be a power of two
-
-        /// <summary>
-        ///     The table capacity
-        /// </summary>
-        public static readonly int TableMask = TableCapacity - 1;
-
-        /// <summary>
         ///     Initializes the broad phase
         /// </summary>
         /// <param name="broadPhase">The broad phase</param>
@@ -166,7 +167,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="id2">The id</param>
         public void AddBufferedPair(int id1, int id2)
         {
-            Box2DxDebug.Assert((id1 != NullProxy) && (id2 != NullProxy));
+            Box2DxDebug.Assert(id1 != NullProxy && id2 != NullProxy);
             Box2DxDebug.Assert(PairBufferCount < Settings.MaxPairs);
 
             Pair pair = AddPair(id1, id2);
@@ -203,7 +204,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="id2">The id</param>
         public void RemoveBufferedPair(int id1, int id2)
         {
-            Box2DxDebug.Assert((id1 != NullProxy) && (id2 != NullProxy));
+            Box2DxDebug.Assert(id1 != NullProxy && id2 != NullProxy);
             Box2DxDebug.Assert(PairBufferCount < Settings.MaxPairs);
 
             Pair pair = Find(id1, id2);
@@ -251,7 +252,7 @@ namespace Alis.Core.Physic.Collisions
                 Box2DxDebug.Assert(pair.IsBuffered());
                 pair.ClearBuffered();
 
-                Box2DxDebug.Assert((pair.ProxyId1 < Settings.MaxProxies) && (pair.ProxyId2 < Settings.MaxProxies));
+                Box2DxDebug.Assert(pair.ProxyId1 < Settings.MaxProxies && pair.ProxyId2 < Settings.MaxProxies);
 
                 Proxy proxy1 = proxies[pair.ProxyId1];
                 Proxy proxy2 = proxies[pair.ProxyId2];
@@ -328,7 +329,7 @@ namespace Alis.Core.Physic.Collisions
         {
             int index = HashTable[hash];
 
-            while ((index != NullPair) && (Equals(Pairs[index], proxyId1, proxyId2) == false))
+            while (index != NullPair && Equals(Pairs[index], proxyId1, proxyId2) == false)
             {
                 index = Pairs[index].Next;
             }
@@ -365,7 +366,7 @@ namespace Alis.Core.Physic.Collisions
                 return pair;
             }
 
-            Box2DxDebug.Assert((PairCount < Settings.MaxPairs) && (FreePair != NullPair));
+            Box2DxDebug.Assert(PairCount < Settings.MaxPairs && FreePair != NullPair);
 
             ushort pairIndex = FreePair;
             pair = Pairs[pairIndex];
@@ -530,13 +531,13 @@ namespace Alis.Core.Physic.Collisions
         /// <returns>The key</returns>
         private uint Hash(uint proxyId1, uint proxyId2)
         {
-            uint key = (proxyId2 << 16) | proxyId1;
+            uint key = proxyId2 << 16 | proxyId1;
             key = ~key + (key << 15);
-            key = key ^ (key >> 12);
+            key = key ^ key >> 12;
             key = key + (key << 2);
-            key = key ^ (key >> 4);
+            key = key ^ key >> 4;
             key = key * 2057;
-            key = key ^ (key >> 16);
+            key = key ^ key >> 16;
             return key;
         }
 
@@ -547,7 +548,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="proxyId1">The proxy id</param>
         /// <param name="proxyId2">The proxy id</param>
         /// <returns>The bool</returns>
-        private bool Equals(Pair pair, int proxyId1, int proxyId2) => (pair.ProxyId1 == proxyId1) && (pair.ProxyId2 == proxyId2);
+        private bool Equals(Pair pair, int proxyId1, int proxyId2) => pair.ProxyId1 == proxyId1 && pair.ProxyId2 == proxyId2;
 
         /// <summary>
         ///     Describes whether this instance equals
@@ -555,7 +556,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="pair1">The pair</param>
         /// <param name="pair2">The pair</param>
         /// <returns>The bool</returns>
-        private bool Equals(ref BufferedPair pair1, ref BufferedPair pair2) => (pair1.ProxyId1 == pair2.ProxyId1) && (pair1.ProxyId2 == pair2.ProxyId2);
+        private bool Equals(ref BufferedPair pair1, ref BufferedPair pair2) => pair1.ProxyId1 == pair2.ProxyId1 && pair1.ProxyId2 == pair2.ProxyId2;
 
         /// <summary>
         ///     Buffereds the pair sort predicate using the specified pair 1

@@ -33,15 +33,15 @@ using Alis.Core.Component.Particle;
 namespace Alis.Core.Builder.Component.Particle
 {
     /// <summary>
-    /// The explosion particle builder class
+    ///     The explosion particle builder class
     /// </summary>
-    /// <seealso cref="ComponentBaseBuilder"/>
-    /// <seealso cref="IBuild{ExplosionParticle}"/>
-    public class ExplosionParticleBuilder:
+    /// <seealso cref="ComponentBaseBuilder" />
+    /// <seealso cref="IBuild{ExplosionParticle}" />
+    public class ExplosionParticleBuilder :
         IBuild<ExplosionParticle>
     {
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The explosion particle</returns>
         public ExplosionParticle Build() => new ExplosionParticle();

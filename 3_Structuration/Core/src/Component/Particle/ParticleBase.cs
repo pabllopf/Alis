@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Particle.cs
+//  File:ParticleBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Entity;
-
 namespace Alis.Core.Component.Particle
 {
     /// <summary>
@@ -39,15 +36,14 @@ namespace Alis.Core.Component.Particle
     public class ParticleBase : ComponentBase
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
-            
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

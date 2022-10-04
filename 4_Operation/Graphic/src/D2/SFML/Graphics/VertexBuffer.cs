@@ -42,6 +42,36 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     /// <seealso cref="IDrawable" />
     public class VertexBuffer : ObjectBase, IDrawable
     {
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Usage specifiers
+        ///     If data is going to be updated once or more every frame,
+        ///     set the usage to Stream. If data is going
+        ///     to be set once and used for a long time without being
+        ///     modified, set the usage to Static.
+        ///     For everything else Dynamic should
+        ///     be a good compromise.
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        public enum UsageSpecifier
+        {
+            /// <summary>
+            ///     The stream usage specifier
+            /// </summary>
+            Stream,
+
+            /// <summary>
+            ///     The dynamic usage specifier
+            /// </summary>
+            Dynamic,
+
+            /// <summary>
+            ///     The static usage specifier
+            /// </summary>
+            Static
+        }
+
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Create a new vertex buffer with a specific
@@ -117,35 +147,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         {
             get => sfVertexBuffer_getUsage(CPointer);
             set => sfVertexBuffer_setUsage(CPointer, value);
-        }
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Usage specifiers
-        ///     If data is going to be updated once or more every frame,
-        ///     set the usage to Stream. If data is going
-        ///     to be set once and used for a long time without being
-        ///     modified, set the usage to Static.
-        ///     For everything else Dynamic should
-        ///     be a good compromise.
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        public enum UsageSpecifier
-        {
-            /// <summary>
-            ///     The stream usage specifier
-            /// </summary>
-            Stream,
-
-            /// <summary>
-            ///     The dynamic usage specifier
-            /// </summary>
-            Dynamic,
-
-            /// <summary>
-            ///     The static usage specifier
-            /// </summary>
-            Static
         }
 
         ////////////////////////////////////////////////////////////

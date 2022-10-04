@@ -38,23 +38,19 @@ namespace Alis.Core.Entity
     /// <summary>Represent a object of the game.</summary>
     public class GameObject : AlisObject
     {
-        /// <summary>
-        /// The transform
-        /// </summary>
-        public Transform Transform { get; internal set; } = new Transform();
 
         /// <summary>
-        /// The components
+        ///     The components
         /// </summary>
         private List<ComponentBase> components;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameObject"/> class
+        ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
         public GameObject() => components = new List<ComponentBase>();
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="GameObject"/> class
+        ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
         /// <param name="name">The name</param>
         public GameObject(string name)
@@ -64,28 +60,33 @@ namespace Alis.Core.Entity
         }
 
         /// <summary>
-        /// Adds the component
+        ///     The transform
+        /// </summary>
+        public Transform Transform { get; internal set; } = new Transform();
+
+        /// <summary>
+        ///     Adds the component
         /// </summary>
         /// <param name="component">The component</param>
         public void Add<T>(T component) => components.Add(component as ComponentBase);
 
         /// <summary>
-        /// Removes the component
+        ///     Removes the component
         /// </summary>
         /// <param name="component">The component</param>
         public void Remove<T>(T component) => components.Remove(component as ComponentBase);
 
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Builder() => new GameObjectBuilder();
-        
+
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         internal void Init() => components.ForEach(component => component.Init());
-        
+
         /// <summary>Awakes this instance.</summary>
         internal void Awake() => components.ForEach(component => component.Awake());
 
@@ -112,7 +113,7 @@ namespace Alis.Core.Entity
 
         /// <summary>Stops this instance.</summary>
         internal void Stop() => components.ForEach(component => component.Stop());
-        
+
         /// <summary>Resets this instance.</summary>
         internal void Reset() => components.ForEach(component => component.Reset());
 
@@ -120,66 +121,50 @@ namespace Alis.Core.Entity
         internal void Exit() => components.ForEach(component => component.Exit());
 
         /// <summary>
-        /// Creates the primitive
+        ///     Creates the primitive
         /// </summary>
         public static void CreatePrimitive()
         {
-            
         }
-        
+
         /// <summary>
-        /// Finds
+        ///     Finds
         /// </summary>
-        public static GameObject Find(string name)
-        {
-            return new GameObject(name);
-        }
-        
+        public static GameObject Find(string name) => new GameObject(name);
+
         /// <summary>
-        /// Finds the game objects with tag
+        ///     Finds the game objects with tag
         /// </summary>
         public static void FindGameObjectsWithTag()
         {
-            
         }
 
         /// <summary>
-        /// Finds the with tag
+        ///     Finds the with tag
         /// </summary>
         public static void FindWithTag()
         {
-            
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
+        public override bool Equals(object obj) => base.Equals(obj);
 
         /// <summary>
-        /// Get hash code
+        ///     Get hash code
         /// </summary>
         /// <returns></returns>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
+        public override int GetHashCode() => base.GetHashCode();
 
         /// <summary>
-        /// To string
+        ///     To string
         /// </summary>
         /// <returns></returns>
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+        public override string ToString() => base.ToString();
     }
 }

@@ -27,10 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Builder.Component.Render;
-using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Render
 {
@@ -39,25 +37,25 @@ namespace Alis.Core.Component.Render
     /// </summary>
     public class Animator : ComponentBase, IBuilder<AnimatorBuilder>
     {
+
         /// <summary>
-        /// Starts this instance
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The animator builder</returns>
+        public new AnimatorBuilder Builder() => new AnimatorBuilder();
+
+        /// <summary>
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
-            
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
         }
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The animator builder</returns>
-        public new AnimatorBuilder Builder() => new AnimatorBuilder();
     }
 }

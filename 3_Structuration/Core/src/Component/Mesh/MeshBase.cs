@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Mesh.cs
+//  File:MeshBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entity;
-
 namespace Alis.Core.Component.Mesh
 {
     /// <summary>
@@ -38,15 +36,14 @@ namespace Alis.Core.Component.Mesh
     public abstract class MeshBase : ComponentBase
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
-            
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

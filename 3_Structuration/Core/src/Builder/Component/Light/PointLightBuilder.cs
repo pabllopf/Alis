@@ -30,10 +30,9 @@
 namespace Alis.Core.Builder.Component.Light
 {
     /// <summary>
-    /// The point light builder class
+    ///     The point light builder class
     /// </summary>
     public class PointLightBuilder
     {
-        
     }
 }

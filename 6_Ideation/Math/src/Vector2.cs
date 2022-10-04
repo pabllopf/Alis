@@ -64,7 +64,7 @@ namespace Alis.Core.Aspect.Math
         {
             unchecked
             {
-                return (X.GetHashCode() * 397) ^ Y.GetHashCode();
+                return X.GetHashCode() * 397 ^ Y.GetHashCode();
             }
         }
 
@@ -159,7 +159,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Get the length of this vector (the norm).
         /// </summary>
-        public float Length() => (float) global::System.Math.Sqrt(X * X + Y * Y);
+        public float Length() => (float) System.Math.Sqrt(X * X + Y * Y);
 
         /// <summary>
         ///     Get the length squared. For performance, use this instead of
@@ -256,7 +256,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static bool operator ==(Vector2 a, Vector2 b) => (a.X == b.X) && (a.Y == b.Y);
+        public static bool operator ==(Vector2 a, Vector2 b) => a.X == b.X && a.Y == b.Y;
 
         /// <summary>
         /// </summary>

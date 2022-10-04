@@ -32,12 +32,12 @@ using Alis.Core.Audio;
 namespace Alis.Core.Setting
 {
     /// <summary>
-    /// The audio setting class
+    ///     The audio setting class
     /// </summary>
     public class AudioSetting
     {
         /// <summary>
-        /// Gets or sets the value of the backend type
+        ///     Gets or sets the value of the backend type
         /// </summary>
         public AudioBackendType BackendType { get; set; } = AudioBackendType.SFML;
     }

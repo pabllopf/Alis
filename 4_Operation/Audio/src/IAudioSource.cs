@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSourceBase.cs
+//  File:IAudioSource.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,52 +30,52 @@
 namespace Alis.Core.Audio
 {
     /// <summary>
-    /// The audio source interface
+    ///     The audio source interface
     /// </summary>
     public interface IAudioSource<T>
     {
         /// <summary>
-        /// Gets or sets the value of the audio clip base
+        ///     Gets or sets the value of the audio clip base
         /// </summary>
-        public T AudioClip { get; set; } 
+        public T AudioClip { get; set; }
 
         /// <summary>
-        /// Gets the value of the is playing
+        ///     Gets the value of the is playing
         /// </summary>
-        public bool IsPlaying { get;}
-        
+        public bool IsPlaying { get; }
+
         /// <summary>
-        /// Gets or sets the value of the play on awake
+        ///     Gets or sets the value of the play on awake
         /// </summary>
         public bool PlayOnAwake { get; set; }
-        
+
         /// <summary>
-        /// Gets or sets the value of the mute
+        ///     Gets or sets the value of the mute
         /// </summary>
         public bool Mute { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the loop
+        ///     Gets or sets the value of the loop
         /// </summary>
         public bool Loop { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the volume
         /// </summary>
         public float Volume { get; set; }
-        
+
         /// <summary>
-        /// Plays this instance
+        ///     Plays this instance
         /// </summary>
         public void Play();
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public void Stop();
 
         /// <summary>
-        /// Resumes this instance
+        ///     Resumes this instance
         /// </summary>
         public void Resume();
     }

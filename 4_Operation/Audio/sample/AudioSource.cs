@@ -27,58 +27,68 @@
 // 
 //  --------------------------------------------------------------------------
 
-
-
 namespace Alis.Core.Audio.Sample
 {
     /// <summary>
-    /// The audio source class
+    ///     The audio source class
     /// </summary>
-    public class AudioSource 
+    public class AudioSource
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSource"/> class
+        ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
         public AudioSource(AudioClip audioClip) => AudioClip = audioClip;
 
         /// <summary>
-        /// Gets or sets the value of the audio clip
+        ///     Gets or sets the value of the audio clip
         /// </summary>
         public AudioClip AudioClip { get; set; }
-        
+
         /// <summary>
-        /// Gets the value of the is playing
+        ///     Gets the value of the is playing
         /// </summary>
         public bool IsPlaying => AudioClip.IsPlaying;
 
         /// <summary>
-        /// Gets or sets the value of the mute
+        ///     Gets or sets the value of the mute
         /// </summary>
-        public bool Mute { get => AudioClip.IsMute; set => AudioClip.IsMute = value; }
-        
+        public bool Mute
+        {
+            get => AudioClip.IsMute;
+            set => AudioClip.IsMute = value;
+        }
+
         /// <summary>
-        /// Gets or sets the value of the loop
+        ///     Gets or sets the value of the loop
         /// </summary>
-        public bool Loop { get => AudioClip.IsLooping; set => AudioClip.IsLooping = value; }
-        
+        public bool Loop
+        {
+            get => AudioClip.IsLooping;
+            set => AudioClip.IsLooping = value;
+        }
+
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the volume
         /// </summary>
-        public float Volume { get => AudioClip.Volume; set => AudioClip.Volume = value; }
-        
+        public float Volume
+        {
+            get => AudioClip.Volume;
+            set => AudioClip.Volume = value;
+        }
+
         /// <summary>
-        /// Plays this instance
+        ///     Plays this instance
         /// </summary>
         public void Play() => AudioClip.Play();
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public void Stop() => AudioClip.Stop();
 
         /// <summary>
-        /// Resumes this instance
+        ///     Resumes this instance
         /// </summary>
         public void Resume() => AudioClip.Resume();
     }

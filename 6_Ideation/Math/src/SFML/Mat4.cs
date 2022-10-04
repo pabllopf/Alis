@@ -84,7 +84,7 @@ namespace Alis.Core.Aspect.Math.SFML
             array[15] = a33;
         }
 
-        
+
         // column major!
         /// <summary>
         ///     The array

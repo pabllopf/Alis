@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ITexture.cs
+//  File:ISetTexture.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The texture interface
+    ///     The texture interface
     /// </summary>
     public interface ISetTexture<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Textures the value
+        ///     Textures the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

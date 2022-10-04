@@ -39,15 +39,6 @@ namespace Alis.Core.Physic.Collisions.Shape
     /// </summary>
     public class PolygonShape : IShape
     {
-        /// <summary>
-        ///     The radius
-        /// </summary>
-        public float Radius { get; set; }
-
-        /// <summary>
-        ///     The unknown shape
-        /// </summary>
-        public ShapeType ShapeType { get; set; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonShape" /> class
@@ -150,6 +141,16 @@ namespace Alis.Core.Physic.Collisions.Shape
         }
 
         /// <summary>
+        ///     The radius
+        /// </summary>
+        public float Radius { get; set; }
+
+        /// <summary>
+        ///     The unknown shape
+        /// </summary>
+        public ShapeType ShapeType { get; set; }
+
+        /// <summary>
         ///     The centroid
         /// </summary>
         internal Vector2 Centroid { get; set; }
@@ -170,130 +171,13 @@ namespace Alis.Core.Physic.Collisions.Shape
         public Vector2[] Vertices { get; } = new Vector2[Settings.MaxPolygonVertices];
 
         /// <summary>
-        ///     Copy vertices. This assumes the vertices define a convex polygon.
-        ///     It is assumed that the exterior is the the right of each edge.
-        /// </summary>
-        public void Set(Vector2[] vertices, int count)
-        {
-            Box2DxDebug.Assert((3 <= count) && (count <= Settings.MaxPolygonVertices));
-            VertexCount = count;
-
-            int i;
-            // Copy vertices.
-            for (i = 0; i < VertexCount; ++i)
-            {
-                Vertices[i] = vertices[i];
-            }
-
-            // Compute normals. Ensure the edges have non-zero length.
-            for (i = 0; i < VertexCount; ++i)
-            {
-                int i1 = i;
-                int i2 = i + 1 < count ? i + 1 : 0;
-                Vector2 edge = Vertices[i2] - Vertices[i1];
-                Box2DxDebug.Assert(edge.LengthSquared() > Settings.FltEpsilonSquared);
-                Normals[i] = Vector2.Cross(edge, 1.0f);
-                Normals[i].Normalize();
-            }
-
-#if DEBUG
-            // Ensure the polygon is convex and the interior
-            // is to the left of each edge.
-            for (i = 0; i < VertexCount; ++i)
-            {
-                int i1 = i;
-                int i2 = i + 1 < count ? i + 1 : 0;
-                Vector2 edge = Vertices[i2] - Vertices[i1];
-
-                for (int j = 0; j < VertexCount; ++j)
-                {
-                    // Don't check vertices on the current edge.
-                    if (j == i1 || j == i2)
-                    {
-                        continue;
-                    }
-
-                    Vector2 r = Vertices[j] - Vertices[i1];
-
-                    // Your polygon is non-convex (it has an indentation) or
-                    // has colinear edges.
-                    float s = Vector2.Cross(edge, r);
-                    Box2DxDebug.Assert(s > 0.0f);
-                }
-            }
-#endif
-
-            // Compute the polygon centroid.
-            Centroid = ComputeCentroid(Vertices, VertexCount);
-        }
-
-        /// <summary>
-        ///     Build vertices to represent an axis-aligned box.
-        /// </summary>
-        /// <param name="hx">The half-width</param>
-        /// <param name="hy">The half-height.</param>
-        public void SetAsBox(float hx, float hy)
-        {
-            VertexCount = 4;
-            Vertices[0].Set(-hx, -hy);
-            Vertices[1].Set(hx, -hy);
-            Vertices[2].Set(hx, hy);
-            Vertices[3].Set(-hx, hy);
-            Normals[0].Set(0.0f, -1.0f);
-            Normals[1].Set(1.0f, 0.0f);
-            Normals[2].Set(0.0f, 1.0f);
-            Normals[3].Set(-1.0f, 0.0f);
-            Centroid = new Vector2(0);
-        }
-
-
-        /// <summary>
-        ///     Build vertices to represent an oriented box.
-        /// </summary>
-        /// <param name="hx">The half-width</param>
-        /// <param name="hy">The half-height.</param>
-        /// <param name="center">The center of the box in local coordinates.</param>
-        /// <param name="angle">The rotation of the box in local coordinates.</param>
-        public void SetAsBox(float hx, float hy, Vector2 center, float angle)
-        {
-            SetAsBox(hx, hy);
-
-            XForm xf = new XForm();
-            xf.Position = center;
-            xf.R.Set(angle);
-
-            // Transform vertices and normals.
-            for (int i = 0; i < VertexCount; ++i)
-            {
-                Vertices[i] = Helper.Mul(xf, Vertices[i]);
-                Normals[i] = Helper.Mul(xf.R, Normals[i]);
-            }
-        }
-
-        /// <summary>
-        ///     Sets the as edge using the specified v 1
-        /// </summary>
-        /// <param name="v1">The </param>
-        /// <param name="v2">The </param>
-        public void SetAsEdge(Vector2 v1, Vector2 v2)
-        {
-            VertexCount = 2;
-            Vertices[0] = v1;
-            Vertices[1] = v2;
-            Centroid = 0.5f * (v1 + v2);
-            Normals[0] = Vector2.Cross(v2 - v1, 1.0f);
-            Normals[0].Normalize();
-            Normals[1] = -Normals[0];
-        }
-
-        /// <summary>
-        /// return the radius of the polygon
+        ///     return the radius of the polygon
         /// </summary>
         /// <returns></returns>
         public float GetRadius() => Radius;
 
         /// <summary>
-        /// return the shape type.
+        ///     return the shape type.
         /// </summary>
         /// <returns></returns>
         public ShapeType GetShapeType() => ShapeType;
@@ -364,14 +248,14 @@ namespace Alis.Core.Physic.Collisions.Shape
                     // lower < numerator / denominator, where denominator < 0
                     // Since denominator < 0, we have to flip the inequality:
                     // lower < numerator / denominator <==> denominator * lower > numerator.
-                    if ((denominator < 0.0f) && (numerator < lower * denominator))
+                    if (denominator < 0.0f && numerator < lower * denominator)
                     {
                         // Increase lower.
                         // The segment enters this half-space.
                         lower = numerator / denominator;
                         index = i;
                     }
-                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
+                    else if (denominator > 0.0f && numerator < upper * denominator)
                     {
                         // Decrease upper.
                         // The segment exits this half-space.
@@ -385,7 +269,7 @@ namespace Alis.Core.Physic.Collisions.Shape
                 }
             }
 
-            Box2DxDebug.Assert((0.0f <= lower) && (lower <= maxLambda));
+            Box2DxDebug.Assert(0.0f <= lower && lower <= maxLambda);
 
             if (index >= 0)
             {
@@ -716,10 +600,184 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The vec</returns>
-        public  Vector2 GetVertex(int index)
+        public Vector2 GetVertex(int index)
         {
-            Box2DxDebug.Assert((0 <= index) && (index < VertexCount));
+            Box2DxDebug.Assert(0 <= index && index < VertexCount);
             return Vertices[index];
+        }
+
+        /*// http://www.geometrictools.com/Documentation/MinimumAreaRectangle.pdf
+        public static void ComputeOBB(out OBB obb, Vec2[] vs, int count)
+        {
+            obb = new OBB();
+
+            Box2DXDebug.Assert(count <= Settings.MaxPolygonVertices);
+            Vec2[] p = new Vec2[Settings.MaxPolygonVertices + 1];
+            for (int i = 0; i < count; ++i)
+            {
+                p[i] = vs[i];
+            }
+            p[count] = p[0];
+
+            float minArea = Common.Settings.FLT_MAX;
+
+            for (int i = 1; i <= count; ++i)
+            {
+                Vec2 root = p[i - 1];
+                Vec2 ux = p[i] - root;
+                float length = ux.Normalize();
+                Box2DXDebug.Assert(length > Common.Settings.FLT_EPSILON);
+                Vec2 uy = new Vec2(-ux.Y, ux.X);
+                Vec2 lower = new Vec2(Common.Settings.FLT_MAX, Common.Settings.FLT_MAX);
+                Vec2 upper = new Vec2(-Common.Settings.FLT_MAX, -Common.Settings.FLT_MAX);
+
+                for (int j = 0; j < count; ++j)
+                {
+                    Vec2 d = p[j] - root;
+                    Vec2 r = new Vec2();
+                    r.X = Vec2.Dot(ux, d);
+                    r.Y = Vec2.Dot(uy, d);
+                    lower = Common.Helper.Min(lower, r);
+                    upper = Common.Helper.Max(upper, r);
+                }
+
+                float area = (upper.X - lower.X) * (upper.Y - lower.Y);
+                if (area < 0.95f * minArea)
+                {
+                    minArea = area;
+                    obb.R.Col1 = ux;
+                    obb.R.Col2 = uy;
+                    Vec2 center = 0.5f * (lower + upper);
+                    obb.Center = root + Common.Helper.Mul(obb.R, center);
+                    obb.Extents = 0.5f * (upper - lower);
+                }
+            }
+
+            Box2DXDebug.Assert(minArea < Common.Settings.FLT_MAX);
+        }*/
+
+        /// <summary>
+        ///     dispose
+        /// </summary>
+        public void Dispose()
+        {
+        }
+
+        /// <summary>
+        ///     Copy vertices. This assumes the vertices define a convex polygon.
+        ///     It is assumed that the exterior is the the right of each edge.
+        /// </summary>
+        public void Set(Vector2[] vertices, int count)
+        {
+            Box2DxDebug.Assert(3 <= count && count <= Settings.MaxPolygonVertices);
+            VertexCount = count;
+
+            int i;
+            // Copy vertices.
+            for (i = 0; i < VertexCount; ++i)
+            {
+                Vertices[i] = vertices[i];
+            }
+
+            // Compute normals. Ensure the edges have non-zero length.
+            for (i = 0; i < VertexCount; ++i)
+            {
+                int i1 = i;
+                int i2 = i + 1 < count ? i + 1 : 0;
+                Vector2 edge = Vertices[i2] - Vertices[i1];
+                Box2DxDebug.Assert(edge.LengthSquared() > Settings.FltEpsilonSquared);
+                Normals[i] = Vector2.Cross(edge, 1.0f);
+                Normals[i].Normalize();
+            }
+
+#if DEBUG
+            // Ensure the polygon is convex and the interior
+            // is to the left of each edge.
+            for (i = 0; i < VertexCount; ++i)
+            {
+                int i1 = i;
+                int i2 = i + 1 < count ? i + 1 : 0;
+                Vector2 edge = Vertices[i2] - Vertices[i1];
+
+                for (int j = 0; j < VertexCount; ++j)
+                {
+                    // Don't check vertices on the current edge.
+                    if (j == i1 || j == i2)
+                    {
+                        continue;
+                    }
+
+                    Vector2 r = Vertices[j] - Vertices[i1];
+
+                    // Your polygon is non-convex (it has an indentation) or
+                    // has colinear edges.
+                    float s = Vector2.Cross(edge, r);
+                    Box2DxDebug.Assert(s > 0.0f);
+                }
+            }
+#endif
+
+            // Compute the polygon centroid.
+            Centroid = ComputeCentroid(Vertices, VertexCount);
+        }
+
+        /// <summary>
+        ///     Build vertices to represent an axis-aligned box.
+        /// </summary>
+        /// <param name="hx">The half-width</param>
+        /// <param name="hy">The half-height.</param>
+        public void SetAsBox(float hx, float hy)
+        {
+            VertexCount = 4;
+            Vertices[0].Set(-hx, -hy);
+            Vertices[1].Set(hx, -hy);
+            Vertices[2].Set(hx, hy);
+            Vertices[3].Set(-hx, hy);
+            Normals[0].Set(0.0f, -1.0f);
+            Normals[1].Set(1.0f, 0.0f);
+            Normals[2].Set(0.0f, 1.0f);
+            Normals[3].Set(-1.0f, 0.0f);
+            Centroid = new Vector2(0);
+        }
+
+
+        /// <summary>
+        ///     Build vertices to represent an oriented box.
+        /// </summary>
+        /// <param name="hx">The half-width</param>
+        /// <param name="hy">The half-height.</param>
+        /// <param name="center">The center of the box in local coordinates.</param>
+        /// <param name="angle">The rotation of the box in local coordinates.</param>
+        public void SetAsBox(float hx, float hy, Vector2 center, float angle)
+        {
+            SetAsBox(hx, hy);
+
+            XForm xf = new XForm();
+            xf.Position = center;
+            xf.R.Set(angle);
+
+            // Transform vertices and normals.
+            for (int i = 0; i < VertexCount; ++i)
+            {
+                Vertices[i] = Helper.Mul(xf, Vertices[i]);
+                Normals[i] = Helper.Mul(xf.R, Normals[i]);
+            }
+        }
+
+        /// <summary>
+        ///     Sets the as edge using the specified v 1
+        /// </summary>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        public void SetAsEdge(Vector2 v1, Vector2 v2)
+        {
+            VertexCount = 2;
+            Vertices[0] = v1;
+            Vertices[1] = v2;
+            Centroid = 0.5f * (v1 + v2);
+            Normals[0] = Vector2.Cross(v2 - v1, 1.0f);
+            Normals[0].Normalize();
+            Normals[1] = -Normals[0];
         }
 
         /// <summary>
@@ -772,64 +830,6 @@ namespace Alis.Core.Physic.Collisions.Shape
             Box2DxDebug.Assert(area > Settings.FltEpsilon);
             c *= 1.0f / area;
             return c;
-        }
-
-        /*// http://www.geometrictools.com/Documentation/MinimumAreaRectangle.pdf
-        public static void ComputeOBB(out OBB obb, Vec2[] vs, int count)
-        {
-            obb = new OBB();
-
-            Box2DXDebug.Assert(count <= Settings.MaxPolygonVertices);
-            Vec2[] p = new Vec2[Settings.MaxPolygonVertices + 1];
-            for (int i = 0; i < count; ++i)
-            {
-                p[i] = vs[i];
-            }
-            p[count] = p[0];
-
-            float minArea = Common.Settings.FLT_MAX;
-
-            for (int i = 1; i <= count; ++i)
-            {
-                Vec2 root = p[i - 1];
-                Vec2 ux = p[i] - root;
-                float length = ux.Normalize();
-                Box2DXDebug.Assert(length > Common.Settings.FLT_EPSILON);
-                Vec2 uy = new Vec2(-ux.Y, ux.X);
-                Vec2 lower = new Vec2(Common.Settings.FLT_MAX, Common.Settings.FLT_MAX);
-                Vec2 upper = new Vec2(-Common.Settings.FLT_MAX, -Common.Settings.FLT_MAX);
-
-                for (int j = 0; j < count; ++j)
-                {
-                    Vec2 d = p[j] - root;
-                    Vec2 r = new Vec2();
-                    r.X = Vec2.Dot(ux, d);
-                    r.Y = Vec2.Dot(uy, d);
-                    lower = Common.Helper.Min(lower, r);
-                    upper = Common.Helper.Max(upper, r);
-                }
-
-                float area = (upper.X - lower.X) * (upper.Y - lower.Y);
-                if (area < 0.95f * minArea)
-                {
-                    minArea = area;
-                    obb.R.Col1 = ux;
-                    obb.R.Col2 = uy;
-                    Vec2 center = 0.5f * (lower + upper);
-                    obb.Center = root + Common.Helper.Mul(obb.R, center);
-                    obb.Extents = 0.5f * (upper - lower);
-                }
-            }
-
-            Box2DXDebug.Assert(minArea < Common.Settings.FLT_MAX);
-        }*/
-        
-        /// <summary>
-        /// dispose 
-        /// </summary>
-        public void Dispose()
-        {
-            
         }
     }
 }

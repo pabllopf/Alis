@@ -110,6 +110,21 @@ namespace Alis.Core.Physic.Dynamics.Joint
     public class PrismaticJoint : IJoint
     {
         /// <summary>
+        ///     The collide connected
+        /// </summary>
+        private readonly bool collideConnected;
+
+        /// <summary>
+        ///     The node
+        /// </summary>
+        private readonly JointEdge node1;
+
+        /// <summary>
+        ///     The node
+        /// </summary>
+        private readonly JointEdge node2;
+
+        /// <summary>
         ///     The ref angle
         /// </summary>
         private readonly float refAngle;
@@ -130,9 +145,54 @@ namespace Alis.Core.Physic.Dynamics.Joint
         public Vector2 Axis;
 
         /// <summary>
+        ///     The body
+        /// </summary>
+        private BodyBase body1;
+
+        /// <summary>
+        ///     The body
+        /// </summary>
+        private BodyBase body2;
+
+        /// <summary>
         ///     The impulse
         /// </summary>
         public Vector3 Impulse;
+
+        /// <summary>
+        ///     The inv
+        /// </summary>
+        private float invI1;
+
+        /// <summary>
+        ///     The inv
+        /// </summary>
+        private float invI2;
+
+        /// <summary>
+        ///     The inv mass
+        /// </summary>
+        private float invMass1;
+
+        /// <summary>
+        ///     The inv mass
+        /// </summary>
+        private float invMass2;
+
+        /// <summary>
+        ///     The island flag
+        /// </summary>
+        private bool islandFlag;
+
+        /// <summary>
+        ///     The is limit enabled
+        /// </summary>
+        private bool isLimitEnabled;
+
+        /// <summary>
+        ///     The is motor enabled
+        /// </summary>
+        private bool isMotorEnabled;
 
         /// <summary>
         ///     The
@@ -155,6 +215,16 @@ namespace Alis.Core.Physic.Dynamics.Joint
         public Vector2 LocalAnchor2;
 
         /// <summary>
+        ///     The local center
+        /// </summary>
+        private Vector2 localCenter1;
+
+        /// <summary>
+        ///     The local center
+        /// </summary>
+        private Vector2 localCenter2;
+
+        /// <summary>
         ///     The local axis
         /// </summary>
         public Vector2 LocalXAxis1;
@@ -165,9 +235,19 @@ namespace Alis.Core.Physic.Dynamics.Joint
         public Vector2 LocalYAxis1;
 
         /// <summary>
+        ///     The lower limit
+        /// </summary>
+        private float lowerLimit;
+
+        /// <summary>
         ///     The max motor force
         /// </summary>
         public float MaxMotorForce;
+
+        /// <summary>
+        ///     The motor force
+        /// </summary>
+        private float motorForce;
 
         /// <summary>
         ///     The motor mass
@@ -180,9 +260,19 @@ namespace Alis.Core.Physic.Dynamics.Joint
         private float motorSpeedx;
 
         /// <summary>
+        ///     The next
+        /// </summary>
+        private IJoint next;
+
+        /// <summary>
         ///     The perp
         /// </summary>
         public Vector2 Perp;
+
+        /// <summary>
+        ///     The prev
+        /// </summary>
+        private IJoint prev;
 
         /// <summary>
         ///     The
@@ -195,89 +285,19 @@ namespace Alis.Core.Physic.Dynamics.Joint
         private float s2;
 
         /// <summary>
-        /// The type
+        ///     The type
         /// </summary>
         private JointType type;
+
         /// <summary>
-        /// The prev
-        /// </summary>
-        private IJoint prev;
-        /// <summary>
-        /// The next
-        /// </summary>
-        private IJoint next;
-        /// <summary>
-        /// The node
-        /// </summary>
-        private readonly JointEdge node1;
-        /// <summary>
-        /// The node
-        /// </summary>
-        private readonly JointEdge node2;
-        /// <summary>
-        /// The body
-        /// </summary>
-        private BodyBase body1;
-        /// <summary>
-        /// The body
-        /// </summary>
-        private BodyBase body2;
-        /// <summary>
-        /// The island flag
-        /// </summary>
-        private bool islandFlag;
-        /// <summary>
-        /// The collide connected
-        /// </summary>
-        private readonly bool collideConnected;
-        /// <summary>
-        /// The local center
-        /// </summary>
-        private Vector2 localCenter1;
-        /// <summary>
-        /// The local center
-        /// </summary>
-        private Vector2 localCenter2;
-        /// <summary>
-        /// The inv mass
-        /// </summary>
-        private float invMass1;
-        /// <summary>
-        /// The inv
-        /// </summary>
-        private float invI1;
-        /// <summary>
-        /// The inv mass
-        /// </summary>
-        private float invMass2;
-        /// <summary>
-        /// The inv
-        /// </summary>
-        private float invI2;
-        /// <summary>
-        /// The user data
-        /// </summary>
-        private object userData;
-        /// <summary>
-        /// The is limit enabled
-        /// </summary>
-        private bool isLimitEnabled;
-        /// <summary>
-        /// The lower limit
-        /// </summary>
-        private float lowerLimit;
-        /// <summary>
-        /// The upper limit
+        ///     The upper limit
         /// </summary>
         private float upperLimit;
+
         /// <summary>
-        /// The is motor enabled
+        ///     The user data
         /// </summary>
-        private bool isMotorEnabled;
-        /// <summary>
-        /// The motor force
-        /// </summary>
-        private float motorForce;
+        private object userData;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PrismaticJoint" /> class
@@ -295,7 +315,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             collideConnected = def.CollideConnected;
             islandFlag = false;
             UserData = def.UserData;
-            
+
             LocalAnchor1 = def.LocalAnchor1;
             LocalAnchor2 = def.LocalAnchor2;
             LocalXAxis1 = def.LocalAxis1;
@@ -316,148 +336,6 @@ namespace Alis.Core.Physic.Dynamics.Joint
 
             Axis.SetZero();
             Perp.SetZero();
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the type
-        /// </summary>
-        public JointType Type
-        {
-            get => type;
-            set => type = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the prev
-        /// </summary>
-        public IJoint Prev
-        {
-            get => prev;
-            set => prev = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the next
-        /// </summary>
-        public IJoint Next
-        {
-            get => next;
-            set => next = value;
-        }
-
-        /// <summary>
-        /// Gets the value of the node 1
-        /// </summary>
-        public JointEdge Node1 => node1;
-
-        /// <summary>
-        /// Gets the value of the node 2
-        /// </summary>
-        public JointEdge Node2 => node2;
-
-        /// <summary>
-        /// Gets or sets the value of the body 1
-        /// </summary>
-        public BodyBase Body1
-        {
-            get => body1;
-            set => body1 = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the body 2
-        /// </summary>
-        public BodyBase Body2
-        {
-            get => body2;
-            set => body2 = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the island flag
-        /// </summary>
-        public bool IslandFlag
-        {
-            get => islandFlag;
-            set => islandFlag = value;
-        }
-
-        /// <summary>
-        /// Gets the value of the collide connected
-        /// </summary>
-        public bool CollideConnected => collideConnected;
-
-        /// <summary>
-        /// Gets or sets the value of the local center 1
-        /// </summary>
-        public Vector2 LocalCenter1
-        {
-            get => localCenter1;
-            set => localCenter1 = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the local center 2
-        /// </summary>
-        public Vector2 LocalCenter2
-        {
-            get => localCenter2;
-            set => localCenter2 = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the inv mass 1
-        /// </summary>
-        public float InvMass1
-        {
-            get => invMass1;
-            set => invMass1 = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the inv i 1
-        /// </summary>
-        public float InvI1
-        {
-            get => invI1;
-            set => invI1 = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the inv mass 2
-        /// </summary>
-        public float InvMass2
-        {
-            get => invMass2;
-            set => invMass2 = value;
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the inv i 2
-        /// </summary>
-        public float InvI2
-        {
-            get => invI2;
-            set => invI2 = value;
-        }
-
-        /// <summary>
-        ///     Gets the value of the anchor 1
-        /// </summary>
-        public  Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
-
-        /// <summary>
-        ///     Gets the value of the anchor 2
-        /// </summary>
-        public  Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
-
-        /// <summary>
-        /// Gets or sets the value of the user data
-        /// </summary>
-        public object UserData
-        {
-            get => userData;
-            set => userData = value;
         }
 
         /// <summary>
@@ -568,6 +446,148 @@ namespace Alis.Core.Physic.Dynamics.Joint
         }
 
         /// <summary>
+        ///     Gets or sets the value of the type
+        /// </summary>
+        public JointType Type
+        {
+            get => type;
+            set => type = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the prev
+        /// </summary>
+        public IJoint Prev
+        {
+            get => prev;
+            set => prev = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the next
+        /// </summary>
+        public IJoint Next
+        {
+            get => next;
+            set => next = value;
+        }
+
+        /// <summary>
+        ///     Gets the value of the node 1
+        /// </summary>
+        public JointEdge Node1 => node1;
+
+        /// <summary>
+        ///     Gets the value of the node 2
+        /// </summary>
+        public JointEdge Node2 => node2;
+
+        /// <summary>
+        ///     Gets or sets the value of the body 1
+        /// </summary>
+        public BodyBase Body1
+        {
+            get => body1;
+            set => body1 = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the body 2
+        /// </summary>
+        public BodyBase Body2
+        {
+            get => body2;
+            set => body2 = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the island flag
+        /// </summary>
+        public bool IslandFlag
+        {
+            get => islandFlag;
+            set => islandFlag = value;
+        }
+
+        /// <summary>
+        ///     Gets the value of the collide connected
+        /// </summary>
+        public bool CollideConnected => collideConnected;
+
+        /// <summary>
+        ///     Gets or sets the value of the local center 1
+        /// </summary>
+        public Vector2 LocalCenter1
+        {
+            get => localCenter1;
+            set => localCenter1 = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the local center 2
+        /// </summary>
+        public Vector2 LocalCenter2
+        {
+            get => localCenter2;
+            set => localCenter2 = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the inv mass 1
+        /// </summary>
+        public float InvMass1
+        {
+            get => invMass1;
+            set => invMass1 = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the inv i 1
+        /// </summary>
+        public float InvI1
+        {
+            get => invI1;
+            set => invI1 = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the inv mass 2
+        /// </summary>
+        public float InvMass2
+        {
+            get => invMass2;
+            set => invMass2 = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the inv i 2
+        /// </summary>
+        public float InvI2
+        {
+            get => invI2;
+            set => invI2 = value;
+        }
+
+        /// <summary>
+        ///     Gets the value of the anchor 1
+        /// </summary>
+        public Vector2 Anchor1 => Body1.GetWorldPoint(LocalAnchor1);
+
+        /// <summary>
+        ///     Gets the value of the anchor 2
+        /// </summary>
+        public Vector2 Anchor2 => Body2.GetWorldPoint(LocalAnchor2);
+
+        /// <summary>
+        ///     Gets or sets the value of the user data
+        /// </summary>
+        public object UserData
+        {
+            get => userData;
+            set => userData = value;
+        }
+
+        /// <summary>
         ///     Gets the reaction force using the specified inv dt
         /// </summary>
         /// <param name="invDt">The inv dt</param>
@@ -580,6 +600,31 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <param name="invDt">The inv dt</param>
         /// <returns>The float</returns>
         public float GetReactionTorque(float invDt) => invDt * Impulse.Y;
+
+        /// <summary>
+        ///     Solves the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.SolveVelocityConstraints(TimeStep step)
+        {
+            SolveVelocityConstraints(step);
+        }
+
+        /// <summary>
+        ///     Describes whether this instance solve position constraints
+        /// </summary>
+        /// <param name="baumgarte">The baumgarte</param>
+        /// <returns>The bool</returns>
+        bool IJoint.SolvePositionConstraints(float baumgarte) => SolvePositionConstraints(baumgarte);
+
+        /// <summary>
+        ///     Inits the velocity constraints using the specified step
+        /// </summary>
+        /// <param name="step">The step</param>
+        void IJoint.InitVelocityConstraints(TimeStep step)
+        {
+            InitVelocityConstraints(step);
+        }
 
         /// <summary>
         ///     Enable/disable the joint limit.
@@ -749,31 +794,6 @@ namespace Alis.Core.Physic.Dynamics.Joint
         }
 
         /// <summary>
-        /// Solves the velocity constraints using the specified step
-        /// </summary>
-        /// <param name="step">The step</param>
-        void IJoint.SolveVelocityConstraints(TimeStep step)
-        {
-            SolveVelocityConstraints(step);
-        }
-
-        /// <summary>
-        /// Describes whether this instance solve position constraints
-        /// </summary>
-        /// <param name="baumgarte">The baumgarte</param>
-        /// <returns>The bool</returns>
-        bool IJoint.SolvePositionConstraints(float baumgarte) => SolvePositionConstraints(baumgarte);
-
-        /// <summary>
-        /// Inits the velocity constraints using the specified step
-        /// </summary>
-        /// <param name="step">The step</param>
-        void IJoint.InitVelocityConstraints(TimeStep step)
-        {
-            InitVelocityConstraints(step);
-        }
-
-        /// <summary>
         ///     Solves the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
@@ -788,7 +808,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             float w2 = b2.AngularVelocity;
 
             // Solve linear motor constraint.
-            if (IsMotorEnabled && (LimitState != LimitState.EqualLimits))
+            if (IsMotorEnabled && LimitState != LimitState.EqualLimits)
             {
                 float cdot = Vector2.Dot(Axis, v2 - v1) + A2 * w2 - a1 * w1;
                 float impulse = MotorMass * (motorSpeedx - cdot);
@@ -812,7 +832,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             cdot1.X = Vector2.Dot(Perp, v2 - v1) + s2 * w2 - s1 * w1;
             cdot1.Y = w2 - w1;
 
-            if (IsLimitEnabled && (LimitState != LimitState.InactiveLimit))
+            if (IsLimitEnabled && LimitState != LimitState.InactiveLimit)
             {
                 // Solve prismatic and limit constraint in block form.
                 float cdot2;
@@ -1007,7 +1027,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             body1.SynchronizeTransform();
             body2.SynchronizeTransform();
 
-            return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
+            return linearError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
         }
     }
 }

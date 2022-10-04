@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Shape.cs
+//  File:IShape.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,24 +39,24 @@ namespace Alis.Core.Physic.Collisions.Shape
     public interface IShape : IDisposable
     {
         /// <summary>
-        /// Return the radius of the shape.
+        ///     Return the radius of the shape.
         /// </summary>
         /// <returns></returns>
         public float GetRadius();
-        
+
         /// <summary>
-        /// Return the type of the shape. You can use this to down cast to the concrete shape.
+        ///     Return the type of the shape. You can use this to down cast to the concrete shape.
         /// </summary>
         /// <returns></returns>
         public ShapeType GetShapeType();
-        
+
         /// <summary>
         ///     Test a point for containment in this shape. This only works for convex shapes.
         /// </summary>
         /// <param name="xf">The shape world transform.</param>
         /// <param name="p">A point in world coordinates.</param>
         /// <returns></returns>
-        public abstract bool TestPoint(XForm xf, Vector2 p);
+        public bool TestPoint(XForm xf, Vector2 p);
 
         /// <summary>
         ///     Perform a ray cast against this shape.
@@ -72,7 +72,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </param>
         /// <param name="segment">Defines the begin and end point of the ray cast.</param>
         /// <param name="maxLambda">A number typically in the range [0,1].</param>
-        public abstract SegmentCollide TestSegment(XForm xf, out float lambda, out Vector2 normal, Segment segment,
+        public SegmentCollide TestSegment(XForm xf, out float lambda, out Vector2 normal, Segment segment,
             float maxLambda);
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </summary>
         /// <param name="aabb">Returns the axis aligned box.</param>
         /// <param name="xf">The world transform of the shape.</param>
-        public abstract void ComputeAabb(out Aabb aabb, XForm xf);
+        public void ComputeAabb(out Aabb aabb, XForm xf);
 
         /// <summary>
         ///     Compute the mass properties of this shape using its dimensions and density.
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </summary>
         /// <param name="massData">Returns the mass data for this shape</param>
         /// <param name="density"></param>
-        public abstract void ComputeMass(out MassData massData, float density);
+        public void ComputeMass(out MassData massData, float density);
 
         /// <summary>
         ///     Compute the volume and centroid of this shape intersected with a half plane.
@@ -98,34 +98,34 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <param name="xf">The shape transform.</param>
         /// <param name="c">Returns the centroid.</param>
         /// <returns>The total volume less than offset along normal.</returns>
-        public abstract float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c);
+        public float ComputeSubmergedArea(Vector2 normal, float offset, XForm xf, out Vector2 c);
 
         /// <summary>
         ///     Compute the sweep radius. This is used for conservative advancement (continuous collision detection).
         /// </summary>
         /// <param name="pivot">Pivot is the pivot point for rotation.</param>
         /// <returns>The distance of the furthest point from the pivot.</returns>
-        public abstract float ComputeSweepRadius(Vector2 pivot);
+        public float ComputeSweepRadius(Vector2 pivot);
 
         /// <summary>
         ///     Gets the vertex using the specified index
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The vec</returns>
-        public abstract Vector2 GetVertex(int index);
+        public Vector2 GetVertex(int index);
 
         /// <summary>
         ///     Gets the support using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The int</returns>
-        public abstract int GetSupport(Vector2 d);
+        public int GetSupport(Vector2 d);
 
         /// <summary>
         ///     Gets the support vertex using the specified d
         /// </summary>
         /// <param name="d">The </param>
         /// <returns>The vec</returns>
-        public abstract Vector2 GetSupportVertex(Vector2 d);
+        public Vector2 GetSupportVertex(Vector2 d);
     }
 }

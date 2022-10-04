@@ -32,12 +32,12 @@ using System.Diagnostics;
 namespace Alis.Core.Manager
 {
     /// <summary>
-    /// The time manager class
+    ///     The time manager class
     /// </summary>
     public class TimeManager : ManagerBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TimeManager"/> class
+        ///     Initializes a new instance of the <see cref="TimeManager" /> class
         /// </summary>
         public TimeManager()
         {
@@ -130,91 +130,80 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         internal override void Init()
         {
-            
         }
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
-            
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
-            
         }
 
         /// <summary>
-        /// Befores the update
+        ///     Befores the update
         /// </summary>
         public override void BeforeUpdate()
         {
-            
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-            
         }
 
         /// <summary>
-        /// Afters the update
+        ///     Afters the update
         /// </summary>
         public override void AfterUpdate()
         {
-            
         }
 
         /// <summary>
-        /// Fixeds the update
+        ///     Fixeds the update
         /// </summary>
         public override void FixedUpdate()
         {
-            
         }
 
         /// <summary>
-        /// Dispatches the events
+        ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
-            
         }
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public override void Reset()
         {
-            
         }
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public override void Stop()
         {
-     
         }
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {
-           
         }
     }
 }

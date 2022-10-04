@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The set audio clip interface
+    ///     The set audio clip interface
     /// </summary>
     public interface ISetAudioClip<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Sets the audio clip using the specified value
+        ///     Sets the audio clip using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

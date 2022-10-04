@@ -37,19 +37,19 @@ using Alis.Core.Manager;
 namespace Alis.Core.Builder.Manager
 {
     /// <summary>
-    /// The scene manager builder class
+    ///     The scene manager builder class
     /// </summary>
     public class SceneManagerBuilder :
         IBuild<SceneManager>,
         IAdd<SceneManagerBuilder, Scene, Func<SceneBuilder, Scene>>
     {
         /// <summary>
-        /// Gets the value of the scene manager
+        ///     Gets the value of the scene manager
         /// </summary>
         private SceneManager SceneManager { get; } = new SceneManager();
 
         /// <summary>
-        /// Adds the value
+        ///     Adds the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -61,7 +61,7 @@ namespace Alis.Core.Builder.Manager
         }
 
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The scene manager</returns>
         public SceneManager Build() => SceneManager;

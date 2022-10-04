@@ -43,6 +43,13 @@ namespace Alis.Core.Physic.Dynamics.Contacts
     /// </summary>
     public abstract class Contact
     {
+
+        /// <summary>
+        ///     The shape type count
+        /// </summary>
+        public static readonly ContactRegister[][] SRegisters =
+            new ContactRegister[(int) ShapeType.ShapeTypeCount][ /*(int)ShapeType.ShapeTypeCount*/];
+
         /// <summary>
         ///     The collide shape function
         /// </summary>
@@ -152,12 +159,6 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public Fixture FixtureB { get; }
 
         /// <summary>
-        ///     The shape type count
-        /// </summary>
-        public static readonly ContactRegister[][] SRegisters =
-            new ContactRegister[(int) ShapeType.ShapeTypeCount][ /*(int)ShapeType.ShapeTypeCount*/];
-
-        /// <summary>
         ///     Adds the type using the specified create fcn
         /// </summary>
         /// <param name="createFcn">The create fcn</param>
@@ -167,8 +168,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
         public static void AddType(ContactCreateFcn createFcn, ContactDestroyFcn contactDestroyFcn,
             ShapeType type1, ShapeType type2)
         {
-            Box2DxDebug.Assert((ShapeType.UnknownShape < type1) && (type1 < ShapeType.ShapeTypeCount));
-            Box2DxDebug.Assert((ShapeType.UnknownShape < type2) && (type2 < ShapeType.ShapeTypeCount));
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
 
             if (SRegisters[(int) type1] == null)
             {
@@ -219,8 +220,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ShapeType type1 = fixtureA.ShapeType;
             ShapeType type2 = fixtureB.ShapeType;
 
-            Box2DxDebug.Assert((ShapeType.UnknownShape < type1) && (type1 < ShapeType.ShapeTypeCount));
-            Box2DxDebug.Assert((ShapeType.UnknownShape < type2) && (type2 < ShapeType.ShapeTypeCount));
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type1 && type1 < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < type2 && type2 < ShapeType.ShapeTypeCount);
 
             ContactCreateFcn createFcn = SRegisters[(int) type1][(int) type2].CreateFcn;
             if (createFcn != null)
@@ -253,8 +254,8 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             ShapeType typeA = contact.FixtureA.ShapeType;
             ShapeType typeB = contact.FixtureB.ShapeType;
 
-            Box2DxDebug.Assert((ShapeType.UnknownShape < typeA) && (typeA < ShapeType.ShapeTypeCount));
-            Box2DxDebug.Assert((ShapeType.UnknownShape < typeB) && (typeB < ShapeType.ShapeTypeCount));
+            Box2DxDebug.Assert(ShapeType.UnknownShape < typeA && typeA < ShapeType.ShapeTypeCount);
+            Box2DxDebug.Assert(ShapeType.UnknownShape < typeB && typeB < ShapeType.ShapeTypeCount);
 
             ContactDestroyFcn destroyFcn = SRegisters[(int) typeA][(int) typeB].DestroyFcn;
             destroyFcn(ref contact);
@@ -276,7 +277,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
             int oldCount = oldManifold.PointCount;
             int newCount = Manifold.PointCount;
 
-            if ((newCount == 0) && (oldCount > 0))
+            if (newCount == 0 && oldCount > 0)
             {
                 bodyBaseA.WakeUp();
                 bodyBaseB.WakeUp();
@@ -314,7 +315,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
             }
 
-            if ((oldCount == 0) && (newCount > 0))
+            if (oldCount == 0 && newCount > 0)
             {
                 Flags |= CollisionFlags.Touch;
                 if (listener != null)
@@ -323,7 +324,7 @@ namespace Alis.Core.Physic.Dynamics.Contacts
                 }
             }
 
-            if ((oldCount > 0) && (newCount == 0))
+            if (oldCount > 0 && newCount == 0)
             {
                 Flags &= ~CollisionFlags.Touch;
                 if (listener != null)

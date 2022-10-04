@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioClip.cs
+//  File:AudioClipBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,22 +34,22 @@ using Alis.Core.Audio.SFML;
 namespace Alis.Core.Audio
 {
     /// <summary>
-    /// The audio clip base class
+    ///     The audio clip base class
     /// </summary>
     public abstract class AudioClipBase
     {
         /// <summary>
-        /// The music
+        ///     The music
         /// </summary>
         private Music music;
 
         /// <summary>
-        /// The player
+        ///     The player
         /// </summary>
         private Player player;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioClipBase"/> class
+        ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
         /// <param name="fullPathAudio">The full path audio</param>
         public AudioClipBase(string fullPathAudio)
@@ -63,39 +63,9 @@ namespace Alis.Core.Audio
                 Console.WriteLine($"Init music: '{fullPathAudio}'");
             }
         }
-        
-        /// <summary>
-        /// Gets or sets the value of the sample rate
-        /// </summary>
-        public int SampleRate { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the channel count
-        /// </summary>
-        public int ChannelCount { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the duration
-        /// </summary>
-        public float Duration { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the pitch
-        /// </summary>
-        public int Pitch { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the is mute
-        /// </summary>
-        public bool IsMute { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the is playing
-        /// </summary>
-        public bool IsPlaying { get; set; }
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AudioClipBase"/> class
+        ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>
         /// <param name="fullPathAudio">The full path audio</param>
         /// <param name="audioBackendType">The audio backend type</param>
@@ -120,35 +90,65 @@ namespace Alis.Core.Audio
                 }
             }
         }
-        
+
         /// <summary>
-        /// Gets or sets the value of the full path audio file
+        ///     Gets or sets the value of the sample rate
+        /// </summary>
+        public int SampleRate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the channel count
+        /// </summary>
+        public int ChannelCount { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the duration
+        /// </summary>
+        public float Duration { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the pitch
+        /// </summary>
+        public int Pitch { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the is mute
+        /// </summary>
+        public bool IsMute { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the is playing
+        /// </summary>
+        public bool IsPlaying { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the full path audio file
         /// </summary>
         public string FullPathAudioFile { get; set; }
 
         /// <summary>
-        /// Gets the value of the audio backend type
+        ///     Gets the value of the audio backend type
         /// </summary>
         public AudioBackendType AudioBackendType { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the is loopping
+        ///     Gets or sets the value of the is loopping
         /// </summary>
         public bool IsLooping { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the volume
         /// </summary>
         public float Volume { get; set; } = 100.0f;
 
         /// <summary>
-        /// Plays this instance
+        ///     Plays this instance
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected void Play()
         {
             Console.WriteLine($"Init Music::play pass here'{FullPathAudioFile}'");
-            
+
             if (!FullPathAudioFile.Equals(""))
             {
                 switch (AudioBackendType)
@@ -172,9 +172,9 @@ namespace Alis.Core.Audio
                 IsPlaying = true;
             }
         }
-        
+
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected void Stop()
@@ -194,12 +194,13 @@ namespace Alis.Core.Audio
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+
                 IsPlaying = false;
             }
         }
-        
+
         /// <summary>
-        /// Resumes this instance
+        ///     Resumes this instance
         /// </summary>
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected void Resume()
@@ -219,6 +220,7 @@ namespace Alis.Core.Audio
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+
                 IsPlaying = true;
             }
         }

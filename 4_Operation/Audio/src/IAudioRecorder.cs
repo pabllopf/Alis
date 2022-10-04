@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RecordSourceBase.cs
+//  File:IAudioRecorder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Core.Audio
 {
     /// <summary>
-    /// The audio recorder interface
+    ///     The audio recorder interface
     /// </summary>
     public interface IAudioRecorder
     {
-        
     }
 }

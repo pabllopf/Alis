@@ -33,7 +33,7 @@ using Alis.Core.Builder.Setting;
 namespace Alis.Core.Setting
 {
     /// <summary>
-    /// The setting base class
+    ///     The setting base class
     /// </summary>
     public class SettingBase : IBuilder<SettingBuilder>
     {
@@ -46,14 +46,14 @@ namespace Alis.Core.Setting
         ///     The general
         /// </summary>
         public GeneralSetting General { get; set; } = new GeneralSetting();
-        
+
         /// <summary>
-        /// Gets or sets the value of the audio
+        ///     Gets or sets the value of the audio
         /// </summary>
         public AudioSetting Audio { get; set; } = new AudioSetting();
 
         /// <summary>
-        /// Setting build 
+        ///     Setting build
         /// </summary>
         /// <returns></returns>
         public SettingBuilder Builder() => new SettingBuilder();

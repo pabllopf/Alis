@@ -42,51 +42,6 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     /// <seealso cref="ObjectBase" />
     public class Cursor : ObjectBase
     {
-        /// <summary>
-        ///     Create a native system cursor
-        ///     Refer to the list of cursor available on each system
-        ///     (see CursorType) to know whether a given cursor is
-        ///     expected to load successfully or is not supported by
-        ///     the operating system.
-        /// </summary>
-        /// <param name="type">System cursor type</param>
-        public Cursor(CursorType type)
-            : base(sfCursor_createFromSystem(type))
-        {
-        }
-
-        /// <summary>
-        ///     Create a cursor with the provided image
-        ///     Pixels must be an array of width by height pixels
-        ///     in 32-bit RGBA format. If not, this will cause undefined behavior.
-        ///     If pixels is null or either width or height are 0,
-        ///     the current cursor is left unchanged and the function will
-        ///     return false.
-        ///     In addition to specifying the pixel data, you can also
-        ///     specify the location of the hotspot of the cursor. The
-        ///     hotspot is the pixel coordinate within the cursor image
-        ///     which will be located exactly where the mouse pointer
-        ///     position is. Any mouse actions that are performed will
-        ///     return the window/screen location of the hotspot.
-        ///     Warning: On Unix, the pixels are mapped into a monochrome
-        ///     bitmap: pixels with an alpha channel to 0 are
-        ///     transparent, black if the RGB channel are close
-        ///     to zero, and white otherwise.
-        /// </summary>
-        /// <param name="pixels">Array of pixels of the image</param>
-        /// <param name="size">Width and height of the image</param>
-        /// <param name="hotspot">(x,y) location of the hotspot</param>
-        public Cursor(byte[] pixels, Vector2U size, Vector2U hotspot)
-            : base((IntPtr) 0)
-        {
-            unsafe
-            {
-                fixed (byte* ptr = pixels)
-                {
-                    CPointer = sfCursor_createFromPixels((IntPtr) ptr, size, hotspot);
-                }
-            }
-        }
 
         /// <summary>
         ///     Enumeration of possibly available native system cursor types
@@ -196,6 +151,52 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
             ///     Linux:   Yes
             /// </summary>
             NotAllowed
+        }
+
+        /// <summary>
+        ///     Create a native system cursor
+        ///     Refer to the list of cursor available on each system
+        ///     (see CursorType) to know whether a given cursor is
+        ///     expected to load successfully or is not supported by
+        ///     the operating system.
+        /// </summary>
+        /// <param name="type">System cursor type</param>
+        public Cursor(CursorType type)
+            : base(sfCursor_createFromSystem(type))
+        {
+        }
+
+        /// <summary>
+        ///     Create a cursor with the provided image
+        ///     Pixels must be an array of width by height pixels
+        ///     in 32-bit RGBA format. If not, this will cause undefined behavior.
+        ///     If pixels is null or either width or height are 0,
+        ///     the current cursor is left unchanged and the function will
+        ///     return false.
+        ///     In addition to specifying the pixel data, you can also
+        ///     specify the location of the hotspot of the cursor. The
+        ///     hotspot is the pixel coordinate within the cursor image
+        ///     which will be located exactly where the mouse pointer
+        ///     position is. Any mouse actions that are performed will
+        ///     return the window/screen location of the hotspot.
+        ///     Warning: On Unix, the pixels are mapped into a monochrome
+        ///     bitmap: pixels with an alpha channel to 0 are
+        ///     transparent, black if the RGB channel are close
+        ///     to zero, and white otherwise.
+        /// </summary>
+        /// <param name="pixels">Array of pixels of the image</param>
+        /// <param name="size">Width and height of the image</param>
+        /// <param name="hotspot">(x,y) location of the hotspot</param>
+        public Cursor(byte[] pixels, Vector2U size, Vector2U hotspot)
+            : base((IntPtr) 0)
+        {
+            unsafe
+            {
+                fixed (byte* ptr = pixels)
+                {
+                    CPointer = sfCursor_createFromPixels((IntPtr) ptr, size, hotspot);
+                }
+            }
         }
 
         /// <summary>

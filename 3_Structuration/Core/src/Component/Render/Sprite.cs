@@ -38,38 +38,45 @@ using Alis.Core.Manager;
 namespace Alis.Core.Component.Render
 {
     /// <summary>
-    /// The sprite class
+    ///     The sprite class
     /// </summary>
-    /// <seealso cref="ComponentBase"/>
+    /// <seealso cref="ComponentBase" />
     public class Sprite : ComponentBase, IBuilder<SpriteBuilder>
     {
+
+        /// <summary>
+        ///     The image
+        /// </summary>
+        public Image Image;
+
+        /// <summary>
+        ///     The size
+        /// </summary>
+        private Vector2F size;
+
+        /// <summary>
+        ///     The sprite
+        /// </summary>
+        public Graphic.D2.SFML.Graphics.Sprite sprite;
+
+        /// <summary>
+        ///     The texture path
+        /// </summary>
+        public string texturePath;
+
         /// <summary>
         ///     The level
         /// </summary>
         public int Depth { get; set; } = 0;
 
         /// <summary>
-        ///     The sprite
+        ///     Builders this instance
         /// </summary>
-        public Alis.Core.Graphic.D2.SFML.Graphics.Sprite sprite;
+        /// <returns>The sprite builder</returns>
+        public new SpriteBuilder Builder() => new SpriteBuilder();
 
         /// <summary>
-        ///     The texture path
-        /// </summary>
-        public string texturePath;
-        
-        /// <summary>
-        /// The image
-        /// </summary>
-        public Image Image;
-
-        /// <summary>
-        /// The size
-        /// </summary>
-        private Vector2F size;
-
-        /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {
@@ -79,13 +86,13 @@ namespace Alis.Core.Component.Render
         }
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
             GraphicManager.Attach(this);
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -93,8 +100,8 @@ namespace Alis.Core.Component.Render
         public override void Start()
         {
             sprite.Position = new Vector2F(
-                (GameObject.Transform.Position.X) - (size.X / 2),
-                (GameObject.Transform.Position.Y) - (size.Y / 2));
+                GameObject.Transform.Position.X - size.X / 2,
+                GameObject.Transform.Position.Y - size.Y / 2);
             sprite.Rotation = GameObject.Transform.Rotation;
             sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
@@ -105,25 +112,19 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            sprite.Position =  new Vector2F(
-                (GameObject.Transform.Position.X) - (size.X / 2),
-                (GameObject.Transform.Position.Y) - (size.Y / 2));
+            sprite.Position = new Vector2F(
+                GameObject.Transform.Position.X - size.X / 2,
+                GameObject.Transform.Position.Y - size.Y / 2);
             sprite.Rotation = GameObject.Transform.Rotation;
             sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {
             GraphicManager.UnAttach(this);
         }
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The sprite builder</returns>
-        public new SpriteBuilder Builder() => new SpriteBuilder();
     }
 }

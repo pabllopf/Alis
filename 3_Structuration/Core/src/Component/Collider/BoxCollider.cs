@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BoxCollider2D.cs
+//  File:BoxCollider.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -26,9 +26,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using System;
-using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Collider
 {

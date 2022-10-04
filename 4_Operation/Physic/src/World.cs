@@ -492,10 +492,10 @@ namespace Alis.Core.Physic
                         toi = ContactList[i].ComputeToi(b1.Sweep, b2.Sweep);
                         //b2TimeOfImpact(c->m_fixtureA->GetShape(), b1->m_sweep, c->m_fixtureB->GetShape(), b2->m_sweep);
 
-                        Box2DxDebug.Assert((0.0f <= toi) && (toi <= 1.0f));
+                        Box2DxDebug.Assert(0.0f <= toi && toi <= 1.0f);
 
                         // If the TOI is in range ...
-                        if ((0.0f < toi) && (toi < 1.0f))
+                        if (0.0f < toi && toi < 1.0f)
                         {
                             // Interpolate on the actual range.
                             toi = Helper.Min((1.0f - toi) * t0 + toi, 1.0f);
@@ -506,7 +506,7 @@ namespace Alis.Core.Physic
                         ContactList[i].Flags |= CollisionFlags.Toi;
                     }
 
-                    if ((Settings.FltEpsilon < toi) && (toi < minToi))
+                    if (Settings.FltEpsilon < toi && toi < minToi)
                     {
                         // This is the minimum TOI found so far.
                         minContact = ContactList[i];

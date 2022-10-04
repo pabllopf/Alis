@@ -30,34 +30,34 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Audio;
 using Alis.Core.Builder.Component.Audio;
-using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Audio
 {
     /// <summary>
-    /// The audio recorder class
+    ///     The audio recorder class
     /// </summary>
-    /// <seealso cref="IAudioRecorder"/>
-    public class AudioRecorder: ComponentBase, IAudioRecorder, IBuilder<AudioRecorderBuilder>
+    /// <seealso cref="IAudioRecorder" />
+    public class AudioRecorder : ComponentBase, IAudioRecorder, IBuilder<AudioRecorderBuilder>
     {
+
         /// <summary>
-        /// Starts this instance
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The audio recorder builder</returns>
+        public new AudioRecorderBuilder Builder() => new AudioRecorderBuilder();
+
+        /// <summary>
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
         }
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The audio recorder builder</returns>
-        public new AudioRecorderBuilder Builder() => new AudioRecorderBuilder();
     }
 }

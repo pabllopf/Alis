@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IComponent.cs
+//  File:IAddComponent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,20 +32,20 @@ using System;
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The add component class
+    ///     The add component class
     /// </summary>
     public interface IAddComponent<out TBuilder, in TType>
     {
         /// <summary>
-        /// Adds the component using the specified value
+        ///     Adds the component using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
         TBuilder AddComponent<T>(Func<T, TType> value) where T : TType;
-        
+
         /// <summary>
-        /// Adds the component using the specified value
+        ///     Adds the component using the specified value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>

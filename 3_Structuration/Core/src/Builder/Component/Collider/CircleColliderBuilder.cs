@@ -30,10 +30,9 @@
 namespace Alis.Core.Builder.Component.Collider
 {
     /// <summary>
-    /// The circle collider builder class
+    ///     The circle collider builder class
     /// </summary>
     public class CircleColliderBuilder
     {
-        
     }
 }

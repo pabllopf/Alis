@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Light.cs
+//  File:LightBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entity;
-
 namespace Alis.Core.Component.Light
 {
     /// <summary>
@@ -38,15 +36,14 @@ namespace Alis.Core.Component.Light
     public abstract class LightBase : ComponentBase
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
-            
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

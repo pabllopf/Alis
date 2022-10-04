@@ -323,7 +323,7 @@ namespace Alis.Core.Physic.Collisions
         /// <param name="proxyId">The proxy id</param>
         public void DestroyProxy(int proxyId)
         {
-            Box2DxDebug.Assert((0 < ProxyCount) && (ProxyCount <= Settings.MaxProxies));
+            Box2DxDebug.Assert(0 < ProxyCount && ProxyCount <= Settings.MaxProxies);
             Proxy proxy1 = ProxyPool[proxyId];
             Box2DxDebug.Assert(proxy1.IsValid);
 
@@ -480,7 +480,7 @@ namespace Alis.Core.Physic.Collisions
                 if (deltaLower < 0)
                 {
                     int index = lowerIndex;
-                    while ((index > 0) && (lowerValue < bounds[index - 1].Value))
+                    while (index > 0 && lowerValue < bounds[index - 1].Value)
                     {
                         Bound bound = bounds[index];
                         Bound prevBound = bounds[index - 1];
@@ -516,7 +516,7 @@ namespace Alis.Core.Physic.Collisions
                 if (deltaUpper > 0)
                 {
                     int index = upperIndex;
-                    while ((index < boundCount - 1) && (bounds[index + 1].Value <= upperValue))
+                    while (index < boundCount - 1 && bounds[index + 1].Value <= upperValue)
                     {
                         Bound bound = bounds[index];
                         Bound nextBound = bounds[index + 1];
@@ -555,7 +555,7 @@ namespace Alis.Core.Physic.Collisions
                 if (deltaLower > 0)
                 {
                     int index = lowerIndex;
-                    while ((index < boundCount - 1) && (bounds[index + 1].Value <= lowerValue))
+                    while (index < boundCount - 1 && bounds[index + 1].Value <= lowerValue)
                     {
                         Bound bound = bounds[index];
                         Bound nextBound = bounds[index + 1];
@@ -591,7 +591,7 @@ namespace Alis.Core.Physic.Collisions
                 if (deltaUpper < 0)
                 {
                     int index = upperIndex;
-                    while ((index > 0) && (upperValue < bounds[index - 1].Value))
+                    while (index > 0 && upperValue < bounds[index - 1].Value)
                     {
                         Bound bound = bounds[index];
                         Bound prevBound = bounds[index - 1];
@@ -677,7 +677,7 @@ namespace Alis.Core.Physic.Collisions
             Box2DxDebug.Assert(QueryResultCount < Settings.MaxProxies);
 
             int count = 0;
-            for (int i = 0; (i < QueryResultCount) && (count < maxCount); ++i, ++count)
+            for (int i = 0; i < QueryResultCount && count < maxCount; ++i, ++count)
             {
                 Box2DxDebug.Assert(QueryResults[i] < Settings.MaxProxies);
                 Proxy proxy = ProxyPool[QueryResults[i]];
@@ -739,10 +739,10 @@ namespace Alis.Core.Physic.Collisions
             ushort proxyId;
 
             // TODO_ERIN implement fast float to ushort conversion.
-            startValues[0] = (ushort) ((ushort) p1X & (BroadphaseMax - 1));
+            startValues[0] = (ushort) ((ushort) p1X & BroadphaseMax - 1);
             startValues2[0] = (ushort) ((ushort) p1X | 1);
 
-            startValues[1] = (ushort) ((ushort) p1Y & (BroadphaseMax - 1));
+            startValues[1] = (ushort) ((ushort) p1Y & BroadphaseMax - 1);
             startValues2[1] = (ushort) ((ushort) p1Y | 1);
 
             //First deal with all the proxies that contain segment.p1
@@ -784,7 +784,7 @@ namespace Alis.Core.Physic.Collisions
                 {
                     float a = QuerySortKeys[i];
                     float b = QuerySortKeys[i + 1];
-                    if (a < 0 ? b >= 0 : (a > b) && (b >= 0))
+                    if (a < 0 ? b >= 0 : a > b && b >= 0)
                     {
                         QuerySortKeys[i + 1] = a;
                         QuerySortKeys[i] = b;
@@ -804,7 +804,7 @@ namespace Alis.Core.Physic.Collisions
                 }
 
                 //Skim off negative values
-                while ((QueryResultCount > 0) && (QuerySortKeys[QueryResultCount - 1] < 0))
+                while (QueryResultCount > 0 && QuerySortKeys[QueryResultCount - 1] < 0)
                 {
                     QueryResultCount--;
                 }
@@ -874,7 +874,7 @@ namespace Alis.Core.Physic.Collisions
                 for (;;)
                 {
                     Proxy proxy;
-                    if (sy == 0 || ((sx != 0) && (xProgress < yProgress)))
+                    if (sy == 0 || sx != 0 && xProgress < yProgress)
                     {
                         if (xProgress > maxLambda)
                         {
@@ -889,7 +889,7 @@ namespace Alis.Core.Physic.Collisions
                             proxy = ProxyPool[proxyId];
                             if (sy >= 0)
                             {
-                                if ((proxy.LowerBounds[1] <= yIndex - 1) && (proxy.UpperBounds[1] >= yIndex))
+                                if (proxy.LowerBounds[1] <= yIndex - 1 && proxy.UpperBounds[1] >= yIndex)
                                 {
                                     //Add the proxy
                                     if (sortKey != null)
@@ -905,7 +905,7 @@ namespace Alis.Core.Physic.Collisions
                             }
                             else
                             {
-                                if ((proxy.LowerBounds[1] <= yIndex) && (proxy.UpperBounds[1] >= yIndex + 1))
+                                if (proxy.LowerBounds[1] <= yIndex && proxy.UpperBounds[1] >= yIndex + 1)
                                 {
                                     //Add the proxy
                                     if (sortKey != null)
@@ -922,8 +922,8 @@ namespace Alis.Core.Physic.Collisions
                         }
 
                         //Early out
-                        if ((sortKey != null) && (QueryResultCount == maxCount) && (QueryResultCount > 0) &&
-                            (xProgress > QuerySortKeys[QueryResultCount - 1]))
+                        if (sortKey != null && QueryResultCount == maxCount && QueryResultCount > 0 &&
+                            xProgress > QuerySortKeys[QueryResultCount - 1])
                         {
                             break;
                         }
@@ -963,7 +963,7 @@ namespace Alis.Core.Physic.Collisions
                             proxy = ProxyPool[proxyId];
                             if (sx >= 0)
                             {
-                                if ((proxy.LowerBounds[0] <= xIndex - 1) && (proxy.UpperBounds[0] >= xIndex))
+                                if (proxy.LowerBounds[0] <= xIndex - 1 && proxy.UpperBounds[0] >= xIndex)
                                 {
                                     //Add the proxy
                                     if (sortKey != null)
@@ -979,7 +979,7 @@ namespace Alis.Core.Physic.Collisions
                             }
                             else
                             {
-                                if ((proxy.LowerBounds[0] <= xIndex) && (proxy.UpperBounds[0] >= xIndex + 1))
+                                if (proxy.LowerBounds[0] <= xIndex && proxy.UpperBounds[0] >= xIndex + 1)
                                 {
                                     //Add the proxy
                                     if (sortKey != null)
@@ -996,8 +996,8 @@ namespace Alis.Core.Physic.Collisions
                         }
 
                         //Early out
-                        if ((sortKey != null) && (QueryResultCount == maxCount) && (QueryResultCount > 0) &&
-                            (yProgress > QuerySortKeys[QueryResultCount - 1]))
+                        if (sortKey != null && QueryResultCount == maxCount && QueryResultCount > 0 &&
+                            yProgress > QuerySortKeys[QueryResultCount - 1])
                         {
                             break;
                         }
@@ -1028,7 +1028,7 @@ namespace Alis.Core.Physic.Collisions
             }
 
             int count = 0;
-            for (int i = 0; (i < QueryResultCount) && (count < maxCount); ++i, ++count)
+            for (int i = 0; i < QueryResultCount && count < maxCount; ++i, ++count)
             {
                 Box2DxDebug.Assert(QueryResults[i] < Settings.MaxProxies);
                 Proxy proxy = ProxyPool[QueryResults[i]];
@@ -1099,11 +1099,11 @@ namespace Alis.Core.Physic.Collisions
             // lower/upper bounds that would have equal values.
             // TODO_ERIN implement fast float to uint16 conversion.
             lowerValues[0] = (ushort) ((ushort) (QuantizationFactor.X * (minVertex.X - WorldAabb.LowerBound.X)) &
-                                       (BroadphaseMax - 1));
+                                       BroadphaseMax - 1);
             upperValues[0] = (ushort) ((ushort) (QuantizationFactor.X * (maxVertex.X - WorldAabb.LowerBound.X)) | 1);
 
             lowerValues[1] = (ushort) ((ushort) (QuantizationFactor.Y * (minVertex.Y - WorldAabb.LowerBound.Y)) &
-                                       (BroadphaseMax - 1));
+                                       BroadphaseMax - 1);
             upperValues[1] = (ushort) ((ushort) (QuantizationFactor.Y * (maxVertex.Y - WorldAabb.LowerBound.Y)) | 1);
         }
 
@@ -1288,13 +1288,13 @@ namespace Alis.Core.Physic.Collisions
             fixed (float* querySortKeysPtr = QuerySortKeys)
             {
                 float* p = querySortKeysPtr;
-                while ((*p < key) && (p < &querySortKeysPtr[QueryResultCount]))
+                while (*p < key && p < &querySortKeysPtr[QueryResultCount])
                 {
                     p++;
                 }
 
                 int i = (int) (p - &querySortKeysPtr[0]);
-                if ((maxCount == QueryResultCount) && (i == QueryResultCount))
+                if (maxCount == QueryResultCount && i == QueryResultCount)
                 {
                     return;
                 }
@@ -1364,7 +1364,7 @@ namespace Alis.Core.Physic.Collisions
             int high = count - 1;
             while (low <= high)
             {
-                int mid = (low + high) >> 1;
+                int mid = low + high >> 1;
                 if (bounds[mid].Value > value)
                 {
                     high = mid - 1;

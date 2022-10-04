@@ -1,42 +1,42 @@
-// -------------------------------------------------------------------------- 
-//  
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█  
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄ 
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█ 
-//
-//  -------------------------------------------------------------------------- 
-//  File:PhysicManager.cs 
-//  
-//  Author:Pablo Perdomo Falcón 
-//  Web:https://www.pabllopf.dev/  
-//  
-//  Copyright (c) 2021 GNU General Public License v3.0 
-//  
-//  This program is free software:you can redistribute it and/or modify 
-//  it under the terms of the GNU General Public License as published by 
-//  the Free Software Foundation, either version 3 of the License, or 
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:PhysicManager.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
-//  
-//  This program is distributed in the hope that it will be useful, 
-//  but WITHOUT ANY WARRANTY without even the implied warranty of 
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the 
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
-//  
-//  You should have received a copy of the GNU General Public License 
+// 
+//  You should have received a copy of the GNU General Public License
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
-//  
+// 
 //  --------------------------------------------------------------------------
 
 namespace Alis.Core.Manager
 {
     /// <summary>
-    /// The physic manager class
+    ///     The physic manager class
     /// </summary>
-    /// <seealso cref="ManagerBase"/>
+    /// <seealso cref="ManagerBase" />
     public class PhysicManager : ManagerBase
     {
         /// <summary>
-        /// Afters the update
+        ///     Afters the update
         /// </summary>
         public override void AfterUpdate()
         {
@@ -44,15 +44,14 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         internal override void Init()
         {
-            
         }
 
         /// <summary>
-        /// Awakes this instance
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -60,7 +59,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Befores the update
+        ///     Befores the update
         /// </summary>
         public override void BeforeUpdate()
         {
@@ -68,7 +67,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Dispatches the events
+        ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
@@ -76,7 +75,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Exits this instance
+        ///     Exits this instance
         /// </summary>
         public override void Exit()
         {
@@ -84,7 +83,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Fixeds the update
+        ///     Fixeds the update
         /// </summary>
         public override void FixedUpdate()
         {
@@ -92,7 +91,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Resets this instance
+        ///     Resets this instance
         /// </summary>
         public override void Reset()
         {
@@ -100,7 +99,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -108,7 +107,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public override void Stop()
         {
@@ -116,7 +115,7 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

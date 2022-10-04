@@ -38,15 +38,6 @@ namespace Alis.Core.Physic.Collisions.Shape
     /// <seealso cref="IShape" />
     public class EdgeShape : IShape
     {
-        /// <summary>
-        ///     The radius
-        /// </summary>
-        public float Radius { get; set; }
-
-        /// <summary>
-        ///     The unknown shape
-        /// </summary>
-        public ShapeType ShapeType { get; set; }
 
         /// <summary>
         ///     The next edge
@@ -66,6 +57,16 @@ namespace Alis.Core.Physic.Collisions.Shape
             ShapeType = ShapeType.EdgeShape;
             Radius = Settings.PolygonRadius;
         }
+
+        /// <summary>
+        ///     The radius
+        /// </summary>
+        public float Radius { get; set; }
+
+        /// <summary>
+        ///     The unknown shape
+        /// </summary>
+        public ShapeType ShapeType { get; set; }
 
         /// <summary>
         ///     Gets the value of the length
@@ -129,24 +130,6 @@ namespace Alis.Core.Physic.Collisions.Shape
         }
 
         /// <summary>
-        ///     Sets the v 1
-        /// </summary>
-        /// <param name="v1">The </param>
-        /// <param name="v2">The </param>
-        public void Set(Vector2 v1, Vector2 v2)
-        {
-            Vertex1 = v1;
-            Vertex2 = v2;
-
-            DirectionVector = Vertex2 - Vertex1;
-            Length = DirectionVector.Normalize();
-            NormalVector = Vector2.Cross(DirectionVector, 1.0f);
-
-            Corner1Vector = NormalVector;
-            Corner2Vector = -1.0f * NormalVector;
-        }
-
-        /// <summary>
         ///     Describes whether this instance test point
         /// </summary>
         /// <param name="transform">The transform</param>
@@ -182,12 +165,12 @@ namespace Alis.Core.Physic.Collisions.Shape
                 Vector2 b = segment.P1 - v1;
                 float a = Vector2.Dot(b, n);
 
-                if ((0.0f <= a) && (a <= maxLambda * denom))
+                if (0.0f <= a && a <= maxLambda * denom)
                 {
                     float mu2 = -r.X * b.Y + r.Y * b.X;
 
                     // Does the segment intersect this segment?
-                    if ((-kSlop * denom <= mu2) && (mu2 <= denom * (1.0f + kSlop)))
+                    if (-kSlop * denom <= mu2 && mu2 <= denom * (1.0f + kSlop))
                     {
                         a /= denom;
                         n.Normalize();
@@ -228,32 +211,6 @@ namespace Alis.Core.Physic.Collisions.Shape
             massData.Mass = 0.0f;
             massData.Center = Vertex1;
             massData.I = 0.0f;
-        }
-
-        /// <summary>
-        ///     Sets the prev edge using the specified edge
-        /// </summary>
-        /// <param name="edge">The edge</param>
-        /// <param name="cornerDir">The corner dir</param>
-        /// <param name="convex">The convex</param>
-        public void SetPrevEdge(EdgeShape edge, Vector2 cornerDir, bool convex)
-        {
-            PrevEdge = edge;
-            Corner1Vector = cornerDir;
-            Corner1IsConvex = convex;
-        }
-
-        /// <summary>
-        ///     Sets the next edge using the specified edge
-        /// </summary>
-        /// <param name="edge">The edge</param>
-        /// <param name="cornerDir">The corner dir</param>
-        /// <param name="convex">The convex</param>
-        public void SetNextEdge(EdgeShape edge, Vector2 cornerDir, bool convex)
-        {
-            NextEdge = edge;
-            Corner2Vector = cornerDir;
-            Corner2IsConvex = convex;
         }
 
         /// <summary>
@@ -328,18 +285,18 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <returns>The vec</returns>
         public Vector2 GetVertex(int index)
         {
-            Box2DxDebug.Assert((0 <= index) && (index < 2));
+            Box2DxDebug.Assert(0 <= index && index < 2);
             return index == 0 ? Vertex1 : Vertex2;
         }
-        
+
         /// <summary>
-        /// return the radius of the polygon
+        ///     return the radius of the polygon
         /// </summary>
         /// <returns></returns>
         public float GetRadius() => Radius;
 
         /// <summary>
-        /// return the shape type.
+        ///     return the shape type.
         /// </summary>
         /// <returns></returns>
         public ShapeType GetShapeType() => ShapeType;
@@ -354,6 +311,50 @@ namespace Alis.Core.Physic.Collisions.Shape
             float ds1 = Vector2.DistanceSquared(Vertex1, pivot);
             float ds2 = Vector2.DistanceSquared(Vertex2, pivot);
             return Helper.Sqrt(Helper.Max(ds1, ds2));
+        }
+
+        /// <summary>
+        ///     Sets the v 1
+        /// </summary>
+        /// <param name="v1">The </param>
+        /// <param name="v2">The </param>
+        public void Set(Vector2 v1, Vector2 v2)
+        {
+            Vertex1 = v1;
+            Vertex2 = v2;
+
+            DirectionVector = Vertex2 - Vertex1;
+            Length = DirectionVector.Normalize();
+            NormalVector = Vector2.Cross(DirectionVector, 1.0f);
+
+            Corner1Vector = NormalVector;
+            Corner2Vector = -1.0f * NormalVector;
+        }
+
+        /// <summary>
+        ///     Sets the prev edge using the specified edge
+        /// </summary>
+        /// <param name="edge">The edge</param>
+        /// <param name="cornerDir">The corner dir</param>
+        /// <param name="convex">The convex</param>
+        public void SetPrevEdge(EdgeShape edge, Vector2 cornerDir, bool convex)
+        {
+            PrevEdge = edge;
+            Corner1Vector = cornerDir;
+            Corner1IsConvex = convex;
+        }
+
+        /// <summary>
+        ///     Sets the next edge using the specified edge
+        /// </summary>
+        /// <param name="edge">The edge</param>
+        /// <param name="cornerDir">The corner dir</param>
+        /// <param name="convex">The convex</param>
+        public void SetNextEdge(EdgeShape edge, Vector2 cornerDir, bool convex)
+        {
+            NextEdge = edge;
+            Corner2Vector = cornerDir;
+            Corner2IsConvex = convex;
         }
     }
 }

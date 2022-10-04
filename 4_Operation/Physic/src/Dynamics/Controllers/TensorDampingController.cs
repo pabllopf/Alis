@@ -85,7 +85,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
                 return;
             }
 
-            if ((timestep > maxTimestep) && (maxTimestep > 0))
+            if (timestep > maxTimestep && maxTimestep > 0)
             {
                 timestep = maxTimestep;
             }

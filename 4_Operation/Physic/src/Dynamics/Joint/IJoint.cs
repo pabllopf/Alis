@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Joint.cs
+//  File:IJoint.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -133,13 +133,13 @@ namespace Alis.Core.Physic.Dynamics.Joint
         ///     Get the anchor point on body1 in world coordinates.
         /// </summary>
         /// <returns></returns>
-        public abstract Vector2 Anchor1 { get; }
+        public Vector2 Anchor1 { get; }
 
         /// <summary>
         ///     Get the anchor point on body2 in world coordinates.
         /// </summary>
         /// <returns></returns>
-        public abstract Vector2 Anchor2 { get; }
+        public Vector2 Anchor2 { get; }
 
         /// <summary>
         ///     Get/Set the user data pointer.
@@ -167,12 +167,12 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// <summary>
         ///     Get the reaction force on body2 at the joint anchor.
         /// </summary>
-        public abstract Vector2 GetReactionForce(float invDt);
+        public Vector2 GetReactionForce(float invDt);
 
         /// <summary>
         ///     Get the reaction torque on body2.
         /// </summary>
-        public abstract float GetReactionTorque(float invDt);
+        public float GetReactionTorque(float invDt);
 
         /// <summary>
         ///     Get the next joint the world joint list.
@@ -247,13 +247,13 @@ namespace Alis.Core.Physic.Dynamics.Joint
         ///     Inits the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal abstract void InitVelocityConstraints(TimeStep step);
+        internal void InitVelocityConstraints(TimeStep step);
 
         /// <summary>
         ///     Solves the velocity constraints using the specified step
         /// </summary>
         /// <param name="step">The step</param>
-        internal abstract void SolveVelocityConstraints(TimeStep step);
+        internal void SolveVelocityConstraints(TimeStep step);
 
         // This returns true if the position errors are within tolerance.
         /// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
         /// </summary>
         /// <param name="baumgarte">The baumgarte</param>
         /// <returns>The bool</returns>
-        internal abstract bool SolvePositionConstraints(float baumgarte);
+        internal bool SolvePositionConstraints(float baumgarte);
 
         /// <summary>
         ///     Computes the x form using the specified xf

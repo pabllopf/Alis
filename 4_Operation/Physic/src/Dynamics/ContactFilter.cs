@@ -47,13 +47,13 @@ namespace Alis.Core.Physic.Dynamics
             FilterData filterA = fixtureA.Filter;
             FilterData filterB = fixtureB.Filter;
 
-            if ((filterA.GroupIndex == filterB.GroupIndex) && (filterA.GroupIndex != 0))
+            if (filterA.GroupIndex == filterB.GroupIndex && filterA.GroupIndex != 0)
             {
                 return filterA.GroupIndex > 0;
             }
 
-            bool collide = ((filterA.MaskBits & filterB.CategoryBits) != 0) &&
-                           ((filterA.CategoryBits & filterB.MaskBits) != 0);
+            bool collide = (filterA.MaskBits & filterB.CategoryBits) != 0 &&
+                           (filterA.CategoryBits & filterB.MaskBits) != 0;
             return collide;
         }
 

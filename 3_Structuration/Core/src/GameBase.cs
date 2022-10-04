@@ -1,32 +1,31 @@
-// -------------------------------------------------------------------------- 
-//  
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█  
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄ 
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█ 
-//
-//  -------------------------------------------------------------------------- 
-//  File:IGame.cs 
-//  
-//  Author:Pablo Perdomo Falcón 
-//  Web:https://www.pabllopf.dev/  
-//  
-//  Copyright (c) 2021 GNU General Public License v3.0 
-//  
-//  This program is free software:you can redistribute it and/or modify 
-//  it under the terms of the GNU General Public License as published by 
-//  the Free Software Foundation, either version 3 of the License, or 
-//  (at your option) any later version.
-//  
-//  This program is distributed in the hope that it will be useful, 
-//  but WITHOUT ANY WARRANTY without even the implied warranty of 
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the 
-//  GNU General Public License for more details.
-//  
-//  You should have received a copy of the GNU General Public License 
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-//  
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
 //  --------------------------------------------------------------------------
-
+//  File:GameBase.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using Alis.Core.Manager;
@@ -35,37 +34,37 @@ using Alis.Core.Setting;
 namespace Alis.Core
 {
     /// <summary>
-    /// Define a game.
+    ///     Define a game.
     /// </summary>
     public abstract class GameBase
     {
         /// <summary>
-        /// Active game
+        ///     Active game
         /// </summary>
         internal static bool IsRunning;
 
         /// <summary>
-        /// Gets the value of the setting
-        /// </summary>
-        public static SettingBase Setting { get; set; } = new SettingBase();
-
-        /// <summary>
-        /// The time manager
-        /// </summary>
-        internal TimeManager timeManager = new TimeManager();
-        
-        /// <summary>
-        /// The manager base
+        ///     The manager base
         /// </summary>
         protected List<ManagerBase> Managers = new List<ManagerBase>();
 
         /// <summary>
-        /// Run program
+        ///     The time manager
+        /// </summary>
+        internal TimeManager timeManager = new TimeManager();
+
+        /// <summary>
+        ///     Gets the value of the setting
+        /// </summary>
+        public static SettingBase Setting { get; set; } = new SettingBase();
+
+        /// <summary>
+        ///     Run program
         /// </summary>
         public virtual void Run()
         {
             IsRunning = true;
-            
+
             Managers.ForEach(i => i.Init());
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
@@ -77,49 +76,48 @@ namespace Alis.Core
                 if (timeManager.IsNewFrame())
                 {
                     timeManager.UpdateTimeStep();
-                    
-                    for (int i = 0;i < timeManager.MaximunAllowedTimeStep;i++) 
+
+                    for (int i = 0; i < timeManager.MaximunAllowedTimeStep; i++)
                     {
                         Managers.ForEach(i => i.BeforeUpdate());
                         Managers.ForEach(i => i.Update());
                         Managers.ForEach(i => i.AfterUpdate());
-                        
                     }
-                    
+
                     Managers.ForEach(i => i.FixedUpdate());
-                
-                    Managers.ForEach(i => i.DispatchEvents()); 
-                
+
+                    Managers.ForEach(i => i.DispatchEvents());
+
                     timeManager.CounterFrames();
                 }
 
                 timeManager.UpdateFixedTime();
             }
-            
+
             Managers.ForEach(i => i.Stop());
             Managers.ForEach(i => i.Exit());
-            
+
             IsRunning = false;
         }
 
         /// <summary>
-        /// Gets the manager using the specified type
+        ///     Gets the manager using the specified type
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The manager base</returns>
         public T FindManager<T>() where T : ManagerBase
         {
-            return (T)Managers.FindLast(i => i.GetType() == typeof(T));
+            return (T) Managers.FindLast(i => i.GetType() == typeof(T));
         }
-        
+
         /// <summary>
-        /// Sets the manager using the specified manager
+        ///     Sets the manager using the specified manager
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="manager">The manager</param>
         public void SetManager<T>(T manager) where T : ManagerBase
         {
-            for (int i =0;i < Managers.Count;i++) 
+            for (int i = 0; i < Managers.Count; i++)
             {
                 if (Managers[i].GetType() == manager.GetType())
                 {
@@ -127,7 +125,7 @@ namespace Alis.Core
                     return;
                 }
             }
-            
+
             Managers.Add(manager);
         }
     }

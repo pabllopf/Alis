@@ -34,27 +34,27 @@ using Alis.Core.Component.Render;
 namespace Alis.Core.Builder.Component.Render
 {
     /// <summary>
-    /// The sprite builder class
+    ///     The sprite builder class
     /// </summary>
-    /// <seealso cref="IBuild{Sprite}"/>
-    public class SpriteBuilder:
+    /// <seealso cref="IBuild{Sprite}" />
+    public class SpriteBuilder :
         IBuild<Sprite>,
         IDepth<SpriteBuilder, int>,
         ISetTexture<SpriteBuilder, string>
     {
         /// <summary>
-        /// The sprite
+        ///     The sprite
         /// </summary>
         private Sprite sprite = new Sprite();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The sprite</returns>
         public Sprite Build() => sprite;
 
         /// <summary>
-        /// Depths the value
+        ///     Depths the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The sprite builder</returns>
@@ -63,9 +63,9 @@ namespace Alis.Core.Builder.Component.Render
             sprite.Depth = value;
             return this;
         }
-        
+
         /// <summary>
-        /// Textures the value
+        ///     Textures the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The sprite builder</returns>

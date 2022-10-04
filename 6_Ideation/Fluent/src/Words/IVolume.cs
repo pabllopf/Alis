@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The volume interface
+    ///     The volume interface
     /// </summary>
     public interface IVolume<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Volumes the value
+        ///     Volumes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

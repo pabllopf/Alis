@@ -30,7 +30,7 @@
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {
     /// <summary>
-    /// The mouse class
+    ///     The mouse class
     /// </summary>
     public static partial class Mouse
     {

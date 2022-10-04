@@ -33,19 +33,19 @@ using Alis.Core.Component.Audio;
 namespace Alis.Core.Builder.Component.Audio
 {
     /// <summary>
-    /// The audio recorder builder class
+    ///     The audio recorder builder class
     /// </summary>
-    /// <seealso cref="IBuild{AudioRecorder}"/>
-    public class AudioRecorderBuilder:
+    /// <seealso cref="IBuild{AudioRecorder}" />
+    public class AudioRecorderBuilder :
         IBuild<AudioRecorder>
     {
         /// <summary>
-        /// The audio recorder
+        ///     The audio recorder
         /// </summary>
         private AudioRecorder audioRecorder = new AudioRecorder();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The audio recorder</returns>
         public AudioRecorder Build() => audioRecorder;

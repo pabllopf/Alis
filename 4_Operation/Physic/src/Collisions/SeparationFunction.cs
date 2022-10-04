@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Collisions
             ShapeA = shapeA;
             ShapeB = shapeB;
             int count = cache->Count;
-            Box2DxDebug.Assert((0 < count) && (count < 3));
+            Box2DxDebug.Assert(0 < count && count < 3);
 
             if (count == 1)
             {

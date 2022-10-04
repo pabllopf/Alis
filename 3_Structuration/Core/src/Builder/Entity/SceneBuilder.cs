@@ -35,32 +35,21 @@ using Alis.Core.Entity;
 namespace Alis.Core.Builder.Entity
 {
     /// <summary>
-    /// The scene builder class
+    ///     The scene builder class
     /// </summary>
-    /// <seealso cref="IBuild{Scene}"/>
+    /// <seealso cref="IBuild{Scene}" />
     public class SceneBuilder :
         IBuild<Scene>,
         IName<SceneBuilder, string>,
         IAdd<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
     {
         /// <summary>
-        /// Gets the value of the scene
+        ///     Gets the value of the scene
         /// </summary>
         private Scene Scene { get; } = new Scene();
 
         /// <summary>
-        /// Names the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneBuilder Name(string value)
-        {
-            Scene.Name = value;
-            return this;
-        }
-        
-        /// <summary>
-        /// Adds the value
+        ///     Adds the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -70,11 +59,22 @@ namespace Alis.Core.Builder.Entity
             Scene.Add(value.Invoke(new GameObjectBuilder()));
             return this;
         }
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The scene</returns>
         public Scene Build() => Scene;
+
+        /// <summary>
+        ///     Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The scene builder</returns>
+        public SceneBuilder Name(string value)
+        {
+            Scene.Name = value;
+            return this;
+        }
     }
 }

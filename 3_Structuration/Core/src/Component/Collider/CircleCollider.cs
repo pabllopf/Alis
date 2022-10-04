@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entity;
-
 namespace Alis.Core.Component.Collider
 {
     /// <summary>
@@ -37,6 +35,5 @@ namespace Alis.Core.Component.Collider
     /// <seealso cref="ColliderBase" />
     public class CircleCollider : ColliderBase
     {
-        
     }
 }

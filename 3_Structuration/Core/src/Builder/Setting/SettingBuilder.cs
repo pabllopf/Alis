@@ -33,18 +33,18 @@ using Alis.Core.Setting;
 namespace Alis.Core.Builder.Setting
 {
     /// <summary>
-    /// Setting builder
+    ///     Setting builder
     /// </summary>
-    public class SettingBuilder:
+    public class SettingBuilder :
         IBuild<SettingBase>
     {
         /// <summary>
-        /// The setting base
+        ///     The setting base
         /// </summary>
         private SettingBase settingBase = new SettingBase();
-        
+
         /// <summary>
-        /// Build setting
+        ///     Build setting
         /// </summary>
         /// <returns></returns>
         public SettingBase Build() => settingBase;

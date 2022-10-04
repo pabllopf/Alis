@@ -30,12 +30,7 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Builder.Component;
-using Alis.Core.Builder.Component.Audio;
-using Alis.Core.Builder.Component.Render;
 using Alis.Core.Component;
-using Alis.Core.Component.Audio;
-using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Builder.Entity
@@ -47,13 +42,42 @@ namespace Alis.Core.Builder.Entity
         IBuild<GameObject>,
         IName<GameObjectBuilder, string>,
         IAddComponent<GameObjectBuilder, ComponentBase>,
-        ITransform<GameObjectBuilder, Func<TransformBuilder,Transform>>,
+        ITransform<GameObjectBuilder, Func<TransformBuilder, Transform>>,
         IWithTag<GameObjectBuilder, string>
     {
         /// <summary>
         ///     Gets or sets the value of the game object
         /// </summary>
         private GameObject gameObject = new GameObject();
+
+
+        /// <summary>
+        ///     Adds the component using the specified value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder AddComponent<T>(Func<T, ComponentBase> value) where T : ComponentBase
+        {
+            ComponentBase componentBase = value.Invoke((T) Activator.CreateInstance(typeof(T)));
+            gameObject.Add(componentBase);
+            componentBase.AttachGameObject(gameObject);
+            return this;
+        }
+
+        /// <summary>
+        ///     Adds the component using the specified value
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The game object builder</returns>
+        public GameObjectBuilder AddComponent<T>(T value) where T : ComponentBase
+        {
+            ComponentBase componentBase = (T) Activator.CreateInstance(typeof(T));
+            gameObject.Add(componentBase);
+            componentBase.AttachGameObject(gameObject);
+            return this;
+        }
 
         /// <summary>
         ///     Builds this instance
@@ -73,7 +97,7 @@ namespace Alis.Core.Builder.Entity
         }
 
         /// <summary>
-        /// Transforms the value
+        ///     Transforms the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>
@@ -83,37 +107,8 @@ namespace Alis.Core.Builder.Entity
             return this;
         }
 
-        
         /// <summary>
-        /// Adds the component using the specified value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder AddComponent<T>(Func<T, ComponentBase> value) where T : ComponentBase
-        {
-            ComponentBase componentBase = value.Invoke((T) Activator.CreateInstance(typeof(T)));
-            gameObject.Add(componentBase);
-            componentBase.AttachGameObject(gameObject);
-            return this;   
-        }
-
-        /// <summary>
-        /// Adds the component using the specified value
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The game object builder</returns>
-        public GameObjectBuilder AddComponent<T>(T value) where T : ComponentBase
-        {
-            ComponentBase componentBase = (T) Activator.CreateInstance(typeof(T));
-            gameObject.Add(componentBase);
-            componentBase.AttachGameObject(gameObject);
-            return this; 
-        }
-
-        /// <summary>
-        /// Adds the tag using the specified value
+        ///     Adds the tag using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The game object builder</returns>

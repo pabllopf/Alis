@@ -29,34 +29,34 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Builder.Component.Render;
-using Alis.Core.Entity;
 
 namespace Alis.Core.Component.Render
 {
     /// <summary>
-    /// The camera class
+    ///     The camera class
     /// </summary>
-    /// <seealso cref="ComponentBase"/>
+    /// <seealso cref="ComponentBase" />
     public class Camera : ComponentBase, IBuilder<CameraBuilder>
     {
+
         /// <summary>
-        /// Starts this instance
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The camera builder</returns>
+        public new CameraBuilder Builder() => new CameraBuilder();
+
+        /// <summary>
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
         }
-
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The camera builder</returns>
-        public new CameraBuilder Builder() => new CameraBuilder();
     }
 }

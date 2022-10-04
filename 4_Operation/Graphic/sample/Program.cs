@@ -27,11 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
-using RenderWindow = Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow;
-
 
 namespace Alis.Core.Graphic.Sample
 {
@@ -41,34 +38,34 @@ namespace Alis.Core.Graphic.Sample
     public class Program
     {
         /// <summary>
-        /// The width
+        ///     The width
         /// </summary>
-        const int WIDTH = 640;
-        
+        private const int WIDTH = 640;
+
         /// <summary>
-        /// The height
+        ///     The height
         /// </summary>
-        const int HEIGHT = 480;
-        
+        private const int HEIGHT = 480;
+
         /// <summary>
-        /// The title
+        ///     The title
         /// </summary>
-        const string TITLE = "Alis.Core.Graphic.Sample";
-        
+        private const string TITLE = "Alis.Core.Graphic.Sample";
+
         /// <summary>
-        /// The blue
+        ///     The blue
         /// </summary>
         private static byte _red, _green, _blue;
-        
+
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             VideoMode mode = new VideoMode(WIDTH, HEIGHT);
             RenderWindow window = new RenderWindow(mode, TITLE);
-            
+
             window.SetVerticalSyncEnabled(true);
             window.SetFramerateLimit(60);
 
@@ -77,13 +74,13 @@ namespace Alis.Core.Graphic.Sample
             //string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
             //Music music = new Music(fileName);
             //music.Play();
-            
+
             while (window.IsOpen)
             {
                 window.DispatchEvents();
                 window.Clear(new Color(_red, _green, _blue));
                 window.Display();
-                
+
                 _red += 1;
                 if (_red >= 100)
                     _red -= 1;

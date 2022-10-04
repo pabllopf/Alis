@@ -35,72 +35,56 @@ using Alis.Core.Builder.Component.Audio;
 namespace Alis.Core.Component.Audio
 {
     /// <summary>
-    /// The audio source class
+    ///     The audio source class
     /// </summary>
     public class AudioSource : ComponentBase, IAudioSource<AudioClip>, IBuilder<AudioSourceBuilder>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSource"/> class
+        ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
         public AudioSource(AudioClip audioClip) => AudioClip = audioClip;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="AudioSource"/> class
+        ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
         public AudioSource() => AudioClip = new AudioClip("");
 
         /// <summary>
-        /// Awakes this instance
-        /// </summary>
-        public override void Awake()
-        {
-            
-        }
-
-        /// <summary>
-        /// Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-            Play();
-        }
-
-        /// <summary>
-        /// Updates this instance
-        /// </summary>
-        public override void Update()
-        {
-
-        }
-
-        /// <summary>
-        /// Gets or sets the value of the audio clip
+        ///     Gets or sets the value of the audio clip
         /// </summary>
         public AudioClip AudioClip { get; set; }
-        
+
         /// <summary>
-        /// Gets the value of the is playing
+        ///     Gets the value of the is playing
         /// </summary>
         public bool IsPlaying => AudioClip.IsPlaying;
 
         /// <summary>
-        /// Gets or sets the value of the play on awake
+        ///     Gets or sets the value of the play on awake
         /// </summary>
         public bool PlayOnAwake { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the mute
+        ///     Gets or sets the value of the mute
         /// </summary>
-        public bool Mute { get => AudioClip.IsMute; set => AudioClip.IsMute = value; }
-        
-        /// <summary>
-        /// Gets or sets the value of the loop
-        /// </summary>
-        public bool Loop { get => AudioClip.IsLooping; set => AudioClip.IsLooping = value; }
+        public bool Mute
+        {
+            get => AudioClip.IsMute;
+            set => AudioClip.IsMute = value;
+        }
 
         /// <summary>
-        /// Gets or sets the value of the volume
+        ///     Gets or sets the value of the loop
+        /// </summary>
+        public bool Loop
+        {
+            get => AudioClip.IsLooping;
+            set => AudioClip.IsLooping = value;
+        }
+
+        /// <summary>
+        ///     Gets or sets the value of the volume
         /// </summary>
         public float Volume
         {
@@ -113,24 +97,46 @@ namespace Alis.Core.Component.Audio
         }
 
         /// <summary>
-        /// Plays this instance
+        ///     Plays this instance
         /// </summary>
         public void Play() => AudioClip.Play();
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public new void Stop() => AudioClip.Stop();
 
         /// <summary>
-        /// Resumes this instance
+        ///     Resumes this instance
         /// </summary>
         public void Resume() => AudioClip.Resume();
 
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The audio source builder</returns>
         public new AudioSourceBuilder Builder() => new AudioSourceBuilder();
+
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+        }
+
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public override void Start()
+        {
+            Play();
+        }
+
+        /// <summary>
+        ///     Updates this instance
+        /// </summary>
+        public override void Update()
+        {
+        }
     }
 }

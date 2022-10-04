@@ -35,42 +35,28 @@ using Alis.Core.Component.Audio;
 namespace Alis.Core.Builder.Component.Audio
 {
     /// <summary>
-    /// The audio source builder class
+    ///     The audio source builder class
     /// </summary>
-    /// <seealso cref="IBuild{AudioSource}"/>
-    public class AudioSourceBuilder:
+    /// <seealso cref="IBuild{AudioSource}" />
+    public class AudioSourceBuilder :
         IBuild<AudioSource>,
         IIsActive<AudioSourceBuilder, bool>,
-        ISetAudioClip<AudioSourceBuilder, Func<AudioClipBuilder,AudioClip>>,
+        ISetAudioClip<AudioSourceBuilder, Func<AudioClipBuilder, AudioClip>>,
         IPlayOnAwake<AudioSourceBuilder, bool>
     {
         /// <summary>
-        /// Gets or sets the value of the audio source
+        ///     Gets or sets the value of the audio source
         /// </summary>
         private AudioSource audioSource = new AudioSource();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The audio source</returns>
-        public AudioSource Build()
-        {
-            return audioSource;
-        }
+        public AudioSource Build() => audioSource;
 
         /// <summary>
-        /// Sets the audio clip using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The audio source builder</returns>
-        public AudioSourceBuilder SetAudioClip(Func<AudioClipBuilder, AudioClip> value)
-        {
-            audioSource.AudioClip = value.Invoke(new AudioClipBuilder());
-            return this;
-        }
-
-        /// <summary>
-        /// Ises the active using the specified value
+        ///     Ises the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio source builder</returns>
@@ -79,15 +65,26 @@ namespace Alis.Core.Builder.Component.Audio
             audioSource.IsActive = value;
             return this;
         }
-        
+
         /// <summary>
-        /// Plays the on awake using the specified value
+        ///     Plays the on awake using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The audio source builder</returns>
         public AudioSourceBuilder PlayOnAwake(bool value)
         {
             audioSource.PlayOnAwake = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Sets the audio clip using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The audio source builder</returns>
+        public AudioSourceBuilder SetAudioClip(Func<AudioClipBuilder, AudioClip> value)
+        {
+            audioSource.AudioClip = value.Invoke(new AudioClipBuilder());
             return this;
         }
     }

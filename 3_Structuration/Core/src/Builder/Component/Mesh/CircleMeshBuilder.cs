@@ -30,10 +30,9 @@
 namespace Alis.Core.Builder.Component.Mesh
 {
     /// <summary>
-    /// The circle mesh builder class
+    ///     The circle mesh builder class
     /// </summary>
     public class CircleMeshBuilder
     {
-        
     }
 }

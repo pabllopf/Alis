@@ -37,7 +37,6 @@ using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 
-
 namespace Alis.Core.Audio.SFML
 {
     ////////////////////////////////////////////////////////////
@@ -45,7 +44,6 @@ namespace Alis.Core.Audio.SFML
     ///     Streamed music played from an audio file
     /// </summary>
     ////////////////////////////////////////////////////////////
-    
     internal class Music : ObjectBase
     {
         /// <summary>
@@ -67,7 +65,6 @@ namespace Alis.Core.Audio.SFML
                 throw new LoadingFailedException("music", filename);
             }
         }
-
 
 
         ////////////////////////////////////////////////////////////
@@ -593,8 +590,6 @@ namespace Alis.Core.Audio.SFML
         /// <returns>The systems time</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern Time sfMusic_getPlayingOffset(IntPtr music);
-
-        
 
 
         /// <summary>

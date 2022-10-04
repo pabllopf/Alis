@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SphereMesh.cs
+//  File:CircleMesh.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -26,8 +26,6 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using System;
 
 namespace Alis.Core.Component.Mesh
 {

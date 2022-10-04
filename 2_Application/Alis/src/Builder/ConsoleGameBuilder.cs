@@ -33,25 +33,25 @@ namespace Alis.Builder
 {
 
     /// <summary>
-    /// The console game builder class
+    ///     The console game builder class
     /// </summary>
-    /// <seealso cref="IBuild{ConsoleGame}"/>
+    /// <seealso cref="IBuild{ConsoleGame}" />
     public class ConsoleGameBuilder :
         IBuild<ConsoleGame>
     {
         /// <summary>
-        /// Gets the value of the console game
+        ///     Gets the value of the console game
         /// </summary>
         private ConsoleGame ConsoleGame { get; } = new ConsoleGame();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The console game</returns>
         public ConsoleGame Build() => ConsoleGame;
-        
+
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run() => ConsoleGame.Run();
     }

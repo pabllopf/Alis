@@ -35,17 +35,17 @@ namespace Alis.Core.Aspect.Base
     public class AlisObject : object
     {
         /// <summary>
-        /// The name
+        ///     The name
         /// </summary>
         public string Name { get; set; } = "Default Name";
 
         /// <summary>
-        /// The tag
+        ///     The tag
         /// </summary>
-        public string Tag  { get; set; } = "Default Tag";
+        public string Tag { get; set; } = "Default Tag";
 
         /// <summary>
-        /// Gets or sets the value of the is active
+        ///     Gets or sets the value of the is active
         /// </summary>
         public bool IsActive { get; set; } = true;
 

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Builder.Manager;
@@ -38,9 +39,9 @@ using Alis.Core.Setting;
 namespace Alis.Builder
 {
     /// <summary>
-    /// The video game builder class
+    ///     The video game builder class
     /// </summary>
-    /// <seealso cref="IBuild{VideoGame}"/>
+    /// <seealso cref="IBuild{VideoGame}" />
     public class VideoGameBuilder :
         IBuild<VideoGame>,
         IManager<VideoGameBuilder, SceneManager, Func<SceneManagerBuilder, SceneManager>>,
@@ -53,9 +54,9 @@ namespace Alis.Builder
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
         public VideoGame Build() => VideoGame;
-        
+
         /// <summary>
-        /// Managers the value
+        ///     Managers the value
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
@@ -65,19 +66,19 @@ namespace Alis.Builder
             VideoGame.SetManager(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
-        
-        /// <summary>Runs this instance.</summary>
-        public void Run() => VideoGame.Run();
 
         /// <summary>
-        /// Setting builder
+        ///     Setting builder
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
         public VideoGameBuilder Settings(Func<SettingBuilder, SettingBase> value)
         {
-            VideoGame.Setting = value.Invoke(new SettingBuilder());
+            GameBase.Setting = value.Invoke(new SettingBuilder());
             return this;
         }
+
+        /// <summary>Runs this instance.</summary>
+        public void Run() => VideoGame.Run();
     }
 }

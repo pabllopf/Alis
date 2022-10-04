@@ -74,12 +74,12 @@ namespace Alis.Core.Physic.Collisions
                 Vector2 b = s - P1;
                 float a = Vector2.Dot(b, n);
 
-                if ((0.0f <= a) && (a <= maxLambda * denom))
+                if (0.0f <= a && a <= maxLambda * denom)
                 {
                     float mu2 = -r.X * b.Y + r.Y * b.X;
 
                     // Does the segment intersect this segment?
-                    if ((-kSlop * denom <= mu2) && (mu2 <= denom * (1.0f + kSlop)))
+                    if (-kSlop * denom <= mu2 && mu2 <= denom * (1.0f + kSlop))
                     {
                         a /= denom;
                         n.Normalize();

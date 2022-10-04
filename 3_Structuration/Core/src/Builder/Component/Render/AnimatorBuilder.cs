@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Animatorbuilder.cs
+//  File:AnimatorBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Core.Builder.Component.Render
 {
     /// <summary>
-    /// The animator builder class
+    ///     The animator builder class
     /// </summary>
     public class AnimatorBuilder
     {
-        
     }
 }

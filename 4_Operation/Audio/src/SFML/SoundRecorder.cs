@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
 
-
 namespace Alis.Core.Audio.SFML
 {
     ////////////////////////////////////////////////////////////

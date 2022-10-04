@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Component.Light
 {
     /// <summary>
@@ -37,6 +35,5 @@ namespace Alis.Core.Component.Light
     /// <seealso cref="LightBase" />
     public class DirectionalLight : LightBase
     {
-
     }
 }

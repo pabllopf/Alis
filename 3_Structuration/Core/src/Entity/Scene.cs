@@ -39,27 +39,25 @@ namespace Alis.Core.Entity
     public class Scene : AlisObject
     {
         /// <summary>
-        /// The game objects
+        ///     The game objects
         /// </summary>
         private List<GameObject> gameObjects;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Scene"/> class
+        ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
-        public Scene() 
-        {
-            gameObjects = new List<GameObject>();
-        }
+        public Scene() => gameObjects = new List<GameObject>();
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         internal void Init()
         {
-            for (int i =0;i < gameObjects.Count;i++) 
+            for (int i = 0; i < gameObjects.Count; i++)
             {
                 Logger.Log($"Scene::Init::GameObject'{gameObjects[i].Name}'");
             }
+
             gameObjects.ForEach(gameObject => gameObject.Init());
         }
 
@@ -144,7 +142,7 @@ namespace Alis.Core.Entity
         }
 
         /// <summary>
-        /// Adds the game object
+        ///     Adds the game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         public void Add(GameObject gameObject)

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:UnixPlayerBase.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -6,46 +35,41 @@ using Alis.Core.Audio.OS.Interfaces;
 namespace Alis.Core.Audio.OS.Players
 {
     /// <summary>
-    /// The unix player base class
+    ///     The unix player base class
     /// </summary>
-    /// <seealso cref="IPlayer"/>
+    /// <seealso cref="IPlayer" />
     internal abstract class UnixPlayerBase : IPlayer
     {
-        /// <summary>
-        /// The process
-        /// </summary>
-        private Process _process = null;
 
         /// <summary>
-        /// The pause process command
+        ///     The pause process command
         /// </summary>
         internal const string PauseProcessCommand = "kill -STOP {0}";
+
         /// <summary>
-        /// The resume process command
+        ///     The resume process command
         /// </summary>
         internal const string ResumeProcessCommand = "kill -CONT {0}";
+
+        /// <summary>
+        ///     The process
+        /// </summary>
+        private Process _process;
 
         public event EventHandler PlaybackFinished;
 
         /// <summary>
-        /// Gets or sets the value of the playing
+        ///     Gets or sets the value of the playing
         /// </summary>
         public bool Playing { get; private set; }
 
         /// <summary>
-        /// Gets or sets the value of the paused
+        ///     Gets or sets the value of the paused
         /// </summary>
         public bool Paused { get; private set; }
 
         /// <summary>
-        /// Gets the bash command using the specified file name
-        /// </summary>
-        /// <param name="fileName">The file name</param>
-        /// <returns>The string</returns>
-        protected abstract string GetBashCommand(string fileName);
-
-        /// <summary>
-        /// Plays the file name
+        ///     Plays the file name
         /// </summary>
         /// <param name="fileName">The file name</param>
         public async Task Play(string fileName)
@@ -61,7 +85,7 @@ namespace Alis.Core.Audio.OS.Players
         }
 
         /// <summary>
-        /// Pauses this instance
+        ///     Pauses this instance
         /// </summary>
         public Task Pause()
         {
@@ -76,7 +100,7 @@ namespace Alis.Core.Audio.OS.Players
         }
 
         /// <summary>
-        /// Resumes this instance
+        ///     Resumes this instance
         /// </summary>
         public Task Resume()
         {
@@ -91,7 +115,7 @@ namespace Alis.Core.Audio.OS.Players
         }
 
         /// <summary>
-        /// Stops this instance
+        ///     Stops this instance
         /// </summary>
         public Task Stop()
         {
@@ -109,7 +133,20 @@ namespace Alis.Core.Audio.OS.Players
         }
 
         /// <summary>
-        /// Starts the bash process using the specified command
+        ///     Sets the volume using the specified percent
+        /// </summary>
+        /// <param name="percent">The percent</param>
+        public abstract Task SetVolume(byte percent);
+
+        /// <summary>
+        ///     Gets the bash command using the specified file name
+        /// </summary>
+        /// <param name="fileName">The file name</param>
+        /// <returns>The string</returns>
+        protected abstract string GetBashCommand(string fileName);
+
+        /// <summary>
+        ///     Starts the bash process using the specified command
         /// </summary>
         /// <param name="command">The command</param>
         /// <returns>The process</returns>
@@ -117,7 +154,7 @@ namespace Alis.Core.Audio.OS.Players
         {
             var escapedArgs = command.Replace("\"", "\\\"");
 
-            var process = new Process()
+            var process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
@@ -126,7 +163,7 @@ namespace Alis.Core.Audio.OS.Players
                     RedirectStandardOutput = true,
                     RedirectStandardInput = true,
                     UseShellExecute = false,
-                    CreateNoWindow = true,
+                    CreateNoWindow = true
                 }
             };
             process.Start();
@@ -134,7 +171,7 @@ namespace Alis.Core.Audio.OS.Players
         }
 
         /// <summary>
-        /// Handles the playback finished using the specified sender
+        ///     Handles the playback finished using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
@@ -146,11 +183,5 @@ namespace Alis.Core.Audio.OS.Players
                 PlaybackFinished?.Invoke(this, e);
             }
         }
-
-        /// <summary>
-        /// Sets the volume using the specified percent
-        /// </summary>
-        /// <param name="percent">The percent</param>
-        public abstract Task SetVolume(byte percent);
     }
 }

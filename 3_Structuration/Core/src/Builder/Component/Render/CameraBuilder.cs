@@ -30,10 +30,9 @@
 namespace Alis.Core.Builder.Component.Render
 {
     /// <summary>
-    /// The camera builder class
+    ///     The camera builder class
     /// </summary>
     public class CameraBuilder
     {
-        
     }
 }

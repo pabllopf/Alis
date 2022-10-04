@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioType.cs
+//  File:AudioBackendType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,17 +30,17 @@
 namespace Alis.Core.Audio
 {
     /// <summary>
-    /// The audio type enum
+    ///     The audio type enum
     /// </summary>
     public enum AudioBackendType
     {
         /// <summary>
-        /// The os audio type
+        ///     The os audio type
         /// </summary>
         OS = 0,
-        
+
         /// <summary>
-        /// The sfml audio type
+        ///     The sfml audio type
         /// </summary>
         SFML = 1
     }

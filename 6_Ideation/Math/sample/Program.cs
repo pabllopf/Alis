@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.Write($"");
+            Console.Write("");
             Console.ReadKey();
         }
     }

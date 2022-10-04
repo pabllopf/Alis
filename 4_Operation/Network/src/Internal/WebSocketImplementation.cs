@@ -49,6 +49,12 @@ namespace Alis.Core.Network.Internal
     /// </summary>
     internal class WebSocketImplementation : WebSocket
     {
+
+        /// <summary>
+        ///     The max ping pong payload len
+        /// </summary>
+        private const int MaxPingPongPayloadLen = 125;
+
         /// <summary>
         ///     The guid
         /// </summary>
@@ -206,11 +212,6 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         public TimeSpan KeepAliveInterval { get; }
 
-        /// <summary>
-        ///     The max ping pong payload len
-        /// </summary>
-        private const int MaxPingPongPayloadLen = 125;
-
         public event EventHandler<PongEventArgs> Pong;
 
         /// <summary>
@@ -283,7 +284,7 @@ namespace Alis.Core.Network.Internal
                             throw;
                         }
 
-                        bool endOfMessage = frame.IsFinBitSet && (_readCursor.NumBytesLeftToRead == 0);
+                        bool endOfMessage = frame.IsFinBitSet && _readCursor.NumBytesLeftToRead == 0;
                         switch (frame.OpCode)
                         {
                             case WebSocketOpCode.ConnectionClose:

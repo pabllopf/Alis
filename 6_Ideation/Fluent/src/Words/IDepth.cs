@@ -30,16 +30,15 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The depth interface
+    ///     The depth interface
     /// </summary>
     public interface IDepth<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Depths the value
+        ///     Depths the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
         TBuilder Depth(TArgument value);
     }
 }
-        

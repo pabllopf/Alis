@@ -102,7 +102,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Color represented as a 32-bit unsigned integer</returns>
         ////////////////////////////////////////////////////////////
-        public uint ToInteger() => (uint) ((R << 24) | (G << 16) | (B << 8) | A);
+        public uint ToInteger() => (uint) (R << 24 | G << 16 | B << 8 | A);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -128,7 +128,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="other">Color to check</param>
         /// <returns>Colors are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Color other) => (R == other.R) && (G == other.G) && (B == other.B) && (A == other.A);
+        public bool Equals(Color other) => R == other.R && G == other.G && B == other.B && A == other.A;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -136,7 +136,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode() => (R << 24) | (G << 16) | (B << 8) | A;
+        public override int GetHashCode() => R << 24 | G << 16 | B << 8 | A;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

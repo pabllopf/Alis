@@ -28,28 +28,25 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
-using Alis.Core.Component.Audio;
-using Alis.Core.Entity;
 
 namespace Alis.Sample.Rogue
 {
     /// <summary>
-    /// Move control of player
+    ///     Move control of player
     /// </summary>
     public class PlayerMovement : ComponentBase
     {
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
-        { 
+        {
             Console.WriteLine($"Tag:object:{Tag}");
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

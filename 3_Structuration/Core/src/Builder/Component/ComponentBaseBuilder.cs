@@ -28,41 +28,37 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Fluent;
 using Alis.Core.Component;
 
 namespace Alis.Core.Builder.Component
 {
     /// <summary>
-    /// The component base builder class
+    ///     The component base builder class
     /// </summary>
     public class ComponentBaseBuilder
     {
         /// <summary>
-        /// The component base
+        ///     The component base
         /// </summary>
         private ComponentBase componentBase;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentBaseBuilder"/> class
+        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
         /// </summary>
         /// <param name="componentBase">The component base</param>
-        public ComponentBaseBuilder(ComponentBase componentBase)
-        {
-            this.componentBase = componentBase;
-        }
-        
+        public ComponentBaseBuilder(ComponentBase componentBase) => this.componentBase = componentBase;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ComponentBaseBuilder"/> class
+        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
         /// </summary>
         public ComponentBaseBuilder()
         {
         }
 
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The component base</returns>
-        public ComponentBase Build() => (ComponentBase)Activator.CreateInstance(componentBase.GetType());
+        public ComponentBase Build() => (ComponentBase) Activator.CreateInstance(componentBase.GetType());
     }
 }

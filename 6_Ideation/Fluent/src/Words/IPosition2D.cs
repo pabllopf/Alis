@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Fluent.Words
     public interface IPosition2D<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        /// Positions the x
+        ///     Positions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

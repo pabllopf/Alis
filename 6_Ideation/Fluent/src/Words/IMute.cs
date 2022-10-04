@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The mute interface
+    ///     The mute interface
     /// </summary>
     public interface IMute<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Mutes the value
+        ///     Mutes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

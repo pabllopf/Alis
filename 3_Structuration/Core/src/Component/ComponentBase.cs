@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Component.cs
+//  File:ComponentBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -37,12 +37,38 @@ namespace Alis.Core.Component
     public abstract class ComponentBase : IBuilder<ComponentBaseBuilder>
     {
         /// <summary>
-        /// Game Object.
+        ///     Game Object.
         /// </summary>
         public GameObject GameObject { get; set; }
-        
+
         /// <summary>
-        /// Attaches the game object using the specified game object
+        ///     Gets or sets the value of the is active
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the tag
+        /// </summary>
+        public string Tag { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the tag
+        /// </summary>
+        public Transform Transform { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the destroyed
+        /// </summary>
+        public bool Destroyed { get; set; }
+
+        /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The component base builder</returns>
+        public ComponentBaseBuilder Builder() => new ComponentBaseBuilder(this);
+
+        /// <summary>
+        ///     Attaches the game object using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
         internal void AttachGameObject(GameObject gameObject)
@@ -51,26 +77,6 @@ namespace Alis.Core.Component
             Tag = GameObject.Tag;
             Transform = GameObject.Transform;
         }
-        
-        /// <summary>
-        ///     Gets or sets the value of the is active
-        /// </summary>
-        public bool IsActive { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the tag
-        /// </summary>
-        public string Tag { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the tag
-        /// </summary>
-        public Transform Transform { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the destroyed
-        /// </summary>
-        public bool Destroyed { get; set; }
 
         /// <summary>
         ///     Ons the destroy
@@ -92,12 +98,12 @@ namespace Alis.Core.Component
         }
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public virtual void Init()
         {
         }
-        
+
         /// <summary>Awakes this instance.</summary>
         public virtual void Awake()
         {
@@ -178,44 +184,31 @@ namespace Alis.Core.Component
         }
 
         /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The component base builder</returns>
-        public ComponentBaseBuilder Builder()
-        {
-            return new ComponentBaseBuilder(this);
-        }
-
-        /// <summary>
-        /// Destroys the immediate
+        ///     Destroys the immediate
         /// </summary>
         public static void DestroyImmediate()
         {
-            
         }
-        
+
         /// <summary>
-        /// Donts the destroy on load
+        ///     Donts the destroy on load
         /// </summary>
         public static void DontDestroyOnLoad()
         {
-            
         }
-        
+
         /// <summary>
-        /// Finds the object of type
+        ///     Finds the object of type
         /// </summary>
         public static void FindObjectOfType()
         {
-            
         }
-        
+
         /// <summary>
-        /// Finds the objects of type
+        ///     Finds the objects of type
         /// </summary>
         public static void FindObjectsOfType()
         {
-            
         }
     }
 }

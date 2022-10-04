@@ -38,15 +38,6 @@ namespace Alis.Core.Physic.Collisions.Shape
     /// </summary>
     public class CircleShape : IShape
     {
-        /// <summary>
-        ///     The radius
-        /// </summary>
-        public float Radius { get; set; }
-
-        /// <summary>
-        ///     The unknown shape
-        /// </summary>
-        public ShapeType ShapeType { get; set; }
 
         // Position
         /// <summary>
@@ -62,6 +53,16 @@ namespace Alis.Core.Physic.Collisions.Shape
             Radius = radius;
             ShapeType = ShapeType.CircleShape;
         }
+
+        /// <summary>
+        ///     The radius
+        /// </summary>
+        public float Radius { get; set; }
+
+        /// <summary>
+        ///     The unknown shape
+        /// </summary>
+        public ShapeType ShapeType { get; set; }
 
         /// <summary>
         ///     Get the vertex count.
@@ -128,7 +129,7 @@ namespace Alis.Core.Physic.Collisions.Shape
             float a = -(c + Helper.Sqrt(sigma));
 
             // Is the intersection point on the segment?
-            if ((0.0f <= a) && (a <= maxLambda * rr))
+            if (0.0f <= a && a <= maxLambda * rr)
             {
                 a /= rr;
                 lambda = a;
@@ -145,7 +146,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </summary>
         /// <param name="aabb">The aabb</param>
         /// <param name="transform">The transform</param>
-        public  void ComputeAabb(out Aabb aabb, XForm transform)
+        public void ComputeAabb(out Aabb aabb, XForm transform)
         {
             aabb = new Aabb();
 
@@ -159,7 +160,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </summary>
         /// <param name="massData">The mass data</param>
         /// <param name="density">The density</param>
-        public  void ComputeMass(out MassData massData, float density)
+        public void ComputeMass(out MassData massData, float density)
         {
             massData = new MassData();
 
@@ -212,17 +213,17 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <summary>
         ///     Get the supporting vertex index in the given direction.
         /// </summary>
-        public  int GetSupport(Vector2 d) => 0;
+        public int GetSupport(Vector2 d) => 0;
 
         /// <summary>
         ///     Get the supporting vertex in the given direction.
         /// </summary>
-        public  Vector2 GetSupportVertex(Vector2 d) => Position;
+        public Vector2 GetSupportVertex(Vector2 d) => Position;
 
         /// <summary>
         ///     Get a vertex by index. Used by Distance.
         /// </summary>
-        public  Vector2 GetVertex(int index)
+        public Vector2 GetVertex(int index)
         {
             Box2DxDebug.Assert(index == 0);
             return Position;
@@ -233,24 +234,23 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </summary>
         /// <param name="pivot">The pivot</param>
         /// <returns>The float</returns>
-        public  float ComputeSweepRadius(Vector2 pivot) => Vector2.Distance(Position, pivot);
+        public float ComputeSweepRadius(Vector2 pivot) => Vector2.Distance(Position, pivot);
 
         /// <summary>
-        /// dispose 
+        ///     dispose
         /// </summary>
         public void Dispose()
         {
-            
         }
-        
+
         /// <summary>
-        /// return the radius of the polygon
+        ///     return the radius of the polygon
         /// </summary>
         /// <returns></returns>
         public float GetRadius() => Radius;
 
         /// <summary>
-        /// return the shape type.
+        ///     return the shape type.
         /// </summary>
         /// <returns></returns>
         public ShapeType GetShapeType() => ShapeType;

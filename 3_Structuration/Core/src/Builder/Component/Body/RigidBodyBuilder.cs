@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:BodyBaseBuilder.cs
+//  File:RigidBodyBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Core.Builder.Component.Body
 {
     /// <summary>
-    /// The rigid body builder class
+    ///     The rigid body builder class
     /// </summary>
     public class RigidBodyBuilder
     {
-        
     }
 }

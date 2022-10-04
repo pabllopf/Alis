@@ -32,25 +32,25 @@ using Alis.Core.Aspect.Fluent;
 namespace Alis.Builder
 {
     /// <summary>
-    /// The sound game builder class
+    ///     The sound game builder class
     /// </summary>
-    /// <seealso cref="IBuild{VideoGame}"/>
+    /// <seealso cref="IBuild{VideoGame}" />
     public class SoundGameBuilder :
         IBuild<SoundGame>
     {
         /// <summary>
-        /// Gets the value of the sound game
+        ///     Gets the value of the sound game
         /// </summary>
         private SoundGame SoundGame { get; } = new SoundGame();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The sound game</returns>
         public SoundGame Build() => SoundGame;
-        
+
         /// <summary>
-        /// Runs this instance
+        ///     Runs this instance
         /// </summary>
         public void Run() => SoundGame.Run();
     }

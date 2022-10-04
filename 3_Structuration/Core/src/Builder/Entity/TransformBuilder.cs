@@ -35,28 +35,28 @@ using Alis.Core.Entity;
 namespace Alis.Core.Builder.Entity
 {
     /// <summary>
-    /// The transform builder class
+    ///     The transform builder class
     /// </summary>
-    /// <seealso cref="IBuild{Transform}"/>
-    public class TransformBuilder:
+    /// <seealso cref="IBuild{Transform}" />
+    public class TransformBuilder :
         IBuild<Transform>,
         IPosition2D<TransformBuilder, float, float>,
         IRotation<TransformBuilder, float>,
         IScale2D<TransformBuilder, float, float>
     {
         /// <summary>
-        /// The transform
+        ///     The transform
         /// </summary>
         private Transform transform = new Transform();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The transform</returns>
         public Transform Build() => transform;
-        
+
         /// <summary>
-        /// Positions the x
+        ///     Positions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -68,7 +68,7 @@ namespace Alis.Core.Builder.Entity
         }
 
         /// <summary>
-        /// Rotations the angle
+        ///     Rotations the angle
         /// </summary>
         /// <param name="angle">The angle</param>
         /// <returns>The transform builder</returns>
@@ -79,7 +79,7 @@ namespace Alis.Core.Builder.Entity
         }
 
         /// <summary>
-        /// Scales the x
+        ///     Scales the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -89,6 +89,5 @@ namespace Alis.Core.Builder.Entity
             transform.Scale = new Vector2(x, y);
             return this;
         }
-        
     }
 }

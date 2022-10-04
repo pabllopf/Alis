@@ -36,7 +36,6 @@ using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 
-
 namespace Alis.Core.Audio.SFML
 {
     ////////////////////////////////////////////////////////////
