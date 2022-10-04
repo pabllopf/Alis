@@ -47,7 +47,7 @@ namespace Alis.Core
         /// <summary>
         /// Gets the value of the setting
         /// </summary>
-        public static SettingBase Setting { get; } = new SettingBase();
+        public static SettingBase Setting { get; set; } = new SettingBase();
 
         /// <summary>
         /// The time manager

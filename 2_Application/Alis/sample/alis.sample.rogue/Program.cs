@@ -51,9 +51,8 @@ namespace Alis.Sample.Rogue
             Console.WriteLine("Start game");
             
             VideoGame.Builder()
-                .Setting()
-                .Builder()
-                .Build()
+                .Settings(i => i
+                    .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager
                     .Add<Scene>(scene => scene
                         .Name("Main Menu")
