@@ -51,6 +51,9 @@ namespace Alis.Sample.Rogue
             Console.WriteLine("Start game");
             
             VideoGame.Builder()
+                .Setting()
+                .Builder()
+                .Build()
                 .Manager<SceneManager>(sceneManager => sceneManager
                     .Add<Scene>(scene => scene
                         .Name("Main Menu")
@@ -88,7 +91,7 @@ namespace Alis.Sample.Rogue
                                 .IsActive(true)
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath(Environment.CurrentDirectory +  "\\Assets\\menu.wav")
+                                    .FilePath(Environment.CurrentDirectory +  "/Assets/menu.wav")
                                     .Volume(100.0f)
                                     .Mute(false)
                                     .Build())

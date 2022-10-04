@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingBase.cs
+//  File:SettingBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,34 +28,22 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Builder.Setting;
+using Alis.Core.Setting;
 
-namespace Alis.Core.Setting
+namespace Alis.Core.Builder.Setting
 {
     /// <summary>
-    /// The setting base class
+    /// Setting builder
     /// </summary>
-    public class SettingBase : IBuilder<SettingBuilder>
+    public class SettingBuilder:
+        IBuild<SettingBase>
     {
-        /// <summary>
-        ///     The debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
-
-        /// <summary>
-        ///     The general
-        /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
+        private SettingBase settingBase = new SettingBase();
         
         /// <summary>
-        /// Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Setting build 
+        /// Build setting
         /// </summary>
         /// <returns></returns>
-        public SettingBuilder Builder() => new SettingBuilder();
+        public SettingBase Build() => settingBase;
     }
 }
