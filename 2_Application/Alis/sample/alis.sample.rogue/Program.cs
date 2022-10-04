@@ -49,6 +49,9 @@ namespace Alis.Sample.Rogue
         public static void Main(string[] args)
         {
             Console.WriteLine("Start game");
+
+            GameObject gameObject = new GameObject();
+            
             
             VideoGame.Builder()
                 .Settings(i => i

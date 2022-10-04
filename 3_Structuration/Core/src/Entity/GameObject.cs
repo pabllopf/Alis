@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.ComponentModel;
 using Alis.Core.Aspect.Base;
 using Alis.Core.Builder.Entity;
 using Alis.Core.Component;
@@ -40,7 +41,7 @@ namespace Alis.Core.Entity
         /// <summary>
         /// The transform
         /// </summary>
-        public Transform Transform = new Transform();
+        public Transform Transform { get; internal set; } = new Transform();
 
         /// <summary>
         /// The components
@@ -83,40 +84,40 @@ namespace Alis.Core.Entity
         /// <summary>
         /// Inits this instance
         /// </summary>
-        public void Init() => components.ForEach(component => component.Init());
+        internal void Init() => components.ForEach(component => component.Init());
         
         /// <summary>Awakes this instance.</summary>
-        public void Awake() => components.ForEach(component => component.Awake());
+        internal void Awake() => components.ForEach(component => component.Awake());
 
         /// <summary>Starts this instance.</summary>
-        public void Start() => components.ForEach(component => component.Start());
+        internal void Start() => components.ForEach(component => component.Start());
 
         /// <summary>Befores the update.</summary>
-        public void BeforeUpdate() => components.ForEach(component => component.BeforeUpdate());
+        internal void BeforeUpdate() => components.ForEach(component => component.BeforeUpdate());
 
         /// <summary>Updates this instance.</summary>
-        public void Update() => components.ForEach(component => component.Update());
+        internal void Update() => components.ForEach(component => component.Update());
 
         /// <summary>Afters the update.</summary>
-        public void AfterUpdate() => components.ForEach(component => component.AfterUpdate());
+        internal void AfterUpdate() => components.ForEach(component => component.AfterUpdate());
 
         /// <summary>Afters the update.</summary>
-        public void FixedUpdate() => components.ForEach(component => component.FixedUpdate());
+        internal void FixedUpdate() => components.ForEach(component => component.FixedUpdate());
 
         /// <summary>
         ///     Dispatches the events.
         /// </summary>
         /// <returns></returns>
-        public void DispatchEvents() => components.ForEach(component => component.DispatchEvents());
+        internal void DispatchEvents() => components.ForEach(component => component.DispatchEvents());
 
         /// <summary>Stops this instance.</summary>
-        public void Stop() => components.ForEach(component => component.Stop());
+        internal void Stop() => components.ForEach(component => component.Stop());
         
         /// <summary>Resets this instance.</summary>
-        public void Reset() => components.ForEach(component => component.Reset());
+        internal void Reset() => components.ForEach(component => component.Reset());
 
         /// <summary>Exits this instance.</summary>
-        public void Exit() => components.ForEach(component => component.Exit());
+        internal void Exit() => components.ForEach(component => component.Exit());
 
         /// <summary>
         /// Creates the primitive
@@ -148,6 +149,37 @@ namespace Alis.Core.Entity
         public static void FindWithTag()
         {
             
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        /// <summary>
+        /// Get hash code
+        /// </summary>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <summary>
+        /// To string
+        /// </summary>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override string ToString()
+        {
+            return base.ToString();
         }
     }
 }
