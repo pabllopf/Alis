@@ -60,7 +60,7 @@ namespace Alis.Core.Builder.Entity
         public GameObjectBuilder AddComponent<T>(Func<T, ComponentBase> value) where T : ComponentBase
         {
             ComponentBase componentBase = value.Invoke((T) Activator.CreateInstance(typeof(T)));
-            gameObject.Add(componentBase);
+            gameObject.AddComponent(componentBase);
             componentBase.AttachGameObject(gameObject);
             return this;
         }
@@ -74,7 +74,7 @@ namespace Alis.Core.Builder.Entity
         public GameObjectBuilder AddComponent<T>(T value) where T : ComponentBase
         {
             ComponentBase componentBase = (T) Activator.CreateInstance(typeof(T));
-            gameObject.Add(componentBase);
+            gameObject.AddComponent(componentBase);
             componentBase.AttachGameObject(gameObject);
             return this;
         }

@@ -50,6 +50,7 @@ namespace Alis.Sample.Rogue
 
             GameObject gameObject = new GameObject();
 
+            //gameObject = GameObject.FindWithTag("object");
 
             VideoGame.Builder()
                 .Settings(i => i

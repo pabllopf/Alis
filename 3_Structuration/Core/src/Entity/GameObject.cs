@@ -68,13 +68,13 @@ namespace Alis.Core.Entity
         ///     Adds the component
         /// </summary>
         /// <param name="component">The component</param>
-        public void Add<T>(T component) => components.Add(component as ComponentBase);
+        public void AddComponent<T>(T component) where T : ComponentBase => components.Add(component);
 
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <param name="component">The component</param>
-        public void Remove<T>(T component) => components.Remove(component as ComponentBase);
+        public void RemoveComponent<T>(T component) where T : ComponentBase => components.Remove(component);
 
         /// <summary>
         ///     Builders this instance
@@ -142,8 +142,9 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     Finds the with tag
         /// </summary>
-        public static void FindWithTag()
+        public static GameObject FindWithTag(string tag)
         {
+            return new GameObject();
         }
 
         /// <summary>
