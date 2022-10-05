@@ -41,7 +41,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The game objects
         /// </summary>
-        private List<GameObject> gameObjects;
+        internal List<GameObject> gameObjects;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class

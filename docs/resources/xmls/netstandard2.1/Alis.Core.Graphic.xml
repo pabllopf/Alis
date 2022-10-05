@@ -2720,6 +2720,12 @@
                 Wrapper for pixel shaders
             </summary>
         </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Shader.CurrentTexture">
+            <summary>
+                Special value that can be passed to SetParameter,
+                and that represents the texture of the object being drawn
+            </summary>
+        </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Shader.myTextures">
             <summary>
                 The texture
@@ -2802,12 +2808,6 @@
                     code or SFML will result in a context switch.
                 </para>
             </remarks>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Shader.CurrentTexture">
-            <summary>
-                Special value that can be passed to SetParameter,
-                and that represents the texture of the object being drawn
-            </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.FromString(System.String,System.String,System.String)">
             <summary>
@@ -3896,6 +3896,26 @@
                 See also the note on coordinates and undistorted rendering in SFML.Graphics.Transformable.
             </remarks>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles">
+            <summary>
+                Enumerate the string drawing styles
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Regular">
+            <summary>Regular characters, no style</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Bold">
+            <summary>Bold characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Italic">
+            <summary>Italic characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Underlined">
+            <summary>Underlined characters</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.StrikeThrough">
+            <summary>Strike through characters</summary>
+        </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.myFont">
             <summary>
                 The my font
@@ -3997,26 +4017,6 @@
             <summary>
                 Style of the text (see Styles enum)
             </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles">
-            <summary>
-                Enumerate the string drawing styles
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Regular">
-            <summary>Regular characters, no style</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Bold">
-            <summary>Bold characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Italic">
-            <summary>Italic characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.Underlined">
-            <summary>Underlined characters</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.Text.Styles.StrikeThrough">
-            <summary>Strike through characters</summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Text.Draw(Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget,Alis.Core.Graphic.D2.SFML.Graphics.RenderStates)">
             <summary>
@@ -5393,6 +5393,32 @@
             <seealso cref="T:Alis.Core.Aspect.Base.ObjectBase" />
             <seealso cref="T:Alis.Core.Graphic.D2.SFML.Graphics.IDrawable" />
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier">
+            <summary>
+                Usage specifiers
+                If data is going to be updated once or more every frame,
+                set the usage to Stream. If data is going
+                to be set once and used for a long time without being
+                modified, set the usage to Static.
+                For everything else Dynamic should
+                be a good compromise.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Stream">
+            <summary>
+                The stream usage specifier
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Dynamic">
+            <summary>
+                The dynamic usage specifier
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Static">
+            <summary>
+                The static usage specifier
+            </summary>
+        </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.#ctor(System.UInt32,Alis.Core.Graphic.D2.SFML.Graphics.PrimitiveType,Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier)">
             <summary>
                 Create a new vertex buffer with a specific
@@ -5440,32 +5466,6 @@
         <member name="P:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.Usage">
             <summary>
                 The usage specifier for the vertex buffer
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier">
-            <summary>
-                Usage specifiers
-                If data is going to be updated once or more every frame,
-                set the usage to Stream. If data is going
-                to be set once and used for a long time without being
-                modified, set the usage to Static.
-                For everything else Dynamic should
-                be a good compromise.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Stream">
-            <summary>
-                The stream usage specifier
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Dynamic">
-            <summary>
-                The dynamic usage specifier
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.UsageSpecifier.Static">
-            <summary>
-                The static usage specifier
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.VertexBuffer.Draw(Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget,Alis.Core.Graphic.D2.SFML.Graphics.RenderStates)">
@@ -5935,6 +5935,11 @@
                 This class defines a .NET interface to an SFML OpenGL Context
             </summary>
         </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Context._ourGlobalContext">
+            <summary>
+                The our global context
+            </summary>
+        </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Context.myThis">
             <summary>
                 The zero
@@ -5953,11 +5958,6 @@
         <member name="P:Alis.Core.Graphic.D2.SFML.Windows.Context.Global">
             <summary>
                 Global helper context
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Context._ourGlobalContext">
-            <summary>
-                The our global context
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Context.Finalize">
@@ -6084,39 +6084,6 @@
             </summary>
             <seealso cref="T:Alis.Core.Aspect.Base.ObjectBase" />
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(Alis.Core.Graphic.D2.SFML.Windows.Cursor.CursorType)">
-            <summary>
-                Create a native system cursor
-                Refer to the list of cursor available on each system
-                (see CursorType) to know whether a given cursor is
-                expected to load successfully or is not supported by
-                the operating system.
-            </summary>
-            <param name="type">System cursor type</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(System.Byte[],Alis.Core.Aspect.Math.SFML.Vector2U,Alis.Core.Aspect.Math.SFML.Vector2U)">
-            <summary>
-                Create a cursor with the provided image
-                Pixels must be an array of width by height pixels
-                in 32-bit RGBA format. If not, this will cause undefined behavior.
-                If pixels is null or either width or height are 0,
-                the current cursor is left unchanged and the function will
-                return false.
-                In addition to specifying the pixel data, you can also
-                specify the location of the hotspot of the cursor. The
-                hotspot is the pixel coordinate within the cursor image
-                which will be located exactly where the mouse pointer
-                position is. Any mouse actions that are performed will
-                return the window/screen location of the hotspot.
-                Warning: On Unix, the pixels are mapped into a monochrome
-                bitmap: pixels with an alpha channel to 0 are
-                transparent, black if the RGB channel are close
-                to zero, and white otherwise.
-            </summary>
-            <param name="pixels">Array of pixels of the image</param>
-            <param name="size">Width and height of the image</param>
-            <param name="hotspot">(x,y) location of the hotspot</param>
-        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Cursor.CursorType">
             <summary>
                 Enumeration of possibly available native system cursor types
@@ -6225,6 +6192,39 @@
                 Mac OS:  Yes
                 Linux:   Yes
             </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(Alis.Core.Graphic.D2.SFML.Windows.Cursor.CursorType)">
+            <summary>
+                Create a native system cursor
+                Refer to the list of cursor available on each system
+                (see CursorType) to know whether a given cursor is
+                expected to load successfully or is not supported by
+                the operating system.
+            </summary>
+            <param name="type">System cursor type</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(System.Byte[],Alis.Core.Aspect.Math.SFML.Vector2U,Alis.Core.Aspect.Math.SFML.Vector2U)">
+            <summary>
+                Create a cursor with the provided image
+                Pixels must be an array of width by height pixels
+                in 32-bit RGBA format. If not, this will cause undefined behavior.
+                If pixels is null or either width or height are 0,
+                the current cursor is left unchanged and the function will
+                return false.
+                In addition to specifying the pixel data, you can also
+                specify the location of the hotspot of the cursor. The
+                hotspot is the pixel coordinate within the cursor image
+                which will be located exactly where the mouse pointer
+                position is. Any mouse actions that are performed will
+                return the window/screen location of the hotspot.
+                Warning: On Unix, the pixels are mapped into a monochrome
+                bitmap: pixels with an alpha channel to 0 are
+                transparent, black if the RGB channel are close
+                to zero, and white otherwise.
+            </summary>
+            <param name="pixels">Array of pixels of the image</param>
+            <param name="size">Width and height of the image</param>
+            <param name="hotspot">(x,y) location of the hotspot</param>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.Destroy(System.Boolean)">
             <summary>
@@ -6631,351 +6631,351 @@
             </summary>
             <returns>String description of the object</returns>
         </member>
+        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Key">
+            <summary>
+                Key codes
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Unknown">
+            <summary>Unhandled key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.A">
+            <summary>The A key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.B">
+            <summary>The B key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.C">
+            <summary>The C key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.D">
+            <summary>The D key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.E">
+            <summary>The E key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F">
+            <summary>The F key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.G">
+            <summary>The G key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.H">
+            <summary>The H key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.I">
+            <summary>The I key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.J">
+            <summary>The J key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.K">
+            <summary>The K key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.L">
+            <summary>The L key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.M">
+            <summary>The M key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.N">
+            <summary>The N key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.O">
+            <summary>The O key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.P">
+            <summary>The P key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Q">
+            <summary>The Q key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.R">
+            <summary>The R key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.S">
+            <summary>The S key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.T">
+            <summary>The T key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.U">
+            <summary>The U key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.V">
+            <summary>The V key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.W">
+            <summary>The W key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.X">
+            <summary>The X key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Y">
+            <summary>The Y key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Z">
+            <summary>The Z key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num0">
+            <summary>The 0 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num1">
+            <summary>The 1 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num2">
+            <summary>The 2 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num3">
+            <summary>The 3 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num4">
+            <summary>The 4 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num5">
+            <summary>The 5 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num6">
+            <summary>The 6 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num7">
+            <summary>The 7 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num8">
+            <summary>The 8 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Num9">
+            <summary>The 9 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Escape">
+            <summary>The Escape key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.LControl">
+            <summary>The left Control key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.LShift">
+            <summary>The left Shift key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.LAlt">
+            <summary>The left Alt key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.LSystem">
+            <summary>The left OS specific key: window (Windows and Linux), apple (MacOS X), ...</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.RControl">
+            <summary>The right Control key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.RShift">
+            <summary>The right Shift key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.RAlt">
+            <summary>The right Alt key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.RSystem">
+            <summary>The right OS specific key: window (Windows and Linux), apple (MacOS X), ...</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Menu">
+            <summary>The Menu key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.LBracket">
+            <summary>The [ key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.RBracket">
+            <summary>The ] key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Semicolon">
+            <summary>The ; key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Comma">
+            <summary>The , key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Period">
+            <summary>The . key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Quote">
+            <summary>The ' key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Slash">
+            <summary>The / key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Backslash">
+            <summary>The \ key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Tilde">
+            <summary>The ~ key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Equal">
+            <summary>The = key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Hyphen">
+            <summary>The - key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Space">
+            <summary>The Space key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Enter">
+            <summary>The Return key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Backspace">
+            <summary>The Backspace key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Tab">
+            <summary>The Tabulation key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.PageUp">
+            <summary>The Page up key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.PageDown">
+            <summary>The Page down key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.End">
+            <summary>The End key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Home">
+            <summary>The Home key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Insert">
+            <summary>The Insert key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Delete">
+            <summary>The Delete key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Add">
+            <summary>The + key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Subtract">
+            <summary>The - key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Multiply">
+            <summary>The * key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Divide">
+            <summary>The / key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Left">
+            <summary>Left arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Right">
+            <summary>Right arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Up">
+            <summary>Up arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Down">
+            <summary>Down arrow</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad0">
+            <summary>The numpad 0 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad1">
+            <summary>The numpad 1 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad2">
+            <summary>The numpad 2 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad3">
+            <summary>The numpad 3 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad4">
+            <summary>The numpad 4 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad5">
+            <summary>The numpad 5 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad6">
+            <summary>The numpad 6 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad7">
+            <summary>The numpad 7 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad8">
+            <summary>The numpad 8 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Numpad9">
+            <summary>The numpad 9 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F1">
+            <summary>The F1 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F2">
+            <summary>The F2 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F3">
+            <summary>The F3 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F4">
+            <summary>The F4 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F5">
+            <summary>The F5 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F6">
+            <summary>The F6 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F7">
+            <summary>The F7 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F8">
+            <summary>The F8 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F9">
+            <summary>The F9 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F10">
+            <summary>The F10 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F11">
+            <summary>The F11 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F12">
+            <summary>The F12 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F13">
+            <summary>The F13 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F14">
+            <summary>The F14 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.F15">
+            <summary>The F15 key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Pause">
+            <summary>The Pause key</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.KeyCount">
+            <summary>The total number of keyboard keys</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Dash">
+            <summary>
+                The dash key
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.BackSpace">
+            <summary>
+                The back space key
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.Return">
+            <summary>
+                The return key
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.BackSlash">
+            <summary>
+                The back slash key
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Key.SemiColon">
+            <summary>
+                The semi colon key
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Keyboard">
             <summary>
                 Give access to the real-time state of the keyboard
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key">
-            <summary>
-                Key codes
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Unknown">
-            <summary>Unhandled key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.A">
-            <summary>The A key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.B">
-            <summary>The B key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.C">
-            <summary>The C key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.D">
-            <summary>The D key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.E">
-            <summary>The E key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F">
-            <summary>The F key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.G">
-            <summary>The G key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.H">
-            <summary>The H key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.I">
-            <summary>The I key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.J">
-            <summary>The J key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.K">
-            <summary>The K key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.L">
-            <summary>The L key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.M">
-            <summary>The M key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.N">
-            <summary>The N key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.O">
-            <summary>The O key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.P">
-            <summary>The P key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Q">
-            <summary>The Q key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.R">
-            <summary>The R key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.S">
-            <summary>The S key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.T">
-            <summary>The T key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.U">
-            <summary>The U key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.V">
-            <summary>The V key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.W">
-            <summary>The W key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.X">
-            <summary>The X key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Y">
-            <summary>The Y key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Z">
-            <summary>The Z key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num0">
-            <summary>The 0 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num1">
-            <summary>The 1 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num2">
-            <summary>The 2 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num3">
-            <summary>The 3 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num4">
-            <summary>The 4 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num5">
-            <summary>The 5 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num6">
-            <summary>The 6 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num7">
-            <summary>The 7 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num8">
-            <summary>The 8 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Num9">
-            <summary>The 9 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Escape">
-            <summary>The Escape key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.LControl">
-            <summary>The left Control key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.LShift">
-            <summary>The left Shift key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.LAlt">
-            <summary>The left Alt key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.LSystem">
-            <summary>The left OS specific key: window (Windows and Linux), apple (MacOS X), ...</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.RControl">
-            <summary>The right Control key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.RShift">
-            <summary>The right Shift key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.RAlt">
-            <summary>The right Alt key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.RSystem">
-            <summary>The right OS specific key: window (Windows and Linux), apple (MacOS X), ...</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Menu">
-            <summary>The Menu key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.LBracket">
-            <summary>The [ key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.RBracket">
-            <summary>The ] key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Semicolon">
-            <summary>The ; key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Comma">
-            <summary>The , key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Period">
-            <summary>The . key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Quote">
-            <summary>The ' key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Slash">
-            <summary>The / key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Backslash">
-            <summary>The \ key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Tilde">
-            <summary>The ~ key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Equal">
-            <summary>The = key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Hyphen">
-            <summary>The - key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Space">
-            <summary>The Space key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Enter">
-            <summary>The Return key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Backspace">
-            <summary>The Backspace key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Tab">
-            <summary>The Tabulation key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.PageUp">
-            <summary>The Page up key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.PageDown">
-            <summary>The Page down key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.End">
-            <summary>The End key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Home">
-            <summary>The Home key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Insert">
-            <summary>The Insert key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Delete">
-            <summary>The Delete key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Add">
-            <summary>The + key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Subtract">
-            <summary>The - key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Multiply">
-            <summary>The * key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Divide">
-            <summary>The / key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Left">
-            <summary>Left arrow</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Right">
-            <summary>Right arrow</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Up">
-            <summary>Up arrow</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Down">
-            <summary>Down arrow</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad0">
-            <summary>The numpad 0 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad1">
-            <summary>The numpad 1 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad2">
-            <summary>The numpad 2 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad3">
-            <summary>The numpad 3 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad4">
-            <summary>The numpad 4 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad5">
-            <summary>The numpad 5 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad6">
-            <summary>The numpad 6 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad7">
-            <summary>The numpad 7 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad8">
-            <summary>The numpad 8 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Numpad9">
-            <summary>The numpad 9 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F1">
-            <summary>The F1 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F2">
-            <summary>The F2 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F3">
-            <summary>The F3 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F4">
-            <summary>The F4 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F5">
-            <summary>The F5 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F6">
-            <summary>The F6 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F7">
-            <summary>The F7 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F8">
-            <summary>The F8 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F9">
-            <summary>The F9 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F10">
-            <summary>The F10 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F11">
-            <summary>The F11 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F12">
-            <summary>The F12 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F13">
-            <summary>The F13 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F14">
-            <summary>The F14 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.F15">
-            <summary>The F15 key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Pause">
-            <summary>The Pause key</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.KeyCount">
-            <summary>The total number of keyboard keys</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Dash">
-            <summary>
-                The dash key
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.BackSpace">
-            <summary>
-                The back space key
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.Return">
-            <summary>
-                The return key
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.BackSlash">
-            <summary>
-                The back slash key
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key.SemiColon">
-            <summary>
-                The semi colon key
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.IsKeyPressed(Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.IsKeyPressed(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
                 Check if a key is pressed
             </summary>
@@ -6989,7 +6989,7 @@
             <remarks>Applicable only on Android and iOS</remarks>
             <param name="visible">Whether to make the virtual keyboard visible (true) or not (false)</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.sfKeyboard_isKeyPressed(Alis.Core.Graphic.D2.SFML.Windows.Keyboard.Key)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Keyboard.sfKeyboard_isKeyPressed(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
                 Describes whether sf keyboard is key pressed
             </summary>
@@ -7059,7 +7059,7 @@
                 Give access to the real-time state of the mouse
             </summary>
             <summary>
-            The mouse class
+                The mouse class
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Windows.Mouse.Button">

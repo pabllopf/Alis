@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
 
@@ -40,9 +41,14 @@ namespace Alis.Core.Manager
     {
 
         /// <summary>
+        /// Define the current scene manager
+        /// </summary>
+        internal static SceneManager currentSceneManager;
+        
+        /// <summary>
         ///     The current scene
         /// </summary>
-        private Scene currentScene;
+        internal Scene currentScene;
 
         /// <summary>
         ///     Scene list
@@ -56,6 +62,7 @@ namespace Alis.Core.Manager
         {
             scenes = new List<Scene>();
             currentScene = new Scene();
+            currentSceneManager = this;
         }
 
         /// <summary>

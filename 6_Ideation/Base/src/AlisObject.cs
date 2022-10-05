@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace Alis.Core.Aspect.Base
 {
     /// <summary>
@@ -55,5 +57,27 @@ namespace Alis.Core.Aspect.Base
         /// <param name="obj"></param>
         /// <returns></returns>
         public static int GetHashCode(object obj) => obj?.GetHashCode() ?? 0;
+        
+        
+        /// <summary>
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object obj) => base.Equals(obj);
+
+        /// <summary>
+        ///     Get hash code
+        /// </summary>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => base.GetHashCode();
+
+        /// <summary>
+        ///     To string
+        /// </summary>
+        /// <returns></returns>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override string ToString() => base.ToString();
     }
 }

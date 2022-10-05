@@ -75,18 +75,18 @@
         </member>
         <member name="T:Alis.Core.Aspect.Logging.Logger">
             <summary>
-            The logger class
+                The logger class
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Logging.Logger.Log(System.String)">
             <summary>
-            Logs the message
+                Logs the message
             </summary>
             <param name="message">The message</param>
         </member>
         <member name="M:Alis.Core.Aspect.Logging.Logger.Trace(System.String)">
             <summary>
-            Traces the message
+                Traces the message
             </summary>
             <param name="message">The message</param>
         </member>

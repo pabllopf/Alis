@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     public struct KeyEvent
     {
         /// <summary>Code of the key (see KeyCode enum)</summary>
-        public Keyboard.Key Code;
+        public Key Code;
 
         /// <summary>Is the Alt modifier pressed?</summary>
         public int Alt;

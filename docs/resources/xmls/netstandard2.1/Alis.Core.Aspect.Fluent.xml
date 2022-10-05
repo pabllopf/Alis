@@ -26,6 +26,12 @@
             </summary>
             <returns>The</returns>
         </member>
+        <member name="M:Alis.Core.Aspect.Fluent.IBuilder`1.Builder``1">
+            <summary>
+            Builder static 
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAdd`3">
             <summary>
                 The add interface
@@ -41,12 +47,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAddComponent`2">
             <summary>
-            The add component class
+                The add component class
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IAddComponent`2.AddComponent``1(System.Func{``0,`1})">
             <summary>
-            Adds the component using the specified value
+                Adds the component using the specified value
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="value">The value</param>
@@ -54,7 +60,7 @@
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IAddComponent`2.AddComponent``1(``0)">
             <summary>
-            Adds the component using the specified value
+                Adds the component using the specified value
             </summary>
             <typeparam name="T">The </typeparam>
             <param name="value">The value</param>
@@ -121,12 +127,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IDepth`2">
             <summary>
-            The depth interface
+                The depth interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IDepth`2.Depth(`1)">
             <summary>
-            Depths the value
+                Depths the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -145,24 +151,24 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IFile`2">
             <summary>
-            The file interface
+                The file interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IFile`2.File(`1)">
             <summary>
-            Files the value
+                Files the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IFilePath`2">
             <summary>
-            The file path interface
+                The file path interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IFilePath`2.FilePath(`1)">
             <summary>
-            Files the path using the specified value
+                Files the path using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -295,12 +301,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IMute`2">
             <summary>
-            The mute interface
+                The mute interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IMute`2.Mute(`1)">
             <summary>
-            Mutes the value
+                Mutes the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -319,12 +325,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IPlayOnAwake`2">
             <summary>
-            The play on awake interface
+                The play on awake interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IPlayOnAwake`2.PlayOnAwake(`1)">
             <summary>
-            Plays the on awake using the specified value
+                Plays the on awake using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -336,7 +342,7 @@
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IPosition2D`3.Position(`1,`2)">
             <summary>
-            Positions the x
+                Positions the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
@@ -384,7 +390,7 @@
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IScale2D`3.Scale(`1,`2)">
             <summary>
-            Scales the x
+                Scales the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
@@ -417,12 +423,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.ISetAudioClip`2">
             <summary>
-            The set audio clip interface
+                The set audio clip interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.ISetAudioClip`2.SetAudioClip(`1)">
             <summary>
-            Sets the audio clip using the specified value
+                Sets the audio clip using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -442,12 +448,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.ISetTexture`2">
             <summary>
-            The texture interface
+                The texture interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.ISetTexture`2.SetTexture(`1)">
             <summary>
-            Textures the value
+                Textures the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -515,12 +521,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IVolume`2">
             <summary>
-            The volume interface
+                The volume interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IVolume`2.Volume(`1)">
             <summary>
-            Volumes the value
+                Volumes the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>

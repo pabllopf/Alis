@@ -6,418 +6,472 @@
     <members>
         <member name="T:Alis.Core.Audio.AudioBackendType">
             <summary>
-            The audio type enum
+                The audio type enum
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.AudioBackendType.OS">
             <summary>
-            The os audio type
+                The os audio type
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.AudioBackendType.SFML">
             <summary>
-            The sfml audio type
+                The sfml audio type
             </summary>
         </member>
         <member name="T:Alis.Core.Audio.AudioClipBase">
             <summary>
-            The audio clip base class
+                The audio clip base class
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.AudioClipBase.music">
             <summary>
-            The music
+                The music
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.AudioClipBase.player">
             <summary>
-            The player
+                The player
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase" /> class
             </summary>
             <param name="fullPathAudio">The full path audio</param>
         </member>
-        <member name="P:Alis.Core.Audio.AudioClipBase.SampleRate">
-            <summary>
-            Gets or sets the value of the sample rate
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.AudioClipBase.ChannelCount">
-            <summary>
-            Gets or sets the value of the channel count
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.AudioClipBase.Duration">
-            <summary>
-            Gets or sets the value of the duration
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.AudioClipBase.Pitch">
-            <summary>
-            Gets or sets the value of the pitch
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.AudioClipBase.IsMute">
-            <summary>
-            Gets or sets the value of the is mute
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.AudioClipBase.IsPlaying">
-            <summary>
-            Gets or sets the value of the is playing
-            </summary>
-        </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.#ctor(System.String,Alis.Core.Audio.AudioBackendType)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase" /> class
             </summary>
             <param name="fullPathAudio">The full path audio</param>
             <param name="audioBackendType">The audio backend type</param>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
+        <member name="P:Alis.Core.Audio.AudioClipBase.SampleRate">
+            <summary>
+                Gets or sets the value of the sample rate
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.AudioClipBase.ChannelCount">
+            <summary>
+                Gets or sets the value of the channel count
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.AudioClipBase.Duration">
+            <summary>
+                Gets or sets the value of the duration
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.AudioClipBase.Pitch">
+            <summary>
+                Gets or sets the value of the pitch
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.AudioClipBase.IsMute">
+            <summary>
+                Gets or sets the value of the is mute
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.AudioClipBase.IsPlaying">
+            <summary>
+                Gets or sets the value of the is playing
+            </summary>
+        </member>
         <member name="P:Alis.Core.Audio.AudioClipBase.FullPathAudioFile">
             <summary>
-            Gets or sets the value of the full path audio file
+                Gets or sets the value of the full path audio file
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.AudioClipBase.AudioBackendType">
             <summary>
-            Gets the value of the audio backend type
+                Gets the value of the audio backend type
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.AudioClipBase.IsLooping">
             <summary>
-            Gets or sets the value of the is loopping
+                Gets or sets the value of the is loopping
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.AudioClipBase.Volume">
             <summary>
-            Gets or sets the value of the volume
+                Gets or sets the value of the volume
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.Play">
             <summary>
-            Plays this instance
+                Plays this instance
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.Resume">
             <summary>
-            Resumes this instance
+                Resumes this instance
             </summary>
             <exception cref="T:System.ArgumentOutOfRangeException"></exception>
         </member>
         <member name="T:Alis.Core.Audio.IAudioRecorder">
             <summary>
-            The audio recorder interface
+                The audio recorder interface
             </summary>
         </member>
         <member name="T:Alis.Core.Audio.IAudioSource`1">
             <summary>
-            The audio source interface
+                The audio source interface
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.IAudioSource`1.AudioClip">
             <summary>
-            Gets or sets the value of the audio clip base
+                Gets or sets the value of the audio clip base
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.IAudioSource`1.IsPlaying">
             <summary>
-            Gets the value of the is playing
+                Gets the value of the is playing
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.IAudioSource`1.PlayOnAwake">
             <summary>
-            Gets or sets the value of the play on awake
+                Gets or sets the value of the play on awake
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.IAudioSource`1.Mute">
             <summary>
-            Gets or sets the value of the mute
+                Gets or sets the value of the mute
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.IAudioSource`1.Loop">
             <summary>
-            Gets or sets the value of the loop
+                Gets or sets the value of the loop
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.IAudioSource`1.Volume">
             <summary>
-            Gets or sets the value of the volume
+                Gets or sets the value of the volume
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.IAudioSource`1.Play">
             <summary>
-            Plays this instance
+                Plays this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.IAudioSource`1.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.IAudioSource`1.Resume">
             <summary>
-            Resumes this instance
+                Resumes this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Audio.OS.Interfaces.IPlayer">
             <summary>
-            The player interface
-            </summary>
-        </member>
-        <member name="E:Alis.Core.Audio.OS.Interfaces.IPlayer.PlaybackFinished">
-            <summary>
-            playback
+                The player interface
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.OS.Interfaces.IPlayer.Playing">
             <summary>
-            Gets the value of the playing
+                Gets the value of the playing
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.OS.Interfaces.IPlayer.Paused">
             <summary>
-            Gets the value of the paused
+                Gets the value of the paused
+            </summary>
+        </member>
+        <member name="E:Alis.Core.Audio.OS.Interfaces.IPlayer.PlaybackFinished">
+            <summary>
+                playback
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Interfaces.IPlayer.Play(System.String)">
             <summary>
-            Plays the file name
+                Plays the file name
             </summary>
             <param name="fileName">The file name</param>
         </member>
         <member name="M:Alis.Core.Audio.OS.Interfaces.IPlayer.Pause">
             <summary>
-            Pauses this instance
+                Pauses this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Interfaces.IPlayer.Resume">
             <summary>
-            Resumes this instance
+                Resumes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Interfaces.IPlayer.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Interfaces.IPlayer.SetVolume(System.Byte)">
             <summary>
-            Sets the volume using the specified percent
+                Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
         </member>
         <member name="T:Alis.Core.Audio.OS.Player">
             <summary>
-            The player class
+                The player class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer"/>
+            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer" />
         </member>
         <member name="F:Alis.Core.Audio.OS.Player._internalPlayer">
             <summary>
-            The internal player
-            </summary>
-        </member>
-        <member name="E:Alis.Core.Audio.OS.Player.PlaybackFinished">
-            <summary>
-            Internally, sets Playing flag to false. Additional handlers can be attached to it to handle any custom logic.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.OS.Player.Playing">
-            <summary>
-            Indicates that the audio is currently playing.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.OS.Player.Paused">
-            <summary>
-            Indicates that the audio playback is currently paused.
+                The internal player
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Player.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.OS.Player"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.OS.Player" /> class
             </summary>
             <exception cref="T:System.Exception">No implementation exist for the current OS</exception>
         </member>
+        <member name="E:Alis.Core.Audio.OS.Player.PlaybackFinished">
+            <summary>
+                Internally, sets Playing flag to false. Additional handlers can be attached to it to handle any custom logic.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.OS.Player.Playing">
+            <summary>
+                Indicates that the audio is currently playing.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.OS.Player.Paused">
+            <summary>
+                Indicates that the audio playback is currently paused.
+            </summary>
+        </member>
         <member name="M:Alis.Core.Audio.OS.Player.Play(System.String)">
             <summary>
-            Will stop any current playback and will start playing the specified audio file. The fileName parameter can be an absolute path or a path relative to the directory where the library is located. Sets Playing flag to true. Sets Paused flag to false.
+                Will stop any current playback and will start playing the specified audio file. The fileName parameter can be an
+                absolute path or a path relative to the directory where the library is located. Sets Playing flag to true. Sets
+                Paused flag to false.
             </summary>
             <param name="fileName"></param>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Player.Pause">
             <summary>
-            Pauses any ongong playback. Sets Paused flag to true. Doesn't modify Playing flag.
+                Pauses any ongong playback. Sets Paused flag to true. Doesn't modify Playing flag.
             </summary>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Player.Resume">
             <summary>
-            Resumes any paused playback. Sets Paused flag to false. Doesn't modify Playing flag.
+                Resumes any paused playback. Sets Paused flag to false. Doesn't modify Playing flag.
             </summary>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Player.Stop">
             <summary>
-            Stops any current playback and clears the buffer. Sets Playing and Paused flags to false.
+                Stops any current playback and clears the buffer. Sets Playing and Paused flags to false.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Player.SetVolume(System.Byte)">
+            <summary>
+                Sets the playing volume as percent
             </summary>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Player.OnPlaybackFinished(System.Object,System.EventArgs)">
             <summary>
-            Ons the playback finished using the specified sender
+                Ons the playback finished using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
-        <member name="M:Alis.Core.Audio.OS.Player.SetVolume(System.Byte)">
-            <summary>
-            Sets the playing volume as percent
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Alis.Core.Audio.OS.Players.LinuxPlayer">
             <summary>
-            The linux player class
+                The linux player class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.OS.Players.UnixPlayerBase"/>
-            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer"/>
-        </member>
-        <member name="M:Alis.Core.Audio.OS.Players.LinuxPlayer.GetBashCommand(System.String)">
-            <summary>
-            Gets the bash command using the specified file name
-            </summary>
-            <param name="fileName">The file name</param>
-            <returns>The string</returns>
+            <seealso cref="T:Alis.Core.Audio.OS.Players.UnixPlayerBase" />
+            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer" />
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.LinuxPlayer.SetVolume(System.Byte)">
             <summary>
-            Sets the volume using the specified percent
+                Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Percent can't exceed 100</exception>
         </member>
-        <member name="T:Alis.Core.Audio.OS.Players.MacPlayer">
+        <member name="M:Alis.Core.Audio.OS.Players.LinuxPlayer.GetBashCommand(System.String)">
             <summary>
-            The mac player class
-            </summary>
-            <seealso cref="T:Alis.Core.Audio.OS.Players.UnixPlayerBase"/>
-            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer"/>
-        </member>
-        <member name="M:Alis.Core.Audio.OS.Players.MacPlayer.GetBashCommand(System.String)">
-            <summary>
-            Gets the bash command using the specified file name
+                Gets the bash command using the specified file name
             </summary>
             <param name="fileName">The file name</param>
             <returns>The string</returns>
         </member>
+        <member name="T:Alis.Core.Audio.OS.Players.MacPlayer">
+            <summary>
+                The mac player class
+            </summary>
+            <seealso cref="T:Alis.Core.Audio.OS.Players.UnixPlayerBase" />
+            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer" />
+        </member>
         <member name="M:Alis.Core.Audio.OS.Players.MacPlayer.SetVolume(System.Byte)">
             <summary>
-            Sets the volume using the specified percent
+                Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
             <exception cref="T:System.ArgumentOutOfRangeException">Percent can't exceed 100</exception>
         </member>
+        <member name="M:Alis.Core.Audio.OS.Players.MacPlayer.GetBashCommand(System.String)">
+            <summary>
+                Gets the bash command using the specified file name
+            </summary>
+            <param name="fileName">The file name</param>
+            <returns>The string</returns>
+        </member>
         <member name="T:Alis.Core.Audio.OS.Players.UnixPlayerBase">
             <summary>
-            The unix player base class
+                The unix player base class
             </summary>
-            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer"/>
-        </member>
-        <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase._process">
-            <summary>
-            The process
-            </summary>
+            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer" />
         </member>
         <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase.PauseProcessCommand">
             <summary>
-            The pause process command
+                The pause process command
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase.ResumeProcessCommand">
             <summary>
-            The resume process command
+                The resume process command
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase._process">
+            <summary>
+                The process
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.OS.Players.UnixPlayerBase.Playing">
             <summary>
-            Gets or sets the value of the playing
+                Gets or sets the value of the playing
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.OS.Players.UnixPlayerBase.Paused">
             <summary>
-            Gets or sets the value of the paused
+                Gets or sets the value of the paused
             </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.GetBashCommand(System.String)">
-            <summary>
-            Gets the bash command using the specified file name
-            </summary>
-            <param name="fileName">The file name</param>
-            <returns>The string</returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.Play(System.String)">
             <summary>
-            Plays the file name
+                Plays the file name
             </summary>
             <param name="fileName">The file name</param>
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.Pause">
             <summary>
-            Pauses this instance
+                Pauses this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.Resume">
             <summary>
-            Resumes this instance
+                Resumes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.SetVolume(System.Byte)">
+            <summary>
+                Sets the volume using the specified percent
+            </summary>
+            <param name="percent">The percent</param>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.GetBashCommand(System.String)">
+            <summary>
+                Gets the bash command using the specified file name
+            </summary>
+            <param name="fileName">The file name</param>
+            <returns>The string</returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.StartBashProcess(System.String)">
             <summary>
-            Starts the bash process using the specified command
+                Starts the bash process using the specified command
             </summary>
             <param name="command">The command</param>
             <returns>The process</returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.HandlePlaybackFinished(System.Object,System.EventArgs)">
             <summary>
-            Handles the playback finished using the specified sender
+                Handles the playback finished using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
-        <member name="M:Alis.Core.Audio.OS.Players.UnixPlayerBase.SetVolume(System.Byte)">
+        <member name="T:Alis.Core.Audio.OS.Players.WindowsPlayer">
             <summary>
-            Sets the volume using the specified percent
+                The windows player class
+            </summary>
+            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer" />
+        </member>
+        <member name="F:Alis.Core.Audio.OS.Players.WindowsPlayer._fileName">
+            <summary>
+                The file name
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.OS.Players.WindowsPlayer._playbackTimer">
+            <summary>
+                The playback timer
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.OS.Players.WindowsPlayer._playStopwatch">
+            <summary>
+                The play stopwatch
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.OS.Players.WindowsPlayer.Playing">
+            <summary>
+                Gets or sets the value of the playing
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.OS.Players.WindowsPlayer.Paused">
+            <summary>
+                Gets or sets the value of the paused
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Play(System.String)">
+            <summary>
+                Plays the file name
+            </summary>
+            <param name="fileName">The file name</param>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Pause">
+            <summary>
+                Pauses this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Resume">
+            <summary>
+                Resumes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Stop">
+            <summary>
+                Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.SetVolume(System.Byte)">
+            <summary>
+                Sets the volume using the specified percent
             </summary>
             <param name="percent">The percent</param>
         </member>
-        <member name="T:Alis.Core.Audio.OS.Players.WindowsPlayer">
-            <summary>
-            The windows player class
-            </summary>
-            <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer"/>
-        </member>
         <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.mciSendString(System.String,System.Text.StringBuilder,System.Int32,System.IntPtr)">
             <summary>
-            Mcis the send string using the specified command
+                Mcis the send string using the specified command
             </summary>
             <param name="command">The command</param>
             <param name="stringReturn">The string return</param>
@@ -427,7 +481,7 @@
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.mciGetErrorString(System.Int32,System.Text.StringBuilder,System.Int32)">
             <summary>
-            Mcis the get error string using the specified error code
+                Mcis the get error string using the specified error code
             </summary>
             <param name="errorCode">The error code</param>
             <param name="errorText">The error text</param>
@@ -436,98 +490,46 @@
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.waveOutSetVolume(System.IntPtr,System.UInt32)">
             <summary>
-            Waves the out set volume using the specified hwo
+                Waves the out set volume using the specified hwo
             </summary>
             <param name="hwo">The hwo</param>
             <param name="dwVolume">The dw volume</param>
             <returns>The int</returns>
         </member>
-        <member name="F:Alis.Core.Audio.OS.Players.WindowsPlayer._playbackTimer">
-            <summary>
-            The playback timer
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.OS.Players.WindowsPlayer._playStopwatch">
-            <summary>
-            The play stopwatch
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.OS.Players.WindowsPlayer._fileName">
-            <summary>
-            The file name
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.OS.Players.WindowsPlayer.Playing">
-            <summary>
-            Gets or sets the value of the playing
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Audio.OS.Players.WindowsPlayer.Paused">
-            <summary>
-            Gets or sets the value of the paused
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Play(System.String)">
-            <summary>
-            Plays the file name
-            </summary>
-            <param name="fileName">The file name</param>
-        </member>
-        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Pause">
-            <summary>
-            Pauses this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Resume">
-            <summary>
-            Resumes this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.Stop">
-            <summary>
-            Stops this instance
-            </summary>
-        </member>
         <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.HandlePlaybackFinished(System.Object,System.Timers.ElapsedEventArgs)">
             <summary>
-            Handles the playback finished using the specified sender
+                Handles the playback finished using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.ExecuteMsiCommand(System.String)">
             <summary>
-            Executes the msi command using the specified command string
+                Executes the msi command using the specified command string
             </summary>
             <param name="commandString">The command string</param>
             <exception cref="T:System.Exception"></exception>
         </member>
-        <member name="M:Alis.Core.Audio.OS.Players.WindowsPlayer.SetVolume(System.Byte)">
-            <summary>
-            Sets the volume using the specified percent
-            </summary>
-            <param name="percent">The percent</param>
-        </member>
         <member name="T:Alis.Core.Audio.OS.Utils.FileUtil">
             <summary>
-            The file util class
+                The file util class
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.OS.Utils.FileUtil.TempDirName">
             <summary>
-            The temp dir name
+                The temp dir name
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.OS.Utils.FileUtil.CheckFileToPlay(System.String)">
             <summary>
-            Checks the file to play using the specified original file name
+                Checks the file to play using the specified original file name
             </summary>
             <param name="originalFileName">The original file name</param>
             <returns>The file name to return</returns>
         </member>
         <member name="M:Alis.Core.Audio.OS.Utils.FileUtil.ClearTempFiles">
             <summary>
-            Clears the temp files
+                Clears the temp files
             </summary>
         </member>
         <member name="T:Alis.Core.Audio.SFML.Listener">

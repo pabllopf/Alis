@@ -30,19 +30,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Alis.Core.Aspect.Base;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Builder.Entity;
 using Alis.Core.Component;
 
 namespace Alis.Core.Entity
 {
     /// <summary>Represent a object of the game.</summary>
-    public class GameObject : AlisObject
+    public class GameObject : AlisObject, IBuilder<GameObjectBuilder>
     {
 
         /// <summary>
         ///     The components
         /// </summary>
-        private List<ComponentBase> components;
+        internal List<ComponentBase> components;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
@@ -146,26 +147,5 @@ namespace Alis.Core.Entity
         {
             return new GameObject();
         }
-
-        /// <summary>
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj) => base.Equals(obj);
-
-        /// <summary>
-        ///     Get hash code
-        /// </summary>
-        /// <returns></returns>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => base.GetHashCode();
-
-        /// <summary>
-        ///     To string
-        /// </summary>
-        /// <returns></returns>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override string ToString() => base.ToString();
     }
 }

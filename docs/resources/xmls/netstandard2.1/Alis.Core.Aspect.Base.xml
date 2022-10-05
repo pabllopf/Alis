@@ -11,17 +11,17 @@
         </member>
         <member name="P:Alis.Core.Aspect.Base.AlisObject.Name">
             <summary>
-            The name
+                The name
             </summary>
         </member>
         <member name="P:Alis.Core.Aspect.Base.AlisObject.Tag">
             <summary>
-            The tag
+                The tag
             </summary>
         </member>
         <member name="P:Alis.Core.Aspect.Base.AlisObject.IsActive">
             <summary>
-            Gets or sets the value of the is active
+                Gets or sets the value of the is active
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Base.AlisObject.GetHashCode(System.Object)">
@@ -29,6 +29,24 @@
                 The object base class
             </summary>
             <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.AlisObject.Equals(System.Object)">
+            <summary>
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.AlisObject.GetHashCode">
+            <summary>
+                Get hash code
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.AlisObject.ToString">
+            <summary>
+                To string
+            </summary>
             <returns></returns>
         </member>
         <member name="T:Alis.Core.Aspect.Base.Attributes.SuppressUnmanagedCodeSecurityAttribute">

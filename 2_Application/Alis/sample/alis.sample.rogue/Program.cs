@@ -49,6 +49,8 @@ namespace Alis.Sample.Rogue
             Console.WriteLine("Start game");
 
             GameObject gameObject = new GameObject();
+            
+            
 
             //gameObject = GameObject.FindWithTag("object");
 
@@ -87,7 +89,7 @@ namespace Alis.Sample.Rogue
                             .AddComponent<PlayerMovement>(i => i
                                 .Builder()
                                 .Build())
-                            .AddComponent<AudioSource>(audioSource => audioSource
+                            /*.AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
                                 .IsActive(true)
                                 .PlayOnAwake(true)
@@ -96,7 +98,7 @@ namespace Alis.Sample.Rogue
                                     .Volume(100.0f)
                                     .Mute(false)
                                     .Build())
-                                .Build())
+                                .Build())*/
                             .Build())
                         .Build())
                     .Build())

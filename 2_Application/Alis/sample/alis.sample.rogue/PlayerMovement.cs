@@ -51,5 +51,41 @@ namespace Alis.Sample.Rogue
         public override void Update()
         {
         }
+
+        /// <summary>
+        /// sample
+        /// </summary>
+        /// <param name="key"></param>
+        public override void OnReleaseKey(string key)
+        {
+            if (key.Equals("W"))
+            {
+                Console.WriteLine($"Release up key='{key}'");
+            }
+        }
+
+        /// <summary>
+        /// sample
+        /// </summary>
+        /// <param name="key"></param>
+        public override void OnPressDownKey(string key)
+        {
+            if (key.Equals("W"))
+            {
+                Console.WriteLine($"You are pressing key='{key}'");
+            }
+        }
+
+        /// <summary>
+        /// sample
+        /// </summary>
+        /// <param name="key"></param>
+        public override void OnPressKey(string key)
+        {
+            if (key.Equals("W"))
+            {
+                Console.WriteLine($"Pressed key='{key}'");
+            }
+        }
     }
 }

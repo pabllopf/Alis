@@ -27,17 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.CompilerServices;
+
 namespace Alis.Core.Aspect.Fluent
 {
     /// <summary>
     ///     The builder interface
     /// </summary>
-    public interface IBuilder<out T>
+    public interface IBuilder<TOut>
     {
         /// <summary>
         ///     Builders
         /// </summary>
         /// <returns>The</returns>
-        public T Builder();
+        public TOut Builder();
+
+        /// <summary>
+        /// Builder static 
+        /// </summary>
+        /// <returns></returns>
+        public static TOut Builder<T>()
+        {
+            return (TOut)Activator.CreateInstance(typeof(TOut));
+        }
     }
 }

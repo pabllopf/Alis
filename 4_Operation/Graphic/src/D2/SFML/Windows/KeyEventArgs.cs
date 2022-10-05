@@ -42,7 +42,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         public bool Alt;
 
         /// <summary>Code of the key (see KeyCode enum)</summary>
-        public Keyboard.Key Code;
+        public Key Code;
 
         /// <summary>Is the Control modifier pressed?</summary>
         public bool Control;

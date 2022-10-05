@@ -813,6 +813,26 @@
                 The pair manager class
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullPair">
+            <summary>
+                The ushrt max
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullProxy">
+            <summary>
+                The ushrt max
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableCapacity">
+            <summary>
+                The max pairs
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableMask">
+            <summary>
+                The table capacity
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Collisions.PairManager.HashTable">
             <summary>
                 The table capacity
@@ -856,26 +876,6 @@
         <member name="M:Alis.Core.Physic.Collisions.PairManager.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.PairManager" /> class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullPair">
-            <summary>
-                The ushrt max
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.NullProxy">
-            <summary>
-                The ushrt max
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableCapacity">
-            <summary>
-                The max pairs
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collisions.PairManager.TableMask">
-            <summary>
-                The table capacity
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.PairManager.Initialize(Alis.Core.Physic.Collisions.BroadPhase,Alis.Core.Physic.Collisions.PairCallback)">
@@ -1218,16 +1218,6 @@
                 A circle shape.
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.Radius">
-            <summary>
-                The radius
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.ShapeType">
-            <summary>
-                The unknown shape
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collisions.Shape.CircleShape.Position">
             <summary>
                 The position
@@ -1236,6 +1226,16 @@
         <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.#ctor(System.Single)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shape.CircleShape" /> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.Radius">
+            <summary>
+                The radius
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.ShapeType">
+            <summary>
+                The unknown shape
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Collisions.Shape.CircleShape.VertexCount">
@@ -1310,18 +1310,18 @@
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.Dispose">
             <summary>
-            dispose 
+                dispose
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.GetRadius">
             <summary>
-            return the radius of the polygon
+                return the radius of the polygon
             </summary>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.CircleShape.GetShapeType">
             <summary>
-            return the shape type.
+                return the shape type.
             </summary>
             <returns></returns>
         </member>
@@ -1330,16 +1330,6 @@
                 The edge shape class
             </summary>
             <seealso cref="T:Alis.Core.Physic.Collisions.Shape.IShape" />
-        </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Radius">
-            <summary>
-                The radius
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.ShapeType">
-            <summary>
-                The unknown shape
-            </summary>
         </member>
         <member name="F:Alis.Core.Physic.Collisions.Shape.EdgeShape.NextEdge">
             <summary>
@@ -1354,6 +1344,16 @@
         <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shape.EdgeShape" /> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Radius">
+            <summary>
+                The radius
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.ShapeType">
+            <summary>
+                The unknown shape
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Collisions.Shape.EdgeShape.Length">
@@ -1406,13 +1406,6 @@
                 Disposes this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.Set(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
-            <summary>
-                Sets the v 1
-            </summary>
-            <param name="v1">The </param>
-            <param name="v2">The </param>
-        </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.TestPoint(Alis.Core.Aspect.Math.XForm,Alis.Core.Aspect.Math.Vector2)">
             <summary>
                 Describes whether this instance test point
@@ -1445,22 +1438,6 @@
             </summary>
             <param name="massData">The mass data</param>
             <param name="density">The density</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.SetPrevEdge(Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Core.Aspect.Math.Vector2,System.Boolean)">
-            <summary>
-                Sets the prev edge using the specified edge
-            </summary>
-            <param name="edge">The edge</param>
-            <param name="cornerDir">The corner dir</param>
-            <param name="convex">The convex</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.SetNextEdge(Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Core.Aspect.Math.Vector2,System.Boolean)">
-            <summary>
-                Sets the next edge using the specified edge
-            </summary>
-            <param name="edge">The edge</param>
-            <param name="cornerDir">The corner dir</param>
-            <param name="convex">The convex</param>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.ComputeSubmergedArea(Alis.Core.Aspect.Math.Vector2,System.Single,Alis.Core.Aspect.Math.XForm,Alis.Core.Aspect.Math.Vector2@)">
             <summary>
@@ -1495,13 +1472,13 @@
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.GetRadius">
             <summary>
-            return the radius of the polygon
+                return the radius of the polygon
             </summary>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.GetShapeType">
             <summary>
-            return the shape type.
+                return the shape type.
             </summary>
             <returns></returns>
         </member>
@@ -1512,6 +1489,29 @@
             <param name="pivot">The pivot</param>
             <returns>The float</returns>
         </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.Set(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Sets the v 1
+            </summary>
+            <param name="v1">The </param>
+            <param name="v2">The </param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.SetPrevEdge(Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Core.Aspect.Math.Vector2,System.Boolean)">
+            <summary>
+                Sets the prev edge using the specified edge
+            </summary>
+            <param name="edge">The edge</param>
+            <param name="cornerDir">The corner dir</param>
+            <param name="convex">The convex</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.EdgeShape.SetNextEdge(Alis.Core.Physic.Collisions.Shape.EdgeShape,Alis.Core.Aspect.Math.Vector2,System.Boolean)">
+            <summary>
+                Sets the next edge using the specified edge
+            </summary>
+            <param name="edge">The edge</param>
+            <param name="cornerDir">The corner dir</param>
+            <param name="convex">The convex</param>
+        </member>
         <member name="T:Alis.Core.Physic.Collisions.Shape.IShape">
             <summary>
                 A shape is used for collision detection. You can create a shape however you like.
@@ -1520,13 +1520,13 @@
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.GetRadius">
             <summary>
-            Return the radius of the shape.
+                Return the radius of the shape.
             </summary>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.IShape.GetShapeType">
             <summary>
-            Return the type of the shape. You can use this to down cast to the concrete shape.
+                Return the type of the shape. You can use this to down cast to the concrete shape.
             </summary>
             <returns></returns>
         </member>
@@ -1612,6 +1612,11 @@
                 A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shape.PolygonShape" /> class
+            </summary>
+        </member>
         <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.Radius">
             <summary>
                 The radius
@@ -1620,11 +1625,6 @@
         <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.ShapeType">
             <summary>
                 The unknown shape
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collisions.Shape.PolygonShape" /> class
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Collisions.Shape.PolygonShape.Centroid">
@@ -1647,44 +1647,15 @@
                 Gets the value of the vertices
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.Set(Alis.Core.Aspect.Math.Vector2[],System.Int32)">
-            <summary>
-                Copy vertices. This assumes the vertices define a convex polygon.
-                It is assumed that the exterior is the the right of each edge.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsBox(System.Single,System.Single)">
-            <summary>
-                Build vertices to represent an axis-aligned box.
-            </summary>
-            <param name="hx">The half-width</param>
-            <param name="hy">The half-height.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsBox(System.Single,System.Single,Alis.Core.Aspect.Math.Vector2,System.Single)">
-            <summary>
-                Build vertices to represent an oriented box.
-            </summary>
-            <param name="hx">The half-width</param>
-            <param name="hy">The half-height.</param>
-            <param name="center">The center of the box in local coordinates.</param>
-            <param name="angle">The rotation of the box in local coordinates.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsEdge(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
-            <summary>
-                Sets the as edge using the specified v 1
-            </summary>
-            <param name="v1">The </param>
-            <param name="v2">The </param>
-        </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.GetRadius">
             <summary>
-            return the radius of the polygon
+                return the radius of the polygon
             </summary>
             <returns></returns>
         </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.GetShapeType">
             <summary>
-            return the shape type.
+                return the shape type.
             </summary>
             <returns></returns>
         </member>
@@ -1757,6 +1728,40 @@
             <param name="index">The index</param>
             <returns>The vec</returns>
         </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.Dispose">
+            <summary>
+                dispose
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.Set(Alis.Core.Aspect.Math.Vector2[],System.Int32)">
+            <summary>
+                Copy vertices. This assumes the vertices define a convex polygon.
+                It is assumed that the exterior is the the right of each edge.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsBox(System.Single,System.Single)">
+            <summary>
+                Build vertices to represent an axis-aligned box.
+            </summary>
+            <param name="hx">The half-width</param>
+            <param name="hy">The half-height.</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsBox(System.Single,System.Single,Alis.Core.Aspect.Math.Vector2,System.Single)">
+            <summary>
+                Build vertices to represent an oriented box.
+            </summary>
+            <param name="hx">The half-width</param>
+            <param name="hy">The half-height.</param>
+            <param name="center">The center of the box in local coordinates.</param>
+            <param name="angle">The rotation of the box in local coordinates.</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.SetAsEdge(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Sets the as edge using the specified v 1
+            </summary>
+            <param name="v1">The </param>
+            <param name="v2">The </param>
+        </member>
         <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.ComputeCentroid(Alis.Core.Aspect.Math.Vector2[],System.Int32)">
             <summary>
                 Computes the centroid using the specified vs
@@ -1764,11 +1769,6 @@
             <param name="vs">The vs</param>
             <param name="count">The count</param>
             <returns>The </returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Collisions.Shape.PolygonShape.Dispose">
-            <summary>
-            dispose 
-            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collisions.Shape.ShapeType">
             <summary>
@@ -2807,6 +2807,11 @@
                 that has no contact points.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.SRegisters">
+            <summary>
+                The shape type count
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.CollideShapeFunction">
             <summary>
                 The collide shape function
@@ -2888,11 +2893,6 @@
         <member name="P:Alis.Core.Physic.Dynamics.Contacts.Contact.FixtureB">
             <summary>
                 Get the second fixture in this contact.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.Contact.SRegisters">
-            <summary>
-                The shape type count
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Contacts.Contact.AddType(Alis.Core.Physic.Dynamics.Contacts.ContactCreateFcn,Alis.Core.Physic.Dynamics.Contacts.ContactDestroyFcn,Alis.Core.Physic.Collisions.Shape.ShapeType,Alis.Core.Physic.Collisions.Shape.ShapeType)">
@@ -3147,6 +3147,11 @@
             </summary>
             <seealso cref="T:System.IDisposable" />
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.SPositionSolverManifold">
+            <summary>
+                The position solver manifold
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Constraints">
             <summary>
                 The constraints
@@ -3168,11 +3173,6 @@
         <member name="P:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.ConstraintCount">
             <summary>
                 The constraint count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.SPositionSolverManifold">
-            <summary>
-                The position solver manifold
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Contacts.ContactSolver.Dispose">
@@ -4271,18 +4271,23 @@
                 A distance joint constrains two points on two bodies
                 to remain at a fixed distance from each other. You can view
                 this as a massless, rigid rod.
-            1-D constrained system
-            m (v2 - v1) = lambda
-            v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
-            x2 = x1 + h * v2
-            1-D mass-damper-spring system
-            m (v2 - v1) + h * d * v2 + h * k * 
-            C = norm(p2 - p1) - L
-            u = (p2 - p1) / norm(p2 - p1)
-            Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
-            J = [-u -cross(r1, u) u cross(r2, u)]
-            K = J * invM * JT
-              = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
+                1-D constrained system
+                m (v2 - v1) = lambda
+                v2 + (beta/h) * x1 + gamma * lambda = 0, gamma has units of inverse mass.
+                x2 = x1 + h * v2
+                1-D mass-damper-spring system
+                m (v2 - v1) + h * d * v2 + h * k *
+                C = norm(p2 - p1) - L
+                u = (p2 - p1) / norm(p2 - p1)
+                Cdot = dot(u, v2 + cross(w2, r2) - v1 - cross(w1, r1))
+                J = [-u -cross(r1, u) u cross(r2, u)]
+                K = J * invM * JT
+                = invMass1 + invI1 * cross(r1, u)^2 + invMass2 + invI2 * cross(r2, u)^2
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.collideConnected">
+            <summary>
+                The collide connected
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.DampingRatio">
@@ -4300,9 +4305,29 @@
                 The length
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.node1">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.node2">
+            <summary>
+                The node
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Bias">
             <summary>
                 The bias
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.body1">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.body2">
+            <summary>
+                The body
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Gamma">
@@ -4315,6 +4340,31 @@
                 The impulse
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invI1">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invI2">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invMass1">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invMass2">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.islandFlag">
+            <summary>
+                The island flag
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.LocalAnchor1">
             <summary>
                 The local anchor
@@ -4325,9 +4375,34 @@
                 The local anchor
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.localCenter1">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.localCenter2">
+            <summary>
+                The local center
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Mass">
             <summary>
                 The mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.next">
+            <summary>
+                The next
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.prev">
+            <summary>
+                The prev
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.type">
+            <summary>
+                The type
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.U">
@@ -4335,84 +4410,9 @@
                 The vector
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.type">
-            <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.prev">
-            <summary>
-            The prev
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.next">
-            <summary>
-            The next
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.node1">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.node2">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.body1">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.body2">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.islandFlag">
-            <summary>
-            The island flag
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.collideConnected">
-            <summary>
-            The collide connected
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.localCenter1">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.localCenter2">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invMass1">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invI1">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invMass2">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.invI2">
-            <summary>
-            The inv
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.userData">
             <summary>
-            The user data
+                The user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Joint.DistanceJointDef)">
@@ -4423,77 +4423,77 @@
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#Type">
             <summary>
-            Gets or sets the value of the type
+                Gets or sets the value of the type
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#Prev">
             <summary>
-            Gets or sets the value of the prev
+                Gets or sets the value of the prev
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#Next">
             <summary>
-            Gets or sets the value of the next
+                Gets or sets the value of the next
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#Node1">
             <summary>
-            Gets the value of the node 1
+                Gets the value of the node 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#Node2">
             <summary>
-            Gets the value of the node 2
+                Gets the value of the node 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#Body1">
             <summary>
-            Gets or sets the value of the body 1
+                Gets or sets the value of the body 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#Body2">
             <summary>
-            Gets or sets the value of the body 2
+                Gets or sets the value of the body 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#IslandFlag">
             <summary>
-            Gets or sets the value of the island flag
+                Gets or sets the value of the island flag
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#CollideConnected">
             <summary>
-            Gets the value of the collide connected
+                Gets the value of the collide connected
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#LocalCenter1">
             <summary>
-            Gets or sets the value of the local center 1
+                Gets or sets the value of the local center 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#LocalCenter2">
             <summary>
-            Gets or sets the value of the local center 2
+                Gets or sets the value of the local center 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InvMass1">
             <summary>
-            Gets or sets the value of the inv mass 1
+                Gets or sets the value of the inv mass 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InvI1">
             <summary>
-            Gets or sets the value of the inv i 1
+                Gets or sets the value of the inv i 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InvMass2">
             <summary>
-            Gets or sets the value of the inv mass 2
+                Gets or sets the value of the inv mass 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InvI2">
             <summary>
-            Gets or sets the value of the inv i 2
+                Gets or sets the value of the inv i 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Anchor1">
@@ -4508,7 +4508,7 @@
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.UserData">
             <summary>
-               Gets the value user data.
+                Gets the value user data.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.GetReactionForce(System.Single)">
@@ -4525,26 +4525,13 @@
             <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-                Inits the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
-            Solves the velocity constraints using the specified step
+                Solves the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
-            <summary>
-            Describes whether this instance solve position constraints
-            </summary>
-            <param name="baumgarte">The baumgarte</param>
-            <returns>The bool</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.SolvePositionConstraints(System.Single)">
             <summary>
                 Describes whether this instance solve position constraints
             </summary>
@@ -4553,9 +4540,22 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
-            Inits the velocity constraints using the specified step
+                Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Inits the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.SolvePositionConstraints(System.Single)">
+            <summary>
+                Describes whether this instance solve position constraints
+            </summary>
+            <param name="baumgarte">The baumgarte</param>
+            <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.DistanceJoint.SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
@@ -4621,159 +4621,159 @@
                 fixed bodies (which must be body1 on those joints).
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.collideConnected">
+            <summary>
+                The collide connected
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.constant">
+            <summary>
+                The constant
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.ground1">
+            <summary>
+                The ground
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.ground2">
+            <summary>
+                The ground
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.groundAnchor1">
+            <summary>
+                The ground anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.groundAnchor2">
+            <summary>
+                The ground anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.localAnchor1">
+            <summary>
+                The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.localAnchor2">
+            <summary>
+                The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.node1">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.node2">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.prismatic1">
+            <summary>
+                The prismatic
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.prismatic2">
+            <summary>
+                The prismatic
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.revolute1">
+            <summary>
+                The revolute
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.revolute2">
+            <summary>
+                The revolute
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.body1">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.body2">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.impulse">
+            <summary>
+                The impulse
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invI1">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invI2">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invMass1">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invMass2">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.islandFlag">
+            <summary>
+                The island flag
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.jacobian">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.ground1">
-            <summary>
-            The ground
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.ground2">
-            <summary>
-            The ground
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.revolute1">
-            <summary>
-            The revolute
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.prismatic1">
-            <summary>
-            The prismatic
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.revolute2">
-            <summary>
-            The revolute
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.prismatic2">
-            <summary>
-            The prismatic
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.groundAnchor1">
-            <summary>
-            The ground anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.groundAnchor2">
-            <summary>
-            The ground anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.localAnchor1">
-            <summary>
-            The local anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.localAnchor2">
-            <summary>
-            The local anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.constant">
-            <summary>
-            The constant
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.mass">
-            <summary>
-            The mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.impulse">
-            <summary>
-            The impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.type">
-            <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.prev">
-            <summary>
-            The prev
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.next">
-            <summary>
-            The next
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.node1">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.node2">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.body1">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.body2">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.islandFlag">
-            <summary>
-            The island flag
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.collideConnected">
-            <summary>
-            The collide connected
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.localCenter1">
             <summary>
-            The local center
+                The local center
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.localCenter2">
             <summary>
-            The local center
+                The local center
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invMass1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.mass">
             <summary>
-            The inv mass
+                The mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invI1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.next">
             <summary>
-            The inv
+                The next
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invMass2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.prev">
             <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.invI2">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.userData">
-            <summary>
-            The user data
+                The prev
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.ratio">
             <summary>
-            The ratio
+                The ratio
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.type">
+            <summary>
+                The type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.GearJoint.userData">
+            <summary>
+                The user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.GearJoint.#ctor(Alis.Core.Physic.Dynamics.Joint.GearJointDef)">
@@ -4847,79 +4847,84 @@
                 The impulse
             </summary>
         </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Ratio">
+            <summary>
+                Get the gear ratio.
+            </summary>
+        </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Type">
             <summary>
-            Gets or sets the value of the type
+                Gets or sets the value of the type
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Prev">
             <summary>
-            Gets or sets the value of the prev
+                Gets or sets the value of the prev
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Next">
             <summary>
-            Gets or sets the value of the next
+                Gets or sets the value of the next
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Node1">
             <summary>
-            Gets the value of the node 1
+                Gets the value of the node 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Node2">
             <summary>
-            Gets the value of the node 2
+                Gets the value of the node 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Body1">
             <summary>
-            Gets or sets the value of the body 1
+                Gets or sets the value of the body 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Body2">
             <summary>
-            Gets or sets the value of the body 2
+                Gets or sets the value of the body 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.IslandFlag">
             <summary>
-            Gets or sets the value of the island flag
+                Gets or sets the value of the island flag
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.CollideConnected">
             <summary>
-            Gets the value of the collide connected
+                Gets the value of the collide connected
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.LocalCenter1">
             <summary>
-            Gets or sets the value of the local center 1
+                Gets or sets the value of the local center 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.LocalCenter2">
             <summary>
-            Gets or sets the value of the local center 2
+                Gets or sets the value of the local center 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.InvMass1">
             <summary>
-            Gets or sets the value of the inv mass 1
+                Gets or sets the value of the inv mass 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.InvI1">
             <summary>
-            Gets or sets the value of the inv i 1
+                Gets or sets the value of the inv i 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.InvMass2">
             <summary>
-            Gets or sets the value of the inv mass 2
+                Gets or sets the value of the inv mass 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.InvI2">
             <summary>
-            Gets or sets the value of the inv i 2
+                Gets or sets the value of the inv i 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Anchor1">
@@ -4934,12 +4939,7 @@
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.UserData">
             <summary>
-            Gets or sets the value of the user data
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.GearJoint.Ratio">
-            <summary>
-                Get the gear ratio.
+                Gets or sets the value of the user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.GearJoint.GetReactionForce(System.Single)">
@@ -4956,28 +4956,28 @@
             <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.GearJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-                Inits the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.GearJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
-            Solves the velocity constraints using the specified step
+                Solves the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.GearJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
             <summary>
-            Describes whether this instance solve position constraints
+                Describes whether this instance solve position constraints
             </summary>
             <param name="baumgarte">The baumgarte</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.GearJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
-            Inits the velocity constraints using the specified step
+                Inits the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.GearJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
@@ -5312,6 +5312,21 @@
                 model joint friction.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.collideConnected">
+            <summary>
+                The collide connected
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.node1">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.node2">
+            <summary>
+                The node
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.A1">
             <summary>
                 The
@@ -5327,6 +5342,16 @@
                 The perp
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.body1">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.body2">
+            <summary>
+                The body
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.EnableLimitx">
             <summary>
                 The enable limit
@@ -5340,6 +5365,31 @@
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.Impulse">
             <summary>
                 The impulse
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invI1">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invI2">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invMass1">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invMass2">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.islandFlag">
+            <summary>
+                The island flag
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.K">
@@ -5360,6 +5410,16 @@
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.LocalAnchor2">
             <summary>
                 The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.localCenter1">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.localCenter2">
+            <summary>
+                The local center
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.LocalXAxis1">
@@ -5397,9 +5457,19 @@
                 The motor speed
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.next">
+            <summary>
+                The next
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.Perp">
             <summary>
                 The perp
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.prev">
+            <summary>
+                The prev
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.S1">
@@ -5412,89 +5482,19 @@
                 The
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.type">
+            <summary>
+                The type
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.UpperTranslation">
             <summary>
                 The upper translation
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.type">
-            <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.prev">
-            <summary>
-            The prev
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.next">
-            <summary>
-            The next
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.node1">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.node2">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.body1">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.body2">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.islandFlag">
-            <summary>
-            The island flag
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.collideConnected">
-            <summary>
-            The collide connected
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.localCenter1">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.localCenter2">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invMass1">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invI1">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invMass2">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.invI2">
-            <summary>
-            The inv
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.LineJoint.userData">
             <summary>
-            The user data
+                The user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.#ctor(Alis.Core.Physic.Dynamics.Joint.LineJointDef)">
@@ -5505,77 +5505,77 @@
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Type">
             <summary>
-            Gets or sets the value of the type
+                Gets or sets the value of the type
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Prev">
             <summary>
-            Gets or sets the value of the prev
+                Gets or sets the value of the prev
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Next">
             <summary>
-            Gets or sets the value of the next
+                Gets or sets the value of the next
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Node1">
             <summary>
-            Gets the value of the node 1
+                Gets the value of the node 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Node2">
             <summary>
-            Gets the value of the node 2
+                Gets the value of the node 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Body1">
             <summary>
-            Gets or sets the value of the body 1
+                Gets or sets the value of the body 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Body2">
             <summary>
-            Gets or sets the value of the body 2
+                Gets or sets the value of the body 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.IslandFlag">
             <summary>
-            Gets or sets the value of the island flag
+                Gets or sets the value of the island flag
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.CollideConnected">
             <summary>
-            Gets the value of the collide connected
+                Gets the value of the collide connected
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.LocalCenter1">
             <summary>
-            Gets or sets the value of the local center 1
+                Gets or sets the value of the local center 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.LocalCenter2">
             <summary>
-            Gets or sets the value of the local center 2
+                Gets or sets the value of the local center 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.InvMass1">
             <summary>
-            Gets or sets the value of the inv mass 1
+                Gets or sets the value of the inv mass 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.InvI1">
             <summary>
-            Gets or sets the value of the inv i 1
+                Gets or sets the value of the inv i 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.InvMass2">
             <summary>
-            Gets or sets the value of the inv mass 2
+                Gets or sets the value of the inv mass 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.InvI2">
             <summary>
-            Gets or sets the value of the inv i 2
+                Gets or sets the value of the inv i 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.Anchor1">
@@ -5590,7 +5590,7 @@
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.LineJoint.UserData">
             <summary>
-            Gets or sets the value of the user data
+                Gets or sets the value of the user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.GetReactionForce(System.Single)">
@@ -5606,6 +5606,25 @@
             </summary>
             <param name="invDt"></param>
             <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Solves the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
+            <summary>
+                Describes whether this instance solve position constraints
+            </summary>
+            <param name="baumgarte">The baumgarte</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Inits the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.GetJointTranslation">
             <summary>
@@ -5675,25 +5694,6 @@
         <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Solves the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
-            <summary>
-            Describes whether this instance solve position constraints
-            </summary>
-            <param name="baumgarte">The baumgarte</param>
-            <returns>The bool</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.LineJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
@@ -5784,134 +5784,134 @@
                 applying huge forces.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.collideConnected">
+            <summary>
+                The collide connected
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.dampingRatio">
+            <summary>
+                The damping ratio
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.frequencyHz">
+            <summary>
+                The frequency hz
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.localAnchor">
+            <summary>
+                The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.maxForce">
+            <summary>
+                The max force
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.node1">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.node2">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.beta">
+            <summary>
+                The beta
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.body1">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.body2">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.c">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.gamma">
+            <summary>
+                The gamma
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.impulse">
+            <summary>
+                The impulse
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invI1">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invI2">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invMass1">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invMass2">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.islandFlag">
+            <summary>
+                The island flag
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.localCenter1">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.localCenter2">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.mass">
+            <summary>
+                The mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.next">
+            <summary>
+                The next
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.prev">
+            <summary>
+                The prev
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Target">
             <summary>
                 The target
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.localAnchor">
-            <summary>
-            The local anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.impulse">
-            <summary>
-            The impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.mass">
-            <summary>
-            The mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.c">
-            <summary>
-            The 
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.maxForce">
-            <summary>
-            The max force
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.frequencyHz">
-            <summary>
-            The frequency hz
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.dampingRatio">
-            <summary>
-            The damping ratio
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.beta">
-            <summary>
-            The beta
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.gamma">
-            <summary>
-            The gamma
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.type">
             <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.prev">
-            <summary>
-            The prev
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.next">
-            <summary>
-            The next
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.node1">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.node2">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.body1">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.body2">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.islandFlag">
-            <summary>
-            The island flag
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.collideConnected">
-            <summary>
-            The collide connected
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.localCenter1">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.localCenter2">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invMass1">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invI1">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invMass2">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.invI2">
-            <summary>
-            The inv
+                The type
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.MouseJoint.userData">
             <summary>
-            The user data
+                The user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.#ctor(Alis.Core.Physic.Dynamics.Joint.MouseJointDef)">
@@ -5967,77 +5967,77 @@
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Type">
             <summary>
-            Gets or sets the value of the type
+                Gets or sets the value of the type
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Prev">
             <summary>
-            Gets or sets the value of the prev
+                Gets or sets the value of the prev
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Next">
             <summary>
-            Gets or sets the value of the next
+                Gets or sets the value of the next
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Node1">
             <summary>
-            Gets the value of the node 1
+                Gets the value of the node 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Node2">
             <summary>
-            Gets the value of the node 2
+                Gets the value of the node 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Body1">
             <summary>
-            Gets or sets the value of the body 1
+                Gets or sets the value of the body 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Body2">
             <summary>
-            Gets or sets the value of the body 2
+                Gets or sets the value of the body 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.IslandFlag">
             <summary>
-            Gets or sets the value of the island flag
+                Gets or sets the value of the island flag
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.CollideConnected">
             <summary>
-            Gets the value of the collide connected
+                Gets the value of the collide connected
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.LocalCenter1">
             <summary>
-            Gets or sets the value of the local center 1
+                Gets or sets the value of the local center 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.LocalCenter2">
             <summary>
-            Gets or sets the value of the local center 2
+                Gets or sets the value of the local center 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.InvMass1">
             <summary>
-            Gets or sets the value of the inv mass 1
+                Gets or sets the value of the inv mass 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.InvI1">
             <summary>
-            Gets or sets the value of the inv i 1
+                Gets or sets the value of the inv i 1
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.InvMass2">
             <summary>
-            Gets or sets the value of the inv mass 2
+                Gets or sets the value of the inv mass 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.InvI2">
             <summary>
-            Gets or sets the value of the inv i 2
+                Gets or sets the value of the inv i 2
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Anchor1">
@@ -6052,7 +6052,7 @@
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.MouseJoint.UserData">
             <summary>
-            Gets or sets the value of the user data
+                Gets or sets the value of the user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.GetReactionForce(System.Single)">
@@ -6071,6 +6071,25 @@
             <param name="invDt"></param>
             <returns>The float</returns>
         </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Solves the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
+            <summary>
+                Describes whether this instance solve position constraints
+            </summary>
+            <param name="baumgarte">The baumgarte</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Inits the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.SetTarget(Alis.Core.Aspect.Math.Vector2)">
             <summary>
                 Use this to update the target point.
@@ -6079,25 +6098,6 @@
         <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Solves the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
-            <summary>
-            Describes whether this instance solve position constraints
-            </summary>
-            <param name="baumgarte">The baumgarte</param>
-            <returns>The bool</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.MouseJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
@@ -6156,6 +6156,21 @@
                 drive the motion or to model joint friction.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.collideConnected">
+            <summary>
+                The collide connected
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.node1">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.node2">
+            <summary>
+                The node
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.refAngle">
             <summary>
                 The ref angle
@@ -6176,9 +6191,54 @@
                 The perp
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.body1">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.body2">
+            <summary>
+                The body
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Impulse">
             <summary>
                 The impulse
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invI1">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invI2">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invMass1">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invMass2">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.islandFlag">
+            <summary>
+                The island flag
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.isLimitEnabled">
+            <summary>
+                The is limit enabled
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.isMotorEnabled">
+            <summary>
+                The is motor enabled
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.K">
@@ -6201,6 +6261,16 @@
                 The local anchor
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.localCenter1">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.localCenter2">
+            <summary>
+                The local center
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.LocalXAxis1">
             <summary>
                 The local axis
@@ -6211,9 +6281,19 @@
                 The local axis
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.lowerLimit">
+            <summary>
+                The lower limit
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.MaxMotorForce">
             <summary>
                 The max motor force
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.motorForce">
+            <summary>
+                The motor force
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.MotorMass">
@@ -6226,9 +6306,19 @@
                 The motor speed
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.next">
+            <summary>
+                The next
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Perp">
             <summary>
                 The perp
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.prev">
+            <summary>
+                The prev
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.s1">
@@ -6243,107 +6333,17 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.type">
             <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.prev">
-            <summary>
-            The prev
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.next">
-            <summary>
-            The next
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.node1">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.node2">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.body1">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.body2">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.islandFlag">
-            <summary>
-            The island flag
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.collideConnected">
-            <summary>
-            The collide connected
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.localCenter1">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.localCenter2">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invMass1">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invI1">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invMass2">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.invI2">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.userData">
-            <summary>
-            The user data
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.isLimitEnabled">
-            <summary>
-            The is limit enabled
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.lowerLimit">
-            <summary>
-            The lower limit
+                The type
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.upperLimit">
             <summary>
-            The upper limit
+                The upper limit
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.isMotorEnabled">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.userData">
             <summary>
-            The is motor enabled
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.motorForce">
-            <summary>
-            The motor force
+                The user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Joint.PrismaticJointDef)">
@@ -6351,96 +6351,6 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint" /> class
             </summary>
             <param name="def">The def</param>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Type">
-            <summary>
-            Gets or sets the value of the type
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Prev">
-            <summary>
-            Gets or sets the value of the prev
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Next">
-            <summary>
-            Gets or sets the value of the next
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Node1">
-            <summary>
-            Gets the value of the node 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Node2">
-            <summary>
-            Gets the value of the node 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Body1">
-            <summary>
-            Gets or sets the value of the body 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Body2">
-            <summary>
-            Gets or sets the value of the body 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.IslandFlag">
-            <summary>
-            Gets or sets the value of the island flag
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.CollideConnected">
-            <summary>
-            Gets the value of the collide connected
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.LocalCenter1">
-            <summary>
-            Gets or sets the value of the local center 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.LocalCenter2">
-            <summary>
-            Gets or sets the value of the local center 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvMass1">
-            <summary>
-            Gets or sets the value of the inv mass 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvI1">
-            <summary>
-            Gets or sets the value of the inv i 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvMass2">
-            <summary>
-            Gets or sets the value of the inv mass 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvI2">
-            <summary>
-            Gets or sets the value of the inv i 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Anchor1">
-            <summary>
-                Gets the value of the anchor 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Anchor2">
-            <summary>
-                Gets the value of the anchor 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.UserData">
-            <summary>
-            Gets or sets the value of the user data
-            </summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.JointTranslation">
             <summary>
@@ -6482,6 +6392,96 @@
                 Get the current motor force, usually in N.
             </summary>
         </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Type">
+            <summary>
+                Gets or sets the value of the type
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Prev">
+            <summary>
+                Gets or sets the value of the prev
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Next">
+            <summary>
+                Gets or sets the value of the next
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Node1">
+            <summary>
+                Gets the value of the node 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Node2">
+            <summary>
+                Gets the value of the node 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Body1">
+            <summary>
+                Gets or sets the value of the body 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Body2">
+            <summary>
+                Gets or sets the value of the body 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.IslandFlag">
+            <summary>
+                Gets or sets the value of the island flag
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.CollideConnected">
+            <summary>
+                Gets the value of the collide connected
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.LocalCenter1">
+            <summary>
+                Gets or sets the value of the local center 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.LocalCenter2">
+            <summary>
+                Gets or sets the value of the local center 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvMass1">
+            <summary>
+                Gets or sets the value of the inv mass 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvI1">
+            <summary>
+                Gets or sets the value of the inv i 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvMass2">
+            <summary>
+                Gets or sets the value of the inv mass 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InvI2">
+            <summary>
+                Gets or sets the value of the inv i 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Anchor1">
+            <summary>
+                Gets the value of the anchor 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Anchor2">
+            <summary>
+                Gets the value of the anchor 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.UserData">
+            <summary>
+                Gets or sets the value of the user data
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.GetReactionForce(System.Single)">
             <summary>
                 Gets the reaction force using the specified inv dt
@@ -6495,6 +6495,25 @@
             </summary>
             <param name="invDt">The inv dt</param>
             <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Solves the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
+            <summary>
+                Describes whether this instance solve position constraints
+            </summary>
+            <param name="baumgarte">The baumgarte</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Inits the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.EnableLimit(System.Boolean)">
             <summary>
@@ -6519,25 +6538,6 @@
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Solves the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
-            <summary>
-            Describes whether this instance solve position constraints
-            </summary>
-            <param name="baumgarte">The baumgarte</param>
-            <returns>The bool</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.PrismaticJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
@@ -6637,182 +6637,182 @@
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.MinPulleyLength1">
             <summary>
-            The min pulley length
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitState">
-            <summary>
-            The limit state
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.ground">
-            <summary>
-            The ground
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.groundAnchor1">
-            <summary>
-            The ground anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.groundAnchor2">
-            <summary>
-            The ground anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localAnchor1">
-            <summary>
-            The local anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localAnchor2">
-            <summary>
-            The local anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.u1">
-            <summary>
-            The 
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.u2">
-            <summary>
-            The 
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.constant">
-            <summary>
-            The constant
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.maxLength1">
-            <summary>
-            The max length
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.maxLength2">
-            <summary>
-            The max length
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.pulleyMass">
-            <summary>
-            The pulley mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitMass1">
-            <summary>
-            The limit mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitMass2">
-            <summary>
-            The limit mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.impulse">
-            <summary>
-            The impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitImpulse1">
-            <summary>
-            The limit impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitImpulse2">
-            <summary>
-            The limit impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.state">
-            <summary>
-            The state
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.type">
-            <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.prev">
-            <summary>
-            The prev
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.next">
-            <summary>
-            The next
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.node1">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.node2">
-            <summary>
-            The node
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.body1">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.body2">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.islandFlag">
-            <summary>
-            The island flag
+                The min pulley length
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.collideConnected">
             <summary>
-            The collide connected
+                The collide connected
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localCenter1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.constant">
             <summary>
-            The local center
+                The constant
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localCenter2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.ground">
             <summary>
-            The local center
+                The ground
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.invMass1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.groundAnchor1">
             <summary>
-            The inv mass
+                The ground anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.groundAnchor2">
+            <summary>
+                The ground anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localAnchor1">
+            <summary>
+                The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localAnchor2">
+            <summary>
+                The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.maxLength1">
+            <summary>
+                The max length
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.maxLength2">
+            <summary>
+                The max length
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.node1">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.node2">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.body1">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.body2">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.impulse">
+            <summary>
+                The impulse
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.invI1">
             <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.invMass2">
-            <summary>
-            The inv mass
+                The inv
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.invI2">
             <summary>
-            The inv
+                The inv
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.userData">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.invMass1">
             <summary>
-            The user data
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.invMass2">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.islandFlag">
+            <summary>
+                The island flag
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitImpulse1">
+            <summary>
+                The limit impulse
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitImpulse2">
+            <summary>
+                The limit impulse
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitMass1">
+            <summary>
+                The limit mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitMass2">
+            <summary>
+                The limit mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.limitState">
+            <summary>
+                The limit state
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localCenter1">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.localCenter2">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.next">
+            <summary>
+                The next
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.prev">
+            <summary>
+                The prev
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.pulleyMass">
+            <summary>
+                The pulley mass
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.ratio">
             <summary>
-            The ratio
+                The ratio
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.state">
+            <summary>
+                The state
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.type">
+            <summary>
+                The type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.u1">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.u2">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.userData">
+            <summary>
+                The user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Joint.PulleyJointDef)">
@@ -6916,96 +6916,6 @@
                 The state
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Type">
-            <summary>
-            Gets or sets the value of the type
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Prev">
-            <summary>
-            Gets or sets the value of the prev
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Next">
-            <summary>
-            Gets or sets the value of the next
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Node1">
-            <summary>
-            Gets the value of the node 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Node2">
-            <summary>
-            Gets the value of the node 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Body1">
-            <summary>
-            Gets or sets the value of the body 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Body2">
-            <summary>
-            Gets or sets the value of the body 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.IslandFlag">
-            <summary>
-            Gets or sets the value of the island flag
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.CollideConnected">
-            <summary>
-            Gets the value of the collide connected
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.LocalCenter1">
-            <summary>
-            Gets or sets the value of the local center 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.LocalCenter2">
-            <summary>
-            Gets or sets the value of the local center 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvMass1">
-            <summary>
-            Gets or sets the value of the inv mass 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvI1">
-            <summary>
-            Gets or sets the value of the inv i 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvMass2">
-            <summary>
-            Gets or sets the value of the inv mass 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvI2">
-            <summary>
-            Gets or sets the value of the inv i 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Anchor1">
-            <summary>
-                Gets the value of the anchor 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Anchor2">
-            <summary>
-                Gets the value of the anchor 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.UserData">
-            <summary>
-            Gets or sets the value of the user data
-            </summary>
-        </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.GroundAnchorX1">
             <summary>
                 Get the first ground anchor.
@@ -7031,6 +6941,96 @@
                 Get the pulley ratio.
             </summary>
         </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Type">
+            <summary>
+                Gets or sets the value of the type
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Prev">
+            <summary>
+                Gets or sets the value of the prev
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Next">
+            <summary>
+                Gets or sets the value of the next
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Node1">
+            <summary>
+                Gets the value of the node 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Node2">
+            <summary>
+                Gets the value of the node 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Body1">
+            <summary>
+                Gets or sets the value of the body 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Body2">
+            <summary>
+                Gets or sets the value of the body 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.IslandFlag">
+            <summary>
+                Gets or sets the value of the island flag
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.CollideConnected">
+            <summary>
+                Gets the value of the collide connected
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.LocalCenter1">
+            <summary>
+                Gets or sets the value of the local center 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.LocalCenter2">
+            <summary>
+                Gets or sets the value of the local center 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvMass1">
+            <summary>
+                Gets or sets the value of the inv mass 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvI1">
+            <summary>
+                Gets or sets the value of the inv i 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvMass2">
+            <summary>
+                Gets or sets the value of the inv mass 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InvI2">
+            <summary>
+                Gets or sets the value of the inv i 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Anchor1">
+            <summary>
+                Gets the value of the anchor 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Anchor2">
+            <summary>
+                Gets the value of the anchor 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.UserData">
+            <summary>
+                Gets or sets the value of the user data
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.GetReactionForce(System.Single)">
             <summary>
                 Gets the reaction force using the specified inv dt
@@ -7045,28 +7045,28 @@
             <param name="invDt">The inv dt</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-                Inits the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
-            Solves the velocity constraints using the specified step
+                Solves the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
             <summary>
-            Describes whether this instance solve position constraints
+                Describes whether this instance solve position constraints
             </summary>
             <param name="baumgarte">The baumgarte</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
-            Inits the velocity constraints using the specified step
+                Inits the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.PulleyJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
@@ -7153,154 +7153,154 @@
                 is provided so that infinite forces are not generated.
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.collideConnected">
+            <summary>
+                The collide connected
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localAnchor1">
+            <summary>
+                The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localAnchor2">
+            <summary>
+                The local anchor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.node1">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.node2">
+            <summary>
+                The node
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.referenceAngle">
+            <summary>
+                The reference angle
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.body1">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.body2">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.impulse">
+            <summary>
+                The impulse
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invI1">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invI2">
+            <summary>
+                The inv
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invMass1">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invMass2">
+            <summary>
+                The inv mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.islandFlag">
+            <summary>
+                The island flag
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.isLimitEnabled">
+            <summary>
+                The is limit enabled
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.isMotorEnabled">
+            <summary>
+                The is motor enabled
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localCenter1">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localCenter2">
+            <summary>
+                The local center
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.lowerLimit">
+            <summary>
+                The lower limit
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.mass">
+            <summary>
+                The mass
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.maxMotorTorque">
+            <summary>
+                The max motor torque
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.motorMass">
+            <summary>
+                The motor mass
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.motorSpeed">
             <summary>
                 The motor speed
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.impulse">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.motorTorque">
             <summary>
-            The impulse
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.mass">
-            <summary>
-            The mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localAnchor1">
-            <summary>
-            The local anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localAnchor2">
-            <summary>
-            The local anchor
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.motorMass">
-            <summary>
-            The motor mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.maxMotorTorque">
-            <summary>
-            The max motor torque
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.referenceAngle">
-            <summary>
-            The reference angle
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.state">
-            <summary>
-            The state
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.type">
-            <summary>
-            The type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.prev">
-            <summary>
-            The prev
+                The motor torque
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.next">
             <summary>
-            The next
+                The next
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.node1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.prev">
             <summary>
-            The node
+                The prev
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.node2">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.state">
             <summary>
-            The node
+                The state
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.body1">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.type">
             <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.body2">
-            <summary>
-            The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.islandFlag">
-            <summary>
-            The island flag
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.collideConnected">
-            <summary>
-            The collide connected
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localCenter1">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.localCenter2">
-            <summary>
-            The local center
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invMass1">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invI1">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invMass2">
-            <summary>
-            The inv mass
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.invI2">
-            <summary>
-            The inv
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.userData">
-            <summary>
-            The user data
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.isLimitEnabled">
-            <summary>
-            The is limit enabled
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.lowerLimit">
-            <summary>
-            The lower limit
+                The type
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.upperLimit">
             <summary>
-            The upper limit
+                The upper limit
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.isMotorEnabled">
+        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.userData">
             <summary>
-            The is motor enabled
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.motorTorque">
-            <summary>
-            The motor torque
+                The user data
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Joint.RevoluteJointDef)">
@@ -7349,96 +7349,6 @@
                 The limit state
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Type">
-            <summary>
-            Gets or sets the value of the type
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Prev">
-            <summary>
-            Gets or sets the value of the prev
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Next">
-            <summary>
-            Gets or sets the value of the next
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Node1">
-            <summary>
-            Gets the value of the node 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Node2">
-            <summary>
-            Gets the value of the node 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Body1">
-            <summary>
-            Gets or sets the value of the body 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Body2">
-            <summary>
-            Gets or sets the value of the body 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.IslandFlag">
-            <summary>
-            Gets or sets the value of the island flag
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.CollideConnected">
-            <summary>
-            Gets the value of the collide connected
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.LocalCenter1">
-            <summary>
-            Gets or sets the value of the local center 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.LocalCenter2">
-            <summary>
-            Gets or sets the value of the local center 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvMass1">
-            <summary>
-            Gets or sets the value of the inv mass 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvI1">
-            <summary>
-            Gets or sets the value of the inv i 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvMass2">
-            <summary>
-            Gets or sets the value of the inv mass 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvI2">
-            <summary>
-            Gets or sets the value of the inv i 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Anchor1">
-            <summary>
-                Gets the value of the anchor 1
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Anchor2">
-            <summary>
-                Gets the value of the anchor 2
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.UserData">
-            <summary>
-            Gets or sets the value of the user data
-            </summary>
-        </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.JointAngleX">
             <summary>
                 Get the current joint angle in radians.
@@ -7479,6 +7389,96 @@
                 Get the current motor torque, usually in N-m.
             </summary>
         </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Type">
+            <summary>
+                Gets or sets the value of the type
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Prev">
+            <summary>
+                Gets or sets the value of the prev
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Next">
+            <summary>
+                Gets or sets the value of the next
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Node1">
+            <summary>
+                Gets the value of the node 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Node2">
+            <summary>
+                Gets the value of the node 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Body1">
+            <summary>
+                Gets or sets the value of the body 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Body2">
+            <summary>
+                Gets or sets the value of the body 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.IslandFlag">
+            <summary>
+                Gets or sets the value of the island flag
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.CollideConnected">
+            <summary>
+                Gets the value of the collide connected
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.LocalCenter1">
+            <summary>
+                Gets or sets the value of the local center 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.LocalCenter2">
+            <summary>
+                Gets or sets the value of the local center 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvMass1">
+            <summary>
+                Gets or sets the value of the inv mass 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvI1">
+            <summary>
+                Gets or sets the value of the inv i 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvMass2">
+            <summary>
+                Gets or sets the value of the inv mass 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InvI2">
+            <summary>
+                Gets or sets the value of the inv i 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Anchor1">
+            <summary>
+                Gets the value of the anchor 1
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Anchor2">
+            <summary>
+                Gets the value of the anchor 2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.UserData">
+            <summary>
+                Gets or sets the value of the user data
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.GetReactionForce(System.Single)">
             <summary>
                 Gets the reaction force using the specified inv dt
@@ -7494,6 +7494,25 @@
             <param>The inv dt</param>
             <param name="invDt"></param>
             <returns>The float</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Solves the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
+            <summary>
+                Describes whether this instance solve position constraints
+            </summary>
+            <param name="baumgarte">The baumgarte</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
+            <summary>
+                Inits the velocity constraints using the specified step
+            </summary>
+            <param name="step">The step</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.EnableLimit(System.Boolean)">
             <summary>
@@ -7518,25 +7537,6 @@
         <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
             <summary>
                 Inits the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolveVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Solves the velocity constraints using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#SolvePositionConstraints(System.Single)">
-            <summary>
-            Describes whether this instance solve position constraints
-            </summary>
-            <param name="baumgarte">The baumgarte</param>
-            <returns>The bool</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joint.RevoluteJoint.Alis#Core#Physic#Dynamics#Joint#IJoint#InitVelocityConstraints(Alis.Core.Aspect.Time.TimeStep)">
-            <summary>
-            Inits the velocity constraints using the specified step
             </summary>
             <param name="step">The step</param>
         </member>
