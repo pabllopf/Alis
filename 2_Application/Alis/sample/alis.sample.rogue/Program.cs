@@ -28,10 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager;
+using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Sample.Rogue
 {
@@ -49,8 +52,22 @@ namespace Alis.Sample.Rogue
             Console.WriteLine("Start game");
 
             GameObject gameObject = new GameObject();
+
+
+            List<Animation> animations = new List<Animation>();
+
+            animations.Add(new Animation(new List<Texture>()
+            {
+                new Texture(Environment.CurrentDirectory + "/Assets/tile000.png"),
+                new Texture(Environment.CurrentDirectory + "/Assets/tile001.png"),
+                new Texture(Environment.CurrentDirectory + "/Assets/tile002.png"),
+                new Texture(Environment.CurrentDirectory + "/Assets/tile003.png")
+            })
+            {
+                Speed = 0.5f
+            });
             
-            
+            animations.Add(new Animation());
 
             //gameObject = GameObject.FindWithTag("object");
 
@@ -78,7 +95,7 @@ namespace Alis.Sample.Rogue
                             .WithTag("Players")
                             .Transform(i => i
                                 .Position(100, 100)
-                                .Rotation(90)
+                                .Rotation(0)
                                 .Scale(3, 3)
                                 .Build())
                             .AddComponent<Sprite>(i => i
@@ -89,7 +106,7 @@ namespace Alis.Sample.Rogue
                             .AddComponent<PlayerMovement>(i => i
                                 .Builder()
                                 .Build())
-                            /*.AddComponent<AudioSource>(audioSource => audioSource
+                            .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
                                 .IsActive(true)
                                 .PlayOnAwake(true)
@@ -98,7 +115,11 @@ namespace Alis.Sample.Rogue
                                     .Volume(100.0f)
                                     .Mute(false)
                                     .Build())
-                                .Build())*/
+                                .Build())
+                            .AddComponent<Animator>(i => i
+                                .Builder()
+                                .Add<List<Animation>>(animations)
+                                .Build())
                             .Build())
                         .Build())
                     .Build())

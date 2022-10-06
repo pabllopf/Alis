@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Builder.Entity;
 using Alis.Core.Component;
+using Alis.Core.Graphic.D2.SFML.Windows;
 
 namespace Alis.Core.Entity
 {
@@ -77,6 +79,20 @@ namespace Alis.Core.Entity
         /// <param name="component">The component</param>
         public void RemoveComponent<T>(T component) where T : ComponentBase => components.Remove(component);
 
+        /// <summary>
+        /// Describes whether this instance contain component
+        /// </summary>
+        /// <param name="component">The component</param>
+        /// <returns>The bool</returns>
+        public bool ContainComponent(ComponentBase component) => components.Contains(component);
+
+        /// <summary>
+        /// Gets the component
+        /// </summary>
+        /// <typeparam name="T">The </typeparam>
+        /// <returns>The</returns>
+        public T GetComponent<T>() where T : ComponentBase => (T) components.Find(i => i.GetType().Equals(typeof(T)));
+        
         /// <summary>
         ///     Builders this instance
         /// </summary>

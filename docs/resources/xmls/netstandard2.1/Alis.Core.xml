@@ -187,6 +187,25 @@
                 The animator builder class
             </summary>
         </member>
+        <member name="F:Alis.Core.Builder.Component.Render.AnimatorBuilder.animator">
+            <summary>
+            The animator
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Render.AnimatorBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The animator</returns>
+        </member>
+        <member name="M:Alis.Core.Builder.Component.Render.AnimatorBuilder.Add``1(System.Collections.Generic.List{Alis.Core.Component.Render.Animation})">
+            <summary>
+            Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The animator builder</returns>
+        </member>
         <member name="T:Alis.Core.Builder.Component.Render.CameraBuilder">
             <summary>
                 The camera builder class
@@ -819,6 +838,51 @@
                 The animation class
             </summary>
         </member>
+        <member name="M:Alis.Core.Component.Render.Animation.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animation.#ctor(System.Collections.Generic.List{Alis.Core.Graphic.D2.SFML.Graphics.Texture})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation" /> class
+            </summary>
+            <param name="textures">The textures</param>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animation.Index">
+            <summary>
+                Gets or sets the value of the index
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animation.Speed">
+            <summary>
+                Gets or sets the value of the speed
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animation.Textures">
+            <summary>
+                Gets or sets the value of the textures
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animation.HasNext">
+            <summary>
+                Describes whether this instance has next
+            </summary>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animation.NextTexture">
+            <summary>
+                Nexts the texture
+            </summary>
+            <exception cref="T:System.InvalidCastException"></exception>
+            <returns>The texture</returns>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animation.Texture">
+            <summary>
+                Textures this instance
+            </summary>
+            <returns>The texture</returns>
+        </member>
         <member name="T:Alis.Core.Component.Render.Animator">
             <summary>
                 The animator class
@@ -830,6 +894,48 @@
             </summary>
             <returns>The animator builder</returns>
         </member>
+        <member name="M:Alis.Core.Component.Render.Animator.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animator" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animator.#ctor(System.Collections.Generic.List{Alis.Core.Component.Render.Animation})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animator" /> class
+            </summary>
+            <param name="animations">The animations</param>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animator.Timer">
+            <summary>
+                Gets or sets the value of the timer
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animator.Sprite">
+            <summary>
+                Gets or sets the value of the sprite
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animator.Animations">
+            <summary>
+                Gets or sets the value of the animations
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animator.State">
+            <summary>
+                Gets or sets the value of the state
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animator.Add(Alis.Core.Component.Render.Animation)">
+            <summary>
+                Adds the animation
+            </summary>
+            <param name="animation">The animation</param>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animator.Awake">
+            <summary>
+                Awakes this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Component.Render.Animator.Start">
             <summary>
                 Starts this instance
@@ -838,6 +944,11 @@
         <member name="M:Alis.Core.Component.Render.Animator.Update">
             <summary>
                 Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animator.Exit">
+            <summary>
+                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Render.Camera">
@@ -966,6 +1077,20 @@
                 Removes the component
             </summary>
             <param name="component">The component</param>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.ContainComponent(Alis.Core.Component.ComponentBase)">
+            <summary>
+            Describes whether this instance contain component
+            </summary>
+            <param name="component">The component</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Entity.GameObject.GetComponent``1">
+            <summary>
+            Gets the component
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <returns>The</returns>
         </member>
         <member name="M:Alis.Core.Entity.GameObject.Builder">
             <summary>

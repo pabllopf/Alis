@@ -153,6 +153,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015E
 		.scripts\windows\restart_nuget.bat = .scripts\windows\restart_nuget.bat
 		.scripts\windows\restart_sln.bat = .scripts\windows\restart_sln.bat
 		.scripts\windows\trust_certificates.bat = .scripts\windows\trust_certificates.bat
+		.scripts\windows\install_env.bat = .scripts\windows\install_env.bat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"

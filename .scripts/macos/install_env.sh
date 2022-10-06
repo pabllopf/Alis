@@ -1,5 +1,7 @@
 #!/bin/bash
 
+dotnet tool install --global dotnet-document --version 0.1.4-alpha
+
 echo "Do you want to continue? (y/n)"
 select yn in "Yes" "No"; do
     case $yn in

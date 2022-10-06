@@ -11,37 +11,37 @@
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program.WIDTH">
             <summary>
-            The width
+                The width
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program.HEIGHT">
             <summary>
-            The height
+                The height
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program.TITLE">
             <summary>
-            The title
+                The title
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program._red">
             <summary>
-            The blue
+                The blue
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program._green">
             <summary>
-            The blue
+                The blue
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program._blue">
             <summary>
-            The blue
+                The blue
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
             <summary>
-            Main the args
+                Main the args
             </summary>
             <param name="args">The args</param>
         </member>
