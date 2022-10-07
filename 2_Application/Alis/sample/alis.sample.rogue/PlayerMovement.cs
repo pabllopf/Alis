@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
 
 namespace Alis.Sample.Rogue
@@ -63,6 +64,7 @@ namespace Alis.Sample.Rogue
                 Console.WriteLine($"Release up key='{key}'");
             }
         }
+        
 
         /// <summary>
         /// sample
@@ -72,19 +74,23 @@ namespace Alis.Sample.Rogue
         {
             if (key.Equals("W"))
             {
-                Console.WriteLine($"You are pressing key='{key}'");
+                //Console.WriteLine($"Pressed key='{key}'");
+                Transform.Position += new Vector2(0, -1);
             }
-        }
-
-        /// <summary>
-        /// sample
-        /// </summary>
-        /// <param name="key"></param>
-        public override void OnPressKey(string key)
-        {
-            if (key.Equals("W"))
+            if (key.Equals("S"))
             {
-                Console.WriteLine($"Pressed key='{key}'");
+                Transform.Position += new Vector2(0, 1);
+                //Console.WriteLine($"Pressed key='{key}'");
+            }
+            if (key.Equals("D"))
+            {
+                Transform.Position += new Vector2(1, 0);
+                //Console.WriteLine($"Pressed key='{key}'");
+            }
+            if (key.Equals("A"))
+            {
+                Transform.Position += new Vector2(-1, 0);
+                //Console.WriteLine($"Pressed key='{key}'");
             }
         }
     }

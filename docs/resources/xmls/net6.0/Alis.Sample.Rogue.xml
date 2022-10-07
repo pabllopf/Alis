@@ -31,12 +31,6 @@
             </summary>
             <param name="key"></param>
         </member>
-        <member name="M:Alis.Sample.Rogue.PlayerMovement.OnPressKey(System.String)">
-            <summary>
-            sample
-            </summary>
-            <param name="key"></param>
-        </member>
         <member name="T:Alis.Sample.Rogue.Program">
             <summary>
                 The program class

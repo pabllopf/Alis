@@ -137,13 +137,13 @@ namespace Alis.Core.Component.Render
                 
                 if (Animations.Count > 0)
                 {
-                    Console.WriteLine($"Animations.Count={Animations.Count}");
+                    //Console.WriteLine($"Animations.Count={Animations.Count}");
                     
                     if (Timer.ElapsedMilliseconds >= Animations[State].Speed * 1000)
                     {
                         if (Animations[State].HasNext())
                         {
-                            Console.WriteLine($"text={Sprite.texturePath}");
+                            //Console.WriteLine($"text={Sprite.texturePath}");
                             Sprite.sprite.Texture = Animations[State].NextTexture();
                         }
                         
