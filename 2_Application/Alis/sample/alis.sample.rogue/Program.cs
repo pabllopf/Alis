@@ -33,7 +33,6 @@ using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Manager;
 using Alis.Core.Manager.Scene;
 using Sprite = Alis.Core.Component.Render.Sprite;
 

@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
-
 namespace Alis.Core.Entity
 {
     /// <summary>Control the object space in the game.</summary>

@@ -34,7 +34,7 @@ namespace Alis.Core.Setting
     /// <summary>
     ///     The debug class
     /// </summary>
-    public class DebugSetting
+    public class DebugSetting : SettingBase
     {
         /// <summary>
         ///     The log level

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IndexArray.cs
+//  File:InputManagerBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,68 +27,100 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Physic.Collisions
+namespace Alis.Core.Manager.Input
 {
     /// <summary>
-    ///     The index array
+    /// The input manager base class
     /// </summary>
-    public struct IndexArray
+    /// <seealso cref="ManagerBase"/>
+    public class InputManagerBase : ManagerBase
     {
         /// <summary>
-        ///     The
+        /// Inits this instance
         /// </summary>
-        private byte i0;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        private byte i1;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        private byte i2;
-
-        /// <summary>
-        ///     The value
-        /// </summary>
-        public byte this[int index]
+        public override void Init()
         {
-            get
-            {
-#if DEBUG
-                Box2DxDebug.Assert(index >= 0 && index < 3);
-#endif
-                if (index == 0)
-                {
-                    return i0;
-                }
+            
+        }
 
-                if (index == 1)
-                {
-                    return i1;
-                }
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            
+        }
 
-                return i2;
-            }
-            set
-            {
-#if DEBUG
-                Box2DxDebug.Assert(index >= 0 && index < 3);
-#endif
-                if (index == 0)
-                {
-                    i0 = value;
-                }
-                else if (index == 1)
-                {
-                    i1 = value;
-                }
-                else
-                {
-                    i2 = value;
-                }
-            }
+        /// <summary>
+        /// Starts this instance
+        /// </summary>
+        public override void Start()
+        {
+
+        }
+
+        /// <summary>
+        /// Befores the update
+        /// </summary>
+        public override void BeforeUpdate()
+        {
+
+        }
+
+        /// <summary>
+        /// Updates this instance
+        /// </summary>
+        public override void Update()
+        {
+
+        }
+
+        /// <summary>
+        /// Afters the update
+        /// </summary>
+        public override void AfterUpdate()
+        {
+
+        }
+
+        /// <summary>
+        /// Fixeds the update
+        /// </summary>
+        public override void FixedUpdate()
+        {
+
+        }
+
+        /// <summary>
+        /// Dispatches the events
+        /// </summary>
+        public override void DispatchEvents()
+        {
+
+        }
+
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
+        public override void Reset()
+        {
+
+        }
+
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
+        public override void Stop()
+        {
+
+        }
+
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public override void Exit()
+        {
+
         }
     }
 }

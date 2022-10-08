@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Builder.Entity;
 using Alis.Core.Entity;
-using Alis.Core.Manager;
 using Alis.Core.Manager.Scene;
 
 namespace Alis.Core.Builder.Manager

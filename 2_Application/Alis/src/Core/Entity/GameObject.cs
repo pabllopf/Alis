@@ -29,12 +29,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Builder.Entity;
 using Alis.Core.Component;
-using Alis.Core.Graphic.D2.SFML.Windows;
 
 namespace Alis.Core.Entity
 {

@@ -29,15 +29,13 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Windows;
-using Alis.Core.Manager.Scene;
 
 namespace Alis.Core.Manager.Input
 {
     /// <summary>
     /// </summary>
-    public class InputManager : ManagerBase
+    public class InputManager : InputManagerBase
     {
         /// <summary>
         /// Array of key of keyboard

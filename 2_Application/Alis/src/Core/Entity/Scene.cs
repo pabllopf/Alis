@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Entity

@@ -30,12 +30,12 @@
 namespace Alis.Core.Setting
 {
     /// <summary>Define a </summary>
-    public class GeneralSetting
+    public class GeneralSetting : SettingBase
     {
         /// <summary>
         ///     Gets or sets the value of the game name
         /// </summary>
-        public string GameName { get; set; } = "Alis Game";
+        public string Name { get; set; } = "Alis Game";
 
         /// <summary>
         ///     Gets or sets the value of the author

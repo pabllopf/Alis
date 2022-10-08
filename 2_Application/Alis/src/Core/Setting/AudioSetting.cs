@@ -34,7 +34,7 @@ namespace Alis.Core.Setting
     /// <summary>
     ///     The audio setting class
     /// </summary>
-    public class AudioSetting
+    public class AudioSetting : SettingBase
     {
         /// <summary>
         ///     Gets or sets the value of the backend type

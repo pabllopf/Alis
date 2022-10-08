@@ -30,7 +30,6 @@
 using System.Collections.Generic;
 using Alis.Core.Manager;
 using Alis.Core.Manager.Time;
-using Alis.Core.Setting;
 
 namespace Alis.Core
 {

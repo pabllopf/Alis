@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Builder.Component.Render;
 using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Manager;
 using Alis.Core.Manager.Graphic;
 
 namespace Alis.Core.Component.Render
