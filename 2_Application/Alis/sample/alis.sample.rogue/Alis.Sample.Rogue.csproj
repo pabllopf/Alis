@@ -115,162 +115,7 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\alpine-x64\native\libcsfml-audio.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libcsfml-graphics.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libcsfml-system.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libcsfml-window.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-audio.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-audio.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-audio.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-graphics.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-graphics.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-graphics.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-system.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-system.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-system.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-window.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-window.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\alpine-x64\native\libsfml-window.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libcsfml-audio.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libcsfml-graphics.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libcsfml-system.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libcsfml-window.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-audio.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-audio.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-audio.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-graphics.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-graphics.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-graphics.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-system.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-system.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-system.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-window.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-window.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\debian-x64\native\libsfml-window.so.2.5.1">
+      <None Update="runtimes\fedora-x64\native\libsfml-audio.so">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -280,7 +125,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\fedora-x64\native\libcsfml-graphics.so">
+      <None Update="runtimes\fedora-x64\native\libsfml-system.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\fedora-x64\native\libsfml-window.so">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -295,7 +145,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-audio.so">
+      <None Update="runtimes\fedora-x64\native\libsfml-graphics.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\fedora-x64\native\libcsfml-graphics.so">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -305,42 +160,7 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-audio.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-graphics.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-graphics.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-graphics.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-system.so">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
       <None Update="runtimes\fedora-x64\native\libsfml-system.so.2.5">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-system.so.2.5.1">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\fedora-x64\native\libsfml-window.so">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -350,17 +170,187 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
+      <None Update="runtimes\fedora-x64\native\libsfml-audio.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\fedora-x64\native\libsfml-graphics.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\fedora-x64\native\libsfml-system.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
       <None Update="runtimes\fedora-x64\native\libsfml-window.so.2.5.1">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-audio.2.5.1.dylib">
+      <None Update="runtimes\fedora-x64\native\libsfml-graphics.so.2.5.1">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-audio.2.5.dylib">
+      <None Update="runtimes\debian-x64\native\libsfml-audio.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libcsfml-audio.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-system.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-window.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libcsfml-system.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libcsfml-window.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-graphics.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libcsfml-graphics.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-audio.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-system.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-window.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-audio.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-graphics.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-system.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-window.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\debian-x64\native\libsfml-graphics.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-audio.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libcsfml-audio.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-system.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-window.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libcsfml-system.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libcsfml-window.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-graphics.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libcsfml-graphics.so">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-audio.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-system.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-window.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-audio.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-graphics.so.2.5">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-system.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-window.so.2.5.1">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\alpine-x64\native\libsfml-graphics.so.2.5.1">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -370,27 +360,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-graphics.2.5.1.dylib">
+      <None Update="runtimes\osx-arm64\native\libcsfml-system.dylib">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-graphics.2.5.dylib">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-graphics.dylib">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-network.2.5.1.dylib">
-        <LinkBase>runtimes/</LinkBase>
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-      </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-network.2.5.dylib">
+      <None Update="runtimes\osx-arm64\native\libcsfml-window.dylib">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -400,7 +375,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-system.2.5.1.dylib">
+      <None Update="runtimes\osx-arm64\native\libcsfml-graphics.dylib">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-arm64\native\libcsfml-audio.2.5.dylib">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -410,7 +390,27 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-system.dylib">
+      <None Update="runtimes\osx-arm64\native\libcsfml-window.2.5.dylib">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-arm64\native\libcsfml-audio.2.5.1.dylib">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-arm64\native\libcsfml-network.2.5.dylib">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-arm64\native\libcsfml-graphics.2.5.dylib">
+        <LinkBase>runtimes/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+      <None Update="runtimes\osx-arm64\native\libcsfml-system.2.5.1.dylib">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
@@ -420,12 +420,12 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-window.2.5.dylib">
+      <None Update="runtimes\osx-arm64\native\libcsfml-network.2.5.1.dylib">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>
       </None>
-      <None Update="runtimes\osx-arm64\native\libcsfml-window.dylib">
+      <None Update="runtimes\osx-arm64\native\libcsfml-graphics.2.5.1.dylib">
         <LinkBase>runtimes/</LinkBase>
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         <CopyToPublishDirectory>Always</CopyToPublishDirectory>

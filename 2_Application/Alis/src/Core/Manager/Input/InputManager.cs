@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Scene.cs
+//  File:InputManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,127 +27,137 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Base;
-using Alis.Core.Aspect.Logging;
+using Alis.Core.Entity;
+using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Manager.Scene;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Manager.Input
 {
     /// <summary>
-    ///     The scene class
     /// </summary>
-    public class Scene : AlisObject
+    public class InputManager : ManagerBase
     {
         /// <summary>
-        ///     The game objects
+        /// Array of key of keyboard
         /// </summary>
-        internal List<GameObject> gameObjects;
+        private Array keys;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Scene" /> class
+        /// Temp list of keys
         /// </summary>
-        public Scene() => gameObjects = new List<GameObject>();
+        private List<Key> tempListOfKeys = new List<Key>();
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal void Init()
+        public override void Init()
         {
-            for (int i = 0; i < gameObjects.Count; i++)
-            {
-                Logger.Log($"Scene::Init::GameObject'{gameObjects[i].Name}'");
-            }
-
-            gameObjects.ForEach(gameObject => gameObject.Init());
+            keys = Enum.GetValues(typeof(Key));
         }
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public void Awake()
+        public override void Awake()
         {
-            gameObjects.ForEach(gameObject => gameObject.Awake());
         }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public void Start()
+        public override void Start()
         {
-            gameObjects.ForEach(gameObject => gameObject.Start());
         }
 
         /// <summary>
-        ///     Before run the update
+        ///     Befores the update
         /// </summary>
-        public void BeforeUpdate()
+        public override void BeforeUpdate()
         {
-            gameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
         }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public void Update()
+        public override void Update()
         {
-            gameObjects.ForEach(gameObject => gameObject.Update());
         }
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public void AfterUpdate()
+        public override void AfterUpdate()
         {
-            gameObjects.ForEach(gameObject => gameObject.AfterUpdate());
         }
 
         /// <summary>
-        ///     Update every frame.
+        ///     Fixeds the update
         /// </summary>
-        public void FixedUpdate()
+        public override void FixedUpdate()
         {
-            gameObjects.ForEach(gameObject => gameObject.FixedUpdate());
         }
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public void DispatchEvents()
-        {
-            gameObjects.ForEach(gameObject => gameObject.DispatchEvents());
+        public override void DispatchEvents()
+        {/*
+            foreach(Key key in keys)
+            {
+                if (Keyboard.IsKeyPressed(key) && !tempListOfKeys.Contains(key))
+                {
+                    //Console.WriteLine($"Key pressed={key}");
+                    tempListOfKeys.Add(key);
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnPressKey(key.ToString()));
+                    }
+                }
+
+                if (!Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
+                {
+                    //Console.WriteLine($"Key NOT pressed={key}");
+                    tempListOfKeys.Remove(key);
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(key.ToString()));
+                    }
+                }
+                
+                
+                if (Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
+                {
+                    //Console.WriteLine($"Key pressing={key}");
+                    
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(key.ToString()));
+                    }
+                }
+            }*/
         }
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public void Reset()
+        public override void Reset()
         {
-            gameObjects.ForEach(gameObject => gameObject.Reset());
         }
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public void Stop()
+        public override void Stop()
         {
-            gameObjects.ForEach(gameObject => gameObject.Stop());
         }
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public void Exit()
+        public override void Exit()
         {
-            gameObjects.ForEach(gameObject => gameObject.Exit());
-        }
-
-        /// <summary>
-        ///     Adds the game object
-        /// </summary>
-        /// <param name="gameObject">The game object</param>
-        public void Add(GameObject gameObject)
-        {
-            gameObjects.Add(gameObject);
         }
     }
 }

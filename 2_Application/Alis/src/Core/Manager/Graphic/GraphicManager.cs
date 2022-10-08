@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:InputManager.cs
+//  File:GraphicManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,31 +29,38 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Entity;
+using System.Linq;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
+using Sprite = Alis.Core.Component.Render.Sprite;
 
-namespace Alis.Core.Manager
+namespace Alis.Core.Manager.Graphic
 {
     /// <summary>
+    ///     The graphic manager class
     /// </summary>
-    public class InputManager : ManagerBase
+    /// <seealso cref="ManagerBase" />
+    public class GraphicManager : ManagerBase
     {
         /// <summary>
-        /// Array of key of keyboard
+        ///     The renderWindow
         /// </summary>
-        private Array keys;
+        private RenderWindow renderWindow;
 
         /// <summary>
-        /// Temp list of keys
+        ///     Gets or sets the value of the sprites
         /// </summary>
-        private List<Key> tempListOfKeys = new List<Key>();
+        private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal override void Init()
+        public override void Init()
         {
-            keys = Enum.GetValues(typeof(Key));
+            Console.WriteLine("init::graphic:new");
+            //renderWindow = new RenderWindow(new VideoMode(640, 480), $"{GameBase.Setting.General.GameName} by {GameBase.Setting.General.Author}");
+            renderWindow = new RenderWindow(new VideoMode(640, 480), "sample");
+            renderWindow.Closed += RenderWindowOnClosed;
         }
 
         /// <summary>
@@ -68,6 +75,8 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Start()
         {
+            Console.WriteLine("Start::graphic");
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
 
         /// <summary>
@@ -75,6 +84,8 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void BeforeUpdate()
         {
+            //Console.WriteLine("BeforeUpdate::graphic");
+            renderWindow.Clear(Color.Blue);
         }
 
         /// <summary>
@@ -82,6 +93,8 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Update()
         {
+            //Console.WriteLine("Update::graphic");
+            Sprites.ForEach(i => renderWindow.Draw(i.sprite));
         }
 
         /// <summary>
@@ -89,53 +102,20 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void AfterUpdate()
         {
+            //Console.WriteLine("Update::graphic");
+            renderWindow.Display();
         }
+
+        /// <summary>
+        ///     Dispatches the events
+        /// </summary>
+        public override void DispatchEvents() => renderWindow.DispatchEvents();
 
         /// <summary>
         ///     Fixeds the update
         /// </summary>
         public override void FixedUpdate()
         {
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-            foreach(Key key in keys)
-            {
-                if (Keyboard.IsKeyPressed(key) && !tempListOfKeys.Contains(key))
-                {
-                    //Console.WriteLine($"Key pressed={key}");
-                    tempListOfKeys.Add(key);
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                    {
-                        currentSceneGameObject.components.ForEach(i => i.OnPressKey(key.ToString()));
-                    }
-                }
-
-                if (!Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
-                {
-                    //Console.WriteLine($"Key NOT pressed={key}");
-                    tempListOfKeys.Remove(key);
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                    {
-                        currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(key.ToString()));
-                    }
-                }
-                
-                
-                if (Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
-                {
-                    //Console.WriteLine($"Key pressing={key}");
-                    
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                    {
-                        currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(key.ToString()));
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -155,8 +135,36 @@ namespace Alis.Core.Manager
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit()
+        public override void Exit() => renderWindow.Close();
+
+        /// <summary>
+        ///     Windows the on closed using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
+        private void RenderWindowOnClosed(object sender, EventArgs e)
         {
+            GameBase.IsRunning = false;
+        }
+
+        /// <summary>
+        ///     Attaches the sprite
+        /// </summary>
+        /// <param name="sprite">The sprite</param>
+        public static void Attach(Sprite sprite)
+        {
+            Sprites.Add(sprite);
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+        }
+
+        /// <summary>
+        ///     Uns the attach using the specified sprite
+        /// </summary>
+        /// <param name="sprite">The sprite</param>
+        public static void UnAttach(Sprite sprite)
+        {
+            Sprites.Remove(sprite);
+            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
         }
     }
 }

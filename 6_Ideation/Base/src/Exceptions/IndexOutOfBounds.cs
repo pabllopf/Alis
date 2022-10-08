@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ComponentTypeAlredyExist.cs
+//  File:IndexOutOfBounds.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Exceptions
+namespace Alis.Core.Aspect.Base.Exceptions
 {
     /// <summary>
-    ///     The component type alredy exist class
+    ///     The index out of bounds class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class ComponentTypeAlredyExist : Exception
+    public class IndexOutOfBounds : Exception
     {
     }
 }

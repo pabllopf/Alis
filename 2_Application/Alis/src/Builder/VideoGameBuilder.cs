@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Builder.Manager;
 using Alis.Core.Builder.Setting;
 using Alis.Core.Manager;
+using Alis.Core.Manager.Scene;
 using Alis.Core.Setting;
 
 namespace Alis.Builder
@@ -74,7 +75,7 @@ namespace Alis.Builder
         /// <returns></returns>
         public VideoGameBuilder Settings(Func<SettingBuilder, SettingBase> value)
         {
-            GameBase.Setting = value.Invoke(new SettingBuilder());
+            //GameBase.Setting = value.Invoke(new SettingBuilder());
             return this;
         }
 

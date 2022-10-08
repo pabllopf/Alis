@@ -39,7 +39,7 @@ namespace Alis.Core.Component
         /// <summary>
         ///     Game Object.
         /// </summary>
-        public GameObject GameObject { get; set; }
+        public GameObjectBase GameObject { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the is active
@@ -54,7 +54,7 @@ namespace Alis.Core.Component
         /// <summary>
         ///     Gets or sets the value of the tag
         /// </summary>
-        public Transform Transform { get; set; }
+        public TransformBase Transform { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the destroyed
@@ -71,7 +71,7 @@ namespace Alis.Core.Component
         ///     Attaches the game object using the specified game object
         /// </summary>
         /// <param name="gameObject">The game object</param>
-        internal void AttachGameObject(GameObject gameObject)
+        public void AttachGameObject(GameObjectBase gameObject)
         {
             GameObject = gameObject;
             Tag = GameObject.Tag;

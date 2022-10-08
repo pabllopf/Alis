@@ -27,7 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Manager
+using System;
+
+namespace Alis.Core.Manager.Audio
 {
     /// <summary>
     ///     The audio manager class
@@ -44,10 +46,11 @@ namespace Alis.Core.Manager
         }
 
         /// <summary>
-        ///     Inits this instance
+        /// Inits this instance
         /// </summary>
-        internal override void Init()
+        public override void Init()
         {
+            Console.WriteLine("Init:new:audiomanager");
         }
 
         /// <summary>
@@ -80,6 +83,7 @@ namespace Alis.Core.Manager
         public override void Exit()
         {
             //throw new NotImplementedException();
+            Console.WriteLine("exit:audio:source:");
         }
 
         /// <summary>

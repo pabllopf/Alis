@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Manager
 {
     /// <summary>
@@ -37,7 +39,7 @@ namespace Alis.Core.Manager
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal abstract void Init();
+        public abstract void Init();
 
         /// <summary>Awakes this instance.</summary>
         public abstract void Awake();

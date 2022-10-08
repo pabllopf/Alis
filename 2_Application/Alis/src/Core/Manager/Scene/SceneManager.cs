@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicManager.cs
+//  File:SceneManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,38 +27,53 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Graphic.D2.SFML.Windows;
-using Sprite = Alis.Core.Component.Render.Sprite;
+using Alis.Core.Aspect.Logging;
 
-namespace Alis.Core.Manager
+namespace Alis.Core.Manager.Scene
 {
     /// <summary>
-    ///     The graphic manager class
+    ///     Scene manager
     /// </summary>
-    /// <seealso cref="ManagerBase" />
-    public class GraphicManager : ManagerBase
+    public class SceneManager : SceneManagerBase
     {
-        /// <summary>
-        ///     The renderWindow
-        /// </summary>
-        private RenderWindow renderWindow;
 
         /// <summary>
-        ///     Gets or sets the value of the sprites
+        /// Define the current scene manager
         /// </summary>
-        private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
+        internal static SceneManager currentSceneManager;
+        
+        /// <summary>
+        ///     The current scene
+        /// </summary>
+        internal Entity.Scene currentScene;
+
+        /// <summary>
+        ///     Scene list
+        /// </summary>
+        private List<Entity.Scene> scenes;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="SceneManager" /> class
+        /// </summary>
+        public SceneManager()
+        {
+            scenes = new List<Entity.Scene>();
+            currentScene = new Entity.Scene();
+            currentSceneManager = this;
+        }
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal override void Init()
+        public override void Init()
         {
-            renderWindow = new RenderWindow(new VideoMode(640, 480), $"{GameBase.Setting.General.GameName} by {GameBase.Setting.General.Author}");
-            renderWindow.Closed += RenderWindowOnClosed;
+            if (scenes.Count > 0)
+            {
+                currentScene = scenes[0];
+            }
+
+            currentScene.Init();
         }
 
         /// <summary>
@@ -66,87 +81,65 @@ namespace Alis.Core.Manager
         /// </summary>
         public override void Awake()
         {
+            for (int i = 0; i < scenes.Count; i++)
+            {
+                Logger.Log($"SceneManager::Awake::Scene::'{scenes[i].Name}'");
+            }
+
+            Logger.Log($"SceneManager::Awake::currentScene::'{currentScene.Name}'");
+
+            currentScene.Awake();
         }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+        public override void Start() => currentScene.Start();
 
         /// <summary>
-        ///     Befores the update
+        ///     Before the update
         /// </summary>
-        public override void BeforeUpdate() => renderWindow.Clear(Color.Blue);
+        public override void BeforeUpdate() => currentScene.BeforeUpdate();
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => Sprites.ForEach(i => renderWindow.Draw(i.sprite));
+        public override void Update() => currentScene.Update();
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => renderWindow.Display();
+        public override void AfterUpdate() => currentScene.AfterUpdate();
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents() => renderWindow.DispatchEvents();
+        public override void DispatchEvents() => currentScene.DispatchEvents();
 
         /// <summary>
-        ///     Fixeds the update
+        ///     Fix the update
         /// </summary>
-        public override void FixedUpdate()
-        {
-        }
+        public override void FixedUpdate() => currentScene.FixedUpdate();
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset()
-        {
-        }
+        public override void Reset() => currentScene.Reset();
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop()
-        {
-        }
+        public override void Stop() => currentScene.Stop();
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => renderWindow.Close();
+        public override void Exit() => currentScene.Exit();
 
         /// <summary>
-        ///     Windows the on closed using the specified sender
+        ///     Adds the scene
         /// </summary>
-        /// <param name="sender">The sender</param>
-        /// <param name="e">The </param>
-        private void RenderWindowOnClosed(object sender, EventArgs e)
-        {
-            GameBase.IsRunning = false;
-        }
-
-        /// <summary>
-        ///     Attaches the sprite
-        /// </summary>
-        /// <param name="sprite">The sprite</param>
-        public static void Attach(Sprite sprite)
-        {
-            Sprites.Add(sprite);
-            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-        }
-
-        /// <summary>
-        ///     Uns the attach using the specified sprite
-        /// </summary>
-        /// <param name="sprite">The sprite</param>
-        public static void UnAttach(Sprite sprite)
-        {
-            Sprites.Remove(sprite);
-            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-        }
+        /// <param name="scene">The scene</param>
+        public void Add(Entity.Scene scene) => scenes.Add(scene);
     }
 }

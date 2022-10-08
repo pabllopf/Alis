@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneManager.cs
+//  File:Scene.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,120 +28,126 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Entity;
 
-namespace Alis.Core.Manager
+namespace Alis.Core.Entity
 {
     /// <summary>
-    ///     Scene manager
+    ///     The scene class
     /// </summary>
-    public class SceneManager : ManagerBase
+    public class Scene : SceneBase
     {
+        /// <summary>
+        ///     The game objects
+        /// </summary>
+        internal List<GameObject> gameObjects;
 
         /// <summary>
-        /// Define the current scene manager
+        ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
-        internal static SceneManager currentSceneManager;
-        
-        /// <summary>
-        ///     The current scene
-        /// </summary>
-        internal Scene currentScene;
-
-        /// <summary>
-        ///     Scene list
-        /// </summary>
-        private List<Scene> scenes;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SceneManager" /> class
-        /// </summary>
-        public SceneManager()
-        {
-            scenes = new List<Scene>();
-            currentScene = new Scene();
-            currentSceneManager = this;
-        }
+        public Scene() => gameObjects = new List<GameObject>();
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal override void Init()
+        internal void Init()
         {
-            if (scenes.Count > 0)
+            for (int i = 0; i < gameObjects.Count; i++)
             {
-                currentScene = scenes[0];
+                Logger.Log($"Scene::Init::GameObject'{gameObjects[i].Name}'");
             }
 
-            currentScene.Init();
+            gameObjects.ForEach(gameObject => gameObject.Init());
         }
 
         /// <summary>
         ///     Awakes this instance
         /// </summary>
-        public override void Awake()
+        public void Awake()
         {
-            for (int i = 0; i < scenes.Count; i++)
-            {
-                Logger.Log($"SceneManager::Awake::Scene::'{scenes[i].Name}'");
-            }
-
-            Logger.Log($"SceneManager::Awake::currentScene::'{currentScene.Name}'");
-
-            currentScene.Awake();
+            gameObjects.ForEach(gameObject => gameObject.Awake());
         }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => currentScene.Start();
+        public void Start()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Start());
+        }
 
         /// <summary>
-        ///     Before the update
+        ///     Before run the update
         /// </summary>
-        public override void BeforeUpdate() => currentScene.BeforeUpdate();
+        public void BeforeUpdate()
+        {
+            gameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
+        }
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => currentScene.Update();
+        public void Update()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Update());
+        }
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => currentScene.AfterUpdate();
+        public void AfterUpdate()
+        {
+            gameObjects.ForEach(gameObject => gameObject.AfterUpdate());
+        }
+
+        /// <summary>
+        ///     Update every frame.
+        /// </summary>
+        public void FixedUpdate()
+        {
+            gameObjects.ForEach(gameObject => gameObject.FixedUpdate());
+        }
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents() => currentScene.DispatchEvents();
-
-        /// <summary>
-        ///     Fix the update
-        /// </summary>
-        public override void FixedUpdate() => currentScene.FixedUpdate();
+        public void DispatchEvents()
+        {
+            gameObjects.ForEach(gameObject => gameObject.DispatchEvents());
+        }
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset() => currentScene.Reset();
+        public void Reset()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Reset());
+        }
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop() => currentScene.Stop();
+        public void Stop()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Stop());
+        }
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => currentScene.Exit();
+        public void Exit()
+        {
+            gameObjects.ForEach(gameObject => gameObject.Exit());
+        }
 
         /// <summary>
-        ///     Adds the scene
+        ///     Adds the game object
         /// </summary>
-        /// <param name="scene">The scene</param>
-        public void Add(Scene scene) => scenes.Add(scene);
+        /// <param name="gameObject">The game object</param>
+        public void Add(GameObject gameObject)
+        {
+            gameObjects.Add(gameObject);
+        }
     }
 }

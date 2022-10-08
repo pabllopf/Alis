@@ -34,6 +34,7 @@ using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager;
+using Alis.Core.Manager.Scene;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Sample.Rogue
@@ -77,7 +78,7 @@ namespace Alis.Sample.Rogue
                 .Manager<SceneManager>(sceneManager => sceneManager
                     .Add<Scene>(scene => scene
                         .Name("Main Menu")
-                        .Add<GameObject>(gameObject => gameObject
+                        .Add<GameObject>(go => go
                             .Name("Player")
                             .Transform(transform => transform
                                 .Position(100, 100)
@@ -90,7 +91,7 @@ namespace Alis.Sample.Rogue
                                 .Depth(2)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(gb => gb
+                        .Add<GameObject>(go => go
                             .Name("Player 2")
                             .WithTag("Players")
                             .Transform(i => i

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneManagerBuilder.cs
+//  File:TransformBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,43 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Builder.Entity;
-using Alis.Core.Entity;
-using Alis.Core.Manager;
+using Alis.Core.Aspect.Math;
 
-namespace Alis.Core.Builder.Manager
+namespace Alis.Core.Entity
 {
     /// <summary>
-    ///     The scene manager builder class
+    /// The transform base class
     /// </summary>
-    public class SceneManagerBuilder :
-        IBuild<SceneManager>,
-        IAdd<SceneManagerBuilder, Scene, Func<SceneBuilder, Scene>>
+    public class TransformBase 
     {
         /// <summary>
-        ///     Gets the value of the scene manager
+        ///     The position
         /// </summary>
-        private SceneManager SceneManager { get; } = new SceneManager();
+        public Vector2 Position { get; set; } = Vector2.Zero;
 
         /// <summary>
-        ///     Adds the value
+        ///     The rotation
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value) where T : Scene
-        {
-            SceneManager.Add(value.Invoke(new SceneBuilder()));
-            return this;
-        }
+        public float Rotation { get; set; } = 0;
 
         /// <summary>
-        ///     Builds this instance
+        ///     The scale
         /// </summary>
-        /// <returns>The scene manager</returns>
-        public SceneManager Build() => SceneManager;
+        public Vector2 Scale { get; set; } = new Vector2(1, 1);
     }
 }

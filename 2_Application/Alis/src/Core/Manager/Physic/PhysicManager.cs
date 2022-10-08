@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Manager
+namespace Alis.Core.Manager.Physic
 {
     /// <summary>
     ///     The physic manager class
@@ -46,7 +46,7 @@ namespace Alis.Core.Manager
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal override void Init()
+        public override void Init()
         {
         }
 

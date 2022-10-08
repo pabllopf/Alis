@@ -37,21 +37,7 @@ namespace Alis.Core.Setting
     /// </summary>
     public class SettingBase : IBuilder<SettingBuilder>
     {
-        /// <summary>
-        ///     The debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
-
-        /// <summary>
-        ///     The general
-        /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
-
-        /// <summary>
-        ///     Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
+        
         /// <summary>
         ///     Setting build
         /// </summary>

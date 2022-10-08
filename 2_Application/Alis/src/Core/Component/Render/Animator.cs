@@ -41,7 +41,6 @@ namespace Alis.Core.Component.Render
     /// </summary>
     public class Animator : ComponentBase, IBuilder<AnimatorBuilder>
     {
-
         /// <summary>
         ///     Builders this instance
         /// </summary>

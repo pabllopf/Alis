@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Exceptions
+namespace Alis.Core.Aspect.Base.Exceptions
 {
     /// <summary>
     ///     The game object is full class

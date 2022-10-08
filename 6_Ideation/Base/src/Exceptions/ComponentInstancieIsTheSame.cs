@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ComponentDontExits.cs
+//  File:ComponentInstancieIsTheSame.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Exceptions
+namespace Alis.Core.Aspect.Base.Exceptions
 {
     /// <summary>
-    ///     The component dont exits class
+    ///     The component instancie is the same class
     /// </summary>
     /// <seealso cref="Exception" />
-    internal class ComponentDontExits : Exception
+    internal class ComponentInstancieIsTheSame : Exception
     {
     }
 }

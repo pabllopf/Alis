@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MaxSceneGame.cs
+//  File:SceneBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,15 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Base;
 
-namespace Alis.Core.Exceptions
+namespace Alis.Core.Entity
 {
     /// <summary>
-    ///     The max scene game class
+    /// The scene base class
     /// </summary>
-    /// <seealso cref="Exception" />
-    public class MaxSceneGame : Exception
+    public class SceneBase : AlisObject
     {
+        
     }
 }

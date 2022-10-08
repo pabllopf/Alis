@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LimitOfComponents.cs
+//  File:MaxSceneGame.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Exceptions
+namespace Alis.Core.Aspect.Base.Exceptions
 {
     /// <summary>
-    ///     The limit of components class
+    ///     The max scene game class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class LimitOfComponents : Exception
+    public class MaxSceneGame : Exception
     {
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Transform.cs
+//  File:SceneManagerBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
+using System;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Builder.Entity;
+using Alis.Core.Entity;
+using Alis.Core.Manager;
+using Alis.Core.Manager.Scene;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Builder.Manager
 {
-    /// <summary>Control the object space in the game.</summary>
-    public class Transform
+    /// <summary>
+    ///     The scene manager builder class
+    /// </summary>
+    public class SceneManagerBuilder :
+        IBuild<SceneManager>,
+        IAdd<SceneManagerBuilder, Scene, Func<SceneBuilder, Scene>>
     {
         /// <summary>
-        ///     The position
+        ///     Gets the value of the scene manager
         /// </summary>
-        public Vector2 Position { get; set; } = Vector2.Zero;
+        private SceneManager SceneManager { get; } = new SceneManager();
 
         /// <summary>
-        ///     The rotation
+        ///     Adds the value
         /// </summary>
-        public float Rotation { get; set; } = 0;
+        /// <typeparam name="T">The </typeparam>
+        /// <param name="value">The value</param>
+        /// <returns>The scene builder</returns>
+        public SceneManagerBuilder Add<T>(Func<SceneBuilder, Scene> value) where T : Scene
+        {
+            SceneManager.Add(value.Invoke(new SceneBuilder()));
+            return this;
+        }
 
         /// <summary>
-        ///     The scale
+        ///     Builds this instance
         /// </summary>
-        public Vector2 Scale { get; set; } = new Vector2(1, 1);
+        /// <returns>The scene manager</returns>
+        public SceneManager Build() => SceneManager;
     }
 }

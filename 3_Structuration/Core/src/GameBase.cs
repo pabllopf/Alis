@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Manager;
+using Alis.Core.Manager.Time;
 using Alis.Core.Setting;
 
 namespace Alis.Core
@@ -41,7 +42,7 @@ namespace Alis.Core
         /// <summary>
         ///     Active game
         /// </summary>
-        internal static bool IsRunning;
+        public static bool IsRunning;
 
         /// <summary>
         ///     The manager base
@@ -49,15 +50,10 @@ namespace Alis.Core
         protected List<ManagerBase> Managers = new List<ManagerBase>();
 
         /// <summary>
-        ///     The time manager
+        /// The time manager base
         /// </summary>
-        internal TimeManager timeManager = new TimeManager();
-
-        /// <summary>
-        ///     Gets the value of the setting
-        /// </summary>
-        public static SettingBase Setting { get; set; } = new SettingBase();
-
+        private TimeManagerBase timeManagerBase = new TimeManagerBase();
+        
         /// <summary>
         ///     Run program
         /// </summary>
@@ -71,27 +67,27 @@ namespace Alis.Core
 
             while (IsRunning)
             {
-                timeManager.SyncFixedDeltaTime();
+                timeManagerBase.SyncFixedDeltaTime();
 
-                if (timeManager.IsNewFrame())
+                if (timeManagerBase.IsNewFrame())
                 {
-                    timeManager.UpdateTimeStep();
+                    timeManagerBase.UpdateTimeStep();
 
-                    for (int i = 0; i < timeManager.MaximunAllowedTimeStep; i++)
+                    for (int i = 0; i < timeManagerBase.MaximunAllowedTimeStep; i++)
                     {
-                        Managers.ForEach(i => i.BeforeUpdate());
-                        Managers.ForEach(i => i.Update());
-                        Managers.ForEach(i => i.AfterUpdate());
+                        Managers.ForEach(j => j.BeforeUpdate());
+                        Managers.ForEach(j => j.Update());
+                        Managers.ForEach(j => j.AfterUpdate());
                     }
 
                     Managers.ForEach(i => i.FixedUpdate());
 
                     Managers.ForEach(i => i.DispatchEvents());
 
-                    timeManager.CounterFrames();
+                    timeManagerBase.CounterFrames();
                 }
 
-                timeManager.UpdateFixedTime();
+                timeManagerBase.UpdateFixedTime();
             }
 
             Managers.ForEach(i => i.Stop());

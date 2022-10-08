@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:NullArgumentException.cs
+//  File:ComponentDontExits.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Exceptions
+namespace Alis.Core.Aspect.Base.Exceptions
 {
     /// <summary>
-    ///     The null argument exception class
+    ///     The component dont exits class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class NullArgumentException : Exception
+    internal class ComponentDontExits : Exception
     {
     }
 }

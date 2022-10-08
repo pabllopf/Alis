@@ -1,6 +1,6 @@
 <Project>
     <ItemGroup>
-        <None Condition="Exists('$(ProjectDir)/runtimes/') == True" Update="$(ProjectDir)/runtimes/**" 
+        <None Update="$(ProjectDir)/runtimes/**" 
               LinkBase="runtimes/"
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>

@@ -31,6 +31,11 @@ using System.Collections.Generic;
 using Alis.Builder;
 using Alis.Core;
 using Alis.Core.Manager;
+using Alis.Core.Manager.Audio;
+using Alis.Core.Manager.Graphic;
+using Alis.Core.Manager.Input;
+using Alis.Core.Manager.Physic;
+using Alis.Core.Manager.Scene;
 
 namespace Alis
 {
@@ -41,16 +46,50 @@ namespace Alis
     public class VideoGame : GameBase
     {
         /// <summary>
+        /// Gets or sets the value of the input manager
+        /// </summary>
+        public static InputManager InputManager { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the physic manager
+        /// </summary>
+        public static PhysicManager PhysicManager { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the graphic manager
+        /// </summary>
+        public static GraphicManager GraphicManager { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the value of the scene manager
+        /// </summary>
+        public static SceneManager SceneManager { get; set; }
+        
+        /// <summary>
+        /// Gets the value of the audio manager
+        /// </summary>
+        public static AudioManager AudioManager { get; set; }
+        
+        /// <summary>
         ///     Video game
         /// </summary>
-        public VideoGame() => Managers = new List<ManagerBase>
+        public VideoGame()
         {
-            new InputManager(),
-            new PhysicManager(),
-            new GraphicManager(),
-            new SceneManager(),
-            new AudioManager()
-        };
+            InputManager = new InputManager();
+            PhysicManager = new PhysicManager();
+            GraphicManager = new GraphicManager();
+            SceneManager = new SceneManager();
+            AudioManager = new AudioManager();
+            
+            Managers = new List<ManagerBase>
+            {
+                InputManager,
+                PhysicManager,
+                GraphicManager,
+                SceneManager,
+                AudioManager
+            };
+        }
 
         /// <summary>
         ///     Builders

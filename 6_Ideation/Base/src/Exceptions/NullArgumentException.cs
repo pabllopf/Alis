@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IndexOutOfBounds.cs
+//  File:NullArgumentException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,13 +29,13 @@
 
 using System;
 
-namespace Alis.Core.Exceptions
+namespace Alis.Core.Aspect.Base.Exceptions
 {
     /// <summary>
-    ///     The index out of bounds class
+    ///     The null argument exception class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class IndexOutOfBounds : Exception
+    public class NullArgumentException : Exception
     {
     }
 }

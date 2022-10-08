@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TimeManager.cs
+//  File:TimeManagerBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,17 +29,18 @@
 
 using System.Diagnostics;
 
-namespace Alis.Core.Manager
+namespace Alis.Core.Manager.Time
 {
     /// <summary>
-    ///     The time manager class
+    /// The time manager base class
     /// </summary>
-    public class TimeManager : ManagerBase
+    /// <seealso cref="ManagerBase"/>
+    public class TimeManagerBase : ManagerBase
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="TimeManager" /> class
+        /// Initializes a new instance of the <see cref="TimeManagerBase"/> class
         /// </summary>
-        public TimeManager()
+        public TimeManagerBase()
         {
             Timer = new Stopwatch();
             Timer.Start();
@@ -132,7 +133,7 @@ namespace Alis.Core.Manager
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal override void Init()
+        public override void Init()
         {
         }
 

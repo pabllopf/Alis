@@ -39,13 +39,10 @@ using Alis.Core.Graphic.D2.SFML.Windows;
 namespace Alis.Core.Entity
 {
     /// <summary>Represent a object of the game.</summary>
-    public class GameObject : AlisObject, IBuilder<GameObjectBuilder>
+    public class GameObject : GameObjectBase, IBuilder<GameObjectBuilder>
     {
 
-        /// <summary>
-        ///     The components
-        /// </summary>
-        internal List<ComponentBase> components;
+        
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
@@ -60,38 +57,10 @@ namespace Alis.Core.Entity
         {
             Name = name;
             components = new List<ComponentBase>();
+            Console.WriteLine($"GameObject:NAME:{name}");
         }
-
-        /// <summary>
-        ///     The transform
-        /// </summary>
-        public Transform Transform { get; internal set; } = new Transform();
-
-        /// <summary>
-        ///     Adds the component
-        /// </summary>
-        /// <param name="component">The component</param>
-        public void AddComponent<T>(T component) where T : ComponentBase => components.Add(component);
-
-        /// <summary>
-        ///     Removes the component
-        /// </summary>
-        /// <param name="component">The component</param>
-        public void RemoveComponent<T>(T component) where T : ComponentBase => components.Remove(component);
-
-        /// <summary>
-        /// Describes whether this instance contain component
-        /// </summary>
-        /// <param name="component">The component</param>
-        /// <returns>The bool</returns>
-        public bool ContainComponent(ComponentBase component) => components.Contains(component);
-
-        /// <summary>
-        /// Gets the component
-        /// </summary>
-        /// <typeparam name="T">The </typeparam>
-        /// <returns>The</returns>
-        public T GetComponent<T>() where T : ComponentBase => (T) components.Find(i => i.GetType().Equals(typeof(T)));
+        
+        
         
         /// <summary>
         ///     Builders this instance
