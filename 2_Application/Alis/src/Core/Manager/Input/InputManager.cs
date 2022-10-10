@@ -29,7 +29,9 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Manager.Scene;
 
 namespace Alis.Core.Manager.Input
 {
@@ -101,7 +103,7 @@ namespace Alis.Core.Manager.Input
         ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
-        {/*
+        {
             foreach(Key key in keys)
             {
                 if (Keyboard.IsKeyPressed(key) && !tempListOfKeys.Contains(key))
@@ -134,7 +136,7 @@ namespace Alis.Core.Manager.Input
                         currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(key.ToString()));
                     }
                 }
-            }*/
+            }
         }
 
         /// <summary>
