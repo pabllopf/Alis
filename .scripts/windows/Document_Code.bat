@@ -1,1 +1,3 @@
-dotnet document apply ../../alis.sln
+cd ../../
+
+.\\.tools\\windows\\document\\dotnet-document.exe apply .\\alis.sln
