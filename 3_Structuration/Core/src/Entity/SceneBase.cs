@@ -34,6 +34,7 @@ namespace Alis.Core.Entity
     /// <summary>
     /// The scene base class
     /// </summary>
+    /// <seealso cref="AlisObject"/>
     public class SceneBase : AlisObject
     {
         
