@@ -41,7 +41,7 @@
                           $(SolutionDir)3_Structuration/**/bin/**/*.cs;
                           $(SolutionDir)3_Structuration/**/*sample/**/*.cs;
                           $(SolutionDir)3_Structuration/**/*test/**/*.cs;"
-                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
@@ -51,7 +51,7 @@
                           $(SolutionDir)4_Operation/**/bin/**/*.cs;
                           $(SolutionDir)4_Operation/**/*sample/**/*.cs;
                           $(SolutionDir)4_Operation/**/*test/**/*.cs;"
-                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
         
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
@@ -61,7 +61,7 @@
                           $(SolutionDir)5_Declaration/**/bin/**/*.cs;
                           $(SolutionDir)5_Declaration/**/*sample/**/*.cs;
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs;"
-                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="$(SolutionDir)6_Ideation/**/*.cs"
@@ -70,7 +70,7 @@
                           $(SolutionDir)6_Ideation/**/bin/**/*.cs;
                           $(SolutionDir)6_Ideation/**/*sample/**/*.cs;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;"
-                 Link="Core/Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="Core/Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
         
         
         <Compile Condition="$(ProjectDir.Contains('3_Structuration'))"
@@ -81,7 +81,7 @@
                           $(SolutionDir)4_Operation/**/bin/**/*.cs;
                           $(SolutionDir)4_Operation/**/*sample/**/*.cs;
                           $(SolutionDir)4_Operation/**/*test/**/*.cs;"
-                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
         
         <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
                  Include="
@@ -91,7 +91,7 @@
                           $(SolutionDir)5_Declaration/**/bin/**/*.cs;
                           $(SolutionDir)5_Declaration/**/*sample/**/*.cs;
                           $(SolutionDir)5_Declaration/**/*test/**/*.cs;"
-                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
         
         <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
                  Include="$(SolutionDir)6_Ideation/**/*.cs"
@@ -100,7 +100,7 @@
                           $(SolutionDir)6_Ideation/**/bin/**/*.cs;
                           $(SolutionDir)6_Ideation/**/*sample/**/*.cs;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;"
-                 Link="Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
         
         <Compile Condition="
         $(ProjectDir.Contains('5_Declaration'))"
@@ -110,7 +110,7 @@
                           $(SolutionDir)6_Ideation/**/bin/**/*.cs;
                           $(SolutionDir)6_Ideation/**/*sample/**/*.cs;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;" 
-                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src/',''))%(Filename)%(Extension)"/>
+                 Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
     </ItemGroup>
     
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
