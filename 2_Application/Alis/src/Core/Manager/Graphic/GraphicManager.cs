@@ -41,7 +41,7 @@ namespace Alis.Core.Manager.Graphic
     ///     The graphic manager class
     /// </summary>
     /// <seealso cref="ManagerBase" />
-    public class GraphicManager : ManagerBase
+    public class GraphicManager : GraphicManagerBase
     {
 
         /// <summary>
@@ -78,9 +78,11 @@ namespace Alis.Core.Manager.Graphic
         public override void Init()
         {
             Console.WriteLine("init::graphic:new");
-            //renderWindow = new RenderWindow(new VideoMode(640, 480), $"{GameBase.Setting.General.GameName} by {GameBase.Setting.General.Author}");
             VideoMode = new VideoMode(640, 480);
-            renderWindow = new RenderWindow(VideoMode, "sample");
+            renderWindow = new RenderWindow(VideoMode, 
+                $"{VideoGame.Setting.General.Name} by {VideoGame.Setting.General.Author}");
+            
+            //renderWindow = new RenderWindow(VideoMode, "sample");
             renderWindow.Closed += RenderWindowOnClosed;
 
            

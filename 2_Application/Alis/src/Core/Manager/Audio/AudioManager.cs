@@ -35,7 +35,7 @@ namespace Alis.Core.Manager.Audio
     ///     The audio manager class
     /// </summary>
     /// <seealso cref="ManagerBase" />
-    public class AudioManager : ManagerBase
+    public class AudioManager : AudioManagerBase
     {
         /// <summary>
         ///     Afters the update
@@ -50,7 +50,7 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Init()
         {
-            Console.WriteLine("Init:new:audiomanager");
+            Console.WriteLine("Init:new");
         }
 
         /// <summary>

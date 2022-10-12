@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:PhysicManager.cs
+//  File:SettingManagerBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,99 +27,100 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Manager.Physic
+namespace Alis.Core.Manager.Setting
 {
     /// <summary>
-    ///     The physic manager class
+    /// The setting manager base class
     /// </summary>
-    /// <seealso cref="ManagerBase" />
-    public class PhysicManager : PhysicManagerBase
+    /// <seealso cref="ManagerBase"/>
+    public class SettingManagerBase : ManagerBase
     {
         /// <summary>
-        ///     Afters the update
-        /// </summary>
-        public override void AfterUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Inits this instance
+        /// Inits this instance
         /// </summary>
         public override void Init()
         {
+            
         }
 
         /// <summary>
-        ///     Awakes this instance
+        /// Awakes this instance
         /// </summary>
         public override void Awake()
         {
-            //throw new NotImplementedException();
+            
         }
 
         /// <summary>
-        ///     Befores the update
-        /// </summary>
-        public override void BeforeUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Starts this instance
+        /// Starts this instance
         /// </summary>
         public override void Start()
         {
-            //throw new NotImplementedException();
+
         }
 
         /// <summary>
-        ///     Stops this instance
+        /// Befores the update
         /// </summary>
-        public override void Stop()
+        public override void BeforeUpdate()
         {
-            //throw new NotImplementedException();
+
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Updates this instance
         /// </summary>
         public override void Update()
         {
-            //throw new NotImplementedException();
+
+        }
+
+        /// <summary>
+        /// Afters the update
+        /// </summary>
+        public override void AfterUpdate()
+        {
+
+        }
+
+        /// <summary>
+        /// Fixeds the update
+        /// </summary>
+        public override void FixedUpdate()
+        {
+
+        }
+
+        /// <summary>
+        /// Dispatches the events
+        /// </summary>
+        public override void DispatchEvents()
+        {
+
+        }
+
+        /// <summary>
+        /// Resets this instance
+        /// </summary>
+        public override void Reset()
+        {
+
+        }
+
+        /// <summary>
+        /// Stops this instance
+        /// </summary>
+        public override void Stop()
+        {
+
+        }
+
+        /// <summary>
+        /// Exits this instance
+        /// </summary>
+        public override void Exit()
+        {
+
         }
     }
 }

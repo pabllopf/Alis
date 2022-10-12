@@ -27,13 +27,27 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Setting;
+
 namespace Alis.Builder.Core.Setting
 {
     /// <summary>
     /// The audio setting builder class
     /// </summary>
-    public class AudioSettingBuilder
+    public class AudioSettingBuilder:
+        IBuild<AudioSetting>
     {
+
+        /// <summary>
+        /// The audio setting
+        /// </summary>
+        private AudioSetting audioSetting = new AudioSetting();
         
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The audio setting</returns>
+        public AudioSetting Build() => audioSetting;
     }
 }

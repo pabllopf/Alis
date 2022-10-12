@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Setting;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Setting
@@ -34,11 +36,18 @@ namespace Alis.Core.Setting
     /// <summary>
     ///     The debug class
     /// </summary>
-    public class DebugSetting : SettingBase
+    public class DebugSetting : SettingBase,
+        IBuilder<DebugSettingBuilder>
     {
         /// <summary>
         ///     The log level
         /// </summary>
         public LogLevel Level { get; set; } = LogLevel.Normal;
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The debug setting builder</returns>
+        public new DebugSettingBuilder Builder() => new DebugSettingBuilder();
     }
 }

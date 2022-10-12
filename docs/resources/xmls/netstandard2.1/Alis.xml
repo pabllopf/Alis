@@ -469,15 +469,69 @@
             The audio setting builder class
             </summary>
         </member>
+        <member name="F:Alis.Builder.Core.Setting.AudioSettingBuilder.audioSetting">
+            <summary>
+            The audio setting
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.AudioSettingBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The audio setting</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Setting.DebugSettingBuilder">
             <summary>
             The debug setting builder class
             </summary>
         </member>
+        <member name="F:Alis.Builder.Core.Setting.DebugSettingBuilder.debugSetting">
+            <summary>
+            The debug setting
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.DebugSettingBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The debug setting</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Setting.GeneralSettingBuilder">
             <summary>
             The general setting builder class
             </summary>
+        </member>
+        <member name="F:Alis.Builder.Core.Setting.GeneralSettingBuilder.generalSetting">
+            <summary>
+            The general setting
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The general setting</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Name(System.String)">
+            <summary>
+            Names the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The general setting builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Author(System.String)">
+            <summary>
+            Authors the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The general setting builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Description(System.String)">
+            <summary>
+            Descriptions the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The general setting builder</returns>
         </member>
         <member name="T:Alis.Builder.SoundGameBuilder">
             <summary>
@@ -1673,6 +1727,27 @@
             </summary>
             <param name="scene">The scene</param>
         </member>
+        <member name="T:Alis.Core.Manager.Setting.SettingManager">
+            <summary>
+            The setting manager class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.Setting.SettingManagerBase"/>
+        </member>
+        <member name="P:Alis.Core.Manager.Setting.SettingManager.General">
+            <summary>
+            Gets or sets the value of the general
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.Setting.SettingManager.Audio">
+            <summary>
+            Gets or sets the value of the audio
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Manager.Setting.SettingManager.Debug">
+            <summary>
+            Gets or sets the value of the debug
+            </summary>
+        </member>
         <member name="T:Alis.Core.Manager.Time.TimeManager">
             <summary>
                 The time manager class
@@ -1688,6 +1763,12 @@
                 Gets or sets the value of the backend type
             </summary>
         </member>
+        <member name="M:Alis.Core.Setting.AudioSetting.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The audio setting builder</returns>
+        </member>
         <member name="T:Alis.Core.Setting.DebugSetting">
             <summary>
                 The debug class
@@ -1697,6 +1778,12 @@
             <summary>
                 The log level
             </summary>
+        </member>
+        <member name="M:Alis.Core.Setting.DebugSetting.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The debug setting builder</returns>
         </member>
         <member name="T:Alis.Core.Setting.GeneralSetting">
             <summary>Define a </summary>
@@ -1715,6 +1802,12 @@
             <summary>
                 Gets or sets the value of the description
             </summary>
+        </member>
+        <member name="M:Alis.Core.Setting.GeneralSetting.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The general setting builder</returns>
         </member>
         <member name="T:Alis.SoundGame">
             <summary>
@@ -1762,6 +1855,11 @@
         <member name="P:Alis.VideoGame.AudioManager">
             <summary>
             Gets the value of the audio manager
+            </summary>
+        </member>
+        <member name="P:Alis.VideoGame.Setting">
+            <summary>
+            Gets or sets the value of the setting manager
             </summary>
         </member>
         <member name="M:Alis.VideoGame.#ctor">

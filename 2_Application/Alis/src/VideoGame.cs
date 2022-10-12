@@ -36,6 +36,7 @@ using Alis.Core.Manager.Graphic;
 using Alis.Core.Manager.Input;
 using Alis.Core.Manager.Physic;
 using Alis.Core.Manager.Scene;
+using Alis.Core.Manager.Setting;
 
 namespace Alis
 {
@@ -69,7 +70,12 @@ namespace Alis
         /// Gets the value of the audio manager
         /// </summary>
         public static AudioManager AudioManager { get; set; }
-        
+
+        /// <summary>
+        /// Gets or sets the value of the setting manager
+        /// </summary>
+        public static SettingManager Setting { get; set; }
+
         /// <summary>
         ///     Video game
         /// </summary>
@@ -80,6 +86,7 @@ namespace Alis
             SceneManager = new SceneManager();
             AudioManager = new AudioManager();
             InputManager = new InputManager();
+            Setting = new SettingManager();
             
             Managers = new List<ManagerBase>
             {
@@ -88,6 +95,7 @@ namespace Alis
                 SceneManager,
                 AudioManager,
                 InputManager,
+                Setting,
             };
         }
 

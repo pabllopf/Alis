@@ -27,10 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Setting;
+using Alis.Core.Aspect.Fluent;
+
 namespace Alis.Core.Setting
 {
     /// <summary>Define a </summary>
-    public class GeneralSetting : SettingBase
+    public class GeneralSetting : SettingBase,
+        IBuilder<GeneralSettingBuilder>
     {
         /// <summary>
         ///     Gets or sets the value of the game name
@@ -46,5 +50,11 @@ namespace Alis.Core.Setting
         ///     Gets or sets the value of the description
         /// </summary>
         public string Description { get; set; } = "Default description of game.";
+
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The general setting builder</returns>
+        public new GeneralSettingBuilder Builder() => new GeneralSettingBuilder();
     }
 }

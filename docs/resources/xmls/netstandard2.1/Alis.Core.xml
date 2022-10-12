@@ -289,6 +289,128 @@
             <typeparam name="T">The </typeparam>
             <param name="manager">The manager</param>
         </member>
+        <member name="T:Alis.Core.Manager.Audio.AudioManagerBase">
+            <summary>
+            The audio manager base class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Manager.Graphic.GraphicManagerBase">
+            <summary>
+            The graphic manager base class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Manager.Input.InputManagerBase">
             <summary>
             The input manager base class
@@ -390,6 +512,67 @@
         <member name="M:Alis.Core.Manager.ManagerBase.Exit">
             <summary>Exits this instance.</summary>
         </member>
+        <member name="T:Alis.Core.Manager.Physic.PhysicManagerBase">
+            <summary>
+            The physic manager base class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Manager.Scene.SceneManagerBase">
             <summary>
             The scene manager base class
@@ -447,6 +630,67 @@
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Exit">
+            <summary>
+            Exits this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Manager.Setting.SettingManagerBase">
+            <summary>
+            The setting manager base class
+            </summary>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Init">
+            <summary>
+            Inits this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.AfterUpdate">
+            <summary>
+            Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.FixedUpdate">
+            <summary>
+            Fixeds the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Reset">
+            <summary>
+            Resets this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Stop">
+            <summary>
+            Stops this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Exit">
             <summary>
             Exits this instance
             </summary>

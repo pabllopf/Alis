@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSetting.cs
+//  File:SettingManagerBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,27 +27,43 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Builder.Core.Setting;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Audio;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Manager.Setting;
+using Alis.Core.Setting;
 
-namespace Alis.Core.Setting
+namespace Alis.Builder.Core.Manager
 {
     /// <summary>
-    ///     The audio setting class
+    /// The setting manager builder class
     /// </summary>
-    public class AudioSetting : SettingBase,
-        IBuilder<AudioSettingBuilder>
+    /// <seealso cref="IBuild{SettingManager}"/>
+    public class SettingManagerBuilder:
+        IBuild<SettingManager>,
+        IDebug<SettingManagerBuilder, Func<DebugSettingBuilder, DebugSetting>>
     {
         /// <summary>
-        ///     Gets or sets the value of the backend type
+        /// The setting manager
         /// </summary>
-        public AudioBackendType BackendType { get; set; } = AudioBackendType.SFML;
+        private SettingManager settingManager = new SettingManager();
+        
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The setting manager</returns>
+        public SettingManager Build() => settingManager;
 
         /// <summary>
-        /// Builders this instance
+        /// Debugs the value
         /// </summary>
-        /// <returns>The audio setting builder</returns>
-        public new AudioSettingBuilder Builder() => new AudioSettingBuilder();
+        /// <param name="value">The value</param>
+        /// <returns>The setting manager builder</returns>
+        public SettingManagerBuilder Debug(Func<DebugSettingBuilder, DebugSetting> value)
+        {
+            settingManager.Debug = value.Invoke(new DebugSettingBuilder());
+            return this;
+        }
     }
 }

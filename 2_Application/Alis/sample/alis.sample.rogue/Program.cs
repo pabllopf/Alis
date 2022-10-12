@@ -49,7 +49,9 @@ namespace Alis.Sample.Rogue
             Console.WriteLine("Start game");
             
             VideoGame.Builder()
-                .Settings(i => i
+                .Settings(setting => setting
+                    .Debug(debug => debug
+                        .Build())
                     .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager
                     .Add<Scene>(scene => scene

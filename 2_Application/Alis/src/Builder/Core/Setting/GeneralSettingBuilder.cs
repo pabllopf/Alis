@@ -27,13 +27,63 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Setting;
+
 namespace Alis.Builder.Core.Setting
 {
     /// <summary>
     /// The general setting builder class
     /// </summary>
-    public class GeneralSettingBuilder
+    public class GeneralSettingBuilder:
+        IBuild<GeneralSetting>,
+        IName<GeneralSettingBuilder, string>,
+        IAuthor<GeneralSettingBuilder, string>,
+        IDescription<GeneralSettingBuilder, string>
     {
+        /// <summary>
+        /// The general setting
+        /// </summary>
+        private GeneralSetting generalSetting = new GeneralSetting();
         
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The general setting</returns>
+        public GeneralSetting Build() => generalSetting;
+
+        /// <summary>
+        /// Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Name(string value)
+        {
+            generalSetting.Name = value;
+            return this;
+        }
+        
+        /// <summary>
+        /// Authors the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Author(string value)
+        {
+            generalSetting.Author = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Descriptions the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Description(string value)
+        {
+            generalSetting.Description = value;
+            return this;
+        }
     }
 }

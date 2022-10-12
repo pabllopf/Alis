@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSetting.cs
+//  File:SettingManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,27 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Setting;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Audio;
+using Alis.Core.Setting;
 
-namespace Alis.Core.Setting
+namespace Alis.Core.Manager.Setting
 {
     /// <summary>
-    ///     The audio setting class
+    /// The setting manager class
     /// </summary>
-    public class AudioSetting : SettingBase,
-        IBuilder<AudioSettingBuilder>
+    /// <seealso cref="SettingManagerBase"/>
+    public class SettingManager : SettingManagerBase
     {
         /// <summary>
-        ///     Gets or sets the value of the backend type
+        /// Gets or sets the value of the general
         /// </summary>
-        public AudioBackendType BackendType { get; set; } = AudioBackendType.SFML;
+        public GeneralSetting General { get; set; } = new GeneralSetting();
 
         /// <summary>
-        /// Builders this instance
+        /// Gets or sets the value of the audio
         /// </summary>
-        /// <returns>The audio setting builder</returns>
-        public new AudioSettingBuilder Builder() => new AudioSettingBuilder();
+        public AudioSetting Audio { get; set; } = new AudioSetting();
+
+        /// <summary>
+        /// Gets or sets the value of the debug
+        /// </summary>
+        public DebugSetting Debug { get; set; } = new DebugSetting();
     }
 }

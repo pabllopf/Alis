@@ -27,13 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Setting;
+
 namespace Alis.Builder.Core.Setting
 {
     /// <summary>
     /// The debug setting builder class
     /// </summary>
-    public class DebugSettingBuilder
+    public class DebugSettingBuilder:
+        IBuild<DebugSetting>
     {
-        
+
+        /// <summary>
+        /// The debug setting
+        /// </summary>
+        private DebugSetting debugSetting = new DebugSetting();
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The debug setting</returns>
+        public DebugSetting Build() => debugSetting;
     }
 }

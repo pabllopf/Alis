@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Builder.Manager;
 using Alis.Core.Builder.Setting;
 using Alis.Core.Manager.Scene;
+using Alis.Core.Manager.Setting;
 using Alis.Core.Setting;
 
 namespace Alis.Builder
@@ -45,15 +46,15 @@ namespace Alis.Builder
     public class VideoGameBuilder :
         IBuild<VideoGame>,
         IManager<VideoGameBuilder, SceneManager, Func<SceneManagerBuilder, SceneManager>>,
-        ISettings<VideoGameBuilder, Func<SettingBuilder, SettingBase>>
+        ISettings<VideoGameBuilder, Func<SettingManagerBuilder, SettingManager>>
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        private VideoGame VideoGame { get; } = new VideoGame();
+        private VideoGame videoGame { get; } = new VideoGame();
 
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public VideoGame Build() => VideoGame;
+        public VideoGame Build() => videoGame;
 
         /// <summary>
         ///     Managers the value
@@ -63,22 +64,24 @@ namespace Alis.Builder
         /// <returns>The video game builder</returns>
         public VideoGameBuilder Manager<T>(Func<SceneManagerBuilder, SceneManager> value) where T : SceneManager
         {
-            VideoGame.SetManager(value.Invoke(new SceneManagerBuilder()));
+            videoGame.SetManager(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
 
-        /// <summary>
-        ///     Setting builder
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public VideoGameBuilder Settings(Func<SettingBuilder, SettingBase> value)
-        {
-            //GameBase.Setting = value.Invoke(new SettingBuilder());
-            return this;
-        }
+        
 
         /// <summary>Runs this instance.</summary>
-        public void Run() => VideoGame.Run();
+        public void Run() => videoGame.Run();
+
+        /// <summary>
+        /// Setting the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The video game builder</returns>
+        public VideoGameBuilder Settings(Func<SettingManagerBuilder, SettingManager> value)
+        {
+            VideoGame.Setting = value.Invoke(new SettingManagerBuilder());
+            return this;
+        }
     }
 }
