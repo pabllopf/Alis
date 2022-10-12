@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Builder.Component.Light
+namespace Alis.Builder.Core.Component.Light
 {
     /// <summary>
     ///     The area light builder class

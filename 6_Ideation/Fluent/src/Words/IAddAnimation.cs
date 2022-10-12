@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RigidBody.cs
+//  File:IAddAnimation.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Component.Body;
-using Alis.Core.Aspect.Fluent;
-
-namespace Alis.Core.Component.Body
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The rigid body class
+    /// The add animation interface
     /// </summary>
-    /// <seealso cref="BodyBase" />
-    public class RigidBody : BodyBase, IBuilder<RigidBodyBuilder>
+    public interface IAddAnimation<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Builders this instance
+        /// Adds the animation using the specified value
         /// </summary>
-        /// <returns>The rigid body builder</returns>
-        public new RigidBodyBuilder Builder() => new RigidBodyBuilder();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder AddAnimation(TArgument value);
     }
 }

@@ -29,8 +29,8 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Builder.Entity;
 using Alis.Core.Component;
 
 namespace Alis.Core.Entity

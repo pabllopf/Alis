@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
@@ -50,27 +51,7 @@ namespace Alis.Sample.Rogue
         public static void Main(string[] args)
         {
             Console.WriteLine("Start game");
-
-            GameObject gameObject = new GameObject();
-
-
-            List<Animation> animations = new List<Animation>();
-
-            animations.Add(new Animation(new List<Texture>()
-            {
-                new Texture(Environment.CurrentDirectory + "/Assets/tile000.png"),
-                new Texture(Environment.CurrentDirectory + "/Assets/tile001.png"),
-                new Texture(Environment.CurrentDirectory + "/Assets/tile002.png"),
-                new Texture(Environment.CurrentDirectory + "/Assets/tile003.png")
-            })
-            {
-                Speed = 0.5f
-            });
             
-            animations.Add(new Animation());
-
-            //gameObject = GameObject.FindWithTag("object");
-
             VideoGame.Builder()
                 .Settings(i => i
                     .Build())
@@ -116,9 +97,25 @@ namespace Alis.Sample.Rogue
                                     .Mute(false)
                                     .Build())
                                 .Build())
-                            .AddComponent<Animator>(i => i
+                            .AddComponent<Animator>(animator => animator
                                 .Builder()
-                                .Add<List<Animation>>(animations)
+                                .AddAnimation(animation => animation
+                                        .Name("WalkDown")
+                                        .Speed(0.25f)
+                                        .Order(1)
+                                        .AddFrame(frame => frame
+                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                                            .Build())
+                                        .AddFrame(frame => frame
+                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile001.png")
+                                            .Build())
+                                        .AddFrame(frame => frame
+                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile002.png")
+                                            .Build())
+                                        .AddFrame(frame => frame
+                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile003.png")
+                                            .Build())
+                                        .Build())
                                 .Build())
                             .Build())
                         .Build())

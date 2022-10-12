@@ -29,6 +29,8 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Builder.Core.Component.Render;
+using Alis.Core.Aspect.Fluent;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 
 namespace Alis.Core.Component.Render
@@ -36,66 +38,89 @@ namespace Alis.Core.Component.Render
     /// <summary>
     ///     The animation class
     /// </summary>
-    public class Animation
+    public class Animation:
+        IBuilder<AnimatorBuilder>
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Animation" /> class
+        /// Gets or sets the value of the name
         /// </summary>
-        public Animation() => Textures = new List<Texture>();
+        public string Name { get; set; } = "Default Animation";
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Animation"/> class
+        /// </summary>
+        public Animation() => Frames = new List<Frame>();
+
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Animation" /> class
+        /// Initializes a new instance of the <see cref="Animation"/> class
         /// </summary>
         /// <param name="textures">The textures</param>
-        public Animation(List<Texture> textures) => Textures = textures;
+        public Animation(List<Frame> textures) => Frames = textures;
+
 
         /// <summary>
-        ///     Gets or sets the value of the index
+        /// Gets or sets the value of the index
         /// </summary>
         private int Index { get; set; }
+        
+        
+        /// <summary>
+        /// Gets or sets the value of the order
+        /// </summary>
+        public int Order { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the speed
         /// </summary>
-        public double Speed { get; set; } = 1.0f;
+        public float Speed { get; set; } = 1.0f;
 
         /// <summary>
         ///     Gets or sets the value of the textures
         /// </summary>
-        private List<Texture> Textures { get; }
+        private List<Frame> Frames { get; }
 
         /// <summary>
         ///     Describes whether this instance has next
         /// </summary>
         /// <returns>The bool</returns>
-        public bool HasNext() => Textures.Count > 0;
+        public bool HasNext() => Frames.Count > 0;
 
         /// <summary>
         ///     Nexts the texture
         /// </summary>
         /// <exception cref="InvalidCastException"></exception>
         /// <returns>The texture</returns>
-        public Texture NextTexture()
+        public Frame NextTexture()
         {
-            Texture result = Textures[Index];
+            Frame result = Frames[Index];
 
-            if (Index < Textures.Count - 1)
+            if (Index < Frames.Count)
             {
                 Index += 1;
             }
 
-            if (Index == Textures.Count - 1)
+            if (Index == Frames.Count)
             {
                 Index = 0;
             }
 
             return result;
         }
+        
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The animator builder</returns>
+        public AnimatorBuilder Builder() => new AnimatorBuilder();
 
         /// <summary>
-        ///     Textures this instance
+        /// Adds the frame using the specified frame
         /// </summary>
-        /// <returns>The texture</returns>
-        public Texture Texture() => Textures[Index];
+        /// <param name="frame">The frame</param>
+        public void AddFrame(Frame frame)
+        {
+            Frames.Add(frame);
+        }
     }
 }

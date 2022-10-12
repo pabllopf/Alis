@@ -28,9 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Builder.Component;
 using Alis.Core.Component.Particle;
 
-namespace Alis.Core.Builder.Component.Particle
+namespace Alis.Builder.Core.Component.Particle
 {
     /// <summary>
     ///     The explosion particle builder class

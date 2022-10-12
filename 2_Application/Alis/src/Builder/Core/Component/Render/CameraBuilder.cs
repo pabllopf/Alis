@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Builder.Component.Render
+namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
     ///     The camera builder class

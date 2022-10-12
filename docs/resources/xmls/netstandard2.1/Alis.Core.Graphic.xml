@@ -4,6 +4,38 @@
         <name>Alis.Core.Graphic</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Graphic.D2.FrameBase">
+            <summary>
+            The frame base class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.D2.FrameBase.Texture">
+            <summary>
+            Gets or sets the value of the texture
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.D2.FrameBase.filePath">
+            <summary>
+            The file path
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.FrameBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.D2.FrameBase"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.FrameBase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.D2.FrameBase"/> class
+            </summary>
+            <param name="filePath">The file path</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.FrameBase.SetFrame(System.String)">
+            <summary>
+            Sets the frame using the specified file path
+            </summary>
+            <param name="filePath">The file path</param>
+        </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Graphics.BlendMode">
             <summary>
                 Blending modes for drawing

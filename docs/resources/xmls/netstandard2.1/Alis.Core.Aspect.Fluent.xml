@@ -45,6 +45,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IAddAnimation`2">
+            <summary>
+            The add animation interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IAddAnimation`2.AddAnimation(`1)">
+            <summary>
+            Adds the animation using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAddComponent`2">
             <summary>
                 The add component class
@@ -63,6 +75,18 @@
                 Adds the component using the specified value
             </summary>
             <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IAddFrame`2">
+            <summary>
+            The add frame interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IAddFrame`2.AddFrame(`1)">
+            <summary>
+            Adds the frame using the specified value
+            </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
@@ -323,6 +347,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IOrder`2">
+            <summary>
+            The order interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IOrder`2.Order(`1)">
+            <summary>
+            Orders the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IPlayOnAwake`2">
             <summary>
                 The play on awake interface
@@ -481,6 +517,18 @@
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.ISpeed`2">
+            <summary>
+            The speed interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.ISpeed`2.Speed(`1)">
+            <summary>
+            Speeds the value
+            </summary>
+            <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.ITime`2">

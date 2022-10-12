@@ -31,7 +31,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Component.Render;
 
-namespace Alis.Core.Builder.Component.Render
+namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
     ///     The sprite builder class

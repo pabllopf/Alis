@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RigidBody.cs
+//  File:FrameBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,51 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Component.Body;
-using Alis.Core.Aspect.Fluent;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
-namespace Alis.Core.Component.Body
+namespace Alis.Core.Graphic.D2
 {
     /// <summary>
-    ///     The rigid body class
+    /// The frame base class
     /// </summary>
-    /// <seealso cref="BodyBase" />
-    public class RigidBody : BodyBase, IBuilder<RigidBodyBuilder>
+    public class FrameBase
     {
         /// <summary>
-        ///     Builders this instance
+        /// Gets or sets the value of the texture
         /// </summary>
-        /// <returns>The rigid body builder</returns>
-        public new RigidBodyBuilder Builder() => new RigidBodyBuilder();
+        public Texture Texture { get; set; }
+
+        /// <summary>
+        /// The file path
+        /// </summary>
+        private string filePath;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrameBase"/> class
+        /// </summary>
+        public FrameBase()
+        {
+            filePath = "";
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrameBase"/> class
+        /// </summary>
+        /// <param name="filePath">The file path</param>
+        public FrameBase(string filePath)
+        {
+            this.filePath = filePath;
+            Texture = new Texture(filePath);
+        }
+
+        /// <summary>
+        /// Sets the frame using the specified file path
+        /// </summary>
+        /// <param name="filePath">The file path</param>
+        public void SetFrame(string filePath)
+        {
+            this.filePath = filePath;
+            Texture = new Texture(filePath);
+        }
     }
 }

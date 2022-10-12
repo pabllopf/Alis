@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RigidBody.cs
+//  File:FrameBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Component.Body;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Component.Render;
 
-namespace Alis.Core.Component.Body
+namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
-    ///     The rigid body class
+    /// The frame builder class
     /// </summary>
-    /// <seealso cref="BodyBase" />
-    public class RigidBody : BodyBase, IBuilder<RigidBodyBuilder>
+    public class FrameBuilder:
+        IBuild<Frame>,
+        IFilePath<FrameBuilder, string>
     {
         /// <summary>
-        ///     Builders this instance
+        /// The frame
         /// </summary>
-        /// <returns>The rigid body builder</returns>
-        public new RigidBodyBuilder Builder() => new RigidBodyBuilder();
+        private Frame frame = new Frame();
+        
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The frame</returns>
+        public Frame Build() => frame;
+
+        /// <summary>
+        /// Files the path using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The frame builder</returns>
+        public FrameBuilder FilePath(string value)
+        {
+            frame.SetFrame(value);
+            return this;
+        }
     }
 }

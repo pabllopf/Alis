@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Component.Particle;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Builder.Component.Particle;
 
 namespace Alis.Core.Component.Particle
 {

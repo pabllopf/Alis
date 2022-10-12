@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SceneBuilder.cs
+//  File:FrameBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,50 +30,75 @@
 using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Entity;
+using Alis.Core.Component.Render;
 
-namespace Alis.Builder.Core.Entity
+namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
-    ///     The scene builder class
+    /// The animation builder class
     /// </summary>
-    /// <seealso cref="IBuild{Scene}" />
-    public class SceneBuilder :
-        IBuild<Scene>,
-        IName<SceneBuilder, string>,
-        IAdd<SceneBuilder, GameObject, Func<GameObjectBuilder, GameObject>>
+    /// <seealso cref="IBuild{Animation}"/>
+    public class AnimationBuilder: 
+        IBuild<Animation>,
+        IName<AnimationBuilder, string>,
+        ISpeed<AnimationBuilder, float>,
+        IOrder<AnimationBuilder, int>,
+        IAddFrame<AnimationBuilder, Func<FrameBuilder, Frame>>
     {
         /// <summary>
-        ///     Gets the value of the scene
+        /// The animation
         /// </summary>
-        private Scene Scene { get; } = new Scene();
+        private Animation animation = new Animation();
+        
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The animation</returns>
+        public Animation Build() => animation;
 
         /// <summary>
-        ///     Adds the value
+        /// Names the value
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneBuilder Add<T>(Func<GameObjectBuilder, GameObject> value) where T : GameObject
+        /// <returns>The animation builder</returns>
+        public AnimationBuilder Name(string value)
         {
-            Scene.Add(value.Invoke(new GameObjectBuilder()));
+            animation.Name = value;
             return this;
         }
 
         /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The scene</returns>
-        public Scene Build() => Scene;
-
-        /// <summary>
-        ///     Names the value
+        /// Speeds the value
         /// </summary>
         /// <param name="value">The value</param>
-        /// <returns>The scene builder</returns>
-        public SceneBuilder Name(string value)
+        /// <returns>The animation builder</returns>
+        public AnimationBuilder Speed(float value)
         {
-            Scene.Name = value;
+            animation.Speed = value;
+            return this;
+        }
+        
+        
+
+        /// <summary>
+        /// Adds the frame using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The animation builder</returns>
+        public AnimationBuilder AddFrame(Func<FrameBuilder, Frame> value)
+        {
+            animation.AddFrame(value.Invoke(new FrameBuilder()));
+            return this;
+        }
+
+        /// <summary>
+        /// Orders the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The animation builder</returns>
+        public AnimationBuilder Order(int value)
+        {
+            animation.Order = value;
             return this;
         }
     }

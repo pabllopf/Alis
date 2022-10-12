@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Component;
 using Alis.Core.Entity;
 
-namespace Alis.Core.Builder.Entity
+namespace Alis.Builder.Core.Entity
 {
     /// <summary>
     ///     The game object builder class

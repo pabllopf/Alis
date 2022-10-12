@@ -30,8 +30,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Builder.Component.Render;
 
 namespace Alis.Core.Component.Render
 {
@@ -87,11 +87,12 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public int State { get; set; }
 
+ 
         /// <summary>
-        ///     Adds the animation
+        /// Adds the animation using the specified animation
         /// </summary>
         /// <param name="animation">The animation</param>
-        public void Add(Animation animation) => Animations.Add(animation);
+        public void AddAnimation(Animation animation) => Animations.Add(animation);
 
         /// <summary>
         ///     Awakes this instance
@@ -142,7 +143,7 @@ namespace Alis.Core.Component.Render
                         if (Animations[State].HasNext())
                         {
                             //Console.WriteLine($"text={Sprite.texturePath}");
-                            Sprite.sprite.Texture = Animations[State].NextTexture();
+                            Sprite.sprite.Texture = Animations[State].NextTexture().Texture;
                         }
                         
                         Timer.Restart();

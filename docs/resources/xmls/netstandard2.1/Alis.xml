@@ -26,6 +26,433 @@
                 Runs this instance
             </summary>
         </member>
+        <member name="T:Alis.Builder.Core.Component.Audio.AudioClipBuilder">
+            <summary>
+                The audio clip builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+        </member>
+        <member name="P:Alis.Builder.Core.Component.Audio.AudioClipBuilder.AudioClip">
+            <summary>
+                The audio clip
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioClipBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The audio clip</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioClipBuilder.FilePath(System.String)">
+            <summary>
+                Files the path using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio clip builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioClipBuilder.Mute(System.Boolean)">
+            <summary>
+                Mutes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio clip builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioClipBuilder.Volume(System.Single)">
+            <summary>
+                Volumes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio clip builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Audio.AudioRecorderBuilder">
+            <summary>
+                The audio recorder builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+        </member>
+        <member name="F:Alis.Builder.Core.Component.Audio.AudioRecorderBuilder.audioRecorder">
+            <summary>
+                The audio recorder
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioRecorderBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The audio recorder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Audio.AudioSourceBuilder">
+            <summary>
+                The audio source builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+        </member>
+        <member name="F:Alis.Builder.Core.Component.Audio.AudioSourceBuilder.audioSource">
+            <summary>
+                Gets or sets the value of the audio source
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioSourceBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The audio source</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioSourceBuilder.IsActive(System.Boolean)">
+            <summary>
+                Ises the active using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio source builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioSourceBuilder.PlayOnAwake(System.Boolean)">
+            <summary>
+                Plays the on awake using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio source builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Audio.AudioSourceBuilder.SetAudioClip(System.Func{Alis.Builder.Core.Component.Audio.AudioClipBuilder,Alis.Core.Component.Audio.AudioClip})">
+            <summary>
+                Sets the audio clip using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The audio source builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Body.RigidBodyBuilder">
+            <summary>
+                The rigid body builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Collider.BoxColliderBuilder">
+            <summary>
+                The box collider builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Collider.CircleColliderBuilder">
+            <summary>
+                The circle collider builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Light.AreaLightBuilder">
+            <summary>
+                The area light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Light.DirectionalLightBuilder">
+            <summary>
+                The directional light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Light.PointLightBuilder">
+            <summary>
+                The point light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Light.SpotLightBuilder">
+            <summary>
+                The spot light builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Mesh.BoxMeshBuilder">
+            <summary>
+                The box mesh builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Mesh.CircleMeshBuilder">
+            <summary>
+                The circle mesh builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Particle.ExplosionParticleBuilder">
+            <summary>
+                The explosion particle builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder" />
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Particle.ExplosionParticleBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The explosion particle</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Render.AnimationBuilder">
+            <summary>
+            The animation builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="F:Alis.Builder.Core.Component.Render.AnimationBuilder.animation">
+            <summary>
+            The animation
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The animation</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Name(System.String)">
+            <summary>
+            Names the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The animation builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Speed(System.Single)">
+            <summary>
+            Speeds the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The animation builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.AddFrame(System.Func{Alis.Builder.Core.Component.Render.FrameBuilder,Alis.Core.Component.Render.Frame})">
+            <summary>
+            Adds the frame using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The animation builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Order(System.Int32)">
+            <summary>
+            Orders the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The animation builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Render.AnimatorBuilder">
+            <summary>
+                The animator builder class
+            </summary>
+        </member>
+        <member name="F:Alis.Builder.Core.Component.Render.AnimatorBuilder.animator">
+            <summary>
+            The animator
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimatorBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The animator</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimatorBuilder.AddAnimation(System.Func{Alis.Builder.Core.Component.Render.AnimationBuilder,Alis.Core.Component.Render.Animation})">
+            <summary>
+            Adds the animation using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The animator builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Render.CameraBuilder">
+            <summary>
+                The camera builder class
+            </summary>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Render.FrameBuilder">
+            <summary>
+            The frame builder class
+            </summary>
+        </member>
+        <member name="F:Alis.Builder.Core.Component.Render.FrameBuilder.frame">
+            <summary>
+            The frame
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.FrameBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The frame</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.FrameBuilder.FilePath(System.String)">
+            <summary>
+            Files the path using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The frame builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Component.Render.SpriteBuilder">
+            <summary>
+                The sprite builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+        </member>
+        <member name="F:Alis.Builder.Core.Component.Render.SpriteBuilder.sprite">
+            <summary>
+                The sprite
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.SpriteBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The sprite</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.SpriteBuilder.Depth(System.Int32)">
+            <summary>
+                Depths the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The sprite builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.SpriteBuilder.SetTexture(System.String)">
+            <summary>
+                Textures the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The sprite builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Entity.GameObjectBuilder">
+            <summary>
+                The game object builder class
+            </summary>
+        </member>
+        <member name="F:Alis.Builder.Core.Entity.GameObjectBuilder.gameObject">
+            <summary>
+                Gets or sets the value of the game object
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.AddComponent``1(System.Func{``0,Alis.Core.Component.ComponentBase})">
+            <summary>
+                Adds the component using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.AddComponent``1(``0)">
+            <summary>
+                Adds the component using the specified value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The game object</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.Name(System.String)">
+            <summary>
+                Names the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.Transform(System.Func{Alis.Builder.Core.Entity.TransformBuilder,Alis.Core.Entity.Transform})">
+            <summary>
+                Transforms the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.GameObjectBuilder.WithTag(System.String)">
+            <summary>
+                Adds the tag using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Entity.SceneBuilder">
+            <summary>
+                The scene builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+        </member>
+        <member name="P:Alis.Builder.Core.Entity.SceneBuilder.Scene">
+            <summary>
+                Gets the value of the scene
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.SceneBuilder.Add``1(System.Func{Alis.Builder.Core.Entity.GameObjectBuilder,Alis.Core.Entity.GameObject})">
+            <summary>
+                Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The scene builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.SceneBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The scene</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.SceneBuilder.Name(System.String)">
+            <summary>
+                Names the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The scene builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Entity.TransformBuilder">
+            <summary>
+                The transform builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+        </member>
+        <member name="F:Alis.Builder.Core.Entity.TransformBuilder.transform">
+            <summary>
+                The transform
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.TransformBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The transform</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.TransformBuilder.Position(System.Single,System.Single)">
+            <summary>
+                Positions the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The transform builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.TransformBuilder.Rotation(System.Single)">
+            <summary>
+                Rotations the angle
+            </summary>
+            <param name="angle">The angle</param>
+            <returns>The transform builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.TransformBuilder.Scale(System.Single,System.Single)">
+            <summary>
+                Scales the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The transform builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Manager.SceneManagerBuilder">
+            <summary>
+                The scene manager builder class
+            </summary>
+        </member>
+        <member name="P:Alis.Builder.Core.Manager.SceneManagerBuilder.SceneManager">
+            <summary>
+                Gets the value of the scene manager
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SceneManagerBuilder.Add``1(System.Func{Alis.Builder.Core.Entity.SceneBuilder,Alis.Core.Entity.Scene})">
+            <summary>
+                Adds the value
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <param name="value">The value</param>
+            <returns>The scene builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SceneManagerBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The scene manager</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Setting.AudioSettingBuilder">
             <summary>
             The audio setting builder class
@@ -77,7 +504,7 @@
             <summary>Builds this instance.</summary>
             <returns></returns>
         </member>
-        <member name="M:Alis.Builder.VideoGameBuilder.Manager``1(System.Func{Alis.Core.Builder.Manager.SceneManagerBuilder,Alis.Core.Manager.Scene.SceneManager})">
+        <member name="M:Alis.Builder.VideoGameBuilder.Manager``1(System.Func{Alis.Builder.Core.Manager.SceneManagerBuilder,Alis.Core.Manager.Scene.SceneManager})">
             <summary>
                 Managers the value
             </summary>
@@ -95,365 +522,21 @@
         <member name="M:Alis.Builder.VideoGameBuilder.Run">
             <summary>Runs this instance.</summary>
         </member>
-        <member name="T:Alis.Core.Builder.Component.Audio.AudioClipBuilder">
+        <member name="T:Alis.ConsoleGame">
             <summary>
-                The audio clip builder class
+                The console game class
             </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
+            <seealso cref="T:Alis.Core.GameBase" />
         </member>
-        <member name="P:Alis.Core.Builder.Component.Audio.AudioClipBuilder.AudioClip">
+        <member name="M:Alis.ConsoleGame.Run">
             <summary>
-                The audio clip
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioClipBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The audio clip</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioClipBuilder.FilePath(System.String)">
-            <summary>
-                Files the path using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The audio clip builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioClipBuilder.Mute(System.Boolean)">
-            <summary>
-                Mutes the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The audio clip builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioClipBuilder.Volume(System.Single)">
-            <summary>
-                Volumes the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The audio clip builder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Audio.AudioRecorderBuilder">
-            <summary>
-                The audio recorder builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="F:Alis.Core.Builder.Component.Audio.AudioRecorderBuilder.audioRecorder">
-            <summary>
-                The audio recorder
             </summary>
         </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioRecorderBuilder.Build">
+        <member name="M:Alis.ConsoleGame.Builder">
             <summary>
-                Builds this instance
+                Builders
             </summary>
-            <returns>The audio recorder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Audio.AudioSourceBuilder">
-            <summary>
-                The audio source builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="F:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.audioSource">
-            <summary>
-                Gets or sets the value of the audio source
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The audio source</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.IsActive(System.Boolean)">
-            <summary>
-                Ises the active using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The audio source builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.PlayOnAwake(System.Boolean)">
-            <summary>
-                Plays the on awake using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The audio source builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Audio.AudioSourceBuilder.SetAudioClip(System.Func{Alis.Core.Builder.Component.Audio.AudioClipBuilder,Alis.Core.Component.Audio.AudioClip})">
-            <summary>
-                Sets the audio clip using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The audio source builder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Body.RigidBodyBuilder">
-            <summary>
-                The rigid body builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Collider.BoxColliderBuilder">
-            <summary>
-                The box collider builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Collider.CircleColliderBuilder">
-            <summary>
-                The circle collider builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Light.AreaLightBuilder">
-            <summary>
-                The area light builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Light.DirectionalLightBuilder">
-            <summary>
-                The directional light builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Light.PointLightBuilder">
-            <summary>
-                The point light builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Light.SpotLightBuilder">
-            <summary>
-                The spot light builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Mesh.BoxMeshBuilder">
-            <summary>
-                The box mesh builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Mesh.CircleMeshBuilder">
-            <summary>
-                The circle mesh builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Particle.ExplosionParticleBuilder">
-            <summary>
-                The explosion particle builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder" />
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Particle.ExplosionParticleBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The explosion particle</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Render.AnimatorBuilder">
-            <summary>
-                The animator builder class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Builder.Component.Render.AnimatorBuilder.animator">
-            <summary>
-            The animator
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Render.AnimatorBuilder.Build">
-            <summary>
-            Builds this instance
-            </summary>
-            <returns>The animator</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Render.AnimatorBuilder.Add``1(System.Collections.Generic.List{Alis.Core.Component.Render.Animation})">
-            <summary>
-            Adds the value
-            </summary>
-            <typeparam name="T">The </typeparam>
-            <param name="value">The value</param>
-            <returns>The animator builder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Render.CameraBuilder">
-            <summary>
-                The camera builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Component.Render.SpriteBuilder">
-            <summary>
-                The sprite builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="F:Alis.Core.Builder.Component.Render.SpriteBuilder.sprite">
-            <summary>
-                The sprite
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The sprite</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.Depth(System.Int32)">
-            <summary>
-                Depths the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The sprite builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.Render.SpriteBuilder.SetTexture(System.String)">
-            <summary>
-                Textures the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The sprite builder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Entity.GameObjectBuilder">
-            <summary>
-                The game object builder class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Builder.Entity.GameObjectBuilder.gameObject">
-            <summary>
-                Gets or sets the value of the game object
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.AddComponent``1(System.Func{``0,Alis.Core.Component.ComponentBase})">
-            <summary>
-                Adds the component using the specified value
-            </summary>
-            <typeparam name="T">The </typeparam>
-            <param name="value">The value</param>
-            <returns>The game object builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.AddComponent``1(``0)">
-            <summary>
-                Adds the component using the specified value
-            </summary>
-            <typeparam name="T">The </typeparam>
-            <param name="value">The value</param>
-            <returns>The game object builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The game object</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Name(System.String)">
-            <summary>
-                Names the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The game object builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.Transform(System.Func{Alis.Core.Builder.Entity.TransformBuilder,Alis.Core.Entity.Transform})">
-            <summary>
-                Transforms the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The game object builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.GameObjectBuilder.WithTag(System.String)">
-            <summary>
-                Adds the tag using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The game object builder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Entity.SceneBuilder">
-            <summary>
-                The scene builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="P:Alis.Core.Builder.Entity.SceneBuilder.Scene">
-            <summary>
-                Gets the value of the scene
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.SceneBuilder.Add``1(System.Func{Alis.Core.Builder.Entity.GameObjectBuilder,Alis.Core.Entity.GameObject})">
-            <summary>
-                Adds the value
-            </summary>
-            <typeparam name="T">The </typeparam>
-            <param name="value">The value</param>
-            <returns>The scene builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.SceneBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The scene</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.SceneBuilder.Name(System.String)">
-            <summary>
-                Names the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The scene builder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Entity.TransformBuilder">
-            <summary>
-                The transform builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="F:Alis.Core.Builder.Entity.TransformBuilder.transform">
-            <summary>
-                The transform
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The transform</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Position(System.Single,System.Single)">
-            <summary>
-                Positions the x
-            </summary>
-            <param name="x">The </param>
-            <param name="y">The </param>
-            <returns>The transform builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Rotation(System.Single)">
-            <summary>
-                Rotations the angle
-            </summary>
-            <param name="angle">The angle</param>
-            <returns>The transform builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Entity.TransformBuilder.Scale(System.Single,System.Single)">
-            <summary>
-                Scales the x
-            </summary>
-            <param name="x">The </param>
-            <param name="y">The </param>
-            <returns>The transform builder</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Manager.SceneManagerBuilder">
-            <summary>
-                The scene manager builder class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Builder.Manager.SceneManagerBuilder.SceneManager">
-            <summary>
-                Gets the value of the scene manager
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Manager.SceneManagerBuilder.Add``1(System.Func{Alis.Core.Builder.Entity.SceneBuilder,Alis.Core.Entity.Scene})">
-            <summary>
-                Adds the value
-            </summary>
-            <typeparam name="T">The </typeparam>
-            <param name="value">The value</param>
-            <returns>The scene builder</returns>
-        </member>
-        <member name="M:Alis.Core.Builder.Manager.SceneManagerBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The scene manager</returns>
+            <returns>The console game builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Audio.AudioClip">
             <summary>
@@ -755,20 +838,30 @@
                 The animation class
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.Render.Animation.#ctor">
+        <member name="P:Alis.Core.Component.Render.Animation.Name">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation" /> class
+            Gets or sets the value of the name
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.Render.Animation.#ctor(System.Collections.Generic.List{Alis.Core.Graphic.D2.SFML.Graphics.Texture})">
+        <member name="M:Alis.Core.Component.Render.Animation.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animation.#ctor(System.Collections.Generic.List{Alis.Core.Component.Render.Frame})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation"/> class
             </summary>
             <param name="textures">The textures</param>
         </member>
         <member name="P:Alis.Core.Component.Render.Animation.Index">
             <summary>
-                Gets or sets the value of the index
+            Gets or sets the value of the index
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Animation.Order">
+            <summary>
+            Gets or sets the value of the order
             </summary>
         </member>
         <member name="P:Alis.Core.Component.Render.Animation.Speed">
@@ -776,7 +869,7 @@
                 Gets or sets the value of the speed
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.Render.Animation.Textures">
+        <member name="P:Alis.Core.Component.Render.Animation.Frames">
             <summary>
                 Gets or sets the value of the textures
             </summary>
@@ -794,11 +887,17 @@
             <exception cref="T:System.InvalidCastException"></exception>
             <returns>The texture</returns>
         </member>
-        <member name="M:Alis.Core.Component.Render.Animation.Texture">
+        <member name="M:Alis.Core.Component.Render.Animation.Builder">
             <summary>
-                Textures this instance
+            Builders this instance
             </summary>
-            <returns>The texture</returns>
+            <returns>The animator builder</returns>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animation.AddFrame(Alis.Core.Component.Render.Frame)">
+            <summary>
+            Adds the frame using the specified frame
+            </summary>
+            <param name="frame">The frame</param>
         </member>
         <member name="T:Alis.Core.Component.Render.Animator">
             <summary>
@@ -842,9 +941,9 @@
                 Gets or sets the value of the state
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.Render.Animator.Add(Alis.Core.Component.Render.Animation)">
+        <member name="M:Alis.Core.Component.Render.Animator.AddAnimation(Alis.Core.Component.Render.Animation)">
             <summary>
-                Adds the animation
+            Adds the animation using the specified animation
             </summary>
             <param name="animation">The animation</param>
         </member>
@@ -889,6 +988,29 @@
             <summary>
                 Updates this instance
             </summary>
+        </member>
+        <member name="T:Alis.Core.Component.Render.Frame">
+            <summary>
+            The frame class
+            </summary>
+            <seealso cref="T:Alis.Core.Graphic.D2.FrameBase"/>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Frame.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Frame"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Frame.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Frame"/> class
+            </summary>
+            <param name="filePath">The file path</param>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Frame.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The frame builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Render.Image">
             <summary>
@@ -1525,22 +1647,6 @@
             <summary>
                 Gets or sets the value of the description
             </summary>
-        </member>
-        <member name="T:Alis.ConsoleGame">
-            <summary>
-                The console game class
-            </summary>
-            <seealso cref="T:Alis.Core.GameBase" />
-        </member>
-        <member name="M:Alis.ConsoleGame.Run">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Alis.ConsoleGame.Builder">
-            <summary>
-                Builders
-            </summary>
-            <returns>The console game builder</returns>
         </member>
         <member name="T:Alis.SoundGame">
             <summary>

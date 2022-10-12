@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Builder.Component.Light
+namespace Alis.Builder.Core.Component.Light
 {
     /// <summary>
     ///     The directional light builder class

@@ -27,19 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
+using System;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Component.Render;
 
-namespace Alis.Core.Builder.Component.Render
+namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
     ///     The animator builder class
     /// </summary>
     public class AnimatorBuilder:
         IBuild<Animator>,
-        IAdd<AnimatorBuilder, List<Animation>, List<Animation>>
+        IAddAnimation<AnimatorBuilder, Func<AnimationBuilder, Animation>>
     {
         /// <summary>
         /// The animator
@@ -52,16 +52,14 @@ namespace Alis.Core.Builder.Component.Render
         /// <returns>The animator</returns>
         public Animator Build() => animator;
 
-
         /// <summary>
-        /// Adds the value
+        /// Adds the animation using the specified value
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
         /// <returns>The animator builder</returns>
-        public AnimatorBuilder Add<T>(List<Animation> value) where T : List<Animation>
+        public AnimatorBuilder AddAnimation(Func<AnimationBuilder, Animation> value)
         {
-            animator.Animations = value;
+            animator.AddAnimation(value.Invoke(new AnimationBuilder()));
             return this;
         }
     }

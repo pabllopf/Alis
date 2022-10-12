@@ -28,13 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Builder.Entity;
 using Alis.Core.Entity;
 using Alis.Core.Manager.Scene;
 
-namespace Alis.Core.Builder.Manager
+namespace Alis.Builder.Core.Manager
 {
     /// <summary>
     ///     The scene manager builder class

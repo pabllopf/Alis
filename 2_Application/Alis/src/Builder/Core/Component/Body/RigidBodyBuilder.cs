@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Builder.Component.Body
+namespace Alis.Builder.Core.Component.Body
 {
     /// <summary>
     ///     The rigid body builder class

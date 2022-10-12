@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Builder.Component.Mesh
+namespace Alis.Builder.Core.Component.Mesh
 {
     /// <summary>
     ///     The box mesh builder class

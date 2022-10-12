@@ -32,7 +32,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Component.Audio;
 
-namespace Alis.Core.Builder.Component.Audio
+namespace Alis.Builder.Core.Component.Audio
 {
     /// <summary>
     ///     The audio source builder class
