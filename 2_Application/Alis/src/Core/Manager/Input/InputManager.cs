@@ -42,19 +42,20 @@ namespace Alis.Core.Manager.Input
         /// <summary>
         /// Array of key of keyboard
         /// </summary>
-        private Array keys;
+        private List<Key> keys;
 
         /// <summary>
         /// Temp list of keys
         /// </summary>
-        private List<Key> tempListOfKeys = new List<Key>();
+        private List<Key> tempListOfKeys;
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
-            keys = Enum.GetValues(typeof(Key));
+            keys = new List<Key>((Key[])Enum.GetValues(typeof(Key)));
+            tempListOfKeys = new List<Key>();
         }
 
         /// <summary>
@@ -83,6 +84,7 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Update()
         {
+            
         }
 
         /// <summary>
@@ -104,12 +106,14 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void DispatchEvents()
         {
-            foreach(Key key in keys)
+            for (int index = 0; index < keys.Count - 7; index++)
             {
+                Key key = keys[index];
                 if (Keyboard.IsKeyPressed(key) && !tempListOfKeys.Contains(key))
                 {
                     //Console.WriteLine($"Key pressed={key}");
                     tempListOfKeys.Add(key);
+
                     foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
                     {
                         currentSceneGameObject.components.ForEach(i => i.OnPressKey(key.ToString()));
@@ -125,12 +129,12 @@ namespace Alis.Core.Manager.Input
                         currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(key.ToString()));
                     }
                 }
-                
-                
+
+
                 if (Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
                 {
                     //Console.WriteLine($"Key pressing={key}");
-                    
+
                     foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
                     {
                         currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(key.ToString()));

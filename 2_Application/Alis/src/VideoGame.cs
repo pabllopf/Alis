@@ -75,11 +75,11 @@ namespace Alis
         /// </summary>
         public VideoGame()
         {
-            InputManager = new InputManager();
             PhysicManager = new PhysicManager();
             GraphicManager = new GraphicManager();
             SceneManager = new SceneManager();
             AudioManager = new AudioManager();
+            InputManager = new InputManager();
             
             Managers = new List<ManagerBase>
             {
@@ -87,7 +87,7 @@ namespace Alis
                 GraphicManager,
                 SceneManager,
                 AudioManager,
-                //InputManager,
+                InputManager,
             };
         }
 
