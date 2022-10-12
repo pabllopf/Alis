@@ -83,11 +83,11 @@ namespace Alis
             
             Managers = new List<ManagerBase>
             {
-                InputManager,
                 PhysicManager,
                 GraphicManager,
                 SceneManager,
-                AudioManager
+                AudioManager,
+                //InputManager,
             };
         }
 
