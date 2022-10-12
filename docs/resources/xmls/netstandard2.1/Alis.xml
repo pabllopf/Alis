@@ -936,9 +936,9 @@
                 Gets or sets the value of the animations
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.Render.Animator.State">
+        <member name="F:Alis.Core.Component.Render.Animator.currentAnimation">
             <summary>
-                Gets or sets the value of the state
+            The current animation
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.AddAnimation(Alis.Core.Component.Render.Animation)">
@@ -946,6 +946,11 @@
             Adds the animation using the specified animation
             </summary>
             <param name="animation">The animation</param>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animator.Init">
+            <summary>
+            Inits this instance
+            </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.Awake">
             <summary>
@@ -966,6 +971,12 @@
             <summary>
                 Exits this instance
             </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animator.ChangeAnimationTo(System.String)">
+            <summary>
+            Changes the animation to using the specified name animation
+            </summary>
+            <param name="nameAnimation">The name animation</param>
         </member>
         <member name="T:Alis.Core.Component.Render.Camera">
             <summary>

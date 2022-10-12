@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
+using Alis.Core.Component.Render;
 
 namespace Alis.Sample.Rogue
 {
@@ -38,6 +39,25 @@ namespace Alis.Sample.Rogue
     /// </summary>
     public class PlayerMovement : ComponentBase
     {
+        /// <summary>
+        /// The walking
+        /// </summary>
+        private bool walk;
+        
+        /// <summary>
+        /// The animator
+        /// </summary>
+        private Animator animator;
+
+        /// <summary>
+        /// Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            animator = GameObject.GetComponent<Animator>();
+            walk = false;
+        }
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -51,6 +71,10 @@ namespace Alis.Sample.Rogue
         /// </summary>
         public override void Update()
         {
+            if (!walk)
+            {
+                animator.ChangeAnimationTo("Idle");
+            }
         }
 
         /// <summary>
@@ -59,9 +83,14 @@ namespace Alis.Sample.Rogue
         /// <param name="key"></param>
         public override void OnReleaseKey(string key)
         {
-            if (key.Equals("W"))
+            switch (key)
             {
-                Console.WriteLine($"Release up key='{key}'");
+                case "W":
+                case "D":
+                case "S":
+                case "A":
+                    walk = false;
+                    break;
             }
         }
         
@@ -72,25 +101,32 @@ namespace Alis.Sample.Rogue
         /// <param name="key"></param>
         public override void OnPressDownKey(string key)
         {
-            if (key.Equals("W"))
+            switch (key)
             {
-                //Console.WriteLine($"Pressed key='{key}'");
-                Transform.Position += new Vector2(0, -1);
-            }
-            if (key.Equals("S"))
-            {
-                Transform.Position += new Vector2(0, 1);
-                //Console.WriteLine($"Pressed key='{key}'");
-            }
-            if (key.Equals("D"))
-            {
-                Transform.Position += new Vector2(1, 0);
-                //Console.WriteLine($"Pressed key='{key}'");
-            }
-            if (key.Equals("A"))
-            {
-                Transform.Position += new Vector2(-1, 0);
-                //Console.WriteLine($"Pressed key='{key}'");
+                case "W":
+                    //Console.WriteLine($"Pressed key='{key}'");
+                    walk = true;
+                    animator.ChangeAnimationTo("WalkUp");
+                    Transform.Position += new Vector2(0, -1);
+                    break;
+                case "S":
+                    walk = true;
+                    Transform.Position += new Vector2(0, 1);
+                    animator.ChangeAnimationTo("WalkDown");
+                    //Console.WriteLine($"Pressed key='{key}'");
+                    break;
+                case "D":
+                    walk = true;
+                    animator.ChangeAnimationTo("WalkRight");
+                    Transform.Position += new Vector2(1, 0);
+                    //Console.WriteLine($"Pressed key='{key}'");
+                    break;
+                case "A":
+                    animator.ChangeAnimationTo("WalkLeft");
+                    walk = true;
+                    Transform.Position += new Vector2(-1, 0);
+                    //Console.WriteLine($"Pressed key='{key}'");
+                    break;
             }
         }
     }

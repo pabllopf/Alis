@@ -84,7 +84,7 @@ namespace Alis.Sample.Rogue
                                 .SetTexture(Environment.CurrentDirectory + "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
-                            .AddComponent<PlayerMovement>(i => i
+                            .AddComponent<PlayerMovement>(playerMovement => playerMovement
                                 .Builder()
                                 .Build())
                             .AddComponent<AudioSource>(audioSource => audioSource
@@ -99,6 +99,18 @@ namespace Alis.Sample.Rogue
                                 .Build())
                             .AddComponent<Animator>(animator => animator
                                 .Builder()
+                                .AddAnimation(animation => animation
+                                    .Name("Idle")
+                                    .Speed(0.25f)
+                                    .Order(0)
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile002.png")
+                                        .Build())
+                                    .Build())
+                                
                                 .AddAnimation(animation => animation
                                         .Name("WalkDown")
                                         .Speed(0.25f)
@@ -116,6 +128,60 @@ namespace Alis.Sample.Rogue
                                             .FilePath(Environment.CurrentDirectory + "/Assets/tile003.png")
                                             .Build())
                                         .Build())
+                                
+                                .AddAnimation(animation => animation
+                                    .Name("WalkUp")
+                                    .Speed(0.25f)
+                                    .Order(2)
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile034.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile035.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile036.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile037.png")
+                                        .Build())
+                                    .Build())
+                                
+                                .AddAnimation(animation => animation
+                                    .Name("WalkRight")
+                                    .Speed(0.25f)
+                                    .Order(3)
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile017.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile018.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile019.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile020.png")
+                                        .Build())
+                                    .Build())
+                                
+                                .AddAnimation(animation => animation
+                                    .Name("WalkLeft")
+                                    .Speed(0.25f)
+                                    .Order(4)
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile051.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile052.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile053.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile054.png")
+                                        .Build())
+                                    .Build())
                                 .Build())
                             .Build())
                         .Build())

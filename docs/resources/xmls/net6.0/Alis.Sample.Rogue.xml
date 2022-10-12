@@ -9,6 +9,21 @@
                 Move control of player
             </summary>
         </member>
+        <member name="F:Alis.Sample.Rogue.PlayerMovement.walk">
+            <summary>
+            The walking
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.Rogue.PlayerMovement.animator">
+            <summary>
+            The animator
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
         <member name="M:Alis.Sample.Rogue.PlayerMovement.Start">
             <summary>
                 Starts this instance

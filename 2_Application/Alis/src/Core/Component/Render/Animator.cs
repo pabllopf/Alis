@@ -52,7 +52,6 @@ namespace Alis.Core.Component.Render
         public Animator()
         {
             Animations = new List<Animation>();
-            State = 0;
             Timer = new Stopwatch();
         }
 
@@ -63,7 +62,11 @@ namespace Alis.Core.Component.Render
         public Animator(List<Animation> animations)
         {
             Animations = animations;
-            State = 0;
+            if (animations.Count > 0)
+            {
+                currentAnimation = animations[0];
+            }
+            
             Timer = new Stopwatch();
         }
 
@@ -81,18 +84,28 @@ namespace Alis.Core.Component.Render
         ///     Gets or sets the value of the animations
         /// </summary>
         public List<Animation> Animations { get; set; }
-
+        
         /// <summary>
-        ///     Gets or sets the value of the state
+        /// The current animation
         /// </summary>
-        public int State { get; set; }
+        private Animation currentAnimation;
 
- 
         /// <summary>
         /// Adds the animation using the specified animation
         /// </summary>
         /// <param name="animation">The animation</param>
         public void AddAnimation(Animation animation) => Animations.Add(animation);
+
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
+        public override void Init()
+        {
+            if (Animations.Count > 0)
+            {
+                currentAnimation = Animations[0];
+            }
+        }
 
         /// <summary>
         ///     Awakes this instance
@@ -130,25 +143,19 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Update()
         {
-            if (Sprite != null)
+            if (Sprite == null || currentAnimation == null || Animations.Count == 0)
             {
-                
-                
-                if (Animations.Count > 0)
+                return;
+            }
+
+            if (Timer.ElapsedMilliseconds >= currentAnimation.Speed * 1000)
+            {
+                if (currentAnimation.HasNext())
                 {
-                    //Console.WriteLine($"Animations.Count={Animations.Count}");
-                    
-                    if (Timer.ElapsedMilliseconds >= Animations[State].Speed * 1000)
-                    {
-                        if (Animations[State].HasNext())
-                        {
-                            //Console.WriteLine($"text={Sprite.texturePath}");
-                            Sprite.sprite.Texture = Animations[State].NextTexture().Texture;
-                        }
-                        
-                        Timer.Restart();
-                    }
+                    Sprite.sprite.Texture = currentAnimation.NextTexture().Texture;
                 }
+
+                Timer.Restart();
             }
         }
 
@@ -157,6 +164,28 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Exit()
         {
+        }
+
+        /// <summary>
+        /// Changes the animation to using the specified name animation
+        /// </summary>
+        /// <param name="nameAnimation">The name animation</param>
+        public void ChangeAnimationTo(string nameAnimation)
+        {
+            if (currentAnimation.Name.Equals(nameAnimation))
+            {
+                //Console.WriteLine($"current animation is set {nameAnimation}");
+                return;
+            }
+
+            Animation tempAnimation = Animations.Find(i => i.Name.Equals(nameAnimation));
+            if (tempAnimation != null)
+            {
+                currentAnimation = tempAnimation;
+                return;
+            }
+            
+            //Console.WriteLine($"Dont find the animation {nameAnimation}");
         }
     }
 }
