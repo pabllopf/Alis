@@ -27,12 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Component.Render;
+
 namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
     ///     The camera builder class
     /// </summary>
-    public class CameraBuilder
+    public class CameraBuilder : 
+        IBuild<Camera>
     {
+        /// <summary>
+        /// The camera
+        /// </summary>
+        private Camera camera = new Camera();
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The camera</returns>
+        public Camera Build() => camera;
     }
 }

@@ -38,9 +38,6 @@ namespace Alis.Core.Entity
     /// <summary>Represent a object of the game.</summary>
     public class GameObject : GameObjectBase, IBuilder<GameObjectBuilder>
     {
-
-        
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>

@@ -48,7 +48,6 @@ namespace Alis.Core.Entity
         /// </summary>
         public TransformBase Transform { get;  set; } = new TransformBase();
         
-        
         /// <summary>
         ///     Adds the component
         /// </summary>

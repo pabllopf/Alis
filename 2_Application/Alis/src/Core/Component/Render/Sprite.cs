@@ -117,6 +117,8 @@ namespace Alis.Core.Component.Render
                 GameObject.Transform.Position.Y - (size.Y / 2));
             sprite.Rotation = GameObject.Transform.Rotation;
             sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            
+            
         }
 
         /// <summary>

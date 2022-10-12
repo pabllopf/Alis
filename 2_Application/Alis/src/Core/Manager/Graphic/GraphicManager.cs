@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using Sprite = Alis.Core.Component.Render.Sprite;
@@ -42,15 +43,34 @@ namespace Alis.Core.Manager.Graphic
     /// <seealso cref="ManagerBase" />
     public class GraphicManager : ManagerBase
     {
+
+        /// <summary>
+        /// The current
+        /// </summary>
+        public static GraphicManager Current;
+        
         /// <summary>
         ///     The renderWindow
         /// </summary>
-        private RenderWindow renderWindow;
+        public RenderWindow renderWindow;
+
+        /// <summary>
+        /// The video mode
+        /// </summary>
+        private VideoMode VideoMode;
 
         /// <summary>
         ///     Gets or sets the value of the sprites
         /// </summary>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GraphicManager"/> class
+        /// </summary>
+        public GraphicManager()
+        {
+            Current = this;
+        }
 
         /// <summary>
         ///     Inits this instance
@@ -59,8 +79,11 @@ namespace Alis.Core.Manager.Graphic
         {
             Console.WriteLine("init::graphic:new");
             //renderWindow = new RenderWindow(new VideoMode(640, 480), $"{GameBase.Setting.General.GameName} by {GameBase.Setting.General.Author}");
-            renderWindow = new RenderWindow(new VideoMode(640, 480), "sample");
+            VideoMode = new VideoMode(640, 480);
+            renderWindow = new RenderWindow(VideoMode, "sample");
             renderWindow.Closed += RenderWindowOnClosed;
+
+           
         }
 
         /// <summary>
@@ -165,6 +188,15 @@ namespace Alis.Core.Manager.Graphic
         {
             Sprites.Remove(sprite);
             Sprites = Sprites.OrderBy(o => o.Depth).ToList();
+        }
+
+        /// <summary>
+        /// Sets the view using the specified view
+        /// </summary>
+        /// <param name="view">The view</param>
+        public void SetView(View view)
+        {
+            renderWindow.SetView(view);
         }
     }
 }

@@ -250,6 +250,17 @@
                 The camera builder class
             </summary>
         </member>
+        <member name="F:Alis.Builder.Core.Component.Render.CameraBuilder.camera">
+            <summary>
+            The camera
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.CameraBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The camera</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Component.Render.FrameBuilder">
             <summary>
             The frame builder class
@@ -984,20 +995,45 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
+        <member name="P:Alis.Core.Component.Render.Camera.PointOfView">
+            <summary>
+                Gets or sets the value of the point of view
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Render.Camera.Resolution">
+            <summary>
+                Gets or sets the value of the resolution
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Component.Render.Camera.view">
+            <summary>
+                Gets or sets the value of the view
+            </summary>
+        </member>
         <member name="M:Alis.Core.Component.Render.Camera.Builder">
             <summary>
                 Builders this instance
             </summary>
             <returns>The camera builder</returns>
         </member>
+        <member name="M:Alis.Core.Component.Render.Camera.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Camera"/> class
+            </summary>
+        </member>
         <member name="M:Alis.Core.Component.Render.Camera.Start">
             <summary>
                 Starts this instance
             </summary>
         </member>
+        <member name="M:Alis.Core.Component.Render.Camera.BeforeUpdate">
+            <summary>
+            Befores the update
+            </summary>
+        </member>
         <member name="M:Alis.Core.Component.Render.Camera.Update">
             <summary>
-                Updates this instance
+            Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Render.Frame">
@@ -1316,14 +1352,29 @@
             </summary>
             <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
+        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.Current">
+            <summary>
+            The current
+            </summary>
+        </member>
         <member name="F:Alis.Core.Manager.Graphic.GraphicManager.renderWindow">
             <summary>
                 The renderWindow
             </summary>
         </member>
+        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.VideoMode">
+            <summary>
+            The video mode
+            </summary>
+        </member>
         <member name="P:Alis.Core.Manager.Graphic.GraphicManager.Sprites">
             <summary>
                 Gets or sets the value of the sprites
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Manager.Graphic.GraphicManager"/> class
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Init">
@@ -1399,6 +1450,12 @@
                 Uns the attach using the specified sprite
             </summary>
             <param name="sprite">The sprite</param>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.SetView(Alis.Core.Graphic.D2.SFML.Graphics.View)">
+            <summary>
+            Sets the view using the specified view
+            </summary>
+            <param name="view">The view</param>
         </member>
         <member name="T:Alis.Core.Manager.Input.InputManager">
             <summary>

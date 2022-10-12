@@ -28,14 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Runtime.Versioning;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
-using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
-using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Sample.Rogue
 {
@@ -62,7 +58,7 @@ namespace Alis.Sample.Rogue
                             .Name("Player")
                             .Transform(transform => transform
                                 .Position(100, 100)
-                                .Rotation(180)
+                                .Rotation(0)
                                 .Scale(3, 3)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
@@ -75,10 +71,11 @@ namespace Alis.Sample.Rogue
                             .Name("Player 2")
                             .WithTag("Players")
                             .Transform(i => i
-                                .Position(100, 100)
+                                .Position(0, 0)
                                 .Rotation(0)
                                 .Scale(3, 3)
                                 .Build())
+                            .AddComponent(new Camera())
                             .AddComponent<Sprite>(i => i
                                 .Builder()
                                 .SetTexture(Environment.CurrentDirectory + "/Assets/tile003.png")
@@ -110,8 +107,6 @@ namespace Alis.Sample.Rogue
                                         .FilePath(Environment.CurrentDirectory + "/Assets/tile002.png")
                                         .Build())
                                     .Build())
-                                
-                                
                                 .AddAnimation(animation => animation
                                         .Name("WalkDown")
                                         .Speed(0.25f)

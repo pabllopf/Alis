@@ -27,8 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Manager.Graphic;
 
 namespace Alis.Core.Component.Render
 {
@@ -36,8 +41,23 @@ namespace Alis.Core.Component.Render
     ///     The camera class
     /// </summary>
     /// <seealso cref="ComponentBase" />
-    public class Camera : ComponentBase, IBuilder<CameraBuilder>
+    public class Camera : ComponentBase, 
+        IBuilder<CameraBuilder>
     {
+        /// <summary>
+        ///     Gets or sets the value of the point of view
+        /// </summary>
+        private Vector2 PointOfView { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the resolution
+        /// </summary>
+        public Vector2 Resolution { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the view
+        /// </summary>
+        private View view;
 
         /// <summary>
         ///     Builders this instance
@@ -46,17 +66,44 @@ namespace Alis.Core.Component.Render
         public new CameraBuilder Builder() => new CameraBuilder();
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Camera"/> class
+        /// </summary>
+        public Camera()
+        {
+            
+        }
+
+        /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
+            
+            PointOfView = new Vector2(0.0f, 0.0f);
+            Resolution = new Vector2(640, 480);
+            /*View = new View(new Vector2F(PointOfView.X, PointOfView.Y), new Vector2F(Resolution.X, Resolution.Y));
+            GraphicManager.Current.renderWindow.SetView(View);
+            pos = new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);*/
+            
+            view = new View(new Vector2F(PointOfView.X, PointOfView.Y), new Vector2F(Resolution.X, Resolution.Y));
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Befores the update
+        /// </summary>
+        public override void BeforeUpdate()
+        {
+            //Console.WriteLine(GraphicManager.Current.renderWindow.GetView().Center);
+        }
+
+        /// <summary>
+        /// Updates this instance
         /// </summary>
         public override void Update()
         {
+            view.Center = new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+            //GraphicManager.Current.renderWindow.SetView(view);
+            GraphicManager.Current.renderWindow.SetView(view);
         }
     }
 }

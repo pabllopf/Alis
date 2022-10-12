@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.SFML;
 
 namespace Alis.Core.Entity
 {
