@@ -111,6 +111,7 @@ namespace Alis.Sample.Rogue
                                         .Build())
                                     .Build())
                                 
+                                
                                 .AddAnimation(animation => animation
                                         .Name("WalkDown")
                                         .Speed(0.25f)
