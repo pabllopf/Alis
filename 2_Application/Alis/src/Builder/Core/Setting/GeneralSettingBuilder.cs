@@ -40,7 +40,8 @@ namespace Alis.Builder.Core.Setting
         IBuild<GeneralSetting>,
         IName<GeneralSettingBuilder, string>,
         IAuthor<GeneralSettingBuilder, string>,
-        IDescription<GeneralSettingBuilder, string>
+        IDescription<GeneralSettingBuilder, string>,
+        IIcon<GeneralSettingBuilder, string>
     {
         /// <summary>
         /// The general setting
@@ -83,6 +84,17 @@ namespace Alis.Builder.Core.Setting
         public GeneralSettingBuilder Description(string value)
         {
             generalSetting.Description = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Icons the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Icon(string value)
+        {
+            generalSetting.IconFile = value;
             return this;
         }
     }

@@ -42,7 +42,9 @@ namespace Alis.Builder.Core.Manager
     /// <seealso cref="IBuild{SettingManager}"/>
     public class SettingManagerBuilder:
         IBuild<SettingManager>,
-        IDebug<SettingManagerBuilder, Func<DebugSettingBuilder, DebugSetting>>
+        IDebug<SettingManagerBuilder, Func<DebugSettingBuilder, DebugSetting>>,
+        IGeneral<SettingManagerBuilder, Func<GeneralSettingBuilder, GeneralSetting>>,
+        IAudio<SettingManagerBuilder, Func<AudioSettingBuilder, AudioSetting>>
     {
         /// <summary>
         /// The setting manager
@@ -63,6 +65,28 @@ namespace Alis.Builder.Core.Manager
         public SettingManagerBuilder Debug(Func<DebugSettingBuilder, DebugSetting> value)
         {
             settingManager.Debug = value.Invoke(new DebugSettingBuilder());
+            return this;
+        }
+
+        /// <summary>
+        /// Generals the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The setting manager builder</returns>
+        public SettingManagerBuilder General(Func<GeneralSettingBuilder, GeneralSetting> value)
+        {
+            settingManager.General = value.Invoke(new GeneralSettingBuilder());
+            return this;
+        }
+        
+        /// <summary>
+        /// Audioes the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The setting manager builder</returns>
+        public SettingManagerBuilder Audio(Func<AudioSettingBuilder, AudioSetting> value)
+        {
+            settingManager.Audio = value.Invoke(new AudioSettingBuilder());
             return this;
         }
     }

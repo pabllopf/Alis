@@ -90,6 +90,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IAudio`2">
+            <summary>
+            The audio interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IAudio`2.Audio(`1)">
+            <summary>
+            Audioes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAuthor`2">
             <summary>
                 The author interface

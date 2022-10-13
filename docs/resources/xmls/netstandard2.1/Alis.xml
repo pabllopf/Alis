@@ -464,6 +464,44 @@
             </summary>
             <returns>The scene manager</returns>
         </member>
+        <member name="T:Alis.Builder.Core.Manager.SettingManagerBuilder">
+            <summary>
+            The setting manager builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="F:Alis.Builder.Core.Manager.SettingManagerBuilder.settingManager">
+            <summary>
+            The setting manager
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The setting manager</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Debug(System.Func{Alis.Builder.Core.Setting.DebugSettingBuilder,Alis.Core.Setting.DebugSetting})">
+            <summary>
+            Debugs the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The setting manager builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.General(System.Func{Alis.Builder.Core.Setting.GeneralSettingBuilder,Alis.Core.Setting.GeneralSetting})">
+            <summary>
+            Generals the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The setting manager builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Audio(System.Func{Alis.Builder.Core.Setting.AudioSettingBuilder,Alis.Core.Setting.AudioSetting})">
+            <summary>
+            Audioes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The setting manager builder</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Setting.AudioSettingBuilder">
             <summary>
             The audio setting builder class
@@ -561,7 +599,7 @@
             </summary>
             <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
-        <member name="P:Alis.Builder.VideoGameBuilder.VideoGame">
+        <member name="P:Alis.Builder.VideoGameBuilder.videoGame">
             <summary>Gets or sets the video game.</summary>
             <value>The video game.</value>
         </member>
@@ -577,15 +615,15 @@
             <param name="value">The value</param>
             <returns>The video game builder</returns>
         </member>
-        <member name="M:Alis.Builder.VideoGameBuilder.Settings(System.Func{Alis.Core.Builder.Setting.SettingBuilder,Alis.Core.Setting.SettingBase})">
-            <summary>
-                Setting builder
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
         <member name="M:Alis.Builder.VideoGameBuilder.Run">
             <summary>Runs this instance.</summary>
+        </member>
+        <member name="M:Alis.Builder.VideoGameBuilder.Settings(System.Func{Alis.Builder.Core.Manager.SettingManagerBuilder,Alis.Core.Manager.Setting.SettingManager})">
+            <summary>
+            Setting the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The video game builder</returns>
         </member>
         <member name="T:Alis.ConsoleGame">
             <summary>

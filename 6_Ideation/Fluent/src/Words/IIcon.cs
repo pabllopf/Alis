@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:AudioSetting.cs
+//  File:IIcon.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,22 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Setting;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Audio;
-
-namespace Alis.Core.Setting
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The audio setting class
+    /// The icon interface
     /// </summary>
-    public class AudioSetting : SettingBase,
-        IBuilder<AudioSettingBuilder>
+    public interface IIcon<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Builders this instance
+        /// Icons the value
         /// </summary>
-        /// <returns>The audio setting builder</returns>
-        public new AudioSettingBuilder Builder() => new AudioSettingBuilder();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder Icon(TArgument value);
     }
 }

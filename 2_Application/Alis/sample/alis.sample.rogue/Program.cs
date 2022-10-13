@@ -50,7 +50,16 @@ namespace Alis.Sample.Rogue
             
             VideoGame.Builder()
                 .Settings(setting => setting
+                    .General(general => general
+                        .Name("Rogue Sample")
+                        .Author("Pablo Perdomo Falcón")
+                        .Description("Simple rogue game")
+                        .Icon(Environment.CurrentDirectory + "/Assets/tile000.png")
+                        .Build())
                     .Debug(debug => debug
+                        
+                        .Build())
+                    .Audio(audio => audio
                         .Build())
                     .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager

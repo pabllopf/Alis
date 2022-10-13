@@ -52,6 +52,11 @@ namespace Alis.Core.Setting
         public string Description { get; set; } = "Default description of game.";
 
         /// <summary>
+        /// Gets or sets the value of the icon file
+        /// </summary>
+        public string IconFile { get; set; } = "";
+
+        /// <summary>
         /// Builders this instance
         /// </summary>
         /// <returns>The general setting builder</returns>
