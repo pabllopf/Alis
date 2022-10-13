@@ -103,9 +103,10 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Update()
         {
+            /*
             view.Size = new Vector2F(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
-                (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
+                (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);*/
             view.Center = new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
             GraphicManager.Current.renderWindow.SetView(view);
         }

@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
@@ -65,6 +66,8 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
 
+        private Styles styles = Styles.Default;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GraphicManager"/> class
         /// </summary>
@@ -73,22 +76,58 @@ namespace Alis.Core.Manager.Graphic
             Current = this;
         }
 
+        private Vector2 defaultSize = new Vector2();
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
             Console.WriteLine("init::graphic:new");
-            VideoMode = new VideoMode(640, 480);
-            renderWindow = new RenderWindow(VideoMode, 
-                $"{VideoGame.Setting.General.Name} by {VideoGame.Setting.General.Author}");
             
-            //renderWindow = new RenderWindow(VideoMode, "sample");
-            renderWindow.Closed += RenderWindowOnClosed;
+            defaultSize = new Vector2(VideoGame.Setting.Graphic.Window.Resolution.X, VideoGame.Setting.Graphic.Window.Resolution.Y);
+            
+            styles = Styles.Default;
+            InitRenderWindow();
+        }
+        
+        
 
+        private void RenderWindowOnKeyPressed(object sender, KeyEventArgs e)
+        {
+            
+        }
+
+        private void RenderWindowOnResized(object sender, SizeEventArgs e)
+        {
+            
+            VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
+            
             renderWindow.Size = new Vector2U(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
+        }
+
+        private void InitRenderWindow()
+        {
+            if (renderWindow is {IsOpen: true})
+            {
+                renderWindow.Close();
+                renderWindow.Dispose();
+            }
+            
+            VideoMode = new VideoMode(
+                (uint) defaultSize.X, 
+                (uint) defaultSize.Y);
+
+            VideoGame.Setting.Graphic.Window.Resolution = new Vector2(defaultSize.X, defaultSize.Y);
+            
+            renderWindow = new RenderWindow(VideoMode, 
+                $"{VideoGame.Setting.General.Name} by {VideoGame.Setting.General.Author}", styles);
+
+            renderWindow.RequestFocus();
+            renderWindow.SetVisible(true);
+
 
             if (!VideoGame.Setting.General.IconFile.Equals(""))
             {
@@ -97,15 +136,8 @@ namespace Alis.Core.Manager.Graphic
             }
             
             renderWindow.Resized += RenderWindowOnResized;
-        }
-
-        private void RenderWindowOnResized(object sender, SizeEventArgs e)
-        {
-            VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
-            
-            renderWindow.Size = new Vector2U(
-                (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
-                (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
+            renderWindow.KeyPressed += RenderWindowOnKeyPressed;
+            renderWindow.Closed += RenderWindowOnClosed;
         }
 
         /// <summary>
@@ -113,6 +145,7 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void Awake()
         {
+            
         }
 
         /// <summary>
@@ -138,7 +171,27 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents() => renderWindow.DispatchEvents();
+        public override void DispatchEvents()
+        {
+            renderWindow.DispatchEvents();
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && Math.Abs(renderWindow.Size.X - defaultSize.X) > 0.1 && Math.Abs(renderWindow.Size.Y - defaultSize.Y) > 0.1)
+            {
+                styles = Styles.Default;
+                Console.WriteLine("Change style to default");
+                InitRenderWindow();
+                Task.Delay(100).Wait();
+                return;
+            }
+
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && Math.Abs(renderWindow.Size.X - defaultSize.X) < 0.1 && Math.Abs(renderWindow.Size.Y - defaultSize.Y) < 0.1)
+            {
+                styles = Styles.Fullscreen;
+                Console.WriteLine("Change style to Fullscreen");
+                InitRenderWindow();
+                Task.Delay(100).Wait();
+                return;
+            }
+        }
 
         /// <summary>
         ///     Fixeds the update
