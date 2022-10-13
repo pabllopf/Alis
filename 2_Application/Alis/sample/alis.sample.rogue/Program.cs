@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Drawing;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
@@ -55,11 +56,19 @@ namespace Alis.Sample.Rogue
                         .Author("Pablo Perdomo Falcón")
                         .Description("Simple rogue game")
                         .Icon(Environment.CurrentDirectory + "/Assets/tile000.png")
+                        .SplashScreen(screen => screen
+                            .Enable(true)
+                            .Style(Style.Dark)
+                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                            .ShowAlisLogo(true)
+                            .Build()) 
                         .Build())
                     .Debug(debug => debug
-                        
                         .Build())
                     .Audio(audio => audio
+                        .Build())
+                    .Window(window => window
+                        .ColorSpace(Color.Blue)
                         .Build())
                     .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager
