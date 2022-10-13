@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingManager.cs
+//  File:Program.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,40 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Setting;
+using System;
+using BenchmarkDotNet.Columns;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Diagnosers;
+using BenchmarkDotNet.Environments;
+using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Running;
 
-namespace Alis.Core.Manager.Setting
+
+namespace Alis.Test.Benchmark
 {
     /// <summary>
-    /// The setting manager class
+    ///     The program class
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
-    public class SettingManager : SettingManagerBase
+    public class Program
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        /// Main the args
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
-        
-        /// <summary>
-        /// Gets or sets the value of the graphic
-        /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        /// <param name="args">The args</param>
+        public static void Main(string[] args)
+        {
+            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly)
+                .Run(args, DefaultConfig.Instance.AddJob(Job.ShortRun
+                        .WithPlatform(Platform.AnyCpu)
+                        .AsDefault())
+                    .WithOptions(ConfigOptions.DisableLogFile)
+                    .WithArtifactsPath($"..\\..\\..\\docs\\test\\{DateTime.Now:yyyy-MM-dd}")
+                    .AddDiagnoser(MemoryDiagnoser.Default)
+                    .AddColumn(StatisticColumn.Mean)
+                    .AddColumn(StatisticColumn.Min)
+                    .AddColumn(StatisticColumn.Max)
+                    .AddExporter(MarkdownExporter.GitHub));
+        }
     }
 }

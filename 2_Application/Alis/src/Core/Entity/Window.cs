@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingManager.cs
+//  File:Window.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,28 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Setting;
+using Alis.Builder.Core.Entity;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
-namespace Alis.Core.Manager.Setting
+namespace Alis.Core.Entity
 {
     /// <summary>
-    /// The setting manager class
+    /// The window class
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
-    public class SettingManager : SettingManagerBase
+    public class Window:
+        IBuilder<WindowBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        /// Builders this instance
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
+        /// <returns>The window builder</returns>
+        public WindowBuilder Builder() => new WindowBuilder();
 
-        /// <summary>
-        /// Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
         
         /// <summary>
-        /// Gets or sets the value of the graphic
+        /// Gets or sets the value of the background
         /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        public Color Background { get; set; } = Color.Black;
     }
 }

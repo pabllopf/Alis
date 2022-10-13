@@ -27,8 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Entity;
 using Alis.Core.Setting;
 
 namespace Alis.Builder.Core.Setting
@@ -41,7 +44,8 @@ namespace Alis.Builder.Core.Setting
         IName<GeneralSettingBuilder, string>,
         IAuthor<GeneralSettingBuilder, string>,
         IDescription<GeneralSettingBuilder, string>,
-        IIcon<GeneralSettingBuilder, string>
+        IIcon<GeneralSettingBuilder, string>,
+        ISplashScreen<GeneralSettingBuilder, Func<SplashScreenBuilder, SplashScreen>>
     {
         /// <summary>
         /// The general setting
@@ -95,6 +99,17 @@ namespace Alis.Builder.Core.Setting
         public GeneralSettingBuilder Icon(string value)
         {
             generalSetting.IconFile = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Splashes the screen using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder SplashScreen(Func<SplashScreenBuilder, SplashScreen> value)
+        {
+            generalSetting.SplashScreen = value.Invoke(new SplashScreenBuilder());
             return this;
         }
     }

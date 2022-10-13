@@ -3,6 +3,7 @@
 
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('Benchmark')) == False AND
         $(AssemblyName.Contains('App')) == False AND 
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
@@ -10,7 +11,7 @@
         
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"  
                           Include="$(SolutionDir)3_Structuration/**/*.csproj"
-                          Exclude="$(SolutionDir)3_Structuration/**/*.Sample.csproj; $(SolutionDir)3_Structuration/**/*.Test.csproj" />
+                          Exclude="$(SolutionDir)3_Structuration/**/*.Sample.csproj; $(SolutionDir)3_Structuration/**/*.Test.csproj; $(SolutionDir)3_Structuration/**/*.Test.Benchmark.csproj" />
 
         <ProjectReference Condition="$(ProjectDir.Contains('3_Structuration'))"
                           Include="$(SolutionDir)4_Operation/**/*.csproj"
@@ -28,6 +29,7 @@
 
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('Benchmark')) == False AND
         $(AssemblyName.Contains('App')) == False AND 
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
@@ -113,8 +115,12 @@
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
     </ItemGroup>
     
-    <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
+    <ItemGroup Condition="$(AssemblyName.Contains('Test')) AND $(AssemblyName.Contains('Benchmark')) == False">
         <ProjectReference Include="$(ProjectDir)/../src/$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Test', '')).csproj"/>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(AssemblyName.Contains('Test')) AND $(AssemblyName.Contains('Benchmark'))">
+        <ProjectReference Include="$(ProjectDir)/../src/$([System.Text.RegularExpressions.Regex]::Replace('$(AssemblyName)', '.Test.Benchmark', '')).csproj"/>
     </ItemGroup>
 
     <PropertyGroup Condition="$(AssemblyName.Contains('Sample'))">

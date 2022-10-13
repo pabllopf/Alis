@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingManager.cs
+//  File:Style.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,21 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Setting;
-
-namespace Alis.Core.Manager.Setting
+namespace Alis.Core.Entity
 {
     /// <summary>
-    /// The setting manager class
+    /// The style enum
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
-    public class SettingManager : SettingManagerBase
+    public enum Style
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        /// The light style
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
+        Light = 0,
         
         /// <summary>
-        /// Gets or sets the value of the graphic
+        /// The dark style
         /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        Dark =1
     }
 }

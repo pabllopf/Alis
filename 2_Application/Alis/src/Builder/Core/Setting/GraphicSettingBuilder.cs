@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingManager.cs
+//  File:GraphicSettingBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
+using System;
+using Alis.Builder.Core.Entity;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Entity;
 using Alis.Core.Setting;
 
-namespace Alis.Core.Manager.Setting
+namespace Alis.Builder.Core.Setting
 {
     /// <summary>
-    /// The setting manager class
+    /// The graphic setting builder class
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
-    public class SettingManager : SettingManagerBase
+    public class GraphicSettingBuilder:
+        IBuild<GraphicSetting>,
+        IWindow<GraphicSettingBuilder, Func<WindowBuilder, Window>>
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        /// The graphic setting
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
+        private GraphicSetting graphicSetting = new GraphicSetting();
         
         /// <summary>
-        /// Gets or sets the value of the graphic
+        /// Builds this instance
         /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        /// <returns>The graphic setting</returns>
+        public GraphicSetting Build() => graphicSetting;
+
+        /// <summary>
+        /// Windows the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The graphic setting builder</returns>
+        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value)
+        {
+            graphicSetting.Window = value.Invoke(new WindowBuilder());
+            return this;
+        }
     }
 }

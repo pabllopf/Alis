@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Setting;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Entity;
 
 namespace Alis.Core.Setting
 {
@@ -55,6 +56,11 @@ namespace Alis.Core.Setting
         /// Gets or sets the value of the icon file
         /// </summary>
         public string IconFile { get; set; } = "";
+
+        /// <summary>
+        /// Gets or sets the value of the splash screen
+        /// </summary>
+        public SplashScreen SplashScreen { get; set; } = new SplashScreen();
 
         /// <summary>
         /// Builders this instance

@@ -400,6 +400,44 @@
             <param name="value">The value</param>
             <returns>The scene builder</returns>
         </member>
+        <member name="T:Alis.Builder.Core.Entity.SplashScreenBuilder">
+            <summary>
+            The splash screen builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="F:Alis.Builder.Core.Entity.SplashScreenBuilder.splashScreen">
+            <summary>
+            The splash screen
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The splash screen</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.FilePath(System.String)">
+            <summary>
+            Files the path using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The splash screen builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.IsActive(System.Boolean)">
+            <summary>
+            Ises the active using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The splash screen builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.Style(Alis.Core.Entity.Style)">
+            <summary>
+            Styles the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The splash screen builder</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Entity.TransformBuilder">
             <summary>
                 The transform builder class
@@ -439,6 +477,30 @@
             <param name="x">The </param>
             <param name="y">The </param>
             <returns>The transform builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Entity.WindowBuilder">
+            <summary>
+            The window builder class
+            </summary>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+        </member>
+        <member name="F:Alis.Builder.Core.Entity.WindowBuilder.window">
+            <summary>
+            The window
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.WindowBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The window</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Entity.WindowBuilder.Background(Alis.Core.Graphic.D2.SFML.Graphics.Color)">
+            <summary>
+            Backgrounds the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The window builder</returns>
         </member>
         <member name="T:Alis.Builder.Core.Manager.SceneManagerBuilder">
             <summary>
@@ -498,6 +560,13 @@
         <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Audio(System.Func{Alis.Builder.Core.Setting.AudioSettingBuilder,Alis.Core.Setting.AudioSetting})">
             <summary>
             Audioes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The setting manager builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Graphic(System.Func{Alis.Builder.Core.Setting.GraphicSettingBuilder,Alis.Core.Setting.GraphicSetting})">
+            <summary>
+            Graphics the value
             </summary>
             <param name="value">The value</param>
             <returns>The setting manager builder</returns>
@@ -570,6 +639,43 @@
             </summary>
             <param name="value">The value</param>
             <returns>The general setting builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Icon(System.String)">
+            <summary>
+            Icons the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The general setting builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.SplashScreen(System.Func{Alis.Builder.Core.Entity.SplashScreenBuilder,Alis.Core.Entity.SplashScreen})">
+            <summary>
+            Splashes the screen using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The general setting builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Setting.GraphicSettingBuilder">
+            <summary>
+            The graphic setting builder class
+            </summary>
+        </member>
+        <member name="F:Alis.Builder.Core.Setting.GraphicSettingBuilder.graphicSetting">
+            <summary>
+            The graphic setting
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GraphicSettingBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The graphic setting</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GraphicSettingBuilder.Window(System.Func{Alis.Builder.Core.Entity.WindowBuilder,Alis.Core.Entity.Window})">
+            <summary>
+            Windows the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The graphic setting builder</returns>
         </member>
         <member name="T:Alis.Builder.SoundGameBuilder">
             <summary>
@@ -1374,8 +1480,81 @@
             </summary>
             <param name="gameObject">The game object</param>
         </member>
+        <member name="T:Alis.Core.Entity.SplashScreen">
+            <summary>
+            The splash screen class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.Enabled">
+            <summary>
+            Gets or sets the value of the enabled
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.Style">
+            <summary>
+            Gets or sets the value of the style
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.filePath">
+            <summary>
+            The file path
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.EnabledAlisLogo">
+            <summary>
+            Gets or sets the value of the enabled alis logo
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.SplashScreen.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Entity.SplashScreen"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.SplashScreen.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Entity.SplashScreen"/> class
+            </summary>
+            <param name="filePath">The file path</param>
+        </member>
+        <member name="M:Alis.Core.Entity.SplashScreen.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The splash screen builder</returns>
+        </member>
+        <member name="T:Alis.Core.Entity.Style">
+            <summary>
+            The style enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Entity.Style.Light">
+            <summary>
+            The light style
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Entity.Style.Dark">
+            <summary>
+            The dark style
+            </summary>
+        </member>
         <member name="T:Alis.Core.Entity.Transform">
             <summary>Control the object space in the game.</summary>
+        </member>
+        <member name="T:Alis.Core.Entity.Window">
+            <summary>
+            The window class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Window.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The window builder</returns>
+        </member>
+        <member name="P:Alis.Core.Entity.Window.Background">
+            <summary>
+            Gets or sets the value of the background
+            </summary>
         </member>
         <member name="T:Alis.Core.Manager.Audio.AudioManager">
             <summary>
@@ -1786,6 +1965,11 @@
             Gets or sets the value of the debug
             </summary>
         </member>
+        <member name="P:Alis.Core.Manager.Setting.SettingManager.Graphic">
+            <summary>
+            Gets or sets the value of the graphic
+            </summary>
+        </member>
         <member name="T:Alis.Core.Manager.Time.TimeManager">
             <summary>
                 The time manager class
@@ -1794,11 +1978,6 @@
         <member name="T:Alis.Core.Setting.AudioSetting">
             <summary>
                 The audio setting class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Setting.AudioSetting.BackendType">
-            <summary>
-                Gets or sets the value of the backend type
             </summary>
         </member>
         <member name="M:Alis.Core.Setting.AudioSetting.Builder">
@@ -1815,6 +1994,11 @@
         <member name="P:Alis.Core.Setting.DebugSetting.Level">
             <summary>
                 The log level
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.DebugSetting.CreateFileLog">
+            <summary>
+            Gets or sets the value of the create file log
             </summary>
         </member>
         <member name="M:Alis.Core.Setting.DebugSetting.Builder">
@@ -1841,11 +2025,39 @@
                 Gets or sets the value of the description
             </summary>
         </member>
+        <member name="P:Alis.Core.Setting.GeneralSetting.IconFile">
+            <summary>
+            Gets or sets the value of the icon file
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Setting.GeneralSetting.SplashScreen">
+            <summary>
+            Gets or sets the value of the splash screen
+            </summary>
+        </member>
         <member name="M:Alis.Core.Setting.GeneralSetting.Builder">
             <summary>
             Builders this instance
             </summary>
             <returns>The general setting builder</returns>
+        </member>
+        <member name="T:Alis.Core.Setting.GraphicSetting">
+            <summary>
+            The graphic setting class
+            </summary>
+            <seealso cref="T:Alis.Core.Setting.SettingBase"/>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuilder`1"/>
+        </member>
+        <member name="M:Alis.Core.Setting.GraphicSetting.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The graphic setting builder</returns>
+        </member>
+        <member name="P:Alis.Core.Setting.GraphicSetting.Window">
+            <summary>
+            Gets or sets the value of the window
+            </summary>
         </member>
         <member name="T:Alis.SoundGame">
             <summary>

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingManager.cs
+//  File:WindowBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Setting;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Entity;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
-namespace Alis.Core.Manager.Setting
+namespace Alis.Builder.Core.Entity
 {
     /// <summary>
-    /// The setting manager class
+    /// The window builder class
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
-    public class SettingManager : SettingManagerBase
+    /// <seealso cref="IBuild{Window}"/>
+    public class WindowBuilder : 
+        IBuild<Window>,
+        IBackground<WindowBuilder, Color>
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        /// The window
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
+        private Window window = new Window();
         
         /// <summary>
-        /// Gets or sets the value of the graphic
+        /// Builds this instance
         /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        /// <returns>The window</returns>
+        public Window Build() => window;
+
+        /// <summary>
+        /// Backgrounds the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The window builder</returns>
+        public WindowBuilder Background(Color value)
+        {
+            window.Background = value;
+            return this;
+        }
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:VideoGameBuilder.cs
+//  File:SplashScreenBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,58 +27,64 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Builder.Core.Manager;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Builder.Manager;
-using Alis.Core.Builder.Setting;
-using Alis.Core.Manager.Scene;
-using Alis.Core.Manager.Setting;
-using Alis.Core.Setting;
+using Alis.Core.Entity;
 
-namespace Alis.Builder
+namespace Alis.Builder.Core.Entity
 {
     /// <summary>
-    ///     The video game builder class
+    /// The splash screen builder class
     /// </summary>
-    /// <seealso cref="IBuild{VideoGame}" />
-    public class VideoGameBuilder :
-        IBuild<VideoGame>,
-        IManager<VideoGameBuilder, SceneManager, Func<SceneManagerBuilder, SceneManager>>,
-        ISettings<VideoGameBuilder, Func<SettingManagerBuilder, SettingManager>>
+    /// <seealso cref="IBuild{SplashScreen}"/>
+    public class SplashScreenBuilder :
+        IBuild<SplashScreen>,
+        IIsActive<SplashScreenBuilder, bool>,
+        IFilePath<SplashScreenBuilder, string>,
+        IStyle<SplashScreenBuilder, Style>
     {
-        /// <summary>Gets or sets the video game.</summary>
-        /// <value>The video game.</value>
-        private VideoGame videoGame { get; } = new VideoGame();
-
-        /// <summary>Builds this instance.</summary>
-        /// <returns></returns>
-        public VideoGame Build() => videoGame;
+        /// <summary>
+        /// The splash screen
+        /// </summary>
+        private SplashScreen splashScreen = new SplashScreen();
+        
+        
+        /// <summary>
+        /// Builds this instance
+        /// </summary>
+        /// <returns>The splash screen</returns>
+        public SplashScreen Build() => splashScreen;
 
         /// <summary>
-        ///     Managers the value
+        /// Files the path using the specified value
         /// </summary>
-        /// <typeparam name="T">The </typeparam>
         /// <param name="value">The value</param>
-        /// <returns>The video game builder</returns>
-        public VideoGameBuilder Manager<T>(Func<SceneManagerBuilder, SceneManager> value) where T : SceneManager
+        /// <returns>The splash screen builder</returns>
+        public SplashScreenBuilder FilePath(string value)
         {
-            videoGame.SetManager(value.Invoke(new SceneManagerBuilder()));
+            splashScreen.filePath = value;
             return this;
         }
 
-        /// <summary>Runs this instance.</summary>
-        public void Run() => videoGame.Run();
-
         /// <summary>
-        /// Setting the value
+        /// Ises the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>
-        /// <returns>The video game builder</returns>
-        public VideoGameBuilder Settings(Func<SettingManagerBuilder, SettingManager> value)
+        /// <returns>The splash screen builder</returns>
+        public SplashScreenBuilder IsActive(bool value)
         {
-            VideoGame.Setting = value.Invoke(new SettingManagerBuilder());
+            splashScreen.Enabled = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Styles the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The splash screen builder</returns>
+        public SplashScreenBuilder Style(Style value)
+        {
+            splashScreen.Style = value;
             return this;
         }
     }

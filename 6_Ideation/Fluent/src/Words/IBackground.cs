@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingManager.cs
+//  File:IBackground.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Setting;
-
-namespace Alis.Core.Manager.Setting
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The setting manager class
+    /// The background interface
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
-    public class SettingManager : SettingManagerBase
+    public interface IBackground<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        /// Backgrounds the value
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the audio
-        /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
-        
-        /// <summary>
-        /// Gets or sets the value of the graphic
-        /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder Background(TArgument value);
     }
 }

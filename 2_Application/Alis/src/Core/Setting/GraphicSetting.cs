@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingManager.cs
+//  File:GraphicSetting.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,35 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Setting;
+using Alis.Builder.Core.Setting;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Entity;
 
-namespace Alis.Core.Manager.Setting
+namespace Alis.Core.Setting
 {
     /// <summary>
-    /// The setting manager class
+    /// The graphic setting class
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
-    public class SettingManager : SettingManagerBase
+    /// <seealso cref="SettingBase"/>
+    /// <seealso cref="IBuilder{GeneralSettingBuilder}"/>
+    public class GraphicSetting : SettingBase,
+        IBuilder<GraphicSettingBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        /// Builders this instance
         /// </summary>
-        public GeneralSetting General { get; set; } = new GeneralSetting();
+        /// <returns>The graphic setting builder</returns>
+        public new GraphicSettingBuilder Builder() => new GraphicSettingBuilder();
 
         /// <summary>
-        /// Gets or sets the value of the audio
+        /// Gets or sets the value of the window
         /// </summary>
-        public AudioSetting Audio { get; set; } = new AudioSetting();
-
-        /// <summary>
-        /// Gets or sets the value of the debug
-        /// </summary>
-        public DebugSetting Debug { get; set; } = new DebugSetting();
-        
-        /// <summary>
-        /// Gets or sets the value of the graphic
-        /// </summary>
-        public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        public Window Window { get; set; } = new Window();
     }
 }

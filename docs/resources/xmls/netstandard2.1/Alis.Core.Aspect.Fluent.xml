@@ -114,6 +114,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IBackground`2">
+            <summary>
+            The background interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IBackground`2.Background(`1)">
+            <summary>
+            Backgrounds the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IConfiguration`2">
             <summary>
                 The configuration interface
@@ -221,6 +233,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IGraphic`2">
+            <summary>
+            The graphic interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IGraphic`2.Graphic(`1)">
+            <summary>
+            Graphics the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IHas`2">
             <summary>
                 The has interface
@@ -232,6 +256,18 @@
             </summary>
             <param name="obj">The obj</param>
             <returns>The</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IIcon`2">
+            <summary>
+            The icon interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IIcon`2.Icon(`1)">
+            <summary>
+            Icons the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IIs`3">
             <summary>
@@ -539,6 +575,30 @@
         <member name="M:Alis.Core.Aspect.Fluent.Words.ISpeed`2.Speed(`1)">
             <summary>
             Speeds the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.ISplashScreen`2">
+            <summary>
+            The splash screen interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.ISplashScreen`2.SplashScreen(`1)">
+            <summary>
+            Splashes the screen using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IStyle`2">
+            <summary>
+            The style interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IStyle`2.Style(`1)">
+            <summary>
+            Styles the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>

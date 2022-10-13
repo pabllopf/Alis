@@ -85,7 +85,11 @@ namespace Alis.Core.Manager.Graphic
             //renderWindow = new RenderWindow(VideoMode, "sample");
             renderWindow.Closed += RenderWindowOnClosed;
 
-           
+            if (!VideoGame.Setting.General.IconFile.Equals(""))
+            {
+                Image image = new Image(VideoGame.Setting.General.IconFile);
+                renderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
+            }
         }
 
         /// <summary>
@@ -98,38 +102,22 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start()
-        {
-            Console.WriteLine("Start::graphic");
-            Sprites = Sprites.OrderBy(o => o.Depth).ToList();
-        }
+        public override void Start() => Sprites = Sprites.OrderBy(o => o.Depth).ToList();
 
         /// <summary>
         ///     Befores the update
         /// </summary>
-        public override void BeforeUpdate()
-        {
-            //Console.WriteLine("BeforeUpdate::graphic");
-            renderWindow.Clear(Color.Blue);
-        }
+        public override void BeforeUpdate() => renderWindow.Clear(VideoGame.Setting.Graphic.Window.Background);
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update()
-        {
-            //Console.WriteLine("Update::graphic");
-            Sprites.ForEach(i => renderWindow.Draw(i.sprite));
-        }
+        public override void Update() => Sprites.ForEach(i => renderWindow.Draw(i.sprite));
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate()
-        {
-            //Console.WriteLine("Update::graphic");
-            renderWindow.Display();
-        }
+        public override void AfterUpdate() => renderWindow.Display();
 
         /// <summary>
         ///     Dispatches the events
@@ -167,10 +155,7 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
-        private void RenderWindowOnClosed(object sender, EventArgs e)
-        {
-            GameBase.IsRunning = false;
-        }
+        private void RenderWindowOnClosed(object sender, EventArgs e) => GameBase.IsRunning = false;
 
         /// <summary>
         ///     Attaches the sprite

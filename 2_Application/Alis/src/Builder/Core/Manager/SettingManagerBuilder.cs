@@ -44,7 +44,8 @@ namespace Alis.Builder.Core.Manager
         IBuild<SettingManager>,
         IDebug<SettingManagerBuilder, Func<DebugSettingBuilder, DebugSetting>>,
         IGeneral<SettingManagerBuilder, Func<GeneralSettingBuilder, GeneralSetting>>,
-        IAudio<SettingManagerBuilder, Func<AudioSettingBuilder, AudioSetting>>
+        IAudio<SettingManagerBuilder, Func<AudioSettingBuilder, AudioSetting>>,
+        IGraphic<SettingManagerBuilder, Func<GraphicSettingBuilder, GraphicSetting>>
     {
         /// <summary>
         /// The setting manager
@@ -87,6 +88,17 @@ namespace Alis.Builder.Core.Manager
         public SettingManagerBuilder Audio(Func<AudioSettingBuilder, AudioSetting> value)
         {
             settingManager.Audio = value.Invoke(new AudioSettingBuilder());
+            return this;
+        }
+
+        /// <summary>
+        /// Graphics the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The setting manager builder</returns>
+        public SettingManagerBuilder Graphic(Func<GraphicSettingBuilder, GraphicSetting> value)
+        {
+            settingManager.Graphic = value.Invoke(new GraphicSettingBuilder());
             return this;
         }
     }
