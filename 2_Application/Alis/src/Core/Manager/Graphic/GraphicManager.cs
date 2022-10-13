@@ -99,6 +99,11 @@ namespace Alis.Core.Manager.Graphic
             renderWindow.Resized += RenderWindowOnResized;
         }
 
+        /// <summary>
+        /// Renders the window on resized using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void RenderWindowOnResized(object sender, SizeEventArgs e)
         {
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
