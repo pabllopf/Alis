@@ -66,6 +66,9 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
 
+        /// <summary>
+        /// The default
+        /// </summary>
         private Styles styles = Styles.Default;
 
         /// <summary>
@@ -76,6 +79,9 @@ namespace Alis.Core.Manager.Graphic
             Current = this;
         }
 
+        /// <summary>
+        /// The vector
+        /// </summary>
         private Vector2 defaultSize = new Vector2();
         
         /// <summary>
@@ -93,11 +99,21 @@ namespace Alis.Core.Manager.Graphic
         
         
 
+        /// <summary>
+        /// Renders the window on key pressed using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void RenderWindowOnKeyPressed(object sender, KeyEventArgs e)
         {
             
         }
 
+        /// <summary>
+        /// Renders the window on resized using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="e">The </param>
         private void RenderWindowOnResized(object sender, SizeEventArgs e)
         {
             
@@ -108,6 +124,9 @@ namespace Alis.Core.Manager.Graphic
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
         }
 
+        /// <summary>
+        /// Inits the render window
+        /// </summary>
         private void InitRenderWindow()
         {
             if (renderWindow is {IsOpen: true})
