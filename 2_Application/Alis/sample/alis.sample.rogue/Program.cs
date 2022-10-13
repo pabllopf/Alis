@@ -69,6 +69,7 @@ namespace Alis.Sample.Rogue
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
+                            .Resolution(1024, 640)
                             .Background(Color.Green)
                             .Build())
                         .Build())

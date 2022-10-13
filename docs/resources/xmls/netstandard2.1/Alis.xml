@@ -502,6 +502,14 @@
             <param name="value">The value</param>
             <returns>The window builder</returns>
         </member>
+        <member name="M:Alis.Builder.Core.Entity.WindowBuilder.Resolution(System.Single,System.Single)">
+            <summary>
+            Resolutions the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The window builder</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Manager.SceneManagerBuilder">
             <summary>
                 The scene manager builder class
@@ -1554,6 +1562,11 @@
         <member name="P:Alis.Core.Entity.Window.Background">
             <summary>
             Gets or sets the value of the background
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.Window.Resolution">
+            <summary>
+            Gets or sets the value of the resolution
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Audio.AudioManager">

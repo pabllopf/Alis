@@ -29,6 +29,7 @@
 
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 
@@ -40,7 +41,8 @@ namespace Alis.Builder.Core.Entity
     /// <seealso cref="IBuild{Window}"/>
     public class WindowBuilder : 
         IBuild<Window>,
-        IBackground<WindowBuilder, Color>
+        IBackground<WindowBuilder, Color>,
+        IResolution<WindowBuilder, float, float>
     {
         /// <summary>
         /// The window
@@ -61,6 +63,18 @@ namespace Alis.Builder.Core.Entity
         public WindowBuilder Background(Color value)
         {
             window.Background = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Resolutions the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The window builder</returns>
+        public WindowBuilder Resolution(float x, float y)
+        {
+            window.Resolution = new Vector2(x, y);
             return this;
         }
     }

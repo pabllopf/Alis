@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 
 namespace Alis.Core.Entity
@@ -50,5 +51,10 @@ namespace Alis.Core.Entity
         /// Gets or sets the value of the background
         /// </summary>
         public Color Background { get; set; } = Color.Black;
+
+        /// <summary>
+        /// Gets or sets the value of the resolution
+        /// </summary>
+        public Vector2 Resolution { get; set; } = new Vector2(640, 480);
     }
 }

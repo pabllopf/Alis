@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using Sprite = Alis.Core.Component.Render.Sprite;
@@ -85,11 +86,26 @@ namespace Alis.Core.Manager.Graphic
             //renderWindow = new RenderWindow(VideoMode, "sample");
             renderWindow.Closed += RenderWindowOnClosed;
 
+            renderWindow.Size = new Vector2U(
+                (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
+                (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
+
             if (!VideoGame.Setting.General.IconFile.Equals(""))
             {
                 Image image = new Image(VideoGame.Setting.General.IconFile);
                 renderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
             }
+            
+            renderWindow.Resized += RenderWindowOnResized;
+        }
+
+        private void RenderWindowOnResized(object sender, SizeEventArgs e)
+        {
+            VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
+            
+            renderWindow.Size = new Vector2U(
+                (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
+                (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
         }
 
         /// <summary>
