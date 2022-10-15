@@ -33,4 +33,7 @@
     <BundleResource Include="Resources\Images.xcassets\splash-xamagon.imageset\splash-xamagon%402x.png" />
     <BundleResource Include="Resources\Images.xcassets\splash-xamagon.imageset\splash-xamagon%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\alis.template.game\Alis.Template.Game.csproj" />
+  </ItemGroup>
 </Project>

@@ -9,4 +9,8 @@
       <PackageReference Include="OpenTK" Version="4.7.4" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\alis.template.game\Alis.Template.Game.csproj" />
+    </ItemGroup>
+
 </Project>
