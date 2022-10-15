@@ -1,5 +1,4 @@
 using System;
-using Alis;
 
 namespace Game
 {
