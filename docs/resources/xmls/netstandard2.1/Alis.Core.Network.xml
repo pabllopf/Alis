@@ -1,0 +1,1919 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Network</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Network.BufferPool">
+            <summary>
+                This buffer pool is instance thread safe
+                Use GetBuffer to get a MemoryStream (with a publically accessible buffer)
+                Calling Close on this MemoryStream will clear its internal buffer and return the buffer to the pool for reuse
+                MemoryStreams can grow larger than the DEFAULT_BUFFER_SIZE (or whatever you passed in)
+                and the underlying buffers will be returned to the pool at their larger sizes
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.BufferPool.DefaultBufferSize">
+            <summary>
+                The default buffer size
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.BufferPool._bufferPoolStack">
+            <summary>
+                The buffer pool stack
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.BufferPool._bufferSize">
+            <summary>
+                The buffer size
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.BufferPool" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.#ctor(System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.BufferPool" /> class
+            </summary>
+            <param name="bufferSize">The buffer size</param>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.GetBuffer">
+            <summary>
+                Gets a MemoryStream built from a buffer plucked from a thread safe pool
+                The pool grows automatically.
+                Closing the memory stream clears the buffer and returns it to the pool
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.ReturnBuffer(System.Byte[])">
+            <summary>
+                Returns the buffer using the specified buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+        </member>
+        <member name="T:Alis.Core.Network.BufferPool.PublicBufferMemoryStream">
+            <summary>
+                This memory stream is not instance thread safe (not to be confused with the BufferPool which is instance thread
+                safe)
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.BufferPool.PublicBufferMemoryStream._bufferPoolInternal">
+            <summary>
+                The buffer pool internal
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.BufferPool.PublicBufferMemoryStream._buffer">
+            <summary>
+                The buffer
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.BufferPool.PublicBufferMemoryStream._ms">
+            <summary>
+                The ms
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.#ctor(System.Byte[],Alis.Core.Network.BufferPool)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.BufferPool.PublicBufferMemoryStream" /> class
+            </summary>
+            <param name="buffer">The buffer</param>
+            <param name="bufferPool">The buffer pool</param>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Length">
+            <summary>
+                Gets the value of the length
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.CanRead">
+            <summary>
+                Gets the value of the can read
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.CanSeek">
+            <summary>
+                Gets the value of the can seek
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.CanTimeout">
+            <summary>
+                Gets the value of the can timeout
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.CanWrite">
+            <summary>
+                Gets the value of the can write
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Capacity">
+            <summary>
+                Gets or sets the value of the capacity
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Position">
+            <summary>
+                Gets or sets the value of the position
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.ReadTimeout">
+            <summary>
+                Gets or sets the value of the read timeout
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.WriteTimeout">
+            <summary>
+                Gets or sets the value of the write timeout
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)">
+            <summary>
+                Begins the read using the specified buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+            <param name="offset">The offset</param>
+            <param name="count">The count</param>
+            <param name="callback">The callback</param>
+            <param name="state">The state</param>
+            <returns>The async result</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)">
+            <summary>
+                Begins the write using the specified buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+            <param name="offset">The offset</param>
+            <param name="count">The count</param>
+            <param name="callback">The callback</param>
+            <param name="state">The state</param>
+            <returns>The async result</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Close">
+            <summary>
+                Closes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.CopyToAsync(System.IO.Stream,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Copies the to using the specified destination
+            </summary>
+            <param name="destination">The destination</param>
+            <param name="bufferSize">The buffer size</param>
+            <param name="cancellationToken">The cancellation token</param>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.EndRead(System.IAsyncResult)">
+            <summary>
+                Ends the read using the specified async result
+            </summary>
+            <param name="asyncResult">The async result</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.EndWrite(System.IAsyncResult)">
+            <summary>
+                Ends the write using the specified async result
+            </summary>
+            <param name="asyncResult">The async result</param>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Flush">
+            <summary>
+                Flushes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.FlushAsync(System.Threading.CancellationToken)">
+            <summary>
+                Flushes the cancellation token
+            </summary>
+            <param name="cancellationToken">The cancellation token</param>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.GetBuffer">
+            <summary>
+                Gets the buffer
+            </summary>
+            <returns>The byte array</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+                Reads the buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+            <param name="offset">The offset</param>
+            <param name="count">The count</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.EnlargeBufferIfRequired(System.Int32)">
+            <summary>
+                Enlarges the buffer if required using the specified count
+            </summary>
+            <param name="count">The count</param>
+            <exception cref="T:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException">
+                Tried to create a buffer ({requiredSize:#,##0} bytes) that was
+                larger than the max allowed size ({int.MaxValue:#,##0})
+            </exception>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.WriteByte(System.Byte)">
+            <summary>
+                Writes the byte using the specified value
+            </summary>
+            <param name="value">The value</param>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+                Writes the buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+            <param name="offset">The offset</param>
+            <param name="count">The count</param>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Writes the buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+            <param name="offset">The offset</param>
+            <param name="count">The count</param>
+            <param name="cancellationToken">The cancellation token</param>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.InitializeLifetimeService">
+            <summary>
+                Initializes the lifetime service
+            </summary>
+            <returns>The object</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Reads the buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+            <param name="offset">The offset</param>
+            <param name="count">The count</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>A task containing the int</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.ReadByte">
+            <summary>
+                Reads the byte
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <summary>
+                Seeks the offset
+            </summary>
+            <param name="offset">The offset</param>
+            <param name="loc">The loc</param>
+            <returns>The long</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.SetLength(System.Int64)">
+            <summary>
+                Note: This will not make the MemoryStream any smaller, only larger
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.ToArray">
+            <summary>
+                Returns the array
+            </summary>
+            <returns>The byte array</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.TryGetBuffer(System.ArraySegment{System.Byte}@)">
+            <summary>
+                Describes whether this instance try get buffer
+            </summary>
+            <param name="buffer">The buffer</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Network.BufferPool.PublicBufferMemoryStream.WriteTo(System.IO.Stream)">
+            <summary>
+                Writes the to using the specified stream
+            </summary>
+            <param name="stream">The stream</param>
+        </member>
+        <member name="T:Alis.Core.Network.Exceptions.EntityTooLargeException">
+            <summary>
+                The entity too large exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.EntityTooLargeException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.EntityTooLargeException" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.EntityTooLargeException.#ctor(System.String)">
+            <summary>
+                Http header too large to fit in buffer
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.EntityTooLargeException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.EntityTooLargeException" /> class
+            </summary>
+            <param name="message">The message</param>
+            <param name="inner">The inner</param>
+        </member>
+        <member name="T:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException">
+            <summary>
+                The invalid http response code exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException" /> class
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.#ctor(System.String,System.String,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException" /> class
+            </summary>
+            <param name="responseCode">The response code</param>
+            <param name="responseDetails">The response details</param>
+            <param name="responseHeader">The response header</param>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException" /> class
+            </summary>
+            <param name="message">The message</param>
+            <param name="inner">The inner</param>
+        </member>
+        <member name="P:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.ResponseCode">
+            <summary>
+                Gets or sets the value of the response code
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.ResponseHeader">
+            <summary>
+                Gets or sets the value of the response header
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException.ResponseDetails">
+            <summary>
+                Gets or sets the value of the response details
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException">
+            <summary>
+                The sec web socket key missing exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException" /> class
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException" /> class
+            </summary>
+            <param name="message">The message</param>
+            <param name="inner">The inner</param>
+        </member>
+        <member name="T:Alis.Core.Network.Exceptions.ServerListenerSocketException">
+            <summary>
+                The server listener socket exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.ServerListenerSocketException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.ServerListenerSocketException" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.ServerListenerSocketException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.ServerListenerSocketException" /> class
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.ServerListenerSocketException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.ServerListenerSocketException" /> class
+            </summary>
+            <param name="message">The message</param>
+            <param name="inner">The inner</param>
+        </member>
+        <member name="T:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException">
+            <summary>
+                The web socket buffer overflow exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException" /> class
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketBufferOverflowException" /> class
+            </summary>
+            <param name="message">The message</param>
+            <param name="inner">The inner</param>
+        </member>
+        <member name="T:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException">
+            <summary>
+                The web socket handshake failed exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException" /> class
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException" /> class
+            </summary>
+            <param name="message">The message</param>
+            <param name="inner">The inner</param>
+        </member>
+        <member name="T:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException">
+            <summary>
+                The web socket version not supported exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.#ctor(System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException" /> class
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException.#ctor(System.String,System.Exception)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException" /> class
+            </summary>
+            <param name="message">The message</param>
+            <param name="inner">The inner</param>
+        </member>
+        <member name="T:Alis.Core.Network.HttpHelper">
+            <summary>
+                The http helper class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.HttpHelper.HttpGetHeaderRegex">
+            <summary>
+                The http get header regex
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.CalculateWebSocketKey">
+            <summary>
+                Calculates a random WebSocket key that can be used to initiate a WebSocket handshake
+            </summary>
+            <returns>A random websocket key</returns>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.ComputeSocketAcceptString(System.String)">
+            <summary>
+                Computes a WebSocket accept string from a given key
+            </summary>
+            <param name="secWebSocketKey">The web socket key to base the accept string on</param>
+            <returns>A web socket accept string</returns>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.ReadHttpHeaderAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+                Reads an http header as per the HTTP spec
+            </summary>
+            <param name="stream">The stream to read UTF8 text from</param>
+            <param name="token">The cancellation token</param>
+            <returns>The HTTP header</returns>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.IsWebSocketUpgradeRequest(System.String)">
+            <summary>
+                Decodes the header to detect is this is a web socket upgrade response
+            </summary>
+            <param name="header">The HTTP header</param>
+            <returns>True if this is an http WebSocket upgrade response</returns>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.GetPathFromHeader(System.String)">
+            <summary>
+                Gets the path from the HTTP header
+            </summary>
+            <param name="httpHeader">The HTTP header to read</param>
+            <returns>The path</returns>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.GetSubProtocols(System.String)">
+            <summary>
+                Gets the sub protocols using the specified http header
+            </summary>
+            <param name="httpHeader">The http header</param>
+            <exception cref="T:Alis.Core.Network.Exceptions.EntityTooLargeException">Sec-WebSocket-Protocol exceeded the maximum of length of {MAX_LEN}</exception>
+            <returns>A list of string</returns>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.ReadHttpResponseCode(System.String)">
+            <summary>
+                Reads the HTTP response code from the http response string
+            </summary>
+            <param name="response">The response string</param>
+            <returns>the response code</returns>
+        </member>
+        <member name="M:Alis.Core.Network.HttpHelper.WriteHttpHeaderAsync(System.String,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+                Writes an HTTP response string to the stream
+            </summary>
+            <param name="response">The response (without the new line characters)</param>
+            <param name="stream">The stream to write to</param>
+            <param name="token">The cancellation token</param>
+        </member>
+        <member name="T:Alis.Core.Network.IBufferPool">
+            <summary>
+                The buffer pool interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.IBufferPool.GetBuffer">
+            <summary>
+                Gets a MemoryStream built from a buffer plucked from a thread safe pool
+                The pool grows automatically.
+                Closing the memory stream clears the buffer and returns it to the pool
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.BinaryReaderWriter">
+            <summary>
+                The binary reader writer class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadExactly(System.Int32,System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Reads the exactly using the specified length
+            </summary>
+            <param name="length">The length</param>
+            <param name="stream">The stream</param>
+            <param name="buffer">The buffer</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <exception cref="T:System.IO.EndOfStreamException"></exception>
+            <exception cref="T:System.IO.InternalBufferOverflowException">
+                Unable to read {length} bytes into buffer (offset: {buffer.Offset}
+                size: {buffer.Count}). Use a larger read buffer
+            </exception>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadUShortExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Reads the u short exactly using the specified stream
+            </summary>
+            <param name="stream">The stream</param>
+            <param name="isLittleEndian">The is little endian</param>
+            <param name="buffer">The buffer</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>A task containing the ushort</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadULongExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Reads the u long exactly using the specified stream
+            </summary>
+            <param name="stream">The stream</param>
+            <param name="isLittleEndian">The is little endian</param>
+            <param name="buffer">The buffer</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>A task containing the ulong</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.ReadLongExactly(System.IO.Stream,System.Boolean,System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Reads the long exactly using the specified stream
+            </summary>
+            <param name="stream">The stream</param>
+            <param name="isLittleEndian">The is little endian</param>
+            <param name="buffer">The buffer</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>A task containing the long</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteInt(System.Int32,System.IO.Stream,System.Boolean)">
+            <summary>
+                Writes the int using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <param name="stream">The stream</param>
+            <param name="isLittleEndian">The is little endian</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteULong(System.UInt64,System.IO.Stream,System.Boolean)">
+            <summary>
+                Writes the u long using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <param name="stream">The stream</param>
+            <param name="isLittleEndian">The is little endian</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteLong(System.Int64,System.IO.Stream,System.Boolean)">
+            <summary>
+                Writes the long using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <param name="stream">The stream</param>
+            <param name="isLittleEndian">The is little endian</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.BinaryReaderWriter.WriteUShort(System.UInt16,System.IO.Stream,System.Boolean)">
+            <summary>
+                Writes the u short using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <param name="stream">The stream</param>
+            <param name="isLittleEndian">The is little endian</param>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.Events">
+            <summary>
+                Use the Guid to locate this EventSource in PerfView using the Additional Providers box (without wildcard
+                characters)
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.Events.Log">
+            <summary>
+                The events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ClientConnectingToIpAddress(System.Guid,System.String,System.Int32)">
+            <summary>
+                Clients the connecting to ip address using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="ipAddress">The ip address</param>
+            <param name="port">The port</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ClientConnectingToHost(System.Guid,System.String,System.Int32)">
+            <summary>
+                Clients the connecting to host using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="host">The host</param>
+            <param name="port">The port</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.AttemtingToSecureSslConnection(System.Guid)">
+            <summary>
+                Attemtings the to secure ssl connection using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ConnectionSecured(System.Guid)">
+            <summary>
+                Connections the secured using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ConnectionNotSecure(System.Guid)">
+            <summary>
+                Connections the not secure using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.SslCertificateError(System.Net.Security.SslPolicyErrors)">
+            <summary>
+                Ssls the certificate error using the specified ssl policy errors
+            </summary>
+            <param name="sslPolicyErrors">The ssl policy errors</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.HandshakeSent(System.Guid,System.String)">
+            <summary>
+                Handshakes the sent using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="httpHeader">The http header</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ReadingHttpResponse(System.Guid)">
+            <summary>
+                Readings the http response using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ReadHttpResponseError(System.Guid,System.String)">
+            <summary>
+                Reads the http response error using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.InvalidHttpResponseCode(System.Guid,System.String)">
+            <summary>
+                Invalids the http response code using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="response">The response</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.HandshakeFailure(System.Guid,System.String)">
+            <summary>
+                Handshakes the failure using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ClientHandshakeSuccess(System.Guid)">
+            <summary>
+                Clients the handshake success using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ServerHandshakeSuccess(System.Guid)">
+            <summary>
+                Servers the handshake success using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.AcceptWebSocketStarted(System.Guid)">
+            <summary>
+                Accepts the web socket started using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.SendingHandshakeResponse(System.Guid,System.String)">
+            <summary>
+                Sendings the handshake response using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="response">The response</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.WebSocketVersionNotSupported(System.Guid,System.String)">
+            <summary>
+                Webs the socket version not supported using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.BadRequest(System.Guid,System.String)">
+            <summary>
+                Bads the request using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.UsePerMessageDeflate(System.Guid)">
+            <summary>
+                Uses the per message deflate using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.NoMessageCompression(System.Guid)">
+            <summary>
+                Noes the message compression using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.KeepAliveIntervalZero(System.Guid)">
+            <summary>
+                Keeps the alive interval zero using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.PingPongManagerStarted(System.Guid,System.Int32)">
+            <summary>
+                Pings the pong manager started using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="keepAliveIntervalSeconds">The keep alive interval seconds</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.PingPongManagerEnded(System.Guid)">
+            <summary>
+                Pings the pong manager ended using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.KeepAliveIntervalExpired(System.Guid,System.Int32)">
+            <summary>
+                Keeps the alive interval expired using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="keepAliveIntervalSeconds">The keep alive interval seconds</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseOutputAutoTimeout(System.Guid,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.String)">
+            <summary>
+                Closes the output auto timeout using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">The status description</param>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseOutputAutoTimeoutCancelled(System.Guid,System.Int32,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.String)">
+            <summary>
+                Closes the output auto timeout cancelled using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="timeoutSeconds">The timeout seconds</param>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">The status description</param>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseOutputAutoTimeoutError(System.Guid,System.String,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.String)">
+            <summary>
+                Closes the output auto timeout error using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="closeException">The close exception</param>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">The status description</param>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.TryGetBufferNotSupported(System.Guid,System.String)">
+            <summary>
+                Tries the get buffer not supported using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="streamType">The stream type</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.SendingFrame(System.Guid,Alis.Core.Network.Internal.WebSocketOpCode,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+                Sendings the frame using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketOpCode">The web socket op code</param>
+            <param name="isFinBitSet">The is fin bit set</param>
+            <param name="numBytes">The num bytes</param>
+            <param name="isPayloadCompressed">The is payload compressed</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.ReceivedFrame(System.Guid,Alis.Core.Network.Internal.WebSocketOpCode,System.Boolean,System.Int32)">
+            <summary>
+                Receiveds the frame using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketOpCode">The web socket op code</param>
+            <param name="isFinBitSet">The is fin bit set</param>
+            <param name="numBytes">The num bytes</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseOutputNoHandshake(System.Guid,System.Nullable{System.Net.WebSockets.WebSocketCloseStatus},System.String)">
+            <summary>
+                Closes the output no handshake using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">The status description</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseHandshakeStarted(System.Guid,System.Nullable{System.Net.WebSockets.WebSocketCloseStatus},System.String)">
+            <summary>
+                Closes the handshake started using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">The status description</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseHandshakeRespond(System.Guid,System.Nullable{System.Net.WebSockets.WebSocketCloseStatus},System.String)">
+            <summary>
+                Closes the handshake respond using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">The status description</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseHandshakeComplete(System.Guid)">
+            <summary>
+                Closes the handshake complete using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.CloseFrameReceivedInUnexpectedState(System.Guid,System.Net.WebSockets.WebSocketState,System.Nullable{System.Net.WebSockets.WebSocketCloseStatus},System.String)">
+            <summary>
+                Closes the frame received in unexpected state using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketState">The web socket state</param>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">The status description</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.WebSocketDispose(System.Guid,System.Net.WebSockets.WebSocketState)">
+            <summary>
+                Webs the socket dispose using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketState">The web socket state</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.WebSocketDisposeCloseTimeout(System.Guid,System.Net.WebSockets.WebSocketState)">
+            <summary>
+                Webs the socket dispose close timeout using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketState">The web socket state</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.WebSocketDisposeError(System.Guid,System.Net.WebSockets.WebSocketState,System.String)">
+            <summary>
+                Webs the socket dispose error using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketState">The web socket state</param>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.InvalidStateBeforeClose(System.Guid,System.Net.WebSockets.WebSocketState)">
+            <summary>
+                Invalids the state before close using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketState">The web socket state</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.Events.InvalidStateBeforeCloseOutput(System.Guid,System.Net.WebSockets.WebSocketState)">
+            <summary>
+                Invalids the state before close output using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="webSocketState">The web socket state</param>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.WebSocketFrame">
+            <summary>
+                The web socket frame class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketFrame" /> class
+            </summary>
+            <param name="isFinBitSet">The is fin bit set</param>
+            <param name="webSocketOpCode">The web socket op code</param>
+            <param name="count">The count</param>
+            <param name="maskKey">The mask key</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrame.#ctor(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.Net.WebSockets.WebSocketCloseStatus,System.String,System.ArraySegment{System.Byte})">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketFrame" /> class
+            </summary>
+            <param name="isFinBitSet">The is fin bit set</param>
+            <param name="webSocketOpCode">The web socket op code</param>
+            <param name="count">The count</param>
+            <param name="closeStatus">The close status</param>
+            <param name="closeStatusDescription">The close status description</param>
+            <param name="maskKey">The mask key</param>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketFrame.IsFinBitSet">
+            <summary>
+                Gets the value of the is fin bit set
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketFrame.OpCode">
+            <summary>
+                Gets the value of the op code
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketFrame.Count">
+            <summary>
+                Gets the value of the count
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketFrame.CloseStatus">
+            <summary>
+                Gets the value of the close status
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketFrame.CloseStatusDescription">
+            <summary>
+                Gets the value of the close status description
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketFrame.MaskKey">
+            <summary>
+                Gets the value of the mask key
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.WebSocketFrameCommon">
+            <summary>
+                The web socket frame common class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketFrameCommon.MaskKeyLength">
+            <summary>
+                The mask key length
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameCommon.ToggleMask(System.ArraySegment{System.Byte},System.ArraySegment{System.Byte})">
+            <summary>
+                Mutate payload with the mask key
+                This is a reversible process
+                If you apply this to masked data it will be unmasked and visa versa
+            </summary>
+            <param name="maskKey">The 4 byte mask key</param>
+            <param name="payload">The payload to mutate</param>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.WebSocketFrameReader">
+            <summary>
+                Reads a WebSocket frame
+                see http://tools.ietf.org/html/rfc6455 for specification
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameReader.CalculateNumBytesToRead(System.Int32,System.Int32)">
+            <summary>
+                Calculates the num bytes to read using the specified num bytes letf to read
+            </summary>
+            <param name="numBytesLetfToRead">The num bytes letf to read</param>
+            <param name="bufferSize">The buffer size</param>
+            <returns>The num bytes letf to read</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadFromCursorAsync(System.IO.Stream,System.ArraySegment{System.Byte},Alis.Core.Network.Internal.WebSocketReadCursor,System.Threading.CancellationToken)">
+            <summary>
+                The last read could not be completed because the read buffer was too small.
+                We need to continue reading bytes off the stream.
+                Not to be confused with a continuation frame
+            </summary>
+            <param name="fromStream">The stream to read from</param>
+            <param name="intoBuffer">The buffer to read into</param>
+            <param name="readCursor">The previous partial websocket frame read plus cursor information</param>
+            <param name="cancellationToken">the cancellation token</param>
+            <returns>A websocket frame</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadAsync(System.IO.Stream,System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Read a WebSocket frame from the stream
+            </summary>
+            <param name="fromStream">The stream to read from</param>
+            <param name="intoBuffer">The buffer to read into</param>
+            <param name="cancellationToken">the cancellation token</param>
+            <returns>A websocket frame</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameReader.DecodeCloseFrame(System.Boolean,Alis.Core.Network.Internal.WebSocketOpCode,System.Int32,System.ArraySegment{System.Byte},System.ArraySegment{System.Byte})">
+            <summary>
+                Extracts close status and close description information from the web socket frame
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameReader.ReadLength(System.Byte,System.ArraySegment{System.Byte},System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+                Reads the length of the payload according to the contents of byte2
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.WebSocketFrameWriter">
+            <summary>
+                The web socket frame writer class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketFrameWriter.Random">
+            <summary>
+                This is used for data masking so that web proxies don't cache the data
+                Therefore, there are no cryptographic concerns
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameWriter.#cctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketFrameWriter" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameWriter.Write(Alis.Core.Network.Internal.WebSocketOpCode,System.ArraySegment{System.Byte},System.IO.MemoryStream,System.Boolean,System.Boolean)">
+            <summary>
+                No async await stuff here because we are dealing with a memory stream
+            </summary>
+            <param name="opCode">The web socket opcode</param>
+            <param name="fromPayload">Array segment to get payload data from</param>
+            <param name="toStream">Stream to write to</param>
+            <param name="isLastFrame">True is this is the last frame in this message (usually true)</param>
+            <param name="isClient"></param>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.WebSocketImplementation">
+            <summary>
+                Main implementation of the WebSocket abstract class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation.MaxPingPongPayloadLen">
+            <summary>
+                The max ping pong payload len
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._guid">
+            <summary>
+                The guid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._includeExceptionInCloseResponse">
+            <summary>
+                The include exception in close response
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._internalReadCts">
+            <summary>
+                The internal read cts
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._isClient">
+            <summary>
+                The is client
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._pingPongManager">
+            <summary>
+                The ping pong manager
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._recycledStreamFactory">
+            <summary>
+                The recycled stream factory
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._semaphore">
+            <summary>
+                The semaphore slim
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._stream">
+            <summary>
+                The stream
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._usePerMessageDeflate">
+            <summary>
+                The use per message deflate
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._closeStatus">
+            <summary>
+                The close status
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._closeStatusDescription">
+            <summary>
+                The close status description
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._continuationFrameMessageType">
+            <summary>
+                The binary
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._isContinuationFrame">
+            <summary>
+                The is continuation frame
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._readCursor">
+            <summary>
+                The read cursor
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._state">
+            <summary>
+                The state
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._tryGetBufferFailureLogged">
+            <summary>
+                The try get buffer failure logged
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.#ctor(System.Guid,System.Func{System.IO.MemoryStream},System.IO.Stream,System.TimeSpan,System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketImplementation" /> class
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="recycledStreamFactory">The recycled stream factory</param>
+            <param name="stream">The stream</param>
+            <param name="keepAliveInterval">The keep alive interval</param>
+            <param name="secWebSocketExtensions">The sec web socket extensions</param>
+            <param name="includeExceptionInCloseResponse">The include exception in close response</param>
+            <param name="isClient">The is client</param>
+            <param name="subProtocol">The sub protocol</param>
+            <exception cref="T:System.InvalidOperationException">KeepAliveInterval must be Zero or positive</exception>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketImplementation.CloseStatus">
+            <summary>
+                Gets the value of the close status
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketImplementation.CloseStatusDescription">
+            <summary>
+                Gets the value of the close status description
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketImplementation.State">
+            <summary>
+                Gets the value of the state
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketImplementation.SubProtocol">
+            <summary>
+                Gets the value of the sub protocol
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketImplementation.KeepAliveInterval">
+            <summary>
+                Gets the value of the keep alive interval
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.ReceiveAsync(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Receive web socket result
+            </summary>
+            <param name="buffer">The buffer to copy data into</param>
+            <param name="cancellationToken">The cancellation token</param>
+            <returns>The web socket result details</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.SendAsync(System.ArraySegment{System.Byte},System.Net.WebSockets.WebSocketMessageType,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+                Send data to the web socket
+            </summary>
+            <param name="buffer">the buffer containing data to send</param>
+            <param name="messageType">The message type. Can be Text or Binary</param>
+            <param name="endOfMessage">
+                True if this message is a standalone message (this is the norm)
+                If it is a multi-part message then false (and true for the last message)
+            </param>
+            <param name="cancellationToken">the cancellation token</param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.SendPingAsync(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Call this automatically from server side each keepAliveInterval period
+                NOTE: ping payload must be 125 bytes or less
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.Abort">
+            <summary>
+                Aborts the WebSocket without sending a Close frame
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.CloseAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Polite close (use the close handshake)
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.CloseOutputAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Threading.CancellationToken)">
+            <summary>
+                Fire and forget close
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.Dispose">
+            <summary>
+                Dispose will send a close frame if the connection is still open
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.OnPong(Alis.Core.Network.PongEventArgs)">
+            <summary>
+                Called when a Pong frame is received
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.BuildClosePayload(System.Net.WebSockets.WebSocketCloseStatus,System.String)">
+            <summary>
+                As per the spec, write the close status followed by the close reason
+            </summary>
+            <param name="closeStatus">The close status</param>
+            <param name="statusDescription">Optional extra close details</param>
+            <returns>The payload to sent in the close frame</returns>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.SendPongAsync(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            NOTE: pong payload must be 125 bytes or less
+            Pong should contain the same payload as the ping
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.RespondToCloseFrame(Alis.Core.Network.Internal.WebSocketFrame,System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Called when a Close frame is received
+                Send a response close frame if applicable
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.GetBuffer(System.IO.MemoryStream)">
+            <summary>
+                Note that the way in which the stream buffer is accessed can lead to significant performance problems
+                You want to avoid a call to stream.ToArray to avoid extra memory allocation
+                MemoryStream can be configured to have its internal buffer accessible.
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.WriteStreamToNetwork(System.IO.MemoryStream,System.Threading.CancellationToken)">
+            <summary>
+                Puts data on the wire
+            </summary>
+            <param name="stream">The stream to read data from</param>
+            <param name="cancellationToken"></param>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.GetOppCode(System.Net.WebSockets.WebSocketMessageType)">
+            <summary>
+                Turns a spec websocket frame opcode into a WebSocketMessageType
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.CloseOutputAutoTimeoutAsync(System.Net.WebSockets.WebSocketCloseStatus,System.String,System.Exception)">
+            <summary>
+                Automatic WebSocket close in response to some invalid data from the remote websocket host
+            </summary>
+            <param name="closeStatus">The close status to use</param>
+            <param name="statusDescription">A description of why we are closing</param>
+            <param name="ex">The exception (for logging)</param>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.WebSocketOpCode">
+            <summary>
+                The web socket op code enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketOpCode.ContinuationFrame">
+            <summary>
+                The continuation frame web socket op code
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketOpCode.TextFrame">
+            <summary>
+                The text frame web socket op code
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketOpCode.BinaryFrame">
+            <summary>
+                The binary frame web socket op code
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketOpCode.ConnectionClose">
+            <summary>
+                The connection close web socket op code
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketOpCode.Ping">
+            <summary>
+                The ping web socket op code
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketOpCode.Pong">
+            <summary>
+                The pong web socket op code
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.Internal.WebSocketReadCursor">
+            <summary>
+                The web socket read cursor class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketReadCursor.#ctor(Alis.Core.Network.Internal.WebSocketFrame,System.Int32,System.Int32)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketReadCursor" /> class
+            </summary>
+            <param name="frame">The frame</param>
+            <param name="numBytesRead">The num bytes read</param>
+            <param name="numBytesLeftToRead">The num bytes left to read</param>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketReadCursor.WebSocketFrame">
+            <summary>
+                Gets the value of the web socket frame
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketReadCursor.NumBytesRead">
+            <summary>
+                Gets the value of the num bytes read
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.Internal.WebSocketReadCursor.NumBytesLeftToRead">
+            <summary>
+                Gets the value of the num bytes left to read
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.IPingPongManager">
+            <summary>
+                Ping Pong Manager used to facilitate ping pong WebSocket messages
+            </summary>
+        </member>
+        <member name="E:Alis.Core.Network.IPingPongManager.Pong">
+            <summary>
+                Raised when a Pong frame is received
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.IPingPongManager.SendPing(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Sends a ping frame
+            </summary>
+            <param name="payload">The payload (must be 125 bytes of less)</param>
+            <param name="cancellation">The cancellation token</param>
+        </member>
+        <member name="T:Alis.Core.Network.IWebSocketClientFactory">
+            <summary>
+                Web socket client factory used to open web socket client connections
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+                Connect with default options
+            </summary>
+            <param name="uri">The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket instance</returns>
+        </member>
+        <member name="M:Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.Uri,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)">
+            <summary>
+                Connect with options specified
+            </summary>
+            <param name="uri">The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)</param>
+            <param name="options">The WebSocket client options</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket instance</returns>
+        </member>
+        <member name="M:Alis.Core.Network.IWebSocketClientFactory.ConnectAsync(System.IO.Stream,System.String,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)">
+            <summary>
+                Connect with a stream that has already been opened and HTTP websocket upgrade request sent
+                This function will check the handshake response from the server and proceed if successful
+                Use this function if you have specific requirements to open a conenction like using special http headers and
+                cookies
+                You will have to build your own HTTP websocket upgrade request
+                You may not even choose to use TCP/IP and this function will allow you to do that
+            </summary>
+            <param name="responseStream">The full duplex response stream from the server</param>
+            <param name="secWebSocketKey">The secWebSocketKey you used in the handshake request</param>
+            <param name="options">The WebSocket client options</param>
+            <param name="token">The optional cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="T:Alis.Core.Network.IWebSocketServerFactory">
+            <summary>
+                Web socket server factory used to open web socket server connections
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.IWebSocketServerFactory.ReadHttpHeaderFromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+                Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
+            </summary>
+            <param name="stream">The network stream</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>Http data read from the stream</returns>
+        </member>
+        <member name="M:Alis.Core.Network.IWebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,System.Threading.CancellationToken)">
+            <summary>
+                Accept web socket with default options
+                Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+            </summary>
+            <param name="context">The http context used to initiate this web socket request</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket</returns>
+        </member>
+        <member name="M:Alis.Core.Network.IWebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,Alis.Core.Network.WebSocketServerOptions,System.Threading.CancellationToken)">
+            <summary>
+                Accept web socket with options specified
+                Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+            </summary>
+            <param name="context">The http context used to initiate this web socket request</param>
+            <param name="options">The web socket options</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket</returns>
+        </member>
+        <member name="T:Alis.Core.Network.PingPongManager">
+            <summary>
+                Ping Pong Manager used to facilitate ping pong WebSocket messages
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.PingPongManager._cancellationToken">
+            <summary>
+                The cancellation token
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.PingPongManager._guid">
+            <summary>
+                The guid
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.PingPongManager._keepAliveInterval">
+            <summary>
+                The keep alive interval
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.PingPongManager._pingTask">
+            <summary>
+                The ping task
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.PingPongManager._stopwatch">
+            <summary>
+                The stopwatch
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.PingPongManager._webSocket">
+            <summary>
+                The web socket
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.PingPongManager._pingSentTicks">
+            <summary>
+                The ping sent ticks
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.PingPongManager.#ctor(System.Guid,System.Net.WebSockets.WebSocket,System.TimeSpan,System.Threading.CancellationToken)">
+            <summary>
+                Initialises a new instance of the PingPongManager to facilitate ping pong WebSocket messages.
+                If you are manually creating an instance of this class then it is advisable to set keepAliveInterval to
+                TimeSpan.Zero when you create the WebSocket instance (using a factory) otherwise you may be automatically
+                be sending duplicate Ping messages (see keepAliveInterval below)
+            </summary>
+            <param name="guid"></param>
+            <param name="webSocket">The web socket used to listen to ping messages and send pong messages</param>
+            <param name="keepAliveInterval">
+                The time between automatically sending ping messages.
+                Set this to TimeSpan.Zero if you with to manually control sending ping messages.
+            </param>
+            <param name="cancellationToken">
+                The token used to cancel a pending ping send AND the automatic sending of ping messages
+                if keepAliveInterval is positive
+            </param>
+        </member>
+        <member name="E:Alis.Core.Network.PingPongManager.Pong">
+            <summary>
+                Raised when a Pong frame is received
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.PingPongManager.SendPing(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+                Sends a ping frame
+            </summary>
+            <param name="payload">The payload (must be 125 bytes of less)</param>
+            <param name="cancellation">The cancellation token</param>
+        </member>
+        <member name="M:Alis.Core.Network.PingPongManager.OnPong(Alis.Core.Network.PongEventArgs)">
+            <summary>
+                Ons the pong using the specified e
+            </summary>
+            <param name="e">The </param>
+        </member>
+        <member name="M:Alis.Core.Network.PingPongManager.PingForever">
+            <summary>
+                Pings the forever
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.PingPongManager.WebSocketImpl_Pong(System.Object,Alis.Core.Network.PongEventArgs)">
+            <summary>
+                Webs the socket impl pong using the specified sender
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The </param>
+        </member>
+        <member name="T:Alis.Core.Network.PongEventArgs">
+            <summary>
+                Pong EventArgs
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.PongEventArgs.#ctor(System.ArraySegment{System.Byte})">
+            <summary>
+                Initialises a new instance of the PongEventArgs class
+            </summary>
+            <param name="payload">The pong payload must be 125 bytes or less (can be zero bytes)</param>
+        </member>
+        <member name="P:Alis.Core.Network.PongEventArgs.Payload">
+            <summary>
+                The data extracted from a Pong WebSocket frame
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.WebSocketClientFactory">
+            <summary>
+                Web socket client factory used to open web socket client connections
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.WebSocketClientFactory._bufferFactory">
+            <summary>
+                The buffer factory
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.WebSocketClientFactory._bufferPool">
+            <summary>
+                The buffer pool
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.#ctor">
+            <summary>
+                Initialises a new instance of the WebSocketClientFactory class without caring about internal buffers
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.#ctor(System.Func{System.IO.MemoryStream})">
+            <summary>
+                Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
+            </summary>
+            <param name="bufferFactory">
+                Used to get a memory stream. Feel free to implement your own buffer pool. MemoryStreams
+                will be disposed when no longer needed and can be returned to the pool.
+            </param>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.ConnectAsync(System.Uri,System.Threading.CancellationToken)">
+            <summary>
+                Connect with default options
+            </summary>
+            <param name="uri">The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket instance</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.ConnectAsync(System.Uri,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)">
+            <summary>
+                Connect with options specified
+            </summary>
+            <param name="uri">The WebSocket uri to connect to (e.g. ws://example.com or wss://example.com for SSL)</param>
+            <param name="options">The WebSocket client options</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket instance</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.ConnectAsync(System.IO.Stream,System.String,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)">
+            <summary>
+                Connect with a stream that has already been opened and HTTP websocket upgrade request sent
+                This function will check the handshake response from the server and proceed if successful
+                Use this function if you have specific requirements to open a conenction like using special http headers and
+                cookies
+                You will have to build your own HTTP websocket upgrade request
+                You may not even choose to use TCP/IP and this function will allow you to do that
+            </summary>
+            <param name="responseStream">The full duplex response stream from the server</param>
+            <param name="secWebSocketKey">The secWebSocketKey you used in the handshake request</param>
+            <param name="options">The WebSocket client options</param>
+            <param name="token">The optional cancellation token</param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.ConnectAsync(System.Guid,System.IO.Stream,System.String,System.TimeSpan,System.String,System.Boolean,System.Threading.CancellationToken)">
+            <summary>
+                Connects the guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="responseStream">The response stream</param>
+            <param name="secWebSocketKey">The sec web socket key</param>
+            <param name="keepAliveInterval">The keep alive interval</param>
+            <param name="secWebSocketExtensions">The sec web socket extensions</param>
+            <param name="includeExceptionInCloseResponse">The include exception in close response</param>
+            <param name="token">The token</param>
+            <exception cref="T:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException">Handshake unexpected failure </exception>
+            <returns>A task containing the web socket</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.GetSubProtocolFromHeader(System.String)">
+            <summary>
+                Gets the sub protocol from header using the specified response
+            </summary>
+            <param name="response">The response</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.ThrowIfInvalidAcceptString(System.Guid,System.String,System.String)">
+            <summary>
+                Throws the if invalid accept string using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="response">The response</param>
+            <param name="secWebSocketKey">The sec web socket key</param>
+            <exception cref="T:Alis.Core.Network.Exceptions.WebSocketHandshakeFailedException"></exception>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.ThrowIfInvalidResponseCode(System.String)">
+            <summary>
+                Throws the if invalid response code using the specified response header
+            </summary>
+            <param name="responseHeader">The response header</param>
+            <exception cref="T:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException"></exception>
+            <exception cref="T:Alis.Core.Network.Exceptions.InvalidHttpResponseCodeException">null null </exception>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.TlsAuthenticateAsClient(System.Net.Security.SslStream,System.String)">
+            <summary>
+                Override this if you need more fine grained control over the TLS handshake like setting the SslProtocol or adding a
+                client certificate
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.GetStream(System.Guid,System.Boolean,System.Boolean,System.String,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+                Override this if you need more control over how the stream used for the websocket is created. It does not event
+                need to be a TCP stream
+            </summary>
+            <param name="loggingGuid">For logging purposes only</param>
+            <param name="isSecure">Make a secure connection</param>
+            <param name="noDelay">
+                Set to true to send a message immediately with the least amount of latency (typical usage for
+                chat)
+            </param>
+            <param name="host">The destination host (can be an IP address)</param>
+            <param name="port">The destination port</param>
+            <param name="cancellationToken">Used to cancel the request</param>
+            <returns>A connected and open stream</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.ValidateServerCertificate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+                Invoked by the RemoteCertificateValidationDelegate
+                If you want to ignore certificate errors (for debugging) then return true
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.GetAdditionalHeaders(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+                Gets the additional headers using the specified additional headers
+            </summary>
+            <param name="additionalHeaders">The additional headers</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.PerformHandshake(System.Guid,System.Uri,System.IO.Stream,Alis.Core.Network.WebSocketClientOptions,System.Threading.CancellationToken)">
+            <summary>
+                Performs the handshake using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="uri">The uri</param>
+            <param name="stream">The stream</param>
+            <param name="options">The options</param>
+            <param name="token">The token</param>
+            <returns>A task containing the web socket</returns>
+        </member>
+        <member name="T:Alis.Core.Network.WebSocketClientOptions">
+            <summary>
+                Client WebSocket init options
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketClientOptions.#ctor">
+            <summary>
+                Initialises a new instance of the WebSocketClientOptions class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketClientOptions.KeepAliveInterval">
+            <summary>
+                How often to send ping requests to the Server
+                This is done to prevent proxy servers from closing your connection
+                The default is TimeSpan.Zero meaning that it is disabled.
+                WebSocket servers usually send ping messages so it is not normally necessary for the client to send them (hence the
+                TimeSpan.Zero default)
+                You can manually control ping pong messages using the PingPongManager class.
+                If you do that it is advisible to set this KeepAliveInterval to zero for the WebSocketClientFactory
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketClientOptions.NoDelay">
+            <summary>
+                Set to true to send a message immediately with the least amount of latency (typical usage for chat)
+                This will disable Nagle's algorithm which can cause high tcp latency for small packets sent infrequently
+                However, if you are streaming large packets or sending large numbers of small packets frequently it is advisable to
+                set NoDelay to false
+                This way data will be bundled into larger packets for better throughput
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketClientOptions.AdditionalHttpHeaders">
+            <summary>
+                Add any additional http headers to this dictionary
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketClientOptions.IncludeExceptionInCloseResponse">
+            <summary>
+                Include the full exception (with stack trace) in the close response
+                when an exception is encountered and the WebSocket connection is closed
+                The default is false
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketClientOptions.SecWebSocketExtensions">
+            <summary>
+                WebSocket Extensions as an HTTP header value
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketClientOptions.SecWebSocketProtocol">
+            <summary>
+                A comma separated list of sub protocols in preference order (first one being the most preferred)
+                The server will return the first supported sub protocol (or none if none are supported)
+                Can be null
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.WebSocketHttpContext">
+            <summary>
+                The WebSocket HTTP Context used to initiate a WebSocket handshake
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketHttpContext.#ctor(System.Boolean,System.Collections.Generic.IList{System.String},System.String,System.String,System.IO.Stream)">
+            <summary>
+                Initialises a new instance of the WebSocketHttpContext class
+            </summary>
+            <param name="isWebSocketRequest">True if this is a valid WebSocket request</param>
+            <param name="webSocketRequestedProtocols"></param>
+            <param name="httpHeader">The raw http header extracted from the stream</param>
+            <param name="path">The Path extracted from the http header</param>
+            <param name="stream">The stream AFTER the header has already been read</param>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketHttpContext.IsWebSocketRequest">
+            <summary>
+                True if this is a valid WebSocket request
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketHttpContext.WebSocketRequestedProtocols">
+            <summary>
+                Gets the value of the web socket requested protocols
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketHttpContext.HttpHeader">
+            <summary>
+                The raw http header extracted from the stream
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketHttpContext.Path">
+            <summary>
+                The Path extracted from the http header
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketHttpContext.Stream">
+            <summary>
+                The stream AFTER the header has already been read
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Network.WebSocketServerFactory">
+            <summary>
+                Web socket server factory used to open web socket server connections
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.WebSocketServerFactory._bufferFactory">
+            <summary>
+                The buffer factory
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.WebSocketServerFactory._bufferPool">
+            <summary>
+                The buffer pool
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerFactory.#ctor">
+            <summary>
+                Initialises a new instance of the WebSocketServerFactory class without caring about internal buffers
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerFactory.#ctor(System.Func{System.IO.MemoryStream})">
+            <summary>
+                Initialises a new instance of the WebSocketClientFactory class with control over internal buffer creation
+            </summary>
+            <param name="bufferFactory"></param>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerFactory.ReadHttpHeaderFromStreamAsync(System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+                Reads a http header information from a stream and decodes the parts relating to the WebSocket protocot upgrade
+            </summary>
+            <param name="stream">The network stream</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>Http data read from the stream</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,System.Threading.CancellationToken)">
+            <summary>
+                Accept web socket with default options
+                Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+            </summary>
+            <param name="context">The http context used to initiate this web socket request</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerFactory.AcceptWebSocketAsync(Alis.Core.Network.WebSocketHttpContext,Alis.Core.Network.WebSocketServerOptions,System.Threading.CancellationToken)">
+            <summary>
+                Accept web socket with options specified
+                Call ReadHttpHeaderFromStreamAsync first to get WebSocketHttpContext
+            </summary>
+            <param name="context">The http context used to initiate this web socket request</param>
+            <param name="options">The web socket options</param>
+            <param name="token">The optional cancellation token</param>
+            <returns>A connected web socket</returns>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerFactory.CheckWebSocketVersion(System.String)">
+            <summary>
+                Checks the web socket version using the specified http header
+            </summary>
+            <param name="httpHeader">The http header</param>
+            <exception cref="T:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException"></exception>
+            <exception cref="T:Alis.Core.Network.Exceptions.WebSocketVersionNotSupportedException">Cannot find "Sec-WebSocket-Version" in http header</exception>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerFactory.PerformHandshakeAsync(System.Guid,System.String,System.String,System.IO.Stream,System.Threading.CancellationToken)">
+            <summary>
+                Performs the handshake using the specified guid
+            </summary>
+            <param name="guid">The guid</param>
+            <param name="httpHeader">The http header</param>
+            <param name="subProtocol">The sub protocol</param>
+            <param name="stream">The stream</param>
+            <param name="token">The token</param>
+            <exception cref="T:Alis.Core.Network.Exceptions.SecWebSocketKeyMissingException">Unable to read "Sec-WebSocket-Key" from http header</exception>
+        </member>
+        <member name="T:Alis.Core.Network.WebSocketServerOptions">
+            <summary>
+                Server WebSocket init options
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerOptions.#ctor">
+            <summary>
+                Initialises a new instance of the WebSocketServerOptions class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerOptions.#ctor(System.Double,System.Boolean,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.WebSocketServerOptions" /> class
+            </summary>
+            <param name="keepAliveInterval">The keep alive interval</param>
+            <param name="includeExceptionInCloseResponse">The include exception in close response</param>
+            <param name="subProtocol">The sub protocol</param>
+        </member>
+        <member name="M:Alis.Core.Network.WebSocketServerOptions.#ctor(System.TimeSpan,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.WebSocketServerOptions" /> class
+            </summary>
+            <param name="keepAliveInterval">The keep alive interval</param>
+            <param name="subProtocol">The sub protocol</param>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketServerOptions.KeepAliveInterval">
+            <summary>
+                How often to send ping requests to the Client
+                The default is 60 seconds
+                This is done to prevent proxy servers from closing your connection
+                A timespan of zero will disable the automatic ping pong mechanism
+                You can manually control ping pong messages using the PingPongManager class.
+                If you do that it is advisable to set this KeepAliveInterval to zero in the WebSocketServerFactory
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketServerOptions.IncludeExceptionInCloseResponse">
+            <summary>
+                Include the full exception (with stack trace) in the close response
+                when an exception is encountered and the WebSocket connection is closed
+                The default is false
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Network.WebSocketServerOptions.SubProtocol">
+            <summary>
+                Specifies the sub protocol to send back to the client in the opening handshake
+                Can be null (the most common use case)
+                The client can specify multiple preferred protocols in the opening handshake header
+                The server should use the first supported one or set this to null if none of the requested sub protocols are
+                supported
+            </summary>
+        </member>
+    </members>
+</doc>

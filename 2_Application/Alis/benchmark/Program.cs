@@ -28,16 +28,19 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Linq;
+using Alis.Benchmark.ComputeHash;
+using BenchmarkDotNet.Analysers;
 using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Diagnosers;
-using BenchmarkDotNet.Environments;
 using BenchmarkDotNet.Exporters;
-using BenchmarkDotNet.Jobs;
+using BenchmarkDotNet.Filters;
+using BenchmarkDotNet.Loggers;
+using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 
-
-namespace Alis.Test.Benchmark
+namespace Alis.Benchmark
 {
     /// <summary>
     ///     The program class
@@ -45,22 +48,47 @@ namespace Alis.Test.Benchmark
     public class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly)
-                .Run(args, DefaultConfig.Instance.AddJob(Job.ShortRun
-                        .WithPlatform(Platform.AnyCpu)
-                        .AsDefault())
-                    .WithOptions(ConfigOptions.DisableLogFile)
-                    .WithArtifactsPath($"..\\..\\..\\docs\\test\\{DateTime.Now:yyyy-MM-dd}")
-                    .AddDiagnoser(MemoryDiagnoser.Default)
-                    .AddColumn(StatisticColumn.Mean)
-                    .AddColumn(StatisticColumn.Min)
-                    .AddColumn(StatisticColumn.Max)
-                    .AddExporter(MarkdownExporter.GitHub));
+            #if DEBUG
+            ManualConfig config = new DebugBuildConfig()
+                .WithOptions(ConfigOptions.DisableLogFile)
+                .AddExporter(MarkdownExporter.GitHub)
+                .WithArtifactsPath($"../../../../docs/benchmarks//{DateTime.Now:yyyy-MM-dd}/{typeof(Program).Assembly.GetName().Name}/debug/");
+                
+            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, config);
+            
+            #endif
+            
+            #if RELEASE
+            
+            ManualConfig config = new DebugBuildConfig()
+                .WithOptions(ConfigOptions.DisableLogFile)
+                .AddColumnProvider(DefaultConfig.Instance.GetColumnProviders().ToArray())
+                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
+                .AddValidator(DefaultConfig.Instance.GetValidators().ToArray())
+                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
+                .AddAnalyser(DefaultConfig.Instance.GetAnalysers().ToArray())
+                .AddJob(DefaultConfig.Instance.GetJobs().ToArray())
+                .AddLogger(new ConsoleLogger())
+                .WithUnionRule(ConfigUnionRule.AlwaysUseGlobal)
+                .AddExporter(MarkdownExporter.GitHub)
+                .WithArtifactsPath($"../../../../docs/benchmarks//{DateTime.Now:yyyy-MM-dd}/{typeof(Program).Assembly.FullName}/release/");
+                
+            Summary[] summarys = BenchmarkRunner.Run(typeof(Program).Assembly, config, args);
+            
+            ILogger logger = ConsoleLogger.Default;
+            
+            foreach (Summary summary in summarys)
+            {
+                MarkdownExporter.Console.ExportToLog(summary, logger);
+                ConclusionHelper.Print(logger, summary.BenchmarksCases.First().Config.GetCompositeAnalyser().Analyse(summary).ToList());
+            }
+            
+            #endif
         }
     }
 }

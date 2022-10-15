@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:UnitTest3.cs
+//  File:ForEachVsFor.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using BenchmarkDotNet.Attributes;
 
-namespace Alis.Test.Acceptance
+namespace Alis.Benchmark.Iterator
 {
+    
     /// <summary>
-    ///     The unit test class
+    /// The for each vs for class
     /// </summary>
-    public class UnitTest3
+    public class ForEachVsFor
     {
+        /*[Params(10, 100, 1000)]
+        public int iterations;
+*/
         /// <summary>
-        ///     Tests that test 1
+        /// Setup this instance
         /// </summary>
-        [Fact]
-        public void Test1()
+        [GlobalSetup]
+        public void Setup()
+        {
+        }
+
+        // Foreach is ~2 times slower than for
+        /// <summary>
+        /// Foreaches this instance
+        /// </summary>
+        [Benchmark]
+        public void Foreach()
+        {
+        }
+
+        // For is ~2 times faster than foreach
+        /// <summary>
+        /// Fors this instance
+        /// </summary>
+        [Benchmark]
+        public void For()
         {
         }
     }

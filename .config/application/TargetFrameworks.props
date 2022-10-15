@@ -3,7 +3,8 @@
         $(AssemblyName.Contains('Test')) == true OR
         $(AssemblyName.Contains('App')) == true OR
         $(AssemblyName.Contains('Template')) == true OR
-        $(AssemblyName.Contains('Sample')) == true
+        $(AssemblyName.Contains('Sample')) == true OR
+        $(AssemblyName.Contains('Benchmark')) == true 
         ">
         <TargetFramework1>$(TargetFramework1)</TargetFramework1>
         <TargetFramework2>net6.0</TargetFramework2>
@@ -13,7 +14,8 @@
         $(AssemblyName.Contains('Test')) == false AND 
         $(AssemblyName.Contains('App')) == false AND
         $(AssemblyName.Contains('Template')) == false AND
-        $(AssemblyName.Contains('Sample')) == false
+        $(AssemblyName.Contains('Sample')) == false AND
+        $(AssemblyName.Contains('Benchmark')) == false 
         ">
         <TargetFramework1>$(TargetFramework1)</TargetFramework1>
         <TargetFramework2>netstandard2.1</TargetFramework2>

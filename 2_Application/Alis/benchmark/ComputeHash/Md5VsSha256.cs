@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:UnitTest1.cs
+//  File:Md5VsSha256.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,56 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Xunit;
+using System;
+using System.Security.Cryptography;
+using BenchmarkDotNet.Attributes;
 
-namespace Alis.Test.Unit
+namespace Alis.Benchmark.ComputeHash
 {
     /// <summary>
-    ///     The unit test class
+    /// The md vs sha 256 class
     /// </summary>
-    public class UnitTest1
+    public class Md5VsSha256
     {
         /// <summary>
-        ///     Tests that test 1
+        /// The 
         /// </summary>
-        [Fact]
-        public void Test1()
+        private const int N = 10000;
+        /// <summary>
+        /// The data
+        /// </summary>
+        private readonly byte[] data;
+
+        /// <summary>
+        /// The create
+        /// </summary>
+        private readonly SHA256 sha256 = SHA256.Create();
+        /// <summary>
+        /// The create
+        /// </summary>
+        private readonly MD5 md5 = MD5.Create();
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Md5VsSha256"/> class
+        /// </summary>
+        public Md5VsSha256()
         {
+            data = new byte[N];
+            new Random(42).NextBytes(data);
         }
+
+        /// <summary>
+        /// Shas the 256
+        /// </summary>
+        /// <returns>The byte array</returns>
+        [Benchmark]
+        public byte[] Sha256() => sha256.ComputeHash(data);
+
+        /// <summary>
+        /// Mds the 5
+        /// </summary>
+        /// <returns>The byte array</returns>
+        [Benchmark]
+        public byte[] Md5() => md5.ComputeHash(data);
     }
 }

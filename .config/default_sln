@@ -153,12 +153,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015E
 		.scripts\windows\restart_nuget.bat = .scripts\windows\restart_nuget.bat
 		.scripts\windows\restart_sln.bat = .scripts\windows\restart_sln.bat
 		.scripts\windows\trust_certificates.bat = .scripts\windows\trust_certificates.bat
+		.scripts\windows\install_env.bat = .scripts\windows\install_env.bat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 		nuget.config = nuget.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{A2BD356E-2DAF-44E6-B145-66CF220C6DB1}"
+	ProjectSection(SolutionItems) = preProject
+		docs\pages\performance.md = docs\pages\performance.md
 	EndProjectSection
 EndProject
 Global
@@ -179,6 +185,7 @@ Global
 		{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
 		{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
 		{015EBC6B-559D-4454-9DB0-8E2D42CBBE34} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
+		{A2BD356E-2DAF-44E6-B145-66CF220C6DB1} = {18D887C5-16C4-4B00-95FC-DC5B630309A0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}

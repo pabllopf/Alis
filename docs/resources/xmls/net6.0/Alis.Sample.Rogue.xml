@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Sample.Rogue</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Sample.Rogue.PlayerMovement">
+            <summary>
+                Move control of player
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.Rogue.PlayerMovement.walk">
+            <summary>
+            The walking
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.Rogue.PlayerMovement.animator">
+            <summary>
+            The animator
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.Awake">
+            <summary>
+            Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.Start">
+            <summary>
+                Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.Update">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.OnReleaseKey(System.String)">
+            <summary>
+            sample
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.OnPressDownKey(System.String)">
+            <summary>
+            sample
+            </summary>
+            <param name="key"></param>
+        </member>
+        <member name="T:Alis.Sample.Rogue.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.Rogue.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>
