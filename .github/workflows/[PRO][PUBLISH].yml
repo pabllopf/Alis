@@ -12,7 +12,7 @@ jobs:
   #
 
   Comment_Code:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -62,7 +62,7 @@ jobs:
   #
   Fast_Test:
     needs: Comment_Code
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -127,37 +127,14 @@ jobs:
       - name: Dotnet test
         run: dotnet test alis.sln
   
-  
-  #
-  # TEST LINUX
-  #
-
-  Linux_latest:
-    needs: Fast_Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
-            6.0.x
-      - name: Dotnet test
-        run: dotnet test alis.sln
 
 
   #
   # CREATE PACKAGES
   #
   Create_Packages:
-    needs: [ Windows_Latest, Macos_Latest, Linux_latest ]
-    runs-on: ubuntu-latest
+    needs: [ Windows_Latest, Macos_Latest ]
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -254,7 +231,7 @@ jobs:
 
   Publish_On_Nuget_Org:
     needs: Create_Packages
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -327,7 +304,7 @@ jobs:
 
   Publish_On_Github_Packages:
     needs: Create_Packages
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -396,7 +373,7 @@ jobs:
 
   Release:
     needs: [ Publish_On_Github_Packages, Publish_On_Nuget_Org ]
-    runs-on: "ubuntu-latest"
+    runs-on: macos-latest
 
     steps:
 
@@ -539,7 +516,7 @@ jobs:
   #
   Write_new_version:
     needs: [ Release ]
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

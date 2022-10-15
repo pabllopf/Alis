@@ -62,28 +62,6 @@ jobs:
       - name: Dotnet test
         run: dotnet test alis.sln
 
-
-  Linux_Latest:
-    needs: Fast_Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: develop
-
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: 6.0.x
-
-      - name: Dotnet install workload
-        run: dotnet workload install macos android
-
-      - name: Dotnet test
-        run: dotnet test alis.sln
-
-
   Macos_Latest:
     needs: Fast_Test
     runs-on: macos-latest
