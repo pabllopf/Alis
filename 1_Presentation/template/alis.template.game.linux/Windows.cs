@@ -1,46 +1,16 @@
-// --------------------------------------------------------------------------
-// 
-//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
-//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
-//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
-// 
-//  --------------------------------------------------------------------------
-//  File:Window.cs
-// 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
-// 
-//  Copyright (c) 2021 GNU General Public License v3.0
-// 
-//  This program is free software:you can redistribute it and/or modify
-//  it under the terms of the GNU General Public License as published by
-//  the Free Software Foundation, either version 3 of the License, or
-//  (at your option) any later version.
-// 
-//  This program is distributed in the hope that it will be useful,
-//  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
-//  GNU General Public License for more details.
-// 
-//  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
-// 
-//  --------------------------------------------------------------------------
-
-using Alis.Template.Game.Android;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-namespace Alis.Template.Game.Desktop
+namespace Game.Desktop
 {
     // Be warned, there is a LOT of stuff here. It might seem complicated, but just take it slow and you'll be fine.
     // OpenGL's initial hurdle is quite large, but once you get past that, things will start making more sense.
     /// <summary>
-    ///     The window class
+    /// The window class
     /// </summary>
-    /// <seealso cref="GameWindow" />
+    /// <seealso cref="GameWindow"/>
     public class Window : GameWindow
     {
         // Create the vertices for our triangle. These are listed in normalized device coordinates (NDC)
@@ -49,19 +19,14 @@ namespace Alis.Template.Game.Desktop
         // Negative Y coordinates move to the bottom, positive Y move to the top.
         // OpenGL only supports rendering in 3D, so to create a flat triangle, the Z coordinate will be kept as 0.
         /// <summary>
-        ///     The vertices
+        /// The vertices
         /// </summary>
         private readonly float[] _vertices =
         {
             -0.5f, -0.5f, 0.0f, // Bottom-left vertex
-            0.5f, -0.5f, 0.0f, // Bottom-right vertex
-            0.0f, 0.5f, 0.0f // Top vertex
+             0.5f, -0.5f, 0.0f, // Bottom-right vertex
+             0.0f,  0.5f, 0.0f  // Top vertex
         };
-
-        /// <summary>
-        ///     The vertex array object
-        /// </summary>
-        private int _vertexArrayObject;
 
         // These are the handles to OpenGL objects. A handle is an integer representing where the object lives on the
         // graphics card. Consider them sort of like a pointer; we can't do anything with them directly, but we can
@@ -69,13 +34,18 @@ namespace Alis.Template.Game.Desktop
 
         // What these objects are will be explained in OnLoad.
         /// <summary>
-        ///     The vertex buffer object
+        /// The vertex buffer object
         /// </summary>
         private int _vertexBufferObject;
 
+        /// <summary>
+        /// The vertex array object
+        /// </summary>
+        private int _vertexArrayObject;
+        
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Window" /> class
+        /// Initializes a new instance of the <see cref="Window"/> class
         /// </summary>
         /// <param name="gameWindowSettings">The game window settings</param>
         /// <param name="nativeWindowSettings">The native window settings</param>
@@ -86,7 +56,7 @@ namespace Alis.Template.Game.Desktop
 
         // Now, we start initializing OpenGL.
         /// <summary>
-        ///     Ons the load
+        /// Ons the load
         /// </summary>
         protected override void OnLoad()
         {
@@ -125,8 +95,7 @@ namespace Alis.Template.Game.Desktop
             //     StreamDraw: This buffer will change on every frame.
             //   Writing to the proper memory space is important! Generally, you'll only want StaticDraw,
             //   but be sure to use the right one for your use case.
-            GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices,
-                BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
 
             // One notable thing about the buffer we just loaded data into is that it doesn't have any structure to it. It's just a bunch of floats (which are actaully just bytes).
             // The opengl driver doesn't know how this data should be interpreted or how it should be divided up into vertices. To do this opengl introduces the idea of a 
@@ -154,23 +123,20 @@ namespace Alis.Template.Game.Desktop
 
             // Enable variable 0 in the shader.
             GL.EnableVertexAttribArray(0);
-
+            
 
             // Setup is now complete! Now we move to the OnRenderFrame function to finally draw the triangle.
         }
 
         // Now that initialization is done, let's create our render loop.
         /// <summary>
-        ///     Ons the render frame using the specified e
+        /// Ons the render frame using the specified e
         /// </summary>
         /// <param name="e">The </param>
         protected override void OnRenderFrame(FrameEventArgs e)
         {
             base.OnRenderFrame(e);
 
-            RenderManager.OnDrawFrame();
-
-            /*
             // This clears the image, using what you set as GL.ClearColor earlier.
             // OpenGL provides several different types of data that can be rendered.
             // You can clear multiple buffers by using multiple bit flags.
@@ -201,22 +167,19 @@ namespace Alis.Template.Game.Desktop
             // This avoids screen tearing, a visual artifact that can happen if the buffer is modified while being displayed.
             // After drawing, call this function to swap the buffers. If you don't, it won't display what you've rendered.
             SwapBuffers();
-            */
 
-
-            SwapBuffers();
             // And that's all you have to do for rendering! You should now see a yellow triangle on a black screen.
         }
 
         /// <summary>
-        ///     Ons the update frame using the specified e
+        /// Ons the update frame using the specified e
         /// </summary>
         /// <param name="e">The </param>
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
             base.OnUpdateFrame(e);
 
-            KeyboardState input = KeyboardState;
+            var input = KeyboardState;
 
             if (input.IsKeyDown(Keys.Escape))
             {
@@ -225,7 +188,7 @@ namespace Alis.Template.Game.Desktop
         }
 
         /// <summary>
-        ///     Ons the resize using the specified e
+        /// Ons the resize using the specified e
         /// </summary>
         /// <param name="e">The </param>
         protected override void OnResize(ResizeEventArgs e)
@@ -251,7 +214,7 @@ namespace Alis.Template.Game.Desktop
         //
         // The comming chapters will not have this code.
         /// <summary>
-        ///     Ons the unload
+        /// Ons the unload
         /// </summary>
         protected override void OnUnload()
         {

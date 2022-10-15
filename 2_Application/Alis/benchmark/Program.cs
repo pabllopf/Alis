@@ -54,6 +54,7 @@ namespace Alis.Benchmark
         public static void Main(string[] args)
         {
             #if DEBUG
+            
             ManualConfig config = new DebugBuildConfig()
                 .WithOptions(ConfigOptions.DisableLogFile)
                 .AddExporter(MarkdownExporter.GitHub)
