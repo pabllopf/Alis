@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net6.0; net6.0-ios; net6.0-macos; net6.0-android</TargetFrameworks>
+        <TargetFrameworks>net6.0; net6.0-ios; net6.0-android</TargetFrameworks>
         <OutputType>Library</OutputType>
     </PropertyGroup>
 </Project>
