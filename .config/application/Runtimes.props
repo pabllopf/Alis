@@ -1,13 +1,13 @@
 <Project>
     <ItemGroup>
-        <None Update="$(ProjectDir)/runtimes/**" 
+        <None Update="$(ProjectDir)/runtimes/**"
               LinkBase="runtimes/"
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>
     </ItemGroup>
 
     <ItemGroup>
-        <None Condition="Exists('$(ProjectDir)/Assets/') == True" Update="$(ProjectDir)/Assets/**" 
+        <None Condition="Exists('$(ProjectDir)/Assets/') == True" Update="$(ProjectDir)/Assets/**"
               LinkBase="Assets/"
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>

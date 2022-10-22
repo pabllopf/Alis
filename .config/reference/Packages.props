@@ -18,8 +18,8 @@
     <ItemGroup Condition="
         $(AssemblyName.Contains('Benchmark')) == true
     ">
-        <PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
+        <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
-    
+
 
 </Project>
