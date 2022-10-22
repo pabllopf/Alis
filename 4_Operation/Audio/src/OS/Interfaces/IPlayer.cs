@@ -37,7 +37,6 @@ namespace Alis.Core.Audio.OS.Interfaces
     /// </summary>
     public interface IPlayer
     {
-
         /// <summary>
         ///     Gets the value of the playing
         /// </summary>

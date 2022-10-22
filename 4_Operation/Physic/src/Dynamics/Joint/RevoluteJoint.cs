@@ -753,7 +753,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             float i1 = b1.InvI, i2 = b2.InvI;
 
             //Solve motor constraint.
-            if (IsMotorEnabled && State != LimitState.EqualLimits)
+            if (IsMotorEnabled && (State != LimitState.EqualLimits))
             {
                 float cdot = w2 - w1 - MotorSpeed;
                 float impulse = MotorMass * -cdot;
@@ -767,7 +767,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             }
 
             //Solve limit constraint.
-            if (IsLimitEnabled && State != LimitState.InactiveLimit)
+            if (IsLimitEnabled && (State != LimitState.InactiveLimit))
             {
                 Vector2 r1 = Helper.Mul(b1.GetXForm().R, LocalAnchor1 - b1.GetLocalCenter());
                 Vector2 r2 = Helper.Mul(b2.GetXForm().R, LocalAnchor2 - b2.GetLocalCenter());
@@ -856,7 +856,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             float positionError = 0.0f;
 
             // Solve angular limit constraint.
-            if (IsLimitEnabled && State != LimitState.InactiveLimit)
+            if (IsLimitEnabled && (State != LimitState.InactiveLimit))
             {
                 float angle = body2.Sweep.A - body1.Sweep.A - ReferenceAngle;
                 float limitImpulse = 0.0f;
@@ -954,7 +954,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
                 body2.SynchronizeTransform();
             }
 
-            return positionError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (positionError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }

@@ -78,7 +78,7 @@ namespace Alis.Core.Component
             Transform = GameObject.Transform;
         }
 
-        
+
         /// <summary>
         ///     Ons the destroy
         /// </summary>

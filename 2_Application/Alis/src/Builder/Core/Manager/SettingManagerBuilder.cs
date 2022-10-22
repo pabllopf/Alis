@@ -37,10 +37,10 @@ using Alis.Core.Setting;
 namespace Alis.Builder.Core.Manager
 {
     /// <summary>
-    /// The setting manager builder class
+    ///     The setting manager builder class
     /// </summary>
-    /// <seealso cref="IBuild{SettingManager}"/>
-    public class SettingManagerBuilder:
+    /// <seealso cref="IBuild{SettingManager}" />
+    public class SettingManagerBuilder :
         IBuild<SettingManager>,
         IDebug<SettingManagerBuilder, Func<DebugSettingBuilder, DebugSetting>>,
         IGeneral<SettingManagerBuilder, Func<GeneralSettingBuilder, GeneralSetting>>,
@@ -48,40 +48,12 @@ namespace Alis.Builder.Core.Manager
         IGraphic<SettingManagerBuilder, Func<GraphicSettingBuilder, GraphicSetting>>
     {
         /// <summary>
-        /// The setting manager
+        ///     The setting manager
         /// </summary>
         private SettingManager settingManager = new SettingManager();
-        
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The setting manager</returns>
-        public SettingManager Build() => settingManager;
 
         /// <summary>
-        /// Debugs the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The setting manager builder</returns>
-        public SettingManagerBuilder Debug(Func<DebugSettingBuilder, DebugSetting> value)
-        {
-            settingManager.Debug = value.Invoke(new DebugSettingBuilder());
-            return this;
-        }
-
-        /// <summary>
-        /// Generals the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The setting manager builder</returns>
-        public SettingManagerBuilder General(Func<GeneralSettingBuilder, GeneralSetting> value)
-        {
-            settingManager.General = value.Invoke(new GeneralSettingBuilder());
-            return this;
-        }
-        
-        /// <summary>
-        /// Audioes the value
+        ///     Audioes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The setting manager builder</returns>
@@ -92,7 +64,35 @@ namespace Alis.Builder.Core.Manager
         }
 
         /// <summary>
-        /// Graphics the value
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The setting manager</returns>
+        public SettingManager Build() => settingManager;
+
+        /// <summary>
+        ///     Debugs the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The setting manager builder</returns>
+        public SettingManagerBuilder Debug(Func<DebugSettingBuilder, DebugSetting> value)
+        {
+            settingManager.Debug = value.Invoke(new DebugSettingBuilder());
+            return this;
+        }
+
+        /// <summary>
+        ///     Generals the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The setting manager builder</returns>
+        public SettingManagerBuilder General(Func<GeneralSettingBuilder, GeneralSetting> value)
+        {
+            settingManager.General = value.Invoke(new GeneralSettingBuilder());
+            return this;
+        }
+
+        /// <summary>
+        ///     Graphics the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The setting manager builder</returns>

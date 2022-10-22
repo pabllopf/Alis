@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     ///     Give access to the real-time state of the keyboard
     /// </summary>
     ////////////////////////////////////////////////////////////
-    public static partial class Keyboard
+    public static class Keyboard
     {
         ////////////////////////////////////////////////////////////
 

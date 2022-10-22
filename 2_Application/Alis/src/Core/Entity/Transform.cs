@@ -32,6 +32,5 @@ namespace Alis.Core.Entity
     /// <summary>Control the object space in the game.</summary>
     public class Transform : TransformBase
     {
-      
     }
 }

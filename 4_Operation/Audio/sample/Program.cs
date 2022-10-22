@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System;
 
 namespace Alis.Core.Audio.Sample
@@ -48,7 +47,7 @@ namespace Alis.Core.Audio.Sample
 
             while (true)
             {
-                var command = Console.ReadLine();
+                string command = Console.ReadLine();
 
                 try
                 {
@@ -65,7 +64,10 @@ namespace Alis.Core.Audio.Sample
                             break;
                     }
 
-                    if (command == "exit") break;
+                    if (command == "exit")
+                    {
+                        break;
+                    }
                 }
                 catch (Exception ex)
                 {

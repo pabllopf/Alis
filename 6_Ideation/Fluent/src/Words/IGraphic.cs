@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The graphic interface
+    ///     The graphic interface
     /// </summary>
     public interface IGraphic<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Graphics the value
+        ///     Graphics the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The background interface
+    ///     The background interface
     /// </summary>
     public interface IBackground<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Backgrounds the value
+        ///     Backgrounds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

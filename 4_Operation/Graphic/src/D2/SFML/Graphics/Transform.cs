@@ -269,14 +269,14 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
             unchecked
             {
                 int hashCode = m00.GetHashCode();
-                hashCode = hashCode * 397 ^ m01.GetHashCode();
-                hashCode = hashCode * 397 ^ m02.GetHashCode();
-                hashCode = hashCode * 397 ^ m10.GetHashCode();
-                hashCode = hashCode * 397 ^ m11.GetHashCode();
-                hashCode = hashCode * 397 ^ m12.GetHashCode();
-                hashCode = hashCode * 397 ^ m20.GetHashCode();
-                hashCode = hashCode * 397 ^ m21.GetHashCode();
-                hashCode = hashCode * 397 ^ m22.GetHashCode();
+                hashCode = (hashCode * 397) ^ m01.GetHashCode();
+                hashCode = (hashCode * 397) ^ m02.GetHashCode();
+                hashCode = (hashCode * 397) ^ m10.GetHashCode();
+                hashCode = (hashCode * 397) ^ m11.GetHashCode();
+                hashCode = (hashCode * 397) ^ m12.GetHashCode();
+                hashCode = (hashCode * 397) ^ m20.GetHashCode();
+                hashCode = (hashCode * 397) ^ m21.GetHashCode();
+                hashCode = (hashCode * 397) ^ m22.GetHashCode();
                 return hashCode;
             }
         }

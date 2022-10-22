@@ -34,21 +34,21 @@ using Alis.Core.Graphic.D2;
 namespace Alis.Core.Component.Render
 {
     /// <summary>
-    /// The frame class
+    ///     The frame class
     /// </summary>
-    /// <seealso cref="FrameBase"/>
+    /// <seealso cref="FrameBase" />
     public class Frame : FrameBase,
         IBuilder<FrameBuilder>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Frame"/> class
+        ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
-        public Frame() : base()
+        public Frame()
         {
         }
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Frame"/> class
+        ///     Initializes a new instance of the <see cref="Frame" /> class
         /// </summary>
         /// <param name="filePath">The file path</param>
         public Frame(string filePath) : base(filePath)
@@ -56,7 +56,7 @@ namespace Alis.Core.Component.Render
         }
 
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The frame builder</returns>
         public FrameBuilder Builder() => new FrameBuilder();

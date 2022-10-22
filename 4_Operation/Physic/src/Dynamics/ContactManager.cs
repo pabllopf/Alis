@@ -97,7 +97,7 @@ namespace Alis.Core.Physic.Dynamics
                 return NullContact;
             }
 
-            if (World.ContactFilter != null && World.ContactFilter.ShouldCollide(fixtureA, fixtureB) == false)
+            if ((World.ContactFilter != null) && (World.ContactFilter.ShouldCollide(fixtureA, fixtureB) == false))
             {
                 return NullContact;
             }

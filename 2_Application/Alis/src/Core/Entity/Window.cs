@@ -35,26 +35,25 @@ using Alis.Core.Graphic.D2.SFML.Graphics;
 namespace Alis.Core.Entity
 {
     /// <summary>
-    /// The window class
+    ///     The window class
     /// </summary>
-    public class Window:
+    public class Window :
         IBuilder<WindowBuilder>
     {
         /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The window builder</returns>
-        public WindowBuilder Builder() => new WindowBuilder();
-
-        
-        /// <summary>
-        /// Gets or sets the value of the background
+        ///     Gets or sets the value of the background
         /// </summary>
         public Color Background { get; set; } = Color.Black;
 
         /// <summary>
-        /// Gets or sets the value of the resolution
+        ///     Gets or sets the value of the resolution
         /// </summary>
         public Vector2 Resolution { get; set; } = new Vector2(640, 480);
+
+        /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The window builder</returns>
+        public WindowBuilder Builder() => new WindowBuilder();
     }
 }

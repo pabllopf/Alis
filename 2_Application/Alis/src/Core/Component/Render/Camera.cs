@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
@@ -41,9 +40,21 @@ namespace Alis.Core.Component.Render
     ///     The camera class
     /// </summary>
     /// <seealso cref="ComponentBase" />
-    public class Camera : ComponentBase, 
+    public class Camera : ComponentBase,
         IBuilder<CameraBuilder>
     {
+        /// <summary>
+        ///     Gets or sets the value of the view
+        /// </summary>
+        private View view;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="Camera" /> class
+        /// </summary>
+        public Camera()
+        {
+        }
+
         /// <summary>
         ///     Gets or sets the value of the point of view
         /// </summary>
@@ -55,30 +66,16 @@ namespace Alis.Core.Component.Render
         public Vector2 Resolution { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the view
-        /// </summary>
-        private View view;
-
-        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The camera builder</returns>
         public new CameraBuilder Builder() => new CameraBuilder();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Camera"/> class
-        /// </summary>
-        public Camera()
-        {
-            
-        }
-
-        /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
-            
             PointOfView = new Vector2(0.0f, 0.0f);
             Resolution = new Vector2(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
@@ -86,12 +83,12 @@ namespace Alis.Core.Component.Render
             /*View = new View(new Vector2F(PointOfView.X, PointOfView.Y), new Vector2F(Resolution.X, Resolution.Y));
             GraphicManager.Current.renderWindow.SetView(View);
             pos = new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);*/
-            
+
             view = new View(new Vector2F(PointOfView.X, PointOfView.Y), new Vector2F(Resolution.X, Resolution.Y));
         }
 
         /// <summary>
-        /// Befores the update
+        ///     Befores the update
         /// </summary>
         public override void BeforeUpdate()
         {
@@ -99,7 +96,7 @@ namespace Alis.Core.Component.Render
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {

@@ -47,36 +47,6 @@ namespace Alis
     public class VideoGame : GameBase
     {
         /// <summary>
-        /// Gets or sets the value of the input manager
-        /// </summary>
-        public static InputManager InputManager { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the physic manager
-        /// </summary>
-        public static PhysicManager PhysicManager { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the graphic manager
-        /// </summary>
-        public static GraphicManager GraphicManager { get; set; }
-        
-        /// <summary>
-        /// Gets or sets the value of the scene manager
-        /// </summary>
-        public static SceneManager SceneManager { get; set; }
-        
-        /// <summary>
-        /// Gets the value of the audio manager
-        /// </summary>
-        public static AudioManager AudioManager { get; set; }
-
-        /// <summary>
-        /// Gets or sets the value of the setting manager
-        /// </summary>
-        public static SettingManager Setting { get; set; }
-
-        /// <summary>
         ///     Video game
         /// </summary>
         public VideoGame()
@@ -87,7 +57,7 @@ namespace Alis
             AudioManager = new AudioManager();
             InputManager = new InputManager();
             Setting = new SettingManager();
-            
+
             Managers = new List<ManagerBase>
             {
                 PhysicManager,
@@ -95,9 +65,39 @@ namespace Alis
                 SceneManager,
                 AudioManager,
                 InputManager,
-                Setting,
+                Setting
             };
         }
+
+        /// <summary>
+        ///     Gets or sets the value of the input manager
+        /// </summary>
+        public static InputManager InputManager { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the physic manager
+        /// </summary>
+        public static PhysicManager PhysicManager { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the graphic manager
+        /// </summary>
+        public static GraphicManager GraphicManager { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the scene manager
+        /// </summary>
+        public static SceneManager SceneManager { get; set; }
+
+        /// <summary>
+        ///     Gets the value of the audio manager
+        /// </summary>
+        public static AudioManager AudioManager { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the value of the setting manager
+        /// </summary>
+        public static SettingManager Setting { get; set; }
 
         /// <summary>
         ///     Builders

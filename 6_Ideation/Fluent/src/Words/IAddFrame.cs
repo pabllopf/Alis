@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The add frame interface
+    ///     The add frame interface
     /// </summary>
     public interface IAddFrame<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Adds the frame using the specified value
+        ///     Adds the frame using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

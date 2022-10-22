@@ -49,7 +49,7 @@ namespace Alis.Sample.Rogue
         public static void Main(string[] args)
         {
             Console.WriteLine("Start game");
-            
+
             VideoGame.Builder()
                 .Settings(setting => setting
                     .General(general => general
@@ -61,7 +61,7 @@ namespace Alis.Sample.Rogue
                             .IsActive(true)
                             .Style(Style.Dark)
                             .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
-                            .Build()) 
+                            .Build())
                         .Build())
                     .Debug(debug => debug
                         .Build())
@@ -131,23 +131,22 @@ namespace Alis.Sample.Rogue
                                         .Build())
                                     .Build())
                                 .AddAnimation(animation => animation
-                                        .Name("WalkDown")
-                                        .Speed(0.25f)
-                                        .Order(1)
-                                        .AddFrame(frame => frame
-                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
-                                            .Build())
-                                        .AddFrame(frame => frame
-                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile001.png")
-                                            .Build())
-                                        .AddFrame(frame => frame
-                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile002.png")
-                                            .Build())
-                                        .AddFrame(frame => frame
-                                            .FilePath(Environment.CurrentDirectory + "/Assets/tile003.png")
-                                            .Build())
+                                    .Name("WalkDown")
+                                    .Speed(0.25f)
+                                    .Order(1)
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
                                         .Build())
-                                
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile001.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile002.png")
+                                        .Build())
+                                    .AddFrame(frame => frame
+                                        .FilePath(Environment.CurrentDirectory + "/Assets/tile003.png")
+                                        .Build())
+                                    .Build())
                                 .AddAnimation(animation => animation
                                     .Name("WalkUp")
                                     .Speed(0.25f)
@@ -165,7 +164,6 @@ namespace Alis.Sample.Rogue
                                         .FilePath(Environment.CurrentDirectory + "/Assets/tile037.png")
                                         .Build())
                                     .Build())
-                                
                                 .AddAnimation(animation => animation
                                     .Name("WalkRight")
                                     .Speed(0.25f)
@@ -183,7 +181,6 @@ namespace Alis.Sample.Rogue
                                         .FilePath(Environment.CurrentDirectory + "/Assets/tile020.png")
                                         .Build())
                                     .Build())
-                                
                                 .AddAnimation(animation => animation
                                     .Name("WalkLeft")
                                     .Speed(0.25f)

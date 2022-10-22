@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FrameBuilder.cs
+//  File:AnimationBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -35,10 +35,10 @@ using Alis.Core.Component.Render;
 namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
-    /// The animation builder class
+    ///     The animation builder class
     /// </summary>
-    /// <seealso cref="IBuild{Animation}"/>
-    public class AnimationBuilder: 
+    /// <seealso cref="IBuild{Animation}" />
+    public class AnimationBuilder :
         IBuild<Animation>,
         IName<AnimationBuilder, string>,
         ISpeed<AnimationBuilder, float>,
@@ -46,42 +46,13 @@ namespace Alis.Builder.Core.Component.Render
         IAddFrame<AnimationBuilder, Func<FrameBuilder, Frame>>
     {
         /// <summary>
-        /// The animation
+        ///     The animation
         /// </summary>
         private Animation animation = new Animation();
-        
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The animation</returns>
-        public Animation Build() => animation;
+
 
         /// <summary>
-        /// Names the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The animation builder</returns>
-        public AnimationBuilder Name(string value)
-        {
-            animation.Name = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Speeds the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The animation builder</returns>
-        public AnimationBuilder Speed(float value)
-        {
-            animation.Speed = value;
-            return this;
-        }
-        
-        
-
-        /// <summary>
-        /// Adds the frame using the specified value
+        ///     Adds the frame using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
@@ -92,13 +63,41 @@ namespace Alis.Builder.Core.Component.Render
         }
 
         /// <summary>
-        /// Orders the value
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The animation</returns>
+        public Animation Build() => animation;
+
+        /// <summary>
+        ///     Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The animation builder</returns>
+        public AnimationBuilder Name(string value)
+        {
+            animation.Name = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Orders the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animation builder</returns>
         public AnimationBuilder Order(int value)
         {
             animation.Order = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Speeds the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The animation builder</returns>
+        public AnimationBuilder Speed(float value)
+        {
+            animation.Speed = value;
             return this;
         }
     }

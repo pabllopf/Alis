@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collisions
         internal unsafe void ReadCache(SimplexCache* cache, IShape shapeA, XForm transformA, IShape shapeB,
             XForm transformB)
         {
-            Box2DxDebug.Assert(0 <= cache->Count && cache->Count <= 3);
+            Box2DxDebug.Assert((0 <= cache->Count) && (cache->Count <= 3));
 
             // Copy data from cache.
             Count = cache->Count;
@@ -347,7 +347,7 @@ namespace Alis.Core.Physic.Collisions
             float d1233 = n123 * Vector2.Cross(w1, w2);
 
             // w1 region
-            if (d122 <= 0.0f && d132 <= 0.0f)
+            if ((d122 <= 0.0f) && (d132 <= 0.0f))
             {
                 V1.A = 1.0f;
                 Count = 1;
@@ -355,7 +355,7 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // e12
-            if (d121 > 0.0f && d122 > 0.0f && d1233 <= 0.0f)
+            if ((d121 > 0.0f) && (d122 > 0.0f) && (d1233 <= 0.0f))
             {
                 float invD12 = 1.0f / (d121 + d122);
                 V1.A = d121 * invD12;
@@ -365,7 +365,7 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // e13
-            if (d131 > 0.0f && d132 > 0.0f && d1232 <= 0.0f)
+            if ((d131 > 0.0f) && (d132 > 0.0f) && (d1232 <= 0.0f))
             {
                 float invD13 = 1.0f / (d131 + d132);
                 V1.A = d131 * invD13;
@@ -376,7 +376,7 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // w2 region
-            if (d121 <= 0.0f && d232 <= 0.0f)
+            if ((d121 <= 0.0f) && (d232 <= 0.0f))
             {
                 V2.A = 1.0f;
                 Count = 1;
@@ -385,7 +385,7 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // w3 region
-            if (d131 <= 0.0f && d231 <= 0.0f)
+            if ((d131 <= 0.0f) && (d231 <= 0.0f))
             {
                 V3.A = 1.0f;
                 Count = 1;
@@ -394,7 +394,7 @@ namespace Alis.Core.Physic.Collisions
             }
 
             // e23
-            if (d231 > 0.0f && d232 > 0.0f && d1231 <= 0.0f)
+            if ((d231 > 0.0f) && (d232 > 0.0f) && (d1231 <= 0.0f))
             {
                 float invD23 = 1.0f / (d231 + d232);
                 V2.A = d231 * invD23;

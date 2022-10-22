@@ -1,21 +1,51 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Main.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using UIKit;
 
-namespace MetalPerformanceShadersHelloWorld {
-	/// <summary>
-	/// The application class
-	/// </summary>
-	public class Application {
-		// This is the main entry point of the application.
-		/// <summary>
-		/// Main the args
-		/// </summary>
-		/// <param name="args">The args</param>
-		static void Main (string[] args)
-		{
-			// if you want to use a different Application Delegate class from "AppDelegate"
-			// you can specify it here.
-			UIApplication.Main (args, null, typeof(AppDelegate));
-		}
-	}
+namespace MetalPerformanceShadersHelloWorld
+{
+    /// <summary>
+    ///     The application class
+    /// </summary>
+    public class Application
+    {
+        // This is the main entry point of the application.
+        /// <summary>
+        ///     Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
+        private static void Main(string[] args)
+        {
+            // if you want to use a different Application Delegate class from "AppDelegate"
+            // you can specify it here.
+            UIApplication.Main(args, null, typeof(AppDelegate));
+        }
+    }
 }
-

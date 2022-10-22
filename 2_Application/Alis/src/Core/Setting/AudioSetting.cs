@@ -29,7 +29,6 @@
 
 using Alis.Builder.Core.Setting;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Audio;
 
 namespace Alis.Core.Setting
 {
@@ -40,7 +39,7 @@ namespace Alis.Core.Setting
         IBuilder<AudioSettingBuilder>
     {
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The audio setting builder</returns>
         public new AudioSettingBuilder Builder() => new AudioSettingBuilder();

@@ -83,13 +83,21 @@ namespace Alis.Core.Graphic.Sample
 
                 _red += 1;
                 if (_red >= 100)
+                {
                     _red -= 1;
+                }
+
                 _green += 2;
                 if (_green >= 100)
+                {
                     _green -= 1;
+                }
+
                 _blue += 3;
                 if (_blue >= 100)
+                {
                     _blue -= 1;
+                }
             }
         }
     }

@@ -39,20 +39,20 @@ namespace Alis.Core
     public abstract class GameBase
     {
         /// <summary>
-        ///     Active game
-        /// </summary>
-        public static bool IsRunning;
-
-        /// <summary>
         ///     The manager base
         /// </summary>
         protected List<ManagerBase> Managers = new List<ManagerBase>();
 
         /// <summary>
-        /// The time manager base
+        ///     The time manager base
         /// </summary>
         private TimeManagerBase timeManagerBase = new TimeManagerBase();
-        
+
+        /// <summary>
+        ///     Active game
+        /// </summary>
+        public static bool IsRunning;
+
         /// <summary>
         ///     Run program
         /// </summary>

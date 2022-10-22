@@ -41,12 +41,6 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
     //////////////////////////////////////////////////////////////////
     public class Context
     {
-
-        /// <summary>
-        ///     The our global context
-        /// </summary>
-        private static Context _ourGlobalContext;
-
         /// <summary>
         ///     The zero
         /// </summary>
@@ -83,6 +77,11 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
                 return _ourGlobalContext;
             }
         }
+
+        /// <summary>
+        ///     The our global context
+        /// </summary>
+        private static Context _ourGlobalContext;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

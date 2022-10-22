@@ -53,14 +53,13 @@ namespace Alis.Core.Entity
             components = new List<ComponentBase>();
             Console.WriteLine($"GameObject:NAME:{name}");
         }
-        
-        
-        
+
         /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The game object builder</returns>
         public GameObjectBuilder Builder() => new GameObjectBuilder();
+
 
         /// <summary>
         ///     Inits this instance
@@ -122,9 +121,6 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     Finds the with tag
         /// </summary>
-        public static GameObject FindWithTag(string tag)
-        {
-            return new GameObject();
-        }
+        public static GameObject FindWithTag(string tag) => new GameObject();
     }
 }

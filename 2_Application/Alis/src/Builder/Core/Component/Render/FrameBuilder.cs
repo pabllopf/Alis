@@ -34,25 +34,25 @@ using Alis.Core.Component.Render;
 namespace Alis.Builder.Core.Component.Render
 {
     /// <summary>
-    /// The frame builder class
+    ///     The frame builder class
     /// </summary>
-    public class FrameBuilder:
+    public class FrameBuilder :
         IBuild<Frame>,
         IFilePath<FrameBuilder, string>
     {
         /// <summary>
-        /// The frame
+        ///     The frame
         /// </summary>
         private Frame frame = new Frame();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The frame</returns>
         public Frame Build() => frame;
 
         /// <summary>
-        /// Files the path using the specified value
+        ///     Files the path using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The frame builder</returns>

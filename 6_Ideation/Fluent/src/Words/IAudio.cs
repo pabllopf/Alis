@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The audio interface
+    ///     The audio interface
     /// </summary>
     public interface IAudio<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Audioes the value
+        ///     Audioes the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

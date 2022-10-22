@@ -37,9 +37,9 @@ using Alis.Core.Setting;
 namespace Alis.Builder.Core.Setting
 {
     /// <summary>
-    /// The general setting builder class
+    ///     The general setting builder class
     /// </summary>
-    public class GeneralSettingBuilder:
+    public class GeneralSettingBuilder :
         IBuild<GeneralSetting>,
         IName<GeneralSettingBuilder, string>,
         IAuthor<GeneralSettingBuilder, string>,
@@ -48,29 +48,12 @@ namespace Alis.Builder.Core.Setting
         ISplashScreen<GeneralSettingBuilder, Func<SplashScreenBuilder, SplashScreen>>
     {
         /// <summary>
-        /// The general setting
+        ///     The general setting
         /// </summary>
         private GeneralSetting generalSetting = new GeneralSetting();
-        
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The general setting</returns>
-        public GeneralSetting Build() => generalSetting;
 
         /// <summary>
-        /// Names the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The general setting builder</returns>
-        public GeneralSettingBuilder Name(string value)
-        {
-            generalSetting.Name = value;
-            return this;
-        }
-        
-        /// <summary>
-        /// Authors the value
+        ///     Authors the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
@@ -81,7 +64,13 @@ namespace Alis.Builder.Core.Setting
         }
 
         /// <summary>
-        /// Descriptions the value
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The general setting</returns>
+        public GeneralSetting Build() => generalSetting;
+
+        /// <summary>
+        ///     Descriptions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
@@ -92,7 +81,7 @@ namespace Alis.Builder.Core.Setting
         }
 
         /// <summary>
-        /// Icons the value
+        ///     Icons the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>
@@ -103,7 +92,18 @@ namespace Alis.Builder.Core.Setting
         }
 
         /// <summary>
-        /// Splashes the screen using the specified value
+        ///     Names the value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The general setting builder</returns>
+        public GeneralSettingBuilder Name(string value)
+        {
+            generalSetting.Name = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Splashes the screen using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The general setting builder</returns>

@@ -32,13 +32,13 @@ using System.Diagnostics;
 namespace Alis.Core.Manager.Time
 {
     /// <summary>
-    /// The time manager base class
+    ///     The time manager base class
     /// </summary>
-    /// <seealso cref="ManagerBase"/>
+    /// <seealso cref="ManagerBase" />
     public class TimeManagerBase : ManagerBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TimeManagerBase"/> class
+        ///     Initializes a new instance of the <see cref="TimeManagerBase" /> class
         /// </summary>
         public TimeManagerBase()
         {

@@ -86,7 +86,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="t">The new initial time.</param>
         public void Advance(float t)
         {
-            if (T0 < t && 1.0f - T0 > Settings.FltEpsilon)
+            if ((T0 < t) && (1.0f - T0 > Settings.FltEpsilon))
             {
                 float alpha = (t - T0) / (1.0f - T0);
                 C0 = (1.0f - alpha) * C0 + alpha * C;

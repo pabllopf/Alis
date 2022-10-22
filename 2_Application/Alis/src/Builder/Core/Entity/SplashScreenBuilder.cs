@@ -34,9 +34,9 @@ using Alis.Core.Entity;
 namespace Alis.Builder.Core.Entity
 {
     /// <summary>
-    /// The splash screen builder class
+    ///     The splash screen builder class
     /// </summary>
-    /// <seealso cref="IBuild{SplashScreen}"/>
+    /// <seealso cref="IBuild{SplashScreen}" />
     public class SplashScreenBuilder :
         IBuild<SplashScreen>,
         IIsActive<SplashScreenBuilder, bool>,
@@ -44,19 +44,19 @@ namespace Alis.Builder.Core.Entity
         IStyle<SplashScreenBuilder, Style>
     {
         /// <summary>
-        /// The splash screen
+        ///     The splash screen
         /// </summary>
         private SplashScreen splashScreen = new SplashScreen();
-        
-        
+
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The splash screen</returns>
         public SplashScreen Build() => splashScreen;
 
         /// <summary>
-        /// Files the path using the specified value
+        ///     Files the path using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The splash screen builder</returns>
@@ -67,7 +67,7 @@ namespace Alis.Builder.Core.Entity
         }
 
         /// <summary>
-        /// Ises the active using the specified value
+        ///     Ises the active using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The splash screen builder</returns>
@@ -78,7 +78,7 @@ namespace Alis.Builder.Core.Entity
         }
 
         /// <summary>
-        /// Styles the value
+        ///     Styles the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The splash screen builder</returns>

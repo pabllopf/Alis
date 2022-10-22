@@ -31,42 +31,41 @@ using System;
 using System.Collections.Generic;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Graphic.D2.SFML.Graphics;
 
 namespace Alis.Core.Component.Render
 {
     /// <summary>
     ///     The animation class
     /// </summary>
-    public class Animation:
+    public class Animation :
         IBuilder<AnimatorBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the name
-        /// </summary>
-        public string Name { get; set; } = "Default Animation";
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         public Animation() => Frames = new List<Frame>();
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Animation"/> class
+        ///     Initializes a new instance of the <see cref="Animation" /> class
         /// </summary>
         /// <param name="textures">The textures</param>
         public Animation(List<Frame> textures) => Frames = textures;
 
+        /// <summary>
+        ///     Gets or sets the value of the name
+        /// </summary>
+        public string Name { get; set; } = "Default Animation";
+
 
         /// <summary>
-        /// Gets or sets the value of the index
+        ///     Gets or sets the value of the index
         /// </summary>
         private int Index { get; set; }
-        
-        
+
+
         /// <summary>
-        /// Gets or sets the value of the order
+        ///     Gets or sets the value of the order
         /// </summary>
         public int Order { get; set; }
 
@@ -79,6 +78,12 @@ namespace Alis.Core.Component.Render
         ///     Gets or sets the value of the textures
         /// </summary>
         private List<Frame> Frames { get; }
+
+        /// <summary>
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The animator builder</returns>
+        public AnimatorBuilder Builder() => new AnimatorBuilder();
 
         /// <summary>
         ///     Describes whether this instance has next
@@ -107,15 +112,9 @@ namespace Alis.Core.Component.Render
 
             return result;
         }
-        
-        /// <summary>
-        /// Builders this instance
-        /// </summary>
-        /// <returns>The animator builder</returns>
-        public AnimatorBuilder Builder() => new AnimatorBuilder();
 
         /// <summary>
-        /// Adds the frame using the specified frame
+        ///     Adds the frame using the specified frame
         /// </summary>
         /// <param name="frame">The frame</param>
         public void AddFrame(Frame frame)

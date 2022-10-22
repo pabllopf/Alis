@@ -40,12 +40,12 @@ namespace Alis.Core.Manager.Input
     public class InputManager : InputManagerBase
     {
         /// <summary>
-        /// Array of key of keyboard
+        ///     Array of key of keyboard
         /// </summary>
         private List<Key> keys;
 
         /// <summary>
-        /// Temp list of keys
+        ///     Temp list of keys
         /// </summary>
         private List<Key> tempListOfKeys;
 
@@ -54,7 +54,7 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Init()
         {
-            keys = new List<Key>((Key[])Enum.GetValues(typeof(Key)));
+            keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();
         }
 
@@ -84,7 +84,6 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Update()
         {
-            
         }
 
         /// <summary>

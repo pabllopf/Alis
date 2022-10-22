@@ -35,15 +35,16 @@ namespace Alis.Builder.Core.Component.Render
     /// <summary>
     ///     The camera builder class
     /// </summary>
-    public class CameraBuilder : 
+    public class CameraBuilder :
         IBuild<Camera>
     {
         /// <summary>
-        /// The camera
+        ///     The camera
         /// </summary>
         private Camera camera = new Camera();
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The camera</returns>
         public Camera Build() => camera;

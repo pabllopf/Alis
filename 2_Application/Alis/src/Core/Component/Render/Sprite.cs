@@ -43,7 +43,6 @@ namespace Alis.Core.Component.Render
     /// <seealso cref="ComponentBase" />
     public class Sprite : ComponentBase, IBuilder<SpriteBuilder>
     {
-
         /// <summary>
         ///     The image
         /// </summary>
@@ -113,12 +112,10 @@ namespace Alis.Core.Component.Render
         public override void Update()
         {
             sprite.Position = new Vector2F(
-                GameObject.Transform.Position.X - (size.X / 2),
-                GameObject.Transform.Position.Y - (size.Y / 2));
+                GameObject.Transform.Position.X - size.X / 2,
+                GameObject.Transform.Position.Y - size.Y / 2);
             sprite.Rotation = GameObject.Transform.Rotation;
             sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
-            
-            
         }
 
         /// <summary>

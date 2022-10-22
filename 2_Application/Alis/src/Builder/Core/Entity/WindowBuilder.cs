@@ -36,27 +36,21 @@ using Alis.Core.Graphic.D2.SFML.Graphics;
 namespace Alis.Builder.Core.Entity
 {
     /// <summary>
-    /// The window builder class
+    ///     The window builder class
     /// </summary>
-    /// <seealso cref="IBuild{Window}"/>
-    public class WindowBuilder : 
+    /// <seealso cref="IBuild{Window}" />
+    public class WindowBuilder :
         IBuild<Window>,
         IBackground<WindowBuilder, Color>,
         IResolution<WindowBuilder, float, float>
     {
         /// <summary>
-        /// The window
+        ///     The window
         /// </summary>
         private Window window = new Window();
-        
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The window</returns>
-        public Window Build() => window;
 
         /// <summary>
-        /// Backgrounds the value
+        ///     Backgrounds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The window builder</returns>
@@ -67,7 +61,13 @@ namespace Alis.Builder.Core.Entity
         }
 
         /// <summary>
-        /// Resolutions the x
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The window</returns>
+        public Window Build() => window;
+
+        /// <summary>
+        ///     Resolutions the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

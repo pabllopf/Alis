@@ -41,10 +41,9 @@ namespace Alis.Core.Component.Render
     public class Animator : ComponentBase, IBuilder<AnimatorBuilder>
     {
         /// <summary>
-        ///     Builders this instance
+        ///     The current animation
         /// </summary>
-        /// <returns>The animator builder</returns>
-        public new AnimatorBuilder Builder() => new AnimatorBuilder();
+        private Animation currentAnimation;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Animator" /> class
@@ -66,7 +65,7 @@ namespace Alis.Core.Component.Render
             {
                 currentAnimation = animations[0];
             }
-            
+
             Timer = new Stopwatch();
         }
 
@@ -84,20 +83,21 @@ namespace Alis.Core.Component.Render
         ///     Gets or sets the value of the animations
         /// </summary>
         public List<Animation> Animations { get; set; }
-        
-        /// <summary>
-        /// The current animation
-        /// </summary>
-        private Animation currentAnimation;
 
         /// <summary>
-        /// Adds the animation using the specified animation
+        ///     Builders this instance
+        /// </summary>
+        /// <returns>The animator builder</returns>
+        public new AnimatorBuilder Builder() => new AnimatorBuilder();
+
+        /// <summary>
+        ///     Adds the animation using the specified animation
         /// </summary>
         /// <param name="animation">The animation</param>
         public void AddAnimation(Animation animation) => Animations.Add(animation);
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {
@@ -124,7 +124,7 @@ namespace Alis.Core.Component.Render
             Console.WriteLine($"text={Sprite.texturePath}");
 
             Console.WriteLine($"Animations={Animations.Count}");
-            
+
             /*
             if (GameObject.ContainComponent(this))
             {
@@ -167,7 +167,7 @@ namespace Alis.Core.Component.Render
         }
 
         /// <summary>
-        /// Changes the animation to using the specified name animation
+        ///     Changes the animation to using the specified name animation
         /// </summary>
         /// <param name="nameAnimation">The name animation</param>
         public void ChangeAnimationTo(string nameAnimation)
@@ -182,9 +182,8 @@ namespace Alis.Core.Component.Render
             if (tempAnimation != null)
             {
                 currentAnimation = tempAnimation;
-                return;
             }
-            
+
             //Console.WriteLine($"Dont find the animation {nameAnimation}");
         }
     }

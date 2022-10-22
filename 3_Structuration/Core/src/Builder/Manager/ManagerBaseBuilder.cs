@@ -30,10 +30,9 @@
 namespace Alis.Core.Builder.Manager
 {
     /// <summary>
-    /// The manager base builder class
+    ///     The manager base builder class
     /// </summary>
     public class ManagerBaseBuilder
     {
-        
     }
 }

@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Fluent;
 
 namespace Alis.Builder
 {
-
     /// <summary>
     ///     The console game builder class
     /// </summary>

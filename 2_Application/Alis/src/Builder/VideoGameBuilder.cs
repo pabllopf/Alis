@@ -31,11 +31,8 @@ using System;
 using Alis.Builder.Core.Manager;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Builder.Manager;
-using Alis.Core.Builder.Setting;
 using Alis.Core.Manager.Scene;
 using Alis.Core.Manager.Setting;
-using Alis.Core.Setting;
 
 namespace Alis.Builder
 {
@@ -68,11 +65,8 @@ namespace Alis.Builder
             return this;
         }
 
-        /// <summary>Runs this instance.</summary>
-        public void Run() => videoGame.Run();
-
         /// <summary>
-        /// Setting the value
+        ///     Setting the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The video game builder</returns>
@@ -81,5 +75,8 @@ namespace Alis.Builder
             VideoGame.Setting = value.Invoke(new SettingManagerBuilder());
             return this;
         }
+
+        /// <summary>Runs this instance.</summary>
+        public void Run() => videoGame.Run();
     }
 }

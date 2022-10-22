@@ -45,12 +45,12 @@ namespace Alis.Core.Setting
         public LogLevel Level { get; set; } = LogLevel.Normal;
 
         /// <summary>
-        /// Gets or sets the value of the create file log
+        ///     Gets or sets the value of the create file log
         /// </summary>
         public bool CreateFileLog { get; set; } = true;
 
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The debug setting builder</returns>
         public new DebugSettingBuilder Builder() => new DebugSettingBuilder();

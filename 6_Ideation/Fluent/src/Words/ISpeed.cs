@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The speed interface
+    ///     The speed interface
     /// </summary>
     public interface ISpeed<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Speeds the value
+        ///     Speeds the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

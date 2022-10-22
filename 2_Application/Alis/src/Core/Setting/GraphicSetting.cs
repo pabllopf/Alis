@@ -34,22 +34,22 @@ using Alis.Core.Entity;
 namespace Alis.Core.Setting
 {
     /// <summary>
-    /// The graphic setting class
+    ///     The graphic setting class
     /// </summary>
-    /// <seealso cref="SettingBase"/>
-    /// <seealso cref="IBuilder{GeneralSettingBuilder}"/>
+    /// <seealso cref="SettingBase" />
+    /// <seealso cref="IBuilder{GeneralSettingBuilder}" />
     public class GraphicSetting : SettingBase,
         IBuilder<GraphicSettingBuilder>
     {
         /// <summary>
-        /// Builders this instance
+        ///     Gets or sets the value of the window
+        /// </summary>
+        public Window Window { get; set; } = new Window();
+
+        /// <summary>
+        ///     Builders this instance
         /// </summary>
         /// <returns>The graphic setting builder</returns>
         public new GraphicSettingBuilder Builder() => new GraphicSettingBuilder();
-
-        /// <summary>
-        /// Gets or sets the value of the window
-        /// </summary>
-        public Window Window { get; set; } = new Window();
     }
 }

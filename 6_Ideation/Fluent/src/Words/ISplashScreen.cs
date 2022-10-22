@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The splash screen interface
+    ///     The splash screen interface
     /// </summary>
     public interface ISplashScreen<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Splashes the screen using the specified value
+        ///     Splashes the screen using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

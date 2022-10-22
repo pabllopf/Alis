@@ -46,31 +46,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
     ////////////////////////////////////////////////////////////
     public class Text : Transformable, IDrawable
     {
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Enumerate the string drawing styles
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        [Flags]
-        public enum Styles
-        {
-            /// <summary>Regular characters, no style</summary>
-            Regular = 0,
-
-            /// <summary>Bold characters</summary>
-            Bold = 1 << 0,
-
-            /// <summary>Italic characters</summary>
-            Italic = 1 << 1,
-
-            /// <summary>Underlined characters</summary>
-            Underlined = 1 << 2,
-
-            /// <summary>Strike through characters</summary>
-            StrikeThrough = 1 << 3
-        }
-
         /// <summary>
         ///     The my font
         /// </summary>
@@ -300,6 +275,30 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         {
             get => sfText_getStyle(CPointer);
             set => sfText_setStyle(CPointer, value);
+        }
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Enumerate the string drawing styles
+        /// </summary>
+        ////////////////////////////////////////////////////////////
+        [Flags]
+        public enum Styles
+        {
+            /// <summary>Regular characters, no style</summary>
+            Regular = 0,
+
+            /// <summary>Bold characters</summary>
+            Bold = 1 << 0,
+
+            /// <summary>Italic characters</summary>
+            Italic = 1 << 1,
+
+            /// <summary>Underlined characters</summary>
+            Underlined = 1 << 2,
+
+            /// <summary>Strike through characters</summary>
+            StrikeThrough = 1 << 3
         }
 
         ////////////////////////////////////////////////////////////

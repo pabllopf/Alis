@@ -40,17 +40,17 @@ namespace Alis.Sample.Rogue
     public class PlayerMovement : ComponentBase
     {
         /// <summary>
-        /// The walking
-        /// </summary>
-        private bool walk;
-        
-        /// <summary>
-        /// The animator
+        ///     The animator
         /// </summary>
         private Animator animator;
 
         /// <summary>
-        /// Awakes this instance
+        ///     The walking
+        /// </summary>
+        private bool walk;
+
+        /// <summary>
+        ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
@@ -78,7 +78,7 @@ namespace Alis.Sample.Rogue
         }
 
         /// <summary>
-        /// sample
+        ///     sample
         /// </summary>
         /// <param name="key"></param>
         public override void OnReleaseKey(string key)
@@ -93,10 +93,10 @@ namespace Alis.Sample.Rogue
                     break;
             }
         }
-        
+
 
         /// <summary>
-        /// sample
+        ///     sample
         /// </summary>
         /// <param name="key"></param>
         public override void OnPressDownKey(string key)

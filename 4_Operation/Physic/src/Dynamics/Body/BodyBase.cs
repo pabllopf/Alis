@@ -249,12 +249,12 @@ namespace Alis.Core.Physic.Dynamics.Body
 
             I = bd.MassData.I;
 
-            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
+            if ((I > 0.0f) && ((Flags & BodyFlags.FixedRotation) == 0))
             {
                 InvI = 1.0f / I;
             }
 
-            if (InvMass == 0.0f && InvI == 0.0f)
+            if ((InvMass == 0.0f) && (InvI == 0.0f))
             {
                 type = BodyType.Static;
             }
@@ -433,7 +433,7 @@ namespace Alis.Core.Physic.Dynamics.Body
 
             I = massData.I;
 
-            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
+            if ((I > 0.0f) && ((Flags & BodyFlags.FixedRotation) == 0))
             {
                 InvI = 1.0f / I;
             }
@@ -443,7 +443,7 @@ namespace Alis.Core.Physic.Dynamics.Body
             Sweep.C0 = Sweep.C = Helper.Mul(Xf, Sweep.LocalCenter);
 
             BodyType oldType = type;
-            if (InvMass == 0.0f && InvI == 0.0f)
+            if ((InvMass == 0.0f) && (InvI == 0.0f))
             {
                 type = BodyType.Static;
             }
@@ -499,7 +499,7 @@ namespace Alis.Core.Physic.Dynamics.Body
                 center *= InvMass;
             }
 
-            if (I > 0.0f && (Flags & BodyFlags.FixedRotation) == 0)
+            if ((I > 0.0f) && ((Flags & BodyFlags.FixedRotation) == 0))
             {
                 // Center the inertia about the center of mass.
                 I -= Mass * Vector2.Dot(center, center);
@@ -517,7 +517,7 @@ namespace Alis.Core.Physic.Dynamics.Body
             Sweep.C0 = Sweep.C = Helper.Mul(Xf, Sweep.LocalCenter);
 
             BodyType oldType = type;
-            if (InvMass == 0.0f && InvI == 0.0f)
+            if ((InvMass == 0.0f) && (InvI == 0.0f))
             {
                 type = BodyType.Static;
             }

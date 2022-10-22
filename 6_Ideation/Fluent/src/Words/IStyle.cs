@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The style interface
+    ///     The style interface
     /// </summary>
     public interface IStyle<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Styles the value
+        ///     Styles the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

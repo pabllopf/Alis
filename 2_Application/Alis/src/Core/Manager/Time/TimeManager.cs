@@ -34,6 +34,5 @@ namespace Alis.Core.Manager.Time
     /// </summary>
     public class TimeManager : TimeManagerBase
     {
-        
     }
 }

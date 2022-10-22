@@ -45,21 +45,30 @@ namespace Alis.Core.Manager.Graphic
     /// <seealso cref="ManagerBase" />
     public class GraphicManager : GraphicManagerBase
     {
-
         /// <summary>
-        /// The current
+        ///     The vector
         /// </summary>
-        public static GraphicManager Current;
-        
+        private Vector2 defaultSize;
+
         /// <summary>
         ///     The renderWindow
         /// </summary>
         public RenderWindow renderWindow;
 
         /// <summary>
-        /// The video mode
+        ///     The default
+        /// </summary>
+        private Styles styles = Styles.Default;
+
+        /// <summary>
+        ///     The video mode
         /// </summary>
         private VideoMode VideoMode;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="GraphicManager" /> class
+        /// </summary>
+        public GraphicManager() => Current = this;
 
         /// <summary>
         ///     Gets or sets the value of the sprites
@@ -67,65 +76,49 @@ namespace Alis.Core.Manager.Graphic
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
 
         /// <summary>
-        /// The default
+        ///     The current
         /// </summary>
-        private Styles styles = Styles.Default;
+        public static GraphicManager Current;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GraphicManager"/> class
-        /// </summary>
-        public GraphicManager()
-        {
-            Current = this;
-        }
-
-        /// <summary>
-        /// The vector
-        /// </summary>
-        private Vector2 defaultSize = new Vector2();
-        
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
             Console.WriteLine("init::graphic:new");
-            
+
             defaultSize = new Vector2(VideoGame.Setting.Graphic.Window.Resolution.X, VideoGame.Setting.Graphic.Window.Resolution.Y);
-            
+
             styles = Styles.Default;
             InitRenderWindow();
         }
-        
-        
+
 
         /// <summary>
-        /// Renders the window on key pressed using the specified sender
+        ///     Renders the window on key pressed using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
         private void RenderWindowOnKeyPressed(object sender, KeyEventArgs e)
         {
-            
         }
 
         /// <summary>
-        /// Renders the window on resized using the specified sender
+        ///     Renders the window on resized using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
         private void RenderWindowOnResized(object sender, SizeEventArgs e)
         {
-            
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
-            
+
             renderWindow.Size = new Vector2U(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
         }
 
         /// <summary>
-        /// Inits the render window
+        ///     Inits the render window
         /// </summary>
         private void InitRenderWindow()
         {
@@ -134,14 +127,14 @@ namespace Alis.Core.Manager.Graphic
                 renderWindow.Close();
                 renderWindow.Dispose();
             }
-            
+
             VideoMode = new VideoMode(
-                (uint) defaultSize.X, 
+                (uint) defaultSize.X,
                 (uint) defaultSize.Y);
 
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(defaultSize.X, defaultSize.Y);
-            
-            renderWindow = new RenderWindow(VideoMode, 
+
+            renderWindow = new RenderWindow(VideoMode,
                 $"{VideoGame.Setting.General.Name} by {VideoGame.Setting.General.Author}", styles);
 
             renderWindow.RequestFocus();
@@ -153,7 +146,7 @@ namespace Alis.Core.Manager.Graphic
                 Image image = new Image(VideoGame.Setting.General.IconFile);
                 renderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
             }
-            
+
             renderWindow.Resized += RenderWindowOnResized;
             renderWindow.KeyPressed += RenderWindowOnKeyPressed;
             renderWindow.Closed += RenderWindowOnClosed;
@@ -164,7 +157,6 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void Awake()
         {
-            
         }
 
         /// <summary>
@@ -193,7 +185,7 @@ namespace Alis.Core.Manager.Graphic
         public override void DispatchEvents()
         {
             renderWindow.DispatchEvents();
-            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && Math.Abs(renderWindow.Size.X - defaultSize.X) > 0.1 && Math.Abs(renderWindow.Size.Y - defaultSize.Y) > 0.1)
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(renderWindow.Size.X - defaultSize.X) > 0.1) && (Math.Abs(renderWindow.Size.Y - defaultSize.Y) > 0.1))
             {
                 styles = Styles.Default;
                 Console.WriteLine("Change style to default");
@@ -202,13 +194,12 @@ namespace Alis.Core.Manager.Graphic
                 return;
             }
 
-            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && Math.Abs(renderWindow.Size.X - defaultSize.X) < 0.1 && Math.Abs(renderWindow.Size.Y - defaultSize.Y) < 0.1)
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(renderWindow.Size.X - defaultSize.X) < 0.1) && (Math.Abs(renderWindow.Size.Y - defaultSize.Y) < 0.1))
             {
                 styles = Styles.Fullscreen;
                 Console.WriteLine("Change style to Fullscreen");
                 InitRenderWindow();
                 Task.Delay(100).Wait();
-                return;
             }
         }
 
@@ -266,7 +257,7 @@ namespace Alis.Core.Manager.Graphic
         }
 
         /// <summary>
-        /// Sets the view using the specified view
+        ///     Sets the view using the specified view
         /// </summary>
         /// <param name="view">The view</param>
         public void SetView(View view)

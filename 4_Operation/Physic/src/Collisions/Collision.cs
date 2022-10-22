@@ -427,7 +427,7 @@ namespace Alis.Core.Physic.Collisions
             int count2 = poly2.VertexCount;
             Vector2[] vertices2 = poly2.Vertices;
 
-            Box2DxDebug.Assert(0 <= edge1 && edge1 < count1);
+            Box2DxDebug.Assert((0 <= edge1) && (edge1 < count1));
 
             // Convert normal from poly1's frame into poly2's frame.
             Vector2 normal1World = Helper.Mul(xf1.R, normals1[edge1]);
@@ -493,7 +493,7 @@ namespace Alis.Core.Physic.Collisions
             int bestEdge;
             float bestSeparation;
             int increment;
-            if (sPrev > s && sPrev > sNext)
+            if ((sPrev > s) && (sPrev > sNext))
             {
                 increment = -1;
                 bestEdge = prevEdge;
@@ -559,7 +559,7 @@ namespace Alis.Core.Physic.Collisions
             Vector2[] vertices2 = poly2.Vertices;
             Vector2[] normals2 = poly2.Normals;
 
-            Box2DxDebug.Assert(0 <= edge1 && edge1 < count1);
+            Box2DxDebug.Assert((0 <= edge1) && (edge1 < count1));
 
             // Get the normal of the reference edge in poly2's frame.
             Vector2 normal1 = Helper.MulT(xf2.R, Helper.Mul(xf1.R, normals1[edge1]));
@@ -836,7 +836,7 @@ namespace Alis.Core.Physic.Collisions
                 bool duplicate = false;
                 for (i = 0; i < lastCount; ++i)
                 {
-                    if (vertex->IndexA == lastA[i] && vertex->IndexB == lastB[i])
+                    if ((vertex->IndexA == lastA[i]) && (vertex->IndexB == lastB[i]))
                     {
                         duplicate = true;
                         break;
@@ -874,7 +874,7 @@ namespace Alis.Core.Physic.Collisions
                 float rA = shapeA.GetRadius();
                 float rB = shapeB.GetRadius();
 
-                if (output.Distance > rA + rB && output.Distance > Settings.FltEpsilon)
+                if ((output.Distance > rA + rB) && (output.Distance > Settings.FltEpsilon))
                 {
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.

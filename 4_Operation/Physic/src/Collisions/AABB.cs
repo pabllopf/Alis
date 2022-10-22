@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Collisions
             get
             {
                 Vector2 d = UpperBound - LowerBound;
-                bool valid = d.X >= 0.0f && d.Y >= 0.0f;
+                bool valid = (d.X >= 0.0f) && (d.Y >= 0.0f);
                 valid = valid && LowerBound.IsValid && UpperBound.IsValid;
                 return valid;
             }
@@ -75,9 +75,9 @@ namespace Alis.Core.Physic.Collisions
         public bool Contains(Aabb aabb)
         {
             bool result = LowerBound.X <= aabb.LowerBound.X;
-            result = result && LowerBound.Y <= aabb.LowerBound.Y;
-            result = result && aabb.UpperBound.X <= UpperBound.X;
-            result = result && aabb.UpperBound.Y <= UpperBound.Y;
+            result = result && (LowerBound.Y <= aabb.LowerBound.Y);
+            result = result && (aabb.UpperBound.X <= UpperBound.X);
+            result = result && (aabb.UpperBound.Y <= UpperBound.Y);
             return result;
         }
 

@@ -57,8 +57,8 @@ namespace Alis.Core.Aspect.Base
         /// <param name="obj"></param>
         /// <returns></returns>
         public static int GetHashCode(object obj) => obj?.GetHashCode() ?? 0;
-        
-        
+
+
         /// <summary>
         /// </summary>
         /// <param name="obj"></param>

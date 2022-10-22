@@ -40,6 +40,10 @@ namespace Alis.Core.Audio.OS.Players
     /// <seealso cref="IPlayer" />
     internal abstract class UnixPlayerBase : IPlayer
     {
+        /// <summary>
+        ///     The process
+        /// </summary>
+        private Process _process;
 
         /// <summary>
         ///     The pause process command
@@ -50,11 +54,6 @@ namespace Alis.Core.Audio.OS.Players
         ///     The resume process command
         /// </summary>
         internal const string ResumeProcessCommand = "kill -CONT {0}";
-
-        /// <summary>
-        ///     The process
-        /// </summary>
-        private Process _process;
 
         public event EventHandler PlaybackFinished;
 
@@ -75,7 +74,7 @@ namespace Alis.Core.Audio.OS.Players
         public async Task Play(string fileName)
         {
             await Stop();
-            var BashToolName = GetBashCommand(fileName);
+            string BashToolName = GetBashCommand(fileName);
             _process = StartBashProcess($"{BashToolName} '{fileName}'");
             _process.EnableRaisingEvents = true;
             _process.Exited += HandlePlaybackFinished;
@@ -89,9 +88,9 @@ namespace Alis.Core.Audio.OS.Players
         /// </summary>
         public Task Pause()
         {
-            if (Playing && !Paused && _process != null)
+            if (Playing && !Paused && (_process != null))
             {
-                var tempProcess = StartBashProcess(string.Format(PauseProcessCommand, _process.Id));
+                Process tempProcess = StartBashProcess(string.Format(PauseProcessCommand, _process.Id));
                 tempProcess.WaitForExit();
                 Paused = true;
             }
@@ -104,9 +103,9 @@ namespace Alis.Core.Audio.OS.Players
         /// </summary>
         public Task Resume()
         {
-            if (Playing && Paused && _process != null)
+            if (Playing && Paused && (_process != null))
             {
-                var tempProcess = StartBashProcess(string.Format(ResumeProcessCommand, _process.Id));
+                Process tempProcess = StartBashProcess(string.Format(ResumeProcessCommand, _process.Id));
                 tempProcess.WaitForExit();
                 Paused = false;
             }
@@ -152,9 +151,9 @@ namespace Alis.Core.Audio.OS.Players
         /// <returns>The process</returns>
         protected Process StartBashProcess(string command)
         {
-            var escapedArgs = command.Replace("\"", "\\\"");
+            string escapedArgs = command.Replace("\"", "\\\"");
 
-            var process = new Process
+            Process process = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {

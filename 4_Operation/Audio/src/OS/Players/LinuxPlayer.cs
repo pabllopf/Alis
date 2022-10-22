@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Alis.Core.Audio.OS.Interfaces;
@@ -41,7 +42,6 @@ namespace Alis.Core.Audio.OS.Players
     /// <seealso cref="IPlayer" />
     internal class LinuxPlayer : UnixPlayerBase, IPlayer
     {
-
         /// <summary>
         ///     Sets the volume using the specified percent
         /// </summary>
@@ -50,9 +50,11 @@ namespace Alis.Core.Audio.OS.Players
         public override Task SetVolume(byte percent)
         {
             if (percent > 100)
+            {
                 throw new ArgumentOutOfRangeException(nameof(percent), "Percent can't exceed 100");
+            }
 
-            var tempProcess = StartBashProcess($"amixer -M set 'Master' {percent}%");
+            Process tempProcess = StartBashProcess($"amixer -M set 'Master' {percent}%");
             tempProcess.WaitForExit();
 
             return Task.CompletedTask;

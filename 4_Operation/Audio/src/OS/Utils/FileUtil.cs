@@ -48,7 +48,7 @@ namespace Alis.Core.Audio.OS.Utils
         /// <returns>The file name to return</returns>
         public static string CheckFileToPlay(string originalFileName)
         {
-            var fileNameToReturn = originalFileName;
+            string fileNameToReturn = originalFileName;
             if (originalFileName.Contains(" "))
             {
                 Directory.CreateDirectory(TempDirName);
@@ -66,7 +66,9 @@ namespace Alis.Core.Audio.OS.Utils
         public static void ClearTempFiles()
         {
             if (Directory.Exists(TempDirName))
+            {
                 Directory.Delete(TempDirName, true);
+            }
         }
     }
 }

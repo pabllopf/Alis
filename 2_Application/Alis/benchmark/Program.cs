@@ -29,15 +29,9 @@
 
 using System;
 using System.Linq;
-using Alis.Benchmark.ComputeHash;
-using BenchmarkDotNet.Analysers;
-using BenchmarkDotNet.Columns;
 using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Diagnosers;
 using BenchmarkDotNet.Exporters;
-using BenchmarkDotNet.Filters;
 using BenchmarkDotNet.Loggers;
-using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 
 namespace Alis.Benchmark
@@ -53,19 +47,26 @@ namespace Alis.Benchmark
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            #if DEBUG
-            
+#if DEBUG
+
             ManualConfig config = new DebugBuildConfig()
                 .WithOptions(ConfigOptions.DisableLogFile)
+                .AddColumnProvider(DefaultConfig.Instance.GetColumnProviders().ToArray())
+                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
+                .AddValidator(DefaultConfig.Instance.GetValidators().ToArray())
+                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
+                .AddAnalyser(DefaultConfig.Instance.GetAnalysers().ToArray())
+                .AddJob(DefaultConfig.Instance.GetJobs().ToArray())
+                .AddLogger(new ConsoleLogger())
+                .WithUnionRule(ConfigUnionRule.AlwaysUseGlobal)
                 .AddExporter(MarkdownExporter.GitHub)
-                .WithArtifactsPath($"../../../../docs/benchmarks//{DateTime.Now:yyyy-MM-dd}/{typeof(Program).Assembly.GetName().Name}/debug/");
-                
+                .WithArtifactsPath($"../../../../docs/benchmarks//{DateTime.Now:yyyy-MM-dd}/{typeof(Program).Assembly.FullName}/release/");
+
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, config);
-            
-            #endif
-            
-            #if RELEASE
-            
+
+#endif
+
+#if RELEASE
             ManualConfig config = new DebugBuildConfig()
                 .WithOptions(ConfigOptions.DisableLogFile)
                 .AddColumnProvider(DefaultConfig.Instance.GetColumnProviders().ToArray())
@@ -88,8 +89,8 @@ namespace Alis.Benchmark
                 MarkdownExporter.Console.ExportToLog(summary, logger);
                 ConclusionHelper.Print(logger, summary.BenchmarksCases.First().Config.GetCompositeAnalyser().Analyse(summary).ToList());
             }
-            
-            #endif
+
+#endif
         }
     }
 }

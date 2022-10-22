@@ -130,7 +130,7 @@ namespace Alis.Core.Aspect.Math
         /// <returns>The result</returns>
         public static bool IsPowerOfTwo(uint x)
         {
-            bool result = x > 0 && (x & x - 1) == 0;
+            bool result = (x > 0) && ((x & (x - 1)) == 0);
             return result;
         }
 

@@ -44,7 +44,6 @@ namespace Alis.Core.Audio.OS.Players
     /// <seealso cref="IPlayer" />
     internal class WindowsPlayer : IPlayer
     {
-
         /// <summary>
         ///     The file name
         /// </summary>
@@ -158,7 +157,7 @@ namespace Alis.Core.Audio.OS.Players
             // Calculate the volume that's being set
             int NewVolume = ushort.MaxValue / 100 * percent;
             // Set the same volume for both the left and the right channels
-            uint NewVolumeAllChannels = (uint) NewVolume & 0x0000ffff | (uint) NewVolume << 16;
+            uint NewVolumeAllChannels = ((uint) NewVolume & 0x0000ffff) | ((uint) NewVolume << 16);
             // Set the volume
             waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
 
@@ -215,14 +214,14 @@ namespace Alis.Core.Audio.OS.Players
         /// <exception cref="Exception"></exception>
         private Task ExecuteMsiCommand(string commandString)
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
-            var result = mciSendString(commandString, sb, 1024 * 1024, IntPtr.Zero);
+            int result = mciSendString(commandString, sb, 1024 * 1024, IntPtr.Zero);
 
             if (result != 0)
             {
-                var errorSb = new StringBuilder($"Error executing MCI command '{commandString}'. Error code: {result}.");
-                var sb2 = new StringBuilder(128);
+                StringBuilder errorSb = new StringBuilder($"Error executing MCI command '{commandString}'. Error code: {result}.");
+                StringBuilder sb2 = new StringBuilder(128);
 
                 mciGetErrorString(result, sb2, 128);
                 errorSb.Append($" Message: {sb2}");
@@ -230,8 +229,10 @@ namespace Alis.Core.Audio.OS.Players
                 throw new Exception(errorSb.ToString());
             }
 
-            if (commandString.ToLower().StartsWith("status") && int.TryParse(sb.ToString(), out var length))
+            if (commandString.ToLower().StartsWith("status") && int.TryParse(sb.ToString(), out int length))
+            {
                 _playbackTimer.Interval = length;
+            }
 
             return Task.CompletedTask;
         }

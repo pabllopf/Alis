@@ -37,7 +37,6 @@ namespace Alis.Core.Setting
     /// </summary>
     public class SettingBase : IBuilder<SettingBuilder>
     {
-        
         /// <summary>
         ///     Setting build
         /// </summary>

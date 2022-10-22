@@ -34,7 +34,7 @@ using Alis.Core.Component;
 namespace Alis.Core.Entity
 {
     /// <summary>
-    /// The game object base class
+    ///     The game object base class
     /// </summary>
     public class GameObjectBase : AlisObject
     {
@@ -42,12 +42,12 @@ namespace Alis.Core.Entity
         ///     The components
         /// </summary>
         public List<ComponentBase> components;
-        
+
         /// <summary>
         ///     The transform
         /// </summary>
-        public TransformBase Transform { get;  set; } = new TransformBase();
-        
+        public TransformBase Transform { get; set; } = new TransformBase();
+
         /// <summary>
         ///     Adds the component
         /// </summary>
@@ -61,14 +61,14 @@ namespace Alis.Core.Entity
         public void RemoveComponent<T>(T component) where T : ComponentBase => components.Remove(component);
 
         /// <summary>
-        /// Describes whether this instance contain component
+        ///     Describes whether this instance contain component
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The bool</returns>
         public bool ContainComponent(ComponentBase component) => components.Contains(component);
 
         /// <summary>
-        /// Gets the component
+        ///     Gets the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>

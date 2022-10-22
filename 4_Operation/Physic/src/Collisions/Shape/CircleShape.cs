@@ -38,7 +38,6 @@ namespace Alis.Core.Physic.Collisions.Shape
     /// </summary>
     public class CircleShape : IShape
     {
-
         // Position
         /// <summary>
         ///     The position
@@ -129,7 +128,7 @@ namespace Alis.Core.Physic.Collisions.Shape
             float a = -(c + Helper.Sqrt(sigma));
 
             // Is the intersection point on the segment?
-            if (0.0f <= a && a <= maxLambda * rr)
+            if ((0.0f <= a) && (a <= maxLambda * rr))
             {
                 a /= rr;
                 lambda = a;

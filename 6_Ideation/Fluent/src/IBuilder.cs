@@ -43,12 +43,9 @@ namespace Alis.Core.Aspect.Fluent
         public TOut Builder();
 
         /// <summary>
-        /// Builder static 
+        ///     Builder static
         /// </summary>
         /// <returns></returns>
-        public static TOut Builder<T>()
-        {
-            return (TOut)Activator.CreateInstance(typeof(TOut));
-        }
+        public static TOut Builder<T>() => (TOut) Activator.CreateInstance(typeof(TOut));
     }
 }

@@ -30,18 +30,18 @@
 namespace Alis.Core.Entity
 {
     /// <summary>
-    /// The style enum
+    ///     The style enum
     /// </summary>
     public enum Style
     {
         /// <summary>
-        /// The light style
+        ///     The light style
         /// </summary>
         Light = 0,
-        
+
         /// <summary>
-        /// The dark style
+        ///     The dark style
         /// </summary>
-        Dark =1
+        Dark = 1
     }
 }

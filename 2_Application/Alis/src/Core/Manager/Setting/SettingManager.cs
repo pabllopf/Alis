@@ -27,34 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Graphic;
 using Alis.Core.Setting;
 
 namespace Alis.Core.Manager.Setting
 {
     /// <summary>
-    /// The setting manager class
+    ///     The setting manager class
     /// </summary>
-    /// <seealso cref="SettingManagerBase"/>
+    /// <seealso cref="SettingManagerBase" />
     public class SettingManager : SettingManagerBase
     {
         /// <summary>
-        /// Gets or sets the value of the general
+        ///     Gets or sets the value of the general
         /// </summary>
         public GeneralSetting General { get; set; } = new GeneralSetting();
 
         /// <summary>
-        /// Gets or sets the value of the audio
+        ///     Gets or sets the value of the audio
         /// </summary>
         public AudioSetting Audio { get; set; } = new AudioSetting();
 
         /// <summary>
-        /// Gets or sets the value of the debug
+        ///     Gets or sets the value of the debug
         /// </summary>
         public DebugSetting Debug { get; set; } = new DebugSetting();
-        
+
         /// <summary>
-        /// Gets or sets the value of the graphic
+        ///     Gets or sets the value of the graphic
         /// </summary>
         public GraphicSetting Graphic { get; set; } = new GraphicSetting();
     }

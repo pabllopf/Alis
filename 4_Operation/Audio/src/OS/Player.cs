@@ -53,13 +53,21 @@ namespace Alis.Core.Audio.OS
         public Player()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
                 _internalPlayer = new WindowsPlayer();
+            }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
                 _internalPlayer = new LinuxPlayer();
+            }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
                 _internalPlayer = new MacPlayer();
+            }
             else
+            {
                 throw new Exception("No implementation exist for the current OS");
+            }
 
             _internalPlayer.PlaybackFinished += OnPlaybackFinished;
         }

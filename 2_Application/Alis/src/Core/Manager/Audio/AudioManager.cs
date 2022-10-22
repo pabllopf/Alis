@@ -46,7 +46,7 @@ namespace Alis.Core.Manager.Audio
         }
 
         /// <summary>
-        /// Inits this instance
+        ///     Inits this instance
         /// </summary>
         public override void Init()
         {

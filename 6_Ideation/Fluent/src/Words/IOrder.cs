@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The order interface
+    ///     The order interface
     /// </summary>
     public interface IOrder<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Orders the value
+        ///     Orders the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

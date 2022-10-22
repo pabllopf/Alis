@@ -147,7 +147,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="other">Vector to check</param>
         /// <returns>Vectors are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Vector2U other) => X == other.X && Y == other.Y;
+        public bool Equals(Vector2U other) => (X == other.X) && (Y == other.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>

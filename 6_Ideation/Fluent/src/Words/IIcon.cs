@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The icon interface
+    ///     The icon interface
     /// </summary>
     public interface IIcon<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Icons the value
+        ///     Icons the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

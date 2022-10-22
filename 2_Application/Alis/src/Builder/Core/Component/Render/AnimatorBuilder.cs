@@ -37,23 +37,17 @@ namespace Alis.Builder.Core.Component.Render
     /// <summary>
     ///     The animator builder class
     /// </summary>
-    public class AnimatorBuilder:
+    public class AnimatorBuilder :
         IBuild<Animator>,
         IAddAnimation<AnimatorBuilder, Func<AnimationBuilder, Animation>>
     {
         /// <summary>
-        /// The animator
+        ///     The animator
         /// </summary>
         private Animator animator = new Animator();
-        
-        /// <summary>
-        /// Builds this instance
-        /// </summary>
-        /// <returns>The animator</returns>
-        public Animator Build() => animator;
 
         /// <summary>
-        /// Adds the animation using the specified value
+        ///     Adds the animation using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The animator builder</returns>
@@ -62,5 +56,11 @@ namespace Alis.Builder.Core.Component.Render
             animator.AddAnimation(value.Invoke(new AnimationBuilder()));
             return this;
         }
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The animator</returns>
+        public Animator Build() => animator;
     }
 }

@@ -808,7 +808,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             float w2 = b2.AngularVelocity;
 
             // Solve linear motor constraint.
-            if (IsMotorEnabled && LimitState != LimitState.EqualLimits)
+            if (IsMotorEnabled && (LimitState != LimitState.EqualLimits))
             {
                 float cdot = Vector2.Dot(Axis, v2 - v1) + A2 * w2 - a1 * w1;
                 float impulse = MotorMass * (motorSpeedx - cdot);
@@ -832,7 +832,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             cdot1.X = Vector2.Dot(Perp, v2 - v1) + s2 * w2 - s1 * w1;
             cdot1.Y = w2 - w1;
 
-            if (IsLimitEnabled && LimitState != LimitState.InactiveLimit)
+            if (IsLimitEnabled && (LimitState != LimitState.InactiveLimit))
             {
                 // Solve prismatic and limit constraint in block form.
                 float cdot2;
@@ -1027,7 +1027,7 @@ namespace Alis.Core.Physic.Dynamics.Joint
             body1.SynchronizeTransform();
             body2.SynchronizeTransform();
 
-            return linearError <= Settings.LinearSlop && angularError <= Settings.AngularSlop;
+            return (linearError <= Settings.LinearSlop) && (angularError <= Settings.AngularSlop);
         }
     }
 }

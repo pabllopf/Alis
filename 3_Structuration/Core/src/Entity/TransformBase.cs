@@ -28,14 +28,13 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.SFML;
 
 namespace Alis.Core.Entity
 {
     /// <summary>
-    /// The transform base class
+    ///     The transform base class
     /// </summary>
-    public class TransformBase 
+    public class TransformBase
     {
         /// <summary>
         ///     The position

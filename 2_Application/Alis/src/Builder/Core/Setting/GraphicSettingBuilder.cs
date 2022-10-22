@@ -37,25 +37,25 @@ using Alis.Core.Setting;
 namespace Alis.Builder.Core.Setting
 {
     /// <summary>
-    /// The graphic setting builder class
+    ///     The graphic setting builder class
     /// </summary>
-    public class GraphicSettingBuilder:
+    public class GraphicSettingBuilder :
         IBuild<GraphicSetting>,
         IWindow<GraphicSettingBuilder, Func<WindowBuilder, Window>>
     {
         /// <summary>
-        /// The graphic setting
+        ///     The graphic setting
         /// </summary>
         private GraphicSetting graphicSetting = new GraphicSetting();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The graphic setting</returns>
         public GraphicSetting Build() => graphicSetting;
 
         /// <summary>
-        /// Windows the value
+        ///     Windows the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The graphic setting builder</returns>

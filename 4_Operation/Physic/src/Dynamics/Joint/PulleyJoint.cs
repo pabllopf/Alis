@@ -64,11 +64,6 @@ namespace Alis.Core.Physic.Dynamics.Joint
     public class PulleyJoint : IJoint
     {
         /// <summary>
-        ///     The min pulley length
-        /// </summary>
-        private static readonly float MinPulleyLength1 = 2.0f;
-
-        /// <summary>
         ///     The collide connected
         /// </summary>
         private readonly bool collideConnected;
@@ -464,6 +459,11 @@ namespace Alis.Core.Physic.Dynamics.Joint
             get => ratio;
             set => ratio = value;
         }
+
+        /// <summary>
+        ///     The min pulley length
+        /// </summary>
+        private static readonly float MinPulleyLength1 = 2.0f;
 
         /// <summary>
         ///     Gets or sets the value of the type

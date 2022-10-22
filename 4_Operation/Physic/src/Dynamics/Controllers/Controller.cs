@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Dynamics.Controllers
 
             //Find the corresponding edge
             ControllerEdge edge = BodyList;
-            while (edge != null && edge.BodyBase != bodyBase)
+            while ((edge != null) && (edge.BodyBase != bodyBase))
             {
                 edge = edge.NextBody;
             }

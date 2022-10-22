@@ -31,9 +31,8 @@ using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.Iterator
 {
-    
     /// <summary>
-    /// The for each vs for class
+    ///     The for each vs for class
     /// </summary>
     public class ForEachVsFor
     {
@@ -41,7 +40,7 @@ namespace Alis.Benchmark.Iterator
         public int iterations;
 */
         /// <summary>
-        /// Setup this instance
+        ///     Setup this instance
         /// </summary>
         [GlobalSetup]
         public void Setup()
@@ -50,7 +49,7 @@ namespace Alis.Benchmark.Iterator
 
         // Foreach is ~2 times slower than for
         /// <summary>
-        /// Foreaches this instance
+        ///     Foreaches this instance
         /// </summary>
         [Benchmark]
         public void Foreach()
@@ -59,7 +58,7 @@ namespace Alis.Benchmark.Iterator
 
         // For is ~2 times faster than foreach
         /// <summary>
-        /// Fors this instance
+        ///     Fors this instance
         /// </summary>
         [Benchmark]
         public void For()

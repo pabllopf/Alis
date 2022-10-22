@@ -39,7 +39,6 @@ namespace Alis.Core.Physic.Collisions.Shape
     /// </summary>
     public class PolygonShape : IShape
     {
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="PolygonShape" /> class
         /// </summary>
@@ -248,14 +247,14 @@ namespace Alis.Core.Physic.Collisions.Shape
                     // lower < numerator / denominator, where denominator < 0
                     // Since denominator < 0, we have to flip the inequality:
                     // lower < numerator / denominator <==> denominator * lower > numerator.
-                    if (denominator < 0.0f && numerator < lower * denominator)
+                    if ((denominator < 0.0f) && (numerator < lower * denominator))
                     {
                         // Increase lower.
                         // The segment enters this half-space.
                         lower = numerator / denominator;
                         index = i;
                     }
-                    else if (denominator > 0.0f && numerator < upper * denominator)
+                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
                     {
                         // Decrease upper.
                         // The segment exits this half-space.
@@ -269,7 +268,7 @@ namespace Alis.Core.Physic.Collisions.Shape
                 }
             }
 
-            Box2DxDebug.Assert(0.0f <= lower && lower <= maxLambda);
+            Box2DxDebug.Assert((0.0f <= lower) && (lower <= maxLambda));
 
             if (index >= 0)
             {
@@ -602,7 +601,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// <returns>The vec</returns>
         public Vector2 GetVertex(int index)
         {
-            Box2DxDebug.Assert(0 <= index && index < VertexCount);
+            Box2DxDebug.Assert((0 <= index) && (index < VertexCount));
             return Vertices[index];
         }
 
@@ -669,7 +668,7 @@ namespace Alis.Core.Physic.Collisions.Shape
         /// </summary>
         public void Set(Vector2[] vertices, int count)
         {
-            Box2DxDebug.Assert(3 <= count && count <= Settings.MaxPolygonVertices);
+            Box2DxDebug.Assert((3 <= count) && (count <= Settings.MaxPolygonVertices));
             VertexCount = count;
 
             int i;

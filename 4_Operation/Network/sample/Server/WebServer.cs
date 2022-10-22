@@ -45,13 +45,6 @@ namespace Alis.Core.Network.Sample.Server
     /// <seealso cref="IDisposable" />
     public class WebServer : IDisposable
     {
-
-        // const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
-        /// <summary>
-        ///     The buffer size
-        /// </summary>
-        private const int BufferSize = 4 * 1024 * 1024; // 4MB
-
         /// <summary>
         ///     The supported sub protocols
         /// </summary>
@@ -82,6 +75,12 @@ namespace Alis.Core.Network.Sample.Server
             _webSocketServerFactory = webSocketServerFactory;
             _supportedSubProtocols = new HashSet<string>(supportedSubProtocols ?? new string[0]);
         }
+
+        // const int BUFFER_SIZE = 1 * 1024 * 1024 * 1024; // 1GB
+        /// <summary>
+        ///     The buffer size
+        /// </summary>
+        private const int BufferSize = 4 * 1024 * 1024; // 4MB
 
         /// <summary>
         ///     Disposes this instance

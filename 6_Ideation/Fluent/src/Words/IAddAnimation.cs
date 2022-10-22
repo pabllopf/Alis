@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The add animation interface
+    ///     The add animation interface
     /// </summary>
     public interface IAddAnimation<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Adds the animation using the specified value
+        ///     Adds the animation using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>
