@@ -23,10 +23,10 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
 
       - name: Install tool
         run: dotnet tool install --global dotnet-document --version 0.1.4-alpha
@@ -67,15 +67,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: develop
+          ref: master
+          
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
+        
       - name: Dotnet test
         run: dotnet test alis.sln
 
@@ -91,14 +93,16 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: master
+          
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
+        
       - name: Dotnet test
         run: dotnet test alis.sln
   
@@ -116,14 +120,16 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: master
+          
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
+        
       - name: Dotnet test
         run: dotnet test alis.sln
   
@@ -141,14 +147,14 @@ jobs:
         with:
           ref: master
 
-      - name: Install dotnet
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
@@ -238,14 +244,14 @@ jobs:
         with:
           ref: master
 
-      - name: Install dotnet
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
@@ -311,14 +317,14 @@ jobs:
         with:
           ref: master
 
-      - name: Install dotnet
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
@@ -382,14 +388,14 @@ jobs:
         with:
           ref: master
 
-      - name: Install dotnet
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
@@ -523,14 +529,14 @@ jobs:
         with:
           ref: master
 
-      - name: Install dotnet
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: |
-            2.1.x
-            3.1.x
-            5.0.x
             6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
