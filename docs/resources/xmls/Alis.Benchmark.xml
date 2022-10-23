@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Benchmark</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Benchmark.ComputeHash.Md5VsSha256">
+            <summary>
+                The md vs sha 256 class
+            </summary>
+        </member>
+        <member name="F:Alis.Benchmark.ComputeHash.Md5VsSha256.data">
+            <summary>
+                The data
+            </summary>
+        </member>
+        <member name="F:Alis.Benchmark.ComputeHash.Md5VsSha256.md5">
+            <summary>
+                The create
+            </summary>
+        </member>
+        <member name="F:Alis.Benchmark.ComputeHash.Md5VsSha256.sha256">
+            <summary>
+                The create
+            </summary>
+        </member>
+        <member name="M:Alis.Benchmark.ComputeHash.Md5VsSha256.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Benchmark.ComputeHash.Md5VsSha256" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Benchmark.ComputeHash.Md5VsSha256.N">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="M:Alis.Benchmark.ComputeHash.Md5VsSha256.Sha256">
+            <summary>
+                Shas the 256
+            </summary>
+            <returns>The byte array</returns>
+        </member>
+        <member name="M:Alis.Benchmark.ComputeHash.Md5VsSha256.Md5">
+            <summary>
+                Mds the 5
+            </summary>
+            <returns>The byte array</returns>
+        </member>
+        <member name="T:Alis.Benchmark.Iterator.ForEachVsFor">
+            <summary>
+                The for each vs for class
+            </summary>
+        </member>
+        <member name="M:Alis.Benchmark.Iterator.ForEachVsFor.Setup">
+            <summary>
+                Setup this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Benchmark.Iterator.ForEachVsFor.Foreach">
+            <summary>
+                Foreaches this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Benchmark.Iterator.ForEachVsFor.For">
+            <summary>
+                Fors this instance
+            </summary>
+        </member>
+        <member name="T:Alis.Benchmark.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Benchmark.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>
