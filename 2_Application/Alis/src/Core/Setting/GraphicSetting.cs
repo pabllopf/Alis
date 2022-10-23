@@ -50,6 +50,6 @@ namespace Alis.Core.Setting
         ///     Builders this instance
         /// </summary>
         /// <returns>The graphic setting builder</returns>
-        public new GraphicSettingBuilder Builder() => new GraphicSettingBuilder();
+        public GraphicSettingBuilder Builder() => new GraphicSettingBuilder();
     }
 }

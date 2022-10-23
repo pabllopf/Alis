@@ -4,54 +4,6 @@
         <name>Alis.Core</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Builder.Component.ComponentBaseBuilder">
-            <summary>
-                The component base builder class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Builder.Component.ComponentBaseBuilder.componentBase">
-            <summary>
-                The component base
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.ComponentBaseBuilder.#ctor(Alis.Core.Component.ComponentBase)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder" /> class
-            </summary>
-            <param name="componentBase">The component base</param>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.ComponentBaseBuilder.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder" /> class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Component.ComponentBaseBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The component base</returns>
-        </member>
-        <member name="T:Alis.Core.Builder.Manager.ManagerBaseBuilder">
-            <summary>
-                The manager base builder class
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Builder.Setting.SettingBuilder">
-            <summary>
-                Setting builder
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Builder.Setting.SettingBuilder.settingBase">
-            <summary>
-                The setting base
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Builder.Setting.SettingBuilder.Build">
-            <summary>
-                Build setting
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:Alis.Core.Component.ComponentBase">
             <summary>Define a general component.</summary>
         </member>
@@ -79,12 +31,6 @@
             <summary>
                 Gets or sets the value of the destroyed
             </summary>
-        </member>
-        <member name="M:Alis.Core.Component.ComponentBase.Builder">
-            <summary>
-                Builders this instance
-            </summary>
-            <returns>The component base builder</returns>
         </member>
         <member name="M:Alis.Core.Component.ComponentBase.AttachGameObject(Alis.Core.Entity.GameObjectBase)">
             <summary>
@@ -888,12 +834,6 @@
             <summary>
                 The setting base class
             </summary>
-        </member>
-        <member name="M:Alis.Core.Setting.SettingBase.Builder">
-            <summary>
-                Setting build
-            </summary>
-            <returns></returns>
         </member>
     </members>
 </doc>

@@ -30,7 +30,6 @@
 using System.Numerics;
 using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Systems.Physics2D;
 
 namespace Alis.Core.Manager.Physic
 {

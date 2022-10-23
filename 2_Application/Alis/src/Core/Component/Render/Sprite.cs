@@ -72,7 +72,7 @@ namespace Alis.Core.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
-        public new SpriteBuilder Builder() => new SpriteBuilder();
+        public  SpriteBuilder Builder() => new SpriteBuilder();
 
         /// <summary>
         ///     Inits this instance

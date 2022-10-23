@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-using Alis.Core.Systems.Physics2D;
-
 namespace Alis.Core.Manager.Physic
 {
     /// <summary>

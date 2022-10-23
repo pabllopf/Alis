@@ -69,7 +69,7 @@ namespace Alis.Core.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The camera builder</returns>
-        public new CameraBuilder Builder() => new CameraBuilder();
+        public  CameraBuilder Builder() => new CameraBuilder();
 
         /// <summary>
         ///     Starts this instance

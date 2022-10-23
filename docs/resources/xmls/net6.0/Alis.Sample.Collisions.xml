@@ -4,12 +4,12 @@
         <name>Alis.Sample.Collisions</name>
     </assembly>
     <members>
-        <member name="T:Alis.Sample.GeometryDash.Program">
+        <member name="T:Alis.Sample.Collisions.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:Alis.Sample.GeometryDash.Program.Main(System.String[])">
+        <member name="M:Alis.Sample.Collisions.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

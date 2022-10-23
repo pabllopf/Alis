@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SettingBuilder.cs
+//  File:FrameBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Setting;
-
-namespace Alis.Core.Builder.Setting
+namespace Alis.Core.Graphic.D3
 {
     /// <summary>
-    ///     Setting builder
+    ///     The frame base class
     /// </summary>
-    public class SettingBuilder :
-        IBuild<SettingBase>
+    public class Sample
     {
-        /// <summary>
-        ///     The setting base
-        /// </summary>
-        private SettingBase settingBase = new SettingBase();
-
-        /// <summary>
-        ///     Build setting
-        /// </summary>
-        /// <returns></returns>
-        public SettingBase Build() => settingBase;
+        
     }
 }

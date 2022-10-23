@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Physic.Collision.Broadphase;
-using Alis.Core.Physic.Collision.Filtering;
 using Alis.Core.Physic.Collision.Handlers;
-using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Handlers;
 

@@ -42,6 +42,6 @@ namespace Alis.Core.Setting
         ///     Builders this instance
         /// </summary>
         /// <returns>The audio setting builder</returns>
-        public new AudioSettingBuilder Builder() => new AudioSettingBuilder();
+        public AudioSettingBuilder Builder() => new AudioSettingBuilder();
     }
 }

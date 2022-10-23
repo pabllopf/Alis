@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ExplosionParticle.cs
+//  File:ComponentBaseBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,38 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Builder.Core.Component.Particle;
-using Alis.Core.Aspect.Fluent;
+using System;
+using Alis.Core.Component;
 
-namespace Alis.Core.Component.Particle
+namespace Alis.Builder.Core.Component
 {
     /// <summary>
-    ///     The explosion particle class
+    ///     The component base builder class
     /// </summary>
-    /// <seealso cref="ParticleBase" />
-    public class ExplosionParticle : ParticleBase, IBuilder<ExplosionParticleBuilder>
+    public class ComponentBaseBuilder
     {
         /// <summary>
-        ///     Builders this instance
+        ///     The component base
         /// </summary>
-        /// <returns>The explosion particle builder</returns>
-        public  ExplosionParticleBuilder Builder() => new ExplosionParticleBuilder();
+        private ComponentBase componentBase;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
+        /// </summary>
+        /// <param name="componentBase">The component base</param>
+        public ComponentBaseBuilder(ComponentBase componentBase) => this.componentBase = componentBase;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
+        /// </summary>
+        public ComponentBaseBuilder()
+        {
+        }
+
+        /// <summary>
+        ///     Builds this instance
+        /// </summary>
+        /// <returns>The component base</returns>
+        public ComponentBase Build() => (ComponentBase) Activator.CreateInstance(componentBase.GetType());
     }
 }

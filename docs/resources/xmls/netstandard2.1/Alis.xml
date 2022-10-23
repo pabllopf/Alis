@@ -252,6 +252,33 @@
                 The circle collider builder class
             </summary>
         </member>
+        <member name="T:Alis.Builder.Core.Component.ComponentBaseBuilder">
+            <summary>
+                The component base builder class
+            </summary>
+        </member>
+        <member name="F:Alis.Builder.Core.Component.ComponentBaseBuilder.componentBase">
+            <summary>
+                The component base
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.ComponentBaseBuilder.#ctor(Alis.Core.Component.ComponentBase)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Builder.Core.Component.ComponentBaseBuilder" /> class
+            </summary>
+            <param name="componentBase">The component base</param>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.ComponentBaseBuilder.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Builder.Core.Component.ComponentBaseBuilder" /> class
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.ComponentBaseBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The component base</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Component.Light.AreaLightBuilder">
             <summary>
                 The area light builder class
@@ -286,7 +313,7 @@
             <summary>
                 The explosion particle builder class
             </summary>
-            <seealso cref="T:Alis.Core.Builder.Component.ComponentBaseBuilder" />
+            <seealso cref="T:Alis.Builder.Core.Component.ComponentBaseBuilder" />
             <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
         <member name="M:Alis.Builder.Core.Component.Particle.ExplosionParticleBuilder.Build">
@@ -628,6 +655,11 @@
             <param name="y">The </param>
             <returns>The window builder</returns>
         </member>
+        <member name="T:Alis.Builder.Core.Manager.ManagerBaseBuilder">
+            <summary>
+                The manager base builder class
+            </summary>
+        </member>
         <member name="T:Alis.Builder.Core.Manager.SceneManagerBuilder">
             <summary>
                 The scene manager builder class
@@ -802,6 +834,22 @@
             </summary>
             <param name="value">The value</param>
             <returns>The graphic setting builder</returns>
+        </member>
+        <member name="T:Alis.Builder.Core.Setting.SettingBuilder">
+            <summary>
+                Setting builder
+            </summary>
+        </member>
+        <member name="F:Alis.Builder.Core.Setting.SettingBuilder.settingBase">
+            <summary>
+                The setting base
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.SettingBuilder.Build">
+            <summary>
+                Build setting
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Alis.Builder.SoundGameBuilder">
             <summary>

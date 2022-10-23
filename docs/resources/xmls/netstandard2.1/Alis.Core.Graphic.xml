@@ -8253,5 +8253,10 @@
             <param name="relativeTo">The relative to</param>
             <returns>The vector 2i</returns>
         </member>
+        <member name="T:Alis.Core.Graphic.D3.Sample">
+            <summary>
+                The frame base class
+            </summary>
+        </member>
     </members>
 </doc>

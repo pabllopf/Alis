@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;

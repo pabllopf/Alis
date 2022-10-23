@@ -36,7 +36,7 @@ using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.GeometryDash
+namespace Alis.Sample.Collisions
 {
     /// <summary>
     ///     The program class

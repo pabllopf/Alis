@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Manager.Time;
 using Alis.Core.Setting;
 
 namespace Alis.Core.Manager.Setting
