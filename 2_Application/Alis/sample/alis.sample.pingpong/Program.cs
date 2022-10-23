@@ -26,6 +26,15 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
+using System;
+using Alis.Core.Component.Audio;
+using Alis.Core.Component.Collider;
+using Alis.Core.Component.Render;
+using Alis.Core.Entity;
+using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Manager.Scene;
+
 namespace Alis.Sample.PingPong
 {
     /// <summary>
@@ -39,309 +48,173 @@ namespace Alis.Sample.PingPong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            /*
-            VideoGame.Builder()
-                .Manager<SceneManager>(sceneManager => sceneManager
-                    //////////////
-                    //  MAIN SCENE
-                    //////////////
-                    .Add<Scene>(mainScene => mainScene
-                        .Name("Menu Scene")
-                        .Add<GameObject>(camera => camera
-                            .Name("Camera")
-                            //.Add(Camera.Create())
-                            .Build())
-                        .Add<GameObject>(controller => controller
-                            .Name("Main Controller")
-                            .AddComponent(new MainMenuController())
-                            .Build())
-                        .Add<GameObject>(background => background
-                            .Name("Background")
-                            .Transform(transform => transform
-                                .Position(-444, -444, 1)
-                                .Scale(55, 55, 55)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent(new Sprite($"{Environment.CurrentDirectory}/Assets/background.png", 0))
-                            .Build())
-                        .Add<GameObject>(soundtrack => soundtrack
-                            .Name("Soundtrack")
-                            .AddComponent(new AudioSource($"{Environment.CurrentDirectory}/Assets/menu.wav"))
-                            .Build())
-                        .Add<GameObject>(startButton => startButton
-                            .Name("StartButton")
-                            .Transform(transform => transform
-                                .Position(300, 200, 1)
-                                .Scale(2, 2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent(new Sprite($"{Environment.CurrentDirectory}/Assets/start_button.png", 1))
-                            .Build())
-                        .Add<GameObject>(exitButton => exitButton
-                            .Name("ExitButton")
-                            .Transform(transform => transform
-                                .Position(300, 250, 1)
-                                .Scale(2, 2, 2)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent(new Sprite($"{Environment.CurrentDirectory}/Assets/exit_button.png", 1))
-                            .Build())
-                        .Add<GameObject>(oneButton => oneButton
-                            .Name("1_Button")
-                            .Transform(transform => transform
-                                .Position(298, 195, 1)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent(new Sprite($"{Environment.CurrentDirectory}/Assets/1.png", 2))
-                            .AddComponent(new Animator(new List<Animation>
-                            {
-                                new Animation(new List<Texture>
-                                {
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/1.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/1.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/11.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/11.png")
-                                })
-                                {
-                                    Speed = 0.5f
-                                },
-                                new Animation()
-                            }))
-                            .Build())
-                        .Add<GameObject>(twoButton => twoButton
-                            .Name("2_Button")
-                            .Transform(transform => transform
-                                .Position(298, 245, 1)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .AddComponent(new Sprite($"{Environment.CurrentDirectory}/Assets/2.png", 2))
-                            .AddComponent(new Animator(new List<Animation>
-                            {
-                                new Animation(new List<Texture>
-                                {
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/2.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/2.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/22.png"),
-                                    new Texture(@$"{Environment.CurrentDirectory}/Assets/22.png")
-                                })
-                                {
-                                    Speed = 0.5f
-                                },
-                                new Animation()
-                            }))
+            VideoGame
+                .Builder()
+                .Settings(setting => setting
+                    .General(general => general
+                        .Name("PingPong")
+                        .Author("Pablo Perdomo Falcón")
+                        .Description("PingPong game")
+                        .Icon(Environment.CurrentDirectory + "/Assets/logo.png")
+                        .SplashScreen(screen => screen
+                            .IsActive(true)
+                            .Style(Style.Dark)
+                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
                             .Build())
                         .Build())
-
-                    //////////////
-                    //  GAME SCENE
-                    //////////////
-                    .Add<Scene>(gameScene => gameScene
-                        .Name("Game Scene")
-                        // SOUNDTRACK:
+                    .Debug(debug => debug
+                        .Build())
+                    .Audio(audio => audio
+                        .Build())
+                    .Graphic(graphic => graphic
+                        .Window(window => window
+                            .Resolution(1024, 640)
+                            .Background(Color.Black)
+                            .Build())
+                        .Build())
+                    .Build())
+                
+                .Manager<SceneManager>(sceneManager => sceneManager
+                    .Add<Scene>(gameScene=>gameScene
+                        .Add<GameObject>(cameraObj => cameraObj
+                            .Name("Camera")
+                            .AddComponent<Camera>(camera => camera
+                                .Builder()
+                                .Build())
+                            .Build())
+                        
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
-                            .AddComponent(new AudioSource($"{Environment.CurrentDirectory}/Assets/ping.wav"))
-                            .Build())
-                        // CAMERA:
-                        .Add<GameObject>(camera => camera
-                            .Name("Camera")
-                            .AddComponent(new Camera())
-                            .Build())
-
-                        // BACKGROUND:
-                        .Add<GameObject>(background => background
-                            .Name("Background")
-                            .Transform(transform => transform
-                                .Position(-500, -500, 0)
-                                .Scale(55, 55, 1)
-                                .Rotation(0)
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
+                                .PlayOnAwake(true)
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath($"{Environment.CurrentDirectory}/Assets/ping.wav")
+                                    .Volume(100.0f)
+                                    .Build())
                                 .Build())
-                            //.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/background.png", -1))
                             .Build())
-
-                        // TopWall:
-                        .Add<GameObject>(topWall => topWall
-                            .Name("TopWall")
-                            .Transform(transform => transform
-                                .Position(0, -240, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D
-                            {
-                                Width = 720.0f,
-                                Height = 20.0f,
-                                BodyType = BodyType.Static,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.2f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-
-                        // DownWall:
-                        .Add<GameObject>(downWall => downWall
-                            .Name("DownWall")
-                            .Transform(transform => transform
-                                .Position(0, 240, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D
-                            {
-                                Width = 720.0f,
-                                Height = 20.0f,
-                                BodyType = BodyType.Static,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.2f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-
-                        // LeftWall:
-                        .Add<GameObject>(leftWall => leftWall
-                            .Name("LeftWall")
-                            .Transform(transform => transform
-                                .Position(-300, 0, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D
-                            {
-                                Width = 20.0f,
-                                Height = 480.0f,
-                                BodyType = BodyType.Static,
-                                Density = 1f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.2f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-
-                        // rightWall:
-                        .Add<GameObject>(rightWall => rightWall
-                            .Name("RightWall")
-                            .Transform(transform => transform
-                                .Position(320, 0, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(0)
-                                .Build())
-                            .Add(new BoxCollider2D
-                            {
-                                Width = 20.0f,
-                                Height = 480.0f,
-                                BodyType = BodyType.Static,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.2f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-
-                        // PLAYER 1:
-                        .Add<GameObject>(player1 => player1
-                            .Name("Player_1")
-                            .Transform(transform => transform
-                                .Position(-290, 0, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(90)
-                                .Build())
-                            /*.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_1.png", 2))
-                            .Add(new BoxCollider2D
-                            {
-                                Width = 720.0f,
-                                Height = 20.0f,
-                                BodyType = BodyType.Static,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.2f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
-                            .Build())
-
-                        // PLAYER 2:
-                        .Add<GameObject>(player2 => player2
-                            .Name("Player_2")
-                            .Transform(transform => transform
-                                .Position(310, 0, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(90)
-                                .Build())
-                            /*.Add(new Sprite($"{Environment.CurrentDirectory}/Assets/player_2.png", 2))
-                             .Add(new BoxCollider2D
-                             {
-                                 Width = 720.0f,
-                                 Height = 20.0f,
-                                 BodyType = BodyType.Static,
-                                 Density = 0.5f,
-                                 Rotation = 0.0f,
-                                 Mass = 10.0f,
-                                 RelativePosition = Vector2.Zero,
-                                 Friction = 0.1f,
-                                 Restitution = 0.2f,
-                                 FixedRotation = true,
-                                 GravityScale = 0.0f,
-                                 IsTrigger = false
-                             })
-                            .Build())
-
-                        // BALL:
+                        
                         .Add<GameObject>(ball => ball
                             .Name("Ball")
                             .Transform(transform => transform
-                                .Position(0, 0, 0)
-                                .Scale(1, 1, 1)
-                                .Rotation(90)
+                                .Position(0, 0)
+                                .Scale(1, 1)
+                                .Rotation(0)
                                 .Build())
-                            .Add(new Sprite($"{Environment.CurrentDirectory}/Assets/ball.png", 2))
-                            .Add(new BoxCollider2D
-                            {
-                                AutoTilling = true,
-                                BodyType = BodyType.Dynamic,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                LinearVelocity = new Vector2(-10, 3),
-                                Friction = 0.0f,
-                                Restitution = 1.0f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .IsDynamic(true)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(50, 50)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .LinearVelocity(-10, 3)
+                                .Mass(10.0f)
+                                .Restitution(1.0f)
+                                .Friction(0f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(downWall => downWall
+                            .Name("downWall")
+                            .Transform(transform=> transform
+                                .Position(0, 324)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .IsDynamic(false)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(1024, 10)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(upWall => upWall
+                            .Name("upWall")
+                            .Transform(transform=> transform
+                                .Position(0, -324)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .IsDynamic(false)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(1024, 10)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(leftWall => leftWall
+                            .Name("leftWall")
+                            .Transform(transform=> transform
+                                .Position(517, 0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .IsDynamic(false)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(10, 640)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(rightWall => rightWall
+                            .Name("rightWall")
+                            .Transform(transform=> transform
+                                .Position(-517, 0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .IsDynamic(false)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(10, 640)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
                             .Build())
                         .Build())
                     .Build())
                 .Run();
-            */
         }
     }
 }

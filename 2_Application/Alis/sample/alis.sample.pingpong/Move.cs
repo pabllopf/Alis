@@ -60,6 +60,11 @@ namespace Alis.Sample.PingPong
         /// </summary>
         private float y0;
         
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Move"/> class
+        /// </summary>
+        /// <param name="upKey">The up key</param>
+        /// <param name="downKey">The down key</param>
         public Move(Key upKey, Key downKey)
         {
             this.upKey = upKey;

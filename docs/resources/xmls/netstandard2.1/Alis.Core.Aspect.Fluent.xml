@@ -408,6 +408,19 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.ILinearVelocity`3">
+            <summary>
+            The linear velocity interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.ILinearVelocity`3.LinearVelocity(`1,`2)">
+            <summary>
+            Linears the velocity using the specified x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IManager`3">
             <summary>
                 The manager interface

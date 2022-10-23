@@ -52,7 +52,8 @@ namespace Alis.Builder.Core.Component.Collider
         IRotation<BoxColliderBuilder, float>,
         IRelativePosition<BoxColliderBuilder, float, float>,
         IRestitution<BoxColliderBuilder, float>,
-        IIsTrigger<BoxColliderBuilder, bool>
+        IIsTrigger<BoxColliderBuilder, bool>,
+        ILinearVelocity<BoxColliderBuilder, float, float>
     {
         /// <summary>
         /// The box collider
@@ -227,6 +228,18 @@ namespace Alis.Builder.Core.Component.Collider
         public BoxColliderBuilder IsActive(bool value)
         {
             boxCollider.IsActive = value;
+            return this;
+        }
+
+        /// <summary>
+        /// Linears the velocity using the specified x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The box collider builder</returns>
+        public BoxColliderBuilder LinearVelocity(float x, float y)
+        {
+            boxCollider.LinearVelocity = new System.Numerics.Vector2(x, y);
             return this;
         }
     }

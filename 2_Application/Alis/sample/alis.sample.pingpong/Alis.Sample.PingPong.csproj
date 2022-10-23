@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="$(SolutionDir).config/Config.props"/>
+    <Import Project="$(SolutionDir).config/Config.props" />
     <PropertyGroup>
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
     </PropertyGroup>
+    <ItemGroup>
+      <None Update="Assets\logo.png">
+        <LinkBase>Assets/</LinkBase>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+      </None>
+    </ItemGroup>
 </Project>

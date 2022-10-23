@@ -47,6 +47,11 @@ namespace Alis.Sample.PingPong
             //Input.OnPressKey += Input_OnPressKeyOnce;
         }
         
+        /// <summary>
+        /// Inputs the on press key once using the specified sender
+        /// </summary>
+        /// <param name="sender">The sender</param>
+        /// <param name="key">The key</param>
         private void Input_OnPressKeyOnce(object sender, Key key)
         {
             /*

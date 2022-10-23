@@ -90,6 +90,13 @@
                 The
             </summary>
         </member>
+        <member name="M:Alis.Sample.PingPong.Move.#ctor(Alis.Core.Graphic.D2.SFML.Windows.Key,Alis.Core.Graphic.D2.SFML.Windows.Key)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Sample.PingPong.Move"/> class
+            </summary>
+            <param name="upKey">The up key</param>
+            <param name="downKey">The down key</param>
+        </member>
         <member name="P:Alis.Sample.PingPong.Move.UpKey">
             <summary>
                 Gets or sets the value of the up key
@@ -179,6 +186,13 @@
             <summary>
                 Starts this instance
             </summary>
+        </member>
+        <member name="M:Alis.Sample.PingPong.Select.Input_OnPressKeyOnce(System.Object,Alis.Core.Graphic.D2.SFML.Windows.Key)">
+            <summary>
+            Inputs the on press key once using the specified sender
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="key">The key</param>
         </member>
         <member name="M:Alis.Sample.PingPong.Select.Update">
             <summary>

@@ -45,6 +45,9 @@ namespace Alis.Sample.Rogue
         /// </summary>
         private Animator animator;
 
+        /// <summary>
+        /// The box collider
+        /// </summary>
         private BoxCollider boxCollider;
 
         /// <summary>

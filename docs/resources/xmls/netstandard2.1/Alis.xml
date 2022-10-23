@@ -245,6 +245,14 @@
             <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.LinearVelocity(System.Single,System.Single)">
+            <summary>
+            Linears the velocity using the specified x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The box collider builder</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Component.Collider.CircleColliderBuilder">
             <summary>
                 The circle collider builder class
