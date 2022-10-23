@@ -80,7 +80,8 @@ jobs:
         run: echo $VERSIONFINAL
 
       - name: Write in filename the next version
-        run: sed -i '' -e 's/$VERSION/$VERSIONFINAL/' $FILENAME
+        #run: sed -i '' -e 's/$VERSION/$VERSIONFINAL/' $FILENAME
+        run: sed -i .bak 's/$VERSION/$VERSIONFINAL/' $FILENAME
         
       - name: Get the current version
         run: echo "CURRENTVERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
