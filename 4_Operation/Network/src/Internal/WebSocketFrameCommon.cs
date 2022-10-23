@@ -62,8 +62,6 @@ namespace Alis.Core.Network.Internal
             int maskKeyOffset = maskKey.Offset;
 
             // apply the mask key (this is a reversible process so no need to copy the payload)
-            // NOTE: this is a hot function
-            // TODO: make this faster
             for (int i = payloadOffset; i < payloadCountPlusOffset; i++)
             {
                 int payloadIndex = i - payloadOffset; // index should start at zero

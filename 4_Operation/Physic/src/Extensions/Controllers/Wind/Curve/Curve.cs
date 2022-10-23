@@ -39,8 +39,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
     ///     Contains a collection of <see cref="CurveKey" /> points in 2D space and provides methods for evaluating
     ///     features of the curve they define.
     /// </summary>
-
-    // TODO : [TypeConverter(typeof(ExpandableObjectConverter))]
+    
     [DataContract]
     public class Curve
     {

@@ -86,16 +86,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         public void RemoveFromList(DelaunayTriangle triangle)
         {
             Triangles.Remove(triangle);
-
-            // TODO: remove all neighbor pointers to this triangle
-            //        for( int i=0; i<3; i++ )
-            //        {
-            //            if( triangle.neighbors[i] != null )
-            //            {
-            //                triangle.neighbors[i].clearNeighbor( triangle );
-            //            }
-            //        }
-            //        triangle.clearNeighbors();
         }
 
         /// <summary>
@@ -188,9 +178,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
             AFront = new AdvancingFront(head, tail);
             AFront.AddNode(middle);
-
-            // TODO: I think it would be more intuitive if head is middles next and not previous
-            //       so swap head and tail
+            
             AFront.Head.Next = middle;
             middle.Next = AFront.Tail;
             middle.Prev = AFront.Head;

@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Collision
             Vector2 e = v2 - v1;
 
             // Normal points to the right, looking from v1 at v2
-            Vector2 normal = new Vector2(e.Y, -e.X); //Velcro TODO: Could possibly cache the normal.
+            Vector2 normal = new Vector2(e.Y, -e.X); 
             normal = Vector2.Normalize(normal);
 
             // q = p1 + t * d

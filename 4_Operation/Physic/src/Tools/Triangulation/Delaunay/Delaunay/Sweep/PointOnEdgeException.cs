@@ -35,7 +35,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
     ///     The point on edge exception class
     /// </summary>
     /// <seealso cref="NotImplementedException" />
-    internal class PointOnEdgeException : NotImplementedException
+    internal class PointOnEdgeException : Exception
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="PointOnEdgeException" /> class

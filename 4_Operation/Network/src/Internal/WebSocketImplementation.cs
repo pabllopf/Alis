@@ -380,7 +380,7 @@ namespace Alis.Core.Network.Internal
                 }
 
                 await WriteStreamToNetwork(stream, cancellationToken);
-                _isContinuationFrame = !endOfMessage; // TODO: is this correct??
+                _isContinuationFrame = !endOfMessage; 
             }
         }
 

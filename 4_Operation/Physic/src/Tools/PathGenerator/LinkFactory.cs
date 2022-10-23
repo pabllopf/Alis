@@ -71,22 +71,6 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             List<Body> chainLinks =
                 PathManager.EvenlyDistributeShapesAlongPath(world, path, shape, BodyType.Dynamic, numberOfLinks);
 
-            //TODO
-            //if (fixStart)
-            //{
-            //    //Fix the first chainlink to the world
-            //    JointFactory.CreateFixedRevoluteJoint(world, chainLinks[0], new Vector2(0, -(linkHeight / 2)),
-            //                                          chainLinks[0].Position);
-            //}
-
-            //if (fixEnd)
-            //{
-            //    //Fix the last chainlink to the world
-            //    JointFactory.CreateFixedRevoluteJoint(world, chainLinks[chainLinks.Count - 1],
-            //                                          new Vector2(0, (linkHeight / 2)),
-            //                                          chainLinks[chainLinks.Count - 1].Position);
-            //}
-
             //Attach all the chainlinks together with a revolute joint
             PathManager.AttachBodiesWithRevoluteJoint(world, chainLinks, new Vector2(0, -linkHeight),
                 new Vector2(0, linkHeight), false, false);

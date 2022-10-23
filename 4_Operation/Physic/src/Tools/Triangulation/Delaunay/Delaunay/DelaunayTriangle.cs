@@ -88,8 +88,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
 
             return i;
         }
-
-        //TODO: Port note - different implementation
+        
         /// <summary>
         ///     Indexes the cw using the specified p
         /// </summary>
@@ -108,8 +107,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
                     return 1;
             }
         }
-
-        //TODO: Port note - different implementation
+        
         /// <summary>
         ///     Indexes the ccw using the specified p
         /// </summary>

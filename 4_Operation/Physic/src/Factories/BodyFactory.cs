@@ -428,7 +428,6 @@ namespace Alis.Core.Physic.Factories
         public static BreakableBody CreateBreakableBody(World world, Vertices vertices, float density,
             Vector2 position = new Vector2(), float rotation = 0)
         {
-            //TODO: Implement a Voronoi diagram algorithm to split up the vertices
             List<Vertices> triangles = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip);
 
             BreakableBody breakableBody = new BreakableBody(world, triangles, density, position, rotation);

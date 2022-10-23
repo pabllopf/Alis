@@ -393,10 +393,6 @@ namespace Alis.Core.Physic.Shared
         /// <returns>PolygonError.NoError if there were no error.</returns>
         public PolygonError CheckPolygon()
         {
-            //TODO: TBM
-            //if (Count < 3 || Count > Settings.MaxPolygonVertices)
-            //    return PolygonError.InvalidAmountOfVertices;
-
             if (!IsSimple())
             {
                 return PolygonError.NotSimple;

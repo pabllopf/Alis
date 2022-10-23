@@ -36,8 +36,6 @@ using System.Runtime.Serialization;
 namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
 {
     /// <summary>The collection of the <see cref="CurveKey" /> elements and a part of the <see cref="Curve" /> class.</summary>
-
-    // TODO : [TypeConverter(typeof(ExpandableObjectConverter))]
     [DataContract]
     public class CurveKeyCollection : ICollection<CurveKey>
     {

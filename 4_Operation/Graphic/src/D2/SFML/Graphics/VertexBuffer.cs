@@ -91,8 +91,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <summary>
         ///     OpenGL handle of the vertex buffer or 0 if not yet created
         ///     You shouldn't need to use this property, unless you have
-        ///     very specific stuff to implement that SFML doesn't support,
-        ///     or implement a temporary workaround until a bug is fixed.
+        ///     very specific stuff to implement that SFML doesn't support.
         /// </summary>
         ////////////////////////////////////////////////////////////
         public uint NativeHandle => sfVertexBuffer_getNativeHandle(CPointer);

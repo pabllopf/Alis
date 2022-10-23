@@ -116,16 +116,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             AdvancingFrontNode n2 = n1.Next;
 
             TurnAdvancingFrontConvex(tcx, n1, n2);
-
-            // TODO: implement ConvexHull for lower right and left boundary
-
-            // Lets remove triangles connected to the two "algorithm" points
-
-            // XXX: When the first the nodes are points in a triangle we need to do a flip before 
-            //      removing triangles or we will lose a valid triangle.
-            //      Same for last three nodes!
-            // !!! If I implement ConvexHull for lower right and left boundary this fix should not be 
-            //     needed and the removed triangles will be added again by default
+            
             n1 = tcx.AFront.Tail.Prev;
             if (n1.Triangle.Contains(n1.Next.Point) && n1.Triangle.Contains(n1.Prev.Point))
             {
@@ -170,7 +161,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             t2 = t1.NeighborCw(tcx.AFront.Head.Point);
             t1.Clear();
             t1 = t2;
-            while (p1 != first) //TODO: Port note. This was do while before.
+            while (p1 != first) 
             {
                 tcx.RemoveFromList(t1);
                 p1 = t1.PointCcw(p1);
@@ -303,10 +294,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 {
                     return;
                 }
-
-                // For now we will do all needed filling
-                // TODO: integrate with flip process might give some better performance 
-                //       but for now this avoid the issue with cases that needs both flips and fills
+                
                 FillEdgeEvent(tcx, edge, node);
 
                 EdgeEvent(tcx, edge.P, edge.Q, node.Triangle, edge.Q);
@@ -672,14 +660,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             DelaunayTriangle t, TriangulationPoint p)
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
-
-            // see https://github.com/greenm01/poly2tri/issues/102
-            //if (ot == null)
-            //{
-            //    // If we want to integrate the fillEdgeEvent do it here
-            //    // With current implementation we should never get here
-            //    throw new InvalidOperationException("[BUG:FIXME] FLIP failed due to missing triangle");
-            //}
+            
 
             if (t.GetConstrainedEdgeAcross(p))
             {
@@ -703,7 +684,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     {
                         if (tcx.IsDebugEnabled)
                         {
-                            Console.WriteLine("[FLIP] - constrained edge done"); // TODO: remove
+                            Console.WriteLine("[FLIP] - constrained edge done"); 
                         }
 
                         t.MarkConstrainedEdge(ep, eq);
@@ -715,7 +696,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     {
                         if (tcx.IsDebugEnabled)
                         {
-                            Console.WriteLine("[FLIP] - subedge done"); // TODO: remove
+                            Console.WriteLine("[FLIP] - subedge done"); 
                         }
 
                         // XXX: I think one of the triangles should be legalized here?
@@ -728,7 +709,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                         Console.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge");
                     }
 
-                    // TODO: remove
+                  
                     Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                     t = NextFlipTriangle(tcx, o, t, ot, p, op);
                     FlipEdgeEvent(tcx, ep, eq, t, p);
@@ -761,8 +742,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 // Left
                 return ot.PointCw(op);
             }
-
-            // TODO: implement support for point on constraint edge
             throw new PointOnEdgeException("Point on constrained edge not supported yet");
         }
 
@@ -813,15 +792,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             DelaunayTriangle flipTriangle, DelaunayTriangle t, TriangulationPoint p)
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
-
-            // see https://github.com/greenm01/poly2tri/issues/102
-            //if (ot == null)
-            //{
-            //    // If we want to integrate the fillEdgeEvent do it here
-            //    // With current implementation we should never get here
-            //    throw new Exception("[BUG:FIXME] FLIP failed due to missing triangle");
-            //}
-
+            
             TriangulationPoint op = ot.OppositePoint(t, p);
 
             bool inScanArea = TriangulationUtil.InScanArea(eq, flipTriangle.PointCcw(eq), flipTriangle.PointCw(eq), op);
@@ -829,14 +800,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             {
                 // flip with new edge op->eq
                 FlipEdgeEvent(tcx, eq, op, ot, op);
-
-                // TODO: Actually I just figured out that it should be possible to 
-                //       improve this by getting the next ot and op before the the above 
-                //       flip and continue the flipScanEdgeEvent here
-                // set new ot and op here and loop back to inScanArea test
-                // also need to set a new flipTriangle first
-                // Turns out at first glance that this is somewhat complicated
-                // so it will have to wait.
             }
             else
             {
@@ -1156,9 +1119,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         private static void Fill(DtSweepContext tcx, AdvancingFrontNode node)
         {
             DelaunayTriangle triangle = new DelaunayTriangle(node.Prev.Point, node.Point, node.Next.Point);
-
-            // TODO: should copy the cEdge value from neighbor triangles
-            //       for now cEdge values are copied during the legalize 
+            
             triangle.MarkNeighbor(node.Prev.Triangle);
             triangle.MarkNeighbor(node.Triangle);
             tcx.Triangles.Add(triangle);
@@ -1182,8 +1143,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             // violate the Delaunay condition
             for (int i = 0; i < 3; i++)
             {
-                // TODO: fix so that cEdge is always valid when creating new triangles then we can check it here
-                //       instead of below with ot
                 if (t.EdgeIsDelaunay[i])
                 {
                     continue;

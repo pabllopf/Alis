@@ -1173,7 +1173,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             Vector2 current = Vector2.Zero;
 
-            // Get the entrance point. //todo: alle möglichkeiten testen
+            // Get the entrance point.
             if (entrance == Vector2.Zero || !InBounds(ref entrance))
             {
                 entranceFound = SearchHullEntrance(out entrance);

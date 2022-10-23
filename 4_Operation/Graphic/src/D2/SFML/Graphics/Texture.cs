@@ -216,8 +216,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <remarks>
         ///     You shouldn't need to use this handle, unless you have
-        ///     very specific stuff to implement that SFML doesn't support,
-        ///     or implement a temporary workaround until a bug is fixed.
+        ///     very specific stuff to implement that SFML doesn't support.
         /// </remarks>
         ////////////////////////////////////////////////////////////
         public uint NativeHandle => sfTexture_getNativeHandle(CPointer);

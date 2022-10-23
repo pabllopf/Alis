@@ -169,9 +169,6 @@ namespace Alis.Core.Physic.Dynamics
             }
 
             proxyCount = 0;
-
-            //TODO:
-            //m_density = def->density;
         }
 
         /// <summary>
