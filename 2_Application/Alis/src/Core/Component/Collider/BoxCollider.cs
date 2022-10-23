@@ -48,12 +48,7 @@ namespace Alis.Core.Component.Collider
         ///     The rectangle shape
         /// </summary>
         private RectangleShape rectangleShape;
-         
-         /// <summary>
-         /// The is dynamic
-         /// </summary>
-         public bool IsDynamic { get; set; }
-         
+
          /// <summary>
          /// Gets or sets the value of the is trigger
          /// </summary>
@@ -180,7 +175,7 @@ namespace Alis.Core.Component.Collider
                     GameObject.Transform.Position.Y + RelativePosition.Y
                     ),
                 rotation: Rotation,
-                bodyType: IsDynamic ? BodyType.Dynamic : BodyType.Static,
+                bodyType: BodyType,
                 userData: GameObject
                 );
             

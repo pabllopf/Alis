@@ -140,19 +140,6 @@
             </summary>
             <returns>The box collider</returns>
         </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsDynamic">
-            <summary>
-            Ises the dynamic
-            </summary>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsDynamic(System.Boolean)">
-            <summary>
-            Ises the dynamic using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The box collider builder</returns>
-        </member>
         <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Size(System.Single,System.Single)">
             <summary>
             Sizes the x
@@ -251,6 +238,13 @@
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.BodyType(Alis.Core.Physic.Dynamics.BodyType)">
+            <summary>
+            Bodies the type using the specified value
+            </summary>
+            <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
         <member name="T:Alis.Builder.Core.Component.Collider.CircleColliderBuilder">
@@ -1060,11 +1054,6 @@
         <member name="F:Alis.Core.Component.Collider.BoxCollider.rectangleShape">
             <summary>
                 The rectangle shape
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Component.Collider.BoxCollider.IsDynamic">
-            <summary>
-            The is dynamic
             </summary>
         </member>
         <member name="P:Alis.Core.Component.Collider.BoxCollider.IsTrigger">

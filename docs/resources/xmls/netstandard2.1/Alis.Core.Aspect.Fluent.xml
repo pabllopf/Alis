@@ -138,6 +138,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IBodyType`2">
+            <summary>
+            The body type interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IBodyType`2.BodyType(`1)">
+            <summary>
+            Bodies the type using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IConfiguration`2">
             <summary>
                 The configuration interface

@@ -5,79 +5,99 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   MainMenuController.cs
+//  File:PlayerController1.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.ComponentModel;
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Component;
+using Alis.Core.Component.Collider;
 
 namespace Alis.Sample.PingPong
 {
     /// <summary>
-    ///     The main menu controller class
+    /// The player controller class
     /// </summary>
-    /// <seealso cref="Component" />
-    public class MainMenuController : ComponentBase
+    public class PlayerController1 : ComponentBase
     {
         /// <summary>
-        ///     Starts this instance
+        /// The box collider
+        /// </summary>
+        private BoxCollider boxCollider;
+        
+        /// <summary>
+        /// Starts this instance
         /// </summary>
         public override void Start()
         {
+            boxCollider = GameObject.GetComponent<BoxCollider>();
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Updates this instance
         /// </summary>
         public override void Update()
         {
+            
         }
 
         /// <summary>
-        ///     Ons the release key using the specified key
+        /// Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(string key)
         {
+            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+
             switch (key)
             {
-                case "Num1":
-                    Logger.Log("Starting game");
-                    break;
-                case "Num2":
-                    Logger.Log("Exit game");
-                    Environment.Exit(0);
+                case "W":
+                    velocity.Y = 0;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
+                case "S":
+                    velocity.Y = 0;
+                    boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
         }
 
         /// <summary>
-        ///     Ons the press key using the specified key
+        /// Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressKey(string key)
+        public override void OnPressDownKey(string key)
         {
+            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+
+            switch (key)
+            {
+                case "W":
+                    velocity.Y = -5;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
+                case "S":
+                    velocity.Y = 5;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    break;
+            }
         }
     }
 }

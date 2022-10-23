@@ -4,166 +4,69 @@
         <name>Alis.Sample.PingPong</name>
     </assembly>
     <members>
-        <member name="T:Alis.Sample.PingPong.BallController">
-            <summary>Ball Controller</summary>
-        </member>
-        <member name="F:Alis.Sample.PingPong.BallController.boxCollider2D">
+        <member name="T:Alis.Sample.PingPong.PlayerController1">
             <summary>
-                The box collider
+            The player controller class
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.BallController.Start">
+        <member name="F:Alis.Sample.PingPong.PlayerController1.boxCollider">
             <summary>
-                Starts this instance
+            The box collider
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.BallController.OnPressKey(System.Object,System.String)">
+        <member name="M:Alis.Sample.PingPong.PlayerController1.Start">
             <summary>
-                Ons the press key using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="key">The key</param>
-        </member>
-        <member name="M:Alis.Sample.PingPong.BallController.OnReleaseKey(System.Object,System.String)">
-            <summary>
-                Ons the release key using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="key">The key</param>
-        </member>
-        <member name="M:Alis.Sample.PingPong.BallController.Update">
-            <summary>
-                Updates this instance
+            Starts this instance
             </summary>
         </member>
-        <member name="T:Alis.Sample.PingPong.MainMenuController">
+        <member name="M:Alis.Sample.PingPong.PlayerController1.Update">
             <summary>
-                The main menu controller class
-            </summary>
-            <seealso cref="T:System.ComponentModel.Component" />
-        </member>
-        <member name="M:Alis.Sample.PingPong.MainMenuController.Start">
-            <summary>
-                Starts this instance
+            Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.MainMenuController.Update">
+        <member name="M:Alis.Sample.PingPong.PlayerController1.OnReleaseKey(System.String)">
             <summary>
-                Updates this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.MainMenuController.OnReleaseKey(System.String)">
-            <summary>
-                Ons the release key using the specified key
+            Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.MainMenuController.OnPressKey(System.String)">
+        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressDownKey(System.String)">
             <summary>
-                Ons the press key using the specified key
+            Ons the release key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="T:Alis.Sample.PingPong.Move">
+        <member name="T:Alis.Sample.PingPong.PlayerController2">
             <summary>
-                The move class
-            </summary>
-            <seealso cref="T:System.ComponentModel.Component" />
-        </member>
-        <member name="F:Alis.Sample.PingPong.Move.downKey">
-            <summary>
-                The down key
+            The player controller class
             </summary>
         </member>
-        <member name="F:Alis.Sample.PingPong.Move.transform">
+        <member name="F:Alis.Sample.PingPong.PlayerController2.boxCollider">
             <summary>
-                The transform
+            The box collider
             </summary>
         </member>
-        <member name="F:Alis.Sample.PingPong.Move.upKey">
+        <member name="M:Alis.Sample.PingPong.PlayerController2.Start">
             <summary>
-                The up key
+            Starts this instance
             </summary>
         </member>
-        <member name="F:Alis.Sample.PingPong.Move.y0">
+        <member name="M:Alis.Sample.PingPong.PlayerController2.Update">
             <summary>
-                The
+            Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.Move.#ctor(Alis.Core.Graphic.D2.SFML.Windows.Key,Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.PingPong.PlayerController2.OnReleaseKey(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Sample.PingPong.Move"/> class
+            Ons the press down key using the specified key
             </summary>
-            <param name="upKey">The up key</param>
-            <param name="downKey">The down key</param>
-        </member>
-        <member name="P:Alis.Sample.PingPong.Move.UpKey">
-            <summary>
-                Gets or sets the value of the up key
-            </summary>
-        </member>
-        <member name="P:Alis.Sample.PingPong.Move.DownKey">
-            <summary>
-                Gets or sets the value of the down key
-            </summary>
-        </member>
-        <member name="F:Alis.Sample.PingPong.Move.speed">
-            <summary>
-                The speed
-            </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.Move.Start">
-            <summary>
-                Starts this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.Move.Input_OnPressKey(System.Object,Alis.Core.Graphic.D2.SFML.Windows.Key)">
-            <summary>
-                Inputs the on press key using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.Move.Update">
+        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressDownKey(System.String)">
             <summary>
-                Updates this instance
+            Ons the release key using the specified key
             </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.Move.Exit">
-            <summary>
-                Exits this instance
-            </summary>
-        </member>
-        <member name="T:Alis.Sample.PingPong.PointController">
-            <summary>
-                The point controller class
-            </summary>
-            <seealso cref="T:System.ComponentModel.Component" />
-        </member>
-        <member name="F:Alis.Sample.PingPong.PointController.points">
-            <summary>
-                The points
-            </summary>
-        </member>
-        <member name="F:Alis.Sample.PingPong.PointController.racketName">
-            <summary>
-                The racket name
-            </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.PointController.Start">
-            <summary>
-                Starts this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.PointController.Update">
-            <summary>
-                Updates this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.PointController.subtractPoint">
-            <summary>
-                Subtracts the point
-            </summary>
+            <param name="key">The key</param>
         </member>
         <member name="T:Alis.Sample.PingPong.Program">
             <summary>
@@ -175,29 +78,6 @@
                 Main the args
             </summary>
             <param name="args">The args</param>
-        </member>
-        <member name="T:Alis.Sample.PingPong.Select">
-            <summary>
-                The select class
-            </summary>
-            <seealso cref="T:System.ComponentModel.Component" />
-        </member>
-        <member name="M:Alis.Sample.PingPong.Select.Start">
-            <summary>
-                Starts this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Sample.PingPong.Select.Input_OnPressKeyOnce(System.Object,Alis.Core.Graphic.D2.SFML.Windows.Key)">
-            <summary>
-            Inputs the on press key once using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="key">The key</param>
-        </member>
-        <member name="M:Alis.Sample.PingPong.Select.Update">
-            <summary>
-                Updates this instance
-            </summary>
         </member>
     </members>
 </doc>

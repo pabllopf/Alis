@@ -32,6 +32,7 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Component.Collider;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Builder.Core.Component.Collider
 {
@@ -41,7 +42,7 @@ namespace Alis.Builder.Core.Component.Collider
     public class BoxColliderBuilder: 
         IBuild<BoxCollider>,
         IIsActive<BoxColliderBuilder, bool>,
-        IIsDynamic<BoxColliderBuilder, bool>,
+        IBodyType<BoxColliderBuilder, BodyType>,
         ISize<BoxColliderBuilder, float, float>,
         IMass<BoxColliderBuilder, float>,
         IAutoTilling<BoxColliderBuilder, bool>,
@@ -64,27 +65,6 @@ namespace Alis.Builder.Core.Component.Collider
         /// </summary>
         /// <returns>The box collider</returns>
         public BoxCollider Build() => boxCollider;
-
-        /// <summary>
-        /// Ises the dynamic
-        /// </summary>
-        /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsDynamic()
-        {
-            boxCollider.IsDynamic = true;
-            return this;
-        }
-
-        /// <summary>
-        /// Ises the dynamic using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder IsDynamic(bool value)
-        {
-            boxCollider.IsDynamic = value;
-            return this;
-        }
 
         /// <summary>
         /// Sizes the x
@@ -242,5 +222,16 @@ namespace Alis.Builder.Core.Component.Collider
             boxCollider.LinearVelocity = new System.Numerics.Vector2(x, y);
             return this;
         }
+
+        /// <summary>
+        /// Bodies the type using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The box collider builder</returns>
+        public BoxColliderBuilder BodyType(BodyType value)
+        {
+            boxCollider.BodyType = value;
+            return this;
+        } 
     }
 }

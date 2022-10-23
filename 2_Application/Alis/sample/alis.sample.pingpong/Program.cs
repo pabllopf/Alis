@@ -34,6 +34,7 @@ using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.PingPong
 {
@@ -95,6 +96,62 @@ namespace Alis.Sample.PingPong
                                 .Build())
                             .Build())
                         
+                        .Add<GameObject>(player => player
+                            .Name("Player 1")
+                            .Transform(transform => transform
+                                .Position(-500, 0)
+                                .Scale(1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Dynamic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(10, 100)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(1.0f)
+                                .Friction(0f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .AddComponent<PlayerController1>(i => i
+                                .Builder()
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(player => player
+                            .Name("Player 2")
+                            .Transform(transform => transform
+                                .Position(500, 0)
+                                .Scale(1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Dynamic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(10, 100)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(1.0f)
+                                .Friction(0f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .AddComponent<PlayerController2>(i => i
+                                .Builder()
+                                .Build())
+                            .Build())
+                        
                         .Add<GameObject>(ball => ball
                             .Name("Ball")
                             .Transform(transform => transform
@@ -105,10 +162,10 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(true)
+                                .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
-                                .Size(50, 50)
+                                .Size(35, 35)
                                 .Rotation(0.0f)
                                 .RelativePosition(0, 0)
                                 .LinearVelocity(-10, 3)
@@ -129,7 +186,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(false)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(1024, 10)
@@ -152,7 +209,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(false)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(1024, 10)
@@ -175,7 +232,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(false)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 640)
@@ -198,7 +255,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(false)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 640)

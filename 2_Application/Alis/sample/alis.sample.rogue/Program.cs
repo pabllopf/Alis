@@ -35,6 +35,7 @@ using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
+using Alis.Core.Physic.Dynamics;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Sample.Rogue
@@ -94,7 +95,7 @@ namespace Alis.Sample.Rogue
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(false)
+                                .BodyType(BodyType.Kinematic)
                                 .IsTrigger(false)
                                 .AutoTilling(true)
                                 .Rotation(0.0f)
@@ -118,7 +119,7 @@ namespace Alis.Sample.Rogue
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(false)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(100, 10)
@@ -150,7 +151,7 @@ namespace Alis.Sample.Rogue
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .IsDynamic(true)
+                                .BodyType(BodyType.Dynamic)
                                 .IsTrigger(false)
                                 .AutoTilling(true)
                                 .Rotation(0.0f)
