@@ -27,14 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Builder.Component;
 using Alis.Core.Entity;
 
 namespace Alis.Core.Component
 {
     /// <summary>Define a general component.</summary>
-    public abstract class ComponentBase : IBuilder<ComponentBaseBuilder>
+    public abstract class ComponentBase 
     {
         /// <summary>
         ///     Game Object.
@@ -60,12 +58,6 @@ namespace Alis.Core.Component
         ///     Gets or sets the value of the destroyed
         /// </summary>
         public bool Destroyed { get; set; }
-
-        /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The component base builder</returns>
-        public ComponentBaseBuilder Builder() => new ComponentBaseBuilder(this);
 
         /// <summary>
         ///     Attaches the game object using the specified game object

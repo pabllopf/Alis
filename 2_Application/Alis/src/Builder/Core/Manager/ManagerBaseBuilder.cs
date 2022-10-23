@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Builder.Manager
+namespace Alis.Builder.Core.Manager
 {
     /// <summary>
     ///     The manager base builder class

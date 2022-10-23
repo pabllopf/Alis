@@ -2,6 +2,7 @@
     <PropertyGroup>
         <TargetFramework>net6.0-android</TargetFramework>
         <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.3.0"/>

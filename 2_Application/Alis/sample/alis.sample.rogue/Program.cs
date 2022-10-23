@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
@@ -163,9 +162,7 @@ namespace Alis.Sample.Rogue
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent<PlayerMovement>(playerMovement => playerMovement
-                                .Builder()
-                                .Build())
+                            .AddComponent(new PlayerMovement())
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
                                 .IsActive(true)

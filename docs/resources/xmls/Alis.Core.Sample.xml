@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Sample.Program.Main(System.String[])">
+            <summary>
+                Mains the specified arguments.
+            </summary>
+            <param name="args">The arguments.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

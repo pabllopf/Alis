@@ -66,6 +66,6 @@ namespace Alis.Core.Setting
         ///     Builders this instance
         /// </summary>
         /// <returns>The general setting builder</returns>
-        public new GeneralSettingBuilder Builder() => new GeneralSettingBuilder();
+        public GeneralSettingBuilder Builder() => new GeneralSettingBuilder();
     }
 }

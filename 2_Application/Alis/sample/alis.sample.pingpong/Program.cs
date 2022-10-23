@@ -119,9 +119,7 @@ namespace Alis.Sample.PingPong
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent<PlayerController1>(i => i
-                                .Builder()
-                                .Build())
+                            .AddComponent(new PlayerController1())
                             .Build())
                         
                         .Add<GameObject>(player => player
@@ -147,9 +145,7 @@ namespace Alis.Sample.PingPong
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent<PlayerController2>(i => i
-                                .Builder()
-                                .Build())
+                            .AddComponent(new PlayerController2())
                             .Build())
                         
                         .Add<GameObject>(ball => ball
@@ -176,9 +172,7 @@ namespace Alis.Sample.PingPong
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
-                            .AddComponent<BallController>(ballController => ballController
-                                .Builder()
-                                .Build())
+                            .AddComponent(new BallController())
                             .Build())
                         
                         .Add<GameObject>(downWall => downWall

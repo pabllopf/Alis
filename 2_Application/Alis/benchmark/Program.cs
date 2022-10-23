@@ -27,12 +27,25 @@
 // 
 //  --------------------------------------------------------------------------
 
+#if RELEASE
+using System;
+using System.Linq;
+using BenchmarkDotNet.Analysers;
+using BenchmarkDotNet.Configs;
+using BenchmarkDotNet.Exporters;
+using BenchmarkDotNet.Loggers;
+using BenchmarkDotNet.Reports;
+using BenchmarkDotNet.Running;
+#endif
+
+#if DEBUG
 using System;
 using System.Linq;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Running;
+#endif
 
 namespace Alis.Benchmark
 {

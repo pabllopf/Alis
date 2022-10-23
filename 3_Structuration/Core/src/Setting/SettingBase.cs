@@ -26,21 +26,12 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Builder.Setting;
-
 namespace Alis.Core.Setting
 {
     /// <summary>
     ///     The setting base class
     /// </summary>
-    public class SettingBase : IBuilder<SettingBuilder>
+    public class SettingBase 
     {
-        /// <summary>
-        ///     Setting build
-        /// </summary>
-        /// <returns></returns>
-        public SettingBuilder Builder() => new SettingBuilder();
     }
 }

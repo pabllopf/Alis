@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ComponentBaseBuilder.cs
+//  File:SettingBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,38 +27,26 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Component;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Setting;
 
-namespace Alis.Core.Builder.Component
+namespace Alis.Builder.Core.Setting
 {
     /// <summary>
-    ///     The component base builder class
+    ///     Setting builder
     /// </summary>
-    public class ComponentBaseBuilder
+    public class SettingBuilder :
+        IBuild<SettingBase>
     {
         /// <summary>
-        ///     The component base
+        ///     The setting base
         /// </summary>
-        private ComponentBase componentBase;
+        private SettingBase settingBase = new SettingBase();
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
+        ///     Build setting
         /// </summary>
-        /// <param name="componentBase">The component base</param>
-        public ComponentBaseBuilder(ComponentBase componentBase) => this.componentBase = componentBase;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ComponentBaseBuilder" /> class
-        /// </summary>
-        public ComponentBaseBuilder()
-        {
-        }
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The component base</returns>
-        public ComponentBase Build() => (ComponentBase) Activator.CreateInstance(componentBase.GetType());
+        /// <returns></returns>
+        public SettingBase Build() => settingBase;
     }
 }

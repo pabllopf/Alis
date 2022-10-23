@@ -4,7 +4,9 @@
         <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
         <OutputType>Exe</OutputType>
         <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
+    
 
     <ItemGroup>
         <ImageAsset Include="Resources\Images.xcassets\AppIcon.appiconset\Contents.json"/>

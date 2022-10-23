@@ -53,6 +53,6 @@ namespace Alis.Core.Setting
         ///     Builders this instance
         /// </summary>
         /// <returns>The debug setting builder</returns>
-        public new DebugSettingBuilder Builder() => new DebugSettingBuilder();
+        public DebugSettingBuilder Builder() => new DebugSettingBuilder();
     }
 }

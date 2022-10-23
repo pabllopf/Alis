@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Logging.Box2DxDebug">
+            <summary>
+                The box dx debug class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Box2DxDebug.Assert(System.Boolean)">
+            <summary>
+                Asserts the condition
+            </summary>
+            <param name="condition">The condition</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Box2DxDebug.Assert(System.Boolean,System.String)">
+            <summary>
+                Asserts the condition
+            </summary>
+            <param name="condition">The condition</param>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Box2DxDebug.Assert(System.Boolean,System.String,System.String)">
+            <summary>
+                Asserts the condition
+            </summary>
+            <param name="condition">The condition</param>
+            <param name="message">The message</param>
+            <param name="detailMessage">The detail message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Box2DxDebug.ThrowBox2DxException(System.String)">
+            <summary>
+                Throws the box 2 dx exception using the specified message
+            </summary>
+            <param name="message">The message</param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.Color">
+            <summary>
+                Color for debug drawing. Each value has the range [0,1].
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Color.r">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Color.g">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Color.b">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Color.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.Color" /> class
+            </summary>
+            <param name="r">The </param>
+            <param name="g">The </param>
+            <param name="b">The </param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Color.Set(System.Single,System.Single,System.Single)">
+            <summary>
+                Sets the r
+            </summary>
+            <param name="r">The </param>
+            <param name="g">The </param>
+            <param name="b">The </param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.Logger">
+            <summary>
+                The logger class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Log(System.String)">
+            <summary>
+                Logs the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Trace(System.String)">
+            <summary>
+                Traces the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.LogLevel">
+            <summary>
+                The log level enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Info">
+            <summary>
+                The info log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Log">
+            <summary>
+                The log log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Normal">
+            <summary>
+                The normal log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Critical">
+            <summary>
+                The critical log level
+            </summary>
+        </member>
+    </members>
+</doc>

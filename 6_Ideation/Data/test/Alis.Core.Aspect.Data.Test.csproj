@@ -2,6 +2,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
-        <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
+        <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
 </Project>

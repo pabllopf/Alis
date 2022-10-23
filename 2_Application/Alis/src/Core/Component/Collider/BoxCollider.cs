@@ -250,6 +250,6 @@ namespace Alis.Core.Component.Collider
         /// Builders this instance
         /// </summary>
         /// <returns>The box collider builder</returns>
-        public new BoxColliderBuilder Builder() => new BoxColliderBuilder();
+        public  BoxColliderBuilder Builder() => new BoxColliderBuilder();
     }
 }

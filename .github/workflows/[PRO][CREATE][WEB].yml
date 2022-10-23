@@ -12,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: develop
+          ref: master
 
       - name: Generate web
         run: .\\.tools\\doxygen\\doxygen.exe .\\.tools\\doxygen\\web_config
