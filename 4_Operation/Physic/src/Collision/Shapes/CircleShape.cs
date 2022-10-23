@@ -28,11 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.RayCast;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>A circle shape.</summary>
     public class CircleShape : Shape

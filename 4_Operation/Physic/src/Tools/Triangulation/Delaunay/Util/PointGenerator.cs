@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Util
+namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
 {
     /// <summary>
     ///     The point generator class

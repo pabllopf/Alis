@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.Narrowphase
 {
     /// <summary>
     ///     The simplex vertex

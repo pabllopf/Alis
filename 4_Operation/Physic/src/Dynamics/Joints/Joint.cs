@@ -30,11 +30,11 @@
 using System;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Definitions.Joints;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
-using Alis.Core.Systems.Physics2D.Dynamics.Solver;
+using Alis.Core.Physic.Definitions.Joints;
+using Alis.Core.Physic.Dynamics.Joints.Misc;
+using Alis.Core.Physic.Dynamics.Solver;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>
     ///     The joint class

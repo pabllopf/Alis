@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull
+namespace Alis.Core.Physic.Tools.ConvexHull
 {
     /// <summary>
     ///     Andrew's Monotone Chain Convex Hull algorithm. Used to get the convex hull of a point cloud.

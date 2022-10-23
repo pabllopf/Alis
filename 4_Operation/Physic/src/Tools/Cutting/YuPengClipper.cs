@@ -30,12 +30,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Tools.Cutting.Simple;
-using Alis.Core.Systems.Physics2D.Tools.PolygonManipulation;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Tools.Cutting.Simple;
+using Alis.Core.Physic.Tools.PolygonManipulation;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Cutting
+namespace Alis.Core.Physic.Tools.Cutting
 {
     //Clipper contributed by Helge Backhaus
 

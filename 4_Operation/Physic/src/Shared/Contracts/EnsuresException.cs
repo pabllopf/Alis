@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Systems.Physics2D.Shared.Contracts
+namespace Alis.Core.Physic.Shared.Contracts
 {
     /// <summary>
     ///     The ensures exception class

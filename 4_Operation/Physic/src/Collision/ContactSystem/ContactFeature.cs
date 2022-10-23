@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
+namespace Alis.Core.Physic.Collision.ContactSystem
 {
     /// <summary>The features that intersect to form the contact point This must be 4 bytes or less.</summary>
     public struct ContactFeature

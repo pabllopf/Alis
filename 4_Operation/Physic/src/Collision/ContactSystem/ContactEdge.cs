@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
+namespace Alis.Core.Physic.Collision.ContactSystem
 {
     /// <summary>
     ///     A contact edge is used to connect bodies and contacts together in a contact graph where each body is a node

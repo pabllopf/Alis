@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind
+namespace Alis.Core.Physic.Extensions.Controllers.Wind
 {
     /// <summary>
     ///     Reference implementation for forces based on AbstractForceController It supports all features provided by the

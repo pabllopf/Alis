@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull
+namespace Alis.Core.Physic.Tools.ConvexHull
 {
     /// <summary>
     ///     Giftwrap convex hull algorithm. O(n * h) time complexity, where n is the number of points and h is the number

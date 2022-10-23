@@ -30,9 +30,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
+namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 {
     /// <summary>
     ///     Convex decomposition algorithm created by Raimund Seidel

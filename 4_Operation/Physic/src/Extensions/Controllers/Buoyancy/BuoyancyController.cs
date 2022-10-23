@@ -30,14 +30,14 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Buoyancy
+namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
 {
     /// <summary>
     ///     The buoyancy controller class

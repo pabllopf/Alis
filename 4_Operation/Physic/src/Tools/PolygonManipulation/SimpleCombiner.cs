@@ -30,10 +30,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Tools.PolygonManipulation
+namespace Alis.Core.Physic.Tools.PolygonManipulation
 {
     /// <summary>
     ///     Combines a list of triangles into a list of convex polygons. Starts with a seed triangle, keep adding

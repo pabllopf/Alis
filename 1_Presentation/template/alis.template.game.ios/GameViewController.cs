@@ -37,7 +37,7 @@ using MetalKit;
 using MetalPerformanceShaders;
 using UIKit;
 
-namespace MetalPerformanceShadersHelloWorld
+namespace Alis.Template.Game.Ios
 {
     /// <summary>
     ///     The game view controller class

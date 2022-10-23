@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Earclip
+namespace Alis.Core.Physic.Tools.Triangulation.Earclip
 {
     /// <summary>
     ///     The triangle class

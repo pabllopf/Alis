@@ -148,12 +148,12 @@ However, we can compute sin+cos of the same angle fast.
 using System;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.Dynamics.Solver
 {
     /// <summary>This is an internal class.</summary>
     internal class Island

@@ -30,7 +30,7 @@
 using Foundation;
 using UIKit;
 
-namespace MetalPerformanceShadersHelloWorld
+namespace Alis.Template.Game.Ios
 {
     /// <summary>
     ///     The app delegate class

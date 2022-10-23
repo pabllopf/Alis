@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc
+namespace Alis.Core.Physic.Dynamics.Joints.Misc
 {
     /// <summary>
     ///     A joint edge is used to connect bodies and joints together in a joint graph where each body is a node and each

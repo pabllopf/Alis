@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
+using Alis.Core.Physic;
+using Alis.Core.Physic.Dynamics;
 using Alis.Core.Systems.Physics2D;
-using Alis.Core.Systems.Physics2D.Dynamics;
 
 namespace Alis.Core.Manager.Physic
 {

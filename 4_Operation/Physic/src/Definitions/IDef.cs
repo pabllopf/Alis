@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Definitions
+namespace Alis.Core.Physic.Definitions
 {
     /// <summary>
     ///     The def interface

@@ -29,12 +29,12 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Handlers;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Collision.Handlers;
+using Alis.Core.Physic.Collision.RayCast;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
+namespace Alis.Core.Physic.Collision.Broadphase
 {
     /// <summary>
     ///     The broad phase interface

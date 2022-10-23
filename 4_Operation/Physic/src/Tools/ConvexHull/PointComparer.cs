@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using System.Numerics;
 
-namespace Alis.Core.Systems.Physics2D.Tools.ConvexHull
+namespace Alis.Core.Physic.Tools.ConvexHull
 {
     /// <summary>
     ///     The point comparer class

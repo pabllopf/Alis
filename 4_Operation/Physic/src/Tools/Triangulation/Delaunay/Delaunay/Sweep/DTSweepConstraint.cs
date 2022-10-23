@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Sweep
+namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /// <summary>
     ///     The dt sweep constraint class

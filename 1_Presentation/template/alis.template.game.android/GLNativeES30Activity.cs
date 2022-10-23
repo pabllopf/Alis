@@ -33,7 +33,7 @@ using Android.Opengl;
 using Android.OS;
 using Android.Views;
 
-namespace HelloAndroid
+namespace Alis.Template.Game.Android
 {
     // the ConfigurationChanges flags set here keep the EGL context
     // from being destroyed whenever the device is rotated or the

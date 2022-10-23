@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase
+namespace Alis.Core.Physic.Extensions.Controllers.ControllerBase
 {
     /// <summary>
     ///     The controller type enum

@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Broadphase
+namespace Alis.Core.Physic.Collision.Broadphase
 {
     /// <summary>A node in the dynamic tree. The client does not interact with this directly.</summary>
     internal class TreeNode<T>

@@ -29,11 +29,11 @@
 
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
-using Alis.Core.Systems.Physics2D.Dynamics.Solver;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Dynamics.Joints.Misc;
+using Alis.Core.Physic.Dynamics.Solver;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Joints
+namespace Alis.Core.Physic.Dynamics.Joints
 {
     /// <summary>Maintains a fixed angle between two bodies</summary>
     public class AngleJoint : Joint

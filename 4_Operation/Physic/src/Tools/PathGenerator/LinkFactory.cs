@@ -30,12 +30,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Factories;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Factories;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
+namespace Alis.Core.Physic.Tools.PathGenerator
 {
     /// <summary>
     ///     The link factory class

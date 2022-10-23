@@ -29,12 +29,12 @@
 
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.RayCast;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
     ///     A chain shape is a free form sequence of line segments. The chain has one-sided collision, with the surface

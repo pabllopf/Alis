@@ -33,7 +33,7 @@
 // Future possibilities
 //   Comments!
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Sweep
+namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
     /// <summary>
     ///     The advancing front node class

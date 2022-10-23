@@ -32,7 +32,7 @@ using Java.Lang;
 using Javax.Microedition.Khronos.Opengles;
 using EGLConfig = Javax.Microedition.Khronos.Egl.EGLConfig;
 
-namespace HelloAndroid
+namespace Alis.Template.Game.Android
 {
     /// <summary>
     ///     The my gl renderer class

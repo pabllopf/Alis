@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
+namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 {
     /// <summary>
     ///     The triangulator class

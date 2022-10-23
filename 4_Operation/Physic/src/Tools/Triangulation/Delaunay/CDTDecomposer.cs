@@ -30,11 +30,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay.Delaunay.Sweep;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay;
+using Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
+namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
 {
     /// <summary>
     ///     2D constrained Delaunay triangulation algorithm.

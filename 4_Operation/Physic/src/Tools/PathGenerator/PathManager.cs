@@ -30,14 +30,14 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints;
-using Alis.Core.Systems.Physics2D.Factories;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Factories;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Tools.Triangulation.TriangulationBase;
 
-namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
+namespace Alis.Core.Physic.Tools.PathGenerator
 {
     /// <summary>An easy to use manager for creating paths.</summary>
     public static class PathManager

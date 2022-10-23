@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.Shared
 {
     /// <summary>
     ///     The pool class

@@ -29,10 +29,10 @@
 
 using System.Collections.Generic;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
+namespace Alis.Core.Physic.Tools.TextureTools
 {
     // Ported by Matthew Bettcher - Feb 2011
 

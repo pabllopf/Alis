@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Dynamics
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>The body type.</summary>
     public enum BodyType

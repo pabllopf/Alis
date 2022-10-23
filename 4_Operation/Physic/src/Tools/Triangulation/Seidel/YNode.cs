@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Seidel
+namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 {
     /// <summary>
     ///     The node class

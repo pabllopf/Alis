@@ -29,11 +29,11 @@
 
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints.Misc;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Definitions.Joints
+namespace Alis.Core.Physic.Definitions.Joints
 {
     /// <summary>Pulley joint definition. This requires two ground anchors, two dynamic body anchor points, and a pulley ratio.</summary>
     public sealed class PulleyJointDef : JointDef

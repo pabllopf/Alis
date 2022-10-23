@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Distance
+namespace Alis.Core.Physic.Collision.Distance
 {
     /// <summary>Input for Distance.ComputeDistance(). You have to option to use the shape radii in the computation.</summary>
     public struct DistanceInput

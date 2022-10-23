@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
+using Alis.Core.Physic.Collision.Shapes;
 
-namespace Alis.Core.Systems.Physics2D.Definitions.Shapes
+namespace Alis.Core.Physic.Definitions.Shapes
 {
     /// <summary>
     ///     The circle shape def class

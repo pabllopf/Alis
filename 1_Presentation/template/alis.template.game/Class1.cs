@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Game
+namespace Alis.Template.Game
 {
     /// <summary>
     ///     The exampleshareclass class

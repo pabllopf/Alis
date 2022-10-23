@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.Dynamics.Solver
 {
     /// This is an internal structure.
     public struct Position

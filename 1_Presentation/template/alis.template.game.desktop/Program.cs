@@ -33,7 +33,7 @@ using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 
-namespace Game.Desktop
+namespace Alis.Template.Game.Desktop
 {
     /// <summary>
     ///     The program class

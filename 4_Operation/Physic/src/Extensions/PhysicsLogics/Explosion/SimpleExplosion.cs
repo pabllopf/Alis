@@ -30,12 +30,12 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase;
+using Alis.Core.Physic.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.Explosion
+namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 {
     /// <summary>Creates a simple explosion that ignores other bodies hiding behind static bodies.</summary>
     public sealed class SimpleExplosion : PhysicsLogic

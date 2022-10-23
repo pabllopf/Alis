@@ -28,10 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints.Misc;
 
-namespace Alis.Core.Systems.Physics2D.Definitions.Joints
+namespace Alis.Core.Physic.Definitions.Joints
 {
     /// <summary>
     ///     Weld joint definition. You need to specify local anchor points where they are attached and the relative body

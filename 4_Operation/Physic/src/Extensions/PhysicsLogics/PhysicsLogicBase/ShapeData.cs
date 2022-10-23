@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase
+namespace Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase
 {
     /// <summary>
     ///     The shape data

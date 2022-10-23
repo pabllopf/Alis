@@ -30,13 +30,13 @@
 using System;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Shared.Optimization;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.Narrowphase;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Shared.Optimization;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Distance
+namespace Alis.Core.Physic.Collision.Distance
 {
     /// <summary>
     ///     The Gilbert–Johnson–Keerthi distance algorithm that provides the distance between shapes. Using Voronoi

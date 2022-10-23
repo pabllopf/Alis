@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Handlers
+namespace Alis.Core.Physic.Dynamics.Handlers
 {
     /// <summary>
     ///     The fixture handler

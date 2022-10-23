@@ -30,11 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Gravity
+namespace Alis.Core.Physic.Extensions.Controllers.Gravity
 {
     /// <summary>
     ///     The gravity controller class

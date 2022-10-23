@@ -29,7 +29,7 @@
 
 using Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve;
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Wind.Curve
+namespace Alis.Core.Physic.Extensions.Controllers.Wind.Curve
 {
     /// <summary>
     ///     Defines the different tangent types to be calculated for <see cref="CurveKey" /> points in a

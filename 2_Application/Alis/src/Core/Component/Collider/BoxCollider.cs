@@ -33,8 +33,8 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Factories;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Factories;
 
 namespace Alis.Core.Component.Collider
 {
@@ -87,7 +87,7 @@ namespace Alis.Core.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the body
         /// </summary>
-        public Systems.Physics2D.Dynamics.Body Body { get; private set; }
+        public Physic.Dynamics.Body Body { get; private set; }
 
         /// <summary>
         ///     Gets or sets the value of the auto tilling

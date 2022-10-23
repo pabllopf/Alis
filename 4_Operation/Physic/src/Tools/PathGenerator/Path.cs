@@ -31,10 +31,10 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.PathGenerator
+namespace Alis.Core.Physic.Tools.PathGenerator
 {
     //Contributed by Matthew Bettcher
 

@@ -30,20 +30,20 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Broadphase;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Collision.Filtering;
-using Alis.Core.Systems.Physics2D.Collision.Handlers;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Collision.TOI;
-using Alis.Core.Systems.Physics2D.Definitions;
-using Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc;
-using Alis.Core.Systems.Physics2D.Extensions.Controllers.ControllerBase;
-using Alis.Core.Systems.Physics2D.Extensions.PhysicsLogics.PhysicsLogicBase;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.Broadphase;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Filtering;
+using Alis.Core.Physic.Collision.Handlers;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Collision.TOI;
+using Alis.Core.Physic.Definitions;
+using Alis.Core.Physic.Dynamics.Joints.Misc;
+using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
     ///     The body class

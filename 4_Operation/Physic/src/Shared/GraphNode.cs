@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.Shared
 {
     /// <summary>
     ///     The graph node class

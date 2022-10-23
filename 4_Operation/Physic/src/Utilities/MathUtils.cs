@@ -29,9 +29,9 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Utilities
+namespace Alis.Core.Physic.Utilities
 {
     /// <summary>
     ///     The math utils class

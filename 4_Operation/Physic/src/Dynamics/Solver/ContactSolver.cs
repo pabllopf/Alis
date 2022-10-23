@@ -53,15 +53,15 @@
 using System;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Shared.Optimization;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Narrowphase;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Shared.Optimization;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Solver
+namespace Alis.Core.Physic.Dynamics.Solver
 {
     /// <summary>
     ///     The contact solver class

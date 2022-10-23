@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>This proxy is used internally to connect fixtures to the broad-phase.</summary>
     public struct FixtureProxy

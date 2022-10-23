@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Delaunay
+namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
 {
     /// <summary>
     ///     The triangulation mode enum

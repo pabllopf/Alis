@@ -30,10 +30,10 @@
 using System;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Collision.TOI
+namespace Alis.Core.Physic.Collision.TOI
 {
     /// <summary>
     ///     This describes the motion of a body/shape for TOI computation. Shapes are defined with respect to the body

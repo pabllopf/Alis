@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.ContactSystem;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Narrowphase
+namespace Alis.Core.Physic.Collision.Narrowphase
 {
     /// <summary>
     ///     A manifold point is a contact point belonging to a contact

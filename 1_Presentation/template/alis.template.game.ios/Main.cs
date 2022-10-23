@@ -29,7 +29,7 @@
 
 using UIKit;
 
-namespace MetalPerformanceShadersHelloWorld
+namespace Alis.Template.Game.Ios
 {
     /// <summary>
     ///     The application class

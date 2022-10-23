@@ -32,7 +32,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace Alis.Core.Systems.Physics2D.Shared.Contracts
+namespace Alis.Core.Physic.Shared.Contracts
 {
     /// <summary>
     ///     The contract class

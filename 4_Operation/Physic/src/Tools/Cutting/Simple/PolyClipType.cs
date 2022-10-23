@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Tools.Cutting.Simple
+namespace Alis.Core.Physic.Tools.Cutting.Simple
 {
     /// <summary>
     ///     The poly clip type enum

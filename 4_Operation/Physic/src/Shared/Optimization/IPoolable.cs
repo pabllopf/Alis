@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Systems.Physics2D.Shared.Optimization
+namespace Alis.Core.Physic.Shared.Optimization
 {
     /// <summary>
     ///     The poolable interface

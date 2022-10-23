@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
+namespace Alis.Core.Physic.Collision.ContactSystem
 {
     /// <summary>Contact ids to facilitate warm starting.</summary>
     [StructLayout(LayoutKind.Explicit)]

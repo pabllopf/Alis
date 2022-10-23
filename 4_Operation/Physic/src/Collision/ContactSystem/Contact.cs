@@ -31,14 +31,14 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Narrowphase;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Shared.Optimization;
+using Alis.Core.Physic.Collision.Narrowphase;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Shared.Optimization;
 
-namespace Alis.Core.Systems.Physics2D.Collision.ContactSystem
+namespace Alis.Core.Physic.Collision.ContactSystem
 {
     /// <summary>
     ///     The class manages contact between two shapes. A contact exists for each overlapping AABB in the broad-phase

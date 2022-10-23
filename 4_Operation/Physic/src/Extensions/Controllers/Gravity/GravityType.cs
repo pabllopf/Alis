@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Extensions.Controllers.Gravity
+namespace Alis.Core.Physic.Extensions.Controllers.Gravity
 {
     /// <summary>
     ///     The gravity type enum

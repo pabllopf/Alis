@@ -31,10 +31,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.Earclip
+namespace Alis.Core.Physic.Tools.Triangulation.Earclip
 {
     /// <summary>
     ///     Convex decomposition algorithm using ear clipping

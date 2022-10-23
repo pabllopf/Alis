@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Dynamics
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>This is an internal class.</summary>
     public struct TimeStep

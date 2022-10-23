@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase
+namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
 {
     /// <summary>
     ///     The triangulation algorithm enum

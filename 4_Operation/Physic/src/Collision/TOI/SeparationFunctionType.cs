@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Collision.TOI
+namespace Alis.Core.Physic.Collision.TOI
 {
     /// <summary>
     ///     The separation function type enum

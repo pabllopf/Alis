@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Tools.TextureTools
+namespace Alis.Core.Physic.Tools.TextureTools
 {
     /// <summary>The detection type affects the resulting polygon data.</summary>
     public enum VerticesDetectionType

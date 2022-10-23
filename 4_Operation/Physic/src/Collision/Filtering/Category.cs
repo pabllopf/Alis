@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Filtering
+namespace Alis.Core.Physic.Collision.Filtering
 {
     /// <summary>
     ///     The category enum

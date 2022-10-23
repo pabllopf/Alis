@@ -30,13 +30,13 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Dynamics.Solver;
-using Alis.Core.Systems.Physics2D.Factories;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Dynamics.Solver;
+using Alis.Core.Physic.Factories;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>A type of body that supports multiple fixtures that can break apart.</summary>
     public class BreakableBody

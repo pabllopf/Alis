@@ -29,17 +29,17 @@
 
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Broadphase;
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
-using Alis.Core.Systems.Physics2D.Collision.Filtering;
-using Alis.Core.Systems.Physics2D.Collision.Handlers;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Config;
-using Alis.Core.Systems.Physics2D.Definitions;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Collision.Broadphase;
+using Alis.Core.Physic.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.Filtering;
+using Alis.Core.Physic.Collision.Handlers;
+using Alis.Core.Physic.Collision.RayCast;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Config;
+using Alis.Core.Physic.Definitions;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Dynamics
+namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
     ///     A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transform from

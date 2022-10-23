@@ -30,7 +30,7 @@
 using System;
 using System.Numerics;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>This holds the mass data computed for a shape.</summary>
     public struct MassData : IEquatable<MassData>

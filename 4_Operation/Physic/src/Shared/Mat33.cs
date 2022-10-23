@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.Shared
 {
     /// <summary>A 3-by-3 matrix. Stored in column-major order.</summary>
     public struct Mat33

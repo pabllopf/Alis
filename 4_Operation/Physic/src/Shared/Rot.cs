@@ -30,7 +30,7 @@
 using System;
 using System.Numerics;
 
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.Shared
 {
     /// <summary>Rotation</summary>
     public struct Rot

@@ -29,10 +29,10 @@
 
 using System.Diagnostics;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Collision.RayCast;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Shapes
+namespace Alis.Core.Physic.Collision.Shapes
 {
     /// <summary>
     ///     A shape is used for collision detection. You can create a shape however you like. Shapes used for simulation

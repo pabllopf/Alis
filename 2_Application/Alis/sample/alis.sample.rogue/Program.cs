@@ -35,7 +35,6 @@ using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
-using Alis.Core.Systems.Physics2D.Dynamics;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Sample.Rogue

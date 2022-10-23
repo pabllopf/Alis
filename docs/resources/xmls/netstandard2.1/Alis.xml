@@ -2168,7 +2168,7 @@
                 Exits this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.Physic.PhysicManager.AttachBody(Alis.Core.Systems.Physics2D.Dynamics.Body)">
+        <member name="M:Alis.Core.Manager.Physic.PhysicManager.AttachBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
             Attaches the body using the specified body
             </summary>

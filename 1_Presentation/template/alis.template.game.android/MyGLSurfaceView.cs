@@ -30,7 +30,7 @@
 using Android.Content;
 using Android.Opengl;
 
-namespace HelloAndroid
+namespace Alis.Template.Game.Android
 {
     /// <summary>
     ///     The my gl surface view class

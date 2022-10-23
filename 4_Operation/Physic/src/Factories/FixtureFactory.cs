@@ -30,14 +30,14 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.Shapes;
-using Alis.Core.Systems.Physics2D.Definitions;
-using Alis.Core.Systems.Physics2D.Dynamics;
-using Alis.Core.Systems.Physics2D.Shared;
-using Alis.Core.Systems.Physics2D.Tools.Triangulation.TriangulationBase;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.Shapes;
+using Alis.Core.Physic.Definitions;
+using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Shared;
+using Alis.Core.Physic.Tools.Triangulation.TriangulationBase;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Factories
+namespace Alis.Core.Physic.Factories
 {
     /// <summary>An easy to use factory for creating bodies</summary>
     public static class FixtureFactory

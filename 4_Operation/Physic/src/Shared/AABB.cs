@@ -29,10 +29,10 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Collision.RayCast;
-using Alis.Core.Systems.Physics2D.Utilities;
+using Alis.Core.Physic.Collision.RayCast;
+using Alis.Core.Physic.Utilities;
 
-namespace Alis.Core.Systems.Physics2D.Shared
+namespace Alis.Core.Physic.Shared
 {
     /// <summary>An axis aligned bounding box.</summary>
     public struct Aabb

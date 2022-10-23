@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Systems.Physics2D.Collision.ContactSystem;
+using Alis.Core.Physic.Collision.ContactSystem;
 
-namespace Alis.Core.Systems.Physics2D.Collision.Handlers
+namespace Alis.Core.Physic.Collision.Handlers
 {
     /// <summary>This delegate is called when a contact is created</summary>
     public delegate void BeginContactHandler(Contact contact);

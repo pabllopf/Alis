@@ -28,9 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Dynamics;
+using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Core.Systems.Physics2D.Definitions
+namespace Alis.Core.Physic.Definitions
 {
     /// <summary>
     ///     The body def class

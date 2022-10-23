@@ -29,9 +29,9 @@
 
 using System;
 using System.Numerics;
-using Alis.Core.Systems.Physics2D.Shared;
+using Alis.Core.Physic.Shared;
 
-namespace Alis.Core.Systems.Physics2D.Utilities
+namespace Alis.Core.Physic.Utilities
 {
     /// <summary>
     ///     Collection of helper methods for misc collisions. Does float tolerance and line collisions with lines and

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Systems.Physics2D.Dynamics.Joints.Misc
+namespace Alis.Core.Physic.Dynamics.Joints.Misc
 {
     /// <summary>
     ///     The limit state enum

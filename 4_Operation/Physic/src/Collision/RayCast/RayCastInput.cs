@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Systems.Physics2D.Collision.RayCast
+namespace Alis.Core.Physic.Collision.RayCast
 {
     /// <summary>Ray-cast input data.</summary>
     public struct RayCastInput
