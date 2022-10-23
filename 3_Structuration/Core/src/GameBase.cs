@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using Alis.Core.Manager;
+using Alis.Core.Manager.Physic;
 using Alis.Core.Manager.Time;
 
 namespace Alis.Core
@@ -46,7 +47,12 @@ namespace Alis.Core
         /// <summary>
         ///     The time manager base
         /// </summary>
-        private TimeManagerBase timeManagerBase = new TimeManagerBase();
+        public static TimeManagerBase TimeManager { get; set; } = new TimeManagerBase();
+
+        /// <summary>
+        /// Gets or sets the value of the physic manager
+        /// </summary>
+        public static PhysicManagerBase PhysicManager { get; set; } = new PhysicManagerBase();
 
         /// <summary>
         ///     Active game
@@ -60,33 +66,49 @@ namespace Alis.Core
         {
             IsRunning = true;
 
+            PhysicManager.Init();
+            PhysicManager.Awake();
+            PhysicManager.Start();
+            
             Managers.ForEach(i => i.Init());
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
+            
+            
 
             while (IsRunning)
             {
-                timeManagerBase.SyncFixedDeltaTime();
+                TimeManager.SyncFixedDeltaTime();
 
-                if (timeManagerBase.IsNewFrame())
+                if (TimeManager.IsNewFrame())
                 {
-                    timeManagerBase.UpdateTimeStep();
+                    TimeManager.UpdateTimeStep();
 
-                    for (int i = 0; i < timeManagerBase.MaximunAllowedTimeStep; i++)
+                    for (int i = 0; i < TimeManager.MaximunAllowedTimeStep; i++)
                     {
+                        PhysicManager.BeforeUpdate();
+                        PhysicManager.Update();
+                        PhysicManager.AfterUpdate();
+                        
+                        
                         Managers.ForEach(j => j.BeforeUpdate());
                         Managers.ForEach(j => j.Update());
                         Managers.ForEach(j => j.AfterUpdate());
+                        
+                        Managers.ForEach(j => j.Draw());
+                        
+                        
                     }
-
+                    PhysicManager.FixedUpdate();
                     Managers.ForEach(i => i.FixedUpdate());
+                    
 
                     Managers.ForEach(i => i.DispatchEvents());
 
-                    timeManagerBase.CounterFrames();
+                    TimeManager.CounterFrames();
                 }
 
-                timeManagerBase.UpdateFixedTime();
+                TimeManager.UpdateFixedTime();
             }
 
             Managers.ForEach(i => i.Stop());

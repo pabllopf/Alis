@@ -97,6 +97,14 @@ namespace Alis.Core.Component
         public virtual void Disable()
         {
         }
+        
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
+        public virtual void Draw()
+        {
+            
+        }
 
         /// <summary>
         ///     Inits this instance

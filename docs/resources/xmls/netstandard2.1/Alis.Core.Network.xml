@@ -13,11 +13,6 @@
                 and the underlying buffers will be returned to the pool at their larger sizes
             </summary>
         </member>
-        <member name="F:Alis.Core.Network.BufferPool.DefaultBufferSize">
-            <summary>
-                The default buffer size
-            </summary>
-        </member>
         <member name="F:Alis.Core.Network.BufferPool._bufferPoolStack">
             <summary>
                 The buffer pool stack
@@ -38,6 +33,11 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Network.BufferPool" /> class
             </summary>
             <param name="bufferSize">The buffer size</param>
+        </member>
+        <member name="F:Alis.Core.Network.BufferPool.DefaultBufferSize">
+            <summary>
+                The default buffer size
+            </summary>
         </member>
         <member name="M:Alis.Core.Network.BufferPool.GetBuffer">
             <summary>
@@ -1053,15 +1053,15 @@
                 The web socket frame writer class
             </summary>
         </member>
+        <member name="M:Alis.Core.Network.Internal.WebSocketFrameWriter.#cctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketFrameWriter" /> class
+            </summary>
+        </member>
         <member name="F:Alis.Core.Network.Internal.WebSocketFrameWriter.Random">
             <summary>
                 This is used for data masking so that web proxies don't cache the data
                 Therefore, there are no cryptographic concerns
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Network.Internal.WebSocketFrameWriter.#cctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketFrameWriter" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Network.Internal.WebSocketFrameWriter.Write(Alis.Core.Network.Internal.WebSocketOpCode,System.ArraySegment{System.Byte},System.IO.MemoryStream,System.Boolean,System.Boolean)">
@@ -1077,11 +1077,6 @@
         <member name="T:Alis.Core.Network.Internal.WebSocketImplementation">
             <summary>
                 Main implementation of the WebSocket abstract class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation.MaxPingPongPayloadLen">
-            <summary>
-                The max ping pong payload len
             </summary>
         </member>
         <member name="F:Alis.Core.Network.Internal.WebSocketImplementation._guid">
@@ -1201,6 +1196,11 @@
         <member name="P:Alis.Core.Network.Internal.WebSocketImplementation.KeepAliveInterval">
             <summary>
                 Gets the value of the keep alive interval
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation.MaxPingPongPayloadLen">
+            <summary>
+                The max ping pong payload len
             </summary>
         </member>
         <member name="M:Alis.Core.Network.Internal.WebSocketImplementation.ReceiveAsync(System.ArraySegment{System.Byte},System.Threading.CancellationToken)">

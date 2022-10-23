@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
+using Alis.Core.Systems.Physics2D;
+
 namespace Alis.Core.Manager.Physic
 {
     /// <summary>
@@ -40,7 +43,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void AfterUpdate()
         {
-            //throw new NotImplementedException();
+           
         }
 
         /// <summary>
@@ -48,6 +51,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void Init()
         {
+           
         }
 
         /// <summary>
@@ -55,7 +59,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void Awake()
         {
-            //throw new NotImplementedException();
+            
         }
 
         /// <summary>
@@ -63,7 +67,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void BeforeUpdate()
         {
-            //throw new NotImplementedException();
+           
         }
 
         /// <summary>

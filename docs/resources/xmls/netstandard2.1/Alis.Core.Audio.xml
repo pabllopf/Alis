@@ -338,6 +338,11 @@
             </summary>
             <seealso cref="T:Alis.Core.Audio.OS.Interfaces.IPlayer" />
         </member>
+        <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase._process">
+            <summary>
+                The process
+            </summary>
+        </member>
         <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase.PauseProcessCommand">
             <summary>
                 The pause process command
@@ -346,11 +351,6 @@
         <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase.ResumeProcessCommand">
             <summary>
                 The resume process command
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.OS.Players.UnixPlayerBase._process">
-            <summary>
-                The process
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.OS.Players.UnixPlayerBase.Playing">

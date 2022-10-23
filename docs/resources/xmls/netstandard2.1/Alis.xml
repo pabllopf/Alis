@@ -129,6 +129,45 @@
                 The box collider builder class
             </summary>
         </member>
+        <member name="F:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.boxCollider">
+            <summary>
+            The box collider
+            </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Build">
+            <summary>
+            Builds this instance
+            </summary>
+            <returns>The box collider</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsDynamic">
+            <summary>
+            Ises the dynamic
+            </summary>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsDynamic(System.Boolean)">
+            <summary>
+            Ises the dynamic using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Size(System.Single,System.Single)">
+            <summary>
+            Sizes the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.AutoTill(System.Boolean)">
+            <summary>
+            Autoes the till using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The box collider builder</returns>
+        </member>
         <member name="T:Alis.Builder.Core.Component.Collider.CircleColliderBuilder">
             <summary>
                 The circle collider builder class
@@ -179,45 +218,45 @@
         </member>
         <member name="T:Alis.Builder.Core.Component.Render.AnimationBuilder">
             <summary>
-            The animation builder class
+                The animation builder class
             </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
         <member name="F:Alis.Builder.Core.Component.Render.AnimationBuilder.animation">
             <summary>
-            The animation
+                The animation
             </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.AddFrame(System.Func{Alis.Builder.Core.Component.Render.FrameBuilder,Alis.Core.Component.Render.Frame})">
+            <summary>
+                Adds the frame using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The animation builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The animation</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Name(System.String)">
             <summary>
-            Names the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The animation builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Speed(System.Single)">
-            <summary>
-            Speeds the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The animation builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.AddFrame(System.Func{Alis.Builder.Core.Component.Render.FrameBuilder,Alis.Core.Component.Render.Frame})">
-            <summary>
-            Adds the frame using the specified value
+                Names the value
             </summary>
             <param name="value">The value</param>
             <returns>The animation builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Order(System.Int32)">
             <summary>
-            Orders the value
+                Orders the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The animation builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimationBuilder.Speed(System.Single)">
+            <summary>
+                Speeds the value
             </summary>
             <param name="value">The value</param>
             <returns>The animation builder</returns>
@@ -229,21 +268,21 @@
         </member>
         <member name="F:Alis.Builder.Core.Component.Render.AnimatorBuilder.animator">
             <summary>
-            The animator
+                The animator
             </summary>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Render.AnimatorBuilder.Build">
-            <summary>
-            Builds this instance
-            </summary>
-            <returns>The animator</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Render.AnimatorBuilder.AddAnimation(System.Func{Alis.Builder.Core.Component.Render.AnimationBuilder,Alis.Core.Component.Render.Animation})">
             <summary>
-            Adds the animation using the specified value
+                Adds the animation using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The animator builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Render.AnimatorBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The animator</returns>
         </member>
         <member name="T:Alis.Builder.Core.Component.Render.CameraBuilder">
             <summary>
@@ -252,34 +291,34 @@
         </member>
         <member name="F:Alis.Builder.Core.Component.Render.CameraBuilder.camera">
             <summary>
-            The camera
+                The camera
             </summary>
         </member>
         <member name="M:Alis.Builder.Core.Component.Render.CameraBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The camera</returns>
         </member>
         <member name="T:Alis.Builder.Core.Component.Render.FrameBuilder">
             <summary>
-            The frame builder class
+                The frame builder class
             </summary>
         </member>
         <member name="F:Alis.Builder.Core.Component.Render.FrameBuilder.frame">
             <summary>
-            The frame
+                The frame
             </summary>
         </member>
         <member name="M:Alis.Builder.Core.Component.Render.FrameBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The frame</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Render.FrameBuilder.FilePath(System.String)">
             <summary>
-            Files the path using the specified value
+                Files the path using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The frame builder</returns>
@@ -402,38 +441,38 @@
         </member>
         <member name="T:Alis.Builder.Core.Entity.SplashScreenBuilder">
             <summary>
-            The splash screen builder class
+                The splash screen builder class
             </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
         <member name="F:Alis.Builder.Core.Entity.SplashScreenBuilder.splashScreen">
             <summary>
-            The splash screen
+                The splash screen
             </summary>
         </member>
         <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The splash screen</returns>
         </member>
         <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.FilePath(System.String)">
             <summary>
-            Files the path using the specified value
+                Files the path using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The splash screen builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.IsActive(System.Boolean)">
             <summary>
-            Ises the active using the specified value
+                Ises the active using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The splash screen builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Entity.SplashScreenBuilder.Style(Alis.Core.Entity.Style)">
             <summary>
-            Styles the value
+                Styles the value
             </summary>
             <param name="value">The value</param>
             <returns>The splash screen builder</returns>
@@ -480,31 +519,31 @@
         </member>
         <member name="T:Alis.Builder.Core.Entity.WindowBuilder">
             <summary>
-            The window builder class
+                The window builder class
             </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
         <member name="F:Alis.Builder.Core.Entity.WindowBuilder.window">
             <summary>
-            The window
+                The window
             </summary>
-        </member>
-        <member name="M:Alis.Builder.Core.Entity.WindowBuilder.Build">
-            <summary>
-            Builds this instance
-            </summary>
-            <returns>The window</returns>
         </member>
         <member name="M:Alis.Builder.Core.Entity.WindowBuilder.Background(Alis.Core.Graphic.D2.SFML.Graphics.Color)">
             <summary>
-            Backgrounds the value
+                Backgrounds the value
             </summary>
             <param name="value">The value</param>
             <returns>The window builder</returns>
         </member>
+        <member name="M:Alis.Builder.Core.Entity.WindowBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The window</returns>
+        </member>
         <member name="M:Alis.Builder.Core.Entity.WindowBuilder.Resolution(System.Single,System.Single)">
             <summary>
-            Resolutions the x
+                Resolutions the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
@@ -536,151 +575,151 @@
         </member>
         <member name="T:Alis.Builder.Core.Manager.SettingManagerBuilder">
             <summary>
-            The setting manager builder class
+                The setting manager builder class
             </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
         <member name="F:Alis.Builder.Core.Manager.SettingManagerBuilder.settingManager">
             <summary>
-            The setting manager
+                The setting manager
             </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Audio(System.Func{Alis.Builder.Core.Setting.AudioSettingBuilder,Alis.Core.Setting.AudioSetting})">
+            <summary>
+                Audioes the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The setting manager builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The setting manager</returns>
         </member>
         <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Debug(System.Func{Alis.Builder.Core.Setting.DebugSettingBuilder,Alis.Core.Setting.DebugSetting})">
             <summary>
-            Debugs the value
+                Debugs the value
             </summary>
             <param name="value">The value</param>
             <returns>The setting manager builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.General(System.Func{Alis.Builder.Core.Setting.GeneralSettingBuilder,Alis.Core.Setting.GeneralSetting})">
             <summary>
-            Generals the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The setting manager builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Audio(System.Func{Alis.Builder.Core.Setting.AudioSettingBuilder,Alis.Core.Setting.AudioSetting})">
-            <summary>
-            Audioes the value
+                Generals the value
             </summary>
             <param name="value">The value</param>
             <returns>The setting manager builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Graphic(System.Func{Alis.Builder.Core.Setting.GraphicSettingBuilder,Alis.Core.Setting.GraphicSetting})">
             <summary>
-            Graphics the value
+                Graphics the value
             </summary>
             <param name="value">The value</param>
             <returns>The setting manager builder</returns>
         </member>
         <member name="T:Alis.Builder.Core.Setting.AudioSettingBuilder">
             <summary>
-            The audio setting builder class
+                The audio setting builder class
             </summary>
         </member>
         <member name="F:Alis.Builder.Core.Setting.AudioSettingBuilder.audioSetting">
             <summary>
-            The audio setting
+                The audio setting
             </summary>
         </member>
         <member name="M:Alis.Builder.Core.Setting.AudioSettingBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The audio setting</returns>
         </member>
         <member name="T:Alis.Builder.Core.Setting.DebugSettingBuilder">
             <summary>
-            The debug setting builder class
+                The debug setting builder class
             </summary>
         </member>
         <member name="F:Alis.Builder.Core.Setting.DebugSettingBuilder.debugSetting">
             <summary>
-            The debug setting
+                The debug setting
             </summary>
         </member>
         <member name="M:Alis.Builder.Core.Setting.DebugSettingBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The debug setting</returns>
         </member>
         <member name="T:Alis.Builder.Core.Setting.GeneralSettingBuilder">
             <summary>
-            The general setting builder class
+                The general setting builder class
             </summary>
         </member>
         <member name="F:Alis.Builder.Core.Setting.GeneralSettingBuilder.generalSetting">
             <summary>
-            The general setting
+                The general setting
             </summary>
-        </member>
-        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Build">
-            <summary>
-            Builds this instance
-            </summary>
-            <returns>The general setting</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Name(System.String)">
-            <summary>
-            Names the value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The general setting builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Author(System.String)">
             <summary>
-            Authors the value
+                Authors the value
             </summary>
             <param name="value">The value</param>
             <returns>The general setting builder</returns>
         </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Build">
+            <summary>
+                Builds this instance
+            </summary>
+            <returns>The general setting</returns>
+        </member>
         <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Description(System.String)">
             <summary>
-            Descriptions the value
+                Descriptions the value
             </summary>
             <param name="value">The value</param>
             <returns>The general setting builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Icon(System.String)">
             <summary>
-            Icons the value
+                Icons the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The general setting builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.Name(System.String)">
+            <summary>
+                Names the value
             </summary>
             <param name="value">The value</param>
             <returns>The general setting builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Setting.GeneralSettingBuilder.SplashScreen(System.Func{Alis.Builder.Core.Entity.SplashScreenBuilder,Alis.Core.Entity.SplashScreen})">
             <summary>
-            Splashes the screen using the specified value
+                Splashes the screen using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The general setting builder</returns>
         </member>
         <member name="T:Alis.Builder.Core.Setting.GraphicSettingBuilder">
             <summary>
-            The graphic setting builder class
+                The graphic setting builder class
             </summary>
         </member>
         <member name="F:Alis.Builder.Core.Setting.GraphicSettingBuilder.graphicSetting">
             <summary>
-            The graphic setting
+                The graphic setting
             </summary>
         </member>
         <member name="M:Alis.Builder.Core.Setting.GraphicSettingBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The graphic setting</returns>
         </member>
         <member name="M:Alis.Builder.Core.Setting.GraphicSettingBuilder.Window(System.Func{Alis.Builder.Core.Entity.WindowBuilder,Alis.Core.Entity.Window})">
             <summary>
-            Windows the value
+                Windows the value
             </summary>
             <param name="value">The value</param>
             <returns>The graphic setting builder</returns>
@@ -729,15 +768,15 @@
             <param name="value">The value</param>
             <returns>The video game builder</returns>
         </member>
-        <member name="M:Alis.Builder.VideoGameBuilder.Run">
-            <summary>Runs this instance.</summary>
-        </member>
         <member name="M:Alis.Builder.VideoGameBuilder.Settings(System.Func{Alis.Builder.Core.Manager.SettingManagerBuilder,Alis.Core.Manager.Setting.SettingManager})">
             <summary>
-            Setting the value
+                Setting the value
             </summary>
             <param name="value">The value</param>
             <returns>The video game builder</returns>
+        </member>
+        <member name="M:Alis.Builder.VideoGameBuilder.Run">
+            <summary>Runs this instance.</summary>
         </member>
         <member name="T:Alis.ConsoleGame">
             <summary>
@@ -933,6 +972,133 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.Collider.ColliderBase" />
         </member>
+        <member name="F:Alis.Core.Component.Collider.BoxCollider.rectangleShape">
+            <summary>
+                The rectangle shape
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Component.Collider.BoxCollider"/> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.IsDynamic">
+            <summary>
+            The is dynamic
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Width">
+            <summary>
+                Gets or sets the value of the width
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Height">
+            <summary>
+                Gets or sets the value of the height
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Density">
+            <summary>
+                Gets or sets the value of the density
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Rotation">
+            <summary>
+                Gets or sets the value of the rotation
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.RelativePosition">
+            <summary>
+                Gets or sets the value of the relative position
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Body">
+            <summary>
+                Gets or sets the value of the body
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.AutoTilling">
+            <summary>
+                Gets or sets the value of the auto tilling
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.BodyType">
+            <summary>
+                Gets or sets the value of the body type
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Restitution">
+            <summary>
+                Gets or sets the value of the restitution
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Friction">
+            <summary>
+                Gets or sets the value of the friction
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.FixedRotation">
+            <summary>
+                Gets or sets the value of the fixed rotation
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.Mass">
+            <summary>
+                Gets or sets the value of the mass
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.GravityScale">
+            <summary>
+                Gets or sets the value of the gravity scale
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.LinearVelocity">
+            <summary>
+                Gets or sets the value of the linear velocity
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.Builder">
+            <summary>
+            Builders this instance
+            </summary>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.Awake">
+            <summary>
+                Awakes this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.CreateBody">
+            <summary>
+                Creates the body
+            </summary>
+            <returns>The body</returns>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.Start">
+            <summary>
+                Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.BeforeUpdate">
+            <summary>
+                Befores the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.Update">
+            <summary>
+                Updates this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.AfterUpdate">
+            <summary>
+                Afters the update
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.Draw">
+            <summary>
+            Draws this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Component.Collider.CircleCollider">
             <summary>
                 The circle collider class
@@ -1055,30 +1221,30 @@
                 The animation class
             </summary>
         </member>
-        <member name="P:Alis.Core.Component.Render.Animation.Name">
-            <summary>
-            Gets or sets the value of the name
-            </summary>
-        </member>
         <member name="M:Alis.Core.Component.Render.Animation.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Animation.#ctor(System.Collections.Generic.List{Alis.Core.Component.Render.Frame})">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Animation" /> class
             </summary>
             <param name="textures">The textures</param>
         </member>
+        <member name="P:Alis.Core.Component.Render.Animation.Name">
+            <summary>
+                Gets or sets the value of the name
+            </summary>
+        </member>
         <member name="P:Alis.Core.Component.Render.Animation.Index">
             <summary>
-            Gets or sets the value of the index
+                Gets or sets the value of the index
             </summary>
         </member>
         <member name="P:Alis.Core.Component.Render.Animation.Order">
             <summary>
-            Gets or sets the value of the order
+                Gets or sets the value of the order
             </summary>
         </member>
         <member name="P:Alis.Core.Component.Render.Animation.Speed">
@@ -1090,6 +1256,12 @@
             <summary>
                 Gets or sets the value of the textures
             </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Animation.Builder">
+            <summary>
+                Builders this instance
+            </summary>
+            <returns>The animator builder</returns>
         </member>
         <member name="M:Alis.Core.Component.Render.Animation.HasNext">
             <summary>
@@ -1104,15 +1276,9 @@
             <exception cref="T:System.InvalidCastException"></exception>
             <returns>The texture</returns>
         </member>
-        <member name="M:Alis.Core.Component.Render.Animation.Builder">
-            <summary>
-            Builders this instance
-            </summary>
-            <returns>The animator builder</returns>
-        </member>
         <member name="M:Alis.Core.Component.Render.Animation.AddFrame(Alis.Core.Component.Render.Frame)">
             <summary>
-            Adds the frame using the specified frame
+                Adds the frame using the specified frame
             </summary>
             <param name="frame">The frame</param>
         </member>
@@ -1121,11 +1287,10 @@
                 The animator class
             </summary>
         </member>
-        <member name="M:Alis.Core.Component.Render.Animator.Builder">
+        <member name="F:Alis.Core.Component.Render.Animator.currentAnimation">
             <summary>
-                Builders this instance
+                The current animation
             </summary>
-            <returns>The animator builder</returns>
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.#ctor">
             <summary>
@@ -1153,20 +1318,21 @@
                 Gets or sets the value of the animations
             </summary>
         </member>
-        <member name="F:Alis.Core.Component.Render.Animator.currentAnimation">
+        <member name="M:Alis.Core.Component.Render.Animator.Builder">
             <summary>
-            The current animation
+                Builders this instance
             </summary>
+            <returns>The animator builder</returns>
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.AddAnimation(Alis.Core.Component.Render.Animation)">
             <summary>
-            Adds the animation using the specified animation
+                Adds the animation using the specified animation
             </summary>
             <param name="animation">The animation</param>
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.Awake">
@@ -1191,7 +1357,7 @@
         </member>
         <member name="M:Alis.Core.Component.Render.Animator.ChangeAnimationTo(System.String)">
             <summary>
-            Changes the animation to using the specified name animation
+                Changes the animation to using the specified name animation
             </summary>
             <param name="nameAnimation">The name animation</param>
         </member>
@@ -1200,6 +1366,16 @@
                 The camera class
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase" />
+        </member>
+        <member name="F:Alis.Core.Component.Render.Camera.view">
+            <summary>
+                Gets or sets the value of the view
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Component.Render.Camera.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Camera" /> class
+            </summary>
         </member>
         <member name="P:Alis.Core.Component.Render.Camera.PointOfView">
             <summary>
@@ -1211,21 +1387,11 @@
                 Gets or sets the value of the resolution
             </summary>
         </member>
-        <member name="F:Alis.Core.Component.Render.Camera.view">
-            <summary>
-                Gets or sets the value of the view
-            </summary>
-        </member>
         <member name="M:Alis.Core.Component.Render.Camera.Builder">
             <summary>
                 Builders this instance
             </summary>
             <returns>The camera builder</returns>
-        </member>
-        <member name="M:Alis.Core.Component.Render.Camera.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Camera"/> class
-            </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Camera.Start">
             <summary>
@@ -1234,34 +1400,34 @@
         </member>
         <member name="M:Alis.Core.Component.Render.Camera.BeforeUpdate">
             <summary>
-            Befores the update
+                Befores the update
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Camera.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Component.Render.Frame">
             <summary>
-            The frame class
+                The frame class
             </summary>
-            <seealso cref="T:Alis.Core.Graphic.D2.FrameBase"/>
+            <seealso cref="T:Alis.Core.Graphic.D2.FrameBase" />
         </member>
         <member name="M:Alis.Core.Component.Render.Frame.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Frame"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Frame" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Render.Frame.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Frame"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Render.Frame" /> class
             </summary>
             <param name="filePath">The file path</param>
         </member>
         <member name="M:Alis.Core.Component.Render.Frame.Builder">
             <summary>
-            Builders this instance
+                Builders this instance
             </summary>
             <returns>The frame builder</returns>
         </member>
@@ -1383,6 +1549,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Alis.Core.Entity.GameObject.Draw">
+            <summary>
+            Draws this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Entity.GameObject.Stop">
             <summary>Stops this instance.</summary>
         </member>
@@ -1467,6 +1638,11 @@
                 Dispatches the events
             </summary>
         </member>
+        <member name="M:Alis.Core.Entity.Scene.Draw">
+            <summary>
+            Draws this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Entity.Scene.Reset">
             <summary>
                 Resets this instance
@@ -1490,59 +1666,59 @@
         </member>
         <member name="T:Alis.Core.Entity.SplashScreen">
             <summary>
-            The splash screen class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Entity.SplashScreen.Enabled">
-            <summary>
-            Gets or sets the value of the enabled
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Entity.SplashScreen.Style">
-            <summary>
-            Gets or sets the value of the style
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Entity.SplashScreen.filePath">
-            <summary>
-            The file path
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Entity.SplashScreen.EnabledAlisLogo">
-            <summary>
-            Gets or sets the value of the enabled alis logo
+                The splash screen class
             </summary>
         </member>
         <member name="M:Alis.Core.Entity.SplashScreen.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Entity.SplashScreen"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Entity.SplashScreen" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Entity.SplashScreen.#ctor(System.String)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Entity.SplashScreen"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Entity.SplashScreen" /> class
             </summary>
             <param name="filePath">The file path</param>
         </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.Enabled">
+            <summary>
+                Gets or sets the value of the enabled
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.Style">
+            <summary>
+                Gets or sets the value of the style
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.filePath">
+            <summary>
+                The file path
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Entity.SplashScreen.EnabledAlisLogo">
+            <summary>
+                Gets or sets the value of the enabled alis logo
+            </summary>
+        </member>
         <member name="M:Alis.Core.Entity.SplashScreen.Builder">
             <summary>
-            Builders this instance
+                Builders this instance
             </summary>
             <returns>The splash screen builder</returns>
         </member>
         <member name="T:Alis.Core.Entity.Style">
             <summary>
-            The style enum
+                The style enum
             </summary>
         </member>
         <member name="F:Alis.Core.Entity.Style.Light">
             <summary>
-            The light style
+                The light style
             </summary>
         </member>
         <member name="F:Alis.Core.Entity.Style.Dark">
             <summary>
-            The dark style
+                The dark style
             </summary>
         </member>
         <member name="T:Alis.Core.Entity.Transform">
@@ -1550,24 +1726,24 @@
         </member>
         <member name="T:Alis.Core.Entity.Window">
             <summary>
-            The window class
+                The window class
             </summary>
-        </member>
-        <member name="M:Alis.Core.Entity.Window.Builder">
-            <summary>
-            Builders this instance
-            </summary>
-            <returns>The window builder</returns>
         </member>
         <member name="P:Alis.Core.Entity.Window.Background">
             <summary>
-            Gets or sets the value of the background
+                Gets or sets the value of the background
             </summary>
         </member>
         <member name="P:Alis.Core.Entity.Window.Resolution">
             <summary>
-            Gets or sets the value of the resolution
+                Gets or sets the value of the resolution
             </summary>
+        </member>
+        <member name="M:Alis.Core.Entity.Window.Builder">
+            <summary>
+                Builders this instance
+            </summary>
+            <returns>The window builder</returns>
         </member>
         <member name="T:Alis.Core.Manager.Audio.AudioManager">
             <summary>
@@ -1582,7 +1758,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManager.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManager.Awake">
@@ -1636,9 +1812,9 @@
             </summary>
             <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
-        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.Current">
+        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.defaultSize">
             <summary>
-            The current
+                The vector
             </summary>
         </member>
         <member name="F:Alis.Core.Manager.Graphic.GraphicManager.renderWindow">
@@ -1646,9 +1822,19 @@
                 The renderWindow
             </summary>
         </member>
+        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.styles">
+            <summary>
+                The default
+            </summary>
+        </member>
         <member name="F:Alis.Core.Manager.Graphic.GraphicManager.VideoMode">
             <summary>
-            The video mode
+                The video mode
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.#ctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Manager.Graphic.GraphicManager" /> class
             </summary>
         </member>
         <member name="P:Alis.Core.Manager.Graphic.GraphicManager.Sprites">
@@ -1656,19 +1842,14 @@
                 Gets or sets the value of the sprites
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.styles">
+        <member name="P:Alis.Core.Manager.Graphic.GraphicManager.Colliders">
             <summary>
-            The default
+            Gets or sets the value of the colliders
             </summary>
         </member>
-        <member name="M:Alis.Core.Manager.Graphic.GraphicManager.#ctor">
+        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.Current">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Manager.Graphic.GraphicManager"/> class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.defaultSize">
-            <summary>
-            The vector
+                The current
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Init">
@@ -1678,21 +1859,21 @@
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.RenderWindowOnKeyPressed(System.Object,Alis.Core.Graphic.D2.SFML.Windows.KeyEventArgs)">
             <summary>
-            Renders the window on key pressed using the specified sender
+                Renders the window on key pressed using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.RenderWindowOnResized(System.Object,Alis.Core.Graphic.D2.SFML.Windows.SizeEventArgs)">
             <summary>
-            Renders the window on resized using the specified sender
+                Renders the window on resized using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.InitRenderWindow">
             <summary>
-            Inits the render window
+                Inits the render window
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.Awake">
@@ -1766,7 +1947,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.SetView(Alis.Core.Graphic.D2.SFML.Graphics.View)">
             <summary>
-            Sets the view using the specified view
+                Sets the view using the specified view
             </summary>
             <param name="view">The view</param>
         </member>
@@ -1776,12 +1957,12 @@
         </member>
         <member name="F:Alis.Core.Manager.Input.InputManager.keys">
             <summary>
-            Array of key of keyboard
+                Array of key of keyboard
             </summary>
         </member>
         <member name="F:Alis.Core.Manager.Input.InputManager.tempListOfKeys">
             <summary>
-            Temp list of keys
+                Temp list of keys
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.Init">
@@ -1905,11 +2086,6 @@
                 Scene manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Scene.SceneManager.currentSceneManager">
-            <summary>
-            Define the current scene manager
-            </summary>
-        </member>
         <member name="F:Alis.Core.Manager.Scene.SceneManager.currentScene">
             <summary>
                 The current scene
@@ -1923,6 +2099,11 @@
         <member name="M:Alis.Core.Manager.Scene.SceneManager.#ctor">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Manager.Scene.SceneManager" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.Scene.SceneManager.currentSceneManager">
+            <summary>
+                Define the current scene manager
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManager.Init">
@@ -1960,6 +2141,11 @@
                 Dispatches the events
             </summary>
         </member>
+        <member name="M:Alis.Core.Manager.Scene.SceneManager.Draw">
+            <summary>
+            Draws this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManager.FixedUpdate">
             <summary>
                 Fix the update
@@ -1988,28 +2174,28 @@
         </member>
         <member name="T:Alis.Core.Manager.Setting.SettingManager">
             <summary>
-            The setting manager class
+                The setting manager class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.Setting.SettingManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.Setting.SettingManagerBase" />
         </member>
         <member name="P:Alis.Core.Manager.Setting.SettingManager.General">
             <summary>
-            Gets or sets the value of the general
+                Gets or sets the value of the general
             </summary>
         </member>
         <member name="P:Alis.Core.Manager.Setting.SettingManager.Audio">
             <summary>
-            Gets or sets the value of the audio
+                Gets or sets the value of the audio
             </summary>
         </member>
         <member name="P:Alis.Core.Manager.Setting.SettingManager.Debug">
             <summary>
-            Gets or sets the value of the debug
+                Gets or sets the value of the debug
             </summary>
         </member>
         <member name="P:Alis.Core.Manager.Setting.SettingManager.Graphic">
             <summary>
-            Gets or sets the value of the graphic
+                Gets or sets the value of the graphic
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Time.TimeManager">
@@ -2024,7 +2210,7 @@
         </member>
         <member name="M:Alis.Core.Setting.AudioSetting.Builder">
             <summary>
-            Builders this instance
+                Builders this instance
             </summary>
             <returns>The audio setting builder</returns>
         </member>
@@ -2040,12 +2226,12 @@
         </member>
         <member name="P:Alis.Core.Setting.DebugSetting.CreateFileLog">
             <summary>
-            Gets or sets the value of the create file log
+                Gets or sets the value of the create file log
             </summary>
         </member>
         <member name="M:Alis.Core.Setting.DebugSetting.Builder">
             <summary>
-            Builders this instance
+                Builders this instance
             </summary>
             <returns>The debug setting builder</returns>
         </member>
@@ -2069,37 +2255,37 @@
         </member>
         <member name="P:Alis.Core.Setting.GeneralSetting.IconFile">
             <summary>
-            Gets or sets the value of the icon file
+                Gets or sets the value of the icon file
             </summary>
         </member>
         <member name="P:Alis.Core.Setting.GeneralSetting.SplashScreen">
             <summary>
-            Gets or sets the value of the splash screen
+                Gets or sets the value of the splash screen
             </summary>
         </member>
         <member name="M:Alis.Core.Setting.GeneralSetting.Builder">
             <summary>
-            Builders this instance
+                Builders this instance
             </summary>
             <returns>The general setting builder</returns>
         </member>
         <member name="T:Alis.Core.Setting.GraphicSetting">
             <summary>
-            The graphic setting class
+                The graphic setting class
             </summary>
-            <seealso cref="T:Alis.Core.Setting.SettingBase"/>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuilder`1"/>
-        </member>
-        <member name="M:Alis.Core.Setting.GraphicSetting.Builder">
-            <summary>
-            Builders this instance
-            </summary>
-            <returns>The graphic setting builder</returns>
+            <seealso cref="T:Alis.Core.Setting.SettingBase" />
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuilder`1" />
         </member>
         <member name="P:Alis.Core.Setting.GraphicSetting.Window">
             <summary>
-            Gets or sets the value of the window
+                Gets or sets the value of the window
             </summary>
+        </member>
+        <member name="M:Alis.Core.Setting.GraphicSetting.Builder">
+            <summary>
+                Builders this instance
+            </summary>
+            <returns>The graphic setting builder</returns>
         </member>
         <member name="T:Alis.SoundGame">
             <summary>
@@ -2124,39 +2310,34 @@
             </summary>
             <seealso cref="T:Alis.Core.GameBase" />
         </member>
-        <member name="P:Alis.VideoGame.InputManager">
+        <member name="M:Alis.VideoGame.#ctor">
             <summary>
-            Gets or sets the value of the input manager
+                Video game
             </summary>
         </member>
-        <member name="P:Alis.VideoGame.PhysicManager">
+        <member name="P:Alis.VideoGame.InputManager">
             <summary>
-            Gets or sets the value of the physic manager
+                Gets or sets the value of the input manager
             </summary>
         </member>
         <member name="P:Alis.VideoGame.GraphicManager">
             <summary>
-            Gets or sets the value of the graphic manager
+                Gets or sets the value of the graphic manager
             </summary>
         </member>
         <member name="P:Alis.VideoGame.SceneManager">
             <summary>
-            Gets or sets the value of the scene manager
+                Gets or sets the value of the scene manager
             </summary>
         </member>
         <member name="P:Alis.VideoGame.AudioManager">
             <summary>
-            Gets the value of the audio manager
+                Gets the value of the audio manager
             </summary>
         </member>
         <member name="P:Alis.VideoGame.Setting">
             <summary>
-            Gets or sets the value of the setting manager
-            </summary>
-        </member>
-        <member name="M:Alis.VideoGame.#ctor">
-            <summary>
-                Video game
+                Gets or sets the value of the setting manager
             </summary>
         </member>
         <member name="M:Alis.VideoGame.Builder">

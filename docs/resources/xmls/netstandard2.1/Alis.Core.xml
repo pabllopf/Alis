@@ -33,7 +33,7 @@
         </member>
         <member name="T:Alis.Core.Builder.Manager.ManagerBaseBuilder">
             <summary>
-            The manager base builder class
+                The manager base builder class
             </summary>
         </member>
         <member name="T:Alis.Core.Builder.Setting.SettingBuilder">
@@ -102,6 +102,11 @@
         </member>
         <member name="M:Alis.Core.Component.ComponentBase.Disable">
             <summary>Disables this instance.</summary>
+        </member>
+        <member name="M:Alis.Core.Component.ComponentBase.Draw">
+            <summary>
+            Draws this instance
+            </summary>
         </member>
         <member name="M:Alis.Core.Component.ComponentBase.Init">
             <summary>
@@ -185,7 +190,7 @@
         </member>
         <member name="T:Alis.Core.Entity.GameObjectBase">
             <summary>
-            The game object base class
+                The game object base class
             </summary>
         </member>
         <member name="F:Alis.Core.Entity.GameObjectBase.components">
@@ -212,27 +217,34 @@
         </member>
         <member name="M:Alis.Core.Entity.GameObjectBase.ContainComponent(Alis.Core.Component.ComponentBase)">
             <summary>
-            Describes whether this instance contain component
+                Describes whether this instance contain component
             </summary>
             <param name="component">The component</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Entity.GameObjectBase.GetComponent``1">
             <summary>
-            Gets the component
+                Gets the component
             </summary>
             <typeparam name="T">The </typeparam>
             <returns>The</returns>
         </member>
+        <member name="M:Alis.Core.Entity.GameObjectBase.Contains``1">
+            <summary>
+            Describes whether this instance contains
+            </summary>
+            <typeparam name="T">The </typeparam>
+            <returns>The bool</returns>
+        </member>
         <member name="T:Alis.Core.Entity.SceneBase">
             <summary>
-            The scene base class
+                The scene base class
             </summary>
-            <seealso cref="T:Alis.Core.Aspect.Base.AlisObject"/>
+            <seealso cref="T:Alis.Core.Aspect.Base.AlisObject" />
         </member>
         <member name="T:Alis.Core.Entity.TransformBase">
             <summary>
-            The transform base class
+                The transform base class
             </summary>
         </member>
         <member name="P:Alis.Core.Entity.TransformBase.Position">
@@ -255,19 +267,24 @@
                 Define a game.
             </summary>
         </member>
-        <member name="F:Alis.Core.GameBase.IsRunning">
-            <summary>
-                Active game
-            </summary>
-        </member>
         <member name="F:Alis.Core.GameBase.Managers">
             <summary>
                 The manager base
             </summary>
         </member>
-        <member name="F:Alis.Core.GameBase.timeManagerBase">
+        <member name="P:Alis.Core.GameBase.TimeManager">
             <summary>
-            The time manager base
+                The time manager base
+            </summary>
+        </member>
+        <member name="P:Alis.Core.GameBase.PhysicManager">
+            <summary>
+            Gets or sets the value of the physic manager
+            </summary>
+        </member>
+        <member name="F:Alis.Core.GameBase.IsRunning">
+            <summary>
+                Active game
             </summary>
         </member>
         <member name="M:Alis.Core.GameBase.Run">
@@ -291,185 +308,200 @@
         </member>
         <member name="T:Alis.Core.Manager.Audio.AudioManagerBase">
             <summary>
-            The audio manager base class
+                The audio manager base class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Awake">
             <summary>
-            Awakes this instance
+                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.BeforeUpdate">
             <summary>
-            Befores the update
+                Befores the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.AfterUpdate">
             <summary>
-            Afters the update
+                Afters the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.FixedUpdate">
             <summary>
-            Fixeds the update
+                Fixeds the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Draw">
+            <summary>
+            Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Reset">
             <summary>
-            Resets this instance
+                Resets this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Audio.AudioManagerBase.Exit">
             <summary>
-            Exits this instance
+                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Graphic.GraphicManagerBase">
             <summary>
-            The graphic manager base class
+                The graphic manager base class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Awake">
             <summary>
-            Awakes this instance
+                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.BeforeUpdate">
             <summary>
-            Befores the update
+                Befores the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.AfterUpdate">
             <summary>
-            Afters the update
+                Afters the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.FixedUpdate">
             <summary>
-            Fixeds the update
+                Fixeds the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Draw">
+            <summary>
+            Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Reset">
             <summary>
-            Resets this instance
+                Resets this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManagerBase.Exit">
             <summary>
-            Exits this instance
+                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Input.InputManagerBase">
             <summary>
-            The input manager base class
+                The input manager base class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Awake">
             <summary>
-            Awakes this instance
+                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.BeforeUpdate">
             <summary>
-            Befores the update
+                Befores the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.AfterUpdate">
             <summary>
-            Afters the update
+                Afters the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.FixedUpdate">
             <summary>
-            Fixeds the update
+                Fixeds the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Input.InputManagerBase.Draw">
+            <summary>
+            Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Reset">
             <summary>
-            Resets this instance
+                Resets this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManagerBase.Exit">
             <summary>
-            Exits this instance
+                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.ManagerBase">
@@ -503,6 +535,11 @@
         <member name="M:Alis.Core.Manager.ManagerBase.DispatchEvents">
             <summary>Dispatches the events.</summary>
         </member>
+        <member name="M:Alis.Core.Manager.ManagerBase.Draw">
+            <summary>
+            Draws this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.ManagerBase.Reset">
             <summary>Resets this instance.</summary>
         </member>
@@ -514,196 +551,216 @@
         </member>
         <member name="T:Alis.Core.Manager.Physic.PhysicManagerBase">
             <summary>
-            The physic manager base class
+                The physic manager base class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase" />
+        </member>
+        <member name="P:Alis.Core.Manager.Physic.PhysicManagerBase.World">
+            <summary>
+            Gets or sets the value of the world
+            </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Awake">
             <summary>
-            Awakes this instance
+                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.BeforeUpdate">
             <summary>
-            Befores the update
+                Befores the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.AfterUpdate">
             <summary>
-            Afters the update
+                Afters the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.FixedUpdate">
             <summary>
-            Fixeds the update
+                Fixeds the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Draw">
+            <summary>
+            Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Reset">
             <summary>
-            Resets this instance
+                Resets this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Exit">
             <summary>
-            Exits this instance
+                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Scene.SceneManagerBase">
             <summary>
-            The scene manager base class
+                The scene manager base class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Awake">
             <summary>
-            Awakes this instance
+                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.BeforeUpdate">
             <summary>
-            Befores the update
+                Befores the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.AfterUpdate">
             <summary>
-            Afters the update
+                Afters the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.FixedUpdate">
             <summary>
-            Fixeds the update
+                Fixeds the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Draw">
+            <summary>
+            Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Reset">
             <summary>
-            Resets this instance
+                Resets this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManagerBase.Exit">
             <summary>
-            Exits this instance
+                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Setting.SettingManagerBase">
             <summary>
-            The setting manager base class
+                The setting manager base class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Awake">
             <summary>
-            Awakes this instance
+                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Start">
             <summary>
-            Starts this instance
+                Starts this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.BeforeUpdate">
             <summary>
-            Befores the update
+                Befores the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Update">
             <summary>
-            Updates this instance
+                Updates this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.AfterUpdate">
             <summary>
-            Afters the update
+                Afters the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.FixedUpdate">
             <summary>
-            Fixeds the update
+                Fixeds the update
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Draw">
+            <summary>
+            Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Reset">
             <summary>
-            Resets this instance
+                Resets this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Stop">
             <summary>
-            Stops this instance
+                Stops this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Setting.SettingManagerBase.Exit">
             <summary>
-            Exits this instance
+                Exits this instance
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Time.TimeManagerBase">
             <summary>
-            The time manager base class
+                The time manager base class
             </summary>
-            <seealso cref="T:Alis.Core.Manager.ManagerBase"/>
+            <seealso cref="T:Alis.Core.Manager.ManagerBase" />
         </member>
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Manager.Time.TimeManagerBase"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Manager.Time.TimeManagerBase" /> class
             </summary>
         </member>
         <member name="P:Alis.Core.Manager.Time.TimeManagerBase.Timer">
@@ -815,6 +872,11 @@
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.DispatchEvents">
             <summary>
                 Dispatches the events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Manager.Time.TimeManagerBase.Draw">
+            <summary>
+            Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Time.TimeManagerBase.Reset">

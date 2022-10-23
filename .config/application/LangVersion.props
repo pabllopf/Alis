@@ -1,6 +1,6 @@
 <Project>
     <!--Need lang version 8 to thread manager.-->
     <PropertyGroup>
-        <LangVersion>8</LangVersion>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
 </Project>

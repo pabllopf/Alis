@@ -28,10 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Collisions;
-using Alis.Core.Physic.Dynamics.Body;
-using Alis.Core.Physic.Dynamics.Fixtures;
 
 namespace Alis.Core.Physic.Sample
 {
@@ -46,6 +42,7 @@ namespace Alis.Core.Physic.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            /*
             // Define the size of the world. Simulation will still work
             // if bodies reach the end of the world, but it will be slower.
             Aabb worldAabb = new Aabb();
@@ -112,7 +109,7 @@ namespace Alis.Core.Physic.Sample
             const int positionIterations = 1;
 
             // This is our little game loop.
-            for (int i = 0; i < 100; ++i)
+            for (int i = 0; i < 300; ++i)
             {
                 // Instruct the world to perform a single step of simulation. It is
                 // generally best to keep the time step and iterations fixed.
@@ -126,7 +123,7 @@ namespace Alis.Core.Physic.Sample
                     "Step: {3} - X: {0}, Y: {1}, Angle: {2}", position.X.ToString(), position.Y.ToString(),
                     angle.ToString(), i.ToString());
             }
-
+*/
             // When the world destructor is called, all bodies and joints are freed. This can
             // create orphaned pointers, so be careful about your world management.
 

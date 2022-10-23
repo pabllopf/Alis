@@ -22,7 +22,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet install workload
-        run: dotnet workload install macos android ios
+        run: dotnet workload install android ios
 
       - name: Install tool
         run: dotnet tool install --global dotnet-document --version 0.1.4-alpha

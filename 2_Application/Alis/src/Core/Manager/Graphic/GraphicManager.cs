@@ -33,6 +33,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Component.Collider;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using Sprite = Alis.Core.Component.Render.Sprite;
@@ -74,6 +75,11 @@ namespace Alis.Core.Manager.Graphic
         ///     Gets or sets the value of the sprites
         /// </summary>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
+        
+        /// <summary>
+        /// Gets or sets the value of the colliders
+        /// </summary>
+        public static List<Shape> Colliders { get; set; } = new List<Shape>();
 
         /// <summary>
         ///     The current
@@ -172,7 +178,11 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => Sprites.ForEach(i => renderWindow.Draw(i.sprite));
+        public override void Update()
+        {
+            Sprites.ForEach(i => renderWindow.Draw(i.sprite));
+            Colliders.ForEach(i => renderWindow.Draw(i));
+        }
 
         /// <summary>
         ///     Afters the update

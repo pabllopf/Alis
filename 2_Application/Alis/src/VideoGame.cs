@@ -51,7 +51,6 @@ namespace Alis
         /// </summary>
         public VideoGame()
         {
-            PhysicManager = new PhysicManager();
             GraphicManager = new GraphicManager();
             SceneManager = new SceneManager();
             AudioManager = new AudioManager();
@@ -60,7 +59,6 @@ namespace Alis
 
             Managers = new List<ManagerBase>
             {
-                PhysicManager,
                 GraphicManager,
                 SceneManager,
                 AudioManager,
@@ -73,12 +71,7 @@ namespace Alis
         ///     Gets or sets the value of the input manager
         /// </summary>
         public static InputManager InputManager { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the value of the physic manager
-        /// </summary>
-        public static PhysicManager PhysicManager { get; set; }
-
+        
         /// <summary>
         ///     Gets or sets the value of the graphic manager
         /// </summary>

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="$(SolutionDir).config/Config.props"/>
+    <Import Project="$(SolutionDir).config/Config.props" />
     <PropertyGroup>
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    </ItemGroup>
 </Project>

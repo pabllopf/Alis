@@ -92,6 +92,14 @@ namespace Alis.Core.Manager.Setting
         }
 
         /// <summary>
+        /// Draws this instance
+        /// </summary>
+        public override void Draw()
+        {
+            
+        }
+
+        /// <summary>
         ///     Resets this instance
         /// </summary>
         public override void Reset()

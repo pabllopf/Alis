@@ -92,6 +92,14 @@ namespace Alis.Core.Manager.Audio
         }
 
         /// <summary>
+        /// Draws this instance
+        /// </summary>
+        public override void Draw()
+        {
+            
+        }
+
+        /// <summary>
         ///     Resets this instance
         /// </summary>
         public override void Reset()

@@ -89,6 +89,11 @@ namespace Alis.Core.Entity
         /// </summary>
         /// <returns></returns>
         internal void DispatchEvents() => components.ForEach(component => component.DispatchEvents());
+        
+        /// <summary>
+        /// Draws this instance
+        /// </summary>
+        internal void Draw() => components.ForEach(component => component.Draw());
 
         /// <summary>Stops this instance.</summary>
         internal void Stop() => components.ForEach(component => component.Stop());

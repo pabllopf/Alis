@@ -111,6 +111,7 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
+            
             sprite.Position = new Vector2F(
                 GameObject.Transform.Position.X - size.X / 2,
                 GameObject.Transform.Position.Y - size.Y / 2);

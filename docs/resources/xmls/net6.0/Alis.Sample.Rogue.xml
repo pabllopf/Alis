@@ -9,19 +9,19 @@
                 Move control of player
             </summary>
         </member>
-        <member name="F:Alis.Sample.Rogue.PlayerMovement.walk">
-            <summary>
-            The walking
-            </summary>
-        </member>
         <member name="F:Alis.Sample.Rogue.PlayerMovement.animator">
             <summary>
-            The animator
+                The animator
+            </summary>
+        </member>
+        <member name="F:Alis.Sample.Rogue.PlayerMovement.walk">
+            <summary>
+                The walking
             </summary>
         </member>
         <member name="M:Alis.Sample.Rogue.PlayerMovement.Awake">
             <summary>
-            Awakes this instance
+                Awakes this instance
             </summary>
         </member>
         <member name="M:Alis.Sample.Rogue.PlayerMovement.Start">
@@ -36,13 +36,13 @@
         </member>
         <member name="M:Alis.Sample.Rogue.PlayerMovement.OnReleaseKey(System.String)">
             <summary>
-            sample
+                sample
             </summary>
             <param name="key"></param>
         </member>
         <member name="M:Alis.Sample.Rogue.PlayerMovement.OnPressDownKey(System.String)">
             <summary>
-            sample
+                sample
             </summary>
             <param name="key"></param>
         </member>

@@ -28,11 +28,14 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Component.Audio;
+using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
+using Alis.Core.Systems.Physics2D.Dynamics;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Sample.Rogue
@@ -70,7 +73,7 @@ namespace Alis.Sample.Rogue
                     .Graphic(graphic => graphic
                         .Window(window => window
                             .Resolution(1024, 640)
-                            .Background(Color.Green)
+                            .Background(Color.Black)
                             .Build())
                         .Build())
                     .Build())
@@ -82,21 +85,50 @@ namespace Alis.Sample.Rogue
                             .Transform(transform => transform
                                 .Position(100, 100)
                                 .Rotation(0)
-                                .Scale(3, 3)
+                                .Scale(1, 1)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(Environment.CurrentDirectory + "/Assets/tile000.png")
                                 .Depth(2)
                                 .Build())
+                            .AddComponent<BoxCollider>( box => box
+                                .Builder()
+                                .IsDynamic(false)
+                                .AutoTill(true)
+                                .Build())
                             .Build())
+                        
+                        .Add<GameObject>(go => go
+                            .Name("Floor")
+                            .Transform(transform => transform
+                                .Position(-50, 200)
+                                .Rotation(0)
+                                .Scale(1, 1)
+                                .Build())
+                            .AddComponent(new BoxCollider
+                            {
+                                AutoTilling = true,
+                                BodyType = BodyType.Static,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.0f,
+                                FixedRotation = true,
+                                GravityScale = 0.0f,
+                                IsTrigger = false
+                            })
+                            .Build())
+                        
                         .Add<GameObject>(go => go
                             .Name("Player 2")
                             .WithTag("Players")
                             .Transform(i => i
                                 .Position(0, 0)
                                 .Rotation(0)
-                                .Scale(3, 3)
+                                .Scale(1, 1)
                                 .Build())
                             .AddComponent(new Camera())
                             .AddComponent<Sprite>(i => i
@@ -104,6 +136,20 @@ namespace Alis.Sample.Rogue
                                 .SetTexture(Environment.CurrentDirectory + "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
+                            .AddComponent(new BoxCollider
+                            {
+                                AutoTilling = true,
+                                BodyType = BodyType.Dynamic,
+                                Density = 0.5f,
+                                Rotation = 0.0f,
+                                Mass = 10.0f,
+                                RelativePosition = Vector2.Zero,
+                                Friction = 0.1f,
+                                Restitution = 0.0f,
+                                FixedRotation = true,
+                                GravityScale = 0.0f,
+                                IsTrigger = false
+                            })
                             .AddComponent<PlayerMovement>(playerMovement => playerMovement
                                 .Builder()
                                 .Build())
