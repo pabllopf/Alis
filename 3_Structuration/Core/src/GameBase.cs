@@ -50,11 +50,6 @@ namespace Alis.Core
         public static TimeManagerBase TimeManager { get; set; } = new TimeManagerBase();
 
         /// <summary>
-        /// Gets or sets the value of the physic manager
-        /// </summary>
-        public static PhysicManagerBase PhysicManager { get; set; } = new PhysicManagerBase();
-
-        /// <summary>
         ///     Active game
         /// </summary>
         public static bool IsRunning;
@@ -65,17 +60,11 @@ namespace Alis.Core
         public virtual void Run()
         {
             IsRunning = true;
-
-            PhysicManager.Init();
-            PhysicManager.Awake();
-            PhysicManager.Start();
             
             Managers.ForEach(i => i.Init());
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
             
-            
-
             while (IsRunning)
             {
                 TimeManager.SyncFixedDeltaTime();
@@ -86,23 +75,14 @@ namespace Alis.Core
 
                     for (int i = 0; i < TimeManager.MaximunAllowedTimeStep; i++)
                     {
-                        PhysicManager.BeforeUpdate();
-                        PhysicManager.Update();
-                        PhysicManager.AfterUpdate();
-                        
-                        
                         Managers.ForEach(j => j.BeforeUpdate());
                         Managers.ForEach(j => j.Update());
                         Managers.ForEach(j => j.AfterUpdate());
                         
                         Managers.ForEach(j => j.Draw());
-                        
-                        
                     }
-                    PhysicManager.FixedUpdate();
-                    Managers.ForEach(i => i.FixedUpdate());
                     
-
+                    Managers.ForEach(i => i.FixedUpdate());
                     Managers.ForEach(i => i.DispatchEvents());
 
                     TimeManager.CounterFrames();

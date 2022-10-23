@@ -277,11 +277,6 @@
                 The time manager base
             </summary>
         </member>
-        <member name="P:Alis.Core.GameBase.PhysicManager">
-            <summary>
-            Gets or sets the value of the physic manager
-            </summary>
-        </member>
         <member name="F:Alis.Core.GameBase.IsRunning">
             <summary>
                 Active game
@@ -554,11 +549,6 @@
                 The physic manager base class
             </summary>
             <seealso cref="T:Alis.Core.Manager.ManagerBase" />
-        </member>
-        <member name="P:Alis.Core.Manager.Physic.PhysicManagerBase.World">
-            <summary>
-            Gets or sets the value of the world
-            </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManagerBase.Init">
             <summary>

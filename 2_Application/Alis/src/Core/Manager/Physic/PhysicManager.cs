@@ -29,6 +29,7 @@
 
 using System.Numerics;
 using Alis.Core.Systems.Physics2D;
+using Alis.Core.Systems.Physics2D.Dynamics;
 
 namespace Alis.Core.Manager.Physic
 {
@@ -39,27 +40,31 @@ namespace Alis.Core.Manager.Physic
     public class PhysicManager : PhysicManagerBase
     {
         /// <summary>
-        ///     Afters the update
+        /// Gets or sets the value of the world
         /// </summary>
-        public override void AfterUpdate()
-        {
-           
-        }
-
+        public World World { get; set; }
+        
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
-           
+            Vector2 gravity = new Vector2(0.000000000000000e+00f, 1.000000000000000e+01f);
+            World = new World(gravity);
         }
-
+        
         /// <summary>
         ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
-            
+        }
+        
+        /// <summary>
+        ///     Starts this instance
+        /// </summary>
+        public override void Start()
+        {
         }
 
         /// <summary>
@@ -67,63 +72,67 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void BeforeUpdate()
         {
-           
+            World.Step((float) GameBase.TimeManager.TimeStep, 1, 1);
         }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Exits this instance
-        /// </summary>
-        public override void Exit()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Fixeds the update
-        /// </summary>
-        public override void FixedUpdate()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Resets this instance
-        /// </summary>
-        public override void Reset()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Starts this instance
-        /// </summary>
-        public override void Start()
-        {
-            //throw new NotImplementedException();
-        }
-
-        /// <summary>
-        ///     Stops this instance
-        /// </summary>
-        public override void Stop()
-        {
-            //throw new NotImplementedException();
-        }
-
+        
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-            //throw new NotImplementedException();
+        }
+        
+        
+        /// <summary>
+        ///     Afters the update
+        /// </summary>
+        public override void AfterUpdate()
+        {
+        }
+        
+        /// <summary>
+        ///     Fixeds the update
+        /// </summary>
+        public override void FixedUpdate()
+        {
+           
+        }
+        
+        /// <summary>
+        ///     Dispatches the events
+        /// </summary>
+        public override void DispatchEvents()
+        {
+        }
+        
+        /// <summary>
+        ///     Resets this instance
+        /// </summary>
+        public override void Reset()
+        {
+        }
+        
+        /// <summary>
+        ///     Stops this instance
+        /// </summary>
+        public override void Stop()
+        {
+        }
+        
+        /// <summary>
+        ///     Exits this instance
+        /// </summary>
+        public override void Exit()
+        {
+        }
+
+        /// <summary>
+        /// Attaches the body using the specified body
+        /// </summary>
+        /// <param name="body">The body</param>
+        public void AttachBody(Body body)
+        {
+            World.AddBody(body);
         }
     }
 }

@@ -114,6 +114,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IAutoTilling`2">
+            <summary>
+            The auto tilling interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IAutoTilling`2.AutoTilling(`1)">
+            <summary>
+            Autoes the tilling using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IBackground`2">
             <summary>
                 The background interface
@@ -173,6 +185,18 @@
             </summary>
             <returns>The</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IDensity`2">
+            <summary>
+            The density interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IDensity`2.Density(`1)">
+            <summary>
+            Densities the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IDepth`2">
             <summary>
                 The depth interface
@@ -221,6 +245,30 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IFixedRotation`2">
+            <summary>
+            The fixed rotation interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IFixedRotation`2.FixedRotation(`1)">
+            <summary>
+            Fixeds the rotation using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IFriction`2">
+            <summary>
+            The friction interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IFriction`2.Friction(`1)">
+            <summary>
+            Frictions the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IGeneral`2">
             <summary>
                 The general interface
@@ -241,6 +289,18 @@
         <member name="M:Alis.Core.Aspect.Fluent.Words.IGraphic`2.Graphic(`1)">
             <summary>
                 Graphics the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IGravityScale`2">
+            <summary>
+            The gravity scale interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IGravityScale`2.GravityScale(`1)">
+            <summary>
+            Gravities the scale using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -371,6 +431,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IMass`2">
+            <summary>
+            The mass interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IMass`2.Mass(`1)">
+            <summary>
+            Masses the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IMute`2">
             <summary>
                 The mute interface
@@ -432,6 +504,19 @@
             <param name="y">The </param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IRelativePosition`3">
+            <summary>
+            The relative position interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IRelativePosition`3.RelativePosition(`1,`2)">
+            <summary>
+            Relatives the position using the specified x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IResolution`3">
             <summary>
                 The resolution interface
@@ -443,6 +528,18 @@
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IRestitution`2">
+            <summary>
+            The restitution interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IRestitution`2.Restitution(`1)">
+            <summary>
+            Restitutions the value
+            </summary>
+            <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IRotation`2">

@@ -274,5 +274,14 @@ namespace Alis.Core.Manager.Graphic
         {
             renderWindow.SetView(view);
         }
+
+        /// <summary>
+        /// Attaches the collider using the specified shape
+        /// </summary>
+        /// <param name="shape">The shape</param>
+        public void AttachCollider(Shape shape)
+        {
+            Colliders.Add(shape);
+        }
     }
 }

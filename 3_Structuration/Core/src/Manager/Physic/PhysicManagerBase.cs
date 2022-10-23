@@ -38,18 +38,14 @@ namespace Alis.Core.Manager.Physic
     /// <seealso cref="ManagerBase" />
     public class PhysicManagerBase : ManagerBase
     {
-        /// <summary>
-        /// Gets or sets the value of the world
-        /// </summary>
-        public static World World { get; set; }
+       
         
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
-            Vector2 gravity = new Vector2(0.000000000000000e+00f, 1.000000000000000e+01f);
-            World = new World(gravity);
+            
         }
 
         /// <summary>
@@ -71,7 +67,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void BeforeUpdate()
         {
-            World.Step((float) GameBase.TimeManager.TimeStep, 1, 1);
+            
         }
 
         /// <summary>

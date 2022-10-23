@@ -85,41 +85,53 @@ namespace Alis.Sample.Rogue
                             .Transform(transform => transform
                                 .Position(100, 100)
                                 .Rotation(0)
-                                .Scale(1, 1)
+                                .Scale(2, 2)
                                 .Build())
                             .AddComponent<Sprite>(sprite => sprite
                                 .Builder()
                                 .SetTexture(Environment.CurrentDirectory + "/Assets/tile000.png")
                                 .Depth(2)
                                 .Build())
-                            .AddComponent<BoxCollider>( box => box
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
+                                .IsActive(true)
                                 .IsDynamic(false)
-                                .AutoTill(true)
+                                .IsTrigger(false)
+                                .AutoTilling(true)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
                                 .Build())
                             .Build())
                         
                         .Add<GameObject>(go => go
                             .Name("Floor")
                             .Transform(transform => transform
-                                .Position(-50, 200)
+                                .Position(50, 200)
                                 .Rotation(0)
                                 .Scale(1, 1)
                                 .Build())
-                            .AddComponent(new BoxCollider
-                            {
-                                AutoTilling = true,
-                                BodyType = BodyType.Static,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.0f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .IsDynamic(false)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(100, 10)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
                             .Build())
                         
                         .Add<GameObject>(go => go
@@ -128,7 +140,7 @@ namespace Alis.Sample.Rogue
                             .Transform(i => i
                                 .Position(0, 0)
                                 .Rotation(0)
-                                .Scale(1, 1)
+                                .Scale(2, 2)
                                 .Build())
                             .AddComponent(new Camera())
                             .AddComponent<Sprite>(i => i
@@ -136,20 +148,21 @@ namespace Alis.Sample.Rogue
                                 .SetTexture(Environment.CurrentDirectory + "/Assets/tile003.png")
                                 .Depth(0)
                                 .Build())
-                            .AddComponent(new BoxCollider
-                            {
-                                AutoTilling = true,
-                                BodyType = BodyType.Dynamic,
-                                Density = 0.5f,
-                                Rotation = 0.0f,
-                                Mass = 10.0f,
-                                RelativePosition = Vector2.Zero,
-                                Friction = 0.1f,
-                                Restitution = 0.0f,
-                                FixedRotation = true,
-                                GravityScale = 0.0f,
-                                IsTrigger = false
-                            })
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .IsDynamic(true)
+                                .IsTrigger(false)
+                                .AutoTilling(true)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
                             .AddComponent<PlayerMovement>(playerMovement => playerMovement
                                 .Builder()
                                 .Build())

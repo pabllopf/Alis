@@ -33,8 +33,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Manager.Graphic;
-using Alis.Core.Manager.Physic;
 using Alis.Core.Systems.Physics2D.Dynamics;
 using Alis.Core.Systems.Physics2D.Factories;
 
@@ -51,19 +49,14 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         private RectangleShape rectangleShape;
          
-         
-         /// <summary>
-         /// Initializes a new instance of the <see cref="BoxCollider"/> class
-         /// </summary>
-         public BoxCollider()
-         {
-         }
-
          /// <summary>
          /// The is dynamic
          /// </summary>
          public bool IsDynamic { get; set; }
          
+         /// <summary>
+         /// Gets or sets the value of the is trigger
+         /// </summary>
          public bool IsTrigger { get; set; }
          
          /// <summary>
@@ -137,20 +130,9 @@ namespace Alis.Core.Component.Collider
         public System.Numerics.Vector2 LinearVelocity { get; set; } = System.Numerics.Vector2.Zero;
         
         /// <summary>
-        /// Builders this instance
+        /// Inits this instance
         /// </summary>
-        /// <returns>The box collider builder</returns>
-        public new BoxColliderBuilder Builder() => new BoxColliderBuilder();
-        
         public override void Init()
-        {
-            
-        }
-
-        /// <summary>
-        ///     Awakes this instance
-        /// </summary>
-        public override void Awake()
         {
             if (AutoTilling)
             {
@@ -160,34 +142,60 @@ namespace Alis.Core.Component.Collider
                     Height = GameObject.GetComponent<Alis.Core.Component.Render.Sprite>().sprite.Texture.Size.Y * GameObject.Transform.Scale.Y;
                 }
             }
+            else
+            {
+                Width *= GameObject.Transform.Scale.X;
+                Height  *= GameObject.Transform.Scale.Y;
+            }
+        }
+
+        /// <summary>
+        ///     Awakes this instance
+        /// </summary>
+        public override void Awake()
+        {
+            rectangleShape = new RectangleShape()
+            {
+                Position = new Vector2F(
+                    (GameObject.Transform.Position.X + RelativePosition.X) - (Width / (2)),
+                    (GameObject.Transform.Position.Y + RelativePosition.Y) - (Height / (2))
+                ),
+                FillColor = Color.Transparent,
+                OutlineColor = Color.Green,
+                OutlineThickness = 1.0f,
+                Rotation = Rotation,
+                Size = new Vector2F(Width, Height)
+            };
             
             
-            rectangleShape = new RectangleShape(new Vector2F(Width, Height));
-            //Console.WriteLine($"Name={GameObject.Name} rectangleShape.Size={rectangleShape.Size}");
-            Vector2F pos = new Vector2F(
-                (GameObject.Transform.Position.X + RelativePosition.X) - ((Width) / 2),
-                (GameObject.Transform.Position.Y + RelativePosition.Y) - ((Height) / 2)
+            VideoGame.GraphicManager.AttachCollider(rectangleShape);
+
+            Body = BodyFactory.CreateRectangle(
+                world: VideoGame.PhysicManager.World,
+                width: Width,
+                height: Height,
+                density: Density,
+                position: new System.Numerics.Vector2(
+                    GameObject.Transform.Position.X + RelativePosition.X,
+                    GameObject.Transform.Position.Y + RelativePosition.Y
+                    ),
+                rotation: Rotation,
+                bodyType: IsDynamic ? BodyType.Dynamic : BodyType.Static,
+                userData: GameObject
                 );
+            
+            Body.Restitution = Restitution;
+            Body.Friction = Friction;
+            Body.FixedRotation = FixedRotation;
+            Body.Mass = Mass;
+            Body.SleepingAllowed = false;
+            Body.IsBullet = true;
+            Body.GravityScale = GravityScale;
+            Body.LinearVelocity = LinearVelocity;
+            Body.Awake = true;
+            Body.IsSensor = IsTrigger;
 
-            //Vector2f pos = new Vector2f(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
-            
-            
-            rectangleShape.Position = pos;
-            rectangleShape.FillColor = Color.Transparent;
-            rectangleShape.OutlineColor = Color.Green;
-            rectangleShape.OutlineThickness = 1f;
-            
-            //Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
-            
-            GraphicManager.Colliders.Add(rectangleShape);
-
-
-            Body = CreateBody();
-
-            //Transform transform;
-            //Body.GetTransform(out transform);
-            
-            
+            VideoGame.PhysicManager.AttachBody(Body);
             
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Size={rectangleShape.Size}");
@@ -197,110 +205,8 @@ namespace Alis.Core.Component.Collider
             Console.WriteLine($"Name={GameObject.Name} Body.Position={Body.Position}");
             Console.WriteLine($"Name={GameObject.Name} Body.Size=x{Width}y{Height}");
             Console.WriteLine($"Name={GameObject.Name} Body.Rotation={Body.Rotation}");
-
-            /*
-            Body = BodyFactory.CreateRectangle(
-                world: PhysicsSystem.World, 
-                width: Width, 
-                height: Height, 
-                density: Density, 
-                position: new Vector2(
-                    GameObject.Transform.Position.X + RelativePosition.X, 
-                    GameObject.Transform.Position.Y + RelativePosition.Y),   
-                rotation: Rotation, 
-                bodyType: BodyType, 
-                userData: this.GameObject);
-            
-            Body.Restitution = Restitution;
-            Body.Friction = Friction;
-            Body.FixedRotation = FixedRotation;
-            Body.Mass = Mass;
-            Body.SleepingAllowed = false;
-            Body.IsBullet = true;*/
         }
-
-        /// <summary>
-        ///     Creates the body
-        /// </summary>
-        /// <returns>The body</returns>
-        private Systems.Physics2D.Dynamics.Body CreateBody()
-        {
-            if (IsDynamic)
-            {
-                BodyType = BodyType.Dynamic;
-            }
-            
-            Systems.Physics2D.Dynamics.Body body = BodyFactory.CreateRectangle(
-                world: PhysicManager.World, 
-                width: Width , 
-                height: Height, 
-                density: Density, 
-                position: new System.Numerics.Vector2(
-                    (GameObject.Transform.Position.X ) + RelativePosition.X,
-                    (GameObject.Transform.Position.Y ) + RelativePosition.Y
-                    ), 
-                rotation: Rotation, 
-                bodyType: BodyType, 
-                userData: this.GameObject);
-            
-            body.Restitution = Restitution;
-            body.Friction = Friction;
-            body.FixedRotation = FixedRotation;
-            body.Mass = Mass;
-            body.SleepingAllowed = false;
-            body.IsBullet = true;
-            body.GravityScale = GravityScale;
-            body.LinearVelocity = LinearVelocity;
-            body.Awake = true;
-            body.IsSensor = IsTrigger;
-
-            return body;
-            
-            
-            
-            /*
-            BodyDef bodyDef = new BodyDef
-            {
-                enabled = IsActive,
-                type = BodyType,
-                position = new Vector2(
-                    GameObject.Transform.Position.X + RelativePosition.X,
-                    GameObject.Transform.Position.Y + RelativePosition.Y),
-                angle = Rotation,
-                linearVelocity = LinearVelocity,
-                angularVelocity = 0.0f,
-                linearDamping = 0.0f,
-                angularDamping = 0.0f,
-                allowSleep = false,
-                awake = true,
-                fixedRotation = FixedRotation,
-                bullet = true,
-                gravityScale = GravityScale,
-                userData = GameObject
-            };
-
-            FixtureDef fixtureDef = new FixtureDef
-            {
-                friction = Friction,
-                restitution = Restitution,
-                density = Density,
-                isSensor = IsTrigger,
-                filter =
-                {
-                    categoryBits = 1,
-                    maskBits = 65535,
-                    groupIndex = 0
-                },
-                userData = GameObject,
-                //shape = new PolygonShape(Width / 2, Height / 2)
-                shape = new PolygonShape(Width, Height)
-            };
-
-            Body body = PhysicsSystem.World.CreateBody(bodyDef);
-            body.CreateFixture(fixtureDef);
-            return body;*/
-        }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -338,12 +244,17 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Draw()
         {
-            Vector2F pos = new Vector2F(
-                (GameObject.Transform.Position.X + RelativePosition.X) - ((Width) / 2),
-                (GameObject.Transform.Position.Y + RelativePosition.Y) - ((Height) / 2)
+            rectangleShape.Position = new Vector2F(
+                (GameObject.Transform.Position.X + RelativePosition.X) - (Width / (2 )),
+                (GameObject.Transform.Position.Y + RelativePosition.Y) - (Height / (2))
             );
-            rectangleShape.Position = pos;
             rectangleShape.Rotation = GameObject.Transform.Rotation;
         }
+        
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The box collider builder</returns>
+        public new BoxColliderBuilder Builder() => new BoxColliderBuilder();
     }
 }

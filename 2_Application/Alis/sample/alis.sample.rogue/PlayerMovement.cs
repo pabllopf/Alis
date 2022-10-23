@@ -30,6 +30,7 @@
 using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Component;
+using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
 
 namespace Alis.Sample.Rogue
@@ -44,6 +45,8 @@ namespace Alis.Sample.Rogue
         /// </summary>
         private Animator animator;
 
+        private BoxCollider boxCollider;
+
         /// <summary>
         ///     The walking
         /// </summary>
@@ -55,6 +58,7 @@ namespace Alis.Sample.Rogue
         public override void Awake()
         {
             animator = GameObject.GetComponent<Animator>();
+            boxCollider = GameObject.GetComponent<BoxCollider>();
             walk = false;
         }
 
@@ -83,13 +87,29 @@ namespace Alis.Sample.Rogue
         /// <param name="key"></param>
         public override void OnReleaseKey(string key)
         {
+            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+
             switch (key)
             {
-                case "W":
                 case "D":
-                case "S":
-                case "A":
+                    velocity.X = 0;
                     walk = false;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
+                case "A":
+                    velocity.X = 0;
+                    walk = false;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
+                case "W":
+                    velocity.Y = 0;
+                    walk = false;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
+                case "S":
+                    velocity.Y = 0;
+                    walk = false;
+                    boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
         }
@@ -101,31 +121,33 @@ namespace Alis.Sample.Rogue
         /// <param name="key"></param>
         public override void OnPressDownKey(string key)
         {
+            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+
             switch (key)
             {
-                case "W":
-                    //Console.WriteLine($"Pressed key='{key}'");
-                    walk = true;
-                    animator.ChangeAnimationTo("WalkUp");
-                    Transform.Position += new Vector2(0, -1);
-                    break;
-                case "S":
-                    walk = true;
-                    Transform.Position += new Vector2(0, 1);
-                    animator.ChangeAnimationTo("WalkDown");
-                    //Console.WriteLine($"Pressed key='{key}'");
-                    break;
                 case "D":
                     walk = true;
                     animator.ChangeAnimationTo("WalkRight");
-                    Transform.Position += new Vector2(1, 0);
-                    //Console.WriteLine($"Pressed key='{key}'");
-                    break;
+                    velocity.X = 5;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
                 case "A":
-                    animator.ChangeAnimationTo("WalkLeft");
                     walk = true;
-                    Transform.Position += new Vector2(-1, 0);
-                    //Console.WriteLine($"Pressed key='{key}'");
+                    animator.ChangeAnimationTo("WalkLeft");
+                    velocity.X = -5;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
+                case "W":
+                    walk = true;
+                    animator.ChangeAnimationTo("WalkUp");
+                    velocity.Y = -5;
+                    boxCollider.Body.LinearVelocity = velocity;
+                    return;
+                case "S":
+                    walk = true;
+                    animator.ChangeAnimationTo("WalkDown");
+                    velocity.Y = 5;
+                    boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
         }
