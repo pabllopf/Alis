@@ -42,6 +42,9 @@ namespace Alis.Sample.PingPong
     /// <seealso cref="ComponentBase"/>
     public class BallController : ComponentBase
     {
+        /// <summary>
+        /// The box collider
+        /// </summary>
         private BoxCollider boxCollider;
         
         /// <summary>
@@ -53,6 +56,12 @@ namespace Alis.Sample.PingPong
             boxCollider.Body.OnCollision += OnCollision;
         }
 
+        /// <summary>
+        /// Ons the collision using the specified fixturebfixturea
+        /// </summary>
+        /// <param name="fixturebfixturea">The fixturebfixturea</param>
+        /// <param name="fixtureb">The fixtureb</param>
+        /// <param name="contact">The contact</param>
         private void OnCollision(Fixture fixturebfixturea, Fixture fixtureb, Contact contact)
         {
             //Console.WriteLine((((GameObject) fixturea.Body.UserData)!).Name);
