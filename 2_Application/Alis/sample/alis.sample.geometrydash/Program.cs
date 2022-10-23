@@ -27,6 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using Alis.Core.Component.Audio;
+using Alis.Core.Component.Collider;
+using Alis.Core.Component.Render;
+using Alis.Core.Entity;
+using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Manager.Scene;
+using Alis.Core.Physic.Dynamics;
+
 namespace Alis.Sample.GeometryDash
 {
     /// <summary>
@@ -39,7 +48,173 @@ namespace Alis.Sample.GeometryDash
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
-        {
+        {VideoGame
+                .Builder()
+                .Settings(setting => setting
+                    .General(general => general
+                        .Name("GeometryDash")
+                        .Author("Pablo Perdomo Falcón")
+                        .Description("GeometryDash game")
+                        .Icon(Environment.CurrentDirectory + "/Assets/logo.png")
+                        .SplashScreen(screen => screen
+                            .IsActive(true)
+                            .Style(Style.Dark)
+                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                            .Build())
+                        .Build())
+                    .Debug(debug => debug
+                        .Build())
+                    .Audio(audio => audio
+                        .Build())
+                    .Graphic(graphic => graphic
+                        .Window(window => window
+                            .Resolution(1024, 640)
+                            .Background(Color.Black)
+                            .Build())
+                        .Build())
+                    .Build())
+                
+                .Manager<SceneManager>(sceneManager => sceneManager
+                    .Add<Scene>(gameScene=>gameScene
+                        .Add<GameObject>(cameraObj => cameraObj
+                            .Name("Camera")
+                            .AddComponent<Camera>(camera => camera
+                                .Builder()
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(soundTrack => soundTrack
+                            .Name("Soundtrack")
+                            .AddComponent<AudioSource>(audioSource => audioSource
+                                .Builder()
+                                .PlayOnAwake(true)
+                                .SetAudioClip(audioClip => audioClip
+                                    .FilePath($"{Environment.CurrentDirectory}/Assets/Music/menu_1.wav")
+                                    .Volume(100.0f)
+                                    .Build())
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(ball => ball
+                            .Name("Ball")
+                            .Transform(transform => transform
+                                .Position(0, 0)
+                                .Scale(1, 1)
+                                .Rotation(0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Dynamic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(35, 35)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .LinearVelocity(0, 3)
+                                .Mass(10.0f)
+                                .Restitution(1.0f)
+                                .Friction(0f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.05f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(downWall => downWall
+                            .Name("downWall")
+                            .Transform(transform=> transform
+                                .Position(0, 324)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(1024, 10)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(upWall => upWall
+                            .Name("upWall")
+                            .Transform(transform=> transform
+                                .Position(0, -324)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(1024, 10)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(leftWall => leftWall
+                            .Name("leftWall")
+                            .Transform(transform=> transform
+                                .Position(-517, 0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(10, 640)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        
+                        .Add<GameObject>(rightWall => rightWall
+                            .Name("rightWall")
+                            .Transform(transform=> transform
+                                .Position(517, 0)
+                                .Build())
+                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                                .Builder()
+                                .IsActive(true)
+                                .BodyType(BodyType.Kinematic)
+                                .IsTrigger(false)
+                                .AutoTilling(false)
+                                .Size(10, 640)
+                                .Rotation(0.0f)
+                                .RelativePosition(0, 0)
+                                .Mass(10.0f)
+                                .Restitution(0.0f)
+                                .Friction(0.1f)
+                                .Density(0.5f)
+                                .FixedRotation(true)
+                                .GravityScale(0.0f)
+                                .Build())
+                            .Build())
+                        .Build())
+                    .Build())
+                .Run();
         }
     }
 }

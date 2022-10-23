@@ -10,10 +10,23 @@
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase"/>
         </member>
+        <member name="F:Alis.Sample.PingPong.BallController.boxCollider">
+            <summary>
+            The box collider
+            </summary>
+        </member>
         <member name="M:Alis.Sample.PingPong.BallController.Start">
             <summary>
             Starts this instance
             </summary>
+        </member>
+        <member name="M:Alis.Sample.PingPong.BallController.OnCollision(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Collision.ContactSystem.Contact)">
+            <summary>
+            Ons the collision using the specified fixturebfixturea
+            </summary>
+            <param name="fixturebfixturea">The fixturebfixturea</param>
+            <param name="fixtureb">The fixtureb</param>
+            <param name="contact">The contact</param>
         </member>
         <member name="M:Alis.Sample.PingPong.BallController.Update">
             <summary>

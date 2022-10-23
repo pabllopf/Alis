@@ -50,7 +50,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void Init()
         {
-            Vector2 gravity = new Vector2(0.000000000000000e+00f, 1.000000000000000e+01f);
+            Vector2 gravity = new Vector2(0.000000000000000e+00f, 9.807000000000000e+01f);
             World = new World(gravity);
         }
         
@@ -73,7 +73,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void BeforeUpdate()
         {
-            World.Step((float) GameBase.TimeManager.TimeStep, 1, 1);
+            
         }
         
         /// <summary>
@@ -81,6 +81,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void Update()
         {
+            World.Step((float) GameBase.TimeManager.TimeStep, 6, 2);
         }
         
         

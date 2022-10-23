@@ -14,6 +14,11 @@
                 The animator
             </summary>
         </member>
+        <member name="F:Alis.Sample.Rogue.PlayerMovement.boxCollider">
+            <summary>
+            The box collider
+            </summary>
+        </member>
         <member name="F:Alis.Sample.Rogue.PlayerMovement.walk">
             <summary>
                 The walking
