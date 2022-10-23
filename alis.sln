@@ -369,6 +369,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Ios", "1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Desktop", "1_Presentation\template\alis.template.game.desktop\Alis.Template.Game.Desktop.csproj", "{394024E7-5BBC-482C-8983-8ABBEBC31111}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Sample.Collisions", "2_Application\Alis\sample\alis.sample.collisions\Alis.Sample.Collisions.csproj", "{14B5CB51-1860-4710-85EB-7A3426EC016D}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -483,6 +485,7 @@ Global
 		{C16EDDA3-38CC-4A67-B68F-ABA3A91D8FCE} = {6BCD51A4-0949-4317-B9BA-C4A1C234AEA7}
 		{C4866200-10DA-4E71-A796-05F5549585B7} = {6BCD51A4-0949-4317-B9BA-C4A1C234AEA7}
 		{394024E7-5BBC-482C-8983-8ABBEBC31111} = {6BCD51A4-0949-4317-B9BA-C4A1C234AEA7}
+		{14B5CB51-1860-4710-85EB-7A3426EC016D} = {B3054295-B3CF-4898-9DA4-26A8514B3376}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C491FC8-E9B0-4689-BAA5-ED6F7C5F61A5}
@@ -1384,5 +1387,17 @@ Global
 		{394024E7-5BBC-482C-8983-8ABBEBC31111}.Release|x64.Build.0 = Release|Any CPU
 		{394024E7-5BBC-482C-8983-8ABBEBC31111}.Release|x86.ActiveCfg = Release|Any CPU
 		{394024E7-5BBC-482C-8983-8ABBEBC31111}.Release|x86.Build.0 = Release|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Debug|x64.Build.0 = Debug|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Debug|x86.Build.0 = Debug|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Release|x64.ActiveCfg = Release|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Release|x64.Build.0 = Release|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Release|x86.ActiveCfg = Release|Any CPU
+		{14B5CB51-1860-4710-85EB-7A3426EC016D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
