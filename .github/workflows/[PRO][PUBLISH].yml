@@ -205,13 +205,13 @@ jobs:
         run: echo $VERSIONFINAL
 
       - name: Write in filename the next version
-        run: sed -i "s/$VERSION/$VERSIONFINAL/" $FILENAME
-
+        run: sed -i '' -e 's/$VERSION/$VERSIONFINAL/' $FILENAME
+        
       - name: Create packages
         run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/; done
 
       - name: Write in filename the next version
-        run: sed -i "s/$VERSIONFINAL/$VERSION/" $FILENAME
+        run: sed -i '' -e 's/$VERSIONFINAL/$VERSION/' $FILENAME
 
       - name: git config user.name github-actions
         run: git config user.name github-actions
@@ -587,7 +587,7 @@ jobs:
         run: echo $VERSIONFINAL
 
       - name: Write in filename the next version
-        run: sed -i "s/$VERSION/$VERSIONFINAL/" $FILENAME
+        run: sed -i '' -e 's/$VERSION/$VERSIONFINAL/' $FILENAME
 
       - name: View the file content
         run: cat $FILENAME
