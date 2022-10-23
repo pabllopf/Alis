@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Definitions
         public Shape Shape { get; set; }
 
         /// <summary>Use this to store application specific fixture data.</summary>
-        public object? UserData { get; set; }
+        public object UserData { get; set; }
 
         /// <summary>
         ///     Sets the defaults

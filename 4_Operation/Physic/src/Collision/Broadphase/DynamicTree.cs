@@ -316,11 +316,12 @@ namespace Alis.Core.Physic.Collision.Broadphase
             Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
             nodes[proxyId].Moved = false;
         }
-
-        /// <summary>Get proxy user data.</summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="proxyId">The proxy id.</param>
-        /// <returns>the proxy user data or 0 if the id is invalid.</returns>
+        
+        /// <summary>
+        /// Gets the user data using the specified proxy id
+        /// </summary>
+        /// <param name="proxyId">The proxy id</param>
+        /// <returns>The</returns>
         public T GetUserData(int proxyId)
         {
             Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
@@ -511,7 +512,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             nodes[nodeId].Child1 = NullNode;
             nodes[nodeId].Child2 = NullNode;
             nodes[nodeId].Height = 0;
-            nodes[nodeId].UserData = default(T?);
+            nodes[nodeId].UserData = default(T);
             nodes[nodeId].Moved = false;
             ++nodeCount;
             return nodeId;
@@ -621,7 +622,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             int oldParent = nodes[sibling].ParentOrNext;
             int newParent = AllocateNode();
             nodes[newParent].ParentOrNext = oldParent;
-            nodes[newParent].UserData = default(T?);
+            nodes[newParent].UserData = default(T);
             nodes[newParent].Aabb.Combine(ref leafAabb, ref nodes[sibling].Aabb);
             nodes[newParent].Height = nodes[sibling].Height + 1;
 

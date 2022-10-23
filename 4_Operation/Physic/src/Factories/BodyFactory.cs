@@ -55,7 +55,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateBody(World world, Vector2 position = new Vector2(), float rotation = 0,
-            BodyType bodyType = BodyType.Static, object? userData = null)
+            BodyType bodyType = BodyType.Static, object userData = null)
         {
             BodyDef def = new BodyDef
             {
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="end">The end</param>
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
-        public static Body CreateEdge(World world, Vector2 start, Vector2 end, object? userData = null)
+        public static Body CreateEdge(World world, Vector2 start, Vector2 end, object userData = null)
         {
             Body body = CreateBody(world);
             body.UserData = userData;
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateChainShape(World world, Vertices vertices, Vector2 position = new Vector2(),
-            object? userData = null)
+            object userData = null)
         {
             Body body = CreateBody(world, position);
             body.UserData = userData;
@@ -112,7 +112,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateLoopShape(World world, Vertices vertices, Vector2 position = new Vector2(),
-            object? userData = null)
+            object userData = null)
         {
             Body body = CreateBody(world, position);
             body.UserData = userData;
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Factories
         /// <returns>The body</returns>
         public static Body CreateRectangle(World world, float width, float height, float density,
             Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
-            object? userData = null)
+            object userData = null)
         {
             if (width <= 0)
             {
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateCircle(World world, float radius, float density, Vector2 position = new Vector2(),
-            BodyType bodyType = BodyType.Static, object? userData = null)
+            BodyType bodyType = BodyType.Static, object userData = null)
         {
             Body body = CreateBody(world, position, 0, bodyType, userData);
             FixtureFactory.AttachCircle(radius, density, body);
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Factories
         /// <returns>The body</returns>
         public static Body CreateEllipse(World world, float xRadius, float yRadius, int edges, float density,
             Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
-            object? userData = null)
+            object userData = null)
         {
             Body body = CreateBody(world, position, rotation, bodyType, userData);
             FixtureFactory.AttachEllipse(xRadius, yRadius, edges, density, body);
@@ -210,7 +210,7 @@ namespace Alis.Core.Physic.Factories
         /// <returns>The body</returns>
         public static Body CreatePolygon(World world, Vertices vertices, float density,
             Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
-            object? userData = null)
+            object userData = null)
         {
             Body body = CreateBody(world, position, rotation, bodyType, userData);
             FixtureFactory.AttachPolygon(vertices, density, body);

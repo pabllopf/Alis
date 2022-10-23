@@ -413,25 +413,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <returns>The collide</returns>
         private static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
         {
-            if (Settings.UseFpeCollisionCategories)
-            {
-                if (fixtureA.CollisionGroup == fixtureB.CollisionGroup &&
-                    fixtureA.CollisionGroup != 0 && fixtureB.CollisionGroup != 0)
-                {
-                    return false;
-                }
-
-                if (((fixtureA.CollisionCategories & fixtureB.CollidesWith) ==
-                     Category.None) &
-                    ((fixtureB.CollisionCategories & fixtureA.CollidesWith) ==
-                     Category.None))
-                {
-                    return false;
-                }
-
-                return true;
-            }
-
             if (fixtureA.CollisionGroup == fixtureB.CollisionGroup &&
                 fixtureA.CollisionGroup != 0)
             {

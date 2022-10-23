@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="userData"></param>
         /// <returns></returns>
         public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes,
-            BodyType type, int copies, object? userData = null)
+            BodyType type, int copies, object userData = null)
         {
             List<Vector3> centers = path.SubdivideEvenly(copies);
             List<Body> bodyList = new List<Body>();
@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="copies">The copies.</param>
         /// <param name="userData">The user data.</param>
         public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, Shape shape, BodyType type,
-            int copies, object? userData = null)
+            int copies, object userData = null)
         {
             List<Shape> shapes = new List<Shape>(1)
             {

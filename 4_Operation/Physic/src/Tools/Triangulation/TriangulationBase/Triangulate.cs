@@ -68,12 +68,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
             switch (algorithm)
             {
                 case TriangulationAlgorithm.Earclip:
-                    if (Settings.SkipSanityChecks)
-                    {
-                        Debug.Assert(!vertices.IsCounterClockWise(),
-                            "The Ear-clip algorithm expects the polygon to be clockwise.");
-                    }
-                    else
+                    if (!Settings.SkipSanityChecks)
                     {
                         if (vertices.IsCounterClockWise())
                         {
@@ -89,12 +84,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
 
                     break;
                 case TriangulationAlgorithm.Bayazit:
-                    if (Settings.SkipSanityChecks)
-                    {
-                        Debug.Assert(vertices.IsCounterClockWise(),
-                            "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
-                    }
-                    else
+                    if (!Settings.SkipSanityChecks)
                     {
                         if (!vertices.IsCounterClockWise())
                         {
@@ -110,12 +100,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.TriangulationBase
 
                     break;
                 case TriangulationAlgorithm.Flipcode:
-                    if (Settings.SkipSanityChecks)
-                    {
-                        Debug.Assert(vertices.IsCounterClockWise(),
-                            "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
-                    }
-                    else
+                    if (!Settings.SkipSanityChecks)
                     {
                         if (!vertices.IsCounterClockWise())
                         {

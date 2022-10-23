@@ -1461,22 +1461,6 @@
                 The my texture
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.#ctor(System.UInt32,System.UInt32)">
-            <summary>
-                Create the render-texture with the given dimensions
-            </summary>
-            <param name="width">Width of the render-texture</param>
-            <param name="height">Height of the render-texture</param>
-        </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.#ctor(System.UInt32,System.UInt32,System.Boolean)">
-            <summary>
-                Create the render-texture with the given dimensions and
-                an optional depth-buffer attached
-            </summary>
-            <param name="width">Width of the render-texture</param>
-            <param name="height">Height of the render-texture</param>
-            <param name="depthBuffer">Do you want a depth-buffer attached?</param>
-        </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.#ctor(System.UInt32,System.UInt32,Alis.Core.Graphic.D2.SFML.Windows.ContextSettings)">
             <summary>
                 Create the render-texture with the given dimensions and
@@ -7986,9 +7970,6 @@
         </member>
         <member name="E:Alis.Core.Graphic.D2.SFML.Windows.Window.KeyReleased">
             <summary>Event handler for the KeyReleased event</summary>
-        </member>
-        <member name="E:Alis.Core.Graphic.D2.SFML.Windows.Window.MouseWheelMoved">
-            <summary>Event handler for the MouseWheelMoved event</summary>
         </member>
         <member name="E:Alis.Core.Graphic.D2.SFML.Windows.Window.MouseWheelScrolled">
             <summary>Event handler for the MouseWheelScrolled event</summary>

@@ -136,10 +136,11 @@
             <param name="proxyId">The proxy id</param>
         </member>
         <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.GetUserData(System.Int32)">
-            <summary>Get proxy user data.</summary>
-            <typeparam name="T"></typeparam>
-            <param name="proxyId">The proxy id.</param>
-            <returns>the proxy user data or 0 if the id is invalid.</returns>
+            <summary>
+            Gets the user data using the specified proxy id
+            </summary>
+            <param name="proxyId">The proxy id</param>
+            <returns>The</returns>
         </member>
         <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.GetFatAabb(System.Int32,Alis.Core.Physic.Shared.Aabb@)">
             <summary>Get the fat AABB for a proxy.</summary>

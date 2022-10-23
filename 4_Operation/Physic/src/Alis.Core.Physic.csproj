@@ -3,9 +3,5 @@
     <Import Project="$(SolutionDir).config/Config.props" />
     <PropertyGroup>
         <TargetFrameworks>$(TargetFramework1);$(TargetFramework2)</TargetFrameworks>
-        <Nullable>enable</Nullable>
     </PropertyGroup>
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    </ItemGroup>
 </Project>

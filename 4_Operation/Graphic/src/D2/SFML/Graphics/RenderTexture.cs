@@ -53,15 +53,8 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     The my texture
         /// </summary>
         private readonly Texture myTexture;
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Create the render-texture with the given dimensions
-        /// </summary>
-        /// <param name="width">Width of the render-texture</param>
-        /// <param name="height">Height of the render-texture</param>
-        ////////////////////////////////////////////////////////////
-        public RenderTexture(uint width, uint height) :
+        
+        /*public RenderTexture(uint width, uint height) :
             this(width, height, false)
         {
         }
@@ -84,7 +77,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
             myTexture = new Texture(sfRenderTexture_getTexture(CPointer));
             GC.SuppressFinalize(myDefaultView);
             GC.SuppressFinalize(myTexture);
-        }
+        }*/
 
         ////////////////////////////////////////////////////////////
         /// <summary>

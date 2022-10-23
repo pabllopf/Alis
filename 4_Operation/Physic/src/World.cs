@@ -1579,7 +1579,7 @@ namespace Alis.Core.Physic
             // Delete the attached joints.
             if (body.JointList != null)
             {
-                JointEdge? jointEdge = body.JointList;
+                JointEdge jointEdge = body.JointList;
                 while (jointEdge != null)
                 {
                     JointEdge nextJointEdge = jointEdge;
@@ -1598,7 +1598,7 @@ namespace Alis.Core.Physic
             // Delete the attached contacts.
             if (body.ContactList != null)
             {
-                ContactEdge? contactEdge = body.ContactList;
+                ContactEdge contactEdge = body.ContactList;
                 while (contactEdge != null)
                 {
                     ContactEdge nextContactEdge = contactEdge;

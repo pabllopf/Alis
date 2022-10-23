@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="body">The body</param>
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
-        public static Fixture AttachEdge(Vector2 start, Vector2 end, Body body, object? userData = null)
+        public static Fixture AttachEdge(Vector2 start, Vector2 end, Body body, object userData = null)
         {
             EdgeShape edgeShape = new EdgeShape(start, end);
             Fixture f = body.AddFixture(edgeShape);
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="body">The body</param>
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
-        public static Fixture AttachChainShape(Vertices vertices, Body body, object? userData = null)
+        public static Fixture AttachChainShape(Vertices vertices, Body body, object userData = null)
         {
             ChainShape shape = new ChainShape(vertices);
             Fixture f = body.AddFixture(shape);
@@ -80,7 +80,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="body">The body</param>
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
-        public static Fixture AttachLoopShape(Vertices vertices, Body body, object? userData = null)
+        public static Fixture AttachLoopShape(Vertices vertices, Body body, object userData = null)
         {
             ChainShape shape = new ChainShape(vertices, true);
             Fixture f = body.AddFixture(shape);
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
         public static Fixture AttachRectangle(float width, float height, float density, Vector2 offset, Body body,
-            object? userData = null)
+            object userData = null)
         {
             Vertices rectangleVertices = PolygonUtils.CreateRectangle(width / 2, height / 2);
             rectangleVertices.Translate(ref offset);
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <exception cref="ArgumentOutOfRangeException">Radius must be more than 0 meters</exception>
         /// <returns>The </returns>
-        public static Fixture AttachCircle(float radius, float density, Body body, object? userData = null)
+        public static Fixture AttachCircle(float radius, float density, Body body, object userData = null)
         {
             if (radius <= 0)
             {
@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Factories
         /// <exception cref="ArgumentOutOfRangeException">Radius must be more than 0 meters</exception>
         /// <returns>The </returns>
         public static Fixture AttachCircle(float radius, float density, Body body, Vector2 offset,
-            object? userData = null)
+            object userData = null)
         {
             if (radius <= 0)
             {
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <exception cref="ArgumentOutOfRangeException">Too few points to be a polygon</exception>
         /// <returns>The </returns>
-        public static Fixture AttachPolygon(Vertices vertices, float density, Body body, object? userData = null)
+        public static Fixture AttachPolygon(Vertices vertices, float density, Body body, object userData = null)
         {
             if (vertices.Count <= 1)
             {
@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Factories
         /// <exception cref="ArgumentOutOfRangeException">Y-radius must be more than 0</exception>
         /// <returns>The </returns>
         public static Fixture AttachEllipse(float xRadius, float yRadius, int edges, float density, Body body,
-            object? userData = null)
+            object userData = null)
         {
             if (xRadius <= 0)
             {

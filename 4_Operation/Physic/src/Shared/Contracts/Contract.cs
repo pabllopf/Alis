@@ -46,7 +46,7 @@ namespace Alis.Core.Physic.Shared.Contracts
         /// <param name="message">The message</param>
         /// <exception cref="RequiredException"></exception>
         [Conditional("DEBUG")]
-        public static void RequireNotNull(object? obj, string message)
+        public static void RequireNotNull(object obj, string message)
         {
             if (obj != null)
             {

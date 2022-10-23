@@ -129,7 +129,6 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         protected Window(IntPtr cPointer, int dummy) :
             base(cPointer)
         {
-            // TODO : find a cleaner way of separating this constructor from Window(IntPtr handle)
         }
 
         ////////////////////////////////////////////////////////////
@@ -606,15 +605,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
                     }
 
                     break;
-
-                case EventType.MouseWheelMoved:
-                    if (MouseWheelMoved != null)
-                    {
-                        MouseWheelMoved(this, new MouseWheelEventArgs(e.MouseWheel));
-                    }
-
-                    break;
-
+                
                 case EventType.MouseWheelScrolled:
                     if (MouseWheelScrolled != null)
                     {
@@ -693,11 +684,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
 
         /// <summary>Event handler for the KeyReleased event</summary>
         public event EventHandler<KeyEventArgs> KeyReleased;
-
-        /// <summary>Event handler for the MouseWheelMoved event</summary>
-        [Obsolete("MouseWheelMoved is deprecated, please use MouseWheelScrolled instead")]
-        public event EventHandler<MouseWheelEventArgs> MouseWheelMoved;
-
+        
         /// <summary>Event handler for the MouseWheelScrolled event</summary>
         public event EventHandler<MouseWheelScrollEventArgs> MouseWheelScrolled;
 

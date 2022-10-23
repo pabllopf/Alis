@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Definitions
         public BodyType Type { get; set; }
 
         /// <summary>Use this to store application specific body data.</summary>
-        public object? UserData { get; set; }
+        public object UserData { get; set; }
 
         /// <summary>Should this body be prevented from rotating? Useful for characters.</summary>
         public bool FixedRotation { get; set; }
