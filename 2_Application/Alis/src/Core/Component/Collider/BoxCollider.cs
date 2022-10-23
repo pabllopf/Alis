@@ -64,6 +64,9 @@ namespace Alis.Core.Component.Collider
          /// </summary>
          public bool IsDynamic { get; set; }
          
+         /// <summary>
+         /// Gets or sets the value of the is trigger
+         /// </summary>
          public bool IsTrigger { get; set; }
          
          /// <summary>
@@ -142,6 +145,9 @@ namespace Alis.Core.Component.Collider
         /// <returns>The box collider builder</returns>
         public new BoxColliderBuilder Builder() => new BoxColliderBuilder();
         
+        /// <summary>
+        /// Inits this instance
+        /// </summary>
         public override void Init()
         {
             
