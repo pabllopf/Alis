@@ -55,91 +55,11 @@ jobs:
       - name: git push
         run: git push
 
-
-
-  #
-  # FAST TEST
-  #
-  Fast_Test:
-    needs: Comment_Code
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            6.0.x
-
-      - name: Dotnet install workload
-        run: dotnet workload install android ios
-        
-      - name: Dotnet test
-        run: dotnet test alis.sln
-
-
-  #
-  # TEST WINDOWS
-  #
-  Windows_Latest:
-    needs: Fast_Test
-    runs-on: windows-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            6.0.x
-
-      - name: Dotnet install workload
-        run: dotnet workload install android ios
-        
-      - name: Dotnet test
-        run: dotnet test alis.sln
-  
-  
-  
-  
-  #
-  # TEST MACOS
-  #
-  Macos_Latest:
-    needs: Fast_Test
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          ref: master
-          
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            6.0.x
-
-      - name: Dotnet install workload
-        run: dotnet workload install android ios
-        
-      - name: Dotnet test
-        run: dotnet test alis.sln
-  
-  
-  
   #
   # CREATE PACKAGES
   #
   Create_Packages:
-    needs: [ Windows_Latest, Macos_Latest ]
+    needs: [ Comment_Code ]
     runs-on: macos-latest
     steps:
       - name: Checkout repository
@@ -155,6 +75,9 @@ jobs:
 
       - name: Dotnet install workload
         run: dotnet workload install android ios
+
+      - name: Dotnet test
+        run: dotnet test alis.sln
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
