@@ -176,6 +176,9 @@ namespace Alis.Sample.PingPong
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
+                            .AddComponent<BallController>(ballController => ballController
+                                .Builder()
+                                .Build())
                             .Build())
                         
                         .Add<GameObject>(downWall => downWall
@@ -227,7 +230,7 @@ namespace Alis.Sample.PingPong
                         .Add<GameObject>(leftWall => leftWall
                             .Name("leftWall")
                             .Transform(transform=> transform
-                                .Position(517, 0)
+                                .Position(-517, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
@@ -250,7 +253,7 @@ namespace Alis.Sample.PingPong
                         .Add<GameObject>(rightWall => rightWall
                             .Name("rightWall")
                             .Transform(transform=> transform
-                                .Position(-517, 0)
+                                .Position(517, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()

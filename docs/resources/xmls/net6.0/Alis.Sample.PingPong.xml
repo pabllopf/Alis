@@ -4,6 +4,22 @@
         <name>Alis.Sample.PingPong</name>
     </assembly>
     <members>
+        <member name="T:Alis.Sample.PingPong.BallController">
+            <summary>
+            The ball controller class
+            </summary>
+            <seealso cref="T:Alis.Core.Component.ComponentBase"/>
+        </member>
+        <member name="M:Alis.Sample.PingPong.BallController.Start">
+            <summary>
+            Starts this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.PingPong.BallController.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
         <member name="T:Alis.Sample.PingPong.PlayerController1">
             <summary>
             The player controller class
