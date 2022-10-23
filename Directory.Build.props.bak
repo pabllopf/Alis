@@ -1,0 +1,20 @@
+<Project>
+    <PropertyGroup Label="BasePath">
+        <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AssemblyVersion>0.0.4</AssemblyVersion>
+    </PropertyGroup>
+
+
+    <PropertyGroup>
+        <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
+
+        <OutputPath>$(MSBuildThisFileDirectory).build/$(MSBuildProjectName)/$(Configuration)</OutputPath>
+        <BaseIntermediateOutputPath>$(OutputPath)/obj</BaseIntermediateOutputPath>
+        <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
+    </PropertyGroup>
+
+</Project>
