@@ -100,151 +100,277 @@ $(document).ready(function(){initNavTree('da/de7/class_alis_1_1_core_1_1_physic_
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
+<a href="#pac-attribs">Package Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../dc/ddc/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Physic.Dynamics.Fixture Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A fixture is used to attach a shape to a body for collision detection. A fixture inherits its transform from its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are created via Body.CreateFixture.  
+<p>A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transform from its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are created via Body.CreateFixture. Warning: You cannot reuse fixtures.  
  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0390504d76659befca6eb9652d77a475"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a0390504d76659befca6eb9652d77a475">Fixture</a> ()</td></tr>
-<tr class="memdesc:a0390504d76659befca6eb9652d77a475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html" title="A fixture is used to attach a shape to a body for collision detection. A fixture inherits its transfo...">Fixture</a> class  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a0390504d76659befca6eb9652d77a475">More...</a><br /></td></tr>
-<tr class="separator:a0390504d76659befca6eb9652d77a475"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5677444c0ef00de9f7f2785e1e5bfe6f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a5677444c0ef00de9f7f2785e1e5bfe6f">Create</a> (<a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a> broadPhase, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> body, <a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a> xf, <a class="el" href="../../d6/d28/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_def.html">FixtureDef</a> def)</td></tr>
-<tr class="memdesc:a5677444c0ef00de9f7f2785e1e5bfe6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the broad phase  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a5677444c0ef00de9f7f2785e1e5bfe6f">More...</a><br /></td></tr>
-<tr class="separator:a5677444c0ef00de9f7f2785e1e5bfe6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a631d5a1ca2dd83da9ef0049052d2a62e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a631d5a1ca2dd83da9ef0049052d2a62e">Destroy</a> (<a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a> broadPhase)</td></tr>
-<tr class="memdesc:a631d5a1ca2dd83da9ef0049052d2a62e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the broad phase  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a631d5a1ca2dd83da9ef0049052d2a62e">More...</a><br /></td></tr>
-<tr class="separator:a631d5a1ca2dd83da9ef0049052d2a62e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2e39b74794ca62d459ec25d7dd75a91"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa2e39b74794ca62d459ec25d7dd75a91">Dispose</a> ()</td></tr>
-<tr class="memdesc:aa2e39b74794ca62d459ec25d7dd75a91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disposes this instance  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa2e39b74794ca62d459ec25d7dd75a91">More...</a><br /></td></tr>
-<tr class="separator:aa2e39b74794ca62d459ec25d7dd75a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a102fa4cff9bb23e932674659361b1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9a102fa4cff9bb23e932674659361b1d">ComputeMass</a> (out <a class="el" href="../../db/d12/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_mass_data.html">MassData</a> massData)</td></tr>
-<tr class="memdesc:a9a102fa4cff9bb23e932674659361b1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed about the local origin, not the centroid.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9a102fa4cff9bb23e932674659361b1d">More...</a><br /></td></tr>
-<tr class="separator:a9a102fa4cff9bb23e932674659361b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06f7e83cee9f095718d4dcffd6e76881"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a06f7e83cee9f095718d4dcffd6e76881">ComputeSubmergedArea</a> (<a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> normal, float offset, out <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> c)</td></tr>
-<tr class="memdesc:a06f7e83cee9f095718d4dcffd6e76881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the volume and centroid of this fixture intersected with a half plane.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a06f7e83cee9f095718d4dcffd6e76881">More...</a><br /></td></tr>
-<tr class="separator:a06f7e83cee9f095718d4dcffd6e76881"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9aefae5aa03b674a7bf2a93eb748f68d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9aefae5aa03b674a7bf2a93eb748f68d">TestPoint</a> (<a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> p)</td></tr>
-<tr class="memdesc:a9aefae5aa03b674a7bf2a93eb748f68d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test a point for containment in this fixture. This only works for convex shapes.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9aefae5aa03b674a7bf2a93eb748f68d">More...</a><br /></td></tr>
-<tr class="separator:a9aefae5aa03b674a7bf2a93eb748f68d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad338494f1e008a5f10303b8e13a1532a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0">SegmentCollide</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ad338494f1e008a5f10303b8e13a1532a">TestSegment</a> (out float lambda, out <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> normal, <a class="el" href="../../db/dec/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_segment.html">Segment</a> segment, float maxLambda)</td></tr>
-<tr class="memdesc:ad338494f1e008a5f10303b8e13a1532a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a ray cast against this shape.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ad338494f1e008a5f10303b8e13a1532a">More...</a><br /></td></tr>
-<tr class="separator:ad338494f1e008a5f10303b8e13a1532a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad73299784cf90f24d43daaf665760609"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ad73299784cf90f24d43daaf665760609">ComputeSweepRadius</a> (<a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> pivot)</td></tr>
-<tr class="memdesc:ad73299784cf90f24d43daaf665760609"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum radius about the parent body's center of mass.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ad73299784cf90f24d43daaf665760609">More...</a><br /></td></tr>
-<tr class="separator:ad73299784cf90f24d43daaf665760609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40a5130db91c0bd5d5e2af50fd031501"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a40a5130db91c0bd5d5e2af50fd031501">TestPoint</a> (ref Vector2 point)</td></tr>
+<tr class="memdesc:a40a5130db91c0bd5d5e2af50fd031501"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test a point for containment in this fixture.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a40a5130db91c0bd5d5e2af50fd031501">More...</a><br /></td></tr>
+<tr class="separator:a40a5130db91c0bd5d5e2af50fd031501"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d8e164f8b9c489aae59e154ccb55dfe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a7d8e164f8b9c489aae59e154ccb55dfe">RayCast</a> (out <a class="el" href="../../d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html">RayCastOutput</a> output, ref <a class="el" href="../../de/d2a/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_input.html">RayCastInput</a> input, int childIndex)</td></tr>
+<tr class="memdesc:a7d8e164f8b9c489aae59e154ccb55dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cast a ray against this Shape.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a7d8e164f8b9c489aae59e154ccb55dfe">More...</a><br /></td></tr>
+<tr class="separator:a7d8e164f8b9c489aae59e154ccb55dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adccaf9f21a6f63c9fabe7c6c294e6c95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#adccaf9f21a6f63c9fabe7c6c294e6c95">GetAabb</a> (out <a class="el" href="../../d8/deb/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_aabb.html">Aabb</a> aabb, int childIndex)</td></tr>
+<tr class="memdesc:adccaf9f21a6f63c9fabe7c6c294e6c95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it using the Shape and the body transform.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#adccaf9f21a6f63c9fabe7c6c294e6c95">More...</a><br /></td></tr>
+<tr class="separator:adccaf9f21a6f63c9fabe7c6c294e6c95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a99aa505fdeb1c807b210d020612cef53"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a99aa505fdeb1c807b210d020612cef53">Density</a></td></tr>
-<tr class="memdesc:a99aa505fdeb1c807b210d020612cef53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Density, usually in kg/m^2.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a99aa505fdeb1c807b210d020612cef53">More...</a><br /></td></tr>
-<tr class="separator:a99aa505fdeb1c807b210d020612cef53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13f77813ae32d109102ed473256a30e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d69/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_filter_data.html">FilterData</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a13f77813ae32d109102ed473256a30e1">Filter</a></td></tr>
-<tr class="memdesc:a13f77813ae32d109102ed473256a30e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contact filtering data. You must call b2World::Refilter to correct existing contacts/non-contacts.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a13f77813ae32d109102ed473256a30e1">More...</a><br /></td></tr>
-<tr class="separator:a13f77813ae32d109102ed473256a30e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c6cecf541cec5802f22f6e6119a415d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9c6cecf541cec5802f22f6e6119a415d">Friction</a></td></tr>
-<tr class="memdesc:a9c6cecf541cec5802f22f6e6119a415d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Friction coefficient, usually in the range [0,1].  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9c6cecf541cec5802f22f6e6119a415d">More...</a><br /></td></tr>
-<tr class="separator:a9c6cecf541cec5802f22f6e6119a415d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab42e36effed65829ecf794c48707a96b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab42e36effed65829ecf794c48707a96b">Restitution</a></td></tr>
-<tr class="memdesc:ab42e36effed65829ecf794c48707a96b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restitution (elasticity) usually in the range [0,1].  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab42e36effed65829ecf794c48707a96b">More...</a><br /></td></tr>
-<tr class="separator:ab42e36effed65829ecf794c48707a96b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8b5f3106c5ccd4ca60be4cf78cca84e"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa8b5f3106c5ccd4ca60be4cf78cca84e">UserData</a></td></tr>
-<tr class="memdesc:aa8b5f3106c5ccd4ca60be4cf78cca84e"><td class="mdescLeft">&#160;</td><td class="mdescRight">User data that was assigned in the fixture definition. Use this to store your application specific data.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa8b5f3106c5ccd4ca60be4cf78cca84e">More...</a><br /></td></tr>
-<tr class="separator:aa8b5f3106c5ccd4ca60be4cf78cca84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9f14e0d04d74f66349f329aae2285e2"><td class="memItemLeft" align="right" valign="top">AfterCollisionHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa9f14e0d04d74f66349f329aae2285e2">AfterCollision</a></td></tr>
+<tr class="memdesc:aa9f14e0d04d74f66349f329aae2285e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa9f14e0d04d74f66349f329aae2285e2">More...</a><br /></td></tr>
+<tr class="separator:aa9f14e0d04d74f66349f329aae2285e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3f61078ebc61e4020bb113e35977e12"><td class="memItemLeft" align="right" valign="top">BeforeCollisionHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ae3f61078ebc61e4020bb113e35977e12">BeforeCollision</a></td></tr>
+<tr class="memdesc:ae3f61078ebc61e4020bb113e35977e12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires when two fixtures are close to each other. Due to how the broadphase works, this can be quite inaccurate as shapes are approximated using AABBs.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ae3f61078ebc61e4020bb113e35977e12">More...</a><br /></td></tr>
+<tr class="separator:ae3f61078ebc61e4020bb113e35977e12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54206c391e3b370a89da36d7b559d1a1"><td class="memItemLeft" align="right" valign="top">OnCollisionHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a54206c391e3b370a89da36d7b559d1a1">OnCollision</a></td></tr>
+<tr class="memdesc:a54206c391e3b370a89da36d7b559d1a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is always the fixture that the delegate is subscribed to.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a54206c391e3b370a89da36d7b559d1a1">More...</a><br /></td></tr>
+<tr class="separator:a54206c391e3b370a89da36d7b559d1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8661470b04a6e58e5ecdafc417997cb"><td class="memItemLeft" align="right" valign="top">OnSeparationHandler&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab8661470b04a6e58e5ecdafc417997cb">OnSeparation</a></td></tr>
+<tr class="memdesc:ab8661470b04a6e58e5ecdafc417997cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that the delegate is subscribed to.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab8661470b04a6e58e5ecdafc417997cb">More...</a><br /></td></tr>
+<tr class="separator:ab8661470b04a6e58e5ecdafc417997cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08b1f19a0ab42da244885d913d293e15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d6f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_proxy.html">FixtureProxy</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a08b1f19a0ab42da244885d913d293e15">Proxies</a> =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab5e66c70703de872eed841648e5c971d">proxies</a></td></tr>
+<tr class="memdesc:a08b1f19a0ab42da244885d913d293e15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of the proxies  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a08b1f19a0ab42da244885d913d293e15">More...</a><br /></td></tr>
+<tr class="separator:a08b1f19a0ab42da244885d913d293e15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6dcd0c7c8de4d6d19348941cd793449a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a6dcd0c7c8de4d6d19348941cd793449a">ProxyCount</a> =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aacfa0e476cde531694c062270ad91eb4">proxyCount</a></td></tr>
+<tr class="memdesc:a6dcd0c7c8de4d6d19348941cd793449a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of the proxy count  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a6dcd0c7c8de4d6d19348941cd793449a">More...</a><br /></td></tr>
+<tr class="separator:a6dcd0c7c8de4d6d19348941cd793449a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff8e61faee2b0de511da9c9ff9d6808d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aff8e61faee2b0de511da9c9ff9d6808d">Shape</a> =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a3975b46cebccba757182a994b0ac22b0">ShapePrivate</a></td></tr>
+<tr class="memdesc:aff8e61faee2b0de511da9c9ff9d6808d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the child Shape. You can modify the child Shape, however you should not change the number of vertices because this will crash some collision caching mechanisms.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aff8e61faee2b0de511da9c9ff9d6808d">More...</a><br /></td></tr>
+<tr class="separator:aff8e61faee2b0de511da9c9ff9d6808d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c09f59ae9152162a0e6878b3e2eabf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a8c09f59ae9152162a0e6878b3e2eabf6">Body</a> =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a77762185b3f807fc4af4985fceff62f5">Bodyprivate</a></td></tr>
+<tr class="memdesc:a8c09f59ae9152162a0e6878b3e2eabf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parent body of this fixture. This is null if the fixture is not attached.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a8c09f59ae9152162a0e6878b3e2eabf6">More...</a><br /></td></tr>
+<tr class="separator:a8c09f59ae9152162a0e6878b3e2eabf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
 Package Functions</h2></td></tr>
-<tr class="memitem:a09eb04c24c6edc3f9e985f4b70c41011"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a09eb04c24c6edc3f9e985f4b70c41011">Synchronize</a> (<a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a> broadPhase, <a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a> transform1, <a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a> transform2)</td></tr>
-<tr class="memdesc:a09eb04c24c6edc3f9e985f4b70c41011"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance synchronize  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a09eb04c24c6edc3f9e985f4b70c41011">More...</a><br /></td></tr>
-<tr class="separator:a09eb04c24c6edc3f9e985f4b70c41011"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74fd18e928ba514e6419ac779ad8ccbd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a74fd18e928ba514e6419ac779ad8ccbd">RefilterProxy</a> (<a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a> broadPhase, <a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a> transform)</td></tr>
-<tr class="memdesc:a74fd18e928ba514e6419ac779ad8ccbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refilters the proxy using the specified broad phase  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a74fd18e928ba514e6419ac779ad8ccbd">More...</a><br /></td></tr>
-<tr class="separator:a74fd18e928ba514e6419ac779ad8ccbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2ab55674c5800cbe55c954ce5a4f61d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ad2ab55674c5800cbe55c954ce5a4f61d">Fixture</a> (<a class="el" href="../../db/d2d/class_alis_1_1_core_1_1_physic_1_1_definitions_1_1_fixture_def.html">FixtureDef</a> def)</td></tr>
+<tr class="memdesc:ad2ab55674c5800cbe55c954ce5a4f61d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html" title="A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transfo...">Fixture</a> class  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ad2ab55674c5800cbe55c954ce5a4f61d">More...</a><br /></td></tr>
+<tr class="separator:ad2ab55674c5800cbe55c954ce5a4f61d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28e8133846fdbca6f196e8aecc58a47a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a28e8133846fdbca6f196e8aecc58a47a">Destroy</a> ()</td></tr>
+<tr class="memdesc:a28e8133846fdbca6f196e8aecc58a47a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys this instance  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a28e8133846fdbca6f196e8aecc58a47a">More...</a><br /></td></tr>
+<tr class="separator:a28e8133846fdbca6f196e8aecc58a47a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1de76bedd1027c2b035297673c60c886"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a1de76bedd1027c2b035297673c60c886">CreateProxies</a> (<a class="el" href="../../d4/d87/interface_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_i_broad_phase.html">IBroadPhase</a> broadPhase, ref <a class="el" href="../../d9/d9e/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_transform.html">Transform</a> xf)</td></tr>
+<tr class="memdesc:a1de76bedd1027c2b035297673c60c886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the proxies using the specified broad phase  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a1de76bedd1027c2b035297673c60c886">More...</a><br /></td></tr>
+<tr class="separator:a1de76bedd1027c2b035297673c60c886"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef9079fc9f3404e7593343dd58755b95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aef9079fc9f3404e7593343dd58755b95">DestroyProxies</a> (<a class="el" href="../../d4/d87/interface_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_i_broad_phase.html">IBroadPhase</a> broadPhase)</td></tr>
+<tr class="memdesc:aef9079fc9f3404e7593343dd58755b95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the proxies using the specified broad phase  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aef9079fc9f3404e7593343dd58755b95">More...</a><br /></td></tr>
+<tr class="separator:aef9079fc9f3404e7593343dd58755b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51f60ff1097e1bdede8a6312616bf40c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a51f60ff1097e1bdede8a6312616bf40c">Synchronize</a> (<a class="el" href="../../d4/d87/interface_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_i_broad_phase.html">IBroadPhase</a> broadPhase, ref <a class="el" href="../../d9/d9e/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_transform.html">Transform</a> transform1, ref <a class="el" href="../../d9/d9e/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_transform.html">Transform</a> transform2)</td></tr>
+<tr class="memdesc:a51f60ff1097e1bdede8a6312616bf40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the broad phase  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a51f60ff1097e1bdede8a6312616bf40c">More...</a><br /></td></tr>
+<tr class="separator:a51f60ff1097e1bdede8a6312616bf40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
+Package Attributes</h2></td></tr>
+<tr class="memitem:a77762185b3f807fc4af4985fceff62f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a77762185b3f807fc4af4985fceff62f5">Bodyprivate</a></td></tr>
+<tr class="memdesc:a77762185b3f807fc4af4985fceff62f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The body  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a77762185b3f807fc4af4985fceff62f5">More...</a><br /></td></tr>
+<tr class="separator:a77762185b3f807fc4af4985fceff62f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a580cd048881879f39b85b21a2e716a41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a580cd048881879f39b85b21a2e716a41">CollidesWithprivate</a></td></tr>
+<tr class="memdesc:a580cd048881879f39b85b21a2e716a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collides with  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a580cd048881879f39b85b21a2e716a41">More...</a><br /></td></tr>
+<tr class="separator:a580cd048881879f39b85b21a2e716a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7361283ce0c7be5cd21e52bd29c47fd4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a7361283ce0c7be5cd21e52bd29c47fd4">CollisionCategoriesprivate</a></td></tr>
+<tr class="memdesc:a7361283ce0c7be5cd21e52bd29c47fd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collision categories  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a7361283ce0c7be5cd21e52bd29c47fd4">More...</a><br /></td></tr>
+<tr class="separator:a7361283ce0c7be5cd21e52bd29c47fd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a670c97dde1e5e7e10eb82ff37c58e984"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a670c97dde1e5e7e10eb82ff37c58e984">CollisionGroupPrivate</a></td></tr>
+<tr class="memdesc:a670c97dde1e5e7e10eb82ff37c58e984"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collision group  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a670c97dde1e5e7e10eb82ff37c58e984">More...</a><br /></td></tr>
+<tr class="separator:a670c97dde1e5e7e10eb82ff37c58e984"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c77ed0117dfaf1aff8af9adcd547388"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a1c77ed0117dfaf1aff8af9adcd547388">Frictionprivate</a></td></tr>
+<tr class="memdesc:a1c77ed0117dfaf1aff8af9adcd547388"><td class="mdescLeft">&#160;</td><td class="mdescRight">The friction  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a1c77ed0117dfaf1aff8af9adcd547388">More...</a><br /></td></tr>
+<tr class="separator:a1c77ed0117dfaf1aff8af9adcd547388"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11621038720d688a78ea601fd7fdf396"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a11621038720d688a78ea601fd7fdf396">IsSensorPrivate</a></td></tr>
+<tr class="memdesc:a11621038720d688a78ea601fd7fdf396"><td class="mdescLeft">&#160;</td><td class="mdescRight">The is sensor  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a11621038720d688a78ea601fd7fdf396">More...</a><br /></td></tr>
+<tr class="separator:a11621038720d688a78ea601fd7fdf396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa31aebfb13d79f6f40c40e127a6ec28e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa31aebfb13d79f6f40c40e127a6ec28e">Restitutionprivate</a></td></tr>
+<tr class="memdesc:aa31aebfb13d79f6f40c40e127a6ec28e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The restitution  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa31aebfb13d79f6f40c40e127a6ec28e">More...</a><br /></td></tr>
+<tr class="separator:aa31aebfb13d79f6f40c40e127a6ec28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ef4a611c7d27067c78d59c814d63932"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a5ef4a611c7d27067c78d59c814d63932">RestitutionThresholdPrivate</a></td></tr>
+<tr class="memdesc:a5ef4a611c7d27067c78d59c814d63932"><td class="mdescLeft">&#160;</td><td class="mdescRight">The restitution threshold  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a5ef4a611c7d27067c78d59c814d63932">More...</a><br /></td></tr>
+<tr class="separator:a5ef4a611c7d27067c78d59c814d63932"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3975b46cebccba757182a994b0ac22b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a3975b46cebccba757182a994b0ac22b0">ShapePrivate</a></td></tr>
+<tr class="memdesc:a3975b46cebccba757182a994b0ac22b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The shape  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a3975b46cebccba757182a994b0ac22b0">More...</a><br /></td></tr>
+<tr class="separator:a3975b46cebccba757182a994b0ac22b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a9976810f2e8c83659cea36e1a87f42cd"><td class="memItemLeft" align="right" valign="top">ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9976810f2e8c83659cea36e1a87f42cd">ProxyId</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a9976810f2e8c83659cea36e1a87f42cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The proxy id  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9976810f2e8c83659cea36e1a87f42cd">More...</a><br /></td></tr>
-<tr class="separator:a9976810f2e8c83659cea36e1a87f42cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e648d561595de599835232fdc4f4b05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a2e648d561595de599835232fdc4f4b05">IsSensor</a><code> [get, protected set]</code></td></tr>
-<tr class="memdesc:a2e648d561595de599835232fdc4f4b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is this fixture a sensor (non-solid)?  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a2e648d561595de599835232fdc4f4b05">More...</a><br /></td></tr>
+<tr class="memitem:a7482d774a9cd10fe3f689988bc469659"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a7482d774a9cd10fe3f689988bc469659">IgnoreCcdWith</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a7482d774a9cd10fe3f689988bc469659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the value of the ignore ccd with  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a7482d774a9cd10fe3f689988bc469659">More...</a><br /></td></tr>
+<tr class="separator:a7482d774a9cd10fe3f689988bc469659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91b06701de3a9bfe57f32cdc76dcbab2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a91b06701de3a9bfe57f32cdc76dcbab2">RestitutionThreshold</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a91b06701de3a9bfe57f32cdc76dcbab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get or set the restitution threshold. This will <em>not</em> change the restitution threshold of existing contacts.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a91b06701de3a9bfe57f32cdc76dcbab2">More...</a><br /></td></tr>
+<tr class="separator:a91b06701de3a9bfe57f32cdc76dcbab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8ba0cc80ddd6dcd5203cfff5d8c7c2b"><td class="memItemLeft" align="right" valign="top">short&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ae8ba0cc80ddd6dcd5203cfff5d8c7c2b">CollisionGroup</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ae8ba0cc80ddd6dcd5203cfff5d8c7c2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defaults to 0 If Settings.UseFPECollisionCategories is set to false: Collision groups allow a certain group of objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group filtering always wins against the mask bits. If Settings.UseFPECollisionCategories is set to true: If 2 fixtures are in the same collision group, they will not collide.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ae8ba0cc80ddd6dcd5203cfff5d8c7c2b">More...</a><br /></td></tr>
+<tr class="separator:ae8ba0cc80ddd6dcd5203cfff5d8c7c2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ca67aa081bc2ba966856708caa8bf10"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a0ca67aa081bc2ba966856708caa8bf10">CollidesWith</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a0ca67aa081bc2ba966856708caa8bf10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defaults to Category.All The collision mask bits. This states the categories that this fixture would accept for collision. Use Settings.UseFPECollisionCategories to change the behavior.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a0ca67aa081bc2ba966856708caa8bf10">More...</a><br /></td></tr>
+<tr class="separator:a0ca67aa081bc2ba966856708caa8bf10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ed6ef953cc6264d01dbb5e493711cf3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a3ed6ef953cc6264d01dbb5e493711cf3">CollisionCategories</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a3ed6ef953cc6264d01dbb5e493711cf3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collision categories this fixture is a part of. If Settings.UseFPECollisionCategories is set to false: Defaults to Category.Cat1 If Settings.UseFPECollisionCategories is set to true: Defaults to Category.All  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a3ed6ef953cc6264d01dbb5e493711cf3">More...</a><br /></td></tr>
+<tr class="separator:a3ed6ef953cc6264d01dbb5e493711cf3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e648d561595de599835232fdc4f4b05"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a2e648d561595de599835232fdc4f4b05">IsSensor</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a2e648d561595de599835232fdc4f4b05"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets a value indicating whether this fixture is a sensor.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a2e648d561595de599835232fdc4f4b05">More...</a><br /></td></tr>
 <tr class="separator:a2e648d561595de599835232fdc4f4b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff8e61faee2b0de511da9c9ff9d6808d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html">Shape</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aff8e61faee2b0de511da9c9ff9d6808d">Shape</a><code> [get, protected set]</code></td></tr>
-<tr class="memdesc:aff8e61faee2b0de511da9c9ff9d6808d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the child shape. You can modify the child shape, however you should not change the number of vertices because this will crash some collision caching mechanisms.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aff8e61faee2b0de511da9c9ff9d6808d">More...</a><br /></td></tr>
-<tr class="separator:aff8e61faee2b0de511da9c9ff9d6808d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a002a3afa9f5b1ff536de3bae488933e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">ShapeType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a002a3afa9f5b1ff536de3bae488933e1">ShapeType</a><code> [get, protected set]</code></td></tr>
-<tr class="memdesc:a002a3afa9f5b1ff536de3bae488933e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of this shape. You can use this to down cast to the concrete shape.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a002a3afa9f5b1ff536de3bae488933e1">More...</a><br /></td></tr>
-<tr class="separator:a002a3afa9f5b1ff536de3bae488933e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adddde419cf4e1a3e55a54d6d5c02f7c4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html">Fixture</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#adddde419cf4e1a3e55a54d6d5c02f7c4">Next</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:adddde419cf4e1a3e55a54d6d5c02f7c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next fixture in the parent body's fixture list.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#adddde419cf4e1a3e55a54d6d5c02f7c4">More...</a><br /></td></tr>
-<tr class="separator:adddde419cf4e1a3e55a54d6d5c02f7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c09f59ae9152162a0e6878b3e2eabf6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a8c09f59ae9152162a0e6878b3e2eabf6">Body</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a8c09f59ae9152162a0e6878b3e2eabf6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the parent body of this fixture. This is NULL if the fixture is not attached.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a8c09f59ae9152162a0e6878b3e2eabf6">More...</a><br /></td></tr>
-<tr class="separator:a8c09f59ae9152162a0e6878b3e2eabf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8b5f3106c5ccd4ca60be4cf78cca84e"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa8b5f3106c5ccd4ca60be4cf78cca84e">UserData</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa8b5f3106c5ccd4ca60be4cf78cca84e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the user data. Use this to store your application specific data.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aa8b5f3106c5ccd4ca60be4cf78cca84e">More...</a><br /></td></tr>
+<tr class="separator:aa8b5f3106c5ccd4ca60be4cf78cca84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c6cecf541cec5802f22f6e6119a415d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9c6cecf541cec5802f22f6e6119a415d">Friction</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a9c6cecf541cec5802f22f6e6119a415d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coefficient of friction. This will <em>not</em> change the friction of existing contacts.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a9c6cecf541cec5802f22f6e6119a415d">More...</a><br /></td></tr>
+<tr class="separator:a9c6cecf541cec5802f22f6e6119a415d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab42e36effed65829ecf794c48707a96b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab42e36effed65829ecf794c48707a96b">Restitution</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ab42e36effed65829ecf794c48707a96b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the coefficient of restitution. This will not change the restitution of existing contacts.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab42e36effed65829ecf794c48707a96b">More...</a><br /></td></tr>
+<tr class="separator:ab42e36effed65829ecf794c48707a96b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a05298f84b84dface2d4dec8ef031a33c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a05298f84b84dface2d4dec8ef031a33c">Refilter</a> ()</td></tr>
+<tr class="memdesc:a05298f84b84dface2d4dec8ef031a33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contacts are persistent and will keep being persistent unless they are flagged for filtering. This methods flags all contacts associated with the body for filtering.  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a05298f84b84dface2d4dec8ef031a33c">More...</a><br /></td></tr>
+<tr class="separator:a05298f84b84dface2d4dec8ef031a33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:af38ffa4d8f1610f67887d5b9d5ffe055"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#af38ffa4d8f1610f67887d5b9d5ffe055">ignoreCcdWith</a></td></tr>
+<tr class="memdesc:af38ffa4d8f1610f67887d5b9d5ffe055"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ignore ccd with  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#af38ffa4d8f1610f67887d5b9d5ffe055">More...</a><br /></td></tr>
+<tr class="separator:af38ffa4d8f1610f67887d5b9d5ffe055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e66c70703de872eed841648e5c971d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dd/d6f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_proxy.html">FixtureProxy</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab5e66c70703de872eed841648e5c971d">proxies</a></td></tr>
+<tr class="memdesc:ab5e66c70703de872eed841648e5c971d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The proxies  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab5e66c70703de872eed841648e5c971d">More...</a><br /></td></tr>
+<tr class="separator:ab5e66c70703de872eed841648e5c971d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacfa0e476cde531694c062270ad91eb4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aacfa0e476cde531694c062270ad91eb4">proxyCount</a></td></tr>
+<tr class="memdesc:aacfa0e476cde531694c062270ad91eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The proxy count  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aacfa0e476cde531694c062270ad91eb4">More...</a><br /></td></tr>
+<tr class="separator:aacfa0e476cde531694c062270ad91eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31c9999922e7894c555c7bd9273b6da9"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a31c9999922e7894c555c7bd9273b6da9">userData</a></td></tr>
+<tr class="memdesc:a31c9999922e7894c555c7bd9273b6da9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The user data  <a href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a31c9999922e7894c555c7bd9273b6da9">More...</a><br /></td></tr>
+<tr class="separator:a31c9999922e7894c555c7bd9273b6da9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A fixture is used to attach a shape to a body for collision detection. A fixture inherits its transform from its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are created via Body.CreateFixture. </p>
-<dl class="section warning"><dt>Warning</dt><dd>you cannot reuse fixtures.</dd></dl>
+<div class="textblock"><p>A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transform from its parent. Fixtures hold additional non-geometric data such as friction, collision filters, etc. Fixtures are created via Body.CreateFixture. Warning: You cannot reuse fixtures. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00044">44</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00050">50</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a0390504d76659befca6eb9652d77a475"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0390504d76659befca6eb9652d77a475">&#9670;&nbsp;</a></span>Fixture()</h2>
+<a id="ad2ab55674c5800cbe55c954ce5a4f61d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2ab55674c5800cbe55c954ce5a4f61d">&#9670;&nbsp;</a></span>Fixture()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">Alis.Core.Physic.Dynamics.Fixture.Fixture </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d2d/class_alis_1_1_core_1_1_physic_1_1_definitions_1_1_fixture_def.html">FixtureDef</a>&#160;</td>
+          <td class="paramname"><em>def</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html" title="A fixture is used to attach a Shape to a body for collision detection. A fixture inherits its transfo...">Fixture</a> class </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">def</td><td>The def</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00145">145</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a05298f84b84dface2d4dec8ef031a33c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05298f84b84dface2d4dec8ef031a33c">&#9670;&nbsp;</a></span>Refilter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.Refilter </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Initializes a new instance of the <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html" title="A fixture is used to attach a shape to a body for collision detection. A fixture inherits its transfo...">Fixture</a> class </p>
+<p>Contacts are persistent and will keep being persistent unless they are flagged for filtering. This methods flags all contacts associated with the body for filtering. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00076">76</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00327">327</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5677444c0ef00de9f7f2785e1e5bfe6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5677444c0ef00de9f7f2785e1e5bfe6f">&#9670;&nbsp;</a></span>Create()</h2>
+<a id="a40a5130db91c0bd5d5e2af50fd031501"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40a5130db91c0bd5d5e2af50fd031501">&#9670;&nbsp;</a></span>TestPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.Create </td>
+          <td class="memname">bool Alis.Core.Physic.Dynamics.Fixture.TestPoint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a>&#160;</td>
-          <td class="paramname"><em>broadPhase</em>, </td>
+          <td class="paramtype">ref Vector2&#160;</td>
+          <td class="paramname"><em>point</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Test a point for containment in this fixture. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>A point in world coordinates.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7d8e164f8b9c489aae59e154ccb55dfe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d8e164f8b9c489aae59e154ccb55dfe">&#9670;&nbsp;</a></span>RayCast()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Alis.Core.Physic.Dynamics.Fixture.RayCast </td>
+          <td>(</td>
+          <td class="paramtype">out <a class="el" href="../../d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html">RayCastOutput</a>&#160;</td>
+          <td class="paramname"><em>output</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td>
-          <td class="paramname"><em>body</em>, </td>
+          <td class="paramtype">ref <a class="el" href="../../de/d2a/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_input.html">RayCastInput</a>&#160;</td>
+          <td class="paramname"><em>input</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a>&#160;</td>
-          <td class="paramname"><em>xf</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d6/d28/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_def.html">FixtureDef</a>&#160;</td>
-          <td class="paramname"><em>def</em>&#160;</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>childIndex</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -254,51 +380,59 @@ Properties</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Creates the broad phase </p>
+<p>Cast a ray against this Shape. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">broadPhase</td><td>The broad phase</td></tr>
-    <tr><td class="paramname">body</td><td>The body</td></tr>
-    <tr><td class="paramname">xf</td><td>The xf</td></tr>
-    <tr><td class="paramname">def</td><td>The def</td></tr>
+    <tr><td class="paramname">output</td><td>The ray-cast results.</td></tr>
+    <tr><td class="paramname">input</td><td>The ray-cast input parameters.</td></tr>
+    <tr><td class="paramname">childIndex</td><td>Index of the child.</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00119">119</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
-
 </div>
 </div>
-<a id="a631d5a1ca2dd83da9ef0049052d2a62e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a631d5a1ca2dd83da9ef0049052d2a62e">&#9670;&nbsp;</a></span>Destroy()</h2>
+<a id="adccaf9f21a6f63c9fabe7c6c294e6c95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adccaf9f21a6f63c9fabe7c6c294e6c95">&#9670;&nbsp;</a></span>GetAabb()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.Destroy </td>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.GetAabb </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a>&#160;</td>
-          <td class="paramname"><em>broadPhase</em></td><td>)</td>
+          <td class="paramtype">out <a class="el" href="../../d8/deb/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_aabb.html">Aabb</a>&#160;</td>
+          <td class="paramname"><em>aabb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>childIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Destroys the broad phase </p>
+<p>Get the fixture's AABB. This AABB may be enlarge and/or stale. If you need a more accurate AABB, compute it using the Shape and the body transform. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">broadPhase</td><td>The broad phase</td></tr>
+    <tr><td class="paramname">aabb</td><td>The AABB.</td></tr>
+    <tr><td class="paramname">childIndex</td><td>Index of the child.</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00194">194</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00376">376</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="a09eb04c24c6edc3f9e985f4b70c41011"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09eb04c24c6edc3f9e985f4b70c41011">&#9670;&nbsp;</a></span>Synchronize()</h2>
+<a id="a28e8133846fdbca6f196e8aecc58a47a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28e8133846fdbca6f196e8aecc58a47a">&#9670;&nbsp;</a></span>Destroy()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -307,21 +441,133 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Alis.Core.Physic.Dynamics.Fixture.Synchronize </td>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.Destroy </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destroys this instance </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00385">385</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1de76bedd1027c2b035297673c60c886"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de76bedd1027c2b035297673c60c886">&#9670;&nbsp;</a></span>CreateProxies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.CreateProxies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d4/d87/interface_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_i_broad_phase.html">IBroadPhase</a>&#160;</td>
           <td class="paramname"><em>broadPhase</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a>&#160;</td>
+          <td class="paramtype">ref <a class="el" href="../../d9/d9e/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_transform.html">Transform</a>&#160;</td>
+          <td class="paramname"><em>xf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Creates the proxies using the specified broad phase </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">broadPhase</td><td>The broad phase</td></tr>
+    <tr><td class="paramname">xf</td><td>The xf</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00409">409</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="aef9079fc9f3404e7593343dd58755b95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef9079fc9f3404e7593343dd58755b95">&#9670;&nbsp;</a></span>DestroyProxies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.DestroyProxies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d4/d87/interface_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_i_broad_phase.html">IBroadPhase</a>&#160;</td>
+          <td class="paramname"><em>broadPhase</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destroys the proxies using the specified broad phase </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">broadPhase</td><td>The broad phase</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00434">434</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a51f60ff1097e1bdede8a6312616bf40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51f60ff1097e1bdede8a6312616bf40c">&#9670;&nbsp;</a></span>Synchronize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.Synchronize </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d4/d87/interface_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_i_broad_phase.html">IBroadPhase</a>&#160;</td>
+          <td class="paramname"><em>broadPhase</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref <a class="el" href="../../d9/d9e/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_transform.html">Transform</a>&#160;</td>
           <td class="paramname"><em>transform1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a>&#160;</td>
+          <td class="paramtype">ref <a class="el" href="../../d9/d9e/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_transform.html">Transform</a>&#160;</td>
           <td class="paramname"><em>transform2</em>&#160;</td>
         </tr>
         <tr>
@@ -337,7 +583,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Describes whether this instance synchronize </p>
+<p>Synchronizes the broad phase </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">broadPhase</td><td>The broad phase</td></tr>
@@ -346,14 +592,50 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00215">215</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00453">453</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="a74fd18e928ba514e6419ac779ad8ccbd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a74fd18e928ba514e6419ac779ad8ccbd">&#9670;&nbsp;</a></span>RefilterProxy()</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aa9f14e0d04d74f66349f329aae2285e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9f14e0d04d74f66349f329aae2285e2">&#9670;&nbsp;</a></span>AfterCollision</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">AfterCollisionHandler Alis.Core.Physic.Dynamics.Fixture.AfterCollision</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fires after two shapes has collided and are solved. This gives you a chance to get the impact force. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00053">53</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae3f61078ebc61e4020bb113e35977e12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3f61078ebc61e4020bb113e35977e12">&#9670;&nbsp;</a></span>BeforeCollision</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">BeforeCollisionHandler Alis.Core.Physic.Dynamics.Fixture.BeforeCollision</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fires when two fixtures are close to each other. Due to how the broadphase works, this can be quite inaccurate as shapes are approximated using AABBs. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00059">59</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a77762185b3f807fc4af4985fceff62f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77762185b3f807fc4af4985fceff62f5">&#9670;&nbsp;</a></span>Bodyprivate</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -362,21 +644,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.RefilterProxy </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/dd7/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broad_phase.html">BroadPhase</a>&#160;</td>
-          <td class="paramname"><em>broadPhase</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a>&#160;</td>
-          <td class="paramname"><em>transform</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> Alis.Core.Physic.Dynamics.Fixture.Bodyprivate</td>
         </tr>
       </table>
   </td>
@@ -386,21 +654,14 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Refilters the proxy using the specified broad phase </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">broadPhase</td><td>The broad phase</td></tr>
-    <tr><td class="paramname">transform</td><td>The transform</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>The body </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00244">244</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00064">64</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="aa2e39b74794ca62d459ec25d7dd75a91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2e39b74794ca62d459ec25d7dd75a91">&#9670;&nbsp;</a></span>Dispose()</h2>
+<a id="a580cd048881879f39b85b21a2e716a41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a580cd048881879f39b85b21a2e716a41">&#9670;&nbsp;</a></span>CollidesWithprivate</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -409,297 +670,421 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Alis.Core.Physic.Dynamics.Fixture.Dispose </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a> Alis.Core.Physic.Dynamics.Fixture.CollidesWithprivate</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Disposes this instance </p>
+<p>The collides with </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00271">271</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00069">69</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="a9a102fa4cff9bb23e932674659361b1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9a102fa4cff9bb23e932674659361b1d">&#9670;&nbsp;</a></span>ComputeMass()</h2>
+<a id="a7361283ce0c7be5cd21e52bd29c47fd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7361283ce0c7be5cd21e52bd29c47fd4">&#9670;&nbsp;</a></span>CollisionCategoriesprivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a> Alis.Core.Physic.Dynamics.Fixture.CollisionCategoriesprivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The collision categories </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00074">74</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a670c97dde1e5e7e10eb82ff37c58e984"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a670c97dde1e5e7e10eb82ff37c58e984">&#9670;&nbsp;</a></span>CollisionGroupPrivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">short Alis.Core.Physic.Dynamics.Fixture.CollisionGroupPrivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The collision group </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00079">79</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1c77ed0117dfaf1aff8af9adcd547388"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c77ed0117dfaf1aff8af9adcd547388">&#9670;&nbsp;</a></span>Frictionprivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.Frictionprivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The friction </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00084">84</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="af38ffa4d8f1610f67887d5b9d5ffe055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38ffa4d8f1610f67887d5b9d5ffe055">&#9670;&nbsp;</a></span>ignoreCcdWith</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a> Alis.Core.Physic.Dynamics.Fixture.ignoreCcdWith</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The ignore ccd with </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00089">89</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a11621038720d688a78ea601fd7fdf396"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11621038720d688a78ea601fd7fdf396">&#9670;&nbsp;</a></span>IsSensorPrivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Alis.Core.Physic.Dynamics.Fixture.IsSensorPrivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The is sensor </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00094">94</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a54206c391e3b370a89da36d7b559d1a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54206c391e3b370a89da36d7b559d1a1">&#9670;&nbsp;</a></span>OnCollision</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Alis.Core.Physic.Dynamics.Fixture.ComputeMass </td>
-          <td>(</td>
-          <td class="paramtype">out <a class="el" href="../../db/d12/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_mass_data.html">MassData</a>&#160;</td>
-          <td class="paramname"><em>massData</em></td><td>)</td>
-          <td></td>
+          <td class="memname">OnCollisionHandler Alis.Core.Physic.Dynamics.Fixture.OnCollision</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed about the local origin, not the centroid. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">massData</td><td>Returns the mass data for this shape.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Fires when two shapes collide and a contact is created between them. Note that the first fixture argument is always the fixture that the delegate is subscribed to. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00282">282</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00100">100</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="a06f7e83cee9f095718d4dcffd6e76881"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06f7e83cee9f095718d4dcffd6e76881">&#9670;&nbsp;</a></span>ComputeSubmergedArea()</h2>
+<a id="ab8661470b04a6e58e5ecdafc417997cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab8661470b04a6e58e5ecdafc417997cb">&#9670;&nbsp;</a></span>OnSeparation</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.ComputeSubmergedArea </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
-          <td class="paramname"><em>normal</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">out <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
-          <td class="paramname"><em>c</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">OnSeparationHandler Alis.Core.Physic.Dynamics.Fixture.OnSeparation</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Compute the volume and centroid of this fixture intersected with a half plane. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">normal</td><td>Normal the surface normal.</td></tr>
-    <tr><td class="paramname">offset</td><td>Offset the surface offset along normal.</td></tr>
-    <tr><td class="paramname">c</td><td>Returns the centroid.</td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The total volume less than offset along normal.</dd></dl>
+<p>Fires when two shapes separate and a contact is removed between them. Note: This can in some cases be called multiple times, as a fixture can have multiple contacts. Note The first fixture argument is always the fixture that the delegate is subscribed to. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00294">294</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00108">108</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="a9aefae5aa03b674a7bf2a93eb748f68d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9aefae5aa03b674a7bf2a93eb748f68d">&#9670;&nbsp;</a></span>TestPoint()</h2>
+<a id="ab5e66c70703de872eed841648e5c971d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5e66c70703de872eed841648e5c971d">&#9670;&nbsp;</a></span>proxies</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d6f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_proxy.html">FixtureProxy</a> [] Alis.Core.Physic.Dynamics.Fixture.proxies</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The proxies </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00113">113</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="aacfa0e476cde531694c062270ad91eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacfa0e476cde531694c062270ad91eb4">&#9670;&nbsp;</a></span>proxyCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Alis.Core.Physic.Dynamics.Fixture.proxyCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The proxy count </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00118">118</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa31aebfb13d79f6f40c40e127a6ec28e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa31aebfb13d79f6f40c40e127a6ec28e">&#9670;&nbsp;</a></span>Restitutionprivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.Restitutionprivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The restitution </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00123">123</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5ef4a611c7d27067c78d59c814d63932"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ef4a611c7d27067c78d59c814d63932">&#9670;&nbsp;</a></span>RestitutionThresholdPrivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.RestitutionThresholdPrivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The restitution threshold </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00128">128</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a3975b46cebccba757182a994b0ac22b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3975b46cebccba757182a994b0ac22b0">&#9670;&nbsp;</a></span>ShapePrivate</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html">Shape</a> Alis.Core.Physic.Dynamics.Fixture.ShapePrivate</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The shape </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00133">133</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a31c9999922e7894c555c7bd9273b6da9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31c9999922e7894c555c7bd9273b6da9">&#9670;&nbsp;</a></span>userData</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">object Alis.Core.Physic.Dynamics.Fixture.userData</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The user data </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00138">138</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a08b1f19a0ab42da244885d913d293e15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08b1f19a0ab42da244885d913d293e15">&#9670;&nbsp;</a></span>Proxies</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool Alis.Core.Physic.Dynamics.Fixture.TestPoint </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="../../dd/d6f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_proxy.html">FixtureProxy</a> [] Alis.Core.Physic.Dynamics.Fixture.Proxies =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#ab5e66c70703de872eed841648e5c971d">proxies</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Test a point for containment in this fixture. This only works for convex shapes. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">p</td><td>A point in world coordinates.</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Gets the value of the proxies </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00303">303</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00186">186</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="ad338494f1e008a5f10303b8e13a1532a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad338494f1e008a5f10303b8e13a1532a">&#9670;&nbsp;</a></span>TestSegment()</h2>
+<a id="a6dcd0c7c8de4d6d19348941cd793449a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6dcd0c7c8de4d6d19348941cd793449a">&#9670;&nbsp;</a></span>ProxyCount</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0">SegmentCollide</a> Alis.Core.Physic.Dynamics.Fixture.TestSegment </td>
-          <td>(</td>
-          <td class="paramtype">out float&#160;</td>
-          <td class="paramname"><em>lambda</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">out <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
-          <td class="paramname"><em>normal</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../db/dec/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_segment.html">Segment</a>&#160;</td>
-          <td class="paramname"><em>segment</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>maxLambda</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">int Alis.Core.Physic.Dynamics.Fixture.ProxyCount =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#aacfa0e476cde531694c062270ad91eb4">proxyCount</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Perform a ray cast against this shape. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">lambda</td><td>Returns the hit fraction. You can use this to compute the contact point p = (1 - lambda) * segment.p1 + lambda * segment.p2. </td></tr>
-    <tr><td class="paramname">normal</td><td>Returns the normal at the contact point. If there is no intersection, the normal is not set. </td></tr>
-    <tr><td class="paramname">segment</td><td>Defines the begin and end point of the ray cast.</td></tr>
-    <tr><td class="paramname">maxLambda</td><td>A number typically in the range [0,1].</td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Gets the value of the proxy count </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00321">321</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00191">191</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="ad73299784cf90f24d43daaf665760609"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad73299784cf90f24d43daaf665760609">&#9670;&nbsp;</a></span>ComputeSweepRadius()</h2>
+<a id="aff8e61faee2b0de511da9c9ff9d6808d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff8e61faee2b0de511da9c9ff9d6808d">&#9670;&nbsp;</a></span>Shape</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.ComputeSweepRadius </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
-          <td class="paramname"><em>pivot</em></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html">Shape</a> Alis.Core.Physic.Dynamics.Fixture.Shape =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a3975b46cebccba757182a994b0ac22b0">ShapePrivate</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Get the maximum radius about the parent body's center of mass. </p>
+<p>Get the child Shape. You can modify the child Shape, however you should not change the number of vertices because this will crash some collision caching mechanisms. </p>
+<p>The shape.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00329">329</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00267">267</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a99aa505fdeb1c807b210d020612cef53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a99aa505fdeb1c807b210d020612cef53">&#9670;&nbsp;</a></span>Density</h2>
+<a id="a8c09f59ae9152162a0e6878b3e2eabf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c09f59ae9152162a0e6878b3e2eabf6">&#9670;&nbsp;</a></span>Body</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.Density</td>
+          <td class="memname"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> Alis.Core.Physic.Dynamics.Fixture.Body =&gt; <a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html#a77762185b3f807fc4af4985fceff62f5">Bodyprivate</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Density, usually in kg/m^2. </p>
+<p>Get the parent body of this fixture. This is null if the fixture is not attached. </p>
+<p>The body.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00049">49</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
-
-</div>
-</div>
-<a id="a13f77813ae32d109102ed473256a30e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13f77813ae32d109102ed473256a30e1">&#9670;&nbsp;</a></span>Filter</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../dc/d69/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_filter_data.html">FilterData</a> Alis.Core.Physic.Dynamics.Fixture.Filter</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Contact filtering data. You must call b2World::Refilter to correct existing contacts/non-contacts. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00055">55</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
-
-</div>
-</div>
-<a id="a9c6cecf541cec5802f22f6e6119a415d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c6cecf541cec5802f22f6e6119a415d">&#9670;&nbsp;</a></span>Friction</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.Friction</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Friction coefficient, usually in the range [0,1]. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00060">60</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
-
-</div>
-</div>
-<a id="ab42e36effed65829ecf794c48707a96b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab42e36effed65829ecf794c48707a96b">&#9670;&nbsp;</a></span>Restitution</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.Restitution</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Restitution (elasticity) usually in the range [0,1]. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00065">65</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
-
-</div>
-</div>
-<a id="aa8b5f3106c5ccd4ca60be4cf78cca84e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8b5f3106c5ccd4ca60be4cf78cca84e">&#9670;&nbsp;</a></span>UserData</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">object Alis.Core.Physic.Dynamics.Fixture.UserData</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>User data that was assigned in the fixture definition. Use this to store your application specific data. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00071">71</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00287">287</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="a9976810f2e8c83659cea36e1a87f42cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9976810f2e8c83659cea36e1a87f42cd">&#9670;&nbsp;</a></span>ProxyId</h2>
+<a id="a7482d774a9cd10fe3f689988bc469659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7482d774a9cd10fe3f689988bc469659">&#9670;&nbsp;</a></span>IgnoreCcdWith</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -708,19 +1093,123 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">ushort Alis.Core.Physic.Dynamics.Fixture.ProxyId</td>
+          <td class="memname"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a> Alis.Core.Physic.Dynamics.Fixture.IgnoreCcdWith</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>The proxy id </p>
+<p>Gets or sets the value of the ignore ccd with </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00084">84</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00177">177</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a91b06701de3a9bfe57f32cdc76dcbab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91b06701de3a9bfe57f32cdc76dcbab2">&#9670;&nbsp;</a></span>RestitutionThreshold</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.RestitutionThreshold</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get or set the restitution threshold. This will <em>not</em> change the restitution threshold of existing contacts. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00194">194</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae8ba0cc80ddd6dcd5203cfff5d8c7c2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8ba0cc80ddd6dcd5203cfff5d8c7c2b">&#9670;&nbsp;</a></span>CollisionGroup</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">short Alis.Core.Physic.Dynamics.Fixture.CollisionGroup</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Defaults to 0 If Settings.UseFPECollisionCategories is set to false: Collision groups allow a certain group of objects to never collide (negative) or always collide (positive). Zero means no collision group. Non-zero group filtering always wins against the mask bits. If Settings.UseFPECollisionCategories is set to true: If 2 fixtures are in the same collision group, they will not collide. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00207">207</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a0ca67aa081bc2ba966856708caa8bf10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ca67aa081bc2ba966856708caa8bf10">&#9670;&nbsp;</a></span>CollidesWith</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a> Alis.Core.Physic.Dynamics.Fixture.CollidesWith</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Defaults to Category.All The collision mask bits. This states the categories that this fixture would accept for collision. Use Settings.UseFPECollisionCategories to change the behavior. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00226">226</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="a3ed6ef953cc6264d01dbb5e493711cf3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ed6ef953cc6264d01dbb5e493711cf3">&#9670;&nbsp;</a></span>CollisionCategories</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/d30/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering.html#aeb0683f6991232480f5a051fd0f90a98">Category</a> Alis.Core.Physic.Dynamics.Fixture.CollisionCategories</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The collision categories this fixture is a part of. If Settings.UseFPECollisionCategories is set to false: Defaults to Category.Cat1 If Settings.UseFPECollisionCategories is set to true: Defaults to Category.All </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00246">246</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
@@ -739,19 +1228,20 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Is this fixture a sensor (non-solid)? </p>
+<p>Gets or sets a value indicating whether this fixture is a sensor. </p>
+<p><code>true</code> if this instance is a sensor; otherwise, <code>false</code>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00089">89</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00271">271</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="aff8e61faee2b0de511da9c9ff9d6808d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aff8e61faee2b0de511da9c9ff9d6808d">&#9670;&nbsp;</a></span>Shape</h2>
+<a id="aa8b5f3106c5ccd4ca60be4cf78cca84e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8b5f3106c5ccd4ca60be4cf78cca84e">&#9670;&nbsp;</a></span>UserData</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -760,59 +1250,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html">Shape</a> Alis.Core.Physic.Dynamics.Fixture.Shape</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the child shape. You can modify the child shape, however you should not change the number of vertices because this will crash some collision caching mechanisms. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00095">95</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
-
-</div>
-</div>
-<a id="a002a3afa9f5b1ff536de3bae488933e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a002a3afa9f5b1ff536de3bae488933e1">&#9670;&nbsp;</a></span>ShapeType</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">ShapeType</a> Alis.Core.Physic.Dynamics.Fixture.ShapeType</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">protected set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the type of this shape. You can use this to down cast to the concrete shape. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00100">100</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
-
-</div>
-</div>
-<a id="adddde419cf4e1a3e55a54d6d5c02f7c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adddde419cf4e1a3e55a54d6d5c02f7c4">&#9670;&nbsp;</a></span>Next</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html">Fixture</a> Alis.Core.Physic.Dynamics.Fixture.Next</td>
+          <td class="memname">object Alis.Core.Physic.Dynamics.Fixture.UserData</td>
         </tr>
       </table>
   </td>
@@ -822,14 +1260,15 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the next fixture in the parent body's fixture list. </p>
+<p>Set the user data. Use this to store your application specific data. </p>
+<p>The user data.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00105">105</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00291">291</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
-<a id="a8c09f59ae9152162a0e6878b3e2eabf6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c09f59ae9152162a0e6878b3e2eabf6">&#9670;&nbsp;</a></span>Body</h2>
+<a id="a9c6cecf541cec5802f22f6e6119a415d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c6cecf541cec5802f22f6e6119a415d">&#9670;&nbsp;</a></span>Friction</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -838,7 +1277,7 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> Alis.Core.Physic.Dynamics.Fixture.Body</td>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.Friction</td>
         </tr>
       </table>
   </td>
@@ -848,9 +1287,37 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the parent body of this fixture. This is NULL if the fixture is not attached. </p>
+<p>Set the coefficient of friction. This will <em>not</em> change the friction of existing contacts. </p>
+<p>The friction.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00110">110</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00299">299</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
+
+</div>
+</div>
+<a id="ab42e36effed65829ecf794c48707a96b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab42e36effed65829ecf794c48707a96b">&#9670;&nbsp;</a></span>Restitution</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Fixture.Restitution</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the coefficient of restitution. This will not change the restitution of existing contacts. </p>
+<p>The restitution.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/df8/_fixture_8cs_source.html#l00312">312</a> of file <a class="el" href="../../d8/df8/_fixture_8cs_source.html">Fixture.cs</a>.</p>
 
 </div>
 </div>
@@ -861,7 +1328,7 @@ Properties</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html">Dynamics</a></li><li class="navelem"><a class="el" href="../../da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html">Fixture</a></li>
     <li class="footer">
-      <a>Generated on | Fri Jul 15 2022 |</a>
+      <a>Generated on | Mon Oct 24 2022 |</a>
     </li>
   </ul>
 </div>

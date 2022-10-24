@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['type_1859',['Type',['../dc/d32/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_separation_function.html#a6165a9a28bb4b98f84ab7a880174696b',1,'Alis::Core::Physic::Collision::SeparationFunction']]]
+  ['key_6729',['Key',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#a459025ad1048a119457bb002652c2ac7',1,'Alis::Core::Graphic::D2::SFML::Windows']]]
 ];

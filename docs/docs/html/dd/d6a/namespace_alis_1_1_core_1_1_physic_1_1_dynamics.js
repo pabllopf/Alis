@@ -1,25 +1,11 @@
 var namespace_alis_1_1_core_1_1_physic_1_1_dynamics =
 [
-    [ "Contacts", "de/d38/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contacts.html", "de/d38/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contacts" ],
-    [ "Controllers", "d8/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_controllers.html", "d8/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_controllers" ],
     [ "Joints", "da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html", "da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints" ],
+    [ "Solver", "d2/df0/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver.html", "d2/df0/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver" ],
     [ "Body", "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html", "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body" ],
-    [ "BodyDef", "d4/de6/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body_def.html", "d4/de6/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body_def" ],
-    [ "BoundaryListener", "d7/dc9/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_boundary_listener.html", "d7/dc9/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_boundary_listener" ],
-    [ "CircleDef", "d1/d5a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_circle_def.html", "d1/d5a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_circle_def" ],
-    [ "Color", "d1/d2c/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_color.html", "d1/d2c/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_color" ],
-    [ "ContactFilter", "dc/d78/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contact_filter.html", "dc/d78/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contact_filter" ],
-    [ "ContactImpulse", "dd/db3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contact_impulse.html", "dd/db3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contact_impulse" ],
-    [ "ContactManager", "d3/d35/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contact_manager.html", "d3/d35/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_contact_manager" ],
-    [ "DebugDraw", "da/d24/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_debug_draw.html", "da/d24/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_debug_draw" ],
-    [ "DestructionListener", "d3/d02/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_destruction_listener.html", "d3/d02/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_destruction_listener" ],
-    [ "EdgeDef", "d6/d66/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_edge_def.html", "d6/d66/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_edge_def" ],
-    [ "FilterData", "dc/d69/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_filter_data.html", "dc/d69/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_filter_data" ],
+    [ "BreakableBody", "dc/d9d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_breakable_body.html", "dc/d9d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_breakable_body" ],
     [ "Fixture", "da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture.html", "da/de7/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture" ],
-    [ "FixtureDef", "d6/d28/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_def.html", "d6/d28/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_def" ],
-    [ "IContactListener", "dc/d5f/interface_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_i_contact_listener.html", "dc/d5f/interface_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_i_contact_listener" ],
-    [ "Island", "d7/d5e/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_island.html", "d7/d5e/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_island" ],
-    [ "PolygonDef", "db/d2b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_polygon_def.html", "db/d2b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_polygon_def" ],
-    [ "Position", "d1/d8a/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_position.html", "d1/d8a/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_position" ],
-    [ "Velocity", "da/d2f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_velocity.html", "da/d2f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_velocity" ]
+    [ "FixtureProxy", "dd/d6f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_proxy.html", "dd/d6f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_fixture_proxy" ],
+    [ "Profile", "dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html", "dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile" ],
+    [ "TimeStep", "dc/d94/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_time_step.html", "dc/d94/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_time_step" ]
 ];

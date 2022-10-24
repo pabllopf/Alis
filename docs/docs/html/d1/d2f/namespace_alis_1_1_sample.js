@@ -3,6 +3,7 @@ var namespace_alis_1_1_sample =
     [ "Asteroids", "df/daa/namespace_alis_1_1_sample_1_1_asteroids.html", "df/daa/namespace_alis_1_1_sample_1_1_asteroids" ],
     [ "Bomberman", "d8/d31/namespace_alis_1_1_sample_1_1_bomberman.html", "d8/d31/namespace_alis_1_1_sample_1_1_bomberman" ],
     [ "Chessmaster", "d9/db5/namespace_alis_1_1_sample_1_1_chessmaster.html", "d9/db5/namespace_alis_1_1_sample_1_1_chessmaster" ],
+    [ "Collisions", "d7/d77/namespace_alis_1_1_sample_1_1_collisions.html", "d7/d77/namespace_alis_1_1_sample_1_1_collisions" ],
     [ "Doom", "d7/d67/namespace_alis_1_1_sample_1_1_doom.html", "d7/d67/namespace_alis_1_1_sample_1_1_doom" ],
     [ "FlappyBird", "d8/dce/namespace_alis_1_1_sample_1_1_flappy_bird.html", "d8/dce/namespace_alis_1_1_sample_1_1_flappy_bird" ],
     [ "GeometryDash", "d9/dbe/namespace_alis_1_1_sample_1_1_geometry_dash.html", "d9/dbe/namespace_alis_1_1_sample_1_1_geometry_dash" ],

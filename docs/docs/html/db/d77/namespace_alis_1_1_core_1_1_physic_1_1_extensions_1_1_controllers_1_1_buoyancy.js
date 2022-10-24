@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_buoyancy =
+[
+    [ "BuoyancyController", "d9/de4/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_buoyancy_1_1_buoyancy_controller.html", "d9/de4/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_buoyancy_1_1_buoyancy_controller" ]
+];

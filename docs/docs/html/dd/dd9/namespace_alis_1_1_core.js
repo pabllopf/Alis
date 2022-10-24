@@ -1,18 +1,17 @@
 var namespace_alis_1_1_core =
 [
-    [ "Ads", "de/d7a/namespace_alis_1_1_core_1_1_ads.html", "de/d7a/namespace_alis_1_1_core_1_1_ads" ],
-    [ "Ai", "d8/dcd/namespace_alis_1_1_core_1_1_ai.html", "d8/dcd/namespace_alis_1_1_core_1_1_ai" ],
     [ "Aspect", "d2/d40/namespace_alis_1_1_core_1_1_aspect.html", "d2/d40/namespace_alis_1_1_core_1_1_aspect" ],
     [ "Audio", "da/db0/namespace_alis_1_1_core_1_1_audio.html", "da/db0/namespace_alis_1_1_core_1_1_audio" ],
-    [ "Cloud", "d6/d74/namespace_alis_1_1_core_1_1_cloud.html", "d6/d74/namespace_alis_1_1_core_1_1_cloud" ],
-    [ "Database", "dc/d7d/namespace_alis_1_1_core_1_1_database.html", "dc/d7d/namespace_alis_1_1_core_1_1_database" ],
-    [ "Diagnostic", "da/d28/namespace_alis_1_1_core_1_1_diagnostic.html", "da/d28/namespace_alis_1_1_core_1_1_diagnostic" ],
+    [ "Component", "dc/d59/namespace_alis_1_1_core_1_1_component.html", "dc/d59/namespace_alis_1_1_core_1_1_component" ],
+    [ "Entity", "dd/d0d/namespace_alis_1_1_core_1_1_entity.html", "dd/d0d/namespace_alis_1_1_core_1_1_entity" ],
     [ "Graphic", "df/df9/namespace_alis_1_1_core_1_1_graphic.html", "df/df9/namespace_alis_1_1_core_1_1_graphic" ],
     [ "Input", "db/d23/namespace_alis_1_1_core_1_1_input.html", "db/d23/namespace_alis_1_1_core_1_1_input" ],
+    [ "Manager", "d5/d13/namespace_alis_1_1_core_1_1_manager.html", "d5/d13/namespace_alis_1_1_core_1_1_manager" ],
     [ "Network", "dd/d38/namespace_alis_1_1_core_1_1_network.html", "dd/d38/namespace_alis_1_1_core_1_1_network" ],
-    [ "Output", "d2/da5/namespace_alis_1_1_core_1_1_output.html", "d2/da5/namespace_alis_1_1_core_1_1_output" ],
     [ "Physic", "d7/db3/namespace_alis_1_1_core_1_1_physic.html", "d7/db3/namespace_alis_1_1_core_1_1_physic" ],
     [ "Sample", "df/da6/namespace_alis_1_1_core_1_1_sample.html", "df/da6/namespace_alis_1_1_core_1_1_sample" ],
+    [ "Setting", "d2/d0f/namespace_alis_1_1_core_1_1_setting.html", "d2/d0f/namespace_alis_1_1_core_1_1_setting" ],
+    [ "Systems", "df/d01/namespace_alis_1_1_core_1_1_systems.html", "df/d01/namespace_alis_1_1_core_1_1_systems" ],
     [ "Test", "d0/db3/namespace_alis_1_1_core_1_1_test.html", "d0/db3/namespace_alis_1_1_core_1_1_test" ],
-    [ "Updater", "d9/d90/namespace_alis_1_1_core_1_1_updater.html", "d9/d90/namespace_alis_1_1_core_1_1_updater" ]
+    [ "GameBase", "df/dab/class_alis_1_1_core_1_1_game_base.html", "df/dab/class_alis_1_1_core_1_1_game_base" ]
 ];

@@ -1,7 +1,10 @@
 var namespace_alis_1_1_core_1_1_audio =
 [
-    [ "D2", "d3/d51/namespace_alis_1_1_core_1_1_audio_1_1_d2.html", "d3/d51/namespace_alis_1_1_core_1_1_audio_1_1_d2" ],
-    [ "D3", "dd/dab/namespace_alis_1_1_core_1_1_audio_1_1_d3.html", "dd/dab/namespace_alis_1_1_core_1_1_audio_1_1_d3" ],
+    [ "OS", "d2/d0e/namespace_alis_1_1_core_1_1_audio_1_1_o_s.html", "d2/d0e/namespace_alis_1_1_core_1_1_audio_1_1_o_s" ],
     [ "Sample", "dc/d10/namespace_alis_1_1_core_1_1_audio_1_1_sample.html", "dc/d10/namespace_alis_1_1_core_1_1_audio_1_1_sample" ],
-    [ "Test", "dc/db2/namespace_alis_1_1_core_1_1_audio_1_1_test.html", "dc/db2/namespace_alis_1_1_core_1_1_audio_1_1_test" ]
+    [ "SFML", "d5/d2b/namespace_alis_1_1_core_1_1_audio_1_1_s_f_m_l.html", "d5/d2b/namespace_alis_1_1_core_1_1_audio_1_1_s_f_m_l" ],
+    [ "Test", "dc/db2/namespace_alis_1_1_core_1_1_audio_1_1_test.html", "dc/db2/namespace_alis_1_1_core_1_1_audio_1_1_test" ],
+    [ "AudioClipBase", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base.html", "d0/d02/class_alis_1_1_core_1_1_audio_1_1_audio_clip_base" ],
+    [ "IAudioRecorder", "db/dc6/interface_alis_1_1_core_1_1_audio_1_1_i_audio_recorder.html", null ],
+    [ "IAudioSource", "d2/d9a/interface_alis_1_1_core_1_1_audio_1_1_i_audio_source.html", "d2/d9a/interface_alis_1_1_core_1_1_audio_1_1_i_audio_source" ]
 ];

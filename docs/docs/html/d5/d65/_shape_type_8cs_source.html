@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALIS: 4_operation/physic/alis.core.physic/Collision/Shapes/ShapeType.cs Source File</title>
+<title>ALIS: 4_Operation/Physic/src/Collision/Shapes/ShapeType.cs Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -133,31 +133,30 @@ $(document).ready(function(){initNavTree('d5/d65/_shape_type_8cs_source.html','.
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">   35</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">ShapeType</a></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        UnknownShape = -1,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        Unknown = -1,</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="../../db/de1/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_circle_shape.html">CircleShape</a>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        Circle = 0,</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../d8/d43/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_polygon_shape.html">PolygonShape</a>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        Edge = 1,</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="../../d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html">EdgeShape</a>,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        Polygon = 2,</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a44d179ceaf7ad4ce8d42ca50c1fb4ed0">ShapeTypeCount</a></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        Chain = 3,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a88183b946cc5f0e8c96b2e66e1c74a7e">TypeCount</a> = 4</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape_html"><div class="ttname"><a href="../../d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html">Alis.Core.Physic.Collision.Shapes.EdgeShape</a></div><div class="ttdoc">The edge shape class</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d32/_edge_shape_8cs_source.html#l00039">EdgeShape.cs:40</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_polygon_shape_html"><div class="ttname"><a href="../../d8/d43/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_polygon_shape.html">Alis.Core.Physic.Collision.Shapes.PolygonShape</a></div><div class="ttdoc">A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0e/_polygon_shape_8cs_source.html#l00040">PolygonShape.cs:41</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_circle_shape_html"><div class="ttname"><a href="../../db/de1/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_circle_shape.html">Alis.Core.Physic.Collision.Shapes.CircleShape</a></div><div class="ttdoc">A circle shape.</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d97/_circle_shape_8cs_source.html#l00038">CircleShape.cs:39</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_html"><div class="ttname"><a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html">Alis.Core.Physic.Collision.Shapes</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d97/_circle_shape_8cs_source.html#l00033">CircleShape.cs:34</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_html_a931fc63dabb0125ba719cecf22f7b887a44d179ceaf7ad4ce8d42ca50c1fb4ed0"><div class="ttname"><a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a44d179ceaf7ad4ce8d42ca50c1fb4ed0">Alis.Core.Physic.Collision.Shapes.ShapeType.UnknownShape</a></div><div class="ttdeci">@ UnknownShape</div><div class="ttdoc">The unknown shape shape type</div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_html_a931fc63dabb0125ba719cecf22f7b887"><div class="ttname"><a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">Alis.Core.Physic.Collision.Shapes.ShapeType</a></div><div class="ttdeci">ShapeType</div><div class="ttdoc">The various collision shape types supported by Box2D.</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d65/_shape_type_8cs_source.html#l00035">ShapeType.cs:36</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_html_a931fc63dabb0125ba719cecf22f7b887a88183b946cc5f0e8c96b2e66e1c74a7e"><div class="ttname"><a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a88183b946cc5f0e8c96b2e66e1c74a7e">Alis.Core.Physic.Collision.Shapes.ShapeType.Unknown</a></div><div class="ttdeci">@ Unknown</div><div class="ttdoc">The unknown shape type</div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_html"><div class="ttname"><a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html">Alis.Core.Physic.Collision.Shapes</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/deb/_chain_shape_8cs_source.html#l00037">ChainShape.cs:38</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_html_a931fc63dabb0125ba719cecf22f7b887"><div class="ttname"><a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">Alis.Core.Physic.Collision.Shapes.ShapeType</a></div><div class="ttdeci">ShapeType</div><div class="ttdoc">The shape type enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d65/_shape_type_8cs_source.html#l00035">ShapeType.cs:36</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_af1e05eda6c7d97e775736318a68db76.html">4_operation</a></li><li class="navelem"><a class="el" href="../../dir_20a2301ba3a9b976511e671585b3abc5.html">physic</a></li><li class="navelem"><a class="el" href="../../dir_b9069deb4f5d5e78c4d9ce1bc22467f8.html">alis.core.physic</a></li><li class="navelem"><a class="el" href="../../dir_692501755b83ccd0f2437d1011f6dc1f.html">Collision</a></li><li class="navelem"><a class="el" href="../../dir_ea4ca5249f278776626c32cc75ad5542.html">Shapes</a></li><li class="navelem"><b>ShapeType.cs</b></li>
+    <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_52bde0543a13a94906a2e677a9f1758f.html">Physic</a></li><li class="navelem"><a class="el" href="../../dir_16bee6912db060554756e46a6c0ce1a1.html">src</a></li><li class="navelem"><a class="el" href="../../dir_7acf51ea87052da6587cd9eb0170f62c.html">Collision</a></li><li class="navelem"><a class="el" href="../../dir_3e07d74a15660b0cd62fc0ceeaafaa5f.html">Shapes</a></li><li class="navelem"><b>ShapeType.cs</b></li>
     <li class="footer">
-      <a>Generated on | Fri Jul 15 2022 |</a>
+      <a>Generated on | Mon Oct 24 2022 |</a>
     </li>
   </ul>
 </div>

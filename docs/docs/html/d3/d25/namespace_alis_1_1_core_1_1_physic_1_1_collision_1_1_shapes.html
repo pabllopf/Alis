@@ -106,77 +106,41 @@ $(document).ready(function(){initNavTree('d3/d25/namespace_alis_1_1_core_1_1_phy
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dbc/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_chain_shape.html">ChainShape</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A chain shape is a free form sequence of line segments. The chain has one-sided collision, with the surface normal pointing to the right of the edge. This provides a counter-clockwise winding like the polygon shape. Connectivity information is used to create smooth collisions. Warning: the chain will not collide properly if there are self-intersections.  <a href="../../d3/dbc/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_chain_shape.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/de1/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_circle_shape.html">CircleShape</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A circle shape.  <a href="../../db/de1/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_circle_shape.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html">EdgeShape</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The edge shape class  <a href="../../d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A line segment (edge) shape. These can be connected in chains or loops to other edge shapes. Edges created independently are two-sided and do no provide smooth movement across junctions.  <a href="../../d4/d19/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_edge_shape.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d12/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_mass_data.html">MassData</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This holds the mass data computed for a shape.  <a href="../../db/d12/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_mass_data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/d43/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_polygon_shape.html">PolygonShape</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A convex polygon. It is assumed that the interior of the polygon is to the left of each edge.  <a href="../../d8/d43/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_polygon_shape.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a simple non-self intersecting convex polygon. Create a convex hull from the given array of points.  <a href="../../d8/d43/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_polygon_shape.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html">Shape</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A shape is used for collision detection. You can create a shape however you like. Shapes used for simulation in World are created automatically when a Fixture is created.  <a href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A shape is used for collision detection. You can create a shape however you like. Shapes used for simulation in World are created automatically when a Fixture is created. Shapes may encapsulate a one or more child shapes. A shape is 2D geometrical object, such as a circle or polygon.  <a href="../../d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:abbf499eea8a53a252cf8071c10ef35e0"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0">SegmentCollide</a> { <a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0a353a13883333aaf1626dd74c17aa636a">SegmentCollide.StartInsideCollide</a> = -1, 
-<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0a95495ccfbbb740f7516a33b1b42a6022">SegmentCollide.MissCollide</a> = 0, 
-<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0ac78b5ad77c263a4dbea57d4ef7344383">SegmentCollide.HitCollide</a> = 1
- }</td></tr>
-<tr class="memdesc:abbf499eea8a53a252cf8071c10ef35e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns code from TestSegment  <a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0">More...</a><br /></td></tr>
-<tr class="separator:abbf499eea8a53a252cf8071c10ef35e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a931fc63dabb0125ba719cecf22f7b887"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">ShapeType</a> { <br />
-&#160;&#160;<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a44d179ceaf7ad4ce8d42ca50c1fb4ed0">ShapeType.UnknownShape</a> = -1, 
-<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887aacc05bbc73e379ebbb6f296fd881bd01">ShapeType.CircleShape</a>, 
-<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a6bc33dd11f278832a537e116ccfe3f54">ShapeType.PolygonShape</a>, 
-<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a09d076922e082a4db467630ad0e604db">ShapeType.EdgeShape</a>, 
+&#160;&#160;<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a88183b946cc5f0e8c96b2e66e1c74a7e">ShapeType.Unknown</a> = -1, 
+<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a30954d90085f6eaaf5817917fc5fecb3">ShapeType.Circle</a> = 0, 
+<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887ae4a297a0f76119a442c2595ac040673e">ShapeType.Edge</a> = 1, 
+<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a4c0a11247d92f73fb84baa51e37a3263">ShapeType.Polygon</a> = 2, 
 <br />
-&#160;&#160;<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a2525736f88a56188c7f24f447e49743d">ShapeType.ShapeTypeCount</a>
+&#160;&#160;<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a5320550175ad6f79ad658943b9c013a7">ShapeType.Chain</a> = 3, 
+<a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887a834c072a52bcf98866ed2eadaaa861a1">ShapeType.TypeCount</a> = 4
 <br />
  }</td></tr>
-<tr class="memdesc:a931fc63dabb0125ba719cecf22f7b887"><td class="mdescLeft">&#160;</td><td class="mdescRight">The various collision shape types supported by Box2D.  <a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">More...</a><br /></td></tr>
+<tr class="memdesc:a931fc63dabb0125ba719cecf22f7b887"><td class="mdescLeft">&#160;</td><td class="mdescRight">The shape type enum  <a href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#a931fc63dabb0125ba719cecf22f7b887">More...</a><br /></td></tr>
 <tr class="separator:a931fc63dabb0125ba719cecf22f7b887"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="abbf499eea8a53a252cf8071c10ef35e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbf499eea8a53a252cf8071c10ef35e0">&#9670;&nbsp;</a></span>SegmentCollide</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html#abbf499eea8a53a252cf8071c10ef35e0">Alis.Core.Physic.Collision.Shapes.SegmentCollide</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Returns code from TestSegment </p>
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="abbf499eea8a53a252cf8071c10ef35e0a353a13883333aaf1626dd74c17aa636a"></a>StartInsideCollide&#160;</td><td class="fielddoc"><p>The start inside collide segment collide </p>
-</td></tr>
-<tr><td class="fieldname"><a id="abbf499eea8a53a252cf8071c10ef35e0a95495ccfbbb740f7516a33b1b42a6022"></a>MissCollide&#160;</td><td class="fielddoc"><p>The miss collide segment collide </p>
-</td></tr>
-<tr><td class="fieldname"><a id="abbf499eea8a53a252cf8071c10ef35e0ac78b5ad77c263a4dbea57d4ef7344383"></a>HitCollide&#160;</td><td class="fielddoc"><p>The hit collide segment collide </p>
-</td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="../../de/d72/_segment_collide_8cs_source.html#l00035">35</a> of file <a class="el" href="../../de/d72/_segment_collide_8cs_source.html">SegmentCollide.cs</a>.</p>
-
-</div>
-</div>
 <a id="a931fc63dabb0125ba719cecf22f7b887"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a931fc63dabb0125ba719cecf22f7b887">&#9670;&nbsp;</a></span>ShapeType</h2>
 
@@ -197,17 +161,19 @@ Enumerations</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The various collision shape types supported by Box2D. </p>
+<p>The shape type enum </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a44d179ceaf7ad4ce8d42ca50c1fb4ed0"></a>UnknownShape&#160;</td><td class="fielddoc"><p>The unknown shape shape type </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"><p>The unknown shape type </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887aacc05bbc73e379ebbb6f296fd881bd01"></a>CircleShape&#160;</td><td class="fielddoc"><p>The circle shape shape type </p>
+<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a30954d90085f6eaaf5817917fc5fecb3"></a>Circle&#160;</td><td class="fielddoc"><p>The circle shape type </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a6bc33dd11f278832a537e116ccfe3f54"></a>PolygonShape&#160;</td><td class="fielddoc"><p>The polygon shape shape type </p>
+<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887ae4a297a0f76119a442c2595ac040673e"></a>Edge&#160;</td><td class="fielddoc"><p>The edge shape type </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a09d076922e082a4db467630ad0e604db"></a>EdgeShape&#160;</td><td class="fielddoc"><p>The edge shape shape type </p>
+<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a4c0a11247d92f73fb84baa51e37a3263"></a>Polygon&#160;</td><td class="fielddoc"><p>The polygon shape type </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a2525736f88a56188c7f24f447e49743d"></a>ShapeTypeCount&#160;</td><td class="fielddoc"><p>The shape type count shape type </p>
+<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a5320550175ad6f79ad658943b9c013a7"></a>Chain&#160;</td><td class="fielddoc"><p>The chain shape type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a931fc63dabb0125ba719cecf22f7b887a834c072a52bcf98866ed2eadaaa861a1"></a>TypeCount&#160;</td><td class="fielddoc"><p>The type count shape type </p>
 </td></tr>
 </table>
 
@@ -222,7 +188,7 @@ Enumerations</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../d3/d49/namespace_alis_1_1_core_1_1_physic_1_1_collision.html">Collision</a></li><li class="navelem"><a class="el" href="../../d3/d25/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes.html">Shapes</a></li>
     <li class="footer">
-      <a>Generated on | Fri Jul 15 2022 |</a>
+      <a>Generated on | Mon Oct 24 2022 |</a>
     </li>
   </ul>
 </div>

@@ -98,228 +98,226 @@ $(document).ready(function(){initNavTree('db/d43/class_alis_1_1_core_1_1_physic_
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#properties">Properties</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="../../db/de1/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Physic.Dynamics.Joints.PulleyJoint Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>The pulley joint is connected to two bodies and two fixed ground points. The pulley supports a ratio such that: length1 + ratio * length2 constant Yes, the force transmitted is scaled by the ratio. The pulley also enforces a maximum length limit on both sides. This is useful to prevent one side of the pulley hitting the top.  
+<p>The pulley joint is connected to two bodies and two fixed world points. The pulley supports a ratio such that: length1 + ratio * length2 &lt;= constant Yes, the force transmitted is scaled by the ratio. Warning: the pulley joint can get a bit squirrelly by itself. They often work better when combined with prismatic joints. You should also cover the the anchor points with static shapes to prevent one side from going to zero length.  
  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#details">More...</a></p>
 
 <p>Inherits <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a6668c6fa5a11fe9c4e1560cb6bd958fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a6668c6fa5a11fe9c4e1560cb6bd958fc">PulleyJoint</a> (<a class="el" href="../../d0/d0e/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint_def.html">PulleyJointDef</a> def)</td></tr>
-<tr class="memdesc:a6668c6fa5a11fe9c4e1560cb6bd958fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html" title="The pulley joint is connected to two bodies and two fixed ground points. The pulley supports a ratio ...">PulleyJoint</a> class  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a6668c6fa5a11fe9c4e1560cb6bd958fc">More...</a><br /></td></tr>
+<tr class="memitem:a6668c6fa5a11fe9c4e1560cb6bd958fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a6668c6fa5a11fe9c4e1560cb6bd958fc">PulleyJoint</a> (<a class="el" href="../../d7/d96/class_alis_1_1_core_1_1_physic_1_1_definitions_1_1_joints_1_1_pulley_joint_def.html">PulleyJointDef</a> def)</td></tr>
+<tr class="memdesc:a6668c6fa5a11fe9c4e1560cb6bd958fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html" title="The pulley joint is connected to two bodies and two fixed world points. The pulley supports a ratio s...">PulleyJoint</a> class  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a6668c6fa5a11fe9c4e1560cb6bd958fc">More...</a><br /></td></tr>
 <tr class="separator:a6668c6fa5a11fe9c4e1560cb6bd958fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f76724296f59de98386cf4b7641b19b"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a8f76724296f59de98386cf4b7641b19b">GetReactionForce</a> (float invDt)</td></tr>
+<tr class="memitem:a5232b8fc894a9059b9ff0877fe3e5198"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a5232b8fc894a9059b9ff0877fe3e5198">PulleyJoint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>, Vector2 anchorA, Vector2 anchorB, Vector2 <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af0cc1f404a2006b4012e3bb37d71b460">worldAnchorA</a>, Vector2 <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a05a24ed7ac7ba7b9a8280496e40e8640">worldAnchorB</a>, float <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a356e9c4258e6a0b53b9ceda96f855b0b">ratio</a>, bool useWorldCoordinates=false)</td></tr>
+<tr class="memdesc:a5232b8fc894a9059b9ff0877fe3e5198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for PulleyJoint.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a5232b8fc894a9059b9ff0877fe3e5198">More...</a><br /></td></tr>
+<tr class="separator:a5232b8fc894a9059b9ff0877fe3e5198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3faee410cbb09779baa9c5d2ce95f73"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ad3faee410cbb09779baa9c5d2ce95f73">ShiftOrigin</a> (ref Vector2 newOrigin)</td></tr>
+<tr class="memdesc:ad3faee410cbb09779baa9c5d2ce95f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shifts the origin using the specified new origin  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ad3faee410cbb09779baa9c5d2ce95f73">More...</a><br /></td></tr>
+<tr class="separator:ad3faee410cbb09779baa9c5d2ce95f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f76724296f59de98386cf4b7641b19b"><td class="memItemLeft" align="right" valign="top">override Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a8f76724296f59de98386cf4b7641b19b">GetReactionForce</a> (float invDt)</td></tr>
 <tr class="memdesc:a8f76724296f59de98386cf4b7641b19b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the reaction force using the specified inv dt  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a8f76724296f59de98386cf4b7641b19b">More...</a><br /></td></tr>
 <tr class="separator:a8f76724296f59de98386cf4b7641b19b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a462c93be1df40a5e105aee50a93965e4"><td class="memItemLeft" align="right" valign="top">override float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a462c93be1df40a5e105aee50a93965e4">GetReactionTorque</a> (float invDt)</td></tr>
 <tr class="memdesc:a462c93be1df40a5e105aee50a93965e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the reaction torque using the specified inv dt  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a462c93be1df40a5e105aee50a93965e4">More...</a><br /></td></tr>
 <tr class="separator:a462c93be1df40a5e105aee50a93965e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
-<tr class="memitem:aa638f05458eca5206357489ad1414032 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">new <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa638f05458eca5206357489ad1414032">GetType</a> ()</td></tr>
-<tr class="memdesc:aa638f05458eca5206357489ad1414032 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the concrete joint.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa638f05458eca5206357489ad1414032">More...</a><br /></td></tr>
-<tr class="separator:aa638f05458eca5206357489ad1414032 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c828d5cbf98d4a2f0dadad20122feb9 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a6c828d5cbf98d4a2f0dadad20122feb9">GetBody1</a> ()</td></tr>
-<tr class="memdesc:a6c828d5cbf98d4a2f0dadad20122feb9 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first body attached to this joint.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a6c828d5cbf98d4a2f0dadad20122feb9">More...</a><br /></td></tr>
-<tr class="separator:a6c828d5cbf98d4a2f0dadad20122feb9 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4dd2d678d65292a84dee339aae1df54 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ac4dd2d678d65292a84dee339aae1df54">GetBody2</a> ()</td></tr>
-<tr class="memdesc:ac4dd2d678d65292a84dee339aae1df54 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the second body attached to this joint.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ac4dd2d678d65292a84dee339aae1df54">More...</a><br /></td></tr>
-<tr class="separator:ac4dd2d678d65292a84dee339aae1df54 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60cc75158b11bf4407b2e81471890c93 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a60cc75158b11bf4407b2e81471890c93">GetNext</a> ()</td></tr>
-<tr class="memdesc:a60cc75158b11bf4407b2e81471890c93 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the next joint the world joint list.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a60cc75158b11bf4407b2e81471890c93">More...</a><br /></td></tr>
-<tr class="separator:a60cc75158b11bf4407b2e81471890c93 inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a92472da13c22f2d52aad4b4aad70b216"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">LimitState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a92472da13c22f2d52aad4b4aad70b216">LimitState1</a></td></tr>
-<tr class="memdesc:a92472da13c22f2d52aad4b4aad70b216"><td class="mdescLeft">&#160;</td><td class="mdescRight">The limit state  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a92472da13c22f2d52aad4b4aad70b216">More...</a><br /></td></tr>
-<tr class="separator:a92472da13c22f2d52aad4b4aad70b216"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02c8826c675bf240c25d4fa77f3da686"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">LimitState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a02c8826c675bf240c25d4fa77f3da686">LimitState2</a></td></tr>
-<tr class="memdesc:a02c8826c675bf240c25d4fa77f3da686"><td class="mdescLeft">&#160;</td><td class="mdescRight">The limit state  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a02c8826c675bf240c25d4fa77f3da686">More...</a><br /></td></tr>
-<tr class="separator:a02c8826c675bf240c25d4fa77f3da686"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c885a2e53e951ade4479a26a6d79b41"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a3c885a2e53e951ade4479a26a6d79b41">Anchor1</a> =&gt; Body1.GetWorldPoint(<a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a434006526e64cdcae0985089a19ea12d">LocalAnchor1</a>)</td></tr>
-<tr class="memdesc:a3c885a2e53e951ade4479a26a6d79b41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of the anchor 1  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a3c885a2e53e951ade4479a26a6d79b41">More...</a><br /></td></tr>
-<tr class="separator:a3c885a2e53e951ade4479a26a6d79b41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83c3bd6b547dfe68ab84c46f2f07f6ba"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a83c3bd6b547dfe68ab84c46f2f07f6ba">Anchor2</a> =&gt; Body2.GetWorldPoint(<a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a53d459865d8dafbf1bea145d0b982414">LocalAnchor2</a>)</td></tr>
-<tr class="memdesc:a83c3bd6b547dfe68ab84c46f2f07f6ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of the anchor 2  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a83c3bd6b547dfe68ab84c46f2f07f6ba">More...</a><br /></td></tr>
-<tr class="separator:a83c3bd6b547dfe68ab84c46f2f07f6ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a658f19f813c37dda105a54eebe44608c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a658f19f813c37dda105a54eebe44608c">GroundAnchorX1</a> =&gt; Ground.GetXForm().<a class="el" href="../../d1/d8a/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_position.html">Position</a> + <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9ccead8d109e8f0d770c4786445a5a26">GroundAnchor1</a></td></tr>
-<tr class="memdesc:a658f19f813c37dda105a54eebe44608c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first ground anchor.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a658f19f813c37dda105a54eebe44608c">More...</a><br /></td></tr>
-<tr class="separator:a658f19f813c37dda105a54eebe44608c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ff10339cb72b07797a507e44ba2f108"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a0ff10339cb72b07797a507e44ba2f108">GroundAnchorX2</a> =&gt; Ground.GetXForm().<a class="el" href="../../d1/d8a/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_position.html">Position</a> + <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a64b10ae66b5f17a12cf05739ac23da32">GroundAnchor2</a></td></tr>
-<tr class="memdesc:a0ff10339cb72b07797a507e44ba2f108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the second ground anchor.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a0ff10339cb72b07797a507e44ba2f108">More...</a><br /></td></tr>
-<tr class="separator:a0ff10339cb72b07797a507e44ba2f108"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:aad8556439e9df5596406d5c84af4e4b6"><td class="memItemLeft" align="right" valign="top">static readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aad8556439e9df5596406d5c84af4e4b6">MinPulleyLength</a> = 2.0f</td></tr>
-<tr class="memdesc:aad8556439e9df5596406d5c84af4e4b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The min pulley length  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aad8556439e9df5596406d5c84af4e4b6">More...</a><br /></td></tr>
-<tr class="separator:aad8556439e9df5596406d5c84af4e4b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a834fbbf98edb70655eae6d5010b268de inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a834fbbf98edb70655eae6d5010b268de">IsFixedType</a> ()</td></tr>
+<tr class="memdesc:a834fbbf98edb70655eae6d5010b268de inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the joint is a fixed type.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a834fbbf98edb70655eae6d5010b268de">More...</a><br /></td></tr>
+<tr class="separator:a834fbbf98edb70655eae6d5010b268de inherit pub_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
 Package Functions</h2></td></tr>
-<tr class="memitem:a22931d258ab649b339dbe6109c48dc29"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a22931d258ab649b339dbe6109c48dc29">InitVelocityConstraints</a> (<a class="el" href="../../dc/dc8/struct_alis_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a> step)</td></tr>
-<tr class="memdesc:a22931d258ab649b339dbe6109c48dc29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the velocity constraints using the specified step  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a22931d258ab649b339dbe6109c48dc29">More...</a><br /></td></tr>
-<tr class="separator:a22931d258ab649b339dbe6109c48dc29"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a446259fd9fac199946adabde23399b88"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a446259fd9fac199946adabde23399b88">SolveVelocityConstraints</a> (<a class="el" href="../../dc/dc8/struct_alis_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a> step)</td></tr>
-<tr class="memdesc:a446259fd9fac199946adabde23399b88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the velocity constraints using the specified step  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a446259fd9fac199946adabde23399b88">More...</a><br /></td></tr>
-<tr class="separator:a446259fd9fac199946adabde23399b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab119bd279a0d8ec4168de0935c05b738"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ab119bd279a0d8ec4168de0935c05b738">SolvePositionConstraints</a> (float baumgarte)</td></tr>
-<tr class="memdesc:ab119bd279a0d8ec4168de0935c05b738"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance solve position constraints  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ab119bd279a0d8ec4168de0935c05b738">More...</a><br /></td></tr>
-<tr class="separator:ab119bd279a0d8ec4168de0935c05b738"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4965d6a474f769b24bebf9b10e4ce942"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a4965d6a474f769b24bebf9b10e4ce942">InitVelocityConstraints</a> (ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a> data)</td></tr>
+<tr class="memdesc:a4965d6a474f769b24bebf9b10e4ce942"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the velocity constraints using the specified data  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a4965d6a474f769b24bebf9b10e4ce942">More...</a><br /></td></tr>
+<tr class="separator:a4965d6a474f769b24bebf9b10e4ce942"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a186059bb3487452d528991c4e14dfdec"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a186059bb3487452d528991c4e14dfdec">SolveVelocityConstraints</a> (ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a> data)</td></tr>
+<tr class="memdesc:a186059bb3487452d528991c4e14dfdec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the velocity constraints using the specified data  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a186059bb3487452d528991c4e14dfdec">More...</a><br /></td></tr>
+<tr class="separator:a186059bb3487452d528991c4e14dfdec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d965667689e6da7cac85ba053bcc799"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a6d965667689e6da7cac85ba053bcc799">SolvePositionConstraints</a> (ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a> data)</td></tr>
+<tr class="memdesc:a6d965667689e6da7cac85ba053bcc799"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether this instance solve position constraints  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a6d965667689e6da7cac85ba053bcc799">More...</a><br /></td></tr>
+<tr class="separator:a6d965667689e6da7cac85ba053bcc799"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Package Functions inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
-<tr class="memitem:a856043493f0fb983c9aa0511814ad1f6 inherit pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a856043493f0fb983c9aa0511814ad1f6">ComputeXForm</a> (ref <a class="el" href="../../d7/d4a/struct_alis_1_1_aspect_1_1_math_1_1_x_form.html">XForm</a> xf, <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> center, <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> localCenter, float angle)</td></tr>
-<tr class="memdesc:a856043493f0fb983c9aa0511814ad1f6 inherit pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the x form using the specified xf  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a856043493f0fb983c9aa0511814ad1f6">More...</a><br /></td></tr>
-<tr class="separator:a856043493f0fb983c9aa0511814ad1f6 inherit pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a142551687faad679683ea6f915979f5b inherit pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a142551687faad679683ea6f915979f5b">Validate</a> (float invDt)</td></tr>
+<tr class="memdesc:a142551687faad679683ea6f915979f5b inherit pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validates the inv dt  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a142551687faad679683ea6f915979f5b">More...</a><br /></td></tr>
+<tr class="separator:a142551687faad679683ea6f915979f5b inherit pac_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a330792315446d4ecd0c0187271a66010"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a330792315446d4ecd0c0187271a66010">Ground</a><code> [get]</code></td></tr>
-<tr class="memdesc:a330792315446d4ecd0c0187271a66010"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ground  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a330792315446d4ecd0c0187271a66010">More...</a><br /></td></tr>
-<tr class="separator:a330792315446d4ecd0c0187271a66010"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ccead8d109e8f0d770c4786445a5a26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9ccead8d109e8f0d770c4786445a5a26">GroundAnchor1</a><code> [get]</code></td></tr>
-<tr class="memdesc:a9ccead8d109e8f0d770c4786445a5a26"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ground anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9ccead8d109e8f0d770c4786445a5a26">More...</a><br /></td></tr>
-<tr class="separator:a9ccead8d109e8f0d770c4786445a5a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64b10ae66b5f17a12cf05739ac23da32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a64b10ae66b5f17a12cf05739ac23da32">GroundAnchor2</a><code> [get]</code></td></tr>
-<tr class="memdesc:a64b10ae66b5f17a12cf05739ac23da32"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ground anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a64b10ae66b5f17a12cf05739ac23da32">More...</a><br /></td></tr>
-<tr class="separator:a64b10ae66b5f17a12cf05739ac23da32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a434006526e64cdcae0985089a19ea12d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a434006526e64cdcae0985089a19ea12d">LocalAnchor1</a><code> [get]</code></td></tr>
-<tr class="memdesc:a434006526e64cdcae0985089a19ea12d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a434006526e64cdcae0985089a19ea12d">More...</a><br /></td></tr>
-<tr class="separator:a434006526e64cdcae0985089a19ea12d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53d459865d8dafbf1bea145d0b982414"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a53d459865d8dafbf1bea145d0b982414">LocalAnchor2</a><code> [get]</code></td></tr>
-<tr class="memdesc:a53d459865d8dafbf1bea145d0b982414"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a53d459865d8dafbf1bea145d0b982414">More...</a><br /></td></tr>
-<tr class="separator:a53d459865d8dafbf1bea145d0b982414"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf0e69f1bba2a43e57c71af31210731b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#adf0e69f1bba2a43e57c71af31210731b">U1</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:adf0e69f1bba2a43e57c71af31210731b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#adf0e69f1bba2a43e57c71af31210731b">More...</a><br /></td></tr>
-<tr class="separator:adf0e69f1bba2a43e57c71af31210731b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0af37313aa6eafc703bc2861737b2c43"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a0af37313aa6eafc703bc2861737b2c43">U2</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a0af37313aa6eafc703bc2861737b2c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a0af37313aa6eafc703bc2861737b2c43">More...</a><br /></td></tr>
-<tr class="separator:a0af37313aa6eafc703bc2861737b2c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9eb35ce56e48f6b5d9e4683351c65da"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae9eb35ce56e48f6b5d9e4683351c65da">Constant</a><code> [get]</code></td></tr>
-<tr class="memdesc:ae9eb35ce56e48f6b5d9e4683351c65da"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constant  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae9eb35ce56e48f6b5d9e4683351c65da">More...</a><br /></td></tr>
-<tr class="separator:ae9eb35ce56e48f6b5d9e4683351c65da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab65f6d06addd5414119003bc4b9a76c5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ab65f6d06addd5414119003bc4b9a76c5">MaxLength1</a><code> [get]</code></td></tr>
-<tr class="memdesc:ab65f6d06addd5414119003bc4b9a76c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max length  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ab65f6d06addd5414119003bc4b9a76c5">More...</a><br /></td></tr>
-<tr class="separator:ab65f6d06addd5414119003bc4b9a76c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1df06e0db3ceedd7e2f8987da5c2e1a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af1df06e0db3ceedd7e2f8987da5c2e1a">MaxLength2</a><code> [get]</code></td></tr>
-<tr class="memdesc:af1df06e0db3ceedd7e2f8987da5c2e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The max length  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af1df06e0db3ceedd7e2f8987da5c2e1a">More...</a><br /></td></tr>
-<tr class="separator:af1df06e0db3ceedd7e2f8987da5c2e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f990d7e727b406cf38b8ca084f0fa28"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a5f990d7e727b406cf38b8ca084f0fa28">PulleyMass</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a5f990d7e727b406cf38b8ca084f0fa28"><td class="mdescLeft">&#160;</td><td class="mdescRight">The pulley mass  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a5f990d7e727b406cf38b8ca084f0fa28">More...</a><br /></td></tr>
-<tr class="separator:a5f990d7e727b406cf38b8ca084f0fa28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a805b3ce2e8aa63a91a182dab62cadc48"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a805b3ce2e8aa63a91a182dab62cadc48">LimitMass1</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a805b3ce2e8aa63a91a182dab62cadc48"><td class="mdescLeft">&#160;</td><td class="mdescRight">The limit mass  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a805b3ce2e8aa63a91a182dab62cadc48">More...</a><br /></td></tr>
-<tr class="separator:a805b3ce2e8aa63a91a182dab62cadc48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a581c856765f46fcf3a460bf04714b9b2"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a581c856765f46fcf3a460bf04714b9b2">LimitMass2</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a581c856765f46fcf3a460bf04714b9b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The limit mass  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a581c856765f46fcf3a460bf04714b9b2">More...</a><br /></td></tr>
-<tr class="separator:a581c856765f46fcf3a460bf04714b9b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add59be56ad48aa513c92d264d1a5c640"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#add59be56ad48aa513c92d264d1a5c640">Impulse</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:add59be56ad48aa513c92d264d1a5c640"><td class="mdescLeft">&#160;</td><td class="mdescRight">The impulse  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#add59be56ad48aa513c92d264d1a5c640">More...</a><br /></td></tr>
-<tr class="separator:add59be56ad48aa513c92d264d1a5c640"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d17ef9c52987bfc5cae59178539d968"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a3d17ef9c52987bfc5cae59178539d968">LimitImpulse1</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a3d17ef9c52987bfc5cae59178539d968"><td class="mdescLeft">&#160;</td><td class="mdescRight">The limit impulse  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a3d17ef9c52987bfc5cae59178539d968">More...</a><br /></td></tr>
-<tr class="separator:a3d17ef9c52987bfc5cae59178539d968"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add982f80981928f494b4ff41f690bb09"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#add982f80981928f494b4ff41f690bb09">LimitImpulse2</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:add982f80981928f494b4ff41f690bb09"><td class="mdescLeft">&#160;</td><td class="mdescRight">The limit impulse  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#add982f80981928f494b4ff41f690bb09">More...</a><br /></td></tr>
-<tr class="separator:add982f80981928f494b4ff41f690bb09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa63c7bbca4610b79df9cdc43413d0246"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">LimitState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aa63c7bbca4610b79df9cdc43413d0246">State</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aa63c7bbca4610b79df9cdc43413d0246"><td class="mdescLeft">&#160;</td><td class="mdescRight">The state  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aa63c7bbca4610b79df9cdc43413d0246">More...</a><br /></td></tr>
-<tr class="separator:aa63c7bbca4610b79df9cdc43413d0246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae0f95b08802f9a42b1336b81730aa9ba"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae0f95b08802f9a42b1336b81730aa9ba">Length1</a><code> [get]</code></td></tr>
-<tr class="memdesc:ae0f95b08802f9a42b1336b81730aa9ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current length of the segment attached to body1.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae0f95b08802f9a42b1336b81730aa9ba">More...</a><br /></td></tr>
-<tr class="separator:ae0f95b08802f9a42b1336b81730aa9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af23bb64a37ec01427c90afbbd4f048e1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af23bb64a37ec01427c90afbbd4f048e1">Length2</a><code> [get]</code></td></tr>
-<tr class="memdesc:af23bb64a37ec01427c90afbbd4f048e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current length of the segment attached to body2.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af23bb64a37ec01427c90afbbd4f048e1">More...</a><br /></td></tr>
-<tr class="separator:af23bb64a37ec01427c90afbbd4f048e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa09ec23410cfe47910c76f6ab47215d0"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aa09ec23410cfe47910c76f6ab47215d0">LocalAnchorA</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa09ec23410cfe47910c76f6ab47215d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor point on BodyA  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aa09ec23410cfe47910c76f6ab47215d0">More...</a><br /></td></tr>
+<tr class="separator:aa09ec23410cfe47910c76f6ab47215d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab37dd7e66bc8569cccde8f9d969bcd6a"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ab37dd7e66bc8569cccde8f9d969bcd6a">LocalAnchorB</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ab37dd7e66bc8569cccde8f9d969bcd6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor point on BodyB  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ab37dd7e66bc8569cccde8f9d969bcd6a">More...</a><br /></td></tr>
+<tr class="separator:ab37dd7e66bc8569cccde8f9d969bcd6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a550211c87b75701b43dff40fbb5339e5"><td class="memItemLeft" align="right" valign="top">sealed override Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a550211c87b75701b43dff40fbb5339e5">WorldAnchorA</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a550211c87b75701b43dff40fbb5339e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first world anchor.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a550211c87b75701b43dff40fbb5339e5">More...</a><br /></td></tr>
+<tr class="separator:a550211c87b75701b43dff40fbb5339e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb2227c7301a5655a96689481d1b02d7"><td class="memItemLeft" align="right" valign="top">sealed override Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#acb2227c7301a5655a96689481d1b02d7">WorldAnchorB</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:acb2227c7301a5655a96689481d1b02d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the second world anchor.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#acb2227c7301a5655a96689481d1b02d7">More...</a><br /></td></tr>
+<tr class="separator:acb2227c7301a5655a96689481d1b02d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63232bead05860fafa2b35b3e4246698"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a63232bead05860fafa2b35b3e4246698">LengthA</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a63232bead05860fafa2b35b3e4246698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current length of the segment attached to BodyA.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a63232bead05860fafa2b35b3e4246698">More...</a><br /></td></tr>
+<tr class="separator:a63232bead05860fafa2b35b3e4246698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaceb75649c8ef37da03bac211789d8a3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aaceb75649c8ef37da03bac211789d8a3">LengthB</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aaceb75649c8ef37da03bac211789d8a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current length of the segment attached to BodyB.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aaceb75649c8ef37da03bac211789d8a3">More...</a><br /></td></tr>
+<tr class="separator:aaceb75649c8ef37da03bac211789d8a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa21404effeabde1cda9d88935c408d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a1fa21404effeabde1cda9d88935c408d">CurrentLengthA</a><code> [get]</code></td></tr>
+<tr class="memdesc:a1fa21404effeabde1cda9d88935c408d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current length between the anchor point on BodyA and WorldAnchorA  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a1fa21404effeabde1cda9d88935c408d">More...</a><br /></td></tr>
+<tr class="separator:a1fa21404effeabde1cda9d88935c408d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae673e9390ddc6f99665119d4232c8b6a"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae673e9390ddc6f99665119d4232c8b6a">CurrentLengthB</a><code> [get]</code></td></tr>
+<tr class="memdesc:ae673e9390ddc6f99665119d4232c8b6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current length between the anchor point on BodyB and WorldAnchorB  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae673e9390ddc6f99665119d4232c8b6a">More...</a><br /></td></tr>
+<tr class="separator:ae673e9390ddc6f99665119d4232c8b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e61b4881d2c5b577646805271bd4f30"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a2e61b4881d2c5b577646805271bd4f30">Ratio</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a2e61b4881d2c5b577646805271bd4f30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the pulley ratio.  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a2e61b4881d2c5b577646805271bd4f30">More...</a><br /></td></tr>
 <tr class="separator:a2e61b4881d2c5b577646805271bd4f30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
-<tr class="memitem:adfea84e2fe6f51f41fd9bc8143137b7e inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#adfea84e2fe6f51f41fd9bc8143137b7e">Type</a><code> [get]</code></td></tr>
-<tr class="memdesc:adfea84e2fe6f51f41fd9bc8143137b7e inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#adfea84e2fe6f51f41fd9bc8143137b7e">More...</a><br /></td></tr>
-<tr class="separator:adfea84e2fe6f51f41fd9bc8143137b7e inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a1a420d1eac93b44b3d80da72f2b4e1 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a9a1a420d1eac93b44b3d80da72f2b4e1">Prev</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a9a1a420d1eac93b44b3d80da72f2b4e1 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The prev  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a9a1a420d1eac93b44b3d80da72f2b4e1">More...</a><br /></td></tr>
-<tr class="separator:a9a1a420d1eac93b44b3d80da72f2b4e1 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae56cba0a66df392f10828204348fed4e inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ae56cba0a66df392f10828204348fed4e">Next</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ae56cba0a66df392f10828204348fed4e inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The next  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ae56cba0a66df392f10828204348fed4e">More...</a><br /></td></tr>
-<tr class="separator:ae56cba0a66df392f10828204348fed4e inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63ec545b7e3642300430d432115f74c3 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html">JointEdge</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a63ec545b7e3642300430d432115f74c3">Node1</a> = new <a class="el" href="../../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html">JointEdge</a>()<code> [get]</code></td></tr>
-<tr class="memdesc:a63ec545b7e3642300430d432115f74c3 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint edge  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a63ec545b7e3642300430d432115f74c3">More...</a><br /></td></tr>
-<tr class="separator:a63ec545b7e3642300430d432115f74c3 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad404e68342dd0e2d6ef15536aa11c005 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html">JointEdge</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ad404e68342dd0e2d6ef15536aa11c005">Node2</a> = new <a class="el" href="../../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html">JointEdge</a>()<code> [get]</code></td></tr>
-<tr class="memdesc:ad404e68342dd0e2d6ef15536aa11c005 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint edge  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ad404e68342dd0e2d6ef15536aa11c005">More...</a><br /></td></tr>
-<tr class="separator:ad404e68342dd0e2d6ef15536aa11c005 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa39ca03c66fd1dc3609d4af3c8426b3b inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa39ca03c66fd1dc3609d4af3c8426b3b">Body1</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aa39ca03c66fd1dc3609d4af3c8426b3b inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The body  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa39ca03c66fd1dc3609d4af3c8426b3b">More...</a><br /></td></tr>
-<tr class="separator:aa39ca03c66fd1dc3609d4af3c8426b3b inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e3ab2e0a68b61bed0ea4b1e8c904b03 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a4e3ab2e0a68b61bed0ea4b1e8c904b03">Body2</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a4e3ab2e0a68b61bed0ea4b1e8c904b03 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The body  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a4e3ab2e0a68b61bed0ea4b1e8c904b03">More...</a><br /></td></tr>
-<tr class="separator:a4e3ab2e0a68b61bed0ea4b1e8c904b03 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a040187309968525ed4015c650c47c734 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dab/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc_1_1_joint_edge.html">JointEdge</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a040187309968525ed4015c650c47c734">EdgeA</a> = new <a class="el" href="../../db/dab/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc_1_1_joint_edge.html">JointEdge</a>()<code> [get]</code></td></tr>
+<tr class="memdesc:a040187309968525ed4015c650c47c734 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint edge  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a040187309968525ed4015c650c47c734">More...</a><br /></td></tr>
+<tr class="separator:a040187309968525ed4015c650c47c734 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aea1baf01f159a00b3bb051121baa25 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/dab/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc_1_1_joint_edge.html">JointEdge</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a1aea1baf01f159a00b3bb051121baa25">EdgeB</a> = new <a class="el" href="../../db/dab/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc_1_1_joint_edge.html">JointEdge</a>()<code> [get]</code></td></tr>
+<tr class="memdesc:a1aea1baf01f159a00b3bb051121baa25 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint edge  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a1aea1baf01f159a00b3bb051121baa25">More...</a><br /></td></tr>
+<tr class="separator:a1aea1baf01f159a00b3bb051121baa25 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c0802a50e7ac7d5f1774d5d45461357 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7c0802a50e7ac7d5f1774d5d45461357">IslandFlag</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a7c0802a50e7ac7d5f1774d5d45461357 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The island flag  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7c0802a50e7ac7d5f1774d5d45461357">More...</a><br /></td></tr>
 <tr class="separator:a7c0802a50e7ac7d5f1774d5d45461357 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a670cdba0e097a13cdfa04c034a03f243 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a670cdba0e097a13cdfa04c034a03f243">CollideConnected</a><code> [get]</code></td></tr>
-<tr class="memdesc:a670cdba0e097a13cdfa04c034a03f243 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The collide connected  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a670cdba0e097a13cdfa04c034a03f243">More...</a><br /></td></tr>
-<tr class="separator:a670cdba0e097a13cdfa04c034a03f243 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09c8b6a1f554a4ea52096b921a1df815 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a09c8b6a1f554a4ea52096b921a1df815">LocalCenter1</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a09c8b6a1f554a4ea52096b921a1df815 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local center  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a09c8b6a1f554a4ea52096b921a1df815">More...</a><br /></td></tr>
-<tr class="separator:a09c8b6a1f554a4ea52096b921a1df815 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0ca9efa46ca9caa2e62f66bd61842e9 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa0ca9efa46ca9caa2e62f66bd61842e9">LocalCenter2</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aa0ca9efa46ca9caa2e62f66bd61842e9 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local center  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa0ca9efa46ca9caa2e62f66bd61842e9">More...</a><br /></td></tr>
-<tr class="separator:aa0ca9efa46ca9caa2e62f66bd61842e9 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0c9f274287b03973d18257e65ce5b2db inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a0c9f274287b03973d18257e65ce5b2db">InvMass1</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a0c9f274287b03973d18257e65ce5b2db inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a0c9f274287b03973d18257e65ce5b2db">More...</a><br /></td></tr>
-<tr class="separator:a0c9f274287b03973d18257e65ce5b2db inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90bfb3c4bfea22f51352dd848615694f inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a90bfb3c4bfea22f51352dd848615694f">InvI1</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a90bfb3c4bfea22f51352dd848615694f inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a90bfb3c4bfea22f51352dd848615694f">More...</a><br /></td></tr>
-<tr class="separator:a90bfb3c4bfea22f51352dd848615694f inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86f28d63f5301e7fd65832f1b60c20a4 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86f28d63f5301e7fd65832f1b60c20a4">InvMass2</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a86f28d63f5301e7fd65832f1b60c20a4 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86f28d63f5301e7fd65832f1b60c20a4">More...</a><br /></td></tr>
-<tr class="separator:a86f28d63f5301e7fd65832f1b60c20a4 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad6e8d95069ada010e3df734d4172b00 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aad6e8d95069ada010e3df734d4172b00">InvI2</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aad6e8d95069ada010e3df734d4172b00 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aad6e8d95069ada010e3df734d4172b00">More...</a><br /></td></tr>
-<tr class="separator:aad6e8d95069ada010e3df734d4172b00 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a913da7e32c98a15cadc29fe7030c51b1 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a913da7e32c98a15cadc29fe7030c51b1">Anchor1</a><code> [get]</code></td></tr>
-<tr class="memdesc:a913da7e32c98a15cadc29fe7030c51b1 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the anchor point on body1 in world coordinates.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a913da7e32c98a15cadc29fe7030c51b1">More...</a><br /></td></tr>
-<tr class="separator:a913da7e32c98a15cadc29fe7030c51b1 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1476e6ccb710aedd5cc867d7a9308104 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">abstract <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a1476e6ccb710aedd5cc867d7a9308104">Anchor2</a><code> [get]</code></td></tr>
-<tr class="memdesc:a1476e6ccb710aedd5cc867d7a9308104 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the anchor point on body2 in world coordinates.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a1476e6ccb710aedd5cc867d7a9308104">More...</a><br /></td></tr>
-<tr class="separator:a1476e6ccb710aedd5cc867d7a9308104 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3842628b1286a9ef4cf577edde3b493 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa3842628b1286a9ef4cf577edde3b493">Enabled</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:aa3842628b1286a9ef4cf577edde3b493 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the value of the enabled  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aa3842628b1286a9ef4cf577edde3b493">More...</a><br /></td></tr>
+<tr class="separator:aa3842628b1286a9ef4cf577edde3b493 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addcf354a3dbe5d27bc9d146aed05faea inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#addcf354a3dbe5d27bc9d146aed05faea">BodyA</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:addcf354a3dbe5d27bc9d146aed05faea inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the first body attached to this joint.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#addcf354a3dbe5d27bc9d146aed05faea">More...</a><br /></td></tr>
+<tr class="separator:addcf354a3dbe5d27bc9d146aed05faea inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9268a1922bc28aa67bd2077c6f133e99 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a9268a1922bc28aa67bd2077c6f133e99">BodyB</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a9268a1922bc28aa67bd2077c6f133e99 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the second body attached to this joint.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a9268a1922bc28aa67bd2077c6f133e99">More...</a><br /></td></tr>
+<tr class="separator:a9268a1922bc28aa67bd2077c6f133e99 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3969363638933ac21ddc915b9c6e6b91 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">abstract Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a3969363638933ac21ddc915b9c6e6b91">WorldAnchorA</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a3969363638933ac21ddc915b9c6e6b91 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the anchor point on bodyA in world coordinates. On some joints, this value indicate the anchor point within the world.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a3969363638933ac21ddc915b9c6e6b91">More...</a><br /></td></tr>
+<tr class="separator:a3969363638933ac21ddc915b9c6e6b91 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac968c8d7c3120bd9e498eb2e1e25b6ff inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">abstract Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ac968c8d7c3120bd9e498eb2e1e25b6ff">WorldAnchorB</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac968c8d7c3120bd9e498eb2e1e25b6ff inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the anchor point on bodyB in world coordinates. On some joints, this value indicate the anchor point within the world.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ac968c8d7c3120bd9e498eb2e1e25b6ff">More...</a><br /></td></tr>
+<tr class="separator:ac968c8d7c3120bd9e498eb2e1e25b6ff inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45b5cbd32b98820d8f47879ce157a44b inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">object&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a45b5cbd32b98820d8f47879ce157a44b">UserData</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a45b5cbd32b98820d8f47879ce157a44b inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get/Set the user data pointer.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a45b5cbd32b98820d8f47879ce157a44b">More...</a><br /></td></tr>
+<tr class="memdesc:a45b5cbd32b98820d8f47879ce157a44b inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the user data pointer.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a45b5cbd32b98820d8f47879ce157a44b">More...</a><br /></td></tr>
 <tr class="separator:a45b5cbd32b98820d8f47879ce157a44b inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a670cdba0e097a13cdfa04c034a03f243 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a670cdba0e097a13cdfa04c034a03f243">CollideConnected</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a670cdba0e097a13cdfa04c034a03f243 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this flag to true if the attached bodies should collide.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a670cdba0e097a13cdfa04c034a03f243">More...</a><br /></td></tr>
+<tr class="separator:a670cdba0e097a13cdfa04c034a03f243 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc25434b963381f799ead790c90a88d2 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#abc25434b963381f799ead790c90a88d2">Breakpoint</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:abc25434b963381f799ead790c90a88d2 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is float.MaxValue, which means it never breaks.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#abc25434b963381f799ead790c90a88d2">More...</a><br /></td></tr>
+<tr class="separator:abc25434b963381f799ead790c90a88d2 inherit properties_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae5b442dacb276fa455a18ba64ea2a4f3"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae5b442dacb276fa455a18ba64ea2a4f3">constant</a></td></tr>
+<tr class="memdesc:ae5b442dacb276fa455a18ba64ea2a4f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constant  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ae5b442dacb276fa455a18ba64ea2a4f3">More...</a><br /></td></tr>
+<tr class="separator:ae5b442dacb276fa455a18ba64ea2a4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82c068b274e23d735b4efe4ff14ba4b5"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a82c068b274e23d735b4efe4ff14ba4b5">impulse</a></td></tr>
+<tr class="memdesc:a82c068b274e23d735b4efe4ff14ba4b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The impulse  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a82c068b274e23d735b4efe4ff14ba4b5">More...</a><br /></td></tr>
+<tr class="separator:a82c068b274e23d735b4efe4ff14ba4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f576eb2409d4c64544bf1880429ce73"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a0f576eb2409d4c64544bf1880429ce73">indexA</a></td></tr>
+<tr class="memdesc:a0f576eb2409d4c64544bf1880429ce73"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a0f576eb2409d4c64544bf1880429ce73">More...</a><br /></td></tr>
+<tr class="separator:a0f576eb2409d4c64544bf1880429ce73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59a98ce61f6e18e19fa47f97e21de431"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a59a98ce61f6e18e19fa47f97e21de431">indexB</a></td></tr>
+<tr class="memdesc:a59a98ce61f6e18e19fa47f97e21de431"><td class="mdescLeft">&#160;</td><td class="mdescRight">The index  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a59a98ce61f6e18e19fa47f97e21de431">More...</a><br /></td></tr>
+<tr class="separator:a59a98ce61f6e18e19fa47f97e21de431"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72689eb80c69f776f362feb9c62c7588"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a72689eb80c69f776f362feb9c62c7588">invIa</a></td></tr>
+<tr class="memdesc:a72689eb80c69f776f362feb9c62c7588"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv ia  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a72689eb80c69f776f362feb9c62c7588">More...</a><br /></td></tr>
+<tr class="separator:a72689eb80c69f776f362feb9c62c7588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c5068b335d51a6d9fc97b214cc2eea7"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9c5068b335d51a6d9fc97b214cc2eea7">invIb</a></td></tr>
+<tr class="memdesc:a9c5068b335d51a6d9fc97b214cc2eea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv ib  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9c5068b335d51a6d9fc97b214cc2eea7">More...</a><br /></td></tr>
+<tr class="separator:a9c5068b335d51a6d9fc97b214cc2eea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57ddc17c46ed13cc25cf2227fb600bca"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a57ddc17c46ed13cc25cf2227fb600bca">invMassA</a></td></tr>
+<tr class="memdesc:a57ddc17c46ed13cc25cf2227fb600bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv mass  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a57ddc17c46ed13cc25cf2227fb600bca">More...</a><br /></td></tr>
+<tr class="separator:a57ddc17c46ed13cc25cf2227fb600bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a595b2e301b11dae8458fd3d67545b87c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a595b2e301b11dae8458fd3d67545b87c">invMassB</a></td></tr>
+<tr class="memdesc:a595b2e301b11dae8458fd3d67545b87c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The inv mass  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a595b2e301b11dae8458fd3d67545b87c">More...</a><br /></td></tr>
+<tr class="separator:a595b2e301b11dae8458fd3d67545b87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1722ac851404b77ca234d28ab2535451"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a1722ac851404b77ca234d28ab2535451">lengthA</a></td></tr>
+<tr class="memdesc:a1722ac851404b77ca234d28ab2535451"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a1722ac851404b77ca234d28ab2535451">More...</a><br /></td></tr>
+<tr class="separator:a1722ac851404b77ca234d28ab2535451"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb1d7e638ac7ad42e8837bdd1aae8ef6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#abb1d7e638ac7ad42e8837bdd1aae8ef6">lengthB</a></td></tr>
+<tr class="memdesc:abb1d7e638ac7ad42e8837bdd1aae8ef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The length  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#abb1d7e638ac7ad42e8837bdd1aae8ef6">More...</a><br /></td></tr>
+<tr class="separator:abb1d7e638ac7ad42e8837bdd1aae8ef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ca2460e7d1a1a839fbbb1a0317abe6c"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a5ca2460e7d1a1a839fbbb1a0317abe6c">localAnchorA</a></td></tr>
+<tr class="memdesc:a5ca2460e7d1a1a839fbbb1a0317abe6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a5ca2460e7d1a1a839fbbb1a0317abe6c">More...</a><br /></td></tr>
+<tr class="separator:a5ca2460e7d1a1a839fbbb1a0317abe6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d1c4a462e6d805c3645d95c429b88d3"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a8d1c4a462e6d805c3645d95c429b88d3">localAnchorB</a></td></tr>
+<tr class="memdesc:a8d1c4a462e6d805c3645d95c429b88d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a8d1c4a462e6d805c3645d95c429b88d3">More...</a><br /></td></tr>
+<tr class="separator:a8d1c4a462e6d805c3645d95c429b88d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5d82b201fb29c8734c4c5da9f02706e"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aa5d82b201fb29c8734c4c5da9f02706e">localCenterA</a></td></tr>
+<tr class="memdesc:aa5d82b201fb29c8734c4c5da9f02706e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local center  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#aa5d82b201fb29c8734c4c5da9f02706e">More...</a><br /></td></tr>
+<tr class="separator:aa5d82b201fb29c8734c4c5da9f02706e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32f3cf3163e37202d7a894a7d726ed33"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a32f3cf3163e37202d7a894a7d726ed33">localCenterB</a></td></tr>
+<tr class="memdesc:a32f3cf3163e37202d7a894a7d726ed33"><td class="mdescLeft">&#160;</td><td class="mdescRight">The local center  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a32f3cf3163e37202d7a894a7d726ed33">More...</a><br /></td></tr>
+<tr class="separator:a32f3cf3163e37202d7a894a7d726ed33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e6b8ac83e79b813d9b11e817e36c288"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a7e6b8ac83e79b813d9b11e817e36c288">mass</a></td></tr>
+<tr class="memdesc:a7e6b8ac83e79b813d9b11e817e36c288"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mass  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a7e6b8ac83e79b813d9b11e817e36c288">More...</a><br /></td></tr>
+<tr class="separator:a7e6b8ac83e79b813d9b11e817e36c288"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dede34d360355a5e5b07bab6d8f7d88"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9dede34d360355a5e5b07bab6d8f7d88">rA</a></td></tr>
+<tr class="memdesc:a9dede34d360355a5e5b07bab6d8f7d88"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9dede34d360355a5e5b07bab6d8f7d88">More...</a><br /></td></tr>
+<tr class="separator:a9dede34d360355a5e5b07bab6d8f7d88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a356e9c4258e6a0b53b9ceda96f855b0b"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a356e9c4258e6a0b53b9ceda96f855b0b">ratio</a></td></tr>
+<tr class="memdesc:a356e9c4258e6a0b53b9ceda96f855b0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The ratio  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a356e9c4258e6a0b53b9ceda96f855b0b">More...</a><br /></td></tr>
+<tr class="separator:a356e9c4258e6a0b53b9ceda96f855b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af443eb575801fb11c63e1692c7d3c137"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af443eb575801fb11c63e1692c7d3c137">rB</a></td></tr>
+<tr class="memdesc:af443eb575801fb11c63e1692c7d3c137"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af443eb575801fb11c63e1692c7d3c137">More...</a><br /></td></tr>
+<tr class="separator:af443eb575801fb11c63e1692c7d3c137"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad07eacf5dcf8322f4e19b34c838bb9cb"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ad07eacf5dcf8322f4e19b34c838bb9cb">uA</a></td></tr>
+<tr class="memdesc:ad07eacf5dcf8322f4e19b34c838bb9cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#ad07eacf5dcf8322f4e19b34c838bb9cb">More...</a><br /></td></tr>
+<tr class="separator:ad07eacf5dcf8322f4e19b34c838bb9cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe3dc033da2f404a79877f1fba6da20"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a7fe3dc033da2f404a79877f1fba6da20">uB</a></td></tr>
+<tr class="memdesc:a7fe3dc033da2f404a79877f1fba6da20"><td class="mdescLeft">&#160;</td><td class="mdescRight">The  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a7fe3dc033da2f404a79877f1fba6da20">More...</a><br /></td></tr>
+<tr class="separator:a7fe3dc033da2f404a79877f1fba6da20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0cc1f404a2006b4012e3bb37d71b460"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af0cc1f404a2006b4012e3bb37d71b460">worldAnchorA</a></td></tr>
+<tr class="memdesc:af0cc1f404a2006b4012e3bb37d71b460"><td class="mdescLeft">&#160;</td><td class="mdescRight">The world anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#af0cc1f404a2006b4012e3bb37d71b460">More...</a><br /></td></tr>
+<tr class="separator:af0cc1f404a2006b4012e3bb37d71b460"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05a24ed7ac7ba7b9a8280496e40e8640"><td class="memItemLeft" align="right" valign="top">Vector2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a05a24ed7ac7ba7b9a8280496e40e8640">worldAnchorB</a></td></tr>
+<tr class="memdesc:a05a24ed7ac7ba7b9a8280496e40e8640"><td class="mdescLeft">&#160;</td><td class="mdescRight">The world anchor  <a href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a05a24ed7ac7ba7b9a8280496e40e8640">More...</a><br /></td></tr>
+<tr class="separator:a05a24ed7ac7ba7b9a8280496e40e8640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('pub_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Static Public Member Functions inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
+<tr class="memitem:a8c797f22e80e5c279c91f3395c8dec42 inherit pub_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a8c797f22e80e5c279c91f3395c8dec42">Create</a> (<a class="el" href="../../da/d41/class_alis_1_1_core_1_1_physic_1_1_definitions_1_1_joints_1_1_joint_def.html">JointDef</a> def)</td></tr>
+<tr class="memdesc:a8c797f22e80e5c279c91f3395c8dec42 inherit pub_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the def  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a8c797f22e80e5c279c91f3395c8dec42">More...</a><br /></td></tr>
+<tr class="separator:a8c797f22e80e5c279c91f3395c8dec42 inherit pub_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
+<tr class="memitem:a6a08927cf6b1caf8e31ae830a0b1d1e2 inherit pub_attribs_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/dd1/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc.html#a5a3689c6538a3164154017986610c32c">JointType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a6a08927cf6b1caf8e31ae830a0b1d1e2">JointType</a> =&gt; <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7ddbab46279152db909281ab539b747f">jointType</a></td></tr>
+<tr class="memdesc:a6a08927cf6b1caf8e31ae830a0b1d1e2 inherit pub_attribs_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the type of the joint.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a6a08927cf6b1caf8e31ae830a0b1d1e2">More...</a><br /></td></tr>
+<tr class="separator:a6a08927cf6b1caf8e31ae830a0b1d1e2 inherit pub_attribs_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
-<tr class="memitem:a22df1ad57cca909425ef6e986e61d3ab inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a22df1ad57cca909425ef6e986e61d3ab">Joint</a> (<a class="el" href="../../d6/dad/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_def.html">JointDef</a> def)</td></tr>
-<tr class="memdesc:a22df1ad57cca909425ef6e986e61d3ab inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html" title="The base joint class. Joints are used to constraint two bodies together in various fashions....">Joint</a> class  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a22df1ad57cca909425ef6e986e61d3ab">More...</a><br /></td></tr>
-<tr class="separator:a22df1ad57cca909425ef6e986e61d3ab inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Static Package Functions inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
-<tr class="memitem:a8c797f22e80e5c279c91f3395c8dec42 inherit pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a8c797f22e80e5c279c91f3395c8dec42">Create</a> (<a class="el" href="../../d6/dad/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_def.html">JointDef</a> def)</td></tr>
-<tr class="memdesc:a8c797f22e80e5c279c91f3395c8dec42 inherit pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates the def  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a8c797f22e80e5c279c91f3395c8dec42">More...</a><br /></td></tr>
-<tr class="separator:a8c797f22e80e5c279c91f3395c8dec42 inherit pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af043cf4b80152e504d3c756422982fd6 inherit pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#af043cf4b80152e504d3c756422982fd6">Destroy</a> (<a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a> joint)</td></tr>
-<tr class="memdesc:af043cf4b80152e504d3c756422982fd6 inherit pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the joint  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#af043cf4b80152e504d3c756422982fd6">More...</a><br /></td></tr>
-<tr class="separator:af043cf4b80152e504d3c756422982fd6 inherit pac_static_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b7bbae8143de9d7a834ac26bfb84004 inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a1b7bbae8143de9d7a834ac26bfb84004">Joint</a> (<a class="el" href="../../d4/dd1/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc.html#a5a3689c6538a3164154017986610c32c">JointType</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7ddbab46279152db909281ab539b747f">jointType</a>)</td></tr>
+<tr class="memdesc:a1b7bbae8143de9d7a834ac26bfb84004 inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html" title="The joint class">Joint</a> class  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a1b7bbae8143de9d7a834ac26bfb84004">More...</a><br /></td></tr>
+<tr class="separator:a1b7bbae8143de9d7a834ac26bfb84004 inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e0fdfefaa5178ebe90e3b62a140d264 inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a8e0fdfefaa5178ebe90e3b62a140d264">Joint</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a86463be88b1d7f97f1923187817b3418">bodyA</a>, <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a73e831ad81173e3e609f9b7cd25fb382">bodyB</a>, <a class="el" href="../../d4/dd1/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc.html#a5a3689c6538a3164154017986610c32c">JointType</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7ddbab46279152db909281ab539b747f">jointType</a>)</td></tr>
+<tr class="memdesc:a8e0fdfefaa5178ebe90e3b62a140d264 inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html" title="The joint class">Joint</a> class  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a8e0fdfefaa5178ebe90e3b62a140d264">More...</a><br /></td></tr>
+<tr class="separator:a8e0fdfefaa5178ebe90e3b62a140d264 inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5de068d7caa7edb91b03fe3cf75cbeed inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>(<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> body, <a class="el" href="../../d4/dd1/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc.html#a5a3689c6538a3164154017986610c32c">JointType</a> <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7ddbab46279152db909281ab539b747f">jointType</a>)&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a5de068d7caa7edb91b03fe3cf75cbeed">Joint</a> (<a class="el" href="../../da/d41/class_alis_1_1_core_1_1_physic_1_1_definitions_1_1_joints_1_1_joint_def.html">JointDef</a> def)</td></tr>
+<tr class="memdesc:a5de068d7caa7edb91b03fe3cf75cbeed inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for fixed joint  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a5de068d7caa7edb91b03fe3cf75cbeed">More...</a><br /></td></tr>
+<tr class="separator:a5de068d7caa7edb91b03fe3cf75cbeed inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a2f0b284780247c51566e67317ad0fa inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7a2f0b284780247c51566e67317ad0fa">WakeBodies</a> ()</td></tr>
+<tr class="memdesc:a7a2f0b284780247c51566e67317ad0fa inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wakes the bodies  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7a2f0b284780247c51566e67317ad0fa">More...</a><br /></td></tr>
+<tr class="separator:a7a2f0b284780247c51566e67317ad0fa inherit pro_methods_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td colspan="2" onclick="javascript:toggleInherit('events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint')"><img src="../../closed.png" alt="-"/>&#160;Events inherited from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Alis.Core.Physic.Dynamics.Joints.Joint</a></td></tr>
+<tr class="memitem:a4f74becad11b01831634d76131f93d53 inherit events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memItemLeft" align="right" valign="top">Action&lt; <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>, float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a4f74becad11b01831634d76131f93d53">Broke</a></td></tr>
+<tr class="memdesc:a4f74becad11b01831634d76131f93d53 inherit events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fires when the joint is broken.  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a4f74becad11b01831634d76131f93d53">More...</a><br /></td></tr>
+<tr class="separator:a4f74becad11b01831634d76131f93d53 inherit events_class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The pulley joint is connected to two bodies and two fixed ground points. The pulley supports a ratio such that: length1 + ratio * length2 constant Yes, the force transmitted is scaled by the ratio. The pulley also enforces a maximum length limit on both sides. This is useful to prevent one side of the pulley hitting the top. </p>
+<div class="textblock"><p>The pulley joint is connected to two bodies and two fixed world points. The pulley supports a ratio such that: length1 + ratio * length2 &lt;= constant Yes, the force transmitted is scaled by the ratio. Warning: the pulley joint can get a bit squirrelly by itself. They often work better when combined with prismatic joints. You should also cover the the anchor points with static shapes to prevent one side from going to zero length. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00065">65</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00063">63</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6668c6fa5a11fe9c4e1560cb6bd958fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6668c6fa5a11fe9c4e1560cb6bd958fc">&#9670;&nbsp;</a></span>PulleyJoint()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6668c6fa5a11fe9c4e1560cb6bd958fc">&#9670;&nbsp;</a></span>PulleyJoint() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -327,14 +325,14 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">Alis.Core.Physic.Dynamics.Joints.PulleyJoint.PulleyJoint </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d0/d0e/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint_def.html">PulleyJointDef</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d7/d96/class_alis_1_1_core_1_1_physic_1_1_definitions_1_1_joints_1_1_pulley_joint_def.html">PulleyJointDef</a>&#160;</td>
           <td class="paramname"><em>def</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Initializes a new instance of the <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html" title="The pulley joint is connected to two bodies and two fixed ground points. The pulley supports a ratio ...">PulleyJoint</a> class </p>
+<p>Initializes a new instance of the <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html" title="The pulley joint is connected to two bodies and two fixed world points. The pulley supports a ratio s...">PulleyJoint</a> class </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">def</td><td>The def</td></tr>
@@ -342,11 +340,130 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00086">86</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00181">181</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5232b8fc894a9059b9ff0877fe3e5198"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5232b8fc894a9059b9ff0877fe3e5198">&#9670;&nbsp;</a></span>PulleyJoint() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Alis.Core.Physic.Dynamics.Joints.PulleyJoint.PulleyJoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td>
+          <td class="paramname"><em>bodyA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&#160;</td>
+          <td class="paramname"><em>bodyB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>anchorA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>anchorB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>worldAnchorA</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector2&#160;</td>
+          <td class="paramname"><em>worldAnchorB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>ratio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>useWorldCoordinates</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor for PulleyJoint. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bodyA</td><td>The first body.</td></tr>
+    <tr><td class="paramname">bodyB</td><td>The second body.</td></tr>
+    <tr><td class="paramname">anchorA</td><td>The anchor on the first body.</td></tr>
+    <tr><td class="paramname">anchorB</td><td>The anchor on the second body.</td></tr>
+    <tr><td class="paramname">worldAnchorA</td><td>The world anchor for the first body.</td></tr>
+    <tr><td class="paramname">worldAnchorB</td><td>The world anchor for the second body.</td></tr>
+    <tr><td class="paramname">ratio</td><td>The ratio.</td></tr>
+    <tr><td class="paramname">useWorldCoordinates</td><td>Set to true if you are using world coordinates as anchors.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00207">207</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad3faee410cbb09779baa9c5d2ce95f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3faee410cbb09779baa9c5d2ce95f73">&#9670;&nbsp;</a></span>ShiftOrigin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void Alis.Core.Physic.Dynamics.Joints.PulleyJoint.ShiftOrigin </td>
+          <td>(</td>
+          <td class="paramtype">ref Vector2&#160;</td>
+          <td class="paramname"><em>newOrigin</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Shifts the origin using the specified new origin </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">newOrigin</td><td>The new origin</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a4517a24987dda6c4a8b32d54c0aaab2a">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00320">320</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
 <a id="a8f76724296f59de98386cf4b7641b19b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f76724296f59de98386cf4b7641b19b">&#9670;&nbsp;</a></span>GetReactionForce()</h2>
 
@@ -357,7 +474,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GetReactionForce </td>
+          <td class="memname">override Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GetReactionForce </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
           <td class="paramname"><em>invDt</em></td><td>)</td>
@@ -378,11 +495,11 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The vec</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The vector</dd></dl>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a27d99104198652c7ab6d0908d8fb7777">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00255">255</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00331">331</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -421,12 +538,10 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a00b1a2e9930b56704275f0e1fe6bac1d">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00266">266</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
 </div>
 </div>
-<a id="a22931d258ab649b339dbe6109c48dc29"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a22931d258ab649b339dbe6109c48dc29">&#9670;&nbsp;</a></span>InitVelocityConstraints()</h2>
+<a id="a4965d6a474f769b24bebf9b10e4ce942"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4965d6a474f769b24bebf9b10e4ce942">&#9670;&nbsp;</a></span>InitVelocityConstraints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -437,8 +552,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">override void Alis.Core.Physic.Dynamics.Joints.PulleyJoint.InitVelocityConstraints </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/dc8/struct_alis_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a>&#160;</td>
-          <td class="paramname"><em>step</em></td><td>)</td>
+          <td class="paramtype">ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -449,22 +564,22 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Inits the velocity constraints using the specified step </p>
+<p>Inits the velocity constraints using the specified data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">step</td><td>The step</td></tr>
+    <tr><td class="paramname">data</td><td>The data</td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a6b52a9bd80615411e448c02d67f74539">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
+<p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a3297f04384b0922fe836b6c5411c6c76">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00275">275</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00348">348</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="a446259fd9fac199946adabde23399b88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a446259fd9fac199946adabde23399b88">&#9670;&nbsp;</a></span>SolveVelocityConstraints()</h2>
+<a id="a186059bb3487452d528991c4e14dfdec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a186059bb3487452d528991c4e14dfdec">&#9670;&nbsp;</a></span>SolveVelocityConstraints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -475,8 +590,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">override void Alis.Core.Physic.Dynamics.Joints.PulleyJoint.SolveVelocityConstraints </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../dc/dc8/struct_alis_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a>&#160;</td>
-          <td class="paramname"><em>step</em></td><td>)</td>
+          <td class="paramtype">ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -487,22 +602,22 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Solves the velocity constraints using the specified step </p>
+<p>Solves the velocity constraints using the specified data </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">step</td><td>The step</td></tr>
+    <tr><td class="paramname">data</td><td>The data</td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a3751db99617c8d3093e8e1d0e63231e6">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
+<p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#aebe1afe4c3a223531a9458f68e88a3e5">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00386">386</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00442">442</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="ab119bd279a0d8ec4168de0935c05b738"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab119bd279a0d8ec4168de0935c05b738">&#9670;&nbsp;</a></span>SolvePositionConstraints()</h2>
+<a id="a6d965667689e6da7cac85ba053bcc799"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d965667689e6da7cac85ba053bcc799">&#9670;&nbsp;</a></span>SolvePositionConstraints()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -513,8 +628,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">override bool Alis.Core.Physic.Dynamics.Joints.PulleyJoint.SolvePositionConstraints </td>
           <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>baumgarte</em></td><td>)</td>
+          <td class="paramtype">ref <a class="el" href="../../d0/da2/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_solver_data.html">SolverData</a>&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -528,21 +643,21 @@ Additional Inherited Members</h2></td></tr>
 <p>Describes whether this instance solve position constraints </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">baumgarte</td><td>The baumgarte</td></tr>
+    <tr><td class="paramname">data</td><td>The data</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The bool</dd></dl>
 
-<p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#a7862f48246a342edc078cb2b9d34a616">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
+<p>Implements <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#ada9adf4f24660bb6148dee2aa18a2fec">Alis.Core.Physic.Dynamics.Joints.Joint</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00449">449</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00474">474</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aad8556439e9df5596406d5c84af4e4b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad8556439e9df5596406d5c84af4e4b6">&#9670;&nbsp;</a></span>MinPulleyLength</h2>
+<a id="ae5b442dacb276fa455a18ba64ea2a4f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5b442dacb276fa455a18ba64ea2a4f3">&#9670;&nbsp;</a></span>constant</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -551,341 +666,24 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MinPulleyLength = 2.0f</td>
+          <td class="memname">readonly float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.constant</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The min pulley length </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00070">70</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a92472da13c22f2d52aad4b4aad70b216"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92472da13c22f2d52aad4b4aad70b216">&#9670;&nbsp;</a></span>LimitState1</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">LimitState</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitState1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The limit state </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00075">75</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a02c8826c675bf240c25d4fa77f3da686"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02c8826c675bf240c25d4fa77f3da686">&#9670;&nbsp;</a></span>LimitState2</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">LimitState</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitState2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The limit state </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00080">80</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3c885a2e53e951ade4479a26a6d79b41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c885a2e53e951ade4479a26a6d79b41">&#9670;&nbsp;</a></span>Anchor1</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Anchor1 =&gt; Body1.GetWorldPoint(<a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a434006526e64cdcae0985089a19ea12d">LocalAnchor1</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the value of the anchor 1 </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00200">200</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a83c3bd6b547dfe68ab84c46f2f07f6ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83c3bd6b547dfe68ab84c46f2f07f6ba">&#9670;&nbsp;</a></span>Anchor2</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override <a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Anchor2 =&gt; Body2.GetWorldPoint(<a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a53d459865d8dafbf1bea145d0b982414">LocalAnchor2</a>)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the value of the anchor 2 </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00205">205</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a658f19f813c37dda105a54eebe44608c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a658f19f813c37dda105a54eebe44608c">&#9670;&nbsp;</a></span>GroundAnchorX1</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchorX1 =&gt; Ground.GetXForm().<a class="el" href="../../d1/d8a/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_position.html">Position</a> + <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a9ccead8d109e8f0d770c4786445a5a26">GroundAnchor1</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the first ground anchor. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00210">210</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a0ff10339cb72b07797a507e44ba2f108"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ff10339cb72b07797a507e44ba2f108">&#9670;&nbsp;</a></span>GroundAnchorX2</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchorX2 =&gt; Ground.GetXForm().<a class="el" href="../../d1/d8a/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_position.html">Position</a> + <a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html#a64b10ae66b5f17a12cf05739ac23da32">GroundAnchor2</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the second ground anchor. </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00215">215</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Property Documentation</h2>
-<a id="a330792315446d4ecd0c0187271a66010"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a330792315446d4ecd0c0187271a66010">&#9670;&nbsp;</a></span>Ground</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Ground</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The ground </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00111">111</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a9ccead8d109e8f0d770c4786445a5a26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ccead8d109e8f0d770c4786445a5a26">&#9670;&nbsp;</a></span>GroundAnchor1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchor1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The ground anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00116">116</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a64b10ae66b5f17a12cf05739ac23da32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64b10ae66b5f17a12cf05739ac23da32">&#9670;&nbsp;</a></span>GroundAnchor2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.GroundAnchor2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The ground anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00121">121</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a434006526e64cdcae0985089a19ea12d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a434006526e64cdcae0985089a19ea12d">&#9670;&nbsp;</a></span>LocalAnchor1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LocalAnchor1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00126">126</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a53d459865d8dafbf1bea145d0b982414"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53d459865d8dafbf1bea145d0b982414">&#9670;&nbsp;</a></span>LocalAnchor2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LocalAnchor2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The local anchor </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00131">131</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="adf0e69f1bba2a43e57c71af31210731b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adf0e69f1bba2a43e57c71af31210731b">&#9670;&nbsp;</a></span>U1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.U1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00136">136</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a0af37313aa6eafc703bc2861737b2c43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0af37313aa6eafc703bc2861737b2c43">&#9670;&nbsp;</a></span>U2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../df/dc0/struct_alis_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.U2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00141">141</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae9eb35ce56e48f6b5d9e4683351c65da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9eb35ce56e48f6b5d9e4683351c65da">&#9670;&nbsp;</a></span>Constant</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Constant</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The constant </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00146">146</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00068">68</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="ab65f6d06addd5414119003bc4b9a76c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab65f6d06addd5414119003bc4b9a76c5">&#9670;&nbsp;</a></span>MaxLength1</h2>
+<a id="a82c068b274e23d735b4efe4ff14ba4b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c068b274e23d735b4efe4ff14ba4b5">&#9670;&nbsp;</a></span>impulse</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -894,154 +692,24 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MaxLength1</td>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.impulse</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The max length </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00151">151</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="af1df06e0db3ceedd7e2f8987da5c2e1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1df06e0db3ceedd7e2f8987da5c2e1a">&#9670;&nbsp;</a></span>MaxLength2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.MaxLength2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The max length </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00156">156</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a5f990d7e727b406cf38b8ca084f0fa28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f990d7e727b406cf38b8ca084f0fa28">&#9670;&nbsp;</a></span>PulleyMass</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.PulleyMass</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The pulley mass </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00163">163</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a805b3ce2e8aa63a91a182dab62cadc48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a805b3ce2e8aa63a91a182dab62cadc48">&#9670;&nbsp;</a></span>LimitMass1</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitMass1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The limit mass </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00168">168</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="a581c856765f46fcf3a460bf04714b9b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a581c856765f46fcf3a460bf04714b9b2">&#9670;&nbsp;</a></span>LimitMass2</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitMass2</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The limit mass </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00173">173</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
-
-</div>
-</div>
-<a id="add59be56ad48aa513c92d264d1a5c640"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add59be56ad48aa513c92d264d1a5c640">&#9670;&nbsp;</a></span>Impulse</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Impulse</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>The impulse </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00180">180</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00073">73</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="a3d17ef9c52987bfc5cae59178539d968"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d17ef9c52987bfc5cae59178539d968">&#9670;&nbsp;</a></span>LimitImpulse1</h2>
+<a id="a0f576eb2409d4c64544bf1880429ce73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f576eb2409d4c64544bf1880429ce73">&#9670;&nbsp;</a></span>indexA</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1050,7 +718,528 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitImpulse1</td>
+          <td class="memname">int Alis.Core.Physic.Dynamics.Joints.PulleyJoint.indexA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The index </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00079">79</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a59a98ce61f6e18e19fa47f97e21de431"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59a98ce61f6e18e19fa47f97e21de431">&#9670;&nbsp;</a></span>indexB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Alis.Core.Physic.Dynamics.Joints.PulleyJoint.indexB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The index </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00084">84</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a72689eb80c69f776f362feb9c62c7588"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72689eb80c69f776f362feb9c62c7588">&#9670;&nbsp;</a></span>invIa</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.invIa</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The inv ia </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00089">89</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a9c5068b335d51a6d9fc97b214cc2eea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c5068b335d51a6d9fc97b214cc2eea7">&#9670;&nbsp;</a></span>invIb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.invIb</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The inv ib </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00094">94</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a57ddc17c46ed13cc25cf2227fb600bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57ddc17c46ed13cc25cf2227fb600bca">&#9670;&nbsp;</a></span>invMassA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.invMassA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The inv mass </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00099">99</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a595b2e301b11dae8458fd3d67545b87c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a595b2e301b11dae8458fd3d67545b87c">&#9670;&nbsp;</a></span>invMassB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.invMassB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The inv mass </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00104">104</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1722ac851404b77ca234d28ab2535451"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1722ac851404b77ca234d28ab2535451">&#9670;&nbsp;</a></span>lengthA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.lengthA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The length </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00109">109</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="abb1d7e638ac7ad42e8837bdd1aae8ef6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb1d7e638ac7ad42e8837bdd1aae8ef6">&#9670;&nbsp;</a></span>lengthB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.lengthB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The length </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00114">114</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5ca2460e7d1a1a839fbbb1a0317abe6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ca2460e7d1a1a839fbbb1a0317abe6c">&#9670;&nbsp;</a></span>localAnchorA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.localAnchorA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The local anchor </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00120">120</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8d1c4a462e6d805c3645d95c429b88d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d1c4a462e6d805c3645d95c429b88d3">&#9670;&nbsp;</a></span>localAnchorB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.localAnchorB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The local anchor </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00125">125</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa5d82b201fb29c8734c4c5da9f02706e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5d82b201fb29c8734c4c5da9f02706e">&#9670;&nbsp;</a></span>localCenterA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.localCenterA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The local center </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00130">130</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a32f3cf3163e37202d7a894a7d726ed33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f3cf3163e37202d7a894a7d726ed33">&#9670;&nbsp;</a></span>localCenterB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.localCenterB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The local center </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00135">135</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7e6b8ac83e79b813d9b11e817e36c288"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e6b8ac83e79b813d9b11e817e36c288">&#9670;&nbsp;</a></span>mass</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.mass</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The mass </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00140">140</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a9dede34d360355a5e5b07bab6d8f7d88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dede34d360355a5e5b07bab6d8f7d88">&#9670;&nbsp;</a></span>rA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.rA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00145">145</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a356e9c4258e6a0b53b9ceda96f855b0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a356e9c4258e6a0b53b9ceda96f855b0b">&#9670;&nbsp;</a></span>ratio</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.ratio</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The ratio </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00150">150</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="af443eb575801fb11c63e1692c7d3c137"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af443eb575801fb11c63e1692c7d3c137">&#9670;&nbsp;</a></span>rB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.rB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00155">155</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="ad07eacf5dcf8322f4e19b34c838bb9cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad07eacf5dcf8322f4e19b34c838bb9cb">&#9670;&nbsp;</a></span>uA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.uA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00160">160</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7fe3dc033da2f404a79877f1fba6da20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fe3dc033da2f404a79877f1fba6da20">&#9670;&nbsp;</a></span>uB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.uB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00165">165</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="af0cc1f404a2006b4012e3bb37d71b460"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0cc1f404a2006b4012e3bb37d71b460">&#9670;&nbsp;</a></span>worldAnchorA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.worldAnchorA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The world anchor </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00170">170</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a05a24ed7ac7ba7b9a8280496e40e8640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05a24ed7ac7ba7b9a8280496e40e8640">&#9670;&nbsp;</a></span>worldAnchorB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.worldAnchorB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The world anchor </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00175">175</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="aa09ec23410cfe47910c76f6ab47215d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa09ec23410cfe47910c76f6ab47215d0">&#9670;&nbsp;</a></span>LocalAnchorA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LocalAnchorA</td>
         </tr>
       </table>
   </td>
@@ -1060,14 +1249,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The limit impulse </p>
+<p>The local anchor point on BodyA </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00185">185</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00244">244</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="add982f80981928f494b4ff41f690bb09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add982f80981928f494b4ff41f690bb09">&#9670;&nbsp;</a></span>LimitImpulse2</h2>
+<a id="ab37dd7e66bc8569cccde8f9d969bcd6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37dd7e66bc8569cccde8f9d969bcd6a">&#9670;&nbsp;</a></span>LocalAnchorB</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1076,7 +1265,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LimitImpulse2</td>
+          <td class="memname">Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LocalAnchorB</td>
         </tr>
       </table>
   </td>
@@ -1086,14 +1275,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The limit impulse </p>
+<p>The local anchor point on BodyB </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00190">190</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00251">251</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="aa63c7bbca4610b79df9cdc43413d0246"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa63c7bbca4610b79df9cdc43413d0246">&#9670;&nbsp;</a></span>State</h2>
+<a id="a550211c87b75701b43dff40fbb5339e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a550211c87b75701b43dff40fbb5339e5">&#9670;&nbsp;</a></span>WorldAnchorA</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1102,7 +1291,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">LimitState</a> Alis.Core.Physic.Dynamics.Joints.PulleyJoint.State</td>
+          <td class="memname">sealed override Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.WorldAnchorA</td>
         </tr>
       </table>
   </td>
@@ -1112,14 +1301,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The state </p>
+<p>Get the first world anchor. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00195">195</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00258">258</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="ae0f95b08802f9a42b1336b81730aa9ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0f95b08802f9a42b1336b81730aa9ba">&#9670;&nbsp;</a></span>Length1</h2>
+<a id="acb2227c7301a5655a96689481d1b02d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb2227c7301a5655a96689481d1b02d7">&#9670;&nbsp;</a></span>WorldAnchorB</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1128,7 +1317,85 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Length1</td>
+          <td class="memname">sealed override Vector2 Alis.Core.Physic.Dynamics.Joints.PulleyJoint.WorldAnchorB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the second world anchor. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00265">265</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a63232bead05860fafa2b35b3e4246698"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63232bead05860fafa2b35b3e4246698">&#9670;&nbsp;</a></span>LengthA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LengthA</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current length of the segment attached to BodyA. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00272">272</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="aaceb75649c8ef37da03bac211789d8a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaceb75649c8ef37da03bac211789d8a3">&#9670;&nbsp;</a></span>LengthB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.LengthB</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the current length of the segment attached to BodyB. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00279">279</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1fa21404effeabde1cda9d88935c408d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa21404effeabde1cda9d88935c408d">&#9670;&nbsp;</a></span>CurrentLengthA</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.CurrentLengthA</td>
         </tr>
       </table>
   </td>
@@ -1138,14 +1405,14 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the current length of the segment attached to body1. </p>
+<p>The current length between the anchor point on BodyA and WorldAnchorA </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00220">220</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00286">286</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
-<a id="af23bb64a37ec01427c90afbbd4f048e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af23bb64a37ec01427c90afbbd4f048e1">&#9670;&nbsp;</a></span>Length2</h2>
+<a id="ae673e9390ddc6f99665119d4232c8b6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae673e9390ddc6f99665119d4232c8b6a">&#9670;&nbsp;</a></span>CurrentLengthB</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1154,7 +1421,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Length2</td>
+          <td class="memname">float Alis.Core.Physic.Dynamics.Joints.PulleyJoint.CurrentLengthB</td>
         </tr>
       </table>
   </td>
@@ -1164,9 +1431,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Get the current length of the segment attached to body2. </p>
+<p>The current length between the anchor point on BodyB and WorldAnchorB </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00234">234</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00298">298</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1192,7 +1459,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the pulley ratio. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00248">248</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html#l00310">310</a> of file <a class="el" href="../../dd/d55/_pulley_joint_8cs_source.html">PulleyJoint.cs</a>.</p>
 
 </div>
 </div>
@@ -1203,7 +1470,7 @@ Additional Inherited Members</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html">Dynamics</a></li><li class="navelem"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html">Joints</a></li><li class="navelem"><a class="el" href="../../db/d43/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_pulley_joint.html">PulleyJoint</a></li>
     <li class="footer">
-      <a>Generated on | Fri Jul 15 2022 |</a>
+      <a>Generated on | Mon Oct 24 2022 |</a>
     </li>
   </ul>
 </div>
