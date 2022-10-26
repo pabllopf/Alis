@@ -1,0 +1,1 @@
+This a example of footer.
