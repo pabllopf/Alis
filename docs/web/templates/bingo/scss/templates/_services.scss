@@ -1,0 +1,70 @@
+/*=================================================================
+  Services section
+==================================================================*/
+
+.services {
+  padding: 100px 0 130px;
+  .service-block {
+    &.color-bg {
+      background:$primary-color;
+      color:$light;
+      i,h3,p {
+        color:$light;
+      }
+    }
+    .service-icon {
+      margin-bottom: 30px;
+    }
+    i {
+      font-size: 75px;
+      color: $primary-color;
+    }
+    h3 {
+      color:#333;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    p {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+
+/*=================================================================
+  Services section 2
+==================================================================*/
+
+.service-2 {
+  .service-item {
+    border: 1px solid #eee;
+    margin-bottom: 30px;
+    padding: 50px 20px;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      box-shadow: 0 5px 65px 0 rgba(0, 0, 0, 0.15);
+      -webkit-box-shadow: 0 5px 65px 0 rgba(0, 0, 0, 0.15);
+    }
+    &:hover i {
+      background: $light;
+      color:$primary-color;
+    }
+    i {
+      font-size: 30px;
+      display: inline-block;
+      background: $primary-color none repeat scroll 0 0;
+      border-radius: 30px;
+      box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.1);
+      color: #fff;
+      height: 55px;
+      line-height: 55px;
+      margin-bottom: 20px;
+      width: 55px;
+      -webkit-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+    }
+  }
+}

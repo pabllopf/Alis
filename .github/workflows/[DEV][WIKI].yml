@@ -1,0 +1,53 @@
+name: "[DEV][WIKI]"
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  CommentCode:
+    runs-on: macos-latest
+    steps:
+      
+      # LOAD REPOSITORY
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      # SETUP DOTNET 
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      # INSTALL ALL WORKLOADS
+      - name: Dotnet install workload
+        run: dotnet workload install android ios
+
+      # LOAD THE CHANGES OF WIKI
+      - name: Push Wiki Changes
+        uses: Andrew-Chen-Wang/github-wiki-action@v3
+        env:
+          # Make sure you have that / at the end. We use rsync 
+          # WIKI_DIR's default is wiki/
+          WIKI_DIR: docs/wiki
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_MAIL: ${{ user.email }}
+          GH_NAME: ${{ github.repository_owner }}
+          #EXCLUDED_FILES: "a/ b.md"
+          
+      # SAVE DATE OF CHANGES.
+      - name: create a file to save the log
+        run: date > ./docs/wiki/last_update.txt
+
+      - name: Commit the changes
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git config core.autocrlf false
+          git add .
+          git commit -m "[BOT] Update the wiki from develop."
+          git push
