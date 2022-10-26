@@ -24,7 +24,7 @@ jobs:
         env:
           # Make sure you have that / at the end. We use rsync 
           # WIKI_DIR's default is wiki/
-          WIKI_DIR: docs/wiki
+          WIKI_DIR: docs/wiki/
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_MAIL: ${{ secrets.GH_MAIL }}
           GH_NAME: ${{ github.repository_owner }}
