@@ -29,16 +29,3 @@ jobs:
           GH_MAIL: ${{ secrets.YOUR_EMAIL }}
           GH_NAME: ${{ github.repository_owner }}
           #EXCLUDED_FILES: "a/ b.md"
-          
-      # SAVE DATE OF CHANGES.
-      #- name: create a file to save the log
-      #  run: date > ./docs/wiki/last_update.txt
-
-      #- name: Commit the changes
-      #  run: |
-      #    git config user.name github-actions
-      #    git config user.email github-actions@github.com
-      #    git config core.autocrlf false
-      #    git add .
-      #    git commit -m "[BOT] Update the wiki from develop."
-      #    git push
