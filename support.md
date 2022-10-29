@@ -17,41 +17,26 @@ Spend time framing questions and add links and resources.
 Spending the extra time up front can help save everyone time in the long run.
 Here are some tips:
 
-* [Talk to a duck][rubberduck]!
-* Don’t fall for the [XY problem][xy]
 * Search to find out if a similar question has been asked
 * Try to define what you need help with:
     * Is there something in particular you want to do?
     * What problem are you encountering and what steps have you taken to try
       and fix it?
     * Is there a concept you don’t understand?
-* Provide sample code, such as a [CodeSandbox][cs] or video, if possible
 * Screenshots can help, but if there’s important text such as code or error
   messages in them, please also provide those as text
 * The more time you put into asking your question, the better we can help you
 
-## Contributions
-
-See [`contributing.md`][contributing] on how to contribute.
-
-## License
-
-[CC-BY-4.0][license] © [Titus Wormer][author]
-
 <!-- Definitions -->
 
-[license]: https://creativecommons.org/licenses/by/4.0/
+[license]: https://github.com/pabllopf/Alis/blob/master/licence.md
 
-[author]: https://wooorm.com
+[author]: https://www.pabllopf.dev/
 
 [coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
 
-[rubberduck]: https://rubberduckdebugging.com
+[chat]: https://github.com/pabllopf/Alis/discussions
 
-[xy]: https://meta.stackexchange.com/questions/66377/what-is-the-xy-problem/66378#66378
-
-[chat]: https://github.com/remarkjs/remark/discussions
-
-[cs]: https://codesandbox.io
+[cs]: https://www.alisengine.com/index.html
 
 [contributing]: contributing.md

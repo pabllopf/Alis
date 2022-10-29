@@ -1,10 +1,10 @@
-name: "[PRO][WIKI]"
+name: "[DEV][WIKI]"
 
 on:
   push:
-    branches: [ master ]
+    branches: [ develop ]
   pull_request:
-    branches: [ master ]
+    branches: [ develop ]
 
 jobs:
   UpdateWiki:
@@ -16,10 +16,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: master
+          ref: develop
           
       - name: copy readme -> home file
-        uses: cp ./readme.md ./docs/wiki/Home.md
+        uses: cp -a ./docs/resources/images/. ./docs/wiki/images/
           
       # LOAD THE CHANGES OF WIKI
       - name: Push Wiki Changes

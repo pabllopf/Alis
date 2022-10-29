@@ -73,7 +73,7 @@ namespace Alis.Benchmark
                 .AddLogger(new ConsoleLogger())
                 .WithUnionRule(ConfigUnionRule.AlwaysUseGlobal)
                 .AddExporter(MarkdownExporter.GitHub)
-                .WithArtifactsPath($"../../../../docs/benchmarks//{DateTime.Now:yyyy-MM-dd}/{typeof(Program).Assembly.FullName}/release/");
+                .WithArtifactsPath($"../../../../docs/resources/benchmarks/{DateTime.Now:yyyy-MM-dd}/");
 
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, config);
 
@@ -91,7 +91,7 @@ namespace Alis.Benchmark
                 .AddLogger(new ConsoleLogger())
                 .WithUnionRule(ConfigUnionRule.AlwaysUseGlobal)
                 .AddExporter(MarkdownExporter.GitHub)
-                .WithArtifactsPath($"../../../../docs/benchmarks//{DateTime.Now:yyyy-MM-dd}/{typeof(Program).Assembly.FullName}/release/");
+                .WithArtifactsPath($"../../../../docs/resources/benchmarks/{DateTime.Now:yyyy-MM-dd}/");
                 
             Summary[] summarys = BenchmarkRunner.Run(typeof(Program).Assembly, config, args);
             
