@@ -34,6 +34,7 @@ Colors:
 /*     General Styles     */
 /**************************/
 
+/*
 @font-face {
     font-family: "myfont";
     src: url("../webfonts/Anaheim-Regular.ttf");
@@ -165,7 +166,7 @@ a.white:hover {
 
 .btn-solid-reg:hover {
 	background-color: transparent;
-	color: #3dcac8; /* needs to stay here because of the color property of a tag */
+	color: #3dcac8; 
 	text-decoration: none;
 }
 
@@ -185,7 +186,7 @@ a.white:hover {
 
 .btn-solid-lg:hover {
 	background-color: transparent;
-	color: #3dcac8; /* needs to stay here because of the color property of a tag */
+	color: #3dcac8; 
 	text-decoration: none;
 }
 
@@ -279,7 +280,7 @@ a.white:hover {
 
 .form-control-input,
 .form-control-select {
-	display: block; /* needed for proper display of the label in Firefox, IE, Edge */
+	display: block; 
 	width: 100%;
 	padding-top: 1.125rem;
 	padding-bottom: 0.125rem;
@@ -290,7 +291,7 @@ a.white:hover {
 	font-size: 0.875rem;
 	line-height: 1.875rem;
 	transition: all 0.2s;
-	-webkit-appearance: none; /* removes inner shadow on form inputs on ios safari */
+	-webkit-appearance: none; 
 }
 
 .form-control-select {
@@ -301,7 +302,7 @@ a.white:hover {
 }
 
 select {
-    /* you should keep these first rules in place to maintain cross-browser behavior */
+   
     -webkit-appearance: none;
 	-moz-appearance: none;
 	-ms-appearance: none;
@@ -314,9 +315,9 @@ select {
 }
 
 .form-control-textarea {
-	display: block; /* used to eliminate a bottom gap difference between Chrome and IE/FF */
+	display: block; 
 	width: 100%;
-	height: 14rem; /* used instead of html rows to normalize height between Chrome and IE/FF */
+	height: 14rem; 
 	padding-top: 1.5rem;
 	padding-left: 1.25rem;
 	border: 1px solid #5a547c;
@@ -331,7 +332,7 @@ select {
 .form-control-select:focus,
 .form-control-textarea:focus {
 	border: 1px solid #9791b9;
-	outline: none; /* Removes blue border on focus */
+	outline: none; 
 }
 
 .form-control-input:hover,
@@ -371,8 +372,7 @@ input[type='checkbox'] {
 	color: #3dcac8;
 }
 
-/* Fade-move Animation For Details Lightbox - Magnific Popup */
-/* at start */
+
 .my-mfp-slide-bottom .zoom-anim-dialog {
 	opacity: 0;
 	transition: all 0.2s ease-out;
@@ -381,7 +381,7 @@ input[type='checkbox'] {
 	transform: translateY(-1.25rem) perspective(37.5rem) rotateX(10deg);
 }
 
-/* animate in */
+
 .my-mfp-slide-bottom.mfp-ready .zoom-anim-dialog {
 	opacity: 1;
 	-webkit-transform: translateY(0) perspective(37.5rem) rotateX(0); 
@@ -389,7 +389,7 @@ input[type='checkbox'] {
 	transform: translateY(0) perspective(37.5rem) rotateX(0); 
 }
 
-/* animate out */
+
 .my-mfp-slide-bottom.mfp-removing .zoom-anim-dialog {
 	opacity: 0;
 	-webkit-transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg); 
@@ -397,13 +397,13 @@ input[type='checkbox'] {
 	transform: translateY(-0.625rem) perspective(37.5rem) rotateX(10deg); 
 }
 
-/* dark overlay, start state */
+
 .my-mfp-slide-bottom.mfp-bg {
 	opacity: 0;
 	transition: opacity 0.2s ease-out;
 }
 
-/* animate in */
+
 .my-mfp-slide-bottom.mfp-ready.mfp-bg {
 	opacity: 0.8;
 }

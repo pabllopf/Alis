@@ -1834,33 +1834,6 @@
                 not change the point count, impulses, etc. The radii must come from the Shapes that generated the manifold.
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Collision.RayCast.RayCastInput">
-            <summary>Ray-cast input data.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.MaxFraction">
-            <summary>
-                The ray extends from p1 to p1 + maxFraction * (p2 - p1). If you supply a max fraction of 1, the ray extends
-                from p1 to p2. A max fraction of 0.5 makes the ray go from p1 and half way to p2.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.Point1">
-            <summary>The starting point of the ray.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.Point2">
-            <summary>The ending point of the ray.</summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Collision.RayCast.RayCastOutput">
-            <summary>Ray-cast output data.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastOutput.Fraction">
-            <summary>
-                The ray hits at p1 + fraction * (p2 - p1), where p1 and p2 come from RayCastInput. Contains the actual
-                fraction of the ray where it has the intersection point.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastOutput.Normal">
-            <summary>The normal of the face of the shape the ray has hit.</summary>
-        </member>
         <member name="T:Alis.Core.Physic.Collision.RayCastHelper">
             <summary>
                 The ray cast helper class
@@ -1899,6 +1872,33 @@
             <param name="transform">The transform</param>
             <param name="output">The output</param>
             <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.RayCast.RayCastInput">
+            <summary>Ray-cast input data.</summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.MaxFraction">
+            <summary>
+                The ray extends from p1 to p1 + maxFraction * (p2 - p1). If you supply a max fraction of 1, the ray extends
+                from p1 to p2. A max fraction of 0.5 makes the ray go from p1 and half way to p2.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.Point1">
+            <summary>The starting point of the ray.</summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.Point2">
+            <summary>The ending point of the ray.</summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Collision.RayCast.RayCastOutput">
+            <summary>Ray-cast output data.</summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastOutput.Fraction">
+            <summary>
+                The ray hits at p1 + fraction * (p2 - p1), where p1 and p2 come from RayCastInput. Contains the actual
+                fraction of the ray where it has the intersection point.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastOutput.Normal">
+            <summary>The normal of the face of the shape the ray has hit.</summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.Shapes.ChainShape">
             <summary>
