@@ -1,7 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base =
-[
-    [ "FilterData", "de/d82/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html", "de/d82/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data" ],
-    [ "PhysicsLogic", "de/d75/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic.html", "de/d75/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic" ],
-    [ "PhysicsLogicFilter", "d1/d7a/struct_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic_filter.html", "d1/d7a/struct_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_physics_logic_filter" ],
-    [ "ShapeData", "dc/d8e/struct_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_shape_data.html", "dc/d8e/struct_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_shape_data" ]
-];
