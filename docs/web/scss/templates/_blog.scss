@@ -1,0 +1,255 @@
+/*=================================================================
+  Latest Posts
+==================================================================*/
+
+.blog {
+  padding-bottom: 110px;
+  padding-top: 70px;
+  background: #F6F6F6;
+}
+
+.post-item {
+  background: $light;
+  margin-bottom: 20px;
+  .content {
+    padding: 20px;
+    h3 {
+      a {
+        color: #000;
+      }
+    }
+    p {
+      color: #757575;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+    .btn-main {
+      padding: 12px 25px;
+      margin: 15px 0;
+    }
+  }
+}
+
+/* 8.2.1 Blog Details */
+
+.blog-details {
+  h3 {
+    font-size: 30px;
+    color: #000;
+    margin-bottom: 10px;
+  }
+}
+
+/* 8.2.2 Post Content */
+
+.post {
+  &-content {
+    ul{
+      margin-bottom: 20px;
+      li{
+        color: #aaa;
+        a{
+          color: #aaa;
+        }
+      }
+    }
+    p{
+      margin-bottom: 30px;
+    }
+    blockquote {
+      border-left: 2px solid $primary-color;
+      padding: 40px 35px;
+      margin-bottom: 30px;
+      background: rgb(238, 238, 238);
+    }
+    &-share {
+      margin-bottom: 100px;
+      li {
+        height: 45px;
+        width: 45px;
+        border: 1px solid #ddd;
+        text-align: center;
+        background: $light;
+        transition: .3s ease;
+        margin-right: 10px;
+        a {
+          i{
+            line-height: 45px;
+            color: $black;
+            transition: .3s ease;
+          }
+        }
+        &:hover {
+          background: $primary-color;
+          border-color: $primary-color;
+          i{
+            color: $light;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 8.2.3 Comment List */
+
+.comment-list {
+  padding-left: 0;
+  margin-bottom: 70px;
+  &-item {
+    padding: 25px 0;
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    &:last-child {
+      border: 0;
+    }
+    &-image {
+      margin-right: 20px;
+    }
+    &-content {
+      h5 {
+        color: $black;
+        margin-bottom: 5px;
+      }
+      h6 {
+        color: $black;
+        margin-bottom: 10px;
+      }
+      p {
+        margin-bottom: 5px;
+      }
+    }
+    .comment-btn {
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background: $light;
+      padding: 10px 30px;
+      border: 1px solid #ddd;
+      text-transform: capitalize;
+      color: #000;
+      font-size: 15px;
+      @media(max-width: 575px) {
+        position: unset;
+      }
+      &:hover {
+        background: $primary-color;
+        color: $light;
+      }
+    }
+  }
+}
+
+/* 8.2.4 Comment Form */
+
+.comment-form {
+  margin-top: 40px;
+  .form-control {
+    background-color: transparent;
+    border: 1px solid #dedede;
+    box-shadow: none;
+    height: 45px !important;
+    color: #0c0c0c;
+    height: 38px;
+    font-size: 14px;
+    border-radius: 0;
+    margin-bottom: 20px;
+  }
+  textarea.form-control {
+    height: 200px !important;
+  }
+  .btn-primary {
+    background: $primary-color;
+    border-radius: 0;
+    padding: 10px 20px;
+    border: 0;
+  }
+}
+
+/* 8.2.5 Widget Style */
+
+.widget {
+  margin-bottom: 30px;
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  &-search {
+    position: relative;
+    .form-control {
+        border: 1px solid #dedede;
+        border-radius: 0;
+        height: 50px;
+    }
+    &-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50px;
+      background: $primary-color;
+      border: 0;
+      i {
+        color: $light;
+      }
+    }
+  }
+  &-categories {
+    &-list {
+      padding-left: 0px;
+      li {
+        border-bottom: 1px solid #ddd;
+        &:last-child {
+          border: 0;
+        }
+        a {
+          display: block;
+          padding: 15px 0;
+          color: #000;
+          font-size: 15px;
+          transition: .3s ease;
+          i {
+            font-size: 10px;
+            margin-right: 10px;
+          }
+          &:hover {
+            background: $primary-color;
+            color: $light;
+            padding-left: 20px;
+          }
+        }
+      }
+    }
+  }
+  &-post {
+    &-list {
+      padding-left: 0;
+      &-item {
+        padding: 15px 0;
+        display: flex;
+      }
+    }
+    &-image {
+      margin-right: 10px;
+      height: 90px;
+      width: 130px;
+      overflow: hidden;
+      img {
+        height: 90px;
+        width: auto;
+      }
+    }
+    &-content {
+      h5 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        transition: .3s ease;
+        color: $black;
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}

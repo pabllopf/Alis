@@ -112,6 +112,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\[PRO][CREATE][WEB].yml = .github\workflows\[PRO][CREATE][WEB].yml
 		.github\workflows\[PRO][NEW][CONTRIBUTORS].yml = .github\workflows\[PRO][NEW][CONTRIBUTORS].yml
 		.github\workflows\[PRO][PUBLISH].yml = .github\workflows\[PRO][PUBLISH].yml
+		.github\workflows\[DEV][WIKI].yml = .github\workflows\[DEV][WIKI].yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issue_template", "issue_template", "{063D29E8-51CF-4155-B23F-8510CA62512A}"
@@ -160,11 +161,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-C
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
 		nuget.config = nuget.config
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{A2BD356E-2DAF-44E6-B145-66CF220C6DB1}"
-	ProjectSection(SolutionItems) = preProject
-		docs\pages\performance.md = docs\pages\performance.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6_Ideation", "6_Ideation", "{9EE7976C-1FE8-4651-9DF1-B6B5116DB053}"
@@ -389,7 +385,6 @@ Global
 		{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
 		{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
 		{015EBC6B-559D-4454-9DB0-8E2D42CBBE34} = {53D32C25-ACBA-467E-AE9F-7BE917C584CE}
-		{A2BD356E-2DAF-44E6-B145-66CF220C6DB1} = {18D887C5-16C4-4B00-95FC-DC5B630309A0}
 		{57842CBA-7614-4155-A02E-6F34BD61EAFB} = {9EE7976C-1FE8-4651-9DF1-B6B5116DB053}
 		{5D263147-B099-4B05-9A2D-6A9FD5585291} = {57842CBA-7614-4155-A02E-6F34BD61EAFB}
 		{315B84F0-A72A-4A76-9B89-E2C9C64060BE} = {57842CBA-7614-4155-A02E-6F34BD61EAFB}

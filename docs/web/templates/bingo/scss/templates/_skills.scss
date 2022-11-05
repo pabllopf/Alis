@@ -1,0 +1,87 @@
+
+/*=================================================================
+  Our skills
+==================================================================*/
+.team-skills {
+  .progress-block {
+    margin-top: 40px;
+    span {
+      display: inline-block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    .progress {
+      box-shadow: none;
+      border-radius: 0;
+      height: 10px;
+      .progress-bar {
+        background:$primary-color;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+
+.clients-logo-slider {
+  margin-top: 50px;
+}
+
+
+
+
+/*=================================================================
+  Step section
+==================================================================*/
+.development-steps {
+  .step {
+    padding:80px 20px;
+    h4 {
+      font-size: 20px;
+      font-weight: 600;
+      i {
+        font-size: 72px;
+        font-weight: 500;
+        margin-right: 10px;
+      }
+    }
+    p {
+      color:#cccccc;
+      font-size: 14px;
+      line-height: 22px;
+    }
+  }
+  .step-1 {
+    background-color:#f2f6f8;
+    h4 {
+      color: #212121;
+    }
+    p {
+      color: #838383;
+    }
+  }
+  .step-2 {
+    background-color: $primary-color;
+    h4,p {
+      color: $light;
+    }
+  }
+  .step-3 {
+    background:darken( $primary-color, 10% );
+    h4,p {
+      color: $light;
+    }
+  }
+  .step-4 {
+    background:darken( $primary-color, 15% );
+    h4,p {
+      color: $light;
+    }
+  }
+}
+
+
+
+
+
+
