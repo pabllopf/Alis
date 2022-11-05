@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util =
-[
-    [ "PointGenerator", "d2/d8f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html", "d2/d8f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator" ],
-    [ "PolygonGenerator", "dc/d90/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_polygon_generator.html", "dc/d90/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_polygon_generator" ]
-];

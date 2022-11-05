@@ -1,6 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon =
-[
-    [ "Polygon", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon.html", "d1/de0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon" ],
-    [ "PolygonPoint", "df/d4f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point.html", "df/d4f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_point" ],
-    [ "PolygonSet", "d4/db2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set.html", "d4/db2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set" ]
-];

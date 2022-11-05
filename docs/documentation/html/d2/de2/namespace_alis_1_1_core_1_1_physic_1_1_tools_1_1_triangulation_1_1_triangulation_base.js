@@ -1,4 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_triangulation_base =
-[
-    [ "Triangulate", "df/dc0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_triangulation_base_1_1_triangulate.html", "df/dc0/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_triangulation_base_1_1_triangulate" ]
-];

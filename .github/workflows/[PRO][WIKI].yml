@@ -1,0 +1,34 @@
+name: "[PRO][WIKI]"
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  UpdateWiki:
+    # only run on ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      
+      # LOAD REPOSITORY
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          
+      - name: copy readme -> home file
+        uses: cp -a ./docs/resources/images/. ./docs/wiki/images/
+          
+      # LOAD THE CHANGES OF WIKI
+      - name: Push Wiki Changes
+        uses: Andrew-Chen-Wang/github-wiki-action@v3
+        env:
+          # Make sure you have that / at the end. We use rsync 
+          # WIKI_DIR's default is wiki/
+          WIKI_DIR: docs/wiki/
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_MAIL: ${{ secrets.GH_MAIL }}
+          GH_NAME: ${{ github.repository_owner }}
+          #EXCLUDED_FILES: "a/ b.md"
