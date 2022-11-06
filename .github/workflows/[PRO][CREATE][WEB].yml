@@ -18,11 +18,8 @@ jobs:
         with:
           ref: master
 
-      - name: change dir
-        run: cd .\\.tools\\windows\\doxygen
-
       - name: Generate web
-        run: .\\doxygen.exe .\\web_config
+        run: cd .\\.tools\\windows\\doxygen && .\\doxygen.exe .\\web_config
 
       - name: git config user.name github-actions
         run: git config user.name github-actions
