@@ -8,7 +8,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    
+
 jobs:
   Create_Web:
     runs-on: windows-latest
@@ -18,8 +18,11 @@ jobs:
         with:
           ref: master
 
+      - name: change dir
+        run: .\\.tools\\windows
+
       - name: Generate web
-        run: .\\.tools\\windows\\doxygen\\doxygen.exe .\\.tools\\windows\\doxygen\\web_config
+        run: .\\doxygen.exe .\\web_config
 
       - name: git config user.name github-actions
         run: git config user.name github-actions
