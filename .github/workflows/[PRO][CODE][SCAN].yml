@@ -4,10 +4,6 @@ name: "[PRO][CODE][SCAN]"
 on:
   schedule:
     - cron: '30 2 * * *'
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   analyze:
