@@ -164,7 +164,7 @@ Fixed Navigation
 				</div>
 			</li>
 
-			<li class="nav-item dropdown active">
+			<li class="nav-item dropdown ">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 19 19">
@@ -198,7 +198,7 @@ Fixed Navigation
 
 			
 
-			<li class="nav-item dropdown">
+			<li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 					aria-haspopup="true" aria-expanded="false">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-heart" viewBox="0 0 19 19">
@@ -322,7 +322,7 @@ Fixed Navigation
 		var $ = function (id) { return document.getElementById(id); };
 		
 		var client = new XMLHttpRequest();
-		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/develop/quick_start.md');
+		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/master/support.md');
 		client.onreadystatechange = function() {
 			$("preview").innerHTML = markdown.toHTML(client.responseText);
 		}
