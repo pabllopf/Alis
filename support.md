@@ -27,8 +27,6 @@ Here are some tips:
   messages in them, please also provide those as text
 * The more time you put into asking your question, the better we can help you
 
-<!-- Definitions -->
-
 [license]: https://github.com/pabllopf/Alis/blob/master/licence.md
 
 [author]: https://www.pabllopf.dev/
