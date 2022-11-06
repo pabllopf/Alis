@@ -19,7 +19,7 @@ jobs:
           ref: master
           
       - name: copy readme -> home file
-        uses: cp -a ./docs/resources/images/. ./docs/wiki/images/
+        run: cp -a ./docs/resources/images/. ./docs/wiki/images/
           
       # LOAD THE CHANGES OF WIKI
       - name: Push Wiki Changes
