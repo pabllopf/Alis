@@ -19,7 +19,7 @@ jobs:
           ref: master
 
       - name: change dir
-        run: .\\.tools\\windows
+        run: cd .\\.tools\\windows
 
       - name: Generate web
         run: .\\doxygen.exe .\\web_config
