@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_velocity =
+[
+    [ "VelocityLimitController", "d7/d35/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_velocity_1_1_velocity_limit_controller.html", "d7/d35/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_velocity_1_1_velocity_limit_controller" ]
+];

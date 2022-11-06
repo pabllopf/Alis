@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_bayazit =
+[
+    [ "BayazitDecomposer", "d3/d2c/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_bayazit_decomposer.html", "d3/d2c/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_bayazit_decomposer" ]
+];
