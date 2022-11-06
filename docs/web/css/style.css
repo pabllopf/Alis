@@ -468,7 +468,7 @@ a:focus, a:hover {
   border: 0;
   border-radius: 0;
   top: 80%;
-  left: 5px;
+  left: 0px;
   display: block;
   visibility: hidden;
   transition: .3s ease;
@@ -2516,4 +2516,45 @@ a.back-to-top {
 a:hover.back-to-top {
 	background-color: #249492;
 }
+
+
+.active {
+ 
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.navbar-dark .navbar-nav .active .nav-link {
+  color: white;
+}
+
+
+
+.active::after {
+  content: '';
+  position: absolute;
+  width: 98%;
+  transform: scaleX(1);
+  height: 2px;
+  bottom: 0;
+  left: 3px;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.active:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+@media (min-width: 768px) { 
+  
+  .contact-form {
+    padding: 0em 10em;
+  }
+}
+
+
 
