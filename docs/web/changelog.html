@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--Security-->
-	<meta http-equiv="Content-Security-Policy" content="script-src 'none'">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-hashes' 'unsafe-inline' *;">
   
 	<!-- SEO Meta Tags -->
 	<meta name="author" content="Pablo Perdomo Falcón">
@@ -49,6 +49,8 @@
 	
 	<!-- Main Stylesheet -->
 	<link rel="stylesheet" href="css/style.css"> 
+
+	
 </head>
 
 <body id="body">
@@ -293,25 +295,28 @@ Fixed Navigation
   </header>
 
 
-<div style="padding: 4em 0em;" id="preview" > </div>
+<div style="padding: 4em 4em;" id="preview" > </div>
 
-    <script src="js/markdown.js"></script>
-    <script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/13.0.1/markdown-it.js" integrity="sha512-yucm4wm2T2mZNzxtKGWQLTsMAGI+KNFRLsfFDNO9SqdMn9eauAORCybt1UnXRAAlrxJoFpdLSR9lhfuCKx22kQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it-emoji/2.0.2/markdown-it-emoji.js" integrity="sha512-PGY1uBw6mUGcfHJzpS8DMYXSqtOd2pFLMx/VRL8iv+5RHsquay3Lcvzgc1BVOwTbFuVoOYX/ERNN8UA0biGiow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
 	
 	  window.onload = function exampleFunction() {
 		//alert('The Script will load now.');
 		var $ = function (id) { return document.getElementById(id); };
-		
+
+		var md = window.markdownit().use(window.markdownitEmoji);
+
 		var client = new XMLHttpRequest();
 		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/master/changelog.md');
 		client.onreadystatechange = function() {
-			$("preview").innerHTML = markdown.toHTML(client.responseText);
+			$("preview").innerHTML = md.render(client.responseText);			
 		}
 		client.send();
       }
 
     </script>
-	
+
 <footer class="bg-dark text-center text-white">
 	<!-- Grid container -->
 	<div class="container p-2 pb-0">
@@ -367,5 +372,6 @@ Fixed Navigation
     <!-- Custom js -->
     <script src="js/script.js"></script>
 
+	
   </body>
   </html>

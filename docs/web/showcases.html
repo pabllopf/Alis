@@ -299,24 +299,10 @@ Fixed Navigation
   </header>
 
 
-<div style="padding: 4em 0em;" id="preview" > </div>
 
-    <script src="js/markdown.js"></script>
-    <script>
-	
-	  window.onload = function exampleFunction() {
-		//alert('The Script will load now.');
-		var $ = function (id) { return document.getElementById(id); };
-		
-		var client = new XMLHttpRequest();
-		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/master/showcases.md');
-		client.onreadystatechange = function() {
-			$("preview").innerHTML = markdown.toHTML(client.responseText);
-		}
-		client.send();
-      }
-
-    </script>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
+  <zero-md style="padding: 4em 4em;" src="https://raw.githubusercontent.com/pabllopf/Alis/master/showcases.md"></zero-md>
+   
     
 	<footer class="bg-dark text-center text-white">
 		<!-- Grid container -->

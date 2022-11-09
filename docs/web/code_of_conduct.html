@@ -13,7 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--Security-->
-	<meta http-equiv="Content-Security-Policy" content="script-src 'none'">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-hashes' 'unsafe-inline' *;">
   
 	<!-- SEO Meta Tags -->
 	<meta name="author" content="Pablo Perdomo Falcón">
@@ -295,24 +295,10 @@ Fixed Navigation
 	</div>
   </header>
 
-<div style="padding: 4em 0em;" id="preview" > </div>
+  <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
+  <zero-md style="padding: 4em 4em;" src="https://raw.githubusercontent.com/pabllopf/Alis/master/code_of_conduct.md"></zero-md>
+   
 
-    <script src="js/markdown.js"></script>
-    <script>
-	
-	  window.onload = function exampleFunction() {
-		//alert('The Script will load now.');
-		var $ = function (id) { return document.getElementById(id); };
-		
-		var client = new XMLHttpRequest();
-		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/master/code_of_conduct.md');
-		client.onreadystatechange = function() {
-			$("preview").innerHTML = markdown.toHTML(client.responseText);
-		}
-		client.send();
-      }
-
-    </script>
     
 	<footer class="bg-dark text-center text-white">
 		<!-- Grid container -->
