@@ -29,7 +29,7 @@
 	<title>Alis Engine | Develop the videogames of your dreams. </title>
 
 	<!-- canonical  -->
-	<link rel=»canonical» href=»https://www.alisengine.com/web/quick_start.html» />
+	<link rel=»canonical» href=»https://www.alisengine.com/web/donate.html» />
 
 	<!-- Favicon  -->
 	<link rel="icon" href="images/logo_final_redondo.png">
@@ -72,7 +72,9 @@
   ==================================== -->
 
 
-  <!--
+  
+
+<!--
 Fixed Navigation
 ==================================== -->
 <header class="navigation fixed-top">
@@ -95,7 +97,7 @@ Fixed Navigation
 		<div class="collapse navbar-collapse" id="navigation">
 		  <ul class="navbar-nav ml-left text-left">
 			
-			  <li class="nav-item dropdown ">
+			  <li class="nav-item dropdown">
 				  <a class="nav-link" href="index.html">
 					  <svg xmlns="http://www.w3.org/2000/svg"  width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 19 19">
 						  <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
@@ -162,7 +164,7 @@ Fixed Navigation
 				  </div>
 			  </li>
   
-			  <li class="nav-item dropdown active">
+			  <li class="nav-item dropdown">
 				  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 					  aria-haspopup="true" aria-expanded="false">
 					  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-mortarboard" viewBox="0 0 19 19">
@@ -196,7 +198,7 @@ Fixed Navigation
   
 			  
   
-			  <li class="nav-item dropdown">
+			  <li class="nav-item dropdown active">
 				  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
 					  aria-haspopup="true" aria-expanded="false">
 					  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-heart" viewBox="0 0 19 19">
@@ -320,7 +322,7 @@ Fixed Navigation
 		var $ = function (id) { return document.getElementById(id); };
 		
 		var client = new XMLHttpRequest();
-		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/master/quick_start.md');
+		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/master/donate.md');
 		client.onreadystatechange = function() {
 			$("preview").innerHTML = markdown.toHTML(client.responseText);
 		}
