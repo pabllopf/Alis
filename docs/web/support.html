@@ -13,8 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--Security-->
-	<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-hashes' 'unsafe-inline' *;">
-
+	<meta http-equiv="Content-Security-Policy" content="default-src  'unsafe-eval' 'unsafe-hashes' 'unsafe-inline' * ; img-src data: * ">
+	
 	<!-- SEO Meta Tags -->
 	<meta name="author" content="Pablo Perdomo Falcón">
 	<meta name="description" content="Alis Engine | Develop the videogames of your dreams.">
@@ -49,7 +49,6 @@
 	
 	<!-- Main Stylesheet -->
 	<link rel="stylesheet" href="css/style.css"> 
-
 
 </head>
 
@@ -297,8 +296,8 @@ Fixed Navigation
 
 
 
-<script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
-<zero-md style="padding: 4em 4em;" src="https://raw.githubusercontent.com/pabllopf/Alis/master/support.md"></zero-md>
+	<script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
+	<zero-md class="custom_md" src="https://raw.githubusercontent.com/pabllopf/Alis/master/support.md"></zero-md>
  
     
 	<footer class="bg-dark text-center text-white">
@@ -340,9 +339,7 @@ Fixed Navigation
 		<!-- end Footer Area
 		========================================== -->
     
-
-    
-    <!-- 
+       <!-- 
     Essential Scripts
     =====================================-->
     <!-- Main jQuery -->
@@ -356,6 +353,7 @@ Fixed Navigation
     
     <!-- Custom js -->
     <script src="js/script.js"></script>
+    
 
   </body>
   </html>

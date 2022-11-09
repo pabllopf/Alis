@@ -13,8 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!--Security-->
-	<meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-hashes' 'unsafe-inline' *;">
-  
+	<meta http-equiv="Content-Security-Policy" content="default-src  'unsafe-eval' 'unsafe-hashes' 'unsafe-inline' * ; img-src data: * ">
+	
 	<!-- SEO Meta Tags -->
 	<meta name="author" content="Pablo Perdomo Falcón">
 	<meta name="description" content="Alis Engine | Develop the videogames of your dreams.">
@@ -299,7 +299,7 @@ Fixed Navigation
 
 
   <script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@2/dist/zero-md.min.js"></script>
-  <zero-md style="padding: 4em 4em;" src="https://raw.githubusercontent.com/pabllopf/Alis/master/donate.md"></zero-md>
+  <zero-md  class="custom_md" src="https://raw.githubusercontent.com/pabllopf/Alis/master/donate.md"></zero-md>
    
     
     
@@ -358,6 +358,5 @@ Fixed Navigation
     
     <!-- Custom js -->
     <script src="js/script.js"></script>
-
   </body>
   </html>

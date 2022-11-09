@@ -2558,3 +2558,13 @@ a:hover.back-to-top {
 
 
 
+.custom_md{
+  padding: 5em 2em;
+}
+
+@media (min-width: 768px) { 
+  
+  .custom_md{
+    padding: 5em 4em;
+  }
+}

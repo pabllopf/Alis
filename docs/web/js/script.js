@@ -20,11 +20,11 @@
   $('.hero-slider').slick({
     autoplay: true,
     infinite: true,
-    arrows: false,
+    arrows: true,
     prevArrow: '<button type=\'button\' class=\'prevArrow\'></button>',
     nextArrow: '<button type=\'button\' class=\'nextArrow\'></button>',
     dots: false,
-    autoplaySpeed: 15000,
+    autoplaySpeed: 7000,
     pauseOnFocus: false,
     pauseOnHover: false
   });
@@ -43,7 +43,7 @@
       $('.navigation').addClass('sticky-header');
     } else {
       //console.log('a');
-      $('.navigation').addClass('sticky-header');
+      $('.navigation').removeClass('sticky-header');
     }
   });
 
@@ -101,6 +101,7 @@
     slidesToShow: 5,
     slidesToScroll: 1
   });
+
 
 
 
