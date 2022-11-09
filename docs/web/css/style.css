@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,500,600,700,700|Source+Sans+Pro:400,600");
 body {
   line-height: 2.1;
   font-family: "Source Sans Pro", sans-serif;
@@ -420,8 +421,6 @@ a:focus, a:hover {
 .navigation .logo-default {
   display: none;
   margin-bottom: 5px;
-  width: 45px;
-  height: 45px;
 }
 
 
