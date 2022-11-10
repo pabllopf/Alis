@@ -955,6 +955,7 @@ a:focus, a:hover {
   border-radius: 0;
 }
 
+
 .contact-form input:hover,
 .contact-form textarea:hover,
 .contact-form #contact-submit:hover {
@@ -1510,6 +1511,12 @@ a:focus, a:hover {
   text-align: center;
   width: 35px;
 }
+
+.hover_custom:hover {
+  padding: 7px;
+}
+
+
 
 .team .member-photo .mask ul li a::hover {
   background-color: #6cb670;
