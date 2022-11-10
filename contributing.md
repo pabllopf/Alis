@@ -1,7 +1,7 @@
 # Contributing Guide
 
 Thank you for investing your time in contributing to our project! Any contribution you make will be reflected
-on [docs.github.com](https://docs.github.com/en) :sparkles:.
+on [docs.github.com](https://docs.github.com/en) 
 
 Read our [Code of Conduct](./code_of_conduct.md) to keep our community approachable and respectable.
 
@@ -21,12 +21,12 @@ open source contributions:
 ## Getting started
 
 To navigate our codebase with confidence,
-see [the introduction to working in the docs repository](/contributing/working-in-docs-repository.md) :confetti_ball:.
+see [the introduction to working in the docs repository](/contributing/working-in-docs-repository.md).
 For more information on how we write our markdown files,
 see [the GitHub Markdown reference](contributing/content-markup-reference.md).
 
 Check to see what [types of contributions](/contributing/types-of-contributions.md) we accept before making changes.
-Some of them don't even require writing a single line of code :sparkles:.
+Some of them don't even require writing a single line of code.
 
 ### Issues
 
@@ -74,7 +74,7 @@ see "[Working in a codespace](https://github.com/github/docs/blob/main/contribut
     - [Fork the repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo#fork-an-example-repository)
       so that you can make your changes without affecting the original project until you're ready to merge them.
 
-3. Install or update to **Node.js v16**. For more information, see [the development guide](contributing/development.md).
+3. Install or update to xxxxx. For more information, see [the development guide](contributing/development.md).
 
 4. Create a working branch and start with your changes!
 
@@ -114,7 +114,7 @@ When you're finished with the changes, create a pull request, also known as a PR
 
 ### Your PR is merged!
 
-Congratulations :tada::tada: The GitHub team thanks you :sparkles:.
+Congratulations The GitHub team thanks you.
 
 Once your PR is merged, your contributions will be publicly visible on the [GitHubs docs](https://docs.github.com/en).
 
