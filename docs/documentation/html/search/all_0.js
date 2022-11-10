@@ -37,6 +37,5 @@ var searchData=
   ['_5ftmpc_34',['_tmpC',['../d0/dda/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer.html#ad14b5e1924d88e6decff20911dbbfb23',1,'Alis::Core::Physic::Tools::Triangulation::FlipCode::FlipcodeDecomposer']]],
   ['_5ftrygetbufferfailurelogged_35',['_tryGetBufferFailureLogged',['../da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a32a24a099ce4ac02eab9fe30f21d1c0b',1,'Alis::Core::Network::Internal::WebSocketImplementation']]],
   ['_5fusepermessagedeflate_36',['_usePerMessageDeflate',['../da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a5f8d53537efa6b9c79df94fa84d8b3be',1,'Alis::Core::Network::Internal::WebSocketImplementation']]],
-  ['_5fwebsocket_37',['_webSocket',['../da/d5f/class_alis_1_1_core_1_1_network_1_1_ping_pong_manager.html#a2ac88749603a33ecec4cc5ea98bdca23',1,'Alis::Core::Network::PingPongManager']]],
-  ['_5ffooter_38',['_Footer',['../dd/d9e/md__d__a__alis__alis_docs_wiki___footer.html',1,'']]]
+  ['_5fwebsocket_37',['_webSocket',['../da/d5f/class_alis_1_1_core_1_1_network_1_1_ping_pong_manager.html#a2ac88749603a33ecec4cc5ea98bdca23',1,'Alis::Core::Network::PingPongManager']]]
 ];

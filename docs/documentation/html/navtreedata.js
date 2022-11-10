@@ -25,21 +25,6 @@
 var NAVTREE =
 [
   [ "ALIS", "index.html", [
-    [ "_Footer", "dd/d9e/md__d__a__alis__alis_docs_wiki___footer.html", null ],
-    [ "Home", "d8/d66/md__d__a__alis__alis_docs_wiki___sidebar.html", [
-      [ "Performance", "d8/d66/md__d__a__alis__alis_docs_wiki___sidebar.html#autotoc_md1", null ],
-      [ "Licence", "d8/d66/md__d__a__alis__alis_docs_wiki___sidebar.html#autotoc_md2", null ]
-    ] ],
-    [ "Alis", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html", [
-      [ "General Public License v3.0", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md4", null ],
-      [ "Contributor Guide", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md5", null ],
-      [ "Contributor Covenant Code of Conduct", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md6", null ],
-      [ "Authors", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md7", null ],
-      [ "Sponsors", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md8", null ],
-      [ "Collaborators", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md9", null ],
-      [ "Contributors", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md10", null ],
-      [ "Bots", "dd/d8e/md__d__a__alis__alis_docs_wiki__home.html#autotoc_md11", null ]
-    ] ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],
       [ "Package Functions", "namespacemembers.html", [
@@ -78,18 +63,18 @@ var NAVTREEINDEX =
 "d7/d1c/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_listener.html#addca32cfd74f5a4a7b8d934c52e1326b",
 "d7/d99/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_shader.html#af7ea18d4ce6122c20c91b85b98025a1c",
 "d8/d43/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_polygon_shape.html",
-"d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#aec699481c406e3e678da45ed27e9ced9",
-"d9/d85/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_fixed_mouse_joint.html#a489a0d788a1fb8aa036d0a9b1f44f517",
-"da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a32a24a099ce4ac02eab9fe30f21d1c0b",
-"db/d01/class_alis_1_1_core_1_1_network_1_1_http_helper.html#af95b0bc6e117667f94d7605682e096b5",
-"db/d5a/class_alis_1_1_core_1_1_component_1_1_render_1_1_camera.html",
-"dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html#a8ce4ccee6c55f78f800fb04d6124c145",
-"dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a38b3e2cd081d52318f0d7b37c77cd373",
-"dd/d1c/class_alis_1_1_core_1_1_component_1_1_render_1_1_animation.html#aabb31ab18f506e6d2405cfbc2b71ad07",
-"dd/ddf/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a177cecef073b8e04a98bfaf6aa88fc4c",
-"de/db6/interface_alis_1_1_core_1_1_audio_1_1_o_s_1_1_interfaces_1_1_i_player.html#af8518288d5f33974d0404eea322f3f64",
-"df/d15/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#ac33237dc9727eca970a821fe0cd89097",
-"df/db5/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music.html#ac10516013d523ef766a69bcbb4129408"
+"d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#af89f6e970c7363b66fae001063695985",
+"d9/d85/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_fixed_mouse_joint.html#a6ef1f19b57fe72a8673da7ade452ecb1",
+"da/d64/class_alis_1_1_core_1_1_network_1_1_internal_1_1_web_socket_implementation.html#a35873b3f92b9436efa196b031e89f423",
+"db/d05/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_position2_d.html#a5830ba7dc08801b0a650f453e3306334",
+"db/d5a/class_alis_1_1_core_1_1_component_1_1_render_1_1_camera.html#a59453148873a6340e477155546c8959c",
+"dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html#adbdd57a36e0bdae256ed23e5f22f9140",
+"dc/dc2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_distance_joint.html#a52e21c96142d6e53ce8ef31c24f79817",
+"dd/d1c/class_alis_1_1_core_1_1_component_1_1_render_1_1_animation.html#af79ee7d784bb7a14e65508b2e054b550",
+"dd/ddf/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a8ddac070b9a41d736b91dcfde7ae0d2b",
+"de/dbb/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_gear_joint.html#a1c76c0d7c24f8b02420615d185ab61b2",
+"df/d1f/namespace_alis_1_1_core_1_1_component_1_1_light.html",
+"df/db5/class_alis_1_1_core_1_1_audio_1_1_s_f_m_l_1_1_music.html#afe5203aaaed5e243d81f2c30c8203699"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
