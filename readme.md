@@ -1,6 +1,6 @@
 # Alis
 
-[![](https://github.com/pabllopf/Alis/blob/master/docs/resources/images/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
+[![](docs/resources/images/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
 [![Platform](https://shields.io/badge/Platform-Windows%20%7C%20OSX%20%7C%20Linux%20%7C%20IOS%20%7C%20Android-blue)]()
 [![Release](https://img.shields.io/github/release/pabllopf/alis.svg)](https://github.com/pabllopf/alis/releases/latest)
@@ -16,7 +16,7 @@
 > and modifications, which include larger works using a licensed work, under the same license. Copyright and license
 > notices must be preserved. Contributors provide an express grant of patent rights.
 
-[![License](docs/resources/license/License.png)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
+[![License](docs/resources/images/License.png)](https://github.com/pabllopf/Alis/blob/master/LICENSE)
 
 [![](https://img.shields.io/badge/Read%20More--blue)](https://github.com/pabllopf/Alis/blob/master/licence.md)
 
