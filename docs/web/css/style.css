@@ -450,7 +450,7 @@ a:focus, a:hover {
 
 @media (max-width: 991px) {
   .navigation .nav-link {
-    padding: 10px !important;
+    padding: 7px !important;
   }
 }
 
