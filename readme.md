@@ -1,5 +1,3 @@
-# Alis
-
 [![](docs/resources/images/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
 [![Platform](https://shields.io/badge/Platform-Windows%20%7C%20OSX%20%7C%20Linux%20%7C%20IOS%20%7C%20Android-blue)]()
