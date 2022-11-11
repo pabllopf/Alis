@@ -1,4 +1,3 @@
 # Home
-# Performance 
-# Licence 
+
 
