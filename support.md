@@ -31,10 +31,10 @@ Here are some tips:
 
 [author]: https://www.pabllopf.dev/
 
-[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
+[coc]: https://www.alisengine.com/web/code_of_conduct.html
 
 [chat]: https://github.com/pabllopf/Alis/discussions
 
 [cs]: https://www.alisengine.com/index.html
 
-[contributing]: contributing.md
+[contributing]: https://www.alisengine.com/web/contributing.html
