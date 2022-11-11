@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/pabllopf/alis/total?color=blue)]()
 [![Web](https://img.shields.io/website?down_color=red&down_message=failed&up_color=blue&up_message=active&url=https%3A%2F%2Fpabllopf.github.io%2FAlis%2F)](https://pabllopf.github.io/Alis/index.html)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pabllopf)
 <img src="https://visitor-badge.laobi.icu/badge?page_id=pabllopf.alis">
 > Develop the video games of your dreams.
 
