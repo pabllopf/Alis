@@ -2477,6 +2477,10 @@ a:focus, a:hover {
   }
 }
 
+.row {
+  margin-right: 0px; 
+   margin-left: 0px; 
+}
 
 .video-header {
   position: absolute;
