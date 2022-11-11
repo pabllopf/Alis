@@ -6,7 +6,7 @@
 <p align="center">
 	<a href="https://www.paypal.me/pabllopf"><img width="185" src="docs/resources/images/badge.png" alt="Badge"></a>
 	<br><br>
-	<b>🙌 Use <a href="https://yourdonation.rocks">donations</a> to help support <b>our</b> project! 🙌</b>
+	<b>🙌 Use <a href="https://www.paypal.me/pabllopf">donations</a> to help support <b>our</b> project! 🙌</b>
 </p>
 <br>
 
