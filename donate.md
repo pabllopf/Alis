@@ -4,7 +4,7 @@
 
 <br>
 <p align="center">
-	<a href="https://www.paypal.me/pabllopf"><img width="185" src="https://raw.githubusercontent.com/pabllopf/Alis/master/docs/resources/images/badge.svg" alt="Badge"></a>
+	<a href="https://www.paypal.me/pabllopf"><img width="185" src="https://raw.githubusercontent.com/pabllopf/Alis/master/docs/resources/images/badge.png" alt="Badge"></a>
 	<br><br>
 	<b>🙌 Use <a href="https://www.paypal.me/pabllopf">donations</a> to help support <b>our</b> project! 🙌</b>
 </p>
