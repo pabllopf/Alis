@@ -1,5 +1,7 @@
+
+
 <h1 align="center">
-    <a href="https://www.paypal.me/pabllopf"><img width="250" src="https://github.com/pabllopf/Alis/blob/master/docs/resources/images/heart3.png" alt="Donations"><p></a>
+    <img width="250" src="https://github.com/pabllopf/Alis/blob/master/docs/resources/images/heart3.png" alt="Donations">
 </h1>
 
 <br>
