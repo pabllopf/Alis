@@ -66,6 +66,13 @@
             <br />
             <sub><b>Carlos</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/roseralmenar">
+            <img src="https://avatars.githubusercontent.com/u/118014440?v=4" width="75;" alt="roseralmenar"/>
+            <br />
+            <sub><b>Roser Almenar</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: collaborators -end -->
