@@ -125,6 +125,13 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
             <br />
             <sub><b>Carlos</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/roseralmenar">
+            <img src="https://avatars.githubusercontent.com/u/118014440?v=4" width="75;" alt="roseralmenar"/>
+            <br />
+            <sub><b>Roser Almenar</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: collaborators -end -->
@@ -189,6 +196,13 @@ socio-economic status, nationality, personal appearance, race, religion, or sexu
             <img src="https://avatars.githubusercontent.com/u/43152062?v=4" width="75;" alt="RaulLozanoPonce"/>
             <br />
             <sub><b>Raúl Lozano Ponce</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/roseralmenar">
+            <img src="https://avatars.githubusercontent.com/u/118014440?v=4" width="75;" alt="roseralmenar"/>
+            <br />
+            <sub><b>Roser Almenar</b></sub>
         </a>
     </td>
     <td align="center">
