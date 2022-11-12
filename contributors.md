@@ -61,6 +61,13 @@
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/roseralmenar">
+            <img src="https://avatars.githubusercontent.com/u/118014440?v=4" width="75;" alt="roseralmenar"/>
+            <br />
+            <sub><b>Roser Almenar</b></sub>
+        </a>
+    </td>
+    <td align="center">
         <a href="https://github.com/suarez0965">
             <img src="https://avatars.githubusercontent.com/u/82760316?v=4" width="75;" alt="suarez0965"/>
             <br />
