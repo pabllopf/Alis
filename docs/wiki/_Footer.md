@@ -1,1 +1,1 @@
-This a example of footer.
+GPL-3.0 license @Alis
