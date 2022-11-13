@@ -2041,10 +2041,12 @@ a:focus, a:hover {
 /*=================================================================
   Footer section
 ==================================================================*/
-.top-footer {
-  background-color: #222222;
-  border-top: 1px solid #404040;
-  padding: 100px 0 80px;
+.footer_custom {
+  background-color: rgb(32, 35, 55);
+}
+
+.bg-dark{
+  background-color: rgb(32, 35, 55);
 }
 
 .top-footer h3 {
@@ -2475,6 +2477,12 @@ a:focus, a:hover {
     display: none;
 
   }
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #0D5B96 !important;
+  border-color: #0D5B96 !important;
+  color: #FFFFFF !important;
 }
 
 .row {
