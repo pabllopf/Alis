@@ -2,14 +2,8 @@
 name: "[PRO][CREATE][WEB]"
 
 on:
-  push:
-    branches: [ master ]
-    paths:
-      - 'docs/**'
-  pull_request:
-    branches: [ master ]
-    paths:
-      - 'docs/**'
+  schedule:
+    - cron: '30 1 * * *'
 
 jobs:
   Create_Web:
