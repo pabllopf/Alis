@@ -143,6 +143,7 @@
 })(jQuery);
 
 
+/*
 (function($){
 	var canvas = $('#bg').children('canvas'),
 		background = canvas[0],
@@ -378,3 +379,4 @@
 		});
 	}
 })(jQuery);
+*/
