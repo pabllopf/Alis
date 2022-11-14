@@ -2600,3 +2600,24 @@ a:hover.back-to-top {
     padding: 5em 4em;
   }
 }
+
+/* BACKGROUND */
+
+#bg {
+  background: #1b00ff5c;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+
+#bg canvas {
+  background: #9d57f733;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
