@@ -390,6 +390,11 @@ a:focus, a:hover {
   display: inline;
 }
 
+.logo img{
+  width: 45px;
+  height: 45px;
+}
+
 .single-page-header {
   background-image: url("../images/about/about-header.jpg");
   background-size: cover;
