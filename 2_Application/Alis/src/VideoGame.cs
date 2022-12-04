@@ -30,6 +30,7 @@
 using System.Collections.Generic;
 using Alis.Builder;
 using Alis.Core;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Manager;
 using Alis.Core.Manager.Audio;
 using Alis.Core.Manager.Graphic;
@@ -65,6 +66,8 @@ namespace Alis
                 AudioManager,
                 InputManager
             };
+            
+            Logger.Trace();
         }
 
         /// <summary>

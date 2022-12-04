@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Builder.Core.Component.Audio;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio;
 
 namespace Alis.Core.Component.Audio
@@ -44,6 +45,7 @@ namespace Alis.Core.Component.Audio
         /// <param name="fullPathAudio">The full path audio</param>
         public AudioClip(string fullPathAudio) : base(fullPathAudio)
         {
+            Logger.Trace();
         }
 
         /// <summary>
@@ -53,6 +55,7 @@ namespace Alis.Core.Component.Audio
         /// <param name="audioBackendType">The audio backend type</param>
         public AudioClip(string fullPathAudio, AudioBackendType audioBackendType) : base(fullPathAudio, audioBackendType)
         {
+            Logger.Trace();
         }
 
         /// <summary>

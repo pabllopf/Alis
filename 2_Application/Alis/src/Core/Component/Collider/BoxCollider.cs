@@ -192,6 +192,7 @@ namespace Alis.Core.Component.Collider
 
             VideoGame.PhysicManager.AttachBody(Body);
             
+            /*
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Size={rectangleShape.Size}");
             Console.WriteLine($"Name={GameObject.Name} rectangleShape.Rotation={rectangleShape.Rotation}");
@@ -199,7 +200,7 @@ namespace Alis.Core.Component.Collider
             
             Console.WriteLine($"Name={GameObject.Name} Body.Position={Body.Position}");
             Console.WriteLine($"Name={GameObject.Name} Body.Size=x{Width}y{Height}");
-            Console.WriteLine($"Name={GameObject.Name} Body.Rotation={Body.Rotation}");
+            Console.WriteLine($"Name={GameObject.Name} Body.Rotation={Body.Rotation}");*/
         }
         
         /// <summary>

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Diagnostics;
 
 namespace Alis.Core.Aspect.Logging
 {
@@ -37,21 +38,119 @@ namespace Alis.Core.Aspect.Logging
     public static class Logger
     {
         /// <summary>
+        /// Info text color
+        /// </summary>
+        private const ConsoleColor InfoMessageColor = ConsoleColor.DarkGreen;
+        
+        /// <summary>
+        /// Log text color
+        /// </summary>
+        private const ConsoleColor LogMessageColor = ConsoleColor.Black;
+        
+        /// <summary>
+        /// Trace text color
+        /// </summary>
+        private const ConsoleColor TraceMessageColor = ConsoleColor.White;
+
+        /// <summary>
+        /// Warning text color
+        /// </summary>
+        private const ConsoleColor WarningMessageColor = ConsoleColor.DarkYellow;
+
+        /// <summary>
+        /// Error text color
+        /// </summary>
+        private const ConsoleColor ErrorMessageColor = ConsoleColor.Red;
+
+        /// <summary>
+        /// Exception text color
+        /// </summary>
+        private const ConsoleColor ExceptionMessageColor = ConsoleColor.DarkRed;
+
+        /// <summary>
+        /// Event text color
+        /// </summary>
+        private const ConsoleColor EventMessageColor = ConsoleColor.DarkMagenta;
+        
+        /// <summary>
         ///     Logs the message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Log(string message)
         {
-            Console.WriteLine($"LOG: {message}");
+            Console.ForegroundColor = LogMessageColor;
+            Console.WriteLine($"[{DateTime.Now}] LOG: '{message}' \n" +
+                              $"{new StackTrace()}");
+            Console.ResetColor();
         }
 
         /// <summary>
         ///     Traces the message
         /// </summary>
-        /// <param name="message">The message</param>
-        public static void Trace(string message)
+        public static void Trace()
         {
-            Console.WriteLine($"TRACE: {message}");
+            Console.ForegroundColor = TraceMessageColor;
+            Console.WriteLine($"[{DateTime.Now}] TRACE: \n" +
+                              $"{new StackTrace()}");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        /// Info messages
+        /// </summary>
+        /// <param name="message"></param>
+        public static void Info(string message)
+        {
+            Console.ForegroundColor = InfoMessageColor;
+            Console.WriteLine($"[{DateTime.Now}] INFO: '{message}'");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        /// Warning message
+        /// </summary>
+        /// <param name="message"></param>
+        public static void Warning(string message)
+        {
+            Console.ForegroundColor = WarningMessageColor;
+            Console.WriteLine($"[{DateTime.Now}] WARNING: '{message}' \n" +
+                              $"{new StackTrace()}");
+            Console.ResetColor();
+        }
+        
+        /// <summary>
+        /// Error message
+        /// </summary>
+        /// <param name="message"></param>
+        public static void Error(string message)
+        {
+            Console.ForegroundColor = ErrorMessageColor;
+            Console.WriteLine($"[{DateTime.Now}] ERROR: '{message}' \n" +
+                              $"{new StackTrace()}");
+            Console.ResetColor();
+        }
+        
+        /// <summary>
+        /// Exception message 
+        /// </summary>
+        /// <param name="exception"></param>
+        public static void Exception(Exception exception)
+        {
+            Console.ForegroundColor = ExceptionMessageColor;
+            Console.WriteLine($"[{DateTime.Now}] EXCEPTION: '{exception.Message}' \n" +
+                              $"{exception.StackTrace} \n");
+            Console.ResetColor();
+        }
+
+        /// <summary>
+        /// Event message
+        /// </summary>
+        /// <param name="message"></param>
+        public static void Event(string message)
+        {
+            Console.ForegroundColor = EventMessageColor;
+            Console.WriteLine($"[{DateTime.Now}] EVENT: '{message}'");
+            Console.ResetColor();
         }
     }
 }

@@ -29,6 +29,7 @@
 
 using Alis.Builder.Core.Component.Audio;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio;
 
 namespace Alis.Core.Component.Audio
@@ -50,6 +51,7 @@ namespace Alis.Core.Component.Audio
         /// </summary>
         public override void Start()
         {
+            Logger.Trace();
         }
 
         /// <summary>

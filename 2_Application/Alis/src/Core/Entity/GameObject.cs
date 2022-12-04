@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Component;
 
 namespace Alis.Core.Entity
@@ -51,7 +52,7 @@ namespace Alis.Core.Entity
         {
             Name = name;
             components = new List<ComponentBase>();
-            Console.WriteLine($"GameObject:NAME:{name}");
+            Logger.Log($"Created GameObject '{name}'");
         }
 
         /// <summary>

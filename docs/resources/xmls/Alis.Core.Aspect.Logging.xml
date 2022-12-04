@@ -78,17 +78,81 @@
                 The logger class
             </summary>
         </member>
+        <member name="F:Alis.Core.Aspect.Logging.Logger.InfoMessageColor">
+            <summary>
+            Info text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Logger.LogMessageColor">
+            <summary>
+            Log text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Logger.TraceMessageColor">
+            <summary>
+            Trace text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Logger.WarningMessageColor">
+            <summary>
+            Warning text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Logger.ErrorMessageColor">
+            <summary>
+            Error text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Logger.ExceptionMessageColor">
+            <summary>
+            Exception text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Logger.EventMessageColor">
+            <summary>
+            Event text color
+            </summary>
+        </member>
         <member name="M:Alis.Core.Aspect.Logging.Logger.Log(System.String)">
             <summary>
                 Logs the message
             </summary>
             <param name="message">The message</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Logging.Logger.Trace(System.String)">
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Trace">
             <summary>
                 Traces the message
             </summary>
-            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Info(System.String)">
+            <summary>
+            Info messages
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Warning(System.String)">
+            <summary>
+            Warning message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Error(System.String)">
+            <summary>
+            Error message
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Exception(System.Exception)">
+            <summary>
+            Exception message 
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Event(System.String)">
+            <summary>
+            Event message
+            </summary>
+            <param name="message"></param>
         </member>
         <member name="T:Alis.Core.Aspect.Logging.LogLevel">
             <summary>
