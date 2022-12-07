@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
@@ -90,7 +91,7 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void Init()
         {
-            Console.WriteLine("init::graphic:new");
+            Logger.Log("init::graphic:new");
 
             defaultSize = new Vector2(VideoGame.Setting.Graphic.Window.Resolution.X, VideoGame.Setting.Graphic.Window.Resolution.Y);
 
@@ -197,7 +198,7 @@ namespace Alis.Core.Manager.Graphic
             if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(renderWindow.Size.X - defaultSize.X) > 0.1) && (Math.Abs(renderWindow.Size.Y - defaultSize.Y) > 0.1))
             {
                 styles = Styles.Default;
-                Console.WriteLine("Change style to default");
+                Logger.Log("Change style to default");
                 InitRenderWindow();
                 Task.Delay(100).Wait();
                 return;
@@ -206,7 +207,7 @@ namespace Alis.Core.Manager.Graphic
             if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(renderWindow.Size.X - defaultSize.X) < 0.1) && (Math.Abs(renderWindow.Size.Y - defaultSize.Y) < 0.1))
             {
                 styles = Styles.Fullscreen;
-                Console.WriteLine("Change style to Fullscreen");
+                Logger.Log("Change style to Fullscreen");
                 InitRenderWindow();
                 Task.Delay(100).Wait();
             }

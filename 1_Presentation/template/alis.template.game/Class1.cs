@@ -41,7 +41,6 @@ namespace Alis.Template.Game
         /// </summary>
         public static void print()
         {
-            Console.WriteLine("sample");
         }
     }
 }

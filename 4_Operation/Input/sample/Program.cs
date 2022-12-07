@@ -42,7 +42,6 @@ namespace Alis.Core.Input.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello");
         }
     }
 }

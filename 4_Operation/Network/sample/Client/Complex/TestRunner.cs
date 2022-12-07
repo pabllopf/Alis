@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Network.Sample.Client.Complex
 {
@@ -88,7 +89,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             Parallel.For(0, _numThreads, Run);
-            Console.WriteLine($"Completed in {stopwatch.Elapsed.TotalMilliseconds:#,##0.00} ms");
+            Logger.Log($"Completed in {stopwatch.Elapsed.TotalMilliseconds:#,##0.00} ms");
         }
 
         /// <summary>

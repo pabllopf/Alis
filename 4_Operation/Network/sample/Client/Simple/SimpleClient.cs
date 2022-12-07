@@ -32,6 +32,7 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Network.Sample.Client.Simple
 {
@@ -92,7 +93,7 @@ namespace Alis.Core.Network.Sample.Client.Simple
                     case WebSocketMessageType.Text:
                     case WebSocketMessageType.Binary:
                         string value = Encoding.UTF8.GetString(buffer.Array, 0, result.Count);
-                        Console.WriteLine(value);
+                        Logger.Log(value);
                         break;
                 }
             }

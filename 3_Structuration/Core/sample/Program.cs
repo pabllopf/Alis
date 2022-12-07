@@ -43,8 +43,6 @@ namespace Alis.Core.Sample
         /// <returns></returns>
         private static void Main(string[] args)
         {
-            Console.WriteLine(@"Please press any key to close the windows.");
-            Console.ReadKey();
         }
     }
 }

@@ -46,6 +46,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 {
@@ -684,7 +685,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     {
                         if (tcx.IsDebugEnabled)
                         {
-                            Console.WriteLine("[FLIP] - constrained edge done"); 
+                            Logger.Log("[FLIP] - constrained edge done"); 
                         }
 
                         t.MarkConstrainedEdge(ep, eq);
@@ -696,17 +697,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     {
                         if (tcx.IsDebugEnabled)
                         {
-                            Console.WriteLine("[FLIP] - subedge done"); 
+                            Logger.Log("[FLIP] - subedge done"); 
                         }
-
-                        // XXX: I think one of the triangles should be legalized here?
                     }
                 }
                 else
                 {
                     if (tcx.IsDebugEnabled)
                     {
-                        Console.WriteLine("[FLIP] - flipping and continuing with triangle still crossing edge");
+                        Logger.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
                     }
 
                   

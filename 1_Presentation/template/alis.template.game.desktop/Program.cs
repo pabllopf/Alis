@@ -66,12 +66,8 @@ namespace Alis.Template.Game.Desktop
             using (windows = new Window(gameWindowSettings, nativeWindowSettings))
             {
                 windows.RenderFrame += WindowsOnRenderFrame;
-                Console.WriteLine("Version: " + GL.GetString(StringName.Version));
                 windows.Run();
             }
-
-
-            Console.WriteLine("pass");
         }
 
         /// <summary>

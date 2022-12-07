@@ -43,7 +43,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void AfterUpdate()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -51,7 +50,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Init()
         {
-            Console.WriteLine("Init:new");
         }
 
         /// <summary>
@@ -59,7 +57,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Awake()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -67,7 +64,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void BeforeUpdate()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -75,7 +71,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void DispatchEvents()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -83,8 +78,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Exit()
         {
-            //throw new NotImplementedException();
-            //Console.WriteLine("exit:audio:source:");
             Logger.Trace();
         }
 
@@ -93,7 +86,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void FixedUpdate()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -101,7 +93,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Reset()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -109,7 +100,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Start()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -117,7 +107,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Stop()
         {
-            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -125,7 +114,6 @@ namespace Alis.Core.Manager.Audio
         /// </summary>
         public override void Update()
         {
-            //throw new NotImplementedException();
         }
     }
 }

@@ -121,21 +121,6 @@ namespace Alis.Core.Component.Render
         public override void Start()
         {
             Sprite = GameObject.GetComponent<Sprite>();
-            Console.WriteLine($"text={Sprite.texturePath}");
-
-            Console.WriteLine($"Animations={Animations.Count}");
-
-            /*
-            if (GameObject.ContainComponent(this))
-            {
-                Sprite = GameObject.Get<Sprite>(nameof(Sprite));
-                Logger.Warning($"The sprite is already set {Sprite.texturePath}");
-            }
-            else
-            {
-                Sprite = new Sprite();
-                GameObject.Add(Sprite);
-            }*/
         }
 
         /// <summary>
@@ -174,7 +159,6 @@ namespace Alis.Core.Component.Render
         {
             if (currentAnimation.Name.Equals(nameAnimation))
             {
-                //Console.WriteLine($"current animation is set {nameAnimation}");
                 return;
             }
 
@@ -183,8 +167,6 @@ namespace Alis.Core.Component.Render
             {
                 currentAnimation = tempAnimation;
             }
-
-            //Console.WriteLine($"Dont find the animation {nameAnimation}");
         }
     }
 }

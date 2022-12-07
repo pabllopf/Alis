@@ -100,7 +100,7 @@ namespace Alis.Core.Component.Audio
             get => AudioClip.Volume;
             set
             {
-                Console.WriteLine($"Write volume={value}");
+                Logger.Log($"Write volume={value}");
                 AudioClip.Volume = value;
             }
         }

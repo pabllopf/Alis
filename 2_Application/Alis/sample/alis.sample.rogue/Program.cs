@@ -50,8 +50,6 @@ namespace Alis.Sample.Rogue
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.WriteLine("Start game");
-
             VideoGame.Builder()
                 .Settings(setting => setting
                     .General(general => general
@@ -259,9 +257,6 @@ namespace Alis.Sample.Rogue
                         .Build())
                     .Build())
                 .Run();
-
-
-            Console.WriteLine("End game");
         }
     }
 }

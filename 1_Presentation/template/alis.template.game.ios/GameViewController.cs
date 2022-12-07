@@ -193,7 +193,6 @@ namespace Alis.Template.Game.Ios
 
             if (device == null)
             {
-                Console.WriteLine("Metal is not supported on this device");
                 return;
             }
 

@@ -65,11 +65,7 @@ namespace Alis.Sample.PingPong
         /// <param name="contact">The contact</param>
         private void OnCollision(Fixture fixturebfixturea, Fixture fixtureb, Contact contact)
         {
-            //Console.WriteLine((((GameObject) fixturea.Body.UserData)!).Name);
-            //Console.WriteLine((((GameObject) fixtureb.Body.UserData)!).Name);
-            //Console.WriteLine((((GameObject) contact.FixtureA.Body.UserData)!).Name);
-            //Console.WriteLine((((GameObject) contact.FixtureB.Body.UserData)!).Name);
-            
+
             if ((((GameObject) fixtureb.Body.UserData)!).Name.Equals("leftWall"))
             {
                 Logger.Info("CONTACT WITH leftWall");
