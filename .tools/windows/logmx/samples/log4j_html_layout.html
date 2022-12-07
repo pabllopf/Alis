@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Log4J Log Messages</title>
+<style type="text/css">
+<!--
+body, table {font-family: arial,sans-serif; font-size: x-small;}
+th {background: #336699; color: #FFFFFF; text-align: left;}
+-->
+</style>
+</head>
+<body bgcolor="#FFFFFF" topmargin="6" leftmargin="6">
+<hr size="1" noshade>
+Log session start time Mon Apr 09 10:31:15 CEST 2007<br>
+<br>
+<table cellspacing="0" cellpadding="4" border="1" bordercolor="#224466" width="100%">
+<tr>
+<th>Time</th>
+<th>Thread</th>
+<th>Level</th>
+<th>Category</th>
+<th>Message</th>
+</tr>
+
+<tr>
+<td>0</td>
+<td title="Tracer thread">Tracer</td>
+<td title="Level"><font color="#993300"><strong>FATAL</strong></font></td>
+<td title="test.Test1 category">test.Test1</td>
+<td title="Message">Message with level FATAL</td>
+</tr>
+
+<tr>
+<td>0</td>
+<td title="Tracer thread">Tracer</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="test.pack1.Test2 category">test.pack1.Test2</td>
+<td title="Message">Message with level ERROR</td>
+</tr>
+
+<tr>
+<td>15</td>
+<td title="Tracer thread">Tracer</td>
+<td title="Level"><font color="#993300"><strong>WARN</strong></font></td>
+<td title="test.Test2 category">test.Test2</td>
+<td title="Message">Message with level WARN</td>
+</tr>
+
+<tr>
+<td>16</td>
+<td title="Tracer thread">Tracer</td>
+<td title="Level">INFO</td>
+<td title="test.Test1 category">test.Test1</td>
+<td title="Message">Message with level INFO...
+...on several...
+...lines</td>
+</tr>
+
+<tr>
+<td>18</td>
+<td title="Tracer thread">Tracer</td>
+<td title="Level"><font color="#339933">DEBUG</font></td>
+<td title="test.pack2.Test1 category">test.pack2.Test1</td>
+<td title="Message">Message with level DEBUG</td>
+</tr>
+
+
+<tr>
+<td>21</td>
+<td title="Tracer thread">Tracer</td>
+<td title="Level"><font color="#339933">TRACE</font></td>
+<td title="test.pack2.Test1 category">test.pack2.Test1</td>
+<td title="Message">Message with level TRACE</td>
+</tr>
+
+<tr>
+<td>25</td>
+<td title="Tracer thread">Tracer</td>
+<td title="Level"><font color="#993300"><strong>ERROR</strong></font></td>
+<td title="test.Test category">test.Test</td>
+<td title="Message">Error message with stack trace below</td>
+</tr>
+<tr><td bgcolor="#993300" style="color:White; font-size : xx-small;" colspan="6">java.lang.ArithmeticException: / by zero
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at test.Test.doSomeTrace(Test.java:106)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at test.Test.access$3(Test.java:93)
+<br>&nbsp;&nbsp;&nbsp;&nbsp;	at test.Test$2.run(Test.java:67)
+</td></tr>

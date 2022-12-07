@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 
 namespace Alis.Core.Aspect.Logging
 {
@@ -38,119 +37,56 @@ namespace Alis.Core.Aspect.Logging
     public static class Logger
     {
         /// <summary>
-        /// Info text color
+        /// Traces the message
         /// </summary>
-        private const ConsoleColor InfoMessageColor = ConsoleColor.DarkGreen;
+        public static void Trace() => ConsoleController.Print(new Message(MessageType.Trace));
         
         /// <summary>
-        /// Log text color
-        /// </summary>
-        private const ConsoleColor LogMessageColor = ConsoleColor.Black;
-        
-        /// <summary>
-        /// Trace text color
-        /// </summary>
-        private const ConsoleColor TraceMessageColor = ConsoleColor.White;
-
-        /// <summary>
-        /// Warning text color
-        /// </summary>
-        private const ConsoleColor WarningMessageColor = ConsoleColor.DarkYellow;
-
-        /// <summary>
-        /// Error text color
-        /// </summary>
-        private const ConsoleColor ErrorMessageColor = ConsoleColor.Red;
-
-        /// <summary>
-        /// Exception text color
-        /// </summary>
-        private const ConsoleColor ExceptionMessageColor = ConsoleColor.DarkRed;
-
-        /// <summary>
-        /// Event text color
-        /// </summary>
-        private const ConsoleColor EventMessageColor = ConsoleColor.DarkMagenta;
-        
-        /// <summary>
-        ///     Logs the message
+        /// Traces the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Log(string message)
-        {
-            Console.ForegroundColor = LogMessageColor;
-            Console.WriteLine($"[{DateTime.Now}] LOG: '{message}' \n" +
-                              $"{new StackTrace()}");
-            Console.ResetColor();
-        }
-
-        /// <summary>
-        ///     Traces the message
-        /// </summary>
-        public static void Trace()
-        {
-            Console.ForegroundColor = TraceMessageColor;
-            Console.WriteLine($"[{DateTime.Now}] TRACE: \n" +
-                              $"{new StackTrace()}");
-            Console.ResetColor();
-        }
-
-        /// <summary>
-        /// Info messages
-        /// </summary>
-        /// <param name="message"></param>
-        public static void Info(string message)
-        {
-            Console.ForegroundColor = InfoMessageColor;
-            Console.WriteLine($"[{DateTime.Now}] INFO: '{message}'");
-            Console.ResetColor();
-        }
-
-        /// <summary>
-        /// Warning message
-        /// </summary>
-        /// <param name="message"></param>
-        public static void Warning(string message)
-        {
-            Console.ForegroundColor = WarningMessageColor;
-            Console.WriteLine($"[{DateTime.Now}] WARNING: '{message}' \n" +
-                              $"{new StackTrace()}");
-            Console.ResetColor();
-        }
+        public static void Trace(string message) => ConsoleController.Print(new Message(MessageType.Trace, message));
         
         /// <summary>
-        /// Error message
+        /// Infoes the message
         /// </summary>
-        /// <param name="message"></param>
-        public static void Error(string message)
-        {
-            Console.ForegroundColor = ErrorMessageColor;
-            Console.WriteLine($"[{DateTime.Now}] ERROR: '{message}' \n" +
-                              $"{new StackTrace()}");
-            Console.ResetColor();
-        }
-        
-        /// <summary>
-        /// Exception message 
-        /// </summary>
-        /// <param name="exception"></param>
-        public static void Exception(Exception exception)
-        {
-            Console.ForegroundColor = ExceptionMessageColor;
-            Console.WriteLine($"[{DateTime.Now}] EXCEPTION: '{exception.Message}' \n" +
-                              $"{exception.StackTrace} \n");
-            Console.ResetColor();
-        }
+        /// <param name="message">The message</param>
+        public static void Info(string message) => ConsoleController.Print(new Message(MessageType.Info, message));
 
         /// <summary>
-        /// Event message
+        /// Logs the message
         /// </summary>
-        /// <param name="message"></param>
-        public static void Event(string message)
-        {
-            Console.ForegroundColor = EventMessageColor;
-            Console.WriteLine($"[{DateTime.Now}] EVENT: '{message}'");
-            Console.ResetColor();
-        }
+        /// <param name="message">The message</param>
+        public static void Log(string message) => ConsoleController.Print(new Message( MessageType.Log, message));
+
+        /// <summary>
+        /// Events the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Event(string message) => ConsoleController.Print(new Message(MessageType.Event, message));
+
+        /// <summary>
+        /// Warnings the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Warning(string message) => ConsoleController.Print(new Message( MessageType.Warning, message));
+
+        /// <summary>
+        /// Errors the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Error(string message) => ConsoleController.Print(new Message( MessageType.Error, message));
+
+        /// <summary>
+        /// Exceptions the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Exception(string message) => ConsoleController.Print(new Message( MessageType.Exception, message));
+        
+        /// <summary>
+        /// Exceptions the exception
+        /// </summary>
+        /// <param name="exception">The exception</param>
+        public static void Exception(Exception exception) => ConsoleController.Print(new Message( MessageType.Exception, exception.Message));
     }
 }

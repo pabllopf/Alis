@@ -22,4 +22,10 @@
     </ItemGroup>
 
 
+    <ItemGroup Condition="
+        $(AssemblyName.Equals('Alis.Core.Aspect.Logging')) == true
+    ">
+        <PackageReference Include="System.Text.Json" Version="7.0.0" />
+    </ItemGroup>
+
 </Project>

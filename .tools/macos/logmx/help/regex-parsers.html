@@ -1,0 +1,476 @@
+<HTML>
+<HEAD>
+<TITLE>LogMX Regular Expression Parsers</TITLE>
+<STYLE type="text/css" media="all">
+body { background-color: #FFFFFF; }
+body, td, th {
+	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif, Times New Roman;
+	color:#000000;
+	cursor: default;
+}
+
+a:link, a:visited, a:active, .LinkColor { 
+	text-decoration: none; 
+	color: #349EF9;
+	transition: color 0.3s;
+}
+
+a:hover, a.LinkHover {
+	color: #91CFFF; 
+	transition: color 0.3s;
+}
+
+table.Tab0, table.Tab0 td, table.Tab0 th {
+	border-style: solid;
+	border-color: #b6b6b6;
+	border-left-width: 1px;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+}
+table.Tab0 td, table.Tab0 th {
+	border-left-width: 0px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+}
+table.Tab0 th, .TableHeader {
+	font-weight: bold;
+	padding: 4px 4px 4px 4px ;
+	background-color: #FFF8EF; /* = $COLOR_LIGHT_ORANGE */
+}
+
+
+.Regex, .Code { 
+	font-family:  Consolas, Menlo, Monaco, monospace; 
+	font-size: 120%;
+	display-style: inline-block;
+	white-space: pre;
+	margin: .2em 0;
+	padding: 1px 0;
+}
+.Regex { 
+	border-style: solid;
+	border-width: 1px 0;
+	border-color: #e9ac00;
+	background-color: #ffffce;
+}
+.fLevel { color: #8064A2; }
+.fEmitter { color: #4BACC6; }
+.fMessage { color: #C0504D; }
+.fThread { color: #63E73F; }
+.fDate { color: #F79646; }
+.fUserDef { color: #DDDD00; }
+body {line-height : 150%; }
+
+.ExampleTitle, .ExampleTitleTOC { font-weight: bold; margin-bottom: 10px; margin-top: 40px;}
+.ExampleTitle { font-size: 140%; margin-bottom: 10px; margin-top: 40px;}
+.ExampleTitleTOC { font-size: 110%;  }
+</STYLE>
+</HEAD>
+
+<BODY style="background-color: #FFFFFF;">
+<DIV style="font-size: 150%"><B>LogMX <I>Regular Expression</I> Parsers</B></DIV>
+<BR>
+Describing your log format using Regular Expression is pretty simple when you already know Regular Expression syntax, 
+but if it's not your case, learning basics through the next few examples should be fine. 
+If you want, you can read more about Regular Expression here: 
+<A href="https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html">https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html</A> 
+(or directly from Google since this syntax is also used by UNIX/Perl/Python/PHP and others).<BR/>
+<BR/>
+To create a Regex (<B>Reg</B>ular <B>Ex</B>pression) Parser, simply give its Regular Expression, then, choose the right log entry fields that match your Regex accordingly to your log format, like in the following examples. <BR/>
+Of course, you can also use your own user-defined log entry fields (e.g. "PID", "Server") in your log format using the combobox for field selection. 
+You do not have to worry about line wrapping in "Message" field, LogMX will automatically handle it, you do not have to specify it in your Regular Expression. Yet, if all your log entries use at least two lines of text because a new line is used <B>between</B> some fields, then see the <A href="#Ex10">Example 10</A>.<BR/>
+<DIV class="ExampleTitle">Table of contents:</DIV>
+<DIV class="ExampleTitleTOC" style="margin-top: 10px;">
+	<A href="#Ex1">Example 1 - Simple and short format</A><BR/>
+	<A href="#Ex2">Example 2 - Simple example using <SPAN class="Regex">.*?</SPAN></A><BR/>
+	<A href="#Ex3">Example 3 - Characters classes / Quantifiers</A><BR/>
+	<A href="#Ex4">Example 4 - Using negation to reduce matching</A><BR/>
+	<A href="#Ex5">Example 5 - Quoting special characters</A><BR/>
+	<A href="#Ex6">Example 6 - Date format</A><BR/>
+	<A href="#Ex7">Example 7 - Dealing with extra whitespace characters (e.g. padding)</A><BR/>
+	<A href="#Ex8">Example 8 - Optional fields</A><BR/>
+	<A href="#Ex9">Example 9 - Non capturing groups</A><BR/>
+	<A href="#Ex10">Example 10 - Multiple lines format</A><BR/>
+</DIV>
+
+<DIV class="ExampleTitle"><A name="Ex1"></A>Example 1 - Simple and short format</DIV>
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN>-<SPAN class="fEmitter">EMITTER</SPAN>-<SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fLevel">(.*)</SPAN>-<SPAN class="fEmitter">(.*)</SPAN>-<SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entries to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN>-<SPAN class="fEmitter">MyEmitter</SPAN>-<SPAN class="fMessage">My log message</SPAN><BR/><SPAN class="fLevel">WARN</SPAN>-<SPAN class="fEmitter">MyEmitter</SPAN>-<SPAN class="fMessage">Another message...&nbsp;&nbsp;&nbsp;<BR/>...on two lines</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE>
+<BR/>
+Parentheses <SPAN class="Regex">( )</SPAN> in Regular Expression mean "capture a log entry field". That's why we use this for each log entry field: Level, Emitter, and Message. These two parentheses and the text between them is called a "group".<BR/>
+<SPAN class="Regex">.*</SPAN> means "any character, 0 or more times, trying to match as much characters as possible".<BR/>
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex2"></A>Example 2 - Simple example using <SPAN class="Regex">.*?</SPAN></DIV>
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN>-<SPAN class="fEmitter">EMITTER</SPAN>-<SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fLevel">(.*?)</SPAN>-<SPAN class="fEmitter">(.*?)</SPAN>-<SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entry to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN>-<SPAN class="fEmitter">MyEmitter</SPAN>-<SPAN class="fMessage">Server [prod-srv-1] is DOWN</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE>
+<BR/>
+
+<SPAN class="Regex">.*?</SPAN> means "any character, 0 or more times, but try to match as few characters as possible".<BR/>
+<SPAN class="Regex">.*</SPAN> means "any character, 0 or more times, trying to match as many characters as possible".<BR/>
+The '?' in <SPAN class="Regex">.*?</SPAN> is very important here. If we use <SPAN class="Regex">.*</SPAN> for Emitter field instead of <SPAN class="Regex">.*?</SPAN>, the text &nbsp;"<SPAN class="Code">INFO-MyEmitter-Server [prod-srv-1] is DOWN</SPAN>"&nbsp; will be parsed this way:<BR/>
+<SPAN class="Code">
+Level: <SPAN class="fLevel">INFO</SPAN>
+Emitter: <SPAN class="fEmitter">MyEmitter</SPAN>-<SPAN class="fMessage">Server [prod-srv</SPAN>
+Message: <SPAN class="fMessage">1] is DOWN</SPAN>
+</SPAN>
+<BR/>
+Whereas using <SPAN class="Regex">.*?</SPAN> for Emitter field, it will be parsed like expected:<BR/>
+<SPAN class="Code">
+Level: <SPAN class="fLevel">INFO</SPAN>
+Emitter: <SPAN class="fEmitter">MyEmitter</SPAN>
+Message: <SPAN class="fMessage">Server [prod-srv-1] is DOWN</SPAN>
+</SPAN>
+<BR/>
+This is because <SPAN class="Regex">.*</SPAN> will match as many characters as possible and <SPAN class="Regex">.*?</SPAN> will match as few characters as possible. <BR/>
+Note: when you can use either <SPAN class="Regex">.*?</SPAN> or <SPAN class="Regex">.*</SPAN>, always go for <SPAN class="Regex">.*?</SPAN> which will improve your parser performances.<BR/>
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex3"></A>Example 3 - Characters classes / Quantifiers</DIV>
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN>-<SPAN class="fEmitter">EMITTER</SPAN>-<SPAN class="fUserDef">ClientID</SPAN>:<SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fLevel">(.*?)</SPAN>-<SPAN class="fEmitter">(.*?)</SPAN>-<SPAN class="fUserDef">(\d+):</SPAN><SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entries to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN>-<SPAN class="fEmitter">MyEmitter</SPAN>-<SPAN class="fUserDef">243:</SPAN><SPAN class="fMessage">My log message</SPAN></SPAN><BR/><SPAN class="Code"><SPAN class="fLevel">WARN</SPAN>-<SPAN class="fEmitter">Emitter 2</SPAN>-<SPAN class="fUserDef">3:</SPAN><SPAN class="fMessage">Another message</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+The token <SPAN class="Regex">\d+</SPAN> means "any digit, one or more times".<BR/>
+We have seen above that <SPAN class="Regex">.*</SPAN> means "any character, 0 or more times". More precisely, <SPAN class="Regex">.</SPAN> means "any character", and <SPAN class="Regex">*</SPAN> means "0 or more times".<BR/>Then <SPAN class="Regex">\d</SPAN> means "any digit" and <SPAN class="Regex">+</SPAN> means "one or more times". That's why <SPAN class="Regex">*</SPAN> and <SPAN class="Regex">+</SPAN> are called "quantifiers". Other quantifiers are:<BR/><BR/>
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TH align="center"><B>Quantifier</B></TH>
+		<TH>Meaning</TH>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">?</SPAN></TD>
+		<TD>0 or 1 occurrence</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">+</SPAN></TD>
+		<TD>1 occurrence or more</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">*</SPAN></TD>
+		<TD>0 occurrence or more</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">{n}</SPAN></TD>
+		<TD>Exactly <I>n</I> occurrences</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">{n,}</SPAN></TD>
+		<TD><I>n</I> or more occurrences</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">{n,N}</SPAN></TD>
+		<TD><I>n</I> to <I>N</I> occurrences</TD>
+	</TR>
+</TABLE><BR/>
+These quantifiers can be followed by a <SPAN class="Regex">?</SPAN> to match as less characters as possible like presented above (i.e. 0 for <SPAN class="Regex">?</SPAN> and <SPAN class="Regex">*</SPAN>, 1 for <SPAN class="Regex">+</SPAN>).<BR/><BR/>
+As for <SPAN class="Regex">.</SPAN> and <SPAN class="Regex">\d</SPAN> used in this example, they are called "character classes". Regular Expressions offers many other character classes:<BR/><BR/>
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TH align="center"><B>Character class or token</B></TH>
+		<TH>Meaning</TH>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">.</SPAN></TD>
+		<TD>Any character</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">[abc]</SPAN></TD>
+		<TD>Character a, b, or c</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">[^abc]</SPAN></TD>
+		<TD>Any character except a, b, or c (negation)</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">[a-z]</SPAN></TD>
+		<TD>Any character between a and z, inclusive</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">[a-zA-Z]</SPAN></TD>
+		<TD>Any character between a and z, or between A and Z, inclusive</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">[a-zA-Z0-9]</SPAN></TD>
+		<TD>Any character between a and z, or between A and Z, or between 0 and 9, inclusive</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">\d</SPAN></TD>
+		<TD>Any digit: synonym of [0-9]</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">\D</SPAN></TD>
+		<TD>Any non-digit: synonym of [^0-9]</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">\s</SPAN></TD>
+		<TD>Any whitespace character: synonym of [ \t\n\x0B\f\r]</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">\S</SPAN></TD>
+		<TD>Any non-whitespace character: synonym of [^\s]</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">\w</SPAN></TD>
+		<TD>Any word character: synonym of [a-zA-Z_0-9]</TD>
+	</TR>
+	<TR>
+		<TD align="center"><SPAN class="Regex">\W</SPAN></TD>
+		<TD>Any non-word character: synonym of [^\w]</TD>
+	</TR>
+</TABLE><BR/>
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex4"></A>Example 4 - Using negation to reduce matching</DIV>
+Instead of using <SPAN class="Regex">.*?</SPAN> like described above, you may also prefer to use negation to reduce matching. In the following example, we use <SPAN class="Regex">[^&lt;]*</SPAN> to capture Emitter field. This regular expression means "0 or more characters that are not &lt;". Indeed, the Emitter field finished when the &lt; character is encountered:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN>-<SPAN class="fEmitter">EMITTER</SPAN>&lt;<SPAN class="fThread">THREAD</SPAN>&gt;<SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fLevel">(.*?)</SPAN>-<SPAN class="fEmitter">([^&lt;]*)</SPAN>&lt;<SPAN class="fUserDef">([^&gt;]*)</SPAN>&gt;<SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entry to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN>-<SPAN class="fEmitter">MyEmitter</SPAN>&lt;<SPAN class="fThread">MyThread</SPAN>&gt;<SPAN class="fMessage">My log message</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex5"></A>Example 5 - Quoting special characters</DIV>
+If your log format contains special characters such as &nbsp; ( ) [ ] | . * + ? ^ \ &nbsp; these characters must be preceded by the <SPAN class="Regex">\</SPAN> character, since these characters have a special meaning in Regular Expression syntax:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code">[<SPAN class="fLevel">LEVEL</SPAN>] (<SPAN class="fEmitter">EMITTER</SPAN>) <SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex">\[<SPAN class="fLevel">(.*?)</SPAN>\] \(<SPAN class="fEmitter">(.*?)</SPAN>\) <SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entry to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code">[<SPAN class="fLevel">INFO</SPAN>] (<SPAN class="fEmitter">MyEmitter</SPAN>) <SPAN class="fMessage">My log message</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+<I>Note:</I> if the log format contains several consecutive special characters, you can surround these special characters with <SPAN class="Regex">\Q &hellip; \E</SPAN> to avoid suffixing each character with <SPAN class="Regex">\</SPAN>. Example for this log format:  <SPAN class="Regex">\[<SPAN class="fLevel">(.*?)</SPAN>\Q] (\E<SPAN class="fEmitter">(.*?)</SPAN>\) <SPAN class="fMessage">(.*)</SPAN></SPAN>
+
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex6"></A>Example 6 - Date format</DIV>
+When your log format contains a date, you can optionally specify the format used for this date. If you do not, you will not be able to use date/time functions like elapsed time computation, calendar filter, time statistics &hellip;.
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fDate">dd/MM/yy HH:mm:ss.SSS</SPAN> <SPAN class="fLevel">LEVEL</SPAN> <SPAN class="fEmitter">EMITTER</SPAN> <SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fDate">(\S+ \S+)</SPAN> <SPAN class="fLevel">(.*?)</SPAN> <SPAN class="fEmitter">(.*?)</SPAN> <SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Date format</TD>
+		<TD align="center">
+			<SPAN class="Code">dd/MM/yyyy HH:mm:ss.SSS</SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entries to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fDate">11/03/14 12:34:56.789</SPAN> <SPAN class="fLevel">INFO</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> <SPAN class="fMessage">My log message</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+To include any fixed characters in date format, simply surround them with simple quotes <SPAN class="Code">' '</SPAN>, like in this example:<BR/>
+<SPAN class="Code">dd MMMM yyyy, hh 'o''clock' a, zzzz</SPAN><BR/>
+to match:<BR/>
+<SPAN class="Code">11 March 2014, 12 o'clock PM, Pacific Daylight Time</SPAN><BR/>
+LogMX uses Java date format syntax, you can read <A href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html</A> if you want to describe more advanced date formats (e.g. timezones, fixed characters in date, &hellip;).<BR/>
+
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex7"></A>Example 7 - Dealing with extra whitespace characters (e.g. padding)</DIV>
+If your log format uses whitespace characters (to visually "align" fields in columns, for example), you can simply tell LogMX that one or more whitespace character is used via <SPAN class="Regex">\s+</SPAN> like shown below:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN> <SPAN class="fEmitter">EMITTER</SPAN> <SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fLevel">(.*?)</SPAN>\s+<SPAN class="fEmitter">(.*?)</SPAN> <SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entries to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">INFO&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> <SPAN class="fMessage">My log message</SPAN></SPAN>
+			<BR/>
+			<SPAN class="Code"><SPAN class="fLevel">CRITICALERROR</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> <SPAN class="fMessage">My log message</SPAN></SPAN>
+			<BR/>
+			<SPAN class="Code"><SPAN class="fLevel">WARNING&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> <SPAN class="fMessage">My log message</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex8"></A>Example 8 - Optional fields</DIV>
+Some log entry fields can be optional. To do so, simply use the <SPAN class="Regex">?</SPAN> quantifier:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN> <SPAN class="fEmitter">EMITTER</SPAN> <SPAN class="fUserDef">[ClientID]</SPAN><SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+			<BR/>or<BR/>
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN> <SPAN class="fEmitter">EMITTER</SPAN> <SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fLevel">(.*?)</SPAN> <SPAN class="fEmitter">(.*?)</SPAN> <SPAN class="fUserDef">(\[\d+\])?</SPAN><SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entries to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> <SPAN class="fMessage">My message</SPAN></SPAN>
+			<BR/>
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> <SPAN class="fUserDef">[243]</SPAN><SPAN class="fMessage">My message</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+In this example, we capture &nbsp;<SPAN class="Code">ClientID</SPAN>&nbsp; in a user-defined field, <B>including</B> its surrounding &nbsp;<SPAN class="Code">[ ]</SPAN>&nbsp;. To see how to exclude a part of an optional field, see next example (Non capturing groups).<BR/>
+
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex9"></A>Example 9 - Non capturing groups</DIV>
+The non capturing group syntax is <SPAN class="Regex">(?:)</SPAN> and is often used when a group of text is optional and should not be captured (e.g. <SPAN class="Regex">(?: )?</SPAN> ), like in this example:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN> <SPAN class="fEmitter">EMITTER</SPAN> &lt;<SPAN class="fUserDef">ClientID</SPAN>&gt; <SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+			<BR/>or<BR/>
+			<SPAN class="Code"><SPAN class="fLevel">LEVEL</SPAN> <SPAN class="fEmitter">EMITTER</SPAN> <SPAN class="fMessage">MESSAGE</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex"><SPAN class="fLevel">(.*?)</SPAN> <SPAN class="fEmitter">(.*?)</SPAN> (?:&lt;<SPAN class="fUserDef">(\d+)</SPAN>&gt; )?<SPAN class="fMessage">(.*)</SPAN></SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entries to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> <SPAN class="fMessage">My message</SPAN></SPAN>
+			<BR/>
+			<SPAN class="Code"><SPAN class="fLevel">INFO</SPAN> <SPAN class="fEmitter">MyEmitter</SPAN> &lt;<SPAN class="fUserDef">243</SPAN>&gt; <SPAN class="fMessage">My message</SPAN></SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+In this example, we capture only &nbsp;<SPAN class="Code">ClientID</SPAN>&nbsp; in a user-defined field, <B>without</B> its surrounding &nbsp;<SPAN class="Code">&lt; &gt;</SPAN>&nbsp;.
+
+<!-- ##################################################################  -->
+<DIV class="ExampleTitle"><A name="Ex10"></A>Example 10 - Multiple lines format</DIV>
+If your log format uses several lines of text for each log entry (e.g. XML file, or more generally, two entry fields that must be separated with a string containing a new line character), you can use <SPAN class="Regex">\n</SPAN> like shown below:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Log format</TD>
+		<TD align="center">
+			<SPAN class="Code">[ENTRY]<SPAN class="fLevel">LEVEL</SPAN>[/LEVEL]<BR/><SPAN class="fEmitter">EMITTER</SPAN>[/EMITTER]<BR/><SPAN class="fMessage">MESSAGE</SPAN>[/ENTRY]</SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Regular expression</TD>
+		<TD align="center">
+			<SPAN class="Regex">\[ENTRY\]<SPAN class="fLevel">(.*?)</SPAN>\[/LEVEL\]\n<SPAN class="fEmitter">(.*?)</SPAN>\[/EMITTER\]\n<SPAN class="fMessage">(.*)</SPAN>\[/ENTRY\]</SPAN>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Example of log entry to be parsed</TD>
+		<TD align="center">
+			<SPAN class="Code">[ENTRY]<SPAN class="fLevel">INFO</SPAN>[/LEVEL]<BR/><SPAN class="fEmitter">MyEmitter</SPAN>[/EMITTER]<BR/><SPAN class="fMessage">My message</SPAN>[/ENTRY]</SPAN>
+		</TD>
+	</TR>
+</TABLE><BR/>
+
+<BODY>
+</HTML>

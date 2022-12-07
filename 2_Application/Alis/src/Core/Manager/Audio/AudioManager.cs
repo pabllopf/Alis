@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Manager.Audio
 {
@@ -83,7 +84,8 @@ namespace Alis.Core.Manager.Audio
         public override void Exit()
         {
             //throw new NotImplementedException();
-            Console.WriteLine("exit:audio:source:");
+            //Console.WriteLine("exit:audio:source:");
+            Logger.Trace();
         }
 
         /// <summary>

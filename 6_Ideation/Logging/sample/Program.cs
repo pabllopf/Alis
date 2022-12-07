@@ -44,7 +44,6 @@ namespace Alis.Core.Aspect.Logging.Sample
         {
             Logger.Trace();
             
-            
             Logger.Log("Sample");
             Logger.Info("Sample");
             
@@ -62,8 +61,6 @@ namespace Alis.Core.Aspect.Logging.Sample
                 Logger.Exception(exception);
             }
 
-           
-            
         }
     }
 }

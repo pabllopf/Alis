@@ -1,0 +1,464 @@
+<HTML>
+<HEAD>
+<TITLE>LogMX IDE plugins (Eclipse/IntelliJ IDEA/NetBeans)</TITLE>
+<STYLE type="text/css" media="all">
+body { background-color: #FFFFFF; }
+body, td, th {
+	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif, Times New Roman;
+	color:#000000;
+	cursor: default;
+}
+
+a:link, a:visited, a:active, .LinkColor { 
+	text-decoration: none; 
+	color: #349EF9;
+	transition: color 0.3s;
+}
+
+a:hover, a.LinkHover {
+	color: #91CFFF; 
+	transition: color 0.3s;
+}
+
+table.Tab0, table.Tab0 td, table.Tab0 th {
+	border-style: solid;
+	border-color: #b6b6b6;
+	border-left-width: 1px;
+	border-top-width: 1px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	margin: 4px;
+}
+table.Tab0 td, table.Tab0 th {
+	border-left-width: 0px;
+	border-top-width: 0px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+}
+table.Tab0 th, .TableHeader {
+	font-weight: bold;
+	padding: 4px 4px 4px 4px ;
+	background-color: #FFF8EF;
+}
+
+.Code, .CodeHighlight { 
+	font-family:  Consolas, Menlo, Monaco, monospace; 
+	font-size: 120%;
+	color: #aaaaaa;
+	display-style: inline-block;
+	/*white-space: pre;*/
+	word-wrap: break-word;
+	margin: .2em 0;
+	padding: 1px 0;
+}
+.CodeHighlight { 
+	color: #8CA28C;
+	font-weight: bold;
+}
+
+.SimpleImage, .ShadowedImage {
+	border: 0px solid;
+	width: 100%;
+	height: auto;
+}
+
+.ShadowedImage {
+	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+body {line-height : 150%; }
+
+.Title1, .Title2, .TOC { font-size: 160%; font-weight: bold; margin-bottom: 10px; margin-top: 40px;}
+.Title2 { font-size: 130%; margin-left: 30px; }
+.TOC { font-size: 130%;  }
+
+.RightShift1, .RightShift2 { margin-left: 30px; }
+.RightShift2 { margin-bottom: 15px; }
+
+</STYLE>
+</HEAD>
+
+<BODY style="background-color: #FFFFFF;">
+<DIV style="font-size: 150%"><B>LogMX plugins for <I>Eclipse</I>, <I>IntelliJ IDEA</I>, and <I>NetBeans</I></B></DIV>
+<BR>
+If you are using LogMX to analyze logs coming from your Java application, then this page is for you:
+when LogMX detects a Java stack trace in a log entry, it transforms each stack trace line into a link in LogMX GUI.
+When such a link is clicked, running instance of Eclipse/VSCode/IntelliJ-IDEA/NetBeans opens the corresponding Java method 
+from this stack trace. <BR/>
+Also, simply hovering over this link with the mouse will show the corresponding Java source directly within LogMX:<BR/>
+<BR/>
+
+<DIV style="text-align:center"><IMG src="images/goto-source_overview.png" class="SimpleImage" style="max-width:988px;"/></DIV>
+
+
+<DIV style="font-weight: bold; font-size: 130%; margin-top: 60px">Table of contents:</DIV>
+<DIV class="TOC" style="margin-top: 10px; margin-bottom:60px">
+	1. <A href="#eclipse">Eclipse plugin</A><BR/>
+	<DIV class="RightShift1">1.1. <A href="#eclipse-install">Installing Eclipse plugin</A><BR/></DIV>
+	<DIV class="RightShift1">1.2. <A href="#eclipse-config">Configuring Eclipse plugin</A><BR/></DIV>
+	<DIV class="RightShift2">1.3. <A href="#eclipse-use">Using Eclipse plugin</A><BR/></DIV>
+	2. <A href="#vscode">VSCode plugin</A><BR/>
+	<DIV class="RightShift1">2.1. <A href="#vscode-install">Installing VSCode plugin</A><BR/></DIV>
+	<DIV class="RightShift1">2.2. <A href="#vscode-config">Configuring VSCode plugin</A><BR/></DIV>
+	<DIV class="RightShift2">2.3. <A href="#vscode-use">Using VSCode plugin</A><BR/></DIV>
+    3. <A href="#intellij-idea">IntelliJ IDEA plugin</A><BR/>
+    <DIV class="RightShift1">3.1. <A href="#intellij-idea-install">Installing IntelliJ IDEA plugin</A><BR/></DIV>
+    <DIV class="RightShift1">3.2. <A href="#intellij-idea-config">Configuring IntelliJ IDEA plugin</A><BR/></DIV>
+    <DIV class="RightShift2">3.3. <A href="#intellij-idea-use">Using IntelliJ IDEA plugin</A><BR/></DIV>
+	4. <A href="#netbeans">NetBeans plugin</A><BR/>
+	<DIV class="RightShift1">4.1. <A href="#netbeans-install">Installing NetBeans plugin</A><BR/></DIV>
+	<DIV class="RightShift1">4.2. <A href="#netbeans-config">Configuring NetBeans plugin</A><BR/></DIV>
+	<DIV class="RightShift2">4.3. <A href="#netbeans-use">Using NetBeans plugin</A><BR/></DIV>
+	5. <A href="#logmx-feature">LogMX "GotoSource" feature</A><BR/>
+	<DIV class="RightShift1">5.1. <A href="#logmx-config">Configuring LogMX</A><BR/></DIV>
+	<DIV class="RightShift2">5.2. <A href="#logmx-use">Using LogMX "GotoSource" feature</A><BR/></DIV>
+	6. <A href="#new-ide"> Using any other IDE</A><BR/>
+</DIV>
+
+<!-- =================================================== -->
+
+<DIV class="Title1"><A name="eclipse"></A>1. Eclipse plugin</DIV>
+<DIV class="Title2" style="margin-top: 15px;"><A name="eclipse-install"></A>1.1. Installing Eclipse plugin</DIV>
+Pre-requisites:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">Eclipse</TD>
+		<TD align="left">At least v3.6.2 (Helios SR2), 32/64 bits</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Java</TD>
+		<TD align="left">At least v6, 32/64 bits</TD>
+	</TR>	
+	<TR>
+		<TD class="TableHeader" align="right">LogMX</TD>
+		<TD align="left">At least v5.4.0</TD>
+	</TR>
+</TABLE>
+<BR/>
+
+<DIV style="text-align:center"><IMG src="images/eclipse_install.png" class="ShadowedImage" style="max-width:655px;"/></DIV>
+<BR>
+<B>To install "LogMX GotoSource" plugin in Eclipse, you shall use the Eclipse Update-site provided in </B>
+"<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/Eclipse</SPAN>". 
+Here are the steps to do this:
+<OL style="margin-top:2px">
+	<LI>In Eclipse, click on menu "Help", then on item "Install New Software..."</LI>
+	<LI>Click on the button "Add...", then on "Local..."</LI>
+	<LI>Choose the directory "<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/Eclipse</SPAN>"</LI>
+	<LI>Click on button "OK" for both dialogs (giving a name to this repository is optional)</LI>
+	<LI>A plug-in category named "LogMX Eclipse plug-ins" should now be displayed: click on button "Select All", then on button "Next &gt;"</LI>
+	<LI>Click on button "Next &gt;" for each step (accepting the License if you agree with its terms), then on button "Finish"</LI>
+	<LI>Eclipse should warn you about installing a software that contains unsigned content: just click OK 
+		<SPAN style="font-size:80%; color:#444444"><I>(signature certificates now use SHA-256, which is not supported by Java 6, so we could not properly sign 
+		the plug-in to allow Java 6 users to install it)<SPAN></I></LI>
+	<LI>Restart Eclipse (Eclipse should ask you to do it)</LI>
+</OL>
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="eclipse-config"></A>1.2. Configuring Eclipse plugin</DIV>
+
+<DIV style="text-align:center"><IMG src="images/eclipse_config.png" class="ShadowedImage" style="max-width:598px;"></DIV>
+<BR>
+To configure "LogMX GotoSource" Eclipse plugin, you shall click on menu "Window", item "Preferences". In the left tree, click on "LogMX GotoSource".
+The preferences page should now display these options:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Enable plug-in"</I></TD>
+		<TD align="left">
+			<UL style="margin:0px;padding-left:20px">
+				<LI>Check to enable the plug-in (will listen to the port described below to communicate with LogMX).</LI>
+				<LI>Uncheck to disable the plug-in without un-installing it (LogMX will not be able to use Eclipse to view source).</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Listen on address"</I></TD>
+		<TD align="left">
+			Shall match the address specified in LogMX (see <A href="#logmx-config">5.1. Configuring LogMX</A>).<BR/>
+			Usually set to "<SPAN class="Code">127.0.0.1</SPAN>" (IP v4), "<SPAN class="Code">::1</SPAN>" (IP v6), or "<SPAN class="Code">localhost</SPAN>" (IP v4/v6)
+		</TD>
+	</TR>	
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Listen on port"</I></TD>
+		<TD align="left">
+			Shall match the TCP port specified in LogMX (see <A href="#logmx-config">5.1. Configuring LogMX</A>).<BR/>
+			Default port for Eclipse plugin is 7788 (ASCII lovers will understand)
+		</TD>
+	</TR>
+</TABLE>
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="eclipse-use"></A>1.3. Using Eclipse plugin</DIV>
+
+To use this Eclipse plugin, you just have to use the LogMX "GotoSource" feature (see <A href="#logmx-use">5.2. Using LogMX "GotoSource" feature</A>).
+
+<!-- =================================================== -->
+
+<DIV class="Title1"><A name="vscode"></A>2. VSCode plugin</DIV>
+<DIV class="Title2" style="margin-top: 15px;"><A name="vscode-install"></A>2.1. Installing VSCode plugin</DIV>
+Pre-requisites:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+    <TR>
+        <TD class="TableHeader" align="right">VSCode</TD>
+        <TD align="left">At least v1.48.0</TD>
+    </TR>
+    <TR>
+        <TD class="TableHeader" align="right">LogMX</TD>
+        <TD align="left">At least v5.4.0</TD>
+    </TR>
+</TABLE>
+<BR/>
+
+<DIV style="text-align:center"><IMG src="images/vscode_install.png" class="ShadowedImage" style="max-width:795px;"/></DIV>
+<BR>
+<B>To install "LogMX GotoSource" plugin in VSCode, you shall use the VSIX file provided in </B>
+"<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/VSCode</SPAN>". 
+Here are the steps to do this:
+<OL style="margin-top:2px">
+    <LI>In VSCode, open the "Extensions" panel ("File" &gt; "Preferences" &gt; "Extensions")</LI>
+    <LI>In the top right corner of the "Extensions" panel, click on the 3 dots icon, then pick the option "Install from VSIX..."</LI>
+    <LI>Choose the file "<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/VSCode/logmx-gotosource.vsix</SPAN>"</LI>
+</OL>
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="vscode-config"></A>2.2. Configuring VSCode plugin</DIV>
+
+<DIV style="text-align:center"><IMG src="images/vscode_config.png" class="ShadowedImage" style="max-width:709px;"></DIV>
+<BR>
+To configure the "LogMX GotoSource" VSCode plugin, you shall click on the menu "File" &gt; "Preferences" &gt; "Settings".
+Then, in the text field "Search settings", type "logmx". The tree on the left should now display the category "LogMX GotoSource": click on it.
+These are the settings you may want to update:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+    <TR>
+        <TD class="TableHeader" align="right"><I>"Enabled"</I></TD>
+        <TD align="left">
+            <UL style="margin:0px;padding-left:20px">
+                <LI>Check to enable the plug-in (will listen to the port described below to communicate with LogMX).</LI>
+                <LI>Uncheck to disable the plug-in without un-installing it (LogMX will not be able to use VSCode to view source).</LI>
+            </UL>
+        </TD>
+    </TR>
+    <TR>
+        <TD class="TableHeader" align="right"><I>"Network: Host"</I></TD>
+        <TD align="left">
+            Shall match the address specified in LogMX (see <A href="#logmx-config">5.1. Configuring LogMX</A>).<BR/>
+            Usually set to "<SPAN class="Code">127.0.0.1</SPAN>" (IP v4), "<SPAN class="Code">::1</SPAN>" (IP v6), or "<SPAN class="Code">localhost</SPAN>" (IP v4/v6)
+        </TD>
+    </TR>   
+    <TR>
+        <TD class="TableHeader" align="right"><I>"Network: Port"</I></TD>
+        <TD align="left">
+            Shall match the TCP port specified in LogMX (see <A href="#logmx-config">5.1. Configuring LogMX</A>).<BR/>
+            Default port for VSCode plugin is 7791
+        </TD>
+    </TR>
+</TABLE>
+Changing these settings should not require a restart of VSCode. At any time, you can also restart the plugin and its server using the command 
+"<SPAN class="Code">logmx.gotosource.restart</SPAN>" using the VSCode Command Palette (Ctrl+Shift+P).
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="vscode-use"></A>2.3. Using VSCode plugin</DIV>
+
+To use this VSCode plugin, you just have to use the LogMX "GotoSource" feature (see <A href="#logmx-use">5.2. Using LogMX "GotoSource" feature</A>).
+
+<!-- =================================================== -->
+
+<DIV class="Title1"><A name="intellij-idea"></A>3. IntelliJ IDEA plugin</DIV>
+<DIV class="Title2" style="margin-top: 15px;"><A name="intellij-idea-install"></A>3.1. Installing IntelliJ IDEA plugin</DIV>
+Pre-requisites:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">IntelliJ IDEA</TD>
+		<TD align="left">At least v11.0</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Java</TD>
+		<TD align="left">At least v6, 32/64 bits</TD>
+	</TR>	
+	<TR>
+		<TD class="TableHeader" align="right">LogMX</TD>
+		<TD align="left">At least v5.4.0 for IntelliJ IDEA v11-v15<BR/>
+						 At least v5.5.1 for IntelliJ IDEA 2016+<BR/>
+		</TD>
+	</TR>
+</TABLE>
+
+<DIV style="text-align:center"><IMG src="images/idea_install.png" class="ShadowedImage" style="max-width:902px;"/></DIV>
+<B>To install "LogMX GotoSource" plugin in IntelliJ IDEA, you shall use the ZIP archive provided in </B>
+"<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/IntelliJ_IDEA</SPAN>". 
+Here are the steps to do this:
+<OL style="margin-top:2px">
+	<LI>In IntelliJ IDEA, click on menu "File", item "Settings..."</LI>
+	<LI>In the left tree, go to "Plugins", then click on button "Install plugin from disk..." (gears icon at the top)</LI>
+	<LI>Choose the following file from the directory "<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/IntelliJ_IDEA/</SPAN>":</LI>
+	<UL>
+		<LI><SPAN style="font-size:90%">[IntelliJ IDEA 2020.2.3 and later]</SPAN> "<SPAN class="Code">LogMX GotoSource IntelliJ IDEA v2020.2-and-later Plug-in.zip</SPAN>"</LI>
+		<LI><SPAN style="font-size:90%">[IntelliJ IDEA 2016-2019]</SPAN> "<SPAN class="Code">LogMX GotoSource IntelliJ IDEA v2016-2019 Plug-in.zip</SPAN>"</LI>
+		<LI><SPAN style="font-size:90%">[IntelliJ IDEA v11-v15]</SPAN> "<SPAN class="Code">LogMX GotoSource IntelliJ IDEA v11-v15 Plug-in.zip</SPAN>"</LI>
+	</UL>		
+	<LI>Click on button "OK" for both dialogs</LI>
+	<LI>If IntelliJ IDEA is older than 2020, restart IntelliJ IDEA (the IDE should ask you to do it)</LI>
+</OL>
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="intellij-idea-config"></A>3.2. Configuring IntelliJ IDEA plugin</DIV>
+
+<DIV style="text-align:center"><IMG src="images/idea_config.png" class="ShadowedImage" style="max-width:902px;"/></DIV>
+To configure "LogMX GotoSource" IntelliJ IDEA plugin, you shall click on menu "File", item "Settings...". In the left tree, go to 
+"LogMX GotoSource" (or "Other Settings" then "LogMX GotoSource" for IntelliJ IDEA v11-v15).
+The preferences page should now display these options:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Enable plug-in"</I></TD>
+		<TD align="left">
+			<UL style="margin:0px;padding-left:20px">
+				<LI>Check to enable the plug-in (will listen to the port described below to communicate with LogMX).</LI>
+				<LI>Uncheck to disable the plug-in without un-installing it (LogMX will not be able to use IntelliJ IDEA to view source).</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Listen on address"</I></TD>
+		<TD align="left">
+			Shall match the address specified in LogMX (see <A href="#logmx-config">5.1. Configuring LogMX</A>).<BR/>
+			Usually set to "<SPAN class="Code">127.0.0.1</SPAN>" (IP v4), "<SPAN class="Code">::1</SPAN>" (IP v6), or "<SPAN class="Code">localhost</SPAN>" (IP v4/v6)
+		</TD>
+	</TR>	
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Listen on port"</I></TD>
+		<TD align="left">
+			Shall match the TCP port specified in LogMX (see <A href="#logmx-config">5.1. Configuring LogMX</A>).<BR/>
+			Default port for IntelliJ IDEA plugin is 7789
+		</TD>
+	</TR>
+</TABLE>
+
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="intellij-idea-use"></A>3.3. Using IntelliJ IDEA plugin</DIV>
+To use this IntelliJ IDEA plugin, you just have to use the LogMX "GotoSource" feature (see <A href="#logmx-use">5.2. Using LogMX "GotoSource" feature</A>).
+
+
+<!-- =================================================== -->
+
+
+<DIV class="Title1"><A name="netbeans"></A>4. NetBeans plugin</DIV>
+<DIV class="Title2" style="margin-top: 15px;"><A name="netbeans-install"></A>4.1. Installing NetBeans plugin</DIV>
+Pre-requisites:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right">NetBeans</TD>
+		<TD align="left">At least v8.0, 32/64 bits</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right">Java</TD>
+		<TD align="left">At least v7, 32/64 bits</TD>
+	</TR>	
+	<TR>
+		<TD class="TableHeader" align="right">LogMX</TD>
+		<TD align="left">At least v6.6.0</TD>
+	</TR>
+</TABLE>
+<BR/>
+
+<DIV style="text-align:center"><IMG src="images/netbeans_install.png" class="ShadowedImage" style="max-width:688px;"/></DIV>
+To install LogMX GotoSource plugin in NetBeans, you shall use the two NBM files provided in </B>
+"<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/NetBeans</SPAN>". 
+Here are the steps to do this:
+<OL style="margin-top:2px">
+	<LI>In NetBeans, click on menu "Tools", item "Plugins..."</LI>
+	<LI>In the tab "Downloaded", click on the button "Add Plugins..."</LI>
+	<LI>Choose the two NBM files from the directory "<SPAN class="CodeHighlight">&lt;LogMX_install_dir&gt;</SPAN><SPAN class="Code">/setup/IDE_plugins/NetBeans/</SPAN>"
+	<LI>Then back to the "Plugins" window, click on the button "Install" (you can ignore the warnings about unsigned plugins)</LI>
+	<LI>Restart NetBeans (NetBeans should ask you to do it)</LI>
+</OL>
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="netbeans-config"></A>4.2. Configuring NetBeans plugin</DIV>
+
+<DIV style="text-align:center"><IMG src="images/netbeans_config.png" class="ShadowedImage" style="max-width:656px;"></DIV>
+
+To configure "LogMX GotoSource" NetBeans plugin, you shall click on menu "Tools", item "Options". Then go to tab "Miscellaneous", then tab "LogMX".
+The preferences page should now display these options:
+<TABLE border="1" cellSpacing="0" cellPadding="5" class="Tab0">
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Enable plug-in"</I></TD>
+		<TD align="left">
+			<UL style="margin:0px;padding-left:20px">
+				<LI>Check to enable the plug-in (will listen to the port described below to communicate with LogMX).</LI>
+				<LI>Uncheck to disable the plug-in without un-installing it (LogMX will not be able to use NetBeans to view source).</LI>
+			</UL>
+		</TD>
+	</TR>
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Listen on address"</I></TD>
+		<TD align="left">
+			Shall match the address specified in LogMX (see <A href="#logmx-config">6.1. Configuring LogMX</A>).<BR/>
+			Usually set to "<SPAN class="Code">127.0.0.1</SPAN>" (IP v4), "<SPAN class="Code">::1</SPAN>" (IP v6), or "<SPAN class="Code">localhost</SPAN>" (IP v4/v6)
+		</TD>
+	</TR>	
+	<TR>
+		<TD class="TableHeader" align="right"><I>"Listen on port"</I></TD>
+		<TD align="left">
+			Shall match the TCP port specified in LogMX (see <A href="#logmx-config">6.1. Configuring LogMX</A>).<BR/>
+			Default port for NetBeans plugin is 7790
+		</TD>
+	</TR>
+</TABLE>
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="netbeans-use"></A>4.3. Using NetBeans plugin</DIV>
+
+To use this NetBeans plugin, you just have to use the LogMX "GotoSource" feature (see <A href="#logmx-use">5.2. Using LogMX "GotoSource" feature</A>).
+
+
+<!-- =================================================== -->
+
+
+<DIV class="Title1"><A name="logmx-feature"></A>5. LogMX "GotoSource" feature</DIV>
+<DIV class="Title2" style="margin-top: 15px;"><A name="logmx-config"></A>5.1. Configuring LogMX</DIV>
+
+To configure LogMX "GotoSource" options:
+<OL style="margin-top:0px">
+	<LI>click on menu "Tools", item "Options"</LI>
+	<LI>in the "General" tab, click on button "Eclipse/VScode/IntelliJ/NetBeans integration..."</LI>
+	<LI>set the address and port to the values you specified in your IDE plugin options (<A href="#eclipse-config">&sect;1.2</A>, <A href="#vscode-config">&sect;2.2</A>, <A href="#intellij-idea-config">&sect;3.2</A>, or <A href="#netbeans-config">&sect;4.2</A>)</LI>
+	<LI>for better performance when LogMX will fetch the source code, you can uncheck the IDEs you don't currently use and/or move your preferred IDE on top of the list:</LI>
+</OL>
+
+<BR/>
+<DIV style="text-align:center"><IMG src="images/logmx_config.png" class="ShadowedImage" style="max-width:546px;"/></DIV>
+
+<!-- =================================================== -->
+
+<DIV class="Title2"><A name="logmx-use"></A>5.2 Using LogMX "GotoSource" feature</DIV>
+
+Once LogMX and your IDE are both configured like described above, you can use LogMX "GotoSource" feature in its "Entry details" panel (bottom of main window):
+<UL style="margin-top:0px">
+	<LI>move your mouse over a stack trace line to display (inside a tooltip) the source preview for the hovered stack line</LI>
+	<LI>click on a stack trace line to bring up your IDE, displaying the file and line matching the clicked stack line</LI>
+</UL>
+<DIV style="text-align:center"><IMG src="images/logmx_usage.png" class="SimpleImage" style="max-width:816px;"/></DIV>
+
+
+<!-- =================================================== -->
+
+
+<DIV class="Title1"><A name="new-ide"></A>6. Using any other IDE</DIV>
+
+If you want to use the LogMX "GotoSource" feature with an IDE that is currently not supported, you can send us a feature request (<A href="mailto:contact@logmx.com">contact@logmx.com</A>), 
+or implement the IDE plug-in yourself using the provided API: <A href="https://logmx.com/dev/ide-plugins/api/index.html">https://logmx.com/dev/ide-plugins/api/index.html</A>.
+
+<BR>
+<BR>
+
+
+<BODY>
+</HTML>
