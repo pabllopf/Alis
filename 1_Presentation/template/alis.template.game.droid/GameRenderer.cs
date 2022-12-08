@@ -27,35 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Android.Content.Res;
 using Android.Opengl;
 using Java.Lang;
 using Javax.Microedition.Khronos.Opengles;
 using EGLConfig = Javax.Microedition.Khronos.Egl.EGLConfig;
 
-namespace Alis.Template.Game.Android
+namespace Alis.Template.Game.Droid
 {
     /// <summary>
-    ///     The my gl renderer class
+    /// The game renderer class
     /// </summary>
-    /// <seealso cref="Java.Lang.Object" />
-    /// <seealso cref="GLSurfaceView.IRenderer" />
-    internal class MyGLRenderer : Object, GLSurfaceView.IRenderer
+    /// <seealso cref="Object"/>
+    /// <seealso cref="GLSurfaceView.IRenderer"/>
+    internal class GameRenderer : Object, GLSurfaceView.IRenderer
     {
         /// <summary>
         ///     The proj matrix
         /// </summary>
-        private float[] mProjMatrix = new float[16];
-
+        private readonly float[] mProjMatrix = new float[16];
+        
+        private readonly float[] viewMatrix = new float[16];
+        
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private float red;
 
         /// <summary>
         ///     The blue
         /// </summary>
-        private float red, green, blue;
+        private float green;
 
         /// <summary>
-        ///     The tag
+        ///     The blue
         /// </summary>
-        private static string TAG = "MyGLRenderer";
+        private float blue;
 
         /// <summary>
         ///     Ons the draw frame using the specified gl
@@ -83,6 +90,8 @@ namespace Alis.Template.Game.Android
             {
                 blue -= 1.0f;
             }
+
+            Matrix.SetLookAtM(viewMatrix, 0, 0f, 0f, 3f, 0f, 0f, 0f, 0f, 1.0f, 0.0f);
         }
 
         /// <summary>
@@ -97,11 +106,11 @@ namespace Alis.Template.Game.Android
             // such as screen rotation
             GLES20.GlViewport(0, 0, width, height);
 
-            float ratio = (float) width / height;
+           //float ratio = (float) width / height;
 
             // this projection matrix is applied to object coordinates
             // in the onDrawFrame() method
-            Matrix.FrustumM(mProjMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
+            //Matrix.FrustumM(mProjMatrix, 0, -ratio, ratio, -1f, 1f, 3f, 7f);
         }
 
         /// <summary>
@@ -111,7 +120,7 @@ namespace Alis.Template.Game.Android
         /// <param name="config">The config</param>
         public void OnSurfaceCreated(IGL10 gl, EGLConfig config)
         {
-            //GLES30.GlClearColor (0.0f, 0.0f, 0.0f, 1.0f);
+            GLES20.GlClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         }
     }
 }

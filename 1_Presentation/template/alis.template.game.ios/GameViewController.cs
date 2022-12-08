@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Diagnostics;
 using CoreAnimation;
 using CoreGraphics;
@@ -127,50 +126,6 @@ namespace Alis.Template.Game.Ios
             {
                 blue -= 1.0f;
             }
-
-
-            /*
-			var time = clock.ElapsedMilliseconds / 1000.0f;
-			var viewProj = Matrix4x4.Multiply(this.view, this.proj);
-			var worldViewProj = Matrix4x4.CreateRotationX(time) * Matrix4x4.CreateRotationY(time * 2) * Matrix4x4.CreateRotationZ(time * .7f) * viewProj;
-			worldViewProj = Matrix4x4.Transpose(worldViewProj);
-			
-			int rawsize = Marshal.SizeOf<Matrix4x4>();
-			var rawdata = new byte[rawsize];
-			
-			GCHandle pinnedUniforms = GCHandle.Alloc(worldViewProj, GCHandleType.Pinned);
-			IntPtr ptr = pinnedUniforms.AddrOfPinnedObject();
-			Marshal.Copy(ptr, rawdata, 0, rawsize);
-			pinnedUniforms.Free();
-
-			Marshal.Copy(rawdata, 0, constantBuffer.Contents + rawsize, rawsize);
-			
-			ICAMetalDrawable drawable = ((CAMetalLayer) view.Layer).NextDrawable();
-			IMTLTexture texture = drawable.Texture;
-			MTLRenderPassDescriptor renderPassDescriptor = view.CurrentRenderPassDescriptor;
-			
-			renderPassDescriptor.ColorAttachments[0].Texture = texture;
-			renderPassDescriptor.ColorAttachments[0].LoadAction = MTLLoadAction.Clear;
-			renderPassDescriptor.ColorAttachments[0].StoreAction = MTLStoreAction.Store;
-			renderPassDescriptor.ColorAttachments[0].ClearColor = new MTLClearColor(red, green, blue, 1.0f);
-
-			red += 0.01f;
-			if (red >= 1.0f)
-				red -= 1.0f;
-			green += 0.02f;
-			if (green >= 1.0f)
-				green -= 1.0f;
-			blue += 0.03f;
-			if (blue >= 1.0f)
-				blue -= 1.0f;
-			
-			IMTLCommandBuffer commandBuffer = commandQueue.CommandBuffer();
-			IMTLRenderCommandEncoder renderEncoder = commandBuffer.CreateRenderCommandEncoder(renderPassDescriptor);
-			renderEncoder.EndEncoding();
-			
-			commandBuffer.PresentDrawable (drawable);
-			commandBuffer.Commit();
-			//commandBuffer.WaitUntilCompleted();*/
         }
 
         /// <summary>
@@ -180,7 +135,6 @@ namespace Alis.Template.Game.Ios
         /// <param name="size">The size</param>
         public void DrawableSizeWillChange(MTKView view, CGSize size)
         {
-            // Called whenever view changes orientation or layout is changed
         }
 
         /// <summary>

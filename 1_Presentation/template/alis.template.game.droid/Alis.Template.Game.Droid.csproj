@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0-android</TargetFramework>
+        <ApplicationId>com.companyname.Alis.Template.Game.Droid</ApplicationId>
+        <OutputType>Exe</OutputType>
+        <IsPackable>false</IsPackable>
+        <ApplicationVersion>1</ApplicationVersion>
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\alis.template.game\Alis.Template.Game.csproj" />
+    </ItemGroup>
+</Project>

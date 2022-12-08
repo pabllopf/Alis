@@ -43,9 +43,5 @@ namespace Alis.Template.Game.Ios
         ///     Gets or sets the value of the window
         /// </summary>
         public override UIWindow Window { get; set; }
-
-        // There is no need for a FinishedLaunching method here as the
-        // Main.storyboard is automagically loaded since it is specified
-        // in the Info.plist -> <key>UIMainStoryboardFile~ipad</key>
     }
 }

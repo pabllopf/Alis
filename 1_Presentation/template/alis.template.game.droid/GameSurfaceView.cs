@@ -27,42 +27,36 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Android.App;
 using Android.Content;
-using Android.Opengl;
+using Android.Graphics;
+using Android.Views;
+using Android.Widget;
 
-namespace Alis.Template.Game.Android
+namespace Alis.Template.Game.Droid
 {
     /// <summary>
-    ///     The my gl surface view class
+    /// The game surface view class
     /// </summary>
-    /// <seealso cref="GLSurfaceView" />
-    internal class MyGLSurfaceView : GLSurfaceView
+    /// <seealso cref="Android.Opengl.GLSurfaceView"/>
+    internal sealed class GameSurfaceView : Android.Opengl.GLSurfaceView
     {
         /// <summary>
-        ///     The renderer
-        /// </summary>
-        private MyGLRenderer mRenderer;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="MyGLSurfaceView" /> class
+        /// Initializes a new instance of the <see cref="GameSurfaceView"/> class
         /// </summary>
         /// <param name="context">The context</param>
-        public MyGLSurfaceView(Context context) : base(context)
+        public GameSurfaceView(Context context) : base(context)
         {
             // Create an OpenGL ES 3.0 context.
-            SetEGLContextClientVersion(3);
+            SetEGLContextClientVersion(2);
 
             // Set the Renderer for drawing on the GLSurfaceView
-            mRenderer = new MyGLRenderer();
-            SetRenderer(mRenderer);
-
+            GameRenderer  gameRenderer =  new GameRenderer();
+            SetRenderer(gameRenderer);
+            
             // Render the view only when there is a change in the drawing data
-            RenderMode = Rendermode.Continuously;
+            RenderMode = Android.Opengl.Rendermode.Continuously;
+            //LayoutParameters = (ViewGroup.LayoutParams) ViewGroup.LayoutParams.WrapContent;
         }
-
-        /// <summary>
-        ///     The touch scale factor
-        /// </summary>
-        private const float TOUCH_SCALE_FACTOR = 180.0f / 320;
     }
 }

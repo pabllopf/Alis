@@ -33,22 +33,19 @@ using Android.Opengl;
 using Android.OS;
 using Android.Views;
 
-namespace Alis.Template.Game.Android
+namespace Alis.Template.Game.Droid
 {
-    // the ConfigurationChanges flags set here keep the EGL context
-    // from being destroyed whenever the device is rotated or the
-    // keyboard is shown (highly recommended for all GL apps)
     /// <summary>
-    ///     The gl native es 30 activity class
+    /// The game activity class
     /// </summary>
-    /// <seealso cref="Activity" />
+    /// <seealso cref="Activity"/>
     [Activity(ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.KeyboardHidden, MainLauncher = true)]
-    public class GLNativeES30Activity : Activity
+    public class GameActivity : Activity
     {
         /// <summary>
-        ///     The gl view
+        /// The game surface view
         /// </summary>
-        private GLSurfaceView mGLView;
+        private GameSurfaceView gameSurfaceView;
 
         /// <summary>
         ///     Ons the create using the specified bundle
@@ -57,18 +54,28 @@ namespace Alis.Template.Game.Android
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            
 
-            //Game.exampleshareclass.print();
-
+            Window.AddFlags(WindowManagerFlags.Fullscreen); // hide the status bar
+            
             //set up notitle 
             RequestWindowFeature(WindowFeatures.NoTitle);
+            
             //set up full screen
-            Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+            if (Window != null)
+            {
+                Window.SetFlags(WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+            }
 
             // Create a GLSurfaceView instance and set it
             // as the ContentView for this Activity
-            mGLView = new MyGLSurfaceView(this);
-            SetContentView(mGLView);
+            gameSurfaceView = new GameSurfaceView(this);
+            
+            gameSurfaceView.LayoutParameters = (new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MatchParent,
+                ViewGroup.LayoutParams.MatchParent));
+            
+            SetContentView(gameSurfaceView);
         }
 
         /// <summary>
@@ -77,12 +84,7 @@ namespace Alis.Template.Game.Android
         protected override void OnPause()
         {
             base.OnPause();
-
-            // The following call pauses the rendering thread.
-            // If your OpenGL application is memory intensive,
-            // you should consider de-allocating objects that
-            // consume significant memory here.
-            mGLView.OnPause();
+            gameSurfaceView.OnPause();
         }
 
         /// <summary>
@@ -91,11 +93,7 @@ namespace Alis.Template.Game.Android
         protected override void OnResume()
         {
             base.OnResume();
-
-            // The following call resumes a paused rendering thread.
-            // If you de-allocated graphic objects for onPause()
-            // this is a good place to re-allocate them.
-            mGLView.OnResume();
+            gameSurfaceView.OnResume();
         }
     }
 }

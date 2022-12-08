@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="GLNativeES30.GLNativeES30">
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+    
+    <application android:label="Alis.Template.Game.Android">
+        <meta-data android:name="android.max_aspect"
+                   android:value="ratio_float"/>
+        <meta-data android:name="android.max_aspect" android:value="2.5" />
+    </application>
+    
+</manifest>
