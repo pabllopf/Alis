@@ -27,13 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using UIKit;
-
 namespace Alis.Template.Game.Ios
 {
-    /// <summary>
-    ///     The application class
-    /// </summary>
     public class Application
     {
         // This is the main entry point of the application.
@@ -45,7 +40,7 @@ namespace Alis.Template.Game.Ios
         {
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
-            UIApplication.Main(args, null, typeof(AppDelegate));
+            UIKit.UIApplication.Main(args, null, typeof(AppDelegate));
         }
     }
 }

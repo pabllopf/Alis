@@ -26,22 +26,14 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
-using Foundation;
-using UIKit;
-
 namespace Alis.Template.Game.Ios
 {
-    /// <summary>
-    ///     The app delegate class
-    /// </summary>
-    /// <seealso cref="UIApplicationDelegate" />
-    [Register("AppDelegate")]
-    public class AppDelegate : UIApplicationDelegate
+    [Foundation.Register("AppDelegate")]
+    public class AppDelegate : UIKit.UIApplicationDelegate
     {
         /// <summary>
         ///     Gets or sets the value of the window
         /// </summary>
-        public override UIWindow Window { get; set; }
+        public override UIKit.UIWindow Window { get; set; }
     }
 }
