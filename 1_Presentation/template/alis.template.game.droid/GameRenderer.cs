@@ -47,6 +47,9 @@ namespace Alis.Template.Game.Droid
         /// </summary>
         private readonly float[] mProjMatrix = new float[16];
         
+        /// <summary>
+        /// The view matrix
+        /// </summary>
         private readonly float[] viewMatrix = new float[16];
         
         /// <summary>

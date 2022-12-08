@@ -4,6 +4,2702 @@
         <name>Alis.Test</name>
     </assembly>
     <members>
+        <member name="T:Alis.Test.Builder.ConsoleGameBuilderTests">
+            <summary>
+            The console game builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.ConsoleGameBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.ConsoleGameBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.ConsoleGameBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.ConsoleGameBuilderTests.CreateConsoleGameBuilder">
+            <summary>
+            Creates the console game builder
+            </summary>
+            <returns>The console game builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.ConsoleGameBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.ConsoleGameBuilderTests.Run_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that run state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests">
+            <summary>
+            The audio clip builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests.CreateAudioClipBuilder">
+            <summary>
+            Creates the audio clip builder
+            </summary>
+            <returns>The audio clip builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests.FilePath_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that file path state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests.Mute_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that mute state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioClipBuilderTests.Volume_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that volume state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Audio.AudioRecorderBuilderTests">
+            <summary>
+            The audio recorder builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Audio.AudioRecorderBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioRecorderBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Audio.AudioRecorderBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioRecorderBuilderTests.CreateAudioRecorderBuilder">
+            <summary>
+            Creates the audio recorder builder
+            </summary>
+            <returns>The audio recorder builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioRecorderBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests">
+            <summary>
+            The audio source builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests.CreateAudioSourceBuilder">
+            <summary>
+            Creates the audio source builder
+            </summary>
+            <returns>The audio source builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests.IsActive_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that is active state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests.PlayOnAwake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that play on awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Audio.AudioSourceBuilderTests.SetAudioClip_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that set audio clip state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Body.RigidBodyBuilderTests">
+            <summary>
+            The rigid body builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Body.RigidBodyBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Body.RigidBodyBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Body.RigidBodyBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Body.RigidBodyBuilderTests.CreateRigidBodyBuilder">
+            <summary>
+            Creates the rigid body builder
+            </summary>
+            <returns>The rigid body builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Body.RigidBodyBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests">
+            <summary>
+            The box collider builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.CreateBoxColliderBuilder">
+            <summary>
+            Creates the box collider builder
+            </summary>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.Size_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that size state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.FixedRotation_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that fixed rotation state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.AutoTilling_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that auto tilling state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.GravityScale_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that gravity scale state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.Mass_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that mass state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.Friction_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that friction state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.Density_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that density state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.Rotation_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that rotation state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.RelativePosition_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that relative position state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.Restitution_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that restitution state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.IsTrigger_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that is trigger state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.IsTrigger_StateUnderTest_ExpectedBehavior1">
+            <summary>
+            Tests that is trigger state under test expected behavior 1
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.IsActive_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that is active state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.LinearVelocity_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that linear velocity state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.BoxColliderBuilderTests.BodyType_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that body type state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Collider.CircleColliderBuilderTests">
+            <summary>
+            The circle collider builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Collider.CircleColliderBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.CircleColliderBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Collider.CircleColliderBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.CircleColliderBuilderTests.CreateCircleColliderBuilder">
+            <summary>
+            Creates the circle collider builder
+            </summary>
+            <returns>The circle collider builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Collider.CircleColliderBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.ComponentBaseBuilderTests">
+            <summary>
+            The component base builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.ComponentBaseBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.ComponentBaseBuilderTests.mockComponentBase">
+            <summary>
+            The mock component base
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.ComponentBaseBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.ComponentBaseBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.ComponentBaseBuilderTests.CreateComponentBaseBuilder">
+            <summary>
+            Creates the component base builder
+            </summary>
+            <returns>The component base builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.ComponentBaseBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Light.AreaLightBuilderTests">
+            <summary>
+            The area light builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Light.AreaLightBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.AreaLightBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Light.AreaLightBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.AreaLightBuilderTests.CreateAreaLightBuilder">
+            <summary>
+            Creates the area light builder
+            </summary>
+            <returns>The area light builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.AreaLightBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Light.DirectionalLightBuilderTests">
+            <summary>
+            The directional light builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Light.DirectionalLightBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.DirectionalLightBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Light.DirectionalLightBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.DirectionalLightBuilderTests.CreateDirectionalLightBuilder">
+            <summary>
+            Creates the directional light builder
+            </summary>
+            <returns>The directional light builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.DirectionalLightBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Light.PointLightBuilderTests">
+            <summary>
+            The point light builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Light.PointLightBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.PointLightBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Light.PointLightBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.PointLightBuilderTests.CreatePointLightBuilder">
+            <summary>
+            Creates the point light builder
+            </summary>
+            <returns>The point light builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.PointLightBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Light.SpotLightBuilderTests">
+            <summary>
+            The spot light builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Light.SpotLightBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.SpotLightBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Light.SpotLightBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.SpotLightBuilderTests.CreateSpotLightBuilder">
+            <summary>
+            Creates the spot light builder
+            </summary>
+            <returns>The spot light builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Light.SpotLightBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Mesh.BoxMeshBuilderTests">
+            <summary>
+            The box mesh builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Mesh.BoxMeshBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Mesh.BoxMeshBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Mesh.BoxMeshBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Mesh.BoxMeshBuilderTests.CreateBoxMeshBuilder">
+            <summary>
+            Creates the box mesh builder
+            </summary>
+            <returns>The box mesh builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Mesh.BoxMeshBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Mesh.CircleMeshBuilderTests">
+            <summary>
+            The circle mesh builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Mesh.CircleMeshBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Mesh.CircleMeshBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Mesh.CircleMeshBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Mesh.CircleMeshBuilderTests.CreateCircleMeshBuilder">
+            <summary>
+            Creates the circle mesh builder
+            </summary>
+            <returns>The circle mesh builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Mesh.CircleMeshBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Particle.ExplosionParticleBuilderTests">
+            <summary>
+            The explosion particle builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Particle.ExplosionParticleBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Particle.ExplosionParticleBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Particle.ExplosionParticleBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Particle.ExplosionParticleBuilderTests.CreateExplosionParticleBuilder">
+            <summary>
+            Creates the explosion particle builder
+            </summary>
+            <returns>The explosion particle builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Particle.ExplosionParticleBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests">
+            <summary>
+            The animation builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.CreateAnimationBuilder">
+            <summary>
+            Creates the animation builder
+            </summary>
+            <returns>The animation builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.AddFrame_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add frame state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.Name_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that name state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.Order_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that order state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimationBuilderTests.Speed_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that speed state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Render.AnimatorBuilderTests">
+            <summary>
+            The animator builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Render.AnimatorBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimatorBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Render.AnimatorBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimatorBuilderTests.CreateAnimatorBuilder">
+            <summary>
+            Creates the animator builder
+            </summary>
+            <returns>The animator builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimatorBuilderTests.AddAnimation_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add animation state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.AnimatorBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Render.CameraBuilderTests">
+            <summary>
+            The camera builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Render.CameraBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.CameraBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Render.CameraBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.CameraBuilderTests.CreateCameraBuilder">
+            <summary>
+            Creates the camera builder
+            </summary>
+            <returns>The camera builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.CameraBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Render.FrameBuilderTests">
+            <summary>
+            The frame builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Render.FrameBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.FrameBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Render.FrameBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.FrameBuilderTests.CreateFrameBuilder">
+            <summary>
+            Creates the frame builder
+            </summary>
+            <returns>The frame builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.FrameBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.FrameBuilderTests.FilePath_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that file path state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests">
+            <summary>
+            The sprite builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests.CreateSpriteBuilder">
+            <summary>
+            Creates the sprite builder
+            </summary>
+            <returns>The sprite builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests.Depth_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that depth state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Component.Render.SpriteBuilderTests.SetTexture_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that set texture state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests">
+            <summary>
+            The game object builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.CreateGameObjectBuilder">
+            <summary>
+            Creates the game object builder
+            </summary>
+            <returns>The game object builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.AddComponent_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add component state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.AddComponent_StateUnderTest_ExpectedBehavior1">
+            <summary>
+            Tests that add component state under test expected behavior 1
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.Name_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that name state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.Transform_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that transform state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.GameObjectBuilderTests.WithTag_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that with tag state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Entity.SceneBuilderTests">
+            <summary>
+            The scene builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Entity.SceneBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SceneBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Entity.SceneBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SceneBuilderTests.CreateSceneBuilder">
+            <summary>
+            Creates the scene builder
+            </summary>
+            <returns>The scene builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SceneBuilderTests.Add_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SceneBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SceneBuilderTests.Name_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that name state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests">
+            <summary>
+            The splash screen builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests.CreateSplashScreenBuilder">
+            <summary>
+            Creates the splash screen builder
+            </summary>
+            <returns>The splash screen builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests.FilePath_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that file path state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests.IsActive_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that is active state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.SplashScreenBuilderTests.Style_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that style state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Entity.TransformBuilderTests">
+            <summary>
+            The transform builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Entity.TransformBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.TransformBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Entity.TransformBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.TransformBuilderTests.CreateTransformBuilder">
+            <summary>
+            Creates the transform builder
+            </summary>
+            <returns>The transform builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.TransformBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.TransformBuilderTests.Position_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that position state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.TransformBuilderTests.Rotation_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that rotation state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.TransformBuilderTests.Scale_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that scale state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Entity.WindowBuilderTests">
+            <summary>
+            The window builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Entity.WindowBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.WindowBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Entity.WindowBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.WindowBuilderTests.CreateWindowBuilder">
+            <summary>
+            Creates the window builder
+            </summary>
+            <returns>The window builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.WindowBuilderTests.Background_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that background state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.WindowBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Entity.WindowBuilderTests.Resolution_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that resolution state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Manager.ManagerBaseBuilderTests">
+            <summary>
+            The manager base builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Manager.ManagerBaseBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.ManagerBaseBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Manager.ManagerBaseBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.ManagerBaseBuilderTests.CreateManagerBaseBuilder">
+            <summary>
+            Creates the manager base builder
+            </summary>
+            <returns>The manager base builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.ManagerBaseBuilderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Manager.SceneManagerBuilderTests">
+            <summary>
+            The scene manager builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Manager.SceneManagerBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SceneManagerBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Manager.SceneManagerBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SceneManagerBuilderTests.CreateSceneManagerBuilder">
+            <summary>
+            Creates the scene manager builder
+            </summary>
+            <returns>The scene manager builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SceneManagerBuilderTests.Add_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SceneManagerBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests">
+            <summary>
+            The setting manager builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.CreateSettingManagerBuilder">
+            <summary>
+            Creates the setting manager builder
+            </summary>
+            <returns>The setting manager builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.Audio_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that audio state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.Debug_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that debug state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.General_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that general state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Manager.SettingManagerBuilderTests.Graphic_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that graphic state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Setting.AudioSettingBuilderTests">
+            <summary>
+            The audio setting builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Setting.AudioSettingBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.AudioSettingBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Setting.AudioSettingBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.AudioSettingBuilderTests.CreateAudioSettingBuilder">
+            <summary>
+            Creates the audio setting builder
+            </summary>
+            <returns>The audio setting builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.AudioSettingBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Setting.DebugSettingBuilderTests">
+            <summary>
+            The debug setting builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Setting.DebugSettingBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.DebugSettingBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Setting.DebugSettingBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.DebugSettingBuilderTests.CreateDebugSettingBuilder">
+            <summary>
+            Creates the debug setting builder
+            </summary>
+            <returns>The debug setting builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.DebugSettingBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests">
+            <summary>
+            The general setting builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.CreateGeneralSettingBuilder">
+            <summary>
+            Creates the general setting builder
+            </summary>
+            <returns>The general setting builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.Author_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that author state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.Description_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that description state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.Icon_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that icon state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.Name_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that name state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GeneralSettingBuilderTests.SplashScreen_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that splash screen state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Setting.GraphicSettingBuilderTests">
+            <summary>
+            The graphic setting builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Setting.GraphicSettingBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GraphicSettingBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Setting.GraphicSettingBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GraphicSettingBuilderTests.CreateGraphicSettingBuilder">
+            <summary>
+            Creates the graphic setting builder
+            </summary>
+            <returns>The graphic setting builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GraphicSettingBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.GraphicSettingBuilderTests.Window_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that window state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.Core.Setting.SettingBuilderTests">
+            <summary>
+            The setting builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.Core.Setting.SettingBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.SettingBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.Core.Setting.SettingBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.SettingBuilderTests.CreateSettingBuilder">
+            <summary>
+            Creates the setting builder
+            </summary>
+            <returns>The setting builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.Core.Setting.SettingBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.SoundGameBuilderTests">
+            <summary>
+            The sound game builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.SoundGameBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.SoundGameBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.SoundGameBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.SoundGameBuilderTests.CreateSoundGameBuilder">
+            <summary>
+            Creates the sound game builder
+            </summary>
+            <returns>The sound game builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.SoundGameBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.SoundGameBuilderTests.Run_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that run state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Builder.VideoGameBuilderTests">
+            <summary>
+            The video game builder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Builder.VideoGameBuilderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.VideoGameBuilderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Builder.VideoGameBuilderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.VideoGameBuilderTests.CreateVideoGameBuilder">
+            <summary>
+            Creates the video game builder
+            </summary>
+            <returns>The video game builder</returns>
+        </member>
+        <member name="M:Alis.Test.Builder.VideoGameBuilderTests.Build_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that build state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.VideoGameBuilderTests.Manager_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that manager state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.VideoGameBuilderTests.Settings_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that settings state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Builder.VideoGameBuilderTests.Run_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that run state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.ConsoleGameTests">
+            <summary>
+            The console game tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.ConsoleGameTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.ConsoleGameTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.ConsoleGameTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.ConsoleGameTests.CreateConsoleGame">
+            <summary>
+            Creates the console game
+            </summary>
+            <returns>The console game</returns>
+        </member>
+        <member name="M:Alis.Test.ConsoleGameTests.Run_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that run state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.ConsoleGameTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Audio.AudioClipTests">
+            <summary>
+            The audio clip tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Audio.AudioClipTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioClipTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Audio.AudioClipTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioClipTests.CreateAudioClip">
+            <summary>
+            Creates the audio clip
+            </summary>
+            <returns>The audio clip</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioClipTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Audio.AudioRecorderTests">
+            <summary>
+            The audio recorder tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Audio.AudioRecorderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioRecorderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Audio.AudioRecorderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioRecorderTests.CreateAudioRecorder">
+            <summary>
+            Creates the audio recorder
+            </summary>
+            <returns>The audio recorder</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioRecorderTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioRecorderTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioRecorderTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Audio.AudioSourceTests">
+            <summary>
+            The audio source tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Audio.AudioSourceTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Audio.AudioSourceTests.mockAudioClip">
+            <summary>
+            The mock audio clip
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Audio.AudioSourceTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.CreateAudioSource">
+            <summary>
+            Creates the audio source
+            </summary>
+            <returns>The audio source</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.Play_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that play state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.Stop_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that stop state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.Resume_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that resume state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Audio.AudioSourceTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Body.BodyBaseTests">
+            <summary>
+            The body base tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Body.BodyBaseTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Body.BodyBaseTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Body.BodyBaseTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Body.BodyBaseTests.CreateBodyBase">
+            <summary>
+            Creates the body base
+            </summary>
+            <returns>The body base</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Body.BodyBaseTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Body.BodyBaseTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Body.RigidBodyTests">
+            <summary>
+            The rigid body tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Body.RigidBodyTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Body.RigidBodyTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Body.RigidBodyTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Body.RigidBodyTests.CreateRigidBody">
+            <summary>
+            Creates the rigid body
+            </summary>
+            <returns>The rigid body</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Body.RigidBodyTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Collider.BoxColliderTests">
+            <summary>
+            The box collider tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Collider.BoxColliderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Collider.BoxColliderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.CreateBoxCollider">
+            <summary>
+            Creates the box collider
+            </summary>
+            <returns>The box collider</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.AfterUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that after update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.Draw_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that draw state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.BoxColliderTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Collider.CircleColliderTests">
+            <summary>
+            The circle collider tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Collider.CircleColliderTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.CircleColliderTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Collider.CircleColliderTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.CircleColliderTests.CreateCircleCollider">
+            <summary>
+            Creates the circle collider
+            </summary>
+            <returns>The circle collider</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Collider.CircleColliderTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Light.AreaLightTests">
+            <summary>
+            The area light tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Light.AreaLightTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Light.AreaLightTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Light.AreaLightTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Light.AreaLightTests.CreateAreaLight">
+            <summary>
+            Creates the area light
+            </summary>
+            <returns>The area light</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Light.AreaLightTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Light.DirectionalLightTests">
+            <summary>
+            The directional light tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Light.DirectionalLightTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Light.DirectionalLightTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Light.DirectionalLightTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Light.DirectionalLightTests.CreateDirectionalLight">
+            <summary>
+            Creates the directional light
+            </summary>
+            <returns>The directional light</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Light.DirectionalLightTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Mesh.BoxMeshTests">
+            <summary>
+            The box mesh tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Mesh.BoxMeshTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Mesh.BoxMeshTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Mesh.BoxMeshTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Mesh.BoxMeshTests.CreateBoxMesh">
+            <summary>
+            Creates the box mesh
+            </summary>
+            <returns>The box mesh</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Mesh.BoxMeshTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Mesh.CircleMeshTests">
+            <summary>
+            The circle mesh tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Mesh.CircleMeshTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Mesh.CircleMeshTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Mesh.CircleMeshTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Mesh.CircleMeshTests.CreateCircleMesh">
+            <summary>
+            Creates the circle mesh
+            </summary>
+            <returns>The circle mesh</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Mesh.CircleMeshTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Render.AnimationTests">
+            <summary>
+            The animation tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Render.AnimationTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimationTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Render.AnimationTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimationTests.CreateAnimation">
+            <summary>
+            Creates the animation
+            </summary>
+            <returns>The animation</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimationTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimationTests.HasNext_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that has next state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimationTests.NextTexture_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that next texture state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimationTests.AddFrame_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add frame state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Render.AnimatorTests">
+            <summary>
+            The animator tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Render.AnimatorTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Render.AnimatorTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.CreateAnimator">
+            <summary>
+            Creates the animator
+            </summary>
+            <returns>The animator</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.AddAnimation_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add animation state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.AnimatorTests.ChangeAnimationTo_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that change animation to state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Render.CameraTests">
+            <summary>
+            The camera tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Render.CameraTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.CameraTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Render.CameraTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.CameraTests.CreateCamera">
+            <summary>
+            Creates the camera
+            </summary>
+            <returns>The camera</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.CameraTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.CameraTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.CameraTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.CameraTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Render.FrameTests">
+            <summary>
+            The frame tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Render.FrameTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.FrameTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Render.FrameTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.FrameTests.CreateFrame">
+            <summary>
+            Creates the frame
+            </summary>
+            <returns>The frame</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.FrameTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Render.ImageTests">
+            <summary>
+            The image tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Render.ImageTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.ImageTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Render.ImageTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.ImageTests.CreateImage">
+            <summary>
+            Creates the image
+            </summary>
+            <returns>The image</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.ImageTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Component.Render.SpriteTests">
+            <summary>
+            The sprite tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Component.Render.SpriteTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Component.Render.SpriteTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.CreateSprite">
+            <summary>
+            Creates the sprite
+            </summary>
+            <returns>The sprite</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Component.Render.SpriteTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Entity.GameObjectTests">
+            <summary>
+            The game object tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Entity.GameObjectTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.GameObjectTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Entity.GameObjectTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.GameObjectTests.CreateGameObject">
+            <summary>
+            Creates the game object
+            </summary>
+            <returns>The game object</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.GameObjectTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.GameObjectTests.CreatePrimitive_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that create primitive state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.GameObjectTests.Find_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that find state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.GameObjectTests.FindGameObjectsWithTag_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that find game objects with tag state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.GameObjectTests.FindWithTag_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that find with tag state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Entity.SceneTests">
+            <summary>
+            The scene tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Entity.SceneTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Entity.SceneTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.CreateScene">
+            <summary>
+            Creates the scene
+            </summary>
+            <returns>The scene</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.AfterUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that after update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.FixedUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that fixed update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.DispatchEvents_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that dispatch events state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Draw_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that draw state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Reset_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that reset state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Stop_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that stop state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SceneTests.Add_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Entity.SplashScreenTests">
+            <summary>
+            The splash screen tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Entity.SplashScreenTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SplashScreenTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Entity.SplashScreenTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SplashScreenTests.CreateSplashScreen">
+            <summary>
+            Creates the splash screen
+            </summary>
+            <returns>The splash screen</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.SplashScreenTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Entity.TransformTests">
+            <summary>
+            The transform tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Entity.TransformTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.TransformTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Entity.TransformTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.TransformTests.CreateTransform">
+            <summary>
+            Creates the transform
+            </summary>
+            <returns>The transform</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.TransformTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Entity.WindowTests">
+            <summary>
+            The window tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Entity.WindowTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.WindowTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Entity.WindowTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.WindowTests.CreateWindow">
+            <summary>
+            Creates the window
+            </summary>
+            <returns>The window</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Entity.WindowTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Manager.Audio.AudioManagerTests">
+            <summary>
+            The audio manager tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Manager.Audio.AudioManagerTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Manager.Audio.AudioManagerTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.CreateManager">
+            <summary>
+            Creates the manager
+            </summary>
+            <returns>The audio manager</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.AfterUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that after update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.DispatchEvents_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that dispatch events state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.FixedUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that fixed update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.Reset_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that reset state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.Stop_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that stop state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Audio.AudioManagerTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Manager.Graphic.GraphicManagerTests">
+            <summary>
+            The graphic manager tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Manager.Graphic.GraphicManagerTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.CreateManager">
+            <summary>
+            Creates the manager
+            </summary>
+            <returns>The graphic manager</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.AfterUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that after update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.DispatchEvents_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that dispatch events state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.FixedUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that fixed update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Reset_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that reset state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Stop_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that stop state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.Attach_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that attach state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.UnAttach_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that un attach state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.SetView_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that set view state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Graphic.GraphicManagerTests.AttachCollider_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that attach collider state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Manager.Input.InputManagerTests">
+            <summary>
+            The input manager tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Manager.Input.InputManagerTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Manager.Input.InputManagerTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.CreateManager">
+            <summary>
+            Creates the manager
+            </summary>
+            <returns>The input manager</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.AfterUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that after update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.FixedUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that fixed update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.DispatchEvents_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that dispatch events state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.Reset_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that reset state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.Stop_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that stop state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Input.InputManagerTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Manager.Physic.PhysicManagerTests">
+            <summary>
+            The physic manager tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Manager.Physic.PhysicManagerTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Manager.Physic.PhysicManagerTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.CreateManager">
+            <summary>
+            Creates the manager
+            </summary>
+            <returns>The physic manager</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.AfterUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that after update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.FixedUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that fixed update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.DispatchEvents_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that dispatch events state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.Reset_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that reset state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.Stop_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that stop state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Physic.PhysicManagerTests.AttachBody_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that attach body state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Manager.Scene.SceneManagerTests">
+            <summary>
+            The scene manager tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Manager.Scene.SceneManagerTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Manager.Scene.SceneManagerTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.CreateManager">
+            <summary>
+            Creates the manager
+            </summary>
+            <returns>The scene manager</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Init_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that init state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Awake_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that awake state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Start_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that start state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.BeforeUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that before update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Update_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.AfterUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that after update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.DispatchEvents_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that dispatch events state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Draw_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that draw state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.FixedUpdate_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that fixed update state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Reset_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that reset state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Stop_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that stop state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Exit_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that exit state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Scene.SceneManagerTests.Add_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that add state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Manager.Setting.SettingManagerTests">
+            <summary>
+            The setting manager tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Manager.Setting.SettingManagerTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Setting.SettingManagerTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Manager.Setting.SettingManagerTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Setting.SettingManagerTests.CreateManager">
+            <summary>
+            Creates the manager
+            </summary>
+            <returns>The setting manager</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Setting.SettingManagerTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Manager.Time.TimeManagerTests">
+            <summary>
+            The time manager tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Manager.Time.TimeManagerTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Time.TimeManagerTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Manager.Time.TimeManagerTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Time.TimeManagerTests.CreateManager">
+            <summary>
+            Creates the manager
+            </summary>
+            <returns>The time manager</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Manager.Time.TimeManagerTests.TestMethod1">
+            <summary>
+            Tests that test method 1
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Setting.AudioSettingTests">
+            <summary>
+            The audio setting tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Setting.AudioSettingTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.AudioSettingTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Setting.AudioSettingTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.AudioSettingTests.CreateAudioSetting">
+            <summary>
+            Creates the audio setting
+            </summary>
+            <returns>The audio setting</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.AudioSettingTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Setting.DebugSettingTests">
+            <summary>
+            The debug setting tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Setting.DebugSettingTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.DebugSettingTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Setting.DebugSettingTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.DebugSettingTests.CreateDebugSetting">
+            <summary>
+            Creates the debug setting
+            </summary>
+            <returns>The debug setting</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.DebugSettingTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Setting.GeneralSettingTests">
+            <summary>
+            The general setting tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Setting.GeneralSettingTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.GeneralSettingTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Setting.GeneralSettingTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.GeneralSettingTests.CreateGeneralSetting">
+            <summary>
+            Creates the general setting
+            </summary>
+            <returns>The general setting</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.GeneralSettingTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.Core.Setting.GraphicSettingTests">
+            <summary>
+            The graphic setting tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.Core.Setting.GraphicSettingTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.GraphicSettingTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.Core.Setting.GraphicSettingTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.GraphicSettingTests.CreateGraphicSetting">
+            <summary>
+            Creates the graphic setting
+            </summary>
+            <returns>The graphic setting</returns>
+        </member>
+        <member name="M:Alis.Test.Core.Setting.GraphicSettingTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.SoundGameTests">
+            <summary>
+            The sound game tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.SoundGameTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.SoundGameTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.SoundGameTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.SoundGameTests.CreateSoundGame">
+            <summary>
+            Creates the sound game
+            </summary>
+            <returns>The sound game</returns>
+        </member>
+        <member name="M:Alis.Test.SoundGameTests.Run_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that run state under test expected behavior
+            </summary>
+        </member>
+        <member name="M:Alis.Test.SoundGameTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
+        <member name="T:Alis.Test.VideoGameTests">
+            <summary>
+            The video game tests class
+            </summary>
+        </member>
+        <member name="F:Alis.Test.VideoGameTests.mockRepository">
+            <summary>
+            The mock repository
+            </summary>
+        </member>
+        <member name="M:Alis.Test.VideoGameTests.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Test.VideoGameTests"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Test.VideoGameTests.CreateVideoGame">
+            <summary>
+            Creates the video game
+            </summary>
+            <returns>The video game</returns>
+        </member>
+        <member name="M:Alis.Test.VideoGameTests.Builder_StateUnderTest_ExpectedBehavior">
+            <summary>
+            Tests that builder state under test expected behavior
+            </summary>
+        </member>
         <member name="T:AutoGeneratedProgram">
             <summary>
             The auto generated program class

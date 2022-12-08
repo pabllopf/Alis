@@ -29,6 +29,9 @@
 
 namespace Alis.Template.Game.Ios
 {
+    /// <summary>
+    /// The application class
+    /// </summary>
     public class Application
     {
         // This is the main entry point of the application.

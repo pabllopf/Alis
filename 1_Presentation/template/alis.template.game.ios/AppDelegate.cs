@@ -28,6 +28,10 @@
 //  --------------------------------------------------------------------------
 namespace Alis.Template.Game.Ios
 {
+    /// <summary>
+    /// The app delegate class
+    /// </summary>
+    /// <seealso cref="UIKit.UIApplicationDelegate"/>
     [Foundation.Register("AppDelegate")]
     public class AppDelegate : UIKit.UIApplicationDelegate
     {
