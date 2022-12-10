@@ -73,32 +73,32 @@ namespace Alis
         /// <summary>
         ///     Gets or sets the value of the input manager
         /// </summary>
-        public static InputManager InputManager { get; set; }
-        
+        public static InputManager InputManager { get; set; } = new InputManager();
+
         /// <summary>
         ///     Gets or sets the value of the graphic manager
         /// </summary>
-        public static GraphicManager GraphicManager { get; set; }
+        public static GraphicManager GraphicManager { get; set; } = new GraphicManager();
 
         /// <summary>
         ///     Gets or sets the value of the scene manager
         /// </summary>
-        public static SceneManager SceneManager { get; set; }
+        public static SceneManager SceneManager { get; set; } = new SceneManager();
 
         /// <summary>
         ///     Gets the value of the audio manager
         /// </summary>
-        public static AudioManager AudioManager { get; set; }
-        
+        public static AudioManager AudioManager { get; set; } = new AudioManager();
+
         /// <summary>
         /// Gets or sets the value of the physic manager
         /// </summary>
-        public static PhysicManager PhysicManager { get; set; }
+        public static PhysicManager PhysicManager { get; set; } = new PhysicManager();
 
         /// <summary>
         ///     Gets or sets the value of the setting manager
         /// </summary>
-        public static SettingManager Setting { get; set; }
+        public static SettingManager Setting { get; set; } = new SettingManager();
 
         /// <summary>
         ///     Builders

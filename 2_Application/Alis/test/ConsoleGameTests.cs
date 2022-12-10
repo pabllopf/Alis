@@ -1,6 +1,4 @@
-using Alis;
-using Moq;
-using System;
+using Alis.Builder;
 using Xunit;
 
 namespace Alis.Test
@@ -10,64 +8,18 @@ namespace Alis.Test
     /// </summary>
     public class ConsoleGameTests
     {
+        
         /// <summary>
-        /// The mock repository
-        /// </summary>
-        private MockRepository mockRepository;
-
-
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConsoleGameTests"/> class
-        /// </summary>
-        public ConsoleGameTests()
-        {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
-
-
-        }
-
-        /// <summary>
-        /// Creates the console game
-        /// </summary>
-        /// <returns>The console game</returns>
-        private ConsoleGame CreateConsoleGame()
-        {
-            return new ConsoleGame();
-        }
-
-        /// <summary>
-        /// Tests that run state under test expected behavior
+        /// Tests that builder should return a console game builder
         /// </summary>
         [Fact]
-        public void Run_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var consoleGame = this.CreateConsoleGame();
-
-            // Act
-            consoleGame.Run();
-
-            // Assert
-            Assert.True(true);
-            this.mockRepository.VerifyAll();
-        }
-
+        public void Builder_Should_Return_A_ConsoleGameBuilder() => Assert.Equal(typeof(ConsoleGameBuilder), ConsoleGame.Builder().GetType());
+        
+      
         /// <summary>
-        /// Tests that builder state under test expected behavior
+        /// Tests that builder dont should return a null
         /// </summary>
         [Fact]
-        public void Builder_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var consoleGame = this.CreateConsoleGame();
-
-            // Act
-            var result = ConsoleGame.Builder();
-
-            // Assert
-            Assert.True(true);
-            this.mockRepository.VerifyAll();
-        }
+        public void Builder_Dont_Should_Return_A_Null() => Assert.NotNull(ConsoleGame.Builder());
     }
 }

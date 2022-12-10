@@ -1,6 +1,5 @@
-using Alis;
-using Moq;
-using System;
+using Alis.Builder;
+using Alis.Core.Manager.Setting;
 using Xunit;
 
 namespace Alis.Test
@@ -11,46 +10,21 @@ namespace Alis.Test
     public class VideoGameTests
     {
         /// <summary>
-        /// The mock repository
-        /// </summary>
-        private MockRepository mockRepository;
-
-
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="VideoGameTests"/> class
-        /// </summary>
-        public VideoGameTests()
-        {
-            this.mockRepository = new MockRepository(MockBehavior.Strict);
-
-
-        }
-
-        /// <summary>
-        /// Creates the video game
-        /// </summary>
-        /// <returns>The video game</returns>
-        private VideoGame CreateVideoGame()
-        {
-            return new VideoGame();
-        }
-
-        /// <summary>
-        /// Tests that builder state under test expected behavior
+        /// Tests that builder should return a video game builder
         /// </summary>
         [Fact]
-        public void Builder_StateUnderTest_ExpectedBehavior()
-        {
-            // Arrange
-            var videoGame = this.CreateVideoGame();
-
-            // Act
-            var result = VideoGame.Builder();
-
-            // Assert
-            Assert.True(false);
-            this.mockRepository.VerifyAll();
-        }
+        public void Builder_Should_Return_A_VideoGameBuilder() => Assert.Equal(typeof(VideoGameBuilder), VideoGame.Builder().GetType());
+        
+        /// <summary>
+        /// Tests that builder dont should return a null
+        /// </summary>
+        [Fact]
+        public void Builder_Dont_Should_Return_A_Null() => Assert.NotNull(VideoGame.Builder());
+        
+        /// <summary>
+        /// Tests that get of setting dont should return a null value
+        /// </summary>
+        [Fact]
+        public void Get_Of_Setting_Dont_Should_Return_A_Null_Value() => Assert.NotNull(VideoGame.Setting);
     }
 }
