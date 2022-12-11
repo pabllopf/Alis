@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Entity;
@@ -64,19 +65,15 @@ namespace Alis.Sample.PingPong
         /// <param name="contact">The contact</param>
         private void OnCollision(Fixture fixturebfixturea, Fixture fixtureb, Contact contact)
         {
-            //Console.WriteLine((((GameObject) fixturea.Body.UserData)!).Name);
-            //Console.WriteLine((((GameObject) fixtureb.Body.UserData)!).Name);
-            //Console.WriteLine((((GameObject) contact.FixtureA.Body.UserData)!).Name);
-            //Console.WriteLine((((GameObject) contact.FixtureB.Body.UserData)!).Name);
-            
+
             if ((((GameObject) fixtureb.Body.UserData)!).Name.Equals("leftWall"))
             {
-                Console.WriteLine("CONTACT WITH leftWall");
+                Logger.Info("CONTACT WITH leftWall");
             }
             
             if ((((GameObject) fixtureb.Body.UserData)!).Name.Equals("rightWall"))
             {
-                Console.WriteLine("CONTACT WITH rightWall");
+                Logger.Info("CONTACT WITH rightWall");
             }
         }
 

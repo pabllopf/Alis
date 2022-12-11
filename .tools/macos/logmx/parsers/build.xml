@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!--
+	LogMX Java Parsers build file
+	Copyright 2022 LightySoft. All rights reserved.
+
+	LogMX: The universal log analyzer
+	https://LogMX.com
+-->
+<project name="LogMX Java Parsers" default="build-dev" basedir=".">
+	<property file="build.properties" />
+
+	<path id="compile.classpath">
+		<pathelement location="${logmx.jar}" />
+	</path>
+
+	<target name="build-dev" depends="clean,mkoutdir" description="Build parsers for development (no optimize, all debug symbols)">
+		<javac debug="on" debuglevel="lines,vars,source" deprecation="true" destdir="${output.dir}" srcdir="${source.dir}" includes="**/*.java" includeantruntime="false">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target name="build-prod" depends="clean,mkoutdir" description="Build parsers for production (optimized, no debug symbol)">
+		<javac debug="off" optimize="true" deprecation="true" destdir="${output.dir}" srcdir="${source.dir}" includes="**/*.java" includeantruntime="false">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target name="clean" description="Remove all generated class files">
+		<delete includeEmptyDirs="true" quiet="true">
+			<fileset dir="${output.dir}"/>
+		</delete>
+	</target>
+
+	<target name="mkoutdir" description="Create classes output directory">
+		<mkdir dir="${output.dir}" />
+	</target>
+</project>

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio.OS;
 using Alis.Core.Audio.SFML;
 
@@ -60,7 +61,7 @@ namespace Alis.Core.Audio
             if (!fullPathAudio.Equals(""))
             {
                 music = new Music(fullPathAudio);
-                Console.WriteLine($"Init music: '{fullPathAudio}'");
+                Logger.Log($"Init music: '{fullPathAudio}'");
             }
         }
 
@@ -147,20 +148,20 @@ namespace Alis.Core.Audio
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         protected void Play()
         {
-            Console.WriteLine($"Init Music::play pass here'{FullPathAudioFile}'");
+            Logger.Log($"Init Music::play pass here'{FullPathAudioFile}'");
 
             if (!FullPathAudioFile.Equals(""))
             {
                 switch (AudioBackendType)
                 {
                     case AudioBackendType.SFML:
-                        Console.WriteLine($"Volume={Volume}");
+                        Logger.Log($"Volume={Volume}");
 
                         music ??= new Music(FullPathAudioFile);
 
                         music.Volume = Volume;
                         music.Play();
-                        Console.WriteLine("Init Music::play");
+                        Logger.Log("Init Music::play");
                         break;
                     case AudioBackendType.OS:
                         player.Play(FullPathAudioFile).Wait();

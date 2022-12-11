@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Do you want to continue? (y/n)"
+echo "Do you want to restart permissions of solution? (y/n)"
 select yn in "Yes" "No"; do
     case $yn in
         Yes ) 

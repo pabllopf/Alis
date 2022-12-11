@@ -32,6 +32,7 @@ using System.Diagnostics;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 
 namespace Alis.Core.Network.Sample.Client.Complex
 {
@@ -117,7 +118,7 @@ namespace Alis.Core.Network.Sample.Client.Complex
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             long len = await ReadAll(webSocket);
-            Console.WriteLine($"Read {len:#,##0} bytes in {stopwatch.Elapsed.TotalMilliseconds:#,##0} ms");
+            Logger.Log($"Read {len:#,##0} bytes in {stopwatch.Elapsed.TotalMilliseconds:#,##0} ms");
         }
     }
 }

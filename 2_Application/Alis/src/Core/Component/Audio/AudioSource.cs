@@ -30,6 +30,7 @@
 using System;
 using Alis.Builder.Core.Component.Audio;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio;
 
 namespace Alis.Core.Component.Audio
@@ -43,12 +44,20 @@ namespace Alis.Core.Component.Audio
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
         /// <param name="audioClip">The audio clip</param>
-        public AudioSource(AudioClip audioClip) => AudioClip = audioClip;
+        public AudioSource(AudioClip audioClip)
+        {
+            AudioClip = audioClip;
+            Logger.Trace();
+        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioSource" /> class
         /// </summary>
-        public AudioSource() => AudioClip = new AudioClip("");
+        public AudioSource()
+        {
+            AudioClip = new AudioClip("");
+            Logger.Trace();
+        }
 
         /// <summary>
         ///     Gets or sets the value of the audio clip
@@ -91,7 +100,7 @@ namespace Alis.Core.Component.Audio
             get => AudioClip.Volume;
             set
             {
-                Console.WriteLine($"Write volume={value}");
+                Logger.Log($"Write volume={value}");
                 AudioClip.Volume = value;
             }
         }

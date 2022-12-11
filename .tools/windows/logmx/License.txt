@@ -1,0 +1,251 @@
+==========================
+Software License Agreement
+==========================
+
+PLEASE READ THIS SOFTWARE LICENSE AGREEMENT AND THE QUOTATION AND ORDER FORM (COLLECTIVELY THE 
+SOFTWARE LICENSE AGREEMENT) CAREFULLY BEFORE DOWNLOADING AND INSTALLING THE SOFTWARE, STATED BELOW.
+
+BY CLICKING ON THE "ACCEPT" BUTTON, DOWNLOADING AND INSTALLING THE SOFTWARE, YOU ARE CONSENTING 
+TO BE BOUND BY THIS SOFTWARE LICENSE AGREEMENT. IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS 
+SOFTWARE LICENSE AGREEMENT, DO NOT DOWNLOAD AND INSTALL THE SOFTWARE. CLICK THE "DO NOT ACCEPT" 
+BUTTON AND THE INSTALLATION PROCESS WILL NOT CONTINUE. 
+
+THIS SOFTWARE LICENCE AGREEMENT MAY BE REVISED FROM TIME TO TIME BY THE LICENSOR. YOU SHALL BE 
+INFORMED OF ANY REVISION IN THE LICENSOR'S WEB SITE. YOU SHALL VISIT THE LICENSOR'S WEB SITE FROM 
+TIME TO TIME TO REVIEW THE THEN-CURRENT TERMS OF THE SOFTWARE LICENSE AGREEMENT AND ACCEPT THEM 
+BECAUSE THEY ARE BINDING TO YOU.
+
+YOU HEREBY EXPRESSLY CONFIRMS THAT YOU UNDERSTAND THE TERMS AND CONDITIONS OF THE SOFTWARE LICENSE 
+AGREEMENT AS DRAFTED IN ENGLISH AND ACCEPT THAT ANY TRANSLATION IS EXCLUDED.
+
+General 
+-------
+"The Licensor" means LightySoft.
+"You" means an individual or legal entity exercising rights under this Software License Agreement.
+"The Software" means the LogMX software, promoted and licensed by LightySoft, in binary form, 
+any other machine readable  materials (including, but not limited to, libraries, bytecodes, 
+and data files), any updates or error corrections provided by the Licensor, and any user manuals, 
+programming guides and other documentation provided to you by the Licensor under this Software 
+License Agreement. 
+
+License to use
+--------------
+The Licensor hereby grants you, effective on the date you accept and install the Software, 
+stated below, a non-exclusive and non-transferable license to use the Software in object code form,
+(i) whether for commercial or non-commercial use and (ii) for the number of 
+authorized users for which you have paid a license fee, as specified in Order Form. 
+
+The number of authorized users of the Software shall not exceed the number of copies of Software 
+specified in the Order Form (which number may be modified in the future by mutual agreement 
+between the parties). If the Software is installed on a server or network, each user who can 
+access the Software is considered to be using copy of the Software.
+
+You may make copies of the Software up to the number of copies for which you have paid a license 
+fee (plus one copy for archival purposes). 
+
+You agree to maintain and reproduce all copyright and confidentiality notices that refer to this 
+Software License Agreement on all copies, in any form, of the Software. 
+
+You may not reproduce or publicly display the Software, for any public or commercial purpose, 
+without the prior consent of the Licensor. 
+
+Except as expressly authorized above, you may not, in whole or in part, copy the Software or 
+documentation; modify the Software;  decompile, translate, or reverse engineer the Software; grant
+any sublicenses or rent; lease, distribute, sell or create derivative works of the Software.
+
+Delivery
+--------
+You shall download the Software and install it on any computer (or more computers if the 
+appropriate additional fees have been paid). The Licensor is not responsible for the installation
+of the Software.
+
+Audits
+------
+The Licensor may conduct one or more audits in your premises to verify the compliance of the terms 
+and conditions of the Software License Agreement. Audits shall be conducted during normal business
+hours. All audits shall be conducted at the Licensor's expense unless the results establish that
+you have underpaid the Licensor by more than 5% of the amounts actually due, in which case you
+shall pay all amounts due and bear the expense of the audit.
+
+License fee
+-----------
+License fee are based on the number of copies of Software licensed. You shall place order in 
+accordance with the Quotation and Order Form. The Order Form shall include the number of copies 
+and the corresponding price. License fee will be paid by credit card or PayPal account. You can 
+download the Software only after payment of the License fee. Prices, as stated in the Quotation, are
+subject to change without notice. In such case, a new Quotation shall be placed in the Licensor's 
+web site. All payments shall be in Euros or in Dollars. The stated price is exclusive of any taxes, 
+fees and duties. You shall pay any taxes related to the Software licensed pursuant to this Software 
+License Agreement. If you are exempt from such taxes, you shall provide to the Licensor, upon 
+Licensor's request, a valid tax exemption certificate acceptable to the taxing authority. 
+
+An invoice will be e-mailed to the address specified in the Order Form.
+
+Versions of the Software
+------------------------
+The Licensor may, but with no obligation, publish revised and/or new version of the Software. 
+Each version will be given a distinguishing version number. Even if a new version of the Software
+is published, you may continue to use the previous version. You may also choose to use the new
+version, by accepting again the Software License Agreement and by paying a new License fee.
+The Licensor may from time to time, in its sole discretion, update or correct the Software and 
+authorize you, by notice on the Licensor's web site, if and only if you use the last version of the
+Software, to download, at no additional charge to you, the updated or corrected version.
+  
+Restriction
+-----------
+The Software is confidential and copyrighted. The Licensor retains title to Software and all 
+associated intellectual property rights. You agree that aspects of the licensed materials, 
+including the specific design and structure of individual programs, constitute trade secrets and/or
+copyrighted material of the Licensor. You shall not disclose, provide, or otherwise make available
+such trade secrets or copyrighted material in any form to any third party without the prior written
+consent of the Licensor. You shall implement reasonable security measures to protect such trade
+secrets and copyrighted material.
+
+Infringement
+------------
+If any portion of, or functionality of the Software becomes the subject of a claim of infringement,
+the Licensor may, at its option, (i) attempt to procure the rights necessary for the Licensor and
+you to continue using the Software, (ii) modify the Software so that it is no longer infringing,
+or (iii) suspend your rights to use the Software until a final determination of the claim is made 
+by a court or governmental administrative agency of competent jurisdiction and the Licensor lifts 
+the suspension as set forth below. Such suspension of rights will be effective immediately upon 
+Licensor's posting of a notice to such effect on the Licensor's web site. Upon such final 
+determination being made, if the Licensor is legally able, without the payment of a fee or royalty,
+to resume use, of the Software, the Licensor will lift the suspension of rights to the Software by
+posting a notice to such effect on the Licensor's web site. However, if the Licensor must suspend
+your rights to the Software, this Software License Agreement will be automatically terminated
+without any remedy. Nothing in this Software License Agreement shall be construed to restrict you,
+at your option, from independently negotiating for necessary rights from such third party.
+
+The Licensor has no liability for any claim based upon (i) combination, operation or use of the 
+Software supplied under this Software License Agreement with equipment, devices or software not 
+supplied by the Licensor (ii) alteration or modification of the Software supplied under this 
+Software License Agreement. You agree to defend and indemnify the Licensor from and against any 
+damages, costs, liabilities and/or expenses (including attorney's fees) incurred in connection with
+any claim, lawsuit or action by any third party that arises or results from the use or distribution
+of modified Software.
+
+Disclaimer
+----------
+The Software is distributed by the Licensor on an "AS IS" basis and without warranty, upgrades or
+support of any kind. The Licensor may from time to time, in its sole discretion, provide any update,
+enhancement or modification of the Software and/or any support services. Updates, enhancements, 
+modifications or support services, if available, may be obtained by you at the Licensor's then 
+current standard pricing, terms and conditions. In no event does the Licensor warrant that the 
+Software is error free or that you shall be able to operate the Software without problems or 
+interruptions. You expressly acknowledge and agree that use of the Software or any portion thereof
+is at your sole and entire risk. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS, AND WARRANTIES
+INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE, 
+NON INFRINGEMENT, SATISFACTORY QUALITY OR ARISING FROM A COURSE OF DEALING, USAGE, OR TRADE 
+PRACTICE, ARE HEREBY EXCLUDED TO THE EXTENT ALLOWED BY APPLICABLE LAW.
+
+THE LICENSOR DOES NOT WARRANT THAT THE FUNCTIONS CONTAINED IN THE SOFTWARE WILL BE UNINTERRUPTED OR
+ERROR-FREE OR THAT DEFECTS IN THE SOFTWARE WILL BE CORRECTED. NO ORAL OR WRITTEN INFORMATION OR 
+ADVICE GIVEN BY THE LICENSOR SHALL CREATE A WARRANTY OR IN ANY WAY INCREASE THE SCOPE OF THIS 
+WARRANTY.
+
+Limitation of liability
+-----------------------
+IN NO EVENT WILL THE LICENSOR BE LIABLE FOR ANY LOST REVENUE, PROFIT, OR DATA, OR FOR SPECIAL, 
+INDIRECT, CONSEQUENTIAL, INCIDENTAL, OR PUNITIVE DAMAGES HOWEVER CAUSED AND REGARDLESS OF THE 
+THEORY OF LIABILITY ARISING OUT OF THE USE OF OR INABILITY TO USE THE SOFTWARE EVEN IF THE 
+LICENSOR HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT SHALL THE LICENSOR'S 
+LIABILITY TO YOU, EXCEED THE LICENSE FEE PAID BY YOU TO THE LICENSOR. THE FOREGOING LIMITATIONS 
+SHALL APPLY EVEN IF THE ABOVE-STATED WARRANTY FAILS OF ITS ESSENTIAL PURPOSE. BECAUSE SOME STATES
+OR JURISDICTIONS DO NOT ALLOW LIMITATION OR EXCLUSION OF DIRECT DAMAGES, THE ABOVE LIMITATION MAY
+NOT APPLY TO YOU. You acknowledge that the Software is not intended for use in the operation of
+nuclear facilities, aircraft navigation, communication systems, or air traffic control machines
+in which case the failure of the Software could lead to death, personal injury or severe physical
+or environmental damage.
+
+Trademark
+---------
+This Software License Agreement does not grant any rights to use the trademarks or trade names or 
+logos belonging to the Licensor. 
+
+Ownership
+---------
+The Licensor retains all rights, title and interest in and to the Software.
+
+Termination
+-----------
+This Software Licence Agreement is effective until terminated. You may terminate this Software 
+License Agreement at any time by destroying all copies of the Software including any documentation.
+This Software License Agreement will terminate immediately without notice from the Licensor if you
+fail to comply with any provision of this Software License Agreement or under the conditions of the
+Clause Infringement, stated above. Upon termination, you must destroy all copies of the Software in
+your possession or control. The Licensor will not be liable to you for compensation, indemnity or
+damages of any sort solely as result of terminating this Software License Agreement in accordance 
+with its terms.
+
+Export regulations
+------------------
+If the Software, including technical data, are subject to export control laws, and may be subject 
+to import regulations in other countries, you agree to comply strictly with all such regulations 
+and acknowledge that you have the responsibility to obtain licenses to import the Software.
+
+Relationships of the parties
+----------------------------
+This Software License Agreement will not be construed as creating an agency, partnership, joint 
+venture or any other form of legal association between you and the Licensor and you will not 
+represent to the contrary, whether expressly, by implication, appearance or otherwise.
+
+Waiver
+------
+Failure by the Licensor to enforce any provision of this Software License Agreement will not be 
+deemed a waiver of future enforcement of that or any other provision. 
+
+Integration
+-----------
+This Software License Agreement constitutes the entire agreement between the parties with respect 
+to the use of the Software. It supersedes all prior or contemporaneous oral or written 
+communications, proposals, representations and warranties and prevails over any conflicting or 
+additional terms of any quote, order, acknowledgment or other communication between you and the 
+Licensor during the term of this Software License Agreement. No modification of this Software 
+License Agreement will be binding unless in writing and signed by an authorized representative of 
+each party.
+
+Severability
+------------
+If for any reason a court of competent jurisdiction finds any provision of this Software License 
+Agreement, to be unenforceable, that provision of the Software License Agreement will be enforced 
+to the maximum extent permissible so as to effect the economic benefits and intent of the parties 
+and the remainder of this Software License Agreement will continue in full force and effect. 
+
+Dispute resolution. This Software License Agreement shall be governed by and construed in 
+accordance with the laws of France, without giving effect to the principles of conflict of law. 
+The application of the United Nations Convention on contracts for the International Sale of Goods
+is expressly excluded. Any litigation or other dispute between you and the Licensor relating to 
+this Software License Agreement shall take place in France.
+ 
+
+Privacy Rules
+-------------
+In order to reduce the risk of fraud, the Licensor must ask you to provide information about 
+yourself and your credit card. This privacy rules describes the information the Licensor collects 
+and show he used that information.
+
+For downloading the Software you must provide your name, phone number, city, country and e-mail 
+address. In order to make payments, you must provide credit card information.
+
+By giving the information on the Order Form, you authorise the Licensor to use and exchange the 
+information for payment purposes.
+
+All personal information is collected only for order process and will be used only by the Licensor.
+Your information will be disclosed only where the Licensor is obliged or permitted by law.
+
+The Licensor will hold your personal information for as long as the Software License Agreement is
+in force.
+
+No personal information is assigned to third party, except with your prior consent.
+
+You have the right to access, correct and delete your personal information at any time. Please 
+address requests to the following address: contact@logmx.com
+
+If you are aged under 18 years, please get your parent/guardians' permission beforehand whenever 
+you provide personal information to the Licensor.
+
+If you have any questions about these privacy rules, please contact the Licensor to the following 
+address: contact@logmx.com.
+
+

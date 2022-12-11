@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Logging;
+
 namespace Alis.Core.Component.Body
 {
     /// <summary>
@@ -40,6 +42,7 @@ namespace Alis.Core.Component.Body
         /// </summary>
         public override void Start()
         {
+            Logger.Trace();
         }
 
         /// <summary>

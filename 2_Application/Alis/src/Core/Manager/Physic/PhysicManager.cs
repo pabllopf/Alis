@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 
@@ -51,6 +52,7 @@ namespace Alis.Core.Manager.Physic
         {
             Vector2 gravity = new Vector2(0.000000000000000e+00f, 9.807000000000000e+01f);
             World = new World(gravity);
+            Logger.Trace();
         }
         
         /// <summary>

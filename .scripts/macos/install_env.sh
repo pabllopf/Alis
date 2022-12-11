@@ -2,48 +2,5 @@
 
 dotnet tool install --global dotnet-document --version 0.1.4-alpha
 
-echo "Do you want to continue? (y/n)"
-select yn in "Yes" "No"; do
-    case $yn in
-        Yes ) 
-          
-          cd ../../
-                    
-          dotnet new sln -o . -n Alis --force
-          
-          cp ./.config/default_sln  ./Alis.sln
-          
-          skip="Template"
-          for i in `find . -name "*.csproj" -type f`; do
-              if [[ $i == *$skip* ]] ; then
-                  echo "Skip project $i"
-              else
-                  echo "Write default value of csproj = $i"
-                  cat ./.config/Default_csproj.props > $i
-              fi
-          done
-          
-          for i in `find . -name "*.csproj" -type f`; do
-              echo "$i"
-              dotnet sln Alis.sln add $i
-          done
-          
-          rm -rf ./.nuget/
-          rm -rf ./.build/
-          rm -rf ./**/obj/
-          rm -rf ./**/bin/
-          
-          for i in `find . -name "*.csproj" -type f`; do
-              echo "$i"
-              dotnet restore $i
-          done
-          
-          cd ./.scripts/macos/ || exit
-          
-          break;;
-        No ) 
-          echo "Goodbye!"
-          exit;;
-    esac
-done
+./restart_permissions.sh
 

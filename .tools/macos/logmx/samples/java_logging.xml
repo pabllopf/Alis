@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669089</millis>
+  <sequence>0</sequence>
+  <logger>com.company.soft.MySoft</logger>
+  <level>INFO</level>
+  <class>com.company.soft.MySoft</class>
+  <method>start()</method>
+  <thread>Main</thread>
+  <message>Starting application...</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669102</millis>
+  <sequence>1</sequence>
+  <logger>com.company.soft.business.CacheBuilder</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.business.CacheBuilder</class>
+  <method>buildCache()</method>
+  <thread>Main</thread>
+  <message>Building cache...</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669113</millis>
+  <sequence>2</sequence>
+  <logger>com.company.soft.business.CacheBuilder</logger>
+  <level>ERROR</level>
+  <class>com.company.soft.business.CacheBuilder</class>
+  <method>buildCache()</method>
+  <thread>Main</thread>
+  <message>Unable to build cache: DB connection not available.
+Driver not found</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669123</millis>
+  <sequence>3</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>WARNING</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>read()</method>
+  <thread>Main</thread>
+  <message>Cache not ready, reading from DB...</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669134</millis>
+  <sequence>4</sequence>
+  <logger>com.company.soft.gui.options.OptionFrame</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.options.OptionFrame</class>
+  <method>OptionFrame()</method>
+  <thread>Main</thread>
+  <message>Initializing Frame...</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669145</millis>
+  <sequence>5</sequence>
+  <logger>com.company.soft.gui.options.OptionFrame</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.options.OptionFrame</class>
+  <method>OptionFrame()</method>
+  <thread>Main</thread>
+  <message>Frame initialized.</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669156</millis>
+  <sequence>6</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>collect()</method>
+  <thread>Main</thread>
+  <message>New data collected</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669167</millis>
+  <sequence>7</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>INFO</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>display()</method>
+  <thread>Main</thread>
+  <message>New data displayed</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669178</millis>
+  <sequence>8</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>collect()</method>
+  <thread>Main</thread>
+  <message>New data collected</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:29</date>
+  <millis>1247000669189</millis>
+  <sequence>9</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>INFO</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>display()</method>
+  <thread>Main</thread>
+  <message>New data displayed</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:30</date>
+  <millis>1247000670153</millis>
+  <sequence>10</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>collect()</method>
+  <thread>Main</thread>
+  <message>New data collected</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:30</date>
+  <millis>1247000670175</millis>
+  <sequence>11</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>INFO</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>display()</method>
+  <thread>Main</thread>
+  <message>New data displayed</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:30</date>
+  <millis>1247000670195</millis>
+  <sequence>12</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>collect()</method>
+  <thread>Main</thread>
+  <message>New data collected</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:30</date>
+  <millis>1247000670235</millis>
+  <sequence>13</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>INFO</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>display()</method>
+  <thread>Main</thread>
+  <message>New data displayed</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:30</date>
+  <millis>1247000670536</millis>
+  <sequence>14</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>collect()</method>
+  <thread>Main</thread>
+  <message>New data collected</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:30</date>
+  <millis>1247000670659</millis>
+  <sequence>15</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>INFO</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>display()</method>
+  <thread>Main</thread>
+  <message>New data displayed</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:31</date>
+  <millis>1247000671059</millis>
+  <sequence>16</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>collect()</method>
+  <thread>Main</thread>
+  <message>New data collected</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:32</date>
+  <millis>1247000672000</millis>
+  <sequence>17</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>INFO</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>display()</method>
+  <thread>Main</thread>
+  <message>New data displayed</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:32</date>
+  <millis>1247000672015</millis>
+  <sequence>18</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>DEBUG</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>collect()</method>
+  <thread>Main</thread>
+  <message>New data collected</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:32</date>
+  <millis>1247000672517</millis>
+  <sequence>19</sequence>
+  <logger>com.company.soft.gui.DataCollector</logger>
+  <level>INFO</level>
+  <class>com.company.soft.gui.DataCollector</class>
+  <method>display()</method>
+  <thread>Main</thread>
+  <message>New data displayed</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:32</date>
+  <millis>1247000672659</millis>
+  <sequence>20</sequence>
+  <logger>com.company.soft.MySoftConfig</logger>
+  <level>INFO</level>
+  <class>com.company.soft.MySoftConfig</class>
+  <method>stop()</method>
+  <thread>Main</thread>
+  <message>Saving current config to file</message>
+</record>
+<record>
+  <date>2009-07-07T23:04:32</date>
+  <millis>1247000672999</millis>
+  <sequence>21</sequence>
+  <logger>com.company.soft.MySoft</logger>
+  <level>INFO</level>
+  <class>com.company.soft.MySoft</class>
+  <method>stop()</method>
+  <thread>Main</thread>
+  <message>Stopping application</message>
+</record>
+</log>

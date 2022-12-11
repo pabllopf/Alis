@@ -132,8 +132,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <param name="node">The node</param>
         public void AddNode(AdvancingFrontNode node)
         {
-            //        Console.WriteLine( "add:" + node.key + ":" + System.identityHashCode(node.key));
-            //        m_nodeTree.put( node.getKey(), node );
             AFront.AddNode(node);
         }
 
@@ -143,8 +141,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <param name="node">The node</param>
         public void RemoveNode(AdvancingFrontNode node)
         {
-            //        Console.WriteLine( "remove:" + node.key + ":" + System.identityHashCode(node.key));
-            //        m_nodeTree.delete( node.getKey() );
             AFront.RemoveNode(node);
         }
 

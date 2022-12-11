@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Aspect.Logging.Sample
 {
     /// <summary>
@@ -40,6 +42,25 @@ namespace Alis.Core.Aspect.Logging.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            Logger.Trace();
+            
+            Logger.Log("Sample");
+            Logger.Info("Sample");
+            
+            Logger.Event("Sample");
+            
+            Logger.Warning("Sample");
+            Logger.Error("Sample");
+            
+            try
+            {
+                throw new NullReferenceException();
+            }
+            catch (Exception exception)
+            {
+                Logger.Exception(exception);
+            }
+
         }
     }
 }

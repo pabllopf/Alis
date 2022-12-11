@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Physic.Collision.Broadphase;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Distance;
@@ -252,50 +253,50 @@ namespace Alis.Core.Physic
         ///     Ons the body added using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        private static void OnBodyAdded(Body body) => Console.WriteLine("World.OnBodyAdded()");
+        private static void OnBodyAdded(Body body) => Logger.Event("World.OnBodyAdded()");
 
         /// <summary>
         ///     Ons the body removed using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        private static void OnBodyRemoved(Body body) => Console.WriteLine("World.OnBodyRemoved()");
+        private static void OnBodyRemoved(Body body) => Logger.Event("World.OnBodyRemoved()");
 
         /// <summary>
         ///     Ons the joint removed using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        private static void OnJointRemoved(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+        private static void OnJointRemoved(Joint joint) => Logger.Event("Wolds.OnFixtureRemoved()");
 
         /// <summary>
         ///     Ons the joint added using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        private static void OnJointAdded(Joint joint) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+        private static void OnJointAdded(Joint joint) => Logger.Event("Wolds.OnFixtureRemoved()");
 
         /// <summary>
         ///     Ons the fixture removed using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        private static void OnFixtureRemoved(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureRemoved()");
+        private static void OnFixtureRemoved(Fixture fixture) => Logger.Event("Wolds.OnFixtureRemoved()");
 
         /// <summary>
         ///     Ons the fixture added using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        private static void OnFixtureAdded(Fixture fixture) => Console.WriteLine("Wolds.OnFixtureAdded()");
+        private static void OnFixtureAdded(Fixture fixture) => Logger.Event("Wolds.OnFixtureAdded()");
 
         /// <summary>
         ///     Ons the controller removed using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
         private static void OnControllerRemoved(Controller controller) =>
-            Console.WriteLine("Wolds.OnControllerRemoved()");
+            Logger.Event("Wolds.OnControllerRemoved()");
 
         /// <summary>
         ///     Ons the controller added using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
-        private static void OnControllerAdded(Controller controller) => Console.WriteLine("Wolds.OnControllerAdded()");
+        private static void OnControllerAdded(Controller controller) => Logger.Event("Wolds.OnControllerAdded()");
 
         /// <summary>Fires whenever a body has been added</summary>
         public event BodyHandler BodyAdded;

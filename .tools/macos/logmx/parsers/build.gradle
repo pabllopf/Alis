@@ -1,0 +1,33 @@
+apply plugin: "java"
+
+defaultTasks "clean", "compileJava"
+
+Properties props = new Properties()
+props.load(new FileInputStream("build.properties"))
+
+sourceSets {
+    main {
+        java {
+            srcDir props."source.dir"
+            output.classesDir props."output.dir"
+        }
+    }
+}
+
+clean {
+    delete props."output.dir"
+}
+    
+repositories {
+    dependencies {
+        compile files(props."logmx.jar")  
+   }
+}
+
+if (hasProperty('prod')) {
+    compileJava.options.debug = false
+    compileJava.options.debugOptions.debugLevel = "none"
+} else {
+    compileJava.options.debug = true
+    compileJava.options.debugOptions.debugLevel = "source,lines,vars"
+}

@@ -1,0 +1,111 @@
+[slf5s.start]04 Oct 2005 14:41:37,995[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.MySoft[slf5s.CATEGORY]
+Starting application...[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:38,050[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.business.CacheBuilder[slf5s.CATEGORY]
+Building cache...[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,105[slf5s.DATE]
+ERROR[slf5s.PRIORITY]
+com.company.soft.business.CacheBuilder[slf5s.CATEGORY]
+Unable to build cache: DB connection not available.
+Driver not found[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,110[slf5s.DATE]
+WARNING[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+Cache not ready, reading from DB...[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,115[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.options.OptionFrame[slf5s.CATEGORY]
+Initializing Frame...[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,120[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.options.OptionFrame[slf5s.CATEGORY]
+Frame initialized.[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,125[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data collected[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,130[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data displayed[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,135[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data collected[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,140[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data displayed[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,145[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data collected[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,150[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data displayed[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,155[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data collected[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,160[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data displayed[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,165[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data collected[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,170[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data displayed[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,175[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data collected[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,180[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data displayed[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,185[slf5s.DATE]
+DEBUG[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data collected[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,190[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.gui.DataCollector[slf5s.CATEGORY]
+New data displayed[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,195[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.MySoftConfig[slf5s.CATEGORY]
+Saving current config to file[slf5s.MESSAGE]
+
+[slf5s.start]04 Oct 2005 14:41:39,200[slf5s.DATE]
+INFO[slf5s.PRIORITY]
+com.company.soft.MySoft[slf5s.CATEGORY]
+Stopping application[slf5s.MESSAGE]
+

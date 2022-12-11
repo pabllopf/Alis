@@ -191,15 +191,6 @@ namespace Alis.Core.Component.Collider
             Body.IsSensor = IsTrigger;
 
             VideoGame.PhysicManager.AttachBody(Body);
-            
-            Console.WriteLine($"Name={GameObject.Name} rectangleShape.Position={rectangleShape.Position}");
-            Console.WriteLine($"Name={GameObject.Name} rectangleShape.Size={rectangleShape.Size}");
-            Console.WriteLine($"Name={GameObject.Name} rectangleShape.Rotation={rectangleShape.Rotation}");
-
-            
-            Console.WriteLine($"Name={GameObject.Name} Body.Position={Body.Position}");
-            Console.WriteLine($"Name={GameObject.Name} Body.Size=x{Width}y{Height}");
-            Console.WriteLine($"Name={GameObject.Name} Body.Rotation={Body.Rotation}");
         }
         
         /// <summary>

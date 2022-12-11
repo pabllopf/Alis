@@ -69,7 +69,6 @@ namespace Alis.Sample.Rogue
         /// </summary>
         public override void Start()
         {
-            Console.WriteLine($"Tag:object:{Tag}");
         }
 
         /// <summary>

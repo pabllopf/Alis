@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Logging;
 using Alis.Core.Network.Sample.Client.Complex;
 using Alis.Core.Network.Sample.Client.Simple;
 using Alis.Core.Network.Sample.Server;
@@ -56,9 +57,6 @@ namespace Alis.Core.Network.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            //_loggerFactory = new LoggerFactory();
-            //_loggerFactory.AddConsole(LogLevel.Trace);
-            //_logger = _loggerFactory.CreateLogger<Program>();
             _webSocketServerFactory = new WebSocketServerFactory();
             Task task = StartWebServer();
 
@@ -75,13 +73,13 @@ namespace Alis.Core.Network.Sample
             }
             else
             {
-                Console.WriteLine("Wrong number of arguments. 0 for simple test. 5 for complex test.");
-                Console.WriteLine(
+               Logger.Log("Wrong number of arguments. 0 for simple test. 5 for complex test.");
+               Logger.Log(
                     "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
-                Console.WriteLine("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
+               Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
             }
 
-            Console.WriteLine("Press any key to quit");
+            Logger.Log("Press any key to quit");
             Console.ReadKey();
             task.Wait();
         }
@@ -107,7 +105,7 @@ namespace Alis.Core.Network.Sample
             int.TryParse("256", out int minNumBytesPerMessage);
             int.TryParse("1024", out int maxNumBytesPerMessage);
 
-            Console.WriteLine(
+            Logger.Log(
                 $"Started DemoClient with Uri '{uri}' numThreads '{numThreads}' numItemsPerThread '{numItemsPerThread}' minNumBytesPerMessage '{minNumBytesPerMessage}' maxNumBytesPerMessage '{maxNumBytesPerMessage}'");
 
             TestRunner runner = new TestRunner(uri, numThreads, numItemsPerThread, minNumBytesPerMessage,

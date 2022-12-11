@@ -37,21 +37,56 @@ namespace Alis.Core.Aspect.Logging
     public static class Logger
     {
         /// <summary>
-        ///     Logs the message
+        /// Traces the message
+        /// </summary>
+        public static void Trace() => ConsoleController.Print(new Message(MessageType.Trace));
+        
+        /// <summary>
+        /// Traces the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Log(string message)
-        {
-            Console.WriteLine($"LOG: {message}");
-        }
+        public static void Trace(string message) => ConsoleController.Print(new Message(MessageType.Trace, message));
+        
+        /// <summary>
+        /// Infoes the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Info(string message) => ConsoleController.Print(new Message(MessageType.Info, message));
 
         /// <summary>
-        ///     Traces the message
+        /// Logs the message
         /// </summary>
         /// <param name="message">The message</param>
-        public static void Trace(string message)
-        {
-            Console.WriteLine($"TRACE: {message}");
-        }
+        public static void Log(string message) => ConsoleController.Print(new Message( MessageType.Log, message));
+
+        /// <summary>
+        /// Events the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Event(string message) => ConsoleController.Print(new Message(MessageType.Event, message));
+
+        /// <summary>
+        /// Warnings the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Warning(string message) => ConsoleController.Print(new Message( MessageType.Warning, message));
+
+        /// <summary>
+        /// Errors the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Error(string message) => ConsoleController.Print(new Message( MessageType.Error, message));
+
+        /// <summary>
+        /// Exceptions the message
+        /// </summary>
+        /// <param name="message">The message</param>
+        public static void Exception(string message) => ConsoleController.Print(new Message( MessageType.Exception, message));
+        
+        /// <summary>
+        /// Exceptions the exception
+        /// </summary>
+        /// <param name="exception">The exception</param>
+        public static void Exception(Exception exception) => ConsoleController.Print(new Message( MessageType.Exception, exception.Message));
     }
 }

@@ -1,0 +1,1159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+	<HEAD>
+		<TITLE>
+			LogMX Log4j/Logback parsers help
+		</TITLE>
+
+        <STYLE type="text/css">
+        <!--
+            td {font-family:  Verdana; cursor: default }
+            body {font-family:  Verdana; cursor: default }
+            code { font-size: 125% }
+            .ConfFile { background-color: #F7EDD3 }
+            .ConfFilePattern { background-color: #ECD5AA }
+            .StripTable tbody tr:nth-child(odd) {  background-color: #F9F9F9; }
+            .StripTable tbody tr:nth-child(even) {  background-color: #FFFFFF; }
+            table.StripTable, table.StripTable td, table.StripTable th {
+            	padding: 0px;
+            	border-spacing: 0px;
+				border-collapse: separate;
+				border-style: solid;
+				border-color: #b6b6b6;
+				border-left-width: 1px;
+				border-top-width: 1px;
+				border-right-width: 0px;
+				border-bottom-width: 0px;
+			}
+			table.StripTable td, table.StripTable th {
+				border-left-width: 0px;
+				border-top-width: 0px;
+				border-right-width: 1px;
+				border-bottom-width: 1px;
+			}
+
+        -->
+        </STYLE>
+
+	</HEAD>
+
+<BODY bgcolor="white">
+<DIV style="font-size: 150%"><B>LogMX <I>Log4j</I>/<I>Logback</I> Parsers</B></DIV>
+<BR>
+
+To create a <I>"Log4jPattern"</I> LogMX Parser, you just have to give to LogMX the Log4j or Logback <B>Pattern</B> you used to generate 
+your log file. This <I>Log4jPattern</I> Parser supports in fact both Log4j & Logback patterns since they are very similar. Supported Log4j versions are 
+v1.x and v2.x (i.e. all versions at this time), and supported Logback versions are v1.0.x and v1.1.x (i.e. all versions at this time).<BR>
+<BR>
+The Pattern needed to configure this LogMX Parser can be found in your Log4j/Logback configuration file (e.g. <CODE>log4j.properties</CODE>,  
+<CODE>log4j2.xml</CODE>, <CODE>logback.xml</CODE>, ...), in a line similar to:<BR>
+<BR>
+<TABLE>
+	<TR>
+		<TD align="right"><I>(Log4j v1.x config)</I></TD>
+		<TD align="left"><CODE><SPAN class="ConfFile">log4j.appender.FILE.layout.ConversionPattern=</SPAN><SPAN class="ConfFilePattern">%6p (%F:%L) - %m%n</SPAN></CODE></TD>
+	</TR>
+	<TR>
+		<TD align="right"><I>(Log4j v2.x XML config)</I></TD>
+		<TD align="left"><CODE><SPAN class="ConfFile">&lt;PatternLayout pattern="</SPAN><SPAN class="ConfFilePattern">%d{HH:mm:ss.SSS} [%thread] %-5level %logger{8} - %msg%n</SPAN><SPAN class="ConfFile">" /&gt;</SPAN></CODE></TD>
+	</TR>
+	<TR>
+		<TD align="right"><I>(Logback XML config)</I></TD>
+		<TD align="left"><CODE><SPAN class="ConfFile">&lt;pattern&gt;</SPAN><SPAN class="ConfFilePattern">%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</SPAN><SPAN class="ConfFile">&lt;/pattern&gt;</SPAN></CODE></TD>
+	</TR>
+</TABLE>
+<BR>
+In these examples, Pattern is highlighted <SPAN class="ConfFilePattern">like this text</SPAN>.
+<BR>
+
+The following content is largely based on Log4j & Logback documentation, which can be found at:
+<UL>
+	<LI><A href="http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html">http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html</A></LI> 
+	<LI><A href="http://logging.apache.org/log4j/2.0/manual/layouts.html#PatternLayout">http://logging.apache.org/log4j/2.0/manual/layouts.html#PatternLayout</A></LI> 
+	<LI><A href="http://logback.qos.ch/manual/layouts.html#ClassicPatternLayout">http://logback.qos.ch/manual/layouts.html#ClassicPatternLayout</A></LI> 
+</UL>
+This document describes how such Patterns are constructed, and its syntax: you can use this 
+Pattern syntax to describe any log format, not only log files generated with by log4j/logback.
+<BR>
+<BR>
+<TABLE border="0"><TR><TD style="background: #F7EDD3;">
+LogMX calls <I>"Tag"</I> the sequence defined by:
+<OL>
+	<LI>the '<B><CODE>%</CODE></B>' character</LI>
+	<LI><I>[optional]</I> a <B><I>format modifier</I></B> (e.g. <CODE>-20</CODE>)</LI>
+	<LI>a <B><I>conversion word</I></B> (e.g. <CODE>logger</CODE>)</LI>
+	<LI><I>[optional]</I> an <B><I>option</I></B> (e.g. <CODE>HH:mm:ss,SSS</CODE>) surrounded by {}</LI>
+</OL>
+</TD></TR></TABLE>
+
+Example of tags: 
+<CODE>%-20logger{4}</CODE>, <CODE> %d{HH:mm:ss,SSS}</CODE>, <CODE> %p </CODE><BR>
+<BR>
+The following chapters list and describe the available <B><I>conversion words</I></B>, <B><I>options</I></B>, and <B><I>formats modifier</I></B>
+<BR><BR>
+<DIV style="font-size: 130%"><B>Conversion words & Options</B></DIV>
+
+
+<p>
+	
+ <table border="1" class="StripTable">
+    <tr >
+      <th>Conversion word / Option</th>
+      <th>Description</th>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternCaller"></a>
+        <b>caller</b>{depth}<br />
+        <b>caller</b>{depth, evaluator-1, ... evaluator-n}{precision}
+      </td>
+      <td>
+        <p><i>[Logback only]</i> Outputs location information of the caller which
+					generated the logging event.
+					</p>
+
+					<p>The location information depends on the JVM
+					implementation but usually consists of the fully qualified
+					name of the calling method followed by the caller's source,
+					the file name and line number between parentheses.
+					</p>
+
+					<p>A integer can be added to the <em>caller</em> conversion
+					specifier's options to configure the depth of the
+					information to be displayed.
+					</p>
+
+          <p>For example, <b>%caller{2}</b> would display the
+          following excerpt:</p>
+					
+<pre class="source white_bg">0    [main] DEBUG - logging statement 
+Caller+0   at mainPackage.sub.sample.Bar.sampleMethodName(Bar.java:22)
+Caller+1   at mainPackage.sub.sample.Bar.createLoggingRequest(Bar.java:17)</pre>
+
+					<p>And <b>%caller{3}</b> would display this other excerpt:</p>
+
+<pre class="source white_bg">16   [main] DEBUG - logging statement 
+Caller+0   at mainPackage.sub.sample.Bar.sampleMethodName(Bar.java:22)
+Caller+1   at mainPackage.sub.sample.Bar.createLoggingRequest(Bar.java:17)
+Caller+2   at mainPackage.ConfigTester.main(ConfigTester.java:38)</pre>
+					
+					<p>This conversion word can also use evaluators to test
+					logging events against a given criterion before computing
+					caller data. For example, using <b>%caller{3,
+					CALLER_DISPLAY_EVAL}</b> will display three lines of
+					stacktrace, only if the evaluator called
+					<em>CALLER_DISPLAY_EVAL</em> returns a <b>positive</b>
+					answer.
+				</p>
+
+				 <p>Evaluators are described below.</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>c</b>{precision}<br />
+        <b>lo</b>{precision}<br />
+        <b>logger</b>{precision}
+      </td>
+      <td>
+        <p>Outputs the name of the logger that published the logging event. The logger conversion
+          specifier can be optionally followed by <i>precision specifier</i>, which consists of a
+          decimal integer, or a pattern starting with a decimal integer.
+        </p>
+        <p>If a precision specifier is given and it is an integer value, then only the corresponding number
+          of right most components of the logger name will be printed. If the precision contains
+          other non-integer characters then the name will be abbreviated based on the pattern. If the
+          precision integer is less than one the right-most token will still be printed in full.
+          By default the logger name is printed in full.
+        </p>
+        <table border="0" class="StripTable">
+          <tr >
+            <th>Conversion Pattern</th>
+            <th>Logger Name</th>
+            <th>Result</th>
+          </tr>
+          <tr >
+            <td>%c{1}</td>
+            <td>org.apache.commons.Foo</td>
+            <td>Foo</td>
+          </tr>
+          <tr >
+            <td>%c{2}</td>
+            <td>org.apache.commons.Foo</td>
+            <td>commons.Foo</td>
+          </tr>
+          <tr >
+            <td>%c{1.}</td>
+            <td>org.apache.commons.Foo</td>
+            <td>o.a.c.Foo</td>
+          </tr>
+          <tr >
+            <td>%c{1.1.~.~}</td>
+            <td>org.apache.commons.test.Foo</td>
+            <td>o.a.~.~.Foo</td>
+          </tr>
+          <tr >
+            <td>%c{.}</td>
+            <td>org.apache.commons.test.Foo</td>
+            <td>....Foo</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternClass"></a>
+        <b>C</b>{precision}<br />
+        <b>class</b>{precision}
+      </td>
+      <td>
+        <p>Outputs the fully qualified class name of the caller issuing the logging request.
+          This conversion specifier can be optionally followed by <i>precision specifier</i>, that
+          follows the same rules as the logger name converter.
+        </p>
+        <p>Generating the class name of the caller (location information)
+        is an expensive operation and may impact performance. Use with caution.</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternContextName"></a>
+        <b>contextName</b><br />
+        <b>cn</b>{precision}
+      </td>
+      <td>
+        <p><i>[Logback only]</i> Outputs the name of the logger context to which the
+          logger at the origin of the event was attached to.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>d</b>{pattern}<br />
+        <b>date</b>{pattern}
+      </td>
+      <td>
+        <p>Outputs the date of the logging event. The date conversion specifier may be
+          followed by a set of braces containing a date and time pattern string per
+          <a class="externalLink" href="http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html">
+            SimpleDateFormat</a>.<br/>
+            <i>Note: In order to also handle Log4Net date syntax (which is very similar to Log4j/Logback/Java syntax), the </i>'<code>f</code>'<i> 
+            character is also accepted to mean </i>'<code>S</code>'<i> (milliseconds).</i> 
+        </p>
+        <p>The predefined formats are
+          ABSOLUTE, COMPACT, DATE, DEFAULT (which is equivalent to ISO8601), ISO8601, ISO8601_BASIC, UNIX, and UNIX_MILLIS.
+        </p>
+        <p>You can also use a set of braces containing a time zone id per
+          <a class="externalLink" href="http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html#getTimeZone(java.lang.String)">
+            java.util.TimeZone.getTimeZone</a>. If no date format specifier is given then the Log4j v1 version of ISO8601 format is assumed (this ISO8601 
+            format doesn't use a 'T' character between the date and the time, contrary to Log4j v2, like shown in the examples below).
+          </p><table border="0" class="StripTable">
+            <tr >
+              <th>Pattern</th>
+              <th>Example</th>
+            </tr>
+            <tr >
+              <td>%d &nbsp;and&nbsp; %d{DEFAULT}</td>
+              <td>2012-11-02 14:34:02,781</td>
+            </tr>
+            <tr >
+              <td>%d{ISO8601}</td>
+              <td>2012-11-02T14:34:02,781 <I><B>(log4j2)</B></I><BR>
+                  2012-11-02 14:34:02,781 <I><B>(log4j1/logback)</B></I></td>
+            </tr>
+            <tr >
+              <td>%d{ISO8601_BASIC}</td>
+              <td>20121102T143402,781</td>
+            </tr>
+            <tr >
+              <td>%d{ABSOLUTE}</td>
+              <td>14:34:02,781</td>
+            </tr>
+            <tr >
+              <td>%d{DATE}</td>
+              <td>02 Nov 2012 14:34:02,781</td>
+            </tr>
+            <tr >
+              <td>%d{COMPACT}</td>
+              <td>20121102143402781</td>
+            </tr>
+            <tr >
+              <td>%d{UNIX}</td>
+              <td>1351866842</td>
+            </tr>
+            <tr >
+              <td>%d{UNIX_MILLIS}</td>
+              <td>1351866842781</td>
+            </tr>
+            <tr >
+              <td>%d{HH:mm:ss,SSS}</td>
+              <td>14:34:02,781</td>
+            </tr>
+            <tr >
+              <td>%d{dd MMM yyyy HH:mm:ss,SSS}</td>
+              <td>02 Nov 2012 14:34:02,781</td>
+            </tr>
+            <tr >
+              <td>%d{HH:mm:ss}{GMT-4}</td>
+              <td>18:34:02,781</td>
+            </tr>
+          </table>
+        
+        <p>
+          %d{UNIX} outputs the UNIX time in seconds. %d{UNIX_MILLIS} outputs the UNIX time in milliseconds. 
+          The UNIX time is the difference, in seconds for UNIX and in milliseconds for UNIX_MILLIS, between
+          the current time and midnight, January 1, 1970 UTC. While the time unit is milliseconds, the 
+          granularity depends on the operating system 
+          (<a href="http://msdn.microsoft.com/en-us/windows/hardware/gg463266.aspx">Windows</a>). 
+          This is an efficient way to output the event time because only a conversion from long to String 
+          takes place, there is no Date formatting involved.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>ex</b>|<b>exception</b>|<b>throwable</b><br />
+        &#160;&#160;{[&quot;none&quot;<br />
+        &#160;&#160;|&quot;full&quot;<br />
+        &#160;&#160;|depth<br />
+        &#160;&#160;|&quot;short&quot;<br />
+        &#160;&#160;|&quot;short.className&quot;<br />
+        &#160;&#160;|&quot;short.fileName&quot;<br />
+        &#160;&#160;|&quot;short.lineNumber&quot;<br />
+        &#160;&#160;|&quot;short.methodName&quot;<br />
+        &#160;&#160;|&quot;short.message&quot;<br />
+        &#160;&#160;|&quot;short.localizedMessage&quot;]}
+      </td>
+      <td>
+        <p>
+          Outputs the Throwable trace bound to the LoggingEvent, by default this will output the full trace 
+          as one would normally find with a call to Throwable.printStackTrace().
+        </p>
+        <p>
+          You can follow the throwable conversion word with an option in the form <b>%throwable{option}</b>.
+        </p>
+        <p> 
+          <b>%throwable{short}</b> outputs the first line of the Throwable.
+        </p>
+        <p> 
+          <b>%throwable{short.className}</b> outputs the name of the class where the exception occurred.
+        </p>
+        <p> 
+          <b>%throwable{short.methodName}</b> outputs the method name where the exception occurred.
+        </p>
+        <p> 
+          <b>%throwable{short.fileName}</b> outputs the name of the class where the exception occurred.
+        </p>
+        <p> 
+          <b>%throwable{short.lineNumber}</b> outputs the line number where the exception occurred.
+        </p>
+        <p> 
+          <b>%throwable{short.message}</b> outputs the message.
+        </p>
+        <p> 
+          <b>%throwable{short.localizedMessage}</b> outputs the localized message.
+        </p>
+        <p> 
+          <b>%throwable{n}</b> outputs the first n lines of the stack trace. 
+        </p> 
+        <p> 
+          Specifying <b>%throwable{none}</b> or <b>%throwable{0}</b> suppresses output of the exception.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternFile"></a>
+        <b>F</b><br />
+        <b>file</b>
+      </td>
+      <td><p>Outputs the file name where the logging request was issued.</p>
+        <p>Generating the file information (location information)
+        is an expensive operation and may impact performance. Use with caution.</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>highlight</b>{pattern}{style}<br><br>
+        <i>(<u>Log4j</u> syntax only)</i>
+      </td>
+      <td>
+        <p>Adds ANSI colors to the result of the enclosed pattern based on the current event's logging level.
+        </p>
+        <p>The default colors for each level are:
+         </p><table border="0" class="StripTable">
+           <tr >
+             <th>Level</th>
+             <th>ANSI color</th>
+           </tr>
+           <tr >
+             <td>FATAL</td>
+             <td>Bright red</td>
+           </tr>
+           <tr >
+             <td>ERROR</td>
+             <td>Bright red</td>
+           </tr>
+           <tr >
+             <td>WARN</td>
+             <td>Yellow</td>
+           </tr>
+           <tr >
+             <td>INFO</td>
+             <td>Green</td>
+           </tr>
+           <tr >
+             <td>DEBUG</td>
+             <td>Cyan</td>
+           </tr>
+           <tr >
+             <td>TRACE</td>
+             <td>Black (looks dark grey)</td>
+           </tr>
+         </table>
+        
+        <p>The color names are ANSI names defined in the AnsiEscape class.
+        </p>
+        <p>The color and attribute names and are standard, but the exact shade, hue, or value.
+        </p>
+        <table border="0" class="StripTable"><caption>Color table</caption>
+          
+          <tbody>
+            <tr >
+              <th>Intensity Code</th>
+              <th>0</th>
+              <th>1</th>
+              <th>2</th>
+              <th>3</th>
+              <th>4</th>
+              <th>5</th>
+              <th>6</th>
+              <th>7</th>
+            </tr>
+            <tr >
+              <th>Normal</th>
+              <td style="background: black;color:white">Black</td>
+              <td style="background: maroon;color:white">Red</td>
+              <td style="background: green;color:white">Green</td>
+              <td style="background: olive;color:white">Yellow</td>
+              <td style="background: navy;color:white">Blue</td>
+              <td style="background: purple;color:white">Magenta</td>
+              <td style="background: teal;color:white">Cyan</td>
+              <td style="background: silver;color:black">White</td>
+            </tr>
+            <tr >
+              <th>Bright</th>
+              <td style="background: gray;color:white">Black</td>
+              <td style="background: red;color:black">Red</td>
+              <td style="background: lime;color:black">Green</td>
+              <td style="background: yellow;color:black">Yellow</td>
+              <td style="background: blue;color:white">Blue</td>
+              <td style="background: fuchsia;color:black">Magenta</td>
+              <td style="background: cyan;color:black">Cyan</td>
+              <td style="background: white;color:black">White</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>You can use the default colors with:
+         </p><div><pre>%highlight{%d [%t] %-5level: %msg%n%throwable}</pre></div>
+        
+        <p>You can override the default colors in the optional {style} option. For example:
+          </p><div><pre>%highlight{%d [%t] %-5level: %msg%n%throwable}{FATAL=white, ERROR=red, WARN=blue, INFO=black, DEBUG=green, TRACE=blue}</pre></div>
+         
+        <p>You can highlight only the a portion of the log event:
+         </p><div><pre>%d [%t] %highlight{%-5level: %msg%n%throwable}</pre></div>
+        
+        <p>You can style one part of the message and highlight the rest the log event:
+          </p><div><pre>%style{%d [%t]}{black} %highlight{%-5level: %msg%n%throwable}</pre></div>
+         
+                          <p>You can also use the STYLE key to use a predefined group of colors:
+          </p><div><pre>%highlight{%d [%t] %-5level: %msg%n%throwable}{STYLE=Logback}</pre></div>
+          The STYLE value can be one of:
+         <table border="0" class="StripTable">
+           
+           <tr >
+             <th>Style</th>
+             <th>Description</th>
+           </tr>
+           <tr >
+             <td>Default</td>
+             <td>See above</td>
+           </tr>
+           <tr >
+             <td>Logback</td>
+             <td>
+               <table border="0" class="StripTable">
+                 <tr >
+                   <th>Level</th>
+                   <th>ANSI color</th>
+                 </tr>
+                 <tr >
+                   <td>FATAL</td>
+                   <td>Blinking bright red</td>
+                 </tr>
+                 <tr >
+                   <td>ERROR</td>
+                   <td>Bright red</td>
+                 </tr>
+                 <tr >
+                   <td>WARN</td>
+                   <td>Red</td>
+                 </tr>
+                 <tr >
+                   <td>INFO</td>
+                   <td>Blue</td>
+                 </tr>
+                 <tr >
+                   <td>DEBUG</td>
+                   <td>Normal</td>
+                 </tr>
+                 <tr >
+                   <td>TRACE</td>
+                   <td>Normal</td>
+                 </tr>
+               </table>
+             </td>
+           </tr>
+         </table>
+        
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternHighlightLB"></a>
+        <b>highlight</b>(pattern)<br><br>
+        <i>(<u>Logback</u> syntax only)</i>
+      </td>
+      <td><p>The %highlight conversion word prints its sub-pattern in bold-red for events 
+      	of level ERROR, in red for WARN, in BLUE for INFO, and in the default color for other levels.
+      	</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternColors"></a>
+        <b>black</b>|<b>red</b>|<b>green</b>|<b>yellow</b><br>
+        |<b>blue</b>|<b>magenta</b>|<b>cyan</b>|<b>white</b><br>
+        |<b>gray</b>|<b>boldRed</b>|<b>boldGreen</b><br>
+        |<b>boldYellow</b>|<b>boldBlue</b><br>
+        |<b>boldMagenta</b>|<b>boldCyan</b><br>
+        |<b>boldWhite</b>(pattern)
+        <br><br>
+        <i>(<u>Logback</u> syntax only)</i>
+      </td>
+      <td><p>These conversions words print its sub-pattern using their color name.
+      	</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>K</b>{key}<br />
+        <b>map</b>{key}<br />
+        <b>MAP</b>{key}
+      </td>
+      <td>
+        <p>Outputs the entries in a MapMessage,
+          if one is present in the event. The <b>K</b> conversion character can be followed by the key
+          for the map placed between braces, as in
+          <b>%K{clientNumber}</b> where <tt>clientNumber</tt> is the key. The value in the Map
+          corresponding to the key will be output. If no additional sub-option
+          is specified, then the entire contents of the Map key value pair set
+          is output using a format {{key1,val1},{key2,val2}}
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternLocation"></a>
+        <b>l</b><br />
+        <b>location</b>
+      </td>
+      <td>
+        <p>Outputs location information of the caller which generated the logging event.
+        </p>
+        <p>The location information depends on the JVM implementation but usually consists of the fully
+          qualified name of the calling method followed by the callers source the file name and line
+          number between parentheses.
+        </p>
+        <p>Generating location information
+        is an expensive operation and may impact performance. Use with caution.</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternLine"></a>
+        <b>L</b><br />
+        <b>line</b>
+      </td>
+      <td><p>Outputs the line number from where the logging request
+        was issued.</p>
+        <p>Generating line number information (location information)
+        is an expensive operation and may impact performance. Use with caution.</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>m</b><br />
+        <b>msg</b><br />
+        <b>message</b>
+      </td>
+      <td>Outputs the application supplied message associated with the logging event.
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternMethod"></a>
+        <b>M</b><br />
+        <b>method</b>
+      </td>
+      <td><p>Outputs the method name where the logging request was issued.</p>
+        <p>Generating the method name of the caller (location information)
+        is an expensive operation and may impact performance. Use with caution.</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>marker</b>
+      </td>
+      <td>The name of the marker, if one is present.</td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>n</b>
+      </td>
+      <td>
+        <p>Outputs the platform dependent line separator character or characters.
+        </p>
+        <p>This conversion character offers practically the same
+          performance as using non-portable line separator strings such as
+          &quot;\n&quot;, or &quot;\r\n&quot;. Thus, it is the preferred way of specifying a
+          line separator.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+      <a name="PatternNopex"></a>
+        <b>nopex</b><br>
+        <b>nopexception</b>
+      </td>
+      <td>
+        <p><i>[Logback only]</i> Although it <em>pretends</em> to handle stack trace data,
+          this conversion word does not output any data, thus,
+          effectively ignoring exceptions.
+          </p>
+
+          <p>The %nopex conversion word allows the user to override
+          <code>PatternLayout</code>'s internal safety mechanism which
+          silently adds the %xThrowable conversion keyword in the absence of
+          another conversion word handling exceptions.
+          </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>p</b>|<b>le</b>|<b>level</b>{<i>level</i>=<i>label</i>, <i>level</i>=<i>label</i>, ...}
+        <b>p</b>|<b>le</b>|<b>level</b>{length=<i>n</i>}
+        <b>p</b>|<b>le</b>|<b>level</b>{lowerCase=<i>true</i>|<i>false</i>}
+      </td>
+      <td>
+        <p>
+          Outputs the level of the logging event. You provide a level name map in the form
+          &quot;level=value, level=value&quot; where level is the name of the Level and value is the value that
+          should be displayed instead of the name of the Level.
+        </p>
+        <p>
+          For example:
+          </p><div><pre>%level{WARN=Warning, DEBUG=Debug, ERROR=Error, TRACE=Trace, INFO=Info}</pre></div>
+        
+        <p>
+          Alternatively, for the compact-minded:
+          </p><div><pre>%level{WARN=W, DEBUG=D, ERROR=E, TRACE=T, INFO=I}</pre></div>
+        
+        <p>
+          More succinctly, for the same result as above, you can define the length of the level label:
+          </p><div><pre>%level{length=1}</pre></div>
+          If the length is greater than a level name length, the layout uses the normal level name.
+        
+        <p>
+          You can combine the two kinds of options:
+          </p><div><pre>%level{ERROR=Error, length=2}</pre></div>
+          This give you the <tt>Error</tt> level name and all other level names of length 2.
+        
+        <p>
+          Finally, you can output lower-case level names (the default is upper-case):
+          </p><div><pre>%level{lowerCase=true}</pre></div>
+        
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>property</b>{key}
+      </td>
+      <td><i>[Logback only]</i> Outputs the value associated with a property named
+        <em>key</em>. The the relevant docs on how to define ion
+        entitled <a href="http://logback.qos.ch/manual/configuration.html#variableSubstitution">define
+        variables</a> and <a href="http://logback.qos.ch/manual/configuration.html#scopes">variable
+        scopes</a>. 
+
+        If <em>key</em> is not a property of
+        the logger context, then <em>key</em> will be looked up in the
+        System properties.</p>
+
+         <p>There is no default value for <em>key</em>. If it is
+         omitted, the returned value will be "Property_HAS_NO_KEY",
+         expliciting the error condition.</p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>r</b><br />
+        <b>relative</b>
+      </td>
+      <td>Outputs the number of milliseconds elapsed since the JVM was started until the creation
+        of the logging event.
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>replace</b>{pattern}{regex}{substitution}<br><br>
+        <i>(<u>Log4j</u> syntax only)</i>
+      </td>
+      <td>
+        <p>Replaces occurrences of 'regex', a regular expression, with its replacement 'substitution' in the
+          string resulting from evaluation of the pattern 'pattern'. For example, &quot;%replace{%msg}{\s}{}&quot; will remove
+          all spaces contained in the event message.
+        </p>
+        <p>The pattern 'pattern' can be arbitrarily complex and in particular can contain multiple conversion keywords.
+          For instance, &quot;%replace{%logger %msg}{\.}{/}&quot; will replace all dots in the logger or the message of
+          the event with a forward slash.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>replace</b>(pattern){regex,substitution}<br><br>
+        <i>(<u>Logback</u> syntax only)</i>
+      </td>
+      <td>
+        <p>Replaces occurrences of 'regex', a regular expression, with its replacement 'substitution' in the 
+        	string resulting from evaluation of the pattern 'pattern'. For example, "%replace(%msg){'\s', ''}" will remove all
+          spaces contained in the event message. 
+          </p>
+
+          <p>The pattern 'pattern' can be arbitrarily complex and in particular can contain multiple conversion keywords. 
+          	 For instance, "%replace(%logger %msg){'\.', '/'}" will replace
+          all dots in the logger or the message of the event with a
+          forward slash.
+          </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>rEx</b>|<b>rException</b>|<b>rThrowable</b>{<br>&quot;none&quot;|&quot;short&quot;|&quot;full&quot;|depth}<br />
+        <br>
+        <b>rEx</b>|<b>rException</b>|<b>rThrowable</b>{<br>&quot;none&quot;|&quot;short&quot;|&quot;full&quot;|depth,<br>filters(packages)}<br />
+      </td>
+      <td>
+        <p>The same as the %throwable conversion word but the stack trace is printed starting with the
+          first exception that was thrown followed by each subsequent wrapping exception.
+        </p>
+        <p>The throwable conversion word can be followed by an option in the form
+          <b>%rEx{short}</b>
+          which will only output the first line of the Throwable or <b>%rEx{n}</b> where
+          the first n lines of the stacktrace will be printed. The conversion word can also be
+          followed by &quot;filters(packages)&quot; where packages is a list of package names that should
+          be suppressed from stack traces. Specifying <b>%rEx{none}</b>
+          or <b>%rEx{0}</b> will suppress printing of the exception.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>rootException</b>{depth}<br />
+        <br>
+        <b>rootException</b>{depth,<br />evaluator-1, ..., evaluator-n}<br />
+      </td>
+      <td>
+        <p><i>[Logback only]</i> The %rootException converter admits the same optional
+         parameters as the %xException converter described above,
+         including depth and evaluators. It outputs also packaging
+         information. In short, %rootException is very similar to
+         %xException, only the order of exception output is reversed.
+         </p>
+
+         <p>Tomasz Nurkiewicz, the author of %rootException converter,
+         documents his contribution in a blog entry entitled <a href="http://nurkiewicz.blogspot.com/2011/09/logging-exceptions-root-cause-first.html">"Logging
+         exceptions root cause first"</a>.</p>
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>sn</b><br />
+        <b>sequenceNumber</b>
+      </td>
+      <td>Includes a sequence number that will be incremented in every event. The counter is a
+        static variable so will only be unique within applications that share the same converter Class
+        object.</td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>style</b>{pattern}{ANSI style}
+      </td>
+      <td>
+        <p>Uses ANSI escape sequences to style the result of the enclosed pattern. The style can consist of
+          a comma separated list of style names from the following table.
+          </p><table border="0" class="StripTable">
+            <tr >
+              <th>Style Name</th>
+              <th>Description</th>
+            </tr>
+            <tr >
+              <td>Normal</td>
+              <td>Normal display</td>
+            </tr>
+            <tr >
+              <td>Bright</td>
+              <td>Bold</td>
+            </tr>
+            <tr >
+              <td>Dim</td>
+              <td>Dimmed or faint characters</td>
+            </tr>
+            <tr >
+              <td>Underline</td>
+              <td>Underlined characters</td>
+            </tr>
+            <tr >
+              <td>Blink</td>
+              <td>Blinking characters</td>
+            </tr>
+            <tr >
+              <td>Reverse</td>
+              <td>Reverse video</td>
+            </tr>
+            <tr >
+              <td>Hidden</td>
+              <td></td>
+            </tr>
+            <tr >
+              <td>Black or FG_Black</td>
+              <td>Set foreground color to black</td>
+            </tr>
+            <tr >
+              <td>Red or FG_Red</td>
+              <td>Set foreground color to red</td>
+            </tr>
+            <tr >
+              <td>Green or FG_Green</td>
+              <td>Set foreground color to green</td>
+            </tr>
+            <tr >
+              <td>Yellow or FG_Yellow</td>
+              <td>Set foreground color to yellow</td>
+            </tr>
+            <tr >
+              <td>Blue or FG_Blue</td>
+              <td>Set foreground color to blue</td>
+            </tr>
+            <tr >
+              <td>Magenta or FG_Magenta</td>
+              <td>Set foreground color to magenta</td>
+            </tr>
+            <tr >
+              <td>Cyan or FG_Cyan</td>
+              <td>Set foreground color to cyan</td>
+            </tr>
+            <tr >
+              <td>White or FG_White</td>
+              <td>Set foreground color to white</td>
+            </tr>
+            <tr >
+              <td>Default or FG_Default</td>
+              <td>Set foreground color to default (white)</td>
+            </tr>
+            <tr >
+              <td>BG_Black</td>
+              <td>Set background color to black</td>
+            </tr>
+            <tr >
+              <td>BG_Red</td>
+              <td>Set background color to red</td>
+            </tr>
+            <tr >
+              <td>BG_Green</td>
+              <td>Set background color to green</td>
+            </tr>
+            <tr >
+              <td>BG_Yellow</td>
+              <td>Set background color to yellow</td>
+            </tr>
+            <tr >
+              <td>BG_Blue</td>
+              <td>Set background color to blue</td>
+            </tr>
+            <tr >
+              <td>BG_Magenta</td>
+              <td>Set background color to magenta</td>
+            </tr>
+            <tr >
+              <td>BG_Cyan</td>
+              <td>Set background color to cyan</td>
+            </tr>
+            <tr >
+              <td>BG_White</td>
+              <td>Set background color to white</td>
+            </tr>
+          </table>
+        
+		<p>For example:
+          </p><div><pre>%style{%d{ISO8601}}{black} %style{[%t]}{blue} %style{%-5level:}{yellow} %style{%msg%n%throwable}{green}</pre></div>
+        
+		<p>You can also combine styles:
+          </p><div><pre>%d %highlight{%p} %style{%logger}{bright,cyan} %C{1.} %msg%n</pre></div>
+        
+		<p>You can also use <tt>%</tt> with a color like <tt>%black</tt>, <tt>%blue</tt>, <tt>%cyan</tt>, and so on. For example:
+          </p><div><pre>%black{%d{ISO8601}} %blue{[%t]} %yellow{%-5level:} %green{%msg%n%throwable}</pre></div>
+		
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>t</b><br />
+        <b>thread</b>
+      </td>
+      <td>Outputs the name of the thread that generated the logging event.</td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>x</b><br />
+        <b>NDC</b>
+      </td>
+      <td>Outputs the Thread Context Stack (also known as the Nested Diagnostic Context or NDC)
+        associated with the thread that generated the logging event.
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>X</b>{key}<br />
+        <b>mdc</b>{key}<br />
+        <b>MDC</b>{key}
+      </td>
+      <td>
+        <p>Outputs the Thread Context Map (also known as the Mapped Diagnostic Context or MDC)
+          associated with the thread that generated the logging event. The
+          <b>X</b>
+          conversion character can be followed by the key for the
+          map placed between braces, as in
+          <b>%X{clientNumber}</b>
+          where
+          <tt>clientNumber</tt>
+          is the key. The value in the MDC
+          corresponding to the key will be output. If no additional sub-option
+          is specified, then the entire contents of the MDC key value pair set
+          is output using a format {{key1,val1},{key2,val2}}
+        </p>
+        <p>See the
+          ThreadContext class for more details.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>u</b>{&quot;RANDOM&quot; | &quot;TIME&quot;}<br />
+        <b>uuid</b>
+      </td>
+      <td>Includes either a random or a time-based UUID. The time-based UUID is a Type 1 UUID that can
+        generate up to 10,000 unique ids per millisecond, will use the MAC address of each host, and to
+        try to insure uniqueness across multiple JVMs and/or ClassLoaders on the same host a
+        random number between 0 and 16,384 will be associated with each instance of the UUID generator
+        Class and included in each time-based UUID generated. Because time-based UUIDs contain
+        the MAC address and timestamp they should be used with care as they can cause a security
+        vulnerability.<BR>
+        <B>Note :</B> Since LogMX v5.1.0, the tag <B>%u{UserDefinedField}</B> (as defined in LogMX v5.0.x and older)
+        is replaced with <B>%mx{UserDefinedField}</B>.
+        
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>xEx</b>|<b>xException</b>|<b>xThrowable</b>{<br>&quot;none&quot;|&quot;short&quot;|&quot;full&quot;|depth}<br />
+        <br>
+        <b>xEx</b>|<b>xException</b>|<b>xThrowable</b>{<br>&quot;none&quot;|&quot;short&quot;|&quot;full&quot;|depth,<br>filters(packages)}<br />
+      </td>
+      <td>
+        <p>The same as the %throwable conversion word but also includes class packaging information.
+        </p>
+        <p>At the end of each stack element of the exception, a string containing the name of the jar file
+          that contains the class or the directory the class is located in and the &quot;Implementation-Version&quot;
+          as found in that jar's manifest will be added. If the information is uncertain, then the class
+          packaging data will be preceded by a tilde, i.e. the '~' character.
+        </p>
+        <p>The throwable conversion word can be followed by an option in the form
+          <b>%xEx{short}</b>
+          which will only output the first line of the Throwable or <b>%xEx{n}</b> where
+          the first n lines of the stacktrace will be printed. The conversion word can also be
+          followed by &quot;filters(packages)&quot; where packages is a list of package names that should
+          be suppressed from stack traces. Specifying <b>%xEx{none}</b>
+          or <b>%xEx{0}</b> will suppress printing of the exception.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <b>mx</b>{FieldName}
+      </td>
+      <td>
+        <p>[LogMX-specific <I>conversion word</I>] Used to add a named user-defined log entry field. 
+The name of this new field must be specified in the associated <I>option</I> (i.e. between <CODE>{ }</CODE> following this conversion word). For example, 
+use <B>%mx{Client ID}</B> to describe a new entry field "Client ID", so that a new column
+will be displayed in main LogMX log entries table.
+        </p>
+      </td>
+    </tr>
+    <tr >
+      <td align="center">
+        <b>%</b>
+      </td>
+      <td>The sequence %% outputs a single percent sign.
+      </td>
+    </tr>
+  </table>	
+	
+
+<BR><BR>
+<DIV style="font-size: 130%"><B>Data type specified in Option</B></DIV>
+
+<p>You may need to specify the data type of each Tag because sorting log entries according 
+to this Tag may be wrong for your use case: by default, all fields are Strings, so LogMX sorts 
+your log entries using alphanumeric order. That means that "a" will come before "b" but also 
+that "1000" will come before "9". If you know that a log entry field will always contain
+numeric data, you can use the following Tag syntax to enforce a specific type to be used by LogMX:
+
+<TABLE border="1" class="StripTable">
+    <tr>
+        <th>Option</th>
+        <th>Meaning</th>
+        <th>Example of data</th>
+    </tr>
+    
+    <tr>
+        <td align=center>%mx{NumberOfThreads<B>::int</B>}</td>
+        <td align=left>User-defined field named "NumberOfThreads" containing only integers: 
+        digits (0~9) and the optional "-" prefix for negative numbers</td>
+        <td align=center>204</td>
+    </tr>
+    
+    <tr>
+        <td align=center>%mx{Rate<B>::double</B>}</td>
+        <td align=left>User-defined field named "Rate" containing floating-point numbers: 
+        digits (0~9), an optional "-" prefix for negative numbers, and an optional "." before  
+        the fractional part</td>
+        <td align=center>56.55</td>
+    </tr>
+
+    <tr>
+        <td align=center>%mx{Client}</td>
+        <td align=left>User-defined field named "Client" containing any characters</td>
+        <td align=center>John-Doe-1245</td>
+    </tr>
+</table>
+<br>
+When a field is declared using "::int" or "::double" in its Tag, LogMX will use numeric order 
+to sort log entries by this field: 9 will come before 1000, and 9.5 will come before 10.
+ </p>
+
+
+<BR><BR>
+<DIV style="font-size: 130%"><B>Format modifiers</B></DIV>
+
+<p>By default the relevant information is output as is. However,
+with the aid of format modifiers it is possible to change the
+minimum field width, the maximum field width and justification.</p>
+
+<p>The optional format modifier is placed between the percent sign
+and the conversion character.</p>
+
+<p>The first optional format modifier is the <em>left justification
+flag</em> which is just the minus (-) character. Then comes the
+optional <em>minimum field width</em> modifier. This is a decimal
+constant that represents the minimum number of characters to
+output. If the data item requires fewer characters, it is padded on
+either the left or the right until the minimum width is
+reached. The default is to pad on the left (right justify) but you
+can specify right padding with the left justification flag. The
+padding character is space. If the data item is larger than the
+minimum field width, the field is expanded to accommodate the
+data. The value is never truncated.</p>
+
+<p>This behavior can be changed using the <em>maximum field
+width</em> modifier which is designated by a period followed by a
+decimal constant. If the data item is longer than the maximum
+field, then the extra characters are removed from the
+
+<em>beginning</em> of the data item and not from the end. For
+example, it the maximum field width is eight and the data item is
+ten characters long, then the first two characters of the data item
+are dropped. This behavior deviates from the printf function in C
+where truncation is done from the end.</p>
+
+<p>Below are various format modifier examples for the "category"
+<i>conversion word</i> (i.e. %c).</p>
+
+<p>
+<TABLE border="1" class="StripTable">
+<th>Format modifier
+<th>left justify
+<th>minimum width
+<th>maximum width
+<th>comment
+
+<tr>
+<td align=center>%20c</td>
+<td align=center>false</td>
+<td align=center>20</td>
+
+<td align=center>none</td>
+
+<td>Left pad with spaces if the category name is less than 20
+characters long.
+
+<tr> <td align=center>%-20c</td> <td align=center>true</td> <td
+align=center>20</td> <td align=center>none</td> <td>Right pad with
+spaces if the category name is less than 20 characters long.
+
+<tr>
+<td align=center>%.30c</td>
+
+<td align=center>NA</td>
+<td align=center>none</td>
+<td align=center>30</td>
+
+<td>Truncate from the beginning if the category name is longer than 30
+characters.
+
+<tr>
+<td align=center>%20.30c</td>
+<td align=center>false</td>
+<td align=center>20</td>
+<td align=center>30</td>
+
+<td>Left pad with spaces if the category name is shorter than 20
+characters. However, if category name is longer than 30 characters,
+then truncate from the beginning.
+
+<tr>
+<td align=center>%-20.30c</td>
+<td align=center>true</td>
+<td align=center>20</td>
+<td align=center>30</td>
+
+<td>Right pad with spaces if the category name is shorter than 20
+characters. However, if category name is longer than 30 characters,
+then truncate from the beginning.
+
+</table>
+
+</BODY>
+</HTML>

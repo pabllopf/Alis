@@ -110,7 +110,6 @@ namespace Alis.Core.Manager.Input
                 Key key = keys[index];
                 if (Keyboard.IsKeyPressed(key) && !tempListOfKeys.Contains(key))
                 {
-                    //Console.WriteLine($"Key pressed={key}");
                     tempListOfKeys.Add(key);
 
                     foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
@@ -121,7 +120,6 @@ namespace Alis.Core.Manager.Input
 
                 if (!Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
                 {
-                    //Console.WriteLine($"Key NOT pressed={key}");
                     tempListOfKeys.Remove(key);
                     foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
                     {
@@ -132,7 +130,6 @@ namespace Alis.Core.Manager.Input
 
                 if (Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
                 {
-                    //Console.WriteLine($"Key pressing={key}");
 
                     foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
                     {
