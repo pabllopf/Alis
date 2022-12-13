@@ -1,0 +1,31 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31620.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game", "Alis.Template.Game\Alis.Template.Game.csproj", "{6EE98157-B50D-4A33-A0BD-AC4A67A2F09C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Lib", "Alis.Template.Game.Lib\Alis.Template.Game.Lib.csproj", "{C6470F97-2A9C-4BFF-B15D-CBDDDAE2B86E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EE98157-B50D-4A33-A0BD-AC4A67A2F09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EE98157-B50D-4A33-A0BD-AC4A67A2F09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EE98157-B50D-4A33-A0BD-AC4A67A2F09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EE98157-B50D-4A33-A0BD-AC4A67A2F09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6470F97-2A9C-4BFF-B15D-CBDDDAE2B86E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6470F97-2A9C-4BFF-B15D-CBDDDAE2B86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6470F97-2A9C-4BFF-B15D-CBDDDAE2B86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6470F97-2A9C-4BFF-B15D-CBDDDAE2B86E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal
