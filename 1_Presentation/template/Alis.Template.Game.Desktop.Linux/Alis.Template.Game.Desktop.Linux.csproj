@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-ios;</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('osx'))">$(TargetFrameworks);net6.0-ios;</TargetFrameworks>
-    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('linux'))">$(TargetFrameworks);net6.0-ios;</TargetFrameworks>
-    
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
     <OutputType>Exe</OutputType>
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
@@ -18,29 +14,30 @@
     <LangVersion>10.0</LangVersion>
     
     <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
-    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-ios'))">14.2</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-maccatalyst'))">14.0</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-android'))">21.0</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
-    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-tizen'))">6.5</SupportedOSPlatformVersion>
-    <Configurations>Debug;Release;osx</Configurations>
-    <Platforms>AnyCPU;arm64</Platforms>
   </PropertyGroup>
-  
-  <ItemGroup>
-    <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8" />
-    <MauiSplashScreen Include="Resources\alis_banner.png" BaseSize="256" Color="#F8F8F8" />
-  </ItemGroup>
+
+    <PropertyGroup Condition="&#xA;    $([MSBuild]::IsOSPlatform('osx')) OR&#xA;    $([MSBuild]::IsOSPlatform('windows'))">
+        <OutputType>Exe</OutputType>
+        <TargetFrameworks>net6.0;</TargetFrameworks>
+        <DefineConstants>$(DefineConstants);UNSUPPORTED;</DefineConstants>
+    </PropertyGroup>
 
 
-    <ItemGroup>
-        <PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.1" />
-        <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.1" />
+    <ItemGroup Condition="&#xA;    $([MSBuild]::IsOSPlatform('windows')) OR &#xA;    $([MSBuild]::IsOSPlatform('linux'))">
+        <None Remove="App.xaml" />
+        <None Remove="MainPage.xaml" />
+        <Compile Remove="App.xaml.cs" />
+        <Compile Remove="MainPage.xaml.cs" />
+        <Compile Remove="Platforms\**" />
+        <None Remove="Platforms\**" />
+        <EmbeddedResource Remove="Platforms\**" />
     </ItemGroup>
 
-
-    <ItemGroup>
-      <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
-    </ItemGroup>
-  
+    <Target Name="RestrictOS" BeforeTargets="Compile">
+        <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) OR $([MSBuild]::IsOSPlatform('osx'))">
+            <UnsupportedTarget>true</UnsupportedTarget>
+        </PropertyGroup>
+        <Warning Code="UNSUPPORTED" Text="Can't compile 'Linux apps' on Windows or MacOS OS." Condition=" '$(UnsupportedTarget)' == 'true' " />
+    </Target>
+    
 </Project>

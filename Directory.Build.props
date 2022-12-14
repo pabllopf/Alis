@@ -8,6 +8,7 @@
     </PropertyGroup>
 
 
+    <!--
     <PropertyGroup>
         <AppendTargetFrameworkToOutputPath>true</AppendTargetFrameworkToOutputPath>
         <AppendRuntimeIdentifierToOutputPath>true</AppendRuntimeIdentifierToOutputPath>
@@ -15,6 +16,6 @@
         <OutputPath>$(MSBuildThisFileDirectory).build/$(MSBuildProjectName)/$(Configuration)</OutputPath>
         <BaseIntermediateOutputPath>$(OutputPath)/obj</BaseIntermediateOutputPath>
         <IntermediateOutputPath>$(BaseIntermediateOutputPath)</IntermediateOutputPath>
-    </PropertyGroup>
+    </PropertyGroup>-->
 
 </Project>

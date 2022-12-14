@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
+      <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-
       <ApplicationTitle>Alis.Template.Game.Desktop.Windows</ApplicationTitle>
+
       <ApplicationId>com.companyname.Alis.Template.Game.Desktop.Windows</ApplicationId>
+      <ApplicationIdGuid>FFDC4434-63F8-44ED-B1B3-9830B9D75921</ApplicationIdGuid>
 
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -16,6 +18,12 @@
     <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
     <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
   </PropertyGroup>
+
+    <ItemGroup Condition="$(TargetFramework.Contains('-windows'))">
+        <!-- Required - WinUI does not yet have buildTransitive for everything -->
+        <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.1.5" />
+        <PackageReference Include="Microsoft.Graphics.Win2D" Version="1.0.4" />
+    </ItemGroup>
 
     <ItemGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
         <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8" />
@@ -36,6 +44,23 @@
         <None Remove="MainPage.xaml" />
         <Compile Remove="App.xaml.cs" />
         <Compile Remove="MainPage.xaml.cs" />
+        <Compile Update="Platforms\Windows\App.xaml.cs">
+          <DependentUpon>App.xaml</DependentUpon>
+          <SubType>Code</SubType>
+          <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+        </Compile>
+        <Compile Update="Platforms\Windows\App.xaml.cs">
+          <DependentUpon>App.xaml</DependentUpon>
+          <SubType>Code</SubType>
+          <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiPlatformSpecificFolder Remove="Platforms\Android\" />
+      <MauiPlatformSpecificFolder Remove="Platforms\iOS\" />
+      <MauiPlatformSpecificFolder Remove="Platforms\MacCatalyst\" />
+      <MauiPlatformSpecificFolder Remove="Platforms\Tizen\" />
     </ItemGroup>
     
     <Target Name="RestrictOS" BeforeTargets="Compile">
