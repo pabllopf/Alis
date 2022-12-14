@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Mobile.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Mobile.Ios", "Alis.Template.Game.Mobile.Ios\Alis.Template.Game.Mobile.Ios.csproj", "{EA4A5850-D6EB-4BEC-B81D-DCE504C4C012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Desktop.Windows", "Alis.Template.Game.Desktop.Windows\Alis.Template.Game.Desktop.Windows.csproj", "{B44C7FC5-D5F0-4D8F-90AA-C128A84C835F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alis.Template.Game.Desktop.MacOs", "Alis.Template.Game.Desktop.MacOs\Alis.Template.Game.Desktop.MacOs.csproj", "{F01D1D58-13B3-4F6C-9A1C-A040B34F6C63}"
 EndProject
 Global
@@ -31,10 +29,6 @@ Global
 		{EA4A5850-D6EB-4BEC-B81D-DCE504C4C012}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA4A5850-D6EB-4BEC-B81D-DCE504C4C012}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA4A5850-D6EB-4BEC-B81D-DCE504C4C012}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B44C7FC5-D5F0-4D8F-90AA-C128A84C835F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B44C7FC5-D5F0-4D8F-90AA-C128A84C835F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B44C7FC5-D5F0-4D8F-90AA-C128A84C835F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B44C7FC5-D5F0-4D8F-90AA-C128A84C835F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F01D1D58-13B3-4F6C-9A1C-A040B34F6C63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F01D1D58-13B3-4F6C-9A1C-A040B34F6C63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F01D1D58-13B3-4F6C-9A1C-A040B34F6C63}.Release|Any CPU.ActiveCfg = Release|Any CPU
