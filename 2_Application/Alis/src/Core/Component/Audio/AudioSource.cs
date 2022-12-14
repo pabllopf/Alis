@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Builder.Core.Component.Audio;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;

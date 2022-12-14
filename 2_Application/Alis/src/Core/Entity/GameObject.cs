@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;

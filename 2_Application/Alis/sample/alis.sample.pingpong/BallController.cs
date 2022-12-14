@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
