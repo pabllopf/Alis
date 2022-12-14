@@ -12,4 +12,18 @@
       <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
     </ItemGroup>
 
+    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('arm64'))">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x64'))">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x86'))">
+        <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
 </Project>

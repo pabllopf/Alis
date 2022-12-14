@@ -38,22 +38,22 @@ namespace Alis.Core.Aspect.Base.Settings
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "Runtimes/win-x64/native/csfml-audio";
+        public const string audio = "runtimes/win-x64/native/csfml-audio";
         
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string graphics = "Runtimes/win-x64/native/csfml-graphics";
+        public const string graphics = "runtimes/win-x64/native/csfml-graphics";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "Runtimes/win-x64/native/csfml-system";
+        public const string system = "runtimes/win-x64/native/csfml-system";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string window = "Runtimes/win-x64/native/csfml-window";
+        public const string window = "runtimes/win-x64/native/csfml-window";
 
 #elif LINUX
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Aspect.Base.Settings
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "Runtimes/linux-x64/native/csfml-system";
+        public const string system = "runtimes/linux-x64/native/csfml-system";
 
         /// <summary>
         ///     The window
