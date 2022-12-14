@@ -5,11 +5,21 @@
         <TargetFramework>net6.0</TargetFramework>
         <IsPackable>false</IsPackable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <RuntimeIdentifier>debian.10-arm64</RuntimeIdentifier>
+        
     </PropertyGroup>
+    
+    
+
+    <ItemGroup>
+        <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.1" />
+    </ItemGroup>
+    
+    
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
-      <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
+      <ProjectReference Include="..\alis.template.game\Alis.Template.Game.csproj" />
     </ItemGroup>
 
 </Project>

@@ -12,4 +12,9 @@
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>
     </ItemGroup>
+    
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
+        <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
+    </PropertyGroup>
+    
 </Project>

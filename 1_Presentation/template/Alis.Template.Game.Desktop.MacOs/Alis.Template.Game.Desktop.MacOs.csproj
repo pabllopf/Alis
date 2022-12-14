@@ -6,6 +6,8 @@
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+
+      <DefineConstants>$(DefineConstants);OSX</DefineConstants>
       
     <ApplicationTitle>Alis.Template.Game.Desktop.MacOS</ApplicationTitle>
     <ApplicationId>com.companyname.Alis.Template.Game.Desktop.MacOS</ApplicationId>

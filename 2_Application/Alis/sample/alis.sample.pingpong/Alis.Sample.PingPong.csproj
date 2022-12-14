@@ -3,5 +3,8 @@
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
+        
+        <RuntimeIdentifier>linux-arm64</RuntimeIdentifier>
+        <PlatformTarget>arm64</PlatformTarget>
     </PropertyGroup>
 </Project>

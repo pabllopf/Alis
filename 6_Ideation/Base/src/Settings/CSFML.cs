@@ -59,22 +59,22 @@ namespace Alis.Core.Aspect.Base.Settings
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "Runtimes/linux-x64/native/csfml-audio";
+        public const string Audio = "./runtimes/debian-arm64/native/libcsfml-audio.so";
         
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string graphics = "Runtimes/linux-x64/native/csfml-graphics";
+        public const string Graphics = "./runtimes/debian-arm64/native/libcsfml-graphics.so";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string system = "runtimes/linux-x64/native/csfml-system";
+        public const string System = "./runtimes/debian-arm64/native/libcsfml-system.so";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string window = "Runtimes/linux-x64/native/csfml-window";
+        public const string Window = "./runtimes/debian-arm64/native/libcsfml-window.so";
 #elif OSXARM64
         /// <summary>
         ///     The audio

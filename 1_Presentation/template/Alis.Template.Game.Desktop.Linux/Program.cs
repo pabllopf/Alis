@@ -33,6 +33,7 @@ using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using SkiaSharp;
 
+
 namespace Alis.Template.Game.Desktop
 {
     /// <summary>
@@ -43,22 +44,27 @@ namespace Alis.Template.Game.Desktop
         /// <summary>
         ///     The blue
         /// </summary>
-        private static byte red;
+        private static float red;
 
         /// <summary>
         ///     The blue
         /// </summary>
-        private static byte green;
+        private static float green;
 
         /// <summary>
         ///     The blue
         /// </summary>
-        private static byte blue;
+        private static float blue;
 
         /// <summary>
         /// The run
         /// </summary>
         private static bool run;
+        
+        /// <summary>
+        /// The fill color
+        /// </summary>
+        private static SKColorF _fillColor;
 
         /// <summary>
         ///     Main the args
@@ -99,7 +105,29 @@ namespace Alis.Template.Game.Desktop
                 renderWindow.DispatchEvents();
                 renderWindow.Clear();
                 
-                CustomRender.Update(canvas);
+                red += 0.01f;
+                if (red >= 1.0f)
+                {
+                    red -= 1.0f;
+                }
+
+                green += 0.02f;
+                if (green >= 1.0f)
+                {
+                    green -= 1.0f;
+                }
+
+                blue += 0.03f;
+                if (blue >= 1.0f)
+                {
+                    blue -= 1.0f;
+                }
+            
+                // change the background color
+                _fillColor = new SKColorF(red, green, blue);
+            
+                // clear the view with the specified background color
+                canvas.DrawColor(_fillColor);
                 
                 image = new Image((uint)bitmap.Width, (uint)bitmap.Height, bitmap.GetPixelSpan().ToArray());
                 texture = new Texture(image);
