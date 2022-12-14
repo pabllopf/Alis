@@ -28,10 +28,14 @@
 //  --------------------------------------------------------------------------
 
 
+#if UNSUPPORTED
+using System;
+#else
 using System;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using SkiaSharp;
+#endif
 
 namespace Alis.Template.Game.Desktop
 {
@@ -40,6 +44,12 @@ namespace Alis.Template.Game.Desktop
     /// </summary>
     public static class Program
     {
+        
+
+#if UNSUPPORTED
+        public static void Main(string[] args)=> Console.WriteLine("UNSUPPORTED PLATFORM: Can't compile 'Windows apps' on MacOS or Linux OS.");
+#else
+        
         /// <summary>
         ///     The blue
         /// </summary>
@@ -59,7 +69,7 @@ namespace Alis.Template.Game.Desktop
         /// The run
         /// </summary>
         private static bool run;
-
+        
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -121,5 +131,6 @@ namespace Alis.Template.Game.Desktop
         {
             run = false;
         }
+#endif
     }
 }
