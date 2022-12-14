@@ -1,5 +1,4 @@
 using Alis.Builder;
-using Alis.Core.Manager.Setting;
 using Xunit;
 
 namespace Alis.Test

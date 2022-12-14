@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
 namespace Alis.Core.Component.Render
 {

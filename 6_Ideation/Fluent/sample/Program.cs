@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
 namespace Alis.Core.Aspect.Fluent.Sample
 {
     /// <summary>

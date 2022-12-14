@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('windows'))">
+    <TargetFrameworks>$(TargetFrameworks);net6.0-android;</TargetFrameworks>
+      
+    <OutputType>Exe</OutputType>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+      
+      <ApplicationTitle>Alis.Template.Mobile.Android</ApplicationTitle>
+      <ApplicationId>com.companyname.Alis.Template.Mobile.Android</ApplicationId>
+
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <LangVersion>10.0</LangVersion>
+    
+    <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-android'))">21.0</SupportedOSPlatformVersion>
+  </PropertyGroup>
+  
+  <ItemGroup Condition="$([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('windows'))">
+    <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8" />
+    <MauiSplashScreen Include="Resources\alis_banner.png" BaseSize="256" Color="#F8F8F8" />
+      <PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.1" />
+      <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.1" />
+      <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
+  </ItemGroup>
+
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
+        <OutputType>Exe</OutputType>
+        <TargetFrameworks>net6.0;</TargetFrameworks>
+        <DefineConstants>$(DefineConstants);UNSUPPORTED;</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
+        <None Remove="App.xaml" />
+        <None Remove="MainPage.xaml" />
+        <Compile Remove="App.xaml.cs" />
+        <Compile Remove="MainPage.xaml.cs" />
+    </ItemGroup>
+
+    <Target Name="RestrictOS" BeforeTargets="Compile">
+        <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
+            <UnsupportedTarget>true</UnsupportedTarget>
+        </PropertyGroup>
+        <Warning Code="UNSUPPORTED" Text="Can't compile 'Android apps' on Linux OS." Condition=" '$(UnsupportedTarget)' == 'true' " />
+    </Target>
+  
+</Project>

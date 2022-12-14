@@ -56,7 +56,7 @@ namespace Alis.Core.Component.Render
         /// <summary>
         ///     The sprite
         /// </summary>
-        public Graphic.D2.SFML.Graphics.Sprite sprite;
+        public Alis.Core.Graphic.D2.SFML.Graphics.Sprite sprite;
 
         /// <summary>
         ///     The texture path
@@ -79,7 +79,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Init()
         {
-            sprite = new Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
+            sprite = new Alis.Core.Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
             size = new Vector2F(sprite.TextureRect.Width, sprite.TextureRect.Height);
             Logger.Log($"Load sprite od '{texturePath}'");
         }
