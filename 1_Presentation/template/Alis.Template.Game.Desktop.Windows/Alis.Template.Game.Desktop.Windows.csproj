@@ -54,14 +54,15 @@
           <SubType>Code</SubType>
           <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
         </Compile>
+        <Compile Remove="Platforms\**" />
+        <None Remove="Platforms\**" />
+        <MauiPlatformSpecificFolder Remove="Platforms\Android\" />
+        <MauiPlatformSpecificFolder Remove="Platforms\iOS\" />
+        <MauiPlatformSpecificFolder Remove="Platforms\MacCatalyst\" />
+        <MauiPlatformSpecificFolder Remove="Platforms\Tizen\" />
+        <EmbeddedResource Remove="Platforms\**" />
     </ItemGroup>
-
-    <ItemGroup>
-      <MauiPlatformSpecificFolder Remove="Platforms\Android\" />
-      <MauiPlatformSpecificFolder Remove="Platforms\iOS\" />
-      <MauiPlatformSpecificFolder Remove="Platforms\MacCatalyst\" />
-      <MauiPlatformSpecificFolder Remove="Platforms\Tizen\" />
-    </ItemGroup>
+    
     
     <Target Name="RestrictOS" BeforeTargets="Compile">
         <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('linux'))">

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="**\*.glade" />
+    <EmbeddedResource Include="**\*.glade" LogicalName="%(Filename)%(Extension)" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="GtkSharp" Version="3.22.24.37" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="2.88.1" />
+    <PackageReference Include="SkiaSharp.Views.Desktop.Common" Version="2.88.1" />
+    <PackageReference Include="SkiaSharp.Views.Gtk3" Version="2.88.1" />
+    <PackageReference Include="SkiaSharp.NativeAssets.macOS " Version="2.88.1" />
+  </ItemGroup>
+  <ItemGroup />
+</Project>
