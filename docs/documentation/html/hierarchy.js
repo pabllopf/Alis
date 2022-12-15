@@ -15,7 +15,6 @@ var hierarchy =
     [ "Alis.Core.Network.Internal.BinaryReaderWriter", "d6/dd9/class_alis_1_1_core_1_1_network_1_1_internal_1_1_binary_reader_writer.html", null ],
     [ "Alis.Core.Physic.Dynamics.Body", "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html", null ],
     [ "Alis.Core.Physic.Factories.BodyFactory", "dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html", null ],
-    [ "Alis.Core.Aspect.Logging.Box2DxDebug", "d3/d46/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_box2_dx_debug.html", null ],
     [ "Alis.Builder.Core.Component.Mesh.BoxMeshBuilder", "d3/d6c/class_alis_1_1_builder_1_1_core_1_1_component_1_1_mesh_1_1_box_mesh_builder.html", null ],
     [ "Alis.Core.Physic.Dynamics.BreakableBody", "dc/d9d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_breakable_body.html", null ],
     [ "Alis.Core.Aspect.Math.SFML.Bvec2", "da/dfb/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_bvec2.html", null ],
@@ -64,6 +63,8 @@ var hierarchy =
       [ "Alis.Core.Component.Render.Sprite", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html", null ]
     ] ],
     [ "Alis.Builder.Core.Component.ComponentBaseBuilder", "df/d8d/class_alis_1_1_builder_1_1_core_1_1_component_1_1_component_base_builder.html", null ],
+    [ "Alis.Core.Aspect.Logging.ConsoleController", "d8/d37/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_controller.html", null ],
+    [ "Alis.Core.Aspect.Logging.ConsoleLogConfig", "db/df9/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_console_log_config.html", null ],
     [ "Alis.Core.Aspect.Math.Constant", "da/d0f/class_alis_1_1_core_1_1_aspect_1_1_math_1_1_constant.html", null ],
     [ "Alis.Core.Physic.Collision.ContactSystem.Contact", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html", null ],
     [ "Alis.Core.Physic.Collision.ContactSystem.ContactEdge", "d3/dd9/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_edge.html", null ],
@@ -144,6 +145,7 @@ var hierarchy =
       [ "Alis.Core.Physic.Shared.Contracts.RequiredException", "d3/d17/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_required_exception.html", null ],
       [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.PointOnEdgeException", "d2/dc3/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_point_on_edge_exception.html", null ]
     ] ],
+    [ "Alis.Core.Aspect.Logging.FileController", "d0/d48/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_file_controller.html", null ],
     [ "Alis.Core.Audio.OS.Utils.FileUtil", "d5/dec/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_utils_1_1_file_util.html", null ],
     [ "Alis.Core.Physic.Collision.Filtering.Filter", "da/d7b/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_filtering_1_1_filter.html", null ],
     [ "Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase.FilterData", "de/d82/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_physics_logic_base_1_1_filter_data.html", [
@@ -703,6 +705,9 @@ var hierarchy =
     [ "Alis.Core.Graphic.D2.SFML.Windows.JoystickButtonEvent", "d0/dd9/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_joystick_button_event.html", null ],
     [ "Alis.Core.Graphic.D2.SFML.Windows.JoystickConnectEvent", "dc/df8/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_joystick_connect_event.html", null ],
     [ "Alis.Core.Graphic.D2.SFML.Windows.JoystickMoveEvent", "d6/d6d/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_joystick_move_event.html", null ],
+    [ "JsonConverter", null, [
+      [ "Alis.Core.Aspect.Logging.DateTimeConverter", "d8/dac/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_date_time_converter.html", null ]
+    ] ],
     [ "Alis.Core.Graphic.D2.SFML.Windows.Keyboard", "dd/d8c/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_keyboard.html", null ],
     [ "Alis.Core.Graphic.D2.SFML.Windows.KeyEvent", "d0/dca/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_key_event.html", null ],
     [ "Alis.Core.Physic.Utilities.LineUtils", "df/d0c/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_line_utils.html", null ],
@@ -755,6 +760,7 @@ var hierarchy =
     [ "MemoryStream", null, [
       [ "Alis.Core.Network.BufferPool.PublicBufferMemoryStream", "dd/d36/class_alis_1_1_core_1_1_network_1_1_buffer_pool_1_1_public_buffer_memory_stream.html", null ]
     ] ],
+    [ "Alis.Core.Aspect.Logging.Message", "d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.MonotoneMountain", "d4/dec/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_monotone_mountain.html", null ],
     [ "Alis.Core.Graphic.D2.SFML.Windows.Mouse", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html", null ],
     [ "Alis.Core.Graphic.D2.SFML.Windows.MouseButtonEvent", "df/db3/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse_button_event.html", null ],

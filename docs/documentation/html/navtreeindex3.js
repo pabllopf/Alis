@@ -1,5 +1,6 @@
 var NAVTREEINDEX3 =
 {
+"d2/d28/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a3f37eab45298632929ae7ed6fe78b891abed99e5db57749f375e738c1c0258047":[1,0,0,2,4,0,0,1,24,0,1],
 "d2/d28/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a3f37eab45298632929ae7ed6fe78b891ad77bb891b6d90fe3dd2d1a7d2d08ceb7":[1,0,0,2,4,0,0,1,24,0,4],
 "d2/d28/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a49b38fe400fdcb94116a670abb78af43":[1,0,0,2,4,0,0,1,24,3],
 "d2/d28/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_sensor.html#a5aae09d87d759dd88c7b43a53a49e780":[1,0,0,2,4,0,0,1,24,4],
@@ -248,6 +249,5 @@ var NAVTREEINDEX3 =
 "d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#a2d0facd1983e77cc45f12122c3e1609a":[1,0,0,2,7,1,0,25],
 "d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#a352fa092fd7e01d8ac09cca1dc008def":[1,0,0,2,7,1,0,15],
 "d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#a38e710eece90be0e09dc0af0f587ab14":[1,0,0,2,7,1,0,22],
-"d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#a396c77dd812f8cfc5dda1720e228e44f":[1,0,0,2,7,1,0,30],
-"d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#a4033aacc57e38d670ba7906d4cf6acad":[1,0,0,2,7,1,0,4]
+"d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html#a396c77dd812f8cfc5dda1720e228e44f":[1,0,0,2,7,1,0,30]
 };

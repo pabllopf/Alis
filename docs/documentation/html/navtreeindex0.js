@@ -84,6 +84,7 @@ var NAVTREEINDEX0 =
 "d0/d46/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_mat33.html#ac12c8d97a01ae745f589432715f2f4e5":[1,0,0,2,7,6,6,5],
 "d0/d46/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_mat33.html#ad15be53e9061333eb0a1c7c48d553f78":[1,0,0,2,7,6,6,0],
 "d0/d46/struct_alis_1_1_core_1_1_physic_1_1_shared_1_1_mat33.html#adce8d890d79f50a7773ccae8feeacc8b":[1,0,0,2,7,6,6,1],
+"d0/d48/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_file_controller.html":[1,0,0,2,0,3,4],
 "d0/d49/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_loading_failed_exception.html":[1,0,0,2,0,0,1,6],
 "d0/d49/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_loading_failed_exception.html#a03d486c6e35f472fcdff6e695164a6f1":[1,0,0,2,0,0,1,6,1],
 "d0/d49/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_exceptions_1_1_loading_failed_exception.html#a2185cd8a448873f061e7bbe18d3f9deb":[1,0,0,2,0,0,1,6,0],
@@ -248,6 +249,5 @@ var NAVTREEINDEX0 =
 "d0/d94/struct_alis_1_1_core_1_1_aspect_1_1_base_1_1_settings_1_1_time.html#a0cb1e251c4dd4db5d787f33753f13ac9":[1,0,0,2,0,0,2,1,16],
 "d0/d94/struct_alis_1_1_core_1_1_aspect_1_1_base_1_1_settings_1_1_time.html#a0eeae785ac5a04815e9ff0989b58de71":[1,0,0,2,0,0,2,1,26],
 "d0/d94/struct_alis_1_1_core_1_1_aspect_1_1_base_1_1_settings_1_1_time.html#a18f6aeca6c5085b4042841a03ba3d025":[1,0,0,2,0,0,2,1,2],
-"d0/d94/struct_alis_1_1_core_1_1_aspect_1_1_base_1_1_settings_1_1_time.html#a1be534f5d44fa6d3b2968b4e61c2095b":[1,0,0,2,0,0,2,1,20],
-"d0/d94/struct_alis_1_1_core_1_1_aspect_1_1_base_1_1_settings_1_1_time.html#a226cd7bc49883deb17a3f2216464f941":[1,0,0,2,0,0,2,1,32]
+"d0/d94/struct_alis_1_1_core_1_1_aspect_1_1_base_1_1_settings_1_1_time.html#a1be534f5d44fa6d3b2968b4e61c2095b":[1,0,0,2,0,0,2,1,20]
 };
