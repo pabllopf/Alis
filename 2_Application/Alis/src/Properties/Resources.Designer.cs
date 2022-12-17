@@ -22,7 +22,7 @@ namespace Alis.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -63,7 +63,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_audio {
+        public static byte[] libcsfml_audio {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-audio", resourceCulture);
                 return ((byte[])(obj));
@@ -73,7 +73,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_audio_2_5 {
+        public static byte[] libcsfml_audio_2_5 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-audio.2.5", resourceCulture);
                 return ((byte[])(obj));
@@ -83,7 +83,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_audio_2_5_1 {
+        public static byte[] libcsfml_audio_2_5_1 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-audio.2.5.1", resourceCulture);
                 return ((byte[])(obj));
@@ -93,7 +93,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_graphics {
+        public static byte[] libcsfml_graphics {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-graphics", resourceCulture);
                 return ((byte[])(obj));
@@ -103,7 +103,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_graphics_2_5 {
+        public static byte[] libcsfml_graphics_2_5 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-graphics.2.5", resourceCulture);
                 return ((byte[])(obj));
@@ -113,7 +113,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_graphics_2_5_1 {
+        public static byte[] libcsfml_graphics_2_5_1 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-graphics.2.5.1", resourceCulture);
                 return ((byte[])(obj));
@@ -123,7 +123,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_network {
+        public static byte[] libcsfml_network {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-network", resourceCulture);
                 return ((byte[])(obj));
@@ -133,7 +133,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_network_2_5 {
+        public static byte[] libcsfml_network_2_5 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-network.2.5", resourceCulture);
                 return ((byte[])(obj));
@@ -143,7 +143,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_network_2_5_1 {
+        public static byte[] libcsfml_network_2_5_1 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-network.2.5.1", resourceCulture);
                 return ((byte[])(obj));
@@ -153,7 +153,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_system {
+        public static byte[] libcsfml_system {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-system", resourceCulture);
                 return ((byte[])(obj));
@@ -163,7 +163,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_system_2_5 {
+        public static byte[] libcsfml_system_2_5 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-system.2.5", resourceCulture);
                 return ((byte[])(obj));
@@ -173,7 +173,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_system_2_5_1 {
+        public static byte[] libcsfml_system_2_5_1 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-system.2.5.1", resourceCulture);
                 return ((byte[])(obj));
@@ -183,7 +183,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_window {
+        public static byte[] libcsfml_window {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-window", resourceCulture);
                 return ((byte[])(obj));
@@ -193,7 +193,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_window_2_5 {
+        public static byte[] libcsfml_window_2_5 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-window.2.5", resourceCulture);
                 return ((byte[])(obj));
@@ -203,7 +203,7 @@ namespace Alis.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Byte[].
         /// </summary>
-        internal static byte[] libcsfml_window_2_5_1 {
+        public static byte[] libcsfml_window_2_5_1 {
             get {
                 object obj = ResourceManager.GetObject("libcsfml-window.2.5.1", resourceCulture);
                 return ((byte[])(obj));

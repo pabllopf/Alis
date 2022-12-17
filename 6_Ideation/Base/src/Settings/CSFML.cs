@@ -79,22 +79,22 @@ namespace Alis.Core.Aspect.Base.Settings
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string Audio = "libcsfml-audio.dylib";
+        public const string Audio = "/private/var/tmp/alis/libcsfml-audio.dylib";
 
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string Graphics = "libcsfml-graphics.dylib";
+        public const string Graphics = "/private/var/tmp/alis/libcsfml-graphics.dylib";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string System = "libcsfml-system.dylib";
+        public const string System = "/private/var/tmp/alis/libcsfml-system.dylib";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string Window = "libcsfml-window.dylib";
+        public const string Window = "/private/var/tmp/alis/libcsfml-window.dylib";
 #elif OSX64
         /// <summary>
         ///     The audio

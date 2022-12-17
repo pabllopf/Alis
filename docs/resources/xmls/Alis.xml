@@ -34616,6 +34616,16 @@
              </list>
              </summary>
         </member>
+        <member name="F:Alis.EmbeddedDllClass.tempFolder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Alis.EmbeddedDllClass.dirName">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Alis.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Byte[])">
             <summary>
             Extract DLLs from resources to temporary folder
@@ -34628,6 +34638,97 @@
             managed wrapper around LoadLibrary
             </summary>
             <param name="dllName"></param>
+        </member>
+        <member name="T:Alis.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_audio">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_audio_2_5">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_audio_2_5_1">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_graphics">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_graphics_2_5">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_graphics_2_5_1">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_network">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_network_2_5">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_network_2_5_1">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_system">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_system_2_5">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_system_2_5_1">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_window">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_window_2_5">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Properties.Resources.libcsfml_window_2_5_1">
+            <summary>
+              Busca un recurso adaptado de tipo System.Byte[].
+            </summary>
         </member>
         <member name="T:Alis.SoundGame">
             <summary>

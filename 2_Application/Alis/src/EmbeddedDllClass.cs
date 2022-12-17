@@ -63,7 +63,15 @@ namespace Alis
     /// </summary>
     public class EmbeddedDllClass
     {
-        private static string tempFolder = "";
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string tempFolder = "";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static string dirName = "";
 
         /// <summary>
         /// Extract DLLs from resources to temporary folder
@@ -80,7 +88,8 @@ namespace Alis
             // It is made "unique" to avoid different versions of the DLL or architectures.
             tempFolder = String.Format("{0}.{1}.{2}", an.Name, an.ProcessorArchitecture, an.Version);
 
-            string dirName = Path.Combine(Path.GetTempPath(), tempFolder);
+            dirName = Path.Combine(Path.GetTempPath(), tempFolder);
+            dirName = "/private/var/tmp/alis";
             if (!Directory.Exists(dirName))
             {
                 Directory.CreateDirectory(dirName);

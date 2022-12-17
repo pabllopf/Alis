@@ -28,6 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
@@ -49,6 +52,28 @@ namespace Alis.Sample.PingPong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            
+            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-graphics.dylib", Properties.Resources.libcsfml_graphics);
+            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-network.dylib", Properties.Resources.libcsfml_network);
+            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-system.dylib", Properties.Resources.libcsfml_system);
+            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-window.dylib", Properties.Resources.libcsfml_window);
+            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-audio.dylib", Properties.Resources.libcsfml_audio);
+
+            //Assembly assembly = null;
+
+            //DllImportSearchPath dir = new DllImportSearchPath();
+
+            //NativeLibrary.Load($"{EmbeddedDllClass.dirName}/libcsfml-graphics.dylib", Assembly.GetExecutingAssembly(), DllImportSearchPath.AssemblyDirectory);
+            
+            
+            /*
+            EmbeddedDllClass.LoadDll("libcsfml-graphics.dylib");
+            EmbeddedDllClass.LoadDll("libcsfml-network.dylib");
+            EmbeddedDllClass.LoadDll("libcsfml-system.dylib");
+            EmbeddedDllClass.LoadDll("libcsfml-window.dylib");
+            EmbeddedDllClass.LoadDll("libcsfml-audio.dylib");*/
+
+            
             VideoGame
                 .Builder()
                 .Settings(setting => setting
