@@ -27,7 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using Alis.Builder;
 using Alis.Core;
 using Alis.Core.Aspect.Logging;
@@ -51,7 +55,9 @@ namespace Alis
         ///     Video game
         /// </summary>
         public VideoGame()
-        {
+        { 
+            //EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-graphics.dylib");
+            
             PhysicManager = new PhysicManager();
             GraphicManager = new GraphicManager();
             SceneManager = new SceneManager();
@@ -69,6 +75,37 @@ namespace Alis
             
             Logger.Trace();
         }
+
+
+        /*private static Assembly CurrentDomainOnAssemblyResolve(object sender, ResolveEventArgs args)
+        {
+            Console.WriteLine("TRY TO LOAD");
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+            AssemblyName asembly = new AssemblyName(args.Name);
+            string requireDllName = $"{asembly.Name}.dylib";
+            string resource = currentAssembly.GetManifestResourceNames().FirstOrDefault(i => i.EndsWith(requireDllName));
+
+            if (resource != null)
+            {
+                using (Stream stream = currentAssembly.GetManifestResourceStream(resource))
+                {
+                    if (stream == null)
+                    {
+                        return null;
+                    }
+
+                    byte[] block = new byte[stream.Length];
+                    stream.Read(block, 0, block.Length);
+                    return Assembly.Load(block);
+                }
+            }
+            
+            return null;
+        }*/
+        
+        
+
+
 
         /// <summary>
         ///     Gets or sets the value of the input manager

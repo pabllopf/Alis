@@ -23,7 +23,11 @@
 
 
     <ItemGroup Condition="
-        $(AssemblyName.Equals('Alis.Core.Aspect.Logging')) == true
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False
     ">
         <PackageReference Include="System.Text.Json" Version="7.0.0" />
     </ItemGroup>

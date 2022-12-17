@@ -1,11 +1,13 @@
 <Project>
+    
+    <!--
     <ItemGroup>
         <None Update="$(ProjectDir)/runtimes/**"
               LinkBase="runtimes/"
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>
     </ItemGroup>
-
+-->
     <ItemGroup>
         <None Condition="Exists('$(ProjectDir)/Assets/') == True" Update="$(ProjectDir)/Assets/**"
               LinkBase="Assets/"
@@ -15,6 +17,14 @@
     
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
         <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx'))">
+        <DefineConstants>$(DefineConstants);OSX</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
+        <DefineConstants>$(DefineConstants);WIN</DefineConstants>
     </PropertyGroup>
     
 </Project>
