@@ -4,45 +4,22 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+
+       
+
     
     <ItemGroup>
-      <None Remove="Resources\libcsfml-graphics.2.5.dylib" />
-      <None Remove="Resources\libcsfml-graphics.2.5.1.dylib" />
-      <None Remove="Resources\libcsfml-network.2.5.dylib" />
-      <None Remove="Resources\libcsfml-network.2.5.1.dylib" />
-      <None Remove="Resources\libcsfml-system.2.5.dylib" />
-      <None Remove="Resources\libcsfml-system.2.5.1.dylib" />
-      <None Remove="Resources\libcsfml-window.2.5.dylib" />
-      <None Remove="Resources\libcsfml-window.2.5.1.dylib" />
-      <None Remove="Resources\libcsfml-audio.dylib" />
-      <None Remove="Resources\libcsfml-audio.2.5.dylib" />
-      <None Remove="Resources\libcsfml-graphics.dylib" />
-      <None Remove="Resources\libcsfml-network.dylib" />
-      <None Remove="Resources\libcsfml-system.dylib" />
-      <None Remove="Resources\libcsfml-window.dylib" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Resources" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <None Remove="Resources\libcsfml-audio.2.5.1.dylib" />
-      <Resource Include="Resources\libcsfml-audio.2.5.1.dylib" />
-    </ItemGroup>
-    
-    <ItemGroup>
-      <EmbeddedResource Update="Properties\Resource.resx">
+      <EmbeddedResource Update="Properties\Resources.resx">
         <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
     
     <ItemGroup>
-      <Compile Update="Properties\Resource.Designer.cs">
+      <Compile Update="Properties\Resources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>Resource.resx</DependentUpon>
+        <DependentUpon>Resources.resx</DependentUpon>
       </Compile>
     </ItemGroup>
     
