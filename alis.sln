@@ -159,7 +159,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"
 	ProjectSection(SolutionItems) = preProject
 		global.json = global.json
-		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{A2BD356E-2DAF-44E6-B145-66CF220C6DB1}"
