@@ -128,6 +128,11 @@ namespace Alis
             }
         }
 
+        /// <summary>
+        /// Loads the library using the specified lp file name
+        /// </summary>
+        /// <param name="lpFileName">The lp file name</param>
+        /// <returns>The int ptr</returns>
         [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
         static extern IntPtr LoadLibrary(string lpFileName);
 
