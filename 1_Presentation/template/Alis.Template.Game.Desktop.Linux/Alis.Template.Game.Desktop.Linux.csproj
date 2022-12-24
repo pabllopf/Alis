@@ -9,7 +9,6 @@
     
     <ItemGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
         <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.1" />
-        <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
         <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
     </ItemGroup>
 

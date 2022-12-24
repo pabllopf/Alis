@@ -1,6 +1,6 @@
 using SkiaSharp;
 
-namespace Alis.Template.Game
+namespace Alis.Core.Graphic.D2.SKIA
 {
 	/// <summary>
 	/// The custom render class
