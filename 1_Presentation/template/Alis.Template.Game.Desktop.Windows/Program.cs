@@ -30,6 +30,7 @@
 
 #if UNSUPPORTED
 using System;
+
 #else
 using System;
 using Alis.Core.Graphic.D2.SFML.Graphics;
@@ -37,7 +38,7 @@ using Alis.Core.Graphic.D2.SFML.Windows;
 using SkiaSharp;
 #endif
 
-namespace Alis.Template.Game.Desktop
+namespace Alis.Template.Game.Desktop.Windows
 {
     /// <summary>
     ///     The program class

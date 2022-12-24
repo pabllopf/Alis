@@ -28,44 +28,50 @@
 //  --------------------------------------------------------------------------
 
 
+#if UNSUPPORTED
+using System;
+
+#else
 using System;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using SkiaSharp;
+#endif
 
 
-namespace Alis.Template.Game.Desktop
+namespace Alis.Template.Game.Desktop.Linux
 {
     /// <summary>
     ///     The program class
     /// </summary>
     public static class Program
     {
+        
+
+#if UNSUPPORTED
+        public static void Main(string[] args)=> Console.WriteLine("UNSUPPORTED PLATFORM: Can't compile 'Linux apps' on MacOS or Windows OS.");
+#else
+        
         /// <summary>
         ///     The blue
         /// </summary>
-        private static float red;
+        private static byte red;
 
         /// <summary>
         ///     The blue
         /// </summary>
-        private static float green;
+        private static byte green;
 
         /// <summary>
         ///     The blue
         /// </summary>
-        private static float blue;
+        private static byte blue;
 
         /// <summary>
         /// The run
         /// </summary>
         private static bool run;
         
-        /// <summary>
-        /// The fill color
-        /// </summary>
-        private static SKColorF _fillColor;
-
         /// <summary>
         ///     Main the args
         /// </summary>
@@ -105,29 +111,7 @@ namespace Alis.Template.Game.Desktop
                 renderWindow.DispatchEvents();
                 renderWindow.Clear();
                 
-                red += 0.01f;
-                if (red >= 1.0f)
-                {
-                    red -= 1.0f;
-                }
-
-                green += 0.02f;
-                if (green >= 1.0f)
-                {
-                    green -= 1.0f;
-                }
-
-                blue += 0.03f;
-                if (blue >= 1.0f)
-                {
-                    blue -= 1.0f;
-                }
-            
-                // change the background color
-                _fillColor = new SKColorF(red, green, blue);
-            
-                // clear the view with the specified background color
-                canvas.DrawColor(_fillColor);
+                CustomRender.Update(canvas);
                 
                 image = new Image((uint)bitmap.Width, (uint)bitmap.Height, bitmap.GetPixelSpan().ToArray());
                 texture = new Texture(image);
@@ -149,5 +133,6 @@ namespace Alis.Template.Game.Desktop
         {
             run = false;
         }
+#endif
     }
 }
