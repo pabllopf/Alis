@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="$(SolutionDir).config/Config.props" />
+    <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
-    <ItemGroup>
-      <EmbeddedResource Update="Properties\Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-    </ItemGroup>
 </Project>
