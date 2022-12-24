@@ -21,6 +21,12 @@
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
 
+    <ItemGroup Condition="
+        $(AssemblyName.Contains('Alis.Core.Graphic')) == true
+    ">
+        <PackageReference Include="SkiaSharp" Version="2.88.3"/>
+    </ItemGroup>
+
 
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
