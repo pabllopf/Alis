@@ -22,7 +22,9 @@
     </ItemGroup>
 
     <ItemGroup Condition="
-        $(AssemblyName.Contains('Alis.Core.Graphic')) == true
+        $(AssemblyName.Equals('Alis.Core.Graphic')) == true OR
+        $(AssemblyName.Equals('Alis.Core')) == true OR
+        $(AssemblyName.Equals('Alis')) == true
     ">
         <PackageReference Include="SkiaSharp" Version="2.88.3"/>
     </ItemGroup>
