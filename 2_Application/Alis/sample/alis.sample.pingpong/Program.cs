@@ -53,11 +53,7 @@ namespace Alis.Sample.PingPong
         public static void Main(string[] args)
         {
             
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-graphics.dylib", Properties.Resources.libcsfml_graphics);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-network.dylib", Properties.Resources.libcsfml_network);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-system.dylib", Properties.Resources.libcsfml_system);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-window.dylib", Properties.Resources.libcsfml_window);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-audio.dylib", Properties.Resources.libcsfml_audio);
+            
 
             //Assembly assembly = null;
 

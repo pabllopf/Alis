@@ -90,6 +90,10 @@ namespace Alis
 
             dirName = Path.Combine(Path.GetTempPath(), tempFolder);
             dirName = "/private/var/tmp/alis";
+
+            
+            
+            
             if (!Directory.Exists(dirName))
             {
                 Directory.CreateDirectory(dirName);
@@ -114,18 +118,10 @@ namespace Alis
 
             // See if the file exists, avoid rewriting it if not necessary
             string dllPath = Path.Combine(dirName, dllName);
-            bool rewrite = true;
             if (File.Exists(dllPath)) {
-                byte[] existing = File.ReadAllBytes(dllPath);
-                if (resourceBytes.SequenceEqual(existing))
-                {
-                    rewrite = false;
-                }
+                File.Delete(dllPath);
             }
-            if (rewrite)
-            {
-                File.WriteAllBytes(dllPath, resourceBytes);
-            }
+            File.WriteAllBytes(dllPath, resourceBytes);
         }
 
         /// <summary>
