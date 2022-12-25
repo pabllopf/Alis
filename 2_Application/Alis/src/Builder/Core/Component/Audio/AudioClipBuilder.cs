@@ -46,7 +46,7 @@ namespace Alis.Builder.Core.Component.Audio
         /// <summary>
         ///     The audio clip
         /// </summary>
-        private AudioClip AudioClip { get; set; } = new AudioClip("");
+        private AudioClip AudioClip { get; set; } = new AudioClip();
 
         /// <summary>
         ///     Builds this instance

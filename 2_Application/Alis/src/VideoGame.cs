@@ -69,7 +69,7 @@ namespace Alis
             
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Gets or sets the value of the input manager
         /// </summary>

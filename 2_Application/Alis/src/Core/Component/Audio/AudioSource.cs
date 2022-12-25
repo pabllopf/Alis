@@ -54,7 +54,7 @@ namespace Alis.Core.Component.Audio
         /// </summary>
         public AudioSource()
         {
-            AudioClip = new AudioClip("");
+            AudioClip = new AudioClip();
             Logger.Trace();
         }
 

@@ -21,9 +21,21 @@
         <PackageReference Include="BenchmarkDotNet" Version="0.13.2"/>
     </ItemGroup>
 
+    <ItemGroup Condition="
+        $(AssemblyName.Equals('Alis.Core.Graphic')) == true OR
+        $(AssemblyName.Equals('Alis.Core')) == true OR
+        $(AssemblyName.Equals('Alis')) == true
+    ">
+        <PackageReference Include="SkiaSharp" Version="2.88.3"/>
+    </ItemGroup>
+
 
     <ItemGroup Condition="
-        $(AssemblyName.Equals('Alis.Core.Aspect.Logging')) == true
+        $(AssemblyName.Contains('Test')) == False AND
+        $(AssemblyName.Contains('App')) == False AND 
+        $(AssemblyName.Contains('Sample')) == False AND
+        $(AssemblyName.Contains('Template')) == False AND 
+        $(AssemblyName.Contains('Benchmark')) == False
     ">
         <PackageReference Include="System.Text.Json" Version="7.0.0" />
     </ItemGroup>

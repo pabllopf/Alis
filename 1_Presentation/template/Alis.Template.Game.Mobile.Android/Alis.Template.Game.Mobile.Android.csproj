@@ -39,7 +39,11 @@
         <None Remove="MainPage.xaml" />
         <Compile Remove="App.xaml.cs" />
         <Compile Remove="MainPage.xaml.cs" />
+        <Compile Remove="Platforms\**" />
+        <None Remove="Platforms\**" />
+        <EmbeddedResource Remove="Platforms\**" />
     </ItemGroup>
+    
 
     <Target Name="RestrictOS" BeforeTargets="Compile">
         <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">

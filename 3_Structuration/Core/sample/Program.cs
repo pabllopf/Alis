@@ -27,6 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Graphic.D2.SFML.Windows;
+
 namespace Alis.Core.Sample
 {
     /// <summary>
@@ -35,12 +38,67 @@ namespace Alis.Core.Sample
     public class Program
     {
         /// <summary>
-        ///     Mains the specified arguments.
+        ///     The width
         /// </summary>
-        /// <param name="args">The arguments.</param>
-        /// <returns></returns>
+        private const int WIDTH = 640;
+
+        /// <summary>
+        ///     The height
+        /// </summary>
+        private const int HEIGHT = 480;
+
+        /// <summary>
+        ///     The title
+        /// </summary>
+        private const string TITLE = "Alis.Core.Graphic.Sample";
+
+        /// <summary>
+        ///     The blue
+        /// </summary>
+        private static byte _red, _green, _blue;
+
+        /// <summary>
+        ///     Main the args
+        /// </summary>
+        /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
+            VideoMode mode = new VideoMode(WIDTH, HEIGHT);
+            RenderWindow window = new RenderWindow(mode, TITLE);
+
+            window.SetVerticalSyncEnabled(true);
+            window.SetFramerateLimit(60);
+
+            window.Closed += (sender, args) => window.Close();
+
+            //string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
+            //Music music = new Music(fileName);
+            //music.Play();
+
+            while (window.IsOpen)
+            {
+                window.DispatchEvents();
+                window.Clear(new Color(_red, _green, _blue));
+                window.Display();
+
+                _red += 1;
+                if (_red >= 100)
+                {
+                    _red -= 1;
+                }
+
+                _green += 2;
+                if (_green >= 100)
+                {
+                    _green -= 1;
+                }
+
+                _blue += 3;
+                if (_blue >= 100)
+                {
+                    _blue -= 1;
+                }
+            }
         }
     }
 }

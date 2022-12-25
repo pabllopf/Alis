@@ -78,7 +78,7 @@ namespace Alis.Core.Aspect.Logging
                               $"   line:   '{message.Line}' \n" +
                               $"   file:   '{message.File}' \n" +
                               $"   {message.StackTrace} \n");
-            SaveToFile(message);
+            //SaveToFile(message);
             Console.ResetColor();
         }
 

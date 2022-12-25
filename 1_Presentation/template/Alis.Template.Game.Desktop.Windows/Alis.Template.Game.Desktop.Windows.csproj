@@ -1,47 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
-    <OutputType>Exe</OutputType>
-    <UseMaui>true</UseMaui>
-    <SingleProject>true</SingleProject>
-    <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 
-      <ApplicationTitle>Alis.Template.Game.Desktop.Windows</ApplicationTitle>
-      <ApplicationId>com.companyname.Alis.Template.Game.Desktop.Windows</ApplicationId>
-
-    <ApplicationVersion>1</ApplicationVersion>
-    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-    <LangVersion>10.0</LangVersion>
-    
-    <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
-    <SupportedOSPlatformVersion Condition="$(TargetFramework.Contains('-windows'))">10.0.17763.0</SupportedOSPlatformVersion>
-  </PropertyGroup>
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
 
     <ItemGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
-        <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8" />
-        <MauiSplashScreen Include="Resources\alis_banner.png" BaseSize="256" Color="#F8F8F8" />
-        <PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.1" />
-        <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.1" />
-        <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
+      <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
+      <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
     </ItemGroup>
-    
-    <PropertyGroup Condition="&#xA;    $([MSBuild]::IsOSPlatform('osx')) OR&#xA;    $([MSBuild]::IsOSPlatform('linux'))">
+
+    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('arm64')) AND $([MSBuild]::IsOSPlatform('windows'))">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x64')) AND $([MSBuild]::IsOSPlatform('windows'))">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x86')) AND $([MSBuild]::IsOSPlatform('windows'))">
+        <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('linux'))">
         <OutputType>Exe</OutputType>
         <TargetFrameworks>net6.0;</TargetFrameworks>
         <DefineConstants>$(DefineConstants);UNSUPPORTED;</DefineConstants>
     </PropertyGroup>
-
-    <ItemGroup Condition="&#xA;    $([MSBuild]::IsOSPlatform('osx')) OR &#xA;    $([MSBuild]::IsOSPlatform('linux'))">
-        <None Remove="App.xaml" />
-        <None Remove="MainPage.xaml" />
-        <Compile Remove="App.xaml.cs" />
-        <Compile Remove="MainPage.xaml.cs" />
-    </ItemGroup>
     
     <Target Name="RestrictOS" BeforeTargets="Compile">
         <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('osx')) OR $([MSBuild]::IsOSPlatform('linux'))">
             <UnsupportedTarget>true</UnsupportedTarget>
         </PropertyGroup>
-        <Warning Code="UNSUPPORTED" Text="Can't compile 'Macos apps' on MacOS or Linux OS." Condition=" '$(UnsupportedTarget)' == 'true' " />
+        <Warning Code="UNSUPPORTED" Text="Can't compile 'Windows apps' on MacOs or Linux OS." Condition=" '$(UnsupportedTarget)' == 'true' " />
     </Target>
 </Project>

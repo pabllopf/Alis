@@ -48,6 +48,7 @@ namespace Alis.Core.Audio.Sample
 
             while (true)
             {
+                Console.WriteLine("Write comand 'play' | 'stop' | 'resume' | exit ");
                 string command = Console.ReadLine();
 
                 try

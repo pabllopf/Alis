@@ -1,11 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
+
+
     <ItemGroup>
-        <PackageReference Include="SkiaSharp" Version="2.88.1" />
+      <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
     </ItemGroup>
 
 </Project>
