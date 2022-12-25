@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <PackageLicenseFile>licence.md</PackageLicenseFile>
+        <PackageLicenseFile>Docs/licence.md</PackageLicenseFile>
     </PropertyGroup>
 </Project>
