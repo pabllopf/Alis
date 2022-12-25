@@ -37,9 +37,8 @@ jobs:
       - name: Dotnet install workload
         run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
 
-
       - name: Dotnet test
-        run: dotnet test alis.sln
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i ; fi;done
 
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
@@ -101,8 +100,8 @@ jobs:
         run: echo $CURRENTVERSION
         
       - name: Create packages
-        run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/; done
-
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/ ; fi;done
+      
       - name: Publish nugets TO nuget
         run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
 

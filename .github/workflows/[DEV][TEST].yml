@@ -165,9 +165,11 @@ jobs:
         run: echo $CURRENTVERSION
 
       - name: Create packages
-        run: for i in `find . -name "*.csproj" -type f`; do dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/; done
-
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/ ; fi;done
+        
       - name: Dotnet test
-        run: dotnet test alis.sln
+        run:  for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i ; fi;done 
+        
+        
         
     
