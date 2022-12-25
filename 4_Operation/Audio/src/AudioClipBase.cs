@@ -45,13 +45,41 @@ namespace Alis.Core.Audio
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.Arm64))
+                switch (RuntimeInformation.ProcessArchitecture)
                 {
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_arm64_csfml_audio);
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_arm64_csfml_audio);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_x64_csfml_audio);
+                        break;
                 }
-                if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.X64))
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
                 {
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_x64_csfml_audio);
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.win_x64_csfml_audio);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.win_x64_csfml_audio);
+                        break;
+                    case Architecture.X86:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.win_x86_csfml_audio);
+                        break;
+                }
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.debian_arm64_csfml_audio);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.debian_x64_csfml_audio);
+                        break;
                 }
             }
         }

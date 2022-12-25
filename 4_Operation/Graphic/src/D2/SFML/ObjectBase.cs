@@ -48,17 +48,50 @@ namespace Alis.Core.Graphic.D2.SFML
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.Arm64))
+                switch (RuntimeInformation.ProcessArchitecture)
                 {
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.osx_arm64_csfml_graphics);
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.osx_arm64_csfml_system);
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.osx_arm64_csfml_window);
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.osx_arm64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.osx_arm64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.osx_arm64_csfml_window);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.osx_x64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.osx_x64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.osx_x64_csfml_window);
+                        break;
                 }
-                if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.X64))
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
                 {
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.osx_x64_csfml_graphics);
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.osx_x64_csfml_system);
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.osx_x64_csfml_window);
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.win_x64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.win_x64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.win_x64_csfml_window);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.win_x64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.win_x64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.win_x64_csfml_window);
+                        break;
+                }
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.debian_arm64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.debian_arm64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.debian_arm64_csfml_window);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.debian_x64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.debian_x64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.debian_x64_csfml_window);
+                        break;
                 }
             }
             
