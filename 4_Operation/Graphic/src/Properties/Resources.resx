@@ -118,22 +118,76 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="osx_arm64_libcsfml_graphics_2_5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\osx-arm64\native\osx-arm64_libcsfml-graphics.2.5.1.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="alpine_x64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\alpine-x64\alpine-x64_csfml-graphics.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="osx_arm64_libcsfml_system_2_5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\osx-arm64\native\osx-arm64_libcsfml-system.2.5.1.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="alpine_x64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\alpine-x64\alpine-x64_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="osx_arm64_libcsfml_window_2_5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\osx-arm64\native\osx-arm64_libcsfml-window.2.5.1.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="alpine_x64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\alpine-x64\alpine-x64_csfml-window.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="osx_x64_libcsfml_graphics_2_5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\osx-x64\native\osx-x64_libcsfml-graphics.2.5.1.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="debian_arm64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\debian-arm64\debian-arm64_csfml-graphics.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="osx_x64_libcsfml_system_2_5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\osx-x64\native\osx-x64_libcsfml-system.2.5.1.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="debian_arm64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\debian-arm64\debian-arm64_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="osx_x64_libcsfml_window_2_5_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\osx-x64\native\osx-x64_libcsfml-window.2.5.1.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="debian_arm64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\debian-arm64\debian-arm64_csfml-window.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="debian_x64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\debian-x64\debian-x64_csfml-graphics.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="debian_x64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\debian-x64\debian-x64_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="debian_x64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\debian-x64\debian-x64_csfml-window.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fedora_x64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fedora-x64\fedora-x64_csfml-graphics.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fedora_x64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fedora-x64\fedora-x64_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="fedora_x64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\fedora-x64\fedora-x64_csfml-window.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="osx_arm64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\osx-arm64\osx-arm64_csfml-graphics.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="osx_arm64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\osx-arm64\osx-arm64_csfml-system.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="osx_arm64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\osx-arm64\osx-arm64_csfml-window.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="osx_x64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\osx-x64\osx-x64_csfml-graphics.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="osx_x64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\osx-x64\osx-x64_csfml-system.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="osx_x64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\osx-x64\osx-x64_csfml-window.dylib;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_x64_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\win-x64\win-x64_csfml-graphics.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_x64_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\win-x64\win-x64_csfml-system.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_x64_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\win-x64\win-x64_csfml-window.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_x86_csfml_graphics" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\win-x86\win-x86_csfml-graphics.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_x86_csfml_system" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\win-x86\win-x86_csfml-system.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="win_x86_csfml_window" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\win-x86\win-x86_csfml-window.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
