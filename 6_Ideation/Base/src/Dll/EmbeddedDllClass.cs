@@ -85,9 +85,7 @@ namespace Alis.Core.Aspect.Base.Dll
             tempFolder = String.Format("{0}.{1}.{2}", an.Name, an.ProcessorArchitecture, an.Version);
 
             dirName = Path.Combine(Path.GetTempPath(), tempFolder);
-            dirName = "/private/var/tmp/alis";
-
-            
+            dirName = Environment.CurrentDirectory;
             
             
             if (!Directory.Exists(dirName))

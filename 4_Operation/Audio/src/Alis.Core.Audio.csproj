@@ -4,4 +4,9 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Update="Properties\Resources.Designer.cs">
+        <DesignTime>True</DesignTime>
+      </Compile>
+    </ItemGroup>
 </Project>

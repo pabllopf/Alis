@@ -36,148 +36,24 @@ namespace Alis.Core.Aspect.Base.Settings
     /// </summary>
     public static class Csfml
     {
-#if WIN
         /// <summary>
         ///     The audio
         /// </summary>
-        public const string audio = "runtimes/win-x64/native/csfml-audio";
-        
-        /// <summary>
-        ///     The graphics
-        /// </summary>
-        public const string graphics = "runtimes/win-x64/native/csfml-graphics";
-
-        /// <summary>
-        ///     The system
-        /// </summary>
-        public const string system = "runtimes/win-x64/native/csfml-system";
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public const string window = "runtimes/win-x64/native/csfml-window";
-
-#elif LINUX
-        /// <summary>
-        ///     The audio
-        /// </summary>
-        public const string Audio = "./runtimes/debian-arm64/native/libcsfml-audio.so";
-        
-        /// <summary>
-        ///     The graphics
-        /// </summary>
-        public const string Graphics = "./runtimes/debian-arm64/native/libcsfml-graphics.so";
-
-        /// <summary>
-        ///     The system
-        /// </summary>
-        public const string System = "./runtimes/debian-arm64/native/libcsfml-system.so";
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public const string Window = "./runtimes/debian-arm64/native/libcsfml-window.so";
-#elif OSXARM64
-        /// <summary>
-        ///     The audio
-        /// </summary>
-        public const string Audio = "/private/var/tmp/alis/csfml-audio.dylib";
+        public const string Audio = "csfml-audio";
 
         /// <summary>
         ///     The graphics
         /// </summary>
-        public const string Graphics = "/private/var/tmp/alis/csfml-graphics.dylib";
+        public const string Graphics = "csfml-graphics";
 
         /// <summary>
         ///     The system
         /// </summary>
-        public const string System = "/private/var/tmp/alis/csfml-system.dylib";
+        public const string System = "csfml-system";
 
         /// <summary>
         ///     The window
         /// </summary>
-        public const string Window = "/private/var/tmp/alis/csfml-window.dylib";
-#elif OSX64
-        /// <summary>
-        ///     The audio
-        /// </summary>
-        public const string Audio = "/private/var/tmp/alis/libcsfml-audio.dylib";
-
-        /// <summary>
-        ///     The graphics
-        /// </summary>
-        public const string Graphics = "/private/var/tmp/alis/libcsfml-graphics.dylib";
-
-        /// <summary>
-        ///     The system
-        /// </summary>
-        public const string System = "/private/var/tmp/alis/libcsfml-system.dylib";
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public const string Window = "/private/var/tmp/alis/libcsfml-window.dylib";
-#elif IOS
-        /// <summary>
-        ///     The audio
-        /// </summary>
-        public const string audio = "csfml-audio";
-        
-        /// <summary>
-        ///     The graphics
-        /// </summary>
-        public const string graphics = "csfml-graphics";
-
-        /// <summary>
-        ///     The system
-        /// </summary>
-        public const string system = "csfml-system";
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public const string window = "csfml-window";
-
-#elif ANDROID
-        /// <summary>
-        ///     The audio
-        /// </summary>
-        public const string audio = $"csfml-audio";
-        
-        /// <summary>
-        ///     The graphics
-        /// </summary>
-        public const string graphics = "csfml-graphics";
-
-        /// <summary>
-        ///     The system
-        /// </summary>
-        public const string system = "csfml-system";
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public const string window = "csfml-window";
-#else
-        /// <summary>
-        ///     The audio
-        /// </summary>
-        public const string Audio = "runtimes/win-x64/native/csfml-audio";
-
-        /// <summary>
-        ///     The graphics
-        /// </summary>
-        public const string Graphics = "runtimes/win-x64/native/csfml-graphics";
-
-        /// <summary>
-        ///     The system
-        /// </summary>
-        public const string System = "runtimes/win-x64/native/csfml-system";
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public const string Window = "runtimes/win-x64/native/csfml-window";
-#endif
+        public const string Window = "csfml-window";
     }
 }
