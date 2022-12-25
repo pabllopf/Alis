@@ -52,6 +52,60 @@
         <member name="T:Alis.Core.Aspect.Base.Attributes.SuppressUnmanagedCodeSecurityAttribute">
             <summary>Allows managed code to call into unmanaged code without a stack walk. This class cannot be inherited.</summary>
         </member>
+        <member name="T:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass">
+             <summary>
+             A class used by managed classes to managed unmanaged DLLs.
+             This will extract and load DLLs from embedded binary resources.
+             
+             This can be used with pinvoke, as well as manually loading DLLs your own way. If you use pinvoke, you don't need to load the DLLs, just
+             extract them. When the DLLs are extracted, the %PATH% environment variable is updated to point to the temporary folder.
+            
+             To Use
+             <list type="">
+             <item>Add all of the DLLs as binary file resources to the project Propeties. Double click Properties/Resources.resx,
+             Add Resource, Add Existing File. The resource name will be similar but not exactly the same as the DLL file name.</item>
+             <item>In a static constructor of your application, call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL that is needed</item>
+             <example>
+                           EmbeddedDllClass.ExtractEmbeddedDlls("libFrontPanel-pinv.dll", Properties.Resources.libFrontPanel_pinv);
+             </example>
+             <item>Optional: In a static constructor of your application, call EmbeddedDllClass.LoadDll() to load the DLLs you have extracted. This is not necessary for pinvoke</item>
+             <example>
+                           EmbeddedDllClass.LoadDll("myscrewball.dll");
+             </example>
+             <item>Continue using standard Pinvoke methods for the desired functions in the DLL</item>
+             </list>
+             </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.tempFolder">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.dirName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Byte[])">
+            <summary>
+            Extract DLLs from resources to temporary folder
+            </summary>
+            <param name="dllName">name of DLL file to create (including dll suffix)</param>
+            <param name="resourceBytes">The resource name (fully qualified)</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.LoadLibrary(System.String)">
+            <summary>
+            Loads the library using the specified lp file name
+            </summary>
+            <param name="lpFileName">The lp file name</param>
+            <returns>The int ptr</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.LoadDll(System.String)">
+            <summary>
+            managed wrapper around LoadLibrary
+            </summary>
+            <param name="dllName"></param>
+        </member>
         <member name="T:Alis.Core.Aspect.Base.Exceptions.ComponentDontExits">
             <summary>
                 The component dont exits class
@@ -138,107 +192,6 @@
             </summary>
             <seealso cref="T:System.Exception" />
         </member>
-        <member name="T:Alis.Core.Aspect.Base.ObjectBase">
-            <summary>
-                The ObjectBase class is an abstract base for every
-                SFML object. It's meant for internal use only
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Base.ObjectBase.myCPointer">
-            <summary>
-                The zero
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.ObjectBase.#ctor(System.IntPtr)">
-            <summary>
-                Construct the object from a pointer to the C library object
-            </summary>
-            <param name="cPointer">Internal pointer to the object in the C libraries</param>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.ObjectBase.CPointer">
-            <summary>
-                Access to the internal pointer of the object.
-                For internal use only
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Dispose">
-            <summary>
-                Explicitly dispose the object
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Finalize">
-            <summary>
-                Dispose the object
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Dispose(System.Boolean)">
-            <summary>
-                Destroy the object
-            </summary>
-            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.ObjectBase.Destroy(System.Boolean)">
-            <summary>
-                Destroy the object (implementation is left to each derived class)
-            </summary>
-            <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
-        </member>
-        <member name="T:Alis.Core.Aspect.Base.Properties.Resources">
-            <summary>
-              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.ResourceManager">
-            <summary>
-              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.Culture">
-            <summary>
-              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
-              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_arm64_libcsfml_audio_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_arm64_libcsfml_graphics_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_arm64_libcsfml_system_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_arm64_libcsfml_window_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_x64_libcsfml_audio_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_x64_libcsfml_graphics_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_x64_libcsfml_system_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Aspect.Base.Properties.Resources.osx_x64_libcsfml_window_2_5_1">
-            <summary>
-              Busca un recurso adaptado de tipo System.Byte[].
-            </summary>
-        </member>
         <member name="T:Alis.Core.Aspect.Base.Settings.Csfml">
             <summary>
                 The csfml class
@@ -263,269 +216,6 @@
             <summary>
                 The window
             </summary>
-        </member>
-        <member name="T:Alis.Core.Aspect.Base.Settings.Time">
-            <summary>
-                This class represents a time value
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Base.Settings.Time.Zero">
-            <summary>
-                Predefined "zero" time value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.FromSeconds(System.Single)">
-            <summary>
-                Construct a time value from a number of seconds
-            </summary>
-            <param name="seconds">Number of seconds</param>
-            <returns>Time value constructed from the amount of seconds</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.FromMilliseconds(System.Int32)">
-            <summary>
-                Construct a time value from a number of milliseconds
-            </summary>
-            <param name="milliseconds">Number of milliseconds</param>
-            <returns>Time value constructed from the amount of milliseconds</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.FromMicroseconds(System.Int64)">
-            <summary>
-                Construct a time value from a number of microseconds
-            </summary>
-            <param name="microseconds">Number of microseconds</param>
-            <returns>Time value constructed from the amount of microseconds</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.AsSeconds">
-            <summary>
-                Returns the time value as a number of seconds
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.AsMilliseconds">
-            <summary>
-                Returns the time value as a number of milliseconds
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.AsMicroseconds">
-            <summary>
-                Returns the time value as a number of microseconds
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Equality(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Compare two times and checks if they are equal
-            </summary>
-            <returns>Times are equal</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Inequality(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Compare two times and checks if they are not equal
-            </summary>
-            <returns>Times are not equal</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.Equals(System.Object)">
-            <summary>
-                Compare time and object and checks if they are equal
-            </summary>
-            <param name="obj">Object to check</param>
-            <returns>Object and time are equal</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.Equals(Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Compare two times and checks if they are equal
-            </summary>
-            <param name="other">Time to check</param>
-            <returns>times are equal</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_LessThan(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of &lt; operator to compare two time values
-            </summary>
-            <returns>True if left is lesser than right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_LessThanOrEqual(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of &lt;= operator to compare two time values
-            </summary>
-            <returns>True if left is lesser or equal than right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_GreaterThan(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of &gt; operator to compare two time values
-            </summary>
-            <returns>True if left is greater than right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_GreaterThanOrEqual(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of &gt;= operator to compare two time values
-            </summary>
-            <returns>True if left is greater or equal than right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Subtraction(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of binary - operator to subtract two time values
-            </summary>
-            <returns>Difference of the two times values</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Addition(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of binary + operator to add two time values
-            </summary>
-            <returns>Sum of the two times values</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Multiply(Alis.Core.Aspect.Base.Settings.Time,System.Single)">
-            <summary>
-                Overload of binary * operator to scale a time value
-            </summary>
-            <returns>left multiplied by the right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Multiply(Alis.Core.Aspect.Base.Settings.Time,System.Int64)">
-            <summary>
-                Overload of binary * operator to scale a time value
-            </summary>
-            <returns>left multiplied by the right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Multiply(System.Single,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of binary * operator to scale a time value
-            </summary>
-            <returns>left multiplied by the right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Multiply(System.Int64,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of binary * operator to scale a time value
-            </summary>
-            <returns>left multiplied by the right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Division(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of binary / operator to scale a time value
-            </summary>
-            <returns>left divided by the right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Division(Alis.Core.Aspect.Base.Settings.Time,System.Single)">
-            <summary>
-                Overload of binary / operator to scale a time value
-            </summary>
-            <returns>left divided by the right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Division(Alis.Core.Aspect.Base.Settings.Time,System.Int64)">
-            <summary>
-                Overload of binary / operator to scale a time value
-            </summary>
-            <returns>left divided by the right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.op_Modulus(Alis.Core.Aspect.Base.Settings.Time,Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Overload of binary % operator to compute remainder of a time value
-            </summary>
-            <returns>left modulo of right</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.GetHashCode">
-            <summary>
-                Provide a integer describing the object
-            </summary>
-            <returns>Integer description of the object</returns>
-        </member>
-        <member name="F:Alis.Core.Aspect.Base.Settings.Time.microseconds">
-            <summary>
-                The microseconds
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.sfSeconds(System.Single)">
-            <summary>
-                Sfs the seconds using the specified amount
-            </summary>
-            <param name="amount">The amount</param>
-            <returns>The time</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.sfMilliseconds(System.Int32)">
-            <summary>
-                Sfs the milliseconds using the specified amount
-            </summary>
-            <param name="amount">The amount</param>
-            <returns>The time</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.sfMicroseconds(System.Int64)">
-            <summary>
-                Sfs the microseconds using the specified amount
-            </summary>
-            <param name="amount">The amount</param>
-            <returns>The time</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.sfTime_asSeconds(Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Sfs the time as seconds using the specified time
-            </summary>
-            <param name="time">The time</param>
-            <returns>The float</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.sfTime_asMilliseconds(Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Sfs the time as milliseconds using the specified time
-            </summary>
-            <param name="time">The time</param>
-            <returns>The int</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Base.Settings.Time.sfTime_asMicroseconds(Alis.Core.Aspect.Base.Settings.Time)">
-            <summary>
-                Sfs the time as microseconds using the specified time
-            </summary>
-            <param name="time">The time</param>
-            <returns>The long</returns>
-        </member>
-        <member name="T:Alis.EmbeddedDllClass">
-             <summary>
-             A class used by managed classes to managed unmanaged DLLs.
-             This will extract and load DLLs from embedded binary resources.
-             
-             This can be used with pinvoke, as well as manually loading DLLs your own way. If you use pinvoke, you don't need to load the DLLs, just
-             extract them. When the DLLs are extracted, the %PATH% environment variable is updated to point to the temporary folder.
-            
-             To Use
-             <list type="">
-             <item>Add all of the DLLs as binary file resources to the project Propeties. Double click Properties/Resources.resx,
-             Add Resource, Add Existing File. The resource name will be similar but not exactly the same as the DLL file name.</item>
-             <item>In a static constructor of your application, call EmbeddedDllClass.ExtractEmbeddedDlls() for each DLL that is needed</item>
-             <example>
-                           EmbeddedDllClass.ExtractEmbeddedDlls("libFrontPanel-pinv.dll", Properties.Resources.libFrontPanel_pinv);
-             </example>
-             <item>Optional: In a static constructor of your application, call EmbeddedDllClass.LoadDll() to load the DLLs you have extracted. This is not necessary for pinvoke</item>
-             <example>
-                           EmbeddedDllClass.LoadDll("myscrewball.dll");
-             </example>
-             <item>Continue using standard Pinvoke methods for the desired functions in the DLL</item>
-             </list>
-             </summary>
-        </member>
-        <member name="F:Alis.EmbeddedDllClass.tempFolder">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Alis.EmbeddedDllClass.dirName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Alis.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Byte[])">
-            <summary>
-            Extract DLLs from resources to temporary folder
-            </summary>
-            <param name="dllName">name of DLL file to create (including dll suffix)</param>
-            <param name="resourceBytes">The resource name (fully qualified)</param>
-        </member>
-        <member name="M:Alis.EmbeddedDllClass.LoadLibrary(System.String)">
-            <summary>
-            Loads the library using the specified lp file name
-            </summary>
-            <param name="lpFileName">The lp file name</param>
-            <returns>The int ptr</returns>
-        </member>
-        <member name="M:Alis.EmbeddedDllClass.LoadDll(System.String)">
-            <summary>
-            managed wrapper around LoadLibrary
-            </summary>
-            <param name="dllName"></param>
         </member>
     </members>
 </doc>

@@ -28,16 +28,12 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.InteropServices;
+using System.ComponentModel;
 using System.IO;
 using System.Reflection;
-using System.Diagnostics;
-using System.ComponentModel;
+using System.Runtime.InteropServices;
 
-namespace Alis
+namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
     /// A class used by managed classes to managed unmanaged DLLs.

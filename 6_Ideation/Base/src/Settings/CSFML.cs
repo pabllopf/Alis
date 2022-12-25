@@ -81,6 +81,26 @@ namespace Alis.Core.Aspect.Base.Settings
         /// <summary>
         ///     The audio
         /// </summary>
+        public const string Audio = "/private/var/tmp/alis/csfml-audio.dylib";
+
+        /// <summary>
+        ///     The graphics
+        /// </summary>
+        public const string Graphics = "/private/var/tmp/alis/csfml-graphics.dylib";
+
+        /// <summary>
+        ///     The system
+        /// </summary>
+        public const string System = "/private/var/tmp/alis/csfml-system.dylib";
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public const string Window = "/private/var/tmp/alis/csfml-window.dylib";
+#elif OSX64
+        /// <summary>
+        ///     The audio
+        /// </summary>
         public const string Audio = "/private/var/tmp/alis/libcsfml-audio.dylib";
 
         /// <summary>
@@ -97,26 +117,6 @@ namespace Alis.Core.Aspect.Base.Settings
         ///     The window
         /// </summary>
         public const string Window = "/private/var/tmp/alis/libcsfml-window.dylib";
-#elif OSX64
-        /// <summary>
-        ///     The audio
-        /// </summary>
-        public const string audio = "./runtimes/osx-x64/native/libcsfml-audio.dylib";
-        
-        /// <summary>
-        ///     The graphics
-        /// </summary>
-        public const string graphics = "./runtimes/osx-x64/native/libcsfml-graphics.dylib";
-
-        /// <summary>
-        ///     The system
-        /// </summary>
-        public const string system = "./runtimes/osx-x64/native/libcsfml-system.dylib";
-
-        /// <summary>
-        ///     The window
-        /// </summary>
-        public const string window = "./runtimes/osx-x64/native/libcsfml-window.dylib";
 #elif IOS
         /// <summary>
         ///     The audio
