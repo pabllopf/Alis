@@ -1,13 +1,4 @@
 <Project>
-    
-    <!--
-    <ItemGroup>
-        <None Update="$(ProjectDir)/runtimes/**"
-              LinkBase="runtimes/"
-              CopyToOutputDirectory="Always"
-              CopyToPublishDirectory="Always"/>
-    </ItemGroup>
--->
     <ItemGroup>
         <None Condition="Exists('$(ProjectDir)/Assets/') == True" Update="$(ProjectDir)/Assets/**"
               LinkBase="Assets/"
@@ -26,21 +17,4 @@
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
         <DefineConstants>$(DefineConstants);WIN</DefineConstants>
     </PropertyGroup>
-
-
-    <ItemGroup>
-        <EmbeddedResource Update="Properties\Resources.resx">
-            <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-        </EmbeddedResource>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Compile Update="Properties\Resources.Designer.cs">
-            <DesignTime>True</DesignTime>
-            <AutoGen>True</AutoGen>
-            <DependentUpon>Resources.resx</DependentUpon>
-        </Compile>
-    </ItemGroup>
-    
 </Project>

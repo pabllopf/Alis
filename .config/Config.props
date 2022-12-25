@@ -5,8 +5,8 @@
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(NETCoreSdkRuntimeIdentifier)' == 'osx-arm64'">
-        <DefineConstants>$(DefineConstants);OSXARM64</DefineConstants>
+    <PropertyGroup>
+        <PublishTrimmed>false</PublishTrimmed>
     </PropertyGroup>
 
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
