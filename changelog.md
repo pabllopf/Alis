@@ -5,6 +5,84 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v0.0.6] - 2022-12-25
+### :sparkles: New Features
+- [`da7b547`](https://github.com/pabllopf/Alis/commit/da7b5470ff9aa0ec9ff9668456bd8fa2bc060159) - update automatic wiki. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`fdcde42`](https://github.com/pabllopf/Alis/commit/fdcde4204f389cdfc1dc8ed1518f10e86a2fb2c6) - change the structure of docs folder to include wiki, web, documentation, and resources folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`31dab88`](https://github.com/pabllopf/Alis/commit/31dab885c17e9b237ce4c2c7dd01b12b73095594) - first version of web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e86a06e`](https://github.com/pabllopf/Alis/commit/e86a06ebb5ac1580935d5cb767a94ef9d32b96ec) - add Content Security Policy to web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bd81036`](https://github.com/pabllopf/Alis/commit/bd810369e333ea0c9afdff6d1502833337d62763) - add new policy *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02d9697`](https://github.com/pabllopf/Alis/commit/02d96974516516d684e1b7243b4ab37e92f50177) - add new control of logs. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`a976136`](https://github.com/pabllopf/Alis/commit/a9761369fdd535c6d54d5c766afa911108c4781a) - add new style logs and new tool to see full logs. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f9bde5f`](https://github.com/pabllopf/Alis/commit/f9bde5f0cb250d95aba18cffc7ed1955595ada7f) - add new template to create games withs alis and 2d new render manager. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`962034d`](https://github.com/pabllopf/Alis/commit/962034d7d1ad476e5765eca327a5636b2488e9f9) - add new extract method to load resources dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d4bcec3`](https://github.com/pabllopf/Alis/commit/d4bcec3737965e900cc9f469280a3a5d509d81a5) - add template to build game on web. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`7334131`](https://github.com/pabllopf/Alis/commit/7334131becddb85c67696945992aa11acc2e870e) - add .runtimes folder on sln *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f5c27d6`](https://github.com/pabllopf/Alis/commit/f5c27d6397e14616540d9e4cfa56a7b8a9c97eec) - adapt the packages config for graphic modules *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6ce06d5`](https://github.com/pabllopf/Alis/commit/6ce06d508834a216dd521072292290547875d9d6) - add native dlls on audio module. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b0193a3`](https://github.com/pabllopf/Alis/commit/b0193a3dc03ee0545aa96bdd58e45ab33efc846e) - compile the alis lib with native dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :bug: Bug Fixes
+- [`5f67f24`](https://github.com/pabllopf/Alis/commit/5f67f24278dcf5b8081fdc80fbf9e6d99f0e5cf6) - workflows of github *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3e5bc8f`](https://github.com/pabllopf/Alis/commit/3e5bc8f76485b4e309cde3e4e45d842f8c7f6b58) - size of web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`bb9df06`](https://github.com/pabllopf/Alis/commit/bb9df062e4e31a0b200c4945677b14867738dde0) - email send of web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`81e9186`](https://github.com/pabllopf/Alis/commit/81e9186da82ec246e2c4aa8c5dfe073528fb43c8) - the Indexing of the web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4003a59`](https://github.com/pabllopf/Alis/commit/4003a5987eeff17126a0147a57a469be5c21ac33) - change gifs to video *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c52566b`](https://github.com/pabllopf/Alis/commit/c52566b58a1430640fa9856ce16746b6e1885e71) - footer web and time load of scripts *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`16b237d`](https://github.com/pabllopf/Alis/commit/16b237d9c163ea3a22960af942f387a00586df8f) - web jquery version *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`5c84c21`](https://github.com/pabllopf/Alis/commit/5c84c213064174503d2e46c4d4db3c294ffc1d01) - video format of web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8819bd1`](https://github.com/pabllopf/Alis/commit/8819bd15d54013d53263056a72f61f84d7523a12) - logo web format *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`e517ca8`](https://github.com/pabllopf/Alis/commit/e517ca848c51e1e185281cfd2635864ae1ac4135) - update bootstrap *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`88dc942`](https://github.com/pabllopf/Alis/commit/88dc94213032f1dda92bbd3c95547d036fe65afc) - resolution logo alis on web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`6d7bb99`](https://github.com/pabllopf/Alis/commit/6d7bb99dc9112262086dd97da8d540f99c33af59) - console errors *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`dd02d93`](https://github.com/pabllopf/Alis/commit/dd02d9335238ab7b18076c334a50591c4d2e8060) - web Ensure CSP *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`78dcb86`](https://github.com/pabllopf/Alis/commit/78dcb86cfcbbb1fb0396de1bbba058c68cada849) - web contact form *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b3002fe`](https://github.com/pabllopf/Alis/commit/b3002feac16d541664bc4df87f8ede317f919687) - navegation menu web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f26d084`](https://github.com/pabllopf/Alis/commit/f26d084763029bed99571a7c4e145d6d67c1faa4) - change images folder of wiki *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`76f9217`](https://github.com/pabllopf/Alis/commit/76f9217c03ce52a176265a51319e30ef703292eb) - the index canonical web deploy on google domains *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`05244a0`](https://github.com/pabllopf/Alis/commit/05244a00d9db39d432e80a7c63a6d03b6b44a064) - homepage redirection on nav header *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`d737d1b`](https://github.com/pabllopf/Alis/commit/d737d1bca7b66764bb9f34c4e5bde7bb8b1a5450) - change id marks and color of namenu of web. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`76399b6`](https://github.com/pabllopf/Alis/commit/76399b6a8a6fb28d1245610696c485489688483f) - logo imagen ref of web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`177cedb`](https://github.com/pabllopf/Alis/commit/177cedb09265b039d7aa6dd70aae441e35de517b) - resolution web icon *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f964a23`](https://github.com/pabllopf/Alis/commit/f964a234da5d4164bcce633142fc295d602d0a42) - video load source *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`019859c`](https://github.com/pabllopf/Alis/commit/019859c3d14a6e56d1be4f3828d61780c5031c19) - homepage video play *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`4202090`](https://github.com/pabllopf/Alis/commit/420209019db710b750f66c012a129f9900aa320f) - nav menu control jquery *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`73cd06d`](https://github.com/pabllopf/Alis/commit/73cd06dc18ad3d8e24c70a8a7429acca8625ef08) - change workflows to install macos workload *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f9a3b97`](https://github.com/pabllopf/Alis/commit/f9a3b9736531383eae83dc68245cc67611ac1791) - the templates of alis *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`f6cce0f`](https://github.com/pabllopf/Alis/commit/f6cce0fc1a839b435c743c386c8dab26ecd302c4) - icon problen *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`84a58be`](https://github.com/pabllopf/Alis/commit/84a58beca15196a55cef3c2c5a49c2acedf2979d) - add new template with windows for arm *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`02f8713`](https://github.com/pabllopf/Alis/commit/02f8713ff753a5bae9fc9ea330c79d84d7f804e1) - windows template builder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`c1ef08c`](https://github.com/pabllopf/Alis/commit/c1ef08c094d4e98cf2b528febcdbfb21466dcbf1) - simple render of web *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`827aaf3`](https://github.com/pabllopf/Alis/commit/827aaf340c891073ee705c15992489008a910a5d) - add new conditions on the linux template csproj *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`40e9353`](https://github.com/pabllopf/Alis/commit/40e9353416f3478ce8cfc53cd7c4f9ce7485b8d5) - change the dir of resources to load dlls of systems. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8d4145e`](https://github.com/pabllopf/Alis/commit/8d4145e3efc8ec31862fbb98f93399bccb46fd4f) - change folder of resources location *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`09ad3ae`](https://github.com/pabllopf/Alis/commit/09ad3aeae0f642dcb1188d9c417307b2ee2d4b2a) - the dll extract of native files *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`baf30a8`](https://github.com/pabllopf/Alis/commit/baf30a8b195df4894b5f07618586bac2f4b4dcc6) - compilation on windows for external dlls *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8da2575`](https://github.com/pabllopf/Alis/commit/8da2575e56ecc0e3d59a3a2f70fba5793e3e6c99) - vector 2 structure *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`8e6b359`](https://github.com/pabllopf/Alis/commit/8e6b359459b8faa228ba7e09ed1d43d11a17ef20) - the automatic create test *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :white_check_mark: Tests
+- [`04b1a2c`](https://github.com/pabllopf/Alis/commit/04b1a2c15e1384b9422c2bcec1ab3eddc678a5a9) - create 240 empty test for alis.test module *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`94d427c`](https://github.com/pabllopf/Alis/commit/94d427cd8fff693a82470d4ee61594961f88839a) - fixed default tests and start to testing videogame class *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :memo: Documentation Changes
+- [`fe7ce86`](https://github.com/pabllopf/Alis/commit/fe7ce861037af867edb72f5e7a5e51aa728ac46b) - refactor the docs folder to include wiki documentation and web. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`71b3441`](https://github.com/pabllopf/Alis/commit/71b34419a97d48ab158a0a64def66c2f5f19ae26) - update wiki with new structure. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`1970890`](https://github.com/pabllopf/Alis/commit/19708906120d8aecbb49fcd8e440784d630bd4af) - include footer *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`df6ef96`](https://github.com/pabllopf/Alis/commit/df6ef960a192ddaa11503edb18e160b9d152c08c) - delete templates of web folder *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`3fbb522`](https://github.com/pabllopf/Alis/commit/3fbb52238f9b0fb3b36bfc64a33f04d1d01515a4) - create donation web section *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :art: Code Style Changes
+- [`8a07408`](https://github.com/pabllopf/Alis/commit/8a074080705fde48a1c01461129c2f04d2eac69a) - change names of docs subfolders *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`2a90ed6`](https://github.com/pabllopf/Alis/commit/2a90ed65d957305c53c40bad5dd5a9f78c18e6a4) - remove all cansole.writeline to inclide logs messages *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`312dd22`](https://github.com/pabllopf/Alis/commit/312dd22ce19fa2b32735e3e45f6943033bd84582) - refactor the sln of templates *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`67fd0b0`](https://github.com/pabllopf/Alis/commit/67fd0b03b5ab636b99c88c8219504302bb06e8b5) - refactor the tmeplate of ios to do more simple *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+### :flying_saucer: Other Changes
+- [`a4ec78a`](https://github.com/pabllopf/Alis/commit/a4ec78a96d041ba07c61891258131ad49215a704) - update bookmarks of log tool. *(commit by [@pabllopf](https://github.com/pabllopf))*
+- [`b1d1605`](https://github.com/pabllopf/Alis/commit/b1d1605baf2a641081e2682a6a25e7dba5369ada) - change the resource files *(commit by [@pabllopf](https://github.com/pabllopf))*
+
+
 ## [v0.0.5] - 2022-10-23
 ### :sparkles: New Features
 - [`607bdac`](https://github.com/pabllopf/Alis/commit/607bdac1980a07f9e84a56e0d112ade09af3ecc4) - add bot to check security *(commit by [@pabllopf](https://github.com/pabllopf))*
@@ -241,3 +319,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [v0.0.4]: https://github.com/pabllopf/Alis/compare/v0.0.3...v0.0.4
 
 [v0.0.5]: https://github.com/pabllopf/Alis/compare/v0.0.4...v0.0.5
+[v0.0.6]: https://github.com/pabllopf/Alis/compare/v0.0.5...v0.0.6
