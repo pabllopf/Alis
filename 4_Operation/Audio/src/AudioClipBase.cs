@@ -47,11 +47,11 @@ namespace Alis.Core.Audio
             {
                 if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.Arm64))
                 {
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_arm64_libcsfml_audio_2_5_1);
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_arm64_csfml_audio);
                 }
                 if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.X64))
                 {
-                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_arm64_libcsfml_audio_2_5_1);
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.Resources.osx_x64_csfml_audio);
                 }
             }
         }

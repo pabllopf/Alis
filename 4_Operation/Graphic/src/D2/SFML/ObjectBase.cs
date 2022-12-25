@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 
 namespace Alis.Core.Graphic.D2.SFML
@@ -45,9 +46,23 @@ namespace Alis.Core.Graphic.D2.SFML
         /// </summary>
         static ObjectBase()
         {
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-graphics.dylib", Properties.Resources.osx_arm64_libcsfml_graphics_2_5_1);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-system.dylib", Properties.Resources.osx_arm64_libcsfml_system_2_5_1);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-window.dylib", Properties.Resources.osx_arm64_libcsfml_window_2_5_1);
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.Arm64))
+                {
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.osx_arm64_csfml_graphics);
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.osx_arm64_csfml_system);
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.osx_arm64_csfml_window);
+                }
+                if (RuntimeInformation.ProcessArchitecture.Equals(Architecture.X64))
+                {
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", Properties.Resources.osx_x64_csfml_graphics);
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", Properties.Resources.osx_x64_csfml_system);
+                    EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", Properties.Resources.osx_x64_csfml_window);
+                }
+            }
+            
+            
         }
         
         /// <summary>
