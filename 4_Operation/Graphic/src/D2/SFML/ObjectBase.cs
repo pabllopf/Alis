@@ -68,14 +68,14 @@ namespace Alis.Core.Graphic.D2.SFML
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", NativeGraphic.win_x64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", NativeGraphic.win_x64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", NativeGraphic.win_x64_csfml_window);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_x64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_x64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_x64_csfml_window);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", NativeGraphic.win_x64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", NativeGraphic.win_x64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", NativeGraphic.win_x64_csfml_window);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_x64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_x64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_x64_csfml_window);
                         break;
                 }
             }
@@ -84,14 +84,14 @@ namespace Alis.Core.Graphic.D2.SFML
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", NativeGraphic.debian_arm64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", NativeGraphic.debian_arm64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", NativeGraphic.debian_arm64_csfml_window);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.so", NativeGraphic.debian_arm64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.so", NativeGraphic.debian_arm64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.so", NativeGraphic.debian_arm64_csfml_window);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dylib", NativeGraphic.debian_x64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dylib", NativeGraphic.debian_x64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dylib", NativeGraphic.debian_x64_csfml_window);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.so", NativeGraphic.debian_x64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.so", NativeGraphic.debian_x64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.so", NativeGraphic.debian_x64_csfml_window);
                         break;
                 }
             }

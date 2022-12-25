@@ -64,13 +64,13 @@ namespace Alis.Core.Audio
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.NativeAudio.win_x64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", Properties.NativeAudio.win_x64_csfml_audio);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.NativeAudio.win_x64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", Properties.NativeAudio.win_x64_csfml_audio);
                         break;
                     case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.NativeAudio.win_x86_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", Properties.NativeAudio.win_x86_csfml_audio);
                         break;
                 }
             }
@@ -79,10 +79,10 @@ namespace Alis.Core.Audio
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.NativeAudio.debian_arm64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", Properties.NativeAudio.debian_arm64_csfml_audio);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.NativeAudio.debian_x64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", Properties.NativeAudio.debian_x64_csfml_audio);
                         break;
                 }
             }
