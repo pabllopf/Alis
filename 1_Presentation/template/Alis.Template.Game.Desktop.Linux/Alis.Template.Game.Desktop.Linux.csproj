@@ -18,6 +18,10 @@
         <PlatformTarget>arm64</PlatformTarget>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PublishTrimmed>false</PublishTrimmed>
+    </PropertyGroup>
+
     <PropertyGroup 
         Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x64')) AND 
         $([MSBuild]::IsOSPlatform('linux'))">

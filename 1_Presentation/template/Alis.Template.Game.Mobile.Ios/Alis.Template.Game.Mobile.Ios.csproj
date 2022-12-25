@@ -38,6 +38,10 @@
         <DefineConstants>$(DefineConstants);UNSUPPORTED;</DefineConstants>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PublishTrimmed>false</PublishTrimmed>
+    </PropertyGroup>
+
     <ItemGroup Condition="&#xA;    $([MSBuild]::IsOSPlatform('windows')) OR &#xA;    $([MSBuild]::IsOSPlatform('linux'))">
         <None Remove="App.xaml" />
         <None Remove="MainPage.xaml" />

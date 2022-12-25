@@ -19,6 +19,10 @@
       <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
     <SupportedOSPlatformVersion>14.0</SupportedOSPlatformVersion>
   </PropertyGroup>
+
+    <PropertyGroup>
+        <PublishTrimmed>false</PublishTrimmed>
+    </PropertyGroup>
   
   <ItemGroup Condition="$([MSBuild]::IsOSPlatform('osx'))">
       <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8" />

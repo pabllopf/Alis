@@ -27,6 +27,10 @@
       <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
   </ItemGroup>
 
+    <PropertyGroup>
+        <PublishTrimmed>false</PublishTrimmed>
+    </PropertyGroup>
+
 
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
         <OutputType>Exe</OutputType>

@@ -22,6 +22,10 @@
         <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PublishTrimmed>false</PublishTrimmed>
+    </PropertyGroup>
+
     <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x86')) AND $([MSBuild]::IsOSPlatform('windows'))">
         <RuntimeIdentifier>win-x86</RuntimeIdentifier>
         <PlatformTarget>x86</PlatformTarget>
