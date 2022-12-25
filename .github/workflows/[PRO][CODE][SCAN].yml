@@ -34,7 +34,8 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet install workload
-        run: dotnet workload install macos android ios
+        run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
+      
       
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL

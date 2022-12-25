@@ -22,7 +22,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet install workload
-        run: dotnet workload install macos android ios
+        run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
 
       - name: Dotnet test
         run: dotnet test alis.sln
