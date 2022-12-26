@@ -1,5 +1,5 @@
 # Run test of the framework.
-name: "[PRO][CREATE][WEB]"
+name: "[CREATE][WEB]"
 
 on:
   schedule:

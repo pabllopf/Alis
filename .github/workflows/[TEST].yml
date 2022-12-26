@@ -1,12 +1,10 @@
 # Run test of the framework.
-name: "[DEV][TEST]"
+name: "[TEST]"
 
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
-
+    
 jobs:
   Test_On_Macos_Latest:
     runs-on: macos-latest
