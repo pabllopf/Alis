@@ -27,81 +27,134 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
+
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     A 2D column vector with 3 elements.
+    /// The vector
     /// </summary>
-    public struct Vector3
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Vector3 : IEquatable<Vector3>
     {
         /// <summary>
-        ///     Construct using coordinates.
+        /// The 
         /// </summary>
+        public readonly float X;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        public readonly float Y;
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        public readonly float Z;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Vector3"/> class
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="z">The </param>
         public Vector3(float x, float y, float z)
         {
             X = x;
             Y = y;
             Z = z;
         }
-
+        
         /// <summary>
-        ///     Set this vector to all zeros.
+        /// 
         /// </summary>
-        public void SetZero()
-        {
-            X = 0.0f;
-            Y = 0.0f;
-            Z = 0.0f;
-        }
-
-        /// <summary>
-        ///     Set this vector to some specified coordinates.
-        /// </summary>
-        public void Set(float x, float y, float z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-
-        /// <summary>
-        ///     Perform the dot product on two vectors.
-        /// </summary>
-        public static float Dot(Vector3 a, Vector3 b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
-
-        /// <summary>
-        ///     Perform the cross product on two vectors.
-        /// </summary>
-        public static Vector3 Cross(Vector3 a, Vector3 b) => new Vector3(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
-
-        /// <summary>
-        ///     Negate this vector.
-        /// </summary>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static Vector3 operator -(Vector3 v) => new Vector3(-v.X, -v.Y, -v.Z);
 
-        /// <summary>
-        ///     Add two vectors component-wise.
-        /// </summary>
-        public static Vector3 operator +(Vector3 v1, Vector3 v2) => new Vector3(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
-
-        /// <summary>
-        ///     Subtract two vectors component-wise.
-        /// </summary>
+/// <summary>
+/// 
+/// </summary>
+/// <param name="v1"></param>
+/// <param name="v2"></param>
+/// <returns></returns>
         public static Vector3 operator -(Vector3 v1, Vector3 v2) => new Vector3(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
 
         /// <summary>
-        ///     Multiply this vector by a scalar.
+        /// 
         /// </summary>
-        public static Vector3 operator *(Vector3 v, float s) => new Vector3(v.X * s, v.Y * s, v.Z * s);
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static Vector3 operator +(Vector3 v1, Vector3 v2) => new Vector3(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
 
         /// <summary>
-        ///     Multiply this vector by a scalar.
+        /// 
         /// </summary>
-        public static Vector3 operator *(float s, Vector3 v) => new Vector3(v.X * s, v.Y * s, v.Z * s);
+        /// <param name="v"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static Vector3 operator *(Vector3 v, float x) => new Vector3(v.X * x, v.Y * x, v.Z * x);
 
         /// <summary>
-        ///     The
+        /// 
         /// </summary>
-        public float X, Y, Z;
+        /// <param name="v"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static Vector3 operator *(float x, Vector3 v) => new Vector3(v.X * x, v.Y * x, v.Z * x);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v"></param>
+        /// <param name="x"></param>
+        /// <returns></returns>
+        public static Vector3 operator /(Vector3 v, float x) => new Vector3(v.X / x, v.Y / x, v.Z / x);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Vector3 v1, Vector3 v2) => v1.Equals(v2);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Vector3 v1, Vector3 v2) => !v1.Equals(v2);
+        
+        /// <summary>
+        /// Returns the string
+        /// </summary>
+        /// <returns>The string</returns>
+        public override string ToString() => $"[Vector3f] X({X}) Y({Y}) Z({Z})";
+
+
+        /// <summary>
+        /// Describes whether this instance equals
+        /// </summary>
+        /// <param name="obj">The obj</param>
+        /// <returns>The bool</returns>
+        public override bool Equals(object obj) => obj is Vector3 vector3 && Equals(vector3);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
+
+        /// <summary>
+        /// Describes whether this instance equals
+        /// </summary>
+        /// <param name="other">The other</param>
+        /// <returns>The bool</returns>
+        public bool Equals(Vector3 other) => (System.Math.Abs(X - other.X) < 0.001f) && (System.Math.Abs(Y - other.Y) < 0.001f) && (System.Math.Abs(Z - other.Z) < 0.001f);
+
     }
 }

@@ -30,10 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.TextureTools;
 using Alis.Core.Systems.Physics2D.Utilities;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Utilities
 {

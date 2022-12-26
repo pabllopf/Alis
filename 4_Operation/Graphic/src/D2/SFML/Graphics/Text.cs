@@ -32,7 +32,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Figures.D2;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -332,7 +333,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="index">Index of the character</param>
         /// <returns>Position of the Index-th character (end of text if Index is out of range)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2F FindCharacterPos(uint index) => sfText_findCharacterPos(CPointer, index);
+        public Vector2 FindCharacterPos(uint index) => sfText_findCharacterPos(CPointer, index);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -345,7 +346,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Local bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetLocalBounds() => sfText_getLocalBounds(CPointer);
+        public Rectangle GetLocalBounds() => sfText_getLocalBounds(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -358,7 +359,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Global bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetGlobalBounds() =>
+        public Rectangle GetGlobalBounds() =>
             // because we override the object's transform
             // we don't use the native getGlobalBounds function,
             Transform.TransformRect(GetLocalBounds());
@@ -597,7 +598,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfText_getRect(IntPtr cPointer);
+        private static extern Rectangle sfText_getRect(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the text find character pos using the specified c pointer
@@ -606,7 +607,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="index">The index</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2F sfText_findCharacterPos(IntPtr cPointer, uint index);
+        private static extern Vector2 sfText_findCharacterPos(IntPtr cPointer, uint index);
 
         /// <summary>
         ///     Sfs the text get local bounds using the specified c pointer
@@ -614,6 +615,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfText_getLocalBounds(IntPtr cPointer);
+        private static extern Rectangle sfText_getLocalBounds(IntPtr cPointer);
     }
 }

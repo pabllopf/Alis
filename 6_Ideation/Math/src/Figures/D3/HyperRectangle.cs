@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Position.cs
+//  File:HyperRectangle.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,21 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Figures.D3
 {
     /// <summary>
-    ///     The position
+    /// The hyper rectangle
     /// </summary>
-    public struct Position
+    public struct HyperRectangle
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public Vector2 X;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float A;
+        
     }
 }

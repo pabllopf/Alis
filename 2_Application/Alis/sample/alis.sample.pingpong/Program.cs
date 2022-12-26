@@ -28,9 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;

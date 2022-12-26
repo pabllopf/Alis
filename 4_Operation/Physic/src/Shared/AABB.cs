@@ -31,6 +31,7 @@ using System;
 using System.Numerics;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Utilities;
+using MathUtils = Alis.Core.Physic.Utilities.MathUtils;
 
 namespace Alis.Core.Physic.Shared
 {
@@ -137,7 +138,7 @@ namespace Alis.Core.Physic.Shared
         {
             Vector2 d = UpperBound - LowerBound;
             bool valid = d.X >= 0.0f && d.Y >= 0.0f;
-            return valid && LowerBound.IsValid() && UpperBound.IsValid();
+            return valid && MathUtils.IsValid(LowerBound) && MathUtils.IsValid(UpperBound);
         }
 
         /// <summary>Combine an AABB into this one.</summary>

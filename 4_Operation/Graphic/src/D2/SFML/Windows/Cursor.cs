@@ -29,10 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {
@@ -76,7 +75,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="pixels">Array of pixels of the image</param>
         /// <param name="size">Width and height of the image</param>
         /// <param name="hotspot">(x,y) location of the hotspot</param>
-        public Cursor(byte[] pixels, Vector2U size, Vector2U hotspot)
+        public Cursor(byte[] pixels, Vector2 size, Vector2 hotspot)
             : base((IntPtr) 0)
         {
             unsafe
@@ -223,7 +222,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="hotspot">The hotspot</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfCursor_createFromPixels(IntPtr pixels, Vector2U size, Vector2U hotspot);
+        private static extern IntPtr sfCursor_createFromPixels(IntPtr pixels, Vector2 size, Vector2 hotspot);
 
         /// <summary>
         ///     Sfs the cursor destroy using the specified c pointer

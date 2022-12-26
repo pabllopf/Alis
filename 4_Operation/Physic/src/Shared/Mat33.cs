@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Shared
@@ -38,13 +37,13 @@ namespace Alis.Core.Physic.Shared
         /// <summary>
         ///     The ez
         /// </summary>
-        public Vector3 Ex, Ey, Ez;
+        public System.Numerics.Vector3 Ex, Ey, Ez;
 
         /// <summary>Construct this matrix using columns.</summary>
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
         /// <param name="c3">The c3.</param>
-        public Mat33(Vector3 c1, Vector3 c2, Vector3 c3)
+        public Mat33(System.Numerics.Vector3 c1, System.Numerics.Vector3 c2, System.Numerics.Vector3 c3)
         {
             Ex = c1;
             Ey = c2;
@@ -54,9 +53,9 @@ namespace Alis.Core.Physic.Shared
         /// <summary>Set this matrix to all zeros.</summary>
         public void SetZero()
         {
-            Ex = Vector3.Zero;
-            Ey = Vector3.Zero;
-            Ez = Vector3.Zero;
+            Ex = System.Numerics.Vector3.Zero;
+            Ey = System.Numerics.Vector3.Zero;
+            Ez = System.Numerics.Vector3.Zero;
         }
 
         /// <summary>
@@ -65,16 +64,16 @@ namespace Alis.Core.Physic.Shared
         /// </summary>
         /// <param name="b">The b.</param>
         /// <returns></returns>
-        public Vector3 Solve33(Vector3 b)
+        public System.Numerics.Vector3 Solve33(System.Numerics.Vector3 b)
         {
-            float det = Vector3.Dot(Ex, Vector3.Cross(Ey, Ez));
+            float det = System.Numerics.Vector3.Dot(Ex, System.Numerics.Vector3.Cross(Ey, Ez));
             if (det != 0.0f)
             {
                 det = 1.0f / det;
             }
 
-            return new Vector3(det * Vector3.Dot(b, Vector3.Cross(Ey, Ez)), det * Vector3.Dot(Ex, Vector3.Cross(b, Ez)),
-                det * Vector3.Dot(Ex, Vector3.Cross(Ey, b)));
+            return new System.Numerics.Vector3(det * System.Numerics.Vector3.Dot(b, System.Numerics.Vector3.Cross(Ey, Ez)), det * System.Numerics.Vector3.Dot(Ex, System.Numerics.Vector3.Cross(b, Ez)),
+                det * System.Numerics.Vector3.Dot(Ex, System.Numerics.Vector3.Cross(Ey, b)));
         }
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace Alis.Core.Physic.Shared
         /// </summary>
         /// <param name="b">The b.</param>
         /// <returns></returns>
-        public Vector2 Solve22(Vector2 b)
+        public System.Numerics.Vector2 Solve22(System.Numerics.Vector2 b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
@@ -93,7 +92,7 @@ namespace Alis.Core.Physic.Shared
                 det = 1.0f / det;
             }
 
-            return new Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
+            return new System.Numerics.Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
 
         /// Get the inverse of this matrix as a 2-by-2.

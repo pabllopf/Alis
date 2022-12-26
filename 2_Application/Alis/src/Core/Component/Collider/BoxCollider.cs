@@ -30,7 +30,6 @@
 using Alis.Builder.Core.Component.Collider;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Factories;
@@ -150,7 +149,7 @@ namespace Alis.Core.Component.Collider
         {
             rectangleShape = new RectangleShape()
             {
-                Position = new Vector2F(
+                Position = new Vector2(
                     (GameObject.Transform.Position.X + RelativePosition.X) - (Width / (2)),
                     (GameObject.Transform.Position.Y + RelativePosition.Y) - (Height / (2))
                 ),
@@ -158,7 +157,7 @@ namespace Alis.Core.Component.Collider
                 OutlineColor = Color.Green,
                 OutlineThickness = 1.0f,
                 Rotation = Rotation,
-                Size = new Vector2F(Width, Height)
+                Size = new Vector2(Width, Height)
             };
             
             
@@ -229,7 +228,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Draw()
         {
-            rectangleShape.Position = new Vector2F(
+            rectangleShape.Position = new Vector2(
                 (GameObject.Transform.Position.X + RelativePosition.X) - (Width / (2 )),
                 (GameObject.Transform.Position.Y + RelativePosition.Y) - (Height / (2))
             );

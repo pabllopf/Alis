@@ -30,7 +30,8 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Figures.D2;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -89,7 +90,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="y">Y coordinate of the point to transform</param>
         /// <returns>Transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2F TransformPoint(float x, float y) => TransformPoint(new Vector2F(x, y));
+        public Vector2 TransformPoint(float x, float y) => TransformPoint(new Vector2(x, y));
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -98,7 +99,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Point to transform</param>
         /// <returns>Transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2F TransformPoint(Vector2F point) => sfTransform_transformPoint(ref this, point);
+        public Vector2 TransformPoint(Vector2 point) => sfTransform_transformPoint(ref this, point);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -112,7 +113,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rectangle">Rectangle to transform</param>
         /// <returns>Transformed rectangle</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect TransformRect(FloatRect rectangle) => sfTransform_transformRect(ref this, rectangle);
+        public Rectangle TransformRect(Rectangle rectangle) => sfTransform_transformRect(ref this, rectangle);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -146,7 +147,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="offset">Translation offset to apply</param>
         ////////////////////////////////////////////////////////////
-        public void Translate(Vector2F offset)
+        public void Translate(Vector2 offset)
         {
             Translate(offset.X, offset.Y);
         }
@@ -190,7 +191,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="angle">Rotation angle, in degrees</param>
         /// <param name="center">Center of rotation</param>
         ////////////////////////////////////////////////////////////
-        public void Rotate(float angle, Vector2F center)
+        public void Rotate(float angle, Vector2 center)
         {
             Rotate(angle, center.X, center.Y);
         }
@@ -231,7 +232,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="factors">Scaling factors</param>
         ////////////////////////////////////////////////////////////
-        public void Scale(Vector2F factors)
+        public void Scale(Vector2 factors)
         {
             Scale(factors.X, factors.Y);
         }
@@ -247,7 +248,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="factors">Scaling factors</param>
         /// <param name="center">Center of scaling</param>
         ////////////////////////////////////////////////////////////
-        public void Scale(Vector2F factors, Vector2F center)
+        public void Scale(Vector2 factors, Vector2 center)
         {
             Scale(factors.X, factors.Y, center.X, center.Y);
         }
@@ -316,7 +317,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="right">Right operand (the point to transform)</param>
         /// <returns>New transformed point</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2F operator *(Transform left, Vector2F right) => left.TransformPoint(right);
+        public static Vector2 operator *(Transform left, Vector2 right) => left.TransformPoint(right);
 
         ////////////////////////////////////////////////////////////
         /// <summary>The identity transform (does nothing)</summary>
@@ -371,7 +372,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">The point</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2F sfTransform_transformPoint(ref Transform transform, Vector2F point);
+        private static extern Vector2 sfTransform_transformPoint(ref Transform transform, Vector2 point);
 
         /// <summary>
         ///     Sfs the transform transform rect using the specified transform
@@ -380,7 +381,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rectangle">The rectangle</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfTransform_transformRect(ref Transform transform, FloatRect rectangle);
+        private static extern Rectangle sfTransform_transformRect(ref Transform transform, Rectangle rectangle);
 
         /// <summary>
         ///     Sfs the transform combine using the specified transform

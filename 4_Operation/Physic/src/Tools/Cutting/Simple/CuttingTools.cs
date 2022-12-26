@@ -29,12 +29,13 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Factories;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Tools.Cutting.Simple
 {

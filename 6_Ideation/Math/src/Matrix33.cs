@@ -30,76 +30,10 @@
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     A 3-by-3 matrix. Stored in column-major order.
+    /// The matrix 33
     /// </summary>
     public struct Matrix33
     {
-        /// <summary>
-        ///     Construct this matrix using columns.
-        /// </summary>
-        public Matrix33(Vector3 c1, Vector3 c2, Vector3 c3)
-        {
-            Col1 = c1;
-            Col2 = c2;
-            Col3 = c3;
-        }
-
-        /// <summary>
-        ///     Set this matrix to all zeros.
-        /// </summary>
-        public void SetZero()
-        {
-            Col1.SetZero();
-            Col2.SetZero();
-            Col3.SetZero();
-        }
-
-        /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient
-        ///     than computing the inverse in one-shot cases.
-        /// </summary>
-        public Vector3 Solve33(Vector3 b)
-        {
-            float det = Vector3.Dot(Col1, Vector3.Cross(Col2, Col3));
-            //Box2DxDebug.Assert(det != 0.0f);
-            det = 1.0f / det;
-            Vector3 x = new Vector3();
-            x.X = det * Vector3.Dot(b, Vector3.Cross(Col2, Col3));
-            x.Y = det * Vector3.Dot(Col1, Vector3.Cross(b, Col3));
-            x.Z = det * Vector3.Dot(Col1, Vector3.Cross(Col2, b));
-            return x;
-        }
-
-        /// <summary>
-        ///     Solve A * x = b, where b is a column vector. This is more efficient
-        ///     than computing the inverse in one-shot cases. Solve only the upper
-        ///     2-by-2 matrix equation.
-        /// </summary>
-        public Vector2 Solve22(Vector2 b)
-        {
-            float a11 = Col1.X, a12 = Col2.X, a21 = Col1.Y, a22 = Col2.Y;
-            float det = a11 * a22 - a12 * a21;
-            //Box2DxDebug.Assert(det != 0.0f);
-            det = 1.0f / det;
-            Vector2 x = new Vector2();
-            x.X = det * (a22 * b.X - a12 * b.Y);
-            x.Y = det * (a11 * b.Y - a21 * b.X);
-            return x;
-        }
-
-        /// <summary>
-        ///     The col
-        /// </summary>
-        public Vector3 Col1 { get; set; }
-
-        /// <summary>
-        ///     The col
-        /// </summary>
-        public Vector3 Col2 { get; set; }
-
-        /// <summary>
-        ///     The col
-        /// </summary>
-        public Vector3 Col3 { get; set; }
+        
     }
 }

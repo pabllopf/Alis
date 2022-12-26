@@ -29,7 +29,6 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
 

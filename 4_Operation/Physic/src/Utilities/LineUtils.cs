@@ -28,8 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Shared;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Utilities
 {

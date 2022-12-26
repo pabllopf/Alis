@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Ivec3.cs
+//  File:Circle.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math.Figures.D2
 {
     /// <summary>
-    ///     <see cref="Ivec3" /> is a struct represent a glsl ivec3 value
+    /// The circle
     /// </summary>
-    ////////////////////////////////////////////////////////////
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Ivec3
+    public struct Circle
     {
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the <see cref="Ivec3" /> from its coordinates
-        /// </summary>
-        /// <param name="x">X coordinate</param>
-        /// <param name="y">Y coordinate</param>
-        /// <param name="z">Z coordinate</param>
-        ////////////////////////////////////////////////////////////
-        public Ivec3(int x, int y, int z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-
-        /// <summary>Horizontal component of the vector</summary>
-        public int X;
-
-        /// <summary>Vertical component of the vector</summary>
-        public int Y;
-
-        /// <summary>Depth component of the vector</summary>
-        public int Z;
+        
     }
 }

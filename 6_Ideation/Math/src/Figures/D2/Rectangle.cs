@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FloatRect.cs
+//  File:Rectangle.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,41 +30,49 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math.Figures.D2
 {
     /// <summary>
-    ///     IntRect is an utility class for manipulating 2D rectangles
-    ///     with float coordinates
+    /// The rectangle
     /// </summary>
-    ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct FloatRect : IEquatable<FloatRect>
+    public struct Rectangle : IEquatable<Rectangle>
     {
-        ////////////////////////////////////////////////////////////
+        /// <summary>Left coordinate of the rectangle</summary>
+        public float Left;
+
+        /// <summary>Top coordinate of the rectangle</summary>
+        public float Top;
+
+        /// <summary>Width of the rectangle</summary>
+        public float Width;
+
+        /// <summary>Height of the rectangle</summary>
+        public float Height;
+
         /// <summary>
-        ///     Construct the rectangle from its coordinates
+        /// Initializes a new instance of the <see cref="Rectangle"/> class
         /// </summary>
-        /// <param name="left">Left coordinate of the rectangle</param>
-        /// <param name="top">Top coordinate of the rectangle</param>
-        /// <param name="width">Width of the rectangle</param>
-        /// <param name="height">Height of the rectangle</param>
-        ////////////////////////////////////////////////////////////
-        public FloatRect(float left, float top, float width, float height)
+        /// <param name="left">The left</param>
+        /// <param name="top">The top</param>
+        /// <param name="width">The width</param>
+        /// <param name="height">The height</param>
+        public Rectangle(float left, float top, float width, float height)
         {
             Left = left;
             Top = top;
             Width = width;
             Height = height;
         }
-
-        ////////////////////////////////////////////////////////////
+        
+            ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Construct the rectangle from position and size
         /// </summary>
         /// <param name="position">Position of the top-left corner of the rectangle</param>
         /// <param name="size">Size of the rectangle</param>
         ////////////////////////////////////////////////////////////
-        public FloatRect(Vector2F position, Vector2F size)
+        public Rectangle(Vector2 position, Vector2 size)
             : this(position.X, position.Y, size.X, size.Y)
         {
         }
@@ -77,7 +85,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="y">Y coordinate of the point to test</param>
         /// <returns>True if the point is inside</returns>
         ////////////////////////////////////////////////////////////
-        public bool Contains(float x, float y)
+        public bool Contains(int x, int y)
         {
             float minX = System.Math.Min(Left, Left + Width);
             float maxX = System.Math.Max(Left, Left + Width);
@@ -94,9 +102,9 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="rect"> Rectangle to test</param>
         /// <returns>True if rectangles overlap</returns>
         ////////////////////////////////////////////////////////////
-        public bool Intersects(FloatRect rect)
+        public bool Intersects(Rectangle rect)
         {
-            FloatRect overlap;
+            Rectangle overlap;
             return Intersects(rect, out overlap);
         }
 
@@ -108,7 +116,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="overlap">Rectangle to be filled with overlapping rect</param>
         /// <returns>True if rectangles overlap</returns>
         ////////////////////////////////////////////////////////////
-        public bool Intersects(FloatRect rect, out FloatRect overlap)
+        public bool Intersects(Rectangle rect, out Rectangle overlap)
         {
             // Rectangles with negative dimensions are allowed, so we must handle them correctly
 
@@ -153,11 +161,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() => "[FloatRect]" +
-                                             " Left(" + Left + ")" +
-                                             " Top(" + Top + ")" +
-                                             " Width(" + Width + ")" +
-                                             " Height(" + Height + ")";
+        public override string ToString() => $"[IntRect] Left({Left}) Top({Top}) Width({Width}) Height({Height})";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -166,7 +170,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="obj">Object to check</param>
         /// <returns>Object and rectangle are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is FloatRect && Equals((FloatRect) obj);
+        public override bool Equals(object obj) => obj is Rectangle && Equals((Rectangle) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -175,10 +179,10 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="other">Rectangle to check</param>
         /// <returns>Rectangles are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(FloatRect other) => (Left == other.Left) &&
-                                               (Top == other.Top) &&
-                                               (Width == other.Width) &&
-                                               (Height == other.Height);
+        public bool Equals(Rectangle other) => (Left == other.Left) &&
+                                             (Top == other.Top) &&
+                                             (Width == other.Width) &&
+                                             (Height == other.Height);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -199,7 +203,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="r2">Second rect</param>
         /// <returns>r1 == r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(FloatRect r1, FloatRect r2) => r1.Equals(r2);
+        public static bool operator ==(Rectangle r1, Rectangle r2) => r1.Equals(r2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -209,30 +213,6 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="r2">Second rect</param>
         /// <returns>r1 != r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(FloatRect r1, FloatRect r2) => !r1.Equals(r2);
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Explicit casting to another rectangle type
-        /// </summary>
-        /// <param name="r">Rectangle being casted</param>
-        /// <returns>Casting result</returns>
-        ////////////////////////////////////////////////////////////
-        public static explicit operator IntRect(FloatRect r) => new IntRect((int) r.Left,
-            (int) r.Top,
-            (int) r.Width,
-            (int) r.Height);
-
-        /// <summary>Left coordinate of the rectangle</summary>
-        public float Left;
-
-        /// <summary>Top coordinate of the rectangle</summary>
-        public float Top;
-
-        /// <summary>Width of the rectangle</summary>
-        public float Width;
-
-        /// <summary>Height of the rectangle</summary>
-        public float Height;
+        public static bool operator !=(Rectangle r1, Rectangle r2) => !r1.Equals(r2);
     }
 }

@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <summary>
         ///     The my size
         /// </summary>
-        private Vector2F mySize;
+        private Vector2 mySize;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -49,7 +49,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         ////////////////////////////////////////////////////////////
         public RectangleShape() :
-            this(new Vector2F(0, 0))
+            this(new Vector2(0, 0))
         {
         }
 
@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="size">Size of the shape</param>
         ////////////////////////////////////////////////////////////
-        public RectangleShape(Vector2F size) => Size = size;
+        public RectangleShape(Vector2 size) => Size = size;
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -76,7 +76,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     The size of the rectangle
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2F Size
+        public Vector2 Size
         {
             get => mySize;
             set
@@ -108,19 +108,19 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="index">Index of the point to get, in range [0 .. 3]</param>
         /// <returns>index-th point of the shape</returns>
         ////////////////////////////////////////////////////////////
-        public override Vector2F GetPoint(uint index)
+        public override Vector2 GetPoint(uint index)
         {
             switch (index)
             {
                 default:
                 case 0:
-                    return new Vector2F(0, 0);
+                    return new Vector2(0, 0);
                 case 1:
-                    return new Vector2F(mySize.X, 0);
+                    return new Vector2(mySize.X, 0);
                 case 2:
-                    return new Vector2F(mySize.X, mySize.Y);
+                    return new Vector2(mySize.X, mySize.Y);
                 case 3:
-                    return new Vector2F(0, mySize.Y);
+                    return new Vector2(0, mySize.Y);
             }
         }
     }

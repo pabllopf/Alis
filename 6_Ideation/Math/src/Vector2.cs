@@ -27,304 +27,155 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     A 2D column vector.
+    /// The vector
     /// </summary>
-    public struct Vector2
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Vector2 : IEquatable<Vector2>
     {
         /// <summary>
-        ///     Describes whether this instance equals
+        /// The 
         /// </summary>
-        /// <param name="other">The other</param>
-        /// <returns>The bool</returns>
-        public bool Equals(Vector2 other) => X.Equals(other.X) && Y.Equals(other.Y);
+        public readonly float X;
 
         /// <summary>
-        ///     Describes whether this instance equals
+        /// The 
         /// </summary>
-        /// <param name="obj">The obj</param>
-        /// <returns>The bool</returns>
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj))
-            {
-                return false;
-            }
-
-            return obj is Vector2 && Equals((Vector2) obj);
-        }
+        public readonly float Y;
 
         /// <summary>
-        ///     Gets the hash code
+        /// Initializes a new instance of the <see cref="Vector2"/> class
         /// </summary>
-        /// <returns>The int</returns>
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (X.GetHashCode() * 397) ^ Y.GetHashCode();
-            }
-        }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float X, Y;
-
-        /// <summary>
-        ///     The assert
-        /// </summary>
-        public float this[int i]
-        {
-            get
-            {
-                if (i == 0)
-                {
-                    return X;
-                }
-
-                if (i == 1)
-                {
-                    return Y;
-                }
-
-                //Box2DxDebug.Assert(false, "Incorrect Vec2 element!");
-                return 0;
-            }
-            set
-            {
-                if (i == 0)
-                {
-                    X = value;
-                }
-                else if (i == 1)
-                {
-                    Y = value;
-                }
-                //else
-                //{
-                //  Box2DxDebug.Assert(false, "Incorrect Vec2 element!");
-                // }
-            }
-        }
-
-        /// <summary>
-        ///     Construct using coordinates.
-        /// </summary>
-        public Vector2(float x)
-        {
-            X = x;
-            Y = x;
-        }
-
-        /// <summary>
-        ///     Construct using coordinates.
-        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         public Vector2(float x, float y)
         {
             X = x;
             Y = y;
         }
-
+        
+        
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Set this vector to all zeros.
+        ///     Operator - overload ; returns the opposite of a vector
         /// </summary>
-        public void SetZero()
-        {
-            X = 0.0f;
-            Y = 0.0f;
-        }
+        /// <param name="v">Vector to negate</param>
+        /// <returns>-v</returns>
+        ////////////////////////////////////////////////////////////
+        public static Vector2 operator -(Vector2 v) => new Vector2(-v.X, -v.Y);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Set this vector to some specified coordinates.
+        ///     Operator - overload ; subtracts two vectors
         /// </summary>
-        public void Set(float x, float y)
-        {
-            X = x;
-            Y = y;
-        }
+        /// <param name="v1">First vector</param>
+        /// <param name="v2">Second vector</param>
+        /// <returns>v1 - v2</returns>
+        ////////////////////////////////////////////////////////////
+        public static Vector2 operator -(Vector2 v1, Vector2 v2) => new Vector2(v1.X - v2.X, v1.Y - v2.Y);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Sets the xy
+        ///     Operator + overload ; add two vectors
         /// </summary>
-        /// <param name="xy">The xy</param>
-        public void Set(float xy)
-        {
-            X = xy;
-            Y = xy;
-        }
+        /// <param name="v1">First vector</param>
+        /// <param name="v2">Second vector</param>
+        /// <returns>v1 + v2</returns>
+        ////////////////////////////////////////////////////////////
+        public static Vector2 operator +(Vector2 v1, Vector2 v2) => new Vector2(v1.X + v2.X, v1.Y + v2.Y);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Get the length of this vector (the norm).
+        ///     Operator * overload ; multiply a vector by a scalar value
         /// </summary>
-        public float Length() => (float) System.Math.Sqrt(X * X + Y * Y);
+        /// <param name="v">Vector</param>
+        /// <param name="x">Scalar value</param>
+        /// <returns>v * x</returns>
+        ////////////////////////////////////////////////////////////
+        public static Vector2 operator *(Vector2 v, float x) => new Vector2(v.X * x, v.Y * x);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Get the length squared. For performance, use this instead of
-        ///     Length (if possible).
+        ///     Operator * overload ; multiply a scalar value by a vector
         /// </summary>
-        public float LengthSquared() => X * X + Y * Y;
+        /// <param name="x">Scalar value</param>
+        /// <param name="v">Vector</param>
+        /// <returns>x * v</returns>
+        ////////////////////////////////////////////////////////////
+        public static Vector2 operator *(float x, Vector2 v) => new Vector2(v.X * x, v.Y * x);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Convert this vector into a unit vector. Returns the length.
+        ///     Operator / overload ; divide a vector by a scalar value
         /// </summary>
-        public float Normalize()
-        {
-            float length = Length();
-            if (length < Settings.FltEpsilon)
-            {
-                return 0.0f;
-            }
+        /// <param name="v">Vector</param>
+        /// <param name="x">Scalar value</param>
+        /// <returns>v / x</returns>
+        ////////////////////////////////////////////////////////////
+        public static Vector2 operator /(Vector2 v, float x) => new Vector2(v.X / x, v.Y / x);
 
-            float invLength = 1.0f / length;
-            X *= invLength;
-            Y *= invLength;
-
-            return length;
-        }
-
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Does this vector contain finite coordinates?
+        ///     Operator == overload ; check vector equality
         /// </summary>
-        public bool IsValid => Helper.IsValid(X) && Helper.IsValid(Y);
+        /// <param name="v1">First vector</param>
+        /// <param name="v2">Second vector</param>
+        /// <returns>v1 == v2</returns>
+        ////////////////////////////////////////////////////////////
+        public static bool operator ==(Vector2 v1, Vector2 v2) => v1.Equals(v2);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Negate this vector.
+        ///     Operator != overload ; check vector inequality
         /// </summary>
-        public static Vector2 operator -(Vector2 v1)
-        {
-            Vector2 v = new Vector2();
-            v.Set(-v1.X, -v1.Y);
-            return v;
-        }
+        /// <param name="v1">First vector</param>
+        /// <param name="v2">Second vector</param>
+        /// <returns>v1 != v2</returns>
+        ////////////////////////////////////////////////////////////
+        public static bool operator !=(Vector2 v1, Vector2 v2) => !v1.Equals(v2);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Hello
+        ///     Provide a string describing the object
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
-        /// <returns></returns>
-        public static Vector2 operator +(Vector2 v1, Vector2 v2)
-        {
-            Vector2 v = new Vector2();
-            v.Set(v1.X + v2.X, v1.Y + v2.Y);
-            return v;
-        }
+        /// <returns>String description of the object</returns>
+        ////////////////////////////////////////////////////////////
+        public override string ToString() => $"[Vector2f] X({X}) Y({Y})";
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Hello
+        ///     Compare vector and object and checks if they are equal
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="v2"></param>
-        /// <returns></returns>
-        public static Vector2 operator -(Vector2 v1, Vector2 v2)
-        {
-            Vector2 v = new Vector2();
-            v.Set(v1.X - v2.X, v1.Y - v2.Y);
-            return v;
-        }
+        /// <param name="obj">Object to check</param>
+        /// <returns>Object and vector are equal</returns>
+        ////////////////////////////////////////////////////////////
+        public override bool Equals(object obj) => obj is Vector2 && Equals((Vector2) obj);
 
+        ///////////////////////////////////////////////////////////
         /// <summary>
-        ///     operator
+        ///     Compare two vectors and checks if they are equal
         /// </summary>
-        /// <param name="v1"></param>
-        /// <param name="a"></param>
-        /// <returns></returns>
-        public static Vector2 operator *(Vector2 v1, float a)
-        {
-            Vector2 v = new Vector2();
-            v.Set(v1.X * a, v1.Y * a);
-            return v;
-        }
+        /// <param name="other">Vector to check</param>
+        /// <returns>Vectors are equal</returns>
+        ////////////////////////////////////////////////////////////
+        public bool Equals(Vector2 other) => (System.Math.Abs(X - other.X) < 0.001f) && (System.Math.Abs(Y - other.Y) < 0.001f);
 
+        ////////////////////////////////////////////////////////////
         /// <summary>
+        ///     Provide a integer describing the object
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="v1"></param>
-        /// <returns></returns>
-        public static Vector2 operator *(float a, Vector2 v1)
-        {
-            Vector2 v = new Vector2();
-            v.Set(v1.X * a, v1.Y * a);
-            return v;
-        }
-
+        /// <returns>Integer description of the object</returns>
+        ////////////////////////////////////////////////////////////
+        public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
+        
         /// <summary>
+        /// Gets the value of the zero
         /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static bool operator ==(Vector2 a, Vector2 b) => (a.X == b.X) && (a.Y == b.Y);
-
-        /// <summary>
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
-        public static bool operator !=(Vector2 a, Vector2 b) => a.X != b.X || a.Y != b.Y;
-
-        /// <summary>
-        ///     Gets the value of the zero
-        /// </summary>
-        public static Vector2 Zero => new Vector2(0, 0);
-
-        /// <summary>
-        ///     Peform the dot product on two vectors.
-        /// </summary>
-        public static float Dot(Vector2 a, Vector2 b) => a.X * b.X + a.Y * b.Y;
-
-        /// <summary>
-        ///     Perform the cross product on two vectors. In 2D this produces a scalar.
-        /// </summary>
-        public static float Cross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
-
-        /// <summary>
-        ///     Perform the cross product on a vector and a scalar.
-        ///     In 2D this produces a vector.
-        /// </summary>
-        public static Vector2 Cross(Vector2 a, float s)
-        {
-            Vector2 v = new Vector2();
-            v.Set(s * a.Y, -s * a.X);
-            return v;
-        }
-
-        /// <summary>
-        ///     Perform the cross product on a scalar and a vector.
-        ///     In 2D this produces a vector.
-        /// </summary>
-        public static Vector2 Cross(float s, Vector2 a)
-        {
-            Vector2 v = new Vector2();
-            v.Set(-s * a.Y, s * a.X);
-            return v;
-        }
-
-        /// <summary>
-        ///     Distances the a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The float</returns>
-        public static float Distance(Vector2 a, Vector2 b)
-        {
-            Vector2 c = a - b;
-            return c.Length();
-        }
-
-        /// <summary>
-        ///     Distances the squared using the specified a
-        /// </summary>
-        /// <param name="a">The </param>
-        /// <param name="b">The </param>
-        /// <returns>The float</returns>
-        public static float DistanceSquared(Vector2 a, Vector2 b)
-        {
-            Vector2 c = a - b;
-            return Dot(c, c);
-        }
+        public static readonly Vector2 Zero = new Vector2(0.0f, 0.0f);
     }
 }

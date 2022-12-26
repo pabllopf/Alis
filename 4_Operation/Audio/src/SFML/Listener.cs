@@ -30,7 +30,7 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Audio.SFML
 {
@@ -60,7 +60,7 @@ namespace Alis.Core.Audio.SFML
         ///     3D position of the listener (default is (0, 0, 0))
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public static Vector3F Position
+        public static Vector3 Position
         {
             get => sfListener_getPosition();
             set => sfListener_setPosition(value);
@@ -76,7 +76,7 @@ namespace Alis.Core.Audio.SFML
         ///     The default listener's direction is (0, 0, -1).
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public static Vector3F Direction
+        public static Vector3 Direction
         {
             get => sfListener_getDirection();
             set => sfListener_setDirection(value);
@@ -92,7 +92,7 @@ namespace Alis.Core.Audio.SFML
         ///     not necessary to change it, especially in 2D scenarios.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public static Vector3F UpVector
+        public static Vector3 UpVector
         {
             get => sfListener_getUpVector();
             set => sfListener_setUpVector(value);
@@ -117,41 +117,41 @@ namespace Alis.Core.Audio.SFML
         /// </summary>
         /// <param name="position">The position</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfListener_setPosition(Vector3F position);
+        private static extern void sfListener_setPosition(Vector3 position);
 
         /// <summary>
         ///     Sfs the listener get position
         /// </summary>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector3F sfListener_getPosition();
+        private static extern Vector3 sfListener_getPosition();
 
         /// <summary>
         ///     Sfs the listener set direction using the specified direction
         /// </summary>
         /// <param name="direction">The direction</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfListener_setDirection(Vector3F direction);
+        private static extern void sfListener_setDirection(Vector3 direction);
 
         /// <summary>
         ///     Sfs the listener get direction
         /// </summary>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector3F sfListener_getDirection();
+        private static extern Vector3 sfListener_getDirection();
 
         /// <summary>
         ///     Sfs the listener set up vector using the specified up vector
         /// </summary>
         /// <param name="upVector">The up vector</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfListener_setUpVector(Vector3F upVector);
+        private static extern void sfListener_setUpVector(Vector3 upVector);
 
         /// <summary>
         ///     Sfs the listener get up vector
         /// </summary>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector3F sfListener_getUpVector();
+        private static extern Vector3 sfListener_getUpVector();
     }
 }

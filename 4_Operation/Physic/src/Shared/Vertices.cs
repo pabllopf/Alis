@@ -32,7 +32,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Numerics;
 using System.Text;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Utilities;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Shared
 {

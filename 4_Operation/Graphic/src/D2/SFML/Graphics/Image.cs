@@ -30,11 +30,11 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Figures.D2;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
@@ -233,8 +233,8 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         {
             get
             {
-                Vector2U size = Size;
-                byte[] pixelsPtr = new byte[size.X * size.Y * 4];
+                Vector2 size = Size;
+                byte[] pixelsPtr = new byte[(int) (size.X * size.Y * 4)];
                 Marshal.Copy(sfImage_getPixelsPtr(CPointer), pixelsPtr, 0, pixelsPtr.Length);
                 return pixelsPtr;
             }
@@ -245,7 +245,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Size of the image, in pixels
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2U Size => sfImage_getSize(CPointer);
+        public Vector2 Size => sfImage_getSize(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -291,7 +291,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public void Copy(Image source, uint destX, uint destY)
         {
-            Copy(source, destX, destY, new IntRect(0, 0, 0, 0));
+            Copy(source, destX, destY, new Rectangle(0, 0, 0, 0));
         }
 
         ////////////////////////////////////////////////////////////
@@ -305,7 +305,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="destY">Y coordinate of the destination position</param>
         /// <param name="sourceRect">Sub-rectangle of the source image to copy</param>
         ////////////////////////////////////////////////////////////
-        public void Copy(Image source, uint destX, uint destY, IntRect sourceRect)
+        public void Copy(Image source, uint destX, uint destY, Rectangle sourceRect)
         {
             Copy(source, destX, destY, sourceRect, false);
         }
@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="sourceRect">Sub-rectangle of the source image to copy</param>
         /// <param name="applyAlpha">Should the copy take in account the source transparency?</param>
         ////////////////////////////////////////////////////////////
-        public void Copy(Image source, uint destX, uint destY, IntRect sourceRect, bool applyAlpha)
+        public void Copy(Image source, uint destX, uint destY, Rectangle sourceRect, bool applyAlpha)
         {
             sfImage_copyImage(CPointer, source.CPointer, destX, destY, sourceRect, applyAlpha);
         }
@@ -478,7 +478,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="applyAlpha">The apply alpha</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfImage_copyImage(IntPtr cPointer, IntPtr source, uint destX, uint destY,
-            IntRect sourceRect, bool applyAlpha);
+            Rectangle sourceRect, bool applyAlpha);
 
         /// <summary>
         ///     Sfs the image set pixel using the specified c pointer
@@ -514,7 +514,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2U sfImage_getSize(IntPtr cPointer);
+        private static extern Vector2 sfImage_getSize(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the image flip horizontally using the specified c pointer
