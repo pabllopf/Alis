@@ -7,7 +7,7 @@ on:
       - 'docs/**'
       - '**.md'
       - '.github/**'
-    
+
 
 jobs:
   #
@@ -86,16 +86,16 @@ jobs:
         #run: sed -i '' -e 's/$VERSION/$VERSIONFINAL/' $FILENAME
         #run: sed -i .bak 's/$VERSION/$VERSIONFINAL/' $FILENAME
         run: sed -i "" "s/$VERSION/$VERSIONFINAL/" Directory.Build.props
-        
+
       - name: Get the current version
         run: echo "CURRENTVERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
-        
+
       - name: Print the next version
         run: echo $CURRENTVERSION
-        
+
       - name: Create packages
         run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/ ; fi;done
-      
+
       - name: Publish nugets TO nuget
         run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
 
@@ -141,7 +141,7 @@ jobs:
 
       - name: create a file to save the log
         run: date > ./.publish/generated.txt
-        
+
       - name: git config user.name github-actions
         run: git config user.name github-actions
 

@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The body type interface
+    ///     The body type interface
     /// </summary>
     public interface IBodyType<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Bodies the type using the specified value
+        ///     Bodies the type using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

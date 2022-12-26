@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The matrix
+    ///     The matrix
     /// </summary>
     public struct Matrix3X2
     {
-        
     }
 }

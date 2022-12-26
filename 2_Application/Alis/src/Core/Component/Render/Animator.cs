@@ -87,7 +87,7 @@ namespace Alis.Core.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The animator builder</returns>
-        public  AnimatorBuilder Builder() => new AnimatorBuilder();
+        public AnimatorBuilder Builder() => new AnimatorBuilder();
 
         /// <summary>
         ///     Adds the animation using the specified animation

@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The quaternion
+    ///     The quaternion
     /// </summary>
     public struct Quaternion
     {
-        
     }
 }

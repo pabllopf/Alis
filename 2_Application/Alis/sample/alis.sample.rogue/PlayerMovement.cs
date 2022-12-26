@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
@@ -44,7 +45,7 @@ namespace Alis.Sample.Rogue
         private Animator animator;
 
         /// <summary>
-        /// The box collider
+        ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
 
@@ -87,7 +88,7 @@ namespace Alis.Sample.Rogue
         /// <param name="key"></param>
         public override void OnReleaseKey(string key)
         {
-            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
@@ -121,7 +122,7 @@ namespace Alis.Sample.Rogue
         /// <param name="key"></param>
         public override void OnPressDownKey(string key)
         {
-            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+            Vector2 velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {

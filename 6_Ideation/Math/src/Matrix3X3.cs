@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Matrix33.cs
+//  File:Matrix3X3.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The matrix 33
+    ///     The matrix 33
     /// </summary>
     public struct Matrix3X3
     {
-        
     }
 }

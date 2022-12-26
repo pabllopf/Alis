@@ -41,10 +41,10 @@ namespace Alis.Core.Manager.Physic
     public class PhysicManager : PhysicManagerBase
     {
         /// <summary>
-        /// Gets or sets the value of the world
+        ///     Gets or sets the value of the world
         /// </summary>
         public World World { get; set; }
-        
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -54,14 +54,14 @@ namespace Alis.Core.Manager.Physic
             World = new World(gravity);
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Awakes this instance
         /// </summary>
         public override void Awake()
         {
         }
-        
+
         /// <summary>
         ///     Starts this instance
         /// </summary>
@@ -74,9 +74,8 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void BeforeUpdate()
         {
-            
         }
-        
+
         /// <summary>
         ///     Updates this instance
         /// </summary>
@@ -84,44 +83,43 @@ namespace Alis.Core.Manager.Physic
         {
             World.Step((float) GameBase.TimeManager.TimeStep, 6, 2);
         }
-        
-        
+
+
         /// <summary>
         ///     Afters the update
         /// </summary>
         public override void AfterUpdate()
         {
         }
-        
+
         /// <summary>
         ///     Fixeds the update
         /// </summary>
         public override void FixedUpdate()
         {
-           
         }
-        
+
         /// <summary>
         ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
         }
-        
+
         /// <summary>
         ///     Resets this instance
         /// </summary>
         public override void Reset()
         {
         }
-        
+
         /// <summary>
         ///     Stops this instance
         /// </summary>
         public override void Stop()
         {
         }
-        
+
         /// <summary>
         ///     Exits this instance
         /// </summary>
@@ -130,7 +128,7 @@ namespace Alis.Core.Manager.Physic
         }
 
         /// <summary>
-        /// Attaches the body using the specified body
+        ///     Attaches the body using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         public void AttachBody(Body body)

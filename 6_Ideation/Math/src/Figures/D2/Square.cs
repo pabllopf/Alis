@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math.Figures.D2
 {
     /// <summary>
-    /// The square
+    ///     The square
     /// </summary>
     public struct Square
     {
-        
     }
 }

@@ -26,12 +26,13 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
+
 namespace Alis.Core.Setting
 {
     /// <summary>
     ///     The setting base class
     /// </summary>
-    public class SettingBase 
+    public class SettingBase
     {
     }
 }

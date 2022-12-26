@@ -5,36 +5,35 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PolygonShape.cs
+//  File:PolygonShape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using System.Numerics;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -102,7 +101,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <exception cref="InvalidOperationException">You can't create a polygon with less than 3 vertices</exception>
         private void SetVertices(Vertices vertices)
         {
-            Debug.Assert(vertices.Count >= 3 && vertices.Count <= Settings.MaxPolygonVertices);
+            Debug.Assert((vertices.Count >= 3) && (vertices.Count <= Settings.MaxPolygonVertices));
 
             //Velcro: We throw an exception instead of setting the polygon to a box for safety reasons
             if (vertices.Count < 3)
@@ -155,7 +154,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             for (int i = 1; i < n; ++i)
             {
                 float x = ps[i].X;
-                if (x > x0 || x == x0 && ps[i].Y < ps[i0].Y)
+                if (x > x0 || ((x == x0) && (ps[i].Y < ps[i0].Y)))
                 {
                     i0 = i;
                     x0 = x;
@@ -189,7 +188,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                     }
 
                     // Collinearity check
-                    if (c == 0.0f && v.LengthSquared() > r.LengthSquared())
+                    if ((c == 0.0f) && (v.LengthSquared() > r.LengthSquared()))
                     {
                         ie = j;
                     }

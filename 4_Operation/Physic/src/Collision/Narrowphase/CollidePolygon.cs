@@ -5,37 +5,36 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   CollidePolygon.cs
+//  File:CollidePolygon.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using System.Numerics;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision.Narrowphase
 {
@@ -240,7 +239,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             Vertices vertices2 = poly2.VerticesPrivate;
             Vertices normals2 = poly2.NormalsPrivate;
 
-            Debug.Assert(0 <= edge1 && edge1 < poly1.VerticesPrivate.Count);
+            Debug.Assert((0 <= edge1) && (edge1 < poly1.VerticesPrivate.Count));
 
             // Get the normal of the reference edge in poly2's frame.
             Vector2 normal1 = MathUtils.MulT(ref xf2.Q, MathUtils.Mul(ref xf1.Q, normals1[edge1]));

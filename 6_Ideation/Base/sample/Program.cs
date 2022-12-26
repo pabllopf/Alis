@@ -40,7 +40,6 @@ namespace Alis.Core.Aspect.Base.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
         }
     }
 }

@@ -32,12 +32,12 @@ using System;
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The vector
+    ///     The vector
     /// </summary>
     public struct Vector
     {
         /// <summary>
-        /// Throws the insufficient number of elements exception using the specified i
+        ///     Throws the insufficient number of elements exception using the specified i
         /// </summary>
         /// <param name="i">The </param>
         /// <exception cref="InsufficientNumberOfElementsException"></exception>
@@ -47,7 +47,7 @@ namespace Alis.Core.Aspect.Math
         }
 
         /// <summary>
-        /// Throws the argument exception destination too short
+        ///     Throws the argument exception destination too short
         /// </summary>
         /// <exception cref="ArgumentException"></exception>
         public static void ThrowArgumentException_DestinationTooShort()

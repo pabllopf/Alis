@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ContactManager.cs
+//  File:ContactManager.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -123,13 +123,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     int iA = edge.Contact.ChildIndexA;
                     int iB = edge.Contact.ChildIndexB;
 
-                    if (fA == fixtureA && fB == fixtureB && iA == indexA && iB == indexB)
+                    if ((fA == fixtureA) && (fB == fixtureB) && (iA == indexA) && (iB == indexB))
                     {
                         // A contact already exists.
                         return;
                     }
 
-                    if (fA == fixtureB && fB == fixtureA && iA == indexB && iB == indexA)
+                    if ((fA == fixtureB) && (fB == fixtureA) && (iA == indexB) && (iB == indexA))
                     {
                         // A contact already exists.
                         return;
@@ -152,18 +152,18 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             }
 
             // Check user filtering.
-            if (ContactFilter != null && !ContactFilter(fixtureA, fixtureB))
+            if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
             {
                 return;
             }
 
             //Velcro: BeforeCollision delegate
-            if (fixtureA.BeforeCollision != null && !fixtureA.BeforeCollision(fixtureA, fixtureB))
+            if ((fixtureA.BeforeCollision != null) && !fixtureA.BeforeCollision(fixtureA, fixtureB))
             {
                 return;
             }
 
-            if (fixtureB.BeforeCollision != null && !fixtureB.BeforeCollision(fixtureB, fixtureA))
+            if ((fixtureB.BeforeCollision != null) && !fixtureB.BeforeCollision(fixtureB, fixtureA))
             {
                 return;
             }
@@ -362,7 +362,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     }
 
                     // Check user filtering.
-                    if (ContactFilter != null && !ContactFilter(fixtureA, fixtureB))
+                    if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
                     {
                         Contact cNuke = c;
                         c = cNuke.Next;
@@ -374,8 +374,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     c.Flags &= ~ContactFlags.FilterFlag;
                 }
 
-                bool activeA = bodyA.Awake && bodyA.BodyType != BodyType.Static;
-                bool activeB = bodyB.Awake && bodyB.BodyType != BodyType.Static;
+                bool activeA = bodyA.Awake && (bodyA.BodyType != BodyType.Static);
+                bool activeB = bodyB.Awake && (bodyB.BodyType != BodyType.Static);
 
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
@@ -411,14 +411,14 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <returns>The collide</returns>
         private static bool ShouldCollide(Fixture fixtureA, Fixture fixtureB)
         {
-            if (fixtureA.CollisionGroup == fixtureB.CollisionGroup &&
-                fixtureA.CollisionGroup != 0)
+            if ((fixtureA.CollisionGroup == fixtureB.CollisionGroup) &&
+                (fixtureA.CollisionGroup != 0))
             {
                 return fixtureA.CollisionGroup > 0;
             }
 
-            bool collide = (fixtureA.CollidesWith & fixtureB.CollisionCategories) != 0 &&
-                           (fixtureA.CollisionCategories & fixtureB.CollidesWith) != 0;
+            bool collide = ((fixtureA.CollidesWith & fixtureB.CollisionCategories) != 0) &&
+                           ((fixtureA.CollisionCategories & fixtureB.CollidesWith) != 0);
 
             return collide;
         }

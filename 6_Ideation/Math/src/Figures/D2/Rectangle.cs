@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Math.Figures.D2
 {
     /// <summary>
-    /// The rectangle
+    ///     The rectangle
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct Rectangle : IEquatable<Rectangle>
@@ -51,7 +51,7 @@ namespace Alis.Core.Aspect.Math.Figures.D2
         public float Height;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Rectangle"/> class
+        ///     Initializes a new instance of the <see cref="Rectangle" /> class
         /// </summary>
         /// <param name="left">The left</param>
         /// <param name="top">The top</param>
@@ -64,8 +64,8 @@ namespace Alis.Core.Aspect.Math.Figures.D2
             Width = width;
             Height = height;
         }
-        
-            ////////////////////////////////////////////////////////////
+
+        ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Construct the rectangle from position and size
         /// </summary>
@@ -180,9 +180,9 @@ namespace Alis.Core.Aspect.Math.Figures.D2
         /// <returns>Rectangles are equal</returns>
         ////////////////////////////////////////////////////////////
         public bool Equals(Rectangle other) => (Left == other.Left) &&
-                                             (Top == other.Top) &&
-                                             (Width == other.Width) &&
-                                             (Height == other.Height);
+                                               (Top == other.Top) &&
+                                               (Width == other.Width) &&
+                                               (Height == other.Height);
 
         ////////////////////////////////////////////////////////////
         /// <summary>

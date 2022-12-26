@@ -5,32 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   LineUtils.cs
+//  File:LineUtils.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
+using System.Numerics;
 using Alis.Core.Physic.Shared;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Utilities
 {
@@ -121,7 +120,7 @@ namespace Alis.Core.Physic.Utilities
             ua /= denom;
             ub /= denom;
 
-            if (0 < ua && ua < 1 && 0 < ub && ub < 1)
+            if ((0 < ua) && (ua < 1) && (0 < ub) && (ub < 1))
             {
                 intersectionPoint.X = x1 + ua * (x2 - x1);
                 intersectionPoint.Y = y1 + ua * (y2 - y1);
@@ -197,7 +196,7 @@ namespace Alis.Core.Physic.Utilities
             float denom = a * b - c * d;
 
             // if denominator is 0, then lines are parallel
-            if (!(denom >= -MathConstants.Epsilon && denom <= MathConstants.Epsilon))
+            if (!((denom >= -MathConstants.Epsilon) && (denom <= MathConstants.Epsilon)))
             {
                 float e = point1.Y - point3.Y;
                 float f = point1.X - point3.X;
@@ -208,7 +207,7 @@ namespace Alis.Core.Physic.Utilities
                 ua *= oneOverDenom;
 
                 // check if intersection point of the two lines is on line segment 1
-                if (!firstIsSegment || ua >= 0.0f && ua <= 1.0f)
+                if (!firstIsSegment || ((ua >= 0.0f) && (ua <= 1.0f)))
                 {
                     // numerator of second equation
                     float ub = b * e - d * f;
@@ -217,7 +216,7 @@ namespace Alis.Core.Physic.Utilities
                     // check if intersection point of the two lines is on line segment 2
                     // means the line segments intersect, since we know it is on
                     // segment 1 as well.
-                    if (!secondIsSegment || ub >= 0.0f && ub <= 1.0f)
+                    if (!secondIsSegment || ((ub >= 0.0f) && (ub <= 1.0f)))
                     {
                         // check if they are coincident (no collision in this case)
                         if (ua != 0f || ub != 0f)

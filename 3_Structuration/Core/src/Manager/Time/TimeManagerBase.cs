@@ -187,11 +187,10 @@ namespace Alis.Core.Manager.Time
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public override void Draw()
         {
-            
         }
 
         /// <summary>

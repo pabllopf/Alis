@@ -73,10 +73,10 @@ namespace Alis.Core.Network.Sample
             }
             else
             {
-               Logger.Log("Wrong number of arguments. 0 for simple test. 5 for complex test.");
-               Logger.Log(
+                Logger.Log("Wrong number of arguments. 0 for simple test. 5 for complex test.");
+                Logger.Log(
                     "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
-               Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
+                Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
             }
 
             Logger.Log("Press any key to quit");

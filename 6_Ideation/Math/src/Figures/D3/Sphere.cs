@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math.Figures.D3
 {
     /// <summary>
-    /// The sphere
+    ///     The sphere
     /// </summary>
     public struct Sphere
     {
-        
     }
 }

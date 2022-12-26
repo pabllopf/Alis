@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   TextureConverter.cs
+//  File:TextureConverter.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -255,17 +255,17 @@ namespace Alis.Core.Physic.Tools.TextureTools
         private void Initialize(uint[] data, int? width, byte? alphaTolerance, float? hullTolerance,
             bool? holeDetection, bool? multipartDetection, bool? pixelOffsetOptimization, Matrix4x4? transform)
         {
-            if (data != null && !width.HasValue)
+            if ((data != null) && !width.HasValue)
             {
                 throw new ArgumentNullException(nameof(width), "'width' can't be null if 'data' is set.");
             }
 
-            if (data == null && width.HasValue)
+            if ((data == null) && width.HasValue)
             {
                 throw new ArgumentNullException(nameof(data), "'data' can't be null if 'width' is set.");
             }
 
-            if (data != null && width.HasValue)
+            if ((data != null) && width.HasValue)
             {
                 SetTextureData(data, width.Value);
             }
@@ -524,7 +524,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                                     Vertices holePolygon = CreateSimplePolygon(holeEntrance.Value,
                                         new Vector2(holeEntrance.Value.X + 1, holeEntrance.Value.Y));
 
-                                    if (holePolygon != null && holePolygon.Count > 2)
+                                    if ((holePolygon != null) && (holePolygon.Count > 2))
                                     {
                                         switch (polygonDetectionType)
                                         {
@@ -606,7 +606,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 detectedPolygons[i].Reverse();
 
-                if (detectedPolygons[i].Holes != null && detectedPolygons[i].Holes.Count > 0)
+                if ((detectedPolygons[i].Holes != null) && (detectedPolygons[i].Holes.Count > 0))
                 {
                     for (int j = 0; j < detectedPolygons[i].Holes.Count; j++)
                     {
@@ -671,7 +671,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             // Set the end y coordinate.
             int endY = (int) GetBottomMostCoord(polygon);
 
-            if (startY > 0 && startY < height && endY > 0 && endY < height)
+            if ((startY > 0) && (startY < height) && (endY > 0) && (endY < height))
             {
                 // go from top to bottom of the polygon
                 for (int y = startY; y <= endY; y++)
@@ -683,7 +683,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     // It's always a pair of start and end edge: nothing | polygon | hole | polygon | nothing ...
                     // If it's not then don't bother, it's probably a peak ...
                     // ...which should be filtered out by SearchCrossingEdges() anyway.
-                    if (xCoords.Count > 1 && xCoords.Count % 2 == 0)
+                    if ((xCoords.Count > 1) && (xCoords.Count % 2 == 0))
                     {
                         // Ok, this is short, but probably a little bit confusing.
                         // This part searches from left to right between the edges inside the polygon.
@@ -868,11 +868,11 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 List<float> xCoords = SearchCrossingEdgesHoles(polygon, (int) point.Y);
 
-                if (xCoords.Count > 0 && xCoords.Count % 2 == 0)
+                if ((xCoords.Count > 0) && (xCoords.Count % 2 == 0))
                 {
                     for (int i = 0; i < xCoords.Count; i += 2)
                     {
-                        if (xCoords[i] <= point.X && xCoords[i + 1] >= point.X)
+                        if ((xCoords[i] <= point.X) && (xCoords[i + 1] >= point.X))
                         {
                             return true;
                         }
@@ -1017,8 +1017,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     vertex1 = polygon[i];
 
                     // Approx. check if the edge crosses our y coord.
-                    if (vertex1.Y >= y && vertex2.Y <= y ||
-                        vertex1.Y <= y && vertex2.Y >= y)
+                    if (((vertex1.Y >= y) && (vertex2.Y <= y)) ||
+                        ((vertex1.Y <= y) && (vertex2.Y >= y)))
                     {
                         // Ignore edges that are parallel to y.
                         if (vertex1.Y != vertex2.Y)
@@ -1091,7 +1091,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             foundEdgeCoord.Y = coordInsideThePolygon.Y;
 
-            if (xCoords != null && xCoords.Count > 1 && xCoords.Count % 2 == 0)
+            if ((xCoords != null) && (xCoords.Count > 1) && (xCoords.Count % 2 == 0))
             {
                 float distance;
                 for (int i = 0; i < xCoords.Count; i++)
@@ -1254,7 +1254,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                         break;
                     }
 
-                    if (next == entrance && !endOfHull)
+                    if ((next == entrance) && !endOfHull)
                     {
                         // It's the last bit of the hull, search on and exit at next found vertex.
                         endOfHull = true;
@@ -1311,9 +1311,9 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 int x = (int) current.X + ClosePixels[i, 0];
                 int y = (int) current.Y + ClosePixels[i, 1];
 
-                if (x >= 0 && x <= width && y >= 0 && y <= height)
+                if ((x >= 0) && (x <= width) && (y >= 0) && (y <= height))
                 {
-                    if (x == (int) near.X && y == (int) near.Y)
+                    if ((x == (int) near.X) && (y == (int) near.Y))
                     {
                         return true;
                     }
@@ -1421,7 +1421,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 x = (int) current.X + ClosePixels[indexOfPixelToCheck, 0];
                 y = (int) current.Y + ClosePixels[indexOfPixelToCheck, 1];
 
-                if (x >= 0 && x < width && y >= 0 && y <= height)
+                if ((x >= 0) && (x < width) && (y >= 0) && (y <= height))
                 {
                     if (IsSolid(ref x, ref y))
                     {
@@ -1550,7 +1550,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             tempIsSolidX = (int) v.X;
             tempIsSolidY = (int) v.Y;
 
-            if (tempIsSolidX >= 0 && tempIsSolidX < width && tempIsSolidY >= 0 && tempIsSolidY < height)
+            if ((tempIsSolidX >= 0) && (tempIsSolidX < width) && (tempIsSolidY >= 0) && (tempIsSolidY < height))
             {
                 return data[tempIsSolidX + tempIsSolidY * width] >= alphaTolerance;
             }
@@ -1568,7 +1568,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <returns>The bool</returns>
         public bool IsSolid(ref int x, ref int y)
         {
-            if (x >= 0 && x < width && y >= 0 && y < height)
+            if ((x >= 0) && (x < width) && (y >= 0) && (y < height))
             {
                 return data[x + y * width] >= alphaTolerance;
             }
@@ -1585,7 +1585,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <returns>The bool</returns>
         public bool IsSolid(ref int index)
         {
-            if (index >= 0 && index < dataLength)
+            if ((index >= 0) && (index < dataLength))
             {
                 return data[index] >= alphaTolerance;
             }
@@ -1601,6 +1601,6 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="coord">The coord</param>
         /// <returns>The bool</returns>
         public bool InBounds(ref Vector2 coord) =>
-            coord.X >= 0f && coord.X < width && coord.Y >= 0f && coord.Y < height;
+            (coord.X >= 0f) && (coord.X < width) && (coord.Y >= 0f) && (coord.Y < height);
     }
 }

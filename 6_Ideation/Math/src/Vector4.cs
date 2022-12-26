@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The vector
+    ///     The vector
     /// </summary>
     public struct Vector4
     {
-        
     }
 }

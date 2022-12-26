@@ -2,15 +2,15 @@
 @inherits LayoutComponentBase
 
 <SKCanvasView OnPaintSurface="OnPaintSurface"
-                      EnableRenderLoop="true"/>
-
+              EnableRenderLoop="true"/>
 
 
 @code {
     SKCanvasView skiaView = null!;
-    
+
     void OnPaintSurface(SKPaintSurfaceEventArgs e)
     {
         CustomRender.Update(e.Surface.Canvas);
     }
+
 }

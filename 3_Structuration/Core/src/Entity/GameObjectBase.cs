@@ -75,7 +75,7 @@ namespace Alis.Core.Entity
         public T GetComponent<T>() where T : ComponentBase => (T) components.Find(i => i.GetType() == typeof(T));
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>

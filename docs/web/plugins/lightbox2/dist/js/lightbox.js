@@ -305,8 +305,8 @@
         }
 
         // Is there a fitting issue?
-        if ((preloader.width > maxImageWidth) || (preloader.height > maxImageHeight)) {
-          if ((preloader.width / maxImageWidth) > (preloader.height / maxImageHeight)) {
+        if (preloader.width > maxImageWidth || preloader.height > maxImageHeight) {
+          if (preloader.width / maxImageWidth > preloader.height / maxImageHeight) {
             imageWidth  = maxImageWidth;
             imageHeight = parseInt(preloader.height / (preloader.width / imageWidth), 10);
             $image.width(imageWidth);
@@ -380,7 +380,7 @@
     var alwaysShowNav = false;
     try {
       document.createEvent('TouchEvent');
-      alwaysShowNav = (this.options.alwaysShowNavOnTouchDevices) ? true : false;
+      alwaysShowNav = this.options.alwaysShowNavOnTouchDevices ? true : false;
     } catch (e) {}
 
     this.$lightbox.find('.lb-nav').show();

@@ -123,12 +123,12 @@
         }, {
           duration: 1000,
           easing: 'swing',
-          step: function () {
-            $this.text(Math.floor(this.countNum));
-          },
-          complete: function () {
-            $this.text(this.countNum);
-          }
+            step() {
+                $this.text(Math.floor(this.countNum));
+            },
+            complete() {
+                $this.text(this.countNum);
+            }
         });
       });
     }

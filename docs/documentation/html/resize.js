@@ -50,7 +50,7 @@ function initResizable()
     if (val==undefined) return;
     if (expiration == null) {
       var date = new Date();
-      date.setTime(date.getTime()+(10*365*24*60*60*1000)); // default expiration is one week
+      date.setTime(date.getTime()+10*365*24*60*60*1000); // default expiration is one week
       expiration = date.toGMTString();
     }
     document.cookie = cookie_namespace + "_" + cookie + "=" + val + "; expires=" + expiration+"; path=/";
@@ -115,7 +115,10 @@ function initResizable()
   content = $("#doc-content");
   navtree = $("#nav-tree");
   footer  = $("#nav-path");
-  $(".side-nav-resizable").resizable({resize: function(e, ui) { resizeWidth(); } });
+  $(".side-nav-resizable").resizable({
+      resize(e, ui) {
+          resizeWidth();
+      }});
   $(sidenav).resizable({ minWidth: 0 });
   $(window).resize(function() { resizeHeight(); });
   var device = navigator.userAgent.toLowerCase();

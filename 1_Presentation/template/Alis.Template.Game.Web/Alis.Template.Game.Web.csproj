@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
-    
-  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-    <WasmNativeStrip>false</WasmNativeStrip>
-    <EmccCompileOptimizationFlag>-O1</EmccCompileOptimizationFlag>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <WasmNativeStrip>false</WasmNativeStrip>
+        <EmccCompileOptimizationFlag>-O1</EmccCompileOptimizationFlag>
+    </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <PublishTrimmed>false</PublishTrimmed>
@@ -16,14 +16,14 @@
     <PropertyGroup Condition="'$(Configuration)' == 'Release'">
         <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
-    
-  <ItemGroup>
-    <PackageReference Include="SkiaSharp.Views.Blazor" Version="2.88.1" />
-      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1" />
-      <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all" />
-  </ItemGroup>
-    
-  <ItemGroup>
-    <ProjectReference Include="..\alis.template.game\Alis.Template.Game.csproj" />
-  </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="SkiaSharp.Views.Blazor" Version="2.88.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.1"/>
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.1" PrivateAssets="all"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\alis.template.game\Alis.Template.Game.csproj"/>
+    </ItemGroup>
 </Project>

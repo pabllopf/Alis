@@ -47,7 +47,7 @@
                           $(SolutionDir)3_Structuration/**/*test/**/*.cs;  
                           $(SolutionDir)3_Structuration/**/*.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
-        
+
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="
                         
@@ -87,8 +87,7 @@
                           $(SolutionDir)6_Ideation/**/*.Designer.cs"
                  Link="Core/Aspect/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
-        
-        
+
         <EmbeddedResource Condition="$(ProjectDir.Contains('2_Application'))"
                           Include="$(SolutionDir)4_Operation/**/*.resx"
                           Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
@@ -104,10 +103,7 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename).resx</DependentUpon>
         </Compile>
-        
-        
-        
-        
+
 
         <Compile Condition="$(ProjectDir.Contains('3_Structuration'))"
                  Include="
@@ -136,7 +132,7 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename).resx</DependentUpon>
         </Compile>
-        
+
         <Compile Condition="$(ProjectDir.Contains('3_Structuration')) OR $(ProjectDir.Contains('4_Operation'))"
                  Include="
                         

@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The density interface
+    ///     The density interface
     /// </summary>
     public interface IDensity<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Densities the value
+        ///     Densities the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

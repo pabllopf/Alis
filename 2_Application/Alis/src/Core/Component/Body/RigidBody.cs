@@ -42,6 +42,6 @@ namespace Alis.Core.Component.Body
         ///     Builders this instance
         /// </summary>
         /// <returns>The rigid body builder</returns>
-        public  RigidBodyBuilder Builder() => new RigidBodyBuilder();
+        public RigidBodyBuilder Builder() => new RigidBodyBuilder();
     }
 }

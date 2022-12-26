@@ -5,35 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   RayCastHelper.cs
+//  File:RayCastHelper.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using System.Numerics;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -72,14 +71,14 @@ namespace Alis.Core.Physic.Collision
             Vector2 e = v2 - v1;
 
             // Normal points to the right, looking from v1 at v2
-            Vector2 normal = new Vector2(e.Y, -e.X); 
+            Vector2 normal = new Vector2(e.Y, -e.X);
             normal = Vector2.Normalize(normal);
 
             // q = p1 + t * d
             // dot(normal, q - v1) = 0
             // dot(normal, p1 - v1) + t * dot(normal, d) = 0
             float numerator = Vector2.Dot(normal, v1 - p1);
-            if (oneSided && numerator > 0.0f)
+            if (oneSided && (numerator > 0.0f))
             {
                 return false;
             }
@@ -166,7 +165,7 @@ namespace Alis.Core.Physic.Collision
             float a = -(c + (float) Math.Sqrt(sigma));
 
             // Is the intersection point on the segment?
-            if (0.0f <= a && a <= input.MaxFraction * rr)
+            if ((0.0f <= a) && (a <= input.MaxFraction * rr))
             {
                 a /= rr;
                 output.Fraction = a;
@@ -222,14 +221,14 @@ namespace Alis.Core.Physic.Collision
                     // lower < numerator / denominator, where denominator < 0
                     // Since denominator < 0, we have to flip the inequality:
                     // lower < numerator / denominator <==> denominator * lower > numerator.
-                    if (denominator < 0.0f && numerator < lower * denominator)
+                    if ((denominator < 0.0f) && (numerator < lower * denominator))
                     {
                         // Increase lower.
                         // The segment enters this half-space.
                         lower = numerator / denominator;
                         index = i;
                     }
-                    else if (denominator > 0.0f && numerator < upper * denominator)
+                    else if ((denominator > 0.0f) && (numerator < upper * denominator))
                     {
                         // Decrease upper.
                         // The segment exits this half-space.
@@ -247,7 +246,7 @@ namespace Alis.Core.Physic.Collision
                 }
             }
 
-            Debug.Assert(0.0f <= lower && lower <= input.MaxFraction);
+            Debug.Assert((0.0f <= lower) && (lower <= input.MaxFraction));
 
             if (index >= 0)
             {

@@ -92,11 +92,10 @@ namespace Alis.Core.Manager.Input
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public override void Draw()
         {
-            
         }
 
         /// <summary>

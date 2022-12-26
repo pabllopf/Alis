@@ -5,36 +5,35 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   YuPengClipper.cs
+//  File:YuPengClipper.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using System.Numerics;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.Cutting.Simple;
 using Alis.Core.Physic.Tools.PolygonManipulation;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Tools.Cutting
 {
@@ -180,11 +179,11 @@ namespace Alis.Core.Physic.Tools.Cutting
                         float alpha = GetAlpha(a, b, intersectionPoint);
 
                         // Insert intersection point into first polygon
-                        if (alpha > 0f && alpha < 1f)
+                        if ((alpha > 0f) && (alpha < 1f))
                         {
                             int index = slicedPoly1.IndexOf(a) + 1;
-                            while (index < slicedPoly1.Count &&
-                                   GetAlpha(a, b, slicedPoly1[index]) <= alpha)
+                            while ((index < slicedPoly1.Count) &&
+                                   (GetAlpha(a, b, slicedPoly1[index]) <= alpha))
                             {
                                 ++index;
                             }
@@ -194,11 +193,11 @@ namespace Alis.Core.Physic.Tools.Cutting
 
                         // Insert intersection point into second polygon
                         alpha = GetAlpha(c, d, intersectionPoint);
-                        if (alpha > 0f && alpha < 1f)
+                        if ((alpha > 0f) && (alpha < 1f))
                         {
                             int index = slicedPoly2.IndexOf(c) + 1;
-                            while (index < slicedPoly2.Count &&
-                                   GetAlpha(c, d, slicedPoly2[index]) <= alpha)
+                            while ((index < slicedPoly2.Count) &&
+                                   (GetAlpha(c, d, slicedPoly2[index]) <= alpha))
                             {
                                 ++index;
                             }
@@ -265,7 +264,7 @@ namespace Alis.Core.Physic.Tools.Cutting
                 {
                     edgeCharacter = 1f;
                 }
-                else if (poly2Simplicies.Contains(-poly1Simplicies[i]) && clipType == PolyClipType.Union)
+                else if (poly2Simplicies.Contains(-poly1Simplicies[i]) && (clipType == PolyClipType.Union))
                 {
                     edgeCharacter = 1f;
                 }
@@ -303,7 +302,7 @@ namespace Alis.Core.Physic.Tools.Cutting
                 if (!resultSimplices.Contains(poly2Simplicies[i]) &&
                     !resultSimplices.Contains(-poly2Simplicies[i]))
                 {
-                    if (poly1Simplicies.Contains(-poly2Simplicies[i]) && clipType == PolyClipType.Union)
+                    if (poly1Simplicies.Contains(-poly2Simplicies[i]) && (clipType == PolyClipType.Union))
                     {
                         edgeCharacter = 1f;
                     }
@@ -357,7 +356,7 @@ namespace Alis.Core.Physic.Tools.Cutting
                 bool closed = false;
                 int index = 0;
                 int count = simplicies.Count; // Needed to catch infinite loops
-                while (!closed && simplicies.Count > 0)
+                while (!closed && (simplicies.Count > 0))
                 {
                     if (VectorEqual(output[output.Count - 1], simplicies[index].EdgeStart))
                     {
@@ -479,9 +478,9 @@ namespace Alis.Core.Physic.Tools.Cutting
         private static bool PointOnLineSegment(Vector2 start, Vector2 end, Vector2 point)
         {
             Vector2 segment = end - start;
-            return MathUtils.Area(ref start, ref end, ref point) == 0f &&
-                   Vector2.Dot(point - start, segment) >= 0f &&
-                   Vector2.Dot(point - end, segment) <= 0f;
+            return (MathUtils.Area(ref start, ref end, ref point) == 0f) &&
+                   (Vector2.Dot(point - start, segment) >= 0f) &&
+                   (Vector2.Dot(point - end, segment) <= 0f);
         }
 
         /// <summary>

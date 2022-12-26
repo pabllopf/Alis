@@ -33,28 +33,28 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The vector
+    ///     The vector
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector3 : IEquatable<Vector3>
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public readonly float X;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public readonly float Y;
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public readonly float Z;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Vector3"/> class
+        ///     Initializes a new instance of the <see cref="Vector3" /> class
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
@@ -65,24 +65,21 @@ namespace Alis.Core.Aspect.Math
             Y = y;
             Z = z;
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="v"></param>
         /// <returns></returns>
         public static Vector3 operator -(Vector3 v) => new Vector3(-v.X, -v.Y, -v.Z);
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="v1"></param>
-/// <param name="v2"></param>
-/// <returns></returns>
+        /// <summary>
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
         public static Vector3 operator -(Vector3 v1, Vector3 v2) => new Vector3(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="v1"></param>
         /// <param name="v2"></param>
@@ -90,7 +87,6 @@ namespace Alis.Core.Aspect.Math
         public static Vector3 operator +(Vector3 v1, Vector3 v2) => new Vector3(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="v"></param>
         /// <param name="x"></param>
@@ -98,7 +94,6 @@ namespace Alis.Core.Aspect.Math
         public static Vector3 operator *(Vector3 v, float x) => new Vector3(v.X * x, v.Y * x, v.Z * x);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="v"></param>
         /// <param name="x"></param>
@@ -106,7 +101,6 @@ namespace Alis.Core.Aspect.Math
         public static Vector3 operator *(float x, Vector3 v) => new Vector3(v.X * x, v.Y * x, v.Z * x);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="v"></param>
         /// <param name="x"></param>
@@ -114,7 +108,6 @@ namespace Alis.Core.Aspect.Math
         public static Vector3 operator /(Vector3 v, float x) => new Vector3(v.X / x, v.Y / x, v.Z / x);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="v1"></param>
         /// <param name="v2"></param>
@@ -122,39 +115,36 @@ namespace Alis.Core.Aspect.Math
         public static bool operator ==(Vector3 v1, Vector3 v2) => v1.Equals(v2);
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="v1"></param>
         /// <param name="v2"></param>
         /// <returns></returns>
         public static bool operator !=(Vector3 v1, Vector3 v2) => !v1.Equals(v2);
-        
+
         /// <summary>
-        /// Returns the string
+        ///     Returns the string
         /// </summary>
         /// <returns>The string</returns>
         public override string ToString() => $"[Vector3f] X({X}) Y({Y}) Z({Z})";
 
 
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="obj">The obj</param>
         /// <returns>The bool</returns>
         public override bool Equals(object obj) => obj is Vector3 vector3 && Equals(vector3);
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
 
         /// <summary>
-        /// Describes whether this instance equals
+        ///     Describes whether this instance equals
         /// </summary>
         /// <param name="other">The other</param>
         /// <returns>The bool</returns>
         public bool Equals(Vector3 other) => (System.Math.Abs(X - other.X) < 0.001f) && (System.Math.Abs(Y - other.Y) < 0.001f) && (System.Math.Abs(Z - other.Z) < 0.001f);
-
     }
 }

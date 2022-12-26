@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Matrix22.cs
+//  File:Matrix2X2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The matrix 22
+    ///     The matrix 22
     /// </summary>
     public struct Matrix2X2
     {
-        
     }
 }

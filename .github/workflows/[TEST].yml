@@ -4,7 +4,7 @@ name: "[TEST]"
 on:
   push:
     branches: [ develop ]
-    
+
 jobs:
   Test_On_Macos_Latest:
     runs-on: macos-latest
@@ -164,9 +164,9 @@ jobs:
 
       - name: Create packages
         run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/ ; fi;done
-        
+
       - name: Dotnet test
-        run:  for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i ; fi;done 
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i ; fi;done 
         
         
         

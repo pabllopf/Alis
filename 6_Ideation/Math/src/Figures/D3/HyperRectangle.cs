@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math.Figures.D3
 {
     /// <summary>
-    /// The hyper rectangle
+    ///     The hyper rectangle
     /// </summary>
     public struct HyperRectangle
     {
-        
     }
 }

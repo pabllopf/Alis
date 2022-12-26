@@ -66,7 +66,7 @@ $.fn.attr2 = function() {
     if ( ! hasProp )
         return this.attr.apply(this, arguments);
     var val = this.prop.apply(this, arguments);
-    if ( ( val && val.jquery ) || typeof val === 'string' )
+    if ( val && val.jquery || typeof val === 'string' )
         return val;
     return this.attr.apply(this, arguments);
 };
@@ -93,7 +93,7 @@ $.fn.ajaxSubmit = function(options) {
     method = this.attr2('method');
     action = this.attr2('action');
 
-    url = (typeof action === 'string') ? $.trim(action) : '';
+    url = typeof action === 'string' ? $.trim(action) : '';
     url = url || window.location.href || '';
     if (url) {
         // clean url (don't include hash vaue)
@@ -101,7 +101,7 @@ $.fn.ajaxSubmit = function(options) {
     }
 
     options = $.extend(true, {
-        url:  url,
+        url,
         success: $.ajaxSettings.success,
         type: method || 'GET',
         iframeSrc: /^https/i.test(window.location.href || '') ? 'javascript:false' : 'about:blank'
@@ -149,7 +149,7 @@ $.fn.ajaxSubmit = function(options) {
 
     var q = $.param(a, traditional);
     if (qx) {
-        q = ( q ? (q + '&' + qx) : qx );
+        q = q ? (q + '&' + qx) : qx;
     }
     if (options.type.toUpperCase() == 'GET') {
         options.url += (options.url.indexOf('?') >= 0 ? '&' : '?') + q;
@@ -194,7 +194,7 @@ $.fn.ajaxSubmit = function(options) {
 
     var hasFileInputs = fileInputs.length > 0;
     var mp = 'multipart/form-data';
-    var multipart = ($form.attr('enctype') == mp || $form.attr('encoding') == mp);
+    var multipart = $form.attr('enctype') == mp || $form.attr('encoding') == mp;
 
     var fileAPI = feature.fileapi && feature.formdata;
     log("fileAPI :" + fileAPI);
@@ -320,7 +320,7 @@ $.fn.ajaxSubmit = function(options) {
 
         s = $.extend(true, {}, $.ajaxSettings, options);
         s.context = s.context || s;
-        id = 'jqFormIO' + (new Date().getTime());
+        id = 'jqFormIO' + new Date().getTime();
         if (s.iframeTarget) {
             $io = $(s.iframeTarget);
             n = $io.attr2('name');
@@ -342,11 +342,14 @@ $.fn.ajaxSubmit = function(options) {
             responseXML: null,
             status: 0,
             statusText: 'n/a',
-            getAllResponseHeaders: function() {},
-            getResponseHeader: function() {},
-            setRequestHeader: function() {},
-            abort: function(status) {
-                var e = (status === 'timeout' ? 'timeout' : 'aborted');
+            getAllResponseHeaders() {
+            },
+            getResponseHeader() {
+            },
+            setRequestHeader() {
+            },
+            abort(status) {
+                var e = status === 'timeout' ? 'timeout' : 'aborted';
                 log('aborting upload... ' + e);
                 this.aborted = 1;
 
@@ -354,8 +357,8 @@ $.fn.ajaxSubmit = function(options) {
                     if (io.contentWindow.document.execCommand) {
                         io.contentWindow.document.execCommand('Stop');
                     }
+                } catch (ignore) {
                 }
-                catch(ignore) {}
 
                 $io.attr('src', s.iframeSrc); // abort op in progress
                 xhr.error = e;
@@ -651,13 +654,13 @@ $.fn.ajaxSubmit = function(options) {
                 }
                 catch (err) {
                     status = 'parsererror';
-                    xhr.error = errMsg = (err || status);
+                    xhr.error = errMsg = err || status;
                 }
             }
             catch (err) {
                 log('error caught: ',err);
                 status = 'error';
-                xhr.error = errMsg = (err || status);
+                xhr.error = errMsg = err || status;
             }
 
             if (xhr.aborted) {
@@ -666,7 +669,7 @@ $.fn.ajaxSubmit = function(options) {
             }
 
             if (xhr.status) { // we've set xhr.status
-                status = (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) ? 'success' : 'error';
+                status = xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 ? 'success' : 'error';
             }
 
             // ordering of these callbacks/triggers is odd, but that's how $.ajax does it
@@ -718,7 +721,7 @@ $.fn.ajaxSubmit = function(options) {
             else {
                 doc = (new DOMParser()).parseFromString(s, 'text/xml');
             }
-            return (doc && doc.documentElement && doc.documentElement.nodeName != 'parsererror') ? doc : null;
+            return doc && doc.documentElement && doc.documentElement.nodeName != 'parsererror' ? doc : null;
         };
         var parseJSON = $.parseJSON || function(s) {
             /*jslint evil:true */
@@ -814,7 +817,7 @@ function captureSubmittingElement(e) {
     /*jshint validthis:true */
     var target = e.target;
     var $el = $(target);
-    if (!($el.is("[type=submit],[type=image]"))) {
+    if (!$el.is("[type=submit],[type=image]")) {
         // is this a child element of the submit el?  (ex: a span within a button)
         var t = $el.closest('[type=submit]');
         if (t.length === 0) {
@@ -1004,7 +1007,7 @@ $.fn.fieldValue = function(successful) {
     for (var val=[], i=0, max=this.length; i < max; i++) {
         var el = this[i];
         var v = $.fieldValue(el, successful);
-        if (v === null || typeof v == 'undefined' || (v.constructor == Array && !v.length)) {
+        if (v === null || typeof v == 'undefined' || v.constructor == Array && !v.length) {
             continue;
         }
         if (v.constructor == Array)
@@ -1037,14 +1040,14 @@ $.fieldValue = function(el, successful) {
             return null;
         }
         var a = [], ops = el.options;
-        var one = (t == 'select-one');
-        var max = (one ? index+1 : ops.length);
-        for(var i=(one ? index : 0); i < max; i++) {
+        var one = t == 'select-one';
+        var max = one ? index+1 : ops.length;
+        for(var i=one ? index : 0; i < max; i++) {
             var op = ops[i];
             if (op.selected) {
                 var v = op.value;
                 if (!v) { // extra pain for IE...
-                    v = (op.attributes && op.attributes['value'] && !(op.attributes['value'].specified)) ? op.text : op.value;
+                    v = op.attributes && op.attributes['value'] && !(op.attributes['value'].specified) ? op.text : op.value;
                 }
                 if (one) {
                     return v;
@@ -1099,8 +1102,8 @@ $.fn.clearFields = $.fn.clearInputs = function(includeHidden) {
             // indicating a special test; for example:
             //  $('#myForm').clearForm('.special:hidden')
             // the above would clean hidden inputs that have the class of 'special'
-            if ( (includeHidden === true && /hidden/.test(t)) ||
-                 (typeof includeHidden == 'string' && $(this).is(includeHidden)) )
+            if ( includeHidden === true && /hidden/.test(t) ||
+                 typeof includeHidden == 'string' && $(this).is(includeHidden) )
                 this.value = '';
         }
     });
@@ -1113,7 +1116,7 @@ $.fn.resetForm = function() {
     return this.each(function() {
         // guard against an input with the name of 'reset'
         // note that IE reports the reset function as an 'object'
-        if (typeof this.reset == 'function' || (typeof this.reset == 'object' && !this.reset.nodeType)) {
+        if (typeof this.reset == 'function' || typeof this.reset == 'object' && !this.reset.nodeType) {
             this.reset();
         }
     });

@@ -5,35 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   SimplifyTools.cs
+//  File:SimplifyTools.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using System.Numerics;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Tools.PolygonManipulation
 {
@@ -181,7 +180,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 float norm0 = (float) Math.Sqrt(dx0 * dx0 + dy0 * dy0);
                 float norm1 = (float) Math.Sqrt(dx1 * dx1 + dy1 * dy1);
 
-                if (!(norm0 > 0.0f && norm1 > 0.0f) && newNVertices > 3)
+                if (!((norm0 > 0.0f) && (norm1 > 0.0f)) && (newNVertices > 3))
                 {
                     //Merge identical points
                     mergeMe[i] = true;
@@ -195,7 +194,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 float cross = dx0 * dy1 - dx1 * dy0;
                 float dot = dx0 * dx1 + dy0 * dy1;
 
-                if (Math.Abs(cross) < tolerance && dot > 0 && newNVertices > 3)
+                if ((Math.Abs(cross) < tolerance) && (dot > 0) && (newNVertices > 3))
                 {
                     mergeMe[i] = true;
                     --newNVertices;

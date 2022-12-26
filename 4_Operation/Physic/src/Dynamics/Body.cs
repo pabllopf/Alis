@@ -5,31 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Body.cs
+//  File:Body.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using System.Numerics;
 using Alis.Core.Physic.Collision.Broadphase;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Filtering;
@@ -42,7 +42,6 @@ using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
 using Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Dynamics
 {
@@ -639,7 +638,7 @@ namespace Alis.Core.Physic.Dynamics
                 }
 
                 //Velcro: We support setting the inertia independently
-                if (value > 0.0f && !FixedRotation)
+                if ((value > 0.0f) && !FixedRotation)
                 {
                     inertia = value - mass * Vector2.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
                     Debug.Assert(inertia > 0.0f);
@@ -1167,7 +1166,7 @@ namespace Alis.Core.Physic.Dynamics
                 localCenter *= InvMass;
             }
 
-            if (inertia > 0.0f && (Flags & BodyFlags.FixedRotationFlag) == 0)
+            if ((inertia > 0.0f) && ((Flags & BodyFlags.FixedRotationFlag) == 0))
             {
                 // Center the inertia about the center of mass.
                 inertia -= mass * Vector2.Dot(localCenter, localCenter);
@@ -1314,7 +1313,7 @@ namespace Alis.Core.Physic.Dynamics
         internal bool ShouldCollide(Body other)
         {
             // At least one body should be dynamic.
-            if (Type != BodyType.Dynamic && other.Type != BodyType.Dynamic)
+            if ((Type != BodyType.Dynamic) && (other.Type != BodyType.Dynamic))
             {
                 return false;
             }

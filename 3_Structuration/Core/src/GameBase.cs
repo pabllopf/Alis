@@ -59,11 +59,11 @@ namespace Alis.Core
         public virtual void Run()
         {
             IsRunning = true;
-            
+
             Managers.ForEach(i => i.Init());
             Managers.ForEach(i => i.Awake());
             Managers.ForEach(i => i.Start());
-            
+
             while (IsRunning)
             {
                 TimeManager.SyncFixedDeltaTime();
@@ -77,10 +77,10 @@ namespace Alis.Core
                         Managers.ForEach(j => j.BeforeUpdate());
                         Managers.ForEach(j => j.Update());
                         Managers.ForEach(j => j.AfterUpdate());
-                        
+
                         Managers.ForEach(j => j.Draw());
                     }
-                    
+
                     Managers.ForEach(i => i.FixedUpdate());
                     Managers.ForEach(i => i.DispatchEvents());
 

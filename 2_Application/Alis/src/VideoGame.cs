@@ -66,10 +66,10 @@ namespace Alis
                 AudioManager,
                 InputManager
             };
-            
+
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the input manager
         /// </summary>
@@ -91,7 +91,7 @@ namespace Alis
         public static AudioManager AudioManager { get; set; } = new AudioManager();
 
         /// <summary>
-        /// Gets or sets the value of the physic manager
+        ///     Gets or sets the value of the physic manager
         /// </summary>
         public static PhysicManager PhysicManager { get; set; } = new PhysicManager();
 

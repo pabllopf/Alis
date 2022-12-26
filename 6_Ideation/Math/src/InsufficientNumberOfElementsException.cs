@@ -32,13 +32,13 @@ using System;
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The insufficient number of elements exception class
+    ///     The insufficient number of elements exception class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class InsufficientNumberOfElementsException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InsufficientNumberOfElementsException"/> class
+        ///     Initializes a new instance of the <see cref="InsufficientNumberOfElementsException" /> class
         /// </summary>
         /// <param name="i">The </param>
         public InsufficientNumberOfElementsException(int i)

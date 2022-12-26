@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 #if UNSUPPORTED
 using System;
 
@@ -46,12 +45,9 @@ namespace Alis.Template.Game.Desktop.Windows
     /// </summary>
     public static class Program
     {
-        
-
 #if UNSUPPORTED
-        public static void Main(string[] args)=> Console.WriteLine("UNSUPPORTED PLATFORM: Can't compile 'Windows apps' on MacOS or Linux OS.");
+        public static void Main(string[] args) => Console.WriteLine("UNSUPPORTED PLATFORM: Can't compile 'Windows apps' on MacOS or Linux OS.");
 #else
-        
         /// <summary>
         ///     The blue
         /// </summary>

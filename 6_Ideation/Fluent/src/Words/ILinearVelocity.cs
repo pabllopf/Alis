@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The linear velocity interface
+    ///     The linear velocity interface
     /// </summary>
     public interface ILinearVelocity<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        /// Linears the velocity using the specified x
+        ///     Linears the velocity using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
