@@ -34,6 +34,7 @@ using System.Numerics;
 using System.Text;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Utilities;
+using Matrix4x4 = System.Numerics.Matrix4x4;
 using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Shared

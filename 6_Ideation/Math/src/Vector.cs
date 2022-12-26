@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Matrix44.cs
+//  File:Vector.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,13 +27,32 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    /// The matrix 44
+    /// The vector
     /// </summary>
-    public struct Matrix44
+    public struct Vector
     {
-        
+        /// <summary>
+        /// Throws the insufficient number of elements exception using the specified i
+        /// </summary>
+        /// <param name="i">The </param>
+        /// <exception cref="InsufficientNumberOfElementsException"></exception>
+        public static void ThrowInsufficientNumberOfElementsException(int i)
+        {
+            throw new InsufficientNumberOfElementsException(i);
+        }
+
+        /// <summary>
+        /// Throws the argument exception destination too short
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
+        public static void ThrowArgumentException_DestinationTooShort()
+        {
+            throw new ArgumentException();
+        }
     }
 }

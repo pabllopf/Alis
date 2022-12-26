@@ -360,7 +360,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="matrix">Value of the mat3 matrix</param>
         ////////////////////////////////////////////////////////////
-        public void SetMat3Uniform(string name, Matrix33 matrix)
+        public void SetMat3Uniform(string name, Matrix3X3 matrix)
         {
             sfShader_setMat3Uniform(CPointer, name, matrix);
         }
@@ -372,7 +372,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="matrix">Value of the mat4 matrix</param>
         ////////////////////////////////////////////////////////////
-        public void SetMat4Uniform(string name, Matrix44 matrix)
+        public void SetMat4Uniform(string name, Matrix4X4 matrix)
         {
             sfShader_setMat4Uniform(CPointer, name, matrix);
         }
@@ -517,9 +517,9 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>mat3</c> values</param>
         ////////////////////////////////////////////////////////////
-        public unsafe void SetUniformArray(string name, Matrix33[] array)
+        public unsafe void SetUniformArray(string name, Matrix3X3[] array)
         {
-            fixed (Matrix33* data = array)
+            fixed (Matrix3X3* data = array)
             {
                 sfShader_setMat3UniformArray(CPointer, name, data, (uint) array.Length);
             }
@@ -532,9 +532,9 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>mat4</c> values</param>
         ////////////////////////////////////////////////////////////
-        public unsafe void SetUniformArray(string name, Matrix44[] array)
+        public unsafe void SetUniformArray(string name, Matrix4X4[] array)
         {
-            fixed (Matrix44* data = array)
+            fixed (Matrix4X4* data = array)
             {
                 sfShader_setMat4UniformArray(CPointer, name, data, (uint) array.Length);
             }
@@ -896,7 +896,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">The name</param>
         /// <param name="matrix">The matrix</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShader_setMat3Uniform(IntPtr shader, string name, Matrix33 matrix);
+        private static extern void sfShader_setMat3Uniform(IntPtr shader, string name, Matrix3X3 matrix);
 
         /// <summary>
         ///     Sfs the shader set mat 4 uniform using the specified shader
@@ -905,7 +905,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">The name</param>
         /// <param name="matrix">The matrix</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShader_setMat4Uniform(IntPtr shader, string name, Matrix44 matrix);
+        private static extern void sfShader_setMat4Uniform(IntPtr shader, string name, Matrix4X4 matrix);
 
         /// <summary>
         ///     Sfs the shader set texture uniform using the specified shader
@@ -976,7 +976,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfShader_setMat3UniformArray(IntPtr shader, string name, Matrix33* data,
+        private static extern unsafe void sfShader_setMat3UniformArray(IntPtr shader, string name, Matrix3X3* data,
             uint length);
 
         /// <summary>
@@ -987,7 +987,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix44* data,
+        private static extern unsafe void sfShader_setMat4UniformArray(IntPtr shader, string name, Matrix4X4* data,
             uint length);
 
         /// <summary>

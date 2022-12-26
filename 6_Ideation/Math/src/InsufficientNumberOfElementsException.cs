@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:InsufficientNumberOfElementsException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,20 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Base.Sample
+using System;
+
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     The program class
+    /// The insufficient number of elements exception class
     /// </summary>
-    public class Program
+    /// <seealso cref="Exception"/>
+    public class InsufficientNumberOfElementsException : Exception
     {
         /// <summary>
-        ///     Main the args
+        /// Initializes a new instance of the <see cref="InsufficientNumberOfElementsException"/> class
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        /// <param name="i">The </param>
+        public InsufficientNumberOfElementsException(int i)
         {
-            
         }
     }
 }
