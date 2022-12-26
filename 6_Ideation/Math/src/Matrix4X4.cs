@@ -1,6 +1,5 @@
 namespace Alis.Core.Aspect.Math
 {
-
     /// <summary>
     /// The matrix
     /// </summary>

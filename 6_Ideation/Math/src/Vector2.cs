@@ -26,20 +26,14 @@
 //  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
-
 using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Text;
 
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
     /// The vector
     /// </summary>
-    public partial struct Vector2 : IEquatable<Vector2>, IFormattable
+    public struct Vector2 : IEquatable<Vector2>
     {
         /// <summary>The X component of the vector.</summary>
         public float X;
@@ -63,18 +57,6 @@ namespace Alis.Core.Aspect.Math
         {
             X = x;
             Y = y;
-        }
-
-        /// <summary>Constructs a vector from the given <see cref="ReadOnlySpan{Single}" />. The span must contain at least 2 elements.</summary>
-        /// <param name="values">The span of elements to assign to the vector.</param>
-        public Vector2(ReadOnlySpan<float> values)
-        {
-            if (values.Length < 2)
-            {
-                Vector.ThrowInsufficientNumberOfElementsException(2);
-            }
-
-            this = Unsafe.ReadUnaligned<Vector2>(ref Unsafe.As<float, byte>(ref MemoryMarshal.GetReference(values)));
         }
 
         /// <summary>Returns a vector whose 2 elements are equal to zero.</summary>
@@ -111,7 +93,7 @@ namespace Alis.Core.Aspect.Math
         /// <returns>The summed vector.</returns>
         /// <remarks>The <see cref="System.Numerics.Vector2.op_Addition" /> method defines the addition operation for <see cref="System.Numerics.Vector2" /> objects.</remarks>
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 operator +(Vector2 left, Vector2 right)
         {
             return new Vector2(
@@ -126,7 +108,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 operator /(Vector2 left, Vector2 right)
         {
             return new Vector2(
@@ -139,7 +121,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value1">The vector.</param>
         /// <param name="value2">The scalar value.</param>
         /// <returns>The result of the division.</returns>
-          [MethodImpl(MethodImplOptions.AggressiveInlining)]
+          
         public static Vector2 operator /(Vector2 value1, float value2)
         {
             return value1 / new Vector2(value2);
@@ -150,7 +132,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="right">The second vector to compare.</param>
         /// <returns><see langword="true" /> if <paramref name="left" /> and <paramref name="right" /> are equal; otherwise, <see langword="false" />.</returns>
          
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static bool operator ==(Vector2 left, Vector2 right)
         {
             return (left.X == right.X)
@@ -161,7 +143,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The first vector to compare.</param>
         /// <param name="right">The second vector to compare.</param>
          
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static bool operator !=(Vector2 left, Vector2 right)
         {
             return !(left == right);
@@ -172,7 +154,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="right">The second vector.</param>
         /// <returns>The element-wise product vector.</returns>
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 operator *(Vector2 left, Vector2 right)
         {
             return new Vector2(
@@ -185,7 +167,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The vector.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
-         [MethodImpl(MethodImplOptions.AggressiveInlining)]
+         
         public static Vector2 operator *(Vector2 left, float right)
         {
             return left * new Vector2(right);
@@ -195,7 +177,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The vector.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 operator *(float left, Vector2 right)
         {
             return right * left;
@@ -206,7 +188,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="right">The second vector.</param>
         /// <returns>The vector that results from subtracting <paramref name="right" /> from <paramref name="left" />.</returns>
          
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 operator -(Vector2 left, Vector2 right)
         {
             return new Vector2(
@@ -218,7 +200,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Negates the specified vector.</summary>
         /// <param name="value">The vector to negate.</param>
         /// <returns>The negated vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 operator -(Vector2 value)
         {
             return Zero - value;
@@ -228,7 +210,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value">A vector.</param>
         /// <returns>The absolute value vector.</returns>
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Abs(Vector2 value)
         {
             return new Vector2(
@@ -241,7 +223,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The first vector to add.</param>
         /// <param name="right">The second vector to add.</param>
         /// <returns>The summed vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Add(Vector2 left, Vector2 right)
         {
             return left + right;
@@ -252,7 +234,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="min">The minimum value.</param>
         /// <param name="max">The maximum value.</param>
         /// <returns>The restricted vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Clamp(Vector2 value1, Vector2 min, Vector2 max)
         {
             // We must follow HLSL behavior in the case user specified min value is bigger than max value.
@@ -263,7 +245,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value1">The first point.</param>
         /// <param name="value2">The second point.</param>
         /// <returns>The distance.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static float Distance(Vector2 value1, Vector2 value2)
         {
             float distanceSquared = DistanceSquared(value1, value2);
@@ -274,7 +256,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value1">The first point.</param>
         /// <param name="value2">The second point.</param>
         /// <returns>The distance squared.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static float DistanceSquared(Vector2 value1, Vector2 value2)
         {
             Vector2 difference = value1 - value2;
@@ -285,7 +267,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The vector resulting from the division.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Divide(Vector2 left, Vector2 right)
         {
             return left / right;
@@ -295,7 +277,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The vector.</param>
         /// <param name="divisor">The scalar value.</param>
         /// <returns>The vector that results from the division.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Divide(Vector2 left, float divisor)
         {
             return left / divisor;
@@ -306,7 +288,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value2">The second vector.</param>
         /// <returns>The dot product.</returns>
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static float Dot(Vector2 value1, Vector2 value2)
         {
             return (value1.X * value2.X)
@@ -321,7 +303,7 @@ namespace Alis.Core.Aspect.Math
         /// <remarks><format type="text/markdown"><![CDATA[
         /// The behavior of this method changed in .NET 5.0. For more information, see [Behavior change for Vector2.Lerp and Vector4.Lerp](/dotnet/core/compatibility/3.1-5.0#behavior-change-for-vector2lerp-and-vector4lerp).
         /// ]]></format></remarks>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Lerp(Vector2 value1, Vector2 value2, float amount)
         {
             return (value1 * (1.0f - amount)) + (value2 * amount);
@@ -332,7 +314,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value2">The second vector.</param>
         /// <returns>The maximized vector.</returns>
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Max(Vector2 value1, Vector2 value2)
         {
             return new Vector2(
@@ -346,7 +328,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value2">The second vector.</param>
         /// <returns>The minimized vector.</returns>
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Min(Vector2 value1, Vector2 value2)
         {
             return new Vector2(
@@ -359,7 +341,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The element-wise product vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Multiply(Vector2 left, Vector2 right)
         {
             return left * right;
@@ -369,7 +351,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The vector to multiply.</param>
         /// <param name="right">The scalar value.</param>
         /// <returns>The scaled vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Multiply(Vector2 left, float right)
         {
             return left * right;
@@ -379,7 +361,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The scaled value.</param>
         /// <param name="right">The vector.</param>
         /// <returns>The scaled vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Multiply(float left, Vector2 right)
         {
             return left * right;
@@ -388,7 +370,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Negates a specified vector.</summary>
         /// <param name="value">The vector to negate.</param>
         /// <returns>The negated vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Negate(Vector2 value)
         {
             return -value;
@@ -397,7 +379,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Returns a vector with the same direction as the specified vector, but with a length of one.</summary>
         /// <param name="value">The vector to normalize.</param>
         /// <returns>The normalized vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Normalize(Vector2 value)
         {
             return value / value.Length();
@@ -407,7 +389,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="vector">The source vector.</param>
         /// <param name="normal">The normal of the surface being reflected off.</param>
         /// <returns>The reflected vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Reflect(Vector2 vector, Vector2 normal)
         {
             float dot = Dot(vector, normal);
@@ -418,7 +400,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="value">A vector.</param>
         /// <returns>The square root vector.</returns>
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 SquareRoot(Vector2 value)
         {
             return new Vector2(
@@ -431,46 +413,20 @@ namespace Alis.Core.Aspect.Math
         /// <param name="left">The first vector.</param>
         /// <param name="right">The second vector.</param>
         /// <returns>The difference vector.</returns>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public static Vector2 Subtract(Vector2 left, Vector2 right)
         {
             return left - right;
         }
         
-        /// <summary>Copies the vector to the given <see cref="Span{T}" />.The length of the destination span must be at least 2.</summary>
-        /// <param name="destination">The destination span which the values are copied into.</param>
-        /// <exception cref="System.ArgumentException">If number of elements in source vector is greater than those available in destination span.</exception>
-        public readonly void CopyTo(Span<float> destination)
-        {
-            if (destination.Length < 2)
-            {
-                Vector.ThrowArgumentException_DestinationTooShort();
-            }
-
-            Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref MemoryMarshal.GetReference(destination)), this);
-        }
-
-        /// <summary>Attempts to copy the vector to the given <see cref="Span{Single}" />. The length of the destination span must be at least 2.</summary>
-        /// <param name="destination">The destination span which the values are copied into.</param>
-        /// <returns><see langword="true" /> if the source vector was successfully copied to <paramref name="destination" />. <see langword="false" /> if <paramref name="destination" /> is not large enough to hold the source vector.</returns>
-        public readonly bool TryCopyTo(Span<float> destination)
-        {
-            if (destination.Length < 2)
-            {
-                return false;
-            }
-
-            Unsafe.WriteUnaligned(ref Unsafe.As<float, byte>(ref MemoryMarshal.GetReference(destination)), this);
-
-            return true;
-        }
+        
 
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
         /// <param name="obj">The object to compare with the current instance.</param>
         /// <returns><see langword="true" /> if the current instance and <paramref name="obj" /> are equal; otherwise, <see langword="false" />. If <paramref name="obj" /> is <see langword="null" />, the method returns <see langword="false" />.</returns>
         /// <remarks>The current instance and <paramref name="obj" /> are equal if <paramref name="obj" /> is a <see cref="System.Numerics.Vector2" /> object and their <see cref="System.Numerics.Vector2.X" /> and <see cref="System.Numerics.Vector2.Y" /> elements are equal.</remarks>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override readonly bool Equals([NotNullWhen(true)] object obj)
+        
+        public override readonly bool Equals( object obj)
         {
             return (obj is Vector2 other) && Equals(other);
         }
@@ -494,7 +450,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Returns the length of the vector.</summary>
         /// <returns>The vector's length.</returns>
         /// <altmember cref="System.Numerics.Vector2.LengthSquared"/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public readonly float Length()
         {
             float lengthSquared = LengthSquared();
@@ -505,49 +461,10 @@ namespace Alis.Core.Aspect.Math
         /// <returns>The vector's length squared.</returns>
         /// <remarks>This operation offers better performance than a call to the <see cref="System.Numerics.Vector2.Length" /> method.</remarks>
         /// <altmember cref="System.Numerics.Vector2.Length"/>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        
         public readonly float LengthSquared()
         {
             return Dot(this, this);
-        }
-
-        /// <summary>Returns the string representation of the current instance using default formatting.</summary>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>This method returns a string in which each element of the vector is formatted using the "G" (general) format string and the formatting conventions of the current thread culture. The "&lt;" and "&gt;" characters are used to begin and end the string, and the current culture's <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to separate each element.</remarks>
-        public override readonly string ToString()
-        {
-            return ToString("G", CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Returns the string representation of the current instance using the specified format string to format individual elements.</summary>
-        /// <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>This method returns a string in which each element of the vector is formatted using <paramref name="format" /> and the current culture's formatting conventions. The "&lt;" and "&gt;" characters are used to begin and end the string, and the current culture's <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to separate each element.</remarks>
-        /// <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">Standard Numeric Format Strings</related>
-        /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        public readonly string ToString(string format)
-        {
-            return ToString(format, CultureInfo.CurrentCulture);
-        }
-
-        /// <summary>Returns the string representation of the current instance using the specified format string to format individual elements and the specified format provider to define culture-specific formatting.</summary>
-        /// <param name="format">A standard or custom numeric format string that defines the format of individual elements.</param>
-        /// <param name="formatProvider">A format provider that supplies culture-specific formatting information.</param>
-        /// <returns>The string representation of the current instance.</returns>
-        /// <remarks>This method returns a string in which each element of the vector is formatted using <paramref name="format" /> and <paramref name="formatProvider" />. The "&lt;" and "&gt;" characters are used to begin and end the string, and the format provider's <see cref="System.Globalization.NumberFormatInfo.NumberGroupSeparator" /> property followed by a space is used to separate each element.</remarks>
-        /// <related type="Article" href="/dotnet/standard/base-types/custom-numeric-format-strings">Custom Numeric Format Strings</related>
-        /// <related type="Article" href="/dotnet/standard/base-types/standard-numeric-format-strings">Standard Numeric Format Strings</related>
-        public readonly string ToString(string format, IFormatProvider formatProvider)
-        {
-            StringBuilder sb = new StringBuilder();
-            string separator = NumberFormatInfo.GetInstance(formatProvider).NumberGroupSeparator;
-            sb.Append('<');
-            sb.Append(X.ToString(format, formatProvider));
-            sb.Append(separator);
-            sb.Append(' ');
-            sb.Append(Y.ToString(format, formatProvider));
-            sb.Append('>');
-            return sb.ToString();
         }
     }
 }
