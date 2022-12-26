@@ -31,7 +31,7 @@
   <ItemGroup Condition="$([MSBuild]::IsOSPlatform('osx'))">
       <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8" />
       <PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.3" />
-      <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.1" />
+      <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.3" />
       <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
   </ItemGroup>
 
