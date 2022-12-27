@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector2i.cs
+//  File:Vector2f.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,15 +30,16 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Vector
 {
+    ////////////////////////////////////////////////////////////
     /// <summary>
-    ///     Vector2i is an utility class for manipulating 2 dimensional
-    ///     vectors with integer components
+    ///     Vector2f is an utility class for manipulating 2 dimensional
+    ///     vectors with float components
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector2I : IEquatable<Vector2I>
+    public struct Vector2F : IEquatable<Vector2F>
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -47,7 +48,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vector2I(int x, int y)
+        public Vector2F(float x, float y)
         {
             X = x;
             Y = y;
@@ -60,7 +61,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v">Vector to negate</param>
         /// <returns>-v</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2I operator -(Vector2I v) => new Vector2I(-v.X, -v.Y);
+        public static Vector2F operator -(Vector2F v) => new Vector2F(-v.X, -v.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -70,7 +71,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 - v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2I operator -(Vector2I v1, Vector2I v2) => new Vector2I(v1.X - v2.X, v1.Y - v2.Y);
+        public static Vector2F operator -(Vector2F v1, Vector2F v2) => new Vector2F(v1.X - v2.X, v1.Y - v2.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -80,7 +81,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 + v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2I operator +(Vector2I v1, Vector2I v2) => new Vector2I(v1.X + v2.X, v1.Y + v2.Y);
+        public static Vector2F operator +(Vector2F v1, Vector2F v2) => new Vector2F(v1.X + v2.X, v1.Y + v2.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -90,7 +91,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="x">Scalar value</param>
         /// <returns>v * x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2I operator *(Vector2I v, int x) => new Vector2I(v.X * x, v.Y * x);
+        public static Vector2F operator *(Vector2F v, float x) => new Vector2F(v.X * x, v.Y * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -100,7 +101,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v">Vector</param>
         /// <returns>x * v</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2I operator *(int x, Vector2I v) => new Vector2I(v.X * x, v.Y * x);
+        public static Vector2F operator *(float x, Vector2F v) => new Vector2F(v.X * x, v.Y * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -110,7 +111,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="x">Scalar value</param>
         /// <returns>v / x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2I operator /(Vector2I v, int x) => new Vector2I(v.X / x, v.Y / x);
+        public static Vector2F operator /(Vector2F v, float x) => new Vector2F(v.X / x, v.Y / x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -120,7 +121,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 == v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(Vector2I v1, Vector2I v2) => v1.Equals(v2);
+        public static bool operator ==(Vector2F v1, Vector2F v2) => v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -130,7 +131,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 != v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(Vector2I v1, Vector2I v2) => !v1.Equals(v2);
+        public static bool operator !=(Vector2F v1, Vector2F v2) => !v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -138,7 +139,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() => $"[Vector2i] X({X}) Y({Y})";
+        public override string ToString() => $"[Vector2f] X({X}) Y({Y})";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -147,7 +148,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="obj">Object to check</param>
         /// <returns>Object and vector are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is Vector2I && Equals((Vector2I) obj);
+        public override bool Equals(object obj) => obj is Vector2F && Equals((Vector2F) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -156,7 +157,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="other">Vector to check</param>
         /// <returns>Vectors are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Vector2I other) => (X == other.X) && (Y == other.Y);
+        public bool Equals(Vector2F other) => (X == other.X) && (Y == other.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -173,7 +174,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v">Vector being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator Vector2F(Vector2I v) => new Vector2F(v.X, v.Y);
+        public static explicit operator Vector2I(Vector2F v) => new Vector2I((int) v.X, (int) v.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -182,12 +183,16 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v">Vector being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator Vector2U(Vector2I v) => new Vector2U((uint) v.X, (uint) v.Y);
+        public static explicit operator Vector2U(Vector2F v) => new Vector2U((uint) v.X, (uint) v.Y);
 
         /// <summary>X (horizontal) component of the vector</summary>
-        public int X;
+        public float X;
 
         /// <summary>Y (vertical) component of the vector</summary>
-        public int Y;
+        public float Y;
     }
+
+    ////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////
 }

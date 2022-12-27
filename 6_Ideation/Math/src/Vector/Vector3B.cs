@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector2B.cs
+//  File:Vector3B.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,26 +29,28 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>
-    ///     <see cref="Vector2B" /> is a struct represent a glsl bvec2 value
+    ///     <see cref="Vector3B" /> is a struct represent a glsl bvec3 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector2B
+    public struct Vector3B
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Vector2B" /> from its coordinates
+        ///     Construct the <see cref="Vector3B" /> from its coordinates
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
+        /// <param name="z">Z coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vector2B(bool x, bool y)
+        public Vector3B(bool x, bool y, bool z)
         {
             X = x;
             Y = y;
+            Z = z;
         }
 
         /// <summary>Horizontal component of the vector</summary>
@@ -56,5 +58,8 @@ namespace Alis.Core.Aspect.Math
 
         /// <summary>Vertical component of the vector</summary>
         public bool Y;
+
+        /// <summary>Depth component of the vector</summary>
+        public bool Z;
     }
 }

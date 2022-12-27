@@ -34,6 +34,7 @@ using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {

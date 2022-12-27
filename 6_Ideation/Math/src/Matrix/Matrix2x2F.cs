@@ -29,7 +29,7 @@
 
 using System.Numerics;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
     ///     A 2-by-2 matrix. Stored in column-major order.

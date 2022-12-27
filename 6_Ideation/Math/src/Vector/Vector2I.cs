@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector3f.cs
+//  File:Vector2i.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,16 +30,15 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Vector
 {
-    ////////////////////////////////////////////////////////////
     /// <summary>
-    ///     Vector3f is an utility class for manipulating 3 dimensional
-    ///     vectors with float components
+    ///     Vector2i is an utility class for manipulating 2 dimensional
+    ///     vectors with integer components
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector3F : IEquatable<Vector3F>
+    public struct Vector2I : IEquatable<Vector2I>
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -47,13 +46,11 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
-        /// <param name="z">Z coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vector3F(float x, float y, float z)
+        public Vector2I(int x, int y)
         {
             X = x;
             Y = y;
-            Z = z;
         }
 
         ////////////////////////////////////////////////////////////
@@ -63,7 +60,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v">Vector to negate</param>
         /// <returns>-v</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3F operator -(Vector3F v) => new Vector3F(-v.X, -v.Y, -v.Z);
+        public static Vector2I operator -(Vector2I v) => new Vector2I(-v.X, -v.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -73,7 +70,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 - v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3F operator -(Vector3F v1, Vector3F v2) => new Vector3F(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+        public static Vector2I operator -(Vector2I v1, Vector2I v2) => new Vector2I(v1.X - v2.X, v1.Y - v2.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -83,7 +80,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 + v2</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3F operator +(Vector3F v1, Vector3F v2) => new Vector3F(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+        public static Vector2I operator +(Vector2I v1, Vector2I v2) => new Vector2I(v1.X + v2.X, v1.Y + v2.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -93,7 +90,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="x">Scalar value</param>
         /// <returns>v * x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3F operator *(Vector3F v, float x) => new Vector3F(v.X * x, v.Y * x, v.Z * x);
+        public static Vector2I operator *(Vector2I v, int x) => new Vector2I(v.X * x, v.Y * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -103,7 +100,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v">Vector</param>
         /// <returns>x * v</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3F operator *(float x, Vector3F v) => new Vector3F(v.X * x, v.Y * x, v.Z * x);
+        public static Vector2I operator *(int x, Vector2I v) => new Vector2I(v.X * x, v.Y * x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -113,7 +110,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="x">Scalar value</param>
         /// <returns>v / x</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector3F operator /(Vector3F v, float x) => new Vector3F(v.X / x, v.Y / x, v.Z / x);
+        public static Vector2I operator /(Vector2I v, int x) => new Vector2I(v.X / x, v.Y / x);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -123,7 +120,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 == v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(Vector3F v1, Vector3F v2) => v1.Equals(v2);
+        public static bool operator ==(Vector2I v1, Vector2I v2) => v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -133,7 +130,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="v2">Second vector</param>
         /// <returns>v1 != v2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(Vector3F v1, Vector3F v2) => !v1.Equals(v2);
+        public static bool operator !=(Vector2I v1, Vector2I v2) => !v1.Equals(v2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -141,7 +138,7 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() => $"[Vector3f] X({X}) Y({Y}) Z({Z})";
+        public override string ToString() => $"[Vector2i] X({X}) Y({Y})";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -150,7 +147,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="obj">Object to check</param>
         /// <returns>Object and vector are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is Vector3F && Equals((Vector3F) obj);
+        public override bool Equals(object obj) => obj is Vector2I && Equals((Vector2I) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -159,7 +156,7 @@ namespace Alis.Core.Aspect.Math
         /// <param name="other">Vector to check</param>
         /// <returns>Vectors are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(Vector3F other) => (X == other.X) && (Y == other.Y) && (Z == other.Z);
+        public bool Equals(Vector2I other) => (X == other.X) && (Y == other.Y);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -167,15 +164,30 @@ namespace Alis.Core.Aspect.Math
         /// </summary>
         /// <returns>Integer description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode() ^ Z.GetHashCode();
+        public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Explicit casting to another vector type
+        /// </summary>
+        /// <param name="v">Vector being casted</param>
+        /// <returns>Casting result</returns>
+        ////////////////////////////////////////////////////////////
+        public static explicit operator Vector2F(Vector2I v) => new Vector2F(v.X, v.Y);
+
+        ////////////////////////////////////////////////////////////
+        /// <summary>
+        ///     Explicit casting to another vector type
+        /// </summary>
+        /// <param name="v">Vector being casted</param>
+        /// <returns>Casting result</returns>
+        ////////////////////////////////////////////////////////////
+        public static explicit operator Vector2U(Vector2I v) => new Vector2U((uint) v.X, (uint) v.Y);
 
         /// <summary>X (horizontal) component of the vector</summary>
-        public float X;
+        public int X;
 
         /// <summary>Y (vertical) component of the vector</summary>
-        public float Y;
-
-        /// <summary>Z (depth) component of the vector</summary>
-        public float Z;
+        public int Y;
     }
 }

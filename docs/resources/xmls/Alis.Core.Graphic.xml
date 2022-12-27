@@ -488,7 +488,7 @@
             <param name="index">Index of the point to get, in range [0 .. PointCount - 1]</param>
             <returns>index-th point of the shape</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ConvexShape.SetPoint(System.UInt32,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.ConvexShape.SetPoint(System.UInt32,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Set the position of a point.
                 Don't forget that the polygon must remain convex, and
@@ -871,7 +871,7 @@
             <param name="destX">X coordinate of the destination position</param>
             <param name="destY">Y coordinate of the destination position</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Image.Copy(Alis.Core.Graphic.D2.SFML.Graphics.Image,System.UInt32,System.UInt32,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Image.Copy(Alis.Core.Graphic.D2.SFML.Graphics.Image,System.UInt32,System.UInt32,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Copy pixels from another image onto this one.
                 This function does a slow pixel copy and should only
@@ -882,7 +882,7 @@
             <param name="destY">Y coordinate of the destination position</param>
             <param name="sourceRect">Sub-rectangle of the source image to copy</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Image.Copy(Alis.Core.Graphic.D2.SFML.Graphics.Image,System.UInt32,System.UInt32,Alis.Core.Aspect.Math.RectangleI,System.Boolean)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Image.Copy(Alis.Core.Graphic.D2.SFML.Graphics.Image,System.UInt32,System.UInt32,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI,System.Boolean)">
             <summary>
                 Copy pixels from another image onto this one.
                 This function does a slow pixel copy and should only
@@ -1001,7 +1001,7 @@
             <param name="col">The col</param>
             <param name="alpha">The alpha</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Image.sfImage_copyImage(System.IntPtr,System.IntPtr,System.UInt32,System.UInt32,Alis.Core.Aspect.Math.RectangleI,System.Boolean)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Image.sfImage_copyImage(System.IntPtr,System.IntPtr,System.UInt32,System.UInt32,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI,System.Boolean)">
             <summary>
                 Sfs the image copy image using the specified c pointer
             </summary>
@@ -1111,7 +1111,7 @@
                 Default constructor
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RectangleShape.#ctor(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RectangleShape.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Construct the shape with an initial size
             </summary>
@@ -1272,7 +1272,7 @@
             <param name="view">Target view</param>
             <returns>Viewport rectangle, expressed in pixels in the current target</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapPixelToCoords(Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapPixelToCoords(Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Convert a point from target coordinates to world
                 coordinates, using the current view
@@ -1284,7 +1284,7 @@
             <param name="point">Pixel to convert</param>
             <returns>The converted point, in "world" coordinates</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapPixelToCoords(Alis.Core.Aspect.Math.Vector2I,Alis.Core.Graphic.D2.SFML.Graphics.View)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapPixelToCoords(Alis.Core.Aspect.Math.Vector.Vector2I,Alis.Core.Graphic.D2.SFML.Graphics.View)">
             <summary>
                 Convert a point from target coordinates to world coordinates
                 This function finds the 2D position that matches the
@@ -1306,7 +1306,7 @@
             <param name="view">The view to use for converting the point</param>
             <returns>The converted point, in "world" coordinates</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Convert a point from world coordinates to target
                 coordinates, using the current view
@@ -1318,7 +1318,7 @@
             <param name="point">Point to convert</param>
             <returns>The converted point, in target coordinates (pixels)</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.View)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.View)">
             <summary>
                 Convert a point from world coordinates to target coordinates
                 This function finds the pixel of the render-target that matches
@@ -1523,7 +1523,7 @@
             <param name="view">Target view</param>
             <returns>Viewport rectangle, expressed in pixels in the current target</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapPixelToCoords(Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapPixelToCoords(Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Convert a point from target coordinates to world
                 coordinates, using the current view
@@ -1535,7 +1535,7 @@
             <param name="point">Pixel to convert</param>
             <returns>The converted point, in "world" coordinates</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapPixelToCoords(Alis.Core.Aspect.Math.Vector2I,Alis.Core.Graphic.D2.SFML.Graphics.View)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapPixelToCoords(Alis.Core.Aspect.Math.Vector.Vector2I,Alis.Core.Graphic.D2.SFML.Graphics.View)">
             <summary>
                 Convert a point from target coordinates to world coordinates
                 This function finds the 2D position that matches the
@@ -1557,7 +1557,7 @@
             <param name="view">The view to use for converting the point</param>
             <returns>The converted point, in "world" coordinates</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Convert a point from world coordinates to target
                 coordinates, using the current view
@@ -1569,7 +1569,7 @@
             <param name="point">Point to convert</param>
             <returns>The converted point, in target coordinates (pixels)</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.View)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.View)">
             <summary>
                 Convert a point from world coordinates to target coordinates
                 This function finds the pixel of the render-target that matches
@@ -1833,7 +1833,7 @@
             <param name="targetView">The target view</param>
             <returns>The int rect</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.sfRenderTexture_mapCoordsToPixel(System.IntPtr,Alis.Core.Aspect.Math.Vector2F,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.sfRenderTexture_mapCoordsToPixel(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2F,System.IntPtr)">
             <summary>
                 Sfs the render texture map coords to pixel using the specified c pointer
             </summary>
@@ -1842,7 +1842,7 @@
             <param name="view">The view</param>
             <returns>The vector 2i</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.sfRenderTexture_mapPixelToCoords(System.IntPtr,Alis.Core.Aspect.Math.Vector2I,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderTexture.sfRenderTexture_mapPixelToCoords(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2I,System.IntPtr)">
             <summary>
                 Sfs the render texture map pixel to coords using the specified c pointer
             </summary>
@@ -2038,7 +2038,7 @@
             <param name="view">Target view</param>
             <returns>Viewport rectangle, expressed in pixels in the current target</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords(Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords(Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Convert a point from target coordinates to world
                 coordinates, using the current view
@@ -2050,7 +2050,7 @@
             <param name="point">Pixel to convert</param>
             <returns>The converted point, in "world" coordinates</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords(Alis.Core.Aspect.Math.Vector2I,Alis.Core.Graphic.D2.SFML.Graphics.View)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords(Alis.Core.Aspect.Math.Vector.Vector2I,Alis.Core.Graphic.D2.SFML.Graphics.View)">
             <summary>
                 Convert a point from target coordinates to world coordinates
                 This function finds the 2D position that matches the
@@ -2072,7 +2072,7 @@
             <param name="view">The view to use for converting the point</param>
             <returns>The converted point, in "world" coordinates</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Convert a point from world coordinates to target
                 coordinates, using the current view
@@ -2084,7 +2084,7 @@
             <param name="point">Point to convert</param>
             <returns>The converted point, in target coordinates (pixels)</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.View)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.View)">
             <summary>
                 Convert a point from world coordinates to target coordinates
                 This function finds the pixel of the render-target that matches
@@ -2360,7 +2360,7 @@
             </summary>
             <returns>Relative mouse position</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.InternalSetMousePosition(Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.InternalSetMousePosition(Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Internal function to set the mouse position relative to the window.
                 This function is protected because it is called by another class,
@@ -2465,7 +2465,7 @@
             <param name="cPointer">The pointer</param>
             <returns>The vector 2i</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Sfs the render window set position using the specified c pointer
             </summary>
@@ -2479,7 +2479,7 @@
             <param name="cPointer">The pointer</param>
             <returns>The vector 2u</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_setSize(System.IntPtr,Alis.Core.Aspect.Math.Vector2U)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_setSize(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2U)">
             <summary>
                 Sfs the render window set size using the specified c pointer
             </summary>
@@ -2635,7 +2635,7 @@
             <param name="targetView">The target view</param>
             <returns>The int rect</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapPixelToCoords(System.IntPtr,Alis.Core.Aspect.Math.Vector2I,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapPixelToCoords(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2I,System.IntPtr)">
             <summary>
                 Sfs the render window map pixel to coords using the specified c pointer
             </summary>
@@ -2644,7 +2644,7 @@
             <param name="view">The view</param>
             <returns>The vector 2f</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapCoordsToPixel(System.IntPtr,Alis.Core.Aspect.Math.Vector2F,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapCoordsToPixel(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2F,System.IntPtr)">
             <summary>
                 Sfs the render window map coords to pixel using the specified c pointer
             </summary>
@@ -2695,7 +2695,7 @@
             <param name="cPointer">The pointer</param>
             <returns>The vector 2i</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfMouse_setPositionRenderWindow(Alis.Core.Aspect.Math.Vector2I,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfMouse_setPositionRenderWindow(Alis.Core.Aspect.Math.Vector.Vector2I,System.IntPtr)">
             <summary>
                 Sfs the mouse set position render window using the specified position
             </summary>
@@ -2857,14 +2857,14 @@
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="vector">Value of the vec2 vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector3F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Specify value for <c>vec3</c> uniform
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="vector">Value of the vec3 vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector4F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector4F)">
             <summary>
                 Specify value for <c>vec4</c> uniform
             </summary>
@@ -2878,21 +2878,21 @@
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="x">Value of the int scalar</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Specify value for <c>ivec2</c> uniform
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="vector">Value of the ivec2 vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector3I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector3I)">
             <summary>
                 Specify value for <c>ivec3</c> uniform
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="vector">Value of the ivec3 vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector4I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector4I)">
             <summary>
                 Specify value for <c>ivec4</c> uniform
             </summary>
@@ -2906,35 +2906,35 @@
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="x">Value of the bool scalar</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector2B)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector2B)">
             <summary>
                 Specify value for <c>bvec2</c> uniform
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="vector">Value of the bvec2 vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector3B)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector3B)">
             <summary>
                 Specify value for <c>bvec3</c> uniform
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="vector">Value of the bvec3 vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector4B)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Vector.Vector4B)">
             <summary>
                 Specify value for <c>bvec4</c> uniform
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="vector">Value of the bvec4 vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Matrix3X3F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F)">
             <summary>
                 Specify value for <c>mat3</c> uniform
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="matrix">Value of the mat3 matrix</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Matrix4X4F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniform(System.String,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
             <summary>
                 Specify value for <c>mat4</c> uniform
             </summary>
@@ -3016,28 +3016,28 @@
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="array">array of <c>vec2</c> values</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Vector3F[])">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Vector.Vector3F[])">
             <summary>
                 Specify values for <c>vec3[]</c> array uniforms
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="array">array of <c>vec3</c> values</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Vector4F[])">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Vector.Vector4F[])">
             <summary>
                 Specify values for <c>vec4[]</c> array uniforms
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="array">array of <c>vec4</c> values</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Matrix3X3F[])">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F[])">
             <summary>
                 Specify values for <c>mat3[]</c> array uniforms
             </summary>
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="array">array of <c>mat3</c> values</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Matrix4X4F[])">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Matrix.Matrix4X4F[])">
             <summary>
                 Specify values for <c>mat4[]</c> array uniforms
             </summary>
@@ -3090,7 +3090,7 @@
             <param name="z">Third component of the value to assign</param>
             <param name="w">Fourth component of the value to assign</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetParameter(System.String,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.SetParameter(System.String,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Change a 2-components vector parameter of the shader
                 "name" is the name of the variable to change in the shader.
@@ -3215,7 +3215,7 @@
             <param name="name">The name</param>
             <param name="vector">The vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector3F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Sfs the shader set vec 3 uniform using the specified shader
             </summary>
@@ -3223,7 +3223,7 @@
             <param name="name">The name</param>
             <param name="vector">The vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector4F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector4F)">
             <summary>
                 Sfs the shader set vec 4 uniform using the specified shader
             </summary>
@@ -3239,7 +3239,7 @@
             <param name="name">The name</param>
             <param name="x">The </param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setIvec2Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setIvec2Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Sfs the shader set ivec 2 uniform using the specified shader
             </summary>
@@ -3247,7 +3247,7 @@
             <param name="name">The name</param>
             <param name="vector">The vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setIvec3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector3I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setIvec3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector3I)">
             <summary>
                 Sfs the shader set ivec 3 uniform using the specified shader
             </summary>
@@ -3255,7 +3255,7 @@
             <param name="name">The name</param>
             <param name="vector">The vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setIvec4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector4I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setIvec4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector4I)">
             <summary>
                 Sfs the shader set ivec 4 uniform using the specified shader
             </summary>
@@ -3271,7 +3271,7 @@
             <param name="name">The name</param>
             <param name="x">The </param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setBvec2Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector2B)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setBvec2Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector2B)">
             <summary>
                 Sfs the shader set bvec 2 uniform using the specified shader
             </summary>
@@ -3279,7 +3279,7 @@
             <param name="name">The name</param>
             <param name="vector">The vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setBvec3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector3B)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setBvec3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector3B)">
             <summary>
                 Sfs the shader set bvec 3 uniform using the specified shader
             </summary>
@@ -3287,7 +3287,7 @@
             <param name="name">The name</param>
             <param name="vector">The vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setBvec4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector4B)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setBvec4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector4B)">
             <summary>
                 Sfs the shader set bvec 4 uniform using the specified shader
             </summary>
@@ -3295,7 +3295,7 @@
             <param name="name">The name</param>
             <param name="vector">The vector</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix3X3F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat3Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F)">
             <summary>
                 Sfs the shader set mat 3 uniform using the specified shader
             </summary>
@@ -3303,7 +3303,7 @@
             <param name="name">The name</param>
             <param name="matrix">The matrix</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix4X4F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat4Uniform(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix.Matrix4X4F)">
             <summary>
                 Sfs the shader set mat 4 uniform using the specified shader
             </summary>
@@ -3344,7 +3344,7 @@
             <param name="data">The data</param>
             <param name="length">The length</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec3UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector3F*,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec3UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector3F*,System.UInt32)">
             <summary>
                 Sfs the shader set vec 3 uniform array using the specified shader
             </summary>
@@ -3353,7 +3353,7 @@
             <param name="data">The data</param>
             <param name="length">The length</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec4UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector4F*,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setVec4UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Vector.Vector4F*,System.UInt32)">
             <summary>
                 Sfs the shader set vec 4 uniform array using the specified shader
             </summary>
@@ -3362,7 +3362,7 @@
             <param name="data">The data</param>
             <param name="length">The length</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat3UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix3X3F*,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat3UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F*,System.UInt32)">
             <summary>
                 Sfs the shader set mat 3 uniform array using the specified shader
             </summary>
@@ -3371,7 +3371,7 @@
             <param name="data">The data</param>
             <param name="length">The length</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat4UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix4X4F*,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shader.sfShader_setMat4UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix.Matrix4X4F*,System.UInt32)">
             <summary>
                 Sfs the shader set mat 4 uniform array using the specified shader
             </summary>
@@ -3636,7 +3636,7 @@
             <param name="texture">The texture</param>
             <param name="adjustToNewSize">The adjust to new size</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shape.sfShape_setTextureRect(System.IntPtr,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Shape.sfShape_setTextureRect(System.IntPtr,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Sfs the shape set texture rect using the specified c pointer
             </summary>
@@ -3756,7 +3756,7 @@
             </summary>
             <param name="texture">Source texture to assign to the sprite</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Sprite.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Texture,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Sprite.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Texture,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Construct the sprite from a source texture
             </summary>
@@ -3882,7 +3882,7 @@
             <param name="texture">The texture</param>
             <param name="adjustToNewSize">The adjust to new size</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Sprite.sfSprite_setTextureRect(System.IntPtr,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Sprite.sfSprite_setTextureRect(System.IntPtr,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Sfs the sprite set texture rect using the specified c pointer
             </summary>
@@ -4305,7 +4305,7 @@
             <param name="filename">Path of the image file to load</param>
             <exception cref="T:Alis.Core.Aspect.Base.Exceptions.LoadingFailedException" />
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.#ctor(System.String,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.#ctor(System.String,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Construct the texture from a file
             </summary>
@@ -4320,7 +4320,7 @@
             <param name="stream">Stream containing the file contents</param>
             <exception cref="T:Alis.Core.Aspect.Base.Exceptions.LoadingFailedException" />
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.#ctor(System.IO.Stream,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.#ctor(System.IO.Stream,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Construct the texture from a file in a stream
             </summary>
@@ -4335,7 +4335,7 @@
             <param name="image">Image to load to the texture</param>
             <exception cref="T:Alis.Core.Aspect.Base.Exceptions.LoadingFailedException" />
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Image,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.#ctor(Alis.Core.Graphic.D2.SFML.Graphics.Image,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Construct the texture from an image
             </summary>
@@ -4547,7 +4547,7 @@
             <param name="height">The height</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromFile(System.String,Alis.Core.Aspect.Math.RectangleI@)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromFile(System.String,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI@)">
             <summary>
                 Sfs the texture create from file using the specified filename
             </summary>
@@ -4555,7 +4555,7 @@
             <param name="area">The area</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromStream(System.IntPtr,Alis.Core.Aspect.Math.RectangleI@)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromStream(System.IntPtr,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI@)">
             <summary>
                 Sfs the texture create from stream using the specified stream
             </summary>
@@ -4563,7 +4563,7 @@
             <param name="area">The area</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromImage(System.IntPtr,Alis.Core.Aspect.Math.RectangleI@)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromImage(System.IntPtr,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI@)">
             <summary>
                 Sfs the texture create from image using the specified image
             </summary>
@@ -4571,7 +4571,7 @@
             <param name="area">The area</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromMemory(System.IntPtr,System.UInt64,Alis.Core.Aspect.Math.RectangleI@)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_createFromMemory(System.IntPtr,System.UInt64,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI@)">
             <summary>
                 Sfs the texture create from memory using the specified data
             </summary>
@@ -4723,7 +4723,7 @@
             <param name="shader">The shader</param>
             <returns>The uint</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_getTexCoords(System.IntPtr,Alis.Core.Aspect.Math.RectangleI)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Texture.sfTexture_getTexCoords(System.IntPtr,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleI)">
             <summary>
                 Sfs the texture get tex coords using the specified texture
             </summary>
@@ -4772,14 +4772,14 @@
             <param name="y">Y coordinate of the point to transform</param>
             <returns>Transformed point</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.TransformPoint(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.TransformPoint(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Transform a 2D point.
             </summary>
             <param name="point">Point to transform</param>
             <returns>Transformed point</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.TransformRect(Alis.Core.Aspect.Math.RectangleF)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.TransformRect(Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF)">
             <summary>
                 Transform a rectangle.
                 Since SFML doesn't provide support for oriented rectangles,
@@ -4807,7 +4807,7 @@
             <param name="x">Offset to apply on X axis</param>
             <param name="y">Offset to apply on Y axis</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Translate(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Translate(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Combine the current transform with a translation.
             </summary>
@@ -4831,7 +4831,7 @@
             <param name="centerX">X coordinate of the center of rotation</param>
             <param name="centerY">Y coordinate of the center of rotation</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Rotate(System.Single,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Rotate(System.Single,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Combine the current transform with a rotation.
                 The center of rotation is provided for convenience as a second
@@ -4862,13 +4862,13 @@
             <param name="centerX">X coordinate of the center of scaling</param>
             <param name="centerY">Y coordinate of the center of scaling</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Scale(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Scale(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Combine the current transform with a scaling.
             </summary>
             <param name="factors">Scaling factors</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Scale(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.Scale(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Combine the current transform with a scaling.
                 The center of scaling is provided for convenience as a second
@@ -4909,7 +4909,7 @@
             <param name="right">Right operand (the second transform)</param>
             <returns>New combined transform</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.op_Multiply(Alis.Core.Graphic.D2.SFML.Graphics.Transform,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.op_Multiply(Alis.Core.Graphic.D2.SFML.Graphics.Transform,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Overload of binary operator * to transform a point.
                 This call is equivalent to calling left.TransformPoint(right).
@@ -4979,7 +4979,7 @@
             <param name="transform">The transform</param>
             <returns>The transform</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.sfTransform_transformPoint(Alis.Core.Graphic.D2.SFML.Graphics.Transform@,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.sfTransform_transformPoint(Alis.Core.Graphic.D2.SFML.Graphics.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Sfs the transform transform point using the specified transform
             </summary>
@@ -4987,7 +4987,7 @@
             <param name="point">The point</param>
             <returns>The vector 2f</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.sfTransform_transformRect(Alis.Core.Graphic.D2.SFML.Graphics.Transform@,Alis.Core.Aspect.Math.RectangleF)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Transform.sfTransform_transformRect(Alis.Core.Graphic.D2.SFML.Graphics.Transform@,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF)">
             <summary>
                 Sfs the transform transform rect using the specified transform
             </summary>
@@ -5172,14 +5172,14 @@
                 Define a point with color and texture coordinates
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Construct the vertex from its position
                 The vertex color is white and texture coordinates are (0, 0).
             </summary>
             <param name="position">Vertex position</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.Color)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.Color)">
             <summary>
                 Construct the vertex from its position and color
                 The texture coordinates are (0, 0).
@@ -5187,7 +5187,7 @@
             <param name="position">Vertex position</param>
             <param name="color">Vertex color</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Construct the vertex from its position and texture coordinates
                 The vertex color is white.
@@ -5195,7 +5195,7 @@
             <param name="position">Vertex position</param>
             <param name="texCoords">Vertex texture coordinates</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.Color,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.Vertex.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Graphic.D2.SFML.Graphics.Color,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Construct the vertex from its position, color and texture coordinates
             </summary>
@@ -5700,13 +5700,13 @@
                 Create a default view (1000x1000)
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.#ctor(Alis.Core.Aspect.Math.RectangleF)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.#ctor(Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF)">
             <summary>
                 Construct the view from a rectangle
             </summary>
             <param name="viewRect">Rectangle defining the position and size of the view</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.#ctor(Alis.Core.Aspect.Math.Vector2F,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Construct the view from its center and size
             </summary>
@@ -5746,13 +5746,13 @@
                 size of the target to which the view is applied
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.Reset(Alis.Core.Aspect.Math.RectangleF)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.Reset(Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF)">
             <summary>
                 Rebuild the view from a rectangle
             </summary>
             <param name="rectangle">Rectangle defining the position and size of the view</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.Move(Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.Move(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Move the view
             </summary>
@@ -5788,7 +5788,7 @@
             </summary>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_createFromRect(Alis.Core.Aspect.Math.RectangleF)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_createFromRect(Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF)">
             <summary>
                 Sfs the view create from rect using the specified rect
             </summary>
@@ -5808,14 +5808,14 @@
             </summary>
             <param name="view">The view</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_setCenter(System.IntPtr,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_setCenter(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Sfs the view set center using the specified view
             </summary>
             <param name="view">The view</param>
             <param name="center">The center</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_setSize(System.IntPtr,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_setSize(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Sfs the view set size using the specified view
             </summary>
@@ -5829,14 +5829,14 @@
             <param name="view">The view</param>
             <param name="angle">The angle</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_setViewport(System.IntPtr,Alis.Core.Aspect.Math.RectangleF)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_setViewport(System.IntPtr,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF)">
             <summary>
                 Sfs the view set viewport using the specified view
             </summary>
             <param name="view">The view</param>
             <param name="viewport">The viewport</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_reset(System.IntPtr,Alis.Core.Aspect.Math.RectangleF)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_reset(System.IntPtr,Alis.Core.Aspect.Math.Figures.D2.Rectangle.RectangleF)">
             <summary>
                 Sfs the view reset using the specified view
             </summary>
@@ -5871,7 +5871,7 @@
             <param name="view">The view</param>
             <returns>The float rect</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_move(System.IntPtr,Alis.Core.Aspect.Math.Vector2F)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Graphics.View.sfView_move(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Sfs the view move using the specified view
             </summary>
@@ -6366,7 +6366,7 @@
             </summary>
             <param name="type">System cursor type</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(System.Byte[],Alis.Core.Aspect.Math.Vector2U,Alis.Core.Aspect.Math.Vector2U)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.#ctor(System.Byte[],Alis.Core.Aspect.Math.Vector.Vector2U,Alis.Core.Aspect.Math.Vector.Vector2U)">
             <summary>
                 Create a cursor with the provided image
                 Pixels must be an array of width by height pixels
@@ -6511,7 +6511,7 @@
             <param name="type">The type</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.sfCursor_createFromPixels(System.IntPtr,Alis.Core.Aspect.Math.Vector2U,Alis.Core.Aspect.Math.Vector2U)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Cursor.sfCursor_createFromPixels(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2U,Alis.Core.Aspect.Math.Vector.Vector2U)">
             <summary>
                 Sfs the cursor create from pixels using the specified pixels
             </summary>
@@ -7381,7 +7381,7 @@
             <param name="relativeTo">Reference window</param>
             <returns>Current position of the mouse</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Mouse.SetPosition(Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Mouse.SetPosition(Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Set the current position of the mouse
             </summary>
@@ -7389,7 +7389,7 @@
             cursor in desktop coordinates.
             <param name="position">New position of the mouse</param>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Mouse.SetPosition(Alis.Core.Aspect.Math.Vector2I,Alis.Core.Graphic.D2.SFML.Windows.Window)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Mouse.SetPosition(Alis.Core.Aspect.Math.Vector.Vector2I,Alis.Core.Graphic.D2.SFML.Windows.Window)">
             <summary>
                 Set the current position of the mouse
             </summary>
@@ -7412,7 +7412,7 @@
             <param name="relativeTo">The relative to</param>
             <returns>The vector 2i</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Mouse.sfMouse_setPosition(Alis.Core.Aspect.Math.Vector2I,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Mouse.sfMouse_setPosition(Alis.Core.Aspect.Math.Vector.Vector2I,System.IntPtr)">
             <summary>
                 Sfs the mouse set position using the specified position
             </summary>
@@ -8177,7 +8177,7 @@
             </summary>
             <returns>Relative mouse position</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.InternalSetMousePosition(Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.InternalSetMousePosition(Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Internal function to set the mouse position relative to the window.
                 This function is protected because it is called by another class of
@@ -8355,7 +8355,7 @@
             <param name="cPointer">The pointer</param>
             <returns>The vector 2i</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.sfWindow_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector2I)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.sfWindow_setPosition(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2I)">
             <summary>
                 Sfs the window set position using the specified c pointer
             </summary>
@@ -8369,7 +8369,7 @@
             <param name="cPointer">The pointer</param>
             <returns>The vector 2u</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.sfWindow_setSize(System.IntPtr,Alis.Core.Aspect.Math.Vector2U)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.sfWindow_setSize(System.IntPtr,Alis.Core.Aspect.Math.Vector.Vector2U)">
             <summary>
                 Sfs the window set size using the specified c pointer
             </summary>
@@ -8497,7 +8497,7 @@
             <param name="cPointer">The pointer</param>
             <returns>The vector 2i</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.sfMouse_setPosition(Alis.Core.Aspect.Math.Vector2I,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.D2.SFML.Windows.Window.sfMouse_setPosition(Alis.Core.Aspect.Math.Vector.Vector2I,System.IntPtr)">
             <summary>
                 Sfs the mouse set position using the specified position
             </summary>
@@ -8546,6 +8546,156 @@
         <member name="T:Alis.Core.Graphic.D3.Sample">
             <summary>
                 The frame base class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.Properties.NativeGraphic">
+            <summary>
+            The native graphic class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Properties.NativeGraphic.resourceMan">
+            <summary>
+            The resource man
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Properties.NativeGraphic.resourceCulture">
+            <summary>
+            The resource culture
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Properties.NativeGraphic.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.Properties.NativeGraphic"/> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.ResourceManager">
+            <summary>
+            Gets the value of the resource manager
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.Culture">
+            <summary>
+            Gets or sets the value of the culture
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.alpine_x64_csfml_graphics">
+            <summary>
+            Gets the value of the alpine x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.alpine_x64_csfml_system">
+            <summary>
+            Gets the value of the alpine x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.alpine_x64_csfml_window">
+            <summary>
+            Gets the value of the alpine x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.debian_arm64_csfml_graphics">
+            <summary>
+            Gets the value of the debian arm64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.debian_arm64_csfml_system">
+            <summary>
+            Gets the value of the debian arm64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.debian_arm64_csfml_window">
+            <summary>
+            Gets the value of the debian arm64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.debian_x64_csfml_graphics">
+            <summary>
+            Gets the value of the debian x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.debian_x64_csfml_system">
+            <summary>
+            Gets the value of the debian x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.debian_x64_csfml_window">
+            <summary>
+            Gets the value of the debian x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.fedora_x64_csfml_graphics">
+            <summary>
+            Gets the value of the fedora x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.fedora_x64_csfml_system">
+            <summary>
+            Gets the value of the fedora x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.fedora_x64_csfml_window">
+            <summary>
+            Gets the value of the fedora x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.osx_arm64_csfml_graphics">
+            <summary>
+            Gets the value of the osx arm64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.osx_arm64_csfml_system">
+            <summary>
+            Gets the value of the osx arm64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.osx_arm64_csfml_window">
+            <summary>
+            Gets the value of the osx arm64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.osx_x64_csfml_graphics">
+            <summary>
+            Gets the value of the osx x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.osx_x64_csfml_system">
+            <summary>
+            Gets the value of the osx x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.osx_x64_csfml_window">
+            <summary>
+            Gets the value of the osx x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.win_x64_csfml_graphics">
+            <summary>
+            Gets the value of the win x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.win_x64_csfml_system">
+            <summary>
+            Gets the value of the win x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.win_x64_csfml_window">
+            <summary>
+            Gets the value of the win x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.win_x86_csfml_graphics">
+            <summary>
+            Gets the value of the win x86 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.win_x86_csfml_system">
+            <summary>
+            Gets the value of the win x86 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.win_x86_csfml_window">
+            <summary>
+            Gets the value of the win x86 csfml window
             </summary>
         </member>
     </members>

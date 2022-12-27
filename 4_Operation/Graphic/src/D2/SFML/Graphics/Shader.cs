@@ -37,6 +37,8 @@ using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 using Alis.Core.Graphic.D2.SFML.Windows;
 

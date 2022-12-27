@@ -29,8 +29,9 @@
 
 using System;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Figures.D2.Rectangle
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>
     ///     Vector2u is an utility class for manipulating 2 dimensional

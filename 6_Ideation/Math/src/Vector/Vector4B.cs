@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector4I.cs
+//  File:Vector4B.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,25 +29,25 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>
-    ///     <see cref="Vector4I" /> is a struct represent a glsl ivec4 value
+    ///     <see cref="Vector4B" /> is a struct represent a glsl bvec4 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector4I
+    public struct Vector4B
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Vector4I" /> from its coordinates
+        ///     Construct the <see cref="Vector4B" /> from its coordinates
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
         /// <param name="z">Z coordinate</param>
         /// <param name="w">W coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vector4I(int x, int y, int z, int w)
+        public Vector4B(bool x, bool y, bool z, bool w)
         {
             X = x;
             Y = y;
@@ -55,29 +55,16 @@ namespace Alis.Core.Aspect.Math
             W = w;
         }
 
-        /*
-        /// <summary>
-        ///     Construct the <see cref="Vector4I" /> from a <see cref="Color" />
-        /// </summary>
-        /// <param name="color">A SFML <see cref="Color" /> to be translated to a 4D integer vector</param>
-        public Vector4I(Color color)
-        {
-            X = color.R;
-            Y = color.G;
-            Z = color.B;
-            W = color.A;
-        }*/
-
         /// <summary>Horizontal component of the vector</summary>
-        public int X;
+        public bool X;
 
         /// <summary>Vertical component of the vector</summary>
-        public int Y;
+        public bool Y;
 
         /// <summary>Depth component of the vector</summary>
-        public int Z;
+        public bool Z;
 
         /// <summary>Projective/Homogenous component of the vector</summary>
-        public int W;
+        public bool W;
     }
 }

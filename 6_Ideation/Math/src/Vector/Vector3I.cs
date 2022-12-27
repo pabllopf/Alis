@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vector4B.cs
+//  File:Vector3I.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,42 +29,37 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Vector
 {
     /// <summary>
-    ///     <see cref="Vector4B" /> is a struct represent a glsl bvec4 value
+    ///     <see cref="Vector3I" /> is a struct represent a glsl ivec3 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vector4B
+    public struct Vector3I
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Vector4B" /> from its coordinates
+        ///     Construct the <see cref="Vector3I" /> from its coordinates
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
         /// <param name="z">Z coordinate</param>
-        /// <param name="w">W coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vector4B(bool x, bool y, bool z, bool w)
+        public Vector3I(int x, int y, int z)
         {
             X = x;
             Y = y;
             Z = z;
-            W = w;
         }
 
         /// <summary>Horizontal component of the vector</summary>
-        public bool X;
+        public int X;
 
         /// <summary>Vertical component of the vector</summary>
-        public bool Y;
+        public int Y;
 
         /// <summary>Depth component of the vector</summary>
-        public bool Z;
-
-        /// <summary>Projective/Homogenous component of the vector</summary>
-        public bool W;
+        public int Z;
     }
 }

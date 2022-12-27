@@ -31,6 +31,8 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
