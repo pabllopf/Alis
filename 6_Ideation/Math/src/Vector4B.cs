@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Ivec2.cs
+//  File:Vector4B.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,50 +29,42 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     <see cref="Ivec2" /> is a struct represent a glsl ivec2 value
+    ///     <see cref="Vector4B" /> is a struct represent a glsl bvec4 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Ivec2
+    public struct Vector4B
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Implicit cast from <see cref="Vector2I" /> to <see cref="Ivec2" />
-        /// </summary>
-        public static implicit operator Ivec2(Vector2I vec) => new Ivec2(vec);
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the <see cref="Ivec2" /> from its coordinates
+        ///     Construct the <see cref="Vector4B" /> from its coordinates
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
+        /// <param name="z">Z coordinate</param>
+        /// <param name="w">W coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Ivec2(int x, int y)
+        public Vector4B(bool x, bool y, bool z, bool w)
         {
             X = x;
             Y = y;
-        }
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the <see cref="Ivec2" /> from a standard SFML <see cref="Vector2I" />
-        /// </summary>
-        /// <param name="vec">A standard SFML 2D integer vector</param>
-        ////////////////////////////////////////////////////////////
-        public Ivec2(Vector2I vec)
-        {
-            X = vec.X;
-            Y = vec.Y;
+            Z = z;
+            W = w;
         }
 
         /// <summary>Horizontal component of the vector</summary>
-        public int X;
+        public bool X;
 
         /// <summary>Vertical component of the vector</summary>
-        public int Y;
+        public bool Y;
+
+        /// <summary>Depth component of the vector</summary>
+        public bool Z;
+
+        /// <summary>Projective/Homogenous component of the vector</summary>
+        public bool W;
     }
 }

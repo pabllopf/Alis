@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Matrix22.cs
+//  File:Matrix2x2.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math
     /// <summary>
     ///     A 2-by-2 matrix. Stored in column-major order.
     /// </summary>
-    public struct Matrix22
+    public struct Matrix2x2
     {
         /// <summary>
         ///     The col
@@ -49,7 +49,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
-        public Matrix22(Vector2 c1, Vector2 c2)
+        public Matrix2x2(Vector2 c1, Vector2 c2)
         {
             Col1 = c1;
             Col2 = c2;
@@ -58,7 +58,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Construct this matrix using scalars.
         /// </summary>
-        public Matrix22(float a11, float a12, float a21, float a22)
+        public Matrix2x2(float a11, float a12, float a21, float a22)
         {
             Col1.X = a11;
             Col1.Y = a21;
@@ -70,7 +70,7 @@ namespace Alis.Core.Aspect.Math
         ///     Construct this matrix using an angle.
         ///     This matrix becomes an orthonormal rotation matrix.
         /// </summary>
-        public Matrix22(float angle)
+        public Matrix2x2(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
             Col1.X = c;
@@ -131,21 +131,21 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
         /// </summary>
-        public Matrix22 GetInverse()
+        public Matrix2x2 GetInverse()
         {
             float col1X = Col1.X;
             float col2X = Col2.X;
             float col1Y = Col1.Y;
             float col2Y = Col2.Y;
-            Matrix22 matrix22 = new Matrix22();
+            Matrix2x2 matrix2X2 = new Matrix2x2();
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            matrix22.Col1.X = det * col2Y;
-            matrix22.Col2.X = -det * col2X;
-            matrix22.Col1.Y = -det * col1Y;
-            matrix22.Col2.Y = det * col1X;
-            return matrix22;
+            matrix2X2.Col1.X = det * col2Y;
+            matrix2X2.Col2.X = -det * col2X;
+            matrix2X2.Col1.Y = -det * col1Y;
+            matrix2X2.Col2.Y = det * col1X;
+            return matrix2X2;
         }
 
         /// <summary>
@@ -170,16 +170,16 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static Matrix22 Identity => new Matrix22(1, 0, 0, 1);
+        public static Matrix2x2 Identity => new Matrix2x2(1, 0, 0, 1);
 
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Matrix22 operator +(Matrix22 a, Matrix22 b)
+        public static Matrix2x2 operator +(Matrix2x2 a, Matrix2x2 b)
         {
-            Matrix22 c = new Matrix22();
+            Matrix2x2 c = new Matrix2x2();
             c.Set(a.Col1 + b.Col1, a.Col2 + b.Col2);
             return c;
         }

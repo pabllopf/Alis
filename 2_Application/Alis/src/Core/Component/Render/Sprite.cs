@@ -31,7 +31,7 @@ using System;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Graphic;
 

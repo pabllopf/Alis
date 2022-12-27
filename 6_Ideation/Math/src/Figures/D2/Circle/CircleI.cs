@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Bvec2.cs
+//  File:CircleI.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,34 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math.Figures.D2.Circle
 {
     /// <summary>
-    ///     <see cref="Bvec2" /> is a struct represent a glsl bvec2 value
+    /// The circle
     /// </summary>
-    ////////////////////////////////////////////////////////////
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Bvec2
+    public struct CircleI
     {
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the <see cref="Bvec2" /> from its coordinates
-        /// </summary>
-        /// <param name="x">X coordinate</param>
-        /// <param name="y">Y coordinate</param>
-        ////////////////////////////////////////////////////////////
-        public Bvec2(bool x, bool y)
-        {
-            X = x;
-            Y = y;
-        }
-
-        /// <summary>Horizontal component of the vector</summary>
-        public bool X;
-
-        /// <summary>Vertical component of the vector</summary>
-        public bool Y;
+        
     }
 }

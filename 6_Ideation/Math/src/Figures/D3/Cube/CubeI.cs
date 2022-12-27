@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Velocity.cs
+//  File:CubeI.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Figures.D3.Cube
 {
     /// <summary>
-    ///     The velocity
+    /// The cube
     /// </summary>
-    public struct Velocity
+    public struct CubeI
     {
-        /// <summary>
-        ///     The
-        /// </summary>
-        public Vector2 V;
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float W;
+        
     }
 }

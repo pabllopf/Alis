@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Position.cs
+//  File:Vector2B.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,23 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     The position
+    ///     <see cref="Vector2B" /> is a struct represent a glsl bvec2 value
     /// </summary>
-    public struct Position
+    ////////////////////////////////////////////////////////////
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Vector2B
     {
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     The
+        ///     Construct the <see cref="Vector2B" /> from its coordinates
         /// </summary>
-        public Vector2 X;
+        /// <param name="x">X coordinate</param>
+        /// <param name="y">Y coordinate</param>
+        ////////////////////////////////////////////////////////////
+        public Vector2B(bool x, bool y)
+        {
+            X = x;
+            Y = y;
+        }
 
-        /// <summary>
-        ///     The
-        /// </summary>
-        public float A;
+        /// <summary>Horizontal component of the vector</summary>
+        public bool X;
+
+        /// <summary>Vertical component of the vector</summary>
+        public bool Y;
     }
 }

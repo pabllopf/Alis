@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:IntRect.cs
+//  File:RectangleI.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,16 +30,16 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math
 {
     ////////////////////////////////////////////////////////////
     /// <summary>
-    ///     IntRect is an utility class for manipulating 2D rectangles
+    ///     RectangleI is an utility class for manipulating 2D rectangles
     ///     with integer coordinates
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct IntRect : IEquatable<IntRect>
+    public struct RectangleI : IEquatable<RectangleI>
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="width">Width of the rectangle</param>
         /// <param name="height">Height of the rectangle</param>
         ////////////////////////////////////////////////////////////
-        public IntRect(int left, int top, int width, int height)
+        public RectangleI(int left, int top, int width, int height)
         {
             Left = left;
             Top = top;
@@ -65,7 +65,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="position">Position of the top-left corner of the rectangle</param>
         /// <param name="size">Size of the rectangle</param>
         ////////////////////////////////////////////////////////////
-        public IntRect(Vector2I position, Vector2I size)
+        public RectangleI(Vector2I position, Vector2I size)
             : this(position.X, position.Y, size.X, size.Y)
         {
         }
@@ -95,9 +95,9 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="rect"> Rectangle to test</param>
         /// <returns>True if rectangles overlap</returns>
         ////////////////////////////////////////////////////////////
-        public bool Intersects(IntRect rect)
+        public bool Intersects(RectangleI rect)
         {
-            IntRect overlap;
+            RectangleI overlap;
             return Intersects(rect, out overlap);
         }
 
@@ -109,7 +109,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="overlap">Rectangle to be filled with overlapping rect</param>
         /// <returns>True if rectangles overlap</returns>
         ////////////////////////////////////////////////////////////
-        public bool Intersects(IntRect rect, out IntRect overlap)
+        public bool Intersects(RectangleI rect, out RectangleI overlap)
         {
             // Rectangles with negative dimensions are allowed, so we must handle them correctly
 
@@ -154,7 +154,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// </summary>
         /// <returns>String description of the object</returns>
         ////////////////////////////////////////////////////////////
-        public override string ToString() => $"[IntRect] Left({Left}) Top({Top}) Width({Width}) Height({Height})";
+        public override string ToString() => $"[RectangleI] Left({Left}) Top({Top}) Width({Width}) Height({Height})";
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -163,7 +163,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="obj">Object to check</param>
         /// <returns>Object and rectangle are equal</returns>
         ////////////////////////////////////////////////////////////
-        public override bool Equals(object obj) => obj is IntRect && Equals((IntRect) obj);
+        public override bool Equals(object obj) => obj is RectangleI && Equals((RectangleI) obj);
 
         ///////////////////////////////////////////////////////////
         /// <summary>
@@ -172,7 +172,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="other">Rectangle to check</param>
         /// <returns>Rectangles are equal</returns>
         ////////////////////////////////////////////////////////////
-        public bool Equals(IntRect other) => (Left == other.Left) &&
+        public bool Equals(RectangleI other) => (Left == other.Left) &&
                                              (Top == other.Top) &&
                                              (Width == other.Width) &&
                                              (Height == other.Height);
@@ -196,7 +196,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="r2">Second rect</param>
         /// <returns>r1 == r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator ==(IntRect r1, IntRect r2) => r1.Equals(r2);
+        public static bool operator ==(RectangleI r1, RectangleI r2) => r1.Equals(r2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -206,7 +206,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="r2">Second rect</param>
         /// <returns>r1 != r2</returns>
         ////////////////////////////////////////////////////////////
-        public static bool operator !=(IntRect r1, IntRect r2) => !r1.Equals(r2);
+        public static bool operator !=(RectangleI r1, RectangleI r2) => !r1.Equals(r2);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Aspect.Math.SFML
         /// <param name="r">Rectangle being casted</param>
         /// <returns>Casting result</returns>
         ////////////////////////////////////////////////////////////
-        public static explicit operator FloatRect(IntRect r) => new FloatRect(r.Left,
+        public static explicit operator RectangleF(RectangleI r) => new RectangleF(r.Left,
             r.Top,
             r.Width,
             r.Height);

@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -141,7 +141,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     contains all the vertices of the array.
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public FloatRect Bounds => sfVertexArray_getBounds(CPointer);
+        public RectangleF Bounds => sfVertexArray_getBounds(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -296,7 +296,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfVertexArray_getBounds(IntPtr cPointer);
+        private static extern RectangleF sfVertexArray_getBounds(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window draw vertex array using the specified c pointer

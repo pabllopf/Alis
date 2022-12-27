@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -75,7 +75,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">Target view</param>
         /// <returns>Viewport rectangle, expressed in pixels in the current target</returns>
         ////////////////////////////////////////////////////////////
-        IntRect GetViewport(View view);
+        RectangleI GetViewport(View view);
 
         ////////////////////////////////////////////////////////////
         /// <summary>

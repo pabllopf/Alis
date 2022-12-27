@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Mat3.cs
+//  File:CubeF.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,44 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math.Figures.D3.Cube
 {
     /// <summary>
-    ///     <see cref="Mat3" /> is a struct representing a glsl mat3 value
+    /// The cube
     /// </summary>
-    ////////////////////////////////////////////////////////////
-    [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct Mat3
+    public struct CubeF
     {
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the <see cref="Mat3" /> from its components
-        /// </summary>
-        /// <remarks>
-        ///     Arguments are in row-major order
-        /// </remarks>
-        ////////////////////////////////////////////////////////////
-        public Mat3(float a00, float a01, float a02,
-            float a10, float a11, float a12,
-            float a20, float a21, float a22)
-        {
-            array[0] = a00;
-            array[3] = a01;
-            array[6] = a02;
-            array[1] = a10;
-            array[4] = a11;
-            array[7] = a12;
-            array[2] = a20;
-            array[5] = a21;
-            array[8] = a22;
-        }
-
-        // column-major!
-        /// <summary>
-        ///     The array
-        /// </summary>
-        private fixed float array[3 * 3];
+        
     }
 }

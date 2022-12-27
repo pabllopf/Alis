@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
@@ -291,7 +291,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public void Copy(Image source, uint destX, uint destY)
         {
-            Copy(source, destX, destY, new IntRect(0, 0, 0, 0));
+            Copy(source, destX, destY, new RectangleI(0, 0, 0, 0));
         }
 
         ////////////////////////////////////////////////////////////
@@ -305,7 +305,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="destY">Y coordinate of the destination position</param>
         /// <param name="sourceRect">Sub-rectangle of the source image to copy</param>
         ////////////////////////////////////////////////////////////
-        public void Copy(Image source, uint destX, uint destY, IntRect sourceRect)
+        public void Copy(Image source, uint destX, uint destY, RectangleI sourceRect)
         {
             Copy(source, destX, destY, sourceRect, false);
         }
@@ -322,7 +322,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="sourceRect">Sub-rectangle of the source image to copy</param>
         /// <param name="applyAlpha">Should the copy take in account the source transparency?</param>
         ////////////////////////////////////////////////////////////
-        public void Copy(Image source, uint destX, uint destY, IntRect sourceRect, bool applyAlpha)
+        public void Copy(Image source, uint destX, uint destY, RectangleI sourceRect, bool applyAlpha)
         {
             sfImage_copyImage(CPointer, source.CPointer, destX, destY, sourceRect, applyAlpha);
         }
@@ -478,7 +478,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="applyAlpha">The apply alpha</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
         private static extern void sfImage_copyImage(IntPtr cPointer, IntPtr source, uint destX, uint destY,
-            IntRect sourceRect, bool applyAlpha);
+            RectangleI sourceRect, bool applyAlpha);
 
         /// <summary>
         ///     Sfs the image set pixel using the specified c pointer

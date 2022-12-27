@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Vec4.cs
+//  File:Vector4I.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,25 +29,25 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     <see cref="Vec4" /> is a struct represent a glsl vec4 value
+    ///     <see cref="Vector4I" /> is a struct represent a glsl ivec4 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Vec4
+    public struct Vector4I
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Vec4" /> from its coordinates
+        ///     Construct the <see cref="Vector4I" /> from its coordinates
         /// </summary>
         /// <param name="x">X coordinate</param>
         /// <param name="y">Y coordinate</param>
         /// <param name="z">Z coordinate</param>
         /// <param name="w">W coordinate</param>
         ////////////////////////////////////////////////////////////
-        public Vec4(float x, float y, float z, float w)
+        public Vector4I(int x, int y, int z, int w)
         {
             X = x;
             Y = y;
@@ -57,31 +57,27 @@ namespace Alis.Core.Aspect.Math.SFML
 
         /*
         /// <summary>
-        ///     Construct the <see cref="Vec4" /> from a <see cref="Color" />
+        ///     Construct the <see cref="Vector4I" /> from a <see cref="Color" />
         /// </summary>
-        /// <remarks>
-        ///     The <see cref="Color" />'s values will be normalized from 0..255 to 0..1
-        /// </remarks>
-        /// <param name="color">A SFML <see cref="Color" /> to be translated to a 4D floating-point vector</param>
-        public Vec4(Color color)
+        /// <param name="color">A SFML <see cref="Color" /> to be translated to a 4D integer vector</param>
+        public Vector4I(Color color)
         {
-            X = color.R / 255.0f;
-            Y = color.G / 255.0f;
-            Z = color.B / 255.0f;
-            W = color.A / 255.0f;
-        }
-        */
+            X = color.R;
+            Y = color.G;
+            Z = color.B;
+            W = color.A;
+        }*/
 
         /// <summary>Horizontal component of the vector</summary>
-        public float X;
+        public int X;
 
         /// <summary>Vertical component of the vector</summary>
-        public float Y;
+        public int Y;
 
         /// <summary>Depth component of the vector</summary>
-        public float Z;
+        public int Z;
 
         /// <summary>Projective/Homogenous component of the vector</summary>
-        public float W;
+        public int W;
     }
 }

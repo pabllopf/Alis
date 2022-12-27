@@ -30,7 +30,7 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -112,7 +112,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rectangle">Rectangle to transform</param>
         /// <returns>Transformed rectangle</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect TransformRect(FloatRect rectangle) => sfTransform_transformRect(ref this, rectangle);
+        public RectangleF TransformRect(RectangleF rectangle) => sfTransform_transformRect(ref this, rectangle);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -380,7 +380,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rectangle">The rectangle</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfTransform_transformRect(ref Transform transform, FloatRect rectangle);
+        private static extern RectangleF sfTransform_transformRect(ref Transform transform, RectangleF rectangle);
 
         /// <summary>
         ///     Sfs the transform combine using the specified transform

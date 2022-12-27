@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Ivec4.cs
+//  File:Matrix3X3F.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -29,55 +29,42 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     <see cref="Ivec4" /> is a struct represent a glsl ivec4 value
+    ///     <see cref="Matrix3X3F" /> is a struct representing a glsl mat3 value
     /// </summary>
     ////////////////////////////////////////////////////////////
     [StructLayout(LayoutKind.Sequential)]
-    public struct Ivec4
+    public unsafe struct Matrix3X3F
     {
         ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     Construct the <see cref="Ivec4" /> from its coordinates
+        ///     Construct the <see cref="Matrix3X3F" /> from its components
         /// </summary>
-        /// <param name="x">X coordinate</param>
-        /// <param name="y">Y coordinate</param>
-        /// <param name="z">Z coordinate</param>
-        /// <param name="w">W coordinate</param>
+        /// <remarks>
+        ///     Arguments are in row-major order
+        /// </remarks>
         ////////////////////////////////////////////////////////////
-        public Ivec4(int x, int y, int z, int w)
+        public Matrix3X3F(float a00, float a01, float a02,
+            float a10, float a11, float a12,
+            float a20, float a21, float a22)
         {
-            X = x;
-            Y = y;
-            Z = z;
-            W = w;
+            array[0] = a00;
+            array[3] = a01;
+            array[6] = a02;
+            array[1] = a10;
+            array[4] = a11;
+            array[7] = a12;
+            array[2] = a20;
+            array[5] = a21;
+            array[8] = a22;
         }
 
-        /*
+        // column-major!
         /// <summary>
-        ///     Construct the <see cref="Ivec4" /> from a <see cref="Color" />
+        ///     The array
         /// </summary>
-        /// <param name="color">A SFML <see cref="Color" /> to be translated to a 4D integer vector</param>
-        public Ivec4(Color color)
-        {
-            X = color.R;
-            Y = color.G;
-            Z = color.B;
-            W = color.A;
-        }*/
-
-        /// <summary>Horizontal component of the vector</summary>
-        public int X;
-
-        /// <summary>Vertical component of the vector</summary>
-        public int Y;
-
-        /// <summary>Depth component of the vector</summary>
-        public int Z;
-
-        /// <summary>Projective/Homogenous component of the vector</summary>
-        public int W;
+        private fixed float array[3 * 3];
     }
 }

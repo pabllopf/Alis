@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="viewRect">Rectangle defining the position and size of the view</param>
         ////////////////////////////////////////////////////////////
-        public View(FloatRect viewRect) :
+        public View(RectangleF viewRect) :
             base(sfView_createFromRect(viewRect))
         {
         }
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     size of the target to which the view is applied
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public FloatRect Viewport
+        public RectangleF Viewport
         {
             get => sfView_getViewport(CPointer);
             set => sfView_setViewport(CPointer, value);
@@ -159,7 +159,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="rectangle">Rectangle defining the position and size of the view</param>
         ////////////////////////////////////////////////////////////
-        public void Reset(FloatRect rectangle)
+        public void Reset(RectangleF rectangle)
         {
             sfView_reset(CPointer, rectangle);
         }
@@ -236,7 +236,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rect">The rect</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfView_createFromRect(FloatRect rect);
+        private static extern IntPtr sfView_createFromRect(RectangleF rect);
 
         /// <summary>
         ///     Sfs the view copy using the specified view
@@ -283,7 +283,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="viewport">The viewport</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_setViewport(IntPtr view, FloatRect viewport);
+        private static extern void sfView_setViewport(IntPtr view, RectangleF viewport);
 
         /// <summary>
         ///     Sfs the view reset using the specified view
@@ -291,7 +291,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="rectangle">The rectangle</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_reset(IntPtr view, FloatRect rectangle);
+        private static extern void sfView_reset(IntPtr view, RectangleF rectangle);
 
         /// <summary>
         ///     Sfs the view get center using the specified view
@@ -323,7 +323,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfView_getViewport(IntPtr view);
+        private static extern RectangleF sfView_getViewport(IntPtr view);
 
         /// <summary>
         ///     Sfs the view move using the specified view

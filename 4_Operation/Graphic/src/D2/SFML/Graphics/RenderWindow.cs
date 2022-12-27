@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Graphic.D2.SFML.Windows;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
@@ -225,7 +225,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">Target view</param>
         /// <returns>Viewport rectangle, expressed in pixels in the current target</returns>
         ////////////////////////////////////////////////////////////
-        public IntRect GetViewport(View view) => sfRenderWindow_getViewport(CPointer, view.CPointer);
+        public RectangleI GetViewport(View view) => sfRenderWindow_getViewport(CPointer, view.CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -1043,7 +1043,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="targetView">The target view</param>
         /// <returns>The int rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntRect sfRenderWindow_getViewport(IntPtr cPointer, IntPtr targetView);
+        private static extern RectangleI sfRenderWindow_getViewport(IntPtr cPointer, IntPtr targetView);
 
         /// <summary>
         ///     Sfs the render window map pixel to coords using the specified c pointer

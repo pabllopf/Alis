@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Bvec3.cs
+//  File:CircleF.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Aspect.Math.SFML
+namespace Alis.Core.Aspect.Math.Figures.D2.Circle
 {
     /// <summary>
-    ///     <see cref="Bvec3" /> is a struct represent a glsl bvec3 value
+    /// The circle
     /// </summary>
-    ////////////////////////////////////////////////////////////
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Bvec3
+    public struct CircleF
     {
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the <see cref="Bvec3" /> from its coordinates
-        /// </summary>
-        /// <param name="x">X coordinate</param>
-        /// <param name="y">Y coordinate</param>
-        /// <param name="z">Z coordinate</param>
-        ////////////////////////////////////////////////////////////
-        public Bvec3(bool x, bool y, bool z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-
-        /// <summary>Horizontal component of the vector</summary>
-        public bool X;
-
-        /// <summary>Vertical component of the vector</summary>
-        public bool Y;
-
-        /// <summary>Depth component of the vector</summary>
-        public bool Z;
+        
     }
 }

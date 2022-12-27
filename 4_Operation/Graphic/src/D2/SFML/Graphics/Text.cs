@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -345,7 +345,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Local bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetLocalBounds() => sfText_getLocalBounds(CPointer);
+        public RectangleF GetLocalBounds() => sfText_getLocalBounds(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -358,7 +358,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Global bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetGlobalBounds() =>
+        public RectangleF GetGlobalBounds() =>
             // because we override the object's transform
             // we don't use the native getGlobalBounds function,
             Transform.TransformRect(GetLocalBounds());
@@ -597,7 +597,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfText_getRect(IntPtr cPointer);
+        private static extern RectangleF sfText_getRect(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the text find character pos using the specified c pointer
@@ -614,6 +614,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfText_getLocalBounds(IntPtr cPointer);
+        private static extern RectangleF sfText_getLocalBounds(IntPtr cPointer);
     }
 }

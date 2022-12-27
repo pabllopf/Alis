@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 using Alis.Core.Graphic.D2.SFML.Windows;
 
@@ -77,7 +77,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(string filename) :
-            this(filename, new IntRect(0, 0, 0, 0))
+            this(filename, new RectangleI(0, 0, 0, 0))
         {
         }
 
@@ -89,7 +89,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="area">Area of the image to load</param>
         /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
-        public Texture(string filename, IntRect area) :
+        public Texture(string filename, RectangleI area) :
             base(sfTexture_createFromFile(filename, ref area))
         {
             if (CPointer == IntPtr.Zero)
@@ -106,7 +106,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(Stream stream) :
-            this(stream, new IntRect(0, 0, 0, 0))
+            this(stream, new RectangleI(0, 0, 0, 0))
         {
         }
 
@@ -118,7 +118,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="area">Area of the image to load</param>
         /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
-        public Texture(Stream stream, IntRect area) :
+        public Texture(Stream stream, RectangleI area) :
             base(IntPtr.Zero)
         {
             using (StreamAdaptor adaptor = new StreamAdaptor(stream))
@@ -140,7 +140,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
         public Texture(Image image) :
-            this(image, new IntRect(0, 0, 0, 0))
+            this(image, new RectangleI(0, 0, 0, 0))
         {
         }
 
@@ -152,7 +152,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="area">Area of the image to load</param>
         /// <exception cref="LoadingFailedException" />
         ////////////////////////////////////////////////////////////
-        public Texture(Image image, IntRect area) :
+        public Texture(Image image, RectangleI area) :
             base(sfTexture_createFromImage(image.CPointer, ref area))
         {
             if (CPointer == IntPtr.Zero)
@@ -174,7 +174,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
             GCHandle pin = GCHandle.Alloc(bytes, GCHandleType.Pinned);
             try
             {
-                IntRect rect = new IntRect(0, 0, 0, 0);
+                RectangleI rect = new RectangleI(0, 0, 0, 0);
                 CPointer = sfTexture_createFromMemory(pin.AddrOfPinnedObject(), Convert.ToUInt64(bytes.Length),
                     ref rect);
             }
@@ -516,7 +516,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfTexture_createFromFile(string filename, ref IntRect area);
+        private static extern IntPtr sfTexture_createFromFile(string filename, ref RectangleI area);
 
         /// <summary>
         ///     Sfs the texture create from stream using the specified stream
@@ -525,7 +525,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfTexture_createFromStream(IntPtr stream, ref IntRect area);
+        private static extern IntPtr sfTexture_createFromStream(IntPtr stream, ref RectangleI area);
 
         /// <summary>
         ///     Sfs the texture create from image using the specified image
@@ -534,7 +534,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfTexture_createFromImage(IntPtr image, ref IntRect area);
+        private static extern IntPtr sfTexture_createFromImage(IntPtr image, ref RectangleI area);
 
         /// <summary>
         ///     Sfs the texture create from memory using the specified data
@@ -544,7 +544,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="area">The area</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfTexture_createFromMemory(IntPtr data, ulong size, ref IntRect area);
+        private static extern IntPtr sfTexture_createFromMemory(IntPtr data, ulong size, ref RectangleI area);
 
         /// <summary>
         ///     Sfs the texture copy using the specified texture
@@ -717,7 +717,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rectangle">The rectangle</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfTexture_getTexCoords(IntPtr texture, IntRect rectangle);
+        private static extern RectangleF sfTexture_getTexCoords(IntPtr texture, RectangleI rectangle);
 
         /// <summary>
         ///     Sfs the texture get maximum size

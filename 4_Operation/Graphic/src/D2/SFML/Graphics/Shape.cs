@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.SFML;
+using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -115,7 +115,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Sub-rectangle of the texture that the shape will display
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public IntRect TextureRect
+        public RectangleI TextureRect
         {
             get => sfShape_getTextureRect(CPointer);
             set => sfShape_setTextureRect(CPointer, value);
@@ -208,7 +208,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Local bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetLocalBounds() => sfShape_getLocalBounds(CPointer);
+        public RectangleF GetLocalBounds() => sfShape_getLocalBounds(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -221,7 +221,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Global bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public FloatRect GetGlobalBounds() =>
+        public RectangleF GetGlobalBounds() =>
             // because we override the object's transform
             // we don't use the native getGlobalBounds function,
             Transform.TransformRect(GetLocalBounds());
@@ -305,7 +305,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <param name="rect">The rect</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShape_setTextureRect(IntPtr cPointer, IntRect rect);
+        private static extern void sfShape_setTextureRect(IntPtr cPointer, RectangleI rect);
 
         /// <summary>
         ///     Sfs the shape get texture rect using the specified c pointer
@@ -313,7 +313,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The int rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntRect sfShape_getTextureRect(IntPtr cPointer);
+        private static extern RectangleI sfShape_getTextureRect(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the shape set fill color using the specified c pointer
@@ -369,7 +369,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern FloatRect sfShape_getLocalBounds(IntPtr cPointer);
+        private static extern RectangleF sfShape_getLocalBounds(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the shape update using the specified c pointer

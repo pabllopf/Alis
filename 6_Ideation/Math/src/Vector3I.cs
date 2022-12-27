@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:XForm.cs
+//  File:Vector3I.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,59 +27,39 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>
-    ///     A transform contains translation and rotation.
-    ///     It is used to represent the position and orientation of rigid frames.
+    ///     <see cref="Vector3I" /> is a struct represent a glsl ivec3 value
     /// </summary>
-    public struct XForm
+    ////////////////////////////////////////////////////////////
+    [StructLayout(LayoutKind.Sequential)]
+    public struct Vector3I
     {
+        ////////////////////////////////////////////////////////////
         /// <summary>
-        ///     The position
+        ///     Construct the <see cref="Vector3I" /> from its coordinates
         /// </summary>
-        public Vector2 Position { get; set; }
-
-        /// <summary>
-        ///     The
-        /// </summary>
-        public Matrix22 R { get; }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="XForm" /> struct.
-        /// </summary>
-        /// <param name="position">The position.</param>
-        /// <param name="rotation">The rotation.</param>
-        private XForm(Vector2 position, Matrix22 rotation)
+        /// <param name="x">X coordinate</param>
+        /// <param name="y">Y coordinate</param>
+        /// <param name="z">Z coordinate</param>
+        ////////////////////////////////////////////////////////////
+        public Vector3I(int x, int y, int z)
         {
-            Position = position;
-            R = rotation;
+            X = x;
+            Y = y;
+            Z = z;
         }
 
-        /// <summary>
-        ///     Set this to the identity transform.
-        /// </summary>
-        public void SetIdentity()
-        {
-            Position = Vector2.Zero;
-            R.SetIdentity();
-        }
+        /// <summary>Horizontal component of the vector</summary>
+        public int X;
 
-        /// Set this based on the position and angle.
-        public void Set(Vector2 p, float angle)
-        {
-            Position = p;
-            R.Set(angle);
-        }
+        /// <summary>Vertical component of the vector</summary>
+        public int Y;
 
-        /// Calculate the angle that the rotation matrix represents.
-        public float GetAngle() => Helper.Atan2(R.Col1.Y, R.Col1.X);
-
-        /// <summary>
-        ///     Gets the value of the identity
-        /// </summary>
-        public static XForm Identity => new XForm(Vector2.Zero, Matrix22.Identity);
+        /// <summary>Depth component of the vector</summary>
+        public int Z;
     }
 }
