@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear mass
         /// </summary>
-        private Mat22 linearMass;
+        private Matrix2X2F linearMass;
 
         // Solver shared
         /// <summary>
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float iA = invIa, iB = invIb;
 
             // Upper 2 by 2 of K for point to point
-            Mat22 k = new Mat22();
+            Matrix2X2F k = new Matrix2X2F();
             k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
             k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
             k.Ey.X = k.Ex.Y;

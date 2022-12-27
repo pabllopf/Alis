@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear mass
         /// </summary>
-        private Mat22 linearMass;
+        private Matrix2X2F linearMass;
 
         /// <summary>
         ///     The local anchor
@@ -281,7 +281,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
-            Mat22 k = new Mat22();
+            Matrix2X2F k = new Matrix2X2F();
             k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
             k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
             k.Ey.X = k.Ex.Y;

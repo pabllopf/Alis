@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Mat33.cs
+//  File:   Matrix3X3F.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -33,7 +33,7 @@ using Alis.Core.Physic.Utilities;
 namespace Alis.Core.Physic.Shared
 {
     /// <summary>A 3-by-3 matrix. Stored in column-major order.</summary>
-    public struct Mat33
+    public struct Matrix3X3F
     {
         /// <summary>
         ///     The ez
@@ -44,7 +44,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
         /// <param name="c3">The c3.</param>
-        public Mat33(Vector3 c1, Vector3 c2, Vector3 c3)
+        public Matrix3X3F(Vector3 c1, Vector3 c2, Vector3 c3)
         {
             Ex = c1;
             Ey = c2;
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Shared
 
         /// Get the inverse of this matrix as a 2-by-2.
         /// Returns the zero matrix if singular.
-        public void GetInverse22(ref Mat33 m)
+        public void GetInverse22(ref Matrix3X3F m)
         {
             float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
             float det = a * d - b * c;
@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Shared
 
         /// Get the symmetric inverse of this matrix as a 3-by-3.
         /// Returns the zero matrix if singular.
-        public void GetSymInverse33(ref Mat33 m)
+        public void GetSymInverse33(ref Matrix3X3F m)
         {
             float det = MathUtils.Dot(Ex, MathUtils.Cross(Ey, Ez));
             if (det != 0.0f)

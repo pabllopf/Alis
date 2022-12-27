@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Mat22 k;
+        private Matrix2X2F k;
 
         // Solver shared
         /// <summary>
@@ -661,7 +661,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float mA = invMassA, mB = invMassB;
                 float iA = invIa, iB = invIb;
 
-                Mat22 k;
+                Matrix2X2F k;
                 k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
                 k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
                 k.Ey.X = k.Ex.Y;

@@ -155,7 +155,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Mat22 k;
+        private Matrix2X2F k;
 
         /// <summary>
         ///     The local anchor
@@ -820,7 +820,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k23 = iA * a1 + iB * a2;
                 float k33 = mA + mB + iA * a1 * a1 + iB * a2 * a2;
 
-                Mat33 k;
+                Matrix3X3F k;
                 k.Ex = new Vector3(k11, k12, k13);
                 k.Ey = new Vector3(k12, k22, k23);
                 k.Ez = new Vector3(k13, k23, k33);
@@ -842,7 +842,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                     k22 = 1.0f;
                 }
 
-                Mat22 k;
+                Matrix2X2F k;
                 k.Ex = new Vector2(k11, k12);
                 k.Ey = new Vector2(k12, k22);
 

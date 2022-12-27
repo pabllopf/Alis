@@ -74,7 +74,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Mat22 a, Vector2 v) => Mul(ref a, ref v);
+        public static Vector2 Mul(ref Matrix2X2F a, Vector2 v) => Mul(ref a, ref v);
 
         /// <summary>
         ///     Muls the a
@@ -82,7 +82,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Mat22 a, ref Vector2 v) =>
+        public static Vector2 Mul(ref Matrix2X2F a, ref Vector2 v) =>
             new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Mat22 a, Vector2 v) => MulT(ref a, ref v);
+        public static Vector2 MulT(ref Matrix2X2F a, Vector2 v) => MulT(ref a, ref v);
 
         /// <summary>
         ///     Muls the t using the specified a
@@ -121,7 +121,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="a">The </param>
         /// <param name="v">The </param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Mat22 a, ref Vector2 v) =>
+        public static Vector2 MulT(ref Matrix2X2F a, ref Vector2 v) =>
             new Vector2(v.X * a.Ex.X + v.Y * a.Ex.Y, v.X * a.Ey.X + v.Y * a.Ey.Y);
 
         /// <summary>
@@ -155,9 +155,9 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <param name="c">The </param>
-        public static void MulT(ref Mat22 a, ref Mat22 b, out Mat22 c)
+        public static void MulT(ref Matrix2X2F a, ref Matrix2X2F b, out Matrix2X2F c)
         {
-            c = new Mat22();
+            c = new Matrix2X2F();
             c.Ex.X = a.Ex.X * b.Ex.X + a.Ex.Y * b.Ex.Y;
             c.Ex.Y = a.Ey.X * b.Ex.X + a.Ey.Y * b.Ex.Y;
             c.Ey.X = a.Ex.X * b.Ey.X + a.Ex.Y * b.Ey.Y;
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>Multiply a matrix times a vector.</summary>
-        public static Vector3 Mul(Mat33 a, Vector3 v) => v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
+        public static Vector3 Mul(Matrix3X3F a, Vector3 v) => v.X * a.Ex + v.Y * a.Ey + v.Z * a.Ez;
 
         /// <summary>
         ///     Muls the a
@@ -218,7 +218,7 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>Multiply a matrix times a vector.</summary>
-        public static Vector2 Mul22(Mat33 a, Vector2 v) =>
+        public static Vector2 Mul22(Matrix3X3F a, Vector2 v) =>
             new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// <summary>Multiply two rotations: q * r</summary>

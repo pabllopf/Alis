@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The mass
         /// </summary>
-        private Mat22 mass;
+        private Matrix2X2F mass;
 
         /// <summary>
         ///     The max force
@@ -269,7 +269,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
             //        [    0     1/m1+1/m2]           [-r1.x*r1.y r1.x*r1.x]           [-r1.x*r1.y r1.x*r1.x]
-            Mat22 kk = new Mat22();
+            Matrix2X2F kk = new Matrix2X2F();
             kk.Ex.X = invMassA + invIa * rA.Y * rA.Y + gamma;
             kk.Ex.Y = -invIa * rA.X * rA.Y;
             kk.Ey.X = kk.Ex.Y;

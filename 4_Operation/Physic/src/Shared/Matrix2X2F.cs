@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Mat22.cs
+//  File:   Matrix2X2F.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,12 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using System.Numerics;
 
 namespace Alis.Core.Physic.Shared
 {
     /// <summary>A 2-by-2 matrix. Stored in column-major order.</summary>
-    public struct Mat22
+    public struct Matrix2X2F
     {
         /// <summary>
         ///     The ey
@@ -42,7 +43,7 @@ namespace Alis.Core.Physic.Shared
         /// <summary>Construct this matrix using columns.</summary>
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
-        public Mat22(Vector2 c1, Vector2 c2)
+        public Matrix2X2F(Vector2 c1, Vector2 c2)
         {
             Ex = c1;
             Ey = c2;
@@ -53,7 +54,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="a12">The a12.</param>
         /// <param name="a21">The a21.</param>
         /// <param name="a22">The a22.</param>
-        public Mat22(float a11, float a12, float a21, float a22)
+        public Matrix2X2F(float a11, float a12, float a21, float a22)
         {
             Ex = new Vector2(a11, a21);
             Ey = new Vector2(a12, a22);
@@ -62,7 +63,7 @@ namespace Alis.Core.Physic.Shared
         /// <summary>
         ///     Gets the value of the inverse
         /// </summary>
-        public Mat22 Inverse
+        public Matrix2X2F Inverse
         {
             get
             {
@@ -73,7 +74,7 @@ namespace Alis.Core.Physic.Shared
                     det = 1.0f / det;
                 }
 
-                Mat22 result = new Mat22();
+                Matrix2X2F result = new Matrix2X2F();
                 result.Ex.X = det * d;
                 result.Ex.Y = -det * c;
 
@@ -135,7 +136,7 @@ namespace Alis.Core.Physic.Shared
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <param name="r">The </param>
-        public static void Add(ref Mat22 a, ref Mat22 b, out Mat22 r)
+        public static void Add(ref Matrix2X2F a, ref Matrix2X2F b, out Matrix2X2F r)
         {
             r.Ex = a.Ex + b.Ex;
             r.Ey = a.Ey + b.Ey;

@@ -135,6 +135,11 @@ namespace Alis.Core.Aspect.Math.Vector
         ////////////////////////////////////////////////////////////
         public static bool operator !=(Vector3F v1, Vector3F v2) => !v1.Equals(v2);
 
+        /// <summary>
+        /// The vector
+        /// </summary>
+        public static Vector3F Zero = new Vector3F(0.0f, 0.0f, 0.0f);
+
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Provide a string describing the object

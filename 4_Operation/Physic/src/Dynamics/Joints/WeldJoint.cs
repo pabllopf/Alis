@@ -142,7 +142,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The mass
         /// </summary>
-        private Mat33 mass;
+        private Matrix3X3F mass;
 
         /// <summary>
         ///     The
@@ -314,7 +314,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
-            Mat33 kk;
+            Matrix3X3F kk;
             kk.Ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
             kk.Ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
             kk.Ez.X = -rA.Y * iA - rB.Y * iB;
@@ -469,7 +469,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float positionError, angularError;
 
-            Mat33 k = new Mat33();
+            Matrix3X3F k = new Matrix3X3F();
             k.Ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
             k.Ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
             k.Ez.X = -rA.Y * iA - rB.Y * iB;
