@@ -144,21 +144,21 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1de5541cc249f6a5336e017f9f3334b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1de5541cc249f6a5336e017f9f3334b2">GetView</a> ()</td></tr>
 <tr class="memdesc:a1de5541cc249f6a5336e017f9f3334b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current active view  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1de5541cc249f6a5336e017f9f3334b2">More...</a><br /></td></tr>
 <tr class="separator:a1de5541cc249f6a5336e017f9f3334b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0c2763518d19f7cd12f7d921fce9b49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/ded/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_int_rect.html">IntRect</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ad0c2763518d19f7cd12f7d921fce9b49">GetViewport</a> (<a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
-<tr class="memdesc:ad0c2763518d19f7cd12f7d921fce9b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the viewport of a view applied to this target  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ad0c2763518d19f7cd12f7d921fce9b49">More...</a><br /></td></tr>
-<tr class="separator:ad0c2763518d19f7cd12f7d921fce9b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aede6d5049e4a70f83aa7b213ccf3caf0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aede6d5049e4a70f83aa7b213ccf3caf0">MapPixelToCoords</a> (<a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> point)</td></tr>
-<tr class="memdesc:aede6d5049e4a70f83aa7b213ccf3caf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates, using the current view This function is an overload of the MapPixelToCoords function that implicitly uses the current view. It is equivalent to: target.MapPixelToCoords(point, target.GetView());  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aede6d5049e4a70f83aa7b213ccf3caf0">More...</a><br /></td></tr>
-<tr class="separator:aede6d5049e4a70f83aa7b213ccf3caf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bb28e7b76469f8eeedd1aefc19d5349"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a9bb28e7b76469f8eeedd1aefc19d5349">MapPixelToCoords</a> (<a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> point, <a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
-<tr class="memdesc:a9bb28e7b76469f8eeedd1aefc19d5349"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates This function finds the 2D position that matches the given pixel of the render-target. In other words, it does the inverse of what the graphics card does, to find the initial position of a rendered pixel. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (10, 50) in your render-target may map to the point (150, 75) in your 2D world &ndash; if the view is translated by (140, 25). For render-windows, this function is typically used to find which point (or object) is located below the mouse cursor. This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a9bb28e7b76469f8eeedd1aefc19d5349">More...</a><br /></td></tr>
-<tr class="separator:a9bb28e7b76469f8eeedd1aefc19d5349"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60928ebed6133356d719051eefe481b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a60928ebed6133356d719051eefe481b3">MapCoordsToPixel</a> (<a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a> point)</td></tr>
-<tr class="memdesc:a60928ebed6133356d719051eefe481b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates, using the current view This function is an overload of the mapCoordsToPixel function that implicitly uses the current view. It is equivalent to: target.MapCoordsToPixel(point, target.GetView());  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a60928ebed6133356d719051eefe481b3">More...</a><br /></td></tr>
-<tr class="separator:a60928ebed6133356d719051eefe481b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f0b35fae90662d3b616a4c40b1652cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4f0b35fae90662d3b616a4c40b1652cf">MapCoordsToPixel</a> (<a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a> point, <a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
-<tr class="memdesc:a4f0b35fae90662d3b616a4c40b1652cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates This function finds the pixel of the render-target that matches the given 2D point. In other words, it goes through the same process as the graphics card, to compute the final position of a rendered point. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (150, 75) in your 2D world may map to the pixel (10, 50) of your render-target &ndash; if the view is translated by (140, 25). This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4f0b35fae90662d3b616a4c40b1652cf">More...</a><br /></td></tr>
-<tr class="separator:a4f0b35fae90662d3b616a4c40b1652cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a175c3ea39f038c835e8d092179df1147"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d9/d35/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle.html">Rectangle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a175c3ea39f038c835e8d092179df1147">GetViewport</a> (<a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
+<tr class="memdesc:a175c3ea39f038c835e8d092179df1147"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the viewport of a view applied to this target  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a175c3ea39f038c835e8d092179df1147">More...</a><br /></td></tr>
+<tr class="separator:a175c3ea39f038c835e8d092179df1147"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7412aed6fd0d5ef91a6194c2e78aa08d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a7412aed6fd0d5ef91a6194c2e78aa08d">MapPixelToCoords</a> (<a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> point)</td></tr>
+<tr class="memdesc:a7412aed6fd0d5ef91a6194c2e78aa08d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates, using the current view This function is an overload of the MapPixelToCoords function that implicitly uses the current view. It is equivalent to: target.MapPixelToCoords(point, target.GetView());  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a7412aed6fd0d5ef91a6194c2e78aa08d">More...</a><br /></td></tr>
+<tr class="separator:a7412aed6fd0d5ef91a6194c2e78aa08d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f862864f91d202ed056225b81721811"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4f862864f91d202ed056225b81721811">MapPixelToCoords</a> (<a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> point, <a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
+<tr class="memdesc:a4f862864f91d202ed056225b81721811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from target coordinates to world coordinates This function finds the 2D position that matches the given pixel of the render-target. In other words, it does the inverse of what the graphics card does, to find the initial position of a rendered pixel. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (10, 50) in your render-target may map to the point (150, 75) in your 2D world &ndash; if the view is translated by (140, 25). For render-windows, this function is typically used to find which point (or object) is located below the mouse cursor. This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4f862864f91d202ed056225b81721811">More...</a><br /></td></tr>
+<tr class="separator:a4f862864f91d202ed056225b81721811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88b001afb2f6d42fa27241774b8c47a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a88b001afb2f6d42fa27241774b8c47a4">MapCoordsToPixel</a> (<a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> point)</td></tr>
+<tr class="memdesc:a88b001afb2f6d42fa27241774b8c47a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates, using the current view This function is an overload of the mapCoordsToPixel function that implicitly uses the current view. It is equivalent to: target.MapCoordsToPixel(point, target.GetView());  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a88b001afb2f6d42fa27241774b8c47a4">More...</a><br /></td></tr>
+<tr class="separator:a88b001afb2f6d42fa27241774b8c47a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c6de75c4d360321c15f94d51fccd98e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a3c6de75c4d360321c15f94d51fccd98e">MapCoordsToPixel</a> (<a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> point, <a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a> view)</td></tr>
+<tr class="memdesc:a3c6de75c4d360321c15f94d51fccd98e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a point from world coordinates to target coordinates This function finds the pixel of the render-target that matches the given 2D point. In other words, it goes through the same process as the graphics card, to compute the final position of a rendered point. Initially, both coordinate systems (world units and target pixels) match perfectly. But if you define a custom view or resize your render-target, this assertion is not true anymore, ie. a point located at (150, 75) in your 2D world may map to the pixel (10, 50) of your render-target &ndash; if the view is translated by (140, 25). This version uses a custom view for calculations, see the other overload of the function if you want to use the current view of the render-target.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a3c6de75c4d360321c15f94d51fccd98e">More...</a><br /></td></tr>
+<tr class="separator:a3c6de75c4d360321c15f94d51fccd98e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7cd8370cf979f0b387649db3e2bb2398"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a7cd8370cf979f0b387649db3e2bb2398">Draw</a> (<a class="el" href="../../d3/d7b/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_drawable.html">IDrawable</a> drawable)</td></tr>
 <tr class="memdesc:a7cd8370cf979f0b387649db3e2bb2398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draw a drawable object to the render-target, with default render states  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a7cd8370cf979f0b387649db3e2bb2398">More...</a><br /></td></tr>
 <tr class="separator:a7cd8370cf979f0b387649db3e2bb2398"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,9 +238,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4a79590bc9ca689d1a97f839eaf5bbe5"><td class="memItemLeft" align="right" valign="top">override string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4a79590bc9ca689d1a97f839eaf5bbe5">ToString</a> ()</td></tr>
 <tr class="memdesc:a4a79590bc9ca689d1a97f839eaf5bbe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide a string describing the object  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4a79590bc9ca689d1a97f839eaf5bbe5">More...</a><br /></td></tr>
 <tr class="separator:a4a79590bc9ca689d1a97f839eaf5bbe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcfc4096a6c623e5000f1fd6032b5106"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#adcfc4096a6c623e5000f1fd6032b5106">InternalGetMousePosition</a> ()</td></tr>
-<tr class="memdesc:adcfc4096a6c623e5000f1fd6032b5106"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to get the mouse position relative to the window. This function is protected because it is called by another class, it is not meant to be called by users.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#adcfc4096a6c623e5000f1fd6032b5106">More...</a><br /></td></tr>
-<tr class="separator:adcfc4096a6c623e5000f1fd6032b5106"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a671870c3e3a0cad271e7ce62823bae39"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a671870c3e3a0cad271e7ce62823bae39">InternalGetMousePosition</a> ()</td></tr>
+<tr class="memdesc:a671870c3e3a0cad271e7ce62823bae39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to get the mouse position relative to the window. This function is protected because it is called by another class, it is not meant to be called by users.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a671870c3e3a0cad271e7ce62823bae39">More...</a><br /></td></tr>
+<tr class="separator:a671870c3e3a0cad271e7ce62823bae39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window')"><img src="../../closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html">Alis.Core.Graphic.D2.SFML.Windows.Window</a></td></tr>
 <tr class="memitem:af0955e6c31d3af265f83662a01bc19e6 inherit pub_methods_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#af0955e6c31d3af265f83662a01bc19e6">Window</a> (<a class="el" href="../../d7/d1f/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html">VideoMode</a> mode, string title)</td></tr>
 <tr class="memdesc:af0955e6c31d3af265f83662a01bc19e6 inherit pub_methods_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create the window with default style and creation settings  <a href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#af0955e6c31d3af265f83662a01bc19e6">More...</a><br /></td></tr>
@@ -323,36 +323,36 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
 Package Functions</h2></td></tr>
-<tr class="memitem:a06448d469420fd0ff1da3e788a57f7fb"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a06448d469420fd0ff1da3e788a57f7fb">InternalSetMousePosition</a> (<a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> position)</td></tr>
-<tr class="memdesc:a06448d469420fd0ff1da3e788a57f7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to set the mouse position relative to the window. This function is protected because it is called by another class, it is not meant to be called by users.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a06448d469420fd0ff1da3e788a57f7fb">More...</a><br /></td></tr>
-<tr class="separator:a06448d469420fd0ff1da3e788a57f7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a297495e6fc3080cfdd6897af15460ecf"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a297495e6fc3080cfdd6897af15460ecf">InternalGetTouchPosition</a> (uint finger)</td></tr>
-<tr class="memdesc:a297495e6fc3080cfdd6897af15460ecf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to get the touch position relative to the window. This function is protected because it is called by another class of another module, it is not meant to be called by users.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a297495e6fc3080cfdd6897af15460ecf">More...</a><br /></td></tr>
-<tr class="separator:a297495e6fc3080cfdd6897af15460ecf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e273fe21a0e64483f84cdd61278616"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a51e273fe21a0e64483f84cdd61278616">InternalSetMousePosition</a> (<a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> position)</td></tr>
+<tr class="memdesc:a51e273fe21a0e64483f84cdd61278616"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to set the mouse position relative to the window. This function is protected because it is called by another class, it is not meant to be called by users.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a51e273fe21a0e64483f84cdd61278616">More...</a><br /></td></tr>
+<tr class="separator:a51e273fe21a0e64483f84cdd61278616"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4781f80800f43177ab41ecd062494f82"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4781f80800f43177ab41ecd062494f82">InternalGetTouchPosition</a> (uint finger)</td></tr>
+<tr class="memdesc:a4781f80800f43177ab41ecd062494f82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to get the touch position relative to the window. This function is protected because it is called by another class of another module, it is not meant to be called by users.  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4781f80800f43177ab41ecd062494f82">More...</a><br /></td></tr>
+<tr class="separator:a4781f80800f43177ab41ecd062494f82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:aa0874501312e9f42055ec11ef913d265"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aa0874501312e9f42055ec11ef913d265">Position</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:aa0874501312e9f42055ec11ef913d265"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the window  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aa0874501312e9f42055ec11ef913d265">More...</a><br /></td></tr>
-<tr class="separator:aa0874501312e9f42055ec11ef913d265"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab84483d94f76c957b77f16c27d410c55"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ab84483d94f76c957b77f16c27d410c55">Size</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ab84483d94f76c957b77f16c27d410c55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the rendering region of the window  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ab84483d94f76c957b77f16c27d410c55">More...</a><br /></td></tr>
-<tr class="separator:ab84483d94f76c957b77f16c27d410c55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14e4fa456c1b5c1b4d42d35562948d82"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a14e4fa456c1b5c1b4d42d35562948d82">Position</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a14e4fa456c1b5c1b4d42d35562948d82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the window  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a14e4fa456c1b5c1b4d42d35562948d82">More...</a><br /></td></tr>
+<tr class="separator:a14e4fa456c1b5c1b4d42d35562948d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0766257f5d0ad339332b8c26d55378b"><td class="memItemLeft" align="right" valign="top">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ae0766257f5d0ad339332b8c26d55378b">Size</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ae0766257f5d0ad339332b8c26d55378b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the rendering region of the window  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ae0766257f5d0ad339332b8c26d55378b">More...</a><br /></td></tr>
+<tr class="separator:ae0766257f5d0ad339332b8c26d55378b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td colspan="2" onclick="javascript:toggleInherit('properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window')"><img src="../../closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html">Alis.Core.Graphic.D2.SFML.Windows.Window</a></td></tr>
-<tr class="memitem:a6e566e672cb1a9fa1cc9e5ebf3f8e2d2 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a6e566e672cb1a9fa1cc9e5ebf3f8e2d2">Position</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a6e566e672cb1a9fa1cc9e5ebf3f8e2d2 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the window  <a href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a6e566e672cb1a9fa1cc9e5ebf3f8e2d2">More...</a><br /></td></tr>
-<tr class="separator:a6e566e672cb1a9fa1cc9e5ebf3f8e2d2 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51013b128289f39ec5781b44d433e100 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a51013b128289f39ec5781b44d433e100">Size</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a51013b128289f39ec5781b44d433e100 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the rendering region of the window  <a href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a51013b128289f39ec5781b44d433e100">More...</a><br /></td></tr>
-<tr class="separator:a51013b128289f39ec5781b44d433e100 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51735c3c11cca7ec9d01a06afc87d12 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#ae51735c3c11cca7ec9d01a06afc87d12">Position</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ae51735c3c11cca7ec9d01a06afc87d12 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position of the window  <a href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#ae51735c3c11cca7ec9d01a06afc87d12">More...</a><br /></td></tr>
+<tr class="separator:ae51735c3c11cca7ec9d01a06afc87d12 inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40796f5e5bbd024ca0c22a7aadcb62aa inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a40796f5e5bbd024ca0c22a7aadcb62aa">Size</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a40796f5e5bbd024ca0c22a7aadcb62aa inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the rendering region of the window  <a href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a40796f5e5bbd024ca0c22a7aadcb62aa">More...</a><br /></td></tr>
+<tr class="separator:a40796f5e5bbd024ca0c22a7aadcb62aa inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base"><td colspan="2" onclick="javascript:toggleInherit('properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base')"><img src="../../closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="../../da/dd1/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base.html">Alis.Core.Graphic.D2.SFML.ObjectBase</a></td></tr>
 <tr class="memitem:a483aceaefaaf3d5035539a3104c185ba inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base"><td class="memItemLeft" align="right" valign="top">IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dd1/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base.html#a483aceaefaaf3d5035539a3104c185ba">CPointer</a><code> [get, protected set]</code></td></tr>
 <tr class="memdesc:a483aceaefaaf3d5035539a3104c185ba inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the internal pointer of the object. For internal use only  <a href="../../da/dd1/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base.html#a483aceaefaaf3d5035539a3104c185ba">More...</a><br /></td></tr>
 <tr class="separator:a483aceaefaaf3d5035539a3104c185ba inherit properties_class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td colspan="2" onclick="javascript:toggleInherit('properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target')"><img src="../../closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a></td></tr>
-<tr class="memitem:abbd5b38fe8ec9cd9314e7fcf3a0b8a1c inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#abbd5b38fe8ec9cd9314e7fcf3a0b8a1c">Size</a><code> [get]</code></td></tr>
-<tr class="memdesc:abbd5b38fe8ec9cd9314e7fcf3a0b8a1c inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the rendering region of the target  <a href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#abbd5b38fe8ec9cd9314e7fcf3a0b8a1c">More...</a><br /></td></tr>
-<tr class="separator:abbd5b38fe8ec9cd9314e7fcf3a0b8a1c inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2acdb3e41c8a66da0848531512d36081 inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a2acdb3e41c8a66da0848531512d36081">Size</a><code> [get]</code></td></tr>
+<tr class="memdesc:a2acdb3e41c8a66da0848531512d36081 inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of the rendering region of the target  <a href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a2acdb3e41c8a66da0848531512d36081">More...</a><br /></td></tr>
+<tr class="separator:a2acdb3e41c8a66da0848531512d36081 inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4ac2db118d272e4d6006f85c981ea1e6 inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a4ac2db118d272e4d6006f85c981ea1e6">DefaultView</a><code> [get]</code></td></tr>
 <tr class="memdesc:a4ac2db118d272e4d6006f85c981ea1e6 inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default view of the target  <a href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a4ac2db118d272e4d6006f85c981ea1e6">More...</a><br /></td></tr>
 <tr class="separator:a4ac2db118d272e4d6006f85c981ea1e6 inherit properties_interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -389,18 +389,18 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a3c8513705c9d675a793c7b9d2b154d9c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a3c8513705c9d675a793c7b9d2b154d9c">sfRenderWindow_waitEvent</a> (IntPtr cPointer, out <a class="el" href="../../de/dc5/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_event.html">Event</a> evt)</td></tr>
 <tr class="memdesc:a3c8513705c9d675a793c7b9d2b154d9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether sf render window wait event  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a3c8513705c9d675a793c7b9d2b154d9c">More...</a><br /></td></tr>
 <tr class="separator:a3c8513705c9d675a793c7b9d2b154d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab170ea28516b7266e03ccdf7873b3a53"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ab170ea28516b7266e03ccdf7873b3a53">sfRenderWindow_getPosition</a> (IntPtr cPointer)</td></tr>
-<tr class="memdesc:ab170ea28516b7266e03ccdf7873b3a53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window get position using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ab170ea28516b7266e03ccdf7873b3a53">More...</a><br /></td></tr>
-<tr class="separator:ab170ea28516b7266e03ccdf7873b3a53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf03d5a5f441ee3a08409f4fd7fea1ef"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#abf03d5a5f441ee3a08409f4fd7fea1ef">sfRenderWindow_setPosition</a> (IntPtr cPointer, <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> position)</td></tr>
-<tr class="memdesc:abf03d5a5f441ee3a08409f4fd7fea1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window set position using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#abf03d5a5f441ee3a08409f4fd7fea1ef">More...</a><br /></td></tr>
-<tr class="separator:abf03d5a5f441ee3a08409f4fd7fea1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69a989316eb2aa881c415cd751649797"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a69a989316eb2aa881c415cd751649797">sfRenderWindow_getSize</a> (IntPtr cPointer)</td></tr>
-<tr class="memdesc:a69a989316eb2aa881c415cd751649797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window get size using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a69a989316eb2aa881c415cd751649797">More...</a><br /></td></tr>
-<tr class="separator:a69a989316eb2aa881c415cd751649797"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d21db0d30d635730aa7f37c2f447074"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a6d21db0d30d635730aa7f37c2f447074">sfRenderWindow_setSize</a> (IntPtr cPointer, <a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a> size)</td></tr>
-<tr class="memdesc:a6d21db0d30d635730aa7f37c2f447074"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window set size using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a6d21db0d30d635730aa7f37c2f447074">More...</a><br /></td></tr>
-<tr class="separator:a6d21db0d30d635730aa7f37c2f447074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3a587da0d055d084d8716d49fbbafff"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ab3a587da0d055d084d8716d49fbbafff">sfRenderWindow_getPosition</a> (IntPtr cPointer)</td></tr>
+<tr class="memdesc:ab3a587da0d055d084d8716d49fbbafff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window get position using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ab3a587da0d055d084d8716d49fbbafff">More...</a><br /></td></tr>
+<tr class="separator:ab3a587da0d055d084d8716d49fbbafff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a097fbf2704aa9e9548c4a6432caa75f0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a097fbf2704aa9e9548c4a6432caa75f0">sfRenderWindow_setPosition</a> (IntPtr cPointer, <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> position)</td></tr>
+<tr class="memdesc:a097fbf2704aa9e9548c4a6432caa75f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window set position using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a097fbf2704aa9e9548c4a6432caa75f0">More...</a><br /></td></tr>
+<tr class="separator:a097fbf2704aa9e9548c4a6432caa75f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c3959324aa31a9faa65f00be2d4d2b1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4c3959324aa31a9faa65f00be2d4d2b1">sfRenderWindow_getSize</a> (IntPtr cPointer)</td></tr>
+<tr class="memdesc:a4c3959324aa31a9faa65f00be2d4d2b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window get size using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4c3959324aa31a9faa65f00be2d4d2b1">More...</a><br /></td></tr>
+<tr class="separator:a4c3959324aa31a9faa65f00be2d4d2b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad425bf60330754ee6cadd70144cb35af"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ad425bf60330754ee6cadd70144cb35af">sfRenderWindow_setSize</a> (IntPtr cPointer, <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> size)</td></tr>
+<tr class="memdesc:ad425bf60330754ee6cadd70144cb35af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window set size using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ad425bf60330754ee6cadd70144cb35af">More...</a><br /></td></tr>
+<tr class="separator:ad425bf60330754ee6cadd70144cb35af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b6baca6784f69343e771747488f0d10"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4b6baca6784f69343e771747488f0d10">sfRenderWindow_setTitle</a> (IntPtr cPointer, string title)</td></tr>
 <tr class="memdesc:a4b6baca6784f69343e771747488f0d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window set title using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a4b6baca6784f69343e771747488f0d10">More...</a><br /></td></tr>
 <tr class="separator:a4b6baca6784f69343e771747488f0d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -461,15 +461,15 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a73b755a9b6eeb73ee71baa09e584b05a"><td class="memItemLeft" align="right" valign="top">static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a73b755a9b6eeb73ee71baa09e584b05a">sfRenderWindow_getDefaultView</a> (IntPtr cPointer)</td></tr>
 <tr class="memdesc:a73b755a9b6eeb73ee71baa09e584b05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window get default view using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a73b755a9b6eeb73ee71baa09e584b05a">More...</a><br /></td></tr>
 <tr class="separator:a73b755a9b6eeb73ee71baa09e584b05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a53f6777bd36258bed9772635fb53d158"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../da/ded/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_int_rect.html">IntRect</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a53f6777bd36258bed9772635fb53d158">sfRenderWindow_getViewport</a> (IntPtr cPointer, IntPtr targetView)</td></tr>
-<tr class="memdesc:a53f6777bd36258bed9772635fb53d158"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window get viewport using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a53f6777bd36258bed9772635fb53d158">More...</a><br /></td></tr>
-<tr class="separator:a53f6777bd36258bed9772635fb53d158"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ff72f266f0f97534034e74158ba33d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a72ff72f266f0f97534034e74158ba33d">sfRenderWindow_mapPixelToCoords</a> (IntPtr cPointer, <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> point, IntPtr view)</td></tr>
-<tr class="memdesc:a72ff72f266f0f97534034e74158ba33d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window map pixel to coords using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a72ff72f266f0f97534034e74158ba33d">More...</a><br /></td></tr>
-<tr class="separator:a72ff72f266f0f97534034e74158ba33d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a572e65e22835e0bda0c22a0413cdb4a0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a572e65e22835e0bda0c22a0413cdb4a0">sfRenderWindow_mapCoordsToPixel</a> (IntPtr cPointer, <a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a> point, IntPtr view)</td></tr>
-<tr class="memdesc:a572e65e22835e0bda0c22a0413cdb4a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window map coords to pixel using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a572e65e22835e0bda0c22a0413cdb4a0">More...</a><br /></td></tr>
-<tr class="separator:a572e65e22835e0bda0c22a0413cdb4a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1495b66ca122ed915c088e45cf1c5816"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d9/d35/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle.html">Rectangle</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1495b66ca122ed915c088e45cf1c5816">sfRenderWindow_getViewport</a> (IntPtr cPointer, IntPtr targetView)</td></tr>
+<tr class="memdesc:a1495b66ca122ed915c088e45cf1c5816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window get viewport using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1495b66ca122ed915c088e45cf1c5816">More...</a><br /></td></tr>
+<tr class="separator:a1495b66ca122ed915c088e45cf1c5816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa86da1694f7fd05d0a1da0baa9ef07f7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aa86da1694f7fd05d0a1da0baa9ef07f7">sfRenderWindow_mapPixelToCoords</a> (IntPtr cPointer, <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> point, IntPtr view)</td></tr>
+<tr class="memdesc:aa86da1694f7fd05d0a1da0baa9ef07f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window map pixel to coords using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#aa86da1694f7fd05d0a1da0baa9ef07f7">More...</a><br /></td></tr>
+<tr class="separator:aa86da1694f7fd05d0a1da0baa9ef07f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f17a09b81e750c765ee877b43dae06c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1f17a09b81e750c765ee877b43dae06c">sfRenderWindow_mapCoordsToPixel</a> (IntPtr cPointer, <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> point, IntPtr view)</td></tr>
+<tr class="memdesc:a1f17a09b81e750c765ee877b43dae06c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window map coords to pixel using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1f17a09b81e750c765ee877b43dae06c">More...</a><br /></td></tr>
+<tr class="separator:a1f17a09b81e750c765ee877b43dae06c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20c84ef7051503c3e0e7a2653d1f0f67"><td class="memItemLeft" align="right" valign="top">static unsafe void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a20c84ef7051503c3e0e7a2653d1f0f67">sfRenderWindow_drawPrimitives</a> (IntPtr cPointer, <a class="el" href="../../d9/d87/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex.html">Vertex</a> *vertexPtr, uint vertexCount, <a class="el" href="../../d5/df8/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics.html#a8dee4a042ec23a2a885b774237172be7">PrimitiveType</a> type, ref <a class="el" href="../../d8/de6/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_states_1_1_marshal_data.html">RenderStates.MarshalData</a> renderStates)</td></tr>
 <tr class="memdesc:a20c84ef7051503c3e0e7a2653d1f0f67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window draw primitives using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a20c84ef7051503c3e0e7a2653d1f0f67">More...</a><br /></td></tr>
 <tr class="separator:a20c84ef7051503c3e0e7a2653d1f0f67"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -485,15 +485,15 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ae4e3c1931fdf58ca1935a78f6a602b44"><td class="memItemLeft" align="right" valign="top">static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ae4e3c1931fdf58ca1935a78f6a602b44">sfRenderWindow_capture</a> (IntPtr cPointer)</td></tr>
 <tr class="memdesc:ae4e3c1931fdf58ca1935a78f6a602b44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the render window capture using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ae4e3c1931fdf58ca1935a78f6a602b44">More...</a><br /></td></tr>
 <tr class="separator:ae4e3c1931fdf58ca1935a78f6a602b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe56dcaca6e4ff3ec9465f9e65c28c85"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#abe56dcaca6e4ff3ec9465f9e65c28c85">sfMouse_getPositionRenderWindow</a> (IntPtr cPointer)</td></tr>
-<tr class="memdesc:abe56dcaca6e4ff3ec9465f9e65c28c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the mouse get position render window using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#abe56dcaca6e4ff3ec9465f9e65c28c85">More...</a><br /></td></tr>
-<tr class="separator:abe56dcaca6e4ff3ec9465f9e65c28c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad02a6b1f51ec6533b05ccf5698f04bbb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ad02a6b1f51ec6533b05ccf5698f04bbb">sfMouse_setPositionRenderWindow</a> (<a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> position, IntPtr cPointer)</td></tr>
-<tr class="memdesc:ad02a6b1f51ec6533b05ccf5698f04bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the mouse set position render window using the specified position  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ad02a6b1f51ec6533b05ccf5698f04bbb">More...</a><br /></td></tr>
-<tr class="separator:ad02a6b1f51ec6533b05ccf5698f04bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ee390dce83c802392970305b35b7ffe"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1ee390dce83c802392970305b35b7ffe">sfTouch_getPositionRenderWindow</a> (uint finger, IntPtr relativeTo)</td></tr>
-<tr class="memdesc:a1ee390dce83c802392970305b35b7ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the touch get position render window using the specified finger  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a1ee390dce83c802392970305b35b7ffe">More...</a><br /></td></tr>
-<tr class="separator:a1ee390dce83c802392970305b35b7ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a740327fc16029992aaae1056943590e4"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a740327fc16029992aaae1056943590e4">sfMouse_getPositionRenderWindow</a> (IntPtr cPointer)</td></tr>
+<tr class="memdesc:a740327fc16029992aaae1056943590e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the mouse get position render window using the specified c pointer  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a740327fc16029992aaae1056943590e4">More...</a><br /></td></tr>
+<tr class="separator:a740327fc16029992aaae1056943590e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b41531d28ba0e782462c93e9526d576"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a3b41531d28ba0e782462c93e9526d576">sfMouse_setPositionRenderWindow</a> (<a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> position, IntPtr cPointer)</td></tr>
+<tr class="memdesc:a3b41531d28ba0e782462c93e9526d576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the mouse set position render window using the specified position  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a3b41531d28ba0e782462c93e9526d576">More...</a><br /></td></tr>
+<tr class="separator:a3b41531d28ba0e782462c93e9526d576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a8af50f715c88f0c7990120e9cfceb2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a2a8af50f715c88f0c7990120e9cfceb2">sfTouch_getPositionRenderWindow</a> (uint finger, IntPtr relativeTo)</td></tr>
+<tr class="memdesc:a2a8af50f715c88f0c7990120e9cfceb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sfs the touch get position render window using the specified finger  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#a2a8af50f715c88f0c7990120e9cfceb2">More...</a><br /></td></tr>
+<tr class="separator:a2a8af50f715c88f0c7990120e9cfceb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae32d2dcb97116503820a368758463475"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ae32d2dcb97116503820a368758463475">sfRenderWindow_saveGLStates</a> (IntPtr cPointer)</td></tr>
 <tr class="memdesc:ae32d2dcb97116503820a368758463475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes whether sf render window save gl states  <a href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html#ae32d2dcb97116503820a368758463475">More...</a><br /></td></tr>
 <tr class="separator:ae32d2dcb97116503820a368758463475"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -583,7 +583,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Simple wrapper for Window that allows easy 2D rendering </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00046">46</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00047">47</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a5bbea40b55627297ee23a83dbc617b11"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5bbea40b55627297ee23a83dbc617b11">&#9670;&nbsp;</a></span>RenderWindow() <span class="overload">[1/5]</span></h2>
@@ -620,7 +620,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00060">60</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00061">61</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -666,7 +666,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00073">73</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00074">74</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -719,7 +719,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00087">87</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00088">88</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -747,7 +747,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00110">110</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00111">111</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -786,7 +786,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00122">122</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00123">123</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -810,7 +810,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#abaaccb4911d4aab938a52d7712a1de91">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00179">179</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00180">180</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -840,7 +840,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a162e776537753eb60d7809eb71f77eb9">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00190">190</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00191">191</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -870,7 +870,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#ab8dc7966f5a0c7bba96d3168f03d5e97">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00201">201</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00202">202</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -896,14 +896,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad0c2763518d19f7cd12f7d921fce9b49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0c2763518d19f7cd12f7d921fce9b49">&#9670;&nbsp;</a></span>GetViewport()</h2>
+<a id="a175c3ea39f038c835e8d092179df1147"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a175c3ea39f038c835e8d092179df1147">&#9670;&nbsp;</a></span>GetViewport()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/ded/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_int_rect.html">IntRect</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.GetViewport </td>
+          <td class="memname"><a class="el" href="../../d9/d35/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle.html">Rectangle</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.GetViewport </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html">View</a>&#160;</td>
           <td class="paramname"><em>view</em></td><td>)</td>
@@ -921,20 +921,20 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Viewport rectangle, expressed in pixels in the current target</dd></dl>
 
-<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#aaa2c2882e18a34116605ae456eb9106c">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
+<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a2bff81116e6ce42db0d97a3495bfba5f">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
 </div>
 </div>
-<a id="aede6d5049e4a70f83aa7b213ccf3caf0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aede6d5049e4a70f83aa7b213ccf3caf0">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[1/2]</span></h2>
+<a id="a7412aed6fd0d5ef91a6194c2e78aa08d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7412aed6fd0d5ef91a6194c2e78aa08d">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords </td>
+          <td class="memname"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em></td><td>)</td>
           <td></td>
         </tr>
@@ -950,20 +950,20 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in "world" coordinates</dd></dl>
 
-<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#afe0828174c258413f3cef0e044770a85">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
+<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#ad3f6a5390d5fdf686c2954509bbb2765">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
 </div>
 </div>
-<a id="a9bb28e7b76469f8eeedd1aefc19d5349"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bb28e7b76469f8eeedd1aefc19d5349">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[2/2]</span></h2>
+<a id="a4f862864f91d202ed056225b81721811"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f862864f91d202ed056225b81721811">&#9670;&nbsp;</a></span>MapPixelToCoords() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords </td>
+          <td class="memname"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapPixelToCoords </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
@@ -990,20 +990,20 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in "world" coordinates</dd></dl>
 
-<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#aa7d3e98aeaacad7aabdfc436cf6c50ec">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
+<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#ab856c9be74f560b45555981ffeffee95">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
 </div>
 </div>
-<a id="a60928ebed6133356d719051eefe481b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60928ebed6133356d719051eefe481b3">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[1/2]</span></h2>
+<a id="a88b001afb2f6d42fa27241774b8c47a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88b001afb2f6d42fa27241774b8c47a4">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel </td>
+          <td class="memname"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em></td><td>)</td>
           <td></td>
         </tr>
@@ -1019,20 +1019,20 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in target coordinates (pixels)</dd></dl>
 
-<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a89e0de8bcd958f4f5c7455cd9ed42087">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
+<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a666118c44726af989409d5ca3b08a862">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
 </div>
 </div>
-<a id="a4f0b35fae90662d3b616a4c40b1652cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f0b35fae90662d3b616a4c40b1652cf">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[2/2]</span></h2>
+<a id="a3c6de75c4d360321c15f94d51fccd98e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c6de75c4d360321c15f94d51fccd98e">&#9670;&nbsp;</a></span>MapCoordsToPixel() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel </td>
+          <td class="memname"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.MapCoordsToPixel </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
@@ -1059,7 +1059,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The converted point, in target coordinates (pixels)</dd></dl>
 
-<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a80d6fd0220cd9f310f6ca34e8a6e021d">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
+<p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a732822242e4d509f5a3944dbfb6cad0a">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
 </div>
 </div>
@@ -1089,7 +1089,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a1a037b519973a40d33c45e42a0a32930">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00309">309</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00310">310</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1130,7 +1130,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#adad4b795106d34f00cd530bce96c435e">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00321">321</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00322">322</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1171,7 +1171,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a49a561bff2ff11ba8612759afbce5732">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00333">333</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00334">334</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1219,7 +1219,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a82944014dd8099d4723172346d9def7a">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00346">346</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00347">347</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1274,7 +1274,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a5e07ba32d3005a6362dbc0df6c0edc24">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00360">360</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00361">361</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1336,7 +1336,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#ada06a615bb63ef3c3b244608dd575359">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00375">375</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00376">376</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1366,7 +1366,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#a69cc12098fc49a0c87c7fa31d0f0e1e5">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00424">424</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00425">425</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1390,7 +1390,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#af6151f6c717504dae8b3886ffffe121b">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00436">436</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00437">437</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1415,7 +1415,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d67/interface_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_i_render_target.html#ae2062135953d6f7367d7071a028f931f">Alis.Core.Graphic.D2.SFML.Graphics.IRenderTarget</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00462">462</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00463">463</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1446,7 +1446,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#ac33d914acdfbb7390058bceb397bb275">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00474">474</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00475">475</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1484,7 +1484,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#ae92151b49a33a7e2abc17c92766285a8">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00485">485</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00486">486</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1540,7 +1540,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#ac739339857b725a86742066f1aa1574d">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00507">507</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00508">508</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1578,7 +1578,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a965491f552196aabe978000b8e555327">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00524">524</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00525">525</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1616,7 +1616,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#aa6666f82a979b31ca60c0a0d105624e6">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00535">535</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00536">536</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1654,7 +1654,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a18c112ca30db3dda83152b6c63d48ee7">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00546">546</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00547">547</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1693,7 +1693,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#adb23c9a30656effa3af658d1278a7212">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00565">565</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00566">566</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1731,7 +1731,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a60c363fcd58e269a35a4979a1aaf7679">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00576">576</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00577">577</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1769,7 +1769,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#aa846feb09c9cf349a7f89f903564a804">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00588">588</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00589">589</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1807,7 +1807,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a63aa4a2dcf02975f9ca46097462c74d5">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00599">599</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00600">600</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1845,7 +1845,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a87cec91f2afcbce22bda7ce6ed2d96bd">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00611">611</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00612">612</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1913,7 +1913,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a40e23761192ef5b2ac568a23a1cc58e6">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00632">632</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00633">633</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -1974,7 +1974,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a4e3dfc5fd7cb5040b35df97eb3206f5f">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00650">650</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00651">651</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -2094,8 +2094,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="adcfc4096a6c623e5000f1fd6032b5106"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcfc4096a6c623e5000f1fd6032b5106">&#9670;&nbsp;</a></span>InternalGetMousePosition()</h2>
+<a id="a671870c3e3a0cad271e7ce62823bae39"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a671870c3e3a0cad271e7ce62823bae39">&#9670;&nbsp;</a></span>InternalGetMousePosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2104,7 +2104,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.InternalGetMousePosition </td>
+          <td class="memname">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.InternalGetMousePosition </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -2120,12 +2120,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Internal function to get the mouse position relative to the window. This function is protected because it is called by another class, it is not meant to be called by users. </p>
 <dl class="section return"><dt>Returns</dt><dd>Relative mouse position</dd></dl>
 
-<p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#acb830053d9046fd4da964d5c387ca65d">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
+<p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a1d6db36a9f681a56aac5517ab3f0cf72">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
 </div>
 </div>
-<a id="a06448d469420fd0ff1da3e788a57f7fb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06448d469420fd0ff1da3e788a57f7fb">&#9670;&nbsp;</a></span>InternalSetMousePosition()</h2>
+<a id="a51e273fe21a0e64483f84cdd61278616"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e273fe21a0e64483f84cdd61278616">&#9670;&nbsp;</a></span>InternalSetMousePosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2136,7 +2136,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">override void Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.InternalSetMousePosition </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>position</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2156,14 +2156,14 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#aa009236cb1fc99c759d487129f1736eb">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
+<p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#aa1132cd0cf34f214b0829aecf6aa942c">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00721">721</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00722">722</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
-<a id="a297495e6fc3080cfdd6897af15460ecf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a297495e6fc3080cfdd6897af15460ecf">&#9670;&nbsp;</a></span>InternalGetTouchPosition()</h2>
+<a id="a4781f80800f43177ab41ecd062494f82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4781f80800f43177ab41ecd062494f82">&#9670;&nbsp;</a></span>InternalGetTouchPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2172,7 +2172,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.InternalGetTouchPosition </td>
+          <td class="memname">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.InternalGetTouchPosition </td>
           <td>(</td>
           <td class="paramtype">uint&#160;</td>
           <td class="paramname"><em>finger</em></td><td>)</td>
@@ -2195,7 +2195,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Relative touch position</dd></dl>
 
-<p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a64e9dbe07000d2bf0748e4db6c66db27">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
+<p>Reimplemented from <a class="el" href="../../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#aa686622530dcd4445759233f549e23a5">Alis.Core.Graphic.D2.SFML.Windows.Window</a>.</p>
 
 </div>
 </div>
@@ -2233,7 +2233,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="../../da/dd1/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_object_base.html#a6afa8ae3506574ed2bf4f2cc21d1b49e">Alis.Core.Graphic.D2.SFML.ObjectBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00743">743</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00744">744</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -2262,7 +2262,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Do common initializations </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00758">758</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00759">759</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -2662,8 +2662,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ab170ea28516b7266e03ccdf7873b3a53"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab170ea28516b7266e03ccdf7873b3a53">&#9670;&nbsp;</a></span>sfRenderWindow_getPosition()</h2>
+<a id="ab3a587da0d055d084d8716d49fbbafff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3a587da0d055d084d8716d49fbbafff">&#9670;&nbsp;</a></span>sfRenderWindow_getPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2672,7 +2672,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_getPosition </td>
+          <td class="memname">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_getPosition </td>
           <td>(</td>
           <td class="paramtype">IntPtr&#160;</td>
           <td class="paramname"><em>cPointer</em></td><td>)</td>
@@ -2697,8 +2697,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="abf03d5a5f441ee3a08409f4fd7fea1ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf03d5a5f441ee3a08409f4fd7fea1ef">&#9670;&nbsp;</a></span>sfRenderWindow_setPosition()</h2>
+<a id="a097fbf2704aa9e9548c4a6432caa75f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a097fbf2704aa9e9548c4a6432caa75f0">&#9670;&nbsp;</a></span>sfRenderWindow_setPosition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2715,7 +2715,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>position</em>&#160;</td>
         </tr>
         <tr>
@@ -2742,8 +2742,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a69a989316eb2aa881c415cd751649797"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69a989316eb2aa881c415cd751649797">&#9670;&nbsp;</a></span>sfRenderWindow_getSize()</h2>
+<a id="a4c3959324aa31a9faa65f00be2d4d2b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c3959324aa31a9faa65f00be2d4d2b1">&#9670;&nbsp;</a></span>sfRenderWindow_getSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2752,7 +2752,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_getSize </td>
+          <td class="memname">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_getSize </td>
           <td>(</td>
           <td class="paramtype">IntPtr&#160;</td>
           <td class="paramname"><em>cPointer</em></td><td>)</td>
@@ -2777,8 +2777,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a6d21db0d30d635730aa7f37c2f447074"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d21db0d30d635730aa7f37c2f447074">&#9670;&nbsp;</a></span>sfRenderWindow_setSize()</h2>
+<a id="ad425bf60330754ee6cadd70144cb35af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad425bf60330754ee6cadd70144cb35af">&#9670;&nbsp;</a></span>sfRenderWindow_setSize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2795,7 +2795,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
@@ -3675,8 +3675,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a53f6777bd36258bed9772635fb53d158"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a53f6777bd36258bed9772635fb53d158">&#9670;&nbsp;</a></span>sfRenderWindow_getViewport()</h2>
+<a id="a1495b66ca122ed915c088e45cf1c5816"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1495b66ca122ed915c088e45cf1c5816">&#9670;&nbsp;</a></span>sfRenderWindow_getViewport()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3685,7 +3685,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../da/ded/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_int_rect.html">IntRect</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_getViewport </td>
+          <td class="memname">static <a class="el" href="../../d9/d35/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_figures_1_1_d2_1_1_rectangle.html">Rectangle</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_getViewport </td>
           <td>(</td>
           <td class="paramtype">IntPtr&#160;</td>
           <td class="paramname"><em>cPointer</em>, </td>
@@ -3721,8 +3721,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a72ff72f266f0f97534034e74158ba33d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72ff72f266f0f97534034e74158ba33d">&#9670;&nbsp;</a></span>sfRenderWindow_mapPixelToCoords()</h2>
+<a id="aa86da1694f7fd05d0a1da0baa9ef07f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa86da1694f7fd05d0a1da0baa9ef07f7">&#9670;&nbsp;</a></span>sfRenderWindow_mapPixelToCoords()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3731,7 +3731,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapPixelToCoords </td>
+          <td class="memname">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapPixelToCoords </td>
           <td>(</td>
           <td class="paramtype">IntPtr&#160;</td>
           <td class="paramname"><em>cPointer</em>, </td>
@@ -3739,7 +3739,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
@@ -3774,8 +3774,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a572e65e22835e0bda0c22a0413cdb4a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a572e65e22835e0bda0c22a0413cdb4a0">&#9670;&nbsp;</a></span>sfRenderWindow_mapCoordsToPixel()</h2>
+<a id="a1f17a09b81e750c765ee877b43dae06c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1f17a09b81e750c765ee877b43dae06c">&#9670;&nbsp;</a></span>sfRenderWindow_mapCoordsToPixel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3784,7 +3784,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapCoordsToPixel </td>
+          <td class="memname">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfRenderWindow_mapCoordsToPixel </td>
           <td>(</td>
           <td class="paramtype">IntPtr&#160;</td>
           <td class="paramname"><em>cPointer</em>, </td>
@@ -3792,7 +3792,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="../../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html">Vector2F</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>point</em>, </td>
         </tr>
         <tr>
@@ -4030,8 +4030,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="abe56dcaca6e4ff3ec9465f9e65c28c85"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe56dcaca6e4ff3ec9465f9e65c28c85">&#9670;&nbsp;</a></span>sfMouse_getPositionRenderWindow()</h2>
+<a id="a740327fc16029992aaae1056943590e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a740327fc16029992aaae1056943590e4">&#9670;&nbsp;</a></span>sfMouse_getPositionRenderWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4040,7 +4040,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfMouse_getPositionRenderWindow </td>
+          <td class="memname">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfMouse_getPositionRenderWindow </td>
           <td>(</td>
           <td class="paramtype">IntPtr&#160;</td>
           <td class="paramname"><em>cPointer</em></td><td>)</td>
@@ -4065,8 +4065,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad02a6b1f51ec6533b05ccf5698f04bbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad02a6b1f51ec6533b05ccf5698f04bbb">&#9670;&nbsp;</a></span>sfMouse_setPositionRenderWindow()</h2>
+<a id="a3b41531d28ba0e782462c93e9526d576"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b41531d28ba0e782462c93e9526d576">&#9670;&nbsp;</a></span>sfMouse_setPositionRenderWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4077,7 +4077,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">static void Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfMouse_setPositionRenderWindow </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
           <td class="paramname"><em>position</em>, </td>
         </tr>
         <tr>
@@ -4110,8 +4110,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a1ee390dce83c802392970305b35b7ffe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ee390dce83c802392970305b35b7ffe">&#9670;&nbsp;</a></span>sfTouch_getPositionRenderWindow()</h2>
+<a id="a2a8af50f715c88f0c7990120e9cfceb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a8af50f715c88f0c7990120e9cfceb2">&#9670;&nbsp;</a></span>sfTouch_getPositionRenderWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4120,7 +4120,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfTouch_getPositionRenderWindow </td>
+          <td class="memname">static <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.sfTouch_getPositionRenderWindow </td>
           <td>(</td>
           <td class="paramtype">uint&#160;</td>
           <td class="paramname"><em>finger</em>, </td>
@@ -4284,7 +4284,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>The my default view </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00051">51</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00052">52</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -4303,7 +4303,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Tell whether or not the window is opened (ie. has been created). Note that a hidden window (Show(false)) will still return true </p>
 <dl class="section return"><dt>Returns</dt><dd>True if the window is opened</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00136">136</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00137">137</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -4321,7 +4321,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Creation settings of the window </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00143">143</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00144">144</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -4339,7 +4339,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>OS-specific handle of the window </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00161">161</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00162">162</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -4357,13 +4357,13 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Default view of the window </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00219">219</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00220">220</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
-<a id="aa0874501312e9f42055ec11ef913d265"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0874501312e9f42055ec11ef913d265">&#9670;&nbsp;</a></span>Position</h2>
+<a id="a14e4fa456c1b5c1b4d42d35562948d82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14e4fa456c1b5c1b4d42d35562948d82">&#9670;&nbsp;</a></span>Position</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4372,7 +4372,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="../../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html">Vector2I</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.Position</td>
+          <td class="memname">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.Position</td>
         </tr>
       </table>
   </td>
@@ -4384,12 +4384,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Position of the window </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00150">150</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00151">151</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
-<a id="ab84483d94f76c957b77f16c27d410c55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab84483d94f76c957b77f16c27d410c55">&#9670;&nbsp;</a></span>Size</h2>
+<a id="ae0766257f5d0ad339332b8c26d55378b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0766257f5d0ad339332b8c26d55378b">&#9670;&nbsp;</a></span>Size</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4398,7 +4398,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">override <a class="el" href="../../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html">Vector2U</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.Size</td>
+          <td class="memname">override <a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Graphic.D2.SFML.Graphics.RenderWindow.Size</td>
         </tr>
       </table>
   </td>
@@ -4410,7 +4410,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Size of the rendering region of the window </p>
 
-<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00168">168</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../da/dcb/_render_window_8cs_source.html#l00169">169</a> of file <a class="el" href="../../da/dcb/_render_window_8cs_source.html">RenderWindow.cs</a>.</p>
 
 </div>
 </div>
@@ -4421,7 +4421,7 @@ Additional Inherited Members</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../df/df9/namespace_alis_1_1_core_1_1_graphic.html">Graphic</a></li><li class="navelem"><a class="el" href="../../da/dca/namespace_alis_1_1_core_1_1_graphic_1_1_d2.html">D2</a></li><li class="navelem"><a class="el" href="../../df/d4c/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l.html">SFML</a></li><li class="navelem"><a class="el" href="../../d5/df8/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics.html">Graphics</a></li><li class="navelem"><a class="el" href="../../de/de0/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_render_window.html">RenderWindow</a></li>
     <li class="footer">
-      <a>Generated on | Mon Dec 26 2022 |</a>
+      <a>Generated on | Tue Dec 27 2022 |</a>
     </li>
   </ul>
 </div>
