@@ -48,8 +48,7 @@ namespace Alis.Sample.Collisions
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
-        {
-            VideoGame
+        {VideoGame
                 .Builder()
                 .Settings(setting => setting
                     .General(general => general
@@ -74,14 +73,16 @@ namespace Alis.Sample.Collisions
                             .Build())
                         .Build())
                     .Build())
+                
                 .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(gameScene => gameScene
+                    .Add<Scene>(gameScene=>gameScene
                         .Add<GameObject>(cameraObj => cameraObj
                             .Name("Camera")
                             .AddComponent<Camera>(camera => camera
                                 .Builder()
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
@@ -93,9 +94,10 @@ namespace Alis.Sample.Collisions
                                     .Build())
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(0, 324)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -115,9 +117,10 @@ namespace Alis.Sample.Collisions
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(upWall => upWall
                             .Name("upWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(0, -324)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -137,9 +140,10 @@ namespace Alis.Sample.Collisions
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(leftWall => leftWall
                             .Name("leftWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(-517, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -159,9 +163,10 @@ namespace Alis.Sample.Collisions
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(rightWall => rightWall
                             .Name("rightWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(517, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider

@@ -43,12 +43,7 @@ namespace Alis.Core.Graphic.D2.SFML
     public abstract class ObjectBase : IDisposable
     {
         /// <summary>
-        ///     The zero
-        /// </summary>
-        private IntPtr myCPointer = IntPtr.Zero;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ObjectBase" /> class
+        /// Initializes a new instance of the <see cref="ObjectBase"/> class
         /// </summary>
         static ObjectBase()
         {
@@ -68,7 +63,6 @@ namespace Alis.Core.Graphic.D2.SFML
                         break;
                 }
             }
-
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 switch (RuntimeInformation.ProcessArchitecture)
@@ -85,7 +79,6 @@ namespace Alis.Core.Graphic.D2.SFML
                         break;
                 }
             }
-
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
             {
                 switch (RuntimeInformation.ProcessArchitecture)
@@ -102,7 +95,14 @@ namespace Alis.Core.Graphic.D2.SFML
                         break;
                 }
             }
+            
+            
         }
+        
+        /// <summary>
+        ///     The zero
+        /// </summary>
+        private IntPtr myCPointer = IntPtr.Zero;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

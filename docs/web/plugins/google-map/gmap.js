@@ -93,7 +93,7 @@ function initialize() {
             style:google.maps.ZoomControlStyle.LARGE
         }
 
-    };
+    }
     map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
     // SET THE MAP TYPE
     var mapType = new google.maps.StyledMapType(style, {name:"Grayscale"});
@@ -106,7 +106,7 @@ function initialize() {
 
     marker = new google.maps.Marker({
         position: nottingham,
-        map,
+        map: map,
         icon: pinIcon,
         title: 'bingo'
     });

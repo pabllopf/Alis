@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Simplex.cs
+//  File:   Simplex.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -359,7 +359,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             float d1233 = n123 * MathUtils.Cross(w1, w2);
 
             // w1 region
-            if ((d122 <= 0.0f) && (d132 <= 0.0f))
+            if (d122 <= 0.0f && d132 <= 0.0f)
             {
                 V.Value0.A = 1.0f;
                 Count = 1;
@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // e12
-            if ((d121 > 0.0f) && (d122 > 0.0f) && (d1233 <= 0.0f))
+            if (d121 > 0.0f && d122 > 0.0f && d1233 <= 0.0f)
             {
                 float invD12 = 1.0f / (d121 + d122);
                 V.Value0.A = d121 * invD12;
@@ -377,7 +377,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // e13
-            if ((d131 > 0.0f) && (d132 > 0.0f) && (d1232 <= 0.0f))
+            if (d131 > 0.0f && d132 > 0.0f && d1232 <= 0.0f)
             {
                 float invD13 = 1.0f / (d131 + d132);
                 V.Value0.A = d131 * invD13;
@@ -388,7 +388,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // w2 region
-            if ((d121 <= 0.0f) && (d232 <= 0.0f))
+            if (d121 <= 0.0f && d232 <= 0.0f)
             {
                 V.Value1.A = 1.0f;
                 Count = 1;
@@ -397,7 +397,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // w3 region
-            if ((d131 <= 0.0f) && (d231 <= 0.0f))
+            if (d131 <= 0.0f && d231 <= 0.0f)
             {
                 V.Value2.A = 1.0f;
                 Count = 1;
@@ -406,7 +406,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // e23
-            if ((d231 > 0.0f) && (d232 > 0.0f) && (d1231 <= 0.0f))
+            if (d231 > 0.0f && d232 > 0.0f && d1231 <= 0.0f)
             {
                 float invD23 = 1.0f / (d231 + d232);
                 V.Value1.A = d231 * invD23;

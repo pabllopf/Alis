@@ -105,6 +105,7 @@ namespace Alis.Sample.Rogue
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(go => go
                             .Name("Floor")
                             .Transform(transform => transform
@@ -129,6 +130,7 @@ namespace Alis.Sample.Rogue
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(go => go
                             .Name("Player 2")
                             .WithTag("Players")

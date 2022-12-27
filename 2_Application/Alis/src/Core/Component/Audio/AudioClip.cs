@@ -40,13 +40,13 @@ namespace Alis.Core.Component.Audio
     public class AudioClip : AudioClipBase
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioClip" /> class
+        /// Initializes a new instance of the <see cref="AudioClip"/> class
         /// </summary>
-        public AudioClip()
+        public AudioClip() : base()
         {
             Logger.Trace();
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClip" /> class
         /// </summary>

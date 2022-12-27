@@ -1,9 +1,15 @@
 var searchData=
 [
-  ['vector2_3895',['Vector2',['../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html',1,'Alis::Core::Aspect::Math']]],
+  ['vec2_3889',['Vec2',['../dd/d58/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vec2.html',1,'Alis::Core::Aspect::Math::SFML']]],
+  ['vec3_3890',['Vec3',['../df/d2b/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vec3.html',1,'Alis::Core::Aspect::Math::SFML']]],
+  ['vec4_3891',['Vec4',['../d7/d79/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vec4.html',1,'Alis::Core::Aspect::Math::SFML']]],
+  ['vector2_3892',['Vector2',['../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html',1,'Alis::Core::Aspect::Math']]],
+  ['vector2f_3893',['Vector2F',['../d7/d7c/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_f.html',1,'Alis::Core::Aspect::Math::SFML']]],
+  ['vector2i_3894',['Vector2I',['../df/d93/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_i.html',1,'Alis::Core::Aspect::Math::SFML']]],
+  ['vector2u_3895',['Vector2U',['../de/dbe/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector2_u.html',1,'Alis::Core::Aspect::Math::SFML']]],
   ['vector3_3896',['Vector3',['../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html',1,'Alis::Core::Aspect::Math']]],
-  ['vector4_3897',['Vector4',['../de/d81/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector4.html',1,'Alis::Core::Aspect::Math']]],
-  ['velocity_3898',['Velocity',['../d3/d7f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html',1,'Alis::Core::Physic::Dynamics::Solver']]],
+  ['vector3f_3897',['Vector3F',['../da/def/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_s_f_m_l_1_1_vector3_f.html',1,'Alis::Core::Aspect::Math::SFML']]],
+  ['velocity_3898',['Velocity',['../d3/d7f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html',1,'Alis.Core.Physic.Dynamics.Solver.Velocity'],['../db/dd9/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_velocity.html',1,'Alis.Core.Aspect.Math.Velocity']]],
   ['velocityconstraintpoint_3899',['VelocityConstraintPoint',['../d8/d54/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity_constraint_point.html',1,'Alis::Core::Physic::Dynamics::Solver']]],
   ['velocitylimitcontroller_3900',['VelocityLimitController',['../d7/d35/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_velocity_1_1_velocity_limit_controller.html',1,'Alis::Core::Physic::Extensions::Controllers::Velocity']]],
   ['vertex_3901',['Vertex',['../d9/d87/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex.html',1,'Alis::Core::Graphic::D2::SFML::Graphics']]],

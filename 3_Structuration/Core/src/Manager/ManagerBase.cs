@@ -59,9 +59,9 @@ namespace Alis.Core.Manager
 
         /// <summary>Dispatches the events.</summary>
         public abstract void DispatchEvents();
-
+        
         /// <summary>
-        ///     Draws this instance
+        /// Draws this instance
         /// </summary>
         public abstract void Draw();
 

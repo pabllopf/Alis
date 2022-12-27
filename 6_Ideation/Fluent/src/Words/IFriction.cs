@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The friction interface
+    /// The friction interface
     /// </summary>
     public interface IFriction<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Frictions the value
+        /// Frictions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

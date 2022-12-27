@@ -5,29 +5,32 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:   Program.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
@@ -49,13 +52,16 @@ namespace Alis.Sample.PingPong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            
+            
+
             //Assembly assembly = null;
 
             //DllImportSearchPath dir = new DllImportSearchPath();
 
             //NativeLibrary.Load($"{EmbeddedDllClass.dirName}/libcsfml-graphics.dylib", Assembly.GetExecutingAssembly(), DllImportSearchPath.AssemblyDirectory);
-
-
+            
+            
             /*
             EmbeddedDllClass.LoadDll("libcsfml-graphics.dylib");
             EmbeddedDllClass.LoadDll("libcsfml-network.dylib");
@@ -63,7 +69,7 @@ namespace Alis.Sample.PingPong
             EmbeddedDllClass.LoadDll("libcsfml-window.dylib");
             EmbeddedDllClass.LoadDll("libcsfml-audio.dylib");*/
 
-
+            
             VideoGame
                 .Builder()
                 .Settings(setting => setting
@@ -89,14 +95,16 @@ namespace Alis.Sample.PingPong
                             .Build())
                         .Build())
                     .Build())
+                
                 .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(gameScene => gameScene
+                    .Add<Scene>(gameScene=>gameScene
                         .Add<GameObject>(cameraObj => cameraObj
                             .Name("Camera")
                             .AddComponent<Camera>(camera => camera
                                 .Builder()
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
@@ -108,6 +116,7 @@ namespace Alis.Sample.PingPong
                                     .Build())
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform
@@ -133,6 +142,7 @@ namespace Alis.Sample.PingPong
                                 .Build())
                             .AddComponent(new PlayerController1())
                             .Build())
+                        
                         .Add<GameObject>(player => player
                             .Name("Player 2")
                             .Transform(transform => transform
@@ -158,6 +168,7 @@ namespace Alis.Sample.PingPong
                                 .Build())
                             .AddComponent(new PlayerController2())
                             .Build())
+                        
                         .Add<GameObject>(ball => ball
                             .Name("Ball")
                             .Transform(transform => transform
@@ -184,9 +195,10 @@ namespace Alis.Sample.PingPong
                                 .Build())
                             .AddComponent(new BallController())
                             .Build())
+                        
                         .Add<GameObject>(downWall => downWall
                             .Name("downWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(0, 324)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -206,9 +218,10 @@ namespace Alis.Sample.PingPong
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(upWall => upWall
                             .Name("upWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(0, -324)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -228,9 +241,10 @@ namespace Alis.Sample.PingPong
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(leftWall => leftWall
                             .Name("leftWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(-517, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
@@ -250,9 +264,10 @@ namespace Alis.Sample.PingPong
                                 .GravityScale(0.0f)
                                 .Build())
                             .Build())
+                        
                         .Add<GameObject>(rightWall => rightWall
                             .Name("rightWall")
-                            .Transform(transform => transform
+                            .Transform(transform=> transform
                                 .Position(517, 0)
                                 .Build())
                             .AddComponent<BoxCollider>(boxCollider => boxCollider

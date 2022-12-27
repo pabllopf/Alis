@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DelaunayTriangle.cs
+//  File:   DelaunayTriangle.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
 
             return i;
         }
-
+        
         /// <summary>
         ///     Indexes the cw using the specified p
         /// </summary>
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
                     return 1;
             }
         }
-
+        
         /// <summary>
         ///     Indexes the ccw using the specified p
         /// </summary>
@@ -155,15 +155,15 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
         /// <param name="t">This triangle's new neighbor</param>
         private void MarkNeighbor(TriangulationPoint p1, TriangulationPoint p2, DelaunayTriangle t)
         {
-            if (((p1 == Points[2]) && (p2 == Points[1])) || ((p1 == Points[1]) && (p2 == Points[2])))
+            if (p1 == Points[2] && p2 == Points[1] || p1 == Points[1] && p2 == Points[2])
             {
                 Neighbors[0] = t;
             }
-            else if (((p1 == Points[0]) && (p2 == Points[2])) || ((p1 == Points[2]) && (p2 == Points[0])))
+            else if (p1 == Points[0] && p2 == Points[2] || p1 == Points[2] && p2 == Points[0])
             {
                 Neighbors[1] = t;
             }
-            else if (((p1 == Points[0]) && (p2 == Points[1])) || ((p1 == Points[1]) && (p2 == Points[0])))
+            else if (p1 == Points[0] && p2 == Points[1] || p1 == Points[1] && p2 == Points[0])
             {
                 Neighbors[2] = t;
             }
@@ -318,7 +318,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay
         {
             for (int i = 0; i < 3; i++)
             {
-                if (EdgeIsConstrained[i] && (Neighbors[i] != null))
+                if (EdgeIsConstrained[i] && Neighbors[i] != null)
                 {
                     Neighbors[i].MarkConstrainedEdge(Points[(i + 1) % 3], Points[(i + 2) % 3]);
                 }

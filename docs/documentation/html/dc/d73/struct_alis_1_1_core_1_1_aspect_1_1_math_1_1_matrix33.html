@@ -96,25 +96,241 @@ $(document).ready(function(){initNavTree('dc/d73/struct_alis_1_1_core_1_1_aspect
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#properties">Properties</a> &#124;
+<a href="../../d8/d20/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Aspect.Math.Matrix33 Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>The matrix 33  
+<p>A 3-by-3 matrix. Stored in column-major order.  
  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#details">More...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a87e84f6f42a8ebd2a675a8a265bd91e5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a87e84f6f42a8ebd2a675a8a265bd91e5">Matrix33</a> (<a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> c1, <a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> c2, <a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> c3)</td></tr>
+<tr class="memdesc:a87e84f6f42a8ebd2a675a8a265bd91e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct this matrix using columns.  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a87e84f6f42a8ebd2a675a8a265bd91e5">More...</a><br /></td></tr>
+<tr class="separator:a87e84f6f42a8ebd2a675a8a265bd91e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6949d3ed602b8bcadc507419b49cbc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#aca6949d3ed602b8bcadc507419b49cbc">SetZero</a> ()</td></tr>
+<tr class="memdesc:aca6949d3ed602b8bcadc507419b49cbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set this matrix to all zeros.  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#aca6949d3ed602b8bcadc507419b49cbc">More...</a><br /></td></tr>
+<tr class="separator:aca6949d3ed602b8bcadc507419b49cbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeda6a67919f23fc2858f59dba0274ffc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#aeda6a67919f23fc2858f59dba0274ffc">Solve33</a> (<a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> b)</td></tr>
+<tr class="memdesc:aeda6a67919f23fc2858f59dba0274ffc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot cases.  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#aeda6a67919f23fc2858f59dba0274ffc">More...</a><br /></td></tr>
+<tr class="separator:aeda6a67919f23fc2858f59dba0274ffc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e110c54dd3950dac9a430383199f672"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a7e110c54dd3950dac9a430383199f672">Solve22</a> (<a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> b)</td></tr>
+<tr class="memdesc:a7e110c54dd3950dac9a430383199f672"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot cases. Solve only the upper 2-by-2 matrix equation.  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a7e110c54dd3950dac9a430383199f672">More...</a><br /></td></tr>
+<tr class="separator:a7e110c54dd3950dac9a430383199f672"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a96b9fb34e1aeb4f04024003e0553115f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a96b9fb34e1aeb4f04024003e0553115f">Col1</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a96b9fb34e1aeb4f04024003e0553115f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The col  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a96b9fb34e1aeb4f04024003e0553115f">More...</a><br /></td></tr>
+<tr class="separator:a96b9fb34e1aeb4f04024003e0553115f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac38791ee95c7f6f9599773df1042e037"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#ac38791ee95c7f6f9599773df1042e037">Col2</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:ac38791ee95c7f6f9599773df1042e037"><td class="mdescLeft">&#160;</td><td class="mdescRight">The col  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#ac38791ee95c7f6f9599773df1042e037">More...</a><br /></td></tr>
+<tr class="separator:ac38791ee95c7f6f9599773df1042e037"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fcbe0b10abd64c0f72d1a7e5d3abed1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a1fcbe0b10abd64c0f72d1a7e5d3abed1">Col3</a><code> [get, set]</code></td></tr>
+<tr class="memdesc:a1fcbe0b10abd64c0f72d1a7e5d3abed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The col  <a href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html#a1fcbe0b10abd64c0f72d1a7e5d3abed1">More...</a><br /></td></tr>
+<tr class="separator:a1fcbe0b10abd64c0f72d1a7e5d3abed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The matrix 33 </p>
+<div class="textblock"><p>A 3-by-3 matrix. Stored in column-major order. </p>
 
 <p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00035">35</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a87e84f6f42a8ebd2a675a8a265bd91e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87e84f6f42a8ebd2a675a8a265bd91e5">&#9670;&nbsp;</a></span>Matrix33()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Alis.Core.Aspect.Math.Matrix33.Matrix33 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>c1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>c2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>c3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct this matrix using columns. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00040">40</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aca6949d3ed602b8bcadc507419b49cbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6949d3ed602b8bcadc507419b49cbc">&#9670;&nbsp;</a></span>SetZero()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Aspect.Math.Matrix33.SetZero </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set this matrix to all zeros. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00050">50</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
+
+</div>
+</div>
+<a id="aeda6a67919f23fc2858f59dba0274ffc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeda6a67919f23fc2858f59dba0274ffc">&#9670;&nbsp;</a></span>Solve33()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> Alis.Core.Aspect.Math.Matrix33.Solve33 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a>&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot cases. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00061">61</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7e110c54dd3950dac9a430383199f672"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e110c54dd3950dac9a430383199f672">&#9670;&nbsp;</a></span>Solve22()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> Alis.Core.Aspect.Math.Matrix33.Solve22 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a>&#160;</td>
+          <td class="paramname"><em>b</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot cases. Solve only the upper 2-by-2 matrix equation. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00078">78</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a96b9fb34e1aeb4f04024003e0553115f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b9fb34e1aeb4f04024003e0553115f">&#9670;&nbsp;</a></span>Col1</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> Alis.Core.Aspect.Math.Matrix33.Col1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The col </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00093">93</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac38791ee95c7f6f9599773df1042e037"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac38791ee95c7f6f9599773df1042e037">&#9670;&nbsp;</a></span>Col2</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> Alis.Core.Aspect.Math.Matrix33.Col2</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The col </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00098">98</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1fcbe0b10abd64c0f72d1a7e5d3abed1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fcbe0b10abd64c0f72d1a7e5d3abed1">&#9670;&nbsp;</a></span>Col3</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d3/dd4/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector3.html">Vector3</a> Alis.Core.Aspect.Math.Matrix33.Col3</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The col </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html#l00103">103</a> of file <a class="el" href="../../d0/d3d/_matrix33_8cs_source.html">Matrix33.cs</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Aspect</a></li><li class="navelem"><a class="el" href="../../de/d0e/namespace_alis_1_1_core_1_1_aspect_1_1_math.html">Math</a></li><li class="navelem"><a class="el" href="../../dc/d73/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix33.html">Matrix33</a></li>
     <li class="footer">
-      <a>Generated on | Tue Dec 27 2022 |</a>
+      <a>Generated on | Sun Dec 25 2022 |</a>
     </li>
   </ul>
 </div>

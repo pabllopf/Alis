@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DTSweep.cs
+//  File:   DTSweep.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             AdvancingFrontNode n2 = n1.Next;
 
             TurnAdvancingFrontConvex(tcx, n1, n2);
-
+            
             n1 = tcx.AFront.Tail.Prev;
             if (n1.Triangle.Contains(n1.Next.Point) && n1.Triangle.Contains(n1.Prev.Point))
             {
@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             t2 = t1.NeighborCw(tcx.AFront.Head.Point);
             t1.Clear();
             t1 = t2;
-            while (p1 != first)
+            while (p1 != first) 
             {
                 tcx.RemoveFromList(t1);
                 p1 = t1.PointCcw(p1);
@@ -196,7 +196,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 else
                 {
                     // [b,c,d] Convex
-                    if ((b != first) && (TriangulationUtil.Orient2d(b.Prev.Point, b.Point, c.Point) == Orientation.Ccw))
+                    if (b != first && TriangulationUtil.Orient2d(b.Prev.Point, b.Point, c.Point) == Orientation.Ccw)
                     {
                         // [a,b,c] Concave - fill around b
                         Fill(tcx, b);
@@ -295,7 +295,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 {
                     return;
                 }
-
+                
                 FillEdgeEvent(tcx, edge, node);
 
                 EdgeEvent(tcx, edge.P, edge.Q, node.Triangle, edge.Q);
@@ -661,7 +661,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             DelaunayTriangle t, TriangulationPoint p)
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
-
+            
 
             if (t.GetConstrainedEdgeAcross(p))
             {
@@ -678,14 +678,14 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 tcx.MapTriangleToNodes(t);
                 tcx.MapTriangleToNodes(ot);
 
-                if ((p == eq) && (op == ep))
+                if (p == eq && op == ep)
                 {
-                    if ((eq == tcx.EdgeEvent.ConstrainedEdge.Q)
-                        && (ep == tcx.EdgeEvent.ConstrainedEdge.P))
+                    if (eq == tcx.EdgeEvent.ConstrainedEdge.Q
+                        && ep == tcx.EdgeEvent.ConstrainedEdge.P)
                     {
                         if (tcx.IsDebugEnabled)
                         {
-                            Logger.Log("[FLIP] - constrained edge done");
+                            Logger.Log("[FLIP] - constrained edge done"); 
                         }
 
                         t.MarkConstrainedEdge(ep, eq);
@@ -697,7 +697,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                     {
                         if (tcx.IsDebugEnabled)
                         {
-                            Logger.Log("[FLIP] - subedge done");
+                            Logger.Log("[FLIP] - subedge done"); 
                         }
                     }
                 }
@@ -708,7 +708,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                         Logger.Log("[FLIP] - flipping and continuing with triangle still crossing edge");
                     }
 
-
+                  
                     Orientation o = TriangulationUtil.Orient2d(eq, op, ep);
                     t = NextFlipTriangle(tcx, o, t, ot, p, op);
                     FlipEdgeEvent(tcx, ep, eq, t, p);
@@ -741,7 +741,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
                 // Left
                 return ot.PointCw(op);
             }
-
             throw new PointOnEdgeException("Point on constrained edge not supported yet");
         }
 
@@ -792,7 +791,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             DelaunayTriangle flipTriangle, DelaunayTriangle t, TriangulationPoint p)
         {
             DelaunayTriangle ot = t.NeighborAcross(p);
-
+            
             TriangulationPoint op = ot.OppositePoint(t, p);
 
             bool inScanArea = TriangulationUtil.InScanArea(eq, flipTriangle.PointCcw(eq), flipTriangle.PointCw(eq), op);
@@ -877,7 +876,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             AdvancingFrontNode next2Node = nextNode.Next;
 
             // "..Plus.." because only want angles on same side as point being added.
-            if ((next2Node != null) &&
+            if (next2Node != null &&
                 !AngleExceedsPlus90DegreesOrIsNegative(node.Point, next2Node.Point, prevNode.Point))
             {
                 return false;
@@ -886,7 +885,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             AdvancingFrontNode prev2Node = prevNode.Prev;
 
             // "..Plus.." because only want angles on same side as point being added.
-            if ((prev2Node != null) &&
+            if (prev2Node != null &&
                 !AngleExceedsPlus90DegreesOrIsNegative(node.Point, nextNode.Point, prev2Node.Point))
             {
                 return false;
@@ -974,7 +973,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
 
             // Find the bottom and right node
             tcx.Basin.BottomNode = tcx.Basin.LeftNode;
-            while (tcx.Basin.BottomNode.HasNext && (tcx.Basin.BottomNode.Point.Y >= tcx.Basin.BottomNode.Next.Point.Y))
+            while (tcx.Basin.BottomNode.HasNext && tcx.Basin.BottomNode.Point.Y >= tcx.Basin.BottomNode.Next.Point.Y)
             {
                 tcx.Basin.BottomNode = tcx.Basin.BottomNode.Next;
             }
@@ -986,7 +985,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             }
 
             tcx.Basin.RightNode = tcx.Basin.BottomNode;
-            while (tcx.Basin.RightNode.HasNext && (tcx.Basin.RightNode.Point.Y < tcx.Basin.RightNode.Next.Point.Y))
+            while (tcx.Basin.RightNode.HasNext && tcx.Basin.RightNode.Point.Y < tcx.Basin.RightNode.Next.Point.Y)
             {
                 tcx.Basin.RightNode = tcx.Basin.RightNode.Next;
             }
@@ -1013,7 +1012,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
             }
 
             Fill(tcx, node);
-            if ((node.Prev == tcx.Basin.LeftNode) && (node.Next == tcx.Basin.RightNode))
+            if (node.Prev == tcx.Basin.LeftNode && node.Next == tcx.Basin.RightNode)
             {
                 return;
             }
@@ -1119,7 +1118,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         private static void Fill(DtSweepContext tcx, AdvancingFrontNode node)
         {
             DelaunayTriangle triangle = new DelaunayTriangle(node.Prev.Point, node.Point, node.Next.Point);
-
+            
             triangle.MarkNeighbor(node.Prev.Triangle);
             triangle.MarkNeighbor(node.Triangle);
             tcx.Triangles.Add(triangle);

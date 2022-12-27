@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
 using Alis.Core.Aspect.Math;
 
 namespace Alis.Core.Entity

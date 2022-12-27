@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.ComponentModel;
 
 namespace Alis.Core.Aspect.Base
@@ -36,6 +37,7 @@ namespace Alis.Core.Aspect.Base
     /// </summary>
     public class AlisObject : object
     {
+
         /*
         static AlisObject()
         {
@@ -44,7 +46,7 @@ namespace Alis.Core.Aspect.Base
             EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-window.dylib", Properties.Resources.osx_arm64_libcsfml_window_2_5_1);
             EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-audio.dylib", Properties.Resources.osx_arm64_libcsfml_audio_2_5_1);
         }*/
-
+        
         /// <summary>
         ///     The name
         /// </summary>

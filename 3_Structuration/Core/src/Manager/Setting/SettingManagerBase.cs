@@ -92,10 +92,11 @@ namespace Alis.Core.Manager.Setting
         }
 
         /// <summary>
-        ///     Draws this instance
+        /// Draws this instance
         /// </summary>
         public override void Draw()
         {
+            
         }
 
         /// <summary>

@@ -129,113 +129,108 @@ $(document).ready(function(){initNavTree('d9/d1b/_gift_wrap_8cs_source.html','..
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d0/d2c/namespace_alis.html">Alis</a>.<a class="code" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a>.<a class="code" href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Aspect</a>.<a class="code" href="../../de/d0e/namespace_alis_1_1_core_1_1_aspect_1_1_math.html">Math</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> System.Numerics;</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d0/d2c/namespace_alis.html">Alis</a>.<a class="code" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a>.<a class="code" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a>.<a class="code" href="../../dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html">Shared</a>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d0/d2c/namespace_alis.html">Alis</a>.<a class="code" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a>.<a class="code" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a>.<a class="code" href="../../de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities.html">Utilities</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">using</span> <a class="code" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> = System.Numerics.<a class="code" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html#a84c57c37e8e1d6b4ed39e1d69a590e4d">Vector2</a>;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html">Alis.Core.Physic.Tools.ConvexHull</a></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html">   41</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html">GiftWrap</a></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">//Extracted from Box2D</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html#a0c6f0c861106dafa04189799807da9c2">   47</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> <a class="code" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html#a0c6f0c861106dafa04189799807da9c2">GetConvexHull</a>(<a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> vertices)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">if</span> (vertices.Count &lt;= 3)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            {</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <span class="keywordflow">return</span> vertices;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            }</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">// Find the right most point on the hull</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">int</span> i0 = 0;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordtype">float</span> x0 = vertices[0].X;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; vertices.Count; ++i)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordtype">float</span> x = vertices[i].X;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">if</span> (x &gt; x0 || x == x0 &amp;&amp; vertices[i].Y &lt; vertices[i0].Y)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                {</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    i0 = i;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                    x0 = x;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">int</span>[] hull = <span class="keyword">new</span> <span class="keywordtype">int</span>[vertices.Count];</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordtype">int</span> m = 0;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordtype">int</span> ih = i0;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">for</span> (;;)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                hull[m] = ih;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordtype">int</span> ie = 0;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 1; j &lt; vertices.Count; ++j)</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    <span class="keywordflow">if</span> (ie == ih)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                    {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        ie = j;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <a class="code" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> r = vertices[ie] - vertices[hull[m]];</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <a class="code" href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Vector2</a> v = vertices[j] - vertices[hull[m]];</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="keywordtype">float</span> c = <a class="code" href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html">MathUtils</a>.<a class="code" href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#ae2328ccbbbaf9421f3378ae56400ccad">Cross</a>(ref r, ref v);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    <span class="keywordflow">if</span> (c &lt; 0.0f)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        ie = j;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="comment">// Collinearity check</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    <span class="keywordflow">if</span> (c == 0.0f &amp;&amp; v.LengthSquared() &gt; r.LengthSquared())</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                    {</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                        ie = j;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                ++m;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                ih = ie;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">if</span> (ie == i0)</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                    <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                }</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> result = <span class="keyword">new</span> <a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a>(m);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="comment">// Copy vertices.</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; m; ++i)</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                result.Add(vertices[hull[i]]);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html">Alis.Core.Physic.Tools.ConvexHull</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html">   40</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html">GiftWrap</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">//Extracted from Box2D</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html#a0c6f0c861106dafa04189799807da9c2">   46</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">static</span> <a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> <a class="code" href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html#a0c6f0c861106dafa04189799807da9c2">GetConvexHull</a>(<a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> vertices)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">if</span> (vertices.Count &lt;= 3)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">return</span> vertices;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// Find the right most point on the hull</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordtype">int</span> i0 = 0;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordtype">float</span> x0 = vertices[0].X;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; vertices.Count; ++i)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="keywordtype">float</span> x = vertices[i].X;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                <span class="keywordflow">if</span> (x &gt; x0 || x == x0 &amp;&amp; vertices[i].Y &lt; vertices[i0].Y)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    i0 = i;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                    x0 = x;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordtype">int</span>[] hull = <span class="keyword">new</span> <span class="keywordtype">int</span>[vertices.Count];</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordtype">int</span> m = 0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordtype">int</span> ih = i0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">for</span> (;;)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                hull[m] = ih;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                <span class="keywordtype">int</span> ie = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 1; j &lt; vertices.Count; ++j)</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                    <span class="keywordflow">if</span> (ie == ih)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        ie = j;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    Vector2 r = vertices[ie] - vertices[hull[m]];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    Vector2 v = vertices[j] - vertices[hull[m]];</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <span class="keywordtype">float</span> c = <a class="code" href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html">MathUtils</a>.<a class="code" href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#ab6d707de4d43aeda695e6361a16eec44">Cross</a>(ref r, ref v);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                    <span class="keywordflow">if</span> (c &lt; 0.0f)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        ie = j;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                    <span class="comment">// Collinearity check</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                    <span class="keywordflow">if</span> (c == 0.0f &amp;&amp; v.LengthSquared() &gt; r.LengthSquared())</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                        ie = j;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                ++m;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                ih = ie;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                <span class="keywordflow">if</span> (ie == i0)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a> result = <span class="keyword">new</span> <a class="code" href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Vertices</a>(m);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="comment">// Copy vertices.</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; m; ++i)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                result.Add(vertices[hull[i]]);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils_html"><div class="ttname"><a href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html">Alis.Core.Physic.Utilities.MathUtils</a></div><div class="ttdoc">The math utils class</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d1c/_math_utils_8cs_source.html#l00037">MathUtils.cs:38</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_html"><div class="ttname"><a href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Alis.Core.Physic</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d32/_a_a_b_b_helper_8cs_source.html#l00036">AABBHelper.cs:37</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_aspect_html"><div class="ttname"><a href="../../d2/d40/namespace_alis_1_1_core_1_1_aspect.html">Alis.Core.Aspect</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d16/5___declaration_2_aspect_2src_2_example_class_8cs_source.html#l00030">ExampleClass.cs:31</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_html"><div class="ttname"><a href="../../d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html">Alis.Core.Physic.Tools.ConvexHull</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df6/_chain_hull_8cs_source.html#l00035">ChainHull.cs:36</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils_html"><div class="ttname"><a href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html">Alis.Core.Physic.Utilities.MathUtils</a></div><div class="ttdoc">The math utils class</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d1c/_math_utils_8cs_source.html#l00039">MathUtils.cs:40</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_html"><div class="ttname"><a href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Alis.Core.Physic</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d32/_a_a_b_b_helper_8cs_source.html#l00035">AABBHelper.cs:36</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_html"><div class="ttname"><a href="../../d8/ddb/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull.html">Alis.Core.Physic.Tools.ConvexHull</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/df6/_chain_hull_8cs_source.html#l00034">ChainHull.cs:35</a></div></div>
 <div class="ttc" id="anamespace_alis_1_1_core_html"><div class="ttname"><a href="../../dd/dd9/namespace_alis_1_1_core.html">Alis.Core</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df7/_audio_clip_8cs_source.html#l00034">AudioClip.cs:35</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2_html_a84c57c37e8e1d6b4ed39e1d69a590e4d"><div class="ttname"><a href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html#a84c57c37e8e1d6b4ed39e1d69a590e4d">Alis.Core.Aspect.Math.Vector2.Vector2</a></div><div class="ttdeci">Vector2(float x, float y)</div><div class="ttdoc">Initializes a new instance of the Vector2 class</div><div class="ttdef"><b>Definition:</b> <a href="../../de/df3/_vector2_8cs_source.html#l00056">Vector2.cs:56</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils_html_ab6d707de4d43aeda695e6361a16eec44"><div class="ttname"><a href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#ab6d707de4d43aeda695e6361a16eec44">Alis.Core.Physic.Utilities.MathUtils.Cross</a></div><div class="ttdeci">static float Cross(ref Vector2 a, ref Vector2 b)</div><div class="ttdoc">Perform the cross product on two vectors.</div></div>
 <div class="ttc" id="anamespace_alis_html"><div class="ttname"><a href="../../d0/d2c/namespace_alis.html">Alis</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d2d/_engine_2src_2_program_8cs_source.html#l00032">Program.cs:33</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_shared_html"><div class="ttname"><a href="../../dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html">Alis.Core.Physic.Shared</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/_a_a_b_b_8cs_source.html#l00036">AABB.cs:37</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices_html"><div class="ttname"><a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Alis.Core.Physic.Shared.Vertices</a></div><div class="ttdoc">The vertices class</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d80/_vertices_8cs_source.html#l00046">Vertices.cs:47</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils_html_ae2328ccbbbaf9421f3378ae56400ccad"><div class="ttname"><a href="../../d4/de0/class_alis_1_1_core_1_1_physic_1_1_utilities_1_1_math_utils.html#ae2328ccbbbaf9421f3378ae56400ccad">Alis.Core.Physic.Utilities.MathUtils.Cross</a></div><div class="ttdeci">static float Cross(ref System.Numerics.Vector2 a, ref System.Numerics.Vector2 b)</div><div class="ttdoc">Perform the cross product on two vectors.</div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap_html_a0c6f0c861106dafa04189799807da9c2"><div class="ttname"><a href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html#a0c6f0c861106dafa04189799807da9c2">Alis.Core.Physic.Tools.ConvexHull.GiftWrap.GetConvexHull</a></div><div class="ttdeci">static Vertices GetConvexHull(Vertices vertices)</div><div class="ttdoc">Returns the convex hull from the given vertices.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d1b/_gift_wrap_8cs_source.html#l00047">GiftWrap.cs:47</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2_html"><div class="ttname"><a href="../../d5/d89/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector2.html">Alis.Core.Aspect.Math.Vector2</a></div><div class="ttdoc">The vector</div><div class="ttdef"><b>Definition:</b> <a href="../../de/df3/_vector2_8cs_source.html#l00039">Vector2.cs:40</a></div></div>
-<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap_html"><div class="ttname"><a href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html">Alis.Core.Physic.Tools.ConvexHull.GiftWrap</a></div><div class="ttdoc">Giftwrap convex hull algorithm. O(n * h) time complexity, where n is the number of points and h is th...</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d1b/_gift_wrap_8cs_source.html#l00041">GiftWrap.cs:42</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_aspect_1_1_math_html"><div class="ttname"><a href="../../de/d0e/namespace_alis_1_1_core_1_1_aspect_1_1_math.html">Alis.Core.Aspect.Math</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d50/_constant_8cs_source.html#l00030">Constant.cs:31</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_utilities_html"><div class="ttname"><a href="../../de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities.html">Alis.Core.Physic.Utilities</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_line_utils_8cs_source.html#l00035">LineUtils.cs:36</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_shared_html"><div class="ttname"><a href="../../dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html">Alis.Core.Physic.Shared</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/_a_a_b_b_8cs_source.html#l00035">AABB.cs:36</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices_html"><div class="ttname"><a href="../../d9/d05/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_vertices.html">Alis.Core.Physic.Shared.Vertices</a></div><div class="ttdoc">The vertices class</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d80/_vertices_8cs_source.html#l00044">Vertices.cs:45</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap_html_a0c6f0c861106dafa04189799807da9c2"><div class="ttname"><a href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html#a0c6f0c861106dafa04189799807da9c2">Alis.Core.Physic.Tools.ConvexHull.GiftWrap.GetConvexHull</a></div><div class="ttdeci">static Vertices GetConvexHull(Vertices vertices)</div><div class="ttdoc">Returns the convex hull from the given vertices.</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d1b/_gift_wrap_8cs_source.html#l00046">GiftWrap.cs:46</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap_html"><div class="ttname"><a href="../../d0/d9f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_convex_hull_1_1_gift_wrap.html">Alis.Core.Physic.Tools.ConvexHull.GiftWrap</a></div><div class="ttdoc">Giftwrap convex hull algorithm. O(n * h) time complexity, where n is the number of points and h is th...</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d1b/_gift_wrap_8cs_source.html#l00040">GiftWrap.cs:41</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_physic_1_1_utilities_html"><div class="ttname"><a href="../../de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities.html">Alis.Core.Physic.Utilities</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_line_utils_8cs_source.html#l00034">LineUtils.cs:35</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_52bde0543a13a94906a2e677a9f1758f.html">Physic</a></li><li class="navelem"><a class="el" href="../../dir_16bee6912db060554756e46a6c0ce1a1.html">src</a></li><li class="navelem"><a class="el" href="../../dir_1a405381ab17d9fca57871013692a818.html">Tools</a></li><li class="navelem"><a class="el" href="../../dir_36a5d6ae7c74a6a4aa4bafbc3961101b.html">ConvexHull</a></li><li class="navelem"><b>GiftWrap.cs</b></li>
     <li class="footer">
-      <a>Generated on | Tue Dec 27 2022 |</a>
+      <a>Generated on | Sun Dec 25 2022 |</a>
     </li>
   </ul>
 </div>

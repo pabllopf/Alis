@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The relative position interface
+    /// The relative position interface
     /// </summary>
     public interface IRelativePosition<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        ///     Relatives the position using the specified x
+        /// Relatives the position using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Contact.cs
+//  File:   Contact.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -397,7 +397,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             ToiCount = 0;
 
             //Velcro: We only set the friction and restitution if we are not resetting the contact
-            if ((FixtureA != null) && (FixtureB != null))
+            if (FixtureA != null && FixtureB != null)
             {
                 Friction = Settings.MixFriction(FixtureA.Frictionprivate, FixtureB.Frictionprivate);
                 Restitution = Settings.MixRestitution(FixtureA.Restitutionprivate, FixtureB.Restitutionprivate);
@@ -494,7 +494,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 Flags &= ~ContactFlags.TouchingFlag;
             }
 
-            if ((wasTouching == false) && touching)
+            if (wasTouching == false && touching)
             {
                 //Velcro: Report the collision to both fixtures:
                 FixtureA.OnCollision?.Invoke(FixtureA, FixtureB, this);
@@ -593,16 +593,16 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             ShapeType type1 = fixtureA.Shape.ShapeType;
             ShapeType type2 = fixtureB.Shape.ShapeType;
 
-            Debug.Assert((ShapeType.Unknown < type1) && (type1 < ShapeType.TypeCount));
-            Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
+            Debug.Assert(ShapeType.Unknown < type1 && type1 < ShapeType.TypeCount);
+            Debug.Assert(ShapeType.Unknown < type2 && type2 < ShapeType.TypeCount);
 
             Contact c;
             Queue<Contact> pool = fixtureA.Body.World.ContactPool;
             if (pool.Count > 0)
             {
                 c = pool.Dequeue();
-                if ((type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) &&
-                    !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon)))
+                if ((type1 >= type2 || type1 == ShapeType.Edge && type2 == ShapeType.Polygon) &&
+                    !(type2 == ShapeType.Edge && type1 == ShapeType.Polygon))
                 {
                     c.Reset(fixtureA, indexA, fixtureB, indexB);
                 }
@@ -614,8 +614,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             else
             {
                 // Edge+Polygon is non-symmetrical due to the way Erin handles collision type registration.
-                if ((type1 >= type2 || ((type1 == ShapeType.Edge) && (type2 == ShapeType.Polygon))) &&
-                    !((type2 == ShapeType.Edge) && (type1 == ShapeType.Polygon)))
+                if ((type1 >= type2 || type1 == ShapeType.Edge && type2 == ShapeType.Polygon) &&
+                    !(type2 == ShapeType.Edge && type1 == ShapeType.Polygon))
                 {
                     c = new Contact(fixtureA, indexA, fixtureB, indexB);
                 }
@@ -640,7 +640,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             //Fixture fixtureA = _fixtureA;
             //Fixture fixtureB = _fixtureB;
 
-            if ((Manifold.PointCount > 0) && !FixtureA.IsSensor && !FixtureB.IsSensor)
+            if (Manifold.PointCount > 0 && !FixtureA.IsSensor && !FixtureB.IsSensor)
             {
                 FixtureA.Body.Awake = true;
                 FixtureB.Body.Awake = true;

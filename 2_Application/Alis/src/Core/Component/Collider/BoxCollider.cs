@@ -27,13 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
 using Alis.Builder.Core.Component.Collider;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Factories;
-using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Core.Component.Collider
 {
@@ -43,17 +44,17 @@ namespace Alis.Core.Component.Collider
     /// <seealso cref="ColliderBase" />
     public class BoxCollider : ColliderBase, IBuilder<BoxColliderBuilder>
     {
-        /// <summary>
+         /// <summary>
         ///     The rectangle shape
         /// </summary>
         private RectangleShape rectangleShape;
 
-        /// <summary>
-        ///     Gets or sets the value of the is trigger
-        /// </summary>
-        public bool IsTrigger { get; set; }
-
-        /// <summary>
+         /// <summary>
+         /// Gets or sets the value of the is trigger
+         /// </summary>
+         public bool IsTrigger { get; set; }
+         
+         /// <summary>
         ///     Gets or sets the value of the width
         /// </summary>
         public float Width { get; set; } = 10.0f;
@@ -92,7 +93,7 @@ namespace Alis.Core.Component.Collider
         ///     Gets or sets the value of the body type
         /// </summary>
         public BodyType BodyType { get; set; } = BodyType.Static;
-
+        
         /// <summary>
         ///     Gets or sets the value of the restitution
         /// </summary>
@@ -122,30 +123,24 @@ namespace Alis.Core.Component.Collider
         ///     Gets or sets the value of the linear velocity
         /// </summary>
         public System.Numerics.Vector2 LinearVelocity { get; set; } = System.Numerics.Vector2.Zero;
-
+        
         /// <summary>
-        ///     Builders this instance
-        /// </summary>
-        /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder Builder() => new BoxColliderBuilder();
-
-        /// <summary>
-        ///     Inits this instance
+        /// Inits this instance
         /// </summary>
         public override void Init()
         {
             if (AutoTilling)
             {
-                if (GameObject.Contains<Sprite>())
+                if (GameObject.Contains<Alis.Core.Component.Render.Sprite>())
                 {
-                    Width = GameObject.GetComponent<Sprite>().sprite.Texture.Size.X * GameObject.Transform.Scale.X;
-                    Height = GameObject.GetComponent<Sprite>().sprite.Texture.Size.Y * GameObject.Transform.Scale.Y;
+                    Width = GameObject.GetComponent<Alis.Core.Component.Render.Sprite>().sprite.Texture.Size.X * GameObject.Transform.Scale.X;
+                    Height = GameObject.GetComponent<Alis.Core.Component.Render.Sprite>().sprite.Texture.Size.Y * GameObject.Transform.Scale.Y;
                 }
             }
             else
             {
                 Width *= GameObject.Transform.Scale.X;
-                Height *= GameObject.Transform.Scale.Y;
+                Height  *= GameObject.Transform.Scale.Y;
             }
         }
 
@@ -154,36 +149,36 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Awake()
         {
-            rectangleShape = new RectangleShape
+            rectangleShape = new RectangleShape()
             {
-                Position = new Vector2(
-                    GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
-                    GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2
+                Position = new Vector2F(
+                    (GameObject.Transform.Position.X + RelativePosition.X) - (Width / (2)),
+                    (GameObject.Transform.Position.Y + RelativePosition.Y) - (Height / (2))
                 ),
                 FillColor = Color.Transparent,
                 OutlineColor = Color.Green,
                 OutlineThickness = 1.0f,
                 Rotation = Rotation,
-                Size = new Vector2(Width, Height)
+                Size = new Vector2F(Width, Height)
             };
-
-
+            
+            
             VideoGame.GraphicManager.AttachCollider(rectangleShape);
 
             Body = BodyFactory.CreateRectangle(
-                VideoGame.PhysicManager.World,
-                Width,
-                Height,
-                Density,
-                new System.Numerics.Vector2(
+                world: VideoGame.PhysicManager.World,
+                width: Width,
+                height: Height,
+                density: Density,
+                position: new System.Numerics.Vector2(
                     GameObject.Transform.Position.X + RelativePosition.X,
                     GameObject.Transform.Position.Y + RelativePosition.Y
-                ),
-                Rotation,
-                BodyType,
-                GameObject
-            );
-
+                    ),
+                rotation: Rotation,
+                bodyType: BodyType,
+                userData: GameObject
+                );
+            
             Body.Restitution = Restitution;
             Body.Friction = Friction;
             Body.FixedRotation = FixedRotation;
@@ -197,12 +192,13 @@ namespace Alis.Core.Component.Collider
 
             VideoGame.PhysicManager.AttachBody(Body);
         }
-
+        
         /// <summary>
         ///     Starts this instance
         /// </summary>
         public override void Start()
         {
+           
         }
 
         /// <summary>
@@ -219,6 +215,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void Update()
         {
+            
         }
 
         /// <summary>
@@ -229,15 +226,21 @@ namespace Alis.Core.Component.Collider
         }
 
         /// <summary>
-        ///     Draws this instance
+        /// Draws this instance
         /// </summary>
         public override void Draw()
         {
-            rectangleShape.Position = new Vector2(
-                GameObject.Transform.Position.X + RelativePosition.X - Width / 2,
-                GameObject.Transform.Position.Y + RelativePosition.Y - Height / 2
+            rectangleShape.Position = new Vector2F(
+                (GameObject.Transform.Position.X + RelativePosition.X) - (Width / (2 )),
+                (GameObject.Transform.Position.Y + RelativePosition.Y) - (Height / (2))
             );
             rectangleShape.Rotation = GameObject.Transform.Rotation;
         }
+        
+        /// <summary>
+        /// Builders this instance
+        /// </summary>
+        /// <returns>The box collider builder</returns>
+        public  BoxColliderBuilder Builder() => new BoxColliderBuilder();
     }
 }

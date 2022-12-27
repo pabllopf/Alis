@@ -30,42 +30,42 @@
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    ///     The message type enum
+    /// The message type enum
     /// </summary>
     public enum MessageType
     {
         /// <summary>
-        ///     The trace message type
+        /// The trace message type
         /// </summary>
         Trace = 0,
-
+        
         /// <summary>
-        ///     The info message type
+        /// The info message type
         /// </summary>
         Info = 1,
-
+        
         /// <summary>
-        ///     The log message type
+        /// The log message type
         /// </summary>
         Log = 2,
-
+        
         /// <summary>
-        ///     The event message type
+        /// The event message type
         /// </summary>
         Event = 3,
-
+        
         /// <summary>
-        ///     The warning message type
+        /// The warning message type
         /// </summary>
         Warning = 4,
-
+        
         /// <summary>
-        ///     The error message type
+        /// The error message type
         /// </summary>
         Error = 5,
-
+        
         /// <summary>
-        ///     The exception message type
+        /// The exception message type
         /// </summary>
         Exception = 6
     }

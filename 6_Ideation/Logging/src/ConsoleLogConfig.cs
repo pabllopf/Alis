@@ -32,47 +32,47 @@ using System;
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    ///     The console log config class
+    /// The console log config class
     /// </summary>
     public static class ConsoleLogConfig
     {
         /// <summary>
-        ///     Info text color
+        /// Info text color
         /// </summary>
         private const ConsoleColor InfoMessageColor = ConsoleColor.DarkGreen;
-
+        
         /// <summary>
-        ///     Log text color
+        /// Log text color
         /// </summary>
         private const ConsoleColor LogMessageColor = ConsoleColor.Black;
-
+        
         /// <summary>
-        ///     Trace text color
+        /// Trace text color
         /// </summary>
         private const ConsoleColor TraceMessageColor = ConsoleColor.White;
 
         /// <summary>
-        ///     Warning text color
+        /// Warning text color
         /// </summary>
         private const ConsoleColor WarningMessageColor = ConsoleColor.DarkYellow;
 
         /// <summary>
-        ///     Error text color
+        /// Error text color
         /// </summary>
         private const ConsoleColor ErrorMessageColor = ConsoleColor.Red;
 
         /// <summary>
-        ///     Exception text color
+        /// Exception text color
         /// </summary>
         private const ConsoleColor ExceptionMessageColor = ConsoleColor.DarkRed;
 
         /// <summary>
-        ///     Event text color
+        /// Event text color
         /// </summary>
         private const ConsoleColor EventMessageColor = ConsoleColor.DarkMagenta;
 
         /// <summary>
-        ///     Gets the color message by type using the specified message type
+        /// Gets the color message by type using the specified message type
         /// </summary>
         /// <param name="messageType">The message type</param>
         /// <exception cref="ArgumentOutOfRangeException">null</exception>

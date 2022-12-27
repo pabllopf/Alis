@@ -115,9 +115,9 @@ namespace Alis.Core.Entity
         {
             gameObjects.ForEach(gameObject => gameObject.DispatchEvents());
         }
-
+        
         /// <summary>
-        ///     Draws this instance
+        /// Draws this instance
         /// </summary>
         public void Draw()
         {

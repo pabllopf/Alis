@@ -22,7 +22,7 @@
 
  @licend  The above is the entire license notice for the JavaScript code in this file
  */
-var navTreeSubIndices = [];
+var navTreeSubIndices = new Array();
 var arrowDown = '&#9660;';
 var arrowRight = '&#9658;';
 
@@ -126,7 +126,7 @@ function createIndent(o,domNode,node,level)
       } else {
         expandNode(o, node, false, false);
       }
-    };
+    }
     node.expandToggle.appendChild(imgNode);
     domNode.appendChild(node.expandToggle);
   } else {
@@ -171,7 +171,7 @@ function gotoAnchor(anchor,aname,updateLocation)
 
 function newNode(o, po, text, link, childrenData, lastNode)
 {
-  var node = {};
+  var node = new Object();
   node.children = Array();
   node.childrenData = childrenData;
   node.depth = po.depth + 1;
@@ -268,7 +268,7 @@ function showRoot()
 function expandNode(o, node, imm, showRoot)
 {
   if (node.childrenData && !node.expanded) {
-    if (typeof node.childrenData==='string') {
+    if (typeof(node.childrenData)==='string') {
       var varName    = node.childrenData;
       getScript(node.relpath+varName,function(){
         node.childrenData = getData(varName);
@@ -336,7 +336,7 @@ function selectAndHighlight(hash,n)
 function showNode(o, node, index, hash)
 {
   if (node && node.childrenData) {
-    if (typeof node.childrenData==='string') {
+    if (typeof(node.childrenData)==='string') {
       var varName    = node.childrenData;
       getScript(node.relpath+varName,function(){
         node.childrenData = getData(varName);
@@ -353,7 +353,7 @@ function showNode(o, node, index, hash)
       if (index+1<o.breadcrumbs.length) {
         showNode(o,n,index+1,hash);
       } else {
-        if (typeof n.childrenData==='string') {
+        if (typeof(n.childrenData)==='string') {
           var varName = n.childrenData;
           getScript(n.relpath+varName,function(){
             n.childrenData = getData(varName);
@@ -483,12 +483,12 @@ $(window).on('load',function(){
 
 function initNavTree(toroot,relpath)
 {
-  var o = {};
+  var o = new Object();
   o.toroot = toroot;
-  o.node = {};
+  o.node = new Object();
   o.node.li = document.getElementById("nav-tree-contents");
   o.node.childrenData = NAVTREE;
-  o.node.children = [];
+  o.node.children = new Array();
   o.node.childrenUL = document.createElement("ul");
   o.node.getChildrenUL = function() { return o.node.childrenUL; };
   o.node.li.appendChild(o.node.childrenUL);

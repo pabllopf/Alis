@@ -4,17 +4,13 @@
         <TargetFramework>netstandard2.1</TargetFramework>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <PropertyGroup>
         <PublishTrimmed>false</PublishTrimmed>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
-        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj"/>
+      <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
     </ItemGroup>
 
 </Project>

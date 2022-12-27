@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The auto tilling interface
+    /// The auto tilling interface
     /// </summary>
     public interface IAutoTilling<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Autoes the tilling using the specified value
+        /// Autoes the tilling using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

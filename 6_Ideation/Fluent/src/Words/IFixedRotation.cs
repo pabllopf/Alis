@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The fixed rotation interface
+    /// The fixed rotation interface
     /// </summary>
     public interface IFixedRotation<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Fixeds the rotation using the specified value
+        /// Fixeds the rotation using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

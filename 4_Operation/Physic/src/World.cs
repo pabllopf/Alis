@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:World.cs
+//  File:   World.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -554,7 +554,7 @@ namespace Alis.Core.Physic
             }
 
             // Integrate velocities, solve velocity constraints, and integrate positions.
-            if (stepComplete && (step.DeltaTime > 0.0f))
+            if (stepComplete && step.DeltaTime > 0.0f)
             {
                 Stopwatch timer = timerPool.GetFromPool(true);
                 Solve(ref step);
@@ -563,7 +563,7 @@ namespace Alis.Core.Physic
             }
 
             // Handle TOI events.
-            if (ContinuousPhysicsEnabled && (step.DeltaTime > 0.0f))
+            if (ContinuousPhysicsEnabled && step.DeltaTime > 0.0f)
             {
                 Stopwatch timer = timerPool.GetFromPool(true);
                 SolveToi(ref step);
@@ -1132,8 +1132,8 @@ namespace Alis.Core.Physic
                         BodyType typeB = bB.BodyType;
                         Debug.Assert(typeA == BodyType.Dynamic || typeB == BodyType.Dynamic);
 
-                        bool activeA = bA.Awake && (typeA != BodyType.Static);
-                        bool activeB = bB.Awake && (typeB != BodyType.Static);
+                        bool activeA = bA.Awake && typeA != BodyType.Static;
+                        bool activeB = bB.Awake && typeB != BodyType.Static;
 
                         // Is at least one body active (awake and dynamic or kinematic)?
                         if (!activeA && !activeB)
@@ -1142,9 +1142,9 @@ namespace Alis.Core.Physic
                         }
 
                         bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) &&
-                                        ((fA.IgnoreCcdWith & fB.CollisionCategories) == 0) && !bA.IgnoreCcd;
+                                        (fA.IgnoreCcdWith & fB.CollisionCategories) == 0 && !bA.IgnoreCcd;
                         bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) &&
-                                        ((fB.IgnoreCcdWith & fA.CollisionCategories) == 0) && !bB.IgnoreCcd;
+                                        (fB.IgnoreCcdWith & fA.CollisionCategories) == 0 && !bB.IgnoreCcd;
 
                         // Are these two non-bullet dynamic bodies?
                         if (!collideA && !collideB)
@@ -1282,7 +1282,7 @@ namespace Alis.Core.Physic
 
                             // Only add static, kinematic, or bullet bodies.
                             Body other = ce.Other;
-                            if ((other.BodyType == BodyType.Dynamic) &&
+                            if (other.BodyType == BodyType.Dynamic &&
                                 !body.IsBullet && !other.IsBullet)
                             {
                                 continue;

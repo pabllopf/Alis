@@ -34,18 +34,18 @@ using System.Text.Json.Serialization;
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    ///     The message class
+    /// The message class
     /// </summary>
     public class Message
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Message" /> class
+        /// Initializes a new instance of the <see cref="Message"/> class
         /// </summary>
         /// <param name="messageType">The message type</param>
         /// <param name="content">The content</param>
         [JsonConstructor]
         public Message(
-            MessageType messageType,
+            MessageType messageType, 
             string content = "")
         {
             DateTime = DateTime.Now.ToUniversalTime();
@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Logging
 
             StackTrace stackTrace1 = new StackTrace(2, false);
             StackTrace stackTrace2 = new StackTrace(2, true);
-
+            
             string methodName = stackTrace1.GetFrame(0).GetMethod().Name;
             Type reflectedType = stackTrace1.GetFrame(0).GetMethod().ReflectedType;
             if (reflectedType != null)
@@ -62,58 +62,58 @@ namespace Alis.Core.Aspect.Logging
                 string className = reflectedType.FullName;
                 Method = className + "." + methodName + "()";
             }
-
+            
             Level = MessageType.ToString();
-
+            
             StackTrace = stackTrace1.ToString().Trim();
-            File = stackTrace2.GetFrame(0).GetFileName();
+            File = stackTrace2.GetFrame(0).GetFileName(); 
             Line = stackTrace2.GetFrame(0).GetFileLineNumber().ToString();
         }
 
         /// <summary>
-        ///     Gets or sets the value of the date time
+        /// Gets or sets the value of the date time
         /// </summary>
         [JsonPropertyName("DateTime")]
         public DateTime DateTime { get; set; }
-
+        
         /// <summary>
-        ///     Gets or sets the value of the message type
+        /// Gets or sets the value of the message type
         /// </summary>
         [JsonPropertyName("MessageType")]
         public MessageType MessageType { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the level
+        /// Gets or sets the value of the level
         /// </summary>
         [JsonPropertyName("Level")]
         public string Level { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the content
+        /// Gets or sets the value of the content
         /// </summary>
         [JsonPropertyName("Content")]
         public string Content { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the stack trace
+        /// Gets or sets the value of the stack trace
         /// </summary>
         [JsonPropertyName("StackTrace")]
         public string StackTrace { get; set; }
-
+        
         /// <summary>
-        ///     Gets or sets the value of the method
+        /// Gets or sets the value of the method
         /// </summary>
         [JsonPropertyName("Method")]
         public string Method { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the file
+        /// Gets or sets the value of the file
         /// </summary>
         [JsonPropertyName("File")]
         public string File { get; set; }
 
         /// <summary>
-        ///     Gets or sets the value of the line
+        /// Gets or sets the value of the line
         /// </summary>
         [JsonPropertyName("Line")]
         public string Line { get; set; }

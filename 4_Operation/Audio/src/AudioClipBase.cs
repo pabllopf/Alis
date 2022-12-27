@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Audio.OS;
-using Alis.Core.Audio.Properties;
+using Alis.Core.Audio;
 using Alis.Core.Audio.SFML;
 
 namespace Alis.Core.Audio
@@ -40,8 +40,54 @@ namespace Alis.Core.Audio
     /// <summary>
     ///     The audio clip base class
     /// </summary>
-    public abstract class AudioClipBase
+    public abstract class AudioClipBase 
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioClipBase"/> class
+        /// </summary>
+        static AudioClipBase()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.NativeAudio.osx_arm64_csfml_audio);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", Properties.NativeAudio.osx_x64_csfml_audio);
+                        break;
+                }
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", Properties.NativeAudio.win_x64_csfml_audio);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", Properties.NativeAudio.win_x64_csfml_audio);
+                        break;
+                    case Architecture.X86:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", Properties.NativeAudio.win_x86_csfml_audio);
+                        break;
+                }
+            }
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", Properties.NativeAudio.debian_arm64_csfml_audio);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", Properties.NativeAudio.debian_x64_csfml_audio);
+                        break;
+                }
+            }
+        }
+        
         /// <summary>
         ///     The music
         /// </summary>
@@ -51,54 +97,6 @@ namespace Alis.Core.Audio
         ///     The player
         /// </summary>
         private Player player;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
-        /// </summary>
-        static AudioClipBase()
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", NativeAudio.osx_arm64_csfml_audio);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dylib", NativeAudio.osx_x64_csfml_audio);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x64_csfml_audio);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x64_csfml_audio);
-                        break;
-                    case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x86_csfml_audio);
-                        break;
-                }
-            }
-
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-            {
-                switch (RuntimeInformation.ProcessArchitecture)
-                {
-                    case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.debian_arm64_csfml_audio);
-                        break;
-                    case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.debian_x64_csfml_audio);
-                        break;
-                }
-            }
-        }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
@@ -114,14 +112,14 @@ namespace Alis.Core.Audio
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
+        /// Initializes a new instance of the <see cref="AudioClipBase"/> class
         /// </summary>
         public AudioClipBase()
         {
             AudioBackendType = AudioBackendType.SFML;
-            Logger.Log("Init music: 'null file'");
+            Logger.Log($"Init music: 'null file'");
         }
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
         /// </summary>

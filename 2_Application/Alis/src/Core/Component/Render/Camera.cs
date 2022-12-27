@@ -27,9 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Graphic;
 
@@ -68,7 +70,7 @@ namespace Alis.Core.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The camera builder</returns>
-        public CameraBuilder Builder() => new CameraBuilder();
+        public  CameraBuilder Builder() => new CameraBuilder();
 
         /// <summary>
         ///     Starts this instance
@@ -79,7 +81,7 @@ namespace Alis.Core.Component.Render
             Resolution = new Vector2(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
-            view = new View(new Vector2(PointOfView.X, PointOfView.Y), new Vector2(Resolution.X, Resolution.Y));
+            view = new View(new Vector2F(PointOfView.X, PointOfView.Y), new Vector2F(Resolution.X, Resolution.Y));
         }
 
         /// <summary>
@@ -87,6 +89,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void BeforeUpdate()
         {
+            
         }
 
         /// <summary>
@@ -94,7 +97,7 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Update()
         {
-            view.Center = new Vector2(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
+            view.Center = new Vector2F(GameObject.Transform.Position.X, GameObject.Transform.Position.Y);
             GraphicManager.Current.renderWindow.SetView(view);
         }
     }

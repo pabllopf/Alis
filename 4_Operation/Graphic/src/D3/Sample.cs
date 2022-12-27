@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sample.cs
+//  File:FrameBase.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -34,5 +34,6 @@ namespace Alis.Core.Graphic.D3
     /// </summary>
     public class Sample
     {
+        
     }
 }

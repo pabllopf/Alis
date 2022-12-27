@@ -16,9 +16,9 @@ var class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor =
       [ "NotAllowed", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a63421034c0e933cb0426dda1f8a61bf8afa89fcc81e9dcfd52671c968fe4e6ddf", null ]
     ] ],
     [ "Cursor", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#aa3ef31d7768e0bb9e07afcb6f021e2a8", null ],
-    [ "Cursor", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a949fd1ac756e234c82852e48a48f6bcc", null ],
+    [ "Cursor", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a69f3d56b12e0c96744f219fca8073ebf", null ],
     [ "Destroy", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a0e5d239475b2331707e583f85e10d2e9", null ],
     [ "sfCursor_createFromSystem", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a3e3cd53f51af96cf57a404cddadf116d", null ],
-    [ "sfCursor_createFromPixels", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a11bfde9efc83b4d52c4e2f7545fe91ea", null ],
+    [ "sfCursor_createFromPixels", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a8c4d90acac68e87af78dd30e32c39ec5", null ],
     [ "sfCursor_destroy", "d8/d08/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_cursor.html#a9094051a64b929e9acf65dd9d4c25693", null ]
 ];

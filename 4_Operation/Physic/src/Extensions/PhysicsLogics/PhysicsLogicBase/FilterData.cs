@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:FilterData.cs
+//  File:   FilterData.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase
             foreach (Fixture fixture in body.FixtureList)
             {
                 //Disable
-                if ((fixture.CollisionGroup == DisabledOnGroup) && (fixture.CollisionGroup != 0) && (DisabledOnGroup != 0))
+                if (fixture.CollisionGroup == DisabledOnGroup && fixture.CollisionGroup != 0 && DisabledOnGroup != 0)
                 {
                     return false;
                 }
@@ -78,13 +78,13 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase
                 if (EnabledOnGroup != 0 || EnabledOnCategories != Category.All)
                 {
                     //Enable
-                    if ((fixture.CollisionGroup == EnabledOnGroup) && (fixture.CollisionGroup != 0) && (EnabledOnGroup != 0))
+                    if (fixture.CollisionGroup == EnabledOnGroup && fixture.CollisionGroup != 0 && EnabledOnGroup != 0)
                     {
                         return true;
                     }
 
-                    if (((fixture.CollisionCategories & EnabledOnCategories) != Category.None) &&
-                        (EnabledOnCategories != Category.All))
+                    if ((fixture.CollisionCategories & EnabledOnCategories) != Category.None &&
+                        EnabledOnCategories != Category.All)
                     {
                         return true;
                     }

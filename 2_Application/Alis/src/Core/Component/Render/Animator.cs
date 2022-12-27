@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Graphic.D2.SFML.Graphics;
 
 namespace Alis.Core.Component.Render
 {
@@ -87,7 +88,7 @@ namespace Alis.Core.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The animator builder</returns>
-        public AnimatorBuilder Builder() => new AnimatorBuilder();
+        public  AnimatorBuilder Builder() => new AnimatorBuilder();
 
         /// <summary>
         ///     Adds the animation using the specified animation

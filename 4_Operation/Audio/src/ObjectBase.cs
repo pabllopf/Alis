@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Base.Dll;
 
 namespace Alis.Core.Audio
 {
@@ -39,6 +40,13 @@ namespace Alis.Core.Audio
     ////////////////////////////////////////////////////////////
     public abstract class ObjectBase : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectBase"/> class
+        /// </summary>
+        static ObjectBase()
+        {
+        }
+
         /// <summary>
         ///     The zero
         /// </summary>
@@ -53,12 +61,10 @@ namespace Alis.Core.Audio
         public ObjectBase(IntPtr cPointer) => myCPointer = cPointer;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ObjectBase" /> class
+        /// Initializes a new instance of the <see cref="ObjectBase"/> class
         /// </summary>
-        public ObjectBase()
-        {
-        }
-
+        public ObjectBase(){}
+        
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Access to the internal pointer of the object.

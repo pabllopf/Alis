@@ -30,10 +30,11 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 
 namespace Alis.Core.Audio.SFML
@@ -192,7 +193,7 @@ namespace Alis.Core.Audio.SFML
         ///     The default position of a sound is (0, 0, 0).
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector3 Position
+        public Vector3F Position
         {
             get => sfMusic_getPosition(CPointer);
             set => sfMusic_setPosition(CPointer, value);
@@ -492,7 +493,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="music">The music</param>
         /// <param name="position">The position</param>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMusic_setPosition(IntPtr music, Vector3 position);
+        private static extern void sfMusic_setPosition(IntPtr music, Vector3F position);
 
         /// <summary>
         ///     Sfs the music set relative to listener using the specified music
@@ -556,7 +557,7 @@ namespace Alis.Core.Audio.SFML
         /// <param name="music">The music</param>
         /// <returns>The vector 3f</returns>
         [DllImport(Csfml.Audio, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector3 sfMusic_getPosition(IntPtr music);
+        private static extern Vector3F sfMusic_getPosition(IntPtr music);
 
         /// <summary>
         ///     Describes whether sf music is relative to listener

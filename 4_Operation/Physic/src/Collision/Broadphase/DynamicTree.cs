@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DynamicTree.cs
+//  File:   DynamicTree.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -215,7 +215,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="proxyId">The proxy id.</param>
         public void DestroyProxy(int proxyId)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
             Debug.Assert(nodes[proxyId].IsLeaf());
 
             RemoveLeaf(proxyId);
@@ -232,7 +232,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <returns>true if the proxy was re-inserted.</returns>
         public bool MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
 
             Debug.Assert(nodes[proxyId].IsLeaf());
 
@@ -303,7 +303,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <returns>The bool</returns>
         public bool WasMoved(int proxyId)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
             return nodes[proxyId].Moved;
         }
 
@@ -313,18 +313,18 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="proxyId">The proxy id</param>
         public void ClearMoved(int proxyId)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
             nodes[proxyId].Moved = false;
         }
-
+        
         /// <summary>
-        ///     Gets the user data using the specified proxy id
+        /// Gets the user data using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The</returns>
         public T GetUserData(int proxyId)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
             return nodes[proxyId].UserData;
         }
 
@@ -333,7 +333,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="fatAabb">The fat AABB.</param>
         public void GetFatAabb(int proxyId, out Aabb fatAabb)
         {
-            Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
             fatAabb = nodes[proxyId].Aabb;
         }
 
@@ -524,7 +524,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="nodeId">The node id</param>
         private void FreeNode(int nodeId)
         {
-            Debug.Assert((0 <= nodeId) && (nodeId < nodeCapacity));
+            Debug.Assert(0 <= nodeId && nodeId < nodeCapacity);
             Debug.Assert(0 < nodeCount);
             nodes[nodeId].ParentOrNext = freeList;
             nodes[nodeId].Height = -1;
@@ -600,7 +600,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 }
 
                 // Descend according to the minimum cost.
-                if ((cost < cost1) && (cost1 < cost2))
+                if (cost < cost1 && cost1 < cost2)
                 {
                     break;
                 }
@@ -753,8 +753,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             int iB = a.Child1;
             int iC = a.Child2;
-            Debug.Assert((0 <= iB) && (iB < nodeCapacity));
-            Debug.Assert((0 <= iC) && (iC < nodeCapacity));
+            Debug.Assert(0 <= iB && iB < nodeCapacity);
+            Debug.Assert(0 <= iC && iC < nodeCapacity);
 
             TreeNode<T> b = nodes[iB];
             TreeNode<T> c = nodes[iC];
@@ -768,8 +768,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 int iG = c.Child2;
                 TreeNode<T> f = nodes[iF];
                 TreeNode<T> g = nodes[iG];
-                Debug.Assert((0 <= iF) && (iF < nodeCapacity));
-                Debug.Assert((0 <= iG) && (iG < nodeCapacity));
+                Debug.Assert(0 <= iF && iF < nodeCapacity);
+                Debug.Assert(0 <= iG && iG < nodeCapacity);
 
                 // Swap A and C
                 c.Child1 = iA;
@@ -828,8 +828,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 int iE = b.Child2;
                 TreeNode<T> d = nodes[iD];
                 TreeNode<T> e = nodes[iE];
-                Debug.Assert((0 <= iD) && (iD < nodeCapacity));
-                Debug.Assert((0 <= iE) && (iE < nodeCapacity));
+                Debug.Assert(0 <= iD && iD < nodeCapacity);
+                Debug.Assert(0 <= iE && iE < nodeCapacity);
 
                 // Swap A and B
                 b.Child1 = iA;
@@ -889,7 +889,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight(int nodeId)
         {
-            Debug.Assert((0 <= nodeId) && (nodeId < nodeCapacity));
+            Debug.Assert(0 <= nodeId && nodeId < nodeCapacity);
             TreeNode<T> node = nodes[nodeId];
 
             if (node.IsLeaf())
@@ -939,8 +939,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 return;
             }
 
-            Debug.Assert((0 <= child1) && (child1 < nodeCapacity));
-            Debug.Assert((0 <= child2) && (child2 < nodeCapacity));
+            Debug.Assert(0 <= child1 && child1 < nodeCapacity);
+            Debug.Assert(0 <= child2 && child2 < nodeCapacity);
 
             Debug.Assert(nodes[child1].ParentOrNext == index);
             Debug.Assert(nodes[child2].ParentOrNext == index);
@@ -973,8 +973,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 return;
             }
 
-            Debug.Assert((0 <= child1) && (child1 < nodeCapacity));
-            Debug.Assert((0 <= child2) && (child2 < nodeCapacity));
+            Debug.Assert(0 <= child1 && child1 < nodeCapacity);
+            Debug.Assert(0 <= child2 && child2 < nodeCapacity);
 
             int height1 = nodes[child1].Height;
             int height2 = nodes[child2].Height;
@@ -1001,7 +1001,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             int freeIndex = freeList;
             while (freeIndex != NullNode)
             {
-                Debug.Assert((0 <= freeIndex) && (freeIndex < nodeCapacity));
+                Debug.Assert(0 <= freeIndex && freeIndex < nodeCapacity);
                 freeIndex = nodes[freeIndex].ParentOrNext;
                 ++freeCount;
             }

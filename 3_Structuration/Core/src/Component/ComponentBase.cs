@@ -32,7 +32,7 @@ using Alis.Core.Entity;
 namespace Alis.Core.Component
 {
     /// <summary>Define a general component.</summary>
-    public abstract class ComponentBase
+    public abstract class ComponentBase 
     {
         /// <summary>
         ///     Game Object.
@@ -89,12 +89,13 @@ namespace Alis.Core.Component
         public virtual void Disable()
         {
         }
-
+        
         /// <summary>
-        ///     Draws this instance
+        /// Draws this instance
         /// </summary>
         public virtual void Draw()
         {
+            
         }
 
         /// <summary>

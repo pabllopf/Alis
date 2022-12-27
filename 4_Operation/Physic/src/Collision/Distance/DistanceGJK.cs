@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:DistanceGJK.cs
+//  File:   DistanceGJK.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -153,7 +153,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 bool duplicate = false;
                 for (int i = 0; i < saveCount; ++i)
                 {
-                    if ((vertex.IndexA == saveA[i]) && (vertex.IndexB == saveB[i]))
+                    if (vertex.IndexA == saveA[i] && vertex.IndexB == saveB[i])
                     {
                         duplicate = true;
                         break;
@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 float rA = input.ProxyA.Radius;
                 float rB = input.ProxyB.Radius;
 
-                if ((output.Distance > rA + rB) && (output.Distance > MathConstants.Epsilon))
+                if (output.Distance > rA + rB && output.Distance > MathConstants.Epsilon)
                 {
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.
@@ -265,7 +265,7 @@ namespace Alis.Core.Physic.Collision.Distance
             int iter = 0;
 
             //Velcro: We have moved the max iterations into settings
-            while ((iter < Settings.MaxGjkIterations) && (v.Length() - sigma > tolerance))
+            while (iter < Settings.MaxGjkIterations && v.Length() - sigma > tolerance)
             {
                 Debug.Assert(simplex.Count < 3);
 

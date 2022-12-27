@@ -13,11 +13,11 @@ var class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse =
       [ "HorizontalWheel", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#aad0494502aead332b9ca4df8c0e4a962a4a394b42bdae148b7e361a23cb1d2f91", null ]
     ] ],
     [ "IsButtonPressed", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a0060a240f57e2edd5ae33fa7569b8cef", null ],
-    [ "GetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#abb0285e45e04914ef538a46a822402ce", null ],
-    [ "GetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a092576e175e85d68fd152728e200c267", null ],
-    [ "SetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a26913f88451eb5175fde82f5bfba279d", null ],
-    [ "SetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#ac290e47898c0623cb804530b417013b2", null ],
+    [ "GetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#ae41316ab2f2b129c32667c62d3e7e35d", null ],
+    [ "GetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a530d12b629d6d588667da500ca330921", null ],
+    [ "SetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a9e0abda25cde3d8a6a24d28f36f1a51a", null ],
+    [ "SetPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#abbbdf7c5231640ef0e5f5fad807f8d0c", null ],
     [ "sfMouse_isButtonPressed", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a13e22f220d44e32fd2e4bbb5e417f846", null ],
-    [ "sfMouse_getPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a8aad23faca64eb321ab03a9cc16dec90", null ],
-    [ "sfMouse_setPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a84eb85759261fd49fed624e9287d5f2e", null ]
+    [ "sfMouse_getPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#af98e46fab7744901889bf37b8624f8fe", null ],
+    [ "sfMouse_setPosition", "df/da3/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_mouse.html#a41055071bcffe519bc707c0794f03dba", null ]
 ];

@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:RealExplosion.cs
+//  File:   RealExplosion.cs
 // 
-//  Author:Pablo Perdomo Falcón
-//  Web:https://www.pabllopf.dev/
+//  Author: Pablo Perdomo Falcón
+//  Web:    https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software:you can redistribute it and/or modify
+//  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -179,7 +179,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                     ps = shapes[i].Shape as PolygonShape;
                 }
 
-                if ((shapes[i].Body.BodyType == BodyType.Dynamic) && (ps != null))
+                if (shapes[i].Body.BodyType == BodyType.Dynamic && ps != null)
                 {
                     Vector2 toCentroid = shapes[i].Body.GetWorldPoint(ps.MassDataPrivate.Centroid) - pos;
                     float angleToCentroid = (float) Math.Atan2(toCentroid.Y, toCentroid.X);
@@ -277,9 +277,9 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                 }, p1, p2);
 
                 //draws radius points
-                if (hitClosest && (fixture.Body.BodyType == BodyType.Dynamic))
+                if (hitClosest && fixture.Body.BodyType == BodyType.Dynamic)
                 {
-                    if (data.Any() && (data.Last().Body == fixture.Body) && !rayMissed)
+                    if (data.Any() && data.Last().Body == fixture.Body && !rayMissed)
                     {
                         int laPos = data.Count - 1;
                         ShapeData la = data[laPos];
@@ -296,10 +296,10 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                         data.Add(d);
                     }
 
-                    if ((data.Count > 1)
-                        && (i == valIndex - 1)
-                        && (data.Last().Body == data.First().Body)
-                        && (data.Last().Max == data.First().Min))
+                    if (data.Count > 1
+                        && i == valIndex - 1
+                        && data.Last().Body == data.First().Body
+                        && data.Last().Max == data.First().Min)
                     {
                         ShapeData fi = data[0];
                         fi.Min = data.Last().Min;
@@ -314,8 +314,8 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
                     int lastPos = data.Count - 1;
                     ShapeData last = data[lastPos];
-                    while ((data.Count > 0)
-                           && (data.Last().Min >= data.Last().Max)) // just making sure min<max
+                    while (data.Count > 0
+                           && data.Last().Min >= data.Last().Max) // just making sure min<max
                     {
                         last.Min = data.Last().Min - 2 * MathConstants.Pi;
                         data[lastPos] = last;

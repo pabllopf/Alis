@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The restitution interface
+    /// The restitution interface
     /// </summary>
     public interface IRestitution<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Restitutions the value
+        /// Restitutions the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

@@ -307,7 +307,7 @@ Fixed Navigation
 		client.open('GET', 'https://raw.githubusercontent.com/pabllopf/Alis/master/changelog.md');
 		client.onreadystatechange = function() {
 			$("preview").innerHTML = md.render(client.responseText);			
-		};
+		}
 		client.send();
       }
 

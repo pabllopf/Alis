@@ -30,9 +30,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using Sprite = Alis.Core.Component.Render.Sprite;
@@ -74,9 +76,9 @@ namespace Alis.Core.Manager.Graphic
         ///     Gets or sets the value of the sprites
         /// </summary>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
-
+        
         /// <summary>
-        ///     Gets or sets the value of the colliders
+        /// Gets or sets the value of the colliders
         /// </summary>
         public static List<Shape> Colliders { get; set; } = new List<Shape>();
 
@@ -117,7 +119,7 @@ namespace Alis.Core.Manager.Graphic
         {
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
 
-            renderWindow.Size = new Vector2(
+            renderWindow.Size = new Vector2U(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
         }
@@ -149,7 +151,7 @@ namespace Alis.Core.Manager.Graphic
             if (!VideoGame.Setting.General.IconFile.Equals(""))
             {
                 Image image = new Image(VideoGame.Setting.General.IconFile);
-                renderWindow.SetIcon((uint) image.Size.X, (uint) image.Size.Y, image.Pixels);
+                renderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
             }
 
             renderWindow.Resized += RenderWindowOnResized;
@@ -275,7 +277,7 @@ namespace Alis.Core.Manager.Graphic
         }
 
         /// <summary>
-        ///     Attaches the collider using the specified shape
+        /// Attaches the collider using the specified shape
         /// </summary>
         /// <param name="shape">The shape</param>
         public void AttachCollider(Shape shape)

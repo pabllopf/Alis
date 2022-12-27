@@ -32,8 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Figures.D2;
+using Alis.Core.Aspect.Math.SFML;
 using Alis.Core.Graphic.D2.SFML.Windows;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
@@ -148,7 +147,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Position of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public override Vector2 Position
+        public override Vector2I Position
         {
             get => sfRenderWindow_getPosition(CPointer);
             set => sfRenderWindow_setPosition(CPointer, value);
@@ -166,7 +165,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Size of the rendering region of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public override Vector2 Size
+        public override Vector2U Size
         {
             get => sfRenderWindow_getSize(CPointer);
             set => sfRenderWindow_setSize(CPointer, value);
@@ -226,7 +225,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">Target view</param>
         /// <returns>Viewport rectangle, expressed in pixels in the current target</returns>
         ////////////////////////////////////////////////////////////
-        public Rectangle GetViewport(View view) => sfRenderWindow_getViewport(CPointer, view.CPointer);
+        public IntRect GetViewport(View view) => sfRenderWindow_getViewport(CPointer, view.CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -240,7 +239,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Pixel to convert</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2 MapPixelToCoords(Vector2 point) => MapPixelToCoords(point, GetView());
+        public Vector2F MapPixelToCoords(Vector2I point) => MapPixelToCoords(point, GetView());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -264,7 +263,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in "world" coordinates</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2 MapPixelToCoords(Vector2 point, View view) => sfRenderWindow_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        public Vector2F MapPixelToCoords(Vector2I point, View view) => sfRenderWindow_mapPixelToCoords(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -278,7 +277,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="point">Point to convert</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2 MapCoordsToPixel(Vector2 point) => MapCoordsToPixel(point, GetView());
+        public Vector2I MapCoordsToPixel(Vector2F point) => MapCoordsToPixel(point, GetView());
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -299,7 +298,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view to use for converting the point</param>
         /// <returns>The converted point, in target coordinates (pixels)</returns>
         ////////////////////////////////////////////////////////////
-        public Vector2 MapCoordsToPixel(Vector2 point, View view) => sfRenderWindow_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
+        public Vector2I MapCoordsToPixel(Vector2F point, View view) => sfRenderWindow_mapCoordsToPixel(CPointer, point, view != null ? view.CPointer : IntPtr.Zero);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -709,7 +708,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Relative mouse position</returns>
         ////////////////////////////////////////////////////////////
-        public override Vector2 InternalGetMousePosition() => sfMouse_getPositionRenderWindow(CPointer);
+        public override Vector2I InternalGetMousePosition() => sfMouse_getPositionRenderWindow(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -719,7 +718,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="position">Relative mouse position</param>
         ////////////////////////////////////////////////////////////
-        protected internal override void InternalSetMousePosition(Vector2 position)
+        protected internal override void InternalSetMousePosition(Vector2I position)
         {
             sfMouse_setPositionRenderWindow(position, CPointer);
         }
@@ -733,7 +732,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="finger">Finger index</param>
         /// <returns>Relative touch position</returns>
         ////////////////////////////////////////////////////////////
-        protected internal override Vector2 InternalGetTouchPosition(uint finger) => sfTouch_getPositionRenderWindow(finger, CPointer);
+        protected internal override Vector2I InternalGetTouchPosition(uint finger) => sfTouch_getPositionRenderWindow(finger, CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -849,7 +848,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfRenderWindow_getPosition(IntPtr cPointer);
+        private static extern Vector2I sfRenderWindow_getPosition(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window set position using the specified c pointer
@@ -857,7 +856,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <param name="position">The position</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setPosition(IntPtr cPointer, Vector2 position);
+        private static extern void sfRenderWindow_setPosition(IntPtr cPointer, Vector2I position);
 
         /// <summary>
         ///     Sfs the render window get size using the specified c pointer
@@ -865,7 +864,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfRenderWindow_getSize(IntPtr cPointer);
+        private static extern Vector2U sfRenderWindow_getSize(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the render window set size using the specified c pointer
@@ -873,7 +872,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <param name="size">The size</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfRenderWindow_setSize(IntPtr cPointer, Vector2 size);
+        private static extern void sfRenderWindow_setSize(IntPtr cPointer, Vector2U size);
 
         /// <summary>
         ///     Sfs the render window set title using the specified c pointer
@@ -1044,7 +1043,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="targetView">The target view</param>
         /// <returns>The int rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Rectangle sfRenderWindow_getViewport(IntPtr cPointer, IntPtr targetView);
+        private static extern IntRect sfRenderWindow_getViewport(IntPtr cPointer, IntPtr targetView);
 
         /// <summary>
         ///     Sfs the render window map pixel to coords using the specified c pointer
@@ -1054,7 +1053,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfRenderWindow_mapPixelToCoords(IntPtr cPointer, Vector2 point, IntPtr view);
+        private static extern Vector2F sfRenderWindow_mapPixelToCoords(IntPtr cPointer, Vector2I point, IntPtr view);
 
         /// <summary>
         ///     Sfs the render window map coords to pixel using the specified c pointer
@@ -1064,7 +1063,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfRenderWindow_mapCoordsToPixel(IntPtr cPointer, Vector2 point, IntPtr view);
+        private static extern Vector2I sfRenderWindow_mapCoordsToPixel(IntPtr cPointer, Vector2F point, IntPtr view);
 
         /// <summary>
         ///     Sfs the render window draw primitives using the specified c pointer
@@ -1113,7 +1112,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfMouse_getPositionRenderWindow(IntPtr cPointer);
+        private static extern Vector2I sfMouse_getPositionRenderWindow(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the mouse set position render window using the specified position
@@ -1121,7 +1120,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="position">The position</param>
         /// <param name="cPointer">The pointer</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMouse_setPositionRenderWindow(Vector2 position, IntPtr cPointer);
+        private static extern void sfMouse_setPositionRenderWindow(Vector2I position, IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the touch get position render window using the specified finger
@@ -1130,7 +1129,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfTouch_getPositionRenderWindow(uint finger, IntPtr relativeTo);
+        private static extern Vector2I sfTouch_getPositionRenderWindow(uint finger, IntPtr relativeTo);
 
         /// <summary>
         ///     Describes whether sf render window save gl states

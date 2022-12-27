@@ -37,18 +37,18 @@ using Alis.Core.Physic.Dynamics;
 namespace Alis.Sample.PingPong
 {
     /// <summary>
-    ///     The ball controller class
+    /// The ball controller class
     /// </summary>
-    /// <seealso cref="ComponentBase" />
+    /// <seealso cref="ComponentBase"/>
     public class BallController : ComponentBase
     {
         /// <summary>
-        ///     The box collider
+        /// The box collider
         /// </summary>
         private BoxCollider boxCollider;
-
+        
         /// <summary>
-        ///     Starts this instance
+        /// Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -57,26 +57,27 @@ namespace Alis.Sample.PingPong
         }
 
         /// <summary>
-        ///     Ons the collision using the specified fixturebfixturea
+        /// Ons the collision using the specified fixturebfixturea
         /// </summary>
         /// <param name="fixturebfixturea">The fixturebfixturea</param>
         /// <param name="fixtureb">The fixtureb</param>
         /// <param name="contact">The contact</param>
         private void OnCollision(Fixture fixturebfixturea, Fixture fixtureb, Contact contact)
         {
-            if (((GameObject) fixtureb.Body.UserData)!.Name.Equals("leftWall"))
+
+            if ((((GameObject) fixtureb.Body.UserData)!).Name.Equals("leftWall"))
             {
                 Logger.Info("CONTACT WITH leftWall");
             }
-
-            if (((GameObject) fixtureb.Body.UserData)!.Name.Equals("rightWall"))
+            
+            if ((((GameObject) fixtureb.Body.UserData)!).Name.Equals("rightWall"))
             {
                 Logger.Info("CONTACT WITH rightWall");
             }
         }
 
         /// <summary>
-        ///     Updates this instance
+        /// Updates this instance
         /// </summary>
         public override void Update()
         {

@@ -123,7 +123,7 @@ namespace Alis.Core.Component.Audio
         ///     Builders this instance
         /// </summary>
         /// <returns>The audio source builder</returns>
-        public AudioSourceBuilder Builder() => new AudioSourceBuilder();
+        public  AudioSourceBuilder Builder() => new AudioSourceBuilder();
 
         /// <summary>
         ///     Awakes this instance
