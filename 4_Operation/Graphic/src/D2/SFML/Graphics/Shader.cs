@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
@@ -229,7 +230,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="vector">Value of the vec2 vector</param>
         ////////////////////////////////////////////////////////////
-        public void SetUniform(string name, Vec2 vector)
+        public void SetUniform(string name, Vector2 vector)
         {
             sfShader_setVec2Uniform(CPointer, name, vector);
         }
@@ -473,9 +474,9 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>vec2</c> values</param>
         ////////////////////////////////////////////////////////////
-        public unsafe void SetUniformArray(string name, Vec2[] array)
+        public unsafe void SetUniformArray(string name, Vector2[] array)
         {
-            fixed (Vec2* data = array)
+            fixed (Vector2* data = array)
             {
                 sfShader_setVec2UniformArray(CPointer, name, data, (uint) array.Length);
             }
@@ -798,7 +799,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="name">The name</param>
         /// <param name="vector">The vector</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfShader_setVec2Uniform(IntPtr shader, string name, Vec2 vector);
+        private static extern void sfShader_setVec2Uniform(IntPtr shader, string name, Vector2 vector);
 
         /// <summary>
         ///     Sfs the shader set vec 3 uniform using the specified shader
@@ -944,7 +945,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfShader_setVec2UniformArray(IntPtr shader, string name, Vec2* data,
+        private static extern unsafe void sfShader_setVec2UniformArray(IntPtr shader, string name, Vector2* data,
             uint length);
 
         /// <summary>

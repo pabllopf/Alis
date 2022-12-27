@@ -4,54 +4,6 @@
         <name>Alis.Core.Aspect.Math</name>
     </assembly>
     <members>
-        <member name="T:Alis.Core.Aspect.Math.Constant">
-            <summary>
-                The math constants class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.Pi">
-            <summary>
-                The pi
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.TwoPi">
-            <summary>
-                The pi
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.MaxFloat">
-            <summary>
-                The max value
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.Epsilon">
-            <summary>
-                The epsilon
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.Euler">
-            <summary>
-                The euler
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.E">
-            <summary>Represents the mathematical constant e(2.71828175).</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.Log10E">
-            <summary>Represents the log base ten of e(0.4342945).</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.Log2E">
-            <summary>Represents the log base two of e(1.442695).</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.PiOver2">
-            <summary>Represents the value of pi divided by two(1.57079637).</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.PiOver4">
-            <summary>Represents the value of pi divided by four(0.7853982).</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.Constant.Tau">
-            <summary>Represents the value of pi times two(6.28318548). This is an alias of TwoPi.</summary>
-        </member>
         <member name="T:Alis.Core.Aspect.Math.Helper">
             <summary>
                 The math class
@@ -1015,35 +967,6 @@
             <summary>
                 The array
             </summary>
-        </member>
-        <member name="T:Alis.Core.Aspect.Math.SFML.Vec2">
-            <summary>
-                <see cref="T:Alis.Core.Aspect.Math.SFML.Vec2" /> is a struct represent a glsl vec2 value
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.SFML.Vec2.op_Implicit(Alis.Core.Aspect.Math.SFML.Vector2F)~Alis.Core.Aspect.Math.SFML.Vec2">
-            <summary>
-                Implicit cast from <see cref="T:Alis.Core.Aspect.Math.SFML.Vector2F" /> to <see cref="T:Alis.Core.Aspect.Math.SFML.Vec2" />
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.SFML.Vec2.#ctor(System.Single,System.Single)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Aspect.Math.SFML.Vec2" /> from its coordinates
-            </summary>
-            <param name="x">X coordinate</param>
-            <param name="y">Y coordinate</param>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.SFML.Vec2.#ctor(Alis.Core.Aspect.Math.SFML.Vector2F)">
-            <summary>
-                Construct the <see cref="T:Alis.Core.Aspect.Math.SFML.Vec2" /> from a standard SFML <see cref="T:Alis.Core.Aspect.Math.SFML.Vector2F" />
-            </summary>
-            <param name="vec">A standard SFML 2D vector</param>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.SFML.Vec2.X">
-            <summary>Horizontal component of the vector</summary>
-        </member>
-        <member name="F:Alis.Core.Aspect.Math.SFML.Vec2.Y">
-            <summary>Vertical component of the vector</summary>
         </member>
         <member name="T:Alis.Core.Aspect.Math.SFML.Vec3">
             <summary>
