@@ -354,12 +354,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Body bA = BodyA;
                 Body bB = BodyB;
 
-                Vector2 rA = MathUtils.Mul(bA.Xf.Q, LocalAnchorA - bA.Sweep.LocalCenter);
-                Vector2 rB = MathUtils.Mul(bB.Xf.Q, LocalAnchorB - bB.Sweep.LocalCenter);
+                Vector2 rA = MathUtils.Mul(bA.Xf.Rotation, LocalAnchorA - bA.Sweep.LocalCenter);
+                Vector2 rB = MathUtils.Mul(bB.Xf.Rotation, LocalAnchorB - bB.Sweep.LocalCenter);
                 Vector2 p1 = bA.Sweep.C + rA;
                 Vector2 p2 = bB.Sweep.C + rB;
                 Vector2 d = p2 - p1;
-                Vector2 axis = MathUtils.Mul(bA.Xf.Q, LocalXAxisA);
+                Vector2 axis = MathUtils.Mul(bA.Xf.Rotation, LocalXAxisA);
 
                 Vector2 vA = bA.LinearVelocity;
                 Vector2 vB = bB.LinearVelocity;

@@ -280,15 +280,15 @@ namespace Alis.Core.Physic.Collision.Shapes
 
             Transform xf = new Transform
             {
-                P = center
+                Position = center
             };
-            xf.Q.Set(angle);
+            xf.Rotation.Set(angle);
 
             // Transform vertices and normals.
             for (int i = 0; i < 4; ++i)
             {
                 VerticesPrivate[i] = MathUtils.Mul(ref xf, VerticesPrivate[i]);
-                NormalsPrivate[i] = MathUtils.Mul(ref xf.Q, NormalsPrivate[i]);
+                NormalsPrivate[i] = MathUtils.Mul(ref xf.Rotation, NormalsPrivate[i]);
             }
 
             ComputeProperties();

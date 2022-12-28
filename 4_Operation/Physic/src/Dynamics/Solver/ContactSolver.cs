@@ -249,10 +249,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 Transform xfA = new Transform();
                 Transform xfB = new Transform();
-                xfA.Q.Set(aA);
-                xfB.Q.Set(aB);
-                xfA.P = cA - MathUtils.Mul(xfA.Q, localCenterA);
-                xfB.P = cB - MathUtils.Mul(xfB.Q, localCenterB);
+                xfA.Rotation.Set(aA);
+                xfB.Rotation.Set(aB);
+                xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
+                xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
 
                 WorldManifold.Initialize(ref manifold, ref xfA, radiusA, ref xfB, radiusB, out Vector2 normal,
                     out FixedArray2<Vector2> points, out _);
@@ -735,10 +735,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 {
                     Transform xfA = new Transform();
                     Transform xfB = new Transform();
-                    xfA.Q.Set(aA);
-                    xfB.Q.Set(aB);
-                    xfA.P = cA - MathUtils.Mul(xfA.Q, localCenterA);
-                    xfB.P = cB - MathUtils.Mul(xfB.Q, localCenterB);
+                    xfA.Rotation.Set(aA);
+                    xfB.Rotation.Set(aB);
+                    xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
+                    xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
 
                     PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point,
                         out float separation);
@@ -830,10 +830,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 {
                     Transform xfA = new Transform();
                     Transform xfB = new Transform();
-                    xfA.Q.Set(aA);
-                    xfB.Q.Set(aB);
-                    xfA.P = cA - MathUtils.Mul(xfA.Q, localCenterA);
-                    xfB.P = cB - MathUtils.Mul(xfB.Q, localCenterB);
+                    xfA.Rotation.Set(aA);
+                    xfB.Rotation.Set(aB);
+                    xfA.Position = cA - MathUtils.Mul(xfA.Rotation, localCenterA);
+                    xfB.Position = cB - MathUtils.Mul(xfB.Rotation, localCenterB);
 
                     PositionSolverManifold.Initialize(pc, ref xfA, ref xfB, j, out Vector2 normal, out Vector2 point,
                         out float separation);

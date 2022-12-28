@@ -62,8 +62,8 @@ namespace Alis.Core.Physic.Collision
             output = new RayCastOutput();
 
             // Put the ray into the edge's frame of reference.
-            Vector2 p1 = MathUtils.MulT(transform.Q, input.Point1 - transform.P);
-            Vector2 p2 = MathUtils.MulT(transform.Q, input.Point2 - transform.P);
+            Vector2 p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
+            Vector2 p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
             Vector2 d = p2 - p1;
 
             Vector2 v1 = start;
@@ -116,11 +116,11 @@ namespace Alis.Core.Physic.Collision
             output.Fraction = t;
             if (numerator > 0.0f)
             {
-                output.Normal = -MathUtils.MulT(transform.Q, normal);
+                output.Normal = -MathUtils.MulT(transform.Rotation, normal);
             }
             else
             {
-                output.Normal = MathUtils.MulT(transform.Q, normal);
+                output.Normal = MathUtils.MulT(transform.Rotation, normal);
             }
 
             return true;
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Collision
 
             output = new RayCastOutput();
 
-            Vector2 position = transform.P + MathUtils.Mul(transform.Q, pos);
+            Vector2 position = transform.Position + MathUtils.Mul(transform.Rotation, pos);
             Vector2 s = input.Point1 - position;
             float b = Vector2.Dot(s, s) - radius * radius;
 
@@ -192,8 +192,8 @@ namespace Alis.Core.Physic.Collision
             output = new RayCastOutput();
 
             // Put the ray into the polygon's frame of reference.
-            Vector2 p1 = MathUtils.MulT(transform.Q, input.Point1 - transform.P);
-            Vector2 p2 = MathUtils.MulT(transform.Q, input.Point2 - transform.P);
+            Vector2 p1 = MathUtils.MulT(transform.Rotation, input.Point1 - transform.Position);
+            Vector2 p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
             Vector2 d = p2 - p1;
 
             float lower = 0.0f, upper = input.MaxFraction;
@@ -251,7 +251,7 @@ namespace Alis.Core.Physic.Collision
             if (index >= 0)
             {
                 output.Fraction = lower;
-                output.Normal = MathUtils.Mul(transform.Q, normals[index]);
+                output.Normal = MathUtils.Mul(transform.Rotation, normals[index]);
                 return true;
             }
 

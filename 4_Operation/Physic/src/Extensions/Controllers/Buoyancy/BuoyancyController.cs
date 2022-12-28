@@ -251,8 +251,8 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     PolygonShape polygonShape = (PolygonShape) shape;
 
                     //Transform plane into shape co-ordinates
-                    Vector2 normalL = MathUtils.MulT(xf.Q, normal);
-                    float offsetL = offset - Vector2.Dot(normal, xf.P);
+                    Vector2 normalL = MathUtils.MulT(xf.Rotation, normal);
+                    float offsetL = offset - Vector2.Dot(normal, xf.Position);
 
                     float[] depths = new float[Settings.MaxPolygonVertices];
                     int diveCount = 0;

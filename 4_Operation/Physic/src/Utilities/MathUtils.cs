@@ -101,8 +101,8 @@ namespace Alis.Core.Physic.Utilities
         /// <returns>The vector</returns>
         public static Vector2 Mul(ref Transform T, ref Vector2 v)
         {
-            float x = T.Q.C * v.X - T.Q.S * v.Y + T.P.X;
-            float y = T.Q.S * v.X + T.Q.C * v.Y + T.P.Y;
+            float x = T.Rotation.C * v.X - T.Rotation.S * v.Y + T.Position.X;
+            float y = T.Rotation.S * v.X + T.Rotation.C * v.Y + T.Position.Y;
 
             return new Vector2(x, y);
         }
@@ -140,10 +140,10 @@ namespace Alis.Core.Physic.Utilities
         /// <returns>The vector</returns>
         public static Vector2 MulT(ref Transform T, ref Vector2 v)
         {
-            float px = v.X - T.P.X;
-            float py = v.Y - T.P.Y;
-            float x = T.Q.C * px + T.Q.S * py;
-            float y = -T.Q.S * px + T.Q.C * py;
+            float px = v.X - T.Position.X;
+            float py = v.Y - T.Position.Y;
+            float x = T.Rotation.C * px + T.Rotation.S * py;
+            float y = -T.Rotation.S * px + T.Rotation.C * py;
 
             return new Vector2(x, y);
         }
@@ -180,8 +180,8 @@ namespace Alis.Core.Physic.Utilities
 
             Transform c = new Transform
             {
-                Q = Mul(a.Q, b.Q),
-                P = Mul(a.Q, b.P) + a.P
+                Rotation = Mul(a.Rotation, b.Rotation),
+                Position = Mul(a.Rotation, b.Position) + a.Position
             };
             return c;
         }
@@ -199,8 +199,8 @@ namespace Alis.Core.Physic.Utilities
 
             c = new Transform
             {
-                Q = MulT(a.Q, b.Q),
-                P = MulT(a.Q, b.P - a.P)
+                Rotation = MulT(a.Rotation, b.Rotation),
+                Position = MulT(a.Rotation, b.Position - a.Position)
             };
         }
 
@@ -242,10 +242,10 @@ namespace Alis.Core.Physic.Utilities
         /// <returns>The vector</returns>
         public static Vector2 MulT(Transform T, Vector2 v)
         {
-            float px = v.X - T.P.X;
-            float py = v.Y - T.P.Y;
-            float x = T.Q.C * px + T.Q.S * py;
-            float y = -T.Q.S * px + T.Q.C * py;
+            float px = v.X - T.Position.X;
+            float py = v.Y - T.Position.Y;
+            float x = T.Rotation.C * px + T.Rotation.S * py;
+            float y = -T.Rotation.S * px + T.Rotation.C * py;
 
             return new Vector2(x, y);
         }
@@ -276,8 +276,8 @@ namespace Alis.Core.Physic.Utilities
 
             Transform c = new Transform
             {
-                Q = MulT(a.Q, b.Q),
-                P = MulT(a.Q, b.P - a.P)
+                Rotation = MulT(a.Rotation, b.Rotation),
+                Position = MulT(a.Rotation, b.Position - a.Position)
             };
             return c;
         }

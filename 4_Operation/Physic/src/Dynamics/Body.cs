@@ -142,11 +142,11 @@ namespace Alis.Core.Physic.Dynamics
                 Flags |= BodyFlags.Enabled;
             }
 
-            Xf.P = def.Position;
-            Xf.Q.Set(def.Angle);
+            Xf.Position = def.Position;
+            Xf.Rotation.Set(def.Angle);
 
-            Sweep.C0 = Xf.P;
-            Sweep.C = Xf.P;
+            Sweep.C0 = Xf.Position;
+            Sweep.C = Xf.Position;
             Sweep.A0 = def.Angle;
             Sweep.A = def.Angle;
 
@@ -525,7 +525,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>Return the world position of the body's origin.</returns>
         public Vector2 Position
         {
-            get => Xf.P;
+            get => Xf.Position;
             set
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
@@ -543,7 +543,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 Debug.Assert(!float.IsNaN(value));
 
-                SetTransform(ref Xf.P, value);
+                SetTransform(ref Xf.Position, value);
             }
         }
 
@@ -936,8 +936,8 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            Xf.Q.Set(rotation);
-            Xf.P = position;
+            Xf.Rotation.Set(rotation);
+            Xf.Position = position;
 
             Sweep.C = MathUtils.Mul(ref Xf, Sweep.LocalCenter);
             Sweep.A = rotation;
@@ -977,14 +977,14 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="force">The force.</param>
         public void ApplyForce(ref Vector2 force)
         {
-            ApplyForce(ref force, ref Xf.P);
+            ApplyForce(ref force, ref Xf.Position);
         }
 
         /// <summary>Applies a force at the center of mass.</summary>
         /// <param name="force">The force.</param>
         public void ApplyForce(Vector2 force)
         {
-            ApplyForce(ref force, ref Xf.P);
+            ApplyForce(ref force, ref Xf.Position);
         }
 
         /// <summary>
@@ -1129,8 +1129,8 @@ namespace Alis.Core.Physic.Dynamics
             // Kinematic bodies have zero mass.
             if (Type == BodyType.Kinematic)
             {
-                Sweep.C0 = Xf.P;
-                Sweep.C = Xf.P;
+                Sweep.C0 = Xf.Position;
+                Sweep.C = Xf.Position;
                 Sweep.A0 = Sweep.A;
                 return;
             }
@@ -1155,7 +1155,7 @@ namespace Alis.Core.Physic.Dynamics
             //Velcro: Static bodies only have mass, they don't have other properties. A little hacky tho...
             if (Type == BodyType.Static)
             {
-                Sweep.C0 = Sweep.C = Xf.P;
+                Sweep.C0 = Sweep.C = Xf.Position;
                 return;
             }
 
@@ -1206,7 +1206,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="localVector">A vector fixed in the body.</param>
         /// <returns>The same vector expressed in world coordinates.</returns>
-        public Vector2 GetWorldVector(ref Vector2 localVector) => MathUtils.Mul(ref Xf.Q, localVector);
+        public Vector2 GetWorldVector(ref Vector2 localVector) => MathUtils.Mul(ref Xf.Rotation, localVector);
 
         /// <summary>Get the world coordinates of a vector given the local coordinates.</summary>
         /// <param name="localVector">A vector fixed in the body.</param>
@@ -1232,7 +1232,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         /// <param name="worldVector">A vector in world coordinates.</param>
         /// <returns>The corresponding local vector.</returns>
-        public Vector2 GetLocalVector(ref Vector2 worldVector) => MathUtils.MulT(Xf.Q, worldVector);
+        public Vector2 GetLocalVector(ref Vector2 worldVector) => MathUtils.MulT(Xf.Rotation, worldVector);
 
         /// <summary>
         ///     Gets a local vector given a world vector. Note that the vector only takes the rotation into account, not the
@@ -1282,8 +1282,8 @@ namespace Alis.Core.Physic.Dynamics
             if ((Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
             {
                 Transform xf1 = new Transform();
-                xf1.Q.Set(Sweep.A0);
-                xf1.P = Sweep.C0 - MathUtils.Mul(xf1.Q, Sweep.LocalCenter);
+                xf1.Rotation.Set(Sweep.A0);
+                xf1.Position = Sweep.C0 - MathUtils.Mul(xf1.Rotation, Sweep.LocalCenter);
 
                 for (int i = 0; i < FixtureList.Count; i++)
                 {
@@ -1304,8 +1304,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void SynchronizeTransform()
         {
-            Xf.Q.Set(Sweep.A);
-            Xf.P = Sweep.C - MathUtils.Mul(Xf.Q, Sweep.LocalCenter);
+            Xf.Rotation.Set(Sweep.A);
+            Xf.Position = Sweep.C - MathUtils.Mul(Xf.Rotation, Sweep.LocalCenter);
         }
 
         /// <summary>This is used to prevent connected bodies from colliding. It may lie, depending on the collideConnected flag.</summary>
@@ -1343,8 +1343,8 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.Advance(alpha);
             Sweep.C = Sweep.C0;
             Sweep.A = Sweep.A0;
-            Xf.Q.Set(Sweep.A);
-            Xf.P = Sweep.C - MathUtils.Mul(Xf.Q, Sweep.LocalCenter);
+            Xf.Rotation.Set(Sweep.A);
+            Xf.Position = Sweep.C - MathUtils.Mul(Xf.Rotation, Sweep.LocalCenter);
         }
     }
 }

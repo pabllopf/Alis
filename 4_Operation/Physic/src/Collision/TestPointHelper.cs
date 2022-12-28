@@ -48,7 +48,7 @@ namespace Alis.Core.Physic.Collision
         /// <returns>The bool</returns>
         public static bool TestPointCircle(ref Vector2 pos, float radius, ref Vector2 point, ref Transform transform)
         {
-            Vector2 center = transform.P + MathUtils.Mul(transform.Q, pos);
+            Vector2 center = transform.Position + MathUtils.Mul(transform.Rotation, pos);
             Vector2 d = point - center;
             return Vector2.Dot(d, d) <= radius * radius;
         }
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Collision
         public static bool TestPointPolygon(Vertices vertices, Vertices normals, ref Vector2 point,
             ref Transform transform)
         {
-            Vector2 pLocal = MathUtils.MulT(transform.Q, point - transform.P);
+            Vector2 pLocal = MathUtils.MulT(transform.Rotation, point - transform.Position);
 
             for (int i = 0; i < vertices.Count; ++i)
             {

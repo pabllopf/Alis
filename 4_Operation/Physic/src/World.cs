@@ -714,7 +714,7 @@ namespace Alis.Core.Physic
 
             foreach (Body b in BodyList)
             {
-                b.Xf.P -= newOrigin;
+                b.Xf.Position -= newOrigin;
                 b.Sweep.C0 -= newOrigin;
                 b.Sweep.C -= newOrigin;
             }

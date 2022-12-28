@@ -136,10 +136,10 @@ namespace Alis.Core.Physic.Collision.Distance
 
                 // Compute a tentative new simplex vertex using support points.
                 SimplexVertex vertex = simplex.V[simplex.Count];
-                vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.Q, -d));
+                vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.Rotation, -d));
                 vertex.Wa = MathUtils.Mul(ref input.TransformA, input.ProxyA.Vertices[vertex.IndexA]);
 
-                vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.Q, d));
+                vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.Rotation, d));
                 vertex.Wb = MathUtils.Mul(ref input.TransformB, input.ProxyB.Vertices[vertex.IndexB]);
                 vertex.W = vertex.Wb - vertex.Wa;
                 simplex.V[simplex.Count] = vertex;
@@ -251,9 +251,9 @@ namespace Alis.Core.Physic.Collision.Distance
             //SimplexVertex vertices = simplex.V.Value0; //Velcro: we don't need this as we have an indexer instead
 
             // Get support point in -r direction
-            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Q, -r));
+            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -r));
             Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Q, r));
+            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, r));
             Vector2 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
             Vector2 v = wA - wB;
 
@@ -272,9 +272,9 @@ namespace Alis.Core.Physic.Collision.Distance
                 output.Iterations += 1;
 
                 // Support in direction -v (A - B)
-                indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Q, -v));
+                indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -v));
                 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-                indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Q, v));
+                indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, v));
                 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
                 Vector2 p = wA - wB;
 

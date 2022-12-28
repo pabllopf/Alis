@@ -241,7 +241,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 localAxisC = prismatic.LocalXAxisA;
 
                 Vector2 pC = localAnchorC;
-                Vector2 pA = MathUtils.MulT(xfC.Q, MathUtils.Mul(xfA.Q, localAnchorA) + (xfA.P - xfC.P));
+                Vector2 pA = MathUtils.MulT(xfC.Rotation, MathUtils.Mul(xfA.Rotation, localAnchorA) + (xfA.Position - xfC.Position));
                 coordinateA = MathUtils.Dot(pA - pC, localAxisC);
             }
 
@@ -276,7 +276,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 localAxisD = prismatic.LocalXAxisA;
 
                 Vector2 pD = localAnchorD;
-                Vector2 pB = MathUtils.MulT(xfD.Q, MathUtils.Mul(xfB.Q, localAnchorB) + (xfB.P - xfD.P));
+                Vector2 pB = MathUtils.MulT(xfD.Rotation, MathUtils.Mul(xfB.Rotation, localAnchorB) + (xfB.Position - xfD.Position));
                 coordinateB = MathUtils.Dot(pB - pD, localAxisD);
             }
 
@@ -345,7 +345,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 localAxisC = prismatic.LocalXAxisA;
 
                 Vector2 pC = localAnchorC;
-                Vector2 pA = MathUtils.MulT(xfC.Q, MathUtils.Mul(xfA.Q, localAnchorA) + (xfA.P - xfC.P));
+                Vector2 pA = MathUtils.MulT(xfC.Rotation, MathUtils.Mul(xfA.Rotation, localAnchorA) + (xfA.Position - xfC.Position));
                 coordinateA = Vector2.Dot(pA - pC, localAxisC);
             }
 
@@ -380,7 +380,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 localAxisD = prismatic.LocalXAxisA;
 
                 Vector2 pD = localAnchorD;
-                Vector2 pB = MathUtils.MulT(xfD.Q, MathUtils.Mul(xfB.Q, localAnchorB) + (xfB.P - xfD.P));
+                Vector2 pB = MathUtils.MulT(xfD.Rotation, MathUtils.Mul(xfB.Rotation, localAnchorB) + (xfB.Position - xfD.Position));
                 coordinateB = Vector2.Dot(pB - pD, localAxisD);
             }
 

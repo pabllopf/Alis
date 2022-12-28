@@ -330,7 +330,7 @@ namespace Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve
                     //After a lot of search on internet I have found all about spline function
                     // and bezier (phi'sss ancien) but finaly use hermite curve 
                     //http://en.wikipedia.org/wiki/Cubic_Hermite_spline
-                    //P(t) = (2*t^3 - 3t^2 + 1)*P0 + (t^3 - 2t^2 + t)m0 + (-2t^3 + 3t^2)P1 + (t^3-t^2)m1
+                    //Position(t) = (2*t^3 - 3t^2 + 1)*P0 + (t^3 - 2t^2 + t)m0 + (-2t^3 + 3t^2)P1 + (t^3-t^2)m1
                     //with P0.value = prev.value , m0 = prev.tangentOut, P1= next.value, m1 = next.TangentIn
                     return (2 * tss - 3 * ts + 1f) * prev.Value + (tss - 2 * ts + t) * prev.TangentOut +
                            (3 * ts - 2 * tss) * next.Value + (tss - ts) * next.TangentIn;

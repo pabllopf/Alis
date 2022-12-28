@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Collision
         /// <param name="aabb">The aabb</param>
         public static void ComputeCircleAabb(ref Vector2 pos, float radius, ref Transform transform, out Aabb aabb)
         {
-            Vector2 p = transform.P + MathUtils.Mul(transform.Q, pos);
+            Vector2 p = transform.Position + MathUtils.Mul(transform.Rotation, pos);
             aabb.LowerBound = new Vector2(p.X - radius, p.Y - radius);
             aabb.UpperBound = new Vector2(p.X + radius, p.Y + radius);
         }

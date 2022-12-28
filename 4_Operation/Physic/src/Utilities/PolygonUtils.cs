@@ -65,9 +65,9 @@ namespace Alis.Core.Physic.Utilities
 
             Transform xf = new Transform
             {
-                P = center
+                Position = center
             };
-            xf.Q.Set(angle);
+            xf.Rotation.Set(angle);
 
             // Transform vertices
             for (int i = 0; i < 4; ++i)

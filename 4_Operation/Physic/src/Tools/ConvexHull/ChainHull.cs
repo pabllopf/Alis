@@ -115,24 +115,24 @@ namespace Alis.Core.Physic.Tools.ConvexHull
             i = minmax;
             while (++i <= maxmin)
             {
-                // the lower line joins P[minmin] with P[maxmin]
+                // the lower line joins Position[minmin] with Position[maxmin]
                 if (MathUtils.Area(pointSet[minmin], pointSet[maxmin], pointSet[i]) >= 0 && i < maxmin)
                 {
-                    continue; // ignore P[i] above or on the lower line
+                    continue; // ignore Position[i] above or on the lower line
                 }
 
                 while (top > 0) // there are at least 2 points on the stack
                 {
-                    // test if P[i] is left of the line at the stack top
+                    // test if Position[i] is left of the line at the stack top
                     if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
                     {
-                        break; // P[i] is a new hull vertex
+                        break; // Position[i] is a new hull vertex
                     }
 
                     top--; // pop top point off stack
                 }
 
-                h[++top] = pointSet[i]; // push P[i] onto stack
+                h[++top] = pointSet[i]; // push Position[i] onto stack
             }
 
             // GetNext, compute the upper hull on the stack H above the bottom hull
@@ -145,24 +145,24 @@ namespace Alis.Core.Physic.Tools.ConvexHull
             i = maxmin;
             while (--i >= minmax)
             {
-                // the upper line joins P[maxmax] with P[minmax]
+                // the upper line joins Position[maxmax] with Position[minmax]
                 if (MathUtils.Area(pointSet[maxmax], pointSet[minmax], pointSet[i]) >= 0 && i > minmax)
                 {
-                    continue; // ignore P[i] below or on the upper line
+                    continue; // ignore Position[i] below or on the upper line
                 }
 
                 while (top > bot) // at least 2 points on the upper stack
                 {
-                    // test if P[i] is left of the line at the stack top
+                    // test if Position[i] is left of the line at the stack top
                     if (MathUtils.Area(h[top - 1], h[top], pointSet[i]) > 0)
                     {
-                        break; // P[i] is a new hull vertex
+                        break; // Position[i] is a new hull vertex
                     }
 
                     top--; // pop top point off stack
                 }
 
-                h[++top] = pointSet[i]; // push P[i] onto stack
+                h[++top] = pointSet[i]; // push Position[i] onto stack
             }
 
             if (minmax != minmin)

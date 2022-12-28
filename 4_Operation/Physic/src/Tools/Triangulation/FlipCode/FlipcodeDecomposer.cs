@@ -147,7 +147,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
             return result;
         }
 
-        /// <summary>Check if the point P is inside the triangle defined by the points A, B, C</summary>
+        /// <summary>Check if the point Position is inside the triangle defined by the points A, B, C</summary>
         /// <param name="a">The A point.</param>
         /// <param name="b">The B point.</param>
         /// <param name="c">The C point.</param>

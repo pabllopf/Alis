@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 Vector2 a = localPointB2 - localPointB1;
                 axis = new Vector2(a.Y, -a.X);
                 axis = Vector2.Normalize(axis);
-                Vector2 normal = MathUtils.Mul(ref xfB.Q, axis);
+                Vector2 normal = MathUtils.Mul(ref xfB.Rotation, axis);
 
                 localPoint = 0.5f * (localPointB1 + localPointB2);
                 Vector2 pointB = MathUtils.Mul(ref xfB, localPoint);
@@ -108,7 +108,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 Vector2 a = localPointA2 - localPointA1;
                 axis = new Vector2(a.Y, -a.X);
                 axis = Vector2.Normalize(axis);
-                Vector2 normal = MathUtils.Mul(ref xfA.Q, axis);
+                Vector2 normal = MathUtils.Mul(ref xfA.Rotation, axis);
 
                 localPoint = 0.5f * (localPointA1 + localPointA2);
                 Vector2 pointA = MathUtils.Mul(ref xfA, localPoint);
@@ -151,8 +151,8 @@ namespace Alis.Core.Physic.Collision.TOI
             {
                 case SeparationFunctionType.Points:
                 {
-                    Vector2 axisA = MathUtils.MulT(ref xfA.Q, axis);
-                    Vector2 axisB = MathUtils.MulT(ref xfB.Q, -axis);
+                    Vector2 axisA = MathUtils.MulT(ref xfA.Rotation, axis);
+                    Vector2 axisB = MathUtils.MulT(ref xfB.Rotation, -axis);
 
                     indexA = proxyA.GetSupport(axisA);
                     indexB = proxyB.GetSupport(axisB);
@@ -169,10 +169,10 @@ namespace Alis.Core.Physic.Collision.TOI
 
                 case SeparationFunctionType.FaceA:
                 {
-                    Vector2 normal = MathUtils.Mul(ref xfA.Q, axis);
+                    Vector2 normal = MathUtils.Mul(ref xfA.Rotation, axis);
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPoint);
 
-                    Vector2 axisB = MathUtils.MulT(ref xfB.Q, -normal);
+                    Vector2 axisB = MathUtils.MulT(ref xfB.Rotation, -normal);
 
                     indexA = -1;
                     indexB = proxyB.GetSupport(axisB);
@@ -186,10 +186,10 @@ namespace Alis.Core.Physic.Collision.TOI
 
                 case SeparationFunctionType.FaceB:
                 {
-                    Vector2 normal = MathUtils.Mul(ref xfB.Q, axis);
+                    Vector2 normal = MathUtils.Mul(ref xfB.Rotation, axis);
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPoint);
 
-                    Vector2 axisA = MathUtils.MulT(ref xfA.Q, -normal);
+                    Vector2 axisA = MathUtils.MulT(ref xfA.Rotation, -normal);
 
                     indexB = -1;
                     indexA = proxyA.GetSupport(axisA);
@@ -245,7 +245,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 }
                 case SeparationFunctionType.FaceA:
                 {
-                    Vector2 normal = MathUtils.Mul(ref xfA.Q, axis);
+                    Vector2 normal = MathUtils.Mul(ref xfA.Rotation, axis);
                     Vector2 pointA = MathUtils.Mul(ref xfA, localPoint);
 
                     Vector2 localPointB = proxyB.Vertices[indexB];
@@ -256,7 +256,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 }
                 case SeparationFunctionType.FaceB:
                 {
-                    Vector2 normal = MathUtils.Mul(ref xfB.Q, axis);
+                    Vector2 normal = MathUtils.Mul(ref xfB.Rotation, axis);
                     Vector2 pointB = MathUtils.Mul(ref xfB, localPoint);
 
                     Vector2 localPointA = proxyA.Vertices[indexA];

@@ -1212,7 +1212,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep
         /// <summary>
         ///     Rotates a triangle pair one vertex CW
         ///     n2                    n2
-        ///     P +-----+             P +-----+
+        ///     Position +-----+             Position +-----+
         ///     | t  /|               |\  t |
         ///     |   / |               | \   |
         ///     n1|  /  |n3           n1|  \  |n3

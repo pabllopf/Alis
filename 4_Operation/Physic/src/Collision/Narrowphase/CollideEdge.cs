@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             for (int i = 0; i < polygonB.VerticesPrivate.Count; ++i)
             {
                 tempPolygonB.Vertices[i] = MathUtils.Mul(ref xf, polygonB.VerticesPrivate[i]);
-                tempPolygonB.Normals[i] = MathUtils.Mul(xf.Q, polygonB.NormalsPrivate[i]);
+                tempPolygonB.Normals[i] = MathUtils.Mul(xf.Rotation, polygonB.NormalsPrivate[i]);
             }
 
             float radius = polygonB.RadiusPrivate + edgeA.RadiusPrivate;
