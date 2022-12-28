@@ -32,7 +32,7 @@ using System.Numerics;
 namespace Alis.Core.Aspect.Math
 {
     /// <summary>Rotation</summary>
-    public struct Rot
+    public struct Rotation
     {
         /// Sine and cosine
         public float Sine;
@@ -42,7 +42,7 @@ namespace Alis.Core.Aspect.Math
 
         /// <summary>Initialize from an angle in radians</summary>
         /// <param name="angle">Angle in radians</param>
-        public Rot(float angle)
+        public Rotation(float angle)
         {
             // TODO_ERIN optimize
             Sine = (float) System.Math.Sin(angle);

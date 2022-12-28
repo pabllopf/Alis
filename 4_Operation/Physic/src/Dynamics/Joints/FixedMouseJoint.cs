@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
 
-            Rot qA = new Rot(aA);
+            Rotation qA = new Rotation(aA);
 
             float d = damping;
             float k = stiffness;

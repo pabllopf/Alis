@@ -14024,7 +14024,7 @@
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul22(Alis.Core.Physic.Shared.Matrix3X3F,System.Numerics.Vector2)">
             <summary>Multiply a matrix times a vector.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rot,Alis.Core.Aspect.Math.Rot)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)">
             <summary>Multiply two rotations: q * r</summary>
         </member>
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,System.Numerics.Vector2)">
@@ -14035,7 +14035,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rot,Alis.Core.Aspect.Math.Rot)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)">
             <summary>Transpose multiply two rotations: qT * r</summary>
         </member>
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)">
@@ -14046,12 +14046,12 @@
             <param name="b">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rot,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,System.Numerics.Vector2)">
             <summary>Rotate a vector</summary>
             <param name="q">The rotation matrix</param>
             <param name="v">The value</param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rot,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,System.Numerics.Vector2)">
             <summary>Inverse rotate a vector</summary>
             <param name="q">The rotation matrix</param>
             <param name="v">The value</param>
@@ -14167,19 +14167,19 @@
             <param name="max">The maximum Value.</param>
             <returns>True if the Value is within the range specified, false otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rot@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation@,System.Numerics.Vector2)">
             <summary>
                 Muls the rot
             </summary>
-            <param name="rot">The rot</param>
+            <param name="rotation">The rot</param>
             <param name="axis">The axis</param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rot@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation@,System.Numerics.Vector2)">
             <summary>
                 Muls the t using the specified rot
             </summary>
-            <param name="rot">The rot</param>
+            <param name="rotation">The rot</param>
             <param name="axis">The axis</param>
             <returns>The vector</returns>
         </member>

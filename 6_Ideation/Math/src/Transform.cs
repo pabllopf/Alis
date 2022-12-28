@@ -45,12 +45,12 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     The
         /// </summary>
-        public Rot Rotation;
+        public Rotation Rotation;
 
         /// <summary>Initialize using a position vector and a rotation matrix.</summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The r.</param>
-        public Transform(ref Vector2 position, ref Rot rotation)
+        public Transform(Vector2 position, Rotation rotation)
         {
             Position = position;
             Rotation = rotation;

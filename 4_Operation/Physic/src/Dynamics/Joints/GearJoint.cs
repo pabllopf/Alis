@@ -482,7 +482,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 vD = data.Velocities[indexD].V;
             float wD = data.Velocities[indexD].W;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB), qC = new Rot(aC), qD = new Rot(aD);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB), qC = new Rotation(aC), qD = new Rotation(aD);
 
             mass = 0.0f;
 
@@ -607,7 +607,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 cD = data.Positions[indexD].C;
             float aD = data.Positions[indexD].A;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB), qC = new Rot(aC), qD = new Rot(aD);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB), qC = new Rotation(aC), qD = new Rotation(aD);
 
             const float linearError = 0.0f;
 

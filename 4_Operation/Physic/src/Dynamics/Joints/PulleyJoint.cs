@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
             rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
@@ -479,7 +479,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 cB = data.Positions[indexB].C;
             float aB = data.Positions[indexB].A;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             Vector2 rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
             Vector2 rB = MathUtils.Mul(qB, localAnchorB - localCenterB);

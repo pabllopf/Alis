@@ -223,13 +223,13 @@ namespace Alis.Core.Physic.Utilities
             new Vector2(a.Ex.X * v.X + a.Ey.X * v.Y, a.Ex.Y * v.X + a.Ey.Y * v.Y);
 
         /// <summary>Multiply two rotations: q * r</summary>
-        public static Rot Mul(Rot q, Rot r)
+        public static Rotation Mul(Rotation q, Rotation r)
         {
             // [qc -qs] * [rc -rs] = [qc*rc-qs*rs -qc*rs-qs*rc]
             // [qs  qc]   [rs  rc]   [qs*rc+qc*rs -qs*rs+qc*rc]
             // s = qs * rc + qc * rs
             // c = qc * rc - qs * rs
-            Rot qr;
+            Rotation qr;
             qr.Sine = q.Sine * r.Cosine + q.Cosine * r.Sine;
             qr.Cosine = q.Cosine * r.Cosine - q.Sine * r.Sine;
             return qr;
@@ -252,13 +252,13 @@ namespace Alis.Core.Physic.Utilities
         }
 
         /// <summary>Transpose multiply two rotations: qT * r</summary>
-        public static Rot MulT(Rot q, Rot r)
+        public static Rotation MulT(Rotation q, Rotation r)
         {
             // [ qc qs] * [rc -rs] = [qc*rc+qs*rs -qc*rs+qs*rc]
             // [-qs qc]   [rs  rc]   [-qs*rc+qc*rs qs*rs+qc*rc]
             // s = qc * rs - qs * rc
             // c = qc * rc + qs * rs
-            Rot qr;
+            Rotation qr;
             qr.Sine = q.Cosine * r.Sine - q.Sine * r.Cosine;
             qr.Cosine = q.Cosine * r.Cosine + q.Sine * r.Sine;
             return qr;
@@ -286,12 +286,12 @@ namespace Alis.Core.Physic.Utilities
         /// <summary>Rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 Mul(Rot q, Vector2 v) => new Vector2(q.Cosine * v.X - q.Sine * v.Y, q.Sine * v.X + q.Cosine * v.Y);
+        public static Vector2 Mul(Rotation q, Vector2 v) => new Vector2(q.Cosine * v.X - q.Sine * v.Y, q.Sine * v.X + q.Cosine * v.Y);
 
         /// <summary>Inverse rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 MulT(Rot q, Vector2 v) => new Vector2(q.Cosine * v.X + q.Sine * v.Y, -q.Sine * v.X + q.Cosine * v.Y);
+        public static Vector2 MulT(Rotation q, Vector2 v) => new Vector2(q.Cosine * v.X + q.Sine * v.Y, -q.Sine * v.X + q.Cosine * v.Y);
 
         /// <summary>Get the skew vector such that dot(skew_vec, other) == cross(vec, other)</summary>
         public static Vector2 Skew(Vector2 input) => new Vector2(-input.Y, input.X);
@@ -442,18 +442,18 @@ namespace Alis.Core.Physic.Utilities
         /// <summary>
         ///     Muls the rot
         /// </summary>
-        /// <param name="rot">The rot</param>
+        /// <param name="rotation">The rot</param>
         /// <param name="axis">The axis</param>
         /// <returns>The vector</returns>
-        public static Vector2 Mul(ref Rot rot, Vector2 axis) => Mul(rot, axis);
+        public static Vector2 Mul(ref Rotation rotation, Vector2 axis) => Mul(rotation, axis);
 
         /// <summary>
         ///     Muls the t using the specified rot
         /// </summary>
-        /// <param name="rot">The rot</param>
+        /// <param name="rotation">The rot</param>
         /// <param name="axis">The axis</param>
         /// <returns>The vector</returns>
-        public static Vector2 MulT(ref Rot rot, Vector2 axis) => MulT(rot, axis);
+        public static Vector2 MulT(ref Rotation rotation, Vector2 axis) => MulT(rotation, axis);
 
         /// <summary>
         ///     Distances the a

@@ -542,7 +542,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             // Compute the effective masses.
             Vector2 rA = MathUtils.Mul(qA, LocalAnchorA - localCenterA);
@@ -755,7 +755,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2 cB = data.Positions[indexB].C;
             float aB = data.Positions[indexB].A;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;

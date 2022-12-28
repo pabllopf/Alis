@@ -370,33 +370,33 @@
                 The array
             </summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Rot">
+        <member name="T:Alis.Core.Aspect.Math.Rotation">
             <summary>Rotation</summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Rot.Sine">
+        <member name="F:Alis.Core.Aspect.Math.Rotation.Sine">
             Sine and cosine
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Rot.Cosine">
+        <member name="F:Alis.Core.Aspect.Math.Rotation.Cosine">
             Sine and cosine
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Rot.#ctor(System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Rotation.#ctor(System.Single)">
             <summary>Initialize from an angle in radians</summary>
             <param name="angle">Angle in radians</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Rot.Set(System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Rotation.Set(System.Single)">
             <summary>Set using an angle in radians.</summary>
             <param name="angle"></param>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Rot.SetIdentity">
+        <member name="M:Alis.Core.Aspect.Math.Rotation.SetIdentity">
             <summary>Set to the identity rotation</summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Rot.GetAngle">
+        <member name="M:Alis.Core.Aspect.Math.Rotation.GetAngle">
             <summary>Get the angle in radians</summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Rot.GetXAxis">
+        <member name="M:Alis.Core.Aspect.Math.Rotation.GetXAxis">
             <summary>Get the x-axis</summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Rot.GetYAxis">
+        <member name="M:Alis.Core.Aspect.Math.Rotation.GetYAxis">
             <summary>Get the y-axis</summary>
         </member>
         <member name="T:Alis.Core.Aspect.Math.Transform">
@@ -415,7 +415,7 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Transform.#ctor(System.Numerics.Vector2@,Alis.Core.Aspect.Math.Rot@)">
+        <member name="M:Alis.Core.Aspect.Math.Transform.#ctor(System.Numerics.Vector2,Alis.Core.Aspect.Math.Rotation)">
             <summary>Initialize using a position vector and a rotation matrix.</summary>
             <param name="position">The position.</param>
             <param name="rotation">The r.</param>
