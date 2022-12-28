@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Rot.cs
+//  File:   Transform.cs
 // 
 //  Author: Pablo Perdomo Falcón
 //  Web:    https://www.pabllopf.dev/
@@ -27,59 +27,49 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Numerics;
 
-namespace Alis.Core.Physic.Shared
+namespace Alis.Core.Aspect.Math
 {
-    /// <summary>Rotation</summary>
-    public struct Rot
+    /// <summary>
+    ///     A transform contains translation and rotation. It is used to represent the position and orientation of rigid
+    ///     frames.
+    /// </summary>
+    public struct Transform
     {
-        /// Sine and cosine
-        public float S,
-            C;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public Vector2 Position;
 
-        /// <summary>Initialize from an angle in radians</summary>
-        /// <param name="angle">Angle in radians</param>
-        public Rot(float angle)
+        /// <summary>
+        ///     The
+        /// </summary>
+        public Rot Rotation;
+
+        /// <summary>Initialize using a position vector and a rotation matrix.</summary>
+        /// <param name="position">The position.</param>
+        /// <param name="rotation">The r.</param>
+        public Transform(ref Vector2 position, ref Rot rotation)
         {
-            // TODO_ERIN optimize
-            S = (float) Math.Sin(angle);
-            C = (float) Math.Cos(angle);
+            Position = position;
+            Rotation = rotation;
         }
 
-        /// <summary>Set using an angle in radians.</summary>
-        /// <param name="angle"></param>
-        public void Set(float angle)
-        {
-            //Velcro: Optimization
-            if (angle == 0)
-            {
-                S = 0;
-                C = 1;
-            }
-            else
-            {
-                // TODO_ERIN optimize
-                S = (float) Math.Sin(angle);
-                C = (float) Math.Cos(angle);
-            }
-        }
-
-        /// <summary>Set to the identity rotation</summary>
+        /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {
-            S = 0.0f;
-            C = 1.0f;
+            Position = Vector2.Zero;
+            Rotation.SetIdentity();
         }
 
-        /// <summary>Get the angle in radians</summary>
-        public float GetAngle() => (float) Math.Atan2(S, C);
-
-        /// <summary>Get the x-axis</summary>
-        public Vector2 GetXAxis() => new Vector2(C, S);
-
-        /// <summary>Get the y-axis</summary>
-        public Vector2 GetYAxis() => new Vector2(-S, C);
+        /// <summary>Set this based on the position and angle.</summary>
+        /// <param name="position">The position.</param>
+        /// <param name="angle">The angle.</param>
+        public void Set(Vector2 position, float angle)
+        {
+            Position = position;
+            Rotation.Set(angle);
+        }
     }
 }

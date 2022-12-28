@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Numerics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Shapes;

@@ -9,7 +9,7 @@
                 The aabb helper class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeEdgeAabb(System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeEdgeAabb(System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the edge aabb using the specified start
             </summary>
@@ -18,7 +18,7 @@
             <param name="transform">The transform</param>
             <param name="aabb">The aabb</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeCircleAabb(System.Numerics.Vector2@,System.Single,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeCircleAabb(System.Numerics.Vector2@,System.Single,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the circle aabb using the specified pos
             </summary>
@@ -27,7 +27,7 @@
             <param name="transform">The transform</param>
             <param name="aabb">The aabb</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputePolygonAabb(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputePolygonAabb(Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the polygon aabb using the specified vertices
             </summary>
@@ -736,7 +736,7 @@
             </summary>
             <param name="contactManager">The contact manager.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.Evaluate(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.Evaluate(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)">
             <summary>Evaluate this contact with your own manifold and transforms.</summary>
             <param name="manifold">The manifold.</param>
             <param name="transformA">The first transform.</param>
@@ -1397,10 +1397,10 @@
                 The collide circle class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideCircle.CollideCircles(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideCircle.CollideCircles(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)">
             <summary>Compute the collision manifold between two circles.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideCircle.CollidePolygonAndCircle(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideCircle.CollidePolygonAndCircle(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)">
             <summary>Compute the collision manifold between a polygon and a circle.</summary>
             <param name="manifold">The manifold.</param>
             <param name="polygonA">The polygon A.</param>
@@ -1413,7 +1413,7 @@
                 The collide edge class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.CollideEdgeAndCircle(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.CollideEdgeAndCircle(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.CircleShape,Alis.Core.Aspect.Math.Transform@)">
             <summary>Compute contact points for edge versus circle. This accounts for edge connectivity.</summary>
             <param name="manifold">The manifold.</param>
             <param name="edgeA">The edge A.</param>
@@ -1421,7 +1421,7 @@
             <param name="circleB">The circle B.</param>
             <param name="transformB">The transform B.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.CollideEdgeAndPolygon(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.CollideEdgeAndPolygon(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.EdgeShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Collides the edge and polygon using the specified manifold
             </summary>
@@ -1480,13 +1480,13 @@
                 The collide polygon class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollidePolygon.CollidePolygons(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollidePolygon.CollidePolygons(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)">
             <summary>Compute the collision manifold between two polygons.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollidePolygon.FindMaxSeparation(System.Int32@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollidePolygon.FindMaxSeparation(System.Int32@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)">
             <summary>Find the max separation between poly1 and poly2 using edge normals from poly1.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollidePolygon.FindIncidentEdge(Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Physic.Collision.Narrowphase.ClipVertex}@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollidePolygon.FindIncidentEdge(Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Physic.Collision.Narrowphase.ClipVertex}@,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.Shapes.PolygonShape,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Finds the incident edge using the specified c
             </summary>
@@ -1500,7 +1500,7 @@
         <member name="T:Alis.Core.Physic.Collision.Narrowphase.Collision">
             <summary>Collision methods</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Collision.TestOverlap(Alis.Core.Physic.Collision.Shapes.Shape,System.Int32,Alis.Core.Physic.Collision.Shapes.Shape,System.Int32,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Collision.TestOverlap(Alis.Core.Physic.Collision.Shapes.Shape,System.Int32,Alis.Core.Physic.Collision.Shapes.Shape,System.Int32,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)">
             <summary>Test overlap between the two shapes.</summary>
             <param name="shapeA">The first shape.</param>
             <param name="indexA">The index for the first shape.</param>
@@ -1731,7 +1731,7 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Simplex.ReadCache(Alis.Core.Physic.Collision.Narrowphase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Simplex.ReadCache(Alis.Core.Physic.Collision.Narrowphase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.Distance.DistanceProxy@,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Reads the cache using the specified cache
             </summary>
@@ -1828,7 +1828,7 @@
                 The world manifold class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.WorldManifold.Initialize(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Physic.Shared.Transform@,System.Single,Alis.Core.Physic.Shared.Transform@,System.Single,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Numerics.Vector2}@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Single}@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.WorldManifold.Initialize(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Transform@,System.Single,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Numerics.Vector2}@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Single}@)">
             <summary>
                 Evaluate the manifold with supplied transforms. This assumes modest motion from the original state. This does
                 not change the point count, impulses, etc. The radii must come from the Shapes that generated the manifold.
@@ -1866,7 +1866,7 @@
                 The ray cast helper class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastEdge(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Boolean,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastEdge(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Boolean,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether ray cast edge
             </summary>
@@ -1878,7 +1878,7 @@
             <param name="output">The output</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastCircle(System.Numerics.Vector2@,System.Single,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastCircle(System.Numerics.Vector2@,System.Single,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether ray cast circle
             </summary>
@@ -1889,7 +1889,7 @@
             <param name="output">The output</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether ray cast polygon
             </summary>
@@ -1963,7 +1963,7 @@
             <param name="index">The index</param>
             <returns>The edge shape</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.TestPoint(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -1971,7 +1971,7 @@
             <param name="point">The point</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether this instance ray cast
             </summary>
@@ -1981,7 +1981,7 @@
             <param name="output">The output</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.ComputeAabb(Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.ComputeAabb(Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the aabb using the specified transform
             </summary>
@@ -2033,7 +2033,7 @@
         <member name="P:Alis.Core.Physic.Collision.Shapes.CircleShape.Position">
             <summary>Get or set the position of the circle</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.TestPoint(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -2041,7 +2041,7 @@
             <param name="point">The point</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether this instance ray cast
             </summary>
@@ -2051,7 +2051,7 @@
             <param name="output">The output</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.ComputeAabb(Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.ComputeAabb(Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the aabb using the specified transform
             </summary>
@@ -2160,7 +2160,7 @@
             <param name="start">The start</param>
             <param name="end">The end</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.TestPoint(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -2168,7 +2168,7 @@
             <param name="point">The point</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether this instance ray cast
             </summary>
@@ -2178,7 +2178,7 @@
             <param name="output">The output</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.ComputeAabb(Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.ComputeAabb(Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the aabb using the specified transform
             </summary>
@@ -2324,7 +2324,7 @@
                 Computes the properties
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.TestPoint(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -2332,7 +2332,7 @@
             <param name="point">The point</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether this instance ray cast
             </summary>
@@ -2342,7 +2342,7 @@
             <param name="output">The output</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.ComputeAabb(Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.ComputeAabb(Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
             <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
             <param name="transform">The world transform of the shape.</param>
             <param name="childIndex">The child shape index.</param>
@@ -2416,13 +2416,13 @@
             <summary>Clone the concrete shape</summary>
             <returns>A clone of the shape</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.TestPoint(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>Test a point for containment in this shape. Note: This only works for convex shapes.</summary>
             <param name="transform">The shape world transform.</param>
             <param name="point">A point in world coordinates.</param>
             <returns>True if the point is inside the shape</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.RayCast(Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>Cast a ray against a child shape.</summary>
             <param name="input">The ray-cast input parameters.</param>
             <param name="transform">The transform to be applied to the shape.</param>
@@ -2430,7 +2430,7 @@
             <param name="output">The ray-cast results.</param>
             <returns>True if the ray-cast hits the shape</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.ComputeAabb(Alis.Core.Physic.Shared.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.ComputeAabb(Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Physic.Shared.Aabb@)">
             <summary>Given a transform, compute the associated axis aligned bounding box for a child shape.</summary>
             <param name="transform">The world transform of the shape.</param>
             <param name="childIndex">The child shape index.</param>
@@ -2482,7 +2482,7 @@
                 The test point helper class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointCircle(System.Numerics.Vector2@,System.Single,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointCircle(System.Numerics.Vector2@,System.Single,System.Numerics.Vector2@,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Describes whether test point circle
             </summary>
@@ -2492,7 +2492,7 @@
             <param name="transform">The transform</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2@,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Describes whether test point polygon
             </summary>
@@ -2603,7 +2603,7 @@
         <member name="F:Alis.Core.Physic.Collision.TOI.Sweep.LocalCenter">
             <summary>Local center of mass position</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TOI.Sweep.GetTransform(Alis.Core.Physic.Shared.Transform@,System.Single)">
+        <member name="M:Alis.Core.Physic.Collision.TOI.Sweep.GetTransform(Alis.Core.Aspect.Math.Transform@,System.Single)">
             <summary>Get the interpolated transform at a specific time.</summary>
             <param name="xfb">The transform.</param>
             <param name="beta">beta is a factor in [0,1], where 0 indicates alpha0.</param>
@@ -3957,7 +3957,7 @@
             <param name="position">The world position of the body's local origin.</param>
             <param name="rotation">The world rotation in radians.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetTransform(Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetTransform(Alis.Core.Aspect.Math.Transform@)">
             <summary>Get the body transform for the body's origin.</summary>
             <param name="transform">The transform of the body's origin.</param>
         </member>
@@ -4454,7 +4454,7 @@
                 Destroys this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Fixture.CreateProxies(Alis.Core.Physic.Collision.Broadphase.IBroadPhase,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Fixture.CreateProxies(Alis.Core.Physic.Collision.Broadphase.IBroadPhase,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Creates the proxies using the specified broad phase
             </summary>
@@ -4467,7 +4467,7 @@
             </summary>
             <param name="broadPhase">The broad phase</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Fixture.Synchronize(Alis.Core.Physic.Collision.Broadphase.IBroadPhase,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Fixture.Synchronize(Alis.Core.Physic.Collision.Broadphase.IBroadPhase,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Synchronizes the broad phase
             </summary>
@@ -7678,7 +7678,7 @@
                 The position solver manifold class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Transform@,System.Int32,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Single@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,System.Int32,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Single@)">
             <summary>
                 Initializes the pc
             </summary>
@@ -7858,7 +7858,7 @@
             </summary>
             <param name="dt">The dt</param>
         </member>
-        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.ComputeSubmergedArea(Alis.Core.Physic.Collision.Shapes.Shape,System.Numerics.Vector2@,System.Single,Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.ComputeSubmergedArea(Alis.Core.Physic.Collision.Shapes.Shape,System.Numerics.Vector2@,System.Single,Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>
                 Computes the submerged area using the specified shape
             </summary>
@@ -9737,64 +9737,6 @@
             </summary>
             <param name="objs">The objs</param>
             <param name="reset">The reset</param>
-        </member>
-        <member name="T:Alis.Core.Physic.Shared.Rot">
-            <summary>Rotation</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Shared.Rot.S">
-            Sine and cosine
-        </member>
-        <member name="F:Alis.Core.Physic.Shared.Rot.C">
-            Sine and cosine
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Rot.#ctor(System.Single)">
-            <summary>Initialize from an angle in radians</summary>
-            <param name="angle">Angle in radians</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Rot.Set(System.Single)">
-            <summary>Set using an angle in radians.</summary>
-            <param name="angle"></param>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Rot.SetIdentity">
-            <summary>Set to the identity rotation</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Rot.GetAngle">
-            <summary>Get the angle in radians</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Rot.GetXAxis">
-            <summary>Get the x-axis</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Rot.GetYAxis">
-            <summary>Get the y-axis</summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Shared.Transform">
-            <summary>
-                A transform contains translation and rotation. It is used to represent the position and orientation of rigid
-                frames.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Shared.Transform.Position">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Shared.Transform.Rotation">
-            <summary>
-                The
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Transform.#ctor(System.Numerics.Vector2@,Alis.Core.Physic.Shared.Rot@)">
-            <summary>Initialize using a position vector and a rotation matrix.</summary>
-            <param name="position">The position.</param>
-            <param name="rotation">The r.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Transform.SetIdentity">
-            <summary>Set this to the identity transform.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Transform.Set(System.Numerics.Vector2,System.Single)">
-            <summary>Set this based on the position and angle.</summary>
-            <param name="position">The position.</param>
-            <param name="angle">The angle.</param>
         </member>
         <member name="T:Alis.Core.Physic.Shared.Vertices">
             <summary>
@@ -13996,7 +13938,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2)">
             <summary>
                 Muls the t
             </summary>
@@ -14004,7 +13946,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>
                 Muls the t
             </summary>
@@ -14028,7 +13970,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -14036,7 +13978,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -14055,7 +13997,7 @@
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix3X3F,System.Numerics.Vector3)">
             <summary>Multiply a matrix times a vector.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Transform,Alis.Core.Physic.Shared.Transform)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)">
             <summary>
                 Muls the a
             </summary>
@@ -14063,7 +14005,7 @@
             <param name="b">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Transform@,Alis.Core.Physic.Shared.Transform@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Muls the t using the specified a
             </summary>
@@ -14082,10 +14024,10 @@
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul22(Alis.Core.Physic.Shared.Matrix3X3F,System.Numerics.Vector2)">
             <summary>Multiply a matrix times a vector.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Rot,Alis.Core.Physic.Shared.Rot)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rot,Alis.Core.Aspect.Math.Rot)">
             <summary>Multiply two rotations: q * r</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Transform,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,System.Numerics.Vector2)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -14093,10 +14035,10 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Rot,Alis.Core.Physic.Shared.Rot)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rot,Alis.Core.Aspect.Math.Rot)">
             <summary>Transpose multiply two rotations: qT * r</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Transform,Alis.Core.Physic.Shared.Transform)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)">
             <summary>
                 Muls the t using the specified a
             </summary>
@@ -14104,12 +14046,12 @@
             <param name="b">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Rot,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rot,System.Numerics.Vector2)">
             <summary>Rotate a vector</summary>
             <param name="q">The rotation matrix</param>
             <param name="v">The value</param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Rot,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rot,System.Numerics.Vector2)">
             <summary>Inverse rotate a vector</summary>
             <param name="q">The rotation matrix</param>
             <param name="v">The value</param>
@@ -14225,7 +14167,7 @@
             <param name="max">The maximum Value.</param>
             <returns>True if the Value is within the range specified, false otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Rot@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rot@,System.Numerics.Vector2)">
             <summary>
                 Muls the rot
             </summary>
@@ -14233,7 +14175,7 @@
             <param name="axis">The axis</param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Rot@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rot@,System.Numerics.Vector2)">
             <summary>
                 Muls the t using the specified rot
             </summary>

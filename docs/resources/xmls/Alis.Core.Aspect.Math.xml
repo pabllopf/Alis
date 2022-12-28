@@ -370,6 +370,64 @@
                 The array
             </summary>
         </member>
+        <member name="T:Alis.Core.Aspect.Math.Rot">
+            <summary>Rotation</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Rot.Sine">
+            Sine and cosine
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Rot.Cosine">
+            Sine and cosine
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Rot.#ctor(System.Single)">
+            <summary>Initialize from an angle in radians</summary>
+            <param name="angle">Angle in radians</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Rot.Set(System.Single)">
+            <summary>Set using an angle in radians.</summary>
+            <param name="angle"></param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Rot.SetIdentity">
+            <summary>Set to the identity rotation</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Rot.GetAngle">
+            <summary>Get the angle in radians</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Rot.GetXAxis">
+            <summary>Get the x-axis</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Rot.GetYAxis">
+            <summary>Get the y-axis</summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Transform">
+            <summary>
+                A transform contains translation and rotation. It is used to represent the position and orientation of rigid
+                frames.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Transform.Position">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Transform.Rotation">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Transform.#ctor(System.Numerics.Vector2@,Alis.Core.Aspect.Math.Rot@)">
+            <summary>Initialize using a position vector and a rotation matrix.</summary>
+            <param name="position">The position.</param>
+            <param name="rotation">The r.</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Transform.SetIdentity">
+            <summary>Set this to the identity transform.</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Transform.Set(System.Numerics.Vector2,System.Single)">
+            <summary>Set this based on the position and angle.</summary>
+            <param name="position">The position.</param>
+            <param name="angle">The angle.</param>
+        </member>
         <member name="T:Alis.Core.Aspect.Math.Vector.Vector2B">
             <summary>
                 <see cref="T:Alis.Core.Aspect.Math.Vector.Vector2B" /> is a struct represent a glsl bvec2 value
@@ -845,6 +903,11 @@
             <param name="v1">First vector</param>
             <param name="v2">Second vector</param>
             <returns>v1 != v2</returns>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector.Vector3F.Zero">
+            <summary>
+            The vector
+            </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.ToString">
             <summary>

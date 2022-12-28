@@ -29,6 +29,7 @@
 
 using System;
 using System.Numerics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Utilities
@@ -101,8 +102,8 @@ namespace Alis.Core.Physic.Utilities
         /// <returns>The vector</returns>
         public static Vector2 Mul(ref Transform T, ref Vector2 v)
         {
-            float x = T.Rotation.C * v.X - T.Rotation.S * v.Y + T.Position.X;
-            float y = T.Rotation.S * v.X + T.Rotation.C * v.Y + T.Position.Y;
+            float x = T.Rotation.Cosine * v.X - T.Rotation.Sine * v.Y + T.Position.X;
+            float y = T.Rotation.Sine * v.X + T.Rotation.Cosine * v.Y + T.Position.Y;
 
             return new Vector2(x, y);
         }
@@ -142,8 +143,8 @@ namespace Alis.Core.Physic.Utilities
         {
             float px = v.X - T.Position.X;
             float py = v.Y - T.Position.Y;
-            float x = T.Rotation.C * px + T.Rotation.S * py;
-            float y = -T.Rotation.S * px + T.Rotation.C * py;
+            float x = T.Rotation.Cosine * px + T.Rotation.Sine * py;
+            float y = -T.Rotation.Sine * px + T.Rotation.Cosine * py;
 
             return new Vector2(x, y);
         }
@@ -229,8 +230,8 @@ namespace Alis.Core.Physic.Utilities
             // s = qs * rc + qc * rs
             // c = qc * rc - qs * rs
             Rot qr;
-            qr.S = q.S * r.C + q.C * r.S;
-            qr.C = q.C * r.C - q.S * r.S;
+            qr.Sine = q.Sine * r.Cosine + q.Cosine * r.Sine;
+            qr.Cosine = q.Cosine * r.Cosine - q.Sine * r.Sine;
             return qr;
         }
 
@@ -244,8 +245,8 @@ namespace Alis.Core.Physic.Utilities
         {
             float px = v.X - T.Position.X;
             float py = v.Y - T.Position.Y;
-            float x = T.Rotation.C * px + T.Rotation.S * py;
-            float y = -T.Rotation.S * px + T.Rotation.C * py;
+            float x = T.Rotation.Cosine * px + T.Rotation.Sine * py;
+            float y = -T.Rotation.Sine * px + T.Rotation.Cosine * py;
 
             return new Vector2(x, y);
         }
@@ -258,8 +259,8 @@ namespace Alis.Core.Physic.Utilities
             // s = qc * rs - qs * rc
             // c = qc * rc + qs * rs
             Rot qr;
-            qr.S = q.C * r.S - q.S * r.C;
-            qr.C = q.C * r.C + q.S * r.S;
+            qr.Sine = q.Cosine * r.Sine - q.Sine * r.Cosine;
+            qr.Cosine = q.Cosine * r.Cosine + q.Sine * r.Sine;
             return qr;
         }
 
@@ -285,12 +286,12 @@ namespace Alis.Core.Physic.Utilities
         /// <summary>Rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 Mul(Rot q, Vector2 v) => new Vector2(q.C * v.X - q.S * v.Y, q.S * v.X + q.C * v.Y);
+        public static Vector2 Mul(Rot q, Vector2 v) => new Vector2(q.Cosine * v.X - q.Sine * v.Y, q.Sine * v.X + q.Cosine * v.Y);
 
         /// <summary>Inverse rotate a vector</summary>
         /// <param name="q">The rotation matrix</param>
         /// <param name="v">The value</param>
-        public static Vector2 MulT(Rot q, Vector2 v) => new Vector2(q.C * v.X + q.S * v.Y, -q.S * v.X + q.C * v.Y);
+        public static Vector2 MulT(Rot q, Vector2 v) => new Vector2(q.Cosine * v.X + q.Sine * v.Y, -q.Sine * v.X + q.Cosine * v.Y);
 
         /// <summary>Get the skew vector such that dot(skew_vec, other) == cross(vec, other)</summary>
         public static Vector2 Skew(Vector2 input) => new Vector2(-input.Y, input.X);

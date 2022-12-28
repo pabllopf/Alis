@@ -29,6 +29,7 @@
 
 using System.Diagnostics;
 using System.Numerics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
