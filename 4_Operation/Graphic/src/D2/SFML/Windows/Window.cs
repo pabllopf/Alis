@@ -604,7 +604,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
                     }
 
                     break;
-                
+
                 case EventType.MouseWheelScrolled:
                     if (MouseWheelScrolled != null)
                     {
@@ -683,7 +683,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
 
         /// <summary>Event handler for the KeyReleased event</summary>
         public event EventHandler<KeyEventArgs> KeyReleased;
-        
+
         /// <summary>Event handler for the MouseWheelScrolled event</summary>
         public event EventHandler<MouseWheelScrollEventArgs> MouseWheelScrolled;
 

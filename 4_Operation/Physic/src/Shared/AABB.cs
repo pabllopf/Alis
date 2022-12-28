@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   AABB.cs
+//  File:AABB.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Shared
         public bool IsValid()
         {
             Vector2F d = UpperBound - LowerBound;
-            bool valid = d.X >= 0.0f && d.Y >= 0.0f;
+            bool valid = (d.X >= 0.0f) && (d.Y >= 0.0f);
             return valid && LowerBound.IsValid() && UpperBound.IsValid();
         }
 
@@ -163,9 +163,9 @@ namespace Alis.Core.Physic.Shared
         public bool Contains(ref Aabb aabb)
         {
             bool result = LowerBound.X <= aabb.LowerBound.X;
-            result = result && LowerBound.Y <= aabb.LowerBound.Y;
-            result = result && aabb.UpperBound.X <= UpperBound.X;
-            result = result && aabb.UpperBound.Y <= UpperBound.Y;
+            result = result && (LowerBound.Y <= aabb.LowerBound.Y);
+            result = result && (aabb.UpperBound.X <= UpperBound.X);
+            result = result && (aabb.UpperBound.Y <= UpperBound.Y);
             return result;
         }
 
@@ -174,8 +174,8 @@ namespace Alis.Core.Physic.Shared
         /// <returns><c>true</c> if it contains the specified point; otherwise, <c>false</c>.</returns>
         public bool Contains(ref Vector2F point) =>
             //using epsilon to try and guard against float rounding errors.
-            point.X > LowerBound.X + float.Epsilon && point.X < UpperBound.X - float.Epsilon &&
-            point.Y > LowerBound.Y + float.Epsilon && point.Y < UpperBound.Y - float.Epsilon;
+            (point.X > LowerBound.X + float.Epsilon) && (point.X < UpperBound.X - float.Epsilon) &&
+            (point.Y > LowerBound.Y + float.Epsilon) && (point.Y < UpperBound.Y - float.Epsilon);
 
         /// <summary>Test if the two AABBs overlap.</summary>
         /// <param name="a">The first AABB.</param>
@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Shared
             Vector2F d1 = b.LowerBound - a.UpperBound;
             Vector2F d2 = a.LowerBound - b.UpperBound;
 
-            return d1.X <= 0 && d1.Y <= 0 && d2.X <= 0 && d2.Y <= 0;
+            return (d1.X <= 0) && (d1.Y <= 0) && (d2.X <= 0) && (d2.Y <= 0);
         }
 
         /// <summary>Raycast against this AABB using the specified points and maxfraction (found in input)</summary>

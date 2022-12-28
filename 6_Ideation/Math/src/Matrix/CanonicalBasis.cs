@@ -27,33 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    /// The matrix
+    ///     The matrix
     /// </summary>
     public partial struct Matrix4X4F
     {
         /// <summary>
-        /// The canonical basis
+        ///     The canonical basis
         /// </summary>
         public struct CanonicalBasis
         {
             /// <summary>
-            /// The row
+            ///     The row
             /// </summary>
             public Vector3F Row0;
+
             /// <summary>
-            /// The row
+            ///     The row
             /// </summary>
             public Vector3F Row1;
+
             /// <summary>
-            /// The row
+            ///     The row
             /// </summary>
             public Vector3F Row2;
-        };
+        }
     }
 }

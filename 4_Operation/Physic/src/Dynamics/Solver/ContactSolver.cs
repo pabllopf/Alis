@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ContactSolver.cs
+//  File:ContactSolver.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -294,7 +294,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
 
                 // If we have two points, then prepare the block solver.
-                if (vc.PointCount == 2 && Settings.BlockSolve)
+                if ((vc.PointCount == 2) && Settings.BlockSolve)
                 {
                     VelocityConstraintPoint vcp1 = vc.Points[0];
                     VelocityConstraintPoint vcp2 = vc.Points[1];
@@ -494,7 +494,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     VelocityConstraintPoint cp2 = vc.Points[1];
 
                     Vector2F a = new Vector2F(cp1.NormalImpulse, cp2.NormalImpulse);
-                    Debug.Assert(a.X >= 0.0f && a.Y >= 0.0f);
+                    Debug.Assert((a.X >= 0.0f) && (a.Y >= 0.0f));
 
                     // Relative velocity at contact
                     Vector2F dv1 = vB + MathUtils.Cross(wB, cp1.RB) - vA - MathUtils.Cross(wA, cp1.RA);
@@ -524,7 +524,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         //
                         Vector2F x = -MathUtils.Mul(ref vc.NormalMass, b);
 
-                        if (x.X >= 0.0f && x.Y >= 0.0f)
+                        if ((x.X >= 0.0f) && (x.Y >= 0.0f))
                         {
                             // Get the incremental impulse
                             Vector2F d = x - a;
@@ -568,7 +568,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         vn1 = 0.0f;
                         vn2 = vc.K.Ex.Y * x.X + b.Y;
 
-                        if (x.X >= 0.0f && vn2 >= 0.0f)
+                        if ((x.X >= 0.0f) && (vn2 >= 0.0f))
                         {
                             // Get the incremental impulse
                             Vector2F d = x - a;
@@ -609,7 +609,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         vn1 = vc.K.Ey.X * x.Y + b.X;
                         vn2 = 0.0f;
 
-                        if (x.Y >= 0.0f && vn1 >= 0.0f)
+                        if ((x.Y >= 0.0f) && (vn1 >= 0.0f))
                         {
                             // Resubstitute for the incremental impulse
                             Vector2F d = x - a;
@@ -649,7 +649,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         vn1 = b.X;
                         vn2 = b.Y;
 
-                        if (vn1 >= 0.0f && vn2 >= 0.0f)
+                        if ((vn1 >= 0.0f) && (vn2 >= 0.0f))
                         {
                             // Resubstitute for the incremental impulse
                             Vector2F d = x - a;

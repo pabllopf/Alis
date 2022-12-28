@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Aspect.Math.Vector;
-using Transform = Alis.Core.Entity.Transform;
+using Alis.Core.Entity;
 
 namespace Alis.Builder.Core.Entity
 {

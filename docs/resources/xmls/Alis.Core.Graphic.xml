@@ -5898,14 +5898,14 @@
                 SFML object. It's meant for internal use only
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.D2.SFML.ObjectBase.#cctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.D2.SFML.ObjectBase"/> class
-            </summary>
-        </member>
         <member name="F:Alis.Core.Graphic.D2.SFML.ObjectBase.myCPointer">
             <summary>
                 The zero
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.D2.SFML.ObjectBase.#cctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Graphic.D2.SFML.ObjectBase" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.ObjectBase.#ctor(System.IntPtr)">
@@ -8514,7 +8514,7 @@
         </member>
         <member name="T:Alis.Core.Graphic.D2.SKIA.CustomRender">
             <summary>
-            The custom render class
+                The custom render class
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender.red">
@@ -8534,12 +8534,12 @@
         </member>
         <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender._fillColor">
             <summary>
-            The fill color
+                The fill color
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.D2.SKIA.CustomRender.Update(SkiaSharp.SKCanvas)">
             <summary>
-            Updates the e surface
+                Updates the e surface
             </summary>
             <param name="surfaceCanvas">The surface canvas</param>
         </member>

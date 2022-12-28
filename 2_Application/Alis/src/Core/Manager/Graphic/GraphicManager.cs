@@ -75,9 +75,9 @@ namespace Alis.Core.Manager.Graphic
         ///     Gets or sets the value of the sprites
         /// </summary>
         private static List<Sprite> Sprites { get; set; } = new List<Sprite>();
-        
+
         /// <summary>
-        /// Gets or sets the value of the colliders
+        ///     Gets or sets the value of the colliders
         /// </summary>
         public static List<Shape> Colliders { get; set; } = new List<Shape>();
 
@@ -276,7 +276,7 @@ namespace Alis.Core.Manager.Graphic
         }
 
         /// <summary>
-        /// Attaches the collider using the specified shape
+        ///     Attaches the collider using the specified shape
         /// </summary>
         /// <param name="shape">The shape</param>
         public void AttachCollider(Shape shape)

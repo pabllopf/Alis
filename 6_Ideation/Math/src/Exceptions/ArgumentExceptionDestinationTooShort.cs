@@ -32,9 +32,9 @@ using System;
 namespace Alis.Core.Aspect.Math.Exceptions
 {
     /// <summary>
-    /// The argument exception destination too short class
+    ///     The argument exception destination too short class
     /// </summary>
-    /// <seealso cref="Exception"/>
+    /// <seealso cref="Exception" />
     public class ArgumentExceptionDestinationTooShort : Exception
     {
     }

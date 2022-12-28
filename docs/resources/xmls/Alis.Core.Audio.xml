@@ -24,11 +24,6 @@
                 The audio clip base class
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.AudioClipBase.#cctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase"/> class
-            </summary>
-        </member>
         <member name="F:Alis.Core.Audio.AudioClipBase.music">
             <summary>
                 The music
@@ -39,6 +34,11 @@
                 The player
             </summary>
         </member>
+        <member name="M:Alis.Core.Audio.AudioClipBase.#cctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase" /> class
+            </summary>
+        </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.#ctor(System.String)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase" /> class
@@ -47,7 +47,7 @@
         </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.AudioClipBase" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.#ctor(System.String,Alis.Core.Audio.AudioBackendType)">
@@ -187,11 +187,6 @@
                 SFML object. It's meant for internal use only
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.ObjectBase.#cctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.ObjectBase"/> class
-            </summary>
-        </member>
         <member name="F:Alis.Core.Audio.ObjectBase.myCPointer">
             <summary>
                 The zero
@@ -205,7 +200,7 @@
         </member>
         <member name="M:Alis.Core.Audio.ObjectBase.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Audio.ObjectBase"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Audio.ObjectBase" /> class
             </summary>
         </member>
         <member name="P:Alis.Core.Audio.ObjectBase.CPointer">

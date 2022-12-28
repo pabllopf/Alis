@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-dotnet@v2
         with:
           dotnet-version: 6.0.x
-          
+
       - name: Dotnet install workload
         run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
       

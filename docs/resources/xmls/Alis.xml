@@ -131,75 +131,95 @@
         </member>
         <member name="F:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.boxCollider">
             <summary>
-            The box collider
+                The box collider
             </summary>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.AutoTilling(System.Boolean)">
+            <summary>
+                Autoes the tilling using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.BodyType(Alis.Core.Physic.Dynamics.BodyType)">
+            <summary>
+                Bodies the type using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The box collider builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The box collider</returns>
         </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Size(System.Single,System.Single)">
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Density(System.Single)">
             <summary>
-            Sizes the x
+                Densities the value
             </summary>
-            <param name="x">The </param>
-            <param name="y">The </param>
+            <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.FixedRotation(System.Boolean)">
             <summary>
-            Fixeds the rotation using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.AutoTilling(System.Boolean)">
-            <summary>
-            Autoes the tilling using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.GravityScale(System.Single)">
-            <summary>
-            Gravities the scale using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Mass(System.Single)">
-            <summary>
-            Masses the value
+                Fixeds the rotation using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Friction(System.Single)">
             <summary>
-            Frictions the value
+                Frictions the value
             </summary>
             <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Density(System.Single)">
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.GravityScale(System.Single)">
             <summary>
-            Densities the value
+                Gravities the scale using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Rotation(System.Single)">
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsActive(System.Boolean)">
             <summary>
-            Rotations the angle
+                Ises the active using the specified value
             </summary>
-            <param name="angle">The angle</param>
+            <param name="value">The value</param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsTrigger">
+            <summary>
+                Ises the trigger
+            </summary>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsTrigger(System.Boolean)">
+            <summary>
+                Ises the trigger using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.LinearVelocity(System.Single,System.Single)">
+            <summary>
+                Linears the velocity using the specified x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Mass(System.Single)">
+            <summary>
+                Masses the value
+            </summary>
+            <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
         <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.RelativePosition(System.Single,System.Single)">
             <summary>
-            Relatives the position using the specified x
+                Relatives the position using the specified x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
@@ -207,44 +227,24 @@
         </member>
         <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Restitution(System.Single)">
             <summary>
-            Restitutions the value
+                Restitutions the value
             </summary>
             <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsTrigger">
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Rotation(System.Single)">
             <summary>
-            Ises the trigger
+                Rotations the angle
             </summary>
+            <param name="angle">The angle</param>
             <returns>The box collider builder</returns>
         </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsTrigger(System.Boolean)">
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.Size(System.Single,System.Single)">
             <summary>
-            Ises the trigger using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.IsActive(System.Boolean)">
-            <summary>
-            Ises the active using the specified value
-            </summary>
-            <param name="value">The value</param>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.LinearVelocity(System.Single,System.Single)">
-            <summary>
-            Linears the velocity using the specified x
+                Sizes the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.BodyType(Alis.Core.Physic.Dynamics.BodyType)">
-            <summary>
-            Bodies the type using the specified value
-            </summary>
-            <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
         <member name="T:Alis.Builder.Core.Component.Collider.CircleColliderBuilder">
@@ -929,7 +929,7 @@
         </member>
         <member name="M:Alis.Core.Component.Audio.AudioClip.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Component.Audio.AudioClip"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Component.Audio.AudioClip" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Audio.AudioClip.#ctor(System.String)">
@@ -1111,7 +1111,7 @@
         </member>
         <member name="P:Alis.Core.Component.Collider.BoxCollider.IsTrigger">
             <summary>
-            Gets or sets the value of the is trigger
+                Gets or sets the value of the is trigger
             </summary>
         </member>
         <member name="P:Alis.Core.Component.Collider.BoxCollider.Width">
@@ -1184,9 +1184,15 @@
                 Gets or sets the value of the linear velocity
             </summary>
         </member>
+        <member name="M:Alis.Core.Component.Collider.BoxCollider.Builder">
+            <summary>
+                Builders this instance
+            </summary>
+            <returns>The box collider builder</returns>
+        </member>
         <member name="M:Alis.Core.Component.Collider.BoxCollider.Init">
             <summary>
-            Inits this instance
+                Inits this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Collider.BoxCollider.Awake">
@@ -1216,14 +1222,8 @@
         </member>
         <member name="M:Alis.Core.Component.Collider.BoxCollider.Draw">
             <summary>
-            Draws this instance
+                Draws this instance
             </summary>
-        </member>
-        <member name="M:Alis.Core.Component.Collider.BoxCollider.Builder">
-            <summary>
-            Builders this instance
-            </summary>
-            <returns>The box collider builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Collider.CircleCollider">
             <summary>
@@ -1677,7 +1677,7 @@
         </member>
         <member name="M:Alis.Core.Entity.GameObject.Draw">
             <summary>
-            Draws this instance
+                Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Entity.GameObject.Stop">
@@ -1766,7 +1766,7 @@
         </member>
         <member name="M:Alis.Core.Entity.Scene.Draw">
             <summary>
-            Draws this instance
+                Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Entity.Scene.Reset">
@@ -1970,7 +1970,7 @@
         </member>
         <member name="P:Alis.Core.Manager.Graphic.GraphicManager.Colliders">
             <summary>
-            Gets or sets the value of the colliders
+                Gets or sets the value of the colliders
             </summary>
         </member>
         <member name="F:Alis.Core.Manager.Graphic.GraphicManager.Current">
@@ -2079,7 +2079,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Graphic.GraphicManager.AttachCollider(Alis.Core.Graphic.D2.SFML.Graphics.Shape)">
             <summary>
-            Attaches the collider using the specified shape
+                Attaches the collider using the specified shape
             </summary>
             <param name="shape">The shape</param>
         </member>
@@ -2160,7 +2160,7 @@
         </member>
         <member name="P:Alis.Core.Manager.Physic.PhysicManager.World">
             <summary>
-            Gets or sets the value of the world
+                Gets or sets the value of the world
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManager.Init">
@@ -2220,7 +2220,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Physic.PhysicManager.AttachBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
-            Attaches the body using the specified body
+                Attaches the body using the specified body
             </summary>
             <param name="body">The body</param>
         </member>
@@ -2286,7 +2286,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManager.Draw">
             <summary>
-            Draws this instance
+                Draws this instance
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Scene.SceneManager.FixedUpdate">
@@ -2480,7 +2480,7 @@
         </member>
         <member name="P:Alis.VideoGame.PhysicManager">
             <summary>
-            Gets or sets the value of the physic manager
+                Gets or sets the value of the physic manager
             </summary>
         </member>
         <member name="P:Alis.VideoGame.Setting">

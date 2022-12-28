@@ -5,25 +5,25 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PolygonUtils.cs
+//  File:PolygonUtils.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic.Utilities
             {
                 throw new Exception("Segments must be zero or more.");
             }
-            
+
             Vertices vertices = new Vertices();
             if (segments == 0)
             {
@@ -341,19 +341,19 @@ namespace Alis.Core.Physic.Utilities
                 {
                     vertices.Add(
                         new Vector2F(radius *
-                                    (float) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
+                                     (float) Math.Cos(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize),
                             -radius *
                             (float) Math.Sin(stepSize * i + toothAngleStepSize * 2f + toothTipStepSize)));
 
                     vertices.Add(
                         new Vector2F((radius + toothHeight) *
-                                    (float) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
+                                     (float) Math.Cos(stepSize * i + toothAngleStepSize + toothTipStepSize),
                             -(radius + toothHeight) *
                             (float) Math.Sin(stepSize * i + toothAngleStepSize + toothTipStepSize)));
                 }
 
                 vertices.Add(new Vector2F((radius + toothHeight) *
-                                         (float) Math.Cos(stepSize * i + toothAngleStepSize),
+                                          (float) Math.Cos(stepSize * i + toothAngleStepSize),
                     -(radius + toothHeight) *
                     (float) Math.Sin(stepSize * i + toothAngleStepSize)));
 

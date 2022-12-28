@@ -174,9 +174,9 @@ namespace Alis.Core.Aspect.Math.Figures.D2.Rectangle
         /// <returns>Rectangles are equal</returns>
         ////////////////////////////////////////////////////////////
         public bool Equals(RectangleI other) => (Left == other.Left) &&
-                                             (Top == other.Top) &&
-                                             (Width == other.Width) &&
-                                             (Height == other.Height);
+                                                (Top == other.Top) &&
+                                                (Width == other.Width) &&
+                                                (Height == other.Height);
 
         ////////////////////////////////////////////////////////////
         /// <summary>

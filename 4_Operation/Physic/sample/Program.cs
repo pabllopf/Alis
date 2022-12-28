@@ -27,8 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
-
 namespace Alis.Core.Physic.Sample
 {
     /// <summary>
@@ -42,7 +40,6 @@ namespace Alis.Core.Physic.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
         }
     }
 }

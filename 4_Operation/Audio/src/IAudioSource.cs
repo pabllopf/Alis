@@ -32,7 +32,7 @@ namespace Alis.Core.Audio
     /// <summary>
     ///     The audio source interface
     /// </summary>
-    public interface IAudioSource<T> 
+    public interface IAudioSource<T>
     {
         /// <summary>
         ///     Gets or sets the value of the audio clip base

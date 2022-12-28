@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Math.Matrix
@@ -60,7 +59,6 @@ namespace Alis.Core.Aspect.Math.Matrix
             array[2] = a20;
             array[5] = a21;
             array[8] = a22;
-            
         }
 
         // column-major!

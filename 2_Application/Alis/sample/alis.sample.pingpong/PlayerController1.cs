@@ -34,17 +34,17 @@ using Alis.Core.Component.Collider;
 namespace Alis.Sample.PingPong
 {
     /// <summary>
-    /// The player controller class
+    ///     The player controller class
     /// </summary>
     public class PlayerController1 : ComponentBase
     {
         /// <summary>
-        /// The box collider
+        ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
-        
+
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         public override void Start()
         {
@@ -52,20 +52,19 @@ namespace Alis.Sample.PingPong
         }
 
         /// <summary>
-        /// Updates this instance
+        ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-            
         }
 
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(string key)
         {
-           Vector2F velocity = boxCollider.Body.LinearVelocity;
+            Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
@@ -81,12 +80,12 @@ namespace Alis.Sample.PingPong
         }
 
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressDownKey(string key)
         {
-           Vector2F velocity = boxCollider.Body.LinearVelocity;
+            Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {

@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Math.Figures.D2.Circle
 {
     /// <summary>
-    /// The circle
+    ///     The circle
     /// </summary>
     public struct CircleI
     {
-        
     }
 }

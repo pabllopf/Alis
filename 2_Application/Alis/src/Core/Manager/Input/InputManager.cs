@@ -130,7 +130,6 @@ namespace Alis.Core.Manager.Input
 
                 if (Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
                 {
-
                     foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
                     {
                         currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(key.ToString()));

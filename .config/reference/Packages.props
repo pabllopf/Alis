@@ -37,7 +37,7 @@
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False
     ">
-        <PackageReference Include="System.Text.Json" Version="7.0.0" />
+        <PackageReference Include="System.Text.Json" Version="7.0.0"/>
     </ItemGroup>
 
 </Project>

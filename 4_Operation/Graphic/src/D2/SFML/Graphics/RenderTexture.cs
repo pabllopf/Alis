@@ -53,7 +53,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     The my texture
         /// </summary>
         private readonly Texture myTexture;
-        
+
         /*public RenderTexture(uint width, uint height) :
             this(width, height, false)
         {
