@@ -147,7 +147,7 @@ However, we can compute sin+cos of the same angle fast.
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
         /// <param name="allowSleep">The allow sleep</param>
-        public void Solve(ref Profile profile, ref TimeStep step, ref Vector2 gravity, bool allowSleep)
+        public void Solve(ref Profile profile, ref TimeStep step, ref Vector2F gravity, bool allowSleep)
         {
             float h = step.DeltaTime;
 
@@ -300,9 +300,9 @@ namespace Alis.Core.Physic.Dynamics.Solver
             {
                 Body b = Bodies[i];
 
-                Vector2 c = b.Sweep.C;
+                Vector2F c = b.Sweep.C;
                 float a = b.Sweep.A;
-                Vector2 v = b.LinearVelocity;
+                Vector2F v = b.LinearVelocity;
                 float w = b.AngularVelocity;
 
                 // Store positions for continuous collision.
@@ -388,14 +388,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
             // Integrate positions
             for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2 c = positions[i].C;
+                Vector2F c = positions[i].C;
                 float a = positions[i].A;
-                Vector2 v = velocities[i].V;
+                Vector2F v = velocities[i].V;
                 float w = velocities[i].W;
 
                 // Check for large velocities
-                Vector2 translation = h * v;
-                if (Vector2.Dot(translation, translation) > Settings.MaxTranslation * Settings.MaxTranslation)
+                Vector2F translation = h * v;
+                if (Vector2F.Dot(translation, translation) > Settings.MaxTranslation * Settings.MaxTranslation)
                 {
                     float ratio = Settings.MaxTranslation / translation.Length();
                     v *= ratio;
@@ -477,7 +477,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     }
 
                     if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > angTolSqr ||
-                        Vector2.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
+                        Vector2F.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
                     {
                         b.SleepTime = 0.0f;
                         minSleepTime = 0.0f;
@@ -558,14 +558,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
             // Integrate positions.
             for (int i = 0; i < BodyCount; ++i)
             {
-                Vector2 c = positions[i].C;
+                Vector2F c = positions[i].C;
                 float a = positions[i].A;
-                Vector2 v = velocities[i].V;
+                Vector2F v = velocities[i].V;
                 float w = velocities[i].W;
 
                 // Check for large velocities
-                Vector2 translation = h * v;
-                if (Vector2.Dot(translation, translation) > Settings.MaxTranslation * Settings.MaxTranslation)
+                Vector2F translation = h * v;
+                if (Vector2F.Dot(translation, translation) > Settings.MaxTranslation * Settings.MaxTranslation)
                 {
                     float ratio = Settings.MaxTranslation / translation.Length();
                     v *= ratio;

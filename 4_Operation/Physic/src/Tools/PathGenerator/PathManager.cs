@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
                 throw new Exception("The path must be closed to convert to a polygon.");
             }
 
-            List<Vector2> verts = path.GetVertices(subdivisions);
+            List<Vector2F> verts = path.GetVertices(subdivisions);
 
             List<Vertices> decomposedVerts =
                 Triangulate.ConvexPartition(new Vertices(verts), TriangulationAlgorithm.Bayazit);
@@ -100,13 +100,13 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         public static List<Body> EvenlyDistributeShapesAlongPath(World world, Path path, IEnumerable<Shape> shapes,
             BodyType type, int copies, object userData = null)
         {
-            List<Vector3> centers = path.SubdivideEvenly(copies);
+            List<Vector3F> centers = path.SubdivideEvenly(copies);
             List<Body> bodyList = new List<Body>();
 
             for (int i = 0; i < centers.Count; i++)
             {
                 // copy the type from original body
-                Body b = BodyFactory.CreateBody(world, new Vector2(centers[i].X, centers[i].Y), centers[i].Z, type,
+                Body b = BodyFactory.CreateBody(world, new Vector2F(centers[i].X, centers[i].Y), centers[i].Z, type,
                     userData);
 
                 foreach (Shape shape in shapes)
@@ -146,9 +146,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="timeStep">The time step.</param>
         public static void MoveBodyOnPath(Path path, Body body, float time, float strength, float timeStep)
         {
-            Vector2 destination = path.GetPosition(time);
-            Vector2 positionDelta = body.Position - destination;
-            Vector2 velocity = positionDelta / timeStep * strength;
+            Vector2F destination = path.GetPosition(time);
+            Vector2F positionDelta = body.Position - destination;
+            Vector2F velocity = positionDelta / timeStep * strength;
 
             body.LinearVelocity = -velocity;
         }
@@ -161,7 +161,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="connectFirstAndLast">if set to <c>true</c> [connect first and last].</param>
         /// <param name="collideConnected">if set to <c>true</c> [collide connected].</param>
         public static List<RevoluteJoint> AttachBodiesWithRevoluteJoint(World world, List<Body> bodies,
-            Vector2 localAnchorA, Vector2 localAnchorB, bool connectFirstAndLast, bool collideConnected)
+            Vector2F localAnchorA, Vector2F localAnchorB, bool connectFirstAndLast, bool collideConnected)
         {
             List<RevoluteJoint> joints = new List<RevoluteJoint>(bodies.Count + 1);
 

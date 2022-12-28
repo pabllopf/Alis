@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
@@ -67,10 +67,10 @@ namespace Alis.Core.Physic.Definitions.Joints
         public float MaxLength { get; set; }
 
         /// <summary>The local anchor point relative to bodyA's origin.</summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2F LocalAnchorA { get; set; }
 
         /// <summary>The local anchor point relative to bodyB's origin.</summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2F LocalAnchorB { get; set; }
 
         /// <summary>
         ///     Initializes the b 1
@@ -79,13 +79,13 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// <param name="b2">The </param>
         /// <param name="anchor1">The anchor</param>
         /// <param name="anchor2">The anchor</param>
-        public void Initialize(Body b1, Body b2, Vector2 anchor1, Vector2 anchor2)
+        public void Initialize(Body b1, Body b2, Vector2F anchor1, Vector2F anchor2)
         {
             BodyA = b1;
             BodyB = b2;
             LocalAnchorA = BodyA.GetLocalPoint(anchor1);
             LocalAnchorB = BodyB.GetLocalPoint(anchor2);
-            Vector2 d = anchor2 - anchor1;
+            Vector2F d = anchor2 - anchor1;
             Length = MathUtils.Max(d.Length(), Settings.LinearSlop);
             MinLength = Length;
             MaxLength = Length;
@@ -96,8 +96,8 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// </summary>
         public override void SetDefaults()
         {
-            LocalAnchorA = Vector2.Zero;
-            LocalAnchorB = Vector2.Zero;
+            LocalAnchorA = Vector2F.Zero;
+            LocalAnchorB = Vector2F.Zero;
             Length = 1.0f;
             MinLength = 0.0f;
             MaxLength = float.MaxValue;

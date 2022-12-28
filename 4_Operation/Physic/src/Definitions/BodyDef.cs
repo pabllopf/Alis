@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Core.Physic.Definitions
@@ -88,10 +88,10 @@ namespace Alis.Core.Physic.Definitions
         public float LinearDamping { get; set; }
 
         /// <summary>The linear velocity of the body's origin in world co-ordinates.</summary>
-        public Vector2 LinearVelocity { get; set; }
+        public Vector2F LinearVelocity { get; set; }
 
         /// <summary>The world position of the body.</summary>
-        public Vector2 Position { get; set; }
+        public Vector2F Position { get; set; }
 
         /// <summary>
         ///     Set the type of body
@@ -110,9 +110,9 @@ namespace Alis.Core.Physic.Definitions
         /// </summary>
         public void SetDefaults()
         {
-            Position = Vector2.Zero;
+            Position = Vector2F.Zero;
             Angle = 0.0f;
-            LinearVelocity = Vector2.Zero;
+            LinearVelocity = Vector2F.Zero;
             AngularVelocity = 0.0f;
             LinearDamping = 0.0f;
             AngularDamping = 0.0f;

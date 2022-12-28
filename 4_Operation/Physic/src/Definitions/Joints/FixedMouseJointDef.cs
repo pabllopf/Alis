@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 
 namespace Alis.Core.Physic.Definitions.Joints
@@ -56,14 +56,14 @@ namespace Alis.Core.Physic.Definitions.Joints
         public float MaxForce { get; set; }
 
         /// <summary>The initial world target point. This is assumed to coincide with the body anchor initially.</summary>
-        public Vector2 Target { get; set; }
+        public Vector2F Target { get; set; }
 
         /// <summary>
         ///     Sets the defaults
         /// </summary>
         public override void SetDefaults()
         {
-            Target = Vector2.Zero;
+            Target = Vector2F.Zero;
             MaxForce = 0.0f;
             Stiffness = 0.0f;
             Damping = 0.0f;

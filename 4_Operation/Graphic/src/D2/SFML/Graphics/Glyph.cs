@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics

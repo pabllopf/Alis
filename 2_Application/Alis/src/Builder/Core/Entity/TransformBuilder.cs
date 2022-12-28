@@ -27,11 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Entity;
+using Alis.Core.Aspect.Math.Vector;
 using Transform = Alis.Core.Entity.Transform;
 
 namespace Alis.Builder.Core.Entity
@@ -65,7 +63,7 @@ namespace Alis.Builder.Core.Entity
         /// <returns>The transform builder</returns>
         public TransformBuilder Position(float x, float y)
         {
-            transform.Position = new Vector2(x, y);
+            transform.Position = new Vector2F(x, y);
             return this;
         }
 
@@ -88,7 +86,7 @@ namespace Alis.Builder.Core.Entity
         /// <returns>The transform builder</returns>
         public TransformBuilder Scale(float x, float y)
         {
-            transform.Scale = new Vector2(x, y);
+            transform.Scale = new Vector2F(x, y);
             return this;
         }
     }

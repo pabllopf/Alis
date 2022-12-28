@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
@@ -162,7 +162,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Velocity
 
                         float ratio = maxLinearVelocity / sq;
 
-                        Vector2 temp = body.LinearVelocity;
+                        Vector2F temp = body.LinearVelocity;
                         temp.X *= ratio;
                         temp.Y *= ratio;
                         body.LinearVelocity = temp;

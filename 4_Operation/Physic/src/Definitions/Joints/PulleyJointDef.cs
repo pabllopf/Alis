@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Utilities;
@@ -47,10 +47,10 @@ namespace Alis.Core.Physic.Definitions.Joints
         }
 
         /// <summary>The first ground anchor in world coordinates. This point never moves.</summary>
-        public Vector2 GroundAnchorA { get; set; }
+        public Vector2F GroundAnchorA { get; set; }
 
         /// <summary>The second ground anchor in world coordinates. This point never moves.</summary>
-        public Vector2 GroundAnchorB { get; set; }
+        public Vector2F GroundAnchorB { get; set; }
 
         /// <summary>The a reference length for the segment attached to bodyA.</summary>
         public float LengthA { get; set; }
@@ -59,10 +59,10 @@ namespace Alis.Core.Physic.Definitions.Joints
         public float LengthB { get; set; }
 
         /// <summary>The local anchor point relative to bodyA's origin.</summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2F LocalAnchorA { get; set; }
 
         /// <summary>The local anchor point relative to bodyB's origin.</summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2F LocalAnchorB { get; set; }
 
         /// <summary>The pulley ratio, used to simulate a block-and-tackle.</summary>
         public float Ratio { get; set; }
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// <param name="anchorA">The anchor</param>
         /// <param name="anchorB">The anchor</param>
         /// <param name="r">The </param>
-        public void Initialize(Body bA, Body bB, Vector2 groundA, Vector2 groundB, Vector2 anchorA, Vector2 anchorB,
+        public void Initialize(Body bA, Body bB, Vector2F groundA, Vector2F groundB, Vector2F anchorA, Vector2F anchorB,
             float r)
         {
             BodyA = bA;
@@ -86,9 +86,9 @@ namespace Alis.Core.Physic.Definitions.Joints
             GroundAnchorB = groundB;
             LocalAnchorA = BodyA.GetLocalPoint(anchorA);
             LocalAnchorB = BodyB.GetLocalPoint(anchorB);
-            Vector2 dA = anchorA - groundA;
+            Vector2F dA = anchorA - groundA;
             LengthA = dA.Length();
-            Vector2 dB = anchorB - groundB;
+            Vector2F dB = anchorB - groundB;
             LengthB = dB.Length();
             Ratio = r;
             Debug.Assert(Ratio > MathConstants.Epsilon);
@@ -99,10 +99,10 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// </summary>
         public override void SetDefaults()
         {
-            GroundAnchorA = new Vector2(-1.0f, 1.0f);
-            GroundAnchorB = new Vector2(1.0f, 1.0f);
-            LocalAnchorA = new Vector2(-1.0f, 0.0f);
-            LocalAnchorB = new Vector2(1.0f, 0.0f);
+            GroundAnchorA = new Vector2F(-1.0f, 1.0f);
+            GroundAnchorB = new Vector2F(1.0f, 1.0f);
+            LocalAnchorA = new Vector2F(-1.0f, 0.0f);
+            LocalAnchorB = new Vector2F(1.0f, 0.0f);
             LengthA = 0.0f;
             LengthB = 0.0f;
             Ratio = 1.0f;

@@ -30,8 +30,8 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Broadphase;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Distance;
@@ -85,7 +85,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The gravity
         /// </summary>
-        private Vector2 gravity;
+        private Vector2F gravity;
 
         /// <summary>
         ///     The inv dt
@@ -100,7 +100,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The ray cast callback
         /// </summary>
-        private Func<Fixture, Vector2, Vector2, float, float> rayCastCallback;
+        private Func<Fixture, Vector2F, Vector2F, float, float> rayCastCallback;
 
         /// <summary>
         ///     The body
@@ -113,7 +113,7 @@ namespace Alis.Core.Physic
         private bool stepComplete = true;
 
         /// <summary>Initializes a new instance of the <see cref="World" /> class.</summary>
-        public World(Vector2 gravity)
+        public World(Vector2F gravity)
         {
             bodyAddList = new HashSet<Body>();
             bodyRemoveList = new HashSet<Body>();
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic
         /// <param name="arg3">The arg</param>
         /// <param name="arg4">The arg</param>
         /// <returns>The float</returns>
-        private static float RayCastCallback(Fixture arg1, Vector2 arg2, Vector2 arg3, float arg4) => 0.0f;
+        private static float RayCastCallback(Fixture arg1, Vector2F arg2, Vector2F arg3, float arg4) => 0.0f;
 
         /// <summary>
         ///     Ons the body added using the specified body
@@ -610,7 +610,7 @@ namespace Alis.Core.Physic
         {
             for (int i = 0; i < BodyList.Count; i++)
             {
-                BodyList[i].Force = Vector2.Zero;
+                BodyList[i].Force = Vector2F.Zero;
                 BodyList[i].Torque = 0.0f;
             }
         }
@@ -634,7 +634,7 @@ namespace Alis.Core.Physic
         /// <param name="callback">A user implemented callback class.</param>
         /// <param name="point1">The ray starting point.</param>
         /// <param name="point2">The ray ending point.</param>
-        public void RayCast(Func<Fixture, Vector2, Vector2, float, float> callback, Vector2 point1, Vector2 point2)
+        public void RayCast(Func<Fixture, Vector2F, Vector2F, float, float> callback, Vector2F point1, Vector2F point2)
         {
             RayCastInput input = new RayCastInput
             {
@@ -654,11 +654,11 @@ namespace Alis.Core.Physic
         /// <param name="point1">The point</param>
         /// <param name="point2">The point</param>
         /// <returns>The affected</returns>
-        public List<Fixture> RayCast(Vector2 point1, Vector2 point2)
+        public List<Fixture> RayCast(Vector2F point1, Vector2F point2)
         {
             List<Fixture> affected = new List<Fixture>();
 
-            float RayCastCallback(Fixture f, Vector2 vector2, Vector2 vector3, float f1)
+            float RayCastCallback(Fixture f, Vector2F vector2, Vector2F vector3, float f1)
             {
                 affected.Add(f);
                 return 1;
@@ -671,10 +671,10 @@ namespace Alis.Core.Physic
 
         /// <summary>Returns a list of fixtures that are at the specified point.</summary>
         /// <param name="point">The point.</param>
-        public List<Fixture> TestPointAll(Vector2 point)
+        public List<Fixture> TestPointAll(Vector2F point)
         {
             Aabb aabb;
-            Vector2 d = new Vector2(MathConstants.Epsilon, MathConstants.Epsilon);
+            Vector2F d = new Vector2F(MathConstants.Epsilon, MathConstants.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
 
@@ -704,7 +704,7 @@ namespace Alis.Core.Physic
         ///     the newOrigin the new origin with respect to the old origin
         ///     Warning: Calling this method mid-update might cause a crash.
         /// </param>
-        public void ShiftOrigin(Vector2 newOrigin)
+        public void ShiftOrigin(Vector2F newOrigin)
         {
             Debug.Assert(!IsLocked);
             if (IsLocked)
@@ -844,7 +844,7 @@ namespace Alis.Core.Physic
             if (hit)
             {
                 float fraction = output.Fraction;
-                Vector2 point = (1.0f - fraction) * rayCastInput.Point1 + fraction * rayCastInput.Point2;
+                Vector2F point = (1.0f - fraction) * rayCastInput.Point1 + fraction * rayCastInput.Point2;
                 return rayCastCallback(fixture, point, output.Normal, fraction);
             }
 
@@ -1387,7 +1387,7 @@ namespace Alis.Core.Physic
         /// <param name="fixture">The fixture</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        private bool TestPointCallback(Fixture fixture, ref Vector2 point) => !fixture.TestPoint(ref point);
+        private bool TestPointCallback(Fixture fixture, ref Vector2F point) => !fixture.TestPoint(ref point);
 
         /// <summary>
         ///     Adds the joint internal using the specified joint

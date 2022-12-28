@@ -29,11 +29,10 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Narrowphase;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
 
@@ -121,7 +120,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 }
 
                 // Get search direction.
-                Vector2 d = simplex.GetSearchDirection();
+                Vector2F d = simplex.GetSearchDirection();
 
                 // Ensure the search direction is numerically fit.
                 if (d.LengthSquared() < MathConstants.Epsilon * MathConstants.Epsilon)
@@ -192,8 +191,8 @@ namespace Alis.Core.Physic.Collision.Distance
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.
                     output.Distance -= rA + rB;
-                    Vector2 normal = output.PointB - output.PointA;
-                    normal = Vector2.Normalize(normal);
+                    Vector2F normal = output.PointB - output.PointA;
+                    normal = Vector2F.Normalize(normal);
                     output.PointA += rA * normal;
                     output.PointB -= rB * normal;
                 }
@@ -201,7 +200,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 {
                     // Shapes are overlapped when radii are considered.
                     // Move the witness points to the middle.
-                    Vector2 p = 0.5f * (output.PointA + output.PointB);
+                    Vector2F p = 0.5f * (output.PointA + output.PointB);
                     output.PointA = p;
                     output.PointB = p;
                     output.Distance = 0.0f;
@@ -224,8 +223,8 @@ namespace Alis.Core.Physic.Collision.Distance
             {
                 Iterations = 0,
                 Lambda = 1.0f,
-                Normal = Vector2.Zero,
-                Point = Vector2.Zero
+                Normal = Vector2F.Zero,
+                Point = Vector2F.Zero
             };
 
             DistanceProxy proxyA = input.ProxyA;
@@ -238,8 +237,8 @@ namespace Alis.Core.Physic.Collision.Distance
             Transform xfA = input.TransformA;
             Transform xfB = input.TransformB;
 
-            Vector2 r = input.TranslationB;
-            Vector2 n = new Vector2(0.0f, 0.0f);
+            Vector2F r = input.TranslationB;
+            Vector2F n = new Vector2F(0.0f, 0.0f);
             float lambda = 0.0f;
 
             // Initial simplex
@@ -253,10 +252,10 @@ namespace Alis.Core.Physic.Collision.Distance
 
             // Get support point in -r direction
             int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -r));
-            Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
+            Vector2F wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
             int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, r));
-            Vector2 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
-            Vector2 v = wA - wB;
+            Vector2F wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
+            Vector2F v = wA - wB;
 
             // Sigma is the target distance between polygons
             float sigma = MathUtils.Max(Settings.PolygonRadius, radius - Settings.PolygonRadius);
@@ -277,10 +276,10 @@ namespace Alis.Core.Physic.Collision.Distance
                 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
                 indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, v));
                 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
-                Vector2 p = wA - wB;
+                Vector2F p = wA - wB;
 
                 // -v is a normal at p
-                v = Vector2.Normalize(v);
+                v = Vector2F.Normalize(v);
 
                 // Intersect ray with plane
                 float vp = MathUtils.Dot(ref v, ref p);
@@ -355,12 +354,12 @@ namespace Alis.Core.Physic.Collision.Distance
             }
 
             // Prepare output.
-            simplex.GetWitnessPoints(out _, out Vector2 pointB);
+            simplex.GetWitnessPoints(out _, out Vector2F pointB);
 
             if (v.LengthSquared() > 0.0f)
             {
                 n = -v;
-                n = Vector2.Normalize(n);
+                n = Vector2F.Normalize(n);
             }
 
             output.Point = pointB + radiusA * n;

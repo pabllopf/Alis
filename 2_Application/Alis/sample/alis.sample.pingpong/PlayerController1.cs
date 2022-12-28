@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 
@@ -64,7 +65,7 @@ namespace Alis.Sample.PingPong
         /// <param name="key">The key</param>
         public override void OnReleaseKey(string key)
         {
-            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+           Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
@@ -85,7 +86,7 @@ namespace Alis.Sample.PingPong
         /// <param name="key">The key</param>
         public override void OnPressDownKey(string key)
         {
-            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+           Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {

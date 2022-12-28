@@ -29,12 +29,11 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Narrowphase;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Collision.TOI
 {
@@ -138,7 +137,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 }
 
                 SeparationFunction.Initialize(ref cache, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, t1,
-                    out Vector2 axis, out Vector2 localPoint, out SeparationFunctionType type);
+                    out Vector2F axis, out Vector2F localPoint, out SeparationFunctionType type);
 
                 // Compute the TOI on the separating axis. We do this by successively
                 // resolving the deepest point. This loop is bounded by the number of vertices.

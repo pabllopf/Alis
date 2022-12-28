@@ -29,8 +29,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
@@ -49,7 +49,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
         /// <summary>
         ///     The gravity
         /// </summary>
-        private readonly Vector2 gravity;
+        private readonly Vector2F gravity;
 
         /// <summary>
         ///     The body
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
         /// <summary>
         ///     The normal
         /// </summary>
-        private Vector2 normal;
+        private Vector2F normal;
 
         /// <summary>
         ///     The offset
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
         private float offset;
 
         /// <summary>Acts like waterflow. Defaults to 0,0.</summary>
-        public Vector2 Velocity;
+        public Vector2F Velocity;
 
         /// <summary>Initializes a new instance of the <see cref="BuoyancyController" /> class.</summary>
         /// <param name="container">Only bodies inside this AABB will be influenced by the controller</param>
@@ -96,11 +96,11 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
         /// <param name="rotationalDragCoefficient">Rotational drag coefficient of the fluid</param>
         /// <param name="gravity">The direction gravity acts. Buoyancy force will act in opposite direction of gravity.</param>
         public BuoyancyController(Aabb container, float density, float linearDragCoefficient,
-            float rotationalDragCoefficient, Vector2 gravity)
+            float rotationalDragCoefficient, Vector2F gravity)
             : base(ControllerType.BuoyancyController)
         {
             Container = container;
-            normal = new Vector2(0, 1);
+            normal = new Vector2F(0, 1);
             Density = density;
             LinearDragCoefficient = linearDragCoefficient;
             AngularDragCoefficient = rotationalDragCoefficient;
@@ -141,8 +141,8 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
 
             foreach (Body body in uniqueBodies)
             {
-                Vector2 areac = Vector2.Zero;
-                Vector2 massc = Vector2.Zero;
+                Vector2F areac = Vector2F.Zero;
+                Vector2F massc = Vector2F.Zero;
                 float area = 0;
                 float mass = 0;
 
@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
 
                     Shape shape = fixture.Shape;
 
-                    float sarea = ComputeSubmergedArea(shape, ref normal, offset, ref body.Xf, out Vector2 sc);
+                    float sarea = ComputeSubmergedArea(shape, ref normal, offset, ref body.Xf, out Vector2F sc);
                     area += sarea;
                     areac.X += sarea * sc.X;
                     areac.Y += sarea * sc.Y;
@@ -178,11 +178,11 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                 }
 
                 //Buoyancy
-                Vector2 buoyancyForce = -Density * area * gravity;
+                Vector2F buoyancyForce = -Density * area * gravity;
                 body.ApplyForce(buoyancyForce, massc);
 
                 //Linear drag
-                Vector2 dragForce = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
+                Vector2F dragForce = body.GetLinearVelocityFromWorldPoint(areac) - Velocity;
                 dragForce *= -LinearDragCoefficient * area;
                 body.ApplyForce(dragForce, areac);
 
@@ -202,8 +202,8 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
         /// <exception cref="ArgumentOutOfRangeException"></exception>
         /// <exception cref="NotSupportedException"></exception>
         /// <returns>The float</returns>
-        private float ComputeSubmergedArea(Shape shape, ref Vector2 normal, float offset, ref Transform xf,
-            out Vector2 sc)
+        private float ComputeSubmergedArea(Shape shape, ref Vector2F normal, float offset, ref Transform xf,
+            out Vector2F sc)
         {
             switch (shape.ShapeType)
             {
@@ -211,12 +211,12 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                 {
                     CircleShape circleShape = (CircleShape) shape;
 
-                    sc = Vector2.Zero;
+                    sc = Vector2F.Zero;
 
                     float radius2 = circleShape.RadiusPrivate * circleShape.RadiusPrivate;
 
-                    Vector2 p = MathUtils.Mul(ref xf, circleShape.Position);
-                    float l = -(Vector2.Dot(normal, p) - offset);
+                    Vector2F p = MathUtils.Mul(ref xf, circleShape.Position);
+                    float l = -(Vector2F.Dot(normal, p) - offset);
                     if (l < -circleShape.RadiusPrivate + MathConstants.Epsilon)
 
                         //Completely dry
@@ -243,17 +243,17 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     return area;
                 }
                 case ShapeType.Edge:
-                    sc = Vector2.Zero;
+                    sc = Vector2F.Zero;
                     return 0;
                 case ShapeType.Polygon:
                 {
-                    sc = Vector2.Zero;
+                    sc = Vector2F.Zero;
 
                     PolygonShape polygonShape = (PolygonShape) shape;
 
                     //Transform plane into shape co-ordinates
-                    Vector2 normalL = MathUtils.MulT(xf.Rotation, normal);
-                    float offsetL = offset - Vector2.Dot(normal, xf.Position);
+                    Vector2F normalL = MathUtils.MulT(xf.Rotation, normal);
+                    float offsetL = offset - Vector2F.Dot(normal, xf.Position);
 
                     float[] depths = new float[Settings.MaxPolygonVertices];
                     int diveCount = 0;
@@ -264,7 +264,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     int i;
                     for (i = 0; i < polygonShape.VerticesPrivate.Count; i++)
                     {
-                        depths[i] = Vector2.Dot(normalL, polygonShape.VerticesPrivate[i]) - offsetL;
+                        depths[i] = Vector2F.Dot(normalL, polygonShape.VerticesPrivate[i]) - offsetL;
                         bool isSubmerged = depths[i] < -MathConstants.Epsilon;
                         if (i > 0)
                         {
@@ -320,12 +320,12 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     float intoLambda = (0 - depths[intoIndex]) / (depths[intoIndex2] - depths[intoIndex]);
                     float outoLambda = (0 - depths[outoIndex]) / (depths[outoIndex2] - depths[outoIndex]);
 
-                    Vector2 intoVec = new Vector2(
+                    Vector2F intoVec = new Vector2F(
                         polygonShape.VerticesPrivate[intoIndex].X * (1 - intoLambda) +
                         polygonShape.VerticesPrivate[intoIndex2].X * intoLambda,
                         polygonShape.VerticesPrivate[intoIndex].Y * (1 - intoLambda) +
                         polygonShape.VerticesPrivate[intoIndex2].Y * intoLambda);
-                    Vector2 outoVec = new Vector2(
+                    Vector2F outoVec = new Vector2F(
                         polygonShape.VerticesPrivate[outoIndex].X * (1 - outoLambda) +
                         polygonShape.VerticesPrivate[outoIndex2].X * outoLambda,
                         polygonShape.VerticesPrivate[outoIndex].Y * (1 - outoLambda) +
@@ -333,8 +333,8 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
 
                     //Initialize accumulator
                     float area = 0;
-                    Vector2 center = new Vector2(0, 0);
-                    Vector2 p2 = polygonShape.VerticesPrivate[intoIndex2];
+                    Vector2F center = new Vector2F(0, 0);
+                    Vector2F p2 = polygonShape.VerticesPrivate[intoIndex2];
 
                     const float kInv3 = 1.0f / 3.0f;
 
@@ -343,7 +343,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     while (i != outoIndex2)
                     {
                         i = (i + 1) % polygonShape.VerticesPrivate.Count;
-                        Vector2 p3;
+                        Vector2F p3;
                         if (i == outoIndex2)
                         {
                             p3 = outoVec;
@@ -355,8 +355,8 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
 
                         //Add the triangle formed by intoVec,p2,p3
                         {
-                            Vector2 e1 = p2 - intoVec;
-                            Vector2 e2 = p3 - intoVec;
+                            Vector2F e1 = p2 - intoVec;
+                            Vector2F e2 = p3 - intoVec;
 
                             float d = MathUtils.Cross(e1, e2);
 
@@ -379,7 +379,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     return area;
                 }
                 case ShapeType.Chain:
-                    sc = Vector2.Zero;
+                    sc = Vector2F.Zero;
                     return 0;
                 case ShapeType.Unknown:
                 case ShapeType.TypeCount:

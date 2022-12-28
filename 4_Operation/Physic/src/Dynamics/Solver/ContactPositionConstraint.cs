@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Narrowphase;
 using Alis.Core.Physic.Config;
 
@@ -61,22 +61,22 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The local center
         /// </summary>
-        public Vector2 LocalCenterA, LocalCenterB;
+        public Vector2F LocalCenterA, LocalCenterB;
 
         /// <summary>
         ///     The local normal
         /// </summary>
-        public Vector2 LocalNormal;
+        public Vector2F LocalNormal;
 
         /// <summary>
         ///     The local point
         /// </summary>
-        public Vector2 LocalPoint;
+        public Vector2F LocalPoint;
 
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public Vector2[] LocalPoints = new Vector2[Settings.MaxManifoldPoints];
+        public Vector2F[] LocalPoints = new Vector2F[Settings.MaxManifoldPoints];
 
         /// <summary>
         ///     The point count

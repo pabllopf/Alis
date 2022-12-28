@@ -27,7 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Dynamics.Solver
 {
@@ -49,12 +50,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 RA;
+        public Vector2F RA;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 RB;
+        public Vector2F RB;
 
         /// <summary>
         ///     The tangent impulse

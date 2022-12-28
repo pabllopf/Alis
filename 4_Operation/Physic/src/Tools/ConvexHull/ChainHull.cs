@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
             //Sort by X-axis
             pointSet.Sort(PointComparerPrivate);
 
-            Vector2[] h = new Vector2[pointSet.Count];
+            Vector2F[] h = new Vector2F[pointSet.Count];
             Vertices res;
 
             int top = -1; // indices for bottom and top of the stack

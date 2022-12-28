@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math.Matrix
 {
@@ -39,17 +39,17 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2 Col1;
+        public Vector2F Col1;
 
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2 Col2;
+        public Vector2F Col2;
 
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
-        public Matrix2x2(Vector2 c1, Vector2 c2)
+        public Matrix2x2(Vector2F c1, Vector2F c2)
         {
             Col1 = c1;
             Col2 = c2;
@@ -82,7 +82,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     Initialize this matrix using columns.
         /// </summary>
-        public void Set(Vector2 c1, Vector2 c2)
+        public void Set(Vector2F c1, Vector2F c2)
         {
             Col1 = c1;
             Col2 = c2;
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     Solve A * x = b, where b is a column vector. This is more efficient
         ///     than computing the inverse in one-shot cases.
         /// </summary>
-        public Vector2 Solve(Vector2 b)
+        public Vector2F Solve(Vector2F b)
         {
             float col1X = Col1.X;
             float col2X = Col2.X;
@@ -161,7 +161,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            Vector2 x = new Vector2();
+            Vector2F x = new Vector2F();
             x.X = det * (col2Y * b.X - col2X * b.Y);
             x.Y = det * (col1X * b.Y - col1Y * b.X);
             return x;

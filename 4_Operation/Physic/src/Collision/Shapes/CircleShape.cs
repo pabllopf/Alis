@@ -27,8 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
@@ -41,13 +42,13 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The position
         /// </summary>
-        internal Vector2 Positionprivate;
+        internal Vector2F Positionprivate;
 
         /// <summary>Create a new circle with the desired radius and density.</summary>
         /// <param name="radius">The radius of the circle.</param>
         /// <param name="density">The density of the circle.</param>
         /// <param name="position">Position of the shape</param>
-        public CircleShape(float radius, float density, Vector2 position = default(Vector2)) : base(ShapeType.Circle,
+        public CircleShape(float radius, float density, Vector2F position = default(Vector2F)) : base(ShapeType.Circle,
             radius, density)
         {
             Positionprivate = position;
@@ -76,7 +77,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override int ChildCount => 1;
 
         /// <summary>Get or set the position of the circle</summary>
-        public Vector2 Position
+        public Vector2F Position
         {
             get => Positionprivate;
             set
@@ -95,7 +96,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) =>
+        public override bool TestPoint(ref Transform transform, ref Vector2F point) =>
             TestPointHelper.TestPointCircle(ref Positionprivate, RadiusPrivate, ref point, ref transform);
 
         /// <summary>
@@ -151,7 +152,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             // inertia about the local origin
             MassDataPrivate.Inertia = MassDataPrivate.Mass *
                                       (0.5f * RadiusPrivate * RadiusPrivate +
-                                       Vector2.Dot(Positionprivate, Positionprivate));
+                                       Vector2F.Dot(Positionprivate, Positionprivate));
         }
 
         /// <summary>

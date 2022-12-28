@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -118,12 +118,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear error
         /// </summary>
-        private Vector2 linearError;
+        private Vector2F linearError;
 
         /// <summary>
         ///     The linear impulse
         /// </summary>
-        private Vector2 linearImpulse;
+        private Vector2F linearImpulse;
 
         /// <summary>
         ///     The linear mass
@@ -134,17 +134,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear offset
         /// </summary>
-        private Vector2 linearOffset;
+        private Vector2F linearOffset;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 localCenterA;
+        private Vector2F localCenterA;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 localCenterB;
+        private Vector2F localCenterB;
 
         /// <summary>
         ///     The max force
@@ -159,12 +159,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 rA;
+        private Vector2F rA;
 
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 rB;
+        private Vector2F rB;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MotorJoint" /> class
@@ -188,7 +188,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public MotorJoint(Body bodyA, Body bodyB, bool useWorldCoordinates = false)
             : base(bodyA, bodyB, JointType.Motor)
         {
-            Vector2 xB = bodyB.Position;
+            Vector2F xB = bodyB.Position;
 
             if (useWorldCoordinates)
             {
@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
-        public override Vector2 WorldAnchorA
+        public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
@@ -218,7 +218,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
-        public override Vector2 WorldAnchorB
+        public override Vector2F WorldAnchorB
         {
             get => BodyB.Position;
             set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The linear (translation) offset.</summary>
-        public Vector2 LinearOffset
+        public Vector2F LinearOffset
         {
             set
             {
@@ -280,7 +280,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt) => invDt * linearImpulse;
+        public override Vector2F GetReactionForce(float invDt) => invDt * linearImpulse;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
@@ -304,14 +304,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             invIa = BodyA.InvI;
             invIb = BodyB.InvI;
 
-            Vector2 cA = data.Positions[indexA].C;
+            Vector2F cA = data.Positions[indexA].C;
             float aA = data.Positions[indexA].A;
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
 
-            Vector2 cB = data.Positions[indexB].C;
+            Vector2F cB = data.Positions[indexB].C;
             float aB = data.Positions[indexB].A;
-            Vector2 vB = data.Velocities[indexB].V;
+            Vector2F vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
             Rotation qA = new Rotation(aA);
@@ -357,7 +357,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 linearImpulse *= data.Step.DeltaTimeRatio;
                 angularImpulse *= data.Step.DeltaTimeRatio;
 
-                Vector2 p = new Vector2(linearImpulse.X, linearImpulse.Y);
+                Vector2F p = new Vector2F(linearImpulse.X, linearImpulse.Y);
                 vA -= mA * p;
                 wA -= iA * (MathUtils.Cross(rA, p) + angularImpulse);
                 vB += mB * p;
@@ -365,7 +365,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                linearImpulse = Vector2.Zero;
+                linearImpulse = Vector2F.Zero;
                 angularImpulse = 0.0f;
             }
 
@@ -381,9 +381,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
-            Vector2 vB = data.Velocities[indexB].V;
+            Vector2F vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
             float mA = invMassA, mB = invMassB;
@@ -408,18 +408,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve linear friction
             {
-                Vector2 cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA) +
+                Vector2F cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA) +
                                invH * correctionFactor * linearError;
 
-                Vector2 impulse = -MathUtils.Mul(ref linearMass, ref cdot);
-                Vector2 oldImpulse = linearImpulse;
+                Vector2F impulse = -MathUtils.Mul(ref linearMass, ref cdot);
+                Vector2F oldImpulse = linearImpulse;
                 linearImpulse += impulse;
 
                 float maxImpulse = h * maxForce;
 
                 if (linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
                 {
-                    linearImpulse = Vector2.Normalize(linearImpulse);
+                    linearImpulse = Vector2F.Normalize(linearImpulse);
                     linearImpulse *= maxImpulse;
                 }
 

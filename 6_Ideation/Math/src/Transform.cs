@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math
 {
@@ -40,7 +40,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 Position;
+        public Vector2F Position;
 
         /// <summary>
         ///     The
@@ -50,7 +50,7 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Initialize using a position vector and a rotation matrix.</summary>
         /// <param name="position">The position.</param>
         /// <param name="rotation">The r.</param>
-        public Transform(Vector2 position, Rotation rotation)
+        public Transform(Vector2F position, Rotation rotation)
         {
             Position = position;
             Rotation = rotation;
@@ -59,14 +59,14 @@ namespace Alis.Core.Aspect.Math
         /// <summary>Set this to the identity transform.</summary>
         public void SetIdentity()
         {
-            Position = Vector2.Zero;
+            Position = Vector2F.Zero;
             Rotation.SetIdentity();
         }
 
         /// <summary>Set this based on the position and angle.</summary>
         /// <param name="position">The position.</param>
         /// <param name="angle">The angle.</param>
-        public void Set(Vector2 position, float angle)
+        public void Set(Vector2F position, float angle)
         {
             Position = position;
             Rotation.Set(angle);

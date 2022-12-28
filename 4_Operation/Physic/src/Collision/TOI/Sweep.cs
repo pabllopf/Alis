@@ -29,9 +29,8 @@
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Shared;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Collision.TOI
@@ -56,15 +55,15 @@ namespace Alis.Core.Physic.Collision.TOI
         public float Alpha0;
 
         /// <summary>Center world positions</summary>
-        public Vector2 C;
+        public Vector2F C;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 C0;
+        public Vector2F C0;
 
         /// <summary>Local center of mass position</summary>
-        public Vector2 LocalCenter;
+        public Vector2F LocalCenter;
 
         /// <summary>Get the interpolated transform at a specific time.</summary>
         /// <param name="xfb">The transform.</param>

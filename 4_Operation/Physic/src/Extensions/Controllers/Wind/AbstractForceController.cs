@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
 using Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve;
@@ -64,7 +64,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
             Enabled = true;
 
             Strength = 1.0f;
-            Position = new Vector2(0, 0);
+            Position = new Vector2F(0, 0);
             MaximumSpeed = 100.0f;
             TimingMode = TimingModes.Switched;
             ImpulseTime = 0.0f;
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
         public float Strength { get; set; }
 
         /// <summary>Position of the Force. Can be ignored (left at (0,0) for forces that are not position-dependent</summary>
-        public Vector2 Position { get; set; }
+        public Vector2F Position { get; set; }
 
         /// <summary>Maximum speed of the bodies. Bodies that are travelling faster are supposed to be ignored</summary>
         public float MaximumSpeed { get; set; }

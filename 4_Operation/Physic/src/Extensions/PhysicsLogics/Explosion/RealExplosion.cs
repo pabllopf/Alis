@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -113,11 +113,11 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         ///     distance)
         /// </param>
         /// <returns>A list of bodies and the amount of force that was applied to them.</returns>
-        public Dictionary<Fixture, Vector2> Activate(Vector2 pos, float radius, float maxForce)
+        public Dictionary<Fixture, Vector2F> Activate(Vector2F pos, float radius, float maxForce)
         {
             Aabb aabb;
-            aabb.LowerBound = pos + new Vector2(-radius, -radius);
-            aabb.UpperBound = pos + new Vector2(radius, radius);
+            aabb.LowerBound = pos + new Vector2F(-radius, -radius);
+            aabb.UpperBound = pos + new Vector2F(radius, radius);
             Fixture[] shapes = new Fixture[MaxShapes];
 
             // More than 5 shapes in an explosion could be possible, but still strange.
@@ -149,10 +149,10 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
             if (exit)
             {
-                return new Dictionary<Fixture, Vector2>();
+                return new Dictionary<Fixture, Vector2F>();
             }
 
-            Dictionary<Fixture, Vector2> exploded = new Dictionary<Fixture, Vector2>(shapeCount + containedShapeCount);
+            Dictionary<Fixture, Vector2F> exploded = new Dictionary<Fixture, Vector2F>(shapeCount + containedShapeCount);
 
             // Per shape max/min angles for now.
             float[] vals = new float[shapeCount * 2];
@@ -164,13 +164,13 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                 {
                     // We create a "diamond" approximation of the circle
                     Vertices v = new Vertices();
-                    Vector2 vec = Vector2.Zero + new Vector2(cs.RadiusPrivate, 0);
+                    Vector2F vec = Vector2F.Zero + new Vector2F(cs.RadiusPrivate, 0);
                     v.Add(vec);
-                    vec = Vector2.Zero + new Vector2(0, cs.RadiusPrivate);
+                    vec = Vector2F.Zero + new Vector2F(0, cs.RadiusPrivate);
                     v.Add(vec);
-                    vec = Vector2.Zero + new Vector2(-cs.RadiusPrivate, cs.RadiusPrivate);
+                    vec = Vector2F.Zero + new Vector2F(-cs.RadiusPrivate, cs.RadiusPrivate);
                     v.Add(vec);
-                    vec = Vector2.Zero + new Vector2(0, -cs.RadiusPrivate);
+                    vec = Vector2F.Zero + new Vector2F(0, -cs.RadiusPrivate);
                     v.Add(vec);
                     ps = new PolygonShape(v, 0);
                 }
@@ -181,7 +181,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
                 if (shapes[i].Body.BodyType == BodyType.Dynamic && ps != null)
                 {
-                    Vector2 toCentroid = shapes[i].Body.GetWorldPoint(ps.MassDataPrivate.Centroid) - pos;
+                    Vector2F toCentroid = shapes[i].Body.GetWorldPoint(ps.MassDataPrivate.Centroid) - pos;
                     float angleToCentroid = (float) Math.Atan2(toCentroid.Y, toCentroid.X);
                     float min = float.MaxValue;
                     float max = float.MinValue;
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
                     for (int j = 0; j < ps.VerticesPrivate.Count; ++j)
                     {
-                        Vector2 toVertex = shapes[i].Body.GetWorldPoint(ps.VerticesPrivate[j]) - pos;
+                        Vector2F toVertex = shapes[i].Body.GetWorldPoint(ps.VerticesPrivate[j]) - pos;
                         float newAngle = (float) Math.Atan2(toVertex.Y, toVertex.X);
                         float diff = newAngle - angleToCentroid;
 
@@ -257,8 +257,8 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
                 midpt /= 2;
 
-                Vector2 p1 = pos;
-                Vector2 p2 = radius * new Vector2((float) Math.Cos(midpt), (float) Math.Sin(midpt)) + pos;
+                Vector2F p1 = pos;
+                Vector2F p2 = radius * new Vector2F((float) Math.Cos(midpt), (float) Math.Sin(midpt)) + pos;
 
                 // RaycastOne
                 bool hitClosest = false;
@@ -354,9 +354,9 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                      j < data[i].Max || MathUtils.FloatEquals(j, data[i].Max, 0.0001f);
                      j += offset)
                 {
-                    Vector2 p1 = pos;
-                    Vector2 p2 = pos + radius * new Vector2((float) Math.Cos(j), (float) Math.Sin(j));
-                    Vector2 hitpoint = Vector2.Zero;
+                    Vector2F p1 = pos;
+                    Vector2F p2 = pos + radius * new Vector2F((float) Math.Cos(j), (float) Math.Sin(j));
+                    Vector2F hitpoint = Vector2F.Zero;
                     float minlambda = float.MaxValue;
 
                     List<Fixture> fl = data[i].Body.FixtureList;
@@ -383,9 +383,9 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                                         (1.0f - Math.Min(1.0f, minlambda));
 
                         // We Apply the impulse!!!
-                        Vector2 vectImp =
-                            Vector2.Dot(impulse * new Vector2((float) Math.Cos(j), (float) Math.Sin(j)), -ro.Normal) *
-                            new Vector2((float) Math.Cos(j), (float) Math.Sin(j));
+                        Vector2F vectImp =
+                            Vector2F.Dot(impulse * new Vector2F((float) Math.Cos(j), (float) Math.Sin(j)), -ro.Normal) *
+                            new Vector2F((float) Math.Cos(j), (float) Math.Sin(j));
                         data[i].Body.ApplyLinearImpulse(ref vectImp, ref hitpoint);
 
                         // We gather the fixtures for returning them
@@ -417,7 +417,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                 }
 
                 float impulse = MinRays * maxForce * 180.0f / MathConstants.Pi;
-                Vector2 hitPoint;
+                Vector2F hitPoint;
 
                 if (fix.Shape is CircleShape circShape)
                 {
@@ -429,7 +429,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                     hitPoint = fix.Body.GetWorldPoint(shape.MassDataPrivate.Centroid);
                 }
 
-                Vector2 vectImp = impulse * (hitPoint - pos);
+                Vector2F vectImp = impulse * (hitPoint - pos);
 
                 fix.Body.ApplyLinearImpulse(ref vectImp, ref hitPoint);
 

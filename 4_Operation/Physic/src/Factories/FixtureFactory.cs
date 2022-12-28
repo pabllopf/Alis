@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Definitions;
 using Alis.Core.Physic.Dynamics;
@@ -50,7 +50,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="body">The body</param>
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
-        public static Fixture AttachEdge(Vector2 start, Vector2 end, Body body, object userData = null)
+        public static Fixture AttachEdge(Vector2F start, Vector2F end, Body body, object userData = null)
         {
             EdgeShape edgeShape = new EdgeShape(start, end);
             Fixture f = body.AddFixture(edgeShape);
@@ -98,7 +98,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="body">The body</param>
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
-        public static Fixture AttachRectangle(float width, float height, float density, Vector2 offset, Body body,
+        public static Fixture AttachRectangle(float width, float height, float density, Vector2F offset, Body body,
             object userData = null)
         {
             Vertices rectangleVertices = PolygonUtils.CreateRectangle(width / 2, height / 2);
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <exception cref="ArgumentOutOfRangeException">Radius must be more than 0 meters</exception>
         /// <returns>The </returns>
-        public static Fixture AttachCircle(float radius, float density, Body body, Vector2 offset,
+        public static Fixture AttachCircle(float radius, float density, Body body, Vector2F offset,
             object userData = null)
         {
             if (radius <= 0)

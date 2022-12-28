@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Base.Dll;
 
 namespace Alis.Core.Audio
 {

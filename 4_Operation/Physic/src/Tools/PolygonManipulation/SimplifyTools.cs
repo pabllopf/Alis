@@ -30,7 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
@@ -54,9 +54,9 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
 
             for (int i = 0; i < vertices.Count; i++)
             {
-                Vector2 prev = vertices.PreviousVertex(i);
-                Vector2 current = vertices[i];
-                Vector2 next = vertices.NextVertex(i);
+                Vector2F prev = vertices.PreviousVertex(i);
+                Vector2F current = vertices[i];
+                Vector2F next = vertices.NextVertex(i);
 
                 //If they collinear, continue
                 if (MathUtils.IsCollinear(ref prev, ref current, ref next, collinearityTolerance))
@@ -119,14 +119,14 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                 return;
             }
 
-            Vector2 a = vertices[i];
-            Vector2 b = vertices[j];
+            Vector2F a = vertices[i];
+            Vector2F b = vertices[j];
 
             double maxDistance = -1.0;
             int maxIndex = i;
             for (int k = i + 1; k < j; k++)
             {
-                Vector2 point = vertices[k];
+                Vector2F point = vertices[k];
 
                 double distance = LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref a, ref b);
 
@@ -235,9 +235,9 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
         /// <param name="vertices">The vertices.</param>
         public static Vertices MergeIdenticalPoints(Vertices vertices)
         {
-            HashSet<Vector2> unique = new HashSet<Vector2>();
+            HashSet<Vector2F> unique = new HashSet<Vector2F>();
 
-            foreach (Vector2 vertex in vertices)
+            foreach (Vector2F vertex in vertices)
             {
                 unique.Add(vertex);
             }
@@ -261,8 +261,8 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
 
             for (int i = 0; i < vertices.Count; i++)
             {
-                Vector2 current = vertices[i];
-                Vector2 next = vertices.NextVertex(i);
+                Vector2F current = vertices[i];
+                Vector2F next = vertices.NextVertex(i);
 
                 //If they are closer than the distance, continue
                 if ((next - current).LengthSquared() <= distance2)
@@ -329,9 +329,9 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             }
 
             Vertices simplified = new Vertices(vertices.Count);
-            Vector2 v3;
-            Vector2 v1 = vertices[vertices.Count - 2];
-            Vector2 v2 = vertices[vertices.Count - 1];
+            Vector2F v3;
+            Vector2F v1 = vertices[vertices.Count - 2];
+            Vector2F v2 = vertices[vertices.Count - 1];
             areaTolerance *= 2;
 
             for (int i = 0; i < vertices.Count; ++i, v2 = v3)

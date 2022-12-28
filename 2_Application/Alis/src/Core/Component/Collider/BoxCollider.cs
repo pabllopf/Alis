@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+
 using Alis.Builder.Core.Component.Collider;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Physic.Dynamics;
@@ -77,7 +76,7 @@ namespace Alis.Core.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the relative position
         /// </summary>
-        public Vector2 RelativePosition { get; set; } = new Vector2(0, 0);
+        public Vector2F RelativePosition { get; set; } = new Vector2F(0, 0);
 
         /// <summary>
         ///     Gets or sets the value of the body
@@ -122,7 +121,7 @@ namespace Alis.Core.Component.Collider
         /// <summary>
         ///     Gets or sets the value of the linear velocity
         /// </summary>
-        public System.Numerics.Vector2 LinearVelocity { get; set; } = System.Numerics.Vector2.Zero;
+        public Vector2F LinearVelocity { get; set; } = Vector2F.Zero;
         
         /// <summary>
         /// Inits this instance
@@ -170,7 +169,7 @@ namespace Alis.Core.Component.Collider
                 width: Width,
                 height: Height,
                 density: Density,
-                position: new System.Numerics.Vector2(
+                position: new Vector2F(
                     GameObject.Transform.Position.X + RelativePosition.X,
                     GameObject.Transform.Position.Y + RelativePosition.Y
                     ),
@@ -206,7 +205,7 @@ namespace Alis.Core.Component.Collider
         /// </summary>
         public override void BeforeUpdate()
         {
-            GameObject.Transform.Position = new Vector2(Body.Position.X, Body.Position.Y);
+            GameObject.Transform.Position = new Vector2F(Body.Position.X, Body.Position.Y);
             GameObject.Transform.Rotation = Body.Rotation;
         }
 

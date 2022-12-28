@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Definitions.Joints
         public float CorrectionFactor { get; set; }
 
         /// <summary>Position of bodyB minus the position of bodyA, in bodyA's frame, in meters.</summary>
-        public Vector2 LinearOffset { get; set; }
+        public Vector2F LinearOffset { get; set; }
 
         /// <summary>The maximum motor force in N.</summary>
         public float MaxForce { get; set; }
@@ -71,7 +71,7 @@ namespace Alis.Core.Physic.Definitions.Joints
         {
             BodyA = bA;
             BodyB = bB;
-            Vector2 xB = BodyB.Position;
+            Vector2F xB = BodyB.Position;
             LinearOffset = BodyA.GetLocalPoint(xB);
 
             float angleA = BodyA.Rotation;
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// </summary>
         public override void SetDefaults()
         {
-            LinearOffset = Vector2.Zero;
+            LinearOffset = Vector2F.Zero;
             AngularOffset = 0.0f;
             MaxForce = 1.0f;
             MaxTorque = 1.0f;

@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Shared
 {
@@ -38,12 +38,12 @@ namespace Alis.Core.Physic.Shared
         /// <summary>
         ///     The ey
         /// </summary>
-        public Vector2 Ex, Ey;
+        public Vector2F Ex, Ey;
 
         /// <summary>Construct this matrix using columns.</summary>
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
-        public Matrix2X2F(Vector2 c1, Vector2 c2)
+        public Matrix2X2F(Vector2F c1, Vector2F c2)
         {
             Ex = c1;
             Ey = c2;
@@ -56,8 +56,8 @@ namespace Alis.Core.Physic.Shared
         /// <param name="a22">The a22.</param>
         public Matrix2X2F(float a11, float a12, float a21, float a22)
         {
-            Ex = new Vector2(a11, a21);
-            Ey = new Vector2(a12, a22);
+            Ex = new Vector2F(a11, a21);
+            Ey = new Vector2F(a12, a22);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Shared
         /// <summary>Initialize this matrix using columns.</summary>
         /// <param name="c1">The c1.</param>
         /// <param name="c2">The c2.</param>
-        public void Set(Vector2 c1, Vector2 c2)
+        public void Set(Vector2F c1, Vector2F c2)
         {
             Ex = c1;
             Ey = c2;
@@ -118,7 +118,7 @@ namespace Alis.Core.Physic.Shared
         /// </summary>
         /// <param name="b">The b.</param>
         /// <returns></returns>
-        public Vector2 Solve(Vector2 b)
+        public Vector2F Solve(Vector2F b)
         {
             float a11 = Ex.X, a12 = Ey.X, a21 = Ex.Y, a22 = Ey.Y;
             float det = a11 * a22 - a12 * a21;
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Shared
                 det = 1.0f / det;
             }
 
-            return new Vector2(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
+            return new Vector2F(det * (a22 * b.X - a12 * b.Y), det * (a11 * b.Y - a21 * b.X));
         }
 
         /// <summary>

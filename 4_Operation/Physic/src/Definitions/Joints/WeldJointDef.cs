@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 
@@ -54,10 +54,10 @@ namespace Alis.Core.Physic.Definitions.Joints
         public float Stiffness { get; set; }
 
         /// <summary>The local anchor point relative to bodyA's origin.</summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2F LocalAnchorA { get; set; }
 
         /// <summary>The local anchor point relative to bodyB's origin.</summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2F LocalAnchorB { get; set; }
 
         /// <summary>The bodyB angle minus bodyA angle in the reference state (radians).</summary>
         public float ReferenceAngle { get; set; }
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// <param name="bA">The </param>
         /// <param name="bB">The </param>
         /// <param name="anchor">The anchor</param>
-        public void Initialize(Body bA, Body bB, Vector2 anchor)
+        public void Initialize(Body bA, Body bB, Vector2F anchor)
         {
             BodyA = bA;
             BodyB = bB;
@@ -82,8 +82,8 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// </summary>
         public override void SetDefaults()
         {
-            LocalAnchorA = Vector2.Zero;
-            LocalAnchorB = Vector2.Zero;
+            LocalAnchorA = Vector2F.Zero;
+            LocalAnchorB = Vector2F.Zero;
             ReferenceAngle = 0.0f;
             Stiffness = 0.0f;
             Damping = 0.0f;

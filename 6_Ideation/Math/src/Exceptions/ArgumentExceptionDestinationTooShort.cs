@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TransformBase.cs
+//  File:ArgumentExceptionDestinationTooShort.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,15 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
+using System;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Aspect.Math.Exceptions
 {
     /// <summary>
-    ///     The transform base class
+    /// The argument exception destination too short class
     /// </summary>
-    public class TransformBase
+    /// <seealso cref="Exception"/>
+    public class ArgumentExceptionDestinationTooShort : Exception
     {
-        /// <summary>
-        ///     The position
-        /// </summary>
-        public Vector2F Position { get; set; } = Vector2F.Zero;
-
-        /// <summary>
-        ///     The rotation
-        /// </summary>
-        public float Rotation { get; set; } = 0;
-
-        /// <summary>
-        ///     The scale
-        /// </summary>
-        public Vector2F Scale { get; set; } = new Vector2F(1, 1);
     }
 }

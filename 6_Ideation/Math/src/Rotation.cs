@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Aspect.Math
 {
@@ -44,7 +44,6 @@ namespace Alis.Core.Aspect.Math
         /// <param name="angle">Angle in radians</param>
         public Rotation(float angle)
         {
-            // TODO_ERIN optimize
             Sine = (float) System.Math.Sin(angle);
             Cosine = (float) System.Math.Cos(angle);
         }
@@ -78,9 +77,9 @@ namespace Alis.Core.Aspect.Math
         public float GetAngle() => (float) System.Math.Atan2(Sine, Cosine);
 
         /// <summary>Get the x-axis</summary>
-        public Vector2 GetXAxis() => new Vector2(Cosine, Sine);
+        public Vector2F GetXAxis() => new Vector2F(Cosine, Sine);
 
         /// <summary>Get the y-axis</summary>
-        public Vector2 GetYAxis() => new Vector2(-Sine, Cosine);
+        public Vector2F GetYAxis() => new Vector2F(-Sine, Cosine);
     }
 }

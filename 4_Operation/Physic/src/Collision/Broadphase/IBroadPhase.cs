@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Dynamics;
@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="proxyId">The proxy id</param>
         /// <param name="aabb">The aabb</param>
         /// <param name="displacement">The displacement</param>
-        void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement);
+        void MoveProxy(int proxyId, ref Aabb aabb, Vector2F displacement);
 
         /// <summary>
         ///     Gets the proxy using the specified proxy id
@@ -119,6 +119,6 @@ namespace Alis.Core.Physic.Collision.Broadphase
         ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
-        void ShiftOrigin(ref Vector2 newOrigin);
+        void ShiftOrigin(ref Vector2F newOrigin);
     }
 }

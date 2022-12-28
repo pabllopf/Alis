@@ -30,11 +30,9 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Exceptions;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Streams.SFML;
 

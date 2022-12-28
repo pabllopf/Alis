@@ -27,13 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
 
@@ -128,7 +127,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <param name="vertexIndexA">The vertex index A.</param>
         /// <returns></returns>
         internal static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn,
-            Vector2 normal, float offset, int vertexIndexA)
+            Vector2F normal, float offset, int vertexIndexA)
         {
             vOut = new FixedArray2<ClipVertex>();
 
@@ -136,8 +135,8 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             int count = 0;
 
             // Calculate the distance of end points to the line
-            float distance0 = Vector2.Dot(normal, vIn.Value0.V) - offset;
-            float distance1 = Vector2.Dot(normal, vIn.Value1.V) - offset;
+            float distance0 = Vector2F.Dot(normal, vIn.Value0.V) - offset;
+            float distance1 = Vector2F.Dot(normal, vIn.Value1.V) - offset;
 
             // If the points are behind the plane
             if (distance0 <= 0.0f)

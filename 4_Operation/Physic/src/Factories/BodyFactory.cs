@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Definitions;
@@ -54,7 +54,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="bodyType">The body type</param>
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
-        public static Body CreateBody(World world, Vector2 position = new Vector2(), float rotation = 0,
+        public static Body CreateBody(World world, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object userData = null)
         {
             BodyDef def = new BodyDef
@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="end">The end</param>
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
-        public static Body CreateEdge(World world, Vector2 start, Vector2 end, object userData = null)
+        public static Body CreateEdge(World world, Vector2F start, Vector2F end, object userData = null)
         {
             Body body = CreateBody(world);
             body.UserData = userData;
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="position">The position</param>
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
-        public static Body CreateChainShape(World world, Vertices vertices, Vector2 position = new Vector2(),
+        public static Body CreateChainShape(World world, Vertices vertices, Vector2F position = new Vector2F(),
             object userData = null)
         {
             Body body = CreateBody(world, position);
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="position">The position</param>
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
-        public static Body CreateLoopShape(World world, Vertices vertices, Vector2 position = new Vector2(),
+        public static Body CreateLoopShape(World world, Vertices vertices, Vector2F position = new Vector2F(),
             object userData = null)
         {
             Body body = CreateBody(world, position);
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Factories
         /// <exception cref="ArgumentOutOfRangeException">Width must be more than 0 meters</exception>
         /// <returns>The body</returns>
         public static Body CreateRectangle(World world, float width, float height, float density,
-            Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
+            Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null)
         {
             if (width <= 0)
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="bodyType">The body type</param>
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
-        public static Body CreateCircle(World world, float radius, float density, Vector2 position = new Vector2(),
+        public static Body CreateCircle(World world, float radius, float density, Vector2F position = new Vector2F(),
             BodyType bodyType = BodyType.Static, object userData = null)
         {
             Body body = CreateBody(world, position, 0, bodyType, userData);
@@ -189,7 +189,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateEllipse(World world, float xRadius, float yRadius, int edges, float density,
-            Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
+            Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null)
         {
             Body body = CreateBody(world, position, rotation, bodyType, userData);
@@ -209,7 +209,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreatePolygon(World world, Vertices vertices, float density,
-            Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
+            Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null)
         {
             Body body = CreateBody(world, position, rotation, bodyType, userData);
@@ -229,7 +229,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateCompoundPolygon(World world, List<Vertices> list, float density,
-            Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
+            Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null!)
         {
             //We create a single body
@@ -253,7 +253,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateGear(World world, float radius, int numberOfTeeth, float tipPercentage,
-            float toothHeight, float density, Vector2 position = new Vector2(), float rotation = 0,
+            float toothHeight, float density, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object userData = null!)
         {
             Vertices gearPolygon = PolygonUtils.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
@@ -286,7 +286,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateCapsule(World world, float height, float topRadius, int topEdges, float bottomRadius,
-            int bottomEdges, float density, Vector2 position = new Vector2(), float rotation = 0,
+            int bottomEdges, float density, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object userData = null!)
         {
             Vertices verts = PolygonUtils.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
@@ -314,7 +314,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateCapsule(World world, float height, float endRadius, float density,
-            Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
+            Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null!)
         {
             //Create the middle rectangle
@@ -326,8 +326,8 @@ namespace Alis.Core.Physic.Factories
             };
 
             Body body = CreateCompoundPolygon(world, list, density, position, rotation, bodyType, userData);
-            FixtureFactory.AttachCircle(endRadius, density, body, new Vector2(0, height / 2));
-            FixtureFactory.AttachCircle(endRadius, density, body, new Vector2(0, -(height / 2)));
+            FixtureFactory.AttachCircle(endRadius, density, body, new Vector2F(0, height / 2));
+            FixtureFactory.AttachCircle(endRadius, density, body, new Vector2F(0, -(height / 2)));
 
             //Create the two circles
             //CircleShape topCircle = new CircleShape(endRadius, density);
@@ -356,7 +356,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateRoundedRectangle(World world, float width, float height, float xRadius, float yRadius,
-            int segments, float density, Vector2 position = new Vector2(), float rotation = 0,
+            int segments, float density, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object userData = null!)
         {
             Vertices verts = PolygonUtils.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
@@ -385,7 +385,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateLineArc(World world, float radians, int sides, float radius, bool closed = false,
-            Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
+            Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null!)
         {
             Body body = CreateBody(world, position, rotation, bodyType, userData);
@@ -407,7 +407,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateSolidArc(World world, float density, float radians, int sides, float radius,
-            Vector2 position = new Vector2(), float rotation = 0, BodyType bodyType = BodyType.Static,
+            Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null!)
         {
             Body body = CreateBody(world, position, rotation, bodyType, userData);
@@ -426,7 +426,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="rotation">The rotation</param>
         /// <returns>The breakable body</returns>
         public static BreakableBody CreateBreakableBody(World world, Vertices vertices, float density,
-            Vector2 position = new Vector2(), float rotation = 0)
+            Vector2F position = new Vector2F(), float rotation = 0)
         {
             List<Vertices> triangles = Triangulate.ConvexPartition(vertices, TriangulationAlgorithm.Earclip);
 
@@ -445,7 +445,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="rotation">The rotation</param>
         /// <returns>The breakable body</returns>
         public static BreakableBody CreateBreakableBody(World world, IEnumerable<Shape> shapes,
-            Vector2 position = new Vector2(), float rotation = 0)
+            Vector2F position = new Vector2F(), float rotation = 0)
         {
             BreakableBody breakableBody = new BreakableBody(world, shapes, position, rotation);
             breakableBody.MainBody.Position = position;

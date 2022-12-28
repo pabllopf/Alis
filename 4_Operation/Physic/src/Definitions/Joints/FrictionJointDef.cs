@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 
 namespace Alis.Core.Physic.Definitions.Joints
@@ -47,10 +47,10 @@ namespace Alis.Core.Physic.Definitions.Joints
         }
 
         /// <summary>The local anchor point relative to bodyA's origin.</summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2F LocalAnchorA { get; set; }
 
         /// <summary>The local anchor point relative to bodyB's origin.</summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2F LocalAnchorB { get; set; }
 
         /// <summary>The maximum friction force in N.</summary>
         public float MaxForce { get; set; }
@@ -63,8 +63,8 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// </summary>
         public override void SetDefaults()
         {
-            LocalAnchorA = Vector2.Zero;
-            LocalAnchorB = Vector2.Zero;
+            LocalAnchorA = Vector2F.Zero;
+            LocalAnchorB = Vector2F.Zero;
             MaxForce = 0.0f;
             MaxTorque = 0.0f;
 

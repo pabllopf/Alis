@@ -27,8 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
@@ -47,15 +47,15 @@ namespace Alis.Core.Physic.Collision
         /// <param name="end">The end</param>
         /// <param name="transform">The transform</param>
         /// <param name="aabb">The aabb</param>
-        public static void ComputeEdgeAabb(ref Vector2 start, ref Vector2 end, ref Transform transform, out Aabb aabb)
+        public static void ComputeEdgeAabb(ref Vector2F start, ref Vector2F end, ref Transform transform, out Aabb aabb)
         {
-            Vector2 v1 = MathUtils.Mul(ref transform, ref start);
-            Vector2 v2 = MathUtils.Mul(ref transform, ref end);
+            Vector2F v1 = MathUtils.Mul(ref transform, ref start);
+            Vector2F v2 = MathUtils.Mul(ref transform, ref end);
 
-            aabb.LowerBound = Vector2.Min(v1, v2);
-            aabb.UpperBound = Vector2.Max(v1, v2);
+            aabb.LowerBound = Vector2F.Min(v1, v2);
+            aabb.UpperBound = Vector2F.Max(v1, v2);
 
-            Vector2 r = new Vector2(Settings.PolygonRadius, Settings.PolygonRadius);
+            Vector2F r = new Vector2F(Settings.PolygonRadius, Settings.PolygonRadius);
             aabb.LowerBound -= r;
             aabb.UpperBound += r;
         }
@@ -67,11 +67,11 @@ namespace Alis.Core.Physic.Collision
         /// <param name="radius">The radius</param>
         /// <param name="transform">The transform</param>
         /// <param name="aabb">The aabb</param>
-        public static void ComputeCircleAabb(ref Vector2 pos, float radius, ref Transform transform, out Aabb aabb)
+        public static void ComputeCircleAabb(ref Vector2F pos, float radius, ref Transform transform, out Aabb aabb)
         {
-            Vector2 p = transform.Position + MathUtils.Mul(transform.Rotation, pos);
-            aabb.LowerBound = new Vector2(p.X - radius, p.Y - radius);
-            aabb.UpperBound = new Vector2(p.X + radius, p.Y + radius);
+            Vector2F p = transform.Position + MathUtils.Mul(transform.Rotation, pos);
+            aabb.LowerBound = new Vector2F(p.X - radius, p.Y - radius);
+            aabb.UpperBound = new Vector2F(p.X + radius, p.Y + radius);
         }
 
         /// <summary>
@@ -82,17 +82,17 @@ namespace Alis.Core.Physic.Collision
         /// <param name="aabb">The aabb</param>
         public static void ComputePolygonAabb(Vertices vertices, ref Transform transform, out Aabb aabb)
         {
-            Vector2 lower = MathUtils.Mul(ref transform, vertices[0]);
-            Vector2 upper = lower;
+            Vector2F lower = MathUtils.Mul(ref transform, vertices[0]);
+            Vector2F upper = lower;
 
             for (int i = 1; i < vertices.Count; ++i)
             {
-                Vector2 v = MathUtils.Mul(ref transform, vertices[i]);
-                lower = Vector2.Min(lower, v);
-                upper = Vector2.Max(upper, v);
+                Vector2F v = MathUtils.Mul(ref transform, vertices[i]);
+                lower = Vector2F.Min(lower, v);
+                upper = Vector2F.Max(upper, v);
             }
 
-            Vector2 r = new Vector2(Settings.PolygonRadius, Settings.PolygonRadius);
+            Vector2F r = new Vector2F(Settings.PolygonRadius, Settings.PolygonRadius);
             aabb.LowerBound = lower - r;
             aabb.UpperBound = upper + r;
         }

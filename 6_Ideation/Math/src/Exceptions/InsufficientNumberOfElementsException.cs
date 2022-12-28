@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TransformBase.cs
+//  File:InsufficientNumberOfElementsException.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math.Vector;
+using System;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Aspect.Math.Exceptions
 {
     /// <summary>
-    ///     The transform base class
+    /// The insufficient number of elements exception class
     /// </summary>
-    public class TransformBase
+    /// <seealso cref="Exception"/>
+    public class InsufficientNumberOfElementsException : Exception
     {
         /// <summary>
-        ///     The position
+        /// Initializes a new instance of the <see cref="InsufficientNumberOfElementsException"/> class
         /// </summary>
-        public Vector2F Position { get; set; } = Vector2F.Zero;
-
-        /// <summary>
-        ///     The rotation
-        /// </summary>
-        public float Rotation { get; set; } = 0;
-
-        /// <summary>
-        ///     The scale
-        /// </summary>
-        public Vector2F Scale { get; set; } = new Vector2F(1, 1);
+        /// <param name="i">The </param>
+        public InsufficientNumberOfElementsException(int i)
+        {
+            
+        }
     }
 }

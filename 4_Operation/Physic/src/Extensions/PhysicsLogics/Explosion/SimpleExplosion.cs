@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase;
 using Alis.Core.Physic.Shared;
@@ -60,18 +60,18 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         /// <param name="force">The force applied</param>
         /// <param name="maxForce">A maximum amount of force. When force gets over this value, it will be equal to maxForce</param>
         /// <returns>A list of bodies and the amount of force that was applied to them.</returns>
-        public Dictionary<Body, Vector2> Activate(Vector2 pos, float radius, float force,
+        public Dictionary<Body, Vector2F> Activate(Vector2F pos, float radius, float force,
             float maxForce = float.MaxValue)
         {
             HashSet<Body> affectedBodies = new HashSet<Body>();
 
             Aabb aabb;
-            aabb.LowerBound = pos - new Vector2(radius);
-            aabb.UpperBound = pos + new Vector2(radius);
+            aabb.LowerBound = pos - new Vector2F(radius);
+            aabb.UpperBound = pos + new Vector2F(radius);
 
             World.TestPointAllFixtures.ForEach(fixture =>
             {
-                if (Vector2.Distance(fixture.Body.Position, pos) <= radius)
+                if (Vector2F.Distance(fixture.Body.Position, pos) <= radius)
                 {
                     if (!affectedBodies.Contains(fixture.Body))
                     {
@@ -92,19 +92,19 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         /// <param name="maxForce">The max force</param>
         /// <param name="overlappingBodies">The overlapping bodies</param>
         /// <returns>The forces</returns>
-        private Dictionary<Body, Vector2> ApplyImpulse(Vector2 pos, float radius, float force, float maxForce,
+        private Dictionary<Body, Vector2F> ApplyImpulse(Vector2F pos, float radius, float force, float maxForce,
             HashSet<Body> overlappingBodies)
         {
-            Dictionary<Body, Vector2> forces = new Dictionary<Body, Vector2>(overlappingBodies.Count);
+            Dictionary<Body, Vector2F> forces = new Dictionary<Body, Vector2F>(overlappingBodies.Count);
 
             foreach (Body overlappingBody in overlappingBodies)
             {
                 if (IsActiveOn(overlappingBody))
                 {
-                    float distance = Vector2.Distance(pos, overlappingBody.Position);
+                    float distance = Vector2F.Distance(pos, overlappingBody.Position);
                     float forcePercent = GetPercent(distance, radius);
 
-                    Vector2 forceVector = pos - overlappingBody.Position;
+                    Vector2F forceVector = pos - overlappingBody.Position;
                     forceVector *=
                         1f / (float) Math.Sqrt(forceVector.X * forceVector.X + forceVector.Y * forceVector.Y);
                     forceVector *= MathHelper.Min(force * forcePercent, maxForce);

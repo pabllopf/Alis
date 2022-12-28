@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -46,14 +46,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             Area = area;
             Inertia = inertia;
             Mass = mass;
-            Centroid = new Vector2(0.0f, 0.0f);
+            Centroid = new Vector2F(0.0f, 0.0f);
         }
 
         /// <summary>The area of the shape</summary>
         public float Area { get; set; }
 
         /// <summary>The position of the shape's centroid relative to the shape's origin.</summary>
-        public Vector2 Centroid { get; set; }
+        public Vector2F Centroid { get; set; }
 
         /// <summary>The rotational inertia of the shape about the local origin.</summary>
         public float Inertia { get; set; }

@@ -27,10 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component.Collider;
 using Alis.Core.Physic.Dynamics;
 
@@ -164,7 +163,7 @@ namespace Alis.Builder.Core.Component.Collider
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder RelativePosition(float x, float y)
         {
-            boxCollider.RelativePosition = new Vector2(x, y);
+            boxCollider.RelativePosition = new Vector2F(x, y);
             return this;
         }
 
@@ -219,7 +218,7 @@ namespace Alis.Builder.Core.Component.Collider
         /// <returns>The box collider builder</returns>
         public BoxColliderBuilder LinearVelocity(float x, float y)
         {
-            boxCollider.LinearVelocity = new System.Numerics.Vector2(x, y);
+            boxCollider.LinearVelocity = new Vector2F(x, y);
             return this;
         }
 

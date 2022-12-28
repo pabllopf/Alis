@@ -9,7 +9,7 @@
                 The aabb helper class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeEdgeAabb(System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeEdgeAabb(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the edge aabb using the specified start
             </summary>
@@ -18,7 +18,7 @@
             <param name="transform">The transform</param>
             <param name="aabb">The aabb</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeCircleAabb(System.Numerics.Vector2@,System.Single,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Shared.Aabb@)">
+        <member name="M:Alis.Core.Physic.Collision.AabbHelper.ComputeCircleAabb(Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Shared.Aabb@)">
             <summary>
                 Computes the circle aabb using the specified pos
             </summary>
@@ -112,7 +112,7 @@
             <summary>Destroy a proxy. This asserts if the id is invalid.</summary>
             <param name="proxyId">The proxy id.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.MoveProxy(System.Int32,Alis.Core.Physic.Shared.Aabb@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.MoveProxy(System.Int32,Alis.Core.Physic.Shared.Aabb@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Move a proxy with a swepted AABB. If the proxy has moved outside of its fattened AABB, then the proxy is
                 removed from the tree and re-inserted. Otherwise the function returns immediately.
@@ -221,7 +221,7 @@
         <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.RebuildBottomUp">
             <summary>Build an optimal tree. Very expensive. For testing.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.ShiftOrigin(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Shift the origin of the nodes</summary>
             <param name="newOrigin">The displacement to use.</param>
         </member>
@@ -310,7 +310,7 @@
             <summary>Destroy a proxy. It is up to the client to remove any pairs.</summary>
             <param name="proxyId">The proxy id.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTreeBroadPhase.MoveProxy(System.Int32,Alis.Core.Physic.Shared.Aabb@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTreeBroadPhase.MoveProxy(System.Int32,Alis.Core.Physic.Shared.Aabb@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Call MoveProxy as many times as you like, then when you are done call UpdatePairs to finalized the proxy pairs
                 (for your time step).
@@ -357,7 +357,7 @@
             <param name="callback">A callback class that is called for each proxy that is hit by the ray.</param>
             <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTreeBroadPhase.ShiftOrigin(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTreeBroadPhase.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Shift the world origin. Useful for large worlds.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTreeBroadPhase.BufferMove(System.Int32)">
@@ -412,7 +412,7 @@
             </summary>
             <param name="proxyId">The proxy id</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Broadphase.IBroadPhase.MoveProxy(System.Int32,Alis.Core.Physic.Shared.Aabb@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Broadphase.IBroadPhase.MoveProxy(System.Int32,Alis.Core.Physic.Shared.Aabb@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Moves the proxy using the specified proxy id
             </summary>
@@ -454,7 +454,7 @@
             <param name="callback">The callback</param>
             <param name="input">The input</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Broadphase.IBroadPhase.ShiftOrigin(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Broadphase.IBroadPhase.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Shifts the origin using the specified new origin
             </summary>
@@ -717,7 +717,7 @@
                 Resets the friction
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.GetWorldManifold(System.Numerics.Vector2@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Numerics.Vector2}@)">
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.GetWorldManifold(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Aspect.Math.Vector.Vector2F}@)">
             <summary>Gets the world manifold.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.Reset(Alis.Core.Physic.Dynamics.Fixture,System.Int32,Alis.Core.Physic.Dynamics.Fixture,System.Int32)">
@@ -1074,14 +1074,14 @@
             <param name="index">The index</param>
             <exception cref="T:System.NotSupportedException"></exception>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Distance.DistanceProxy.#ctor(System.Numerics.Vector2[],System.Single)">
+        <member name="M:Alis.Core.Physic.Collision.Distance.DistanceProxy.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F[],System.Single)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Collision.Distance.DistanceProxy" /> class
             </summary>
             <param name="vertices">The vertices</param>
             <param name="radius">The radius</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Distance.DistanceProxy.GetSupport(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Distance.DistanceProxy.GetSupport(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Get the supporting vertex index in the given direction.</summary>
             <param name="direction">The direction.</param>
         </member>
@@ -1431,7 +1431,7 @@
             <param name="polygonB">The polygon</param>
             <param name="xfB">The xf</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.ComputeEdgeSeparation(Alis.Core.Physic.Collision.Narrowphase.CollideEdge.TempPolygon@,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.ComputeEdgeSeparation(Alis.Core.Physic.Collision.Narrowphase.CollideEdge.TempPolygon@,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Computes the edge separation using the specified polygon b
             </summary>
@@ -1440,7 +1440,7 @@
             <param name="normal1">The normal</param>
             <returns>The axis</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.ComputePolygonSeparation(Alis.Core.Physic.Collision.Narrowphase.CollideEdge.TempPolygon@,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.CollideEdge.ComputePolygonSeparation(Alis.Core.Physic.Collision.Narrowphase.CollideEdge.TempPolygon@,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Computes the polygon separation using the specified polygon b
             </summary>
@@ -1518,7 +1518,7 @@
             <param name="manifold1">The manifold</param>
             <param name="manifold2">The manifold</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Collision.ClipSegmentToLine(Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Physic.Collision.Narrowphase.ClipVertex}@,Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Physic.Collision.Narrowphase.ClipVertex}@,System.Numerics.Vector2,System.Single,System.Int32)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Collision.ClipSegmentToLine(Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Physic.Collision.Narrowphase.ClipVertex}@,Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Physic.Collision.Narrowphase.ClipVertex}@,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Int32)">
             <summary>Clipping for contact manifolds.</summary>
             <param name="vOut">The v out.</param>
             <param name="vIn">The v in.</param>
@@ -1759,7 +1759,7 @@
             </summary>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Simplex.GetWitnessPoints(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.Simplex.GetWitnessPoints(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Gets the witness points using the specified p a
             </summary>
@@ -1828,7 +1828,7 @@
                 The world manifold class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Narrowphase.WorldManifold.Initialize(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Transform@,System.Single,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Numerics.Vector2}@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Single}@)">
+        <member name="M:Alis.Core.Physic.Collision.Narrowphase.WorldManifold.Initialize(Alis.Core.Physic.Collision.Narrowphase.Manifold@,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Transform@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Physic.Shared.Optimization.FixedArray2{Alis.Core.Aspect.Math.Vector.Vector2F}@,Alis.Core.Physic.Shared.Optimization.FixedArray2{System.Single}@)">
             <summary>
                 Evaluate the manifold with supplied transforms. This assumes modest motion from the original state. This does
                 not change the point count, impulses, etc. The radii must come from the Shapes that generated the manifold.
@@ -1866,7 +1866,7 @@
                 The ray cast helper class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastEdge(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Boolean,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastEdge(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Boolean,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether ray cast edge
             </summary>
@@ -1878,7 +1878,7 @@
             <param name="output">The output</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastCircle(System.Numerics.Vector2@,System.Single,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
+        <member name="M:Alis.Core.Physic.Collision.RayCastHelper.RayCastCircle(Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single,Alis.Core.Physic.Collision.RayCast.RayCastInput@,Alis.Core.Aspect.Math.Transform@,Alis.Core.Physic.Collision.RayCast.RayCastOutput@)">
             <summary>
                 Describes whether ray cast circle
             </summary>
@@ -1963,7 +1963,7 @@
             <param name="index">The index</param>
             <returns>The edge shape</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.ChainShape.TestPoint(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -2008,7 +2008,7 @@
                 The position
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.#ctor(System.Single,System.Single,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.#ctor(System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Create a new circle with the desired radius and density.</summary>
             <param name="radius">The radius of the circle.</param>
             <param name="density">The density of the circle.</param>
@@ -2033,7 +2033,7 @@
         <member name="P:Alis.Core.Physic.Collision.Shapes.CircleShape.Position">
             <summary>Get or set the position of the circle</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.CircleShape.TestPoint(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -2111,12 +2111,12 @@
                 The vertex
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.#ctor(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Create a new EdgeShape with the specified start and end. This edge supports two-sided collision.</summary>
             <param name="start">The start of the edge.</param>
             <param name="end">The end of the edge.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.#ctor(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Create a new EdgeShape with ghost vertices for smooth collision. This edge only supports one-sided collision.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.#ctor">
@@ -2144,7 +2144,7 @@
         <member name="P:Alis.Core.Physic.Collision.Shapes.EdgeShape.Vertex2">
             <summary>These are the edge vertices</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.SetOneSided(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.SetOneSided(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Sets the one sided using the specified v 0
             </summary>
@@ -2153,14 +2153,14 @@
             <param name="v2">The </param>
             <param name="v3">The </param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.SetTwoSided(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.SetTwoSided(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Sets the two sided using the specified start
             </summary>
             <param name="start">The start</param>
             <param name="end">The end</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.EdgeShape.TestPoint(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -2310,7 +2310,7 @@
             <param name="hx">The hx</param>
             <param name="hy">The hy</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.SetAsBox(System.Single,System.Single,System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.SetAsBox(System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Sets the as box using the specified hx
             </summary>
@@ -2324,7 +2324,7 @@
                 Computes the properties
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.PolygonShape.TestPoint(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance test point
             </summary>
@@ -2416,7 +2416,7 @@
             <summary>Clone the concrete shape</summary>
             <returns>A clone of the shape</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.TestPoint(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Collision.Shapes.Shape.TestPoint(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Test a point for containment in this shape. Note: This only works for convex shapes.</summary>
             <param name="transform">The shape world transform.</param>
             <param name="point">A point in world coordinates.</param>
@@ -2482,7 +2482,7 @@
                 The test point helper class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointCircle(System.Numerics.Vector2@,System.Single,System.Numerics.Vector2@,Alis.Core.Aspect.Math.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointCircle(Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Describes whether test point circle
             </summary>
@@ -2492,7 +2492,7 @@
             <param name="transform">The transform</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2@,Alis.Core.Aspect.Math.Transform@)">
+        <member name="M:Alis.Core.Physic.Collision.TestPointHelper.TestPointPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Transform@)">
             <summary>
                 Describes whether test point polygon
             </summary>
@@ -2507,7 +2507,7 @@
                 The separation function class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TOI.SeparationFunction.Initialize(Alis.Core.Physic.Collision.Narrowphase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,System.Single,System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType@)">
+        <member name="M:Alis.Core.Physic.Collision.TOI.SeparationFunction.Initialize(Alis.Core.Physic.Collision.Narrowphase.SimplexCache@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType@)">
             <summary>
                 Initializes the cache
             </summary>
@@ -2521,7 +2521,7 @@
             <param name="localPoint">The local point</param>
             <param name="type">The type</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TOI.SeparationFunction.FindMinSeparation(System.Int32@,System.Int32@,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)">
+        <member name="M:Alis.Core.Physic.Collision.TOI.SeparationFunction.FindMinSeparation(System.Int32@,System.Int32@,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)">
             <summary>
                 Finds the min separation using the specified index a
             </summary>
@@ -2537,7 +2537,7 @@
             <param name="type">The type</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.TOI.SeparationFunction.Evaluate(System.Int32,System.Int32,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)">
+        <member name="M:Alis.Core.Physic.Collision.TOI.SeparationFunction.Evaluate(System.Int32,System.Int32,System.Single,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Physic.Collision.Distance.DistanceProxy,Alis.Core.Physic.Collision.TOI.Sweep@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Physic.Collision.TOI.SeparationFunctionType)">
             <summary>
                 Evaluates the index a
             </summary>
@@ -3063,7 +3063,7 @@
         <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.LocalAnchorB">
             <summary>The local anchor point relative to bodyB's origin.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes the b 1
             </summary>
@@ -3272,7 +3272,7 @@
         <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.UpperTranslation">
             <summary>The upper translation limit, usually in meters.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes the b a
             </summary>
@@ -3315,7 +3315,7 @@
         <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.Ratio">
             <summary>The pulley ratio, used to simulate a block-and-tackle.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Initializes the b a
             </summary>
@@ -3375,7 +3375,7 @@
         <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.UpperAngle">
             <summary>The upper angle for the joint limit (radians).</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes the b a
             </summary>
@@ -3414,7 +3414,7 @@
         <member name="P:Alis.Core.Physic.Definitions.Joints.WeldJointDef.ReferenceAngle">
             <summary>The bodyB angle minus bodyA angle in the reference state (radians).</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WeldJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Definitions.Joints.WeldJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes the b a
             </summary>
@@ -3474,7 +3474,7 @@
         <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.LowerTranslation">
             <summary>The lower translation limit, usually in meters.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WheelJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Definitions.Joints.WheelJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes the b a
             </summary>
@@ -3941,7 +3941,7 @@
             </summary>
             <param name="fixture">The fixture to be removed.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.SetTransform(System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.SetTransform(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Set the position of the body's origin and rotation. This breaks any contacts and wakes the other bodies.
                 Manipulating a body's transform may cause non-physical behavior.
@@ -3949,7 +3949,7 @@
             <param name="position">The world position of the body's local origin.</param>
             <param name="rotation">The world rotation in radians.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.SetTransform(System.Numerics.Vector2@,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.SetTransform(Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single)">
             <summary>
                 Set the position of the body's origin and rotation. This breaks any contacts and wakes the other bodies.
                 Manipulating a body's transform may cause non-physical behavior.
@@ -3961,7 +3961,7 @@
             <summary>Get the body transform for the body's origin.</summary>
             <param name="transform">The transform of the body's origin.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Apply a force at a world point. If the force is not applied at the center of mass, it will generate a torque
                 and affect the angular velocity. This wakes up the body.
@@ -3969,15 +3969,15 @@
             <param name="force">The world force vector, usually in Newtons (N).</param>
             <param name="point">The world position of the point of application.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Applies a force at the center of mass.</summary>
             <param name="force">The force.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Applies a force at the center of mass.</summary>
             <param name="force">The force.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyForce(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Apply a force at a world point. If the force is not applied at the center of mass, it will generate a torque
                 and affect the angular velocity. This wakes up the body.
@@ -3989,11 +3989,11 @@
             <summary>Apply a torque. This affects the angular velocity without affecting the linear velocity of the center of mass.</summary>
             <param name="torque">The torque about the z-axis (out of the screen), usually in N-m.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Apply an impulse at a point. This immediately modifies the velocity. This wakes up the body.</summary>
             <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Apply an impulse at a point. This immediately modifies the velocity. It also modifies the angular velocity if
                 the point of application is not at the center of mass. This wakes up the body.
@@ -4001,11 +4001,11 @@
             <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
             <param name="point">The world position of the point of application.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Apply an impulse at a point. This immediately modifies the velocity. This wakes up the body.</summary>
             <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ApplyLinearImpulse(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Apply an impulse at a point. This immediately modifies the velocity. It also modifies the angular velocity if
                 the point of application is not at the center of mass. This wakes up the body.
@@ -4023,17 +4023,17 @@
                 to be called unless you called SetMassData to override the mass and you later want to reset the mass.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldPoint(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldPoint(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Get the world coordinates of a point given the local coordinates.</summary>
             <param name="localPoint">A point on the body measured relative the body's origin.</param>
             <returns>The same point expressed in world coordinates.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldPoint(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldPoint(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Get the world coordinates of a point given the local coordinates.</summary>
             <param name="localPoint">A point on the body measured relative the body's origin.</param>
             <returns>The same point expressed in world coordinates.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldVector(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldVector(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Get the world coordinates of a vector given the local coordinates. Note that the vector only takes the
                 rotation into account, not the position.
@@ -4041,12 +4041,12 @@
             <param name="localVector">A vector fixed in the body.</param>
             <returns>The same vector expressed in world coordinates.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldVector(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetWorldVector(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Get the world coordinates of a vector given the local coordinates.</summary>
             <param name="localVector">A vector fixed in the body.</param>
             <returns>The same vector expressed in world coordinates.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalPoint(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalPoint(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Gets a local point relative to the body's origin given a world point. Note that the vector only takes the
                 rotation into account, not the position.
@@ -4054,12 +4054,12 @@
             <param name="worldPoint">A point in world coordinates.</param>
             <returns>The corresponding local point relative to the body's origin.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalPoint(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalPoint(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Gets a local point relative to the body's origin given a world point.</summary>
             <param name="worldPoint">A point in world coordinates.</param>
             <returns>The corresponding local point relative to the body's origin.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalVector(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalVector(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Gets a local vector given a world vector. Note that the vector only takes the rotation into account, not the
                 position.
@@ -4067,7 +4067,7 @@
             <param name="worldVector">A vector in world coordinates.</param>
             <returns>The corresponding local vector.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalVector(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLocalVector(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Gets a local vector given a world vector. Note that the vector only takes the rotation into account, not the
                 position.
@@ -4075,22 +4075,22 @@
             <param name="worldVector">A vector in world coordinates.</param>
             <returns>The corresponding local vector.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromWorldPoint(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromWorldPoint(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Get the world linear velocity of a world point attached to this body.</summary>
             <param name="worldPoint">A point in world coordinates.</param>
             <returns>The world velocity of a point.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromWorldPoint(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromWorldPoint(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Get the world linear velocity of a world point attached to this body.</summary>
             <param name="worldPoint">A point in world coordinates.</param>
             <returns>The world velocity of a point.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromLocalPoint(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromLocalPoint(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Get the world velocity of a local point.</summary>
             <param name="localPoint">A point in local coordinates.</param>
             <returns>The world velocity of a point.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromLocalPoint(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.GetLinearVelocityFromLocalPoint(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Get the world velocity of a local point.</summary>
             <param name="localPoint">A point in local coordinates.</param>
             <returns>The world velocity of a point.</returns>
@@ -4198,7 +4198,7 @@
                 The vector
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.BreakableBody.#ctor(Alis.Core.Physic.World,System.Collections.Generic.ICollection{Alis.Core.Physic.Shared.Vertices},System.Single,System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.BreakableBody.#ctor(Alis.Core.Physic.World,System.Collections.Generic.ICollection{Alis.Core.Physic.Shared.Vertices},System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.BreakableBody" /> class
             </summary>
@@ -4208,7 +4208,7 @@
             <param name="position">The position</param>
             <param name="rotation">The rotation</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.BreakableBody.#ctor(Alis.Core.Physic.World,System.Collections.Generic.IEnumerable{Alis.Core.Physic.Collision.Shapes.Shape},System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.BreakableBody.#ctor(Alis.Core.Physic.World,System.Collections.Generic.IEnumerable{Alis.Core.Physic.Collision.Shapes.Shape},Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.BreakableBody" /> class
             </summary>
@@ -4431,7 +4431,7 @@
                 flags all contacts associated with the body for filtering.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Fixture.TestPoint(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Fixture.TestPoint(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Test a point for containment in this fixture.</summary>
             <param name="point">A point in world coordinates.</param>
         </member>
@@ -4770,7 +4770,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 This requires defining an anchor point on both bodies and the non-zero length of the distance joint. If you
                 don't supply a length, the local anchor points is used so that the initial configuration can violate the constraint
@@ -4924,7 +4924,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>This requires a world target point, tuning parameters, and the time step.</summary>
             <param name="body">The body.</param>
             <param name="target">The target.</param>
@@ -4952,7 +4952,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Damping">
             <summary>Set/get linear damping in N*s/m</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.ShiftOrigin(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Shifts the origin using the specified new origin
             </summary>
@@ -5093,7 +5093,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>Constructor for FrictionJoint.</summary>
             <param name="bodyA"></param>
             <param name="bodyB"></param>
@@ -5563,7 +5563,7 @@
             <summary>Get the reaction torque on the body at the joint anchor in N*m.</summary>
             <param name="invDt">The inverse delta time.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.ShiftOrigin(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Shift the origin for any points stored in world coordinates.
             </summary>
@@ -6096,7 +6096,7 @@
                 The upper translation
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 This requires defining a line of motion using an axis and an anchor point. The definition uses local anchor
                 points and a local axis so that the initial configuration can violate the constraint slightly. The joint
@@ -6112,7 +6112,7 @@
             <param name="axis">The axis.</param>
             <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint" /> class
             </summary>
@@ -6224,7 +6224,7 @@
             <param name="data">The data</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Initialize(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.Initialize(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Initializes the local anchor a
             </summary>
@@ -6360,7 +6360,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Boolean)">
             <summary>Constructor for PulleyJoint.</summary>
             <param name="bodyA">The first body.</param>
             <param name="bodyB">The second body.</param>
@@ -6398,7 +6398,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.Ratio">
             <summary>Get the pulley ratio.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.ShiftOrigin(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Shifts the origin using the specified new origin
             </summary>
@@ -6583,7 +6583,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>Constructor of RevoluteJoint.</summary>
             <param name="bodyA">The first body.</param>
             <param name="bodyB">The second body.</param>
@@ -6591,7 +6591,7 @@
             <param name="anchorB">The second anchor.</param>
             <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>Constructor of RevoluteJoint.</summary>
             <param name="bodyA">The first body.</param>
             <param name="bodyB">The second body.</param>
@@ -6796,7 +6796,7 @@
             </summary>
             <param name="def">The def</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 You need to specify an anchor point where they are attached. The position of the anchor point is important for
                 computing the reaction torque.
@@ -7068,7 +7068,7 @@
                 The upper translation
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.WheelJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.WheelJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>Constructor for WheelJoint</summary>
             <param name="bodyA">The first body</param>
             <param name="bodyB">The second body</param>
@@ -7619,7 +7619,7 @@
                 Clears this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Physic.Dynamics.Profile@,Alis.Core.Physic.Dynamics.TimeStep@,System.Numerics.Vector2@,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Physic.Dynamics.Profile@,Alis.Core.Physic.Dynamics.TimeStep@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Boolean)">
             <summary>
                 Solves the profile
             </summary>
@@ -7678,7 +7678,7 @@
                 The position solver manifold class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,System.Int32,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Single@)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold.Initialize(Alis.Core.Physic.Dynamics.Solver.ContactPositionConstraint,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Transform@,System.Int32,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single@)">
             <summary>
                 Initializes the pc
             </summary>
@@ -7839,7 +7839,7 @@
         <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.Velocity">
             <summary>Acts like waterflow. Defaults to 0,0.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.#ctor(Alis.Core.Physic.Shared.Aabb,System.Single,System.Single,System.Single,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.#ctor(Alis.Core.Physic.Shared.Aabb,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController" /> class.</summary>
             <param name="container">Only bodies inside this AABB will be influenced by the controller</param>
             <param name="density">Density of the fluid</param>
@@ -7858,7 +7858,7 @@
             </summary>
             <param name="dt">The dt</param>
         </member>
-        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.ComputeSubmergedArea(Alis.Core.Physic.Collision.Shapes.Shape,System.Numerics.Vector2@,System.Single,Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.ComputeSubmergedArea(Alis.Core.Physic.Collision.Shapes.Shape,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Computes the submerged area using the specified shape
             </summary>
@@ -8021,7 +8021,7 @@
             </summary>
             <param name="body">The body</param>
         </member>
-        <member name="M:Alis.Core.Physic.Extensions.Controllers.Gravity.GravityController.AddPoint(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Extensions.Controllers.Gravity.GravityController.AddPoint(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Adds the point using the specified point
             </summary>
@@ -8411,7 +8411,7 @@
         <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MaxEdgeOffset">
             <summary>Two degrees: maximum angle from edges to first ray tested</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Activate(System.Numerics.Vector2,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Activate(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
             <summary>Activate the explosion at the specified position.</summary>
             <param name="pos">The position where the explosion happens </param>
             <param name="radius">The explosion radius </param>
@@ -8436,7 +8436,7 @@
                 is linear. A value of 2 means it is exponential.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.Activate(System.Numerics.Vector2,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.Activate(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>Activate the explosion at the specified position.</summary>
             <param name="pos">The position (center) of the explosion.</param>
             <param name="radius">The radius of the explosion.</param>
@@ -8444,7 +8444,7 @@
             <param name="maxForce">A maximum amount of force. When force gets over this value, it will be equal to maxForce</param>
             <returns>A list of bodies and the amount of force that was applied to them.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.ApplyImpulse(System.Numerics.Vector2,System.Single,System.Single,System.Single,System.Collections.Generic.HashSet{Alis.Core.Physic.Dynamics.Body})">
+        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.ApplyImpulse(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Collections.Generic.HashSet{Alis.Core.Physic.Dynamics.Body})">
             <summary>
                 Applies the impulse using the specified pos
             </summary>
@@ -8597,7 +8597,7 @@
                 The body factory class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBody(Alis.Core.Physic.World,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBody(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the body using the specified world
             </summary>
@@ -8608,7 +8608,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateEdge(Alis.Core.Physic.World,System.Numerics.Vector2,System.Numerics.Vector2,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateEdge(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Object)">
             <summary>
                 Creates the edge using the specified world
             </summary>
@@ -8618,7 +8618,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateChainShape(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateChainShape(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F,System.Object)">
             <summary>
                 Creates the chain shape using the specified world
             </summary>
@@ -8628,7 +8628,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateLoopShape(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateLoopShape(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F,System.Object)">
             <summary>
                 Creates the loop shape using the specified world
             </summary>
@@ -8638,7 +8638,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateRectangle(Alis.Core.Physic.World,System.Single,System.Single,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateRectangle(Alis.Core.Physic.World,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the rectangle using the specified world
             </summary>
@@ -8654,7 +8654,7 @@
             <exception cref="T:System.ArgumentOutOfRangeException">Width must be more than 0 meters</exception>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCircle(Alis.Core.Physic.World,System.Single,System.Single,System.Numerics.Vector2,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCircle(Alis.Core.Physic.World,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the circle using the specified world
             </summary>
@@ -8666,7 +8666,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateEllipse(Alis.Core.Physic.World,System.Single,System.Single,System.Int32,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateEllipse(Alis.Core.Physic.World,System.Single,System.Single,System.Int32,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the ellipse using the specified world
             </summary>
@@ -8681,7 +8681,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreatePolygon(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreatePolygon(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the polygon using the specified world
             </summary>
@@ -8694,7 +8694,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCompoundPolygon(Alis.Core.Physic.World,System.Collections.Generic.List{Alis.Core.Physic.Shared.Vertices},System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCompoundPolygon(Alis.Core.Physic.World,System.Collections.Generic.List{Alis.Core.Physic.Shared.Vertices},System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the compound polygon using the specified world
             </summary>
@@ -8707,7 +8707,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateGear(Alis.Core.Physic.World,System.Single,System.Int32,System.Single,System.Single,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateGear(Alis.Core.Physic.World,System.Single,System.Int32,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the gear using the specified world
             </summary>
@@ -8723,7 +8723,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCapsule(Alis.Core.Physic.World,System.Single,System.Single,System.Int32,System.Single,System.Int32,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCapsule(Alis.Core.Physic.World,System.Single,System.Single,System.Int32,System.Single,System.Int32,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the capsule using the specified world
             </summary>
@@ -8740,7 +8740,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCapsule(Alis.Core.Physic.World,System.Single,System.Single,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateCapsule(Alis.Core.Physic.World,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the capsule using the specified world
             </summary>
@@ -8754,7 +8754,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateRoundedRectangle(Alis.Core.Physic.World,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateRoundedRectangle(Alis.Core.Physic.World,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the rounded rectangle using the specified world
             </summary>
@@ -8771,7 +8771,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateLineArc(Alis.Core.Physic.World,System.Single,System.Int32,System.Single,System.Boolean,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateLineArc(Alis.Core.Physic.World,System.Single,System.Int32,System.Single,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the line arc using the specified world
             </summary>
@@ -8786,7 +8786,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateSolidArc(Alis.Core.Physic.World,System.Single,System.Single,System.Int32,System.Single,System.Numerics.Vector2,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateSolidArc(Alis.Core.Physic.World,System.Single,System.Single,System.Int32,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
             <summary>
                 Creates the solid arc using the specified world
             </summary>
@@ -8801,7 +8801,7 @@
             <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBreakableBody(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,System.Single,System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBreakableBody(Alis.Core.Physic.World,Alis.Core.Physic.Shared.Vertices,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Creates the breakable body using the specified world
             </summary>
@@ -8812,7 +8812,7 @@
             <param name="rotation">The rotation</param>
             <returns>The breakable body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBreakableBody(Alis.Core.Physic.World,System.Collections.Generic.IEnumerable{Alis.Core.Physic.Collision.Shapes.Shape},System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBreakableBody(Alis.Core.Physic.World,System.Collections.Generic.IEnumerable{Alis.Core.Physic.Collision.Shapes.Shape},Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Creates the breakable body using the specified world
             </summary>
@@ -8833,7 +8833,7 @@
         <member name="T:Alis.Core.Physic.Factories.FixtureFactory">
             <summary>An easy to use factory for creating bodies</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.FixtureFactory.AttachEdge(System.Numerics.Vector2,System.Numerics.Vector2,Alis.Core.Physic.Dynamics.Body,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.FixtureFactory.AttachEdge(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Dynamics.Body,System.Object)">
             <summary>
                 Attaches the edge using the specified start
             </summary>
@@ -8861,7 +8861,7 @@
             <param name="userData">The user data</param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.FixtureFactory.AttachRectangle(System.Single,System.Single,System.Single,System.Numerics.Vector2,Alis.Core.Physic.Dynamics.Body,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.FixtureFactory.AttachRectangle(System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Dynamics.Body,System.Object)">
             <summary>
                 Attaches the rectangle using the specified width
             </summary>
@@ -8884,7 +8884,7 @@
             <exception cref="T:System.ArgumentOutOfRangeException">Radius must be more than 0 meters</exception>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.FixtureFactory.AttachCircle(System.Single,System.Single,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.FixtureFactory.AttachCircle(System.Single,System.Single,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,System.Object)">
             <summary>
                 Attaches the circle using the specified radius
             </summary>
@@ -8973,7 +8973,7 @@
             <param name="useWorldCoordinates">The use world coordinates</param>
             <returns>The joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateWeldJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateWeldJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Creates the weld joint using the specified world
             </summary>
@@ -8985,7 +8985,7 @@
             <param name="useWorldCoordinates">The use world coordinates</param>
             <returns>The weld joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreatePrismaticJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreatePrismaticJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Creates the prismatic joint using the specified world
             </summary>
@@ -9018,7 +9018,7 @@
             <param name="ratio">The ratio</param>
             <returns>The gear joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreatePulleyJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreatePulleyJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Boolean)">
             <summary>
                 Creates the pulley joint using the specified world
             </summary>
@@ -9033,7 +9033,7 @@
             <param name="useWorldCoordinates">The use world coordinates</param>
             <returns>The pulley joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateFixedMouseJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateFixedMouseJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Creates the fixed mouse joint using the specified world
             </summary>
@@ -9042,7 +9042,7 @@
             <param name="worldAnchor">The world anchor</param>
             <returns>The joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateRevoluteJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateRevoluteJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Creates the revolute joint using the specified world
             </summary>
@@ -9054,7 +9054,7 @@
             <param name="useWorldCoordinates">The use world coordinates</param>
             <returns>The joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateRevoluteJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateRevoluteJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Creates the revolute joint using the specified world
             </summary>
@@ -9064,7 +9064,7 @@
             <param name="anchor">The anchor</param>
             <returns>The joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateWheelJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateWheelJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Creates the wheel joint using the specified world
             </summary>
@@ -9076,7 +9076,7 @@
             <param name="useWorldCoordinates">The use world coordinates</param>
             <returns>The joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateWheelJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateWheelJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Creates the wheel joint using the specified world
             </summary>
@@ -9086,7 +9086,7 @@
             <param name="axis">The axis</param>
             <returns>The wheel joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateDistanceJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateDistanceJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Creates the distance joint using the specified world
             </summary>
@@ -9107,7 +9107,7 @@
             <param name="bodyB">The body</param>
             <returns>The distance joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateFrictionJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateFrictionJoint(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Creates the friction joint using the specified world
             </summary>
@@ -9144,14 +9144,14 @@
         <member name="F:Alis.Core.Physic.Shared.Aabb.UpperBound">
             <summary>The upper vertex</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Aabb.#ctor(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Shared.Aabb" /> class
             </summary>
             <param name="min">The min</param>
             <param name="max">The max</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Aabb.#ctor(System.Numerics.Vector2,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Shared.Aabb" /> class
             </summary>
@@ -9159,7 +9159,7 @@
             <param name="width">The width</param>
             <param name="height">The height</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Aabb.#ctor(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Shared.Aabb.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Shared.Aabb" /> class
             </summary>
@@ -9219,7 +9219,7 @@
             <param name="aabb">The AABB.</param>
             <returns><c>true</c> if it contains the specified AABB; otherwise, <c>false</c>.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Aabb.Contains(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Shared.Aabb.Contains(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Determines whether the AABB contains the specified point.</summary>
             <param name="point">The point.</param>
             <returns><c>true</c> if it contains the specified point; otherwise, <c>false</c>.</returns>
@@ -9439,7 +9439,7 @@
                 The ey
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.#ctor(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Construct this matrix using columns.</summary>
             <param name="c1">The c1.</param>
             <param name="c2">The c2.</param>
@@ -9456,7 +9456,7 @@
                 Gets the value of the inverse
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.Set(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.Set(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Initialize this matrix using columns.</summary>
             <param name="c1">The c1.</param>
             <param name="c2">The c2.</param>
@@ -9467,7 +9467,7 @@
         <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.SetZero">
             <summary>Set this matrix to all zeros.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.Solve(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.Solve(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
                 cases.
@@ -9501,7 +9501,7 @@
                 The ez
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix3X3F.#ctor(System.Numerics.Vector3,System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:Alis.Core.Physic.Shared.Matrix3X3F.#ctor(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>Construct this matrix using columns.</summary>
             <param name="c1">The c1.</param>
             <param name="c2">The c2.</param>
@@ -9510,7 +9510,7 @@
         <member name="M:Alis.Core.Physic.Shared.Matrix3X3F.SetZero">
             <summary>Set this matrix to all zeros.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix3X3F.Solve33(System.Numerics.Vector3)">
+        <member name="M:Alis.Core.Physic.Shared.Matrix3X3F.Solve33(Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
                 cases.
@@ -9518,7 +9518,7 @@
             <param name="b">The b.</param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix3X3F.Solve22(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Shared.Matrix3X3F.Solve22(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
                 cases. Solve only the upper 2-by-2 matrix equation.
@@ -9755,7 +9755,7 @@
             </summary>
             <param name="capacity">The capacity</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.#ctor(System.Collections.Generic.IEnumerable{System.Numerics.Vector2})">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.#ctor(System.Collections.Generic.IEnumerable{Alis.Core.Aspect.Math.Vector.Vector2F})">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Shared.Vertices" /> class
             </summary>
@@ -9803,19 +9803,19 @@
         <member name="M:Alis.Core.Physic.Shared.Vertices.GetAabb">
             <summary>Returns an AABB that fully contains this polygon.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.Translate(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.Translate(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Translates the vertices with the specified vector.</summary>
             <param name="value">The value.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.Translate(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.Translate(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Translates the vertices with the specified vector.</summary>
             <param name="value">The vector.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.Scale(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.Scale(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Scales the vertices with the specified vector.</summary>
             <param name="value">The Value.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.Scale(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.Scale(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Scales the vertices with the specified vector.</summary>
             <param name="value">The Value.</param>
         </member>
@@ -9852,13 +9852,13 @@
             </summary>
             <returns>PolygonError.NoError if there were no error.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.ProjectToAxis(System.Numerics.Vector2@,System.Single@,System.Single@)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.ProjectToAxis(Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single@,System.Single@)">
             <summary>Projects to axis.</summary>
             <param name="axis">The axis.</param>
             <param name="min">The min.</param>
             <param name="max">The max.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.PointInPolygon(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.PointInPolygon(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Winding number test for a point in a polygon.</summary>
             See more info about the algorithm here: http://softsurfer.com/Archive/algorithm_0103/algorithm_0103.htm
             <param name="point">The point to be tested.</param>
@@ -9867,18 +9867,18 @@
                 and 0 if the point is on the polygons edge.
             </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.PointInPolygonAngle(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.PointInPolygonAngle(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Compute the sum of the angles made between the test point and each pair of points making up the polygon. If
                 this sum is 2pi then the point is an interior point, if 0 then the point is an exterior point. ref:
                 http://ozviz.wasp.uwa.edu.au/~pbourke/geometry/insidepoly/  - Solution 2
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.Transform(System.Numerics.Matrix4x4@)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Matrix.Matrix4X4F@)">
             <summary>Transforms the polygon using the defined matrix.</summary>
             <param name="transform">The matrix to use as transformation.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.Transform(System.Numerics.Vector2[],System.Numerics.Matrix4x4@,System.Numerics.Vector2[])">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Vector.Vector2F[],Alis.Core.Aspect.Math.Matrix.Matrix4X4F@,Alis.Core.Aspect.Math.Vector.Vector2F[])">
             <summary>
                 Transforms the source array
             </summary>
@@ -9886,7 +9886,7 @@
             <param name="matrix">The matrix</param>
             <param name="destinationArray">The destination array</param>
         </member>
-        <member name="M:Alis.Core.Physic.Shared.Vertices.Transform(System.Numerics.Vector2[],System.Int32,System.Numerics.Matrix4x4@,System.Numerics.Vector2[],System.Int32,System.Int32)">
+        <member name="M:Alis.Core.Physic.Shared.Vertices.Transform(Alis.Core.Aspect.Math.Vector.Vector2F[],System.Int32,Alis.Core.Aspect.Math.Matrix.Matrix4X4F@,Alis.Core.Aspect.Math.Vector.Vector2F[],System.Int32,System.Int32)">
             <summary>
                 Transforms the source array
             </summary>
@@ -9962,7 +9962,7 @@
             </summary>
             <seealso cref="T:System.Collections.Generic.Comparer`1" />
         </member>
-        <member name="M:Alis.Core.Physic.Tools.ConvexHull.PointComparer.Compare(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.ConvexHull.PointComparer.Compare(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Compares the a
             </summary>
@@ -9975,7 +9975,7 @@
                 The cutting tools class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.Simple.CuttingTools.SplitShape(Alis.Core.Physic.Dynamics.Fixture,System.Numerics.Vector2,System.Numerics.Vector2,Alis.Core.Physic.Shared.Vertices@,Alis.Core.Physic.Shared.Vertices@)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.Simple.CuttingTools.SplitShape(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Shared.Vertices@,Alis.Core.Physic.Shared.Vertices@)">
             <summary>Split a fixture into 2 vertices collections using the given entry and exit-point.</summary>
             <param name="fixture">The Fixture to split</param>
             <param name="entryPoint">The entry point - The start point</param>
@@ -9983,7 +9983,7 @@
             <param name="first">The first collection of vertexes</param>
             <param name="second">The second collection of vertexes</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.Simple.CuttingTools.Cut(Alis.Core.Physic.World,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.Simple.CuttingTools.Cut(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 This is a high-level function to cuts fixtures inside the given world, using the start and end points. Note:
                 We don't support cutting when the start or end is inside a shape.
@@ -10114,29 +10114,29 @@
             <summary>Calculates the polygon(s) from the result simplical chain.</summary>
             <remarks>Used by method <c>Execute()</c>.</remarks>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.CalculateBeta(System.Numerics.Vector2,Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge,System.Single)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.CalculateBeta(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge,System.Single)">
             <summary>Needed to calculate the characteristics function of a simplex.</summary>
             <remarks>Used by method <c>CalculateEdgeCharacter()</c>.</remarks>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.GetAlpha(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.GetAlpha(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Needed for sorting multiple intersections points on the same edge.</summary>
             <remarks>Used by method <c>CalculateIntersections()</c>.</remarks>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.CalculateSimplexCoefficient(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.CalculateSimplexCoefficient(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Returns the coefficient of a simplex.</summary>
             <remarks>Used by method <c>CalculateSimplicalChain()</c>.</remarks>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.PointInSimplex(System.Numerics.Vector2,Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.PointInSimplex(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge)">
             <summary>Winding number test for a point in a simplex.</summary>
             <param name="point">The point to be tested.</param>
             <param name="edge">The edge that the point is tested against.</param>
             <returns>False if the winding number is even and the point is outside the simplex and True otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.PointOnLineSegment(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.PointOnLineSegment(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Tests if a point lies on a line segment.</summary>
             <remarks>Used by method <c>CalculateBeta()</c>.</remarks>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.VectorEqual(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.VectorEqual(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Describes whether vector equal
             </summary>
@@ -10147,7 +10147,7 @@
         <member name="T:Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge">
             <summary>Specifies an Edge. Edges are used to represent simplicies in simplical chains</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge.#ctor(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.Cutting.YuPengClipper.Edge" /> class
             </summary>
@@ -10195,7 +10195,7 @@
                 The link factory class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.LinkFactory.CreateChain(Alis.Core.Physic.World,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single,System.Int32,System.Single,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.LinkFactory.CreateChain(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Int32,System.Single,System.Boolean)">
             <summary>Creates a chain.</summary>
             <param name="world">The world.</param>
             <param name="start">The start.</param>
@@ -10226,11 +10226,11 @@
         <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.#ctor">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.PathGenerator.Path" /> class.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.#ctor(System.Numerics.Vector2[])">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F[])">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.PathGenerator.Path" /> class.</summary>
             <param name="vertices">The vertices to created the path from.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.#ctor(System.Collections.Generic.IList{System.Numerics.Vector2})">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.#ctor(System.Collections.Generic.IList{Alis.Core.Aspect.Math.Vector.Vector2F})">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.PathGenerator.Path" /> class.</summary>
             <param name="vertices">The vertices to created the path from.</param>
         </member>
@@ -10248,11 +10248,11 @@
             <param name="index">The index.</param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Translate(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Translate(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Translates the control points by the specified vector.</summary>
             <param name="vector">The vector.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Scale(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Scale(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Scales the control points by the specified vector.</summary>
             <param name="value">The Value.</param>
         </member>
@@ -10279,7 +10279,7 @@
             <exception cref="T:System.Exception">You need at least 2 control points to calculate a position.</exception>
             <returns>The temp</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.CatmullRom(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.CatmullRom(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Catmulls the rom using the specified value 1
             </summary>
@@ -10295,13 +10295,13 @@
             <param name="time">The time</param>
             <returns>The normal.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Add(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Add(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Adds the point
             </summary>
             <param name="point">The point</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Remove(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.Path.Remove(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Removes the point
             </summary>
@@ -10369,7 +10369,7 @@
             <param name="strength">The strength.</param>
             <param name="timeStep">The time step.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.PathGenerator.PathManager.AttachBodiesWithRevoluteJoint(Alis.Core.Physic.World,System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Body},System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Tools.PathGenerator.PathManager.AttachBodiesWithRevoluteJoint(Alis.Core.Physic.World,System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Body},Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,System.Boolean)">
             <summary>Attaches the bodies with revolute joints.</summary>
             <param name="world">The world.</param>
             <param name="bodies">The bodies.</param>
@@ -10497,7 +10497,7 @@
         <member name="M:Alis.Core.Physic.Tools.TextureTools.MarchingSquares.Square(System.Single)">
             <summary>Square value for use in marching squares</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.MarchingSquares.VecDsq(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.MarchingSquares.VecDsq(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Vecs the dsq using the specified a
             </summary>
@@ -10505,7 +10505,7 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.MarchingSquares.VecCross(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.MarchingSquares.VecCross(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Vecs the cross using the specified a
             </summary>
@@ -10747,7 +10747,7 @@
             <param name="world">The World</param>
             <param name="area">The area of the terrain.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.Terrain.#ctor(Alis.Core.Physic.World,System.Numerics.Vector2,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.Terrain.#ctor(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
             <summary>Creates a new terrain</summary>
             <param name="world">The World</param>
             <param name="position">The position (center) of the terrain.</param>
@@ -10757,12 +10757,12 @@
         <member name="M:Alis.Core.Physic.Tools.TextureTools.Terrain.Initialize">
             <summary>Initialize the terrain for use.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.Terrain.ApplyData(System.SByte[0:,0:],System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.Terrain.ApplyData(System.SByte[0:,0:],Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Apply the specified texture data to the terrain.</summary>
             <param name="data"></param>
             <param name="offset"></param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.Terrain.ModifyTerrain(System.Numerics.Vector2,System.SByte)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.Terrain.ModifyTerrain(Alis.Core.Aspect.Math.Vector.Vector2F,System.SByte)">
             <summary>Modify a single point in the terrain.</summary>
             <param name="location">World location to modify. Automatically clipped.</param>
             <param name="value">-1 = inside terrain, 1 = outside terrain</param>
@@ -10861,7 +10861,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.TextureTools.TextureConverter" /> class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.#ctor(System.Nullable{System.Byte},System.Nullable{System.Single},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Numerics.Matrix4x4})">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.#ctor(System.Nullable{System.Byte},System.Nullable{System.Single},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Alis.Core.Aspect.Math.Matrix.Matrix4X4F})">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.TextureTools.TextureConverter" /> class
             </summary>
@@ -10879,7 +10879,7 @@
             <param name="data">The data</param>
             <param name="width">The width</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.#ctor(System.UInt32[],System.Int32,System.Nullable{System.Byte},System.Nullable{System.Single},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Numerics.Matrix4x4})">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.#ctor(System.UInt32[],System.Int32,System.Nullable{System.Byte},System.Nullable{System.Single},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Alis.Core.Aspect.Math.Matrix.Matrix4X4F})">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Tools.TextureTools.TextureConverter" /> class
             </summary>
@@ -10927,7 +10927,7 @@
         <member name="F:Alis.Core.Physic.Tools.TextureTools.TextureConverter.ClosePixels">
             <summary>This array is meant to be read-only. It's not because it is accessed very frequently.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.Initialize(System.UInt32[],System.Nullable{System.Int32},System.Nullable{System.Byte},System.Nullable{System.Single},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Numerics.Matrix4x4})">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.Initialize(System.UInt32[],System.Nullable{System.Int32},System.Nullable{System.Byte},System.Nullable{System.Single},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{Alis.Core.Aspect.Math.Matrix.Matrix4X4F})">
             <summary>
                 Initializes the data
             </summary>
@@ -11011,7 +11011,7 @@
             </summary>
             <param name="detectedPolygons">The detected polygons</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchHoleEntrance(Alis.Core.Physic.Shared.Vertices,System.Nullable{System.Numerics.Vector2})">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchHoleEntrance(Alis.Core.Physic.Shared.Vertices,System.Nullable{Alis.Core.Aspect.Math.Vector.Vector2F})">
             <summary>
                 Function to search for an entrance point of a hole in a polygon. It searches the polygon from top to bottom
                 between the polygon edges.
@@ -11020,7 +11020,7 @@
             <param name="lastHoleEntrance">The last entrance point.</param>
             <returns>The next holes entrance point. Null if there are no holes.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.DistanceToHullAcceptableHoles(Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.DistanceToHullAcceptableHoles(Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Describes whether this instance distance to hull acceptable holes
             </summary>
@@ -11031,7 +11031,7 @@
             <exception cref="T:System.ArgumentException">'polygon.MainPolygon.Count' can't be less then 3.</exception>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.DistanceToHullAcceptable(Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.DistanceToHullAcceptable(Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Describes whether this instance distance to hull acceptable
             </summary>
@@ -11042,7 +11042,7 @@
             <exception cref="T:System.ArgumentException">'polygon.Count' can't be less then 3.</exception>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.InPolygon(Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.InPolygon(Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Describes whether this instance in polygon
             </summary>
@@ -11087,7 +11087,7 @@
             <param name="y">Y coordinate to check for edges.</param>
             <returns>Descending sorted list of x coordinates of edges that cross the specified y coordinate.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SplitPolygonEdge(Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2,System.Int32@,System.Int32@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SplitPolygonEdge(Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F,System.Int32@,System.Int32@)">
             <summary>
                 Describes whether this instance split polygon edge
             </summary>
@@ -11097,13 +11097,13 @@
             <param name="vertex2Index">The vertex index</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.CreateSimplePolygon(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.CreateSimplePolygon(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary></summary>
             <param name="entrance"></param>
             <param name="last"></param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchNearPixels(System.Boolean,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchNearPixels(System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance search near pixels
             </summary>
@@ -11112,7 +11112,7 @@
             <param name="foundPixel">The found pixel</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.IsNearPixel(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.IsNearPixel(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance is near pixel
             </summary>
@@ -11120,21 +11120,21 @@
             <param name="near">The near</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchHullEntrance(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchHullEntrance(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance search hull entrance
             </summary>
             <param name="entrance">The entrance</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchNextHullEntrance(System.Collections.Generic.List{Alis.Core.Physic.Shared.Vertices},System.Numerics.Vector2,System.Nullable{System.Numerics.Vector2}@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchNextHullEntrance(System.Collections.Generic.List{Alis.Core.Physic.Shared.Vertices},Alis.Core.Aspect.Math.Vector.Vector2F,System.Nullable{Alis.Core.Aspect.Math.Vector.Vector2F}@)">
             <summary>Searches for the next shape.</summary>
             <param name="detectedPolygons">Already detected polygons.</param>
             <param name="start">Search start coordinate.</param>
             <param name="entrance">Returns the found entrance coordinate. Null if no other shapes found.</param>
             <returns>True if a new shape was found.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.GetNextHullPoint(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.GetNextHullPoint(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance get next hull point
             </summary>
@@ -11143,7 +11143,7 @@
             <param name="next">The next</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchForOutstandingVertex(Alis.Core.Physic.Shared.Vertices,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.SearchForOutstandingVertex(Alis.Core.Physic.Shared.Vertices,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance search for outstanding vertex
             </summary>
@@ -11151,7 +11151,7 @@
             <param name="outstanding">The outstanding</param>
             <returns>The found</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.GetIndexOfFirstPixelToCheck(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.GetIndexOfFirstPixelToCheck(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Gets the index of first pixel to check using the specified last
             </summary>
@@ -11159,7 +11159,7 @@
             <param name="current">The current</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.IsSolid(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.IsSolid(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance is solid
             </summary>
@@ -11181,7 +11181,7 @@
             <param name="index">The index</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.InBounds(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.TextureTools.TextureConverter.InBounds(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance in bounds
             </summary>
@@ -11263,7 +11263,7 @@
             <param name="vertices">The vertices</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.Left(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.Left(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Describes whether left
             </summary>
@@ -11272,7 +11272,7 @@
             <param name="c">The </param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.LeftOn(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.LeftOn(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Describes whether left on
             </summary>
@@ -11281,7 +11281,7 @@
             <param name="c">The </param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.Right(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.Right(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Describes whether right
             </summary>
@@ -11290,7 +11290,7 @@
             <param name="c">The </param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.RightOn(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.RightOn(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Describes whether right on
             </summary>
@@ -11299,7 +11299,7 @@
             <param name="c">The </param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.SquareDist(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer.SquareDist(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Squares the dist using the specified a
             </summary>
@@ -12896,7 +12896,7 @@
             </summary>
             <param name="vertices">The list of points describing the polygon</param>
         </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.FlipCode.FlipcodeDecomposer.InsideTriangle(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.FlipCode.FlipcodeDecomposer.InsideTriangle(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Check if the point Position is inside the triangle defined by the points A, B, C</summary>
             <param name="a">The A point.</param>
             <param name="b">The B point.</param>
@@ -13749,7 +13749,7 @@
                 AABBs.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.DistanceBetweenPointAndLineSegment(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.DistanceBetweenPointAndLineSegment(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Distances the between point and line segment using the specified point
             </summary>
@@ -13758,13 +13758,13 @@
             <param name="end">The end</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect2(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect2(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Check if the lines a0->a1 and b0->b1 cross. If they do, intersectionPoint will be filled with the point of
                 crossing. Grazing lines should not return true.
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Lines the intersect using the specified p 1
             </summary>
@@ -13774,7 +13774,7 @@
             <param name="q2">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Boolean,System.Boolean,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Boolean,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 This method detects if two line segments (or lines) intersect, and, if so, the point of intersection. Use the
                 <paramref name="firstIsSegment" /> and <paramref name="secondIsSegment" /> parameters to set whether the
@@ -13795,7 +13795,7 @@
             <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
             <returns>True if an intersection is detected, false otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Boolean,System.Boolean,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 This method detects if two line segments (or lines) intersect, and, if so, the point of intersection. Use the
                 <paramref name="firstIsSegment" /> and <paramref name="secondIsSegment" /> parameters to set whether the
@@ -13816,7 +13816,7 @@
             <param name="secondIsSegment">Set this to true to require that the intersection point be on the second line segment.</param>
             <returns>True if an intersection is detected, false otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
                 segments are coincident, then no intersection is detected (there are actually infinite intersection points).
@@ -13828,7 +13828,7 @@
             <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
             <returns>True if an intersection is detected, false otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineIntersect(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 This method detects if two line segments intersect, and, if so, the point of intersection. Note: If two line
                 segments are coincident, then no intersection is detected (there are actually infinite intersection points).
@@ -13840,7 +13840,7 @@
             <param name="intersectionPoint">This is set to the intersection point if an intersection is detected.</param>
             <returns>True if an intersection is detected, false otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineSegmentVerticesIntersect(System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Vertices)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineSegmentVerticesIntersect(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Physic.Shared.Vertices)">
             <summary>
                 Get all intersections between a line segment and a list of vertices representing a polygon. The vertices reuse
                 adjacent points, so for example edges one and two are between the first and second vertices and between the second
@@ -13852,7 +13852,7 @@
             <param name="point2">The second point of the line segment to test.</param>
             <param name="vertices">The vertices, as described above</param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineSegmentAabbIntersect(System.Numerics.Vector2@,System.Numerics.Vector2@,Alis.Core.Physic.Shared.Aabb)">
+        <member name="M:Alis.Core.Physic.Utilities.LineUtils.LineSegmentAabbIntersect(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Physic.Shared.Aabb)">
             <summary>Get all intersections between a line segment and an AABB.</summary>
             <param name="point1">The first point of the line segment to test</param>
             <param name="point2">The second point of the line segment to test.</param>
@@ -13893,22 +13893,22 @@
                 The math utils class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Perform the cross product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Perform the cross product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>Perform the cross product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>Perform the cross product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Single,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Perform the cross product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Abs(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Abs(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Abses the v
             </summary>
@@ -13922,7 +13922,7 @@
             <param name="value">The value</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix2X2F@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the a
             </summary>
@@ -13930,7 +13930,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix2X2F@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Muls the a
             </summary>
@@ -13938,7 +13938,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the t
             </summary>
@@ -13946,7 +13946,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Muls the t
             </summary>
@@ -13954,7 +13954,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Matrix2X2F@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the t using the specified a
             </summary>
@@ -13962,7 +13962,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Matrix2X2F@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Muls the t using the specified a
             </summary>
@@ -13970,7 +13970,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -13978,7 +13978,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -13994,7 +13994,7 @@
             <param name="b">The </param>
             <param name="c">The </param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix3X3F,System.Numerics.Vector3)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix3X3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>Multiply a matrix times a vector.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Transform)">
@@ -14021,13 +14021,13 @@
             <param name="a">The </param>
             <param name="b">The </param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul22(Alis.Core.Physic.Shared.Matrix3X3F,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul22(Alis.Core.Physic.Shared.Matrix3X3F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Multiply a matrix times a vector.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Rotation)">
             <summary>Multiply two rotations: q * r</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Transform,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the t using the specified t
             </summary>
@@ -14046,17 +14046,17 @@
             <param name="b">The </param>
             <returns>The </returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Rotate a vector</summary>
             <param name="q">The rotation matrix</param>
             <param name="v">The value</param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Inverse rotate a vector</summary>
             <param name="q">The rotation matrix</param>
             <param name="v">The value</param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Skew(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Skew(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Get the skew vector such that dot(skew_vec, other) == cross(vec, other)</summary>
         </member>
         <member name="M:Alis.Core.Physic.Utilities.MathUtils.IsValid(System.Single)">
@@ -14064,7 +14064,7 @@
             <param name="x">The x.</param>
             <returns><c>true</c> if the specified x is valid; otherwise, <c>false</c>.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.IsValid(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.IsValid(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Describes whether is valid
             </summary>
@@ -14089,7 +14089,7 @@
             <param name="high">The high</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Clamp(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Clamp(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Clamps the a
             </summary>
@@ -14098,7 +14098,7 @@
             <param name="high">The high</param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Single@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single@)">
             <summary>
                 Crosses the a
             </summary>
@@ -14106,22 +14106,22 @@
             <param name="b">The </param>
             <param name="c">The </param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.VectorAngle(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Return the angle between two vectors on a plane The angle is from vector 1 to vector 2, positive anticlockwise
                 The result is between -pi -> pi
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Dot(System.Numerics.Vector3,System.Numerics.Vector3)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector3F,Alis.Core.Aspect.Math.Vector.Vector3F)">
             <summary>Perform the dot product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Dot(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Perform the dot product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Dot(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Dot(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Perform the dot product on two vectors.</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.VectorAngle(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.VectorAngle(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Vectors the angle using the specified p 1
             </summary>
@@ -14129,18 +14129,18 @@
             <param name="p2">The </param>
             <returns>The double</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Area(System.Numerics.Vector2,System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Returns a positive number if c is to the left of the line going from a to b.</summary>
             <returns>Positive number if point is left, negative if point is right, and 0 if points are collinear.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Area(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Area(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>Returns a positive number if c is to the left of the line going from a to b.</summary>
             <returns>Positive number if point is left, negative if point is right, and 0 if points are collinear.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.IsCollinear(System.Numerics.Vector2@,System.Numerics.Vector2@,System.Numerics.Vector2@,System.Single)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.IsCollinear(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single)">
             <summary>Determines if three vertices are collinear (ie. on a straight line)</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Single,System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Cross(System.Single,Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Crosses the s
             </summary>
@@ -14167,7 +14167,7 @@
             <param name="max">The maximum Value.</param>
             <returns>True if the Value is within the range specified, false otherwise.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the rot
             </summary>
@@ -14175,7 +14175,7 @@
             <param name="axis">The axis</param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation@,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Rotation@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the t using the specified rot
             </summary>
@@ -14183,7 +14183,7 @@
             <param name="axis">The axis</param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Distance(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Distances the a
             </summary>
@@ -14191,7 +14191,7 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Distance(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Distance(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Distances the a
             </summary>
@@ -14199,7 +14199,7 @@
             <param name="b">The </param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.DistanceSquared(System.Numerics.Vector2@,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.DistanceSquared(Alis.Core.Aspect.Math.Vector.Vector2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Distances the squared using the specified a
             </summary>
@@ -14246,7 +14246,7 @@
             <param name="value">The value</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Normalize(System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Normalize(Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Convert this vector into a unit vector. Returns the length.
             </summary>
@@ -14296,7 +14296,7 @@
             <param name="hx">the half-width.</param>
             <param name="hy">the half-height.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.PolygonUtils.CreateRectangle(System.Single,System.Single,System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.Utilities.PolygonUtils.CreateRectangle(System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>Build vertices to represent an oriented box.</summary>
             <param name="hx">the half-width.</param>
             <param name="hy">the half-height.</param>
@@ -14312,7 +14312,7 @@
             <param name="segments">The number of segments to subdivide the edges.</param>
             <returns></returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.PolygonUtils.CreateLine(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.Utilities.PolygonUtils.CreateLine(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Set this as a single edge.</summary>
             <param name="start">The first point.</param>
             <param name="end">The second point.</param>
@@ -14454,7 +14454,7 @@
                 The step complete
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.#ctor(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class.</summary>
         </member>
         <member name="P:Alis.Core.Physic.World.TestPointAllFixtures">
@@ -14537,7 +14537,7 @@
                 Gets or sets the value of the is locked
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.RayCastCallback(Alis.Core.Physic.Dynamics.Fixture,System.Numerics.Vector2,System.Numerics.Vector2,System.Single)">
+        <member name="M:Alis.Core.Physic.World.RayCastCallback(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
                 Rays the cast callback using the specified arg 1
             </summary>
@@ -14691,7 +14691,7 @@
             <param name="aabb">The AABB query box.</param>
             <returns>A list of fixtures that were in the affected area.</returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.RayCast(System.Func{Alis.Core.Physic.Dynamics.Fixture,System.Numerics.Vector2,System.Numerics.Vector2,System.Single,System.Single},System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.World.RayCast(System.Func{Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single},Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Ray-cast the world for all fixtures in the path of the ray. Your callback controls whether you get the closest
                 point, any point, or n-points. The ray-cast ignores shapes that contain the starting point. Inside the callback:
@@ -14703,7 +14703,7 @@
             <param name="point1">The ray starting point.</param>
             <param name="point2">The ray ending point.</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.RayCast(System.Numerics.Vector2,System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.World.RayCast(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Rays the cast using the specified point 1
             </summary>
@@ -14711,11 +14711,11 @@
             <param name="point2">The point</param>
             <returns>The affected</returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.TestPointAll(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.World.TestPointAll(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>Returns a list of fixtures that are at the specified point.</summary>
             <param name="point">The point.</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.ShiftOrigin(System.Numerics.Vector2)">
+        <member name="M:Alis.Core.Physic.World.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Shift the world origin.
                 Useful for large worlds.
@@ -14777,7 +14777,7 @@
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.TestPointCallback(Alis.Core.Physic.Dynamics.Fixture,System.Numerics.Vector2@)">
+        <member name="M:Alis.Core.Physic.World.TestPointCallback(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Describes whether this instance test point callback
             </summary>

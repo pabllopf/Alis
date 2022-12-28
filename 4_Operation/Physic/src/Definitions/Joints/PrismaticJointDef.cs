@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 
@@ -57,13 +57,13 @@ namespace Alis.Core.Physic.Definitions.Joints
         public bool EnableMotor { get; set; }
 
         /// <summary>The local anchor point relative to bodyA's origin.</summary>
-        public Vector2 LocalAnchorA { get; set; }
+        public Vector2F LocalAnchorA { get; set; }
 
         /// <summary>The local anchor point relative to bodyB's origin.</summary>
-        public Vector2 LocalAnchorB { get; set; }
+        public Vector2F LocalAnchorB { get; set; }
 
         /// <summary>The local translation unit axis in bodyA.</summary>
-        public Vector2 LocalAxisA { get; set; }
+        public Vector2F LocalAxisA { get; set; }
 
         /// <summary>The lower translation limit, usually in meters.</summary>
         public float LowerTranslation { get; set; }
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// <param name="bB">The </param>
         /// <param name="anchor">The anchor</param>
         /// <param name="axis">The axis</param>
-        public void Initialize(Body bA, Body bB, Vector2 anchor, Vector2 axis)
+        public void Initialize(Body bA, Body bB, Vector2F anchor, Vector2F axis)
         {
             BodyA = bA;
             BodyB = bB;
@@ -102,9 +102,9 @@ namespace Alis.Core.Physic.Definitions.Joints
         /// </summary>
         public override void SetDefaults()
         {
-            LocalAnchorA = Vector2.Zero;
-            LocalAnchorB = Vector2.Zero;
-            LocalAxisA = new Vector2(1.0f, 0.0f);
+            LocalAnchorA = Vector2F.Zero;
+            LocalAnchorB = Vector2F.Zero;
+            LocalAxisA = new Vector2F(1.0f, 0.0f);
             ReferenceAngle = 0.0f;
             EnableLimit = false;
             LowerTranslation = 0.0f;

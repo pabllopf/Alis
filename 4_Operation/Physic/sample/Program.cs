@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Numerics;
+
 namespace Alis.Core.Physic.Sample
 {
     /// <summary>

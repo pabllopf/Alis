@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Collision.Distance
 {

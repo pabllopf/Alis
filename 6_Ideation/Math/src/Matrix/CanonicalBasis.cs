@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:TransformBase.cs
+//  File:CanonicalBasis.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,28 +27,33 @@
 // 
 //  --------------------------------------------------------------------------
 
+
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Entity
+namespace Alis.Core.Aspect.Math.Matrix
 {
     /// <summary>
-    ///     The transform base class
+    /// The matrix
     /// </summary>
-    public class TransformBase
+    public partial struct Matrix4X4F
     {
         /// <summary>
-        ///     The position
+        /// The canonical basis
         /// </summary>
-        public Vector2F Position { get; set; } = Vector2F.Zero;
-
-        /// <summary>
-        ///     The rotation
-        /// </summary>
-        public float Rotation { get; set; } = 0;
-
-        /// <summary>
-        ///     The scale
-        /// </summary>
-        public Vector2F Scale { get; set; } = new Vector2F(1, 1);
+        public struct CanonicalBasis
+        {
+            /// <summary>
+            /// The row
+            /// </summary>
+            public Vector3F Row0;
+            /// <summary>
+            /// The row
+            /// </summary>
+            public Vector3F Row1;
+            /// <summary>
+            /// The row
+            /// </summary>
+            public Vector3F Row2;
+        };
     }
 }

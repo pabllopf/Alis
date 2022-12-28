@@ -29,8 +29,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using System.Text;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Systems.Physics2D.Utilities;
 
@@ -45,7 +46,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
     public class Path
     {
         /// <summary>All the points that makes up the curve</summary>
-        public List<Vector2> ControlPoints;
+        public List<Vector2F> ControlPoints;
 
         /// <summary>
         ///     The delta
@@ -53,13 +54,13 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         private float deltaT;
 
         /// <summary>Initializes a new instance of the <see cref="Path" /> class.</summary>
-        public Path() => ControlPoints = new List<Vector2>();
+        public Path() => ControlPoints = new List<Vector2F>();
 
         /// <summary>Initializes a new instance of the <see cref="Path" /> class.</summary>
         /// <param name="vertices">The vertices to created the path from.</param>
-        public Path(Vector2[] vertices)
+        public Path(Vector2F[] vertices)
         {
-            ControlPoints = new List<Vector2>(vertices.Length);
+            ControlPoints = new List<Vector2F>(vertices.Length);
 
             for (int i = 0; i < vertices.Length; i++)
             {
@@ -69,9 +70,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
 
         /// <summary>Initializes a new instance of the <see cref="Path" /> class.</summary>
         /// <param name="vertices">The vertices to created the path from.</param>
-        public Path(IList<Vector2> vertices)
+        public Path(IList<Vector2F> vertices)
         {
-            ControlPoints = new List<Vector2>(vertices.Count);
+            ControlPoints = new List<Vector2F>(vertices.Count);
             for (int i = 0; i < vertices.Count; i++)
             {
                 Add(vertices[i]);
@@ -110,21 +111,21 @@ namespace Alis.Core.Physic.Tools.PathGenerator
 
         /// <summary>Translates the control points by the specified vector.</summary>
         /// <param name="vector">The vector.</param>
-        public void Translate(ref Vector2 vector)
+        public void Translate(ref Vector2F vector)
         {
             for (int i = 0; i < ControlPoints.Count; i++)
             {
-                ControlPoints[i] = Vector2.Add(ControlPoints[i], vector);
+                ControlPoints[i] = Vector2F.Add(ControlPoints[i], vector);
             }
         }
 
         /// <summary>Scales the control points by the specified vector.</summary>
         /// <param name="value">The Value.</param>
-        public void Scale(ref Vector2 value)
+        public void Scale(ref Vector2F value)
         {
             for (int i = 0; i < ControlPoints.Count; i++)
             {
-                ControlPoints[i] = Vector2.Multiply(ControlPoints[i], value);
+                ControlPoints[i] = Vector2F.Multiply(ControlPoints[i], value);
             }
         }
 
@@ -132,11 +133,11 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
         {
-            Matrix4x4 rotationMatrix = Matrix4x4.CreateRotationZ(value);
+            Matrix4X4F rotationMatrix = Matrix4X4F.CreateRotationZ(value);
 
             for (int i = 0; i < ControlPoints.Count; i++)
             {
-                ControlPoints[i] = Vector2.Transform(ControlPoints[i], rotationMatrix);
+                ControlPoints[i] = Vector2F.Transform(ControlPoints[i], rotationMatrix);
             }
         }
 
@@ -182,9 +183,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="time">The time</param>
         /// <exception cref="Exception">You need at least 2 control points to calculate a position.</exception>
         /// <returns>The temp</returns>
-        public Vector2 GetPosition(float time)
+        public Vector2F GetPosition(float time)
         {
-            Vector2 temp;
+            Vector2F temp;
 
             if (ControlPoints.Count < 2)
             {
@@ -312,32 +313,32 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <param name="value4">The value</param>
         /// <param name="amount">The amount</param>
         /// <returns>The vector</returns>
-        public static Vector2 CatmullRom(Vector2 value1, Vector2 value2, Vector2 value3, Vector2 value4,
+        public static Vector2F CatmullRom(Vector2F value1, Vector2F value2, Vector2F value3, Vector2F value4,
             float amount) =>
-            new Vector2(
+            new Vector2F(
                 MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
                 MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount));
 
         /// <summary>Gets the normal for the given time.</summary>
         /// <param name="time">The time</param>
         /// <returns>The normal.</returns>
-        public Vector2 GetPositionNormal(float time)
+        public Vector2F GetPositionNormal(float time)
         {
             float offsetTime = time + 0.0001f;
 
-            Vector2 a = GetPosition(time);
-            Vector2 b = GetPosition(offsetTime);
+            Vector2F a = GetPosition(time);
+            Vector2F b = GetPosition(offsetTime);
 
 
-            Vector2 temp = Vector2.Subtract(a, b);
+            Vector2F temp = Vector2F.Subtract(a, b);
 
-            Vector2 output = new Vector2
+            Vector2F output = new Vector2F
             {
                 X = -temp.Y,
                 Y = temp.X
             };
 
-            output = Vector2.Normalize(output);
+            output = Vector2F.Normalize(output);
 
             return output;
         }
@@ -346,7 +347,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         ///     Adds the point
         /// </summary>
         /// <param name="point">The point</param>
-        public void Add(Vector2 point)
+        public void Add(Vector2F point)
         {
             ControlPoints.Add(point);
             deltaT = 1f / (ControlPoints.Count - 1);
@@ -356,7 +357,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         ///     Removes the point
         /// </summary>
         /// <param name="point">The point</param>
-        public void Remove(Vector2 point)
+        public void Remove(Vector2F point)
         {
             ControlPoints.Remove(point);
             deltaT = 1f / (ControlPoints.Count - 1);
@@ -378,17 +379,17 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// <returns>The length</returns>
         public float GetLength()
         {
-            List<Vector2> verts = GetVertices(ControlPoints.Count * 25);
+            List<Vector2F> verts = GetVertices(ControlPoints.Count * 25);
             float length = 0;
 
             for (int i = 1; i < verts.Count; i++)
             {
-                length += Vector2.Distance(verts[i - 1], verts[i]);
+                length += Vector2F.Distance(verts[i - 1], verts[i]);
             }
 
             if (Closed)
             {
-                length += Vector2.Distance(verts[ControlPoints.Count - 1], verts[0]);
+                length += Vector2F.Distance(verts[ControlPoints.Count - 1], verts[0]);
             }
 
             return length;
@@ -399,9 +400,9 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         /// </summary>
         /// <param name="divisions">The divisions</param>
         /// <returns>The verts</returns>
-        public List<Vector3> SubdivideEvenly(int divisions)
+        public List<Vector3F> SubdivideEvenly(int divisions)
         {
-            List<Vector3> verts = new List<Vector3>();
+            List<Vector3F> verts = new List<Vector3F>();
 
             float length = GetLength();
 
@@ -409,11 +410,11 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             float t = 0.000f;
 
             // we always start at the first control point
-            Vector2 start = ControlPoints[0];
-            Vector2 end = GetPosition(t);
+            Vector2F start = ControlPoints[0];
+            Vector2F end = GetPosition(t);
 
             // increment t until we are at half the distance
-            while (deltaLength * 0.5f >= Vector2.Distance(start, end))
+            while (deltaLength * 0.5f >= Vector2F.Distance(start, end))
             {
                 end = GetPosition(t);
                 t += 0.0001f;
@@ -429,14 +430,14 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             // for each box
             for (int i = 1; i < divisions; i++)
             {
-                Vector2 normal = GetPositionNormal(t);
+                Vector2F normal = GetPositionNormal(t);
                 float angle = (float) Math.Atan2(normal.Y, normal.X);
 
-                Vector3 addVector = new Vector3(new Vector2(end.X, end.Y), angle);
+                Vector3F addVector = new Vector3F(new Vector2F(end.X, end.Y), angle);
                 verts.Add(addVector);
 
                 // until we reach the correct distance down the curve
-                while (deltaLength >= Vector2.Distance(start, end))
+                while (deltaLength >= Vector2F.Distance(start, end))
                 {
                     end = GetPosition(t);
                     t += 0.00001f;

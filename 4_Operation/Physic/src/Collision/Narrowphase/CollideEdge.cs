@@ -28,12 +28,11 @@
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
 
@@ -56,13 +55,13 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             manifold.PointCount = 0;
 
             // Compute circle in frame of edge
-            Vector2 q = MathUtils.MulT(ref transformA, MathUtils.Mul(ref transformB, ref circleB.Positionprivate));
+            Vector2F q = MathUtils.MulT(ref transformA, MathUtils.Mul(ref transformB, ref circleB.Positionprivate));
 
-            Vector2 a = edgeA.Vertex1, b = edgeA.Vertex2;
-            Vector2 e = b - a;
+            Vector2F a = edgeA.Vertex1, b = edgeA.Vertex2;
+            Vector2F e = b - a;
 
             // Normal points to the right for a CCW winding
-            Vector2 n = new Vector2(e.Y, -e.X);
+            Vector2F n = new Vector2F(e.Y, -e.X);
             float offset = MathUtils.Dot(n, q - a);
 
             bool oneSided = edgeA.OneSided;
@@ -72,8 +71,8 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // Barycentric coordinates
-            float u = Vector2.Dot(e, b - q);
-            float v = Vector2.Dot(e, q - a);
+            float u = Vector2F.Dot(e, b - q);
+            float v = Vector2F.Dot(e, q - a);
 
             float radius = edgeA.RadiusPrivate + circleB.RadiusPrivate;
 
@@ -84,9 +83,9 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             // Region A
             if (v <= 0.0f)
             {
-                Vector2 p1 = a;
-                Vector2 d1 = q - p1;
-                float dd1 = Vector2.Dot(d1, d1);
+                Vector2F p1 = a;
+                Vector2F d1 = q - p1;
+                float dd1 = Vector2F.Dot(d1, d1);
                 if (dd1 > radius * radius)
                 {
                     return;
@@ -95,10 +94,10 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 // Is there an edge connected to A?
                 if (edgeA.OneSided)
                 {
-                    Vector2 a1 = edgeA.Vertex0;
-                    Vector2 b1 = a;
-                    Vector2 e1 = b1 - a1;
-                    float u1 = Vector2.Dot(e1, b1 - q);
+                    Vector2F a1 = edgeA.Vertex0;
+                    Vector2F b1 = a;
+                    Vector2F e1 = b1 - a1;
+                    float u1 = Vector2F.Dot(e1, b1 - q);
 
                     // Is the circle in Region AB of the previous edge?
                     if (u1 > 0.0f)
@@ -111,7 +110,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 cf.TypeA = ContactFeatureType.Vertex;
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2.Zero;
+                manifold.LocalNormal = Vector2F.Zero;
                 manifold.LocalPoint = p1;
                 manifold.Points.Value0.Id.Key = 0;
                 manifold.Points.Value0.Id.ContactFeature = cf;
@@ -122,9 +121,9 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             // Region B
             if (u <= 0.0f)
             {
-                Vector2 p2 = b;
-                Vector2 d2 = q - p2;
-                float dd2 = Vector2.Dot(d2, d2);
+                Vector2F p2 = b;
+                Vector2F d2 = q - p2;
+                float dd2 = Vector2F.Dot(d2, d2);
                 if (dd2 > radius * radius)
                 {
                     return;
@@ -133,10 +132,10 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 // Is there an edge connected to B?
                 if (edgeA.OneSided)
                 {
-                    Vector2 b2 = edgeA.Vertex3;
-                    Vector2 a2 = b;
-                    Vector2 e2 = b2 - a2;
-                    float v2 = Vector2.Dot(e2, q - a2);
+                    Vector2F b2 = edgeA.Vertex3;
+                    Vector2F a2 = b;
+                    Vector2F e2 = b2 - a2;
+                    float v2 = Vector2F.Dot(e2, q - a2);
 
                     // Is the circle in Region AB of the next edge?
                     if (v2 > 0.0f)
@@ -149,7 +148,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 cf.TypeA = (byte) ContactFeatureType.Vertex;
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.Circles;
-                manifold.LocalNormal = Vector2.Zero;
+                manifold.LocalNormal = Vector2F.Zero;
                 manifold.LocalPoint = p2;
                 manifold.Points.Value0.Id.Key = 0;
                 manifold.Points.Value0.Id.ContactFeature = cf;
@@ -158,11 +157,11 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // Region AB
-            float den = Vector2.Dot(e, e);
+            float den = Vector2F.Dot(e, e);
             Debug.Assert(den > 0.0f);
-            Vector2 p = 1.0f / den * (u * a + v * b);
-            Vector2 d = q - p;
-            float dd = Vector2.Dot(d, d);
+            Vector2F p = 1.0f / den * (u * a + v * b);
+            Vector2F d = q - p;
+            float dd = Vector2F.Dot(d, d);
             if (dd > radius * radius)
             {
                 return;
@@ -170,10 +169,10 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
             if (offset < 0.0f)
             {
-                n = new Vector2(-n.X, -n.Y);
+                n = new Vector2F(-n.X, -n.Y);
             }
 
-            n = Vector2.Normalize(n);
+            n = Vector2F.Normalize(n);
 
             cf.IndexA = 0;
             cf.TypeA = ContactFeatureType.Face;
@@ -201,16 +200,16 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
             Transform xf = MathUtils.MulT(xfA, xfB);
 
-            Vector2 centroidB = MathUtils.Mul(ref xf, polygonB.MassDataPrivate.Centroid);
+            Vector2F centroidB = MathUtils.Mul(ref xf, polygonB.MassDataPrivate.Centroid);
 
-            Vector2 v1 = edgeA.Vertex1;
-            Vector2 v2 = edgeA.Vertex2;
+            Vector2F v1 = edgeA.Vertex1;
+            Vector2F v2 = edgeA.Vertex2;
 
-            Vector2 edge1 = v2 - v1;
-            edge1 = Vector2.Normalize(edge1);
+            Vector2F edge1 = v2 - v1;
+            edge1 = Vector2F.Normalize(edge1);
 
             // Normal points to the right for a CCW winding
-            Vector2 normal1 = new Vector2(edge1.Y, -edge1.X);
+            Vector2F normal1 = new Vector2F(edge1.Y, -edge1.X);
             float offset1 = MathUtils.Dot(normal1, centroidB - v1);
 
             bool oneSided = edgeA.OneSided;
@@ -260,14 +259,14 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 // Smooth collision
                 // See https://box2d.org/posts/2020/06/ghost-collisions/
 
-                Vector2 edge0 = v1 - edgeA.Vertex0;
-                edge0 = Vector2.Normalize(edge0);
-                Vector2 normal0 = new Vector2(edge0.Y, -edge0.X);
+                Vector2F edge0 = v1 - edgeA.Vertex0;
+                edge0 = Vector2F.Normalize(edge0);
+                Vector2F normal0 = new Vector2F(edge0.Y, -edge0.X);
                 bool convex1 = MathUtils.Cross(edge0, edge1) >= 0.0f;
 
-                Vector2 edge2 = edgeA.Vertex3 - v2;
-                edge2 = Vector2.Normalize(edge2);
-                Vector2 normal2 = new Vector2(edge2.Y, -edge2.X);
+                Vector2F edge2 = edgeA.Vertex3 - v2;
+                edge2 = Vector2F.Normalize(edge2);
+                Vector2F normal2 = new Vector2F(edge2.Y, -edge2.X);
                 bool convex2 = MathUtils.Cross(edge1, edge2) >= 0.0f;
 
                 const float sinTol = 0.1f;
@@ -377,7 +376,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 ref1.Normal = tempPolygonB.Normals[ref1.I1];
 
                 // CCW winding
-                ref1.SideNormal1 = new Vector2(ref1.Normal.Y, -ref1.Normal.X);
+                ref1.SideNormal1 = new Vector2F(ref1.Normal.Y, -ref1.Normal.X);
                 ref1.SideNormal2 = -ref1.SideNormal1;
             }
 
@@ -457,15 +456,15 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <param name="v1">The </param>
         /// <param name="normal1">The normal</param>
         /// <returns>The axis</returns>
-        private static EpAxis ComputeEdgeSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 normal1)
+        private static EpAxis ComputeEdgeSeparation(ref TempPolygon polygonB, Vector2F v1, Vector2F normal1)
         {
             EpAxis axis;
             axis.Type = EpAxisType.EdgeA;
             axis.Index = -1;
             axis.Separation = -MathConstants.MaxFloat;
-            axis.Normal = Vector2.Zero;
+            axis.Normal = Vector2F.Zero;
 
-            Vector2[] axes = {normal1, -normal1};
+            Vector2F[] axes = {normal1, -normal1};
 
             // Find axis with least overlap (min-max problem)
             for (int j = 0; j < 2; ++j)
@@ -500,17 +499,17 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
         /// <returns>The axis</returns>
-        private static EpAxis ComputePolygonSeparation(ref TempPolygon polygonB, Vector2 v1, Vector2 v2)
+        private static EpAxis ComputePolygonSeparation(ref TempPolygon polygonB, Vector2F v1, Vector2F v2)
         {
             EpAxis axis;
             axis.Type = EpAxisType.Unknown;
             axis.Index = -1;
             axis.Separation = -MathConstants.MaxFloat;
-            axis.Normal = Vector2.Zero;
+            axis.Normal = Vector2F.Zero;
 
             for (int i = 0; i < polygonB.Count; ++i)
             {
-                Vector2 n = -polygonB.Normals[i];
+                Vector2F n = -polygonB.Normals[i];
 
                 float s1 = MathUtils.Dot(n, polygonB.Vertices[i] - v1);
                 float s2 = MathUtils.Dot(n, polygonB.Vertices[i] - v2);
@@ -540,19 +539,19 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             public TempPolygon(int count)
             {
                 Count = count;
-                Vertices = new Vector2[count];
-                Normals = new Vector2[count];
+                Vertices = new Vector2F[count];
+                Normals = new Vector2F[count];
             }
 
             /// <summary>
             ///     The vertices
             /// </summary>
-            public readonly Vector2[] Vertices;
+            public readonly Vector2F[] Vertices;
 
             /// <summary>
             ///     The normals
             /// </summary>
-            public readonly Vector2[] Normals;
+            public readonly Vector2F[] Normals;
 
             /// <summary>
             ///     The count

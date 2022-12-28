@@ -29,7 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Factories;
@@ -51,11 +51,11 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
         /// <param name="exitPoint">The exit point - The end point</param>
         /// <param name="first">The first collection of vertexes</param>
         /// <param name="second">The second collection of vertexes</param>
-        public static void SplitShape(Fixture fixture, Vector2 entryPoint, Vector2 exitPoint, out Vertices first,
+        public static void SplitShape(Fixture fixture, Vector2F entryPoint, Vector2F exitPoint, out Vertices first,
             out Vertices second)
         {
-            Vector2 localEntryPoint = fixture.Body.GetLocalPoint(ref entryPoint);
-            Vector2 localExitPoint = fixture.Body.GetLocalPoint(ref exitPoint);
+            Vector2F localEntryPoint = fixture.Body.GetLocalPoint(ref entryPoint);
+            Vector2F localExitPoint = fixture.Body.GetLocalPoint(ref exitPoint);
 
             //We can only cut polygons at the moment
             if (!(fixture.Shape is PolygonShape shape))
@@ -66,16 +66,16 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
             }
 
             //Offset the entry and exit points if they are too close to the vertices
-            foreach (Vector2 vertex in shape.VerticesPrivate)
+            foreach (Vector2F vertex in shape.VerticesPrivate)
             {
                 if (vertex.Equals(localEntryPoint))
                 {
-                    localEntryPoint -= new Vector2(0, MathConstants.Epsilon);
+                    localEntryPoint -= new Vector2F(0, MathConstants.Epsilon);
                 }
 
                 if (vertex.Equals(localExitPoint))
                 {
-                    localExitPoint += new Vector2(0, MathConstants.Epsilon);
+                    localExitPoint += new Vector2F(0, MathConstants.Epsilon);
                 }
             }
 
@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
                 int n;
 
                 //Find out if this vertex is on the old or new shape.
-                if (Vector2.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) >
+                if (Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) >
                     MathConstants.Epsilon)
                 {
                     n = 0;
@@ -145,7 +145,7 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
 
             for (int n = 0; n < 2; n++)
             {
-                Vector2 offset;
+                Vector2F offset;
                 if (cutAdded[n] > 0)
                 {
                     offset = newPolygon[n][cutAdded[n] - 1] - newPolygon[n][cutAdded[n]];
@@ -155,11 +155,11 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
                     offset = newPolygon[n][newPolygon[n].Count - 1] - newPolygon[n][0];
                 }
 
-                offset = Vector2.Normalize(offset);
+                offset = Vector2F.Normalize(offset);
 
                 if (!offset.IsValid())
                 {
-                    offset = Vector2.One;
+                    offset = Vector2F.One;
                 }
 
                 newPolygon[n][cutAdded[n]] += MathConstants.Epsilon * offset;
@@ -173,11 +173,11 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
                     offset = newPolygon[n][0] - newPolygon[n][newPolygon[n].Count - 1];
                 }
 
-                offset = Vector2.Normalize(offset);
+                offset = Vector2F.Normalize(offset);
 
                 if (!offset.IsValid())
                 {
-                    offset = Vector2.One;
+                    offset = Vector2F.One;
                 }
 
                 newPolygon[n][cutAdded[n] + 1] += MathConstants.Epsilon * offset;
@@ -195,11 +195,11 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
         /// <param name="start">The startpoint.</param>
         /// <param name="end">The endpoint.</param>
         /// <returns>True if the cut was performed.</returns>
-        public static bool Cut(World world, Vector2 start, Vector2 end)
+        public static bool Cut(World world, Vector2F start, Vector2F end)
         {
             List<Fixture> fixtures = new List<Fixture>();
-            List<Vector2> entryPoints = new List<Vector2>();
-            List<Vector2> exitPoints = new List<Vector2>();
+            List<Vector2F> entryPoints = new List<Vector2F>();
+            List<Vector2F> exitPoints = new List<Vector2F>();
 
             //We don't support cutting when the start or end is inside a shape.
             if (world.TestPointAll(start) != null || world.TestPointAll(end) != null)

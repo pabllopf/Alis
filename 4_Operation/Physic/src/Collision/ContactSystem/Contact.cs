@@ -30,13 +30,12 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Narrowphase;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
 
 namespace Alis.Core.Physic.Collision.ContactSystem
@@ -351,7 +350,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>Gets the world manifold.</summary>
-        public void GetWorldManifold(out Vector2 normal, out FixedArray2<Vector2> points)
+        public void GetWorldManifold(out Vector2F normal, out FixedArray2<Vector2F> points)
         {
             Body bodyA = FixtureA.Body;
             Body bodyB = FixtureB.Body;
