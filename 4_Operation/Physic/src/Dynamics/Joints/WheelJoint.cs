@@ -31,7 +31,6 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Utilities;
@@ -262,27 +261,61 @@ namespace Alis.Core.Physic.Dynamics.Joints
             localYAxisA = MathUtils.Cross(1.0f, localXAxisA);
         }
 
+        
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WheelJoint" /> class
+        /// Initializes a new instance of the <see cref="WheelJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public WheelJoint(WheelJointDef def) : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="localAxisA">The local axis</param>
+        /// <param name="enableLimit">The enable limit</param>
+        /// <param name="lowerTranslation">The lower translation</param>
+        /// <param name="upperTranslation">The upper translation</param>
+        /// <param name="enableMotor">The enable motor</param>
+        /// <param name="maxMotorTorque">The max motor torque</param>
+        /// <param name="motorSpeed">The motor speed</param>
+        /// <param name="stiffness">The stiffness</param>
+        /// <param name="damping">The damping</param>
+        public WheelJoint( 
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            Vector2F localAxisA = default(Vector2F),
+            bool enableLimit = false,
+            float lowerTranslation = 0.0f,
+            float upperTranslation = 0.0f,
+            bool enableMotor = false,
+            float maxMotorTorque = 0.0f,
+            float motorSpeed = 0.0f,
+            float stiffness = 0.0f,
+            float damping = 0.0f
+        )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            localAnchorA = def.LocalAnchorA;
-            localAnchorB = def.LocalAnchorB;
-            localXAxisA = def.LocalAxisA;
-            localYAxisA = MathUtils.Cross(1.0f, localXAxisA);
-
-            lowerTranslation = def.LowerTranslation;
-            upperTranslation = def.UpperTranslation;
-            enableLimit = def.EnableLimit;
-
-            maxMotorTorque = def.MaxMotorTorque;
-            motorSpeed = def.MotorSpeed;
-            enableMotor = def.EnableMotor;
-
-            stiffness = def.Stiffness;
-            damping = def.Damping;
+            if (localAxisA.Equals(default(Vector2F)))
+            {
+                localAxisA = new Vector2F(1.0f, 0.0f);
+            }
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+            this.localXAxisA = localAxisA;
+            this.localYAxisA = MathUtils.Cross(1.0f, localXAxisA);
+            this.lowerTranslation = lowerTranslation;
+            this.upperTranslation = upperTranslation;
+            this.enableLimit = enableLimit;
+            this.maxMotorTorque = maxMotorTorque;
+            this.motorSpeed = motorSpeed;
+            this.enableMotor = enableMotor;
+            this.stiffness = stiffness;
+            this.damping = damping;
         }
 
         /// <summary>

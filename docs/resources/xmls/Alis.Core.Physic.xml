@@ -2905,608 +2905,6 @@
         <member name="M:Alis.Core.Physic.Config.Settings.DefaultMixRestitutionThreshold(System.Single,System.Single)">
             <summary>Restitution mixing law. This picks the lowest value.</summary>
         </member>
-        <member name="T:Alis.Core.Physic.Definitions.IDef">
-            <summary>
-                The def interface
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.IDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.DistanceJointDef">
-            <summary>
-                Distance joint definition. This requires defining an anchor point on both bodies and the non-zero length of
-                the distance joint. The definition uses local anchor points so that the initial configuration can violate the
-                constraint slightly. This helps when saving and loading a game.
-                <remarks>Do not use a zero or a short length.</remarks>
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.DistanceJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.Damping">
-            <summary>The linear damping in N*s/m.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.Stiffness">
-            <summary>The linear stiffness in N/m.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.Length">
-            <summary>The rest length of this joint. Clamped to a stable minimum value.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.MinLength">
-            <summary>Minimum length. Clamped to a stable minimum value.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.MaxLength">
-            <summary>Maximum length. Must be greater than or equal to the minimum length.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.LocalAnchorA">
-            <summary>The local anchor point relative to bodyA's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.LocalAnchorB">
-            <summary>The local anchor point relative to bodyB's origin.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Initializes the b 1
-            </summary>
-            <param name="b1">The </param>
-            <param name="b2">The </param>
-            <param name="anchor1">The anchor</param>
-            <param name="anchor2">The anchor</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.DistanceJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef">
-            <summary>Mouse joint definition. This requires a world target point, tuning parameters, and the time step.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef.Damping">
-            <summary>The linear damping in N*s/m</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef.Stiffness">
-            <summary>The linear stiffness in N/m</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef.MaxForce">
-            <summary>
-                The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some
-                multiple of the weight (multiplier * mass * gravity).
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef.Target">
-            <summary>The initial world target point. This is assumed to coincide with the body anchor initially.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.FrictionJointDef">
-            <summary>
-                The friction joint def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.Joints.JointDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.FrictionJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.FrictionJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FrictionJointDef.LocalAnchorA">
-            <summary>The local anchor point relative to bodyA's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FrictionJointDef.LocalAnchorB">
-            <summary>The local anchor point relative to bodyB's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FrictionJointDef.MaxForce">
-            <summary>The maximum friction force in N.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.FrictionJointDef.MaxTorque">
-            <summary>The maximum friction torque in N-m.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.FrictionJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.GearJointDef">
-            <summary>
-                The gear joint def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.Joints.JointDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.GearJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.GearJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.GearJointDef.JointA">
-            <summary>The first revolute/prismatic joint attached to the gear joint.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.GearJointDef.JointB">
-            <summary>The second revolute/prismatic joint attached to the gear joint.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.GearJointDef.Ratio">
-            <summary>The gear ratio.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.GearJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.JointDef">
-            <summary>
-                The joint def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.IDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.JointDef.#ctor(Alis.Core.Physic.Dynamics.Joints.Misc.JointType)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.JointDef" /> class
-            </summary>
-            <param name="type">The type</param>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.JointDef.BodyA">
-            <summary>The first attached body.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.JointDef.BodyB">
-            <summary>The second attached body.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.JointDef.CollideConnected">
-            <summary>Set this flag to true if the attached bodies should collide.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.JointDef.Type">
-            <summary>The joint type is set automatically for concrete joint types.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.JointDef.UserData">
-            <summary>Use this to attach application specific data.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.JointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.MotorJointDef">
-            <summary>
-                The motor joint def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.Joints.JointDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.MotorJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.MotorJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.MotorJointDef.AngularOffset">
-            <summary>The bodyB angle minus bodyA angle in radians.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.MotorJointDef.CorrectionFactor">
-            <summary>Position correction factor in the range [0,1].</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.MotorJointDef.LinearOffset">
-            <summary>Position of bodyB minus the position of bodyA, in bodyA's frame, in meters.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.MotorJointDef.MaxForce">
-            <summary>The maximum motor force in N.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.MotorJointDef.MaxTorque">
-            <summary>The maximum motor torque in N-m.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.MotorJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body)">
-            <summary>
-                Initializes the b a
-            </summary>
-            <param name="bA">The </param>
-            <param name="bB">The </param>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.MotorJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef">
-            <summary>
-                Prismatic joint definition. This requires defining a line of motion using an axis and an anchor point. The
-                definition uses local anchor points and a local axis so that the initial configuration can violate the constraint
-                slightly. The joint translation is zero when the local anchor points coincide in world space. Using local anchors
-                and a
-                local axis helps when saving and loading a game.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.EnableLimit">
-            <summary>Enable/disable the joint limit.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.EnableMotor">
-            <summary>Enable/disable the joint motor.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.LocalAnchorA">
-            <summary>The local anchor point relative to bodyA's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.LocalAnchorB">
-            <summary>The local anchor point relative to bodyB's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.LocalAxisA">
-            <summary>The local translation unit axis in bodyA.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.LowerTranslation">
-            <summary>The lower translation limit, usually in meters.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.MaxMotorForce">
-            <summary>The maximum motor torque, usually in N-m.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.MotorSpeed">
-            <summary>The desired motor speed in radians per second.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.ReferenceAngle">
-            <summary>The constrained angle between the bodies: bodyB_angle - bodyA_angle.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.UpperTranslation">
-            <summary>The upper translation limit, usually in meters.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Initializes the b a
-            </summary>
-            <param name="bA">The </param>
-            <param name="bB">The </param>
-            <param name="anchor">The anchor</param>
-            <param name="axis">The axis</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PrismaticJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.PulleyJointDef">
-            <summary>Pulley joint definition. This requires two ground anchors, two dynamic body anchor points, and a pulley ratio.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.PulleyJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.GroundAnchorA">
-            <summary>The first ground anchor in world coordinates. This point never moves.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.GroundAnchorB">
-            <summary>The second ground anchor in world coordinates. This point never moves.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.LengthA">
-            <summary>The a reference length for the segment attached to bodyA.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.LengthB">
-            <summary>The a reference length for the segment attached to bodyB.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.LocalAnchorA">
-            <summary>The local anchor point relative to bodyA's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.LocalAnchorB">
-            <summary>The local anchor point relative to bodyB's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.Ratio">
-            <summary>The pulley ratio, used to simulate a block-and-tackle.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
-            <summary>
-                Initializes the b a
-            </summary>
-            <param name="bA">The </param>
-            <param name="bB">The </param>
-            <param name="groundA">The ground</param>
-            <param name="groundB">The ground</param>
-            <param name="anchorA">The anchor</param>
-            <param name="anchorB">The anchor</param>
-            <param name="r">The </param>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.PulleyJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef">
-            <summary>
-                Revolute joint definition. This requires defining an anchor point where the bodies are joined. The definition
-                uses local anchor points so that the initial configuration can violate the constraint slightly. You also need to
-                specify the initial relative angle for joint limits. This helps when saving and loading a game. The local anchor
-                points
-                are measured from the body's origin rather than the center of mass because: 1. you might not know where the center
-                of
-                mass will be. 2. if you add/remove shapes from a body and recompute the mass, the joints will be broken.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.EnableLimit">
-            <summary>A flag to enable joint limits.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.EnableMotor">
-            <summary>A flag to enable the joint motor.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.LocalAnchorA">
-            <summary>The local anchor point relative to bodyA's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.LocalAnchorB">
-            <summary>The local anchor point relative to bodyB's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.LowerAngle">
-            <summary>The lower angle for the joint limit (radians).</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.MaxMotorTorque">
-            <summary>The maximum motor torque used to achieve the desired motor speed. Usually in N-m.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.MotorSpeed">
-            <summary>The desired motor speed. Usually in radians per second.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.ReferenceAngle">
-            <summary>The bodyB angle minus bodyA angle in the reference state (radians).</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.UpperAngle">
-            <summary>The upper angle for the joint limit (radians).</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Initializes the b a
-            </summary>
-            <param name="bA">The </param>
-            <param name="bB">The </param>
-            <param name="anchor">The anchor</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.RevoluteJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.WeldJointDef">
-            <summary>
-                Weld joint definition. You need to specify local anchor points where they are attached and the relative body
-                angle. The position of the anchor points is important for computing the reaction torque.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WeldJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.WeldJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WeldJointDef.Damping">
-            <summary>The rotational damping in N*m*s</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WeldJointDef.Stiffness">
-            <summary>The rotational stiffness in N*m. Disable softness with a value of 0</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WeldJointDef.LocalAnchorA">
-            <summary>The local anchor point relative to bodyA's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WeldJointDef.LocalAnchorB">
-            <summary>The local anchor point relative to bodyB's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WeldJointDef.ReferenceAngle">
-            <summary>The bodyB angle minus bodyA angle in the reference state (radians).</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WeldJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Initializes the b a
-            </summary>
-            <param name="bA">The </param>
-            <param name="bB">The </param>
-            <param name="anchor">The anchor</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WeldJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Joints.WheelJointDef">
-            <summary>
-                Wheel joint definition. This requires defining a line of motion using an axis and an anchor point. The
-                definition uses local anchor points and a local axis so that the initial configuration can violate the constraint
-                slightly. The joint translation is zero when the local anchor points coincide in world space. Using local anchors
-                and a
-                local axis helps when saving and loading a game.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WheelJointDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Joints.WheelJointDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.EnableMotor">
-            <summary>Enable/disable the joint motor.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.LocalAnchorA">
-            <summary>The local anchor point relative to bodyA's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.LocalAnchorB">
-            <summary>The local anchor point relative to bodyB's origin.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.LocalAxisA">
-            <summary>The local translation axis in bodyA.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.MaxMotorTorque">
-            <summary>The maximum motor torque, usually in N-m.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.MotorSpeed">
-            <summary>The desired motor speed in radians per second.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.Damping">
-            <summary>Suspension damping. Typically in units of N*s/m.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.Stiffness">
-            <summary>Suspension stiffness. Typically in units N/m.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.EnableLimit">
-            <summary>Enable/disable the joint limit.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.UpperTranslation">
-            <summary>The upper translation limit, usually in meters.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Joints.WheelJointDef.LowerTranslation">
-            <summary>The lower translation limit, usually in meters.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WheelJointDef.Initialize(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Initializes the b a
-            </summary>
-            <param name="bA">The </param>
-            <param name="bB">The </param>
-            <param name="anchor">The anchor</param>
-            <param name="axis">The axis</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Joints.WheelJointDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Shapes.ChainShapeDef">
-            <summary>
-                A chain shape is a free form sequence of line segments. The chain has two-sided collision, so you can use
-                inside and outside collision. Therefore, you may use any winding order. Connectivity information is used to create
-                smooth collisions.
-                <remarks>WARNING: The chain will not collide properly if there are self-intersections.</remarks>
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.ChainShapeDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Shapes.ChainShapeDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.ChainShapeDef.NextVertex">
-            <summary>
-                Establish connectivity to a vertex that follows the last vertex.
-                <remarks>Don't call this for loops.</remarks>
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.ChainShapeDef.PrevVertex">
-            <summary>
-                Establish connectivity to a vertex that precedes the first vertex.
-                <remarks>Don't call this for loops.</remarks>
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.ChainShapeDef.Vertices">
-            <summary>The vertices. These are not owned/freed by the chain Shape.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.ChainShapeDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Shapes.CircleShapeDef">
-            <summary>
-                The circle shape def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.Shapes.ShapeDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.CircleShapeDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Shapes.CircleShapeDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.CircleShapeDef.Position">
-            <summary>Get or set the position of the circle</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.CircleShapeDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef">
-            <summary>
-                A line segment (edge) shape. These can be connected in chains or loops to other edge shapes. The connectivity
-                information is used to ensure correct contact normals.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.HasVertex0">
-            <summary>Is true if the edge is connected to an adjacent vertex before vertex 1.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.HasVertex3">
-            <summary>Is true if the edge is connected to an adjacent vertex after vertex2.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.Vertex0">
-            <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.Vertex1">
-            <summary>These are the edge vertices</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.Vertex2">
-            <summary>These are the edge vertices</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.Vertex3">
-            <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.EdgeShapeDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Shapes.PolygonShapeDef">
-            <summary>
-                The polygon shape def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.Shapes.ShapeDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.PolygonShapeDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Shapes.PolygonShapeDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.PolygonShapeDef.Vertices">
-            <summary>
-                Gets or sets the value of the vertices
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.PolygonShapeDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Definitions.Shapes.ShapeDef">
-            <summary>
-                The shape def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.IDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.ShapeDef.#ctor(Alis.Core.Physic.Collision.Shapes.ShapeType)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.Shapes.ShapeDef" /> class
-            </summary>
-            <param name="type">The type</param>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.ShapeDef.Density">
-            <summary>Gets or sets the density.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.ShapeDef.Radius">
-            <summary>Radius of the Shape</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.Shapes.ShapeDef.ShapeType">
-            <summary>Get the type of this shape.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.Shapes.ShapeDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Dynamics.Body">
             <summary>
                 The body class
@@ -4607,11 +4005,21 @@
                 The upper impulse
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Definitions.Joints.DistanceJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.DistanceJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.DistanceJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="localAnchorA">The local anchor</param>
+            <param name="localAnchorB">The local anchor</param>
+            <param name="length">The length</param>
+            <param name="minLength">The min length</param>
+            <param name="maxLength">The max length</param>
+            <param name="stiffness">The stiffness</param>
+            <param name="damping">The damping</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
@@ -4761,11 +4169,18 @@
                 The target
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Definitions.Joints.FixedMouseJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="target">The target</param>
+            <param name="maxForce">The max force</param>
+            <param name="stiffness">The stiffness</param>
+            <param name="damping">The damping</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>This requires a world target point, tuning parameters, and the time step.</summary>
@@ -4930,11 +4345,18 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Definitions.Joints.FrictionJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FrictionJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FrictionJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="localAnchorA">The local anchor</param>
+            <param name="localAnchorB">The local anchor</param>
+            <param name="maxForce">The max force</param>
+            <param name="maxTorque">The max torque</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>Constructor for FrictionJoint.</summary>
@@ -5210,11 +4632,17 @@
                 The ratio
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.#ctor(Alis.Core.Physic.Definitions.Joints.GearJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Physic.Dynamics.Joints.Joint,Alis.Core.Physic.Dynamics.Joints.Joint,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.GearJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.GearJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="jointA">The joint</param>
+            <param name="jointB">The joint</param>
+            <param name="ratio">The ratio</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Joint,Alis.Core.Physic.Dynamics.Joints.Joint,System.Single)">
             <summary>
@@ -5334,11 +4762,14 @@
         <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType)">
             <summary>Constructor for fixed joint</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Definitions.Joints.JointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.Joint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.Joint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The type</param>
+            <param name="collideConnected">The collide connected</param>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.Joint.EdgeA">
             <summary>
@@ -5441,13 +4872,6 @@
             <summary>Solves the position constraints.</summary>
             <param name="data"></param>
             <returns>returns true if the position errors are within tolerance.</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.Create(Alis.Core.Physic.Definitions.Joints.JointDef)">
-            <summary>
-                Creates the def
-            </summary>
-            <param name="def">The def</param>
-            <returns>The joint</returns>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Joints.Misc.JointEdge">
             <summary>
@@ -5699,11 +5123,19 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.MotorJoint.#ctor(Alis.Core.Physic.Definitions.Joints.MotorJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.MotorJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.MotorJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.MotorJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="linearOffset">The linear offset</param>
+            <param name="angularOffset">The angular offset</param>
+            <param name="maxForce">The max force</param>
+            <param name="maxTorque">The max torque</param>
+            <param name="correctionFactor">The correction factor</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.MotorJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,System.Boolean)">
             <summary>Constructor for MotorJoint.</summary>
@@ -5965,11 +5397,24 @@
             <param name="axis">The axis</param>
             <param name="useWorldCoordinates">The use world coordinates</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Definitions.Joints.PrismaticJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="localAnchorA">The local anchor</param>
+            <param name="localAnchorB">The local anchor</param>
+            <param name="localAxisA">The local axis</param>
+            <param name="referenceAngle">The reference angle</param>
+            <param name="enableLimit">The enable limit</param>
+            <param name="lowerTranslation">The lower translation</param>
+            <param name="upperTranslation">The upper translation</param>
+            <param name="enableMotor">The enable motor</param>
+            <param name="maxMotorForce">The max motor force</param>
+            <param name="motorSpeed">The motor speed</param>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.LocalAnchorA">
             <summary>The local anchor point on BodyA</summary>
@@ -6197,11 +5642,21 @@
                 The world anchor
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Definitions.Joints.PulleyJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PulleyJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PulleyJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="groundAnchorA">The ground anchor</param>
+            <param name="groundAnchorB">The ground anchor</param>
+            <param name="localAnchorA">The local anchor</param>
+            <param name="localAnchorB">The local anchor</param>
+            <param name="lengthA">The length</param>
+            <param name="lengthB">The length</param>
+            <param name="ratio">The ratio</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Boolean)">
             <summary>Constructor for PulleyJoint.</summary>
@@ -6420,11 +5875,35 @@
                 The upper impulse
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Definitions.Joints.RevoluteJointDef)">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableLimit">
+            <summary>A flag to enable joint limits.</summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableMotor">
+            <summary>A flag to enable the joint motor.</summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LowerAngle">
+            <summary>The lower angle for the joint limit (radians).</summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperAngle">
+            <summary>The upper angle for the joint limit (radians).</summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="localAnchorA">The local anchor</param>
+            <param name="localAnchorB">The local anchor</param>
+            <param name="referenceAngle">The reference angle</param>
+            <param name="lowerAngle">The lower angle</param>
+            <param name="upperAngle">The upper angle</param>
+            <param name="motorTorque">The motor torque</param>
+            <param name="motorSpeed">The motor speed</param>
+            <param name="enableLimit">The enable limit</param>
+            <param name="enableMotor">The enable motor</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>Constructor of RevoluteJoint.</summary>
@@ -6633,11 +6112,19 @@
                 The stiffness
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Definitions.Joints.WeldJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WeldJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WeldJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="localAnchorA">The local anchor</param>
+            <param name="localAnchorB">The local anchor</param>
+            <param name="referenceAngle">The reference angle</param>
+            <param name="stiffness">The stiffness</param>
+            <param name="damping">The damping</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
@@ -6919,11 +6406,25 @@
             <param name="axis">The axis</param>
             <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.WheelJoint.#ctor(Alis.Core.Physic.Definitions.Joints.WheelJointDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.WheelJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WheelJoint" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WheelJoint"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="bodyA">The body</param>
+            <param name="bodyB">The body</param>
+            <param name="jointType">The joint type</param>
+            <param name="collideConnected">The collide connected</param>
+            <param name="localAnchorA">The local anchor</param>
+            <param name="localAnchorB">The local anchor</param>
+            <param name="localAxisA">The local axis</param>
+            <param name="enableLimit">The enable limit</param>
+            <param name="lowerTranslation">The lower translation</param>
+            <param name="upperTranslation">The upper translation</param>
+            <param name="enableMotor">The enable motor</param>
+            <param name="maxMotorTorque">The max motor torque</param>
+            <param name="motorSpeed">The motor speed</param>
+            <param name="stiffness">The stiffness</param>
+            <param name="damping">The damping</param>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.WheelJoint.LocalXAxisA">
             <summary>
@@ -8969,7 +8470,7 @@
             <param name="bodyB">The body</param>
             <returns>The friction joint</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateFromDef(Alis.Core.Physic.World,Alis.Core.Physic.Definitions.Joints.JointDef)">
+        <member name="M:Alis.Core.Physic.Factories.JointFactory.CreateFromDef(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>
                 Creates the from def using the specified world
             </summary>

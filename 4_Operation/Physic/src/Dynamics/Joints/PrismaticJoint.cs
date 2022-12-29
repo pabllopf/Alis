@@ -31,7 +31,6 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -273,31 +272,64 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Initialize(anchor, anchor, axis, useWorldCoordinates);
         }
 
+
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PrismaticJoint" /> class
+        /// Initializes a new instance of the <see cref="PrismaticJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public PrismaticJoint(PrismaticJointDef def)
-            : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="localAxisA">The local axis</param>
+        /// <param name="referenceAngle">The reference angle</param>
+        /// <param name="enableLimit">The enable limit</param>
+        /// <param name="lowerTranslation">The lower translation</param>
+        /// <param name="upperTranslation">The upper translation</param>
+        /// <param name="enableMotor">The enable motor</param>
+        /// <param name="maxMotorForce">The max motor force</param>
+        /// <param name="motorSpeed">The motor speed</param>
+        public PrismaticJoint(
+                Body bodyA = null,
+                Body bodyB = null,
+                JointType jointType = default(JointType),
+                bool collideConnected = false,
+                Vector2F localAnchorA = default(Vector2F),
+                Vector2F localAnchorB = default(Vector2F),
+                Vector2F localAxisA = default(Vector2F),
+                float referenceAngle = 0.0f,
+                bool enableLimit = false,
+                float lowerTranslation = 0.0f,
+                float upperTranslation = 0.0f,
+                bool enableMotor = false,
+                float maxMotorForce = 0.0f,
+                float motorSpeed = 0.0f
+            )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            LocalAnchorA = def.LocalAnchorA;
-            LocalAnchorB = def.LocalAnchorB;
-            LocalXAxisA = def.LocalAxisA;
+            if (localAxisA.Equals(default(Vector2F)))
+            {
+                localAxisA = new Vector2F(1.0f, 1.0f);
+            }
+            
+            LocalAnchorA = localAnchorA;
+            LocalAnchorB = localAnchorB;
+            LocalXAxisA = localAxisA;
 
             LocalXAxisA = Vector2F.Normalize(LocalXAxisA);
             localYAxisA = MathUtils.Cross(1.0f, LocalXAxisA);
-            ReferenceAngle = def.ReferenceAngle;
-
-
-            lowerTranslation = def.LowerTranslation;
-            upperTranslation = def.UpperTranslation;
+            ReferenceAngle = referenceAngle;
+            
+            this.lowerTranslation = lowerTranslation;
+            this.upperTranslation = upperTranslation;
 
             Debug.Assert(lowerTranslation <= upperTranslation);
 
-            maxMotorForce = def.MaxMotorForce;
-            motorSpeed = def.MotorSpeed;
-            enableLimit = def.EnableLimit;
-            enableMotor = def.EnableMotor;
+            this.maxMotorForce = maxMotorForce;
+            this.motorSpeed = motorSpeed;
+            this.enableLimit = enableLimit;
+            this.enableMotor = enableMotor;
         }
 
         /// <summary>The local anchor point on BodyA</summary>

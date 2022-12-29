@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 
@@ -280,11 +279,10 @@ namespace Alis.Core.Physic.Factories
         /// <param name="world">The world</param>
         /// <param name="def">The def</param>
         /// <returns>The joint</returns>
-        public static Joint CreateFromDef(World world, JointDef def)
+        public static Joint CreateFromDef(World world, Joint def)
         {
-            Joint joint = Joint.Create(def);
-            world.AddJoint(joint);
-            return joint;
+            world.AddJoint(def);
+            return def;
         }
     }
 }

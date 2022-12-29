@@ -27,10 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Logging;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
-using Alis.Core.Entity;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 

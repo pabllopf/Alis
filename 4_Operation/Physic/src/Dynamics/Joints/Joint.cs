@@ -28,9 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 
@@ -44,7 +42,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The joint type
         /// </summary>
-        private readonly JointType jointType;
+        private static JointType jointType;
 
         /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
         private Body bodyA;
@@ -79,8 +77,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="jointType">The joint type</param>
         protected Joint(JointType jointType)
-        {
-            this.jointType = jointType;
+        { 
+            Joint.jointType = jointType;
             breakpoint = float.MaxValue;
 
             //Connected bodies should not collide by default
@@ -96,32 +94,34 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="jointType">The joint type</param>
         protected Joint(Body bodyA, Body bodyB, JointType jointType) : this(jointType)
         {
-            //Can't connect a joint to the same body twice.
-            Debug.Assert(bodyA != bodyB);
-
             BodyA = bodyA;
             BodyB = bodyB;
         }
 
         /// <summary>Constructor for fixed joint</summary>
         protected Joint(Body body, JointType jointType) : this(jointType) => BodyA = body;
-
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Joint" /> class
+        /// Initializes a new instance of the <see cref="Joint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        protected Joint(JointDef def) : this(def.Type)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        protected Joint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false
+            ) : this(jointType)
         {
-            Debug.Assert(def.BodyA != def.BodyB);
-
-            jointType = def.Type;
-            BodyA = def.BodyA;
-            BodyB = def.BodyB;
-            collideConnected = def.CollideConnected;
+            Joint.jointType = jointType;
+            BodyA = bodyA;
+            BodyB = bodyB;
+            this.collideConnected = collideConnected;
             IslandFlag = false;
-            userData = def.UserData;
         }
-
+        
         /// <summary>
         ///     The joint edge
         /// </summary>
@@ -284,42 +284,5 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data"></param>
         /// <returns>returns true if the position errors are within tolerance.</returns>
         internal abstract bool SolvePositionConstraints(ref SolverData data);
-
-        /// <summary>
-        ///     Creates the def
-        /// </summary>
-        /// <param name="def">The def</param>
-        /// <returns>The joint</returns>
-        public static Joint Create(JointDef def)
-        {
-            switch (def.Type)
-            {
-                case JointType.Distance:
-                    return new DistanceJoint((DistanceJointDef) def);
-                case JointType.FixedMouse:
-                    return new FixedMouseJoint((FixedMouseJointDef) def);
-                case JointType.Prismatic:
-                    return new PrismaticJoint((PrismaticJointDef) def);
-                case JointType.Revolute:
-                    return new RevoluteJoint((RevoluteJointDef) def);
-                case JointType.Pulley:
-                    return new PulleyJoint((PulleyJointDef) def);
-                case JointType.Gear:
-                    return new GearJoint((GearJointDef) def);
-                case JointType.Wheel:
-                    return new WheelJoint((WheelJointDef) def);
-                case JointType.Weld:
-                    return new WeldJoint((WeldJointDef) def);
-                case JointType.Friction:
-                    return new FrictionJoint((FrictionJointDef) def);
-                case JointType.Motor:
-                    return new MotorJoint((MotorJointDef) def);
-                default:
-                    Debug.Assert(false);
-                    break;
-            }
-
-            return null;
-        }
     }
 }

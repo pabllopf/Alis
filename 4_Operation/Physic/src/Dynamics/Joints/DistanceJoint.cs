@@ -31,7 +31,6 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Utilities;
@@ -191,19 +190,42 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float upperImpulse;
 
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="DistanceJoint" /> class
+        /// Initializes a new instance of the <see cref="DistanceJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public DistanceJoint(DistanceJointDef def) : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="length">The length</param>
+        /// <param name="minLength">The min length</param>
+        /// <param name="maxLength">The max length</param>
+        /// <param name="stiffness">The stiffness</param>
+        /// <param name="damping">The damping</param>
+        public DistanceJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = JointType.Distance,
+            bool collideConnected = false,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            float length = 1.0f,
+            float minLength = 0.0f,
+            float maxLength = float.MaxValue,
+            float stiffness = 0.0f,
+            float damping = 0.0f
+            ) : base(bodyA, bodyB, jointType, collideConnected)
         {
-            localAnchorA = def.LocalAnchorA;
-            localAnchorB = def.LocalAnchorB;
-            length = MathUtils.Max(def.Length, Settings.LinearSlop);
-            minLength = MathUtils.Max(def.MinLength, Settings.LinearSlop);
-            maxLength = MathUtils.Max(def.MaxLength, minLength);
-            stiffness = def.Stiffness;
-            damping = def.Damping;
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+            this.length = MathUtils.Max(length, Settings.LinearSlop);
+            this.minLength = MathUtils.Max(minLength, Settings.LinearSlop);
+            this.maxLength = MathUtils.Max(maxLength, this.minLength);
+            this.stiffness = stiffness;
+            this.damping = damping;
         }
 
         /// <summary>

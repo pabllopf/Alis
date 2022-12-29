@@ -31,7 +31,6 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Utilities;
@@ -191,17 +190,32 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float ratio;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="GearJoint" /> class
-        /// </summary>
-        /// <param name="def">The def</param>
-        public GearJoint(GearJointDef def) : base(def)
-        {
-            jointA = def.JointA;
-            jointB = def.JointB;
 
-            typeA = jointA.JointType;
-            typeB = jointB.JointType;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GearJoint"/> class
+        /// </summary>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="jointA">The joint</param>
+        /// <param name="jointB">The joint</param>
+        /// <param name="ratio">The ratio</param>
+        public GearJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Joint jointA = null,
+            Joint jointB = null,
+            float ratio = 1.0f
+            ) : base(bodyA, bodyB, jointType, collideConnected)
+        {
+            this.jointA = jointA;
+            this.jointB = jointB;
+
+            typeA = this.jointA.JointType;
+            typeB = this.jointB.JointType;
 
             Debug.Assert(typeA == JointType.Revolute || typeA == JointType.Prismatic);
             Debug.Assert(typeB == JointType.Revolute || typeB == JointType.Prismatic);
@@ -210,8 +224,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // TODO_ERIN there might be some problem with the joint edges in b2Joint.
 
-            bodyC = jointA.BodyA;
-            BodyA = jointA.BodyB;
+            bodyC = this.jointA.BodyA;
+            BodyA = this.jointA.BodyB;
 
             // Body B on joint1 must be dynamic
             Debug.Assert(BodyA.Type == BodyType.Dynamic);
@@ -224,7 +238,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (typeA == JointType.Revolute)
             {
-                RevoluteJoint revolute = (RevoluteJoint) def.JointA;
+                RevoluteJoint revolute = (RevoluteJoint) jointA;
                 localAnchorC = revolute.LocalAnchorA;
                 localAnchorA = revolute.LocalAnchorB;
                 referenceAngleA = revolute.ReferenceAngle;
@@ -234,7 +248,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                PrismaticJoint prismatic = (PrismaticJoint) def.JointA;
+                PrismaticJoint prismatic = (PrismaticJoint) jointA;
                 localAnchorC = prismatic.LocalAnchorA;
                 localAnchorA = prismatic.LocalAnchorB;
                 referenceAngleA = prismatic.ReferenceAngle;
@@ -259,7 +273,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             if (typeB == JointType.Revolute)
             {
-                RevoluteJoint revolute = (RevoluteJoint) def.JointB;
+                RevoluteJoint revolute = (RevoluteJoint) jointB;
                 localAnchorD = revolute.LocalAnchorA;
                 localAnchorB = revolute.LocalAnchorB;
                 referenceAngleB = revolute.ReferenceAngle;
@@ -269,7 +283,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                PrismaticJoint prismatic = (PrismaticJoint) def.JointB;
+                PrismaticJoint prismatic = (PrismaticJoint) jointB;
                 localAnchorD = prismatic.LocalAnchorA;
                 localAnchorB = prismatic.LocalAnchorB;
                 referenceAngleB = prismatic.ReferenceAngle;
@@ -280,7 +294,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 coordinateB = MathUtils.Dot(pB - pD, localAxisD);
             }
 
-            ratio = def.Ratio;
+            this.ratio = ratio;
 
             constant = coordinateA + ratio * coordinateB;
 

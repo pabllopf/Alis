@@ -28,11 +28,9 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Utilities;
@@ -173,26 +171,68 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The world anchor
         /// </summary>
         private Vector2F worldAnchorB;
-
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
+        /// Initializes a new instance of the <see cref="PulleyJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public PulleyJoint(PulleyJointDef def)
-            : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="groundAnchorA">The ground anchor</param>
+        /// <param name="groundAnchorB">The ground anchor</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="lengthA">The length</param>
+        /// <param name="lengthB">The length</param>
+        /// <param name="ratio">The ratio</param>
+        public PulleyJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = true,
+            Vector2F groundAnchorA = default(Vector2F),
+            Vector2F groundAnchorB = default(Vector2F),
+            Vector2F localAnchorA = default(Vector2F) ,
+            Vector2F localAnchorB = default(Vector2F) ,
+            float lengthA = 0.0f,
+            float lengthB = 0.0f,
+            float ratio = 1.0f
+        )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            worldAnchorA = def.GroundAnchorA;
-            worldAnchorB = def.GroundAnchorB;
-            localAnchorA = def.LocalAnchorA;
-            localAnchorB = def.LocalAnchorB;
+            if (groundAnchorA.Equals(default(Vector2F)))
+            {
+                groundAnchorA = new Vector2F(-1.0f, 1.0f);
+            }
 
-            lengthA = def.LengthA;
-            lengthB = def.LengthB;
+            if (groundAnchorB.Equals(default(Vector2F)))
+            {
+                groundAnchorB = new Vector2F(1.0f, 1.0f);
+            }
 
-            Debug.Assert(def.Ratio != 0.0f);
-            ratio = def.Ratio;
+            if (localAnchorA.Equals(default(Vector2F)))
+            {
+                localAnchorA = new Vector2F(-1.0f, 0.0f);
+            }
 
-            constant = def.LengthA + ratio * def.LengthB;
+            if (localAnchorB.Equals(default(Vector2F)))
+            {
+                localAnchorB = new Vector2F(1.0f, 0.0f);
+            }
+            
+            worldAnchorA = groundAnchorA;
+            worldAnchorB = groundAnchorB;
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+
+            this.lengthA = lengthA;
+            this.lengthB = lengthB;
+
+            //Debug.Assert(def.Ratio != 0.0f);
+            this.ratio = ratio;
+
+            constant = lengthA + this.ratio * lengthB;
         }
 
         /// <summary>Constructor for PulleyJoint.</summary>
@@ -232,8 +272,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 lengthB = dB.Length();
             }
 
-            Debug.Assert(ratio != 0.0f);
-            Debug.Assert(ratio > MathConstants.Epsilon);
+            //Debug.Assert(ratio != 0.0f);
+            //Debug.Assert(ratio > MathConstants.Epsilon);
 
             this.ratio = ratio;
             constant = lengthA + ratio * lengthB;

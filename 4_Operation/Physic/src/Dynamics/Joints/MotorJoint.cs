@@ -30,7 +30,6 @@
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -165,20 +164,37 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The
         /// </summary>
         private Vector2F rB;
-
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="MotorJoint" /> class
+        /// Initializes a new instance of the <see cref="MotorJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public MotorJoint(MotorJointDef def)
-            : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="linearOffset">The linear offset</param>
+        /// <param name="angularOffset">The angular offset</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="maxTorque">The max torque</param>
+        /// <param name="correctionFactor">The correction factor</param>
+        public MotorJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Vector2F linearOffset = default(Vector2F),
+            float angularOffset = 0.0f,
+            float maxForce = 1.0f,
+            float maxTorque = 1.0f,
+            float correctionFactor = 0.3f
+            )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            linearOffset = def.LinearOffset;
-            angularOffset = def.AngularOffset;
-
-            maxForce = def.MaxForce;
-            maxTorque = def.MaxTorque;
-            correctionFactor = def.CorrectionFactor;
+            this.linearOffset = linearOffset;
+            this.angularOffset = angularOffset;
+            this.maxForce = maxForce;
+            this.maxTorque = maxTorque;
+            this.correctionFactor = correctionFactor;
         }
 
         /// <summary>Constructor for MotorJoint.</summary>

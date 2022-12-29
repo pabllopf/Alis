@@ -30,7 +30,6 @@
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -193,25 +192,61 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float upperImpulse;
 
+        /// <summary>A flag to enable joint limits.</summary>
+        public bool EnableLimit { get; set; }
+
+        /// <summary>A flag to enable the joint motor.</summary>
+        public bool EnableMotor { get; set; }
+
+        /// <summary>The lower angle for the joint limit (radians).</summary>
+        public float LowerAngle { get; set; }
+
+        /// <summary>The upper angle for the joint limit (radians).</summary>
+        public float UpperAngle { get; set; }
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="RevoluteJoint" /> class
+        /// Initializes a new instance of the <see cref="RevoluteJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public RevoluteJoint(RevoluteJointDef def)
-            : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="referenceAngle">The reference angle</param>
+        /// <param name="lowerAngle">The lower angle</param>
+        /// <param name="upperAngle">The upper angle</param>
+        /// <param name="motorTorque">The motor torque</param>
+        /// <param name="motorSpeed">The motor speed</param>
+        /// <param name="enableLimit">The enable limit</param>
+        /// <param name="enableMotor">The enable motor</param>
+        public RevoluteJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            float referenceAngle = 0.0f,
+            float lowerAngle = 0.0f,
+            float upperAngle = 0.0f,
+            float motorTorque = 0.0f,
+            float motorSpeed = 0.0f,
+            bool enableLimit = false,
+            bool enableMotor = false
+            )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            LocalAnchorA = def.LocalAnchorA;
-            LocalAnchorB = def.LocalAnchorB;
-            ReferenceAngle = def.ReferenceAngle;
-
-            lowerAngle = def.LowerAngle;
-            upperAngle = def.UpperAngle;
-            maxMotorTorque = def.MaxMotorTorque;
-            motorSpeed = def.MotorSpeed;
-            enableLimit = def.EnableLimit;
-            enableMotor = def.EnableMotor;
-
-            angle = 0.0f;
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+            this.referenceAngle = referenceAngle;
+            this.lowerAngle = lowerAngle;
+            this.upperAngle = upperAngle;
+            this.maxMotorTorque = motorTorque;
+            this.motorSpeed = motorSpeed;
+            this.enableLimit = enableLimit;
+            this.enableMotor = enableMotor;
+            this.angle = 0.0f;
         }
 
         /// <summary>Constructor of RevoluteJoint.</summary>

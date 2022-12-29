@@ -31,7 +31,6 @@ using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -160,19 +159,37 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float stiffness;
 
+       
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WeldJoint" /> class
+        /// Initializes a new instance of the <see cref="WeldJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public WeldJoint(WeldJointDef def)
-            : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="referenceAngle">The reference angle</param>
+        /// <param name="stiffness">The stiffness</param>
+        /// <param name="damping">The damping</param>
+        public WeldJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            float referenceAngle = 0.0f,
+            float stiffness = 0.0f,
+            float damping = 0.0f
+            )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            localAnchorA = def.LocalAnchorA;
-            localAnchorB = def.LocalAnchorB;
-            referenceAngle = def.ReferenceAngle;
-            stiffness = def.Stiffness;
-            damping = def.Damping;
-
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+            this.referenceAngle = referenceAngle;
+            this.stiffness = stiffness;
+            this.damping = damping;
             impulse = Vector3F.Zero;
         }
 

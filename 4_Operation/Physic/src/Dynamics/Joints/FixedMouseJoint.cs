@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -130,18 +129,34 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The target
         /// </summary>
         private Vector2F targetB;
-
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="FixedMouseJoint" /> class
+        /// Initializes a new instance of the <see cref="FixedMouseJoint"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public FixedMouseJoint(FixedMouseJointDef def) : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="target">The target</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="stiffness">The stiffness</param>
+        /// <param name="damping">The damping</param>
+        public FixedMouseJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = JointType.FixedMouse,
+            bool collideConnected = false,
+            Vector2F target = default(Vector2F),
+            float maxForce = 0.0f,
+            float stiffness = 0.0f,
+            float damping = 0.0f
+            ) : base(bodyA, bodyB, jointType, collideConnected)
         {
-            targetB = def.Target;
+            targetB = target;
             localAnchorA = MathUtils.MulT(BodyB.Xf, targetB);
-            maxForce = def.MaxForce;
-            stiffness = def.Stiffness;
-            damping = def.Damping;
+            this.maxForce = maxForce;
+            this.stiffness = stiffness;
+            this.damping = damping;
         }
 
         /// <summary>This requires a world target point, tuning parameters, and the time step.</summary>

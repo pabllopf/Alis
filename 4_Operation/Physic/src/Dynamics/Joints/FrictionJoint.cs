@@ -29,7 +29,6 @@
 
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Definitions.Joints;
 using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -147,18 +146,34 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private Vector2F rB;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="FrictionJoint" /> class
-        /// </summary>
-        /// <param name="def">The def</param>
-        public FrictionJoint(FrictionJointDef def)
-            : base(def)
-        {
-            localAnchorA = def.LocalAnchorA;
-            localAnchorB = def.LocalAnchorB;
 
-            maxForce = def.MaxForce;
-            maxTorque = def.MaxTorque;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrictionJoint"/> class
+        /// </summary>
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="maxTorque">The max torque</param>
+        public FrictionJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            float maxForce = 0.0f,
+            float maxTorque = 0.0f
+            )
+            : base(bodyA, bodyB, jointType, collideConnected)
+        {
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+            this.maxForce = maxForce;
+            this.maxTorque = maxTorque;
         }
 
         /// <summary>Constructor for FrictionJoint.</summary>
