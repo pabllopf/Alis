@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Physic.Collision.Filtering;
 using Alis.Core.Physic.Utilities;
 
@@ -116,7 +117,7 @@ namespace Alis.Core.Physic.Config
         ///     A small angle used as a collision and constraint tolerance. Usually it is chosen to be numerically
         ///     significant, but visually insignificant.
         /// </summary>
-        public const float AngularSlop = 2.0f / 180.0f * MathConstants.Pi;
+        public const float AngularSlop = 2.0f / 180.0f * Constant.Pi;
 
         /// <summary>Maximum number of sub-steps per contact in continuous physics simulation.</summary>
         public const int MaxSubSteps = 8;
@@ -130,7 +131,7 @@ namespace Alis.Core.Physic.Config
         public const float MaxLinearCorrection = 0.2f;
 
         /// <summary>The maximum angular position correction used when solving constraints. This helps to prevent overshoot.</summary>
-        public const float MaxAngularCorrection = 8.0f / 180.0f * MathConstants.Pi;
+        public const float MaxAngularCorrection = 8.0f / 180.0f * Constant.Pi;
 
         /// <summary>
         ///     The maximum linear velocity of a body. This limit is very large and is used to prevent numerical problems. You
@@ -142,7 +143,7 @@ namespace Alis.Core.Physic.Config
         ///     The maximum angular velocity of a body. This limit is very large and is used to prevent numerical problems.
         ///     You shouldn't need to adjust this.
         /// </summary>
-        public const float MaxRotation = 0.5f * MathConstants.Pi;
+        public const float MaxRotation = 0.5f * Constant.Pi;
 
         /// <summary>
         ///     This scale factor controls how fast overlap is resolved. Ideally this would be 1 so that overlap is removed in
@@ -164,7 +165,7 @@ namespace Alis.Core.Physic.Config
         public const float LinearSleepTolerance = 0.01f;
 
         /// <summary>A body cannot sleep if its angular velocity is above this tolerance.</summary>
-        public const float AngularSleepTolerance = 2.0f / 180.0f * MathConstants.Pi;
+        public const float AngularSleepTolerance = 2.0f / 180.0f * Constant.Pi;
 
         /// <summary>
         ///     By default, forces are cleared automatically after each call to Step. The default behavior is modified with

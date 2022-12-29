@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Utilities;
@@ -200,8 +201,8 @@ namespace Alis.Core.Physic.Shared
 
             output = new RayCastOutput();
 
-            float tmin = -MathConstants.MaxFloat;
-            float tmax = MathConstants.MaxFloat;
+            float tmin = -float.MaxValue;
+            float tmax = float.MaxValue;
 
             Vector2F p = input.Point1;
             Vector2F d = input.Point2 - input.Point1;
@@ -216,7 +217,7 @@ namespace Alis.Core.Physic.Shared
                 float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
                 float pI = i == 0 ? p.X : p.Y;
 
-                if (absDI < MathConstants.Epsilon)
+                if (absDI < Constant.Epsilon)
                 {
                     // Parallel.
                     if (pI < lowerBoundI || upperBoundI < pI)

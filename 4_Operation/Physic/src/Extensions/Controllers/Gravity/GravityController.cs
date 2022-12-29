@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
@@ -129,7 +130,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
                     Vector2F d = controllerBody.Position - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= MathConstants.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= Constant.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
                     {
                         continue;
                     }
@@ -152,7 +153,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
                     Vector2F d = point - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= MathConstants.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= Constant.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
                     {
                         continue;
                     }

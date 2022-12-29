@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
@@ -177,7 +178,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
         /// <returns>True if a triangle was found</returns>
         private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] vv)
         {
-            if (MathConstants.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
+            if (Constant.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
             {
                 return false;
             }

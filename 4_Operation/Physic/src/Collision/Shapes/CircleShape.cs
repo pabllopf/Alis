@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         private void ComputeMass()
         {
             //Velcro: We calculate area for later consumption
-            float area = MathConstants.Pi * RadiusPrivate * RadiusPrivate;
+            float area = Constant.Pi * RadiusPrivate * RadiusPrivate;
             MassDataPrivate.Area = area;
             MassDataPrivate.Mass = DensityPrivate * area;
         }

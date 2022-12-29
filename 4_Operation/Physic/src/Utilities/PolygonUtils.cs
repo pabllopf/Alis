@@ -120,7 +120,7 @@ namespace Alis.Core.Physic.Utilities
             {
                 int numberOfEdges = segments * 4 + 8;
 
-                float stepSize = MathConstants.TwoPi / (numberOfEdges - 4);
+                float stepSize = Constant.TwoPi / (numberOfEdges - 4);
                 int perPhase = numberOfEdges / 4;
 
                 Vector2F posOffset = new Vector2F(width / 2 - xRadius, height / 2 - yRadius);
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Utilities
         {
             Vertices vertices = new Vertices();
 
-            float stepSize = MathConstants.TwoPi / numberOfEdges;
+            float stepSize = Constant.TwoPi / numberOfEdges;
 
             vertices.Add(new Vector2F(xRadius, 0));
             for (int i = numberOfEdges - 1; i > 0; --i)
@@ -295,7 +295,7 @@ namespace Alis.Core.Physic.Utilities
             // top
             vertices.Add(new Vector2F(topRadius, newHeight));
 
-            float stepSize = MathConstants.Pi / topEdges;
+            float stepSize = Constant.Pi / topEdges;
             for (int i = 1; i < topEdges; i++)
             {
                 vertices.Add(new Vector2F(topRadius * (float) Math.Cos(stepSize * i),
@@ -307,7 +307,7 @@ namespace Alis.Core.Physic.Utilities
             // bottom
             vertices.Add(new Vector2F(-bottomRadius, -newHeight));
 
-            stepSize = MathConstants.Pi / bottomEdges;
+            stepSize = Constant.Pi / bottomEdges;
             for (int i = 1; i < bottomEdges; i++)
             {
                 vertices.Add(new Vector2F(-bottomRadius * (float) Math.Cos(stepSize * i),
@@ -328,7 +328,7 @@ namespace Alis.Core.Physic.Utilities
         {
             Vertices vertices = new Vertices();
 
-            float stepSize = MathConstants.TwoPi / numberOfTeeth;
+            float stepSize = Constant.TwoPi / numberOfTeeth;
             tipPercentage /= 100f;
             MathHelper.Clamp(tipPercentage, 0f, 1f);
             float toothTipStepSize = stepSize / 2f * tipPercentage;

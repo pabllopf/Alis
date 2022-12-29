@@ -27,30 +27,23 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-namespace Alis.Core.Physic.Utilities
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>
     ///     The math constants class
     /// </summary>
-    public static class MathConstants
+    public static class Constant
     {
         /// <summary>
         ///     The pi
         /// </summary>
-        public const float Pi = (float) Math.PI;
+        public const float Pi = (float) System.Math.PI;
 
         /// <summary>
         ///     The pi
         /// </summary>
         public const float TwoPi = Pi * 2.0f;
-
-        /// <summary>
-        ///     The max value
-        /// </summary>
-        public const float MaxFloat = float.MaxValue;
-
+        
         /// <summary>
         ///     The epsilon
         /// </summary>

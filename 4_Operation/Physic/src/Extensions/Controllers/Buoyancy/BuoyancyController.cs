@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                 massc.X /= mass;
                 massc.Y /= mass;
 
-                if (area < MathConstants.Epsilon)
+                if (area < Constant.Epsilon)
                 {
                     continue;
                 }
@@ -217,7 +217,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
 
                     Vector2F p = MathUtils.Mul(ref xf, circleShape.Position);
                     float l = -(Vector2F.Dot(normal, p) - offset);
-                    if (l < -circleShape.RadiusPrivate + MathConstants.Epsilon)
+                    if (l < -circleShape.RadiusPrivate + Constant.Epsilon)
 
                         //Completely dry
                     {
@@ -228,12 +228,12 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     {
                         //Completely wet
                         sc = p;
-                        return MathConstants.Pi * radius2;
+                        return Constant.Pi * radius2;
                     }
 
                     //Magic
                     float l2 = l * l;
-                    float area = radius2 * (float) (Math.Asin(l / circleShape.RadiusPrivate) + MathConstants.Pi / 2 +
+                    float area = radius2 * (float) (Math.Asin(l / circleShape.RadiusPrivate) + Constant.Pi / 2 +
                                                     l * Math.Sqrt(radius2 - l2));
                     float com = -2.0f / 3.0f * (float) Math.Pow(radius2 - l2, 1.5f) / area;
 
@@ -265,7 +265,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     for (i = 0; i < polygonShape.VerticesPrivate.Count; i++)
                     {
                         depths[i] = Vector2F.Dot(normalL, polygonShape.VerticesPrivate[i]) - offsetL;
-                        bool isSubmerged = depths[i] < -MathConstants.Epsilon;
+                        bool isSubmerged = depths[i] < -Constant.Epsilon;
                         if (i > 0)
                         {
                             if (isSubmerged)

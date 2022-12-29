@@ -4,6 +4,31 @@
         <name>Alis.Core.Aspect.Math</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Aspect.Math.Constant">
+            <summary>
+                The math constants class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Pi">
+            <summary>
+                The pi
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.TwoPi">
+            <summary>
+                The pi
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Epsilon">
+            <summary>
+                The epsilon
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Euler">
+            <summary>
+                The euler
+            </summary>
+        </member>
         <member name="T:Alis.Core.Aspect.Math.Exceptions.ArgumentExceptionDestinationTooShort">
             <summary>
                 The argument exception destination too short class

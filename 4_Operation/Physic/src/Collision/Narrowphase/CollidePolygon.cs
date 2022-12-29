@@ -193,7 +193,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             Transform xf = MathUtils.MulT(xf2, xf1);
 
             int bestIndex = 0;
-            float maxSeparation = -MathConstants.MaxFloat;
+            float maxSeparation = -float.MaxValue;
             for (int i = 0; i < count1; ++i)
             {
                 // Get poly1 normal in frame2.
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 Vector2F v1 = MathUtils.Mul(ref xf, v1S[i]);
 
                 // Find deepest point for normal i.
-                float si = MathConstants.MaxFloat;
+                float si = float.MaxValue;
                 for (int j = 0; j < count2; ++j)
                 {
                     float sij = Vector2F.Dot(n, v2S[j] - v1);
@@ -247,7 +247,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
             // Find the incident edge on poly2.
             int index = 0;
-            float minDot = MathConstants.MaxFloat;
+            float minDot = float.MaxValue;
             for (int i = 0; i < count2; ++i)
             {
                 float dot = Vector2F.Dot(normal1, normals2[i]);

@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
@@ -1039,7 +1040,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             while (count > 1)
             {
-                float minCost = MathConstants.MaxFloat;
+                float minCost = float.MaxValue;
                 int iMin = -1, jMin = -1;
                 for (int i = 0; i < count; ++i)
                 {

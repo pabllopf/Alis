@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Utilities;
@@ -522,7 +523,7 @@ namespace Alis.Core.Physic.Shared
                 angle += MathUtils.VectorAngle(ref p1, ref p2);
             }
 
-            if (Math.Abs(angle) < MathConstants.Pi)
+            if (Math.Abs(angle) < Constant.Pi)
             {
                 return false;
             }

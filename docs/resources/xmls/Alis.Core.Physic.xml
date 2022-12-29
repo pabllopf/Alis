@@ -13174,36 +13174,6 @@
             <param name="point2">The second point of the line segment to test.</param>
             <param name="aabb">The AABB that is used for testing intersection.</param>
         </member>
-        <member name="T:Alis.Core.Physic.Utilities.MathConstants">
-            <summary>
-                The math constants class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Utilities.MathConstants.Pi">
-            <summary>
-                The pi
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Utilities.MathConstants.TwoPi">
-            <summary>
-                The pi
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Utilities.MathConstants.MaxFloat">
-            <summary>
-                The max value
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Utilities.MathConstants.Epsilon">
-            <summary>
-                The epsilon
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Utilities.MathConstants.Euler">
-            <summary>
-                The euler
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Utilities.MathUtils">
             <summary>
                 The math utils class

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
@@ -263,7 +264,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                     //combine above (but disallow the hole thingies
                     CxFastListNode<Vector2F> bi = bp.Begin();
-                    while (Square(bi.GetElem().Y - ay) > MathConstants.Epsilon || bi.GetElem().X < ax)
+                    while (Square(bi.GetElem().Y - ay) > Constant.Epsilon || bi.GetElem().X < ax)
                     {
                         bi = bi.GetNext();
                     }
@@ -271,7 +272,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     //NOTE: Unused
                     //Vector2 b0 = bi.elem();
                     Vector2F b1 = bi.GetNext().GetElem();
-                    if (Square(b1.Y - ay) > MathConstants.Epsilon)
+                    if (Square(b1.Y - ay) > Constant.Epsilon)
                     {
                         x++;
                         continue;
@@ -281,7 +282,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     CxFastListNode<Vector2F> ai = ap.Begin();
                     while (ai != ap.End())
                     {
-                        if (VecDsq(ai.GetElem(), b1) < MathConstants.Epsilon)
+                        if (VecDsq(ai.GetElem(), b1) < Constant.Epsilon)
                         {
                             brk = false;
                             break;
@@ -375,7 +376,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         {
             float dv = v0 - v1;
             float t;
-            if (dv * dv < MathConstants.Epsilon)
+            if (dv * dv < Constant.Epsilon)
             {
                 t = 0.5f;
             }
@@ -564,7 +565,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             while (ai != ap.End())
             {
                 Vector2F a = ai.GetElem();
-                if (VecDsq(a, b) < MathConstants.Epsilon)
+                if (VecDsq(a, b) < Constant.Epsilon)
                 {
                     //ignore shared vertex if parallel
                     if (prea != null)
@@ -579,7 +580,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                         //vec_new(v); vec_sub(b.p.p, a.p.p, v);
                         float dot = VecCross(u, v);
-                        if (dot * dot < MathConstants.Epsilon)
+                        if (dot * dot < Constant.Epsilon)
                         {
                             ap.Erase(prea, ai);
                             polya.Length--;
@@ -622,7 +623,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                     //vec_new(v); vec_sub(a2.p, a1.p, v);
                     float dot1 = VecCross(uu, vv);
-                    if (dot1 * dot1 < MathConstants.Epsilon)
+                    if (dot1 * dot1 < Constant.Epsilon)
                     {
                         ap.Erase(preb, preb.GetNext());
                         polya.Length--;

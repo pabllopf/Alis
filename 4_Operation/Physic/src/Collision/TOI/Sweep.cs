@@ -94,7 +94,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <summary>Normalize the angles.</summary>
         public void Normalize()
         {
-            float d = MathConstants.TwoPi * (float) Math.Floor(A0 / MathConstants.TwoPi);
+            float d = Constant.TwoPi * (float) Math.Floor(A0 / Constant.TwoPi);
             A0 -= d;
             A -= d;
         }

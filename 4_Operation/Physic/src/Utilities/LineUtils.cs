@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
@@ -111,7 +112,7 @@ namespace Alis.Core.Physic.Utilities
             float ua = (x4 - x3) * (y1 - y3) - (y4 - y3) * (x1 - x3);
             float ub = (x2 - x1) * (y1 - y3) - (y2 - y1) * (x1 - x3);
             float denom = (y4 - y3) * (x2 - x1) - (x4 - x3) * (y2 - y1);
-            if (Math.Abs(denom) < MathConstants.Epsilon)
+            if (Math.Abs(denom) < Constant.Epsilon)
             {
                 //Lines are too close to parallel to call
                 return false;
@@ -196,7 +197,7 @@ namespace Alis.Core.Physic.Utilities
             float denom = a * b - c * d;
 
             // if denominator is 0, then lines are parallel
-            if (!((denom >= -MathConstants.Epsilon) && (denom <= MathConstants.Epsilon)))
+            if (!((denom >= -Constant.Epsilon) && (denom <= Constant.Epsilon)))
             {
                 float e = point1.Y - point3.Y;
                 float f = point1.X - point3.X;

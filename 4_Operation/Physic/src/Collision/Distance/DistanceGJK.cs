@@ -123,7 +123,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 Vector2F d = simplex.GetSearchDirection();
 
                 // Ensure the search direction is numerically fit.
-                if (d.LengthSquared() < MathConstants.Epsilon * MathConstants.Epsilon)
+                if (d.LengthSquared() < Constant.Epsilon * Constant.Epsilon)
                 {
                     // The origin is probably contained by a line segment
                     // or triangle. Thus the shapes are overlapped.
@@ -186,7 +186,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 float rA = input.ProxyA.Radius;
                 float rB = input.ProxyB.Radius;
 
-                if ((output.Distance > rA + rB) && (output.Distance > MathConstants.Epsilon))
+                if ((output.Distance > rA + rB) && (output.Distance > Constant.Epsilon))
                 {
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.

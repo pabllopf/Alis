@@ -461,7 +461,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             EpAxis axis;
             axis.Type = EpAxisType.EdgeA;
             axis.Index = -1;
-            axis.Separation = -MathConstants.MaxFloat;
+            axis.Separation = -float.MaxValue;
             axis.Normal = Vector2F.Zero;
 
             Vector2F[] axes = {normal1, -normal1};
@@ -469,7 +469,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             // Find axis with least overlap (min-max problem)
             for (int j = 0; j < 2; ++j)
             {
-                float sj = MathConstants.MaxFloat;
+                float sj = float.MaxValue;
 
                 // Find deepest polygon vertex along axis j
                 for (int i = 0; i < polygonB.Count; ++i)
@@ -504,7 +504,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             EpAxis axis;
             axis.Type = EpAxisType.Unknown;
             axis.Index = -1;
-            axis.Separation = -MathConstants.MaxFloat;
+            axis.Separation = -float.MaxValue;
             axis.Normal = Vector2F.Zero;
 
             for (int i = 0; i < polygonB.Count; ++i)

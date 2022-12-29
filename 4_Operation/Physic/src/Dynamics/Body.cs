@@ -236,7 +236,7 @@ namespace Alis.Core.Physic.Dynamics
 
         /// <summary>Gets the total number revolutions the body has made.</summary>
         /// <value>The revolutions.</value>
-        public float Revolutions => Rotation / MathConstants.Pi;
+        public float Revolutions => Rotation / Constant.Pi;
 
         /// <summary>Gets or sets the body type. Warning: Calling this mid-update might cause a crash.</summary>
         /// <value>The type of body.</value>

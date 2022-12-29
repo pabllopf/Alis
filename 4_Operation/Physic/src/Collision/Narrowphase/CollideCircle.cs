@@ -86,7 +86,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
             // Find the min separating edge.
             int normalIndex = 0;
-            float separation = -MathConstants.MaxFloat;
+            float separation = -float.MaxValue;
             float radius = polygonA.RadiusPrivate + circleB.RadiusPrivate;
             int vertexCount = polygonA.VerticesPrivate.Count;
             Vertices vertices = polygonA.VerticesPrivate;
@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             Vector2F v2 = vertices[vertIndex2];
 
             // If the center is inside the polygon ...
-            if (separation < MathConstants.Epsilon)
+            if (separation < Constant.Epsilon)
             {
                 manifold.PointCount = 1;
                 manifold.Type = ManifoldType.FaceA;

@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
             DistanceGjk.ComputeDistance(ref input, out DistanceOutput output, out _);
 
-            return output.Distance < 10.0f * MathConstants.Epsilon;
+            return output.Distance < 10.0f * Constant.Epsilon;
         }
 
         /// <summary>

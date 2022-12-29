@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -252,7 +253,7 @@ namespace Alis.Core.Physic.Factories
         public static Fixture AttachLineArc(float radians, int sides, float radius, bool closed, Body body)
         {
             Vertices arc = PolygonUtils.CreateArc(radians, sides, radius);
-            arc.Rotate((MathConstants.Pi - radians) / 2);
+            arc.Rotate((Constant.Pi - radians) / 2);
             return closed ? AttachLoopShape(arc, body) : AttachChainShape(arc, body);
         }
 
@@ -268,7 +269,7 @@ namespace Alis.Core.Physic.Factories
         public static List<Fixture> AttachSolidArc(float density, float radians, int sides, float radius, Body body)
         {
             Vertices arc = PolygonUtils.CreateArc(radians, sides, radius);
-            arc.Rotate((MathConstants.Pi - radians) / 2);
+            arc.Rotate((Constant.Pi - radians) / 2);
 
             //Close the arc
             arc.Add(arc[0]);

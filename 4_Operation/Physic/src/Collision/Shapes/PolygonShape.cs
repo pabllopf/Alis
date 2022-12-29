@@ -228,7 +228,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 int i1 = i;
                 int i2 = i + 1 < VerticesPrivate.Count ? i + 1 : 0;
                 Vector2F edge = VerticesPrivate[i2] - VerticesPrivate[i1];
-                Debug.Assert(edge.LengthSquared() > MathConstants.Epsilon * MathConstants.Epsilon);
+                Debug.Assert(edge.LengthSquared() > Constant.Epsilon * Constant.Epsilon);
                 Vector2F temp = MathUtils.Cross(edge, 1.0f);
                 temp = Vector2F.Normalize(temp);
                 NormalsPrivate.Add(temp);
@@ -369,7 +369,7 @@ namespace Alis.Core.Physic.Collision.Shapes
             }
 
             //The area is too small for the engine to handle.
-            Debug.Assert(area > MathConstants.Epsilon);
+            Debug.Assert(area > Constant.Epsilon);
 
             // We save the area
             MassDataPrivate.Area = area;

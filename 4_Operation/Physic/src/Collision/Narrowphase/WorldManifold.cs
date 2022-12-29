@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                     normal = new Vector2F(1.0f, 0.0f);
                     Vector2F pointA = MathUtils.Mul(ref xfA, manifold.LocalPoint);
                     Vector2F pointB = MathUtils.Mul(ref xfB, manifold.Points.Value0.LocalPoint);
-                    if (Vector2F.DistanceSquared(pointA, pointB) > MathConstants.Epsilon * MathConstants.Epsilon)
+                    if (Vector2F.DistanceSquared(pointA, pointB) > Constant.Epsilon * Constant.Epsilon)
                     {
                         normal = pointB - pointA;
                         normal = Vector2F.Normalize(normal);

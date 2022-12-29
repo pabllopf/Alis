@@ -29,6 +29,7 @@
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -70,12 +71,12 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
             {
                 if (vertex.Equals(localEntryPoint))
                 {
-                    localEntryPoint -= new Vector2F(0, MathConstants.Epsilon);
+                    localEntryPoint -= new Vector2F(0, Constant.Epsilon);
                 }
 
                 if (vertex.Equals(localExitPoint))
                 {
-                    localExitPoint += new Vector2F(0, MathConstants.Epsilon);
+                    localExitPoint += new Vector2F(0, Constant.Epsilon);
                 }
             }
 
@@ -95,7 +96,7 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
 
                 //Find out if this vertex is on the old or new shape.
                 if (Vector2F.Dot(MathUtils.Cross(localExitPoint - localEntryPoint, 1), vertices[i] - localEntryPoint) >
-                    MathConstants.Epsilon)
+                    Constant.Epsilon)
                 {
                     n = 0;
                 }
@@ -162,7 +163,7 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
                     offset = Vector2F.One;
                 }
 
-                newPolygon[n][cutAdded[n]] += MathConstants.Epsilon * offset;
+                newPolygon[n][cutAdded[n]] += Constant.Epsilon * offset;
 
                 if (cutAdded[n] < newPolygon[n].Count - 2)
                 {
@@ -180,7 +181,7 @@ namespace Alis.Core.Physic.Tools.Cutting.Simple
                     offset = Vector2F.One;
                 }
 
-                newPolygon[n][cutAdded[n] + 1] += MathConstants.Epsilon * offset;
+                newPolygon[n][cutAdded[n] + 1] += Constant.Epsilon * offset;
             }
 
             first = newPolygon[0];

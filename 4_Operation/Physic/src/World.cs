@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.Broadphase;
@@ -674,7 +675,7 @@ namespace Alis.Core.Physic
         public List<Fixture> TestPointAll(Vector2F point)
         {
             Aabb aabb;
-            Vector2F d = new Vector2F(MathConstants.Epsilon, MathConstants.Epsilon);
+            Vector2F d = new Vector2F(Constant.Epsilon, Constant.Epsilon);
             aabb.LowerBound = point - d;
             aabb.UpperBound = point + d;
 
@@ -1204,7 +1205,7 @@ namespace Alis.Core.Physic
                     }
                 }
 
-                if (minContact == null || 1.0f - 10.0f * MathConstants.Epsilon < minAlpha)
+                if (minContact == null || 1.0f - 10.0f * Constant.Epsilon < minAlpha)
                 {
                     // No more TOI events. Done!
                     stepComplete = true;

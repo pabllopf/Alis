@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Collision
             float sigma = c * c - rr * b;
 
             // Check for negative discriminant and short segment.
-            if (sigma < 0.0f || rr < MathConstants.Epsilon)
+            if (sigma < 0.0f || rr < Constant.Epsilon)
             {
                 return false;
             }

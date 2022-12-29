@@ -364,14 +364,14 @@ namespace Alis.Core.Physic.Utilities
             double theta2 = Math.Atan2(p2.Y, p2.X);
             double dtheta = theta2 - theta1;
 
-            while (dtheta > MathConstants.Pi)
+            while (dtheta > Constant.Pi)
             {
-                dtheta -= MathConstants.TwoPi;
+                dtheta -= Constant.TwoPi;
             }
 
-            while (dtheta < -MathConstants.Pi)
+            while (dtheta < -Constant.Pi)
             {
-                dtheta += MathConstants.TwoPi;
+                dtheta += Constant.TwoPi;
             }
 
             return dtheta;
@@ -425,7 +425,7 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="value2">The value</param>
         /// <returns>The bool</returns>
         public static bool FloatEquals(float value1, float value2) =>
-            Math.Abs(value1 - value2) <= MathConstants.Epsilon;
+            Math.Abs(value1 - value2) <= Constant.Epsilon;
 
         /// <summary>Checks if a floating point Value is equal to another, within a certain tolerance.</summary>
         /// <returns>True if the values are "equal", false otherwise.</returns>
@@ -536,7 +536,7 @@ namespace Alis.Core.Physic.Utilities
         public static float Normalize(ref Vector2F v)
         {
             float length = v.Length();
-            if (length < MathConstants.Epsilon)
+            if (length < Constant.Epsilon)
             {
                 return 0.0f;
             }

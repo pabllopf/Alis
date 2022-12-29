@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Collision.Shapes;
@@ -83,7 +84,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         public bool IgnoreWhenInsideShape = false;
 
         /// <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
-        public float MaxAngle = MathConstants.Pi / 15;
+        public float MaxAngle = Constant.Pi / 15;
 
         /// <summary>Maximum number of shapes involved in the explosion. Defaults to 100</summary>
         public int MaxShapes = 100;
@@ -103,7 +104,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         }
 
         /// <summary>Two degrees: maximum angle from edges to first ray tested</summary>
-        private const float MaxEdgeOffset = MathConstants.Pi / 90;
+        private const float MaxEdgeOffset = Constant.Pi / 90;
 
         /// <summary>Activate the explosion at the specified position.</summary>
         /// <param name="pos">The position where the explosion happens </param>
@@ -194,18 +195,18 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                         float newAngle = (float) Math.Atan2(toVertex.Y, toVertex.X);
                         float diff = newAngle - angleToCentroid;
 
-                        diff = (diff - MathConstants.Pi) % (2 * MathConstants.Pi);
+                        diff = (diff - Constant.Pi) % (2 * Constant.Pi);
 
                         // the minus pi is important. It means cutoff for going other direction is at 180 deg where it needs to be
 
                         if (diff < 0.0f)
                         {
-                            diff += 2 * MathConstants.Pi; // correction for not handling negs
+                            diff += 2 * Constant.Pi; // correction for not handling negs
                         }
 
-                        diff -= MathConstants.Pi;
+                        diff -= Constant.Pi;
 
-                        if (Math.Abs(diff) > MathConstants.Pi)
+                        if (Math.Abs(diff) > Constant.Pi)
                         {
                             continue; // Something's wrong, point not in shape but exists angle diff > 180
                         }
@@ -248,7 +249,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                 if (i == valIndex - 1)
                 {
                     // the single edgecase
-                    midpt = vals[0] + MathConstants.Pi * 2 + vals[i];
+                    midpt = vals[0] + Constant.Pi * 2 + vals[i];
                 }
                 else
                 {
@@ -307,7 +308,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                         data[0] = fi;
                         while (data.First().Min >= data.First().Max)
                         {
-                            fi.Min -= MathConstants.Pi * 2;
+                            fi.Min -= Constant.Pi * 2;
                             data[0] = fi;
                         }
                     }
@@ -317,7 +318,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                     while ((data.Count > 0)
                            && (data.Last().Min >= data.Last().Max)) // just making sure min<max
                     {
-                        last.Min = data.Last().Min - 2 * MathConstants.Pi;
+                        last.Min = data.Last().Min - 2 * Constant.Pi;
                         data[lastPos] = last;
                     }
 
@@ -379,7 +380,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
                         // the force that is to be applied for this particular ray.
                         // offset is angular coverage. lambda*length of segment is distance.
-                        float impulse = arclen / (MinRays + insertedRays) * maxForce * 180.0f / MathConstants.Pi *
+                        float impulse = arclen / (MinRays + insertedRays) * maxForce * 180.0f / Constant.Pi *
                                         (1.0f - Math.Min(1.0f, minlambda));
 
                         // We Apply the impulse!!!
@@ -416,7 +417,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                     continue;
                 }
 
-                float impulse = MinRays * maxForce * 180.0f / MathConstants.Pi;
+                float impulse = MinRays * maxForce * 180.0f / Constant.Pi;
                 Vector2F hitPoint;
 
                 if (fix.Shape is CircleShape circShape)
