@@ -106,8 +106,7 @@ namespace Alis.Core.Physic.Tools.PathGenerator
             for (int i = 0; i < centers.Count; i++)
             {
                 // copy the type from original body
-                Body b = BodyFactory.CreateBody(world, new Vector2F(centers[i].X, centers[i].Y), centers[i].Z, type,
-                    userData);
+                Body b = BodyFactory.CreateBody(world, new Vector2F(centers[i].X, centers[i].Y), centers[i].Z, type);
 
                 foreach (Shape shape in shapes)
                 {

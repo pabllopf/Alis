@@ -32,7 +32,6 @@ using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.Triangulation.TriangulationBase;
@@ -52,20 +51,16 @@ namespace Alis.Core.Physic.Factories
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
         /// <param name="bodyType">The body type</param>
-        /// <param name="userData">The user data</param>
         /// <returns>The body</returns>
         public static Body CreateBody(World world, Vector2F position = new Vector2F(), float rotation = 0,
-            BodyType bodyType = BodyType.Static, object userData = null)
+            BodyType bodyType = BodyType.Static)
         {
-            BodyDef def = new BodyDef
-            {
-                Position = position,
-                Angle = rotation,
-                Type = bodyType,
-                UserData = userData
-            };
-
-            return CreateFromDef(world, def);
+            return CreateFromDef(world, new Body(
+                position,
+                Vector2F.Zero,
+                bodyType,
+                rotation
+                ));
         }
 
         /// <summary>
@@ -79,8 +74,6 @@ namespace Alis.Core.Physic.Factories
         public static Body CreateEdge(World world, Vector2F start, Vector2F end, object userData = null)
         {
             Body body = CreateBody(world);
-            body.UserData = userData;
-
             FixtureFactory.AttachEdge(start, end, body);
             return body;
         }
@@ -97,7 +90,6 @@ namespace Alis.Core.Physic.Factories
             object userData = null)
         {
             Body body = CreateBody(world, position);
-            body.UserData = userData;
 
             FixtureFactory.AttachChainShape(vertices, body);
             return body;
@@ -115,8 +107,6 @@ namespace Alis.Core.Physic.Factories
             object userData = null)
         {
             Body body = CreateBody(world, position);
-            body.UserData = userData;
-
             FixtureFactory.AttachLoopShape(vertices, body);
             return body;
         }
@@ -149,7 +139,7 @@ namespace Alis.Core.Physic.Factories
                 throw new ArgumentOutOfRangeException(nameof(height), @"Height must be more than 0 meters");
             }
 
-            Body body = CreateBody(world, position, rotation, bodyType, userData);
+            Body body = CreateBody(world, position, rotation, bodyType);
 
             Vertices rectangleVertices = PolygonUtils.CreateRectangle(width / 2, height / 2);
             FixtureFactory.AttachPolygon(rectangleVertices, density, body);
@@ -170,7 +160,7 @@ namespace Alis.Core.Physic.Factories
         public static Body CreateCircle(World world, float radius, float density, Vector2F position = new Vector2F(),
             BodyType bodyType = BodyType.Static, object userData = null)
         {
-            Body body = CreateBody(world, position, 0, bodyType, userData);
+            Body body = CreateBody(world, position, 0, bodyType);
             FixtureFactory.AttachCircle(radius, density, body);
             return body;
         }
@@ -192,7 +182,7 @@ namespace Alis.Core.Physic.Factories
             Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null)
         {
-            Body body = CreateBody(world, position, rotation, bodyType, userData);
+            Body body = CreateBody(world, position, rotation, bodyType);
             FixtureFactory.AttachEllipse(xRadius, yRadius, edges, density, body);
             return body;
         }
@@ -212,7 +202,7 @@ namespace Alis.Core.Physic.Factories
             Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null)
         {
-            Body body = CreateBody(world, position, rotation, bodyType, userData);
+            Body body = CreateBody(world, position, rotation, bodyType);
             FixtureFactory.AttachPolygon(vertices, density, body);
             return body;
         }
@@ -233,7 +223,7 @@ namespace Alis.Core.Physic.Factories
             object userData = null!)
         {
             //We create a single body
-            Body body = CreateBody(world, position, rotation, bodyType, userData);
+            Body body = CreateBody(world, position, rotation, bodyType);
             FixtureFactory.AttachCompoundPolygon(list, density, body);
             return body;
         }
@@ -388,7 +378,7 @@ namespace Alis.Core.Physic.Factories
             Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null!)
         {
-            Body body = CreateBody(world, position, rotation, bodyType, userData);
+            Body body = CreateBody(world, position, rotation, bodyType);
             FixtureFactory.AttachLineArc(radians, sides, radius, closed, body);
             return body;
         }
@@ -410,7 +400,7 @@ namespace Alis.Core.Physic.Factories
             Vector2F position = new Vector2F(), float rotation = 0, BodyType bodyType = BodyType.Static,
             object userData = null!)
         {
-            Body body = CreateBody(world, position, rotation, bodyType, userData);
+            Body body = CreateBody(world, position, rotation, bodyType);
             FixtureFactory.AttachSolidArc(density, radians, sides, radius, body);
 
             return body;
@@ -459,11 +449,10 @@ namespace Alis.Core.Physic.Factories
         /// <param name="world">The world</param>
         /// <param name="def">The def</param>
         /// <returns>The body</returns>
-        public static Body CreateFromDef(World world, BodyDef def)
+        public static Body CreateFromDef(World world, Body def)
         {
-            Body body = new Body(def);
-            world.AddBody(body);
-            return body;
+            world.AddBody(def);
+            return def;
         }
     }
 }

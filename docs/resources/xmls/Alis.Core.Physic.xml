@@ -2905,81 +2905,6 @@
         <member name="M:Alis.Core.Physic.Config.Settings.DefaultMixRestitutionThreshold(System.Single,System.Single)">
             <summary>Restitution mixing law. This picks the lowest value.</summary>
         </member>
-        <member name="T:Alis.Core.Physic.Definitions.BodyDef">
-            <summary>
-                The body def class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Definitions.IDef" />
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.BodyDef.#ctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Definitions.BodyDef" /> class
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.Awake">
-            <summary>Is this body initially awake or sleeping?</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.Enabled">
-            <summary>Does this body start out active?</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.IsBullet">
-            <summary>
-                Is this a fast moving body that should be prevented from tunneling through other moving bodies? Note that all
-                bodies are prevented from tunneling through kinematic and static bodies. This setting is only considered on dynamic
-                bodies.
-                <remarks>Warning: You should use this flag sparingly since it increases processing time.</remarks>
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.AllowSleep">
-            <summary>
-                Set this flag to false if this body should never fall asleep.
-                <remarks>Note: Setting this to false increases CPU usage.</remarks>
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.Angle">
-            <summary>The world angle of the body in radians.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.AngularDamping">
-            <summary>
-                Angular damping is use to reduce the angular velocity. The damping parameter can be larger than 1.0f but the
-                damping effect becomes sensitive to the time step when the damping parameter is large.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.AngularVelocity">
-            <summary>The angular velocity of the body.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.GravityScale">
-            <summary>Scale the gravity applied to this body.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.LinearDamping">
-            <summary>
-                Linear damping is use to reduce the linear velocity. The damping parameter can be larger than 1.0f but the
-                damping effect becomes sensitive to the time step when the damping parameter is large.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.LinearVelocity">
-            <summary>The linear velocity of the body's origin in world co-ordinates.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.Position">
-            <summary>The world position of the body.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.Type">
-            <summary>
-                Set the type of body
-                <remarks>Note: if a dynamic body would have zero mass, the mass is set to one.</remarks>
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.UserData">
-            <summary>Use this to store application specific body data.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Definitions.BodyDef.FixedRotation">
-            <summary>Should this body be prevented from rotating? Useful for characters.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Definitions.BodyDef.SetDefaults">
-            <summary>
-                Sets the defaults
-            </summary>
-        </member>
         <member name="T:Alis.Core.Physic.Definitions.IDef">
             <summary>
                 The def interface
@@ -3587,11 +3512,6 @@
                 The body class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.angularDamping">
-            <summary>
-                The angular damping
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.angularVelocity">
             <summary>
                 The angular velocity
@@ -3600,11 +3520,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Body.inertia">
             <summary>
                 The inertia
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.linearDamp">
-            <summary>
-                The linear damping
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.linearVelc">
@@ -3646,11 +3561,23 @@
                 The xf
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.#ctor(Alis.Core.Physic.Definitions.BodyDef)">
+        <member name="M:Alis.Core.Physic.Dynamics.Body.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Dynamics.BodyType,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Single)">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Body" /> class
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Body"/> class
             </summary>
-            <param name="def">The def</param>
+            <param name="position">The position</param>
+            <param name="linearVelocity">The linear velocity</param>
+            <param name="bodyType">The body type</param>
+            <param name="angle">The angle</param>
+            <param name="angularVelocity">The angular velocity</param>
+            <param name="linearDamping">The linear damping</param>
+            <param name="angularDamping">The angular damping</param>
+            <param name="allowSleep">The allow sleep</param>
+            <param name="awake">The awake</param>
+            <param name="fixedRotation">The fixed rotation</param>
+            <param name="isBullet">The is bullet</param>
+            <param name="enabled">The enabled</param>
+            <param name="gravityScale">The gravity scale</param>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Body.Flags">
             <summary>
@@ -3707,10 +3634,6 @@
                 Scale the gravity applied to this body. Defaults to 1. A value of 2 means double the gravity is applied to
                 this body.
             </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Body.UserData">
-            <summary>Set the user data. Use this to store your application specific data.</summary>
-            <value>The user data.</value>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Body.Revolutions">
             <summary>Gets the total number revolutions the body has made.</summary>
@@ -8517,7 +8440,7 @@
                 The body factory class
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBody(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType,System.Object)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateBody(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,Alis.Core.Physic.Dynamics.BodyType)">
             <summary>
                 Creates the body using the specified world
             </summary>
@@ -8525,7 +8448,6 @@
             <param name="position">The position</param>
             <param name="rotation">The rotation</param>
             <param name="bodyType">The body type</param>
-            <param name="userData">The user data</param>
             <returns>The body</returns>
         </member>
         <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateEdge(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Object)">
@@ -8742,7 +8664,7 @@
             <param name="rotation">The rotation</param>
             <returns>The breakable body</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateFromDef(Alis.Core.Physic.World,Alis.Core.Physic.Definitions.BodyDef)">
+        <member name="M:Alis.Core.Physic.Factories.BodyFactory.CreateFromDef(Alis.Core.Physic.World,Alis.Core.Physic.Dynamics.Body)">
             <summary>
                 Creates the from def using the specified world
             </summary>

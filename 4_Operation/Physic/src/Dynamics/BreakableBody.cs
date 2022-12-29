@@ -202,8 +202,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 MainBody.RemoveFixture(oldFixture);
 
-                Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic,
-                    MainBody.UserData);
+                Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
 
                 Fixture newFixture = body.AddFixture(shape);
                 //newFixture.UserData = userData;

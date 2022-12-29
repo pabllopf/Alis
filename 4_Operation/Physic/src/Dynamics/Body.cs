@@ -50,11 +50,6 @@ namespace Alis.Core.Physic.Dynamics
     public class Body
     {
         /// <summary>
-        ///     The angular damping
-        /// </summary>
-        private float angularDamping;
-
-        /// <summary>
         ///     The angular velocity
         /// </summary>
         private float angularVelocity;
@@ -63,11 +58,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     The inertia
         /// </summary>
         private float inertia;
-
-        /// <summary>
-        ///     The linear damping
-        /// </summary>
-        private float linearDamp;
 
         /// <summary>
         ///     The linear velocity
@@ -108,60 +98,85 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal Transform Xf; // the body origin transform
 
+        
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Body" /> class
+        /// Initializes a new instance of the <see cref="Body"/> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public Body(BodyDef def)
+        /// <param name="position">The position</param>
+        /// <param name="linearVelocity">The linear velocity</param>
+        /// <param name="bodyType">The body type</param>
+        /// <param name="angle">The angle</param>
+        /// <param name="angularVelocity">The angular velocity</param>
+        /// <param name="linearDamping">The linear damping</param>
+        /// <param name="angularDamping">The angular damping</param>
+        /// <param name="allowSleep">The allow sleep</param>
+        /// <param name="awake">The awake</param>
+        /// <param name="fixedRotation">The fixed rotation</param>
+        /// <param name="isBullet">The is bullet</param>
+        /// <param name="enabled">The enabled</param>
+        /// <param name="gravityScale">The gravity scale</param>
+        public Body(
+            Vector2F position,
+            Vector2F linearVelocity,
+            BodyType bodyType = BodyType.Static,
+            float angle = 0.0f,
+            float angularVelocity = 0.0f,
+            float linearDamping = 0.0f,
+            float angularDamping = 0.0f,
+            bool allowSleep = true,
+            bool awake = true,
+            bool fixedRotation = false,
+            bool isBullet = false,
+            bool enabled = true,
+            float gravityScale = 1.0f
+        )
         {
             FixtureList = new List<Fixture>(1);
 
-            if (def.IsBullet)
+            if (isBullet)
             {
                 Flags |= BodyFlags.BulletFlag;
             }
 
-            if (def.FixedRotation)
+            if (fixedRotation)
             {
                 Flags |= BodyFlags.FixedRotationFlag;
             }
 
-            if (def.AllowSleep)
+            if (allowSleep)
             {
                 Flags |= BodyFlags.AutoSleepFlag;
             }
 
-            if (def.Awake)
+            if (awake)
             {
                 Flags |= BodyFlags.AwakeFlag;
             }
 
-            if (def.Enabled)
+            if (enabled)
             {
                 Flags |= BodyFlags.Enabled;
             }
 
-            Xf.Position = def.Position;
-            Xf.Rotation.Set(def.Angle);
+            Xf.Position = position;
+            Xf.Rotation.Set(angle);
 
             Sweep.C0 = Xf.Position;
             Sweep.C = Xf.Position;
-            Sweep.A0 = def.Angle;
-            Sweep.A = def.Angle;
+            Sweep.A0 = angle;
+            Sweep.A = angle;
 
-            LinearVelocity = def.LinearVelocity;
-            AngularVelocity = def.AngularVelocity;
+            LinearVelocity = linearVelocity;
+            AngularVelocity = angularVelocity;
 
-            linearDamp = def.LinearDamping;
-            angularDamping = def.AngularDamping;
-            GravityScale = def.GravityScale;
+            LinearDamping = linearDamping;
+            this.AngularDamping = angularDamping;
+            GravityScale = gravityScale;
 
-            Type = def.Type;
+            Type = bodyType;
 
             mass = 0.0f;
             InvMass = 0.0f;
-
-            UserData = def.UserData;
         }
 
         /// <summary>
@@ -219,10 +234,6 @@ namespace Alis.Core.Physic.Dynamics
         ///     this body.
         /// </summary>
         public float GravityScale { get; set; }
-
-        /// <summary>Set the user data. Use this to store your application specific data.</summary>
-        /// <value>The user data.</value>
-        public object UserData { get; set; }
 
         /// <summary>Gets the total number revolutions the body has made.</summary>
         /// <value>The revolutions.</value>
@@ -337,19 +348,11 @@ namespace Alis.Core.Physic.Dynamics
 
         /// <summary>Gets or sets the linear damping.</summary>
         /// <value>The linear damping.</value>
-        public float LinearDamping
-        {
-            get => linearDamp;
-            set => linearDamp = value;
-        }
+        public float LinearDamping { get; set; }
 
         /// <summary>Gets or sets the angular damping.</summary>
         /// <value>The angular damping.</value>
-        public float AngularDamping
-        {
-            get => angularDamping;
-            set => angularDamping = value;
-        }
+        public float AngularDamping { get; set; }
 
         /// <summary>Gets or sets a value indicating whether this body should be included in the CCD solver.</summary>
         /// <value><c>true</c> if this instance is included in CCD; otherwise, <c>false</c>.</value>
@@ -540,8 +543,6 @@ namespace Alis.Core.Physic.Dynamics
             get => Sweep.A;
             set
             {
-                //Debug.Assert(!float.IsNaN(value));
-
                 SetTransform(ref Xf.Position, value);
             }
         }
