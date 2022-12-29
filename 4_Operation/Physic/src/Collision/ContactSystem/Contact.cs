@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Narrowphase;
@@ -593,8 +592,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             ShapeType type1 = fixtureA.Shape.ShapeType;
             ShapeType type2 = fixtureB.Shape.ShapeType;
 
-            Debug.Assert((ShapeType.Unknown < type1) && (type1 < ShapeType.TypeCount));
-            Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
+            //Debug.Assert((ShapeType.Unknown < type1) && (type1 < ShapeType.TypeCount));
+            //Debug.Assert((ShapeType.Unknown < type2) && (type2 < ShapeType.TypeCount));
 
             Contact c;
             Queue<Contact> pool = fixtureA.Body.World.ContactPool;
@@ -635,7 +634,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void Destroy()
         {
-            //Debug.Assert(_initialized);
+            ////Debug.Assert(_initialized);
 
             //Fixture fixtureA = _fixtureA;
             //Fixture fixtureB = _fixtureB;
@@ -649,8 +648,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             //b2Shape::Type typeA = fixtureA->GetType();
             //b2Shape::Type typeB = fixtureB->GetType();
 
-            //Debug.Assert(0 <= typeA && typeA < b2Shape::e_typeCount);
-            //Debug.Assert(0 <= typeB && typeB < b2Shape::e_typeCount);
+            ////Debug.Assert(0 <= typeA && typeA < b2Shape::e_typeCount);
+            ////Debug.Assert(0 <= typeB && typeB < b2Shape::e_typeCount);
 
             FixtureA.Body.World.ContactPool.Enqueue(this);
 

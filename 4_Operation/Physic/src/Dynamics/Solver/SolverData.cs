@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Time;
+
 namespace Alis.Core.Physic.Dynamics.Solver
 {
     /// <summary>

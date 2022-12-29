@@ -6734,7 +6734,7 @@
                 The velocity constraints
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.Reset(Alis.Core.Physic.Dynamics.TimeStep,System.Int32,Alis.Core.Physic.Collision.ContactSystem.Contact[],Alis.Core.Physic.Dynamics.Solver.Position[],Alis.Core.Physic.Dynamics.Solver.Velocity[])">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.Reset(Alis.Core.Aspect.Time.TimeStep,System.Int32,Alis.Core.Physic.Collision.ContactSystem.Contact[],Alis.Core.Physic.Dynamics.Solver.Position[],Alis.Core.Physic.Dynamics.Solver.Velocity[])">
             <summary>
                 Resets the step
             </summary>
@@ -6963,7 +6963,7 @@
                 Clears this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Physic.Dynamics.Profile@,Alis.Core.Physic.Dynamics.TimeStep@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Physic.Dynamics.Profile@,Alis.Core.Aspect.Time.TimeStep@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Boolean)">
             <summary>
                 Solves the profile
             </summary>
@@ -6972,7 +6972,7 @@
             <param name="gravity">The gravity</param>
             <param name="allowSleep">The allow sleep</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(Alis.Core.Physic.Dynamics.TimeStep@,System.Int32,System.Int32)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(Alis.Core.Aspect.Time.TimeStep@,System.Int32,System.Int32)">
             <summary>
                 Solves the toi using the specified sub step
             </summary>
@@ -7105,33 +7105,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.VelocityBias">
             <summary>
                 The velocity bias
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Dynamics.TimeStep">
-            <summary>This is an internal class.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.DeltaTime">
-            <summary>Time step (Delta time)</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.DeltaTimeRatio">
-            <summary>dt * inv_dt0</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.InvertedDeltaTime">
-            <summary>Inverse time step (0 if dt == 0).</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.PositionIterations">
-            <summary>
-                The position iterations
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.VelocityIterations">
-            <summary>
-                The velocity iterations
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.TimeStep.WarmStarting">
-            <summary>
-                The warm starting
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController">
@@ -14108,13 +14081,13 @@
             <param name="proxyId">The proxy id</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.Solve(Alis.Core.Physic.Dynamics.TimeStep@)">
+        <member name="M:Alis.Core.Physic.World.Solve(Alis.Core.Aspect.Time.TimeStep@)">
             <summary>
                 Solves the step
             </summary>
             <param name="step">The step</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.SolveToi(Alis.Core.Physic.Dynamics.TimeStep@)">
+        <member name="M:Alis.Core.Physic.World.SolveToi(Alis.Core.Aspect.Time.TimeStep@)">
             <summary>
                 Solves the toi using the specified step
             </summary>
