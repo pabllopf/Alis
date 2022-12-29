@@ -198,7 +198,7 @@ namespace Alis.Core.Physic.Dynamics
                 Fixture oldFixture = Parts[i];
 
                 Shape shape = oldFixture.Shape.Clone();
-                object userData = oldFixture.UserData;
+                //object userData = oldFixture.UserData;
 
                 MainBody.RemoveFixture(oldFixture);
 
@@ -206,7 +206,7 @@ namespace Alis.Core.Physic.Dynamics
                     MainBody.UserData);
 
                 Fixture newFixture = body.AddFixture(shape);
-                newFixture.UserData = userData;
+                //newFixture.UserData = userData;
                 Parts[i] = newFixture;
 
                 body.AngularVelocity = angularVelocitiesCache[i];

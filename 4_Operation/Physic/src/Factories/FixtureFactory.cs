@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Definitions;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.Triangulation.TriangulationBase;
@@ -54,7 +53,7 @@ namespace Alis.Core.Physic.Factories
         {
             EdgeShape edgeShape = new EdgeShape(start, end);
             Fixture f = body.AddFixture(edgeShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -69,7 +68,7 @@ namespace Alis.Core.Physic.Factories
         {
             ChainShape shape = new ChainShape(vertices);
             Fixture f = body.AddFixture(shape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -84,7 +83,7 @@ namespace Alis.Core.Physic.Factories
         {
             ChainShape shape = new ChainShape(vertices, true);
             Fixture f = body.AddFixture(shape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -105,7 +104,7 @@ namespace Alis.Core.Physic.Factories
             rectangleVertices.Translate(ref offset);
             PolygonShape rectangleShape = new PolygonShape(rectangleVertices, density);
             Fixture f = body.AddFixture(rectangleShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -127,7 +126,7 @@ namespace Alis.Core.Physic.Factories
 
             CircleShape circleShape = new CircleShape(radius, density);
             Fixture f = body.AddFixture(circleShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -154,7 +153,7 @@ namespace Alis.Core.Physic.Factories
                 Position = offset
             };
             Fixture f = body.AddFixture(circleShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -176,7 +175,7 @@ namespace Alis.Core.Physic.Factories
 
             PolygonShape polygon = new PolygonShape(vertices, density);
             Fixture f = body.AddFixture(polygon);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -208,7 +207,7 @@ namespace Alis.Core.Physic.Factories
             Vertices ellipseVertices = PolygonUtils.CreateEllipse(xRadius, yRadius, edges);
             PolygonShape polygonShape = new PolygonShape(ellipseVertices, density);
             Fixture f = body.AddFixture(polygonShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -283,8 +282,8 @@ namespace Alis.Core.Physic.Factories
         ///     Creates the from def using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        /// <param name="fixtureDef">The fixture def</param>
+        /// <param name="fixture">The fixture def</param>
         /// <returns>The fixture</returns>
-        public static Fixture CreateFromDef(Body body, FixtureDef fixtureDef) => body.AddFixture(fixtureDef);
+        public static Fixture CreateFromDef(Body body, Fixture fixture) => body.AddFixture(fixture);
     }
 }

@@ -915,15 +915,23 @@
                 The
             </summary>
         </member>
+        <member name="F:Alis.Core.Aspect.Math.Transform.Scale">
+            <summary>
+            The scale
+            </summary>
+        </member>
         <member name="F:Alis.Core.Aspect.Math.Transform.Rotation">
             <summary>
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Transform.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Rotation)">
-            <summary>Initialize using a position vector and a rotation matrix.</summary>
-            <param name="position">The position.</param>
-            <param name="rotation">The r.</param>
+        <member name="M:Alis.Core.Aspect.Math.Transform.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Rotation,Alis.Core.Aspect.Math.Vector.Vector2F)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Math.Transform"/> class
+            </summary>
+            <param name="position">The position</param>
+            <param name="rotation">The rotation</param>
+            <param name="scale">The scale</param>
         </member>
         <member name="M:Alis.Core.Aspect.Math.Transform.SetIdentity">
             <summary>Set this to the identity transform.</summary>

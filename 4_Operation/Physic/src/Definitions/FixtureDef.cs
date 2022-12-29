@@ -32,6 +32,7 @@ using Alis.Core.Physic.Collision.Shapes;
 
 namespace Alis.Core.Physic.Definitions
 {
+    /*
     /// <summary>
     ///     The fixture def class
     /// </summary>
@@ -83,5 +84,5 @@ namespace Alis.Core.Physic.Definitions
             IsSensor = false;
             Filter = new Filter();
         }
-    }
+    }*/
 }

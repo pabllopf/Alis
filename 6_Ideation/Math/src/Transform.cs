@@ -43,17 +43,26 @@ namespace Alis.Core.Aspect.Math
         public Vector2F Position;
 
         /// <summary>
+        /// The scale
+        /// </summary>
+        public Vector2F Scale;
+
+        /// <summary>
         ///     The
         /// </summary>
         public Rotation Rotation;
-
-        /// <summary>Initialize using a position vector and a rotation matrix.</summary>
-        /// <param name="position">The position.</param>
-        /// <param name="rotation">The r.</param>
-        public Transform(Vector2F position, Rotation rotation)
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Transform"/> class
+        /// </summary>
+        /// <param name="position">The position</param>
+        /// <param name="rotation">The rotation</param>
+        /// <param name="scale">The scale</param>
+        public Transform(Vector2F position, Rotation rotation, Vector2F scale)
         {
             Position = position;
             Rotation = rotation;
+            Scale = scale;
         }
 
         /// <summary>Set this to the identity transform.</summary>

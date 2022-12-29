@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Broadphase;
@@ -236,7 +235,7 @@ namespace Alis.Core.Physic.Dynamics
             get => Type;
             set
             {
-                Debug.Assert(!World.IsLocked);
+                //Debug.Assert(!World.IsLocked);
                 if (World.IsLocked)
                 {
                     return;
@@ -297,7 +296,7 @@ namespace Alis.Core.Physic.Dynamics
             get => linearVelc;
             set
             {
-                Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
+                //Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
 
                 if (Type == BodyType.Static)
                 {
@@ -320,7 +319,7 @@ namespace Alis.Core.Physic.Dynamics
             get => angularVelocity;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
+                //Debug.Assert(!float.IsNaN(value));
 
                 if (Type == BodyType.Static)
                 {
@@ -433,7 +432,7 @@ namespace Alis.Core.Physic.Dynamics
 
             set
             {
-                Debug.Assert(!World.IsLocked);
+                //Debug.Assert(!World.IsLocked);
 
                 if (value == Enabled)
                 {
@@ -528,7 +527,7 @@ namespace Alis.Core.Physic.Dynamics
             get => Xf.Position;
             set
             {
-                Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
+                //Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
 
                 SetTransform(ref value, Sweep.A);
             }
@@ -541,7 +540,7 @@ namespace Alis.Core.Physic.Dynamics
             get => Sweep.A;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
+                //Debug.Assert(!float.IsNaN(value));
 
                 SetTransform(ref Xf.Position, value);
             }
@@ -604,7 +603,7 @@ namespace Alis.Core.Physic.Dynamics
             get => mass;
             set
             {
-                Debug.Assert(!float.IsNaN(value));
+                //Debug.Assert(!float.IsNaN(value));
 
                 if (Type != BodyType.Dynamic)
                 {
@@ -630,7 +629,7 @@ namespace Alis.Core.Physic.Dynamics
             get => inertia + mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
             set
             {
-                Debug.Assert(!float.IsNaN(value));
+                //Debug.Assert(!float.IsNaN(value));
 
                 if (Type != BodyType.Dynamic)
                 {
@@ -641,7 +640,7 @@ namespace Alis.Core.Physic.Dynamics
                 if ((value > 0.0f) && !FixedRotation)
                 {
                     inertia = value - mass * Vector2F.Dot(Sweep.LocalCenter, Sweep.LocalCenter);
-                    Debug.Assert(inertia > 0.0f);
+                    //Debug.Assert(inertia > 0.0f);
                     InvI = 1.0f / inertia;
                 }
             }
@@ -795,16 +794,14 @@ namespace Alis.Core.Physic.Dynamics
         ///     the mass of the body. Contacts are not created until the next time step. Warning: This function is locked during
         ///     callbacks.
         /// </summary>
-        public Fixture AddFixture(FixtureDef def)
+        public Fixture AddFixture(Fixture fixture)
         {
-            Debug.Assert(!World.IsLocked);
+            //Debug.Assert(!World.IsLocked);
             if (World.IsLocked)
             {
                 return null;
             }
-
-            Fixture fixture = new Fixture(def);
-
+            
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
                 IBroadPhase broadPhase = World.ContactManager.BroadPhase;
@@ -813,10 +810,10 @@ namespace Alis.Core.Physic.Dynamics
 
             FixtureList.Add(fixture);
 
-            fixture.Bodyprivate = this;
+            fixture.Body = this;
 
             // Adjust mass properties if needed.
-            if (fixture.ShapePrivate.DensityPrivate > 0.0f)
+            if (fixture.Shape.DensityPrivate > 0.0f)
             {
                 ResetMassData();
             }
@@ -836,18 +833,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public Fixture AddFixture(Shape shape)
         {
-            Debug.Assert(!World.IsLocked);
-            if (World.IsLocked)
-            {
-                return null;
-            }
-
-            FixtureDef template = new FixtureDef
-            {
-                Shape = shape
-            };
-
-            return AddFixture(template);
+            return World.IsLocked ? null : AddFixture(new Fixture(shape, new Filter()));
         }
 
         /// <summary>
@@ -861,7 +847,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="fixture">The fixture to be removed.</param>
         public void RemoveFixture(Fixture fixture)
         {
-            Debug.Assert(!World.IsLocked);
+            //Debug.Assert(!World.IsLocked);
             if (World.IsLocked)
             {
                 return;
@@ -872,13 +858,13 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            Debug.Assert(fixture.Body == this);
+            //Debug.Assert(fixture.Body == this);
 
             // Remove the fixture from this body's singly linked list.
-            Debug.Assert(FixtureList.Count > 0);
+            //Debug.Assert(FixtureList.Count > 0);
 
             // You tried to remove a fixture that not present in the fixturelist.
-            Debug.Assert(FixtureList.Contains(fixture));
+            //Debug.Assert(FixtureList.Contains(fixture));
 
             // Destroy any contacts associated with the fixture.
             ContactEdge edge = ContactList;
@@ -906,7 +892,7 @@ namespace Alis.Core.Physic.Dynamics
 
             FixtureList.Remove(fixture);
             fixture.Destroy();
-            fixture.Bodyprivate = null;
+            fixture.Body = null;
 
             ResetMassData();
         }
@@ -930,7 +916,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="rotation">The world rotation in radians.</param>
         public void SetTransform(ref Vector2F position, float rotation)
         {
-            Debug.Assert(!World.IsLocked);
+            //Debug.Assert(!World.IsLocked);
             if (World.IsLocked)
             {
                 return;
@@ -995,10 +981,10 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="point">The world position of the point of application.</param>
         public void ApplyForce(ref Vector2F force, ref Vector2F point)
         {
-            Debug.Assert(!float.IsNaN(force.X));
-            Debug.Assert(!float.IsNaN(force.Y));
-            Debug.Assert(!float.IsNaN(point.X));
-            Debug.Assert(!float.IsNaN(point.Y));
+            //Debug.Assert(!float.IsNaN(force.X));
+            //Debug.Assert(!float.IsNaN(force.Y));
+            //Debug.Assert(!float.IsNaN(point.X));
+            //Debug.Assert(!float.IsNaN(point.Y));
 
             if (Type != BodyType.Dynamic)
             {
@@ -1019,7 +1005,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="torque">The torque about the z-axis (out of the screen), usually in N-m.</param>
         public void ApplyTorque(float torque)
         {
-            Debug.Assert(!float.IsNaN(torque));
+            //Debug.Assert(!float.IsNaN(torque));
 
             if (Type != BodyType.Dynamic)
             {
@@ -1135,7 +1121,7 @@ namespace Alis.Core.Physic.Dynamics
                 return;
             }
 
-            Debug.Assert(Type == BodyType.Dynamic || Type == BodyType.Static);
+            //Debug.Assert(Type == BodyType.Dynamic || Type == BodyType.Static);
 
             // Accumulate mass over all fixtures.
             Vector2F localCenter = Vector2F.Zero;
@@ -1171,7 +1157,7 @@ namespace Alis.Core.Physic.Dynamics
                 // Center the inertia about the center of mass.
                 inertia -= mass * Vector2F.Dot(localCenter, localCenter);
 
-                Debug.Assert(inertia > 0.0f);
+                //Debug.Assert(inertia > 0.0f);
                 InvI = 1.0f / inertia;
             }
             else

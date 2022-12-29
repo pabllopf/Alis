@@ -399,11 +399,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             //Velcro: We only set the friction and restitution if we are not resetting the contact
             if ((FixtureA != null) && (FixtureB != null))
             {
-                Friction = Settings.MixFriction(FixtureA.Frictionprivate, FixtureB.Frictionprivate);
-                Restitution = Settings.MixRestitution(FixtureA.Restitutionprivate, FixtureB.Restitutionprivate);
+                Friction = Settings.MixFriction(FixtureA.Friction, FixtureB.Friction);
+                Restitution = Settings.MixRestitution(FixtureA.Restitution, FixtureB.Restitution);
                 RestitutionThreshold =
-                    Settings.MixRestitutionThreshold(FixtureA.RestitutionThresholdPrivate,
-                        FixtureB.RestitutionThresholdPrivate);
+                    Settings.MixRestitutionThreshold(FixtureA.RestitutionThreshold,
+                        FixtureB.RestitutionThreshold);
             }
 
             TangentSpeed = 0;
@@ -652,7 +652,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             //Debug.Assert(0 <= typeA && typeA < b2Shape::e_typeCount);
             //Debug.Assert(0 <= typeB && typeB < b2Shape::e_typeCount);
 
-            FixtureA.Bodyprivate.World.ContactPool.Enqueue(this);
+            FixtureA.Body.World.ContactPool.Enqueue(this);
 
             Reset(null, 0, null, 0);
         }

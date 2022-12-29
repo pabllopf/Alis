@@ -42,6 +42,7 @@ namespace Alis.Core.Aspect.Math.Vector
     /// <summary>
     ///     The vector
     /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
     public struct Vector3F : IEquatable<Vector3F>, IFormattable
     {
         /// <summary>The X component of the vector.</summary>
