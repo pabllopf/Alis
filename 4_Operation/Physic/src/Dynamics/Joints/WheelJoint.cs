@@ -31,7 +31,6 @@ using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Utilities;
 

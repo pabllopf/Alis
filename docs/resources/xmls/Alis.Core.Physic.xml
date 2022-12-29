@@ -4005,7 +4005,7 @@
                 The upper impulse
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.DistanceJoint"/> class
             </summary>
@@ -4169,7 +4169,7 @@
                 The target
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint"/> class
             </summary>
@@ -4345,7 +4345,7 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FrictionJoint"/> class
             </summary>
@@ -4632,7 +4632,7 @@
                 The ratio
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Physic.Dynamics.Joints.Joint,Alis.Core.Physic.Dynamics.Joints.Joint,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Physic.Dynamics.Joints.Joint,Alis.Core.Physic.Dynamics.Joints.Joint,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.GearJoint"/> class
             </summary>
@@ -4745,13 +4745,13 @@
                 The user data
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Joints.Misc.JointType)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Joints.JointType)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.Joint" /> class
             </summary>
             <param name="jointType">The joint type</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.Joint" /> class
             </summary>
@@ -4759,10 +4759,10 @@
             <param name="bodyB">The body</param>
             <param name="jointType">The joint type</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType)">
             <summary>Constructor for fixed joint</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.Joint"/> class
             </summary>
@@ -4873,141 +4873,141 @@
             <param name="data"></param>
             <returns>returns true if the position errors are within tolerance.</returns>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Joints.Misc.JointEdge">
+        <member name="T:Alis.Core.Physic.Dynamics.Joints.JointEdge">
             <summary>
                 A joint edge is used to connect bodies and joints together in a joint graph where each body is a node and each
                 joint is an edge. A joint edge belongs to a doubly linked list maintained in each attached body. Each joint has two
                 joint nodes, one for each attached body.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointEdge.Joint">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointEdge.Joint">
             <summary>The joint.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointEdge.Next">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointEdge.Next">
             <summary>The next joint edge in the body's joint list.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointEdge.Other">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointEdge.Other">
             <summary>Provides quick access to the other body attached.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointEdge.Prev">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointEdge.Prev">
             <summary>The previous joint edge in the body's joint list.</summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Joints.Misc.JointType">
+        <member name="T:Alis.Core.Physic.Dynamics.Joints.JointType">
             <summary>
                 The joint type enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Unknown">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Unknown">
             <summary>
                 The unknown joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Revolute">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Revolute">
             <summary>
                 The revolute joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Prismatic">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Prismatic">
             <summary>
                 The prismatic joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Distance">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Distance">
             <summary>
                 The distance joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Pulley">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Pulley">
             <summary>
                 The pulley joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Gear">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Gear">
             <summary>
                 The gear joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Wheel">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Wheel">
             <summary>
                 The wheel joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Weld">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Weld">
             <summary>
                 The weld joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Friction">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Friction">
             <summary>
                 The friction joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Motor">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Motor">
             <summary>
                 The motor joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.Angle">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.Angle">
             <summary>
                 The angle joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.FixedMouse">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.FixedMouse">
             <summary>
                 The fixed mouse joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.FixedRevolute">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.FixedRevolute">
             <summary>
                 The fixed revolute joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.FixedDistance">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.FixedDistance">
             <summary>
                 The fixed distance joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.FixedLine">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.FixedLine">
             <summary>
                 The fixed line joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.FixedPrismatic">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.FixedPrismatic">
             <summary>
                 The fixed prismatic joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.FixedAngle">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.FixedAngle">
             <summary>
                 The fixed angle joint type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.JointType.FixedFriction">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.JointType.FixedFriction">
             <summary>
                 The fixed friction joint type
             </summary>
         </member>
-        <member name="T:Alis.Core.Physic.Dynamics.Joints.Misc.LimitState">
+        <member name="T:Alis.Core.Physic.Dynamics.Joints.LimitState">
             <summary>
                 The limit state enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.LimitState.Inactive">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LimitState.Inactive">
             <summary>
                 The inactive limit state
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.LimitState.AtLower">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LimitState.AtLower">
             <summary>
                 The at lower limit state
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.LimitState.AtUpper">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LimitState.AtUpper">
             <summary>
                 The at upper limit state
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Misc.LimitState.Equal">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.LimitState.Equal">
             <summary>
                 The equal limit state
             </summary>
@@ -5123,7 +5123,7 @@
                 The
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.MotorJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.MotorJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.MotorJoint"/> class
             </summary>
@@ -5397,7 +5397,7 @@
             <param name="axis">The axis</param>
             <param name="useWorldCoordinates">The use world coordinates</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint"/> class
             </summary>
@@ -5642,7 +5642,7 @@
                 The world anchor
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PulleyJoint"/> class
             </summary>
@@ -5887,7 +5887,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperAngle">
             <summary>The upper angle for the joint limit (radians).</summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint"/> class
             </summary>
@@ -6112,7 +6112,7 @@
                 The stiffness
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WeldJoint"/> class
             </summary>
@@ -6406,7 +6406,7 @@
             <param name="axis">The axis</param>
             <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Joints.WheelJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.Misc.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.WheelJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single,System.Single,System.Single)">
             <summary>
             Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WheelJoint"/> class
             </summary>

@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 
 namespace Alis.Core.Physic.Dynamics.Joints

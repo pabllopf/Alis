@@ -42,7 +42,6 @@ using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Handlers;
 using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
 using Alis.Core.Physic.Shared;
