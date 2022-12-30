@@ -44,6 +44,7 @@ namespace Alis.Core.Input.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
+            SDL.SDL_SetHint(SDL.SDL_HINT_XINPUT_ENABLED, "0");
             SDL.SDL_SetHint(SDL.SDL_HINT_JOYSTICK_THREAD, "1");
             SDL.SDL_InitSubSystem(SDL.SDL_INIT_GAMECONTROLLER);
             
