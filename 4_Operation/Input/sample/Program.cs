@@ -44,7 +44,8 @@ namespace Alis.Core.Input.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING);
+            SDL.SDL_SetHint(SDL.SDL_HINT_JOYSTICK_THREAD, "1");
+            SDL.SDL_Init(SDL.SDL_INIT_JOYSTICK | SDL.SDL_INIT_GAMECONTROLLER);
             
             for (int i = 0; i < SDL.SDL_NumJoysticks(); i++)
             {
