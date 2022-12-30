@@ -44,13 +44,34 @@ namespace Alis.Core.Audio.Sample
         private static void Main(string[] args)
         {
             string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            AudioSource audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.SFML));
+            AudioSource audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.OS));
 
             while (true)
             {
-                Console.WriteLine("Write comand 'play' | 'stop' | 'resume' | exit ");
-                string command = Console.ReadLine();
+                Console.WriteLine("Select backend audio system ('sfml' | 'os')");
+                string os = Console.ReadLine();
 
+                try
+                {
+                    switch (os)
+                    {
+                        case "sfml":
+                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.OS));
+                            break;
+                        case "os":
+                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.OS));
+                            break;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Logger.Exception(ex);
+                }
+                
+                
+                Console.WriteLine("Write command 'play' | 'stop' | 'resume' | exit ");
+                string command = Console.ReadLine();
                 try
                 {
                     switch (command)
