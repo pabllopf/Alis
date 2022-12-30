@@ -46,20 +46,23 @@ namespace Alis.Core.Input.Sample
         {
             SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING);
             
-            IntPtr myJoystick = SDL.SDL_JoystickOpen(0);
-
-            if (myJoystick == IntPtr.Zero)
+            for (int i = 0; i < SDL.SDL_NumJoysticks(); i++)
             {
-                Console.WriteLine("Ooops, something fishy's goin' on here!" + SDL.SDL_GetError());
+                IntPtr myJoystick = SDL.SDL_JoystickOpen(i);
+                if (myJoystick == IntPtr.Zero)
+                {
+                    Console.WriteLine("Ooops, something fishy's goin' on here!" + SDL.SDL_GetError());
+                }
+                else
+                {
+                    Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
+                                      $"SDL_JoystickName={SDL.SDL_JoystickName(myJoystick)} \n" +
+                                      $"SDL_JoystickNumAxes={SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                      $"SDL_JoystickNumButtons={SDL.SDL_JoystickNumButtons(myJoystick)}");
+                }
+                
             }
-            else
-            {
-                Console.WriteLine($"You have successfully loaded the joystick \n" +
-                                  $"SDL_JoystickName={SDL.SDL_JoystickName(myJoystick)} \n" +
-                                  $"SDL_JoystickNumAxes={SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                  $"SDL_JoystickNumButtons={SDL.SDL_JoystickNumButtons(myJoystick)}");
-            }
-
+            
             List<SDL.SDL_GameControllerButton> buttons = new List<SDL.SDL_GameControllerButton>((SDL.SDL_GameControllerButton[]) Enum.GetValues(typeof(SDL.SDL_GameControllerButton)));
             List<SDL.SDL_GameControllerAxis> axis = new List<SDL.SDL_GameControllerAxis>((SDL.SDL_GameControllerAxis[]) Enum.GetValues(typeof(SDL.SDL_GameControllerAxis)));
             
@@ -72,7 +75,7 @@ namespace Alis.Core.Input.Sample
             while (run)
             {
                 SDL.SDL_JoystickUpdate();
-
+                
                 while (SDL.SDL_PollEvent(out sdlEvent) != 0)
                 {
                     foreach (SDL.SDL_Keycode key in keys)
@@ -96,7 +99,7 @@ namespace Alis.Core.Input.Sample
                         if (sdlEvent.type == SDL.SDL_EventType.SDL_JOYBUTTONDOWN 
                             && button == (SDL.SDL_GameControllerButton) sdlEvent.cbutton.button)
                         {
-                            Console.WriteLine($"Pressed button={button}");
+                            Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed button={button}");
                         }
                     }
 
@@ -105,11 +108,14 @@ namespace Alis.Core.Input.Sample
                         if (sdlEvent.type == SDL.SDL_EventType.SDL_JOYAXISMOTION 
                             && axi ==  (SDL.SDL_GameControllerAxis) sdlEvent.caxis.axis)
                         {
-                            Console.WriteLine($"Pressed axi={axi}");
+                            Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed axi={axi}");
                         }
                     }
+                    
+                    
                 }
             }
+            
         }
     }
 }
