@@ -27,6 +27,8 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Graphic.D2.SFML.Windows;
 
@@ -75,11 +77,95 @@ namespace Alis.Core.Graphic.Sample
             //Music music = new Music(fileName);
             //music.Play();
 
+            List<Key> keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
+            
+            List<Axis> axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
+
+
+            Joystick.Update();
+            for (uint i = 0; i < Joystick.Count; i++)
+            {
+                Joystick.Identification identification = Joystick.GetIdentification(i);
+                Console.Write($"[SPACE {i}] Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+
+                if (Joystick.IsConnected(i))
+                {
+                    Console.Write(" [CONNECTED] ");
+                }
+                else
+                {
+                    Console.Write(" [DISCONNECTED] ");
+                }
+
+                Console.Write("\n");
+
+                uint maxbutton = Joystick.GetButtonCount(i);
+                Console.WriteLine($"    Maxbuttons='{maxbutton}'");
+
+                for (uint j = 0; j < maxbutton; j++)
+                {
+                    Console.WriteLine($"    - [Button {j}]");
+                    if (Joystick.IsButtonPressed(i, j))
+                    {
+                        Console.WriteLine($"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                    }
+                }
+                
+                Console.Write("\n");
+            }
+            
+            
             while (window.IsOpen)
             {
                 window.DispatchEvents();
+                Joystick.Update();
+
+                for (int index = 0; index < keys.Count - 7; index++)
+                {
+                    Key key = keys[index];
+                    if (Keyboard.IsKeyPressed(key))
+                    {
+                        Console.WriteLine($" {key}" );  
+                    }
+                    
+                }
+                
+                for (uint i = 0; i < Joystick.Count; i++)
+                {
+                    if (Joystick.IsConnected(i))
+                    {
+                        Joystick.Identification identification = Joystick.GetIdentification(i);
+                        //uint maxbutton = Joystick.GetButtonCount(i);
+                        for (uint j = 0; j < 32; j++)
+                        {
+                            if (Joystick.IsButtonPressed(i, j))
+                            {
+                                Console.WriteLine($"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                            }
+                        }
+
+                        
+                        float tolerencie = 50.0f;
+                        foreach (Axis axisId in axis)
+                        {
+                            if (Joystick.HasAxis(i, axisId))
+                            {
+                                if (Joystick.GetAxisPosition(i, axisId) > tolerencie || Joystick.GetAxisPosition(i, axisId) < -tolerencie)
+                                {
+                                    Console.WriteLine($"    [ButtonPressed] AxisId = '{axisId}' | valueAxi = '{Joystick.GetAxisPosition(i, axisId)}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                                }
+                            }
+                        }
+                        
+                        
+                        
+                        //Console.WriteLine($"    [ButtonPressed] AxisId = '{Axis.PovX}' | valueAxi = '{Joystick.GetAxisPosition(i, Axis.PovX)}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
+                    }
+                }
+                
                 window.Clear(new Color(_red, _green, _blue));
                 window.Display();
+                
 
                 _red += 1;
                 if (_red >= 100)

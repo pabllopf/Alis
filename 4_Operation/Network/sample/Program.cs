@@ -60,8 +60,7 @@ namespace Alis.Core.Network.Sample
             _webSocketServerFactory = new WebSocketServerFactory();
             Task task = StartWebServer();
 
-
-            RunComplexTest(args);
+            //RunComplexTest(args);
 
             if (args.Length == 0)
             {
@@ -81,7 +80,6 @@ namespace Alis.Core.Network.Sample
 
             Logger.Log("Press any key to quit");
             Console.ReadKey();
-            task.Wait();
         }
 
         /// <summary>
@@ -134,10 +132,10 @@ namespace Alis.Core.Network.Sample
                 IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
                 using (WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols))
                 {
-                    await server.Listen(port);
+                    
                     Debug.Print($"Listening on port {port}");
                     Debug.Print("Press any key to quit");
-                    Console.ReadKey();
+                    await server.Listen(port);
                 }
             }
             catch (Exception ex)
