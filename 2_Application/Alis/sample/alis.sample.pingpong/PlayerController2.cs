@@ -31,6 +31,7 @@ using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
+using Alis.Core.Graphic.D2.SFML.Windows;
 using Alis.Core.Input.SDL2;
 
 namespace Alis.Sample.PingPong
@@ -64,17 +65,17 @@ namespace Alis.Sample.PingPong
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(SDL.SDL_Keycode key)
+        public override void OnReleaseKey(Key key)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
-                case SDL.SDL_Keycode.SDLK_UP:
+                case Key.Up:
                     velocity.Y = 0;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case SDL.SDL_Keycode.SDLK_DOWN:
+                case Key.Down:
                     velocity.Y = 0;
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
@@ -85,17 +86,17 @@ namespace Alis.Sample.PingPong
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(SDL.SDL_Keycode key)
+        public override void OnPressDownKey(Key key)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
-                case SDL.SDL_Keycode.SDLK_UP:
+                case Key.Up:
                     velocity.Y = -5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case SDL.SDL_Keycode.SDLK_DOWN:
+                case Key.Down:
                     velocity.Y = 5;
                     boxCollider.Body.LinearVelocity = velocity;
                     break;

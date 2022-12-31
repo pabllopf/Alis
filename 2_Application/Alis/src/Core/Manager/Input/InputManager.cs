@@ -43,15 +43,15 @@ namespace Alis.Core.Manager.Input
     public class InputManager : InputManagerBase
     {
         /// <summary>
-        /// The keys
+        ///     Array of key of keyboard
         /// </summary>
-        private List<SDL.SDL_Keycode> keys;
-        
+        private List<Key> keys;
+
         /// <summary>
-        /// The keys temp
+        ///     Temp list of keys
         /// </summary>
-        private List<SDL.SDL_Keycode> keysTemp;
-        
+        private List<Key> tempListOfKeys;
+
         /// <summary>
         /// The buttons
         /// </summary>
@@ -78,10 +78,6 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         private SDL.SDL_Event sdlEvent;
         
-        /// <summary>
-        /// The array size
-        /// </summary>
-        private int arraySize;
 
         /// <summary>
         /// The currentsdl numjoysticks
@@ -142,8 +138,8 @@ namespace Alis.Core.Manager.Input
             axis = new List<SDL.SDL_GameControllerAxis>((SDL.SDL_GameControllerAxis[]) Enum.GetValues(typeof(SDL.SDL_GameControllerAxis)));
             axisTemp = new List<SDL.SDL_GameControllerAxis>();
             
-            keys = new List<SDL.SDL_Keycode>((SDL.SDL_Keycode[]) Enum.GetValues(typeof(SDL.SDL_Keycode)));
-            keysTemp = new List<SDL.SDL_Keycode>();
+            keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
+            tempListOfKeys = new List<Key>();
         }
 
         /// <summary>
@@ -197,38 +193,42 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Update()
         {
-            while (SDL.SDL_PollEvent(out sdlEvent) != 0)
+            
+            for (int index = 0; index < keys.Count - 7; index++)
             {
-                for (int index = 0; index < keys.Count; index++)
+                Key key = keys[index];
+                if (Keyboard.IsKeyPressed(key) && !tempListOfKeys.Contains(key))
                 {
-                    if (GetKey(keys[index]) && !keysTemp.Contains(keys[index]))
-                    {
-                        keysTemp.Add(keys[index]);
-                        
-                        foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                        {
-                            currentSceneGameObject.components.ForEach(i => i.OnPressKey(keys[index]));
-                        }
-                    }
+                    tempListOfKeys.Add(key);
 
-                    if (!GetKey(keys[index]) && keysTemp.Contains(keys[index]))
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
                     {
-                        keysTemp.Remove(keys[index]);
-                        foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                        {
-                            currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(keys[index]));
-                        }
-                    }
-                    
-                    if (GetKey(keys[index]) && keysTemp.Contains(keys[index]))
-                    {
-                        foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                        {
-                            currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(keys[index]));
-                        }
+                        currentSceneGameObject.components.ForEach(i => i.OnPressKey(key));
                     }
                 }
 
+                if (!Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
+                {
+                    tempListOfKeys.Remove(key);
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(key));
+                    }
+                }
+
+
+                if (Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
+                {
+
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(key));
+                    }
+                }
+            }
+            
+            while (SDL.SDL_PollEvent(out sdlEvent) != 0)
+            {
                 if (SDL.SDL_NumJoysticks() > 0)
                 {
                     for (int joystickId = 0; joystickId < joysticks.Count; joystickId++)
@@ -277,19 +277,6 @@ namespace Alis.Core.Manager.Input
                 }
             }
 
-        }
-        
-        /// <summary>
-        /// Describes whether this instance get key
-        /// </summary>
-        /// <param name="keycode">The keycode</param>
-        /// <returns>The is key pressed</returns>
-        public bool GetKey(SDL.SDL_Keycode keycode)
-        {
-            IntPtr status = SDL.SDL_GetKeyboardState(out arraySize);
-            byte[] destination = new byte[arraySize];
-            Marshal.Copy(status, destination, 0, arraySize);
-            return destination[(byte) SDL.SDL_GetScancodeFromKey(keycode)] == 1;
         }
 
         /// <summary>

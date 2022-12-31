@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Entity;
+using Alis.Core.Graphic.D2.SFML.Windows;
 using Alis.Core.Input.SDL2;
 
 namespace Alis.Core.Component
@@ -159,7 +160,7 @@ namespace Alis.Core.Component
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressKey(SDL.SDL_Keycode key)
+        public virtual void OnPressKey(Key key)
         {
         }
 
@@ -167,7 +168,7 @@ namespace Alis.Core.Component
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressDownKey(SDL.SDL_Keycode key)
+        public virtual void OnPressDownKey(Key key)
         {
         }
 
@@ -175,7 +176,7 @@ namespace Alis.Core.Component
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnReleaseKey(SDL.SDL_Keycode key)
+        public virtual void OnReleaseKey(Key key)
         {
         }
         
