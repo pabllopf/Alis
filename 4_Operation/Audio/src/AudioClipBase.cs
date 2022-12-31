@@ -76,12 +76,15 @@ namespace Alis.Core.Audio
                 {
                     case Architecture.Arm64:
                         EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("openal32.dll", NativeAudio.win_x64_openal32);
                         break;
                     case Architecture.X64:
                         EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("openal32.dll", NativeAudio.win_x64_openal32);
                         break;
                     case Architecture.X86:
                         EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.dll", NativeAudio.win_x86_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("openal32.dll", NativeAudio.win_x86_openal32);
                         break;
                 }
             }

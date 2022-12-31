@@ -204,6 +204,7 @@ namespace Alis.Core.Manager.Input
                     if (GetKey(keys[index]) && !keysTemp.Contains(keys[index]))
                     {
                         keysTemp.Add(keys[index]);
+                        
                         foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
                         {
                             currentSceneGameObject.components.ForEach(i => i.OnPressKey(keys[index]));

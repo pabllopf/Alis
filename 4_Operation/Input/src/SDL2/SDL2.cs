@@ -31,7 +31,7 @@ namespace Alis.Core.Input.SDL2
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dll", NativeInput.win_arm64_SDL2);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dll", NativeInput.win_x64_SDL2);
                         break;
                     case Architecture.X64:
                         EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dll", NativeInput.win_x64_SDL2);

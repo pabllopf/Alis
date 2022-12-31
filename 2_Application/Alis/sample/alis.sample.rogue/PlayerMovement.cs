@@ -32,6 +32,7 @@ using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
 using Alis.Core.Input.SDL2;
+using System;
 
 namespace Alis.Sample.Rogue
 {
@@ -124,6 +125,7 @@ namespace Alis.Sample.Rogue
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
 
+            Console.WriteLine($"key={key}");
             switch (key)
             {
                 case SDL.SDL_Keycode.SDLK_d:
