@@ -35,6 +35,7 @@ using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using Alis.Core.Input.SDL2;
 using Alis.Core.Manager.Scene;
+using Window = Alis.Core.Entity.Window;
 
 namespace Alis.Core.Manager.Input
 {
@@ -193,40 +194,6 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Update()
         {
-            
-            for (int index = 0; index < keys.Count - 7; index++)
-            {
-                Key key = keys[index];
-                if (Keyboard.IsKeyPressed(key) && !tempListOfKeys.Contains(key))
-                {
-                    tempListOfKeys.Add(key);
-
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                    {
-                        currentSceneGameObject.components.ForEach(i => i.OnPressKey(key));
-                    }
-                }
-
-                if (!Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
-                {
-                    tempListOfKeys.Remove(key);
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                    {
-                        currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(key));
-                    }
-                }
-
-
-                if (Keyboard.IsKeyPressed(key) && tempListOfKeys.Contains(key))
-                {
-
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
-                    {
-                        currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(key));
-                    }
-                }
-            }
-            
             while (SDL.SDL_PollEvent(out sdlEvent) != 0)
             {
                 if (SDL.SDL_NumJoysticks() > 0)
@@ -278,6 +245,43 @@ namespace Alis.Core.Manager.Input
             }
 
         }
+        
+        /// <summary>
+        /// Dispatches the events
+        /// </summary>
+        public override void DispatchEvents()
+        {
+            for (int index = 0; index < keys.Count - 7; index++)
+            {
+                if (Keyboard.IsKeyPressed(keys[index]) && !tempListOfKeys.Contains(keys[index]))
+                {
+                    tempListOfKeys.Add(keys[index]);
+
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnPressKey(keys[index]));
+                    }
+                }
+
+                if (!Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
+                {
+                    tempListOfKeys.Remove(keys[index]);
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(keys[index]));
+                    }
+                }
+
+
+                if (Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
+                {
+                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    {
+                        currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(keys[index]));
+                    }
+                }
+            }
+        }
 
         /// <summary>
         ///     Afters the update
@@ -290,13 +294,6 @@ namespace Alis.Core.Manager.Input
         ///     Fixeds the update
         /// </summary>
         public override void FixedUpdate()
-        {
-        }
-
-        /// <summary>
-        ///     Dispatches the events
-        /// </summary>
-        public override void DispatchEvents()
         {
         }
 

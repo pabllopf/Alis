@@ -2157,6 +2157,11 @@
                 Updates this instance
             </summary>
         </member>
+        <member name="M:Alis.Core.Manager.Input.InputManager.DispatchEvents">
+            <summary>
+            Dispatches the events
+            </summary>
+        </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.AfterUpdate">
             <summary>
                 Afters the update
@@ -2165,11 +2170,6 @@
         <member name="M:Alis.Core.Manager.Input.InputManager.FixedUpdate">
             <summary>
                 Fixeds the update
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Manager.Input.InputManager.DispatchEvents">
-            <summary>
-                Dispatches the events
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.Reset">
