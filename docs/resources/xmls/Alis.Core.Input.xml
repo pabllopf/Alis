@@ -4,6 +4,62 @@
         <name>Alis.Core.Input</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Input.Properties.NativeInput">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_arm64_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x64_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x86_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_arm64_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_x64_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_arm64_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x64_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x86_SDL2">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
         <member name="T:Alis.Core.Input.SDL2.SDL">
             <summary>
             The sdl class

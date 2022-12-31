@@ -96,6 +96,12 @@ namespace Alis.Core.Audio
                     case Architecture.X64:
                         EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.debian_x64_csfml_audio);
                         break;
+                    case Architecture.Arm:
+                        break;
+                    case Architecture.X86:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
                 }
             }
         }

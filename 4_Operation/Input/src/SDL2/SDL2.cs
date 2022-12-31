@@ -1,6 +1,8 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Input.Properties;
 
 namespace Alis.Core.Input.SDL2
 {
@@ -9,7 +11,52 @@ namespace Alis.Core.Input.SDL2
 	/// </summary>
 	public static class SDL
 	{
-		
+        static SDL()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dylib", NativeInput.osx_arm64_SDL2);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dylib", NativeInput.osx_x64_SDL2);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dll", NativeInput.win_arm64_SDL2);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dll", NativeInput.win_x64_SDL2);
+                        break;
+                    case Architecture.X86:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.dll", NativeInput.win_x86_SDL2);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.so", NativeInput.linux_arm64_SDL2);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("SDL2.so", NativeInput.linux_x64_SDL2);
+                        break;
+                }
+            }
+        }
+        
+        
 		/// <summary>
 		/// The native lib name
 		/// </summary>
