@@ -1,37 +1,9 @@
-#region License
-/* SDL2# - C# Wrapper for SDL2
- *
- * Copyright (c) 2013-2021 Ethan Lee.
- *
- * This software is provided 'as-is', without any express or implied warranty.
- * In no event will the authors be held liable for any damages arising from
- * the use of this software.
- *
- * Permission is granted to anyone to use this software for any purpose,
- * including commercial applications, and to alter it and redistribute it
- * freely, subject to the following restrictions:
- *
- * 1. The origin of this software must not be misrepresented; you must not
- * claim that you wrote the original software. If you use this software in a
- * product, an acknowledgment in the product documentation would be
- * appreciated but is not required.
- *
- * 2. Altered source versions must be plainly marked as such, and must not be
- * misrepresented as being the original software.
- *
- * 3. This notice may not be removed or altered from any source distribution.
- *
- * Ethan "flibitijibibo" Lee <flibitijibibo@flibitijibibo.com>
- *
- */
-#endregion
 
-#region Using Statements
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
-#endregion
+
 
 namespace SDL2
 {
@@ -40,17 +12,15 @@ namespace SDL2
 	/// </summary>
 	public static class SDL
 	{
-		#region SDL2# Variables
-
+		
 		/// <summary>
 		/// The native lib name
 		/// </summary>
 		private const string nativeLibName = "SDL2";
 
-		#endregion
+		
 
-		#region UTF8 Marshaling
-
+		
 		/* Used for stack allocated string marshaling. */
 		/// <summary>
 		/// Utfs the 8 size using the specified str
@@ -169,10 +139,9 @@ namespace SDL2
 			return result;
 		}
 
-		#endregion
+		
 
-		#region SDL_stdinc.h
-
+		
 		/// <summary>
 		/// Sdls the fourcc using the specified a
 		/// </summary>
@@ -233,10 +202,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_memcpy(IntPtr dst, IntPtr src, IntPtr len);
 
-		#endregion
+		
 
-		#region SDL_rwops.h
-
+		
 		/// <summary>
 		/// The rw seek set
 		/// </summary>
@@ -676,10 +644,9 @@ namespace SDL2
 			return result;
 		}
 
-		#endregion
+		
 
-		#region SDL_main.h
-
+		
 		/// <summary>
 		/// Sdls the set main ready
 		/// </summary>
@@ -722,10 +689,9 @@ namespace SDL2
 			SDL_main_func mainFunction
 		);
 
-		#endregion
+		
 
-		#region SDL.h
-
+		
 		/// <summary>
 		/// The sdl init timer
 		/// </summary>
@@ -808,10 +774,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern uint SDL_WasInit(uint flags);
 
-		#endregion
+		
 
-		#region SDL_platform.h
-
+		
 		/// <summary>
 		/// Internals the sdl get platform
 		/// </summary>
@@ -827,10 +792,9 @@ namespace SDL2
 			return UTF8_ToManaged(INTERNAL_SDL_GetPlatform());
 		}
 
-		#endregion
+		
 
-		#region SDL_hints.h
-
+		
 		/// <summary>
 		/// The sdl hint framebuffer acceleration
 		/// </summary>
@@ -1674,10 +1638,9 @@ namespace SDL2
 			);
 		}
 
-		#endregion
+		
 
-		#region SDL_error.h
-
+		
 		/// <summary>
 		/// Sdls the clear error
 		/// </summary>
@@ -1731,10 +1694,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
 
-		#endregion
+		
 
-		#region SDL_log.h
-
+		
 		/// <summary>
 		/// The sdl logcategory enum
 		/// </summary>
@@ -2220,10 +2182,9 @@ namespace SDL2
 			IntPtr userdata
 		);
 
-		#endregion
+		
 
-		#region SDL_messagebox.h
-
+		
 		/// <summary>
 		/// The sdl messageboxflags enum
 		/// </summary>
@@ -2551,10 +2512,9 @@ namespace SDL2
 			);
 		}
 
-		#endregion
+		
 
-		#region SDL_version.h, SDL_revision.h
-
+		
 		/* Similar to the headers, this is the version we're expecting to be
 		 * running with. You will likely want to check this somewhere in your
 		 * program!
@@ -2665,10 +2625,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_GetRevisionNumber();
 
-		#endregion
+		
 
-		#region SDL_video.h
-
+		
 		/// <summary>
 		/// The sdl glattr enum
 		/// </summary>
@@ -4550,10 +4509,9 @@ namespace SDL2
 			SDL_FlashOperation operation
 		);
 
-		#endregion
+		
 
-		#region SDL_blendmode.h
-
+		
 		/// <summary>
 		/// The sdl blendmode enum
 		/// </summary>
@@ -4681,10 +4639,9 @@ namespace SDL2
 			SDL_BlendOperation alphaOperation
 		);
 
-		#endregion
+		
 
-		#region SDL_vulkan.h
-
+		
 		/* Only available in 2.0.6 or higher. */
 		/// <summary>
 		/// Internals the sdl vulkan load library using the specified path
@@ -4795,10 +4752,9 @@ namespace SDL2
 			out int h
 		);
 
-		#endregion
+		
 
-		#region SDL_metal.h
-
+		
 		/* Only available in 2.0.11 or higher. */
 		/// <summary>
 		/// Sdls the metal create view using the specified window
@@ -4848,10 +4804,9 @@ namespace SDL2
 			out int h
 		);
 
-		#endregion
+		
 
-		#region SDL_render.h
-
+		
 		/// <summary>
 		/// The sdl rendererflags enum
 		/// </summary>
@@ -5820,8 +5775,7 @@ namespace SDL2
 			int count
 		);
 
-		#region Floating Point Render Functions
-
+		
 		/* This region only available in SDL 2.0.10 or higher. */
 
 		/* renderer refers to an SDL_Renderer*, texture to an SDL_Texture* */
@@ -6331,7 +6285,7 @@ namespace SDL2
 			int count
 		);
 
-		#endregion
+		
 
 		/* renderer refers to an SDL_Renderer* */
 		/// <summary>
@@ -6800,10 +6754,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_RenderFlush(IntPtr renderer);
 
-		#endregion
+		
 
-		#region SDL_pixels.h
-
+		
 		/// <summary>
 		/// Sdls the define pixelfourcc using the specified a
 		/// </summary>
@@ -7929,10 +7882,9 @@ namespace SDL2
 			IntPtr palette
 		);
 
-		#endregion
+		
 
-		#region SDL_rect.h
-
+		
 		/// <summary>
 		/// The sdl point
 		/// </summary>
@@ -8135,10 +8087,9 @@ namespace SDL2
 			out SDL_Rect result
 		);
 
-		#endregion
+		
 
-		#region SDL_surface.h
-
+		
 		/// <summary>
 		/// The sdl swsurface
 		/// </summary>
@@ -8998,10 +8949,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_DuplicateSurface(IntPtr surface);
 
-		#endregion
+		
 
-		#region SDL_clipboard.h
-
+		
 		/// <summary>
 		/// Sdls the has clipboard text
 		/// </summary>
@@ -9049,10 +8999,9 @@ namespace SDL2
 			return result;
 		}
 
-		#endregion
+		
 
-		#region SDL_events.h
-
+		
 		/* General keyboard/mouse state definitions. */
 		/// <summary>
 		/// The sdl pressed
@@ -10888,10 +10837,9 @@ namespace SDL2
 		/// <returns>The int 32</returns>
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern UInt32 SDL_RegisterEvents(int numevents);
-		#endregion
+		
 
-		#region SDL_scancode.h
-
+		
 		/* Scancodes based off USB keyboard page (0x07) */
 		/// <summary>
 		/// The sdl scancode enum
@@ -11904,10 +11852,9 @@ namespace SDL2
 			SDL_NUM_SCANCODES = 512
 		}
 
-		#endregion
+		
 
-		#region SDL_keycode.h
-
+		
 		/// <summary>
 		/// The sdlk scancode mask
 		/// </summary>
@@ -13001,10 +12948,9 @@ namespace SDL2
 			KMOD_RESERVED = KMOD_SCROLL
 		}
 
-		#endregion
+		
 
-		#region SDL_keyboard.h
-
+		
 		/// <summary>
 		/// The sdl keysym
 		/// </summary>
@@ -13232,10 +13178,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_bool SDL_IsScreenKeyboardShown(IntPtr window);
 
-		#endregion
+		
 
-		#region SDL_mouse.c
-
+		
 		/* Note: SDL_Cursor is a typedef normally. We'll treat it as
 		 * an IntPtr, because C# doesn't do typedefs. Yay!
 		 */
@@ -13607,10 +13552,9 @@ namespace SDL2
 		/// </summary>
 		public static readonly UInt32 SDL_BUTTON_X2MASK =	SDL_BUTTON(SDL_BUTTON_X2);
 
-		#endregion
+		
 
-		#region SDL_touch.h
-
+		
 		/// <summary>
 		/// The max value
 		/// </summary>
@@ -13697,10 +13641,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_TouchDeviceType SDL_GetTouchDeviceType(Int64 touchID);
 
-		#endregion
+		
 
-		#region SDL_joystick.h
-
+		
 		/// <summary>
 		/// The sdl hat centered
 		/// </summary>
@@ -14464,10 +14407,9 @@ namespace SDL2
 			int size
 		);
 
-		#endregion
+		
 
-		#region SDL_gamecontroller.h
-
+		
 		/// <summary>
 		/// The sdl gamecontrollerbindtype enum
 		/// </summary>
@@ -15667,10 +15609,9 @@ namespace SDL2
 			int size
 		);
 
-		#endregion
+		
 
-		#region SDL_haptic.h
-
+		
 		/* SDL_HapticEffect type */
 		/// <summary>
 		/// The sdl haptic constant
@@ -16478,10 +16419,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_NumHaptics();
 
-		#endregion
+		
 
-		#region SDL_sensor.h
-
+		
 		/* This region is only available in 2.0.9 or higher. */
 
 		/// <summary>
@@ -16668,10 +16608,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void SDL_UnlockSensors();
 
-		#endregion
+		
 
-		#region SDL_audio.h
-
+		
 		/// <summary>
 		/// The sdl audio mask bitsize
 		/// </summary>
@@ -17476,10 +17415,9 @@ namespace SDL2
 			out SDL_AudioSpec spec
 		);
 
-		#endregion
+		
 
-		#region SDL_timer.h
-
+		
 		/* System timers rely on different OS mechanisms depending on
 		 * which operating system SDL2 is compiled against.
 		 */
@@ -17571,10 +17509,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_bool SDL_RemoveTimer(int id);
 
-		#endregion
+		
 
-		#region SDL_system.h
-
+		
 		/* Windows */
 
 		/// <summary>
@@ -17870,10 +17807,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern SDL_bool SDL_IsTablet();
 
-		#endregion
+		
 
-		#region SDL_syswm.h
-
+		
 		/// <summary>
 		/// The sdl syswm type enum
 		/// </summary>
@@ -18270,10 +18206,9 @@ namespace SDL2
 			ref SDL_SysWMinfo info
 		);
 
-		#endregion
+		
 
-		#region SDL_filesystem.h
-
+		
 		/* Only available in 2.0.1 or higher. */
 		/// <summary>
 		/// Internals the sdl get base path
@@ -18325,10 +18260,9 @@ namespace SDL2
 			);
 		}
 
-		#endregion
+		
 
-		#region SDL_power.h
-
+		
 		/// <summary>
 		/// The sdl powerstate enum
 		/// </summary>
@@ -18368,10 +18302,9 @@ namespace SDL2
 			out int pct
 		);
 
-		#endregion
+		
 
-		#region SDL_cpuinfo.h
-
+		
 		/// <summary>
 		/// Sdls the get cpu count
 		/// </summary>
@@ -18527,10 +18460,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void SDL_HasARMSIMD();
 
-		#endregion
+		
 
-		#region SDL_locale.h
-
+		
 		/// <summary>
 		/// The sdl locale
 		/// </summary>
@@ -18557,10 +18489,9 @@ namespace SDL2
 		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr SDL_GetPreferredLocales();
 
-		#endregion
+		
 
-		#region SDL_misc.h
-
+		
 		/* Only available in 2.0.14 or higher. */
 		/// <summary>
 		/// Internals the sdl open url using the specified url
@@ -18582,6 +18513,6 @@ namespace SDL2
 			return result;
 		}
 
-		#endregion
+		
 	}
 }
