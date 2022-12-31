@@ -231,6 +231,11 @@
             </summary>
             <param name="disposing">Is the GC disposing the object, or is it an explicit call?</param>
         </member>
+        <member name="M:Alis.Core.Audio.ObjectBase.Load">
+            <summary>
+            Loads
+            </summary>
+        </member>
         <member name="T:Alis.Core.Audio.OS.Interfaces.IPlayer">
             <summary>
                 The player interface

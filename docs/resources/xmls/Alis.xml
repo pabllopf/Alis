@@ -2500,6 +2500,11 @@
             </summary>
             <seealso cref="T:Alis.Core.GameBase" />
         </member>
+        <member name="M:Alis.VideoGame.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.VideoGame"/> class
+            </summary>
+        </member>
         <member name="M:Alis.VideoGame.#ctor">
             <summary>
                 Video game

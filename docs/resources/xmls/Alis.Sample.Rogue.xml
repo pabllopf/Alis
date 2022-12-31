@@ -39,17 +39,17 @@
                 Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.Rogue.PlayerMovement.OnReleaseKey(System.String)">
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.OnReleaseKey(Alis.Core.Input.SDL2.SDL.SDL_Keycode)">
             <summary>
-                sample
+            Ons the release key using the specified key
             </summary>
-            <param name="key"></param>
+            <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.Rogue.PlayerMovement.OnPressDownKey(System.String)">
+        <member name="M:Alis.Sample.Rogue.PlayerMovement.OnPressDownKey(Alis.Core.Input.SDL2.SDL.SDL_Keycode)">
             <summary>
-                sample
+            Ons the press down key using the specified key
             </summary>
-            <param name="key"></param>
+            <param name="key">The key</param>
         </member>
         <member name="T:Alis.Sample.Rogue.Program">
             <summary>

@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
+using Alis.Core.Input.SDL2;
 
 namespace Alis.Sample.Rogue
 {
@@ -83,31 +84,31 @@ namespace Alis.Sample.Rogue
         }
 
         /// <summary>
-        ///     sample
+        /// Ons the release key using the specified key
         /// </summary>
-        /// <param name="key"></param>
-        public override void OnReleaseKey(string key)
+        /// <param name="key">The key</param>
+        public override void OnReleaseKey(SDL.SDL_Keycode key)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
-                case "D":
+                case SDL.SDL_Keycode.SDLK_d:
                     velocity.X = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "A":
+                case SDL.SDL_Keycode.SDLK_a:
                     velocity.X = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "W":
+                case SDL.SDL_Keycode.SDLK_w:
                     velocity.Y = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "S":
+                case SDL.SDL_Keycode.SDLK_s:
                     velocity.Y = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
@@ -115,36 +116,35 @@ namespace Alis.Sample.Rogue
             }
         }
 
-
         /// <summary>
-        ///     sample
+        /// Ons the press down key using the specified key
         /// </summary>
-        /// <param name="key"></param>
-        public override void OnPressDownKey(string key)
+        /// <param name="key">The key</param>
+        public override void OnPressDownKey(SDL.SDL_Keycode key)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
-                case "D":
+                case SDL.SDL_Keycode.SDLK_d:
                     walk = true;
                     animator.ChangeAnimationTo("WalkRight");
                     velocity.X = 5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "A":
+                case SDL.SDL_Keycode.SDLK_a:
                     walk = true;
                     animator.ChangeAnimationTo("WalkLeft");
                     velocity.X = -5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "W":
+                case SDL.SDL_Keycode.SDLK_w:
                     walk = true;
                     animator.ChangeAnimationTo("WalkUp");
                     velocity.Y = -5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "S":
+                case SDL.SDL_Keycode.SDLK_s:
                     walk = true;
                     animator.ChangeAnimationTo("WalkDown");
                     velocity.Y = 5;
