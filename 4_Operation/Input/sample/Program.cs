@@ -46,8 +46,9 @@ namespace Alis.Core.Input.Sample
         {
             SDL.SDL_SetHint(SDL.SDL_HINT_XINPUT_ENABLED, "0");
             SDL.SDL_SetHint(SDL.SDL_HINT_JOYSTICK_THREAD, "1");
-            SDL.SDL_InitSubSystem(SDL.SDL_INIT_GAMECONTROLLER);
-            
+            SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING);
+
+
             for (int i = 0; i < SDL.SDL_NumJoysticks(); i++)
             {
                 IntPtr myJoystick = SDL.SDL_JoystickOpen(i);
