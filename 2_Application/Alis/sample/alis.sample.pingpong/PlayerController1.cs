@@ -110,7 +110,7 @@ namespace Alis.Sample.PingPong
         /// <param name="device">The device</param>
         public override void OnPressDownButton(SDL.SDL_GameControllerButton button, int device)
         {
-            Console.WriteLine($"OnPressDownButton Device={device} | button={button}");
+            //Console.WriteLine($"OnPressDownButton Device={device} | button={button}");
             
             if (device == 0)
             {
@@ -137,7 +137,7 @@ namespace Alis.Sample.PingPong
         /// <param name="device">The device</param>
         public override void OnReleaseButton(SDL.SDL_GameControllerButton button, int device)
         {
-            Console.WriteLine($"OnReleaseButton Device={device} | button={button}");
+            //Console.WriteLine($"OnReleaseButton Device={device} | button={button}");
             
             if (device == 0)
             {
@@ -164,7 +164,7 @@ namespace Alis.Sample.PingPong
         /// <param name="device">The device</param>
         public override void OnPressButton(SDL.SDL_GameControllerButton button, int device)
         {
-            Console.WriteLine($"OnPressButton Device={device} | button={button}");
+            //Console.WriteLine($"OnPressButton Device={device} | button={button}");
         }
     }
 }

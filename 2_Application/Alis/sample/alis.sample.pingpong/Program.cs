@@ -81,6 +81,7 @@ namespace Alis.Sample.PingPong
                     .Debug(debug => debug
                         .Build())
                     .Audio(audio => audio
+                        
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
@@ -97,7 +98,7 @@ namespace Alis.Sample.PingPong
                                 .Builder()
                                 .Build())
                             .Build())
-                        .Add<GameObject>(soundTrack => soundTrack
+                        /*.Add<GameObject>(soundTrack => soundTrack
                             .Name("Soundtrack")
                             .AddComponent<AudioSource>(audioSource => audioSource
                                 .Builder()
@@ -107,7 +108,7 @@ namespace Alis.Sample.PingPong
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())
-                            .Build())
+                            .Build())*/
                         .Add<GameObject>(player => player
                             .Name("Player 1")
                             .Transform(transform => transform

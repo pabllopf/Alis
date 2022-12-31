@@ -3,5 +3,7 @@
     <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        
     </PropertyGroup>
 </Project>
