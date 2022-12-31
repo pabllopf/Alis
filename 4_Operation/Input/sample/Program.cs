@@ -29,7 +29,7 @@
 
 using System;
 using System.Collections.Generic;
-using SDL2;
+using Alis.Core.Input.SDL2;
 
 namespace Alis.Core.Input.Sample
 {

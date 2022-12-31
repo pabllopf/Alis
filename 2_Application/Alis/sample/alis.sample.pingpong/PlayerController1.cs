@@ -27,9 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
+using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Input.SDL2;
 
 namespace Alis.Sample.PingPong
 {
@@ -62,17 +65,17 @@ namespace Alis.Sample.PingPong
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnReleaseKey(string key)
+        public override void OnReleaseKey(SDL.SDL_Keycode key)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
-                case "W":
+                case SDL.SDL_Keycode.SDLK_w:
                     velocity.Y = 0;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "S":
+                case  SDL.SDL_Keycode.SDLK_s:
                     velocity.Y = 0;
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
@@ -83,21 +86,85 @@ namespace Alis.Sample.PingPong
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public override void OnPressDownKey(string key)
+        public override void OnPressDownKey(SDL.SDL_Keycode key)
         {
             Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
-                case "W":
+                case SDL.SDL_Keycode.SDLK_w:
                     velocity.Y = -5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "S":
+                case  SDL.SDL_Keycode.SDLK_s:
                     velocity.Y = 5;
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
+        }
+
+        /// <summary>
+        /// Ons the press button using the specified button
+        /// </summary>
+        /// <param name="button">The button</param>
+        /// <param name="device">The device</param>
+        public override void OnPressDownButton(SDL.SDL_GameControllerButton button, int device)
+        {
+            Console.WriteLine($"OnPressDownButton Device={device} | button={button}");
+            
+            if (device == 0)
+            {
+                Vector2F velocity = boxCollider.Body.LinearVelocity;
+                
+                switch (button)
+                {
+                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A:
+                        velocity.Y = 5;
+                        boxCollider.Body.LinearVelocity = velocity;
+                        return;
+                    case  SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y:
+                        velocity.Y = -5;
+                        boxCollider.Body.LinearVelocity = velocity;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ons the release button using the specified button
+        /// </summary>
+        /// <param name="button">The button</param>
+        /// <param name="device">The device</param>
+        public override void OnReleaseButton(SDL.SDL_GameControllerButton button, int device)
+        {
+            Console.WriteLine($"OnReleaseButton Device={device} | button={button}");
+            
+            if (device == 0)
+            {
+                Vector2F velocity = boxCollider.Body.LinearVelocity;
+
+                switch (button)
+                {
+                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A:
+                        velocity.Y = 0;
+                        boxCollider.Body.LinearVelocity = velocity;
+                        return;
+                    case  SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y:
+                        velocity.Y = 0;
+                        boxCollider.Body.LinearVelocity = velocity;
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Ons the press button using the specified button
+        /// </summary>
+        /// <param name="button">The button</param>
+        /// <param name="device">The device</param>
+        public override void OnPressButton(SDL.SDL_GameControllerButton button, int device)
+        {
+            Console.WriteLine($"OnPressButton Device={device} | button={button}");
         }
     }
 }

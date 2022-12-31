@@ -127,7 +127,7 @@ namespace Alis.Sample.PingPong
                                 .Mass(10.0f)
                                 .Restitution(1.0f)
                                 .Friction(0f)
-                                .Density(0.5f)
+                                .Density(1.0f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
@@ -152,7 +152,7 @@ namespace Alis.Sample.PingPong
                                 .Mass(10.0f)
                                 .Restitution(1.0f)
                                 .Friction(0f)
-                                .Density(0.5f)
+                                .Density(1.0f)
                                 .FixedRotation(true)
                                 .GravityScale(0.0f)
                                 .Build())
@@ -192,7 +192,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(1024, 10)
@@ -214,7 +214,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(1024, 10)
@@ -236,7 +236,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 640)
@@ -258,7 +258,7 @@ namespace Alis.Sample.PingPong
                             .AddComponent<BoxCollider>(boxCollider => boxCollider
                                 .Builder()
                                 .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
+                                .BodyType(BodyType.Static)
                                 .IsTrigger(false)
                                 .AutoTilling(false)
                                 .Size(10, 640)

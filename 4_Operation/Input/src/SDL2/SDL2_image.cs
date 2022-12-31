@@ -1,10 +1,7 @@
-
-
 using System;
 using System.Runtime.InteropServices;
 
-
-namespace SDL2
+namespace Alis.Core.Input.SDL2
 {
 	/// <summary>
 	/// The sdl image class

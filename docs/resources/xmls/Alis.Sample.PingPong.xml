@@ -53,17 +53,38 @@
                 Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.OnReleaseKey(System.String)">
+        <member name="M:Alis.Sample.PingPong.PlayerController1.OnReleaseKey(Alis.Core.Input.SDL2.SDL.SDL_Keycode)">
             <summary>
                 Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressDownKey(System.String)">
+        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressDownKey(Alis.Core.Input.SDL2.SDL.SDL_Keycode)">
             <summary>
                 Ons the release key using the specified key
             </summary>
             <param name="key">The key</param>
+        </member>
+        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressDownButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+            <summary>
+            Ons the press button using the specified button
+            </summary>
+            <param name="button">The button</param>
+            <param name="device">The device</param>
+        </member>
+        <member name="M:Alis.Sample.PingPong.PlayerController1.OnReleaseButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+            <summary>
+            Ons the release button using the specified button
+            </summary>
+            <param name="button">The button</param>
+            <param name="device">The device</param>
+        </member>
+        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+            <summary>
+            Ons the press button using the specified button
+            </summary>
+            <param name="button">The button</param>
+            <param name="device">The device</param>
         </member>
         <member name="T:Alis.Sample.PingPong.PlayerController2">
             <summary>
@@ -85,17 +106,38 @@
                 Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.OnReleaseKey(System.String)">
+        <member name="M:Alis.Sample.PingPong.PlayerController2.OnReleaseKey(Alis.Core.Input.SDL2.SDL.SDL_Keycode)">
             <summary>
                 Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressDownKey(System.String)">
+        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressDownKey(Alis.Core.Input.SDL2.SDL.SDL_Keycode)">
             <summary>
                 Ons the release key using the specified key
             </summary>
             <param name="key">The key</param>
+        </member>
+        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressDownButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+            <summary>
+            Ons the press button using the specified button
+            </summary>
+            <param name="button">The button</param>
+            <param name="device">The device</param>
+        </member>
+        <member name="M:Alis.Sample.PingPong.PlayerController2.OnReleaseButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+            <summary>
+            Ons the release button using the specified button
+            </summary>
+            <param name="button">The button</param>
+            <param name="device">The device</param>
+        </member>
+        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+            <summary>
+            Ons the press button using the specified button
+            </summary>
+            <param name="button">The button</param>
+            <param name="device">The device</param>
         </member>
         <member name="T:Alis.Sample.PingPong.Program">
             <summary>

@@ -1,11 +1,8 @@
-
 using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 
-
-namespace SDL2
+namespace Alis.Core.Input.SDL2
 {
 	/// <summary>
 	/// The sdl class

@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Entity;
+using Alis.Core.Input.SDL2;
 
 namespace Alis.Core.Component
 {
@@ -158,7 +159,7 @@ namespace Alis.Core.Component
         ///     Ons the press key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressKey(string key)
+        public virtual void OnPressKey(SDL.SDL_Keycode key)
         {
         }
 
@@ -166,7 +167,7 @@ namespace Alis.Core.Component
         ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnPressDownKey(string key)
+        public virtual void OnPressDownKey(SDL.SDL_Keycode key)
         {
         }
 
@@ -174,7 +175,41 @@ namespace Alis.Core.Component
         ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        public virtual void OnReleaseKey(string key)
+        public virtual void OnReleaseKey(SDL.SDL_Keycode key)
+        {
+        }
+        
+        
+        
+      
+        /// <summary>
+        /// Ons the press button using the specified button
+        /// </summary>
+        /// <param name="button">The button</param>
+        /// <param name="device">The device</param>
+        public virtual void OnPressButton(SDL.SDL_GameControllerButton button, int device)
+        {
+        }
+
+        
+        
+        /// <summary>
+        /// Ons the press down button using the specified button
+        /// </summary>
+        /// <param name="button">The button</param>
+        /// <param name="device">The device</param>
+        public virtual void OnPressDownButton(SDL.SDL_GameControllerButton button, int device)
+        {
+        }
+
+       
+        
+        /// <summary>
+        /// Ons the release button using the specified button
+        /// </summary>
+        /// <param name="button">The button</param>
+        /// <param name="device">The device</param>
+        public virtual void OnReleaseButton(SDL.SDL_GameControllerButton button, int device)
         {
         }
 
