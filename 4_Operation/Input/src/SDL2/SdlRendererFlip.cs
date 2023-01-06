@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlFlashOperation.cs
+//  File:Sdl.SdlRendererFlip.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,29 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
-        /// <summary>
-        ///     The sdl flashoperation enum
+    /// <summary>
+        ///     The sdl rendererflip enum
         /// </summary>
-        public enum SdlFlashOperation
+        [Flags]
+        public enum SdlRendererFlip
         {
             /// <summary>
-            ///     The sdl flash cancel sdl flashoperation
+            ///     The sdl flip none sdl rendererflip
             /// </summary>
-            SdlFlashCancel,
+            SdlFlipNone = 0x00000000,
 
             /// <summary>
-            ///     The sdl flash briefly sdl flashoperation
+            ///     The sdl flip horizontal sdl rendererflip
             /// </summary>
-            SdlFlashBriefly,
+            SdlFlipHorizontal = 0x00000001,
 
             /// <summary>
-            ///     The sdl flash until focused sdl flashoperation
+            ///     The sdl flip vertical sdl rendererflip
             /// </summary>
-            SdlFlashUntilFocused
+            SdlFlipVertical = 0x00000002
         }
-    }
+    
 }

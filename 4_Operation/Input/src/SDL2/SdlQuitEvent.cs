@@ -31,9 +31,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
-        /// <summary>
+    /// <summary>
         ///     The sdl quitevent
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
@@ -49,9 +47,6 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             public uint timestamp;
         }
-    }
-
-    public static partial class Sdl
-    {
-    }
+    
+    
 }

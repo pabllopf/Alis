@@ -31,8 +31,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
+
         /// <summary>
         ///     The sdl hapticleftright
         /// </summary>
@@ -63,4 +62,3 @@ namespace Alis.Core.Input.SDL2
             public ushort small_magnitude;
         }
     }
-}

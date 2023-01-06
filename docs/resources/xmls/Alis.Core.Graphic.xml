@@ -5944,7 +5944,7 @@
         </member>
         <member name="M:Alis.Core.Graphic.D2.SFML.ObjectBase.Load">
             <summary>
-            Loads
+                Loads
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.D2.SFML.Time">

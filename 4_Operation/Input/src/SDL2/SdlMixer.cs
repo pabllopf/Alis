@@ -35,7 +35,7 @@ namespace Alis.Core.Input.SDL2
     /// <summary>
     ///     The sdl mixer class
     /// </summary>
-    public static partial class SdlMixer
+    public static class SdlMixer
     {
         /// <summary>
         ///     The channel finished delegate

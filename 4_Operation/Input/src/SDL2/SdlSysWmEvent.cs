@@ -32,9 +32,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
-        /// <summary>
+    /// <summary>
         ///     The sdl syswmevent
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
@@ -55,5 +53,5 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             public IntPtr msg; /* SDL_SysWMmsg*, system-dependent*/
         }
-    }
+    
 }

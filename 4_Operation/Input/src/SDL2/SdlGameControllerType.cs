@@ -1,0 +1,89 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Sdl.SdlGameControllerType.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+namespace Alis.Core.Input.SDL2
+{
+
+        /// <summary>
+        ///     The sdl gamecontrollertype enum
+        /// </summary>
+        public enum SdlGameControllerType
+        {
+            /// <summary>
+            ///     The sdl controller type unknown sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypeUnknown = 0,
+
+            /// <summary>
+            ///     The sdl controller type xbox360 sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypeXbox360,
+
+            /// <summary>
+            ///     The sdl controller type xboxone sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypeXboxone,
+
+            /// <summary>
+            ///     The sdl controller type ps3 sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypePs3,
+
+            /// <summary>
+            ///     The sdl controller type ps4 sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypePs4,
+
+            /// <summary>
+            ///     The sdl controller type nintendo switch pro sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypeNintendoSwitchPro,
+
+            /// <summary>
+            ///     The sdl controller type virtual sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypeVirtual, /* Requires >= 2.0.14 */
+
+            /// <summary>
+            ///     The sdl controller type ps5 sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypePs5, /* Requires >= 2.0.14 */
+
+            /// <summary>
+            ///     The sdl controller type amazon luna sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypeAmazonLuna, /* Requires >= 2.0.16 */
+
+            /// <summary>
+            ///     The sdl controller type google stadia sdl gamecontrollertype
+            /// </summary>
+            SdlControllerTypeGoogleStadia /* Requires >= 2.0.16 */
+        
+    }
+}

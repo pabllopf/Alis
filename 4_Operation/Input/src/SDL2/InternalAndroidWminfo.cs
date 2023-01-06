@@ -32,23 +32,20 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
+    /// <summary>
+    ///     The internal android wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalAndroidWminfo
     {
         /// <summary>
-        ///     The internal android wminfo
+        ///     The window
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalAndroidWminfo
-        {
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to an ANativeWindow
+        public IntPtr window; // Refers to an ANativeWindow
 
-            /// <summary>
-            ///     The surface
-            /// </summary>
-            public IntPtr surface; // Refers to an EGLSurface
-        }
+        /// <summary>
+        ///     The surface
+        /// </summary>
+        public IntPtr surface; // Refers to an EGLSurface
     }
 }

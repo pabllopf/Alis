@@ -31,9 +31,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
-        /// <summary>
+    /// <summary>
         ///     The internal syswmdriverunion
         /// </summary>
         [StructLayout(LayoutKind.Explicit)]
@@ -100,5 +98,5 @@ namespace Alis.Core.Input.SDL2
             [FieldOffset(0)] public InternalKmsdrmWminfo ksmdrm;
             // private int dummy;
         }
-    }
+    
 }

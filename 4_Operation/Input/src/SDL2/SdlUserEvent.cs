@@ -32,9 +32,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
-        /// <summary>
+    /// <summary>
         ///     The sdl userevent
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
@@ -71,4 +69,3 @@ namespace Alis.Core.Input.SDL2
             public IntPtr data2; /* user-defined */
         }
     }
-}

@@ -32,9 +32,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
-        /// <summary>
+    /// <summary>
         ///     The internal mir wminfo
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
@@ -50,5 +48,5 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             public IntPtr surface; // Refers to a MirSurface*
         }
-    }
+    
 }

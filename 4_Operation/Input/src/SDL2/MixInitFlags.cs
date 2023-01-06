@@ -31,9 +31,7 @@ using System;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class SdlMixer
-    {
-        /// <summary>
+    /// <summary>
         ///     The mix initflags enum
         /// </summary>
         [Flags]
@@ -69,5 +67,5 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             MixInitOpus = 0x00000040
         }
-    }
+    
 }

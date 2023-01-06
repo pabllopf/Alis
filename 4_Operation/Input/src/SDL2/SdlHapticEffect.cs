@@ -31,8 +31,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
+ 
         /// <summary>
         ///     The sdl hapticeffect
         /// </summary>
@@ -75,4 +74,3 @@ namespace Alis.Core.Input.SDL2
             [FieldOffset(0)] public SdlHapticCustom custom;
         }
     }
-}

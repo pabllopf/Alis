@@ -32,8 +32,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
+    
         /// <summary>
         ///     The internal kmsdrm wminfo
         /// </summary>
@@ -55,5 +54,5 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             private IntPtr gbm_dev; // Refers to a gbm_device*
         }
-    }
+    
 }

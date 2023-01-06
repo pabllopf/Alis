@@ -32,8 +32,7 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
+
         /// <summary>
         ///     The sdl hapticcustom
         /// </summary>
@@ -116,4 +115,3 @@ namespace Alis.Core.Input.SDL2
             public ushort fade_level;
         }
     }
-}

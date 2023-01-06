@@ -2961,7 +2961,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Dynamics.BodyType,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Body"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Body" /> class
             </summary>
             <param name="position">The position</param>
             <param name="linearVelocity">The linear velocity</param>
@@ -3590,12 +3590,9 @@
                 delegate is subscribed to.
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Fixture.Filter">
-            <summary>Contact filtering data.</summary>
-        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Fixture.#ctor(Alis.Core.Physic.Collision.Shapes.Shape,Alis.Core.Physic.Collision.Filtering.Filter,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Fixture"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Fixture" /> class
             </summary>
             <param name="shape">The shape</param>
             <param name="filter">The filter</param>
@@ -3603,6 +3600,9 @@
             <param name="restitution">The restitution</param>
             <param name="restitutionThreshold">The restitution threshold</param>
             <param name="isSensor">The is sensor</param>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Fixture.Filter">
+            <summary>Contact filtering data.</summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Fixture.IgnoreCcdWith">
             <summary>
@@ -4007,7 +4007,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.DistanceJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.DistanceJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -4171,7 +4171,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -4347,7 +4347,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FrictionJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.FrictionJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -4634,7 +4634,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.GearJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Physic.Dynamics.Joints.Joint,Alis.Core.Physic.Dynamics.Joints.Joint,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.GearJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.GearJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -4712,11 +4712,6 @@
                 The joint class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._jointType">
-            <summary>
-                The joint type
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint.bodyA">
             <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
         </member>
@@ -4764,7 +4759,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.Joint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.Joint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -4824,6 +4819,11 @@
             <summary>
                 The Breakpoint simply indicates the maximum Value the JointError can be before it breaks. The default value is
                 float.MaxValue, which means it never breaks.
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._jointType">
+            <summary>
+                The joint type
             </summary>
         </member>
         <member name="E:Alis.Core.Physic.Dynamics.Joints.Joint.Broke">
@@ -5125,7 +5125,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.MotorJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.MotorJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.MotorJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -5399,7 +5399,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -5644,7 +5644,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.PulleyJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PulleyJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.PulleyJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -5875,21 +5875,9 @@
                 The upper impulse
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableLimit">
-            <summary>A flag to enable joint limits.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableMotor">
-            <summary>A flag to enable the joint motor.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LowerAngle">
-            <summary>The lower angle for the joint limit (radians).</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperAngle">
-            <summary>The upper angle for the joint limit (radians).</summary>
-        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -5919,6 +5907,18 @@
             <param name="bodyB">The second body.</param>
             <param name="anchor">The shared anchor.</param>
             <param name="useWorldCoordinates"></param>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableLimit">
+            <summary>A flag to enable joint limits.</summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.EnableMotor">
+            <summary>A flag to enable the joint motor.</summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LowerAngle">
+            <summary>The lower angle for the joint limit (radians).</summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.UpperAngle">
+            <summary>The upper angle for the joint limit (radians).</summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.LocalAnchorA">
             <summary>The local anchor point on BodyA</summary>
@@ -6114,7 +6114,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.WeldJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WeldJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WeldJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -6408,7 +6408,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.WheelJoint.#ctor(Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Body,Alis.Core.Physic.Dynamics.Joints.JointType,System.Boolean,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,System.Single,System.Single,System.Boolean,System.Single,System.Single,System.Single,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WheelJoint"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Joints.WheelJoint" /> class
             </summary>
             <param name="bodyA">The body</param>
             <param name="bodyB">The body</param>
@@ -7704,20 +7704,20 @@
                 The rdc
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Angle">
+            <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
+        </member>
         <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.EdgeRatio">
             <summary>Ratio of arc length to angle from edges to first ray tested. Defaults to 1/40.</summary>
         </member>
         <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.IgnoreWhenInsideShape">
             <summary>Ignore Explosion if it happens inside a shape. Default value is false.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Angle">
-            <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
+        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MinRays">
+            <summary>How many rays per shape/body/segment. Defaults to 5</summary>
         </member>
         <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Shapes">
             <summary>Maximum number of shapes involved in the explosion. Defaults to 100</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MinRays">
-            <summary>How many rays per shape/body/segment. Defaults to 5</summary>
         </member>
         <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.#ctor(Alis.Core.Physic.World)">
             <summary>

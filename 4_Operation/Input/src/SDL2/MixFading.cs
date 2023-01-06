@@ -29,9 +29,7 @@
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class SdlMixer
-    {
-        /// <summary>
+    /// <summary>
         ///     The mix fading enum
         /// </summary>
         public enum MixFading
@@ -51,5 +49,5 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             MixFadingIn
         }
-    }
+    
 }

@@ -29,9 +29,7 @@
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class SdlMixer
-    {
-        /// <summary>
+    /// <summary>
         ///     The mix musictype enum
         /// </summary>
         public enum MixMusicType
@@ -91,5 +89,5 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             MusOpus
         }
-    }
+    
 }
