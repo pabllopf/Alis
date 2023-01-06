@@ -68,9 +68,9 @@ namespace Alis.Sample.PingPong
                 .Builder()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("PingPong")
+                        .Name("Pong")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("PingPong game")
+                        .Description("Pong clasic game")
                         .Icon(Environment.CurrentDirectory + "/Assets/logo.png")
                         .SplashScreen(screen => screen
                             .IsActive(true)
