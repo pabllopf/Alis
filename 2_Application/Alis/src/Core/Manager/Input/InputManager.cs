@@ -29,13 +29,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using Alis.Core.Input.SDL2;
 using Alis.Core.Manager.Scene;
-using Window = Alis.Core.Entity.Window;
 
 namespace Alis.Core.Manager.Input
 {
@@ -44,51 +42,51 @@ namespace Alis.Core.Manager.Input
     public class InputManager : InputManagerBase
     {
         /// <summary>
+        ///     The axis
+        /// </summary>
+        private List<Sdl.SdlGameControllerAxis> axis;
+
+        /// <summary>
+        ///     The axis temp
+        /// </summary>
+        private List<Sdl.SdlGameControllerAxis> axisTemp;
+
+        /// <summary>
+        ///     The buttons
+        /// </summary>
+        private List<Sdl.SdlGameControllerButton> buttons;
+
+        /// <summary>
+        ///     The buttons temp
+        /// </summary>
+        private Dictionary<string, Sdl.SdlGameControllerButton> buttonsTemp;
+
+
+        /// <summary>
+        ///     The currentsdl numjoysticks
+        /// </summary>
+        private int currentSdlNumJoysticks;
+
+        /// <summary>
+        ///     The joysticks
+        /// </summary>
+        private List<IntPtr> joysticks;
+
+        /// <summary>
         ///     Array of key of keyboard
         /// </summary>
         private List<Key> keys;
+
+
+        /// <summary>
+        ///     The sdl event
+        /// </summary>
+        private Sdl.SdlEvent sdlEvent;
 
         /// <summary>
         ///     Temp list of keys
         /// </summary>
         private List<Key> tempListOfKeys;
-
-        /// <summary>
-        /// The buttons
-        /// </summary>
-        private List<Sdl.SdlGameControllerButton> buttons;
-        
-        /// <summary>
-        /// The buttons temp
-        /// </summary>
-        private Dictionary<string, Sdl.SdlGameControllerButton> buttonsTemp;
-
-        /// <summary>
-        /// The axis
-        /// </summary>
-        private List<Sdl.SdlGameControllerAxis> axis;
-        
-        /// <summary>
-        /// The axis temp
-        /// </summary>
-        private List<Sdl.SdlGameControllerAxis> axisTemp;
-        
-        
-        /// <summary>
-        /// The sdl event
-        /// </summary>
-        private Sdl.SdlEvent sdlEvent;
-        
-
-        /// <summary>
-        /// The currentsdl numjoysticks
-        /// </summary>
-        private int currentSdlNumJoysticks;
-
-        /// <summary>
-        /// The joysticks
-        /// </summary>
-        private List<IntPtr> joysticks;
 
 /*
         /// <summary>
@@ -100,7 +98,7 @@ namespace Alis.Core.Manager.Input
         /// The numkeys
         /// </summary>
         private int numkeys;*/
-        
+
         /// <summary>
         ///     Inits this instance
         /// </summary>
@@ -109,9 +107,9 @@ namespace Alis.Core.Manager.Input
             Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
             Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
             Sdl.SDL_Init(Sdl.SdlInitEverything);
-            
+
             joysticks = new List<IntPtr>();
-            
+
             for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
             {
                 IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
@@ -122,23 +120,23 @@ namespace Alis.Core.Manager.Input
                 else
                 {
                     Logger.Log($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
+                               $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
+                               $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
+                               $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
                 }
-                
+
                 joysticks.Add(myJoystick);
             }
 
             currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
-            
-            
+
+
             buttons = new List<Sdl.SdlGameControllerButton>((Sdl.SdlGameControllerButton[]) Enum.GetValues(typeof(Sdl.SdlGameControllerButton)));
             buttonsTemp = new Dictionary<string, Sdl.SdlGameControllerButton>();
-            
+
             axis = new List<Sdl.SdlGameControllerAxis>((Sdl.SdlGameControllerAxis[]) Enum.GetValues(typeof(Sdl.SdlGameControllerAxis)));
             axisTemp = new List<Sdl.SdlGameControllerAxis>();
-            
+
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();
         }
@@ -182,9 +180,10 @@ namespace Alis.Core.Manager.Input
                                    $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
                                    $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
                     }
-                
+
                     joysticks.Add(myJoystick);
                 }
+
                 currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
             }
         }
@@ -202,7 +201,7 @@ namespace Alis.Core.Manager.Input
                     {
                         for (int index = 0; index < buttons.Count; index++)
                         {
-                            if (Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0 
+                            if ((Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0)
                                 && !buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                             {
                                 buttonsTemp.Add($"{joysticks[joystickId]}|{buttons[index]}", buttons[index]);
@@ -211,8 +210,8 @@ namespace Alis.Core.Manager.Input
                                     currentSceneGameObject.Components.ForEach(i => i.OnPressButton(buttons[index], joystickId));
                                 }
                             }
-                            
-                            if (Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) == 0 
+
+                            if ((Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) == 0)
                                 && buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                             {
                                 buttonsTemp.Remove($"{joysticks[joystickId]}|{buttons[index]}");
@@ -225,14 +224,14 @@ namespace Alis.Core.Manager.Input
                     }
                 }
             }
-            
+
             if (Sdl.SDL_NumJoysticks() > 0)
             {
                 for (int joystickId = 0; joystickId < joysticks.Count; joystickId++)
                 {
                     for (int index = 0; index < buttons.Count; index++)
                     {
-                        if (Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0
+                        if ((Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0)
                             && buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                         {
                             foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
@@ -243,11 +242,10 @@ namespace Alis.Core.Manager.Input
                     }
                 }
             }
-
         }
-        
+
         /// <summary>
-        /// Dispatches the events
+        ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
@@ -317,7 +315,7 @@ namespace Alis.Core.Manager.Input
         public override void Exit()
         {
         }
-        
+
         /*
         /// <summary>
         ///     Array of key of keyboard

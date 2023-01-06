@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Math
         public Vector2F Position;
 
         /// <summary>
-        /// The scale
+        ///     The scale
         /// </summary>
         public Vector2F Scale;
 
@@ -51,9 +51,9 @@ namespace Alis.Core.Aspect.Math
         ///     The
         /// </summary>
         public Rotation Rotation;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Transform"/> class
+        ///     Initializes a new instance of the <see cref="Transform" /> class
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>

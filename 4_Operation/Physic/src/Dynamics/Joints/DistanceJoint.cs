@@ -189,9 +189,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float upperImpulse;
 
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="DistanceJoint"/> class
+        ///     Initializes a new instance of the <see cref="DistanceJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -216,11 +216,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float maxLength = float.MaxValue,
             float stiffness = 0.0f,
             float damping = 0.0f
-            ) : base(bodyA, bodyB, jointType, collideConnected)
+        ) : base(bodyA, bodyB, jointType, collideConnected)
         {
             this.localAnchorA = localAnchorA;
             this.localAnchorB = localAnchorB;
-            this.lengthPrivate = MathUtils.Max(length, Settings.LinearSlop);
+            lengthPrivate = MathUtils.Max(length, Settings.LinearSlop);
             this.minLength = MathUtils.Max(minLength, Settings.LinearSlop);
             this.maxLength = MathUtils.Max(maxLength, this.minLength);
             this.stiffness = stiffness;

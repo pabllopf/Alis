@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -274,7 +273,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PrismaticJoint"/> class
+        ///     Initializes a new instance of the <see cref="PrismaticJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -291,28 +290,28 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="maxMotorForce">The max motor force</param>
         /// <param name="motorSpeed">The motor speed</param>
         public PrismaticJoint(
-                Body bodyA = null,
-                Body bodyB = null,
-                JointType jointType = default(JointType),
-                bool collideConnected = false,
-                Vector2F localAnchorA = default(Vector2F),
-                Vector2F localAnchorB = default(Vector2F),
-                Vector2F localAxisA = default(Vector2F),
-                float referenceAngle = 0.0f,
-                bool enableLimit = false,
-                float lowerTranslation = 0.0f,
-                float upperTranslation = 0.0f,
-                bool enableMotor = false,
-                float maxMotorForce = 0.0f,
-                float motorSpeed = 0.0f
-            )
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            Vector2F localAxisA = default(Vector2F),
+            float referenceAngle = 0.0f,
+            bool enableLimit = false,
+            float lowerTranslation = 0.0f,
+            float upperTranslation = 0.0f,
+            bool enableMotor = false,
+            float maxMotorForce = 0.0f,
+            float motorSpeed = 0.0f
+        )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
             if (localAxisA.Equals(default(Vector2F)))
             {
                 localAxisA = new Vector2F(1.0f, 1.0f);
             }
-            
+
             LocalAnchorA = localAnchorA;
             LocalAnchorB = localAnchorB;
             LocalXAxisA = localAxisA;
@@ -320,7 +319,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             LocalXAxisA = Vector2F.Normalize(LocalXAxisA);
             localYAxisA = MathUtils.Cross(1.0f, LocalXAxisA);
             ReferenceAngle = referenceAngle;
-            
+
             this.lowerTranslation = lowerTranslation;
             this.upperTranslation = upperTranslation;
 

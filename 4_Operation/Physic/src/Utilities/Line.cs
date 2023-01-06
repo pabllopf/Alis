@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:LineUtils.cs
+//  File:Line.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;

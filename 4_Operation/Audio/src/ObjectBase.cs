@@ -119,7 +119,7 @@ namespace Alis.Core.Audio
         protected abstract void Destroy(bool disposing);
 
         /// <summary>
-        /// Loads
+        ///     Loads
         /// </summary>
         public static void Load()
         {

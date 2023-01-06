@@ -38,11 +38,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
     /// </summary>
     public abstract class Joint
     {
-        /// <summary>
-        ///     The joint type
-        /// </summary>
-        private static JointType _jointType;
-
         /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
         private Body bodyA;
 
@@ -76,8 +71,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="jointType">The joint type</param>
         protected Joint(JointType jointType)
-        { 
-            Joint._jointType = jointType;
+        {
+            _jointType = jointType;
             breakpoint = float.MaxValue;
 
             //Connected bodies should not collide by default
@@ -99,9 +94,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         /// <summary>Constructor for fixed joint</summary>
         protected Joint(Body body, JointType jointType) : this(jointType) => BodyA = body;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Joint"/> class
+        ///     Initializes a new instance of the <see cref="Joint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -112,15 +107,15 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Body bodyB = null,
             JointType jointType = default(JointType),
             bool collideConnected = false
-            ) : this(jointType)
+        ) : this(jointType)
         {
-            Joint._jointType = jointType;
+            _jointType = jointType;
             BodyA = bodyA;
             BodyB = bodyB;
             this.collideConnected = collideConnected;
             IslandFlag = false;
         }
-        
+
         /// <summary>
         ///     The joint edge
         /// </summary>
@@ -199,6 +194,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             get => breakpoint;
             set => breakpoint = value;
         }
+
+        /// <summary>
+        ///     The joint type
+        /// </summary>
+        private static JointType _jointType;
 
         /// <summary>Fires when the joint is broken.</summary>
         public event Action<Joint, float> Broke;

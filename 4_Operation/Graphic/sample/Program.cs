@@ -78,7 +78,7 @@ namespace Alis.Core.Graphic.Sample
             //music.Play();
 
             List<Key> keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
-            
+
             List<Axis> axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));
 
 
@@ -110,11 +110,11 @@ namespace Alis.Core.Graphic.Sample
                         Console.WriteLine($"    [ButtonPressed] Button = '{j}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
                     }
                 }
-                
+
                 Console.Write("\n");
             }
-            
-            
+
+
             while (window.IsOpen)
             {
                 window.DispatchEvents();
@@ -125,11 +125,10 @@ namespace Alis.Core.Graphic.Sample
                     Key key = keys[index];
                     if (Keyboard.IsKeyPressed(key))
                     {
-                        Console.WriteLine($" {key}" );  
+                        Console.WriteLine($" {key}");
                     }
-                    
                 }
-                
+
                 for (uint i = 0; i < Joystick.Count; i++)
                 {
                     if (Joystick.IsConnected(i))
@@ -144,7 +143,7 @@ namespace Alis.Core.Graphic.Sample
                             }
                         }
 
-                        
+
                         float tolerencie = 50.0f;
                         foreach (Axis axisId in axis)
                         {
@@ -156,16 +155,15 @@ namespace Alis.Core.Graphic.Sample
                                 }
                             }
                         }
-                        
-                        
-                        
+
+
                         //Console.WriteLine($"    [ButtonPressed] AxisId = '{Axis.PovX}' | valueAxi = '{Joystick.GetAxisPosition(i, Axis.PovX)}' | Controller = '{i}' | Name = '{identification.Name}' | ProductId='{identification.ProductId}' | VendorId='{identification.VendorId}'");
                     }
                 }
-                
+
                 window.Clear(new Color(_red, _green, _blue));
                 window.Display();
-                
+
 
                 _red += 1;
                 if (_red >= 100)

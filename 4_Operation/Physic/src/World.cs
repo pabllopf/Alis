@@ -31,7 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
@@ -47,7 +46,6 @@ using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic
 {

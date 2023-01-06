@@ -81,7 +81,6 @@ namespace Alis.Sample.PingPong
                     .Debug(debug => debug
                         .Build())
                     .Audio(audio => audio
-                        
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window

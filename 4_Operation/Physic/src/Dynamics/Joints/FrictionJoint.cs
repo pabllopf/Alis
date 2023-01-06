@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -148,7 +147,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FrictionJoint"/> class
+        ///     Initializes a new instance of the <see cref="FrictionJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -167,7 +166,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Vector2F localAnchorB = default(Vector2F),
             float maxForce = 0.0f,
             float maxTorque = 0.0f
-            )
+        )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
             this.localAnchorA = localAnchorA;

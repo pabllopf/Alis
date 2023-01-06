@@ -31,8 +31,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
-using Alis.Core.Input.SDL2;
-using System;
 using Alis.Core.Graphic.D2.SFML.Windows;
 
 namespace Alis.Sample.Rogue
@@ -86,7 +84,7 @@ namespace Alis.Sample.Rogue
         }
 
         /// <summary>
-        /// Ons the release key using the specified key
+        ///     Ons the release key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnReleaseKey(Key key)
@@ -119,7 +117,7 @@ namespace Alis.Sample.Rogue
         }
 
         /// <summary>
-        /// Ons the press down key using the specified key
+        ///     Ons the press down key using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         public override void OnPressDownKey(Key key)

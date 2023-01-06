@@ -28,12 +28,10 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using Alis.Builder;
 using Alis.Core;
-using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Entity;
+using Alis.Core.Audio;
 using Alis.Core.Manager;
 using Alis.Core.Manager.Audio;
 using Alis.Core.Manager.Graphic;
@@ -51,14 +49,14 @@ namespace Alis
     public class VideoGame : GameBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="VideoGame"/> class
+        ///     Initializes a new instance of the <see cref="VideoGame" /> class
         /// </summary>
         static VideoGame()
         {
-            Core.Audio.ObjectBase.Load();
+            ObjectBase.Load();
             Core.Graphic.D2.SFML.ObjectBase.Load();
         }
-        
+
         /// <summary>
         ///     Video game
         /// </summary>

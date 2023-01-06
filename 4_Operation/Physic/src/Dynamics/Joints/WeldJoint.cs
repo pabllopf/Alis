@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -159,9 +158,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float stiffness;
 
-       
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeldJoint"/> class
+        ///     Initializes a new instance of the <see cref="WeldJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -182,7 +181,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float referenceAngle = 0.0f,
             float stiffness = 0.0f,
             float damping = 0.0f
-            )
+        )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
             this.localAnchorA = localAnchorA;

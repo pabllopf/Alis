@@ -30,7 +30,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
@@ -77,20 +76,20 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         /// </summary>
         private readonly RayDataComparer rdc;
 
+        /// <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
+        public float Angle = Constant.Pi / 15;
+
         /// <summary>Ratio of arc length to angle from edges to first ray tested. Defaults to 1/40.</summary>
         public float EdgeRatio = 1.0f / 40.0f;
 
         /// <summary>Ignore Explosion if it happens inside a shape. Default value is false.</summary>
         public bool IgnoreWhenInsideShape = false;
 
-        /// <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
-        public float Angle = Constant.Pi / 15;
+        /// <summary>How many rays per shape/body/segment. Defaults to 5</summary>
+        public int MinRays = 5;
 
         /// <summary>Maximum number of shapes involved in the explosion. Defaults to 100</summary>
         public int Shapes = 100;
-
-        /// <summary>How many rays per shape/body/segment. Defaults to 5</summary>
-        public int MinRays = 5;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="RealExplosion" /> class

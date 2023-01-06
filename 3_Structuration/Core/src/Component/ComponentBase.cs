@@ -179,12 +179,10 @@ namespace Alis.Core.Component
         public virtual void OnReleaseKey(Key key)
         {
         }
-        
-        
-        
-      
+
+
         /// <summary>
-        /// Ons the press button using the specified button
+        ///     Ons the press button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
@@ -192,10 +190,9 @@ namespace Alis.Core.Component
         {
         }
 
-        
-        
+
         /// <summary>
-        /// Ons the press down button using the specified button
+        ///     Ons the press down button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
@@ -203,10 +200,9 @@ namespace Alis.Core.Component
         {
         }
 
-       
-        
+
         /// <summary>
-        /// Ons the release button using the specified button
+        ///     Ons the release button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>

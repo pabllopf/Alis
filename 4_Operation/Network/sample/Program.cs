@@ -132,7 +132,6 @@ namespace Alis.Core.Network.Sample
                 IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
                 using (WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols))
                 {
-                    
                     Debug.Print($"Listening on port {port}");
                     Debug.Print("Press any key to quit");
                     await server.Listen(port);

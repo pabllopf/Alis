@@ -191,7 +191,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GearJoint"/> class
+        ///     Initializes a new instance of the <see cref="GearJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             Joint jointA = null,
             Joint jointB = null,
             float ratio = 1.0f
-            ) : base(bodyA, bodyB, jointType, collideConnected)
+        ) : base(bodyA, bodyB, jointType, collideConnected)
         {
             this.jointA = jointA;
             this.jointB = jointB;

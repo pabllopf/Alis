@@ -169,11 +169,11 @@ namespace Alis.Core.Graphic.D2.SFML
         protected abstract void Destroy(bool disposing);
 
         /// <summary>
-        /// Loads
+        ///     Loads
         /// </summary>
         public static void Load()
         {
-           if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 switch (RuntimeInformation.ProcessArchitecture)
                 {

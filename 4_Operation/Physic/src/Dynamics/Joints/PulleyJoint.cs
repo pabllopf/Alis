@@ -170,9 +170,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The world anchor
         /// </summary>
         private Vector2F worldAnchorB;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="PulleyJoint"/> class
+        ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -192,8 +192,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bool collideConnected = true,
             Vector2F groundAnchorA = default(Vector2F),
             Vector2F groundAnchorB = default(Vector2F),
-            Vector2F localAnchorA = default(Vector2F) ,
-            Vector2F localAnchorB = default(Vector2F) ,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
             float lengthA = 0.0f,
             float lengthB = 0.0f,
             float ratio = 1.0f
@@ -219,7 +219,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 localAnchorB = new Vector2F(1.0f, 0.0f);
             }
-            
+
             worldAnchorA = groundAnchorA;
             worldAnchorB = groundAnchorB;
             this.localAnchorA = localAnchorA;

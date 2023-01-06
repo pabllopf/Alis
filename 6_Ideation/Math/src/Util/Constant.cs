@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:MathConstants.cs
+//  File:Constant.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -43,7 +43,7 @@ namespace Alis.Core.Aspect.Math.Util
         ///     The euler
         /// </summary>
         public const float Euler = 2.7182818284590452354f;
-        
+
         /// <summary>Represents the mathematical constant e(2.71828175).</summary>
         public const float E = (float) System.Math.E;
 

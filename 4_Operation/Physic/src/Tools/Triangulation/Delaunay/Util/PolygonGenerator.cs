@@ -28,10 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
 {

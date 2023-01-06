@@ -147,7 +147,6 @@ However, we can compute sin+cos of the same angle fast.
 
 using System;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.ContactSystem;

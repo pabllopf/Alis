@@ -92,11 +92,8 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         public OnSeparationHandler OnSeparation;
 
-        /// <summary>Contact filtering data.</summary>
-        public Filter Filter { get; set; } = new Filter();
-        
         /// <summary>
-        /// Initializes a new instance of the <see cref="Fixture"/> class
+        ///     Initializes a new instance of the <see cref="Fixture" /> class
         /// </summary>
         /// <param name="shape">The shape</param>
         /// <param name="filter">The filter</param>
@@ -122,7 +119,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 throw new ArgumentNullException(nameof(filter));
             }
-            
+
             Friction = friction;
             Restitution = restitution;
             RestitutionThreshold = restitutionThreshold;
@@ -130,12 +127,12 @@ namespace Alis.Core.Physic.Dynamics
             CollisionGroupPrivate = filter.Group;
             CollisionCategoriesprivate = filter.Category;
             CollidesWithprivate = filter.CategoryMask;
-            
+
             IgnoreCcdWith = Settings.DefaultFixtureIgnoreCcdWith;
 
             IsSensorPrivate = isSensor;
             Shape = shape.Clone();
-            
+
             int childCount = Shape.ChildCount;
             Proxies = new FixtureProxy[childCount];
             for (int i = 0; i < childCount; ++i)
@@ -146,6 +143,9 @@ namespace Alis.Core.Physic.Dynamics
 
             ProxyCount = 0;
         }
+
+        /// <summary>Contact filtering data.</summary>
+        public Filter Filter { get; set; } = new Filter();
 
         /// <summary>
         ///     Gets or sets the value of the ignore ccd with
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 IsSensorPrivate = value;
             }
-        } 
+        }
 
         /// <summary>Get the parent body of this fixture. This is null if the fixture is not attached.</summary>
         /// <value>The body.</value>

@@ -47,7 +47,7 @@ namespace Alis.Core.Entity
         ///     Initializes a new instance of the <see cref="SplashScreen" /> class
         /// </summary>
         /// <param name="filePath">The file path</param>
-        public SplashScreen(string filePath) => this.FilePath = filePath;
+        public SplashScreen(string filePath) => FilePath = filePath;
 
         /// <summary>
         ///     Gets or sets the value of the enabled

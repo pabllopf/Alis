@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
@@ -104,25 +103,25 @@ namespace Alis.Sample.PingPong
         }
 
         /// <summary>
-        /// Ons the press button using the specified button
+        ///     Ons the press button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
         public override void OnPressDownButton(Sdl.SdlGameControllerButton button, int device)
         {
             //Console.WriteLine($"OnPressDownButton Device={device} | button={button}");
-            
+
             if (device == 0)
             {
                 Vector2F velocity = boxCollider.Body.LinearVelocity;
-                
+
                 switch (button)
                 {
                     case Sdl.SdlGameControllerButton.SdlControllerButtonA:
                         velocity.Y = 5;
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case  Sdl.SdlGameControllerButton.SdlControllerButtonY:
+                    case Sdl.SdlGameControllerButton.SdlControllerButtonY:
                         velocity.Y = -5;
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -131,14 +130,14 @@ namespace Alis.Sample.PingPong
         }
 
         /// <summary>
-        /// Ons the release button using the specified button
+        ///     Ons the release button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
         public override void OnReleaseButton(Sdl.SdlGameControllerButton button, int device)
         {
             //Console.WriteLine($"OnReleaseButton Device={device} | button={button}");
-            
+
             if (device == 0)
             {
                 Vector2F velocity = boxCollider.Body.LinearVelocity;
@@ -149,7 +148,7 @@ namespace Alis.Sample.PingPong
                         velocity.Y = 0;
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case  Sdl.SdlGameControllerButton.SdlControllerButtonY:
+                    case Sdl.SdlGameControllerButton.SdlControllerButtonY:
                         velocity.Y = 0;
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -158,7 +157,7 @@ namespace Alis.Sample.PingPong
         }
 
         /// <summary>
-        /// Ons the press button using the specified button
+        ///     Ons the press button using the specified button
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>

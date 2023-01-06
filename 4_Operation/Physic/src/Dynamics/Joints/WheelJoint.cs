@@ -260,10 +260,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
             localYAxisA = MathUtils.Cross(1.0f, localXAxisA);
         }
 
-        
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="WheelJoint"/> class
+        ///     Initializes a new instance of the <see cref="WheelJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -280,7 +279,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="motorSpeed">The motor speed</param>
         /// <param name="stiffness">The stiffness</param>
         /// <param name="damping">The damping</param>
-        public WheelJoint( 
+        public WheelJoint(
             Body bodyA = null,
             Body bodyB = null,
             JointType jointType = default(JointType),
@@ -303,10 +302,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             {
                 localAxisA = new Vector2F(1.0f, 0.0f);
             }
+
             this.localAnchorA = localAnchorA;
             this.localAnchorB = localAnchorB;
-            this.localXAxisA = localAxisA;
-            this.localYAxisA = MathUtils.Cross(1.0f, localXAxisA);
+            localXAxisA = localAxisA;
+            localYAxisA = MathUtils.Cross(1.0f, localXAxisA);
             this.lowerTranslation = lowerTranslation;
             this.upperTranslation = upperTranslation;
             this.enableLimit = enableLimit;

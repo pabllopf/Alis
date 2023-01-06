@@ -62,14 +62,13 @@ namespace Alis.Core.Audio.Sample
                             audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
                             break;
                     }
-
                 }
                 catch (Exception ex)
                 {
                     Logger.Exception(ex);
                 }
-                
-                
+
+
                 Console.WriteLine("Write command 'play' | 'stop' | 'resume' | exit ");
                 string command = Console.ReadLine();
                 try

@@ -53,7 +53,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The decompose epsilon
         /// </summary>
         private const float DecomposeEpsilon = 0.0001f;
-        
+
         /// <summary>The first element of the first row.</summary>
         public float M11;
 
@@ -1443,7 +1443,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The numeric values in the returned string are formatted by using the conventions of the current culture. For
         ///     example, for the en-US culture, the returned string might appear as
         ///     <c>
-        ///         { {M11:1.1 M12:1.2 M13:1.3 M14:1.4} {M21:2.1 M22:2.2 M23:2.3 M24:2.4} {M31:3.1 M32:3.2 M33:3.3 M34:3.4} {M41:4.1
+        ///         { {M11:1.1 M12:1.2 M13:1.3 M14:1.4} {M21:2.1 M22:2.2 M23:2.3 M24:2.4} {M31:3.1 M32:3.2 M33:3.3 M34:3.4}
+        ///         {M41:4.1
         ///         M42:4.2 M43:4.3 M44:4.4} }
         ///     </c>
         ///     .

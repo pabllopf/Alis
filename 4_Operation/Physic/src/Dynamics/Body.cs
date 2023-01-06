@@ -98,9 +98,9 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal Transform Xf; // the body origin transform
 
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Body"/> class
+        ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
         /// <param name="position">The position</param>
         /// <param name="linearVelocity">The linear velocity</param>
@@ -170,7 +170,7 @@ namespace Alis.Core.Physic.Dynamics
             AngularVelocity = angularVelocity;
 
             LinearDamping = linearDamping;
-            this.AngularDamping = angularDamping;
+            AngularDamping = angularDamping;
             GravityScale = gravityScale;
 
             Type = bodyType;
@@ -528,12 +528,9 @@ namespace Alis.Core.Physic.Dynamics
         public Vector2F Position
         {
             get => Xf.Position;
-            set
-            {
+            set =>
                 //Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
-
                 SetTransform(ref value, Sweep.A);
-            }
         }
 
         /// <summary>Get the angle in radians.</summary>
@@ -541,10 +538,7 @@ namespace Alis.Core.Physic.Dynamics
         public float Rotation
         {
             get => Sweep.A;
-            set
-            {
-                SetTransform(ref Xf.Position, value);
-            }
+            set => SetTransform(ref Xf.Position, value);
         }
 
         //Velcro: We don't add a setter here since it requires a branch, and we only use it internally
@@ -802,7 +796,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 return null;
             }
-            
+
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
                 IBroadPhase broadPhase = World.ContactManager.BroadPhase;
@@ -832,10 +826,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     the mass of the body. Contacts are not created until the next time step. Warning: This function is locked during
         ///     callbacks.
         /// </summary>
-        public Fixture AddFixture(Shape shape)
-        {
-            return World.IsLocked ? null : AddFixture(new Fixture(shape, new Filter()));
-        }
+        public Fixture AddFixture(Shape shape) => World.IsLocked ? null : AddFixture(new Fixture(shape, new Filter()));
 
         /// <summary>
         ///     Destroy a fixture. This removes the fixture from the broad-phase and destroys all contacts associated with

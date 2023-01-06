@@ -54,14 +54,12 @@ namespace Alis.Core.Physic.Factories
         /// <returns>The body</returns>
         public static Body CreateBody(World world, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static)
-        {
-            return CreateFromDef(world, new Body(
+            => CreateFromDef(world, new Body(
                 position,
                 Vector2F.Zero,
                 bodyType,
                 rotation
-                ));
-        }
+            ));
 
         /// <summary>
         ///     Creates the edge using the specified world
