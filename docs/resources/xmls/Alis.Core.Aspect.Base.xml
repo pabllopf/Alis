@@ -86,11 +86,11 @@
                 </list>
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.tempFolder">
+        <member name="F:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.TempFolder">
             <summary>
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.dirName">
+        <member name="F:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.DirName">
             <summary>
             </summary>
         </member>
@@ -188,7 +188,7 @@
             <param name="filename">Path of the file</param>
             <param name="innerException">Exception which is the cause ofthe current exception</param>
         </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.MaxSceneGame">
+        <member name="T:Alis.Core.Aspect.Base.Exceptions.SceneGame">
             <summary>
                 The max scene game class
             </summary>

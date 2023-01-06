@@ -188,7 +188,7 @@ namespace Alis.Core.Component
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public virtual void OnPressButton(SDL.SDL_GameControllerButton button, int device)
+        public virtual void OnPressButton(Sdl.SdlGameControllerButton button, int device)
         {
         }
 
@@ -199,7 +199,7 @@ namespace Alis.Core.Component
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public virtual void OnPressDownButton(SDL.SDL_GameControllerButton button, int device)
+        public virtual void OnPressDownButton(Sdl.SdlGameControllerButton button, int device)
         {
         }
 
@@ -210,7 +210,7 @@ namespace Alis.Core.Component
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public virtual void OnReleaseButton(SDL.SDL_GameControllerButton button, int device)
+        public virtual void OnReleaseButton(Sdl.SdlGameControllerButton button, int device)
         {
         }
 

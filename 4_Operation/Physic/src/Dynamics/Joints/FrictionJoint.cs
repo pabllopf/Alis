@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -228,14 +229,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The maximum friction force in N.</summary>
-        public float MaxForce
+        public float Force
         {
             get => maxForce;
             set => maxForce = value;
         }
 
         /// <summary>The maximum friction torque in N-m.</summary>
-        public float MaxTorque
+        public float Torque
         {
             get => maxTorque;
             set => maxTorque = value;
@@ -356,7 +357,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float impulse = -angularMass * cdot;
 
                 float oldImpulse = angularImpulse;
-                float maxImpulse = h * MaxTorque;
+                float maxImpulse = h * Torque;
                 angularImpulse = MathUtils.Clamp(angularImpulse + impulse, -maxImpulse, maxImpulse);
                 impulse = angularImpulse - oldImpulse;
 
@@ -372,7 +373,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F oldImpulse = linearImpulse;
                 linearImpulse += impulse;
 
-                float maxImpulse = h * MaxForce;
+                float maxImpulse = h * Force;
 
                 if (linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
                 {

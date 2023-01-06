@@ -34,49 +34,49 @@ namespace Alis.Core.Aspect.Math.Matrix
     /// <summary>
     ///     A 2-by-2 matrix. Stored in column-major order.
     /// </summary>
-    public struct Matrix2x2
+    public struct Matrix2X2F
     {
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2F Col1;
+        public Vector2F Ex;
 
         /// <summary>
         ///     The col
         /// </summary>
-        public Vector2F Col2;
+        public Vector2F Ey;
 
         /// <summary>
         ///     Construct this matrix using columns.
         /// </summary>
-        public Matrix2x2(Vector2F c1, Vector2F c2)
+        public Matrix2X2F(Vector2F c1, Vector2F c2)
         {
-            Col1 = c1;
-            Col2 = c2;
+            Ex = c1;
+            Ey = c2;
         }
 
         /// <summary>
         ///     Construct this matrix using scalars.
         /// </summary>
-        public Matrix2x2(float a11, float a12, float a21, float a22)
+        public Matrix2X2F(float a11, float a12, float a21, float a22)
         {
-            Col1.X = a11;
-            Col1.Y = a21;
-            Col2.X = a12;
-            Col2.Y = a22;
+            Ex.X = a11;
+            Ex.Y = a21;
+            Ey.X = a12;
+            Ey.Y = a22;
         }
 
         /// <summary>
         ///     Construct this matrix using an angle.
         ///     This matrix becomes an orthonormal rotation matrix.
         /// </summary>
-        public Matrix2x2(float angle)
+        public Matrix2X2F(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Col1.X = c;
-            Col2.X = -s;
-            Col1.Y = s;
-            Col2.Y = c;
+            Ex.X = c;
+            Ey.X = -s;
+            Ex.Y = s;
+            Ey.Y = c;
         }
 
         /// <summary>
@@ -84,8 +84,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public void Set(Vector2F c1, Vector2F c2)
         {
-            Col1 = c1;
-            Col2 = c2;
+            Ex = c1;
+            Ey = c2;
         }
 
         /// <summary>
@@ -95,10 +95,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         public void Set(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Col1.X = c;
-            Col2.X = -s;
-            Col1.Y = s;
-            Col2.Y = c;
+            Ex.X = c;
+            Ey.X = -s;
+            Ex.Y = s;
+            Ey.Y = c;
         }
 
         /// <summary>
@@ -106,10 +106,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public void SetIdentity()
         {
-            Col1.X = 1.0f;
-            Col2.X = 0.0f;
-            Col1.Y = 0.0f;
-            Col2.Y = 1.0f;
+            Ex.X = 1.0f;
+            Ey.X = 0.0f;
+            Ex.Y = 0.0f;
+            Ey.Y = 1.0f;
         }
 
         /// <summary>
@@ -117,35 +117,35 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public void SetZero()
         {
-            Col1.X = 0.0f;
-            Col2.X = 0.0f;
-            Col1.Y = 0.0f;
-            Col2.Y = 0.0f;
+            Ex.X = 0.0f;
+            Ey.X = 0.0f;
+            Ex.Y = 0.0f;
+            Ey.Y = 0.0f;
         }
 
         /// <summary>
         ///     Extract the angle from this matrix (assumed to be a rotation matrix).
         /// </summary>
-        public float GetAngle() => (float) System.Math.Atan2(Col1.Y, Col1.X);
+        public float GetAngle() => (float) System.Math.Atan2(Ex.Y, Ex.X);
 
         /// <summary>
         ///     Compute the inverse of this matrix, such that inv(A) * A = identity.
         /// </summary>
-        public Matrix2x2 GetInverse()
+        public Matrix2X2F GetInverse()
         {
-            float col1X = Col1.X;
-            float col2X = Col2.X;
-            float col1Y = Col1.Y;
-            float col2Y = Col2.Y;
-            Matrix2x2 matrix2X2 = new Matrix2x2();
+            float col1X = Ex.X;
+            float col2X = Ey.X;
+            float col1Y = Ex.Y;
+            float col2Y = Ey.Y;
+            Matrix2X2F matrix2X2F = new Matrix2X2F();
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            matrix2X2.Col1.X = det * col2Y;
-            matrix2X2.Col2.X = -det * col2X;
-            matrix2X2.Col1.Y = -det * col1Y;
-            matrix2X2.Col2.Y = det * col1X;
-            return matrix2X2;
+            matrix2X2F.Ex.X = det * col2Y;
+            matrix2X2F.Ey.X = -det * col2X;
+            matrix2X2F.Ex.Y = -det * col1Y;
+            matrix2X2F.Ey.Y = det * col1X;
+            return matrix2X2F;
         }
 
         /// <summary>
@@ -154,10 +154,10 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public Vector2F Solve(Vector2F b)
         {
-            float col1X = Col1.X;
-            float col2X = Col2.X;
-            float col1Y = Col1.Y;
-            float col2Y = Col2.Y;
+            float col1X = Ex.X;
+            float col2X = Ey.X;
+            float col1Y = Ex.Y;
+            float col2Y = Ey.Y;
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
@@ -170,18 +170,43 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// <summary>
         ///     Gets the value of the identity
         /// </summary>
-        public static Matrix2x2 Identity => new Matrix2x2(1, 0, 0, 1);
+        public static Matrix2X2F Identity => new Matrix2X2F(1, 0, 0, 1);
 
         /// <summary>
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public static Matrix2x2 operator +(Matrix2x2 a, Matrix2x2 b)
+        public static Matrix2X2F operator +(Matrix2X2F a, Matrix2X2F b)
         {
-            Matrix2x2 c = new Matrix2x2();
-            c.Set(a.Col1 + b.Col1, a.Col2 + b.Col2);
+            Matrix2X2F c = new Matrix2X2F();
+            c.Set(a.Ex + b.Ex, a.Ey + b.Ey);
             return c;
+        }
+
+        /// <summary>
+        ///     Gets the value of the inverse
+        /// </summary>
+        public Matrix2X2F Inverse
+        {
+            get
+            {
+                float a = Ex.X, b = Ey.X, c = Ex.Y, d = Ey.Y;
+                float det = a * d - b * c;
+                if (det != 0.0f)
+                {
+                    det = 1.0f / det;
+                }
+
+                Matrix2X2F result = new Matrix2X2F();
+                result.Ex.X = det * d;
+                result.Ex.Y = -det * c;
+
+                result.Ey.X = -det * b;
+                result.Ey.Y = det * a;
+
+                return result;
+            }
         }
     }
 }

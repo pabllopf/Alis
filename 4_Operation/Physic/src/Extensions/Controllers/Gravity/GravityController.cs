@@ -52,7 +52,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
             : base(ControllerType.GravityController)
         {
             Strength = strength;
-            MaxRadius = float.MaxValue;
+            Radius = float.MaxValue;
             GravityType = GravityType.DistanceSquared;
             Points = new List<Vector2F>();
             Bodies = new List<Body>();
@@ -68,7 +68,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
             : base(ControllerType.GravityController)
         {
             MinRadius = minRadius;
-            MaxRadius = maxRadius;
+            Radius = maxRadius;
             Strength = strength;
             GravityType = GravityType.DistanceSquared;
             Points = new List<Vector2F>();
@@ -83,7 +83,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
         /// <summary>
         ///     Gets or sets the value of the max radius
         /// </summary>
-        public float MaxRadius { get; set; }
+        public float Radius { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the strength
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
                     Vector2F d = controllerBody.Position - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= Constant.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= Constant.Epsilon || r2 > Radius * Radius || r2 < MinRadius * MinRadius)
                     {
                         continue;
                     }
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
                     Vector2F d = point - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= Constant.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= Constant.Epsilon || r2 > Radius * Radius || r2 < MinRadius * MinRadius)
                     {
                         continue;
                     }

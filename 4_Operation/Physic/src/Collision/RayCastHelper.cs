@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Collision
             }
 
             float t = numerator / denominator;
-            if (t < 0.0f || input.MaxFraction < t)
+            if (t < 0.0f || input.Fraction < t)
             {
                 return false;
             }
@@ -167,7 +167,7 @@ namespace Alis.Core.Physic.Collision
             float a = -(c + (float) Math.Sqrt(sigma));
 
             // Is the intersection point on the segment?
-            if ((0.0f <= a) && (a <= input.MaxFraction * rr))
+            if ((0.0f <= a) && (a <= input.Fraction * rr))
             {
                 a /= rr;
                 output.Fraction = a;
@@ -198,7 +198,7 @@ namespace Alis.Core.Physic.Collision
             Vector2F p2 = MathUtils.MulT(transform.Rotation, input.Point2 - transform.Position);
             Vector2F d = p2 - p1;
 
-            float lower = 0.0f, upper = input.MaxFraction;
+            float lower = 0.0f, upper = input.Fraction;
 
             int index = -1;
 
@@ -248,7 +248,7 @@ namespace Alis.Core.Physic.Collision
                 }
             }
 
-            Debug.Assert((0.0f <= lower) && (lower <= input.MaxFraction));
+            Debug.Assert((0.0f <= lower) && (lower <= input.Fraction));
 
             if (index >= 0)
             {

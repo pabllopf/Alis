@@ -71,11 +71,11 @@ namespace Alis.Core.Aspect.Base.Dll
     {
         /// <summary>
         /// </summary>
-        public static string tempFolder = "";
+        public static string TempFolder = "";
 
         /// <summary>
         /// </summary>
-        public static string dirName = "";
+        public static string DirName = "";
 
         /// <summary>
         ///     Extract DLLs from resources to temporary folder
@@ -90,15 +90,15 @@ namespace Alis.Core.Aspect.Base.Dll
 
             // The temporary folder holds one or more of the temporary DLLs
             // It is made "unique" to avoid different versions of the DLL or architectures.
-            tempFolder = string.Format("{0}.{1}.{2}", an.Name, an.ProcessorArchitecture, an.Version);
+            TempFolder = string.Format("{0}.{1}.{2}", an.Name, an.ProcessorArchitecture, an.Version);
 
-            dirName = Path.Combine(Path.GetTempPath(), tempFolder);
-            dirName = Environment.CurrentDirectory;
+            DirName = Path.Combine(Path.GetTempPath(), TempFolder);
+            DirName = Environment.CurrentDirectory;
 
 
-            if (!Directory.Exists(dirName))
+            if (!Directory.Exists(DirName))
             {
-                Directory.CreateDirectory(dirName);
+                Directory.CreateDirectory(DirName);
             }
 
             // Add the temporary dirName to the PATH environment variable (at the head!)
@@ -107,7 +107,7 @@ namespace Alis.Core.Aspect.Base.Dll
             bool found = false;
             foreach (string pathPiece in pathPieces)
             {
-                if (pathPiece == dirName)
+                if (pathPiece == DirName)
                 {
                     found = true;
                     break;
@@ -116,11 +116,11 @@ namespace Alis.Core.Aspect.Base.Dll
 
             if (!found)
             {
-                Environment.SetEnvironmentVariable("PATH", dirName + ";" + path);
+                Environment.SetEnvironmentVariable("PATH", DirName + ";" + path);
             }
 
             // See if the file exists, avoid rewriting it if not necessary
-            string dllPath = Path.Combine(dirName, dllName);
+            string dllPath = Path.Combine(DirName, dllName);
             if (File.Exists(dllPath))
             {
                 File.Delete(dllPath);
@@ -143,7 +143,7 @@ namespace Alis.Core.Aspect.Base.Dll
         /// <param name="dllName"></param>
         public static void LoadDll(string dllName)
         {
-            if (tempFolder == "")
+            if (TempFolder == "")
             {
                 throw new Exception("Please call ExtractEmbeddedDlls before LoadDll");
             }
@@ -152,7 +152,7 @@ namespace Alis.Core.Aspect.Base.Dll
             if (h == IntPtr.Zero)
             {
                 Exception e = new Win32Exception();
-                throw new DllNotFoundException("Unable to load library: " + dllName + " from " + tempFolder, e);
+                throw new DllNotFoundException("Unable to load library: " + dllName + " from " + TempFolder, e);
             }
         }
     }

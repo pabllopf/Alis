@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -202,7 +203,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some
         ///     multiple of the weight (multiplier * mass * gravity). Set/get the maximum force in Newtons.
         /// </summary>
-        public float MaxForce
+        public float Force
         {
             get => maxForce;
             set => maxForce = value;

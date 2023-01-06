@@ -6,14 +6,14 @@ namespace Alis.Core.Input.SDL2
 	/// <summary>
 	/// The sdl image class
 	/// </summary>
-	public static class SDL_image
+	public static class SdlImage
 	{
 		
 		/* Used by DllImport to load the native library. */
 		/// <summary>
 		/// The native lib name
 		/// </summary>
-		private const string nativeLibName = "SDL2_image";
+		private const string NativeLibName = "SDL2_image";
 
 		
 
@@ -25,68 +25,68 @@ namespace Alis.Core.Input.SDL2
 		/// <summary>
 		/// The sdl image major version
 		/// </summary>
-		public const int SDL_IMAGE_MAJOR_VERSION =	2;
+		public const int SdlImageMajorVersion =	2;
 		/// <summary>
 		/// The sdl image minor version
 		/// </summary>
-		public const int SDL_IMAGE_MINOR_VERSION =	0;
+		public const int SdlImageMinorVersion =	0;
 		/// <summary>
 		/// The sdl image patchlevel
 		/// </summary>
-		public const int SDL_IMAGE_PATCHLEVEL =		6;
+		public const int SdlImagePatchlevel =		6;
 
 		/// <summary>
 		/// The img initflags enum
 		/// </summary>
 		[Flags]
-		public enum IMG_InitFlags
+		public enum ImgInitFlags
 		{
 			/// <summary>
 			/// The img init jpg img initflags
 			/// </summary>
-			IMG_INIT_JPG =	0x00000001,
+			ImgInitJpg =	0x00000001,
 			/// <summary>
 			/// The img init png img initflags
 			/// </summary>
-			IMG_INIT_PNG =	0x00000002,
+			ImgInitPng =	0x00000002,
 			/// <summary>
 			/// The img init tif img initflags
 			/// </summary>
-			IMG_INIT_TIF =	0x00000004,
+			ImgInitTif =	0x00000004,
 			/// <summary>
 			/// The img init webp img initflags
 			/// </summary>
-			IMG_INIT_WEBP =	0x00000008
+			ImgInitWebp =	0x00000008
 		}
 
 		/// <summary>
 		/// Sdls the image version using the specified x
 		/// </summary>
-		/// <param name="X">The </param>
-		public static void SDL_IMAGE_VERSION(out SDL.SDL_version X)
+		/// <param name="x">The </param>
+		public static void SDL_IMAGE_VERSION(out Sdl.SdlVersion x)
 		{
-			X.major = SDL_IMAGE_MAJOR_VERSION;
-			X.minor = SDL_IMAGE_MINOR_VERSION;
-			X.patch = SDL_IMAGE_PATCHLEVEL;
+			x.major = SdlImageMajorVersion;
+			x.minor = SdlImageMinorVersion;
+			x.patch = SdlImagePatchlevel;
 		}
 
 		/// <summary>
 		/// Internals the img linked version
 		/// </summary>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, EntryPoint = "IMG_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, EntryPoint = "IMG_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
 		private static extern IntPtr INTERNAL_IMG_Linked_Version();
 		/// <summary>
 		/// Imgs the linked version
 		/// </summary>
 		/// <returns>The result</returns>
-		public static SDL.SDL_version IMG_Linked_Version()
+		public static Sdl.SdlVersion IMG_Linked_Version()
 		{
-			SDL.SDL_version result;
-			IntPtr result_ptr = INTERNAL_IMG_Linked_Version();
-			result = (SDL.SDL_version) Marshal.PtrToStructure(
-				result_ptr,
-				typeof(SDL.SDL_version)
+			Sdl.SdlVersion result;
+			IntPtr resultPtr = INTERNAL_IMG_Linked_Version();
+			result = (Sdl.SdlVersion) Marshal.PtrToStructure(
+				resultPtr,
+				typeof(Sdl.SdlVersion)
 			);
 			return result;
 		}
@@ -96,13 +96,13 @@ namespace Alis.Core.Input.SDL2
 		/// </summary>
 		/// <param name="flags">The flags</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern int IMG_Init(IMG_InitFlags flags);
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int IMG_Init(ImgInitFlags flags);
 
 		/// <summary>
 		/// Imgs the quit
 		/// </summary>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void IMG_Quit();
 
 		/* IntPtr refers to an SDL_Surface* */
@@ -111,7 +111,7 @@ namespace Alis.Core.Input.SDL2
 		/// </summary>
 		/// <param name="file">The file</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, EntryPoint = "IMG_Load", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, EntryPoint = "IMG_Load", CallingConvention = CallingConvention.Cdecl)]
 		private static extern unsafe IntPtr INTERNAL_IMG_Load(
 			byte* file
 		);
@@ -122,7 +122,7 @@ namespace Alis.Core.Input.SDL2
 		/// <returns>The handle</returns>
 		public static unsafe IntPtr IMG_Load(string file)
 		{
-			byte* utf8File = SDL.Utf8EncodeHeap(file);
+			byte* utf8File = Sdl.Utf8EncodeHeap(file);
 			IntPtr handle = INTERNAL_IMG_Load(
 				utf8File
 			);
@@ -138,7 +138,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="src">The src</param>
 		/// <param name="freesrc">The freesrc</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr IMG_Load_RW(
 			IntPtr src,
 			int freesrc
@@ -153,7 +153,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="freesrc">The freesrc</param>
 		/// <param name="type">The type</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, EntryPoint = "IMG_LoadTyped_RW", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, EntryPoint = "IMG_LoadTyped_RW", CallingConvention = CallingConvention.Cdecl)]
 		private static extern unsafe IntPtr INTERNAL_IMG_LoadTyped_RW(
 			IntPtr src,
 			int freesrc,
@@ -171,12 +171,12 @@ namespace Alis.Core.Input.SDL2
 			int freesrc,
 			string type
 		) {
-			int utf8TypeBufSize = SDL.Utf8Size(type);
+			int utf8TypeBufSize = Sdl.Utf8Size(type);
 			byte* utf8Type = stackalloc byte[utf8TypeBufSize];
 			return INTERNAL_IMG_LoadTyped_RW(
 				src,
 				freesrc,
-				SDL.Utf8Encode(type, utf8Type, utf8TypeBufSize)
+				Sdl.Utf8Encode(type, utf8Type, utf8TypeBufSize)
 			);
 		}
 
@@ -187,7 +187,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="renderer">The renderer</param>
 		/// <param name="file">The file</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, EntryPoint = "IMG_LoadTexture", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, EntryPoint = "IMG_LoadTexture", CallingConvention = CallingConvention.Cdecl)]
 		private static extern unsafe IntPtr INTERNAL_IMG_LoadTexture(
 			IntPtr renderer,
 			byte* file
@@ -202,7 +202,7 @@ namespace Alis.Core.Input.SDL2
 			IntPtr renderer,
 			string file
 		) {
-			byte* utf8File = SDL.Utf8EncodeHeap(file);
+			byte* utf8File = Sdl.Utf8EncodeHeap(file);
 			IntPtr handle = INTERNAL_IMG_LoadTexture(
 				renderer,
 				utf8File
@@ -223,7 +223,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="src">The src</param>
 		/// <param name="freesrc">The freesrc</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr IMG_LoadTexture_RW(
 			IntPtr renderer,
 			IntPtr src,
@@ -243,7 +243,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="freesrc">The freesrc</param>
 		/// <param name="type">The type</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, EntryPoint = "IMG_LoadTextureTyped_RW", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, EntryPoint = "IMG_LoadTextureTyped_RW", CallingConvention = CallingConvention.Cdecl)]
 		private static extern unsafe IntPtr INTERNAL_IMG_LoadTextureTyped_RW(
 			IntPtr renderer,
 			IntPtr src,
@@ -264,7 +264,7 @@ namespace Alis.Core.Input.SDL2
 			int freesrc,
 			string type
 		) {
-			byte* utf8Type = SDL.Utf8EncodeHeap(type);
+			byte* utf8Type = Sdl.Utf8EncodeHeap(type);
 			IntPtr handle = INTERNAL_IMG_LoadTextureTyped_RW(
 				renderer,
 				src,
@@ -281,7 +281,7 @@ namespace Alis.Core.Input.SDL2
 		/// </summary>
 		/// <param name="xpm">The xpm</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr IMG_ReadXPMFromArray(
 			[In()] [MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.LPStr)]
 				string[] xpm
@@ -294,7 +294,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="surface">The surface</param>
 		/// <param name="file">The file</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, EntryPoint = "IMG_SavePNG", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, EntryPoint = "IMG_SavePNG", CallingConvention = CallingConvention.Cdecl)]
 		private static extern unsafe int INTERNAL_IMG_SavePNG(
 			IntPtr surface,
 			byte* file
@@ -307,7 +307,7 @@ namespace Alis.Core.Input.SDL2
 		/// <returns>The result</returns>
 		public static unsafe int IMG_SavePNG(IntPtr surface, string file)
 		{
-			byte* utf8File = SDL.Utf8EncodeHeap(file);
+			byte* utf8File = Sdl.Utf8EncodeHeap(file);
 			int result = INTERNAL_IMG_SavePNG(
 				surface,
 				utf8File
@@ -325,7 +325,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dst">The dst</param>
 		/// <param name="freedst">The freedst</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int IMG_SavePNG_RW(
 			IntPtr surface,
 			IntPtr dst,
@@ -340,7 +340,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="file">The file</param>
 		/// <param name="quality">The quality</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, EntryPoint = "IMG_SaveJPG", CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, EntryPoint = "IMG_SaveJPG", CallingConvention = CallingConvention.Cdecl)]
 		private static extern unsafe int INTERNAL_IMG_SaveJPG(
 			IntPtr surface,
 			byte* file,
@@ -355,7 +355,7 @@ namespace Alis.Core.Input.SDL2
 		/// <returns>The result</returns>
 		public static unsafe int IMG_SaveJPG(IntPtr surface, string file, int quality)
 		{
-			byte* utf8File = SDL.Utf8EncodeHeap(file);
+			byte* utf8File = Sdl.Utf8EncodeHeap(file);
 			int result = INTERNAL_IMG_SaveJPG(
 				surface,
 				utf8File,
@@ -375,7 +375,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="freedst">The freedst</param>
 		/// <param name="quality">The quality</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int IMG_SaveJPG_RW(
 			IntPtr surface,
 			IntPtr dst,
@@ -389,7 +389,7 @@ namespace Alis.Core.Input.SDL2
 		/// <returns>The string</returns>
 		public static string IMG_GetError()
 		{
-			return SDL.SDL_GetError();
+			return Sdl.SDL_GetError();
 		}
 
 		/// <summary>
@@ -398,7 +398,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="fmtAndArglist">The fmt and arglist</param>
 		public static void IMG_SetError(string fmtAndArglist)
 		{
-			SDL.SDL_SetError(fmtAndArglist);
+			Sdl.SDL_SetError(fmtAndArglist);
 		}
 
 		
@@ -407,24 +407,24 @@ namespace Alis.Core.Input.SDL2
 		/// <summary>
 		/// The img animation
 		/// </summary>
-		public struct IMG_Animation
+		public struct ImgAnimation
 		{
 			/// <summary>
 			/// The 
 			/// </summary>
-			public int w;
+			public int W;
 			/// <summary>
 			/// The 
 			/// </summary>
-			public int h;
+			public int H;
 			/// <summary>
 			/// The frames
 			/// </summary>
-			public IntPtr frames; /* SDL_Surface** */
+			public IntPtr Frames; /* SDL_Surface** */
 			/// <summary>
 			/// The delays
 			/// </summary>
-			public IntPtr delays; /* int* */
+			public IntPtr Delays; /* int* */
 		}
 
 		/* IntPtr refers to an IMG_Animation* */
@@ -433,7 +433,7 @@ namespace Alis.Core.Input.SDL2
 		/// </summary>
 		/// <param name="file">The file</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr IMG_LoadAnimation(
 			[In()] [MarshalAs(UnmanagedType.LPStr)]
 				string file
@@ -447,7 +447,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="src">The src</param>
 		/// <param name="freesrc">The freesrc</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr IMG_LoadAnimation_RW(
 			IntPtr src,
 			int freesrc
@@ -462,7 +462,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="freesrc">The freesrc</param>
 		/// <param name="type">The type</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr IMG_LoadAnimationTyped_RW(
 			IntPtr src,
 			int freesrc,
@@ -475,7 +475,7 @@ namespace Alis.Core.Input.SDL2
 		/// Imgs the free animation using the specified anim
 		/// </summary>
 		/// <param name="anim">The anim</param>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void IMG_FreeAnimation(IntPtr anim);
 
 		/* IntPtr refers to an IMG_Animation*, src to an SDL_RWops* */
@@ -485,7 +485,7 @@ namespace Alis.Core.Input.SDL2
 		/// </summary>
 		/// <param name="src">The src</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr IMG_LoadGIFAnimation_RW(IntPtr src);
 
 		

@@ -124,7 +124,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Gets or sets the maximum impulse. Defaults to float.MaxValue</summary>
-        public float MaxImpulse
+        public float Impulse
         {
             get => maxImpulse;
             set => maxImpulse = value;

@@ -213,12 +213,12 @@ namespace Alis.Core.Physic.Shared
 
             for (int i = 0; i < 2; ++i)
             {
-                float absDI = i == 0 ? absD.X : absD.Y;
+                float absDi = i == 0 ? absD.X : absD.Y;
                 float lowerBoundI = i == 0 ? LowerBound.X : LowerBound.Y;
                 float upperBoundI = i == 0 ? UpperBound.X : UpperBound.Y;
                 float pI = i == 0 ? p.X : p.Y;
 
-                if (absDI < Constant.Epsilon)
+                if (absDi < Constant.Epsilon)
                 {
                     // Parallel.
                     if (pI < lowerBoundI || upperBoundI < pI)
@@ -270,7 +270,7 @@ namespace Alis.Core.Physic.Shared
 
             // Does the ray start inside the box?
             // Does the ray intersect beyond the max fraction?
-            if (doInteriorCheck && (tmin < 0.0f || input.MaxFraction < tmin))
+            if (doInteriorCheck && (tmin < 0.0f || input.Fraction < tmin))
             {
                 return false;
             }

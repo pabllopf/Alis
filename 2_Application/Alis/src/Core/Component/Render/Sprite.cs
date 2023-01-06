@@ -56,12 +56,12 @@ namespace Alis.Core.Component.Render
         /// <summary>
         ///     The sprite
         /// </summary>
-        public Graphic.D2.SFML.Graphics.Sprite spriteSFML;
+        public Graphic.D2.SFML.Graphics.Sprite SpriteSfml;
 
         /// <summary>
         ///     The texture path
         /// </summary>
-        public string texturePath;
+        public string TexturePath;
 
         /// <summary>
         ///     The level
@@ -79,9 +79,9 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Init()
         {
-            spriteSFML = new Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
-            size = new Vector2F(spriteSFML.TextureRect.Width, spriteSFML.TextureRect.Height);
-            Logger.Log($"Load sprite od '{texturePath}'");
+            SpriteSfml = new Graphic.D2.SFML.Graphics.Sprite(new Texture(TexturePath));
+            size = new Vector2F(SpriteSfml.TextureRect.Width, SpriteSfml.TextureRect.Height);
+            Logger.Log($"Load sprite od '{TexturePath}'");
         }
 
         /// <summary>
@@ -98,12 +98,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            spriteSFML.Position = new Vector2F(
+            SpriteSfml.Position = new Vector2F(
                 GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
                 GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
-            spriteSFML.Rotation = GameObject.Transform.Rotation;
-            spriteSFML.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            SpriteSfml.Rotation = GameObject.Transform.Rotation;
+            SpriteSfml.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>
@@ -112,12 +112,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            spriteSFML.Position = new Vector2F(
+            SpriteSfml.Position = new Vector2F(
                 GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
                 GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
-            spriteSFML.Rotation = GameObject.Transform.Rotation;
-            spriteSFML.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            SpriteSfml.Rotation = GameObject.Transform.Rotation;
+            SpriteSfml.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>

@@ -6,35 +6,35 @@ namespace Alis.Core.Input.SDL2
 	/// <summary>
 	/// The sdl gfx class
 	/// </summary>
-	public static class SDL_gfx
+	public static class SdlGfx
 	{
 		
 		/* Used by DllImport to load the native library. */
 		/// <summary>
 		/// The native lib name
 		/// </summary>
-		private const string nativeLibName = "SDL2_gfx";
+		private const string NativeLibName = "SDL2_gfx";
 
 		
 		
 		/// <summary>
 		/// The pi
 		/// </summary>
-		public const double M_PI = 3.1415926535897932384626433832795;
+		public const double MPi = 3.1415926535897932384626433832795;
 		
 				
 		/// <summary>
 		/// The sdl2 gfxprimitives major
 		/// </summary>
-		public const uint SDL2_GFXPRIMITIVES_MAJOR = 1;
+		public const uint Sdl2GfxprimitivesMajor = 1;
 		/// <summary>
 		/// The sdl2 gfxprimitives minor
 		/// </summary>
-		public const uint SDL2_GFXPRIMITIVES_MINOR = 0;
+		public const uint Sdl2GfxprimitivesMinor = 0;
 		/// <summary>
 		/// The sdl2 gfxprimitives micro
 		/// </summary>
-		public const uint SDL2_GFXPRIMITIVES_MICRO = 1;
+		public const uint Sdl2GfxprimitivesMicro = 1;
 
 		/// <summary>
 		/// Pixels the color using the specified renderer
@@ -44,7 +44,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int pixelColor(IntPtr renderer, short x, short y, uint color);
 
 		/// <summary>
@@ -58,7 +58,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int pixelRGBA(IntPtr renderer, short x, short y, byte r, byte g, byte b, byte a);
 
 		/// <summary>
@@ -70,7 +70,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int hlineColor(IntPtr renderer, short x1, short x2, short y, uint color);
 		
 		/// <summary>
@@ -85,7 +85,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int hlineRGBA(IntPtr renderer, short x1, short x2, short y, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y2">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int vlineColor(IntPtr renderer, short x, short y1, short y2, uint color);
 		
 		/// <summary>
@@ -112,7 +112,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int vlineRGBA(IntPtr renderer, short x, short y1, short y2, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -125,7 +125,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y2">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int rectangleColor(IntPtr renderer, short x1, short y1, short x2, short y2, uint color);
 		
 		/// <summary>
@@ -141,7 +141,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int rectangleRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, byte r, byte g, byte b, byte a);
 
 		/// <summary>
@@ -155,7 +155,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="rad">The rad</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int roundedRectangleColor(IntPtr renderer, short x1, short y1, short x2, short y2, short rad, uint color);
 		
 		/// <summary>
@@ -172,7 +172,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int roundedRectangleRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, short rad, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -185,7 +185,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y2">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int boxColor(IntPtr renderer, short x1, short y1, short x2, short y2, uint color);
 		
 		/// <summary>
@@ -201,7 +201,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int boxRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -215,7 +215,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="rad">The rad</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int roundedBoxColor(IntPtr renderer, short x1, short y1, short x2, short y2, short rad, uint color);
 		
 		/// <summary>
@@ -232,7 +232,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int roundedBoxRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, short rad, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -245,7 +245,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y2">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int lineColor(IntPtr renderer, short x1, short y1, short x2, short y2, uint color);
 		
 		/// <summary>
@@ -261,7 +261,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int lineRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -274,7 +274,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y2">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aalineColor(IntPtr renderer, short x1, short y1, short x2, short y2, uint color);
 		
 		/// <summary>
@@ -290,7 +290,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aalineRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -304,7 +304,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="width">The width</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int thickLineColor(IntPtr renderer, short x1, short y1, short x2, short y2, byte width, uint color);
 		
 		/// <summary>
@@ -321,7 +321,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int thickLineRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, byte width, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -333,7 +333,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="rad">The rad</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int circleColor(IntPtr renderer, short x, short y, short rad, uint color);
 		
 		/// <summary>
@@ -348,7 +348,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int circleRGBA(IntPtr renderer, short x, short y, short rad, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -362,7 +362,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="end">The end</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int arcColor(IntPtr renderer, short x, short y, short rad, short start, short end, uint color);
 		
 		/// <summary>
@@ -379,7 +379,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int arcRGBA(IntPtr renderer, short x, short y, short rad, short start, short end, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -391,7 +391,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="rad">The rad</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aacircleColor(IntPtr renderer, short x, short y, short rad, uint color);
 		
 		/// <summary>
@@ -406,7 +406,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aacircleRGBA(IntPtr renderer, short x, short y, short rad, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -418,7 +418,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="rad">The rad</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledCircleColor(IntPtr renderer, short x, short y, short rad, uint color);
 		
 		/// <summary>
@@ -433,7 +433,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledCircleRGBA(IntPtr renderer, short x, short y, short rad, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -446,7 +446,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="ry">The ry</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int ellipseColor(IntPtr renderer, short x, short y, short rx, short ry, uint color);
 		
 		/// <summary>
@@ -462,7 +462,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int ellipseRGBA(IntPtr renderer, short x, short y, short rx, short ry, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -475,7 +475,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="ry">The ry</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aaellipseColor(IntPtr renderer, short x, short y, short rx, short ry, uint color);
 		
 		/// <summary>
@@ -491,7 +491,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aaellipseRGBA(IntPtr renderer, short x, short y, short rx, short ry, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -504,7 +504,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="ry">The ry</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledEllipseColor(IntPtr renderer, short x, short y, short rx, short ry, uint color);
 		
 		/// <summary>
@@ -520,7 +520,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledEllipseRGBA(IntPtr renderer, short x, short y, short rx, short ry, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -534,7 +534,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="end">The end</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int pieColor(IntPtr renderer, short x, short y, short rad, short start, short end, uint color);
 		
 		/// <summary>
@@ -551,7 +551,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int pieRGBA(IntPtr renderer, short x, short y, short rad, short start, short end, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -565,7 +565,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="end">The end</param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledPieColor(IntPtr renderer, short x, short y, short rad, short start, short end, uint color);
 		
 		/// <summary>
@@ -582,7 +582,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledPieRGBA(IntPtr renderer, short x, short y, short rad, short start, short end, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -597,7 +597,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y3">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int trigonColor(IntPtr renderer, short x1, short y1, short x2, short y2, short x3, short y3, uint color);
 		
 		/// <summary>
@@ -615,7 +615,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int trigonRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, short x3, short y3, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -630,7 +630,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y3">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aatrigonColor(IntPtr renderer, short x1, short y1, short x2, short y2, short x3, short y3, uint color);
 		
 		/// <summary>
@@ -648,7 +648,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aatrigonRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, short x3, short y3, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -663,7 +663,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="y3">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledTrigonColor(IntPtr renderer, short x1, short y1, short x2, short y2, short x3, short y3, uint color);
 		
 		/// <summary>
@@ -681,7 +681,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledTrigonRGBA(IntPtr renderer, short x1, short y1, short x2, short y2, short x3, short y3, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -693,7 +693,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="n">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int polygonColor(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, uint color);
 		
 		/// <summary>
@@ -708,7 +708,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int polygonRGBA(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -720,7 +720,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="n">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aapolygonColor(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, uint color);
 		
 		/// <summary>
@@ -735,7 +735,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int aapolygonRGBA(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -747,7 +747,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="n">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledPolygonColor(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, uint color);
 		
 		/// <summary>
@@ -762,7 +762,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int filledPolygonRGBA(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -773,11 +773,11 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="vy">The vy</param>
 		/// <param name="n">The </param>
 		/// <param name="texture">The texture</param>
-		/// <param name="texture_dx">The texture dx</param>
-		/// <param name="texture_dy">The texture dy</param>
+		/// <param name="textureDx">The texture dx</param>
+		/// <param name="textureDy">The texture dy</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern int texturedPolygon(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, IntPtr texture, int texture_dx, int texture_dy);
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int texturedPolygon(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, IntPtr texture, int textureDx, int textureDy);
 		
 		/// <summary>
 		/// Beziers the color using the specified renderer
@@ -789,7 +789,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="s">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int bezierColor(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, int s, uint color);
 		
 		/// <summary>
@@ -805,7 +805,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int bezierRGBA(IntPtr renderer, [In] short[] vx, [In] short[] vy, int n, int s, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -814,14 +814,14 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="fontdata">The fontdata</param>
 		/// <param name="cw">The cw</param>
 		/// <param name="ch">The ch</param>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void gfxPrimitivesSetFont([In] byte[] fontdata, uint cw, uint ch);
 		
 		/// <summary>
 		/// Gfxes the primitives set font rotation using the specified rotation
 		/// </summary>
 		/// <param name="rotation">The rotation</param>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void gfxPrimitivesSetFontRotation(uint rotation);
 		
 		/// <summary>
@@ -833,7 +833,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="c">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int characterColor(IntPtr renderer, short x, short y, char c, uint color);
 		
 		/// <summary>
@@ -848,7 +848,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int characterRGBA(IntPtr renderer, short x, short y, char c, byte r, byte g, byte b, byte a);
 		
 		/// <summary>
@@ -860,7 +860,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="s">The </param>
 		/// <param name="color">The color</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int stringColor(IntPtr renderer, short x, short y, string s, uint color);
 		
 		/// <summary>
@@ -875,7 +875,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="b">The </param>
 		/// <param name="a">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int stringRGBA(IntPtr renderer, short x, short y, string s, byte r, byte g, byte b, byte a);
 
 		
@@ -884,11 +884,11 @@ namespace Alis.Core.Input.SDL2
 		/// <summary>
 		/// The smoothing off
 		/// </summary>
-		public const int SMOOTHING_OFF = 0;
+		public const int SmoothingOff = 0;
 		/// <summary>
 		/// The smoothing on
 		/// </summary>
-		public const int SMOOTHING_ON = 1;
+		public const int SmoothingOn = 1;
 		
 		/// <summary>
 		/// Rotozooms the surface using the specified src
@@ -898,7 +898,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="zoom">The zoom</param>
 		/// <param name="smooth">The smooth</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr rotozoomSurface(IntPtr src, double angle, double zoom, int smooth);
 		
 		/// <summary>
@@ -910,7 +910,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="zoomy">The zoomy</param>
 		/// <param name="smooth">The smooth</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr rotozoomSurfaceXY(IntPtr src, double angle, double zoomx, double zoomy, int smooth);
 		
 		/// <summary>
@@ -922,7 +922,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="zoom">The zoom</param>
 		/// <param name="dstwidth">The dstwidth</param>
 		/// <param name="dstheight">The dstheight</param>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void rotozoomSurfaceSize(int width, int height, double angle, double zoom, out int dstwidth, out int dstheight);
 		
 		/// <summary>
@@ -935,7 +935,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="zoomy">The zoomy</param>
 		/// <param name="dstwidth">The dstwidth</param>
 		/// <param name="dstheight">The dstheight</param>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void rotozoomSurfaceSizeXY(int width, int height, double angle, double zoomx, double zoomy, out int dstwidth, out int dstheight);
 		
 		/// <summary>
@@ -946,7 +946,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="zoomy">The zoomy</param>
 		/// <param name="smooth">The smooth</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr zoomSurface(IntPtr src, double zoomx, double zoomy, int smooth);
 		
 		/// <summary>
@@ -958,7 +958,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="zoomy">The zoomy</param>
 		/// <param name="dstwidth">The dstwidth</param>
 		/// <param name="dstheight">The dstheight</param>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void zoomSurfaceSize(int width, int height, double zoomx, double zoomy, out int dstwidth, out int dstheight);
 		
 		/// <summary>
@@ -968,7 +968,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="factorx">The factorx</param>
 		/// <param name="factory">The factory</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr shrinkSurface(IntPtr src, int factorx, int factory);
 		
 		/// <summary>
@@ -977,7 +977,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="src">The src</param>
 		/// <param name="numClockwiseTurns">The num clockwise turns</param>
 		/// <returns>The int ptr</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern IntPtr rotateSurface90Degrees(IntPtr src, int numClockwiseTurns);
 
 		
@@ -986,21 +986,21 @@ namespace Alis.Core.Input.SDL2
 		/// <summary>
 		/// The fps upper limit
 		/// </summary>
-		public const int FPS_UPPER_LIMIT = 200;
+		public const int FpsUpperLimit = 200;
 		/// <summary>
 		/// The fps lower limit
 		/// </summary>
-		public const int FPS_LOWER_LIMIT = 1;
+		public const int FpsLowerLimit = 1;
 		/// <summary>
 		/// The fps default
 		/// </summary>
-		public const int FPS_DEFAULT = 30;
+		public const int FpsDefault = 30;
 		
 		/// <summary>
 		/// The fp smanager
 		/// </summary>
 		[StructLayout(LayoutKind.Sequential)]
-		public struct FPSmanager
+		public struct FpSmanager
 		{
 			/// <summary>
 			/// The framecount
@@ -1028,8 +1028,8 @@ namespace Alis.Core.Input.SDL2
 		/// Sdls the init framerate using the specified manager
 		/// </summary>
 		/// <param name="manager">The manager</param>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern void SDL_initFramerate(ref FPSmanager manager);
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern void SDL_initFramerate(ref FpSmanager manager);
 		
 		/// <summary>
 		/// Sdls the set framerate using the specified manager
@@ -1037,32 +1037,32 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="manager">The manager</param>
 		/// <param name="rate">The rate</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern int SDL_setFramerate(ref FPSmanager manager, uint rate);
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int SDL_setFramerate(ref FpSmanager manager, uint rate);
 		
 		/// <summary>
 		/// Sdls the get framerate using the specified manager
 		/// </summary>
 		/// <param name="manager">The manager</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern int SDL_getFramerate(ref FPSmanager manager);
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int SDL_getFramerate(ref FpSmanager manager);
 		
 		/// <summary>
 		/// Sdls the get framecount using the specified manager
 		/// </summary>
 		/// <param name="manager">The manager</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern int SDL_getFramecount(ref FPSmanager manager);
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern int SDL_getFramecount(ref FpSmanager manager);
 		
 		/// <summary>
 		/// Sdls the framerate delay using the specified manager
 		/// </summary>
 		/// <param name="manager">The manager</param>
 		/// <returns>The uint</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-		public static extern uint SDL_framerateDelay(ref FPSmanager manager);
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		public static extern uint SDL_framerateDelay(ref FpSmanager manager);
 
 		
 
@@ -1071,19 +1071,19 @@ namespace Alis.Core.Input.SDL2
 		/// Sdls the image filter mm xdetect
 		/// </summary>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterMMXdetect();
 		
 		/// <summary>
 		/// Sdls the image filter mm xoff
 		/// </summary>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void SDL_imageFilterMMXoff();
 		
 		/// <summary>
 		/// Sdls the image filter mm xon
 		/// </summary>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern void SDL_imageFilterMMXon();
 
 		/// <summary>
@@ -1094,7 +1094,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterAdd([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1105,7 +1105,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterMean([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1116,7 +1116,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterSub([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1127,7 +1127,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterAbsDiff([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1138,7 +1138,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterMult([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1149,7 +1149,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterMultNor([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1160,7 +1160,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterMultDivby2([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1171,7 +1171,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterMultDivby4([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1182,7 +1182,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterBitAnd([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1193,7 +1193,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterBitOr([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1204,7 +1204,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterDiv([In] byte[] src1, [In] byte[] src2, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1214,7 +1214,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="dest">The dest</param>
 		/// <param name="length">The length</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterBitNegation([In] byte[] src1, [Out] byte[] dest, uint length);
 		
 		/// <summary>
@@ -1225,7 +1225,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="c">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterAddByte([In] byte[] src1, [Out] byte[] dest, uint length, byte c);
 		
 		/// <summary>
@@ -1236,7 +1236,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="c">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterAddUint([In] byte[] src1, [Out] byte[] dest, uint length, uint c);
 		
 		/// <summary>
@@ -1247,7 +1247,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="c">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterAddByteToHalf([In] byte[] src1, [Out] byte[] dest, uint length, byte c);
 		
 		/// <summary>
@@ -1258,7 +1258,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="c">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterSubByte([In] byte[] src1, [Out] byte[] dest, uint length, byte c);
 		
 		/// <summary>
@@ -1269,7 +1269,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="c">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterSubUint([In] byte[] src1, [Out] byte[] dest, uint length, uint c);
 		
 		/// <summary>
@@ -1280,7 +1280,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="n">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterShiftRight([In] byte[] src1, [Out] byte[] dest, uint length, byte n);
 		
 		/// <summary>
@@ -1291,7 +1291,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="n">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterShiftRightUint([In] byte[] src1, [Out] byte[] dest, uint length, byte n);
 		
 		/// <summary>
@@ -1302,7 +1302,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="c">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterMultByByte([In] byte[] src1, [Out] byte[] dest, uint length, byte c);
 		
 		/// <summary>
@@ -1314,7 +1314,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="n">The </param>
 		/// <param name="c">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterShiftRightAndMultByByte([In] byte[] src1, [Out] byte[] dest, uint length, byte n, byte c);
 		
 		/// <summary>
@@ -1325,7 +1325,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="n">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterShiftLeftByte([In] byte[] src1, [Out] byte[] dest, uint length, byte n);
 		
 		/// <summary>
@@ -1336,7 +1336,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="n">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterShiftLeftUint([In] byte[] src1, [Out] byte[] dest, uint length, byte n);
 		
 		/// <summary>
@@ -1347,7 +1347,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="n">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterShiftLeft([In] byte[] src1, [Out] byte[] dest, uint length, byte n);
 		
 		/// <summary>
@@ -1358,7 +1358,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="length">The length</param>
 		/// <param name="t">The </param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterBinarizeUsingThreshold([In] byte[] src1, [Out] byte[] dest, uint length, byte t);
 		
 		/// <summary>
@@ -1370,7 +1370,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="tmin">The tmin</param>
 		/// <param name="tmax">The tmax</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterClipToRange([In] byte[] src1, [Out] byte[] dest, uint length, byte tmin, byte tmax);
 		
 		/// <summary>
@@ -1384,7 +1384,7 @@ namespace Alis.Core.Input.SDL2
 		/// <param name="nmin">The nmin</param>
 		/// <param name="nmax">The nmax</param>
 		/// <returns>The int</returns>
-		[DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
 		public static extern int SDL_imageFilterNormalizeLinear([In] byte[] src1, [Out] byte[] dest, uint length, int cmin, int cmax, int nmin, int nmax);
 
 		

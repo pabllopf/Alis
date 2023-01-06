@@ -256,7 +256,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Buoyancy
                     Vector2F normalL = MathUtils.MulT(xf.Rotation, normal);
                     float offsetL = offset - Vector2F.Dot(normal, xf.Position);
 
-                    float[] depths = new float[Settings.MaxPolygonVertices];
+                    float[] depths = new float[Settings.PolygonVertices];
                     int diveCount = 0;
                     int intoIndex = -1;
                     int outoIndex = -1;

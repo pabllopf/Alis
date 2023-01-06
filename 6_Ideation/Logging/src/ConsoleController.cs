@@ -47,24 +47,24 @@ namespace Alis.Core.Aspect.Logging
         /// </summary>
         static ConsoleController()
         {
-            dirPath = Environment.CurrentDirectory + "/log";
-            filePath = Environment.CurrentDirectory + $"/log/{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}_{DateTime.Now.Hour}-{DateTime.Now.Minute}.log";
+            _dirPath = Environment.CurrentDirectory + "/log";
+            _filePath = Environment.CurrentDirectory + $"/log/{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}_{DateTime.Now.Hour}-{DateTime.Now.Minute}.log";
         }
 
         /// <summary>
         ///     The message
         /// </summary>
-        private static List<Message> messages = new List<Message>();
+        private static List<Message> _messages = new List<Message>();
 
         /// <summary>
         ///     The file path
         /// </summary>
-        private static string filePath;
+        private static string _filePath;
 
         /// <summary>
         ///     The dir path
         /// </summary>
-        private static string dirPath;
+        private static string _dirPath;
 
         /// <summary>
         ///     Prints the to console using the specified message
@@ -96,20 +96,20 @@ namespace Alis.Core.Aspect.Logging
 
             options.Converters.Add(new DateTimeConverter());
 
-            if (!Directory.Exists(dirPath))
+            if (!Directory.Exists(_dirPath))
             {
-                Directory.CreateDirectory(dirPath);
+                Directory.CreateDirectory(_dirPath);
             }
 
-            if (File.Exists(filePath))
+            if (File.Exists(_filePath))
             {
-                messages = JsonSerializer.Deserialize<List<Message>>(File.ReadAllText(filePath), options);
+                _messages = JsonSerializer.Deserialize<List<Message>>(File.ReadAllText(_filePath), options);
             }
 
-            if (messages != null)
+            if (_messages != null)
             {
-                messages.Add(message);
-                File.WriteAllText(filePath, JsonSerializer.Serialize(messages, options));
+                _messages.Add(message);
+                File.WriteAllText(_filePath, JsonSerializer.Serialize(_messages, options));
             }
         }
     }

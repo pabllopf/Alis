@@ -41,13 +41,13 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     Initializes a new instance of the <see cref="SplashScreen" /> class
         /// </summary>
-        public SplashScreen() => filePath = "";
+        public SplashScreen() => FilePath = "";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="SplashScreen" /> class
         /// </summary>
         /// <param name="filePath">The file path</param>
-        public SplashScreen(string filePath) => this.filePath = filePath;
+        public SplashScreen(string filePath) => this.FilePath = filePath;
 
         /// <summary>
         ///     Gets or sets the value of the enabled
@@ -62,7 +62,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The file path
         /// </summary>
-        public string filePath { get; set; } = "";
+        public string FilePath { get; set; } = "";
 
         /// <summary>
         ///     Gets or sets the value of the enabled alis logo

@@ -157,7 +157,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         ///     Get the maximum balance of an node in the tree. The balance is the difference in height of the two children of
         ///     a node.
         /// </summary>
-        public int MaxBalance
+        public int Balance
         {
             get
             {
@@ -399,7 +399,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             // Separating axis for segment (Gino, p80).
             // |dot(v, p1 - c)| > dot(|v|, h)
 
-            float maxFraction = input.MaxFraction;
+            float maxFraction = input.Fraction;
 
             // Build a bounding box for the segment.
             Aabb segmentAabb = new Aabb();
@@ -442,7 +442,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     RayCastInput subInput;
                     subInput.Point1 = input.Point1;
                     subInput.Point2 = input.Point2;
-                    subInput.MaxFraction = maxFraction;
+                    subInput.Fraction = maxFraction;
 
                     float value = callback(subInput, nodeId);
 
@@ -657,7 +657,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             index = nodes[leaf].ParentOrNext;
             while (index != NullNode)
             {
-                index = Balance(index);
+                index = BalanceTo(index);
 
                 int child1 = nodes[index].Child1;
                 int child2 = nodes[index].Child2;
@@ -717,7 +717,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 int index = grandParent;
                 while (index != NullNode)
                 {
-                    index = Balance(index);
+                    index = BalanceTo(index);
 
                     int child1 = nodes[index].Child1;
                     int child2 = nodes[index].Child2;
@@ -741,7 +741,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <summary>Perform a left or right rotation if node A is imbalanced.</summary>
         /// <param name="iA"></param>
         /// <returns>the new root index.</returns>
-        private int Balance(int iA)
+        private int BalanceTo(int iA)
         {
             //Debug.Assert(iA != NullNode);
 

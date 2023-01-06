@@ -62,7 +62,7 @@ namespace Alis.Builder.Core.Entity
         /// <returns>The splash screen builder</returns>
         public SplashScreenBuilder FilePath(string value)
         {
-            splashScreen.filePath = value;
+            splashScreen.FilePath = value;
             return this;
         }
 

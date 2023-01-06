@@ -103,7 +103,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <exception cref="InvalidOperationException">You can't create a polygon with less than 3 vertices</exception>
         private void SetVertices(Vertices vertices)
         {
-            Debug.Assert((vertices.Count >= 3) && (vertices.Count <= Settings.MaxPolygonVertices));
+            Debug.Assert((vertices.Count >= 3) && (vertices.Count <= Settings.PolygonVertices));
 
             //Velcro: We throw an exception instead of setting the polygon to a box for safety reasons
             if (vertices.Count < 3)
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Collision.Shapes
                 throw new InvalidOperationException("You can't create a polygon with less than 3 vertices");
             }
 
-            int n = MathUtils.Min(vertices.Count, Settings.MaxPolygonVertices);
+            int n = MathUtils.Min(vertices.Count, Settings.PolygonVertices);
 
             // Perform welding and copy vertices into local buffer.
             Vector2F[] ps = new Vector2F[n]; //Velcro: The temp buffer is n long instead of Settings.MaxPolygonVertices
@@ -163,13 +163,13 @@ namespace Alis.Core.Physic.Collision.Shapes
                 }
             }
 
-            int[] hull = new int[Settings.MaxPolygonVertices];
+            int[] hull = new int[Settings.PolygonVertices];
             int m = 0;
             int ih = i0;
 
             for (;;)
             {
-                Debug.Assert(m < Settings.MaxPolygonVertices);
+                Debug.Assert(m < Settings.PolygonVertices);
                 hull[m] = ih;
 
                 int ie = 0;

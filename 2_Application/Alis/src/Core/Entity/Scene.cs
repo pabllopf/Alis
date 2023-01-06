@@ -40,24 +40,24 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The game objects
         /// </summary>
-        internal List<GameObject> gameObjects;
+        internal List<GameObject> GameObjects;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="Scene" /> class
         /// </summary>
-        public Scene() => gameObjects = new List<GameObject>();
+        public Scene() => GameObjects = new List<GameObject>();
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
         internal void Init()
         {
-            for (int i = 0; i < gameObjects.Count; i++)
+            for (int i = 0; i < GameObjects.Count; i++)
             {
-                Logger.Log($"Scene::Init::GameObject'{gameObjects[i].Name}'");
+                Logger.Log($"Scene::Init::GameObject'{GameObjects[i].Name}'");
             }
 
-            gameObjects.ForEach(gameObject => gameObject.Init());
+            GameObjects.ForEach(gameObject => gameObject.Init());
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void Awake()
         {
-            gameObjects.ForEach(gameObject => gameObject.Awake());
+            GameObjects.ForEach(gameObject => gameObject.Awake());
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void Start()
         {
-            gameObjects.ForEach(gameObject => gameObject.Start());
+            GameObjects.ForEach(gameObject => gameObject.Start());
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void BeforeUpdate()
         {
-            gameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
+            GameObjects.ForEach(gameObject => gameObject.BeforeUpdate());
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void Update()
         {
-            gameObjects.ForEach(gameObject => gameObject.Update());
+            GameObjects.ForEach(gameObject => gameObject.Update());
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void AfterUpdate()
         {
-            gameObjects.ForEach(gameObject => gameObject.AfterUpdate());
+            GameObjects.ForEach(gameObject => gameObject.AfterUpdate());
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void FixedUpdate()
         {
-            gameObjects.ForEach(gameObject => gameObject.FixedUpdate());
+            GameObjects.ForEach(gameObject => gameObject.FixedUpdate());
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void DispatchEvents()
         {
-            gameObjects.ForEach(gameObject => gameObject.DispatchEvents());
+            GameObjects.ForEach(gameObject => gameObject.DispatchEvents());
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void Draw()
         {
-            gameObjects.ForEach(gameObject => gameObject.Draw());
+            GameObjects.ForEach(gameObject => gameObject.Draw());
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void Reset()
         {
-            gameObjects.ForEach(gameObject => gameObject.Reset());
+            GameObjects.ForEach(gameObject => gameObject.Reset());
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void Stop()
         {
-            gameObjects.ForEach(gameObject => gameObject.Stop());
+            GameObjects.ForEach(gameObject => gameObject.Stop());
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Alis.Core.Entity
         /// </summary>
         public void Exit()
         {
-            gameObjects.ForEach(gameObject => gameObject.Exit());
+            GameObjects.ForEach(gameObject => gameObject.Exit());
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Alis.Core.Entity
         /// <param name="gameObject">The game object</param>
         public void Add(GameObject gameObject)
         {
-            gameObjects.Add(gameObject);
+            GameObjects.Add(gameObject);
         }
     }
 }

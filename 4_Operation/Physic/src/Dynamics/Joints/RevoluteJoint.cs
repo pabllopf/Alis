@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -403,7 +404,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Get or set the maximum motor torque, usually in N-m.</summary>
-        public float MaxMotorTorque
+        public float MotorTorque
         {
             set
             {
@@ -661,20 +662,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 if (MathUtils.Abs(upperAngle - lowerAngle) < 2.0f * Settings.AngularSlop)
                 {
                     // Prevent large angular corrections
-                    c = MathUtils.Clamp(angle - lowerAngle, -Settings.MaxAngularCorrection,
-                        Settings.MaxAngularCorrection);
+                    c = MathUtils.Clamp(angle - lowerAngle, -Settings.AngularCorrection,
+                        Settings.AngularCorrection);
                 }
                 else if (angle <= lowerAngle)
                 {
                     // Prevent large angular corrections and allow some slop.
-                    c = MathUtils.Clamp(angle - lowerAngle + Settings.AngularSlop, -Settings.MaxAngularCorrection,
+                    c = MathUtils.Clamp(angle - lowerAngle + Settings.AngularSlop, -Settings.AngularCorrection,
                         0.0f);
                 }
                 else if (angle >= upperAngle)
                 {
                     // Prevent large angular corrections and allow some slop.
                     c = MathUtils.Clamp(angle - upperAngle - Settings.AngularSlop, 0.0f,
-                        Settings.MaxAngularCorrection);
+                        Settings.AngularCorrection);
                 }
 
                 float limitImpulse = -axialMass * c;

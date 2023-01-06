@@ -1198,7 +1198,7 @@
                 Gets the value of the keep alive interval
             </summary>
         </member>
-        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation.MaxPingPongPayloadLen">
+        <member name="F:Alis.Core.Network.Internal.WebSocketImplementation.PingPongPayloadLen">
             <summary>
                 The max ping pong payload len
             </summary>

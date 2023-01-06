@@ -392,7 +392,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             np = Collision.ClipSegmentToLine(out clipPoints1, ref clipPoints, ref1.SideNormal1, ref1.SideOffset1,
                 ref1.I1);
 
-            if (np < Settings.MaxManifoldPoints)
+            if (np < Settings.ManifoldPoints)
             {
                 return;
             }
@@ -401,7 +401,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             np = Collision.ClipSegmentToLine(out clipPoints2, ref clipPoints1, ref1.SideNormal2, ref1.SideOffset2,
                 ref1.I2);
 
-            if (np < Settings.MaxManifoldPoints)
+            if (np < Settings.ManifoldPoints)
             {
                 return;
             }
@@ -419,7 +419,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             int pointCount = 0;
-            for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+            for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
                 float separation = MathUtils.Dot(ref1.Normal, clipPoints2[i].V - ref1.V1);
 

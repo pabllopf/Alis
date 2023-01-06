@@ -8522,17 +8522,17 @@
                 The custom render class
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender.red">
+        <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender._red">
             <summary>
                 The blue
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender.green">
+        <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender._green">
             <summary>
                 The blue
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender.blue">
+        <member name="F:Alis.Core.Graphic.D2.SKIA.CustomRender._blue">
             <summary>
                 The blue
             </summary>

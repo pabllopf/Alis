@@ -397,16 +397,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 // Check for large velocities
                 Vector2F translation = h * v;
-                if (Vector2F.Dot(translation, translation) > Settings.MaxTranslation * Settings.MaxTranslation)
+                if (Vector2F.Dot(translation, translation) > Settings.Translation * Settings.Translation)
                 {
-                    float ratio = Settings.MaxTranslation / translation.Length();
+                    float ratio = Settings.Translation / translation.Length();
                     v *= ratio;
                 }
 
                 float rotation = h * w;
-                if (rotation * rotation > Settings.MaxRotation * Settings.MaxRotation)
+                if (rotation * rotation > Settings.Rotation * Settings.Rotation)
                 {
-                    float ratio = Settings.MaxRotation / Math.Abs(rotation);
+                    float ratio = Settings.Rotation / Math.Abs(rotation);
                     w *= ratio;
                 }
 
@@ -567,16 +567,16 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 // Check for large velocities
                 Vector2F translation = h * v;
-                if (Vector2F.Dot(translation, translation) > Settings.MaxTranslation * Settings.MaxTranslation)
+                if (Vector2F.Dot(translation, translation) > Settings.Translation * Settings.Translation)
                 {
-                    float ratio = Settings.MaxTranslation / translation.Length();
+                    float ratio = Settings.Translation / translation.Length();
                     v *= ratio;
                 }
 
                 float rotation = h * w;
-                if (rotation * rotation > Settings.MaxRotation * Settings.MaxRotation)
+                if (rotation * rotation > Settings.Rotation * Settings.Rotation)
                 {
-                    float ratio = Settings.MaxRotation / Math.Abs(rotation);
+                    float ratio = Settings.Rotation / Math.Abs(rotation);
                     w *= ratio;
                 }
 

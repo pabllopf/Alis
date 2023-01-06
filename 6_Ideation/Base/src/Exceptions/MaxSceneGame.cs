@@ -35,7 +35,7 @@ namespace Alis.Core.Aspect.Base.Exceptions
     ///     The max scene game class
     /// </summary>
     /// <seealso cref="Exception" />
-    public class MaxSceneGame : Exception
+    public class SceneGame : Exception
     {
     }
 }

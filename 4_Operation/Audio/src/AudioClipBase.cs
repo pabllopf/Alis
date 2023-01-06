@@ -116,7 +116,7 @@ namespace Alis.Core.Audio
         public AudioClipBase(string fullPathAudio)
         {
             FullPathAudioFile = fullPathAudio;
-            AudioBackendType = AudioBackendType.SFML;
+            AudioBackendType = AudioBackendType.Sfml;
             IsPlaying = false;
             music = new Music(fullPathAudio);
             Logger.Log($"Init music: '{fullPathAudio}'");
@@ -127,7 +127,7 @@ namespace Alis.Core.Audio
         /// </summary>
         public AudioClipBase()
         {
-            AudioBackendType = AudioBackendType.SFML;
+            AudioBackendType = AudioBackendType.Sfml;
             Logger.Log("Init music: 'null file'");
         }
 
@@ -144,10 +144,10 @@ namespace Alis.Core.Audio
             IsPlaying = false;
             switch (AudioBackendType)
             {
-                case AudioBackendType.SFML:
+                case AudioBackendType.Sfml:
                     music = new Music(fullPathAudio);
                     break;
-                case AudioBackendType.OS:
+                case AudioBackendType.Os:
                     player = new Player();
                     break;
                 default:
@@ -217,7 +217,7 @@ namespace Alis.Core.Audio
             {
                 switch (AudioBackendType)
                 {
-                    case AudioBackendType.SFML:
+                    case AudioBackendType.Sfml:
                         Logger.Log($"Volume={Volume}");
 
                         music ??= new Music(FullPathAudioFile);
@@ -226,7 +226,7 @@ namespace Alis.Core.Audio
                         music.Play();
                         Logger.Log("Init Music::play");
                         break;
-                    case AudioBackendType.OS:
+                    case AudioBackendType.Os:
                         player.Play(FullPathAudioFile).Wait();
                         break;
                     default:
@@ -247,12 +247,12 @@ namespace Alis.Core.Audio
             {
                 switch (AudioBackendType)
                 {
-                    case AudioBackendType.SFML:
+                    case AudioBackendType.Sfml:
                         music ??= new Music(FullPathAudioFile);
                         music.Volume = Volume;
                         music.Stop();
                         break;
-                    case AudioBackendType.OS:
+                    case AudioBackendType.Os:
                         player.Stop().Wait();
                         break;
                     default:
@@ -273,12 +273,12 @@ namespace Alis.Core.Audio
             {
                 switch (AudioBackendType)
                 {
-                    case AudioBackendType.SFML:
+                    case AudioBackendType.Sfml:
                         music ??= new Music(FullPathAudioFile);
                         music.Volume = Volume;
                         music.Play();
                         break;
-                    case AudioBackendType.OS:
+                    case AudioBackendType.Os:
                         player.Play(FullPathAudioFile).Wait();
                         break;
                     default:

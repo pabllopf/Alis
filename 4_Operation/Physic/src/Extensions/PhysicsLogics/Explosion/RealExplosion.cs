@@ -84,10 +84,10 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         public bool IgnoreWhenInsideShape = false;
 
         /// <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
-        public float MaxAngle = Constant.Pi / 15;
+        public float Angle = Constant.Pi / 15;
 
         /// <summary>Maximum number of shapes involved in the explosion. Defaults to 100</summary>
-        public int MaxShapes = 100;
+        public int Shapes = 100;
 
         /// <summary>How many rays per shape/body/segment. Defaults to 5</summary>
         public int MinRays = 5;
@@ -104,7 +104,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
         }
 
         /// <summary>Two degrees: maximum angle from edges to first ray tested</summary>
-        private const float MaxEdgeOffset = Constant.Pi / 90;
+        private const float EdgeOffset = Constant.Pi / 90;
 
         /// <summary>Activate the explosion at the specified position.</summary>
         /// <param name="pos">The position where the explosion happens </param>
@@ -119,7 +119,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
             Aabb aabb;
             aabb.LowerBound = pos + new Vector2F(-radius, -radius);
             aabb.UpperBound = pos + new Vector2F(radius, radius);
-            Fixture[] shapes = new Fixture[MaxShapes];
+            Fixture[] shapes = new Fixture[Shapes];
 
             // More than 5 shapes in an explosion could be possible, but still strange.
             Fixture[] containedShapes = new Fixture[5];
@@ -339,8 +339,8 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
                 float arclen = data[i].Max - data[i].Min;
 
-                float first = Helper.Min(MaxEdgeOffset, EdgeRatio * arclen);
-                int insertedRays = (int) Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * MaxAngle) / MaxAngle);
+                float first = Helper.Min(EdgeOffset, EdgeRatio * arclen);
+                int insertedRays = (int) Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * Angle) / Angle);
 
                 if (insertedRays < 0)
                 {
@@ -367,7 +367,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                         RayCastInput ri;
                         ri.Point1 = p1;
                         ri.Point2 = p2;
-                        ri.MaxFraction = 50f;
+                        ri.Fraction = 50f;
 
                         if (f.RayCast(out RayCastOutput ro, ref ri, 0))
                         {

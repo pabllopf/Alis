@@ -334,7 +334,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Maximum length. Must be greater than or equal to the minimum length.</summary>
-        public float MaxLength
+        public float Length
         {
             get => maxLength;
             set

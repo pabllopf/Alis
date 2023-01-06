@@ -56,34 +56,34 @@ namespace Alis.Core.Manager.Input
         /// <summary>
         /// The buttons
         /// </summary>
-        private List<SDL.SDL_GameControllerButton> buttons;
+        private List<Sdl.SdlGameControllerButton> buttons;
         
         /// <summary>
         /// The buttons temp
         /// </summary>
-        private Dictionary<string, SDL.SDL_GameControllerButton> buttonsTemp;
+        private Dictionary<string, Sdl.SdlGameControllerButton> buttonsTemp;
 
         /// <summary>
         /// The axis
         /// </summary>
-        private List<SDL.SDL_GameControllerAxis> axis;
+        private List<Sdl.SdlGameControllerAxis> axis;
         
         /// <summary>
         /// The axis temp
         /// </summary>
-        private List<SDL.SDL_GameControllerAxis> axisTemp;
+        private List<Sdl.SdlGameControllerAxis> axisTemp;
         
         
         /// <summary>
         /// The sdl event
         /// </summary>
-        private SDL.SDL_Event sdlEvent;
+        private Sdl.SdlEvent sdlEvent;
         
 
         /// <summary>
         /// The currentsdl numjoysticks
         /// </summary>
-        private int currentSDL_NumJoysticks;
+        private int currentSdlNumJoysticks;
 
         /// <summary>
         /// The joysticks
@@ -106,38 +106,38 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Init()
         {
-            SDL.SDL_SetHint(SDL.SDL_HINT_XINPUT_ENABLED, "0");
-            SDL.SDL_SetHint(SDL.SDL_HINT_JOYSTICK_THREAD, "1");
-            SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING);
+            Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
+            Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
+            Sdl.SDL_Init(Sdl.SdlInitEverything);
             
             joysticks = new List<IntPtr>();
             
-            for (int i = 0; i < SDL.SDL_NumJoysticks(); i++)
+            for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
             {
-                IntPtr myJoystick = SDL.SDL_JoystickOpen(i);
+                IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
-                    Logger.Exception($"Error on SDL2: {SDL.SDL_GetError()}");
+                    Logger.Exception($"Error on SDL2: {Sdl.SDL_GetError()}");
                 }
                 else
                 {
                     Logger.Log($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={SDL.SDL_JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={SDL.SDL_JoystickNumButtons(myJoystick)}");
+                                      $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
+                                      $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                      $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
                 }
                 
                 joysticks.Add(myJoystick);
             }
 
-            currentSDL_NumJoysticks = SDL.SDL_NumJoysticks();
+            currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
             
             
-            buttons = new List<SDL.SDL_GameControllerButton>((SDL.SDL_GameControllerButton[]) Enum.GetValues(typeof(SDL.SDL_GameControllerButton)));
-            buttonsTemp = new Dictionary<string, SDL.SDL_GameControllerButton>();
+            buttons = new List<Sdl.SdlGameControllerButton>((Sdl.SdlGameControllerButton[]) Enum.GetValues(typeof(Sdl.SdlGameControllerButton)));
+            buttonsTemp = new Dictionary<string, Sdl.SdlGameControllerButton>();
             
-            axis = new List<SDL.SDL_GameControllerAxis>((SDL.SDL_GameControllerAxis[]) Enum.GetValues(typeof(SDL.SDL_GameControllerAxis)));
-            axisTemp = new List<SDL.SDL_GameControllerAxis>();
+            axis = new List<Sdl.SdlGameControllerAxis>((Sdl.SdlGameControllerAxis[]) Enum.GetValues(typeof(Sdl.SdlGameControllerAxis)));
+            axisTemp = new List<Sdl.SdlGameControllerAxis>();
             
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();
@@ -162,30 +162,30 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void BeforeUpdate()
         {
-            SDL.SDL_JoystickUpdate();
-            SDL.SDL_GameControllerUpdate();
+            Sdl.SDL_JoystickUpdate();
+            Sdl.SDL_GameControllerUpdate();
 
-            if (SDL.SDL_NumJoysticks() != currentSDL_NumJoysticks)
+            if (Sdl.SDL_NumJoysticks() != currentSdlNumJoysticks)
             {
                 joysticks = new List<IntPtr>();
-                for (int i = 0; i < SDL.SDL_NumJoysticks(); i++)
+                for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
                 {
-                    IntPtr myJoystick = SDL.SDL_JoystickOpen(i);
+                    IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
                     if (myJoystick == IntPtr.Zero)
                     {
-                        Logger.Exception($"Error on SDL2: {SDL.SDL_GetError()}");
+                        Logger.Exception($"Error on SDL2: {Sdl.SDL_GetError()}");
                     }
                     else
                     {
                         Logger.Log($"[SDL_JoystickName_id = '{i}'] \n" +
-                                   $"SDL_JoystickName={SDL.SDL_JoystickName(myJoystick)} \n" +
-                                   $"SDL_JoystickNumAxes={SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                   $"SDL_JoystickNumButtons={SDL.SDL_JoystickNumButtons(myJoystick)}");
+                                   $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
+                                   $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                   $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
                     }
                 
                     joysticks.Add(myJoystick);
                 }
-                currentSDL_NumJoysticks = SDL.SDL_NumJoysticks();
+                currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
             }
         }
 
@@ -194,31 +194,31 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Update()
         {
-            while (SDL.SDL_PollEvent(out sdlEvent) != 0)
+            while (Sdl.SDL_PollEvent(out sdlEvent) != 0)
             {
-                if (SDL.SDL_NumJoysticks() > 0)
+                if (Sdl.SDL_NumJoysticks() > 0)
                 {
                     for (int joystickId = 0; joystickId < joysticks.Count; joystickId++)
                     {
                         for (int index = 0; index < buttons.Count; index++)
                         {
-                            if (SDL.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0 
+                            if (Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0 
                                 && !buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                             {
                                 buttonsTemp.Add($"{joysticks[joystickId]}|{buttons[index]}", buttons[index]);
-                                foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                                foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
                                 {
-                                    currentSceneGameObject.components.ForEach(i => i.OnPressButton(buttons[index], joystickId));
+                                    currentSceneGameObject.Components.ForEach(i => i.OnPressButton(buttons[index], joystickId));
                                 }
                             }
                             
-                            if (SDL.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) == 0 
+                            if (Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) == 0 
                                 && buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                             {
                                 buttonsTemp.Remove($"{joysticks[joystickId]}|{buttons[index]}");
-                                foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                                foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
                                 {
-                                    currentSceneGameObject.components.ForEach(i => i.OnReleaseButton(buttons[index], joystickId));
+                                    currentSceneGameObject.Components.ForEach(i => i.OnReleaseButton(buttons[index], joystickId));
                                 }
                             }
                         }
@@ -226,18 +226,18 @@ namespace Alis.Core.Manager.Input
                 }
             }
             
-            if (SDL.SDL_NumJoysticks() > 0)
+            if (Sdl.SDL_NumJoysticks() > 0)
             {
                 for (int joystickId = 0; joystickId < joysticks.Count; joystickId++)
                 {
                     for (int index = 0; index < buttons.Count; index++)
                     {
-                        if (SDL.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0
+                        if (Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0
                             && buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                         {
-                            foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                            foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
                             {
-                                currentSceneGameObject.components.ForEach(i => i.OnPressDownButton(buttons[index], joystickId));
+                                currentSceneGameObject.Components.ForEach(i => i.OnPressDownButton(buttons[index], joystickId));
                             }
                         }
                     }
@@ -257,27 +257,27 @@ namespace Alis.Core.Manager.Input
                 {
                     tempListOfKeys.Add(keys[index]);
 
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
                     {
-                        currentSceneGameObject.components.ForEach(i => i.OnPressKey(keys[index]));
+                        currentSceneGameObject.Components.ForEach(i => i.OnPressKey(keys[index]));
                     }
                 }
 
                 if (!Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
                 {
                     tempListOfKeys.Remove(keys[index]);
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
                     {
-                        currentSceneGameObject.components.ForEach(i => i.OnReleaseKey(keys[index]));
+                        currentSceneGameObject.Components.ForEach(i => i.OnReleaseKey(keys[index]));
                     }
                 }
 
 
                 if (Keyboard.IsKeyPressed(keys[index]) && tempListOfKeys.Contains(keys[index]))
                 {
-                    foreach (GameObject currentSceneGameObject in SceneManager.currentSceneManager.currentScene.gameObjects)
+                    foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)
                     {
-                        currentSceneGameObject.components.ForEach(i => i.OnPressDownKey(keys[index]));
+                        currentSceneGameObject.Components.ForEach(i => i.OnPressDownKey(keys[index]));
                     }
                 }
             }

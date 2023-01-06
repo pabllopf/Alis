@@ -29,6 +29,7 @@
 
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
 using Alis.Core.Physic.Shared;
@@ -240,14 +241,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>Get/set the maximum friction force in N.</summary>
-        public float MaxForce
+        public float Force
         {
             set => maxForce = value;
             get => maxForce;
         }
 
         /// <summary>Get/set the maximum friction torque in N*m.</summary>
-        public float MaxTorque
+        public float Torque
         {
             set => maxTorque = value;
             get => maxTorque;

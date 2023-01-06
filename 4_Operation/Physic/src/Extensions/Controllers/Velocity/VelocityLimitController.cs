@@ -84,8 +84,8 @@ namespace Alis.Core.Physic.Extensions.Controllers.Velocity
         public VelocityLimitController()
             : base(ControllerType.VelocityLimitController)
         {
-            MaxLinearVelocity = Settings.MaxTranslation;
-            MaxAngularVelocity = Settings.MaxRotation;
+            LinearVelocity = Settings.Translation;
+            AngularVelocity = Settings.Rotation;
         }
 
         /// <summary>
@@ -107,13 +107,13 @@ namespace Alis.Core.Physic.Extensions.Controllers.Velocity
                 LimitAngularVelocity = false;
             }
 
-            MaxLinearVelocity = maxLinearVelocity;
-            MaxAngularVelocity = maxAngularVelocity;
+            LinearVelocity = maxLinearVelocity;
+            AngularVelocity = maxAngularVelocity;
         }
 
         /// <summary>Gets or sets the max angular velocity.</summary>
         /// <value>The max angular velocity.</value>
-        public float MaxAngularVelocity
+        public float AngularVelocity
         {
             get => maxAngularVelocity;
             set
@@ -125,7 +125,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Velocity
 
         /// <summary>Gets or sets the max linear velocity.</summary>
         /// <value>The max linear velocity.</value>
-        public float MaxLinearVelocity
+        public float LinearVelocity
         {
             get => maxLinearVelocity;
             set

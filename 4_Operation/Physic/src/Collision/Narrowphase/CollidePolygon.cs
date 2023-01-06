@@ -152,7 +152,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             manifold.LocalPoint = planePoint;
 
             int pointCount = 0;
-            for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+            for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
                 float separation = Vector2F.Dot(normal, clipPoints2[i].V) - frontOffset;
 

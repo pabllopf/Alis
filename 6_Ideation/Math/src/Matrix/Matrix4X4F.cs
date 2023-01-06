@@ -1395,17 +1395,17 @@ namespace Alis.Core.Aspect.Math.Matrix
             float i = M31, j = M32, k = M33, l = M34;
             float m = M41, n = M42, o = M43, p = M44;
 
-            float kp_lo = k * p - l * o;
-            float jp_ln = j * p - l * n;
-            float jo_kn = j * o - k * n;
-            float ip_lm = i * p - l * m;
-            float io_km = i * o - k * m;
-            float in_jm = i * n - j * m;
+            float kpLo = k * p - l * o;
+            float jpLn = j * p - l * n;
+            float joKn = j * o - k * n;
+            float ipLm = i * p - l * m;
+            float ioKm = i * o - k * m;
+            float inJm = i * n - j * m;
 
-            return a * (f * kp_lo - g * jp_ln + h * jo_kn) -
-                   b * (e * kp_lo - g * ip_lm + h * io_km) +
-                   c * (e * jp_ln - f * ip_lm + h * in_jm) -
-                   d * (e * jo_kn - f * io_km + g * in_jm);
+            return a * (f * kpLo - g * jpLn + h * joKn) -
+                   b * (e * kpLo - g * ipLm + h * ioKm) +
+                   c * (e * jpLn - f * ipLm + h * inJm) -
+                   d * (e * joKn - f * ioKm + g * inJm);
         }
 
         /// <summary>Returns the hash code for this instance.</summary>

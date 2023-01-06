@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
             }
 
             // polygon is already convex
-            if (vertices.Count > Settings.MaxPolygonVertices)
+            if (vertices.Count > Settings.PolygonVertices)
             {
                 lowerPoly = Copy(0, vertices.Count / 2, vertices);
                 upperPoly = Copy(vertices.Count / 2, 0, vertices);

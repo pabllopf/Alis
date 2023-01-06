@@ -310,11 +310,6 @@
                 The decompose epsilon
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F._identity">
-            <summary>
-                The matrix
-            </summary>
-        </member>
         <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix4X4F.M11">
             <summary>The first element of the first row.</summary>
         </member>
@@ -777,85 +772,90 @@
                 The element
             </summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix2x2">
+        <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix2X2F">
             <summary>
                 A 2-by-2 matrix. Stored in column-major order.
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix2x2.Col1">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Ex">
             <summary>
                 The col
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix2x2.Col2">
+        <member name="F:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Ey">
             <summary>
                 The col
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Construct this matrix using columns.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.#ctor(System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.#ctor(System.Single,System.Single,System.Single,System.Single)">
             <summary>
                 Construct this matrix using scalars.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.#ctor(System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.#ctor(System.Single)">
             <summary>
                 Construct this matrix using an angle.
                 This matrix becomes an orthonormal rotation matrix.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.Set(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Set(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initialize this matrix using columns.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.Set(System.Single)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Set(System.Single)">
             <summary>
                 Initialize this matrix using an angle.
                 This matrix becomes an orthonormal rotation matrix.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.SetIdentity">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.SetIdentity">
             <summary>
                 Set this to the identity matrix.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.SetZero">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.SetZero">
             <summary>
                 Set this matrix to all zeros.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.GetAngle">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.GetAngle">
             <summary>
                 Extract the angle from this matrix (assumed to be a rotation matrix).
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.GetInverse">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.GetInverse">
             <summary>
                 Compute the inverse of this matrix, such that inv(A) * A = identity.
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.Solve(Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Solve(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Solve A * x = b, where b is a column vector. This is more efficient
                 than computing the inverse in one-shot cases.
             </summary>
         </member>
-        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix2x2.Identity">
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Identity">
             <summary>
                 Gets the value of the identity
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2x2.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix2x2,Alis.Core.Aspect.Math.Matrix.Matrix2x2)">
+        <member name="M:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.op_Addition(Alis.Core.Aspect.Math.Matrix.Matrix2X2F,Alis.Core.Aspect.Math.Matrix.Matrix2X2F)">
             <summary>
             </summary>
             <param name="a"></param>
             <param name="b"></param>
             <returns></returns>
+        </member>
+        <member name="P:Alis.Core.Aspect.Math.Matrix.Matrix2X2F.Inverse">
+            <summary>
+                Gets the value of the inverse
+            </summary>
         </member>
         <member name="T:Alis.Core.Aspect.Math.Matrix.Matrix3X3F">
             <summary>

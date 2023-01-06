@@ -245,7 +245,7 @@ namespace Alis.Core.Physic.Collision.TOI
 
                     ++pushBackIter;
 
-                    if (pushBackIter == Settings.MaxPolygonVertices)
+                    if (pushBackIter == Settings.PolygonVertices)
                     {
                         break;
                     }

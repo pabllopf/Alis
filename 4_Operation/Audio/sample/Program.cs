@@ -44,7 +44,7 @@ namespace Alis.Core.Audio.Sample
         private static void Main(string[] args)
         {
             string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            AudioSource audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.OS));
+            AudioSource audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
 
             while (true)
             {
@@ -56,10 +56,10 @@ namespace Alis.Core.Audio.Sample
                     switch (os)
                     {
                         case "sfml":
-                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.OS));
+                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
                             break;
                         case "os":
-                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.OS));
+                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
                             break;
                     }
 

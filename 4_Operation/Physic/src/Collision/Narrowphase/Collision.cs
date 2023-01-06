@@ -79,7 +79,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             state1 = new FixedArray2<PointState>();
             state2 = new FixedArray2<PointState>();
 
-            for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+            for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
                 state1[i] = PointState.Null;
                 state2[i] = PointState.Null;

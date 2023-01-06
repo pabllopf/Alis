@@ -54,7 +54,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     The renderWindow
         /// </summary>
-        public RenderWindow renderWindow;
+        public RenderWindow RenderWindow;
 
         /// <summary>
         ///     The default
@@ -64,7 +64,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     The video mode
         /// </summary>
-        private VideoMode VideoMode;
+        private VideoMode videoMode;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GraphicManager" /> class
@@ -118,7 +118,7 @@ namespace Alis.Core.Manager.Graphic
         {
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(e.Width, e.Height);
 
-            renderWindow.Size = new Vector2U(
+            RenderWindow.Size = new Vector2U(
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.X,
                 (uint) VideoGame.Setting.Graphic.Window.Resolution.Y);
         }
@@ -128,34 +128,34 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         private void InitRenderWindow()
         {
-            if (renderWindow is {IsOpen: true})
+            if (RenderWindow is {IsOpen: true})
             {
-                renderWindow.Close();
-                renderWindow.Dispose();
+                RenderWindow.Close();
+                RenderWindow.Dispose();
             }
 
-            VideoMode = new VideoMode(
+            videoMode = new VideoMode(
                 (uint) defaultSize.X,
                 (uint) defaultSize.Y);
 
             VideoGame.Setting.Graphic.Window.Resolution = new Vector2(defaultSize.X, defaultSize.Y);
 
-            renderWindow = new RenderWindow(VideoMode,
+            RenderWindow = new RenderWindow(videoMode,
                 $"{VideoGame.Setting.General.Name} by {VideoGame.Setting.General.Author}", styles);
 
-            renderWindow.RequestFocus();
-            renderWindow.SetVisible(true);
+            RenderWindow.RequestFocus();
+            RenderWindow.SetVisible(true);
 
 
             if (!VideoGame.Setting.General.IconFile.Equals(""))
             {
                 Image image = new Image(VideoGame.Setting.General.IconFile);
-                renderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
+                RenderWindow.SetIcon(image.Size.X, image.Size.Y, image.Pixels);
             }
 
-            renderWindow.Resized += RenderWindowOnResized;
-            renderWindow.KeyPressed += RenderWindowOnKeyPressed;
-            renderWindow.Closed += RenderWindowOnClosed;
+            RenderWindow.Resized += RenderWindowOnResized;
+            RenderWindow.KeyPressed += RenderWindowOnKeyPressed;
+            RenderWindow.Closed += RenderWindowOnClosed;
         }
 
         /// <summary>
@@ -173,29 +173,29 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Befores the update
         /// </summary>
-        public override void BeforeUpdate() => renderWindow.Clear(VideoGame.Setting.Graphic.Window.Background);
+        public override void BeforeUpdate() => RenderWindow.Clear(VideoGame.Setting.Graphic.Window.Background);
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
         public override void Update()
         {
-            Sprites.ForEach(i => renderWindow.Draw(i.spriteSFML));
-            Colliders.ForEach(i => renderWindow.Draw(i));
+            Sprites.ForEach(i => RenderWindow.Draw(i.SpriteSfml));
+            Colliders.ForEach(i => RenderWindow.Draw(i));
         }
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => renderWindow.Display();
+        public override void AfterUpdate() => RenderWindow.Display();
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
         public override void DispatchEvents()
         {
-            renderWindow.DispatchEvents();
-            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(renderWindow.Size.X - defaultSize.X) > 0.1) && (Math.Abs(renderWindow.Size.Y - defaultSize.Y) > 0.1))
+            RenderWindow.DispatchEvents();
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(RenderWindow.Size.X - defaultSize.X) > 0.1) && (Math.Abs(RenderWindow.Size.Y - defaultSize.Y) > 0.1))
             {
                 styles = Styles.Default;
                 Logger.Log("Change style to default");
@@ -204,7 +204,7 @@ namespace Alis.Core.Manager.Graphic
                 return;
             }
 
-            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(renderWindow.Size.X - defaultSize.X) < 0.1) && (Math.Abs(renderWindow.Size.Y - defaultSize.Y) < 0.1))
+            if (Keyboard.IsKeyPressed(Key.LAlt) && Keyboard.IsKeyPressed(Key.Enter) && (Math.Abs(RenderWindow.Size.X - defaultSize.X) < 0.1) && (Math.Abs(RenderWindow.Size.Y - defaultSize.Y) < 0.1))
             {
                 styles = Styles.Fullscreen;
                 Logger.Log("Change style to Fullscreen");
@@ -237,7 +237,7 @@ namespace Alis.Core.Manager.Graphic
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => renderWindow.Close();
+        public override void Exit() => RenderWindow.Close();
 
         /// <summary>
         ///     Windows the on closed using the specified sender
@@ -272,7 +272,7 @@ namespace Alis.Core.Manager.Graphic
         /// <param name="view">The view</param>
         public void SetView(View view)
         {
-            renderWindow.SetView(view);
+            RenderWindow.SetView(view);
         }
 
         /// <summary>

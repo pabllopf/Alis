@@ -377,7 +377,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The maximum motor torque, usually in N-m.</summary>
-        public float MaxMotorTorque
+        public float MotorTorque
         {
             get => maxMotorTorque;
             set

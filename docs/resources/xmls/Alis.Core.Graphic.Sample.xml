@@ -9,17 +9,17 @@
                 The program class
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.Program.WIDTH">
+        <member name="F:Alis.Core.Graphic.Sample.Program.Width">
             <summary>
                 The width
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.Program.HEIGHT">
+        <member name="F:Alis.Core.Graphic.Sample.Program.Height">
             <summary>
                 The height
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.Sample.Program.TITLE">
+        <member name="F:Alis.Core.Graphic.Sample.Program.Title">
             <summary>
                 The title
             </summary>

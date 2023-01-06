@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
@@ -91,7 +92,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public VelocityConstraintPoint[] Points = new VelocityConstraintPoint[Settings.MaxManifoldPoints];
+        public VelocityConstraintPoint[] Points = new VelocityConstraintPoint[Settings.ManifoldPoints];
 
         /// <summary>
         ///     The restitution
@@ -113,7 +114,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// </summary>
         public ContactVelocityConstraint()
         {
-            for (int i = 0; i < Settings.MaxManifoldPoints; i++)
+            for (int i = 0; i < Settings.ManifoldPoints; i++)
             {
                 Points[i] = new VelocityConstraintPoint();
             }

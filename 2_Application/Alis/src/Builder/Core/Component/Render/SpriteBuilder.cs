@@ -71,7 +71,7 @@ namespace Alis.Builder.Core.Component.Render
         /// <returns>The sprite builder</returns>
         public SpriteBuilder SetTexture(string value)
         {
-            sprite.texturePath = value;
+            sprite.TexturePath = value;
             return this;
         }
     }

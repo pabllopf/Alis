@@ -879,7 +879,7 @@
             </summary>
             <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
-        <member name="P:Alis.Builder.VideoGameBuilder.videoGame">
+        <member name="P:Alis.Builder.VideoGameBuilder.VideoGame">
             <summary>Gets or sets the video game.</summary>
             <value>The video game.</value>
         </member>
@@ -1578,12 +1578,12 @@
                 The size
             </summary>
         </member>
-        <member name="F:Alis.Core.Component.Render.Sprite.sprite">
+        <member name="F:Alis.Core.Component.Render.Sprite.SpriteSfml">
             <summary>
                 The sprite
             </summary>
         </member>
-        <member name="F:Alis.Core.Component.Render.Sprite.texturePath">
+        <member name="F:Alis.Core.Component.Render.Sprite.TexturePath">
             <summary>
                 The texture path
             </summary>
@@ -1714,7 +1714,7 @@
                 The scene class
             </summary>
         </member>
-        <member name="F:Alis.Core.Entity.Scene.gameObjects">
+        <member name="F:Alis.Core.Entity.Scene.GameObjects">
             <summary>
                 The game objects
             </summary>
@@ -1816,7 +1816,7 @@
                 Gets or sets the value of the style
             </summary>
         </member>
-        <member name="P:Alis.Core.Entity.SplashScreen.filePath">
+        <member name="P:Alis.Core.Entity.SplashScreen.FilePath">
             <summary>
                 The file path
             </summary>
@@ -1943,7 +1943,7 @@
                 The vector
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.renderWindow">
+        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.RenderWindow">
             <summary>
                 The renderWindow
             </summary>
@@ -1953,7 +1953,7 @@
                 The default
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.VideoMode">
+        <member name="F:Alis.Core.Manager.Graphic.GraphicManager.videoMode">
             <summary>
                 The video mode
             </summary>
@@ -2122,7 +2122,7 @@
             The sdl event
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.currentSDL_NumJoysticks">
+        <member name="F:Alis.Core.Manager.Input.InputManager.currentSdlNumJoysticks">
             <summary>
             The currentsdl numjoysticks
             </summary>
@@ -2264,7 +2264,7 @@
                 Scene manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Scene.SceneManager.currentScene">
+        <member name="F:Alis.Core.Manager.Scene.SceneManager.CurrentScene">
             <summary>
                 The current scene
             </summary>
@@ -2279,7 +2279,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Manager.Scene.SceneManager" /> class
             </summary>
         </member>
-        <member name="F:Alis.Core.Manager.Scene.SceneManager.currentSceneManager">
+        <member name="F:Alis.Core.Manager.Scene.SceneManager.CurrentSceneManager">
             <summary>
                 Define the current scene manager
             </summary>

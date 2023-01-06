@@ -50,17 +50,17 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.ConsoleController" /> class
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Logging.ConsoleController.messages">
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._messages">
             <summary>
                 The message
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Logging.ConsoleController.filePath">
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._filePath">
             <summary>
                 The file path
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Logging.ConsoleController.dirPath">
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._dirPath">
             <summary>
                 The dir path
             </summary>

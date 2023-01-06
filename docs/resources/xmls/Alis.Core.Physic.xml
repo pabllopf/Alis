@@ -88,7 +88,7 @@
         <member name="P:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.AreaRatio">
             <summary>Get the ratio of the sum of the node areas to the root area.</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.MaxBalance">
+        <member name="P:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.Balance">
             <summary>
                 Get the maximum balance of an node in the tree. The balance is the difference in height of the two children of
                 a node.
@@ -189,7 +189,7 @@
             </summary>
             <param name="leaf">The leaf</param>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.Balance(System.Int32)">
+        <member name="M:Alis.Core.Physic.Collision.Broadphase.DynamicTree`1.BalanceTo(System.Int32)">
             <summary>Perform a left or right rotation if node A is imbalanced.</summary>
             <param name="iA"></param>
             <returns>the new root index.</returns>
@@ -1837,7 +1837,7 @@
         <member name="T:Alis.Core.Physic.Collision.RayCast.RayCastInput">
             <summary>Ray-cast input data.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.MaxFraction">
+        <member name="F:Alis.Core.Physic.Collision.RayCast.RayCastInput.Fraction">
             <summary>
                 The ray extends from p1 to p1 + maxFraction * (p2 - p1). If you supply a max fraction of 1, the ray extends
                 from p1 to p2. A max fraction of 0.5 makes the ray go from p1 and half way to p2.
@@ -2735,7 +2735,7 @@
                 The settings class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxManifoldPoints">
+        <member name="F:Alis.Core.Physic.Config.Settings.ManifoldPoints">
             <summary>The maximum number of contact points between two convex shapes. DO NOT CHANGE THIS VALUE!</summary>
         </member>
         <member name="F:Alis.Core.Physic.Config.Settings.EnableSubStepping">
@@ -2782,7 +2782,7 @@
                 Set the default collision group
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxGjkIterations">
+        <member name="F:Alis.Core.Physic.Config.Settings.GjkIterations">
             <summary>Defines the maximum number of iterations made by the GJK algorithm.</summary>
         </member>
         <member name="F:Alis.Core.Physic.Config.Settings.AabbExtension">
@@ -2809,25 +2809,25 @@
                 significant, but visually insignificant.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxSubSteps">
+        <member name="F:Alis.Core.Physic.Config.Settings.SubSteps">
             <summary>Maximum number of sub-steps per contact in continuous physics simulation.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxToiContacts">
+        <member name="F:Alis.Core.Physic.Config.Settings.ToiContacts">
             <summary>Maximum number of contacts to be handled to solve a TOI impact.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxLinearCorrection">
+        <member name="F:Alis.Core.Physic.Config.Settings.LinearCorrection">
             <summary>The maximum linear position correction used when solving constraints. This helps to prevent overshoot.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxAngularCorrection">
+        <member name="F:Alis.Core.Physic.Config.Settings.AngularCorrection">
             <summary>The maximum angular position correction used when solving constraints. This helps to prevent overshoot.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxTranslation">
+        <member name="F:Alis.Core.Physic.Config.Settings.Translation">
             <summary>
                 The maximum linear velocity of a body. This limit is very large and is used to prevent numerical problems. You
                 shouldn't need to adjust this.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxRotation">
+        <member name="F:Alis.Core.Physic.Config.Settings.Rotation">
             <summary>
                 The maximum angular velocity of a body. This limit is very large and is used to prevent numerical problems.
                 You shouldn't need to adjust this.
@@ -2863,7 +2863,7 @@
                 and instead call ClearForces after all sub-steps are complete in one pass of your game loop.
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Config.Settings.MaxPolygonVertices">
+        <member name="F:Alis.Core.Physic.Config.Settings.PolygonVertices">
             <summary>The maximum number of vertices on a convex polygon.</summary>
         </member>
         <member name="F:Alis.Core.Physic.Config.Settings.PolygonRadius">
@@ -3830,7 +3830,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.BiasFactor">
             <summary>Gets or sets the bias factor. Defaults to 0.2</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.MaxImpulse">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.Impulse">
             <summary>Gets or sets the maximum impulse. Defaults to float.MaxValue</summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.AngleJoint.Softness">
@@ -3930,7 +3930,7 @@
                 The inv mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.length">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.lengthPrivate">
             <summary>
                 The length
             </summary>
@@ -4045,7 +4045,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.WorldAnchorB">
             <summary>The anchor on <see cref="P:Alis.Core.Physic.Dynamics.Joints.Joint.BodyB" /> in world coordinates</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Length">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.LengthPropertie">
             <summary>The rest length of this joint. Clamped to a stable minimum value.</summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Stiffness">
@@ -4057,7 +4057,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.MinLength">
             <summary>Minimum length. Clamped to a stable minimum value.</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.MaxLength">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.Length">
             <summary>Maximum length. Must be greater than or equal to the minimum length.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.DistanceJoint.GetReactionForce(System.Single)">
@@ -4198,7 +4198,7 @@
                 Gets or sets the value of the world anchor b
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.MaxForce">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.FixedMouseJoint.Force">
             <summary>
                 The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some
                 multiple of the weight (multiplier * mass * gravity). Set/get the maximum force in Newtons.
@@ -4381,10 +4381,10 @@
                 Gets or sets the value of the world anchor b
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.MaxForce">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.Force">
             <summary>The maximum friction force in N.</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.MaxTorque">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.Torque">
             <summary>The maximum friction torque in N-m.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.FrictionJoint.GetReactionForce(System.Single)">
@@ -4712,7 +4712,7 @@
                 The joint class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint.jointType">
+        <member name="F:Alis.Core.Physic.Dynamics.Joints.Joint._jointType">
             <summary>
                 The joint type
             </summary>
@@ -5153,10 +5153,10 @@
                 Gets or sets the value of the world anchor b
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.MotorJoint.MaxForce">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MotorJoint.Force">
             <summary>Get/set the maximum friction force in N.</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.MotorJoint.MaxTorque">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.MotorJoint.Torque">
             <summary>Get/set the maximum friction torque in N*m.</summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.MotorJoint.CorrectionFactor">
@@ -5456,7 +5456,7 @@
             <summary>Set the motor speed, usually in meters per second.</summary>
             <value>The speed.</value>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.MaxMotorForce">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.PrismaticJoint.MotorForce">
             <summary>Set the maximum motor force, usually in N.</summary>
             <value>The force.</value>
         </member>
@@ -5962,7 +5962,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorSpeed">
             <summary>Get or set the motor speed in radians per second.</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MaxMotorTorque">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.MotorTorque">
             <summary>Get or set the maximum motor torque, usually in N-m.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.RevoluteJoint.SetLimits(System.Single,System.Single)">
@@ -6458,7 +6458,7 @@
         <member name="P:Alis.Core.Physic.Dynamics.Joints.WheelJoint.MotorSpeed">
             <summary>The desired motor speed in radians per second.</summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Joints.WheelJoint.MaxMotorTorque">
+        <member name="P:Alis.Core.Physic.Dynamics.Joints.WheelJoint.MotorTorque">
             <summary>The maximum motor torque, usually in N-m.</summary>
         </member>
         <member name="P:Alis.Core.Physic.Dynamics.Joints.WheelJoint.JointTranslation">
@@ -7082,12 +7082,12 @@
                 The normal mass
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.RA">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.Ra">
             <summary>
                 The
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.RB">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint.Rb">
             <summary>
                 The
             </summary>
@@ -7301,7 +7301,7 @@
                 Gets or sets the value of the min radius
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Extensions.Controllers.Gravity.GravityController.MaxRadius">
+        <member name="P:Alis.Core.Physic.Extensions.Controllers.Gravity.GravityController.Radius">
             <summary>
                 Gets or sets the value of the max radius
             </summary>
@@ -7414,11 +7414,11 @@
             <param name="maxLinearVelocity">The max linear velocity.</param>
             <param name="maxAngularVelocity">The max angular velocity.</param>
         </member>
-        <member name="P:Alis.Core.Physic.Extensions.Controllers.Velocity.VelocityLimitController.MaxAngularVelocity">
+        <member name="P:Alis.Core.Physic.Extensions.Controllers.Velocity.VelocityLimitController.AngularVelocity">
             <summary>Gets or sets the max angular velocity.</summary>
             <value>The max angular velocity.</value>
         </member>
-        <member name="P:Alis.Core.Physic.Extensions.Controllers.Velocity.VelocityLimitController.MaxLinearVelocity">
+        <member name="P:Alis.Core.Physic.Extensions.Controllers.Velocity.VelocityLimitController.LinearVelocity">
             <summary>Gets or sets the max linear velocity.</summary>
             <value>The max linear velocity.</value>
         </member>
@@ -7710,10 +7710,10 @@
         <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.IgnoreWhenInsideShape">
             <summary>Ignore Explosion if it happens inside a shape. Default value is false.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MaxAngle">
+        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Angle">
             <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MaxShapes">
+        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Shapes">
             <summary>Maximum number of shapes involved in the explosion. Defaults to 100</summary>
         </member>
         <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MinRays">
@@ -7725,7 +7725,7 @@
             </summary>
             <param name="world">The world</param>
         </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MaxEdgeOffset">
+        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.EdgeOffset">
             <summary>Two degrees: maximum angle from edges to first ray tested</summary>
         </member>
         <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Activate(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
@@ -8741,63 +8741,6 @@
             <summary>
                 Clears this instance
             </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Shared.Matrix2X2F">
-            <summary>A 2-by-2 matrix. Stored in column-major order.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Shared.Matrix2X2F.Ex">
-            <summary>
-                The ey
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Shared.Matrix2X2F.Ey">
-            <summary>
-                The ey
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>Construct this matrix using columns.</summary>
-            <param name="c1">The c1.</param>
-            <param name="c2">The c2.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.#ctor(System.Single,System.Single,System.Single,System.Single)">
-            <summary>Construct this matrix using scalars.</summary>
-            <param name="a11">The a11.</param>
-            <param name="a12">The a12.</param>
-            <param name="a21">The a21.</param>
-            <param name="a22">The a22.</param>
-        </member>
-        <member name="P:Alis.Core.Physic.Shared.Matrix2X2F.Inverse">
-            <summary>
-                Gets the value of the inverse
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.Set(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>Initialize this matrix using columns.</summary>
-            <param name="c1">The c1.</param>
-            <param name="c2">The c2.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.SetIdentity">
-            <summary>Set this to the identity matrix.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.SetZero">
-            <summary>Set this matrix to all zeros.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.Solve(Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
-                cases.
-            </summary>
-            <param name="b">The b.</param>
-            <returns></returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Shared.Matrix2X2F.Add(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Physic.Shared.Matrix2X2F@)">
-            <summary>
-                Adds the a
-            </summary>
-            <param name="a">The </param>
-            <param name="b">The </param>
-            <param name="r">The </param>
         </member>
         <member name="T:Alis.Core.Physic.Shared.Optimization.FixedArray2`1">
             <summary>
@@ -13157,7 +13100,7 @@
             <param name="value">The value</param>
             <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the a
             </summary>
@@ -13165,7 +13108,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.Mul(Alis.Core.Aspect.Math.Matrix.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Muls the a
             </summary>
@@ -13189,7 +13132,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Muls the t using the specified a
             </summary>
@@ -13197,7 +13140,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2F@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
             <summary>
                 Muls the t using the specified a
             </summary>
@@ -13221,7 +13164,7 @@
             <param name="v">The </param>
             <returns>The vector</returns>
         </member>
-        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Physic.Shared.Matrix2X2F@,Alis.Core.Physic.Shared.Matrix2X2F@)">
+        <member name="M:Alis.Core.Physic.Utilities.MathUtils.MulT(Alis.Core.Aspect.Math.Matrix.Matrix2X2F@,Alis.Core.Aspect.Math.Matrix.Matrix2X2F@,Alis.Core.Aspect.Math.Matrix.Matrix2X2F@)">
             <summary>
                 Muls the t using the specified a
             </summary>

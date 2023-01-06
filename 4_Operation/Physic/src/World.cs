@@ -640,7 +640,7 @@ namespace Alis.Core.Physic
         {
             RayCastInput input = new RayCastInput
             {
-                MaxFraction = 1.0f,
+                Fraction = 1.0f,
                 Point1 = point1,
                 Point2 = point2
             };
@@ -850,7 +850,7 @@ namespace Alis.Core.Physic
                 return rayCastCallback(fixture, point, output.Normal, fraction);
             }
 
-            return rayCastInput.MaxFraction;
+            return rayCastInput.Fraction;
         }
 
         /// <summary>
@@ -1070,7 +1070,7 @@ namespace Alis.Core.Physic
         /// <param name="step">The step</param>
         private void SolveToi(ref TimeStep step)
         {
-            Island.Reset(2 * Settings.MaxToiContacts, Settings.MaxToiContacts, 0, ContactManager);
+            Island.Reset(2 * Settings.ToiContacts, Settings.ToiContacts, 0, ContactManager);
 
             if (stepComplete)
             {
@@ -1105,7 +1105,7 @@ namespace Alis.Core.Physic
                     }
 
                     // Prevent excessive sub-stepping.
-                    if (c.ToiCount > Settings.MaxSubSteps)
+                    if (c.ToiCount > Settings.SubSteps)
                     {
                         continue;
                     }

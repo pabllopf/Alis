@@ -9,12 +9,12 @@
                 The audio type enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.AudioBackendType.OS">
+        <member name="F:Alis.Core.Audio.AudioBackendType.Os">
             <summary>
                 The os audio type
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.AudioBackendType.SFML">
+        <member name="F:Alis.Core.Audio.AudioBackendType.Sfml">
             <summary>
                 The sfml audio type
             </summary>

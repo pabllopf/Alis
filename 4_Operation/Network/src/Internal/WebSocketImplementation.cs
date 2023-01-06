@@ -209,7 +209,7 @@ namespace Alis.Core.Network.Internal
         /// <summary>
         ///     The max ping pong payload len
         /// </summary>
-        private const int MaxPingPongPayloadLen = 125;
+        private const int PingPongPayloadLen = 125;
 
         public event EventHandler<PongEventArgs> Pong;
 
@@ -390,10 +390,10 @@ namespace Alis.Core.Network.Internal
         /// </summary>
         public async Task SendPingAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
-            if (payload.Count > MaxPingPongPayloadLen)
+            if (payload.Count > PingPongPayloadLen)
             {
                 throw new InvalidOperationException(
-                    $"Cannot send Ping: Max ping message size {MaxPingPongPayloadLen} exceeded: {payload.Count}");
+                    $"Cannot send Ping: Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}");
             }
 
             if (_state == WebSocketState.Open)
@@ -540,11 +540,11 @@ namespace Alis.Core.Network.Internal
         private async Task SendPongAsync(ArraySegment<byte> payload, CancellationToken cancellationToken)
         {
             // as per websocket spec
-            if (payload.Count > MaxPingPongPayloadLen)
+            if (payload.Count > PingPongPayloadLen)
             {
                 Exception ex =
                     new InvalidOperationException(
-                        $"Max ping message size {MaxPingPongPayloadLen} exceeded: {payload.Count}");
+                        $"Max ping message size {PingPongPayloadLen} exceeded: {payload.Count}");
                 await CloseOutputAutoTimeoutAsync(WebSocketCloseStatus.ProtocolError, ex.Message, ex);
                 throw ex;
             }

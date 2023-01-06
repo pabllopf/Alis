@@ -484,7 +484,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         /// <summary>Set the maximum motor force, usually in N.</summary>
         /// <value>The force.</value>
-        public float MaxMotorForce
+        public float MotorForce
         {
             get => maxMotorForce;
             set

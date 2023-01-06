@@ -111,21 +111,21 @@
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnPressButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+        <member name="M:Alis.Core.Component.ComponentBase.OnPressButton(Alis.Core.Input.SDL2.Sdl.SdlGameControllerButton,System.Int32)">
             <summary>
             Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnPressDownButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+        <member name="M:Alis.Core.Component.ComponentBase.OnPressDownButton(Alis.Core.Input.SDL2.Sdl.SdlGameControllerButton,System.Int32)">
             <summary>
             Ons the press down button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Core.Component.ComponentBase.OnReleaseButton(Alis.Core.Input.SDL2.SDL.SDL_GameControllerButton,System.Int32)">
+        <member name="M:Alis.Core.Component.ComponentBase.OnReleaseButton(Alis.Core.Input.SDL2.Sdl.SdlGameControllerButton,System.Int32)">
             <summary>
             Ons the release button using the specified button
             </summary>
@@ -160,7 +160,7 @@
                 The game object base class
             </summary>
         </member>
-        <member name="F:Alis.Core.Entity.GameObjectBase.components">
+        <member name="F:Alis.Core.Entity.GameObjectBase.Components">
             <summary>
                 The components
             </summary>

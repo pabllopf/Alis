@@ -122,7 +122,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
                             continue; // is this right
                         }
 
-                        if (newP.Count > Settings.MaxPolygonVertices)
+                        if (newP.Count > Settings.PolygonVertices)
                         {
                             continue;
                         }

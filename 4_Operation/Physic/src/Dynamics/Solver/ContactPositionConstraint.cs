@@ -76,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The max manifold points
         /// </summary>
-        public Vector2F[] LocalPoints = new Vector2F[Settings.MaxManifoldPoints];
+        public Vector2F[] LocalPoints = new Vector2F[Settings.ManifoldPoints];
 
         /// <summary>
         ///     The point count

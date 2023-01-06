@@ -41,7 +41,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The joint type
         /// </summary>
-        private static JointType jointType;
+        private static JointType _jointType;
 
         /// <summary>Indicate if this join is enabled or not. Disabling a joint means it is still in the simulation, but inactive.</summary>
         private Body bodyA;
@@ -77,7 +77,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="jointType">The joint type</param>
         protected Joint(JointType jointType)
         { 
-            Joint.jointType = jointType;
+            Joint._jointType = jointType;
             breakpoint = float.MaxValue;
 
             //Connected bodies should not collide by default
@@ -114,7 +114,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bool collideConnected = false
             ) : this(jointType)
         {
-            Joint.jointType = jointType;
+            Joint._jointType = jointType;
             BodyA = bodyA;
             BodyB = bodyB;
             this.collideConnected = collideConnected;
@@ -138,7 +138,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
         /// <summary>Gets or sets the type of the joint.</summary>
         /// <value>The type of the joint.</value>
-        public JointType JointType => jointType;
+        public JointType JointType => _jointType;
 
         /// <summary>
         ///     Gets or sets the value of the enabled

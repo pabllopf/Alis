@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Collision.Distance
             int iter = 0;
 
             //Velcro: Moved the max iterations to settings
-            while (iter < Settings.MaxGjkIterations)
+            while (iter < Settings.GjkIterations)
             {
                 // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
@@ -266,7 +266,7 @@ namespace Alis.Core.Physic.Collision.Distance
             int iter = 0;
 
             //Velcro: We have moved the max iterations into settings
-            while ((iter < Settings.MaxGjkIterations) && (v.Length() - sigma > tolerance))
+            while ((iter < Settings.GjkIterations) && (v.Length() - sigma > tolerance))
             {
                 Debug.Assert(simplex.Count < 3);
 
