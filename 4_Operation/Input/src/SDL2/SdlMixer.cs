@@ -35,7 +35,7 @@ namespace Alis.Core.Input.SDL2
     /// <summary>
     ///     The sdl mixer class
     /// </summary>
-    public static class SdlMixer
+    public static partial class SdlMixer
     {
         /// <summary>
         ///     The channel finished delegate
@@ -87,125 +87,6 @@ namespace Alis.Core.Input.SDL2
             IntPtr a, // const char*
             IntPtr b // void*
         );
-
-        /// <summary>
-        ///     The mix fading enum
-        /// </summary>
-        public enum MixFading
-        {
-            /// <summary>
-            ///     The mix no fading mix fading
-            /// </summary>
-            MixNoFading,
-
-            /// <summary>
-            ///     The mix fading out mix fading
-            /// </summary>
-            MixFadingOut,
-
-            /// <summary>
-            ///     The mix fading in mix fading
-            /// </summary>
-            MixFadingIn
-        }
-
-        /// <summary>
-        ///     The mix initflags enum
-        /// </summary>
-        [Flags]
-        public enum MixInitFlags
-        {
-            /// <summary>
-            ///     The mix init flac mix initflags
-            /// </summary>
-            MixInitFlac = 0x00000001,
-
-            /// <summary>
-            ///     The mix init mod mix initflags
-            /// </summary>
-            MixInitMod = 0x00000002,
-
-            /// <summary>
-            ///     The mix init mp3 mix initflags
-            /// </summary>
-            MixInitMp3 = 0x00000008,
-
-            /// <summary>
-            ///     The mix init ogg mix initflags
-            /// </summary>
-            MixInitOgg = 0x00000010,
-
-            /// <summary>
-            ///     The mix init mid mix initflags
-            /// </summary>
-            MixInitMid = 0x00000020,
-
-            /// <summary>
-            ///     The mix init opus mix initflags
-            /// </summary>
-            MixInitOpus = 0x00000040
-        }
-
-        /// <summary>
-        ///     The mix musictype enum
-        /// </summary>
-        public enum MixMusicType
-        {
-            /// <summary>
-            ///     The mus none mix musictype
-            /// </summary>
-            MusNone,
-
-            /// <summary>
-            ///     The mus cmd mix musictype
-            /// </summary>
-            MusCmd,
-
-            /// <summary>
-            ///     The mus wav mix musictype
-            /// </summary>
-            MusWav,
-
-            /// <summary>
-            ///     The mus mod mix musictype
-            /// </summary>
-            MusMod,
-
-            /// <summary>
-            ///     The mus mid mix musictype
-            /// </summary>
-            MusMid,
-
-            /// <summary>
-            ///     The mus ogg mix musictype
-            /// </summary>
-            MusOgg,
-
-            /// <summary>
-            ///     The mus mp3 mix musictype
-            /// </summary>
-            MusMp3,
-
-            /// <summary>
-            ///     The mus mp3 mad unused mix musictype
-            /// </summary>
-            MusMp3MadUnused,
-
-            /// <summary>
-            ///     The mus flac mix musictype
-            /// </summary>
-            MusFlac,
-
-            /// <summary>
-            ///     The mus modplug unused mix musictype
-            /// </summary>
-            MusModplugUnused,
-
-            /// <summary>
-            ///     The mus opus mix musictype
-            /// </summary>
-            MusOpus
-        }
 
         /* Used by DllImport to load the native library. */
         /// <summary>

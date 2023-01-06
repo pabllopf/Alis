@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -164,9 +163,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The
         /// </summary>
         private Vector2F rB;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="MotorJoint"/> class
+        ///     Initializes a new instance of the <see cref="MotorJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -187,7 +186,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float maxForce = 1.0f,
             float maxTorque = 1.0f,
             float correctionFactor = 0.3f
-            )
+        )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
             this.linearOffset = linearOffset;

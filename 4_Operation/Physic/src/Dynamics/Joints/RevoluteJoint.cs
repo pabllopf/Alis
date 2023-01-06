@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -192,20 +191,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         private float upperImpulse;
 
-        /// <summary>A flag to enable joint limits.</summary>
-        public bool EnableLimit { get; set; }
-
-        /// <summary>A flag to enable the joint motor.</summary>
-        public bool EnableMotor { get; set; }
-
-        /// <summary>The lower angle for the joint limit (radians).</summary>
-        public float LowerAngle { get; set; }
-
-        /// <summary>The upper angle for the joint limit (radians).</summary>
-        public float UpperAngle { get; set; }
-        
         /// <summary>
-        /// Initializes a new instance of the <see cref="RevoluteJoint"/> class
+        ///     Initializes a new instance of the <see cref="RevoluteJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -234,7 +221,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float motorSpeed = 0.0f,
             bool enableLimit = false,
             bool enableMotor = false
-            )
+        )
             : base(bodyA, bodyB, jointType, collideConnected)
         {
             this.localAnchorA = localAnchorA;
@@ -242,11 +229,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             this.referenceAngle = referenceAngle;
             this.lowerAngle = lowerAngle;
             this.upperAngle = upperAngle;
-            this.maxMotorTorque = motorTorque;
+            maxMotorTorque = motorTorque;
             this.motorSpeed = motorSpeed;
             this.enableLimit = enableLimit;
             this.enableMotor = enableMotor;
-            this.angle = 0.0f;
+            angle = 0.0f;
         }
 
         /// <summary>Constructor of RevoluteJoint.</summary>
@@ -281,6 +268,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             : this(bodyA, bodyB, anchor, anchor, useWorldCoordinates)
         {
         }
+
+        /// <summary>A flag to enable joint limits.</summary>
+        public bool EnableLimit { get; set; }
+
+        /// <summary>A flag to enable the joint motor.</summary>
+        public bool EnableMotor { get; set; }
+
+        /// <summary>The lower angle for the joint limit (radians).</summary>
+        public float LowerAngle { get; set; }
+
+        /// <summary>The upper angle for the joint limit (radians).</summary>
+        public float UpperAngle { get; set; }
 
         /// <summary>The local anchor point on BodyA</summary>
         public Vector2F LocalAnchorA

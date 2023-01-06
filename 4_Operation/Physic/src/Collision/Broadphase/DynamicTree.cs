@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
@@ -301,11 +300,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The bool</returns>
-        public bool WasMoved(int proxyId)
-        {
+        public bool WasMoved(int proxyId) =>
             //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
-            return nodes[proxyId].Moved;
-        }
+            nodes[proxyId].Moved;
 
         /// <summary>
         ///     Clears the moved using the specified proxy id
@@ -322,11 +319,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The</returns>
-        public T GetUserData(int proxyId)
-        {
+        public T GetUserData(int proxyId) =>
             //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
-            return nodes[proxyId].UserData;
-        }
+            nodes[proxyId].UserData;
 
         /// <summary>Get the fat AABB for a proxy.</summary>
         /// <param name="proxyId">The proxy id.</param>

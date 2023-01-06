@@ -31,7 +31,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Dynamics.Joints
@@ -129,9 +128,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The target
         /// </summary>
         private Vector2F targetB;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="FixedMouseJoint"/> class
+        ///     Initializes a new instance of the <see cref="FixedMouseJoint" /> class
         /// </summary>
         /// <param name="bodyA">The body</param>
         /// <param name="bodyB">The body</param>
@@ -150,7 +149,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float maxForce = 0.0f,
             float stiffness = 0.0f,
             float damping = 0.0f
-            ) : base(bodyA, bodyB, jointType, collideConnected)
+        ) : base(bodyA, bodyB, jointType, collideConnected)
         {
             targetB = target;
             localAnchorA = MathUtils.MulT(BodyB.Xf, targetB);

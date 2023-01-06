@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             Ey = c2;
             Ez = c3;
         }
-        
+
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Construct the <see cref="Matrix3X3F" /> from its components
@@ -76,7 +76,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             array[2] = a20;
             array[5] = a21;
             array[8] = a22;
-            
+
             Ex = new Vector3F(a00, a01, a02);
             Ey = new Vector3F(a10, a11, a12);
             Ez = new Vector3F(a20, a21, a22);
@@ -87,7 +87,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The array
         /// </summary>
         private fixed float array[3 * 3];
-        
+
         /// <summary>
         ///     Solve A * x = b, where b is a column vector. This is more efficient than computing the inverse in one-shot
         ///     cases.
@@ -173,9 +173,9 @@ namespace Alis.Core.Aspect.Math.Matrix
             m.Ez.Y = m.Ey.Z;
             m.Ez.Z = det * (a11 * a22 - a12 * a12);
         }
-        
+
         /// <summary>
-        /// Dots the a
+        ///     Dots the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
@@ -183,13 +183,12 @@ namespace Alis.Core.Aspect.Math.Matrix
         public static float Dot(Vector3F a, Vector3F b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 
         /// <summary>
-        /// Crosses the a
+        ///     Crosses the a
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The vector</returns>
         public static Vector3F Cross(Vector3F a, Vector3F b) =>
             new Vector3F(a.Y * b.Z - a.Z * b.Y, a.Z * b.X - a.X * b.Z, a.X * b.Y - a.Y * b.X);
-
     }
 }
