@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                             RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
                         {
                             // find the point of intersection
-                            p = LineUtils.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
+                            p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
                                 At(j - 1, vertices));
 
                             if (Right(At(i + 1, vertices), At(i, vertices), p))
@@ -109,7 +109,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                         if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) &&
                             RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
                         {
-                            p = LineUtils.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices),
+                            p = Line.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices),
                                 At(j + 1, vertices));
 
                             if (Left(At(i - 1, vertices), At(i, vertices), p))
@@ -285,7 +285,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     continue; // ignore incident edges
                 }
 
-                if (LineUtils.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices),
+                if (Line.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices),
                         out _))
                 {
                     return false;

@@ -128,7 +128,7 @@ namespace Alis.Core.Physic.Tools.PolygonManipulation
             {
                 Vector2F point = vertices[k];
 
-                double distance = LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref a, ref b);
+                double distance = Line.DistanceBetweenPointAndLineSegment(ref point, ref a, ref b);
 
                 if (distance > maxDistance)
                 {

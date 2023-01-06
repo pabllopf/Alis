@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Factories
 
             Body body = CreateBody(world, position, rotation, bodyType);
 
-            Vertices rectangleVertices = PolygonUtils.CreateRectangle(width / 2, height / 2);
+            Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
             FixtureFactory.AttachPolygon(rectangleVertices, density, body);
 
             return body;
@@ -246,7 +246,7 @@ namespace Alis.Core.Physic.Factories
             float toothHeight, float density, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object userData = null!)
         {
-            Vertices gearPolygon = PolygonUtils.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
+            Vertices gearPolygon = Polygon.CreateGear(radius, numberOfTeeth, tipPercentage, toothHeight);
 
             //Gears can in some cases be convex
             if (!gearPolygon.IsConvex())
@@ -279,7 +279,7 @@ namespace Alis.Core.Physic.Factories
             int bottomEdges, float density, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object userData = null!)
         {
-            Vertices verts = PolygonUtils.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
+            Vertices verts = Polygon.CreateCapsule(height, topRadius, topEdges, bottomRadius, bottomEdges);
 
             //There are too many vertices in the capsule. We decompose it.
             if (verts.Count >= Settings.MaxPolygonVertices)
@@ -308,7 +308,7 @@ namespace Alis.Core.Physic.Factories
             object userData = null!)
         {
             //Create the middle rectangle
-            Vertices rectangle = PolygonUtils.CreateRectangle(endRadius, height / 2);
+            Vertices rectangle = Polygon.CreateRectangle(endRadius, height / 2);
 
             List<Vertices> list = new List<Vertices>
             {
@@ -349,7 +349,7 @@ namespace Alis.Core.Physic.Factories
             int segments, float density, Vector2F position = new Vector2F(), float rotation = 0,
             BodyType bodyType = BodyType.Static, object userData = null!)
         {
-            Vertices verts = PolygonUtils.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
+            Vertices verts = Polygon.CreateRoundedRectangle(width, height, xRadius, yRadius, segments);
 
             //There are too many vertices in the capsule. We decompose it.
             if (verts.Count >= Settings.MaxPolygonVertices)

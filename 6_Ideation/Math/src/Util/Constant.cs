@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>
     ///     The math constants class

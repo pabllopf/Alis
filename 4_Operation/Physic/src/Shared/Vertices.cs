@@ -33,6 +33,7 @@ using System.Diagnostics;
 using System.Text;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Utilities;
 
@@ -378,7 +379,7 @@ namespace Alis.Core.Physic.Shared
                     Vector2F b1 = this[j];
                     Vector2F b2 = NextVertex(j);
 
-                    if (LineUtils.LineIntersect2(ref a1, ref a2, ref b1, ref b2, out _))
+                    if (Line.LineIntersect2(ref a1, ref a2, ref b1, ref b2, out _))
                     {
                         return false;
                     }

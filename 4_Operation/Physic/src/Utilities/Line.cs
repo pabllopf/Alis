@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
@@ -38,7 +39,7 @@ namespace Alis.Core.Physic.Utilities
     ///     Collection of helper methods for misc collisions. Does float tolerance and line collisions with lines and
     ///     AABBs.
     /// </summary>
-    public static class LineUtils
+    public static class Line
     {
         /// <summary>
         ///     Distances the between point and line segment using the specified point

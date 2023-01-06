@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.TextureTools;
@@ -40,7 +41,7 @@ namespace Alis.Core.Physic.Utilities
     /// <summary>
     ///     The polygon utils class
     /// </summary>
-    public static class PolygonUtils
+    public static class Polygon
     {
         /// <summary>Build vertices to represent an axis-aligned box.</summary>
         /// <param name="hx">the half-width.</param>

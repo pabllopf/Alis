@@ -827,7 +827,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 {
                     edgeVertex1 = polygon[i];
 
-                    if (LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
+                    if (Line.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
                         hullTolerance || Vector2F.Distance(point, edgeVertex1) <= hullTolerance)
                     {
                         return false;
@@ -843,7 +843,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 edgeVertex1 = polygon[i];
 
-                if (LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
+                if (Line.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
                     hullTolerance)
                 {
                     return false;
@@ -1122,7 +1122,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     {
                         Vector2F tempVector1 = polygon[edgeVertex1Index];
                         Vector2F tempVector2 = polygon[edgeVertex2Index];
-                        distance = LineUtils.DistanceBetweenPointAndLineSegment(ref foundEdgeCoord,
+                        distance = Line.DistanceBetweenPointAndLineSegment(ref foundEdgeCoord,
                             ref tempVector1, ref tempVector2);
                         if (distance < shortestDistance)
                         {
@@ -1461,7 +1461,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     tempVector1 = hullArea[i];
 
                     // Check if the distance is over the one that's tolerable.
-                    if (LineUtils.DistanceBetweenPointAndLineSegment(ref tempVector1, ref tempVector2,
+                    if (Line.DistanceBetweenPointAndLineSegment(ref tempVector1, ref tempVector2,
                             ref tempVector3) >= hullTolerance)
                     {
                         outstandingResult = hullArea[i];

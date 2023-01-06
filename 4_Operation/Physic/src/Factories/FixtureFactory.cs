@@ -30,6 +30,7 @@
 using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
@@ -101,7 +102,7 @@ namespace Alis.Core.Physic.Factories
         public static Fixture AttachRectangle(float width, float height, float density, Vector2F offset, Body body,
             object userData = null)
         {
-            Vertices rectangleVertices = PolygonUtils.CreateRectangle(width / 2, height / 2);
+            Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
             rectangleVertices.Translate(ref offset);
             PolygonShape rectangleShape = new PolygonShape(rectangleVertices, density);
             Fixture f = body.AddFixture(rectangleShape);
@@ -205,7 +206,7 @@ namespace Alis.Core.Physic.Factories
                 throw new ArgumentOutOfRangeException(nameof(yRadius), "Y-radius must be more than 0");
             }
 
-            Vertices ellipseVertices = PolygonUtils.CreateEllipse(xRadius, yRadius, edges);
+            Vertices ellipseVertices = Polygon.CreateEllipse(xRadius, yRadius, edges);
             PolygonShape polygonShape = new PolygonShape(ellipseVertices, density);
             Fixture f = body.AddFixture(polygonShape);
             //f.UserData = userData;
@@ -252,7 +253,7 @@ namespace Alis.Core.Physic.Factories
         /// <returns>The fixture</returns>
         public static Fixture AttachLineArc(float radians, int sides, float radius, bool closed, Body body)
         {
-            Vertices arc = PolygonUtils.CreateArc(radians, sides, radius);
+            Vertices arc = Polygon.CreateArc(radians, sides, radius);
             arc.Rotate((Constant.Pi - radians) / 2);
             return closed ? AttachLoopShape(arc, body) : AttachChainShape(arc, body);
         }
@@ -268,7 +269,7 @@ namespace Alis.Core.Physic.Factories
         /// <returns>A list of fixture</returns>
         public static List<Fixture> AttachSolidArc(float density, float radians, int sides, float radius, Body body)
         {
-            Vertices arc = PolygonUtils.CreateArc(radians, sides, radius);
+            Vertices arc = Polygon.CreateArc(radians, sides, radius);
             arc.Rotate((Constant.Pi - radians) / 2);
 
             //Close the arc

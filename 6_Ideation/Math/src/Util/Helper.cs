@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Math
+namespace Alis.Core.Aspect.Math.Util
 {
     /// <summary>Contains commonly used precalculated values and mathematical operations.</summary>
     public static class Helper

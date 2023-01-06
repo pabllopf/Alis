@@ -30,6 +30,7 @@
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
@@ -245,7 +246,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="hy">The hy</param>
         public void SetAsBox(float hx, float hy)
         {
-            VerticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
+            VerticesPrivate = Polygon.CreateRectangle(hx, hy);
 
             NormalsPrivate = new Vertices(4)
             {
@@ -267,7 +268,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="angle">The angle</param>
         public void SetAsBox(float hx, float hy, Vector2F center, float angle)
         {
-            VerticesPrivate = PolygonUtils.CreateRectangle(hx, hy);
+            VerticesPrivate = Polygon.CreateRectangle(hx, hy);
 
             NormalsPrivate = new Vertices(4)
             {

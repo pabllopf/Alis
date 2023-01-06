@@ -173,7 +173,7 @@ namespace Alis.Core.Physic.Tools.Cutting
                     Vector2F d = polygon2[polygon2.NextIndex(j)];
 
                     // Check if the edges intersect
-                    if (LineUtils.LineIntersect(a, b, c, d, out Vector2F intersectionPoint))
+                    if (Line.LineIntersect(a, b, c, d, out Vector2F intersectionPoint))
                     {
                         // calculate alpha values for sorting multiple intersections points on a edge
                         float alpha = GetAlpha(a, b, intersectionPoint);

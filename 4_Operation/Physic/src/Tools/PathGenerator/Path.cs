@@ -32,6 +32,7 @@ using System.Collections.Generic;
 using System.Text;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
