@@ -116,7 +116,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The length
         /// </summary>
-        private float length;
+        private float lengthPrivate;
 
         /// <summary>
         ///     The local anchor
@@ -220,7 +220,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             this.localAnchorA = localAnchorA;
             this.localAnchorB = localAnchorB;
-            this.length = MathUtils.Max(length, Settings.LinearSlop);
+            this.lengthPrivate = MathUtils.Max(length, Settings.LinearSlop);
             this.minLength = MathUtils.Max(minLength, Settings.LinearSlop);
             this.maxLength = MathUtils.Max(maxLength, this.minLength);
             this.stiffness = stiffness;
@@ -257,9 +257,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 d = bodyB.GetWorldPoint(ref anchorB) - bodyA.GetWorldPoint(ref anchorA);
             }
 
-            length = MathUtils.Max(d.Length(), Settings.LinearSlop);
-            minLength = length;
-            maxLength = length;
+            lengthPrivate = MathUtils.Max(d.Length(), Settings.LinearSlop);
+            minLength = lengthPrivate;
+            maxLength = lengthPrivate;
         }
 
         /// <summary>The local anchor point relative to bodyA's origin.</summary>
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The rest length of this joint. Clamped to a stable minimum value.</summary>
-        public float Length
+        public float LengthPropertie
         {
             get
             {
@@ -304,7 +304,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             set
             {
                 impulse = 0.0f;
-                length = MathUtils.Max(Settings.LinearSlop, value);
+                lengthPrivate = MathUtils.Max(Settings.LinearSlop, value);
             }
         }
 
@@ -408,7 +408,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             if ((stiffness > 0.0f) && (minLength < maxLength))
             {
                 // soft
-                float c = currentLength - length;
+                float c = currentLength - lengthPrivate;
 
                 float d = damping;
                 float k = stiffness;

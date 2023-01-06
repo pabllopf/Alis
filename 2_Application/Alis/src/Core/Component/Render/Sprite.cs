@@ -56,7 +56,7 @@ namespace Alis.Core.Component.Render
         /// <summary>
         ///     The sprite
         /// </summary>
-        public Graphic.D2.SFML.Graphics.Sprite sprite;
+        public Graphic.D2.SFML.Graphics.Sprite spriteSFML;
 
         /// <summary>
         ///     The texture path
@@ -79,8 +79,8 @@ namespace Alis.Core.Component.Render
         /// </summary>
         public override void Init()
         {
-            sprite = new Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
-            size = new Vector2F(sprite.TextureRect.Width, sprite.TextureRect.Height);
+            spriteSFML = new Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
+            size = new Vector2F(spriteSFML.TextureRect.Width, spriteSFML.TextureRect.Height);
             Logger.Log($"Load sprite od '{texturePath}'");
         }
 
@@ -98,12 +98,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            sprite.Position = new Vector2F(
+            spriteSFML.Position = new Vector2F(
                 GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
                 GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
-            sprite.Rotation = GameObject.Transform.Rotation;
-            sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            spriteSFML.Rotation = GameObject.Transform.Rotation;
+            spriteSFML.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>
@@ -112,12 +112,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            sprite.Position = new Vector2F(
+            spriteSFML.Position = new Vector2F(
                 GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
                 GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
-            sprite.Rotation = GameObject.Transform.Rotation;
-            sprite.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            spriteSFML.Rotation = GameObject.Transform.Rotation;
+            spriteSFML.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>

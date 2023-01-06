@@ -138,8 +138,8 @@ namespace Alis.Core.Component.Collider
             {
                 if (GameObject.Contains<Sprite>())
                 {
-                    Width = GameObject.GetComponent<Sprite>().sprite.Texture.Size.X * GameObject.Transform.Scale.X;
-                    Height = GameObject.GetComponent<Sprite>().sprite.Texture.Size.Y * GameObject.Transform.Scale.Y;
+                    Width = GameObject.GetComponent<Sprite>().spriteSFML.Texture.Size.X * GameObject.Transform.Scale.X;
+                    Height = GameObject.GetComponent<Sprite>().spriteSFML.Texture.Size.Y * GameObject.Transform.Scale.Y;
                 }
             }
             else

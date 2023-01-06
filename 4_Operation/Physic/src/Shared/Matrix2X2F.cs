@@ -31,6 +31,7 @@ using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Shared
 {
+    /*
     /// <summary>A 2-by-2 matrix. Stored in column-major order.</summary>
     public struct Matrix2X2F
     {
@@ -140,5 +141,5 @@ namespace Alis.Core.Physic.Shared
             r.Ex = a.Ex + b.Ex;
             r.Ey = a.Ey + b.Ey;
         }
-    }
+    }*/
 }

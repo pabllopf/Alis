@@ -136,7 +136,7 @@ namespace Alis.Core.Component.Render
             {
                 if (currentAnimation.HasNext())
                 {
-                    Sprite.sprite.Texture = currentAnimation.NextTexture().Texture;
+                    Sprite.spriteSFML.Texture = currentAnimation.NextTexture().Texture;
                 }
 
                 Timer.Restart();

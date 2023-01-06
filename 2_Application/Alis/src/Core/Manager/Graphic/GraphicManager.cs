@@ -180,7 +180,7 @@ namespace Alis.Core.Manager.Graphic
         /// </summary>
         public override void Update()
         {
-            Sprites.ForEach(i => renderWindow.Draw(i.sprite));
+            Sprites.ForEach(i => renderWindow.Draw(i.spriteSFML));
             Colliders.ForEach(i => renderWindow.Draw(i));
         }
 

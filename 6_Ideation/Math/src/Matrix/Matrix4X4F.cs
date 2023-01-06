@@ -53,18 +53,7 @@ namespace Alis.Core.Aspect.Math.Matrix
         ///     The decompose epsilon
         /// </summary>
         private const float DecomposeEpsilon = 0.0001f;
-
-        /// <summary>
-        ///     The matrix
-        /// </summary>
-        private static readonly Matrix4X4F _identity = new Matrix4X4F
-        (
-            1f, 0f, 0f, 0f,
-            0f, 1f, 0f, 0f,
-            0f, 0f, 1f, 0f,
-            0f, 0f, 0f, 1f
-        );
-
+        
         /// <summary>The first element of the first row.</summary>
         public float M11;
 
@@ -189,7 +178,13 @@ namespace Alis.Core.Aspect.Math.Matrix
 
         /// <summary>Gets the multiplicative identity matrix.</summary>
         /// <value>Gets the multiplicative identity matrix.</value>
-        public static Matrix4X4F Identity => _identity;
+        public static Matrix4X4F Identity => new Matrix4X4F
+        (
+            1f, 0f, 0f, 0f,
+            0f, 1f, 0f, 0f,
+            0f, 0f, 1f, 0f,
+            0f, 0f, 0f, 1f
+        );
 
         /// <summary>Indicates whether the current matrix is the identity matrix.</summary>
         /// <value><see langword="true" /> if the current matrix is the identity matrix; otherwise, <see langword="false" />.</value>
