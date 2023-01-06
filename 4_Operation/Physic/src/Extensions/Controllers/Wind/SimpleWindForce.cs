@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Systems.Physics2D.Utilities;
 
 namespace Alis.Core.Physic.Extensions.Controllers.Wind
 {
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
                     // Calculate random Variation
                     if (Variation != 0)
                     {
-                        float strengthVariation = (float) Randomize.NextDouble() * MathHelper.Clamp(Variation, 0, 1);
+                        float strengthVariation = (float) Randomize.NextDouble() * Helper.Clamp(Variation, 0, 1);
                         forceVector = Vector2F.Normalize(forceVector);
                         body.ApplyForce(forceVector * strength * decayMultiplier * strengthVariation);
                     }

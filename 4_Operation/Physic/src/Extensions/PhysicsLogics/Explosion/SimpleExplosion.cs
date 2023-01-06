@@ -29,11 +29,11 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
 
 namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 {
@@ -107,7 +107,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                     Vector2F forceVector = pos - overlappingBody.Position;
                     forceVector *=
                         1f / (float) Math.Sqrt(forceVector.X * forceVector.X + forceVector.Y * forceVector.Y);
-                    forceVector *= MathHelper.Min(force * forcePercent, maxForce);
+                    forceVector *= Helper.Min(force * forcePercent, maxForce);
                     forceVector *= -1;
 
                     overlappingBody.ApplyLinearImpulse(forceVector);
@@ -134,7 +134,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
                 return 0f;
             }
 
-            return MathHelper.Clamp(percent, 0f, 1f);
+            return Helper.Clamp(percent, 0f, 1f);
         }
     }
 }

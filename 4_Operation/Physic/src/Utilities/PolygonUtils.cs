@@ -34,7 +34,6 @@ using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.TextureTools;
-using Alis.Core.Systems.Physics2D.Utilities;
 
 namespace Alis.Core.Physic.Utilities
 {
@@ -330,7 +329,7 @@ namespace Alis.Core.Physic.Utilities
 
             float stepSize = Constant.TwoPi / numberOfTeeth;
             tipPercentage /= 100f;
-            MathHelper.Clamp(tipPercentage, 0f, 1f);
+            Helper.Clamp(tipPercentage, 0f, 1f);
             float toothTipStepSize = stepSize / 2f * tipPercentage;
 
             float toothAngleStepSize = (stepSize - toothTipStepSize * 2f) / 2f;

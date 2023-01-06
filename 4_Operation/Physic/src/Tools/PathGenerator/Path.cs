@@ -30,10 +30,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Systems.Physics2D.Utilities;
 
 namespace Alis.Core.Physic.Tools.PathGenerator
 {
@@ -316,8 +316,8 @@ namespace Alis.Core.Physic.Tools.PathGenerator
         public static Vector2F CatmullRom(Vector2F value1, Vector2F value2, Vector2F value3, Vector2F value4,
             float amount) =>
             new Vector2F(
-                MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
-                MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount));
+                Helper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
+                Helper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount));
 
         /// <summary>Gets the normal for the given time.</summary>
         /// <param name="time">The time</param>

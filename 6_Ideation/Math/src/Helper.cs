@@ -27,38 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-
-// ReSharper disable once CheckNamespace
-namespace Alis.Core.Systems.Physics2D.Utilities
+namespace Alis.Core.Aspect.Math
 {
     /// <summary>Contains commonly used precalculated values and mathematical operations.</summary>
-    public static class MathHelper
+    public static class Helper
     {
-        /// <summary>Represents the mathematical constant e(2.71828175).</summary>
-        public const float E = (float) Math.E;
-
-        /// <summary>Represents the log base ten of e(0.4342945).</summary>
-        public const float Log10E = 0.4342945f;
-
-        /// <summary>Represents the log base two of e(1.442695).</summary>
-        public const float Log2E = 1.442695f;
-
-        /// <summary>Represents the value of pi(3.14159274).</summary>
-        public const float Pi = (float) Math.PI;
-
-        /// <summary>Represents the value of pi divided by two(1.57079637).</summary>
-        public const float PiOver2 = (float) (Math.PI / 2.0);
-
-        /// <summary>Represents the value of pi divided by four(0.7853982).</summary>
-        public const float PiOver4 = (float) (Math.PI / 4.0);
-
-        /// <summary>Represents the value of pi times two(6.28318548).</summary>
-        public const float TwoPi = (float) (Math.PI * 2.0);
-
-        /// <summary>Represents the value of pi times two(6.28318548). This is an alias of TwoPi.</summary>
-        public const float Tau = TwoPi;
-
         /// <summary>
         ///     Returns the Cartesian coordinate for one axis of a point that is defined by a given triangle and two
         ///     normalized barycentric (areal) coordinates.
@@ -130,7 +103,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Source value.</param>
         /// <returns>Distance between the two values.</returns>
-        public static float Distance(float value1, float value2) => Math.Abs(value1 - value2);
+        public static float Distance(float value1, float value2) => System.Math.Abs(value1 - value2);
 
         /// <summary>Performs a Hermite spline interpolation.</summary>
         /// <param name="value1">Source position.</param>
@@ -175,7 +148,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         ///     This method performs the linear interpolation based on the following formula:
         ///     <code>value1 + (value2 - value1) * amount</code>. Passing amount a value of 0 will cause value1 to be returned, a
         ///     value
-        ///     of 1 will cause value2 to be returned. See <see cref="MathHelper.LerpPrecise" /> for a less efficient version with
+        ///     of 1 will cause value2 to be returned. See <see cref="Helper.LerpPrecise" /> for a less efficient version with
         ///     more
         ///     precision around edge cases.
         /// </remarks>
@@ -183,7 +156,7 @@ namespace Alis.Core.Systems.Physics2D.Utilities
 
         /// <summary>
         ///     Linearly interpolates between two values. This method is a less efficient, more precise version of
-        ///     <see cref="MathHelper.Lerp" />. See remarks for more info.
+        ///     <see cref="Helper.Lerp" />. See remarks for more info.
         /// </summary>
         /// <param name="value1">Source value.</param>
         /// <param name="value2">Destination value.</param>
@@ -194,9 +167,9 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         ///     <code>((1 - amount) * value1) + (value2 * amount)</code>. Passing amount a value of 0 will cause value1 to be
         ///     returned,
         ///     a value of 1 will cause value2 to be returned. This method does not have the floating point precision issue that
-        ///     <see cref="MathHelper.Lerp" /> has. i.e. If there is a big gap between value1 and value2 in magnitude (e.g.
+        ///     <see cref="Helper.Lerp" /> has. i.e. If there is a big gap between value1 and value2 in magnitude (e.g.
         ///     value1=10000000000000000, value2=1), right at the edge of the interpolation range (amount=1),
-        ///     <see cref="MathHelper.Lerp" /> will return 0 (whereas it should return 1). This also holds for value1=10^17,
+        ///     <see cref="Helper.Lerp" /> will return 0 (whereas it should return 1). This also holds for value1=10^17,
         ///     value2=10;
         ///     value1=10^18,value2=10^2... so on. For an in depth explanation of the issue, see below references: Relevant
         ///     Wikipedia
@@ -264,20 +237,20 @@ namespace Alis.Core.Systems.Physics2D.Utilities
         /// <returns>The new angle, in radians.</returns>
         public static float WrapAngle(float angle)
         {
-            if ((angle > -Pi) && (angle <= Pi))
+            if ((angle > -Constant.Pi) && (angle <= Constant.Pi))
             {
                 return angle;
             }
 
-            angle %= TwoPi;
-            if (angle <= -Pi)
+            angle %= Constant.TwoPi;
+            if (angle <= -Constant.Pi)
             {
-                return angle + TwoPi;
+                return angle + Constant.TwoPi;
             }
 
-            if (angle > Pi)
+            if (angle > Constant.Pi)
             {
-                return angle - TwoPi;
+                return angle - Constant.TwoPi;
             }
 
             return angle;

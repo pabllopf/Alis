@@ -38,7 +38,6 @@ using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Alis.Core.Systems.Physics2D.Utilities;
 
 namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 {
@@ -339,7 +338,7 @@ namespace Alis.Core.Physic.Extensions.PhysicsLogics.Explosion
 
                 float arclen = data[i].Max - data[i].Min;
 
-                float first = MathHelper.Min(MaxEdgeOffset, EdgeRatio * arclen);
+                float first = Helper.Min(MaxEdgeOffset, EdgeRatio * arclen);
                 int insertedRays = (int) Math.Ceiling((arclen - 2.0f * first - (MinRays - 1) * MaxAngle) / MaxAngle);
 
                 if (insertedRays < 0)
