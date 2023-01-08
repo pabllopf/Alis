@@ -127,7 +127,7 @@ namespace Alis.Core.Input.SDL2
         ///     Sdls the ttf version using the specified x
         /// </summary>
         /// <param name="x">The </param>
-        public static void SDL_TTF_VERSION(out Sdl.SdlVersion x)
+        public static void SDL_TTF_VERSION(out SdlVersion x)
         {
             x.major = SdlTtfMajorVersion;
             x.minor = SdlTtfMinorVersion;
@@ -145,13 +145,13 @@ namespace Alis.Core.Input.SDL2
         ///     Ttfs the linked version
         /// </summary>
         /// <returns>The result</returns>
-        public static Sdl.SdlVersion TTF_LinkedVersion()
+        public static SdlVersion TTF_LinkedVersion()
         {
-            Sdl.SdlVersion result;
+            SdlVersion result;
             IntPtr resultPtr = INTERNAL_TTF_LinkedVersion();
-            result = (Sdl.SdlVersion) Marshal.PtrToStructure(
+            result = (SdlVersion) Marshal.PtrToStructure(
                 resultPtr,
-                typeof(Sdl.SdlVersion)
+                typeof(SdlVersion)
             );
             return result;
         }
@@ -706,7 +706,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderText_Solid(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPStr)] string text,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -721,7 +721,7 @@ namespace Alis.Core.Input.SDL2
         private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Solid(
             IntPtr font,
             byte* text,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /// <summary>
@@ -734,7 +734,7 @@ namespace Alis.Core.Input.SDL2
         public static unsafe IntPtr TTF_RenderUTF8_Solid(
             IntPtr font,
             string text,
-            Sdl.SdlColor fg
+            SdlColor fg
         )
         {
             byte* utf8Text = Sdl.Utf8EncodeHeap(text);
@@ -759,7 +759,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderUNICODE_Solid(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPWStr)] string text,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font*
@@ -777,7 +777,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderText_Solid_Wrapped(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPStr)] string text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapLength
         );
 
@@ -796,7 +796,7 @@ namespace Alis.Core.Input.SDL2
         public static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Solid_Wrapped(
             IntPtr font,
             byte* text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapLength
         );
 
@@ -811,7 +811,7 @@ namespace Alis.Core.Input.SDL2
         public static unsafe IntPtr TTF_RenderUTF8_Solid_Wrapped(
             IntPtr font,
             string text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapLength
         )
         {
@@ -841,7 +841,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderUNICODE_Solid_Wrapped(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPWStr)] string text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapLength
         );
 
@@ -857,7 +857,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderGlyph_Solid(
             IntPtr font,
             ushort ch,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font*
@@ -874,7 +874,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderGlyph32_Solid(
             IntPtr font,
             uint ch,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -890,8 +890,8 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderText_Shaded(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPStr)] string text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg
+            SdlColor fg,
+            SdlColor bg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -907,8 +907,8 @@ namespace Alis.Core.Input.SDL2
         private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Shaded(
             IntPtr font,
             byte* text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg
+            SdlColor fg,
+            SdlColor bg
         );
 
         /// <summary>
@@ -922,8 +922,8 @@ namespace Alis.Core.Input.SDL2
         public static unsafe IntPtr TTF_RenderUTF8_Shaded(
             IntPtr font,
             string text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg
+            SdlColor fg,
+            SdlColor bg
         )
         {
             byte* utf8Text = Sdl.Utf8EncodeHeap(text);
@@ -950,8 +950,8 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderUNICODE_Shaded(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPWStr)] string text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg
+            SdlColor fg,
+            SdlColor bg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -968,8 +968,8 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderText_Shaded_Wrapped(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPStr)] string text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg,
+            SdlColor fg,
+            SdlColor bg,
             uint wrapLength
         );
 
@@ -989,8 +989,8 @@ namespace Alis.Core.Input.SDL2
         public static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(
             IntPtr font,
             byte* text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg,
+            SdlColor fg,
+            SdlColor bg,
             uint wrapLength
         );
 
@@ -1006,8 +1006,8 @@ namespace Alis.Core.Input.SDL2
         public static unsafe IntPtr TTF_RenderUTF8_Shaded_Wrapped(
             IntPtr font,
             string text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg,
+            SdlColor fg,
+            SdlColor bg,
             uint wrapLength
         )
         {
@@ -1037,8 +1037,8 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderUNICODE_Shaded_Wrapped(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPWStr)] string text,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg,
+            SdlColor fg,
+            SdlColor bg,
             uint wrapLength
         );
 
@@ -1055,8 +1055,8 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderGlyph_Shaded(
             IntPtr font,
             ushort ch,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg
+            SdlColor fg,
+            SdlColor bg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font*
@@ -1074,8 +1074,8 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderGlyph32_Shaded(
             IntPtr font,
             uint ch,
-            Sdl.SdlColor fg,
-            Sdl.SdlColor bg
+            SdlColor fg,
+            SdlColor bg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -1090,7 +1090,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderText_Blended(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPStr)] string text,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -1105,7 +1105,7 @@ namespace Alis.Core.Input.SDL2
         private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Blended(
             IntPtr font,
             byte* text,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /// <summary>
@@ -1118,7 +1118,7 @@ namespace Alis.Core.Input.SDL2
         public static unsafe IntPtr TTF_RenderUTF8_Blended(
             IntPtr font,
             string text,
-            Sdl.SdlColor fg
+            SdlColor fg
         )
         {
             byte* utf8Text = Sdl.Utf8EncodeHeap(text);
@@ -1143,7 +1143,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderUNICODE_Blended(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPWStr)] string text,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font* */
@@ -1159,7 +1159,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderText_Blended_Wrapped(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPStr)] string text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapped
         );
 
@@ -1176,7 +1176,7 @@ namespace Alis.Core.Input.SDL2
         private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Blended_Wrapped(
             IntPtr font,
             byte* text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapped
         );
 
@@ -1191,7 +1191,7 @@ namespace Alis.Core.Input.SDL2
         public static unsafe IntPtr TTF_RenderUTF8_Blended_Wrapped(
             IntPtr font,
             string text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapped
         )
         {
@@ -1219,7 +1219,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderUNICODE_Blended_Wrapped(
             IntPtr font,
             [In, MarshalAs(UnmanagedType.LPWStr)] string text,
-            Sdl.SdlColor fg,
+            SdlColor fg,
             uint wrapped
         );
 
@@ -1235,7 +1235,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderGlyph_Blended(
             IntPtr font,
             ushort ch,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* IntPtr refers to an SDL_Surface*, font to a TTF_Font*
@@ -1252,7 +1252,7 @@ namespace Alis.Core.Input.SDL2
         public static extern IntPtr TTF_RenderGlyph32_Blended(
             IntPtr font,
             uint ch,
-            Sdl.SdlColor fg
+            SdlColor fg
         );
 
         /* Only available in 2.0.16 or higher. */

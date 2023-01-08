@@ -2087,49 +2087,49 @@
             <summary>
             </summary>
         </member>
+        <member name="F:Alis.Core.Manager.Input.InputManager.axis">
+            <summary>
+                The axis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.Input.InputManager.axisTemp">
+            <summary>
+                The axis temp
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.Input.InputManager.buttons">
+            <summary>
+                The buttons
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.Input.InputManager.buttonsTemp">
+            <summary>
+                The buttons temp
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.Input.InputManager.currentSdlNumJoysticks">
+            <summary>
+                The currentsdl numjoysticks
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Manager.Input.InputManager.joysticks">
+            <summary>
+                The joysticks
+            </summary>
+        </member>
         <member name="F:Alis.Core.Manager.Input.InputManager.keys">
             <summary>
                 Array of key of keyboard
             </summary>
         </member>
+        <member name="F:Alis.Core.Manager.Input.InputManager.sdlEvent">
+            <summary>
+                The sdl event
+            </summary>
+        </member>
         <member name="F:Alis.Core.Manager.Input.InputManager.tempListOfKeys">
             <summary>
                 Temp list of keys
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.buttons">
-            <summary>
-            The buttons
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.buttonsTemp">
-            <summary>
-            The buttons temp
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.axis">
-            <summary>
-            The axis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.axisTemp">
-            <summary>
-            The axis temp
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.sdlEvent">
-            <summary>
-            The sdl event
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.currentSdlNumJoysticks">
-            <summary>
-            The currentsdl numjoysticks
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Manager.Input.InputManager.joysticks">
-            <summary>
-            The joysticks
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.Init">
@@ -2159,7 +2159,7 @@
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.DispatchEvents">
             <summary>
-            Dispatches the events
+                Dispatches the events
             </summary>
         </member>
         <member name="M:Alis.Core.Manager.Input.InputManager.AfterUpdate">
@@ -2490,7 +2490,7 @@
         </member>
         <member name="M:Alis.VideoGame.#cctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.VideoGame"/> class
+                Initializes a new instance of the <see cref="T:Alis.VideoGame" /> class
             </summary>
         </member>
         <member name="M:Alis.VideoGame.#ctor">

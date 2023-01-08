@@ -29,9 +29,7 @@
 
 namespace Alis.Core.Input.SDL2
 {
-    public static partial class Sdl
-    {
-        /// <summary>
+    /// <summary>
         ///     The sdl systemcursor enum
         /// </summary>
         public enum SdlSystemCursor
@@ -101,5 +99,5 @@ namespace Alis.Core.Input.SDL2
             /// </summary>
             SdlNumSystemCursors
         }
-    }
+    
 }

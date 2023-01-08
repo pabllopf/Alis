@@ -93,105 +93,17 @@ namespace Alis.Core.Input.SDL2
         /* win refers to an SDL_Window*, area to a const SDL_Point*, data to a void*.
          * Only available in 2.0.4 or higher.
          */
-        /// <summary>
-        ///     The sdl hittest
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
 
         /* iOS */
 
-        /// <summary>
-        ///     The sdl iphoneanimationcallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlIPhoneAnimationCallback(IntPtr p);
-
         /* userdata refers to a void*, message to a const char* */
-        /// <summary>
-        ///     The sdl logoutputfunction
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlLogOutputFunction(
-            IntPtr userdata,
-            int category,
-            SdlLogPriority priority,
-            IntPtr message
-        );
 
         /* This is used as a function pointer to a C main() function */
-        /// <summary>
-        ///     The sdl main func
-        /// </summary>
-        public delegate int SdlMainFunc(int argc, IntPtr argv);
-
-        /// <summary>
-        ///     The sdlr wops close callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SdlrWopsCloseCallback(
-            IntPtr context
-        );
-
-        /// <summary>
-        ///     The sdlr wops read callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlrWopsReadCallback(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr maxnum
-        );
-
-        /// <summary>
-        ///     The sdlr wops seek callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate long SdlrWopsSeekCallback(
-            IntPtr context,
-            long offset,
-            int whence
-        );
-
-        /// <summary>
-        ///     The sdlr wops size callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate long SdlrWopsSizeCallback(IntPtr context);
-
-        /// <summary>
-        ///     The sdlr wops write callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlrWopsWriteCallback(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr num
-        );
 
         /* param refers to a void* */
-        /// <summary>
-        ///     The sdl timercallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate uint SdlTimerCallback(uint interval, IntPtr param);
 
 
         /* Windows */
-
-        /// <summary>
-        ///     The sdl windowsmessagehook
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlWindowsMessageHook(
-            IntPtr userdata,
-            IntPtr hWnd,
-            uint message,
-            ulong wParam,
-            long lParam
-        );
 
 
         /* The types of events that can be delivered. */

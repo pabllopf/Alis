@@ -148,7 +148,7 @@ namespace Alis.Core.Input.SDL2
         ///     Sdls the mixer version using the specified x
         /// </summary>
         /// <param name="x">The </param>
-        public static void SDL_MIXER_VERSION(out Sdl.SdlVersion x)
+        public static void SDL_MIXER_VERSION(out SdlVersion x)
         {
             x.major = SdlMixerMajorVersion;
             x.minor = SdlMixerMinorVersion;
@@ -166,13 +166,13 @@ namespace Alis.Core.Input.SDL2
         ///     Mixes the linked version
         /// </summary>
         /// <returns>The result</returns>
-        public static Sdl.SdlVersion MIX_Linked_Version()
+        public static SdlVersion MIX_Linked_Version()
         {
-            Sdl.SdlVersion result;
+            SdlVersion result;
             IntPtr resultPtr = INTERNAL_MIX_Linked_Version();
-            result = (Sdl.SdlVersion) Marshal.PtrToStructure(
+            result = (SdlVersion) Marshal.PtrToStructure(
                 resultPtr,
-                typeof(Sdl.SdlVersion)
+                typeof(SdlVersion)
             );
             return result;
         }

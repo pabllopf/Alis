@@ -41,13 +41,13 @@
         </member>
         <member name="M:Alis.Sample.Rogue.PlayerMovement.OnReleaseKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
-            Ons the release key using the specified key
+                Ons the release key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
         <member name="M:Alis.Sample.Rogue.PlayerMovement.OnPressDownKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
-            Ons the press down key using the specified key
+                Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>

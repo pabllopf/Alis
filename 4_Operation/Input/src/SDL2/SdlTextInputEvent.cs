@@ -55,7 +55,7 @@ namespace Alis.Core.Input.SDL2
             /// <summary>
             ///     The sdl textinputevent text size
             /// </summary>
-            public fixed byte text[SdlTextinputeventTextSize];
+            public fixed byte text[Sdl.SdlTextinputeventTextSize];
         }
     
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlTextEditingEvent.cs
+//  File:ImgInitFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,45 +27,34 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
+using System;
 
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl texteditingevent
+        ///     The img initflags enum
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlTextEditingEvent
+        [Flags]
+        public enum ImgInitFlags
         {
             /// <summary>
-            ///     The type
+            ///     The img init jpg img initflags
             /// </summary>
-            public SdlEventType type;
+            ImgInitJpg = 0x00000001,
 
             /// <summary>
-            ///     The timestamp
+            ///     The img init png img initflags
             /// </summary>
-            public uint timestamp;
+            ImgInitPng = 0x00000002,
 
             /// <summary>
-            ///     The window id
+            ///     The img init tif img initflags
             /// </summary>
-            public uint windowID;
+            ImgInitTif = 0x00000004,
 
             /// <summary>
-            ///     The sdl texteditingevent text size
+            ///     The img init webp img initflags
             /// </summary>
-            public fixed byte text[Sdl.SdlTexteditingeventTextSize];
-
-            /// <summary>
-            ///     The start
-            /// </summary>
-            public int start;
-
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public int length;
+            ImgInitWebp = 0x00000008
         }
-    
 }

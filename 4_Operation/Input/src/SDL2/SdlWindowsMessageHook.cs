@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlTextEditingEvent.cs
+//  File:SdlWindowsMessageHook.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,45 +27,20 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl texteditingevent
+        ///     The sdl windowsmessagehook
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlTextEditingEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-
-            /// <summary>
-            ///     The sdl texteditingevent text size
-            /// </summary>
-            public fixed byte text[Sdl.SdlTexteditingeventTextSize];
-
-            /// <summary>
-            ///     The start
-            /// </summary>
-            public int start;
-
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public int length;
-        }
-    
-}
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+        public delegate IntPtr SdlWindowsMessageHook(
+            IntPtr userdata,
+            IntPtr hWnd,
+            uint message,
+            ulong wParam,
+            long lParam
+        );
+    }

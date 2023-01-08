@@ -37,33 +37,6 @@ namespace Alis.Core.Input.SDL2
     /// </summary>
     public static class SdlImage
     {
-        /// <summary>
-        ///     The img initflags enum
-        /// </summary>
-        [Flags]
-        public enum ImgInitFlags
-        {
-            /// <summary>
-            ///     The img init jpg img initflags
-            /// </summary>
-            ImgInitJpg = 0x00000001,
-
-            /// <summary>
-            ///     The img init png img initflags
-            /// </summary>
-            ImgInitPng = 0x00000002,
-
-            /// <summary>
-            ///     The img init tif img initflags
-            /// </summary>
-            ImgInitTif = 0x00000004,
-
-            /// <summary>
-            ///     The img init webp img initflags
-            /// </summary>
-            ImgInitWebp = 0x00000008
-        }
-
         /* Used by DllImport to load the native library. */
         /// <summary>
         ///     The native lib name
@@ -94,7 +67,7 @@ namespace Alis.Core.Input.SDL2
         ///     Sdls the image version using the specified x
         /// </summary>
         /// <param name="x">The </param>
-        public static void SDL_IMAGE_VERSION(out Sdl.SdlVersion x)
+        public static void SDL_IMAGE_VERSION(out SdlVersion x)
         {
             x.major = SdlImageMajorVersion;
             x.minor = SdlImageMinorVersion;
@@ -112,13 +85,13 @@ namespace Alis.Core.Input.SDL2
         ///     Imgs the linked version
         /// </summary>
         /// <returns>The result</returns>
-        public static Sdl.SdlVersion IMG_Linked_Version()
+        public static SdlVersion IMG_Linked_Version()
         {
-            Sdl.SdlVersion result;
+            SdlVersion result;
             IntPtr resultPtr = INTERNAL_IMG_Linked_Version();
-            result = (Sdl.SdlVersion) Marshal.PtrToStructure(
+            result = (SdlVersion) Marshal.PtrToStructure(
                 resultPtr,
-                typeof(Sdl.SdlVersion)
+                typeof(SdlVersion)
             );
             return result;
         }
