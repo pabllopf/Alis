@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlBlendMode.cs
+//  File:SdlBlendMode.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,40 +32,39 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl blendmode enum
+    ///     The sdl blendmode enum
+    /// </summary>
+    [Flags]
+    public enum SdlBlendMode
+    {
+        /// <summary>
+        ///     The sdl blendmode none sdl blendmode
         /// </summary>
-        [Flags]
-        public enum SdlBlendMode
-        {
-            /// <summary>
-            ///     The sdl blendmode none sdl blendmode
-            /// </summary>
-            SdlBlendmodeNone = 0x00000000,
+        SdlBlendmodeNone = 0x00000000,
 
-            /// <summary>
-            ///     The sdl blendmode blend sdl blendmode
-            /// </summary>
-            SdlBlendmodeBlend = 0x00000001,
+        /// <summary>
+        ///     The sdl blendmode blend sdl blendmode
+        /// </summary>
+        SdlBlendmodeBlend = 0x00000001,
 
-            /// <summary>
-            ///     The sdl blendmode add sdl blendmode
-            /// </summary>
-            SdlBlendmodeAdd = 0x00000002,
+        /// <summary>
+        ///     The sdl blendmode add sdl blendmode
+        /// </summary>
+        SdlBlendmodeAdd = 0x00000002,
 
-            /// <summary>
-            ///     The sdl blendmode mod sdl blendmode
-            /// </summary>
-            SdlBlendmodeMod = 0x00000004,
+        /// <summary>
+        ///     The sdl blendmode mod sdl blendmode
+        /// </summary>
+        SdlBlendmodeMod = 0x00000004,
 
-            /// <summary>
-            ///     The sdl blendmode mul sdl blendmode
-            /// </summary>
-            SdlBlendmodeMul = 0x00000008, /* >= 2.0.11 */
+        /// <summary>
+        ///     The sdl blendmode mul sdl blendmode
+        /// </summary>
+        SdlBlendmodeMul = 0x00000008, /* >= 2.0.11 */
 
-            /// <summary>
-            ///     The sdl blendmode invalid sdl blendmode
-            /// </summary>
-            SdlBlendmodeInvalid = 0x7FFFFFFF
-        }
-    
+        /// <summary>
+        ///     The sdl blendmode invalid sdl blendmode
+        /// </summary>
+        SdlBlendmodeInvalid = 0x7FFFFFFF
+    }
 }

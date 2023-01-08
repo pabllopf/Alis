@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlDollarGestureEvent.cs
+//  File:SdlDollarGestureEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,50 +32,49 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl dollargestureevent
+    ///     The sdl dollargestureevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlDollarGestureEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlDollarGestureEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
+        public uint type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The touch id
-            /// </summary>
-            public long touchId; // SDL_TouchID
+        /// <summary>
+        ///     The touch id
+        /// </summary>
+        public long touchId; // SDL_TouchID
 
-            /// <summary>
-            ///     The gesture id
-            /// </summary>
-            public long gestureId; // SDL_GestureID
+        /// <summary>
+        ///     The gesture id
+        /// </summary>
+        public long gestureId; // SDL_GestureID
 
-            /// <summary>
-            ///     The num fingers
-            /// </summary>
-            public uint numFingers;
+        /// <summary>
+        ///     The num fingers
+        /// </summary>
+        public uint numFingers;
 
-            /// <summary>
-            ///     The error
-            /// </summary>
-            public float error;
+        /// <summary>
+        ///     The error
+        /// </summary>
+        public float error;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
-        }
-    
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
+    }
 }

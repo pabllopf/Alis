@@ -32,40 +32,39 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The mix initflags enum
+    ///     The mix initflags enum
+    /// </summary>
+    [Flags]
+    public enum MixInitFlags
+    {
+        /// <summary>
+        ///     The mix init flac mix initflags
         /// </summary>
-        [Flags]
-        public enum MixInitFlags
-        {
-            /// <summary>
-            ///     The mix init flac mix initflags
-            /// </summary>
-            MixInitFlac = 0x00000001,
+        MixInitFlac = 0x00000001,
 
-            /// <summary>
-            ///     The mix init mod mix initflags
-            /// </summary>
-            MixInitMod = 0x00000002,
+        /// <summary>
+        ///     The mix init mod mix initflags
+        /// </summary>
+        MixInitMod = 0x00000002,
 
-            /// <summary>
-            ///     The mix init mp3 mix initflags
-            /// </summary>
-            MixInitMp3 = 0x00000008,
+        /// <summary>
+        ///     The mix init mp3 mix initflags
+        /// </summary>
+        MixInitMp3 = 0x00000008,
 
-            /// <summary>
-            ///     The mix init ogg mix initflags
-            /// </summary>
-            MixInitOgg = 0x00000010,
+        /// <summary>
+        ///     The mix init ogg mix initflags
+        /// </summary>
+        MixInitOgg = 0x00000010,
 
-            /// <summary>
-            ///     The mix init mid mix initflags
-            /// </summary>
-            MixInitMid = 0x00000020,
+        /// <summary>
+        ///     The mix init mid mix initflags
+        /// </summary>
+        MixInitMid = 0x00000020,
 
-            /// <summary>
-            ///     The mix init opus mix initflags
-            /// </summary>
-            MixInitOpus = 0x00000040
-        }
-    
+        /// <summary>
+        ///     The mix init opus mix initflags
+        /// </summary>
+        MixInitOpus = 0x00000040
+    }
 }

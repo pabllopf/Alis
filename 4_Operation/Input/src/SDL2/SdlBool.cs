@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlBool.cs
+//  File:SdlBool.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,18 +30,18 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl bool enum
+    ///     The sdl bool enum
+    /// </summary>
+    public enum SdlBool
+    {
+        /// <summary>
+        ///     The sdl false sdl bool
         /// </summary>
-        public enum SdlBool
-        {
-            /// <summary>
-            ///     The sdl false sdl bool
-            /// </summary>
-            SdlFalse = 0,
+        SdlFalse = 0,
 
-            /// <summary>
-            ///     The sdl true sdl bool
-            /// </summary>
-            SdlTrue = 1
-        }
+        /// <summary>
+        ///     The sdl true sdl bool
+        /// </summary>
+        SdlTrue = 1
     }
+}

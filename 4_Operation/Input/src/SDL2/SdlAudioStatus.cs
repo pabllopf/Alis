@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlAudioStatus.cs
+//  File:SdlAudioStatus.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,24 +30,23 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl audiostatus enum
+    ///     The sdl audiostatus enum
+    /// </summary>
+    public enum SdlAudioStatus
+    {
+        /// <summary>
+        ///     The sdl audio stopped sdl audiostatus
         /// </summary>
-        public enum SdlAudioStatus
-        {
-            /// <summary>
-            ///     The sdl audio stopped sdl audiostatus
-            /// </summary>
-            SdlAudioStopped,
+        SdlAudioStopped,
 
-            /// <summary>
-            ///     The sdl audio playing sdl audiostatus
-            /// </summary>
-            SdlAudioPlaying,
+        /// <summary>
+        ///     The sdl audio playing sdl audiostatus
+        /// </summary>
+        SdlAudioPlaying,
 
-            /// <summary>
-            ///     The sdl audio paused sdl audiostatus
-            /// </summary>
-            SdlAudioPaused
-        }
-    
+        /// <summary>
+        ///     The sdl audio paused sdl audiostatus
+        /// </summary>
+        SdlAudioPaused
+    }
 }

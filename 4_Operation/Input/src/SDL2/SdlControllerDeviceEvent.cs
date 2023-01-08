@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlControllerDeviceEvent.cs
+//  File:SdlControllerDeviceEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,25 +32,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl controllerdeviceevent
+    ///     The sdl controllerdeviceevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlControllerDeviceEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlControllerDeviceEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public int which; 
-        
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public int which;
     }
 }

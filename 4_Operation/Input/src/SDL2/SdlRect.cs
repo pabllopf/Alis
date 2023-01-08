@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlRect.cs
+//  File:SdlRect.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,29 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl rect
+    ///     The sdl rect
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlRect
+    {
+        /// <summary>
+        ///     The
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlRect
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int x;
+        public int x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int y;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int y;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int w;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int w;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int h;
-        }
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int h;
+    }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMessageBoxColorScheme.cs
+//  File:SdlMessageBoxColorScheme.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,16 +32,15 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl messageboxcolorscheme
+    ///     The sdl messageboxcolorscheme
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlMessageBoxColorScheme
+    {
+        /// <summary>
+        ///     The colors
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMessageBoxColorScheme
-        {
-            /// <summary>
-            ///     The colors
-            /// </summary>
-            [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int) SdlMessageBoxColorType.SdlMessageboxColorMax)]
-            public SdlMessageBoxColor[] colors;
-        }
-    
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int) SdlMessageBoxColorType.SdlMessageboxColorMax)]
+        public SdlMessageBoxColor[] colors;
+    }
 }

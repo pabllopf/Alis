@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalUikitWminfo.cs
+//  File:InternalUikitWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,32 +32,30 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
+    /// <summary>
+    ///     The internal uikit wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalUikitWminfo
+    {
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr window; // Refers to a UIWindow*
 
         /// <summary>
-        ///     The internal uikit wminfo
+        ///     The framebuffer
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalUikitWminfo
-        {
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to a UIWindow*
+        public uint framebuffer;
 
-            /// <summary>
-            ///     The framebuffer
-            /// </summary>
-            public uint framebuffer;
+        /// <summary>
+        ///     The colorbuffer
+        /// </summary>
+        public uint colorbuffer;
 
-            /// <summary>
-            ///     The colorbuffer
-            /// </summary>
-            public uint colorbuffer;
-
-            /// <summary>
-            ///     The resolve framebuffer
-            /// </summary>
-            public uint resolveFramebuffer;
-        
+        /// <summary>
+        ///     The resolve framebuffer
+        /// </summary>
+        public uint resolveFramebuffer;
     }
 }

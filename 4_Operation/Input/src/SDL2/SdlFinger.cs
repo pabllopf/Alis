@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlFinger.cs
+//  File:SdlFinger.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,29 +30,28 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl finger
+    ///     The sdl finger
+    /// </summary>
+    public struct SdlFinger
+    {
+        /// <summary>
+        ///     The id
         /// </summary>
-        public struct SdlFinger
-        {
-            /// <summary>
-            ///     The id
-            /// </summary>
-            public long Id; // SDL_FingerID
+        public long Id; // SDL_FingerID
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float X;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float X;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float Y;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float Y;
 
-            /// <summary>
-            ///     The pressure
-            /// </summary>
-            public float Pressure;
-        
+        /// <summary>
+        ///     The pressure
+        /// </summary>
+        public float Pressure;
     }
 }

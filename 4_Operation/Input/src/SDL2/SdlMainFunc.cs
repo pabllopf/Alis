@@ -32,8 +32,7 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl main func
-        /// </summary>
-        public delegate int SdlMainFunc(int argc, IntPtr argv);
-    
+    ///     The sdl main func
+    /// </summary>
+    public delegate int SdlMainFunc(int argc, IntPtr argv);
 }

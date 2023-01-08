@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlGenericEvent.cs
+//  File:SdlGenericEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,19 +32,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl genericevent
+    ///     The sdl genericevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlGenericEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlGenericEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-        }
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
     }
+}

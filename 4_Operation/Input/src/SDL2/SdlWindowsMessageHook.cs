@@ -33,14 +33,14 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl windowsmessagehook
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlWindowsMessageHook(
-            IntPtr userdata,
-            IntPtr hWnd,
-            uint message,
-            ulong wParam,
-            long lParam
-        );
-    }
+    ///     The sdl windowsmessagehook
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate IntPtr SdlWindowsMessageHook(
+        IntPtr userdata,
+        IntPtr hWnd,
+        uint message,
+        ulong wParam,
+        long lParam
+    );
+}

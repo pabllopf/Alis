@@ -33,12 +33,11 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl eventfilter
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SdlEventFilter(
-            IntPtr userdata, // void*
-            IntPtr sdlevent // SDL_Event* event, lolC#
-        );
-    
+    ///     The sdl eventfilter
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate int SdlEventFilter(
+        IntPtr userdata, // void*
+        IntPtr sdlevent // SDL_Event* event, lolC#
+    );
 }

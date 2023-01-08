@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlControllerTouchpadEvent.cs
+//  File:SdlControllerTouchpadEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,52 +31,50 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-  
+    /// <summary>
+    ///     The sdl controllertouchpadevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlControllerTouchpadEvent
+    {
         /// <summary>
-        ///     The sdl controllertouchpadevent
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlControllerTouchpadEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
+        public uint type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public int which; /* SDL_JoystickID */
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public int which; /* SDL_JoystickID */
 
-            /// <summary>
-            ///     The touchpad
-            /// </summary>
-            public int touchpad;
+        /// <summary>
+        ///     The touchpad
+        /// </summary>
+        public int touchpad;
 
-            /// <summary>
-            ///     The finger
-            /// </summary>
-            public int finger;
+        /// <summary>
+        ///     The finger
+        /// </summary>
+        public int finger;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
 
-            /// <summary>
-            ///     The pressure
-            /// </summary>
-            public float pressure;
-        }
-    
+        /// <summary>
+        ///     The pressure
+        /// </summary>
+        public float pressure;
+    }
 }

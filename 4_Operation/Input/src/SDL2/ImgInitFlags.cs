@@ -32,29 +32,29 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The img initflags enum
+    ///     The img initflags enum
+    /// </summary>
+    [Flags]
+    public enum ImgInitFlags
+    {
+        /// <summary>
+        ///     The img init jpg img initflags
         /// </summary>
-        [Flags]
-        public enum ImgInitFlags
-        {
-            /// <summary>
-            ///     The img init jpg img initflags
-            /// </summary>
-            ImgInitJpg = 0x00000001,
+        ImgInitJpg = 0x00000001,
 
-            /// <summary>
-            ///     The img init png img initflags
-            /// </summary>
-            ImgInitPng = 0x00000002,
+        /// <summary>
+        ///     The img init png img initflags
+        /// </summary>
+        ImgInitPng = 0x00000002,
 
-            /// <summary>
-            ///     The img init tif img initflags
-            /// </summary>
-            ImgInitTif = 0x00000004,
+        /// <summary>
+        ///     The img init tif img initflags
+        /// </summary>
+        ImgInitTif = 0x00000004,
 
-            /// <summary>
-            ///     The img init webp img initflags
-            /// </summary>
-            ImgInitWebp = 0x00000008
-        }
+        /// <summary>
+        ///     The img init webp img initflags
+        /// </summary>
+        ImgInitWebp = 0x00000008
+    }
 }

@@ -30,29 +30,28 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl touchdevicetype enum
+    ///     The sdl touchdevicetype enum
+    /// </summary>
+    public enum SdlTouchDeviceType
+    {
+        /// <summary>
+        ///     The sdl touch device invalid sdl touchdevicetype
         /// </summary>
-        public enum SdlTouchDeviceType
-        {
-            /// <summary>
-            ///     The sdl touch device invalid sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceInvalid = -1,
+        SdlTouchDeviceInvalid = -1,
 
-            /// <summary>
-            ///     The sdl touch device direct sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceDirect, /* touch screen with window-relative coordinates */
+        /// <summary>
+        ///     The sdl touch device direct sdl touchdevicetype
+        /// </summary>
+        SdlTouchDeviceDirect, /* touch screen with window-relative coordinates */
 
-            /// <summary>
-            ///     The sdl touch device indirect absolute sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceIndirectAbsolute, /* trackpad with absolute device coordinates */
+        /// <summary>
+        ///     The sdl touch device indirect absolute sdl touchdevicetype
+        /// </summary>
+        SdlTouchDeviceIndirectAbsolute, /* trackpad with absolute device coordinates */
 
-            /// <summary>
-            ///     The sdl touch device indirect relative sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceIndirectRelative /* trackpad with screen cursor-relative coordinates */
-        }
-    
+        /// <summary>
+        ///     The sdl touch device indirect relative sdl touchdevicetype
+        /// </summary>
+        SdlTouchDeviceIndirectRelative /* trackpad with screen cursor-relative coordinates */
+    }
 }

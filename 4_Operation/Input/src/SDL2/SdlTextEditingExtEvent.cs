@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlTextEditingExtEvent.cs
+//  File:SdlTextEditingExtEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,40 +33,39 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl texteditingextevent
+    ///     The sdl texteditingextevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlTextEditingExtEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlTextEditingExtEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
 
-            /// <summary>
-            ///     The text
-            /// </summary>
-            public IntPtr text; /* char*, free with SDL_free */
+        /// <summary>
+        ///     The text
+        /// </summary>
+        public IntPtr text; /* char*, free with SDL_free */
 
-            /// <summary>
-            ///     The start
-            /// </summary>
-            public int start;
+        /// <summary>
+        ///     The start
+        /// </summary>
+        public int start;
 
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public int length;
-        }
-    
+        /// <summary>
+        ///     The length
+        /// </summary>
+        public int length;
+    }
 }

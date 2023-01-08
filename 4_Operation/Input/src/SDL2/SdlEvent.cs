@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlEvent.cs
+//  File:SdlEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,164 +32,164 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl event
+    ///     The sdl event
+    /// </summary>
+    [StructLayout(LayoutKind.Explicit)]
+    public unsafe struct SdlEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Explicit)]
-        public unsafe struct SdlEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            [FieldOffset(0)] public SdlEventType type;
+        [FieldOffset(0)] public SdlEventType type;
 
-            /// <summary>
-            ///     The type sharp
-            /// </summary>
-            [FieldOffset(0)] public SdlEventType typeFSharp;
+        /// <summary>
+        ///     The type sharp
+        /// </summary>
+        [FieldOffset(0)] public SdlEventType typeFSharp;
 
-            /// <summary>
-            ///     The display
-            /// </summary>
-            [FieldOffset(0)] public SdlDisplayEvent display;
+        /// <summary>
+        ///     The display
+        /// </summary>
+        [FieldOffset(0)] public SdlDisplayEvent display;
 
-            /// <summary>
-            ///     The window
-            /// </summary>
-            [FieldOffset(0)] public SdlWindowEvent window;
+        /// <summary>
+        ///     The window
+        /// </summary>
+        [FieldOffset(0)] public SdlWindowEvent window;
 
-            /// <summary>
-            ///     The key
-            /// </summary>
-            [FieldOffset(0)] public SdlKeyboardEvent key;
+        /// <summary>
+        ///     The key
+        /// </summary>
+        [FieldOffset(0)] public SdlKeyboardEvent key;
 
-            /// <summary>
-            ///     The edit
-            /// </summary>
-            [FieldOffset(0)] public SdlTextEditingEvent edit;
+        /// <summary>
+        ///     The edit
+        /// </summary>
+        [FieldOffset(0)] public SdlTextEditingEvent edit;
 
-            /// <summary>
-            ///     The edit ext
-            /// </summary>
-            [FieldOffset(0)] public SdlTextEditingExtEvent editExt;
+        /// <summary>
+        ///     The edit ext
+        /// </summary>
+        [FieldOffset(0)] public SdlTextEditingExtEvent editExt;
 
-            /// <summary>
-            ///     The text
-            /// </summary>
-            [FieldOffset(0)] public SdlTextInputEvent text;
+        /// <summary>
+        ///     The text
+        /// </summary>
+        [FieldOffset(0)] public SdlTextInputEvent text;
 
-            /// <summary>
-            ///     The motion
-            /// </summary>
-            [FieldOffset(0)] public SdlMouseMotionEvent motion;
+        /// <summary>
+        ///     The motion
+        /// </summary>
+        [FieldOffset(0)] public SdlMouseMotionEvent motion;
 
-            /// <summary>
-            ///     The button
-            /// </summary>
-            [FieldOffset(0)] public SdlMouseButtonEvent button;
+        /// <summary>
+        ///     The button
+        /// </summary>
+        [FieldOffset(0)] public SdlMouseButtonEvent button;
 
-            /// <summary>
-            ///     The wheel
-            /// </summary>
-            [FieldOffset(0)] public SdlMouseWheelEvent wheel;
+        /// <summary>
+        ///     The wheel
+        /// </summary>
+        [FieldOffset(0)] public SdlMouseWheelEvent wheel;
 
-            /// <summary>
-            ///     The jaxis
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyAxisEvent jaxis;
+        /// <summary>
+        ///     The jaxis
+        /// </summary>
+        [FieldOffset(0)] public SdlJoyAxisEvent jaxis;
 
-            /// <summary>
-            ///     The jball
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyBallEvent jball;
+        /// <summary>
+        ///     The jball
+        /// </summary>
+        [FieldOffset(0)] public SdlJoyBallEvent jball;
 
-            /// <summary>
-            ///     The jhat
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyHatEvent jhat;
+        /// <summary>
+        ///     The jhat
+        /// </summary>
+        [FieldOffset(0)] public SdlJoyHatEvent jhat;
 
-            /// <summary>
-            ///     The jbutton
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyButtonEvent jbutton;
+        /// <summary>
+        ///     The jbutton
+        /// </summary>
+        [FieldOffset(0)] public SdlJoyButtonEvent jbutton;
 
-            /// <summary>
-            ///     The jdevice
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyDeviceEvent jdevice;
+        /// <summary>
+        ///     The jdevice
+        /// </summary>
+        [FieldOffset(0)] public SdlJoyDeviceEvent jdevice;
 
-            /// <summary>
-            ///     The caxis
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerAxisEvent caxis;
+        /// <summary>
+        ///     The caxis
+        /// </summary>
+        [FieldOffset(0)] public SdlControllerAxisEvent caxis;
 
-            /// <summary>
-            ///     The cbutton
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerButtonEvent cbutton;
+        /// <summary>
+        ///     The cbutton
+        /// </summary>
+        [FieldOffset(0)] public SdlControllerButtonEvent cbutton;
 
-            /// <summary>
-            ///     The cdevice
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerDeviceEvent cdevice;
+        /// <summary>
+        ///     The cdevice
+        /// </summary>
+        [FieldOffset(0)] public SdlControllerDeviceEvent cdevice;
 
-            /// <summary>
-            ///     The ctouchpad
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerTouchpadEvent ctouchpad;
+        /// <summary>
+        ///     The ctouchpad
+        /// </summary>
+        [FieldOffset(0)] public SdlControllerTouchpadEvent ctouchpad;
 
-            /// <summary>
-            ///     The csensor
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerSensorEvent csensor;
+        /// <summary>
+        ///     The csensor
+        /// </summary>
+        [FieldOffset(0)] public SdlControllerSensorEvent csensor;
 
-            /// <summary>
-            ///     The adevice
-            /// </summary>
-            [FieldOffset(0)] public SdlAudioDeviceEvent adevice;
+        /// <summary>
+        ///     The adevice
+        /// </summary>
+        [FieldOffset(0)] public SdlAudioDeviceEvent adevice;
 
-            /// <summary>
-            ///     The sensor
-            /// </summary>
-            [FieldOffset(0)] public SdlSensorEvent sensor;
+        /// <summary>
+        ///     The sensor
+        /// </summary>
+        [FieldOffset(0)] public SdlSensorEvent sensor;
 
-            /// <summary>
-            ///     The quit
-            /// </summary>
-            [FieldOffset(0)] public SdlQuitEvent quit;
+        /// <summary>
+        ///     The quit
+        /// </summary>
+        [FieldOffset(0)] public SdlQuitEvent quit;
 
-            /// <summary>
-            ///     The user
-            /// </summary>
-            [FieldOffset(0)] public SdlUserEvent user;
+        /// <summary>
+        ///     The user
+        /// </summary>
+        [FieldOffset(0)] public SdlUserEvent user;
 
-            /// <summary>
-            ///     The syswm
-            /// </summary>
-            [FieldOffset(0)] public SdlSysWmEvent syswm;
+        /// <summary>
+        ///     The syswm
+        /// </summary>
+        [FieldOffset(0)] public SdlSysWmEvent syswm;
 
-            /// <summary>
-            ///     The tfinger
-            /// </summary>
-            [FieldOffset(0)] public SdlTouchFingerEvent tfinger;
+        /// <summary>
+        ///     The tfinger
+        /// </summary>
+        [FieldOffset(0)] public SdlTouchFingerEvent tfinger;
 
-            /// <summary>
-            ///     The mgesture
-            /// </summary>
-            [FieldOffset(0)] public SdlMultiGestureEvent mgesture;
+        /// <summary>
+        ///     The mgesture
+        /// </summary>
+        [FieldOffset(0)] public SdlMultiGestureEvent mgesture;
 
-            /// <summary>
-            ///     The dgesture
-            /// </summary>
-            [FieldOffset(0)] public SdlDollarGestureEvent dgesture;
+        /// <summary>
+        ///     The dgesture
+        /// </summary>
+        [FieldOffset(0)] public SdlDollarGestureEvent dgesture;
 
-            /// <summary>
-            ///     The drop
-            /// </summary>
-            [FieldOffset(0)] public SdlDropEvent drop;
+        /// <summary>
+        ///     The drop
+        /// </summary>
+        [FieldOffset(0)] public SdlDropEvent drop;
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            [FieldOffset(0)] private fixed byte padding[56];
-        }
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        [FieldOffset(0)] private fixed byte padding[56];
     }
+}

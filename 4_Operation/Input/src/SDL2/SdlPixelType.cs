@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlPixelType.cs
+//  File:SdlPixelType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,69 +30,68 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl pixeltype enum
+    ///     The sdl pixeltype enum
+    /// </summary>
+    public enum SdlPixelType
+    {
+        /// <summary>
+        ///     The sdl pixeltype unknown sdl pixeltype
         /// </summary>
-        public enum SdlPixelType
-        {
-            /// <summary>
-            ///     The sdl pixeltype unknown sdl pixeltype
-            /// </summary>
-            SdlPixeltypeUnknown,
+        SdlPixeltypeUnknown,
 
-            /// <summary>
-            ///     The sdl pixeltype index1 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeIndex1,
+        /// <summary>
+        ///     The sdl pixeltype index1 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeIndex1,
 
-            /// <summary>
-            ///     The sdl pixeltype index4 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeIndex4,
+        /// <summary>
+        ///     The sdl pixeltype index4 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeIndex4,
 
-            /// <summary>
-            ///     The sdl pixeltype index8 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeIndex8,
+        /// <summary>
+        ///     The sdl pixeltype index8 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeIndex8,
 
-            /// <summary>
-            ///     The sdl pixeltype packed8 sdl pixeltype
-            /// </summary>
-            SdlPixeltypePacked8,
+        /// <summary>
+        ///     The sdl pixeltype packed8 sdl pixeltype
+        /// </summary>
+        SdlPixeltypePacked8,
 
-            /// <summary>
-            ///     The sdl pixeltype packed16 sdl pixeltype
-            /// </summary>
-            SdlPixeltypePacked16,
+        /// <summary>
+        ///     The sdl pixeltype packed16 sdl pixeltype
+        /// </summary>
+        SdlPixeltypePacked16,
 
-            /// <summary>
-            ///     The sdl pixeltype packed32 sdl pixeltype
-            /// </summary>
-            SdlPixeltypePacked32,
+        /// <summary>
+        ///     The sdl pixeltype packed32 sdl pixeltype
+        /// </summary>
+        SdlPixeltypePacked32,
 
-            /// <summary>
-            ///     The sdl pixeltype arrayu8 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayu8,
+        /// <summary>
+        ///     The sdl pixeltype arrayu8 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayu8,
 
-            /// <summary>
-            ///     The sdl pixeltype arrayu16 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayu16,
+        /// <summary>
+        ///     The sdl pixeltype arrayu16 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayu16,
 
-            /// <summary>
-            ///     The sdl pixeltype arrayu32 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayu32,
+        /// <summary>
+        ///     The sdl pixeltype arrayu32 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayu32,
 
-            /// <summary>
-            ///     The sdl pixeltype arrayf16 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayf16,
+        /// <summary>
+        ///     The sdl pixeltype arrayf16 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayf16,
 
-            /// <summary>
-            ///     The sdl pixeltype arrayf32 sdl pixeltype
-            /// </summary>
-            SdlPixeltypeArrayf32
-        }
-    
+        /// <summary>
+        ///     The sdl pixeltype arrayf32 sdl pixeltype
+        /// </summary>
+        SdlPixeltypeArrayf32
+    }
 }

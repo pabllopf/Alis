@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlWindowFlags.cs
+//  File:SdlWindowFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,134 +31,132 @@ using System;
 
 namespace Alis.Core.Input.SDL2
 {
-    
+    /// <summary>
+    ///     The sdl windowflags enum
+    /// </summary>
+    [Flags]
+    public enum SdlWindowFlags : uint
+    {
         /// <summary>
-        ///     The sdl windowflags enum
+        ///     The sdl window fullscreen sdl windowflags
         /// </summary>
-        [Flags]
-        public enum SdlWindowFlags : uint
-        {
-            /// <summary>
-            ///     The sdl window fullscreen sdl windowflags
-            /// </summary>
-            SdlWindowFullscreen = 0x00000001,
+        SdlWindowFullscreen = 0x00000001,
 
-            /// <summary>
-            ///     The sdl window opengl sdl windowflags
-            /// </summary>
-            SdlWindowOpengl = 0x00000002,
+        /// <summary>
+        ///     The sdl window opengl sdl windowflags
+        /// </summary>
+        SdlWindowOpengl = 0x00000002,
 
-            /// <summary>
-            ///     The sdl window shown sdl windowflags
-            /// </summary>
-            SdlWindowShown = 0x00000004,
+        /// <summary>
+        ///     The sdl window shown sdl windowflags
+        /// </summary>
+        SdlWindowShown = 0x00000004,
 
-            /// <summary>
-            ///     The sdl window hidden sdl windowflags
-            /// </summary>
-            SdlWindowHidden = 0x00000008,
+        /// <summary>
+        ///     The sdl window hidden sdl windowflags
+        /// </summary>
+        SdlWindowHidden = 0x00000008,
 
-            /// <summary>
-            ///     The sdl window borderless sdl windowflags
-            /// </summary>
-            SdlWindowBorderless = 0x00000010,
+        /// <summary>
+        ///     The sdl window borderless sdl windowflags
+        /// </summary>
+        SdlWindowBorderless = 0x00000010,
 
-            /// <summary>
-            ///     The sdl window resizable sdl windowflags
-            /// </summary>
-            SdlWindowResizable = 0x00000020,
+        /// <summary>
+        ///     The sdl window resizable sdl windowflags
+        /// </summary>
+        SdlWindowResizable = 0x00000020,
 
-            /// <summary>
-            ///     The sdl window minimized sdl windowflags
-            /// </summary>
-            SdlWindowMinimized = 0x00000040,
+        /// <summary>
+        ///     The sdl window minimized sdl windowflags
+        /// </summary>
+        SdlWindowMinimized = 0x00000040,
 
-            /// <summary>
-            ///     The sdl window maximized sdl windowflags
-            /// </summary>
-            SdlWindowMaximized = 0x00000080,
+        /// <summary>
+        ///     The sdl window maximized sdl windowflags
+        /// </summary>
+        SdlWindowMaximized = 0x00000080,
 
-            /// <summary>
-            ///     The sdl window mouse grabbed sdl windowflags
-            /// </summary>
-            SdlWindowMouseGrabbed = 0x00000100,
+        /// <summary>
+        ///     The sdl window mouse grabbed sdl windowflags
+        /// </summary>
+        SdlWindowMouseGrabbed = 0x00000100,
 
-            /// <summary>
-            ///     The sdl window input focus sdl windowflags
-            /// </summary>
-            SdlWindowInputFocus = 0x00000200,
+        /// <summary>
+        ///     The sdl window input focus sdl windowflags
+        /// </summary>
+        SdlWindowInputFocus = 0x00000200,
 
-            /// <summary>
-            ///     The sdl window mouse focus sdl windowflags
-            /// </summary>
-            SdlWindowMouseFocus = 0x00000400,
+        /// <summary>
+        ///     The sdl window mouse focus sdl windowflags
+        /// </summary>
+        SdlWindowMouseFocus = 0x00000400,
 
-            /// <summary>
-            ///     The sdl window fullscreen desktop sdl windowflags
-            /// </summary>
-            SdlWindowFullscreenDesktop =
-                SdlWindowFullscreen | 0x00001000,
+        /// <summary>
+        ///     The sdl window fullscreen desktop sdl windowflags
+        /// </summary>
+        SdlWindowFullscreenDesktop =
+            SdlWindowFullscreen | 0x00001000,
 
-            /// <summary>
-            ///     The sdl window foreign sdl windowflags
-            /// </summary>
-            SdlWindowForeign = 0x00000800,
+        /// <summary>
+        ///     The sdl window foreign sdl windowflags
+        /// </summary>
+        SdlWindowForeign = 0x00000800,
 
-            /// <summary>
-            ///     The sdl window allow highdpi sdl windowflags
-            /// </summary>
-            SdlWindowAllowHighdpi = 0x00002000, /* Requires >= 2.0.1 */
+        /// <summary>
+        ///     The sdl window allow highdpi sdl windowflags
+        /// </summary>
+        SdlWindowAllowHighdpi = 0x00002000, /* Requires >= 2.0.1 */
 
-            /// <summary>
-            ///     The sdl window mouse capture sdl windowflags
-            /// </summary>
-            SdlWindowMouseCapture = 0x00004000, /* Requires >= 2.0.4 */
+        /// <summary>
+        ///     The sdl window mouse capture sdl windowflags
+        /// </summary>
+        SdlWindowMouseCapture = 0x00004000, /* Requires >= 2.0.4 */
 
-            /// <summary>
-            ///     The sdl window always on top sdl windowflags
-            /// </summary>
-            SdlWindowAlwaysOnTop = 0x00008000, /* Requires >= 2.0.5 */
+        /// <summary>
+        ///     The sdl window always on top sdl windowflags
+        /// </summary>
+        SdlWindowAlwaysOnTop = 0x00008000, /* Requires >= 2.0.5 */
 
-            /// <summary>
-            ///     The sdl window skip taskbar sdl windowflags
-            /// </summary>
-            SdlWindowSkipTaskbar = 0x00010000, /* Requires >= 2.0.5 */
+        /// <summary>
+        ///     The sdl window skip taskbar sdl windowflags
+        /// </summary>
+        SdlWindowSkipTaskbar = 0x00010000, /* Requires >= 2.0.5 */
 
-            /// <summary>
-            ///     The sdl window utility sdl windowflags
-            /// </summary>
-            SdlWindowUtility = 0x00020000, /* Requires >= 2.0.5 */
+        /// <summary>
+        ///     The sdl window utility sdl windowflags
+        /// </summary>
+        SdlWindowUtility = 0x00020000, /* Requires >= 2.0.5 */
 
-            /// <summary>
-            ///     The sdl window tooltip sdl windowflags
-            /// </summary>
-            SdlWindowTooltip = 0x00040000, /* Requires >= 2.0.5 */
+        /// <summary>
+        ///     The sdl window tooltip sdl windowflags
+        /// </summary>
+        SdlWindowTooltip = 0x00040000, /* Requires >= 2.0.5 */
 
-            /// <summary>
-            ///     The sdl window popup menu sdl windowflags
-            /// </summary>
-            SdlWindowPopupMenu = 0x00080000, /* Requires >= 2.0.5 */
+        /// <summary>
+        ///     The sdl window popup menu sdl windowflags
+        /// </summary>
+        SdlWindowPopupMenu = 0x00080000, /* Requires >= 2.0.5 */
 
-            /// <summary>
-            ///     The sdl window keyboard grabbed sdl windowflags
-            /// </summary>
-            SdlWindowKeyboardGrabbed = 0x00100000, /* Requires >= 2.0.16 */
+        /// <summary>
+        ///     The sdl window keyboard grabbed sdl windowflags
+        /// </summary>
+        SdlWindowKeyboardGrabbed = 0x00100000, /* Requires >= 2.0.16 */
 
-            /// <summary>
-            ///     The sdl window vulkan sdl windowflags
-            /// </summary>
-            SdlWindowVulkan = 0x10000000, /* Requires >= 2.0.6 */
+        /// <summary>
+        ///     The sdl window vulkan sdl windowflags
+        /// </summary>
+        SdlWindowVulkan = 0x10000000, /* Requires >= 2.0.6 */
 
-            /// <summary>
-            ///     The sdl window metal sdl windowflags
-            /// </summary>
-            SdlWindowMetal = 0x2000000, /* Requires >= 2.0.14 */
+        /// <summary>
+        ///     The sdl window metal sdl windowflags
+        /// </summary>
+        SdlWindowMetal = 0x2000000, /* Requires >= 2.0.14 */
 
-            /// <summary>
-            ///     The sdl window input grabbed sdl windowflags
-            /// </summary>
-            SdlWindowInputGrabbed =
-                SdlWindowMouseGrabbed
-        }
-    
+        /// <summary>
+        ///     The sdl window input grabbed sdl windowflags
+        /// </summary>
+        SdlWindowInputGrabbed =
+            SdlWindowMouseGrabbed
+    }
 }

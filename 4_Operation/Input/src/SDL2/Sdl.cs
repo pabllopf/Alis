@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SDL2.cs
+//  File:Sdl.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -38,7 +38,7 @@ namespace Alis.Core.Input.SDL2
     /// <summary>
     ///     The sdl class
     /// </summary>
-    public static partial class Sdl
+    public static class Sdl
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="Sdl" /> class

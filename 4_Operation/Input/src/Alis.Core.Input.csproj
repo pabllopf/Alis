@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="$(SolutionDir).config/Config.props" />
+    <Import Project="$(SolutionDir).config/Config.props"/>
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <Folder Include="Resources\linux-arm64" />
+        <Folder Include="Resources\linux-arm64"/>
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Update="Properties\NativeInput.resx">

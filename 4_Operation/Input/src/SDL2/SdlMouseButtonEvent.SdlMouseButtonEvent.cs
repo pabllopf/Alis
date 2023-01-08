@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMouseButtonEvent.cs
+//  File:SdlMouseButtonEvent.SdlMouseButtonEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,60 +32,59 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl mousebuttonevent
+    ///     The sdl mousebuttonevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlMouseButtonEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMouseButtonEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
 
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public uint which;
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public uint which;
 
-            /// <summary>
-            ///     The button
-            /// </summary>
-            public byte button; /* button id */
+        /// <summary>
+        ///     The button
+        /// </summary>
+        public byte button; /* button id */
 
-            /// <summary>
-            ///     The state
-            /// </summary>
-            public byte state; /* SDL_PRESSED or SDL_RELEASED */
+        /// <summary>
+        ///     The state
+        /// </summary>
+        public byte state; /* SDL_PRESSED or SDL_RELEASED */
 
-            /// <summary>
-            ///     The clicks
-            /// </summary>
-            public byte clicks; /* 1 for single-click, 2 for double-click, etc. */
+        /// <summary>
+        ///     The clicks
+        /// </summary>
+        public byte clicks; /* 1 for single-click, 2 for double-click, etc. */
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding1;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private byte padding1;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int x;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int y;
-        }
-    
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int y;
+    }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlVersion.cs
+//  File:SdlVersion.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,24 +32,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl version
+    ///     The sdl version
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlVersion
+    {
+        /// <summary>
+        ///     The major
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlVersion
-        {
-            /// <summary>
-            ///     The major
-            /// </summary>
-            public byte major;
+        public byte major;
 
-            /// <summary>
-            ///     The minor
-            /// </summary>
-            public byte minor;
+        /// <summary>
+        ///     The minor
+        /// </summary>
+        public byte minor;
 
-            /// <summary>
-            ///     The patch
-            /// </summary>
-            public byte patch;
-        }
+        /// <summary>
+        ///     The patch
+        /// </summary>
+        public byte patch;
     }
+}

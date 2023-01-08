@@ -32,71 +32,70 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal syswmdriverunion
+    ///     The internal syswmdriverunion
+    /// </summary>
+    [StructLayout(LayoutKind.Explicit)]
+    public struct InternalSysWmDriverUnion
+    {
+        /// <summary>
+        ///     The win
         /// </summary>
-        [StructLayout(LayoutKind.Explicit)]
-        public struct InternalSysWmDriverUnion
-        {
-            /// <summary>
-            ///     The win
-            /// </summary>
-            [FieldOffset(0)] public InternalWindowsWminfo win;
+        [FieldOffset(0)] public InternalWindowsWminfo win;
 
-            /// <summary>
-            ///     The winrt
-            /// </summary>
-            [FieldOffset(0)] public InternalWinrtWminfo winrt;
+        /// <summary>
+        ///     The winrt
+        /// </summary>
+        [FieldOffset(0)] public InternalWinrtWminfo winrt;
 
-            /// <summary>
-            ///     The 11
-            /// </summary>
-            [FieldOffset(0)] public InternalX11Wminfo x11;
+        /// <summary>
+        ///     The 11
+        /// </summary>
+        [FieldOffset(0)] public InternalX11Wminfo x11;
 
-            /// <summary>
-            ///     The dfb
-            /// </summary>
-            [FieldOffset(0)] public InternalDirectfbWminfo dfb;
+        /// <summary>
+        ///     The dfb
+        /// </summary>
+        [FieldOffset(0)] public InternalDirectfbWminfo dfb;
 
-            /// <summary>
-            ///     The cocoa
-            /// </summary>
-            [FieldOffset(0)] public InternalCocoaWminfo cocoa;
+        /// <summary>
+        ///     The cocoa
+        /// </summary>
+        [FieldOffset(0)] public InternalCocoaWminfo cocoa;
 
-            /// <summary>
-            ///     The uikit
-            /// </summary>
-            [FieldOffset(0)] public InternalUikitWminfo uikit;
+        /// <summary>
+        ///     The uikit
+        /// </summary>
+        [FieldOffset(0)] public InternalUikitWminfo uikit;
 
-            /// <summary>
-            ///     The wl
-            /// </summary>
-            [FieldOffset(0)] public InternalWaylandWminfo wl;
+        /// <summary>
+        ///     The wl
+        /// </summary>
+        [FieldOffset(0)] public InternalWaylandWminfo wl;
 
-            /// <summary>
-            ///     The mir
-            /// </summary>
-            [FieldOffset(0)] public InternalMirWminfo mir;
+        /// <summary>
+        ///     The mir
+        /// </summary>
+        [FieldOffset(0)] public InternalMirWminfo mir;
 
-            /// <summary>
-            ///     The android
-            /// </summary>
-            [FieldOffset(0)] public InternalAndroidWminfo android;
+        /// <summary>
+        ///     The android
+        /// </summary>
+        [FieldOffset(0)] public InternalAndroidWminfo android;
 
-            /// <summary>
-            ///     The os
-            /// </summary>
-            [FieldOffset(0)] public InternalOs2Wminfo os2;
+        /// <summary>
+        ///     The os
+        /// </summary>
+        [FieldOffset(0)] public InternalOs2Wminfo os2;
 
-            /// <summary>
-            ///     The vivante
-            /// </summary>
-            [FieldOffset(0)] public InternalVivanteWminfo vivante;
+        /// <summary>
+        ///     The vivante
+        /// </summary>
+        [FieldOffset(0)] public InternalVivanteWminfo vivante;
 
-            /// <summary>
-            ///     The ksmdrm
-            /// </summary>
-            [FieldOffset(0)] public InternalKmsdrmWminfo ksmdrm;
-            // private int dummy;
-        }
-    
+        /// <summary>
+        ///     The ksmdrm
+        /// </summary>
+        [FieldOffset(0)] public InternalKmsdrmWminfo ksmdrm;
+        // private int dummy;
+    }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlFlashOperation.cs
+//  File:SdlFlashOperation.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,23 +30,23 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl flashoperation enum
+    ///     The sdl flashoperation enum
+    /// </summary>
+    public enum SdlFlashOperation
+    {
+        /// <summary>
+        ///     The sdl flash cancel sdl flashoperation
         /// </summary>
-        public enum SdlFlashOperation
-        {
-            /// <summary>
-            ///     The sdl flash cancel sdl flashoperation
-            /// </summary>
-            SdlFlashCancel,
+        SdlFlashCancel,
 
-            /// <summary>
-            ///     The sdl flash briefly sdl flashoperation
-            /// </summary>
-            SdlFlashBriefly,
+        /// <summary>
+        ///     The sdl flash briefly sdl flashoperation
+        /// </summary>
+        SdlFlashBriefly,
 
-            /// <summary>
-            ///     The sdl flash until focused sdl flashoperation
-            /// </summary>
-            SdlFlashUntilFocused
-        }
+        /// <summary>
+        ///     The sdl flash until focused sdl flashoperation
+        /// </summary>
+        SdlFlashUntilFocused
     }
+}

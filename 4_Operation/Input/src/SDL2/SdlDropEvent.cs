@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlDropEvent.cs
+//  File:SdlDropEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,33 +33,33 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl dropevent
+    ///     The sdl dropevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlDropEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlDropEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /* char* filename, to be freed.
-             * Access the variable EXACTLY ONCE like this:
-             * string s = SDL.UTF8_ToManaged(evt.drop.file, true);
-             */
-            /// <summary>
-            ///     The file
-            /// </summary>
-            public IntPtr file;
+        /* char* filename, to be freed.
+         * Access the variable EXACTLY ONCE like this:
+         * string s = SDL.UTF8_ToManaged(evt.drop.file, true);
+         */
+        /// <summary>
+        ///     The file
+        /// </summary>
+        public IntPtr file;
 
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-        }
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
     }
+}

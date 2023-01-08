@@ -33,20 +33,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl locale
+    ///     The sdl locale
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlLocale
+    {
+        /// <summary>
+        ///     The language
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlLocale
-        {
-            /// <summary>
-            ///     The language
-            /// </summary>
-            private IntPtr language;
+        private IntPtr language;
 
-            /// <summary>
-            ///     The country
-            /// </summary>
-            private IntPtr country;
-        }
-    
+        /// <summary>
+        ///     The country
+        /// </summary>
+        private IntPtr country;
+    }
 }

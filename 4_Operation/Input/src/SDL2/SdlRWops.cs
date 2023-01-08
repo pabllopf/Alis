@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlRWops.cs
+//  File:SdlRWops.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,39 +33,39 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl rwops
+    ///     The sdl rwops
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlRWops
+    {
+        /// <summary>
+        ///     The size
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlRWops
-        {
-            /// <summary>
-            ///     The size
-            /// </summary>
-            public IntPtr size;
+        public IntPtr size;
 
-            /// <summary>
-            ///     The seek
-            /// </summary>
-            public IntPtr seek;
+        /// <summary>
+        ///     The seek
+        /// </summary>
+        public IntPtr seek;
 
-            /// <summary>
-            ///     The read
-            /// </summary>
-            public IntPtr read;
+        /// <summary>
+        ///     The read
+        /// </summary>
+        public IntPtr read;
 
-            /// <summary>
-            ///     The write
-            /// </summary>
-            public IntPtr write;
+        /// <summary>
+        ///     The write
+        /// </summary>
+        public IntPtr write;
 
-            /// <summary>
-            ///     The close
-            /// </summary>
-            public IntPtr close;
+        /// <summary>
+        ///     The close
+        /// </summary>
+        public IntPtr close;
 
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
-        }
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public uint type;
     }
+}

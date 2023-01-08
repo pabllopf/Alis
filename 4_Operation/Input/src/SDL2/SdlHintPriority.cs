@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlHintPriority.cs
+//  File:SdlHintPriority.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,24 +30,23 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl hintpriority enum
+    ///     The sdl hintpriority enum
+    /// </summary>
+    public enum SdlHintPriority
+    {
+        /// <summary>
+        ///     The sdl hint default sdl hintpriority
         /// </summary>
-        public enum SdlHintPriority
-        {
-            /// <summary>
-            ///     The sdl hint default sdl hintpriority
-            /// </summary>
-            SdlHintDefault,
+        SdlHintDefault,
 
-            /// <summary>
-            ///     The sdl hint normal sdl hintpriority
-            /// </summary>
-            SdlHintNormal,
+        /// <summary>
+        ///     The sdl hint normal sdl hintpriority
+        /// </summary>
+        SdlHintNormal,
 
-            /// <summary>
-            ///     The sdl hint override sdl hintpriority
-            /// </summary>
-            SdlHintOverride
-        }
-    
+        /// <summary>
+        ///     The sdl hint override sdl hintpriority
+        /// </summary>
+        SdlHintOverride
+    }
 }

@@ -33,20 +33,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal vivante wminfo
+    ///     The internal vivante wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalVivanteWminfo
+    {
+        /// <summary>
+        ///     The display
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalVivanteWminfo
-        {
-            /// <summary>
-            ///     The display
-            /// </summary>
-            public IntPtr display; // Refers to an EGLNativeDisplayType
+        public IntPtr display; // Refers to an EGLNativeDisplayType
 
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to an EGLNativeWindowType
-        }
-    
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr window; // Refers to an EGLNativeWindowType
+    }
 }

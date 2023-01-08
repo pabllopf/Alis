@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlHapticPeriodic.cs
+//  File:SdlHapticPeriodic.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,85 +32,84 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl hapticperiodic
+    ///     The sdl hapticperiodic
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlHapticPeriodic
+    {
+        // Header
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlHapticPeriodic
-        {
-            // Header
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public ushort type;
+        public ushort type;
 
-            /// <summary>
-            ///     The direction
-            /// </summary>
-            public SdlHapticDirection direction;
+        /// <summary>
+        ///     The direction
+        /// </summary>
+        public SdlHapticDirection direction;
 
-            // Replay
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public uint length;
+        // Replay
+        /// <summary>
+        ///     The length
+        /// </summary>
+        public uint length;
 
-            /// <summary>
-            ///     The delay
-            /// </summary>
-            public ushort delay;
+        /// <summary>
+        ///     The delay
+        /// </summary>
+        public ushort delay;
 
-            // Trigger
-            /// <summary>
-            ///     The button
-            /// </summary>
-            public ushort button;
+        // Trigger
+        /// <summary>
+        ///     The button
+        /// </summary>
+        public ushort button;
 
-            /// <summary>
-            ///     The interval
-            /// </summary>
-            public ushort interval;
+        /// <summary>
+        ///     The interval
+        /// </summary>
+        public ushort interval;
 
-            // Periodic
-            /// <summary>
-            ///     The period
-            /// </summary>
-            public ushort period;
+        // Periodic
+        /// <summary>
+        ///     The period
+        /// </summary>
+        public ushort period;
 
-            /// <summary>
-            ///     The magnitude
-            /// </summary>
-            public short magnitude;
+        /// <summary>
+        ///     The magnitude
+        /// </summary>
+        public short magnitude;
 
-            /// <summary>
-            ///     The offset
-            /// </summary>
-            public short offset;
+        /// <summary>
+        ///     The offset
+        /// </summary>
+        public short offset;
 
-            /// <summary>
-            ///     The phase
-            /// </summary>
-            public ushort phase;
+        /// <summary>
+        ///     The phase
+        /// </summary>
+        public ushort phase;
 
-            // Envelope
-            /// <summary>
-            ///     The attack length
-            /// </summary>
-            public ushort attack_length;
+        // Envelope
+        /// <summary>
+        ///     The attack length
+        /// </summary>
+        public ushort attack_length;
 
-            /// <summary>
-            ///     The attack level
-            /// </summary>
-            public ushort attack_level;
+        /// <summary>
+        ///     The attack level
+        /// </summary>
+        public ushort attack_level;
 
-            /// <summary>
-            ///     The fade length
-            /// </summary>
-            public ushort fade_length;
+        /// <summary>
+        ///     The fade length
+        /// </summary>
+        public ushort fade_length;
 
-            /// <summary>
-            ///     The fade level
-            /// </summary>
-            public ushort fade_level;
-        }
-    
+        /// <summary>
+        ///     The fade level
+        /// </summary>
+        public ushort fade_level;
+    }
 }

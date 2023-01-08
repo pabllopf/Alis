@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMessageBoxData.cs
+//  File:SdlMessageBoxData.SdlMessageBoxData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,45 +33,44 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl messageboxdata
+    ///     The sdl messageboxdata
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlMessageBoxData
+    {
+        /// <summary>
+        ///     The flags
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMessageBoxData
-        {
-            /// <summary>
-            ///     The flags
-            /// </summary>
-            public SdlMessageBoxFlags flags;
+        public SdlMessageBoxFlags flags;
 
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; /* Parent window, can be NULL */
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr window; /* Parent window, can be NULL */
 
-            /// <summary>
-            ///     The title
-            /// </summary>
-            public string title; /* UTF-8 title */
+        /// <summary>
+        ///     The title
+        /// </summary>
+        public string title; /* UTF-8 title */
 
-            /// <summary>
-            ///     The message
-            /// </summary>
-            public string message; /* UTF-8 message text */
+        /// <summary>
+        ///     The message
+        /// </summary>
+        public string message; /* UTF-8 message text */
 
-            /// <summary>
-            ///     The numbuttons
-            /// </summary>
-            public int numbuttons;
+        /// <summary>
+        ///     The numbuttons
+        /// </summary>
+        public int numbuttons;
 
-            /// <summary>
-            ///     The buttons
-            /// </summary>
-            public SdlMessageBoxButtonData[] buttons;
+        /// <summary>
+        ///     The buttons
+        /// </summary>
+        public SdlMessageBoxButtonData[] buttons;
 
-            /// <summary>
-            ///     The color scheme
-            /// </summary>
-            public SdlMessageBoxColorScheme? colorScheme; /* Can be NULL to use system settings */
-        }
-    
+        /// <summary>
+        ///     The color scheme
+        /// </summary>
+        public SdlMessageBoxColorScheme? colorScheme; /* Can be NULL to use system settings */
+    }
 }

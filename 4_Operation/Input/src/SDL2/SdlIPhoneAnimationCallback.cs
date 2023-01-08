@@ -33,9 +33,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl iphoneanimationcallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlIPhoneAnimationCallback(IntPtr p);
-    
+    ///     The sdl iphoneanimationcallback
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void SdlIPhoneAnimationCallback(IntPtr p);
 }

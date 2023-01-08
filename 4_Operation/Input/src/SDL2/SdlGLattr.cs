@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlGLattr.cs
+//  File:SdlGLattr.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,144 +30,143 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl glattr enum
+    ///     The sdl glattr enum
+    /// </summary>
+    public enum SdlGLattr
+    {
+        /// <summary>
+        ///     The sdl gl red size sdl glattr
         /// </summary>
-        public enum SdlGLattr
-        {
-            /// <summary>
-            ///     The sdl gl red size sdl glattr
-            /// </summary>
-            SdlGlRedSize,
+        SdlGlRedSize,
 
-            /// <summary>
-            ///     The sdl gl green size sdl glattr
-            /// </summary>
-            SdlGlGreenSize,
+        /// <summary>
+        ///     The sdl gl green size sdl glattr
+        /// </summary>
+        SdlGlGreenSize,
 
-            /// <summary>
-            ///     The sdl gl blue size sdl glattr
-            /// </summary>
-            SdlGlBlueSize,
+        /// <summary>
+        ///     The sdl gl blue size sdl glattr
+        /// </summary>
+        SdlGlBlueSize,
 
-            /// <summary>
-            ///     The sdl gl alpha size sdl glattr
-            /// </summary>
-            SdlGlAlphaSize,
+        /// <summary>
+        ///     The sdl gl alpha size sdl glattr
+        /// </summary>
+        SdlGlAlphaSize,
 
-            /// <summary>
-            ///     The sdl gl buffer size sdl glattr
-            /// </summary>
-            SdlGlBufferSize,
+        /// <summary>
+        ///     The sdl gl buffer size sdl glattr
+        /// </summary>
+        SdlGlBufferSize,
 
-            /// <summary>
-            ///     The sdl gl doublebuffer sdl glattr
-            /// </summary>
-            SdlGlDoublebuffer,
+        /// <summary>
+        ///     The sdl gl doublebuffer sdl glattr
+        /// </summary>
+        SdlGlDoublebuffer,
 
-            /// <summary>
-            ///     The sdl gl depth size sdl glattr
-            /// </summary>
-            SdlGlDepthSize,
+        /// <summary>
+        ///     The sdl gl depth size sdl glattr
+        /// </summary>
+        SdlGlDepthSize,
 
-            /// <summary>
-            ///     The sdl gl stencil size sdl glattr
-            /// </summary>
-            SdlGlStencilSize,
+        /// <summary>
+        ///     The sdl gl stencil size sdl glattr
+        /// </summary>
+        SdlGlStencilSize,
 
-            /// <summary>
-            ///     The sdl gl accum red size sdl glattr
-            /// </summary>
-            SdlGlAccumRedSize,
+        /// <summary>
+        ///     The sdl gl accum red size sdl glattr
+        /// </summary>
+        SdlGlAccumRedSize,
 
-            /// <summary>
-            ///     The sdl gl accum green size sdl glattr
-            /// </summary>
-            SdlGlAccumGreenSize,
+        /// <summary>
+        ///     The sdl gl accum green size sdl glattr
+        /// </summary>
+        SdlGlAccumGreenSize,
 
-            /// <summary>
-            ///     The sdl gl accum blue size sdl glattr
-            /// </summary>
-            SdlGlAccumBlueSize,
+        /// <summary>
+        ///     The sdl gl accum blue size sdl glattr
+        /// </summary>
+        SdlGlAccumBlueSize,
 
-            /// <summary>
-            ///     The sdl gl accum alpha size sdl glattr
-            /// </summary>
-            SdlGlAccumAlphaSize,
+        /// <summary>
+        ///     The sdl gl accum alpha size sdl glattr
+        /// </summary>
+        SdlGlAccumAlphaSize,
 
-            /// <summary>
-            ///     The sdl gl stereo sdl glattr
-            /// </summary>
-            SdlGlStereo,
+        /// <summary>
+        ///     The sdl gl stereo sdl glattr
+        /// </summary>
+        SdlGlStereo,
 
-            /// <summary>
-            ///     The sdl gl multisamplebuffers sdl glattr
-            /// </summary>
-            SdlGlMultisamplebuffers,
+        /// <summary>
+        ///     The sdl gl multisamplebuffers sdl glattr
+        /// </summary>
+        SdlGlMultisamplebuffers,
 
-            /// <summary>
-            ///     The sdl gl multisamplesamples sdl glattr
-            /// </summary>
-            SdlGlMultisamplesamples,
+        /// <summary>
+        ///     The sdl gl multisamplesamples sdl glattr
+        /// </summary>
+        SdlGlMultisamplesamples,
 
-            /// <summary>
-            ///     The sdl gl accelerated visual sdl glattr
-            /// </summary>
-            SdlGlAcceleratedVisual,
+        /// <summary>
+        ///     The sdl gl accelerated visual sdl glattr
+        /// </summary>
+        SdlGlAcceleratedVisual,
 
-            /// <summary>
-            ///     The sdl gl retained backing sdl glattr
-            /// </summary>
-            SdlGlRetainedBacking,
+        /// <summary>
+        ///     The sdl gl retained backing sdl glattr
+        /// </summary>
+        SdlGlRetainedBacking,
 
-            /// <summary>
-            ///     The sdl gl context major version sdl glattr
-            /// </summary>
-            SdlGlContextMajorVersion,
+        /// <summary>
+        ///     The sdl gl context major version sdl glattr
+        /// </summary>
+        SdlGlContextMajorVersion,
 
-            /// <summary>
-            ///     The sdl gl context minor version sdl glattr
-            /// </summary>
-            SdlGlContextMinorVersion,
+        /// <summary>
+        ///     The sdl gl context minor version sdl glattr
+        /// </summary>
+        SdlGlContextMinorVersion,
 
-            /// <summary>
-            ///     The sdl gl context egl sdl glattr
-            /// </summary>
-            SdlGlContextEgl,
+        /// <summary>
+        ///     The sdl gl context egl sdl glattr
+        /// </summary>
+        SdlGlContextEgl,
 
-            /// <summary>
-            ///     The sdl gl context flags sdl glattr
-            /// </summary>
-            SdlGlContextFlags,
+        /// <summary>
+        ///     The sdl gl context flags sdl glattr
+        /// </summary>
+        SdlGlContextFlags,
 
-            /// <summary>
-            ///     The sdl gl context profile mask sdl glattr
-            /// </summary>
-            SdlGlContextProfileMask,
+        /// <summary>
+        ///     The sdl gl context profile mask sdl glattr
+        /// </summary>
+        SdlGlContextProfileMask,
 
-            /// <summary>
-            ///     The sdl gl share with current context sdl glattr
-            /// </summary>
-            SdlGlShareWithCurrentContext,
+        /// <summary>
+        ///     The sdl gl share with current context sdl glattr
+        /// </summary>
+        SdlGlShareWithCurrentContext,
 
-            /// <summary>
-            ///     The sdl gl framebuffer srgb capable sdl glattr
-            /// </summary>
-            SdlGlFramebufferSrgbCapable,
+        /// <summary>
+        ///     The sdl gl framebuffer srgb capable sdl glattr
+        /// </summary>
+        SdlGlFramebufferSrgbCapable,
 
-            /// <summary>
-            ///     The sdl gl context release behavior sdl glattr
-            /// </summary>
-            SdlGlContextReleaseBehavior,
+        /// <summary>
+        ///     The sdl gl context release behavior sdl glattr
+        /// </summary>
+        SdlGlContextReleaseBehavior,
 
-            /// <summary>
-            ///     The sdl gl context reset notification sdl glattr
-            /// </summary>
-            SdlGlContextResetNotification, /* Requires >= 2.0.6 */
+        /// <summary>
+        ///     The sdl gl context reset notification sdl glattr
+        /// </summary>
+        SdlGlContextResetNotification, /* Requires >= 2.0.6 */
 
-            /// <summary>
-            ///     The sdl gl context no error sdl glattr
-            /// </summary>
-            SdlGlContextNoError /* Requires >= 2.0.6 */
-        }
-    
+        /// <summary>
+        ///     The sdl gl context no error sdl glattr
+        /// </summary>
+        SdlGlContextNoError /* Requires >= 2.0.6 */
+    }
 }

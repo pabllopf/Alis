@@ -33,15 +33,14 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal winrt wminfo
+    ///     The internal winrt wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalWinrtWminfo
+    {
+        /// <summary>
+        ///     The window
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalWinrtWminfo
-        {
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to an IInspectable*
-        }
-    
+        public IntPtr window; // Refers to an IInspectable*
+    }
 }

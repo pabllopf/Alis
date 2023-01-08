@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalDirectfbWminfo.cs
+//  File:InternalDirectfbWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,26 +32,25 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-  
+    /// <summary>
+    ///     The internal directfb wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalDirectfbWminfo
+    {
         /// <summary>
-        ///     The internal directfb wminfo
+        ///     The dfb
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalDirectfbWminfo
-        {
-            /// <summary>
-            ///     The dfb
-            /// </summary>
-            public IntPtr dfb; // Refers to an IDirectFB*
+        public IntPtr dfb; // Refers to an IDirectFB*
 
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to an IDirectFBWindow*
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr window; // Refers to an IDirectFBWindow*
 
-            /// <summary>
-            ///     The surface
-            /// </summary>
-            public IntPtr surface; // Refers to an IDirectFBSurface*
-        }
+        /// <summary>
+        ///     The surface
+        /// </summary>
+        public IntPtr surface; // Refers to an IDirectFBSurface*
     }
+}

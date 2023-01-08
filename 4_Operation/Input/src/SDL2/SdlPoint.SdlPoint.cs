@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlPoint.cs
+//  File:SdlPoint.SdlPoint.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,19 +32,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl point
+    ///     The sdl point
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlPoint
+    {
+        /// <summary>
+        ///     The
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlPoint
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int x;
+        public int x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int y;
-        }
+        /// <summary>
+        ///     The
+        /// </summary>
+        public int y;
+    }
 }

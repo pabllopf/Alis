@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlDisplayEventId.cs
+//  File:SdlDisplayEventId.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,29 +30,28 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl displayeventid enum
+    ///     The sdl displayeventid enum
+    /// </summary>
+    public enum SdlDisplayEventId : byte
+    {
+        /// <summary>
+        ///     The sdl displayevent none sdl displayeventid
         /// </summary>
-        public enum SdlDisplayEventId : byte
-        {
-            /// <summary>
-            ///     The sdl displayevent none sdl displayeventid
-            /// </summary>
-            SdlDisplayeventNone,
+        SdlDisplayeventNone,
 
-            /// <summary>
-            ///     The sdl displayevent orientation sdl displayeventid
-            /// </summary>
-            SdlDisplayeventOrientation,
+        /// <summary>
+        ///     The sdl displayevent orientation sdl displayeventid
+        /// </summary>
+        SdlDisplayeventOrientation,
 
-            /// <summary>
-            ///     The sdl displayevent connected sdl displayeventid
-            /// </summary>
-            SdlDisplayeventConnected, /* Requires >= 2.0.14 */
+        /// <summary>
+        ///     The sdl displayevent connected sdl displayeventid
+        /// </summary>
+        SdlDisplayeventConnected, /* Requires >= 2.0.14 */
 
-            /// <summary>
-            ///     The sdl displayevent disconnected sdl displayeventid
-            /// </summary>
-            SdlDisplayeventDisconnected /* Requires >= 2.0.14 */
-        }
-    
+        /// <summary>
+        ///     The sdl displayevent disconnected sdl displayeventid
+        /// </summary>
+        SdlDisplayeventDisconnected /* Requires >= 2.0.14 */
+    }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlWinRtDeviceFamily.cs
+//  File:SdlWinRtDeviceFamily.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,29 +30,28 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl winrt devicefamily enum
+    ///     The sdl winrt devicefamily enum
+    /// </summary>
+    public enum SdlWinRtDeviceFamily
+    {
+        /// <summary>
+        ///     The sdl winrt devicefamily unknown sdl winrt devicefamily
         /// </summary>
-        public enum SdlWinRtDeviceFamily
-        {
-            /// <summary>
-            ///     The sdl winrt devicefamily unknown sdl winrt devicefamily
-            /// </summary>
-            SdlWinrtDevicefamilyUnknown,
+        SdlWinrtDevicefamilyUnknown,
 
-            /// <summary>
-            ///     The sdl winrt devicefamily desktop sdl winrt devicefamily
-            /// </summary>
-            SdlWinrtDevicefamilyDesktop,
+        /// <summary>
+        ///     The sdl winrt devicefamily desktop sdl winrt devicefamily
+        /// </summary>
+        SdlWinrtDevicefamilyDesktop,
 
-            /// <summary>
-            ///     The sdl winrt devicefamily mobile sdl winrt devicefamily
-            /// </summary>
-            SdlWinrtDevicefamilyMobile,
+        /// <summary>
+        ///     The sdl winrt devicefamily mobile sdl winrt devicefamily
+        /// </summary>
+        SdlWinrtDevicefamilyMobile,
 
-            /// <summary>
-            ///     The sdl winrt devicefamily xbox sdl winrt devicefamily
-            /// </summary>
-            SdlWinrtDevicefamilyXbox
-        }
-    
+        /// <summary>
+        ///     The sdl winrt devicefamily xbox sdl winrt devicefamily
+        /// </summary>
+        SdlWinrtDevicefamilyXbox
+    }
 }

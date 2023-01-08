@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlVertex.cs
+//  File:SdlVertex.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,24 +32,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl vertex
+    ///     The sdl vertex
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlVertex
+    {
+        /// <summary>
+        ///     The position
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlVertex
-        {
-            /// <summary>
-            ///     The position
-            /// </summary>
-            public SdlFPoint position;
+        public SdlFPoint position;
 
-            /// <summary>
-            ///     The color
-            /// </summary>
-            public SdlColor color;
+        /// <summary>
+        ///     The color
+        /// </summary>
+        public SdlColor color;
 
-            /// <summary>
-            ///     The tex coord
-            /// </summary>
-            public SdlFPoint tex_coord;
-        }
+        /// <summary>
+        ///     The tex coord
+        /// </summary>
+        public SdlFPoint tex_coord;
     }
+}

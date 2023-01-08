@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlSensorEvent.cs
+//  File:SdlSensorEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,30 +32,29 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl sensorevent
+    ///     The sdl sensorevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct SdlSensorEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlSensorEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public int which;
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public int which;
 
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public fixed float data[6];
-        }
-    
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public fixed float data[6];
+    }
 }

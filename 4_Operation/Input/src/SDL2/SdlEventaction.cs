@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlEventaction.cs
+//  File:SdlEventaction.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,24 +30,23 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl eventaction enum
+    ///     The sdl eventaction enum
+    /// </summary>
+    public enum SdlEventaction
+    {
+        /// <summary>
+        ///     The sdl addevent sdl eventaction
         /// </summary>
-        public enum SdlEventaction
-        {
-            /// <summary>
-            ///     The sdl addevent sdl eventaction
-            /// </summary>
-            SdlAddevent,
+        SdlAddevent,
 
-            /// <summary>
-            ///     The sdl peekevent sdl eventaction
-            /// </summary>
-            SdlPeekevent,
+        /// <summary>
+        ///     The sdl peekevent sdl eventaction
+        /// </summary>
+        SdlPeekevent,
 
-            /// <summary>
-            ///     The sdl getevent sdl eventaction
-            /// </summary>
-            SdlGetevent
-        }
-    
+        /// <summary>
+        ///     The sdl getevent sdl eventaction
+        /// </summary>
+        SdlGetevent
+    }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalCocoaWminfo.cs
+//  File:InternalCocoaWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,14 +33,14 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal cocoa wminfo
+    ///     The internal cocoa wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalCocoaWminfo
+    {
+        /// <summary>
+        ///     The window
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalCocoaWminfo
-        {
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to an NSWindow*
-        }
+        public IntPtr window; // Refers to an NSWindow*
     }
+}

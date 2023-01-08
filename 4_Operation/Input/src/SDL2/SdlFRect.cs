@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlFRect.cs
+//  File:SdlFRect.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,29 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl frect
+    ///     The sdl frect
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlFRect
+    {
+        /// <summary>
+        ///     The
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlFRect
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
+        public float x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float w;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float w;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float h;
-        }
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float h;
     }
+}

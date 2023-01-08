@@ -33,20 +33,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal mir wminfo
+    ///     The internal mir wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalMirWminfo
+    {
+        /// <summary>
+        ///     The connection
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalMirWminfo
-        {
-            /// <summary>
-            ///     The connection
-            /// </summary>
-            public IntPtr connection; // Refers to a MirConnection*
+        public IntPtr connection; // Refers to a MirConnection*
 
-            /// <summary>
-            ///     The surface
-            /// </summary>
-            public IntPtr surface; // Refers to a MirSurface*
-        }
-    
+        /// <summary>
+        ///     The surface
+        /// </summary>
+        public IntPtr surface; // Refers to a MirSurface*
+    }
 }

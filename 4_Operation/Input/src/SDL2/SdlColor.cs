@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlColor.cs
+//  File:SdlColor.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,29 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl color
+    ///     The sdl color
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlColor
+    {
+        /// <summary>
+        ///     The
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlColor
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte r;
+        public byte r;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte g;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public byte g;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte b;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public byte b;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte a;
-        }
+        /// <summary>
+        ///     The
+        /// </summary>
+        public byte a;
     }
+}

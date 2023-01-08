@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlPalette.cs
+//  File:SdlPalette.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,29 +33,29 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl palette
+    ///     The sdl palette
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlPalette
+    {
+        /// <summary>
+        ///     The ncolors
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlPalette
-        {
-            /// <summary>
-            ///     The ncolors
-            /// </summary>
-            public int ncolors;
+        public int ncolors;
 
-            /// <summary>
-            ///     The colors
-            /// </summary>
-            public IntPtr colors;
+        /// <summary>
+        ///     The colors
+        /// </summary>
+        public IntPtr colors;
 
-            /// <summary>
-            ///     The version
-            /// </summary>
-            public int version;
+        /// <summary>
+        ///     The version
+        /// </summary>
+        public int version;
 
-            /// <summary>
-            ///     The refcount
-            /// </summary>
-            public int refcount;
-        }
+        /// <summary>
+        ///     The refcount
+        /// </summary>
+        public int refcount;
     }
+}

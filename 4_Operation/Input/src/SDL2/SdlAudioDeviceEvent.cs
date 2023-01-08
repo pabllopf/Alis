@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlAudioDeviceEvent.cs
+//  File:SdlAudioDeviceEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,45 +32,44 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl audiodeviceevent
+    ///     The sdl audiodeviceevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlAudioDeviceEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlAudioDeviceEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
+        public uint type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public uint which;
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public uint which;
 
-            /// <summary>
-            ///     The iscapture
-            /// </summary>
-            public byte iscapture;
+        /// <summary>
+        ///     The iscapture
+        /// </summary>
+        public byte iscapture;
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding1;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private byte padding1;
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding2;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private byte padding2;
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding3;
-    
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private byte padding3;
     }
 }

@@ -32,25 +32,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl syswminfo
+    ///     The sdl syswminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlSysWMinfo
+    {
+        /// <summary>
+        ///     The version
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlSysWMinfo
-        {
-            /// <summary>
-            ///     The version
-            /// </summary>
-            public SdlVersion version;
+        public SdlVersion version;
 
-            /// <summary>
-            ///     The subsystem
-            /// </summary>
-            public SdlSyswmType subsystem;
+        /// <summary>
+        ///     The subsystem
+        /// </summary>
+        public SdlSyswmType subsystem;
 
-            /// <summary>
-            ///     The info
-            /// </summary>
-            public InternalSysWmDriverUnion info;
-        }
-    
+        /// <summary>
+        ///     The info
+        /// </summary>
+        public InternalSysWmDriverUnion info;
+    }
 }

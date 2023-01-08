@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMessageBoxColorType.cs
+//  File:SdlMessageBoxColorType.SdlMessageBoxColorType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,39 +30,38 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl messageboxcolortype enum
+    ///     The sdl messageboxcolortype enum
+    /// </summary>
+    public enum SdlMessageBoxColorType
+    {
+        /// <summary>
+        ///     The sdl messagebox color background sdl messageboxcolortype
         /// </summary>
-        public enum SdlMessageBoxColorType
-        {
-            /// <summary>
-            ///     The sdl messagebox color background sdl messageboxcolortype
-            /// </summary>
-            SdlMessageboxColorBackground,
+        SdlMessageboxColorBackground,
 
-            /// <summary>
-            ///     The sdl messagebox color text sdl messageboxcolortype
-            /// </summary>
-            SdlMessageboxColorText,
+        /// <summary>
+        ///     The sdl messagebox color text sdl messageboxcolortype
+        /// </summary>
+        SdlMessageboxColorText,
 
-            /// <summary>
-            ///     The sdl messagebox color button border sdl messageboxcolortype
-            /// </summary>
-            SdlMessageboxColorButtonBorder,
+        /// <summary>
+        ///     The sdl messagebox color button border sdl messageboxcolortype
+        /// </summary>
+        SdlMessageboxColorButtonBorder,
 
-            /// <summary>
-            ///     The sdl messagebox color button background sdl messageboxcolortype
-            /// </summary>
-            SdlMessageboxColorButtonBackground,
+        /// <summary>
+        ///     The sdl messagebox color button background sdl messageboxcolortype
+        /// </summary>
+        SdlMessageboxColorButtonBackground,
 
-            /// <summary>
-            ///     The sdl messagebox color button selected sdl messageboxcolortype
-            /// </summary>
-            SdlMessageboxColorButtonSelected,
+        /// <summary>
+        ///     The sdl messagebox color button selected sdl messageboxcolortype
+        /// </summary>
+        SdlMessageboxColorButtonSelected,
 
-            /// <summary>
-            ///     The sdl messagebox color max sdl messageboxcolortype
-            /// </summary>
-            SdlMessageboxColorMax
-        }
-    
+        /// <summary>
+        ///     The sdl messagebox color max sdl messageboxcolortype
+        /// </summary>
+        SdlMessageboxColorMax
+    }
 }

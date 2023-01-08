@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlTouchFingerEvent.cs
+//  File:SdlTouchFingerEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,60 +32,59 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl touchfingerevent
+    ///     The sdl touchfingerevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlTouchFingerEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlTouchFingerEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
+        public uint type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The touch id
-            /// </summary>
-            public long touchId; // SDL_TouchID
+        /// <summary>
+        ///     The touch id
+        /// </summary>
+        public long touchId; // SDL_TouchID
 
-            /// <summary>
-            ///     The finger id
-            /// </summary>
-            public long fingerId; // SDL_GestureID
+        /// <summary>
+        ///     The finger id
+        /// </summary>
+        public long fingerId; // SDL_GestureID
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
 
-            /// <summary>
-            ///     The dx
-            /// </summary>
-            public float dx;
+        /// <summary>
+        ///     The dx
+        /// </summary>
+        public float dx;
 
-            /// <summary>
-            ///     The dy
-            /// </summary>
-            public float dy;
+        /// <summary>
+        ///     The dy
+        /// </summary>
+        public float dy;
 
-            /// <summary>
-            ///     The pressure
-            /// </summary>
-            public float pressure;
+        /// <summary>
+        ///     The pressure
+        /// </summary>
+        public float pressure;
 
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-        }
-    
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
+    }
 }

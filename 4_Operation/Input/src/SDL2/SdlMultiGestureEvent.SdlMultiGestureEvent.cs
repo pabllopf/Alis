@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMultiGestureEvent.cs
+//  File:SdlMultiGestureEvent.SdlMultiGestureEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,55 +32,54 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl multigestureevent
+    ///     The sdl multigestureevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlMultiGestureEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMultiGestureEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
+        public uint type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The touch id
-            /// </summary>
-            public long touchId; // SDL_TouchID
+        /// <summary>
+        ///     The touch id
+        /// </summary>
+        public long touchId; // SDL_TouchID
 
-            /// <summary>
-            ///     The theta
-            /// </summary>
-            public float dTheta;
+        /// <summary>
+        ///     The theta
+        /// </summary>
+        public float dTheta;
 
-            /// <summary>
-            ///     The dist
-            /// </summary>
-            public float dDist;
+        /// <summary>
+        ///     The dist
+        /// </summary>
+        public float dDist;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
 
-            /// <summary>
-            ///     The num fingers
-            /// </summary>
-            public ushort numFingers;
+        /// <summary>
+        ///     The num fingers
+        /// </summary>
+        public ushort numFingers;
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            public ushort padding;
-        
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        public ushort padding;
     }
 }

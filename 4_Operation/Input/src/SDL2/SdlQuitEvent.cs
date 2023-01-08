@@ -32,21 +32,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl quitevent
+    ///     The sdl quitevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlQuitEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlQuitEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-        }
-    
-    
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+    }
 }

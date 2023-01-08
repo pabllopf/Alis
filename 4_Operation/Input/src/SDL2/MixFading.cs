@@ -30,24 +30,23 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The mix fading enum
+    ///     The mix fading enum
+    /// </summary>
+    public enum MixFading
+    {
+        /// <summary>
+        ///     The mix no fading mix fading
         /// </summary>
-        public enum MixFading
-        {
-            /// <summary>
-            ///     The mix no fading mix fading
-            /// </summary>
-            MixNoFading,
+        MixNoFading,
 
-            /// <summary>
-            ///     The mix fading out mix fading
-            /// </summary>
-            MixFadingOut,
+        /// <summary>
+        ///     The mix fading out mix fading
+        /// </summary>
+        MixFadingOut,
 
-            /// <summary>
-            ///     The mix fading in mix fading
-            /// </summary>
-            MixFadingIn
-        }
-    
+        /// <summary>
+        ///     The mix fading in mix fading
+        /// </summary>
+        MixFadingIn
+    }
 }

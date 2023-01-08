@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlGameControllerButtonBind.cs
+//  File:SdlGSdlGameControllerButtonBind.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,19 +32,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl gamecontrollerbuttonbind
+    ///     The sdl gamecontrollerbuttonbind
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlGameControllerButtonBind
+    {
+        /// <summary>
+        ///     The bind type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlGameControllerButtonBind
-        {
-            /// <summary>
-            ///     The bind type
-            /// </summary>
-            public SdlGameControllerBindType bindType;
+        public SdlGameControllerBindType bindType;
 
-            /// <summary>
-            ///     The value
-            /// </summary>
-            public InternalGameControllerButtonBindUnion value;
-        }
+        /// <summary>
+        ///     The value
+        /// </summary>
+        public InternalGameControllerButtonBindUnion value;
     }
+}

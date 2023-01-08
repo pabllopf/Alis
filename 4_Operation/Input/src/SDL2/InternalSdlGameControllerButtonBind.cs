@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalSdlGameControllerButtonBind.cs
+//  File:InternalSdlGameControllerButtonBind.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,26 +32,25 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal sdl gamecontrollerbuttonbind
+    ///     The internal sdl gamecontrollerbuttonbind
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalSdlGameControllerButtonBind
+    {
+        /// <summary>
+        ///     The bind type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalSdlGameControllerButtonBind
-        {
-            /// <summary>
-            ///     The bind type
-            /// </summary>
-            public int bindType;
+        public int bindType;
 
-            /* Largest data type in the union is two ints in size */
-            /// <summary>
-            ///     The union val
-            /// </summary>
-            public int unionVal0;
+        /* Largest data type in the union is two ints in size */
+        /// <summary>
+        ///     The union val
+        /// </summary>
+        public int unionVal0;
 
-            /// <summary>
-            ///     The union val
-            /// </summary>
-            public int unionVal1;
-        }
-    
+        /// <summary>
+        ///     The union val
+        /// </summary>
+        public int unionVal1;
+    }
 }

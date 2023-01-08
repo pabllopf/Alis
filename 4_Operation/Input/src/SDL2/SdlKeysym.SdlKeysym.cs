@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlKeysym.cs
+//  File:SdlKeysym.SdlKeysym.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,30 +32,29 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl keysym
+    ///     The sdl keysym
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlKeysym
+    {
+        /// <summary>
+        ///     The scancode
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlKeysym
-        {
-            /// <summary>
-            ///     The scancode
-            /// </summary>
-            public SdlScancode scancode;
+        public SdlScancode scancode;
 
-            /// <summary>
-            ///     The sym
-            /// </summary>
-            public SdlKeycode sym;
+        /// <summary>
+        ///     The sym
+        /// </summary>
+        public SdlKeycode sym;
 
-            /// <summary>
-            ///     The mod
-            /// </summary>
-            public SdlKeymod mod; /* UInt16 */
+        /// <summary>
+        ///     The mod
+        /// </summary>
+        public SdlKeymod mod; /* UInt16 */
 
-            /// <summary>
-            ///     The unicode
-            /// </summary>
-            public uint unicode; /* Deprecated */
-        
+        /// <summary>
+        ///     The unicode
+        /// </summary>
+        public uint unicode; /* Deprecated */
     }
 }

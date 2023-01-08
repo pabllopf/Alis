@@ -32,27 +32,25 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
-    
+    /// <summary>
+    ///     The internal kmsdrm wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalKmsdrmWminfo
+    {
         /// <summary>
-        ///     The internal kmsdrm wminfo
+        ///     The dev index
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalKmsdrmWminfo
-        {
-            /// <summary>
-            ///     The dev index
-            /// </summary>
-            private int dev_index;
+        private int dev_index;
 
-            /// <summary>
-            ///     The drm fd
-            /// </summary>
-            private int drm_fd;
+        /// <summary>
+        ///     The drm fd
+        /// </summary>
+        private int drm_fd;
 
-            /// <summary>
-            ///     The gbm dev
-            /// </summary>
-            private IntPtr gbm_dev; // Refers to a gbm_device*
-        }
-    
+        /// <summary>
+        ///     The gbm dev
+        /// </summary>
+        private IntPtr gbm_dev; // Refers to a gbm_device*
+    }
 }

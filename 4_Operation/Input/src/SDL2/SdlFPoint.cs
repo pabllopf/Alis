@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlFPoint.cs
+//  File:SdlFPoint.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,20 +32,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl fpoint
+    ///     The sdl fpoint
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlFPoint
+    {
+        /// <summary>
+        ///     The
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlFPoint
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
+        public float x;
 
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
-        
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
     }
 }

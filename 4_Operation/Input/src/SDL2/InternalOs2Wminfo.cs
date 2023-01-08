@@ -33,20 +33,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal os2 wminfo
+    ///     The internal os2 wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalOs2Wminfo
+    {
+        /// <summary>
+        ///     The hwnd
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalOs2Wminfo
-        {
-            /// <summary>
-            ///     The hwnd
-            /// </summary>
-            public IntPtr hwnd; // Refers to an HWND
+        public IntPtr hwnd; // Refers to an HWND
 
-            /// <summary>
-            ///     The hwnd frame
-            /// </summary>
-            public IntPtr hwndFrame; // Refers to an HWND
-        }
-    
+        /// <summary>
+        ///     The hwnd frame
+        /// </summary>
+        public IntPtr hwndFrame; // Refers to an HWND
+    }
 }

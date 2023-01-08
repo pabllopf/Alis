@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMouseWheelDirection.cs
+//  File:SdlMouseWheelDirection.SdlMouseWheelDirection.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,18 +30,18 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl mousewheeldirection enum
+    ///     The sdl mousewheeldirection enum
+    /// </summary>
+    public enum SdlMouseWheelDirection : uint
+    {
+        /// <summary>
+        ///     The sdl mousewheel normal sdl mousewheeldirection
         /// </summary>
-        public enum SdlMouseWheelDirection : uint
-        {
-            /// <summary>
-            ///     The sdl mousewheel normal sdl mousewheeldirection
-            /// </summary>
-            SdlMousewheelNormal,
+        SdlMousewheelNormal,
 
-            /// <summary>
-            ///     The sdl mousewheel flipped sdl mousewheeldirection
-            /// </summary>
-            SdlMousewheelFlipped
-        }
+        /// <summary>
+        ///     The sdl mousewheel flipped sdl mousewheeldirection
+        /// </summary>
+        SdlMousewheelFlipped
     }
+}

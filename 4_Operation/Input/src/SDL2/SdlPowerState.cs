@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlPowerState.cs
+//  File:SdlPowerState.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,34 +30,33 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl powerstate enum
+    ///     The sdl powerstate enum
+    /// </summary>
+    public enum SdlPowerState
+    {
+        /// <summary>
+        ///     The sdl powerstate unknown sdl powerstate
         /// </summary>
-        public enum SdlPowerState
-        {
-            /// <summary>
-            ///     The sdl powerstate unknown sdl powerstate
-            /// </summary>
-            SdlPowerstateUnknown = 0,
+        SdlPowerstateUnknown = 0,
 
-            /// <summary>
-            ///     The sdl powerstate on battery sdl powerstate
-            /// </summary>
-            SdlPowerstateOnBattery,
+        /// <summary>
+        ///     The sdl powerstate on battery sdl powerstate
+        /// </summary>
+        SdlPowerstateOnBattery,
 
-            /// <summary>
-            ///     The sdl powerstate no battery sdl powerstate
-            /// </summary>
-            SdlPowerstateNoBattery,
+        /// <summary>
+        ///     The sdl powerstate no battery sdl powerstate
+        /// </summary>
+        SdlPowerstateNoBattery,
 
-            /// <summary>
-            ///     The sdl powerstate charging sdl powerstate
-            /// </summary>
-            SdlPowerstateCharging,
+        /// <summary>
+        ///     The sdl powerstate charging sdl powerstate
+        /// </summary>
+        SdlPowerstateCharging,
 
-            /// <summary>
-            ///     The sdl powerstate charged sdl powerstate
-            /// </summary>
-            SdlPowerstateCharged
+        /// <summary>
+        ///     The sdl powerstate charged sdl powerstate
+        /// </summary>
+        SdlPowerstateCharged
     }
-    
 }

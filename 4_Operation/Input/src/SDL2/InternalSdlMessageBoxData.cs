@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalSdlMessageBoxData.cs
+//  File:InternalSdlMessageBoxData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,44 +33,44 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal sdl messageboxdata
+    ///     The internal sdl messageboxdata
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalSdlMessageBoxData
+    {
+        /// <summary>
+        ///     The flags
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalSdlMessageBoxData
-        {
-            /// <summary>
-            ///     The flags
-            /// </summary>
-            public SdlMessageBoxFlags flags;
+        public SdlMessageBoxFlags flags;
 
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; /* Parent window, can be NULL */
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr window; /* Parent window, can be NULL */
 
-            /// <summary>
-            ///     The title
-            /// </summary>
-            public IntPtr title; /* UTF-8 title */
+        /// <summary>
+        ///     The title
+        /// </summary>
+        public IntPtr title; /* UTF-8 title */
 
-            /// <summary>
-            ///     The message
-            /// </summary>
-            public IntPtr message; /* UTF-8 message text */
+        /// <summary>
+        ///     The message
+        /// </summary>
+        public IntPtr message; /* UTF-8 message text */
 
-            /// <summary>
-            ///     The numbuttons
-            /// </summary>
-            public int numbuttons;
+        /// <summary>
+        ///     The numbuttons
+        /// </summary>
+        public int numbuttons;
 
-            /// <summary>
-            ///     The buttons
-            /// </summary>
-            public IntPtr buttons;
+        /// <summary>
+        ///     The buttons
+        /// </summary>
+        public IntPtr buttons;
 
-            /// <summary>
-            ///     The color scheme
-            /// </summary>
-            public IntPtr colorScheme; /* Can be NULL to use system settings */
-        }
+        /// <summary>
+        ///     The color scheme
+        /// </summary>
+        public IntPtr colorScheme; /* Can be NULL to use system settings */
+    }
 }

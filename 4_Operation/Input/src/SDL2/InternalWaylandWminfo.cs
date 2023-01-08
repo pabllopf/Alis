@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalWaylandWminfo.cs
+//  File:InternalWaylandWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,52 +32,50 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
+    /// <summary>
+    ///     The internal wayland wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalWaylandWminfo
+    {
+        /// <summary>
+        ///     The display
+        /// </summary>
+        public IntPtr display; // Refers to a wl_display*
 
         /// <summary>
-        ///     The internal wayland wminfo
+        ///     The surface
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalWaylandWminfo
-        {
-            /// <summary>
-            ///     The display
-            /// </summary>
-            public IntPtr display; // Refers to a wl_display*
+        public IntPtr surface; // Refers to a wl_surface*
 
-            /// <summary>
-            ///     The surface
-            /// </summary>
-            public IntPtr surface; // Refers to a wl_surface*
+        /// <summary>
+        ///     The shell surface
+        /// </summary>
+        public IntPtr shell_surface; // Refers to a wl_shell_surface*
 
-            /// <summary>
-            ///     The shell surface
-            /// </summary>
-            public IntPtr shell_surface; // Refers to a wl_shell_surface*
+        /// <summary>
+        ///     The egl window
+        /// </summary>
+        public IntPtr egl_window; // Refers to an egl_window*, requires >= 2.0.16
 
-            /// <summary>
-            ///     The egl window
-            /// </summary>
-            public IntPtr egl_window; // Refers to an egl_window*, requires >= 2.0.16
+        /// <summary>
+        ///     The xdg surface
+        /// </summary>
+        public IntPtr xdg_surface; // Refers to an xdg_surface*, requires >= 2.0.16
 
-            /// <summary>
-            ///     The xdg surface
-            /// </summary>
-            public IntPtr xdg_surface; // Refers to an xdg_surface*, requires >= 2.0.16
+        /// <summary>
+        ///     The xdg toplevel
+        /// </summary>
+        public IntPtr xdg_toplevel; // Referes to an xdg_toplevel*, requires >= 2.0.18
 
-            /// <summary>
-            ///     The xdg toplevel
-            /// </summary>
-            public IntPtr xdg_toplevel; // Referes to an xdg_toplevel*, requires >= 2.0.18
+        /// <summary>
+        ///     The xdg popup
+        /// </summary>
+        public IntPtr xdg_popup;
 
-            /// <summary>
-            ///     The xdg popup
-            /// </summary>
-            public IntPtr xdg_popup;
-
-            /// <summary>
-            ///     The xdg positioner
-            /// </summary>
-            public IntPtr xdg_positioner;
-        
+        /// <summary>
+        ///     The xdg positioner
+        /// </summary>
+        public IntPtr xdg_positioner;
     }
 }

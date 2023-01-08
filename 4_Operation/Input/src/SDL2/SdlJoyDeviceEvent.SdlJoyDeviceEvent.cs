@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlJoyDeviceEvent.cs
+//  File:SdlJoyDeviceEvent.SdlJoyDeviceEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,25 +32,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl joydeviceevent
+    ///     The sdl joydeviceevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlJoyDeviceEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlJoyDeviceEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public int which; /* SDL_JoystickID */
-        }
-    
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public int which; /* SDL_JoystickID */
+    }
 }

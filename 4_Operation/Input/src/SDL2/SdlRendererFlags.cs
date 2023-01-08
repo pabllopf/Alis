@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlRendererFlags.cs
+//  File:SdlRendererFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,29 +32,29 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl rendererflags enum
+    ///     The sdl rendererflags enum
+    /// </summary>
+    [Flags]
+    public enum SdlRendererFlags : uint
+    {
+        /// <summary>
+        ///     The sdl renderer software sdl rendererflags
         /// </summary>
-        [Flags]
-        public enum SdlRendererFlags : uint
-        {
-            /// <summary>
-            ///     The sdl renderer software sdl rendererflags
-            /// </summary>
-            SdlRendererSoftware = 0x00000001,
+        SdlRendererSoftware = 0x00000001,
 
-            /// <summary>
-            ///     The sdl renderer accelerated sdl rendererflags
-            /// </summary>
-            SdlRendererAccelerated = 0x00000002,
+        /// <summary>
+        ///     The sdl renderer accelerated sdl rendererflags
+        /// </summary>
+        SdlRendererAccelerated = 0x00000002,
 
-            /// <summary>
-            ///     The sdl renderer presentvsync sdl rendererflags
-            /// </summary>
-            SdlRendererPresentvsync = 0x00000004,
+        /// <summary>
+        ///     The sdl renderer presentvsync sdl rendererflags
+        /// </summary>
+        SdlRendererPresentvsync = 0x00000004,
 
-            /// <summary>
-            ///     The sdl renderer targettexture sdl rendererflags
-            /// </summary>
-            SdlRendererTargettexture = 0x00000008
-        }
+        /// <summary>
+        ///     The sdl renderer targettexture sdl rendererflags
+        /// </summary>
+        SdlRendererTargettexture = 0x00000008
     }
+}

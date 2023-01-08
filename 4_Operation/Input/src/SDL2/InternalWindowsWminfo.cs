@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalWindowsWminfo.cs
+//  File:InternalWindowsWminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,26 +32,25 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
- 
+    /// <summary>
+    ///     The internal windows wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalWindowsWminfo
+    {
         /// <summary>
-        ///     The internal windows wminfo
+        ///     The window
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalWindowsWminfo
-        {
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to an HWND
+        public IntPtr window; // Refers to an HWND
 
-            /// <summary>
-            ///     The hdc
-            /// </summary>
-            public IntPtr hdc; // Refers to an HDC
+        /// <summary>
+        ///     The hdc
+        /// </summary>
+        public IntPtr hdc; // Refers to an HDC
 
-            /// <summary>
-            ///     The hinstance
-            /// </summary>
-            public IntPtr hinstance; // Refers to an HINSTANCE
-        }
+        /// <summary>
+        ///     The hinstance
+        /// </summary>
+        public IntPtr hinstance; // Refers to an HINSTANCE
     }
+}

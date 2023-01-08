@@ -33,11 +33,10 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdlr wops close callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SdlrWopsCloseCallback(
-            IntPtr context
-        );
-    
+    ///     The sdlr wops close callback
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate int SdlrWopsCloseCallback(
+        IntPtr context
+    );
 }

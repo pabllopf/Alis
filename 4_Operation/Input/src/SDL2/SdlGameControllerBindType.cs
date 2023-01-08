@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlGameControllerBindType.cs
+//  File:SdlGameControllerBindType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,29 +30,28 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl gamecontrollerbindtype enum
+    ///     The sdl gamecontrollerbindtype enum
+    /// </summary>
+    public enum SdlGameControllerBindType
+    {
+        /// <summary>
+        ///     The sdl controller bindtype none sdl gamecontrollerbindtype
         /// </summary>
-        public enum SdlGameControllerBindType
-        {
-            /// <summary>
-            ///     The sdl controller bindtype none sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeNone,
+        SdlControllerBindtypeNone,
 
-            /// <summary>
-            ///     The sdl controller bindtype button sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeButton,
+        /// <summary>
+        ///     The sdl controller bindtype button sdl gamecontrollerbindtype
+        /// </summary>
+        SdlControllerBindtypeButton,
 
-            /// <summary>
-            ///     The sdl controller bindtype axis sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeAxis,
+        /// <summary>
+        ///     The sdl controller bindtype axis sdl gamecontrollerbindtype
+        /// </summary>
+        SdlControllerBindtypeAxis,
 
-            /// <summary>
-            ///     The sdl controller bindtype hat sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeHat
-        }
-    
+        /// <summary>
+        ///     The sdl controller bindtype hat sdl gamecontrollerbindtype
+        /// </summary>
+        SdlControllerBindtypeHat
+    }
 }

@@ -33,9 +33,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdlr wops size callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate long SdlrWopsSizeCallback(IntPtr context);
-    
+    ///     The sdlr wops size callback
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate long SdlrWopsSizeCallback(IntPtr context);
 }

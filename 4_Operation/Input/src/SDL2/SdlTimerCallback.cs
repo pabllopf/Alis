@@ -33,9 +33,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl timercallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate uint SdlTimerCallback(uint interval, IntPtr param);
-    
+    ///     The sdl timercallback
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate uint SdlTimerCallback(uint interval, IntPtr param);
 }

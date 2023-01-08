@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalSdlMessageBoxButtonData.cs
+//  File:InternalSdlMessageBoxButtonData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,24 +33,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal sdl messageboxbuttondata
+    ///     The internal sdl messageboxbuttondata
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalSdlMessageBoxButtonData
+    {
+        /// <summary>
+        ///     The flags
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalSdlMessageBoxButtonData
-        {
-            /// <summary>
-            ///     The flags
-            /// </summary>
-            public SdlMessageBoxButtonFlags flags;
+        public SdlMessageBoxButtonFlags flags;
 
-            /// <summary>
-            ///     The buttonid
-            /// </summary>
-            public int buttonid;
+        /// <summary>
+        ///     The buttonid
+        /// </summary>
+        public int buttonid;
 
-            /// <summary>
-            ///     The text
-            /// </summary>
-            public IntPtr text; /* The UTF-8 button text */
-        }
+        /// <summary>
+        ///     The text
+        /// </summary>
+        public IntPtr text; /* The UTF-8 button text */
     }
+}

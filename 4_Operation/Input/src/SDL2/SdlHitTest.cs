@@ -33,9 +33,8 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl hittest
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
-    
+    ///     The sdl hittest
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
 }

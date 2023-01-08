@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlKeyboardEvent.cs
+//  File:SdlKeyboardEvent.SdlKeyboardEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,50 +32,49 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl keyboardevent
+    ///     The sdl keyboardevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlKeyboardEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlKeyboardEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
 
-            /// <summary>
-            ///     The state
-            /// </summary>
-            public byte state;
+        /// <summary>
+        ///     The state
+        /// </summary>
+        public byte state;
 
-            /// <summary>
-            ///     The repeat
-            /// </summary>
-            public byte repeat; /* non-zero if this is a repeat */
+        /// <summary>
+        ///     The repeat
+        /// </summary>
+        public byte repeat; /* non-zero if this is a repeat */
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding2;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private byte padding2;
 
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding3;
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        private byte padding3;
 
-            /// <summary>
-            ///     The keysym
-            /// </summary>
-            public SdlKeysym keysym;
-        
+        /// <summary>
+        ///     The keysym
+        /// </summary>
+        public SdlKeysym keysym;
     }
 }

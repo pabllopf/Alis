@@ -33,25 +33,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl syswmevent
+    ///     The sdl syswmevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlSysWmEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlSysWmEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The msg
-            /// </summary>
-            public IntPtr msg; /* SDL_SysWMmsg*, system-dependent*/
-        }
-    
+        /// <summary>
+        ///     The msg
+        /// </summary>
+        public IntPtr msg; /* SDL_SysWMmsg*, system-dependent*/
+    }
 }

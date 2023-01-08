@@ -30,23 +30,23 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl scalemode enum
+    ///     The sdl scalemode enum
+    /// </summary>
+    public enum SdlScaleMode
+    {
+        /// <summary>
+        ///     The sdl scalemodenearest sdl scalemode
         /// </summary>
-        public enum SdlScaleMode
-        {
-            /// <summary>
-            ///     The sdl scalemodenearest sdl scalemode
-            /// </summary>
-            SdlScaleModeNearest,
+        SdlScaleModeNearest,
 
-            /// <summary>
-            ///     The sdl scalemodelinear sdl scalemode
-            /// </summary>
-            SdlScaleModeLinear,
+        /// <summary>
+        ///     The sdl scalemodelinear sdl scalemode
+        /// </summary>
+        SdlScaleModeLinear,
 
-            /// <summary>
-            ///     The sdl scalemodebest sdl scalemode
-            /// </summary>
-            SdlScaleModeBest
-        }
+        /// <summary>
+        ///     The sdl scalemodebest sdl scalemode
+        /// </summary>
+        SdlScaleModeBest
+    }
 }

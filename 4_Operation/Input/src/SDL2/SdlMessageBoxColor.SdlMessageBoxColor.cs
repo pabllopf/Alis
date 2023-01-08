@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMessageBoxColor.cs
+//  File:SdlMessageBoxColor.SdlMessageBoxColor.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,15 +32,14 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl messageboxcolor
+    ///     The sdl messageboxcolor
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlMessageBoxColor
+    {
+        /// <summary>
+        ///     The
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMessageBoxColor
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte r, g, b;
-        }
-    
+        public byte r, g, b;
+    }
 }

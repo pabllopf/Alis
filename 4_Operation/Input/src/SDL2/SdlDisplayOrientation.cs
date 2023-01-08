@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlDisplayOrientation.cs
+//  File:SdlDisplayOrientation.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,34 +30,33 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl displayorientation enum
+    ///     The sdl displayorientation enum
+    /// </summary>
+    public enum SdlDisplayOrientation
+    {
+        /// <summary>
+        ///     The sdl orientation unknown sdl displayorientation
         /// </summary>
-        public enum SdlDisplayOrientation
-        {
-            /// <summary>
-            ///     The sdl orientation unknown sdl displayorientation
-            /// </summary>
-            SdlOrientationUnknown,
+        SdlOrientationUnknown,
 
-            /// <summary>
-            ///     The sdl orientation landscape sdl displayorientation
-            /// </summary>
-            SdlOrientationLandscape,
+        /// <summary>
+        ///     The sdl orientation landscape sdl displayorientation
+        /// </summary>
+        SdlOrientationLandscape,
 
-            /// <summary>
-            ///     The sdl orientation landscape flipped sdl displayorientation
-            /// </summary>
-            SdlOrientationLandscapeFlipped,
+        /// <summary>
+        ///     The sdl orientation landscape flipped sdl displayorientation
+        /// </summary>
+        SdlOrientationLandscapeFlipped,
 
-            /// <summary>
-            ///     The sdl orientation portrait sdl displayorientation
-            /// </summary>
-            SdlOrientationPortrait,
+        /// <summary>
+        ///     The sdl orientation portrait sdl displayorientation
+        /// </summary>
+        SdlOrientationPortrait,
 
-            /// <summary>
-            ///     The sdl orientation portrait flipped sdl displayorientation
-            /// </summary>
-            SdlOrientationPortraitFlipped
-        }
-    
+        /// <summary>
+        ///     The sdl orientation portrait flipped sdl displayorientation
+        /// </summary>
+        SdlOrientationPortraitFlipped
+    }
 }

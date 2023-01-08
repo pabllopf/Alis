@@ -33,14 +33,13 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl logoutputfunction
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlLogOutputFunction(
-            IntPtr userdata,
-            int category,
-            SdlLogPriority priority,
-            IntPtr message
-        );
-    
+    ///     The sdl logoutputfunction
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void SdlLogOutputFunction(
+        IntPtr userdata,
+        int category,
+        SdlLogPriority priority,
+        IntPtr message
+    );
 }

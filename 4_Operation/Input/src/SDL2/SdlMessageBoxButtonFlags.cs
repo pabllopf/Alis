@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMessageBoxButtonFlags.cs
+//  File:SdlMessageBoxButtonFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,20 +32,19 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl messageboxbuttonflags enum
+    ///     The sdl messageboxbuttonflags enum
+    /// </summary>
+    [Flags]
+    public enum SdlMessageBoxButtonFlags : uint
+    {
+        /// <summary>
+        ///     The sdl messagebox button returnkey default sdl messageboxbuttonflags
         /// </summary>
-        [Flags]
-        public enum SdlMessageBoxButtonFlags : uint
-        {
-            /// <summary>
-            ///     The sdl messagebox button returnkey default sdl messageboxbuttonflags
-            /// </summary>
-            SdlMessageboxButtonReturnkeyDefault = 0x00000001,
+        SdlMessageboxButtonReturnkeyDefault = 0x00000001,
 
-            /// <summary>
-            ///     The sdl messagebox button escapekey default sdl messageboxbuttonflags
-            /// </summary>
-            SdlMessageboxButtonEscapekeyDefault = 0x00000002
-        }
-    
+        /// <summary>
+        ///     The sdl messagebox button escapekey default sdl messageboxbuttonflags
+        /// </summary>
+        SdlMessageboxButtonEscapekeyDefault = 0x00000002
+    }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlMessageBoxFlags.cs
+//  File:SdlMessageBoxFlags.SdlMessageBoxFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,25 +32,24 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl messageboxflags enum
+    ///     The sdl messageboxflags enum
+    /// </summary>
+    [Flags]
+    public enum SdlMessageBoxFlags : uint
+    {
+        /// <summary>
+        ///     The sdl messagebox error sdl messageboxflags
         /// </summary>
-        [Flags]
-        public enum SdlMessageBoxFlags : uint
-        {
-            /// <summary>
-            ///     The sdl messagebox error sdl messageboxflags
-            /// </summary>
-            SdlMessageboxError = 0x00000010,
+        SdlMessageboxError = 0x00000010,
 
-            /// <summary>
-            ///     The sdl messagebox warning sdl messageboxflags
-            /// </summary>
-            SdlMessageboxWarning = 0x00000020,
+        /// <summary>
+        ///     The sdl messagebox warning sdl messageboxflags
+        /// </summary>
+        SdlMessageboxWarning = 0x00000020,
 
-            /// <summary>
-            ///     The sdl messagebox information sdl messageboxflags
-            /// </summary>
-            SdlMessageboxInformation = 0x00000040
-        }
-    
+        /// <summary>
+        ///     The sdl messagebox information sdl messageboxflags
+        /// </summary>
+        SdlMessageboxInformation = 0x00000040
+    }
 }

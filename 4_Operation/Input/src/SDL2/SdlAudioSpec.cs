@@ -33,50 +33,49 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl audiospec
+    ///     The sdl audiospec
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlAudioSpec
+    {
+        /// <summary>
+        ///     The freq
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlAudioSpec
-        {
-            /// <summary>
-            ///     The freq
-            /// </summary>
-            public int freq;
+        public int freq;
 
-            /// <summary>
-            ///     The format
-            /// </summary>
-            public ushort format; // SDL_AudioFormat
+        /// <summary>
+        ///     The format
+        /// </summary>
+        public ushort format; // SDL_AudioFormat
 
-            /// <summary>
-            ///     The channels
-            /// </summary>
-            public byte channels;
+        /// <summary>
+        ///     The channels
+        /// </summary>
+        public byte channels;
 
-            /// <summary>
-            ///     The silence
-            /// </summary>
-            public byte silence;
+        /// <summary>
+        ///     The silence
+        /// </summary>
+        public byte silence;
 
-            /// <summary>
-            ///     The samples
-            /// </summary>
-            public ushort samples;
+        /// <summary>
+        ///     The samples
+        /// </summary>
+        public ushort samples;
 
-            /// <summary>
-            ///     The size
-            /// </summary>
-            public uint size;
+        /// <summary>
+        ///     The size
+        /// </summary>
+        public uint size;
 
-            /// <summary>
-            ///     The callback
-            /// </summary>
-            public SdlAudioCallback callback;
+        /// <summary>
+        ///     The callback
+        /// </summary>
+        public SdlAudioCallback callback;
 
-            /// <summary>
-            ///     The userdata
-            /// </summary>
-            public IntPtr userdata; // void*
-        }
-    
+        /// <summary>
+        ///     The userdata
+        /// </summary>
+        public IntPtr userdata; // void*
+    }
 }

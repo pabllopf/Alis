@@ -30,78 +30,78 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl syswm type enum
+    ///     The sdl syswm type enum
+    /// </summary>
+    public enum SdlSyswmType
+    {
+        /// <summary>
+        ///     The sdl syswm unknown sdl syswm type
         /// </summary>
-        public enum SdlSyswmType
-        {
-            /// <summary>
-            ///     The sdl syswm unknown sdl syswm type
-            /// </summary>
-            SdlSyswmUnknown,
+        SdlSyswmUnknown,
 
-            /// <summary>
-            ///     The sdl syswm windows sdl syswm type
-            /// </summary>
-            SdlSyswmWindows,
+        /// <summary>
+        ///     The sdl syswm windows sdl syswm type
+        /// </summary>
+        SdlSyswmWindows,
 
-            /// <summary>
-            ///     The sdl syswm x11 sdl syswm type
-            /// </summary>
-            SdlSyswmX11,
+        /// <summary>
+        ///     The sdl syswm x11 sdl syswm type
+        /// </summary>
+        SdlSyswmX11,
 
-            /// <summary>
-            ///     The sdl syswm directfb sdl syswm type
-            /// </summary>
-            SdlSyswmDirectfb,
+        /// <summary>
+        ///     The sdl syswm directfb sdl syswm type
+        /// </summary>
+        SdlSyswmDirectfb,
 
-            /// <summary>
-            ///     The sdl syswm cocoa sdl syswm type
-            /// </summary>
-            SdlSyswmCocoa,
+        /// <summary>
+        ///     The sdl syswm cocoa sdl syswm type
+        /// </summary>
+        SdlSyswmCocoa,
 
-            /// <summary>
-            ///     The sdl syswm uikit sdl syswm type
-            /// </summary>
-            SdlSyswmUikit,
+        /// <summary>
+        ///     The sdl syswm uikit sdl syswm type
+        /// </summary>
+        SdlSyswmUikit,
 
-            /// <summary>
-            ///     The sdl syswm wayland sdl syswm type
-            /// </summary>
-            SdlSyswmWayland,
+        /// <summary>
+        ///     The sdl syswm wayland sdl syswm type
+        /// </summary>
+        SdlSyswmWayland,
 
-            /// <summary>
-            ///     The sdl syswm mir sdl syswm type
-            /// </summary>
-            SdlSyswmMir,
+        /// <summary>
+        ///     The sdl syswm mir sdl syswm type
+        /// </summary>
+        SdlSyswmMir,
 
-            /// <summary>
-            ///     The sdl syswm winrt sdl syswm type
-            /// </summary>
-            SdlSyswmWinrt,
+        /// <summary>
+        ///     The sdl syswm winrt sdl syswm type
+        /// </summary>
+        SdlSyswmWinrt,
 
-            /// <summary>
-            ///     The sdl syswm android sdl syswm type
-            /// </summary>
-            SdlSyswmAndroid,
+        /// <summary>
+        ///     The sdl syswm android sdl syswm type
+        /// </summary>
+        SdlSyswmAndroid,
 
-            /// <summary>
-            ///     The sdl syswm vivante sdl syswm type
-            /// </summary>
-            SdlSyswmVivante,
+        /// <summary>
+        ///     The sdl syswm vivante sdl syswm type
+        /// </summary>
+        SdlSyswmVivante,
 
-            /// <summary>
-            ///     The sdl syswm os2 sdl syswm type
-            /// </summary>
-            SdlSyswmOs2,
+        /// <summary>
+        ///     The sdl syswm os2 sdl syswm type
+        /// </summary>
+        SdlSyswmOs2,
 
-            /// <summary>
-            ///     The sdl syswm haiku sdl syswm type
-            /// </summary>
-            SdlSyswmHaiku,
+        /// <summary>
+        ///     The sdl syswm haiku sdl syswm type
+        /// </summary>
+        SdlSyswmHaiku,
 
-            /// <summary>
-            ///     The sdl syswm kmsdrm sdl syswm type
-            /// </summary>
-            SdlSyswmKmsdrm /* requires >= 2.0.16 */
-        }
+        /// <summary>
+        ///     The sdl syswm kmsdrm sdl syswm type
+        /// </summary>
+        SdlSyswmKmsdrm /* requires >= 2.0.16 */
     }
+}

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlTextInputEvent.cs
+//  File:SdlTextInputEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,30 +32,29 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl textinputevent
+    ///     The sdl textinputevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct SdlTextInputEvent
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlTextInputEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
+        public SdlEventType type;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
 
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
 
-            /// <summary>
-            ///     The sdl textinputevent text size
-            /// </summary>
-            public fixed byte text[Sdl.SdlTextinputeventTextSize];
-        }
-    
+        /// <summary>
+        ///     The sdl textinputevent text size
+        /// </summary>
+        public fixed byte text[Sdl.SdlTextinputeventTextSize];
+    }
 }

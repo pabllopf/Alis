@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlLogPriority.cs
+//  File:SdlLogPriority.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,44 +30,43 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl logpriority enum
+    ///     The sdl logpriority enum
+    /// </summary>
+    public enum SdlLogPriority
+    {
+        /// <summary>
+        ///     The sdl log priority verbose sdl logpriority
         /// </summary>
-        public enum SdlLogPriority
-        {
-            /// <summary>
-            ///     The sdl log priority verbose sdl logpriority
-            /// </summary>
-            SdlLogPriorityVerbose = 1,
+        SdlLogPriorityVerbose = 1,
 
-            /// <summary>
-            ///     The sdl log priority debug sdl logpriority
-            /// </summary>
-            SdlLogPriorityDebug,
+        /// <summary>
+        ///     The sdl log priority debug sdl logpriority
+        /// </summary>
+        SdlLogPriorityDebug,
 
-            /// <summary>
-            ///     The sdl log priority info sdl logpriority
-            /// </summary>
-            SdlLogPriorityInfo,
+        /// <summary>
+        ///     The sdl log priority info sdl logpriority
+        /// </summary>
+        SdlLogPriorityInfo,
 
-            /// <summary>
-            ///     The sdl log priority warn sdl logpriority
-            /// </summary>
-            SdlLogPriorityWarn,
+        /// <summary>
+        ///     The sdl log priority warn sdl logpriority
+        /// </summary>
+        SdlLogPriorityWarn,
 
-            /// <summary>
-            ///     The sdl log priority error sdl logpriority
-            /// </summary>
-            SdlLogPriorityError,
+        /// <summary>
+        ///     The sdl log priority error sdl logpriority
+        /// </summary>
+        SdlLogPriorityError,
 
-            /// <summary>
-            ///     The sdl log priority critical sdl logpriority
-            /// </summary>
-            SdlLogPriorityCritical,
+        /// <summary>
+        ///     The sdl log priority critical sdl logpriority
+        /// </summary>
+        SdlLogPriorityCritical,
 
-            /// <summary>
-            ///     The sdl num log priorities sdl logpriority
-            /// </summary>
-            SdlNumLogPriorities
-        }
-    
+        /// <summary>
+        ///     The sdl num log priorities sdl logpriority
+        /// </summary>
+        SdlNumLogPriorities
+    }
 }

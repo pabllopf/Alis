@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlHapticDirection.cs
+//  File:SdlHapticDirection.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,20 +32,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl hapticdirection
+    ///     The sdl hapticdirection
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct SdlHapticDirection
+    {
+        /// <summary>
+        ///     The type
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlHapticDirection
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public byte type;
+        public byte type;
 
-            /// <summary>
-            ///     The dir
-            /// </summary>
-            public fixed int dir[3];
-        }
-    
+        /// <summary>
+        ///     The dir
+        /// </summary>
+        public fixed int dir[3];
+    }
 }

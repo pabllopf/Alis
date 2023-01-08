@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalX11Wminfo.cs
+//  File:InternalX11Wminfo.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,19 +33,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal x11 wminfo
+    ///     The internal x11 wminfo
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalX11Wminfo
+    {
+        /// <summary>
+        ///     The display
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalX11Wminfo
-        {
-            /// <summary>
-            ///     The display
-            /// </summary>
-            public IntPtr display; // Refers to a Display*
+        public IntPtr display; // Refers to a Display*
 
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; // Refers to a Window (XID, use ToInt64!)
-        }
+        /// <summary>
+        ///     The window
+        /// </summary>
+        public IntPtr window; // Refers to a Window (XID, use ToInt64!)
     }
+}

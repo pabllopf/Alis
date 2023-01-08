@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlPixelFormat.cs
+//  File:SdlPixelFormat.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,100 +33,99 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl pixelformat
+    ///     The sdl pixelformat
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlPixelFormat
+    {
+        /// <summary>
+        ///     The format
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlPixelFormat
-        {
-            /// <summary>
-            ///     The format
-            /// </summary>
-            public uint format;
+        public uint format;
 
-            /// <summary>
-            ///     The palette
-            /// </summary>
-            public IntPtr palette; // SDL_Palette*
+        /// <summary>
+        ///     The palette
+        /// </summary>
+        public IntPtr palette; // SDL_Palette*
 
-            /// <summary>
-            ///     The bits per pixel
-            /// </summary>
-            public byte BitsPerPixel;
+        /// <summary>
+        ///     The bits per pixel
+        /// </summary>
+        public byte BitsPerPixel;
 
-            /// <summary>
-            ///     The bytes per pixel
-            /// </summary>
-            public byte BytesPerPixel;
+        /// <summary>
+        ///     The bytes per pixel
+        /// </summary>
+        public byte BytesPerPixel;
 
-            /// <summary>
-            ///     The rmask
-            /// </summary>
-            public uint Rmask;
+        /// <summary>
+        ///     The rmask
+        /// </summary>
+        public uint Rmask;
 
-            /// <summary>
-            ///     The gmask
-            /// </summary>
-            public uint Gmask;
+        /// <summary>
+        ///     The gmask
+        /// </summary>
+        public uint Gmask;
 
-            /// <summary>
-            ///     The bmask
-            /// </summary>
-            public uint Bmask;
+        /// <summary>
+        ///     The bmask
+        /// </summary>
+        public uint Bmask;
 
-            /// <summary>
-            ///     The amask
-            /// </summary>
-            public uint Amask;
+        /// <summary>
+        ///     The amask
+        /// </summary>
+        public uint Amask;
 
-            /// <summary>
-            ///     The rloss
-            /// </summary>
-            public byte Rloss;
+        /// <summary>
+        ///     The rloss
+        /// </summary>
+        public byte Rloss;
 
-            /// <summary>
-            ///     The gloss
-            /// </summary>
-            public byte Gloss;
+        /// <summary>
+        ///     The gloss
+        /// </summary>
+        public byte Gloss;
 
-            /// <summary>
-            ///     The bloss
-            /// </summary>
-            public byte Bloss;
+        /// <summary>
+        ///     The bloss
+        /// </summary>
+        public byte Bloss;
 
-            /// <summary>
-            ///     The aloss
-            /// </summary>
-            public byte Aloss;
+        /// <summary>
+        ///     The aloss
+        /// </summary>
+        public byte Aloss;
 
-            /// <summary>
-            ///     The rshift
-            /// </summary>
-            public byte Rshift;
+        /// <summary>
+        ///     The rshift
+        /// </summary>
+        public byte Rshift;
 
-            /// <summary>
-            ///     The gshift
-            /// </summary>
-            public byte Gshift;
+        /// <summary>
+        ///     The gshift
+        /// </summary>
+        public byte Gshift;
 
-            /// <summary>
-            ///     The bshift
-            /// </summary>
-            public byte Bshift;
+        /// <summary>
+        ///     The bshift
+        /// </summary>
+        public byte Bshift;
 
-            /// <summary>
-            ///     The ashift
-            /// </summary>
-            public byte Ashift;
+        /// <summary>
+        ///     The ashift
+        /// </summary>
+        public byte Ashift;
 
-            /// <summary>
-            ///     The refcount
-            /// </summary>
-            public int refcount;
+        /// <summary>
+        ///     The refcount
+        /// </summary>
+        public int refcount;
 
-            /// <summary>
-            ///     The next
-            /// </summary>
-            public IntPtr next; // SDL_PixelFormat*
-        }
-    
+        /// <summary>
+        ///     The next
+        /// </summary>
+        public IntPtr next; // SDL_PixelFormat*
+    }
 }

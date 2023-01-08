@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlGLprofile.cs
+//  File:SdlGLprofile.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,25 +32,24 @@ using System;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl glprofile enum
+    ///     The sdl glprofile enum
+    /// </summary>
+    [Flags]
+    public enum SdlGLprofile
+    {
+        /// <summary>
+        ///     The sdl gl context profile core sdl glprofile
         /// </summary>
-        [Flags]
-        public enum SdlGLprofile
-        {
-            /// <summary>
-            ///     The sdl gl context profile core sdl glprofile
-            /// </summary>
-            SdlGlContextProfileCore = 0x0001,
+        SdlGlContextProfileCore = 0x0001,
 
-            /// <summary>
-            ///     The sdl gl context profile compatibility sdl glprofile
-            /// </summary>
-            SdlGlContextProfileCompatibility = 0x0002,
+        /// <summary>
+        ///     The sdl gl context profile compatibility sdl glprofile
+        /// </summary>
+        SdlGlContextProfileCompatibility = 0x0002,
 
-            /// <summary>
-            ///     The sdl gl context profile es sdl glprofile
-            /// </summary>
-            SdlGlContextProfileEs = 0x0004
-        }
-    
+        /// <summary>
+        ///     The sdl gl context profile es sdl glprofile
+        /// </summary>
+        SdlGlContextProfileEs = 0x0004
+    }
 }

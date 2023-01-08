@@ -30,64 +30,63 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The mix musictype enum
+    ///     The mix musictype enum
+    /// </summary>
+    public enum MixMusicType
+    {
+        /// <summary>
+        ///     The mus none mix musictype
         /// </summary>
-        public enum MixMusicType
-        {
-            /// <summary>
-            ///     The mus none mix musictype
-            /// </summary>
-            MusNone,
+        MusNone,
 
-            /// <summary>
-            ///     The mus cmd mix musictype
-            /// </summary>
-            MusCmd,
+        /// <summary>
+        ///     The mus cmd mix musictype
+        /// </summary>
+        MusCmd,
 
-            /// <summary>
-            ///     The mus wav mix musictype
-            /// </summary>
-            MusWav,
+        /// <summary>
+        ///     The mus wav mix musictype
+        /// </summary>
+        MusWav,
 
-            /// <summary>
-            ///     The mus mod mix musictype
-            /// </summary>
-            MusMod,
+        /// <summary>
+        ///     The mus mod mix musictype
+        /// </summary>
+        MusMod,
 
-            /// <summary>
-            ///     The mus mid mix musictype
-            /// </summary>
-            MusMid,
+        /// <summary>
+        ///     The mus mid mix musictype
+        /// </summary>
+        MusMid,
 
-            /// <summary>
-            ///     The mus ogg mix musictype
-            /// </summary>
-            MusOgg,
+        /// <summary>
+        ///     The mus ogg mix musictype
+        /// </summary>
+        MusOgg,
 
-            /// <summary>
-            ///     The mus mp3 mix musictype
-            /// </summary>
-            MusMp3,
+        /// <summary>
+        ///     The mus mp3 mix musictype
+        /// </summary>
+        MusMp3,
 
-            /// <summary>
-            ///     The mus mp3 mad unused mix musictype
-            /// </summary>
-            MusMp3MadUnused,
+        /// <summary>
+        ///     The mus mp3 mad unused mix musictype
+        /// </summary>
+        MusMp3MadUnused,
 
-            /// <summary>
-            ///     The mus flac mix musictype
-            /// </summary>
-            MusFlac,
+        /// <summary>
+        ///     The mus flac mix musictype
+        /// </summary>
+        MusFlac,
 
-            /// <summary>
-            ///     The mus modplug unused mix musictype
-            /// </summary>
-            MusModplugUnused,
+        /// <summary>
+        ///     The mus modplug unused mix musictype
+        /// </summary>
+        MusModplugUnused,
 
-            /// <summary>
-            ///     The mus opus mix musictype
-            /// </summary>
-            MusOpus
-        }
-    
+        /// <summary>
+        ///     The mus opus mix musictype
+        /// </summary>
+        MusOpus
+    }
 }

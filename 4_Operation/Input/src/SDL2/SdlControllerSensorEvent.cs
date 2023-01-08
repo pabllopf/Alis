@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlControllerSensorEvent.cs
+//  File:SdlControllerSensorEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -31,47 +31,45 @@ using System.Runtime.InteropServices;
 
 namespace Alis.Core.Input.SDL2
 {
+    /// <summary>
+    ///     The sdl controllersensorevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlControllerSensorEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public uint type;
 
         /// <summary>
-        ///     The sdl controllersensorevent
+        ///     The timestamp
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlControllerSensorEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
+        public uint timestamp;
 
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public int which; /* SDL_JoystickID */
 
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public int which; /* SDL_JoystickID */
+        /// <summary>
+        ///     The sensor
+        /// </summary>
+        public int sensor;
 
-            /// <summary>
-            ///     The sensor
-            /// </summary>
-            public int sensor;
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float data1;
 
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public float data1;
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float data2;
 
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public float data2;
-
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public float data3;
-        
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public float data3;
     }
 }

@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlAudioCallback.cs
+//  File:SdlAudioCallback.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -33,13 +33,12 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl audiocallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlAudioCallback(
-            IntPtr userdata,
-            IntPtr stream,
-            int len
-        );
-    
+    ///     The sdl audiocallback
+    /// </summary>
+    [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+    public delegate void SdlAudioCallback(
+        IntPtr userdata,
+        IntPtr stream,
+        int len
+    );
 }

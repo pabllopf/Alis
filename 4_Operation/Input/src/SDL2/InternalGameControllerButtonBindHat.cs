@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.InternalGameControllerButtonBindHat.cs
+//  File:InternalGameControllerButtonBindHat.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -32,20 +32,19 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The internal gamecontrollerbuttonbind hat
+    ///     The internal gamecontrollerbuttonbind hat
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct InternalGameControllerButtonBindHat
+    {
+        /// <summary>
+        ///     The hat
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalGameControllerButtonBindHat
-        {
-            /// <summary>
-            ///     The hat
-            /// </summary>
-            public int hat;
+        public int hat;
 
-            /// <summary>
-            ///     The hat mask
-            /// </summary>
-            public int hat_mask;
-        }
-    
+        /// <summary>
+        ///     The hat mask
+        /// </summary>
+        public int hat_mask;
+    }
 }

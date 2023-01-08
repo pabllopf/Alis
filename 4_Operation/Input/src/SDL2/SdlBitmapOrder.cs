@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Sdl.SdlBitmapOrder.cs
+//  File:SdlBitmapOrder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,24 +30,23 @@
 namespace Alis.Core.Input.SDL2
 {
     /// <summary>
-        ///     The sdl bitmaporder enum
+    ///     The sdl bitmaporder enum
+    /// </summary>
+    public enum SdlBitmapOrder
+    {
+        /// <summary>
+        ///     The sdl bitmaporder none sdl bitmaporder
         /// </summary>
-        public enum SdlBitmapOrder
-        {
-            /// <summary>
-            ///     The sdl bitmaporder none sdl bitmaporder
-            /// </summary>
-            SdlBitmaporderNone,
+        SdlBitmaporderNone,
 
-            /// <summary>
-            ///     The sdl bitmaporder 4321 sdl bitmaporder
-            /// </summary>
-            SdlBitmaporder4321,
+        /// <summary>
+        ///     The sdl bitmaporder 4321 sdl bitmaporder
+        /// </summary>
+        SdlBitmaporder4321,
 
-            /// <summary>
-            ///     The sdl bitmaporder 1234 sdl bitmaporder
-            /// </summary>
-            SdlBitmaporder1234
-        }
-    
+        /// <summary>
+        ///     The sdl bitmaporder 1234 sdl bitmaporder
+        /// </summary>
+        SdlBitmaporder1234
+    }
 }
