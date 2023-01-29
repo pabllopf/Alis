@@ -283,7 +283,7 @@ namespace Alis.Core.Physic.Dynamics
                 edge = edge.Next;
             }
 
-            World world = Body.World;
+            World world = World.Current;
 
             if (world == null)
             {

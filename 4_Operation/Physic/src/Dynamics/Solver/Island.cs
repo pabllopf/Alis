@@ -170,11 +170,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     Solves the profile
         /// </summary>
-        /// <param name="profile">The profile</param>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
         /// <param name="allowSleep">The allow sleep</param>
-        public void Solve(ref Profile profile, ref TimeStep step, ref Vector2F gravity, bool allowSleep)
+        public void Solve(TimeStep step, Vector2F gravity, bool allowSleep)
         {
             float h = step.DeltaTime;
 
@@ -242,7 +241,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 }
             }
 
-            profile.SolveInit = timer.ElapsedTicks;
+            //profile.SolveInit = timer.ElapsedTicks;
 
             // Solve velocity constraints.
             timer.Restart();
@@ -266,7 +265,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
             // Store impulses for warm starting.
             contactSolver.StoreImpulses();
-            profile.SolveVelocity = timer.ElapsedTicks;
+            //profile.SolveVelocity = timer.ElapsedTicks;
 
             // Integrate positions
             for (int i = 0; i < BodyCount; ++i)
@@ -342,7 +341,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 body.SynchronizeTransform();
             }
 
-            profile.SolvePosition = timer.ElapsedTicks;
+            //profile.SolvePosition = timer.ElapsedTicks;
 
             Report(contactSolver.VelocityConstraints);
 

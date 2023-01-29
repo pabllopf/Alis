@@ -2949,11 +2949,6 @@
                 The type
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Body.World">
-            <summary>
-                The world
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Body.Xf">
             <summary>
                 The xf
@@ -6963,11 +6958,10 @@
                 Clears this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Physic.Dynamics.Profile@,Alis.Core.Aspect.Time.TimeStep@,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Aspect.Time.TimeStep,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
             <summary>
                 Solves the profile
             </summary>
-            <param name="profile">The profile</param>
             <param name="step">The step</param>
             <param name="gravity">The gravity</param>
             <param name="allowSleep">The allow sleep</param>
@@ -7106,87 +7100,6 @@
             <summary>
                 The velocity bias
             </summary>
-        </member>
-        <member name="T:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController">
-            <summary>
-                The buoyancy controller class
-            </summary>
-            <seealso cref="T:Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller" />
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.gravity">
-            <summary>
-                The gravity
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.uniqueBodies">
-            <summary>
-                The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.AngularDragCoefficient">
-            <summary>
-                Controls the rotational drag that the fluid exerts on the bodies within it. Use higher values will simulate
-                thick fluid, like honey, lower values to simulate water-like fluids.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.container">
-            <summary>
-                The container
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.Density">
-            <summary>Density of the fluid. Higher values will make things more buoyant, lower values will cause things to sink.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.LinearDragCoefficient">
-            <summary>
-                Controls the linear drag that the fluid exerts on the bodies within it.  Use higher values will simulate thick
-                fluid, like honey, lower values to simulate water-like fluids.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.normal">
-            <summary>
-                The normal
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.offset">
-            <summary>
-                The offset
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.Velocity">
-            <summary>Acts like waterflow. Defaults to 0,0.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.#ctor(Alis.Core.Physic.Shared.Aabb,System.Single,System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController" /> class.</summary>
-            <param name="container">Only bodies inside this AABB will be influenced by the controller</param>
-            <param name="density">Density of the fluid</param>
-            <param name="linearDragCoefficient">Linear drag coefficient of the fluid</param>
-            <param name="rotationalDragCoefficient">Rotational drag coefficient of the fluid</param>
-            <param name="gravity">The direction gravity acts. Buoyancy force will act in opposite direction of gravity.</param>
-        </member>
-        <member name="P:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.Container">
-            <summary>
-                Gets or sets the value of the container
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.Update(System.Single)">
-            <summary>
-                Updates the dt
-            </summary>
-            <param name="dt">The dt</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.Controllers.Buoyancy.BuoyancyController.ComputeSubmergedArea(Alis.Core.Physic.Collision.Shapes.Shape,Alis.Core.Aspect.Math.Vector.Vector2F@,System.Single,Alis.Core.Aspect.Math.Transform@,Alis.Core.Aspect.Math.Vector.Vector2F@)">
-            <summary>
-                Computes the submerged area using the specified shape
-            </summary>
-            <param name="shape">The shape</param>
-            <param name="normal">The normal</param>
-            <param name="offset">The offset</param>
-            <param name="xf">The xf</param>
-            <param name="sc">The sc</param>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-            <exception cref="T:System.NotSupportedException"></exception>
-            <returns>The float</returns>
         </member>
         <member name="T:Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller">
             <summary>
@@ -7674,111 +7587,6 @@
             </summary>
             <param name="dt">The dt</param>
             <param name="strength">The strength</param>
-        </member>
-        <member name="T:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RayDataComparer">
-            <summary>This is a comparer used for detecting angle difference between rays</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RayDataComparer.System#Collections#Generic#IComparer{System#Single}#Compare(System.Single,System.Single)">
-            <summary>
-                Compares the a
-            </summary>
-            <param name="a">The </param>
-            <param name="b">The </param>
-            <returns>The int</returns>
-        </member>
-        <member name="T:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion">
-            <summary>
-                Creates a realistic explosion based on raycasting. Objects in the open will be affected, but objects behind
-                static bodies will not. A body that is half in cover, half in the open will get half the force applied to the end
-                in
-                the open.
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.data">
-            <summary>
-                The shape data
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.rdc">
-            <summary>
-                The rdc
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Angle">
-            <summary>Max angle between rays (used when segment is large). Defaults to 15 degrees</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.EdgeRatio">
-            <summary>Ratio of arc length to angle from edges to first ray tested. Defaults to 1/40.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.IgnoreWhenInsideShape">
-            <summary>Ignore Explosion if it happens inside a shape. Default value is false.</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.MinRays">
-            <summary>How many rays per shape/body/segment. Defaults to 5</summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Shapes">
-            <summary>Maximum number of shapes involved in the explosion. Defaults to 100</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.#ctor(Alis.Core.Physic.World)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion" /> class
-            </summary>
-            <param name="world">The world</param>
-        </member>
-        <member name="F:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.EdgeOffset">
-            <summary>Two degrees: maximum angle from edges to first ray tested</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.RealExplosion.Activate(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single)">
-            <summary>Activate the explosion at the specified position.</summary>
-            <param name="pos">The position where the explosion happens </param>
-            <param name="radius">The explosion radius </param>
-            <param name="maxForce">
-                The explosion force at the explosion point (then is inversely proportional to the square of the
-                distance)
-            </param>
-            <returns>A list of bodies and the amount of force that was applied to them.</returns>
-        </member>
-        <member name="T:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion">
-            <summary>Creates a simple explosion that ignores other bodies hiding behind static bodies.</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.#ctor(Alis.Core.Physic.World)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion" /> class
-            </summary>
-            <param name="world">The world</param>
-        </member>
-        <member name="P:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.Power">
-            <summary>
-                This is the power used in the power function. A value of 1 means the force applied to bodies in the explosion
-                is linear. A value of 2 means it is exponential.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.Activate(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single)">
-            <summary>Activate the explosion at the specified position.</summary>
-            <param name="pos">The position (center) of the explosion.</param>
-            <param name="radius">The radius of the explosion.</param>
-            <param name="force">The force applied</param>
-            <param name="maxForce">A maximum amount of force. When force gets over this value, it will be equal to maxForce</param>
-            <returns>A list of bodies and the amount of force that was applied to them.</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.ApplyImpulse(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single,System.Single,System.Collections.Generic.HashSet{Alis.Core.Physic.Dynamics.Body})">
-            <summary>
-                Applies the impulse using the specified pos
-            </summary>
-            <param name="pos">The pos</param>
-            <param name="radius">The radius</param>
-            <param name="force">The force</param>
-            <param name="maxForce">The max force</param>
-            <param name="overlappingBodies">The overlapping bodies</param>
-            <returns>The forces</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Extensions.PhysicsLogics.Explosion.SimpleExplosion.GetPercent(System.Single,System.Single)">
-            <summary>
-                Gets the percent using the specified distance
-            </summary>
-            <param name="distance">The distance</param>
-            <param name="radius">The radius</param>
-            <returns>The float</returns>
         </member>
         <member name="T:Alis.Core.Physic.Extensions.PhysicsLogics.PhysicsLogicBase.FilterData">
             <summary>Contains filter data that can determine whether an object should be processed or not.</summary>
@@ -9177,29 +8985,6 @@
             <param name="a">The </param>
             <param name="b">The </param>
             <returns>The int</returns>
-        </member>
-        <member name="T:Alis.Core.Physic.Tools.Cutting.Simple.CuttingTools">
-            <summary>
-                The cutting tools class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.Simple.CuttingTools.SplitShape(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Shared.Vertices@,Alis.Core.Physic.Shared.Vertices@)">
-            <summary>Split a fixture into 2 vertices collections using the given entry and exit-point.</summary>
-            <param name="fixture">The Fixture to split</param>
-            <param name="entryPoint">The entry point - The start point</param>
-            <param name="exitPoint">The exit point - The end point</param>
-            <param name="first">The first collection of vertexes</param>
-            <param name="second">The second collection of vertexes</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Tools.Cutting.Simple.CuttingTools.Cut(Alis.Core.Physic.World,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                This is a high-level function to cuts fixtures inside the given world, using the start and end points. Note:
-                We don't support cutting when the start or end is inside a shape.
-            </summary>
-            <param name="world">The world.</param>
-            <param name="start">The startpoint.</param>
-            <param name="end">The endpoint.</param>
-            <returns>True if the cut was performed.</returns>
         </member>
         <member name="T:Alis.Core.Physic.Tools.Cutting.Simple.PolyClipError">
             <summary>
@@ -13572,416 +13357,136 @@
         <member name="T:Alis.Core.Physic.World">
             <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.gravity">
-            <summary>
-                The gravity
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.profile">
-            <summary>
-                The profile
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.InvDt0">
             <summary>
-                The inv dt
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.World"/> class
+            </summary>
+            <param name="gravity">The gravity</param>
+        </member>
+        <member name="P:Alis.Core.Physic.World.Gravity">
+            <summary>
+            Gets the value of the gravity
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.CastCallback">
+        <member name="P:Alis.Core.Physic.World.Bodies">
             <summary>
-                The ray cast callback
+            Gets or sets the value of the bodys
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.Stack1">
+        <member name="F:Alis.Core.Physic.World.BreakableBodies">
             <summary>
-                The body
+            The breakable body
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.StepComplete">
+        <member name="P:Alis.Core.Physic.World.Joints">
             <summary>
-                The step complete
+            Gets or sets the value of the joints
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.BodyAddList">
+        <member name="P:Alis.Core.Physic.World.Controllers">
             <summary>
-                The body
+            Gets the value of the controllers
             </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.BodyRemoveList">
-            <summary>
-                The body
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.JointAddList">
-            <summary>
-                The joint
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.JointRemoveList">
-            <summary>
-                The joint
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.RayCastCallbackWrapper">
-            <summary>
-                The ray cast callback wrapper
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.TimerPool">
-            <summary>
-                The restart
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.TestPointAllFixtures">
-            <summary>
-                The test point all fixtures
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.ContactPool">
-            <summary>
-                The contact
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.Island">
-            <summary>
-                The island
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.NewContacts">
-            <summary>
-                The new contacts
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.ContinuousPhysicsEnabled">
-            <summary>
-                Gets or sets the value of the continuous physics enabled
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.SleepingAllowed">
-            <summary>
-                Gets or sets the value of the sleeping allowed
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.WarmStartingEnabled">
-            <summary>
-                Gets or sets the value of the warm starting enabled
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.EnableDiagnostics">
-            <summary>
-                Enabling diagnostics causes the engine to gather timing information. You can see how much time it took to
-                solve the contacts, solve CCD and update the controllers.
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.Profile">
-            <summary>
-                Gets the value of the profile
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.ControllerList">
-            <summary>
-                Gets the value of the controller list
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.BreakableBodyList">
-            <summary>
-                Gets the value of the breakable body list
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.ProxyCount">
-            <summary>Get the number of broad-phase proxies.</summary>
-            <value>The proxy count.</value>
         </member>
         <member name="P:Alis.Core.Physic.World.ContactManager">
-            <summary>Get the contact manager for testing.</summary>
-            <value>The contact manager.</value>
-        </member>
-        <member name="P:Alis.Core.Physic.World.BodyList">
-            <summary>Get the world body list.</summary>
-            <value>The head of the world body list.</value>
-        </member>
-        <member name="P:Alis.Core.Physic.World.JointList">
-            <summary>Get the world joint list.</summary>
-            <value>The joint list.</value>
-        </member>
-        <member name="P:Alis.Core.Physic.World.Enabled">
-            <summary>If false, the whole simulation stops. It still processes added and removed geometries.</summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.IsLocked">
             <summary>
-                Gets or sets the value of the is locked
+            Gets or sets the value of the contact manager
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.RayCastCallback(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+        <member name="P:Alis.Core.Physic.World.TimeStep">
             <summary>
-                Rays the cast callback using the specified arg 1
+            Gets or sets the value of the step
             </summary>
-            <param name="arg1">The arg</param>
-            <param name="arg2">The arg</param>
-            <param name="arg3">The arg</param>
-            <param name="arg4">The arg</param>
-            <returns>The float</returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.OnBodyAdded(Alis.Core.Physic.Dynamics.Body)">
+        <member name="F:Alis.Core.Physic.World.Island">
             <summary>
-                Ons the body added using the specified body
+            The island
             </summary>
-            <param name="body">The body</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.OnBodyRemoved(Alis.Core.Physic.Dynamics.Body)">
+        <member name="F:Alis.Core.Physic.World.ContactPool">
             <summary>
-                Ons the body removed using the specified body
+            The contact
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.BodiesStack">
+            <summary>
+            Gets or sets the value of the bodies stack
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.World.Current">
+            <summary>
+            The current
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)">
+            <summary>
+            Adds the body using the specified body
             </summary>
             <param name="body">The body</param>
         </member>
-        <member name="M:Alis.Core.Physic.World.OnJointRemoved(Alis.Core.Physic.Dynamics.Joints.Joint)">
+        <member name="M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
-                Ons the joint removed using the specified joint
+            Removes the body using the specified body
             </summary>
-            <param name="joint">The joint</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.OnJointAdded(Alis.Core.Physic.Dynamics.Joints.Joint)">
-            <summary>
-                Ons the joint added using the specified joint
-            </summary>
-            <param name="joint">The joint</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.OnFixtureRemoved(Alis.Core.Physic.Dynamics.Fixture)">
-            <summary>
-                Ons the fixture removed using the specified fixture
-            </summary>
-            <param name="fixture">The fixture</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.OnFixtureAdded(Alis.Core.Physic.Dynamics.Fixture)">
-            <summary>
-                Ons the fixture added using the specified fixture
-            </summary>
-            <param name="fixture">The fixture</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.OnControllerRemoved(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
-            <summary>
-                Ons the controller removed using the specified controller
-            </summary>
-            <param name="controller">The controller</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.OnControllerAdded(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
-            <summary>
-                Ons the controller added using the specified controller
-            </summary>
-            <param name="controller">The controller</param>
-        </member>
-        <member name="E:Alis.Core.Physic.World.BodyAdded">
-            <summary>Fires whenever a body has been added</summary>
-        </member>
-        <member name="E:Alis.Core.Physic.World.BodyRemoved">
-            <summary>Fires whenever a body has been removed</summary>
-        </member>
-        <member name="E:Alis.Core.Physic.World.ControllerAdded">
-            <summary>Fires every time a controller is added to the World.</summary>
-        </member>
-        <member name="E:Alis.Core.Physic.World.ControllerRemoved">
-            <summary>Fires every time a controller is removed form the World.</summary>
-        </member>
-        <member name="E:Alis.Core.Physic.World.FixtureAdded">
-            <summary>Fires whenever a fixture has been added</summary>
-        </member>
-        <member name="E:Alis.Core.Physic.World.FixtureRemoved">
-            <summary>Fires whenever a fixture has been removed</summary>
-        </member>
-        <member name="E:Alis.Core.Physic.World.JointAdded">
-            <summary>Fires whenever a joint has been added</summary>
-        </member>
-        <member name="E:Alis.Core.Physic.World.JointRemoved">
-            <summary>Fires whenever a joint has been removed</summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body,System.Boolean)">
-            <summary>Add a rigid body.</summary>
-            <param name="body">The body.</param>
-            <param name="delayUntilNextStep">If true, the body is added at next time step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body,System.Boolean)">
-            <summary>Destroy a rigid body. Warning: This automatically deletes all associated shapes and joints.</summary>
-            <param name="body">The body.</param>
-            <param name="delayUntilNextStep">If true, the body is removed at next time step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint,System.Boolean)">
-            <summary>Create a joint to constrain bodies together. This may cause the connected bodies to cease colliding.</summary>
-            <param name="joint">The joint.</param>
-            <param name="delayUntilNextStep">If true, the joint is added at next time step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint,System.Boolean)">
-            <summary>Destroy a joint. This may cause the connected bodies to begin colliding.</summary>
-            <param name="joint">The joint.</param>
-            <param name="delayUntilNextStep">If true, the joint is removed at next time step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.AddController(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
-            <summary>
-                Adds the controller using the specified controller
-            </summary>
-            <param name="controller">The controller</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RemoveController(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
-            <summary>
-                Removes the controller using the specified controller
-            </summary>
-            <param name="controller">The controller</param>
+            <param name="body">The body</param>
         </member>
         <member name="M:Alis.Core.Physic.World.AddBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)">
             <summary>
-                Adds the breakable body using the specified breakable body
+            Adds the breakable body using the specified breakable body
             </summary>
             <param name="breakableBody">The breakable body</param>
         </member>
         <member name="M:Alis.Core.Physic.World.RemoveBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)">
             <summary>
-                Removes the breakable body using the specified breakable body
+            Removes the breakable body using the specified breakable body
             </summary>
             <param name="breakableBody">The breakable body</param>
         </member>
+        <member name="M:Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
+            <summary>
+            Adds the joint using the specified joint
+            </summary>
+            <param name="joint">The joint</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
+            <summary>
+            Removes the joint using the specified joint
+            </summary>
+            <param name="joint">The joint</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.AddController(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
+            <summary>
+            Adds the controller using the specified controller
+            </summary>
+            <param name="controller">The controller</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.RemoveController(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
+            <summary>
+            Removes the controller using the specified controller
+            </summary>
+            <param name="controller">The controller</param>
+        </member>
         <member name="M:Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)">
-            <summary>Take a time step. This performs collision detection, integration, and constraint solution.</summary>
-            <param name="dt">The amount of time to simulate, this should not vary.</param>
-            <param name="velocityIterations">
-                The number of velocity iterations to do in this step. Lesser means more performance
-                but more inaccurate velocity calculations.
-            </param>
-            <param name="positionIterations">
-                The number of position iterations to do in this step. Lesser means more performance,
-                but also more inaccurate position calculations.
-            </param>
+            <summary>
+            Steps the dt
+            </summary>
+            <param name="dt">The dt</param>
+            <param name="velocityIterations">The velocity iterations</param>
+            <param name="positionIterations">The position iterations</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.Solve">
+            <summary>
+            Solves the step
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.SolveToi">
+            <summary>
+            Solves the toi
+            </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.ClearForces">
             <summary>
-                Call this after you are done with time steps to clear the forces. You normally call this after each call to
-                Step, unless you are performing sub-steps. By default, forces will be automatically cleared, so you don't need to
-                call
-                this function.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.QueryAabb(Alis.Core.Physic.Shared.Aabb@)">
-            <summary>
-                Query the world for all fixtures that potentially overlap the provided AABB. Use the overload with a callback
-                for filtering and better performance.
-            </summary>
-            <param name="aabb">The AABB query box.</param>
-            <returns>A list of fixtures that were in the affected area.</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RayCast(System.Func{Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,System.Single,System.Single},Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Ray-cast the world for all fixtures in the path of the ray. Your callback controls whether you get the closest
-                point, any point, or n-points. The ray-cast ignores shapes that contain the starting point. Inside the callback:
-                return
-                -1: ignore this fixture and continue return 0: terminate the ray cast return fraction: clip the ray to this point
-                return 1: don't clip the ray and continue
-            </summary>
-            <param name="callback">A user implemented callback class.</param>
-            <param name="point1">The ray starting point.</param>
-            <param name="point2">The ray ending point.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RayCast(Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Rays the cast using the specified point 1
-            </summary>
-            <param name="point1">The point</param>
-            <param name="point2">The point</param>
-            <returns>The affected</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.TestPointAll(Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>Returns a list of fixtures that are at the specified point.</summary>
-            <param name="point">The point.</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.ShiftOrigin(Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>
-                Shift the world origin.
-                Useful for large worlds.
-                The body shift formula is: position -= newOrigin
-            </summary>
-            <param name="newOrigin">
-                the newOrigin the new origin with respect to the old origin
-                Warning: Calling this method mid-update might cause a crash.
-            </param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.Clear">
-            <summary>
-                Clears this instance
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RaiseNewFixtureEvent(Alis.Core.Physic.Dynamics.Fixture)">
-            <summary>
-                Raises the new fixture event using the specified fixture
-            </summary>
-            <param name="fixture">The fixture</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.ProcessRemovedJoints">
-            <summary>
-                Processes the removed joints
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.ProcessAddedJoints">
-            <summary>
-                Processes the added joints
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.ProcessAddedBodies">
-            <summary>
-                Processes the added bodies
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.ProcessRemovedBodies">
-            <summary>
-                Processes the removed bodies
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RayCastCallbackWrapperMethod(Alis.Core.Physic.Collision.RayCast.RayCastInput,System.Int32)">
-            <summary>
-                Rays the cast callback wrapper using the specified ray cast input
-            </summary>
-            <param name="rayCastInput">The ray cast input</param>
-            <param name="proxyId">The proxy id</param>
-            <returns>The float</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.World.Solve(Alis.Core.Aspect.Time.TimeStep@)">
-            <summary>
-                Solves the step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.SolveToi(Alis.Core.Aspect.Time.TimeStep@)">
-            <summary>
-                Solves the toi using the specified step
-            </summary>
-            <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.AddJointInternal(Alis.Core.Physic.Dynamics.Joints.Joint)">
-            <summary>
-                Adds the joint internal using the specified joint
-            </summary>
-            <param name="joint">The joint</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RemoveJointInternal(Alis.Core.Physic.Dynamics.Joints.Joint)">
-            <summary>
-                Removes the joint internal using the specified joint
-            </summary>
-            <param name="joint">The joint</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.AddBodyInternal(Alis.Core.Physic.Dynamics.Body)">
-            <summary>
-                Adds the body internal using the specified body
-            </summary>
-            <param name="body">The body</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.RemoveBodyInternal(Alis.Core.Physic.Dynamics.Body)">
-            <summary>
-                Removes the body internal using the specified body
-            </summary>
-            <param name="body">The body</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.ProcessChanges">
-            <summary>
-                Processes the changes
+            Clears the forces
             </summary>
         </member>
         <member name="T:Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve">

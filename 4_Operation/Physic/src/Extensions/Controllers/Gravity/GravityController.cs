@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
         {
             Vector2F f = Vector2F.Zero;
 
-            foreach (Body worldBody in World.BodyList)
+            foreach (Body worldBody in World.Bodies)
             {
                 if (!IsActiveOn(worldBody))
                 {

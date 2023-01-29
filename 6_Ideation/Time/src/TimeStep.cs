@@ -30,7 +30,7 @@
 namespace Alis.Core.Aspect.Time
 {
     /// <summary>This is an internal class.</summary>
-    public struct TimeStep
+    public class TimeStep
     {
         /// <summary>Time step (Delta time)</summary>
         public float DeltaTime;
@@ -40,6 +40,11 @@ namespace Alis.Core.Aspect.Time
 
         /// <summary>Inverse time step (0 if dt == 0).</summary>
         public float InvertedDeltaTime;
+        
+        /// <summary>
+        /// The inverted delta time
+        /// </summary>
+        public float InvertedDeltaTimeZero;
 
         /// <summary>
         ///     The position iterations

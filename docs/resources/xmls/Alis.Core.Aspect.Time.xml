@@ -16,6 +16,11 @@
         <member name="F:Alis.Core.Aspect.Time.TimeStep.InvertedDeltaTime">
             <summary>Inverse time step (0 if dt == 0).</summary>
         </member>
+        <member name="F:Alis.Core.Aspect.Time.TimeStep.InvertedDeltaTimeZero">
+            <summary>
+            The inverted delta time
+            </summary>
+        </member>
         <member name="F:Alis.Core.Aspect.Time.TimeStep.PositionIterations">
             <summary>
                 The position iterations

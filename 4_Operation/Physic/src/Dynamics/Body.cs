@@ -87,12 +87,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     The type
         /// </summary>
         internal BodyType Type;
-
-        /// <summary>
-        ///     The world
-        /// </summary>
-        internal World World;
-
+        
         /// <summary>
         ///     The xf
         /// </summary>
@@ -247,10 +242,6 @@ namespace Alis.Core.Physic.Dynamics
             set
             {
                 //Debug.Assert(!World.IsLocked);
-                if (World.IsLocked)
-                {
-                    return;
-                }
 
                 if (Type == value)
                 {
@@ -282,13 +273,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     ContactEdge ce0 = ce;
                     ce = ce.Next;
-                    World.ContactManager.Remove(ce0.Contact);
+                    World.Current.ContactManager.Remove(ce0.Contact);
                 }
 
                 ContactList = null;
 
                 // Touch the proxies so that new contacts will be created (when appropriate)
-                IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
                 foreach (Fixture fixture in FixtureList)
                 {
                     int proxyCount = fixture.ProxyCount;
@@ -447,21 +438,19 @@ namespace Alis.Core.Physic.Dynamics
                     Flags |= BodyFlags.Enabled;
 
                     // Create all proxies.
-                    IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
                         FixtureList[i].CreateProxies(broadPhase, ref Xf);
                     }
-
-                    // Contacts are created the next time step.
-                    World.NewContacts = true;
+                    
                 }
                 else
                 {
                     Flags &= ~BodyFlags.Enabled;
 
                     // Destroy all proxies.
-                    IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
 
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
@@ -474,7 +463,7 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         ContactEdge ce0 = ce;
                         ce = ce.Next;
-                        World.ContactManager.Remove(ce0.Contact);
+                        World.Current.ContactManager.Remove(ce0.Contact);
                     }
 
                     ContactList = null;
@@ -792,14 +781,10 @@ namespace Alis.Core.Physic.Dynamics
         public Fixture AddFixture(Fixture fixture)
         {
             //Debug.Assert(!World.IsLocked);
-            if (World.IsLocked)
-            {
-                return null;
-            }
-
+            
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
                 fixture.CreateProxies(broadPhase, ref Xf);
             }
 
@@ -812,11 +797,9 @@ namespace Alis.Core.Physic.Dynamics
             {
                 ResetMassData();
             }
-
-            World.NewContacts = true;
-
+            
             //Velcro: Added this code to raise the FixtureAdded event
-            World.RaiseNewFixtureEvent(fixture);
+            //World.RaiseNewFixtureEvent(fixture);
 
             return fixture;
         }
@@ -826,7 +809,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     the mass of the body. Contacts are not created until the next time step. Warning: This function is locked during
         ///     callbacks.
         /// </summary>
-        public Fixture AddFixture(Shape shape) => World.IsLocked ? null : AddFixture(new Fixture(shape, new Filter()));
+        public Fixture AddFixture(Shape shape) => AddFixture(new Fixture(shape, new Filter()));
 
         /// <summary>
         ///     Destroy a fixture. This removes the fixture from the broad-phase and destroys all contacts associated with
@@ -840,10 +823,6 @@ namespace Alis.Core.Physic.Dynamics
         public void RemoveFixture(Fixture fixture)
         {
             //Debug.Assert(!World.IsLocked);
-            if (World.IsLocked)
-            {
-                return;
-            }
 
             if (fixture == null)
             {
@@ -872,13 +851,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // This destroys the contact and removes it from
                     // this body's contact list.
-                    World.ContactManager.Remove(c);
+                    World.Current.ContactManager.Remove(c);
                 }
             }
 
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
 
@@ -909,10 +888,6 @@ namespace Alis.Core.Physic.Dynamics
         public void SetTransform(ref Vector2F position, float rotation)
         {
             //Debug.Assert(!World.IsLocked);
-            if (World.IsLocked)
-            {
-                return;
-            }
 
             Xf.Rotation.Set(rotation);
             Xf.Position = position;
@@ -923,14 +898,11 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C;
             Sweep.A0 = rotation;
 
-            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
             for (int i = 0; i < FixtureList.Count; i++)
             {
                 FixtureList[i].Synchronize(broadPhase, ref Xf, ref Xf);
             }
-
-            // Check for new contacts the next step
-            World.NewContacts = true;
         }
 
         /// <summary>Get the body transform for the body's origin.</summary>
@@ -1247,7 +1219,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary> Calling this will remove the body from its associated world.</summary>
         public void RemoveFromWorld()
         {
-            World.RemoveBody(this);
+            World.Current.RemoveBody(this);
         }
 
         /// <summary>
@@ -1255,7 +1227,7 @@ namespace Alis.Core.Physic.Dynamics
         /// </summary>
         internal void SynchronizeFixtures()
         {
-            IBroadPhase broadPhase = World.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
 
             if ((Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
             {
