@@ -13572,44 +13572,9 @@
         <member name="T:Alis.Core.Physic.World">
             <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.bodyAddList">
-            <summary>
-                The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.bodyRemoveList">
-            <summary>
-                The body
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.jointAddList">
-            <summary>
-                The joint
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.jointRemoveList">
-            <summary>
-                The joint
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.rayCastCallbackWrapper">
-            <summary>
-                The ray cast callback wrapper
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.timerPool">
-            <summary>
-                The restart
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.World.gravity">
             <summary>
                 The gravity
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.invDt0">
-            <summary>
-                The inv dt
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.World.profile">
@@ -13617,23 +13582,58 @@
                 The profile
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.rayCastCallback">
+        <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
+            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class.</summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.InvDt0">
+            <summary>
+                The inv dt
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.CastCallback">
             <summary>
                 The ray cast callback
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.stack">
+        <member name="P:Alis.Core.Physic.World.Stack1">
             <summary>
                 The body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.stepComplete">
+        <member name="P:Alis.Core.Physic.World.StepComplete">
             <summary>
                 The step complete
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
-            <summary>Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class.</summary>
+        <member name="P:Alis.Core.Physic.World.BodyAddList">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.BodyRemoveList">
+            <summary>
+                The body
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.JointAddList">
+            <summary>
+                The joint
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.JointRemoveList">
+            <summary>
+                The joint
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.RayCastCallbackWrapper">
+            <summary>
+                The ray cast callback wrapper
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.World.TimerPool">
+            <summary>
+                The restart
+            </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.TestPointAllFixtures">
             <summary>
@@ -13935,7 +13935,7 @@
                 Processes the removed bodies
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.RayCastCallbackWrapper(Alis.Core.Physic.Collision.RayCast.RayCastInput,System.Int32)">
+        <member name="M:Alis.Core.Physic.World.RayCastCallbackWrapperMethod(Alis.Core.Physic.Collision.RayCast.RayCastInput,System.Int32)">
             <summary>
                 Rays the cast callback wrapper using the specified ray cast input
             </summary>
@@ -13954,14 +13954,6 @@
                 Solves the toi using the specified step
             </summary>
             <param name="step">The step</param>
-        </member>
-        <member name="M:Alis.Core.Physic.World.TestPointCallback(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Aspect.Math.Vector.Vector2F@)">
-            <summary>
-                Describes whether this instance test point callback
-            </summary>
-            <param name="fixture">The fixture</param>
-            <param name="point">The point</param>
-            <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Physic.World.AddJointInternal(Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>

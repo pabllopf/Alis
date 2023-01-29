@@ -53,80 +53,30 @@ namespace Alis.Core.Physic
     public class World
     {
         /// <summary>
-        ///     The body
-        /// </summary>
-        private readonly HashSet<Body> bodyAddList;
-
-        /// <summary>
-        ///     The body
-        /// </summary>
-        private readonly HashSet<Body> bodyRemoveList;
-
-        /// <summary>
-        ///     The joint
-        /// </summary>
-        private readonly HashSet<Joint> jointAddList;
-
-        /// <summary>
-        ///     The joint
-        /// </summary>
-        private readonly HashSet<Joint> jointRemoveList;
-
-        /// <summary>
-        ///     The ray cast callback wrapper
-        /// </summary>
-        private readonly Func<RayCastInput, int, float> rayCastCallbackWrapper;
-
-        /// <summary>
-        ///     The restart
-        /// </summary>
-        private readonly Pool<Stopwatch> timerPool;
-
-        /// <summary>
         ///     The gravity
         /// </summary>
         private Vector2F gravity;
-
-        /// <summary>
-        ///     The inv dt
-        /// </summary>
-        private float invDt0;
 
         /// <summary>
         ///     The profile
         /// </summary>
         private Profile profile;
 
-        /// <summary>
-        ///     The ray cast callback
-        /// </summary>
-        private Func<Fixture, Vector2F, Vector2F, float, float> rayCastCallback;
-
-        /// <summary>
-        ///     The body
-        /// </summary>
-        private Body[] stack;
-
-        /// <summary>
-        ///     The step complete
-        /// </summary>
-        private bool stepComplete = true;
-
         /// <summary>Initializes a new instance of the <see cref="World" /> class.</summary>
         public World(Vector2F gravity)
         {
-            bodyAddList = new HashSet<Body>();
-            bodyRemoveList = new HashSet<Body>();
-            jointAddList = new HashSet<Joint>();
-            jointRemoveList = new HashSet<Joint>();
+            BodyAddList = new HashSet<Body>();
+            BodyRemoveList = new HashSet<Body>();
+            JointAddList = new HashSet<Joint>();
+            JointRemoveList = new HashSet<Joint>();
 
             ContactPool = new Queue<Contact>(256);
 
             TestPointAllFixtures = new List<Fixture>();
 
-            stack = new Body[64];
+            Stack1 = new Body[64];
 
-            timerPool = new Pool<Stopwatch>(Stopwatch.StartNew, sw => sw.Restart(), 5, false);
+            TimerPool = new Pool<Stopwatch>(Stopwatch.StartNew, sw => sw.Restart(), 5, false);
 
             this.gravity = gravity;
             Enabled = true;
@@ -141,8 +91,8 @@ namespace Alis.Core.Physic
             JointList = new List<Joint>(32);
 
 
-            rayCastCallback = RayCastCallback;
-            rayCastCallbackWrapper = RayCastCallbackWrapper;
+            CastCallback = RayCastCallback;
+            RayCastCallbackWrapper = RayCastCallbackWrapperMethod;
 
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
 
@@ -157,7 +107,59 @@ namespace Alis.Core.Physic
 
             JointAdded += OnJointAdded;
             JointRemoved += OnJointRemoved;
+            
+            
         }
+
+        /// <summary>
+        ///     The inv dt
+        /// </summary>
+        public float InvDt0 { get; private set; }
+
+        /// <summary>
+        ///     The ray cast callback
+        /// </summary>
+        public Func<Fixture, Vector2F, Vector2F, float, float> CastCallback { get; private set; }
+
+        /// <summary>
+        ///     The body
+        /// </summary>
+        public Body[] Stack1 { get; private set; }
+
+        /// <summary>
+        ///     The step complete
+        /// </summary>
+        public bool StepComplete { get; private set; } = true;
+
+        /// <summary>
+        ///     The body
+        /// </summary>
+        public HashSet<Body> BodyAddList { get; }
+
+        /// <summary>
+        ///     The body
+        /// </summary>
+        public HashSet<Body> BodyRemoveList { get; }
+
+        /// <summary>
+        ///     The joint
+        /// </summary>
+        public HashSet<Joint> JointAddList { get; }
+
+        /// <summary>
+        ///     The joint
+        /// </summary>
+        public HashSet<Joint> JointRemoveList { get; }
+
+        /// <summary>
+        ///     The ray cast callback wrapper
+        /// </summary>
+        public Func<RayCastInput, int, float> RayCastCallbackWrapper { get; }
+
+        /// <summary>
+        ///     The restart
+        /// </summary>
+        public Pool<Stopwatch> TimerPool { get; }
 
         /// <summary>
         ///     The test point all fixtures
@@ -249,54 +251,59 @@ namespace Alis.Core.Physic
         /// <returns>The float</returns>
         private static float RayCastCallback(Fixture arg1, Vector2F arg2, Vector2F arg3, float arg4) => 0.0f;
 
+        #region OnEvent
+
         /// <summary>
         ///     Ons the body added using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        private static void OnBodyAdded(Body body) => Logger.Event("World.OnBodyAdded()");
+        private static void OnBodyAdded(Body body) => Logger.Event();
 
         /// <summary>
         ///     Ons the body removed using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        private static void OnBodyRemoved(Body body) => Logger.Event("World.OnBodyRemoved()");
+        private static void OnBodyRemoved(Body body) => Logger.Event();
 
         /// <summary>
         ///     Ons the joint removed using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        private static void OnJointRemoved(Joint joint) => Logger.Event("Wolds.OnFixtureRemoved()");
+        private static void OnJointRemoved(Joint joint) => Logger.Event();
 
         /// <summary>
         ///     Ons the joint added using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        private static void OnJointAdded(Joint joint) => Logger.Event("Wolds.OnFixtureRemoved()");
+        private static void OnJointAdded(Joint joint) => Logger.Event();
 
         /// <summary>
         ///     Ons the fixture removed using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        private static void OnFixtureRemoved(Fixture fixture) => Logger.Event("Wolds.OnFixtureRemoved()");
+        private static void OnFixtureRemoved(Fixture fixture) => Logger.Event();
 
         /// <summary>
         ///     Ons the fixture added using the specified fixture
         /// </summary>
         /// <param name="fixture">The fixture</param>
-        private static void OnFixtureAdded(Fixture fixture) => Logger.Event("Wolds.OnFixtureAdded()");
+        private static void OnFixtureAdded(Fixture fixture) => Logger.Event();
 
         /// <summary>
         ///     Ons the controller removed using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
-        private static void OnControllerRemoved(Controller controller) =>
-            Logger.Event("Wolds.OnControllerRemoved()");
+        private static void OnControllerRemoved(Controller controller) => Logger.Event();
 
         /// <summary>
         ///     Ons the controller added using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
-        private static void OnControllerAdded(Controller controller) => Logger.Event("Wolds.OnControllerAdded()");
+        private static void OnControllerAdded(Controller controller) => Logger.Event();
+
+        #endregion
+        
+        #region Event
 
         /// <summary>Fires whenever a body has been added</summary>
         public event BodyHandler BodyAdded;
@@ -321,7 +328,9 @@ namespace Alis.Core.Physic
 
         /// <summary>Fires whenever a joint has been removed</summary>
         public event JointHandler JointRemoved;
-
+        
+        #endregion
+        
         /// <summary>Add a rigid body.</summary>
         /// <param name="body">The body.</param>
         /// <param name="delayUntilNextStep">If true, the body is added at next time step</param>
@@ -329,12 +338,12 @@ namespace Alis.Core.Physic
         {
             if (delayUntilNextStep)
             {
-                if (bodyAddList.Contains(body))
+                if (BodyAddList.Contains(body))
                 {
                     throw new ArgumentException("The body is already added to the world.");
                 }
 
-                bodyAddList.Add(body);
+                BodyAddList.Add(body);
             }
             else
             {
@@ -354,12 +363,12 @@ namespace Alis.Core.Physic
         {
             if (delayUntilNextStep)
             {
-                if (bodyRemoveList.Contains(body))
+                if (BodyRemoveList.Contains(body))
                 {
                     throw new ArgumentException("The body is already removed from the world.");
                 }
 
-                bodyRemoveList.Add(body);
+                BodyRemoveList.Add(body);
             }
             else
             {
@@ -379,12 +388,12 @@ namespace Alis.Core.Physic
         {
             if (delayUntilNextStep)
             {
-                if (jointAddList.Contains(joint))
+                if (JointAddList.Contains(joint))
                 {
                     throw new ArgumentException("The joint is already added to the world.");
                 }
 
-                jointAddList.Add(joint);
+                JointAddList.Add(joint);
             }
             else
             {
@@ -404,13 +413,13 @@ namespace Alis.Core.Physic
         {
             if (delayUntilNextStep)
             {
-                if (jointRemoveList.Contains(joint))
+                if (JointRemoveList.Contains(joint))
                 {
                     throw new InvalidOperationException(
                         "The joint is already marked for removal. You are removing the joint more than once.");
                 }
 
-                jointRemoveList.Add(joint);
+                JointRemoveList.Add(joint);
             }
             else
             {
@@ -494,25 +503,25 @@ namespace Alis.Core.Physic
             }
 
             //Velcro: We reuse the timers to avoid generating garbage
-            Stopwatch stepTimer = timerPool.GetFromPool(true);
+            Stopwatch stepTimer = TimerPool.GetFromPool(true);
 
             {
                 //Velcro: We support add/removal of objects live in the engine.
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
                 ProcessChanges();
-                profile.AddRemoveTime = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.AddRemoveTime = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
 
             // If new fixtures were added, we need to find the new contacts.
             if (NewContacts)
             {
                 //Velcro: We measure how much time is spent on finding new contacts
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
                 ContactManager.FindNewContacts();
                 NewContacts = false;
-                profile.NewContactsTime = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.NewContactsTime = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
 
             IsLocked = true;
@@ -531,49 +540,49 @@ namespace Alis.Core.Physic
                 step.InvertedDeltaTime = 0.0f;
             }
 
-            step.DeltaTimeRatio = invDt0 * dt;
+            step.DeltaTimeRatio = InvDt0 * dt;
 
             {
                 //Velcro: We have the concept of controllers. We update them here
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
                 for (int i = 0; i < ControllerList.Count; i++)
                 {
                     ControllerList[i].Update(dt);
                 }
 
-                profile.ControllersUpdateTime = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.ControllersUpdateTime = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
 
             // Update contacts. This is where some contacts are destroyed.
             {
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
                 ContactManager.Collide();
-                profile.Collide = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.Collide = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
 
             // Integrate velocities, solve velocity constraints, and integrate positions.
-            if (stepComplete && (step.DeltaTime > 0.0f))
+            if (StepComplete && (step.DeltaTime > 0.0f))
             {
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
                 Solve(ref step);
-                profile.Solve = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.Solve = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
 
             // Handle TOI events.
             if (ContinuousPhysicsEnabled && (step.DeltaTime > 0.0f))
             {
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
                 SolveToi(ref step);
-                profile.SolveToi = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.SolveToi = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
 
             if (step.DeltaTime > 0.0f)
             {
-                invDt0 = step.InvertedDeltaTime;
+                InvDt0 = step.InvertedDeltaTime;
             }
 
             if (Settings.AutoClearForces)
@@ -583,21 +592,21 @@ namespace Alis.Core.Physic
 
             {
                 //Velcro: We support breakable bodies. We update them here.
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
 
                 for (int i = 0; i < BreakableBodyList.Count; i++)
                 {
                     BreakableBodyList[i].Update();
                 }
 
-                profile.BreakableBodies = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.BreakableBodies = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
 
             IsLocked = false;
 
-            profile.Step = stepTimer.ElapsedTicks;
-            timerPool.ReturnToPool(stepTimer);
+            Profile.Step = stepTimer.ElapsedTicks;
+            TimerPool.ReturnToPool(stepTimer);
         }
 
         /// <summary>
@@ -643,9 +652,9 @@ namespace Alis.Core.Physic
                 Point2 = point2
             };
 
-            rayCastCallback = callback;
-            ContactManager.BroadPhase.RayCast(rayCastCallbackWrapper, ref input);
-            rayCastCallback = null;
+            CastCallback = callback;
+            ContactManager.BroadPhase.RayCast(RayCastCallbackWrapper, ref input);
+            CastCallback = null;
         }
 
         /// <summary>
@@ -764,17 +773,17 @@ namespace Alis.Core.Physic
         /// </summary>
         private void ProcessRemovedJoints()
         {
-            if (jointRemoveList.Count == 0)
+            if (JointRemoveList.Count == 0)
             {
                 return;
             }
 
-            foreach (Joint joint in jointRemoveList)
+            foreach (Joint joint in JointRemoveList)
             {
                 RemoveJointInternal(joint);
             }
 
-            jointRemoveList.Clear();
+            JointRemoveList.Clear();
         }
 
         /// <summary>
@@ -782,17 +791,17 @@ namespace Alis.Core.Physic
         /// </summary>
         private void ProcessAddedJoints()
         {
-            if (jointAddList.Count == 0)
+            if (JointAddList.Count == 0)
             {
                 return;
             }
 
-            foreach (Joint joint in jointAddList)
+            foreach (Joint joint in JointAddList)
             {
                 AddJointInternal(joint);
             }
 
-            jointAddList.Clear();
+            JointAddList.Clear();
         }
 
         /// <summary>
@@ -800,14 +809,14 @@ namespace Alis.Core.Physic
         /// </summary>
         private void ProcessAddedBodies()
         {
-            if (bodyAddList.Count > 0)
+            if (BodyAddList.Count > 0)
             {
-                foreach (Body body in bodyAddList)
+                foreach (Body body in BodyAddList)
                 {
                     AddBodyInternal(body);
                 }
 
-                bodyAddList.Clear();
+                BodyAddList.Clear();
             }
         }
 
@@ -816,17 +825,16 @@ namespace Alis.Core.Physic
         /// </summary>
         private void ProcessRemovedBodies()
         {
-            if (bodyRemoveList.Count > 0)
+            if (BodyRemoveList.Count > 0)
             {
-                foreach (Body body in bodyRemoveList)
+                foreach (Body body in BodyRemoveList)
                 {
                     RemoveBodyInternal(body);
                 }
 
-                bodyRemoveList.Clear();
+                BodyRemoveList.Clear();
             }
         }
-
 
         /// <summary>
         ///     Rays the cast callback wrapper using the specified ray cast input
@@ -834,7 +842,7 @@ namespace Alis.Core.Physic
         /// <param name="rayCastInput">The ray cast input</param>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The float</returns>
-        private float RayCastCallbackWrapper(RayCastInput rayCastInput, int proxyId)
+        private float RayCastCallbackWrapperMethod(RayCastInput rayCastInput, int proxyId)
         {
             FixtureProxy proxy = ContactManager.BroadPhase.GetProxy(proxyId);
             Fixture fixture = proxy.Fixture;
@@ -845,7 +853,7 @@ namespace Alis.Core.Physic
             {
                 float fraction = output.Fraction;
                 Vector2F point = (1.0f - fraction) * rayCastInput.Point1 + fraction * rayCastInput.Point2;
-                return rayCastCallback(fixture, point, output.Normal, fraction);
+                return CastCallback(fixture, point, output.Normal, fraction);
             }
 
             return rayCastInput.Fraction;
@@ -857,9 +865,9 @@ namespace Alis.Core.Physic
         /// <param name="step">The step</param>
         private void Solve(ref TimeStep step)
         {
-            profile.SolveInit = 0;
-            profile.SolveVelocity = 0;
-            profile.SolvePosition = 0;
+            Profile.SolveInit = 0;
+            Profile.SolveVelocity = 0;
+            Profile.SolvePosition = 0;
 
             // Size the island for the worst case.
             Island.Reset(BodyList.Count,
@@ -885,9 +893,9 @@ namespace Alis.Core.Physic
 
             // Build and simulate all awake islands.
             int stackSize = BodyList.Count;
-            if (stackSize > stack.Length)
+            if (stackSize > Stack1.Length)
             {
-                stack = new Body[Math.Max(stack.Length * 2, stackSize)];
+                Stack1 = new Body[Math.Max(Stack1.Length * 2, stackSize)];
             }
 
             for (int index = BodyList.Count - 1; index >= 0; index--)
@@ -912,7 +920,7 @@ namespace Alis.Core.Physic
                 // Reset island and stack.
                 Island.Clear();
                 int stackCount = 0;
-                stack[stackCount++] = seed;
+                Stack1[stackCount++] = seed;
 
                 seed.Flags |= BodyFlags.IslandFlag;
 
@@ -920,7 +928,7 @@ namespace Alis.Core.Physic
                 while (stackCount > 0)
                 {
                     // Grab the next body off the stack and add it to the island.
-                    Body b = stack[--stackCount];
+                    Body b = Stack1[--stackCount];
                     Debug.Assert(b.Enabled);
                     Island.Add(b);
 
@@ -971,7 +979,7 @@ namespace Alis.Core.Physic
                         }
 
                         Debug.Assert(stackCount < stackSize);
-                        stack[stackCount++] = other;
+                        Stack1[stackCount++] = other;
                         other.Flags |= BodyFlags.IslandFlag;
                     }
 
@@ -1004,7 +1012,7 @@ namespace Alis.Core.Physic
                             }
 
                             Debug.Assert(stackCount < stackSize);
-                            stack[stackCount++] = other;
+                            Stack1[stackCount++] = other;
 
                             other.Flags |= BodyFlags.IslandFlag;
                         }
@@ -1018,9 +1026,9 @@ namespace Alis.Core.Physic
 
                 Profile profile = new Profile();
                 Island.Solve(ref profile, ref step, ref gravity, SleepingAllowed);
-                this.profile.SolveInit += profile.SolveInit;
-                this.profile.SolveVelocity += profile.SolveVelocity;
-                this.profile.SolvePosition += profile.SolvePosition;
+                Profile.SolveInit += profile.SolveInit;
+                Profile.SolveVelocity += profile.SolveVelocity;
+                Profile.SolvePosition += profile.SolvePosition;
 
                 // Post solve cleanup.
                 for (int i = 0; i < Island.BodyCount; ++i)
@@ -1035,7 +1043,7 @@ namespace Alis.Core.Physic
             }
 
             {
-                Stopwatch timer = timerPool.GetFromPool(true);
+                Stopwatch timer = TimerPool.GetFromPool(true);
 
                 // Synchronize fixtures, check for out of range bodies.
                 foreach (Body b in BodyList)
@@ -1057,8 +1065,8 @@ namespace Alis.Core.Physic
 
                 // Look for new contacts.
                 ContactManager.FindNewContacts();
-                profile.Broadphase = timer.ElapsedTicks;
-                timerPool.ReturnToPool(timer);
+                Profile.Broadphase = timer.ElapsedTicks;
+                TimerPool.ReturnToPool(timer);
             }
         }
 
@@ -1070,7 +1078,7 @@ namespace Alis.Core.Physic
         {
             Island.Reset(2 * Settings.ToiContacts, Settings.ToiContacts, 0, ContactManager);
 
-            if (stepComplete)
+            if (StepComplete)
             {
                 for (int i = 0; i < BodyList.Count; i++)
                 {
@@ -1207,7 +1215,7 @@ namespace Alis.Core.Physic
                 if (minContact == null || 1.0f - 10.0f * Constant.Epsilon < minAlpha)
                 {
                     // No more TOI events. Done!
-                    stepComplete = true;
+                    StepComplete = true;
                     break;
                 }
 
@@ -1379,15 +1387,6 @@ namespace Alis.Core.Physic
                 ContactManager.FindNewContacts();
             }
         }
-
-
-        /// <summary>
-        ///     Describes whether this instance test point callback
-        /// </summary>
-        /// <param name="fixture">The fixture</param>
-        /// <param name="point">The point</param>
-        /// <returns>The bool</returns>
-        private bool TestPointCallback(Fixture fixture, ref Vector2F point) => !fixture.TestPoint(ref point);
 
         /// <summary>
         ///     Adds the joint internal using the specified joint

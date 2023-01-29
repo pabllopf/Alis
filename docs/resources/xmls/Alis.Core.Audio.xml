@@ -597,6 +597,76 @@
                 Clears the temp files
             </summary>
         </member>
+        <member name="T:Alis.Core.Audio.Properties.NativeAudio">
+            <summary>
+            The native audio class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.Properties.NativeAudio.resourceMan">
+            <summary>
+            The resource man
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.Properties.NativeAudio.resourceCulture">
+            <summary>
+            The resource culture
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Properties.NativeAudio.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.Properties.NativeAudio"/> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.ResourceManager">
+            <summary>
+            Gets the value of the resource manager
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.Culture">
+            <summary>
+            Gets or sets the value of the culture
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.debian_arm64_csfml_audio">
+            <summary>
+            Gets the value of the debian arm64 csfml audio
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.debian_x64_csfml_audio">
+            <summary>
+            Gets the value of the debian x64 csfml audio
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.osx_arm64_csfml_audio">
+            <summary>
+            Gets the value of the osx arm64 csfml audio
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.osx_x64_csfml_audio">
+            <summary>
+            Gets the value of the osx x64 csfml audio
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.win_x64_csfml_audio">
+            <summary>
+            Gets the value of the win x64 csfml audio
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.win_x64_openal32">
+            <summary>
+            Gets the value of the win x64 openal32
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.win_x86_csfml_audio">
+            <summary>
+            Gets the value of the win x86 csfml audio
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Audio.Properties.NativeAudio.win_x86_openal32">
+            <summary>
+            Gets the value of the win x86 openal32
+            </summary>
+        </member>
         <member name="T:Alis.Core.Audio.SFML.Listener">
             <summary>
                 The audio listener is the point in the scene
