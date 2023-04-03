@@ -1,66 +1,21 @@
-# Code of Conduct
+# Código de conducta de proyecto Alis
 
-## Our Pledge
+## Introducción
 
-In the interest of fostering an open and welcoming environment, we as
-contributors and maintainers pledge to making participation in our project and
-our community a harassment-free experience for everyone, regardless of age, body
-size, disability, ethnicity, sex characteristics, gender identity and expression,
-level of experience, education, socio-economic status, nationality, personal
-appearance, race, religion, or sexual identity and orientation.
+El proyecto "Alis" se compromete a crear un ambiente seguro, respetuoso e inclusivo para todas las personas que participan en él, independientemente de su género, orientación sexual, discapacidad, edad, raza, etnia, religión u otras características personales. Creemos que todas las personas merecen respeto y consideración, y nos comprometemos a fomentar un ambiente en el que todas las voces sean valoradas y escuchadas.
 
-## Our Standards
+Este código de conducta se aplica a todas las personas involucradas en el proyecto, incluyendo miembros del equipo, colaboradores, patrocinadores, usuarios y cualquier otra persona que interactúe con el proyecto. Esperamos que todas las personas involucradas en el proyecto se comprometan a cumplir con este código de conducta y a trabajar juntas para crear un ambiente seguro y respetuoso para todos.
 
-Examples of behavior that contributes to creating a positive environment
-include:
+## Expectativas de comportamiento
 
-* Using welcoming and inclusive language
-* Being respectful of differing viewpoints and experiences
-* Gracefully accepting constructive criticism
-* Focusing on what is best for the community
-* Showing empathy towards other community members
+El proyecto "Alis" se basa en la colaboración y el respeto mutuo. Por lo tanto, se espera que todas las personas involucradas en el proyecto se comporten de manera adecuada y respetuosa en todo momento. Algunas expectativas específicas incluyen:
 
-Examples of unacceptable behavior by participants include:
+1. Tratar a todas las personas con respeto y consideración, independientemente de su género, orientación sexual, discapacidad, edad, raza, etnia, religión u otras características personales. Todas las personas merecen ser tratadas con dignidad y respeto, y nos comprometemos a fomentar un ambiente en el que todas las personas se sientan valoradas.
 
-* The use of sexualized language or imagery and unwelcome sexual attention or
-  advances
-* Trolling, insulting/derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or electronic
-  address, without explicit permission
-* Other conduct which could reasonably be considered inappropriate in a
-  professional setting
+2. No hacer comentarios ofensivos o discriminatorios en ningún momento. Las palabras pueden tener un gran impacto, y nos comprometemos a fomentar un ambiente en el que todas las personas se sientan seguras y respetadas. No toleraremos ningún comentario ofensivo o discriminatorio, y tomaremos medidas para abordar cualquier comportamiento inapropiado.
 
-## Our Responsibilities
+3. Respetar los límites personales de los demás, incluyendo su privacidad y espacio personal. Todas las personas tienen derecho a su privacidad y espacio personal, y nos comprometemos a fomentar un ambiente en el que todas las personas se sientan seguras y cómodas. No toleraremos ningún comportamiento que viole los límites personales de los demás.
 
-Project maintainers are responsible for clarifying the standards of acceptable
-behavior and are expected to take appropriate and fair corrective action in
-response to any instances of unacceptable behavior.
+4. Escuchar y considerar las perspectivas y opiniones de los demás, incluso si difieren de las propias. La diversidad de perspectivas y opiniones es una de las cosas que hace que los proyectos sean exitosos, y nos comprometemos a fomentar un ambiente en el que todas las voces sean valoradas y escuchadas. Nos esforzaremos por ser abiertos y receptivos a las ideas de los demás y por trabajar juntos para lograr nuestros objetivos.
 
-Project maintainers have the right and responsibility to remove, edit, or
-reject comments, commits, code, wiki edits, issues, and other contributions
-that are not aligned to this Code of Conduct, or to ban temporarily or
-permanently any contributor for other behaviors that they deem inappropriate,
-threatening, offensive, or harmful.
-
-## Scope
-
-This Code of Conduct applies both within project spaces and in public spaces
-when an individual is representing the project or its community. Examples of
-representing a project or community include using an official project e-mail
-address, posting via an official social media account, or acting as an appointed
-representative at an online or offline event. Representation of a project may be
-further defined and clarified by project maintainers.
-
-## Enforcement
-
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported by contacting the project team. All
-complaints will be reviewed and investigated and will result in a response that
-is deemed necessary and appropriate to the circumstances. The project team is
-obligated to maintain confidentiality with regard to the reporter of an incident.
-Further details of specific enforcement policies may be posted separately.
-
-Project maintainers who do not follow or enforce the Code of Conduct in good
-faith may face temporary or permanent repercussions as determined by other
-members of the project's leadership.
+5. No tolerar el acoso, la intimidación, la discriminación o cualquier otra forma de comportamiento abusivo hacia cualquier persona involucrada en el proyecto. El acoso, la intimidación, la discriminación y cualquier otra forma de comportamiento abusivo son inaceptables y no serán tolerados en el proyecto "Alis". Nos comprometemos a tomar medidas para abordar cualquier comportamiento
