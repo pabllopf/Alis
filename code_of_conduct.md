@@ -24,13 +24,8 @@ Todos los participantes deben mostrar respeto y consideración hacia los demás 
 
 Si un participante siente que ha sido objeto de acoso, discriminación, intimidación, abuso, violencia o cualquier otro comportamiento inapropiado, debe informarlo de inmediato a los moderadores del proyecto. Todos los informes serán tratados de manera confidencial y se investigarán de manera oportuna.
 
-Los moderadores del proyecto se comprometen a escuchar todas las denuncias y a
+Los moderadores del proyecto se comprometen a escuchar todas las denuncias y a tomar medidas apropiadas si se determina que se ha producido un comportamiento inaceptable. Esto puede incluir la expulsión temporal o permanente del participante infractor del proyecto.
 
-Person: 
-- continua mostrando la respuesta completa donde lo dejaste
-
-ChatGPT: 
-- tomar medidas apropiadas si se determina que se ha producido un comportamiento inaceptable. Esto puede incluir la expulsión temporal o permanente del participante infractor del proyecto.
 ## Responsabilidad
 
 Todos los participantes del proyecto son responsables de seguir este código de conducta y de reportar cualquier comportamiento inapropiado. Los moderadores del proyecto tienen la responsabilidad de abordar y resolver cualquier denuncia de manera oportuna y justa.
