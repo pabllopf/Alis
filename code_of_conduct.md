@@ -34,3 +34,42 @@ En el proyecto "Alis", nos comprometemos a:
 4. Respetar la privacidad y confidencialidad de todas las personas involucradas en el proyecto. Nos comprometemos a proteger la privacidad y confidencialidad de todas las personas involucradas en el proyecto, incluyendo su información personal y cualquier información confidencial relacionada con el proyecto.
 
 5. No tolerar ningún comportamiento inapropiado. Nos comprometemos a tomar medidas para abordar cualquier comportamiento inapropiado, incluyendo el acoso, la intimidación o cualquier otra forma de comportamiento
+
+...
+
+## Comportamiento esperado
+
+Las siguientes son algunas de las formas en que se espera que las personas involucradas en el proyecto "Alis" se comporten:
+
+1. Tratar a todas las personas con respeto y dignidad, independientemente de su género, orientación sexual, raza, origen étnico, religión, discapacidad u otra característica personal.
+
+2. Comunicarse de manera clara y respetuosa. Nos esforzamos por comunicarnos de manera clara y efectiva, y por asegurarnos de que todas las personas involucradas en el proyecto comprendan lo que se está comunicando.
+
+3. Valorar la diversidad. Nos comprometemos a valorar y apreciar la diversidad de todas las personas involucradas en el proyecto, incluyendo sus antecedentes, perspectivas y opiniones.
+
+4. Respetar los límites personales. Nos comprometemos a respetar los límites personales de todas las personas involucradas en el proyecto y a no presionar a nadie para que haga algo que no se sienta cómodo haciendo.
+
+5. Trabajar juntos para resolver conflictos. Si surge algún conflicto entre las personas involucradas en el proyecto, nos comprometemos a trabajar juntos para resolverlo de manera pacífica y respetuosa.
+
+## Comportamiento inaceptable
+
+Las siguientes son algunas de las formas de comportamiento que se consideran inaceptables en el proyecto "Alis":
+
+1. Acoso o intimidación, en cualquier forma. Esto incluye, entre otras cosas, comentarios ofensivos o discriminatorios, amenazas, insultos, comportamiento físico agresivo y acoso en línea.
+
+2. Discriminación. No toleramos la discriminación de ninguna persona involucrada en el proyecto "Alis", ya sea en función de su género, orientación sexual, raza, origen étnico, religión, discapacidad u otra característica personal.
+
+3. Comportamiento inapropiado en línea. No se tolera ningún comportamiento inapropiado en línea, incluyendo el acoso, la intimidación, el lenguaje ofensivo, el acoso cibernético y la divulgación de información personal sin permiso.
+
+4. Daño físico o emocional. No se tolerará ningún comportamiento que cause daño físico o emocional a cualquier persona involucrada en el proyecto "Alis".
+
+## Reporte de infracciones
+
+Si observa o experimenta alguna violación de este código de conducta, comuníquese de inmediato con el equipo de moderación del proyecto "Alis" a través de la siguiente dirección de correo electrónico: [contacto@alisproject.com](mailto:contacto@alisproject.com).
+
+Todas las denuncias se tomarán en serio y se investigarán de manera justa y adecuada. Si se determina que se ha producido una infracción, se tomarán las medidas adecuadas, que pueden incluir la expulsión del proyecto "Alis".
+
+## Conclusión
+
+En el proyecto "Alis", nos esforzamos por crear un ambiente seguro, respetuoso e inclusivo para todas las personas involucradas en el proyecto. Este código de conducta se creó para ayudar a guiar nuestras interacciones y decisiones en el proyecto, y esperamos que todas las personas invol
+
