@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets =
-[
-    [ "ConstrainedPointSet", "df/d2b/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_constrained_point_set.html", "df/d2b/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_constrained_point_set" ],
-    [ "PointSet", "d8/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_point_set.html", "d8/d81/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_sets_1_1_point_set" ]
-];

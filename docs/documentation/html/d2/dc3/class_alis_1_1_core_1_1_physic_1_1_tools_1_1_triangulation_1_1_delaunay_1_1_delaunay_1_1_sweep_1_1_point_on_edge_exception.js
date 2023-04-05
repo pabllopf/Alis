@@ -1,4 +1,0 @@
-var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_point_on_edge_exception =
-[
-    [ "PointOnEdgeException", "d2/dc3/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_point_on_edge_exception.html#ab1ee0432259b4caa713b0cab39a710b2", null ]
-];

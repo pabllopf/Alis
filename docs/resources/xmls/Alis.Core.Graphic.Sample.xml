@@ -1,3 +1,54 @@
+<<<<<<< HEAD
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Graphic.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Graphic.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.WIDTH">
+            <summary>
+                The width
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.HEIGHT">
+            <summary>
+                The height
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.TITLE">
+            <summary>
+                The title
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._red">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._green">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._blue">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>
+=======
 <?xml version="1.0"?>
 <doc>
     <assembly>
@@ -47,3 +98,4 @@
         </member>
     </members>
 </doc>
+>>>>>>> develop

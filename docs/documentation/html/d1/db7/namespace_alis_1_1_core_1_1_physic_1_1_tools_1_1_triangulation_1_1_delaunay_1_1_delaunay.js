@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay =
-[
-    [ "Sweep", "d2/dfa/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep.html", "d2/dfa/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep" ],
-    [ "DelaunayTriangle", "d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle.html", "d2/d26/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_delaunay_triangle" ]
-];

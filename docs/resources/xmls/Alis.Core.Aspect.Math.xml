@@ -1,3 +1,437 @@
+<<<<<<< HEAD
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Math</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Math.Constant">
+            <summary>
+                The math constants class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Pi">
+            <summary>
+                The pi
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.TwoPi">
+            <summary>
+                The pi
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.MaxFloat">
+            <summary>
+                The max value
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Epsilon">
+            <summary>
+                The epsilon
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Euler">
+            <summary>
+                The euler
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.E">
+            <summary>Represents the mathematical constant e(2.71828175).</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Log10E">
+            <summary>Represents the log base ten of e(0.4342945).</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Log2E">
+            <summary>Represents the log base two of e(1.442695).</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.PiOver2">
+            <summary>Represents the value of pi divided by two(1.57079637).</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.PiOver4">
+            <summary>Represents the value of pi divided by four(0.7853982).</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Constant.Tau">
+            <summary>Represents the value of pi times two(6.28318548). This is an alias of TwoPi.</summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Figures.D2.Circle">
+            <summary>
+            The circle
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Figures.D2.Rectangle">
+            <summary>
+            The rectangle
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Left">
+            <summary>Left coordinate of the rectangle</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Top">
+            <summary>Top coordinate of the rectangle</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Width">
+            <summary>Width of the rectangle</summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Height">
+            <summary>Height of the rectangle</summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Math.Figures.D2.Rectangle"/> class
+            </summary>
+            <param name="left">The left</param>
+            <param name="top">The top</param>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.#ctor(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Construct the rectangle from position and size
+            </summary>
+            <param name="position">Position of the top-left corner of the rectangle</param>
+            <param name="size">Size of the rectangle</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Contains(System.Int32,System.Int32)">
+            <summary>
+                Check if a point is inside the rectangle's area
+            </summary>
+            <param name="x">X coordinate of the point to test</param>
+            <param name="y">Y coordinate of the point to test</param>
+            <returns>True if the point is inside</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Intersects(Alis.Core.Aspect.Math.Figures.D2.Rectangle)">
+            <summary>
+                Check intersection between two rectangles
+            </summary>
+            <param name="rect"> Rectangle to test</param>
+            <returns>True if rectangles overlap</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Intersects(Alis.Core.Aspect.Math.Figures.D2.Rectangle,Alis.Core.Aspect.Math.Figures.D2.Rectangle@)">
+            <summary>
+                Check intersection between two rectangles
+            </summary>
+            <param name="rect"> Rectangle to test</param>
+            <param name="overlap">Rectangle to be filled with overlapping rect</param>
+            <returns>True if rectangles overlap</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Equals(System.Object)">
+            <summary>
+                Compare rectangle and object and checks if they are equal
+            </summary>
+            <param name="obj">Object to check</param>
+            <returns>Object and rectangle are equal</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.Equals(Alis.Core.Aspect.Math.Figures.D2.Rectangle)">
+            <summary>
+                Compare two rectangles and checks if they are equal
+            </summary>
+            <param name="other">Rectangle to check</param>
+            <returns>Rectangles are equal</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.GetHashCode">
+            <summary>
+                Provide a integer describing the object
+            </summary>
+            <returns>Integer description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.op_Equality(Alis.Core.Aspect.Math.Figures.D2.Rectangle,Alis.Core.Aspect.Math.Figures.D2.Rectangle)">
+            <summary>
+                Operator == overload ; check rect equality
+            </summary>
+            <param name="r1">First rect</param>
+            <param name="r2">Second rect</param>
+            <returns>r1 == r2</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Figures.D2.Rectangle.op_Inequality(Alis.Core.Aspect.Math.Figures.D2.Rectangle,Alis.Core.Aspect.Math.Figures.D2.Rectangle)">
+            <summary>
+                Operator != overload ; check rect inequality
+            </summary>
+            <param name="r1">First rect</param>
+            <param name="r2">Second rect</param>
+            <returns>r1 != r2</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Figures.D2.Square">
+            <summary>
+            The square
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Figures.D3.Cube">
+            <summary>
+            The cube
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Figures.D3.HyperRectangle">
+            <summary>
+            The hyper rectangle
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Figures.D3.Sphere">
+            <summary>
+            The sphere
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Matrix22">
+            <summary>
+            The matrix 22
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Matrix33">
+            <summary>
+            The matrix 33
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Matrix44">
+            <summary>
+            The matrix 44
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Vector2">
+            <summary>
+            The vector
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector2.X">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector2.Y">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.#ctor(System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Math.Vector2"/> class
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_UnaryNegation(Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Operator - overload ; returns the opposite of a vector
+            </summary>
+            <param name="v">Vector to negate</param>
+            <returns>-v</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_Subtraction(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Operator - overload ; subtracts two vectors
+            </summary>
+            <param name="v1">First vector</param>
+            <param name="v2">Second vector</param>
+            <returns>v1 - v2</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_Addition(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Operator + overload ; add two vectors
+            </summary>
+            <param name="v1">First vector</param>
+            <param name="v2">Second vector</param>
+            <returns>v1 + v2</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_Multiply(Alis.Core.Aspect.Math.Vector2,System.Single)">
+            <summary>
+                Operator * overload ; multiply a vector by a scalar value
+            </summary>
+            <param name="v">Vector</param>
+            <param name="x">Scalar value</param>
+            <returns>v * x</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_Multiply(System.Single,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Operator * overload ; multiply a scalar value by a vector
+            </summary>
+            <param name="x">Scalar value</param>
+            <param name="v">Vector</param>
+            <returns>x * v</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_Division(Alis.Core.Aspect.Math.Vector2,System.Single)">
+            <summary>
+                Operator / overload ; divide a vector by a scalar value
+            </summary>
+            <param name="v">Vector</param>
+            <param name="x">Scalar value</param>
+            <returns>v / x</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_Equality(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Operator == overload ; check vector equality
+            </summary>
+            <param name="v1">First vector</param>
+            <param name="v2">Second vector</param>
+            <returns>v1 == v2</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.op_Inequality(Alis.Core.Aspect.Math.Vector2,Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Operator != overload ; check vector inequality
+            </summary>
+            <param name="v1">First vector</param>
+            <param name="v2">Second vector</param>
+            <returns>v1 != v2</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.ToString">
+            <summary>
+                Provide a string describing the object
+            </summary>
+            <returns>String description of the object</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.Equals(System.Object)">
+            <summary>
+                Compare vector and object and checks if they are equal
+            </summary>
+            <param name="obj">Object to check</param>
+            <returns>Object and vector are equal</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.Equals(Alis.Core.Aspect.Math.Vector2)">
+            <summary>
+                Compare two vectors and checks if they are equal
+            </summary>
+            <param name="other">Vector to check</param>
+            <returns>Vectors are equal</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector2.GetHashCode">
+            <summary>
+                Provide a integer describing the object
+            </summary>
+            <returns>Integer description of the object</returns>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector2.Zero">
+            <summary>
+            Gets the value of the zero
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Vector3">
+            <summary>
+            The vector
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector3.X">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector3.Y">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Math.Vector3.Z">
+            <summary>
+            The 
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Math.Vector3"/> class
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <param name="z">The </param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_UnaryNegation(Alis.Core.Aspect.Math.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_Subtraction(Alis.Core.Aspect.Math.Vector3,Alis.Core.Aspect.Math.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_Addition(Alis.Core.Aspect.Math.Vector3,Alis.Core.Aspect.Math.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_Multiply(Alis.Core.Aspect.Math.Vector3,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_Multiply(System.Single,Alis.Core.Aspect.Math.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_Division(Alis.Core.Aspect.Math.Vector3,System.Single)">
+            <summary>
+            
+            </summary>
+            <param name="v"></param>
+            <param name="x"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_Equality(Alis.Core.Aspect.Math.Vector3,Alis.Core.Aspect.Math.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.op_Inequality(Alis.Core.Aspect.Math.Vector3,Alis.Core.Aspect.Math.Vector3)">
+            <summary>
+            
+            </summary>
+            <param name="v1"></param>
+            <param name="v2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.ToString">
+            <summary>
+            Returns the string
+            </summary>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.Equals(System.Object)">
+            <summary>
+            Describes whether this instance equals
+            </summary>
+            <param name="obj">The obj</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Math.Vector3.Equals(Alis.Core.Aspect.Math.Vector3)">
+            <summary>
+            Describes whether this instance equals
+            </summary>
+            <param name="other">The other</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Math.Vector4">
+            <summary>
+            The vector
+            </summary>
+        </member>
+    </members>
+</doc>
+=======
 <?xml version="1.0"?>
 <doc>
     <assembly>
@@ -2383,3 +2817,4 @@
         </member>
     </members>
 </doc>
+>>>>>>> develop
