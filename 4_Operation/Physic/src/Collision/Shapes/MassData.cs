@@ -5,30 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   MassData.cs
+//  File:MassData.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -46,14 +46,14 @@ namespace Alis.Core.Physic.Collision.Shapes
             Area = area;
             Inertia = inertia;
             Mass = mass;
-            Centroid = new Vector2(0.0f, 0.0f);
+            Centroid = new Vector2F(0.0f, 0.0f);
         }
 
         /// <summary>The area of the shape</summary>
         public float Area { get; set; }
 
         /// <summary>The position of the shape's centroid relative to the shape's origin.</summary>
-        public Vector2 Centroid { get; set; }
+        public Vector2F Centroid { get; set; }
 
         /// <summary>The rotational inertia of the shape about the local origin.</summary>
         public float Inertia { get; set; }
@@ -65,10 +65,10 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="left"></param>
         /// <param name="right"></param>
         public static bool operator ==(MassData left, MassData right) =>
-            Math.Abs(left.Area - right.Area) < 0.1f &&
-            Math.Abs(left.Mass - right.Mass) < 0.1f &&
-            left.Centroid == right.Centroid &&
-            Math.Abs(left.Inertia - right.Inertia) < 0.1f;
+            (Math.Abs(left.Area - right.Area) < 0.1f) &&
+            (Math.Abs(left.Mass - right.Mass) < 0.1f) &&
+            (left.Centroid == right.Centroid) &&
+            (Math.Abs(left.Inertia - right.Inertia) < 0.1f);
 
         /// <summary>The not equal operator</summary>
         /// <param name="left"></param>

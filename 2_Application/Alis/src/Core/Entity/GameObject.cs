@@ -41,7 +41,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
         /// </summary>
-        public GameObject() => components = new List<ComponentBase>();
+        public GameObject() => Components = new List<ComponentBase>();
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GameObject" /> class
@@ -50,7 +50,7 @@ namespace Alis.Core.Entity
         public GameObject(string name)
         {
             Name = name;
-            components = new List<ComponentBase>();
+            Components = new List<ComponentBase>();
             Logger.Log($"Created GameObject '{name}'");
         }
 
@@ -64,45 +64,45 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     Inits this instance
         /// </summary>
-        internal void Init() => components.ForEach(component => component.Init());
+        internal void Init() => Components.ForEach(component => component.Init());
 
         /// <summary>Awakes this instance.</summary>
-        internal void Awake() => components.ForEach(component => component.Awake());
+        internal void Awake() => Components.ForEach(component => component.Awake());
 
         /// <summary>Starts this instance.</summary>
-        internal void Start() => components.ForEach(component => component.Start());
+        internal void Start() => Components.ForEach(component => component.Start());
 
         /// <summary>Befores the update.</summary>
-        internal void BeforeUpdate() => components.ForEach(component => component.BeforeUpdate());
+        internal void BeforeUpdate() => Components.ForEach(component => component.BeforeUpdate());
 
         /// <summary>Updates this instance.</summary>
-        internal void Update() => components.ForEach(component => component.Update());
+        internal void Update() => Components.ForEach(component => component.Update());
 
         /// <summary>Afters the update.</summary>
-        internal void AfterUpdate() => components.ForEach(component => component.AfterUpdate());
+        internal void AfterUpdate() => Components.ForEach(component => component.AfterUpdate());
 
         /// <summary>Afters the update.</summary>
-        internal void FixedUpdate() => components.ForEach(component => component.FixedUpdate());
+        internal void FixedUpdate() => Components.ForEach(component => component.FixedUpdate());
 
         /// <summary>
         ///     Dispatches the events.
         /// </summary>
         /// <returns></returns>
-        internal void DispatchEvents() => components.ForEach(component => component.DispatchEvents());
-        
+        internal void DispatchEvents() => Components.ForEach(component => component.DispatchEvents());
+
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
-        internal void Draw() => components.ForEach(component => component.Draw());
+        internal void Draw() => Components.ForEach(component => component.Draw());
 
         /// <summary>Stops this instance.</summary>
-        internal void Stop() => components.ForEach(component => component.Stop());
+        internal void Stop() => Components.ForEach(component => component.Stop());
 
         /// <summary>Resets this instance.</summary>
-        internal void Reset() => components.ForEach(component => component.Reset());
+        internal void Reset() => Components.ForEach(component => component.Reset());
 
         /// <summary>Exits this instance.</summary>
-        internal void Exit() => components.ForEach(component => component.Exit());
+        internal void Exit() => Components.ForEach(component => component.Exit());
 
         /// <summary>
         ///     Creates the primitive

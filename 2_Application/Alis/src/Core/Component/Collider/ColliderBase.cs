@@ -48,7 +48,5 @@ namespace Alis.Core.Component.Collider
         public override void Update()
         {
         }
-
-        
     }
 }

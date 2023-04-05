@@ -5,31 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   SeidelDecomposer.cs
+//  File:SeidelDecomposer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Seidel
@@ -63,7 +63,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 
             List<Point> compatList = new List<Point>(vertices.Count);
 
-            foreach (Vector2 vertex in vertices)
+            foreach (Vector2F vertex in vertices)
             {
                 compatList.Add(new Point(vertex.X, vertex.Y));
             }
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
 
                 foreach (Point outTriangle in triangle)
                 {
-                    outTriangles.Add(new Vector2(outTriangle.X, outTriangle.Y));
+                    outTriangles.Add(new Vector2F(outTriangle.X, outTriangle.Y));
                 }
 
                 list.Add(outTriangles);
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
         {
             List<Point> compatList = new List<Point>(vertices.Count);
 
-            foreach (Vector2 vertex in vertices)
+            foreach (Vector2F vertex in vertices)
             {
                 compatList.Add(new Point(vertex.X, vertex.Y));
             }
@@ -111,7 +111,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Seidel
                 List<Point> points = trapezoid.GetVertices();
                 foreach (Point point in points)
                 {
-                    verts.Add(new Vector2(point.X, point.Y));
+                    verts.Add(new Vector2F(point.X, point.Y));
                 }
 
                 list.Add(verts);

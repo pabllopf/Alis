@@ -41,7 +41,7 @@ namespace Alis.Core.Entity
         /// <summary>
         ///     The components
         /// </summary>
-        public List<ComponentBase> components;
+        public List<ComponentBase> Components;
 
         /// <summary>
         ///     The transform
@@ -52,33 +52,33 @@ namespace Alis.Core.Entity
         ///     Adds the component
         /// </summary>
         /// <param name="component">The component</param>
-        public void AddComponent<T>(T component) where T : ComponentBase => components.Add(component);
+        public void AddComponent<T>(T component) where T : ComponentBase => Components.Add(component);
 
         /// <summary>
         ///     Removes the component
         /// </summary>
         /// <param name="component">The component</param>
-        public void RemoveComponent<T>(T component) where T : ComponentBase => components.Remove(component);
+        public void RemoveComponent<T>(T component) where T : ComponentBase => Components.Remove(component);
 
         /// <summary>
         ///     Describes whether this instance contain component
         /// </summary>
         /// <param name="component">The component</param>
         /// <returns>The bool</returns>
-        public bool ContainComponent(ComponentBase component) => components.Contains(component);
+        public bool ContainComponent(ComponentBase component) => Components.Contains(component);
 
         /// <summary>
         ///     Gets the component
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The</returns>
-        public T GetComponent<T>() where T : ComponentBase => (T) components.Find(i => i.GetType() == typeof(T));
+        public T GetComponent<T>() where T : ComponentBase => (T) Components.Find(i => i.GetType() == typeof(T));
 
         /// <summary>
-        /// Describes whether this instance contains
+        ///     Describes whether this instance contains
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The bool</returns>
-        public bool Contains<T>() where T : ComponentBase => components.Find(i => i.GetType() == typeof(T)) != null;
+        public bool Contains<T>() where T : ComponentBase => Components.Find(i => i.GetType() == typeof(T)) != null;
     }
 }

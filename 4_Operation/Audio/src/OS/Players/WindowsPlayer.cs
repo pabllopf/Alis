@@ -155,11 +155,11 @@ namespace Alis.Core.Audio.OS.Players
         public Task SetVolume(byte percent)
         {
             // Calculate the volume that's being set
-            int NewVolume = ushort.MaxValue / 100 * percent;
+            int newVolume = ushort.MaxValue / 100 * percent;
             // Set the same volume for both the left and the right channels
-            uint NewVolumeAllChannels = ((uint) NewVolume & 0x0000ffff) | ((uint) NewVolume << 16);
+            uint newVolumeAllChannels = ((uint) newVolume & 0x0000ffff) | ((uint) newVolume << 16);
             // Set the volume
-            waveOutSetVolume(IntPtr.Zero, NewVolumeAllChannels);
+            waveOutSetVolume(IntPtr.Zero, newVolumeAllChannels);
 
             return Task.CompletedTask;
         }

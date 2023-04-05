@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {
@@ -87,7 +87,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// cursor in desktop coordinates.
         /// <returns>Current position of the mouse</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2 GetPosition() => GetPosition(null);
+        public static Vector2I GetPosition() => GetPosition(null);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="relativeTo">Reference window</param>
         /// <returns>Current position of the mouse</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2 GetPosition(Window relativeTo)
+        public static Vector2I GetPosition(Window relativeTo)
         {
             if (relativeTo != null)
             {
@@ -116,7 +116,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// cursor in desktop coordinates.
         /// <param name="position">New position of the mouse</param>
         ////////////////////////////////////////////////////////////
-        public static void SetPosition(Vector2 position)
+        public static void SetPosition(Vector2I position)
         {
             SetPosition(position, null);
         }
@@ -130,7 +130,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="position">New position of the mouse</param>
         /// <param name="relativeTo">Reference window</param>
         ////////////////////////////////////////////////////////////
-        public static void SetPosition(Vector2 position, Window relativeTo)
+        public static void SetPosition(Vector2I position, Window relativeTo)
         {
             if (relativeTo != null)
             {
@@ -156,7 +156,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfMouse_getPosition(IntPtr relativeTo);
+        private static extern Vector2I sfMouse_getPosition(IntPtr relativeTo);
 
         /// <summary>
         ///     Sfs the mouse set position using the specified position
@@ -164,6 +164,6 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="position">The position</param>
         /// <param name="relativeTo">The relative to</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMouse_setPosition(Vector2 position, IntPtr relativeTo);
+        private static extern void sfMouse_setPosition(Vector2I position, IntPtr relativeTo);
     }
 }

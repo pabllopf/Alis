@@ -5,35 +5,33 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   FrictionJoint.cs
+//  File:FrictionJoint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Definitions.Joints;
-using Alis.Core.Physic.Dynamics.Joints.Misc;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -100,32 +98,32 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The linear impulse
         /// </summary>
-        private Vector2 linearImpulse;
+        private Vector2F linearImpulse;
 
         /// <summary>
         ///     The linear mass
         /// </summary>
-        private Mat22 linearMass;
+        private Matrix2X2F linearMass;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private Vector2 localAnchorA;
+        private Vector2F localAnchorA;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private Vector2 localAnchorB;
+        private Vector2F localAnchorB;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 localCenterA;
+        private Vector2F localCenterA;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 localCenterB;
+        private Vector2F localCenterB;
 
         /// <summary>
         ///     The max force
@@ -140,25 +138,41 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 rA;
+        private Vector2F rA;
 
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 rB;
+        private Vector2F rB;
+
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FrictionJoint" /> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public FrictionJoint(FrictionJointDef def)
-            : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="maxTorque">The max torque</param>
+        public FrictionJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = false,
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            float maxForce = 0.0f,
+            float maxTorque = 0.0f
+        )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            localAnchorA = def.LocalAnchorA;
-            localAnchorB = def.LocalAnchorB;
-
-            maxForce = def.MaxForce;
-            maxTorque = def.MaxTorque;
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+            this.maxForce = maxForce;
+            this.maxTorque = maxTorque;
         }
 
         /// <summary>Constructor for FrictionJoint.</summary>
@@ -166,7 +180,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="bodyB"></param>
         /// <param name="anchor"></param>
         /// <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
-        public FrictionJoint(Body bodyA, Body bodyB, Vector2 anchor, bool useWorldCoordinates = false)
+        public FrictionJoint(Body bodyA, Body bodyB, Vector2F anchor, bool useWorldCoordinates = false)
             : base(bodyA, bodyB, JointType.Friction)
         {
             if (useWorldCoordinates)
@@ -182,14 +196,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The local anchor point on BodyA</summary>
-        public Vector2 LocalAnchorA
+        public Vector2F LocalAnchorA
         {
             get => localAnchorA;
             set => localAnchorA = value;
         }
 
         /// <summary>The local anchor point on BodyB</summary>
-        public Vector2 LocalAnchorB
+        public Vector2F LocalAnchorB
         {
             get => localAnchorB;
             set => localAnchorB = value;
@@ -198,7 +212,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor a
         /// </summary>
-        public override Vector2 WorldAnchorA
+        public override Vector2F WorldAnchorA
         {
             get => BodyA.GetWorldPoint(localAnchorA);
             set => localAnchorA = BodyA.GetLocalPoint(value);
@@ -207,21 +221,21 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
-        public override Vector2 WorldAnchorB
+        public override Vector2F WorldAnchorB
         {
             get => BodyB.GetWorldPoint(localAnchorB);
             set => localAnchorB = BodyB.GetLocalPoint(value);
         }
 
         /// <summary>The maximum friction force in N.</summary>
-        public float MaxForce
+        public float Force
         {
             get => maxForce;
             set => maxForce = value;
         }
 
         /// <summary>The maximum friction torque in N-m.</summary>
-        public float MaxTorque
+        public float Torque
         {
             get => maxTorque;
             set => maxTorque = value;
@@ -232,7 +246,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt) => invDt * linearImpulse;
+        public override Vector2F GetReactionForce(float invDt) => invDt * linearImpulse;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
@@ -257,14 +271,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
             invIb = BodyB.InvI;
 
             float aA = data.Positions[indexA].A;
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
 
             float aB = data.Positions[indexB].A;
-            Vector2 vB = data.Velocities[indexB].V;
+            Vector2F vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             // Compute the effective mass matrix.
             rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
@@ -282,7 +296,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
-            Mat22 k = new Mat22();
+            Matrix2X2F k = new Matrix2X2F();
             k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
             k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
             k.Ey.X = k.Ex.Y;
@@ -302,7 +316,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 linearImpulse *= data.Step.DeltaTimeRatio;
                 angularImpulse *= data.Step.DeltaTimeRatio;
 
-                Vector2 p = new Vector2(linearImpulse.X, linearImpulse.Y);
+                Vector2F p = new Vector2F(linearImpulse.X, linearImpulse.Y);
                 vA -= mA * p;
                 wA -= iA * (MathUtils.Cross(rA, p) + angularImpulse);
                 vB += mB * p;
@@ -310,7 +324,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                linearImpulse = Vector2.Zero;
+                linearImpulse = Vector2F.Zero;
                 angularImpulse = 0.0f;
             }
 
@@ -326,9 +340,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
-            Vector2 vB = data.Velocities[indexB].V;
+            Vector2F vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
             float mA = invMassA, mB = invMassB;
@@ -342,7 +356,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float impulse = -angularMass * cdot;
 
                 float oldImpulse = angularImpulse;
-                float maxImpulse = h * MaxTorque;
+                float maxImpulse = h * Torque;
                 angularImpulse = MathUtils.Clamp(angularImpulse + impulse, -maxImpulse, maxImpulse);
                 impulse = angularImpulse - oldImpulse;
 
@@ -352,17 +366,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve linear friction
             {
-                Vector2 cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
+                Vector2F cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
 
-                Vector2 impulse = -MathUtils.Mul(ref linearMass, cdot);
-                Vector2 oldImpulse = linearImpulse;
+                Vector2F impulse = -MathUtils.Mul(ref linearMass, cdot);
+                Vector2F oldImpulse = linearImpulse;
                 linearImpulse += impulse;
 
-                float maxImpulse = h * MaxForce;
+                float maxImpulse = h * Force;
 
                 if (linearImpulse.LengthSquared() > maxImpulse * maxImpulse)
                 {
-                    linearImpulse = Vector2.Normalize(linearImpulse);
+                    linearImpulse = Vector2F.Normalize(linearImpulse);
                     linearImpulse *= maxImpulse;
                 }
 

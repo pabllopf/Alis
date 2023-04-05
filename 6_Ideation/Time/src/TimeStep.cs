@@ -29,35 +29,32 @@
 
 namespace Alis.Core.Aspect.Time
 {
-    /// <summary>
-    ///     The time step
-    /// </summary>
-    public struct TimeStep
+    /// <summary>This is an internal class.</summary>
+    public class TimeStep
     {
-        /// <summary>
-        ///     The dt
-        /// </summary>
-        public float Dt; // time step
+        /// <summary>Time step (Delta time)</summary>
+        public float DeltaTime;
 
-        /// <summary>
-        ///     The inv dt
-        /// </summary>
-        public float InvDt; // inverse time step (0 if dt == 0).
+        /// <summary>dt * inv_dt0</summary>
+        public float DeltaTimeRatio;
 
+        /// <summary>Inverse time step (0 if dt == 0).</summary>
+        public float InvertedDeltaTime;
+        
         /// <summary>
-        ///     The dt ratio
+        /// The inverted delta time
         /// </summary>
-        public float DtRatio; // dt * inv_dt0
-
-        /// <summary>
-        ///     The velocity iterations
-        /// </summary>
-        public int VelocityIterations;
+        public float InvertedDeltaTimeZero;
 
         /// <summary>
         ///     The position iterations
         /// </summary>
         public int PositionIterations;
+
+        /// <summary>
+        ///     The velocity iterations
+        /// </summary>
+        public int VelocityIterations;
 
         /// <summary>
         ///     The warm starting

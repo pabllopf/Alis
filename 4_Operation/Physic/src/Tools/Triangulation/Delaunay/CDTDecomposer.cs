@@ -5,31 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   CDTDecomposer.cs
+//  File:CDTDecomposer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay;
 using Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep;
@@ -56,7 +56,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
 
             Polygon.Polygon poly = new Polygon.Polygon();
 
-            foreach (Vector2 vertex in vertices)
+            foreach (Vector2F vertex in vertices)
             {
                 poly.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
             }
@@ -67,7 +67,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
                 {
                     Polygon.Polygon hole = new Polygon.Polygon();
 
-                    foreach (Vector2 vertex in holeVertices)
+                    foreach (Vector2F vertex in holeVertices)
                     {
                         hole.Points.Add(new TriangulationPoint(vertex.X, vertex.Y));
                     }
@@ -87,7 +87,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay
                 Vertices v = new Vertices();
                 foreach (TriangulationPoint p in triangle.Points)
                 {
-                    v.Add(new Vector2((float) p.X, (float) p.Y));
+                    v.Add(new Vector2F((float) p.X, (float) p.Y));
                 }
 
                 results.Add(v);

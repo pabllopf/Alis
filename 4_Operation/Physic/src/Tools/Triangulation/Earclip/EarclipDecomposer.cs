@@ -5,35 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   EarclipDecomposer.cs
+//  File:EarclipDecomposer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Earclip
 {
@@ -134,13 +133,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                     {
                         int lower = Remainder(i - 1, vNum);
                         int upper = Remainder(i + 1, vNum);
-                        Vector2 d1 = new Vector2(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
-                        Vector2 d2 = new Vector2(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
-                        Vector2 d3 = new Vector2(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
+                        Vector2F d1 = new Vector2F(xrem[upper] - xrem[i], yrem[upper] - yrem[i]);
+                        Vector2F d2 = new Vector2F(xrem[i] - xrem[lower], yrem[i] - yrem[lower]);
+                        Vector2F d3 = new Vector2F(xrem[lower] - xrem[upper], yrem[lower] - yrem[upper]);
 
-                        d1 = Vector2.Normalize(d1);
-                        d2 = Vector2.Normalize(d2);
-                        d3 = Vector2.Normalize(d3);
+                        d1 = Vector2F.Normalize(d1);
+                        d2 = Vector2F.Normalize(d2);
+                        d3 = Vector2F.Normalize(d3);
                         MathUtils.Cross(ref d1, ref d2, out float cross12);
                         cross12 = Math.Abs(cross12);
 
@@ -247,8 +246,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                 {
                     //Don't worry about pinch points where the points
                     //are actually just dupe neighbors
-                    if (Math.Abs(pin[i].X - pin[j].X) < tolerance && Math.Abs(pin[i].Y - pin[j].Y) < tolerance &&
-                        j != i + 1)
+                    if ((Math.Abs(pin[i].X - pin[j].X) < tolerance) && (Math.Abs(pin[i].Y - pin[j].Y) < tolerance) &&
+                        (j != i + 1))
                     {
                         pinchIndexA = i;
                         pinchIndexB = j;

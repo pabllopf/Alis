@@ -35,14 +35,11 @@ namespace Alis.Core.Manager.Physic
     /// <seealso cref="ManagerBase" />
     public class PhysicManagerBase : ManagerBase
     {
-       
-        
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
-            
         }
 
         /// <summary>
@@ -64,7 +61,6 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void BeforeUpdate()
         {
-            
         }
 
         /// <summary>
@@ -72,7 +68,6 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void Update()
         {
-            
         }
 
         /// <summary>
@@ -87,7 +82,6 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void FixedUpdate()
         {
-            
         }
 
         /// <summary>
@@ -98,11 +92,10 @@ namespace Alis.Core.Manager.Physic
         }
 
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public override void Draw()
         {
-            
         }
 
         /// <summary>

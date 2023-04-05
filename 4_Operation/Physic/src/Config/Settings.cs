@@ -5,31 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Settings.cs
+//  File:Settings.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
+using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Physic.Collision.Filtering;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Config
 {
@@ -39,7 +39,7 @@ namespace Alis.Core.Physic.Config
     internal static class Settings
     {
         /// <summary>The maximum number of contact points between two convex shapes. DO NOT CHANGE THIS VALUE!</summary>
-        internal const int MaxManifoldPoints = 2;
+        internal const int ManifoldPoints = 2;
 
         //Velcro: Moved EnableSubStepping from TimeStep to Settings
         /// <summary>Enable or disable sub stepping. Used for debugging.</summary>
@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Config
 
         //Velcro: Moved the maximum number of iterations to Settings
         /// <summary>Defines the maximum number of iterations made by the GJK algorithm.</summary>
-        public const int MaxGjkIterations = 20;
+        public const int GjkIterations = 20;
 
         /* Common */
 
@@ -116,33 +116,33 @@ namespace Alis.Core.Physic.Config
         ///     A small angle used as a collision and constraint tolerance. Usually it is chosen to be numerically
         ///     significant, but visually insignificant.
         /// </summary>
-        public const float AngularSlop = 2.0f / 180.0f * MathConstants.Pi;
+        public const float AngularSlop = 2.0f / 180.0f * Constant.Pi;
 
         /// <summary>Maximum number of sub-steps per contact in continuous physics simulation.</summary>
-        public const int MaxSubSteps = 8;
+        public const int SubSteps = 8;
 
         // Dynamics
 
         /// <summary>Maximum number of contacts to be handled to solve a TOI impact.</summary>
-        public const int MaxToiContacts = 32;
+        public const int ToiContacts = 32;
 
         /// <summary>The maximum linear position correction used when solving constraints. This helps to prevent overshoot.</summary>
-        public const float MaxLinearCorrection = 0.2f;
+        public const float LinearCorrection = 0.2f;
 
         /// <summary>The maximum angular position correction used when solving constraints. This helps to prevent overshoot.</summary>
-        public const float MaxAngularCorrection = 8.0f / 180.0f * MathConstants.Pi;
+        public const float AngularCorrection = 8.0f / 180.0f * Constant.Pi;
 
         /// <summary>
         ///     The maximum linear velocity of a body. This limit is very large and is used to prevent numerical problems. You
         ///     shouldn't need to adjust this.
         /// </summary>
-        public const float MaxTranslation = 2.0f;
+        public const float Translation = 2.0f;
 
         /// <summary>
         ///     The maximum angular velocity of a body. This limit is very large and is used to prevent numerical problems.
         ///     You shouldn't need to adjust this.
         /// </summary>
-        public const float MaxRotation = 0.5f * MathConstants.Pi;
+        public const float Rotation = 0.5f * Constant.Pi;
 
         /// <summary>
         ///     This scale factor controls how fast overlap is resolved. Ideally this would be 1 so that overlap is removed in
@@ -164,7 +164,7 @@ namespace Alis.Core.Physic.Config
         public const float LinearSleepTolerance = 0.01f;
 
         /// <summary>A body cannot sleep if its angular velocity is above this tolerance.</summary>
-        public const float AngularSleepTolerance = 2.0f / 180.0f * MathConstants.Pi;
+        public const float AngularSleepTolerance = 2.0f / 180.0f * Constant.Pi;
 
         /// <summary>
         ///     By default, forces are cleared automatically after each call to Step. The default behavior is modified with
@@ -177,7 +177,7 @@ namespace Alis.Core.Physic.Config
         public const bool AutoClearForces = true;
 
         /// <summary>The maximum number of vertices on a convex polygon.</summary>
-        public const int MaxPolygonVertices = 8;
+        public const int PolygonVertices = 8;
 
         /// <summary>
         ///     The radius of the polygon/edge shape skin. This should not be modified. Making this smaller means polygons

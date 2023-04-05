@@ -38,36 +38,36 @@ using System.Text.Json.Serialization;
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    /// The console controller class
+    ///     The console controller class
     /// </summary>
     public static class ConsoleController
     {
         /// <summary>
-        /// The message
-        /// </summary>
-        private static List<Message> messages = new List<Message>();
-
-        /// <summary>
-        /// The file path
-        /// </summary>
-        private static string filePath;
-
-        /// <summary>
-        /// The dir path
-        /// </summary>
-        private static string dirPath;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ConsoleController"/> class
+        ///     Initializes a new instance of the <see cref="ConsoleController" /> class
         /// </summary>
         static ConsoleController()
         {
-            dirPath = Environment.CurrentDirectory + "/log";
-            filePath = Environment.CurrentDirectory + $"/log/{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}_{DateTime.Now.Hour}-{DateTime.Now.Minute}.log";
+            _dirPath = Environment.CurrentDirectory + "/log";
+            _filePath = Environment.CurrentDirectory + $"/log/{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}_{DateTime.Now.Hour}-{DateTime.Now.Minute}.log";
         }
-        
+
         /// <summary>
-        /// Prints the to console using the specified message
+        ///     The message
+        /// </summary>
+        private static List<Message> _messages = new List<Message>();
+
+        /// <summary>
+        ///     The file path
+        /// </summary>
+        private static string _filePath;
+
+        /// <summary>
+        ///     The dir path
+        /// </summary>
+        private static string _dirPath;
+
+        /// <summary>
+        ///     Prints the to console using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         public static void Print(Message message)
@@ -83,46 +83,45 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Saves the to file using the specified message
+        ///     Saves the to file using the specified message
         /// </summary>
         /// <param name="message">The message</param>
         private static void SaveToFile(Message message)
         {
-            
             JsonSerializerOptions options = new JsonSerializerOptions
             {
                 Encoder = JavaScriptEncoder.Default,
                 WriteIndented = true
             };
-            
+
             options.Converters.Add(new DateTimeConverter());
 
-            if (!Directory.Exists(dirPath))
+            if (!Directory.Exists(_dirPath))
             {
-                Directory.CreateDirectory(dirPath);
-            }
-            
-            if (File.Exists(filePath))
-            {
-                messages = JsonSerializer.Deserialize<List<Message>>(File.ReadAllText(filePath), options);
+                Directory.CreateDirectory(_dirPath);
             }
 
-            if (messages != null)
+            if (File.Exists(_filePath))
             {
-                messages.Add(message);
-                File.WriteAllText(filePath, JsonSerializer.Serialize(messages, options));
+                _messages = JsonSerializer.Deserialize<List<Message>>(File.ReadAllText(_filePath), options);
+            }
+
+            if (_messages != null)
+            {
+                _messages.Add(message);
+                File.WriteAllText(_filePath, JsonSerializer.Serialize(_messages, options));
             }
         }
     }
-    
+
     /// <summary>
-    /// The date time converter class
+    ///     The date time converter class
     /// </summary>
-    /// <seealso cref="JsonConverter{DateTime}"/>
+    /// <seealso cref="JsonConverter{DateTime}" />
     public class DateTimeConverter : JsonConverter<DateTime>
     {
         /// <summary>
-        /// Reads the reader
+        ///     Reads the reader
         /// </summary>
         /// <param name="reader">The reader</param>
         /// <param name="typeToConvert">The type to convert</param>
@@ -135,7 +134,7 @@ namespace Alis.Core.Aspect.Logging
         }
 
         /// <summary>
-        /// Writes the writer
+        ///     Writes the writer
         /// </summary>
         /// <param name="writer">The writer</param>
         /// <param name="value">The value</param>

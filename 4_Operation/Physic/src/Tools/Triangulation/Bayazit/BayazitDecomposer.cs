@@ -5,35 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   BayazitDecomposer.cs
+//  File:BayazitDecomposer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
 {
@@ -70,8 +69,8 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         private static List<Vertices> TriangulatePolygon(Vertices vertices)
         {
             List<Vertices> list = new List<Vertices>();
-            Vector2 lowerInt = new Vector2();
-            Vector2 upperInt = new Vector2(); // intersection points
+            Vector2F lowerInt = new Vector2F();
+            Vector2F upperInt = new Vector2F(); // intersection points
             int lowerIndex = 0, upperIndex = 0;
             Vertices lowerPoly, upperPoly;
 
@@ -85,12 +84,12 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     {
                         // if line intersects with an edge
                         float d;
-                        Vector2 p;
+                        Vector2F p;
                         if (Left(At(i - 1, vertices), At(i, vertices), At(j, vertices)) &&
                             RightOn(At(i - 1, vertices), At(i, vertices), At(j - 1, vertices)))
                         {
                             // find the point of intersection
-                            p = LineUtils.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
+                            p = Line.LineIntersect(At(i - 1, vertices), At(i, vertices), At(j, vertices),
                                 At(j - 1, vertices));
 
                             if (Right(At(i + 1, vertices), At(i, vertices), p))
@@ -110,7 +109,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                         if (Left(At(i + 1, vertices), At(i, vertices), At(j + 1, vertices)) &&
                             RightOn(At(i + 1, vertices), At(i, vertices), At(j, vertices)))
                         {
-                            p = LineUtils.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices),
+                            p = Line.LineIntersect(At(i + 1, vertices), At(i, vertices), At(j, vertices),
                                 At(j + 1, vertices));
 
                             if (Left(At(i - 1, vertices), At(i, vertices), p))
@@ -129,7 +128,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     // if there are no vertices to connect to, choose a point in the middle
                     if (lowerIndex == (upperIndex + 1) % vertices.Count)
                     {
-                        Vector2 p = (lowerInt + upperInt) / 2;
+                        Vector2F p = (lowerInt + upperInt) / 2;
 
                         lowerPoly = Copy(i, upperIndex, vertices);
                         lowerPoly.Add(p);
@@ -185,7 +184,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
             }
 
             // polygon is already convex
-            if (vertices.Count > Settings.MaxPolygonVertices)
+            if (vertices.Count > Settings.PolygonVertices)
             {
                 lowerPoly = Copy(0, vertices.Count / 2, vertices);
                 upperPoly = Copy(vertices.Count / 2, 0, vertices);
@@ -206,7 +205,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="i">The </param>
         /// <param name="vertices">The vertices</param>
         /// <returns>The vector</returns>
-        private static Vector2 At(int i, Vertices vertices)
+        private static Vector2F At(int i, Vertices vertices)
         {
             int s = vertices.Count;
             return vertices[i < 0 ? s - 1 - (-i - 1) % s : i % s];
@@ -286,7 +285,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
                     continue; // ignore incident edges
                 }
 
-                if (LineUtils.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices),
+                if (Line.LineIntersect(At(i, vertices), At(j, vertices), At(k, vertices), At(k + 1, vertices),
                         out _))
                 {
                     return false;
@@ -320,7 +319,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Left(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) > 0;
+        private static bool Left(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) > 0;
 
         /// <summary>
         ///     Describes whether left on
@@ -329,7 +328,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool LeftOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
+        private static bool LeftOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) >= 0;
 
         /// <summary>
         ///     Describes whether right
@@ -338,7 +337,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool Right(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) < 0;
+        private static bool Right(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) < 0;
 
         /// <summary>
         ///     Describes whether right on
@@ -347,7 +346,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <returns>The bool</returns>
-        private static bool RightOn(Vector2 a, Vector2 b, Vector2 c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
+        private static bool RightOn(Vector2F a, Vector2F b, Vector2F c) => MathUtils.Area(ref a, ref b, ref c) <= 0;
 
         /// <summary>
         ///     Squares the dist using the specified a
@@ -355,7 +354,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Bayazit
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float SquareDist(Vector2 a, Vector2 b)
+        private static float SquareDist(Vector2F a, Vector2F b)
         {
             float dx = b.X - a.X;
             float dy = b.Y - a.Y;

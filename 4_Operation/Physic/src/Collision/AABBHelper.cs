@@ -5,33 +5,33 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   AABBHelper.cs
+//  File:AABBHelper.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision
 {
@@ -47,15 +47,15 @@ namespace Alis.Core.Physic.Collision
         /// <param name="end">The end</param>
         /// <param name="transform">The transform</param>
         /// <param name="aabb">The aabb</param>
-        public static void ComputeEdgeAabb(ref Vector2 start, ref Vector2 end, ref Transform transform, out Aabb aabb)
+        public static void ComputeEdgeAabb(ref Vector2F start, ref Vector2F end, ref Transform transform, out Aabb aabb)
         {
-            Vector2 v1 = MathUtils.Mul(ref transform, ref start);
-            Vector2 v2 = MathUtils.Mul(ref transform, ref end);
+            Vector2F v1 = MathUtils.Mul(ref transform, ref start);
+            Vector2F v2 = MathUtils.Mul(ref transform, ref end);
 
-            aabb.LowerBound = Vector2.Min(v1, v2);
-            aabb.UpperBound = Vector2.Max(v1, v2);
+            aabb.LowerBound = Vector2F.Min(v1, v2);
+            aabb.UpperBound = Vector2F.Max(v1, v2);
 
-            Vector2 r = new Vector2(Settings.PolygonRadius, Settings.PolygonRadius);
+            Vector2F r = new Vector2F(Settings.PolygonRadius, Settings.PolygonRadius);
             aabb.LowerBound -= r;
             aabb.UpperBound += r;
         }
@@ -67,11 +67,11 @@ namespace Alis.Core.Physic.Collision
         /// <param name="radius">The radius</param>
         /// <param name="transform">The transform</param>
         /// <param name="aabb">The aabb</param>
-        public static void ComputeCircleAabb(ref Vector2 pos, float radius, ref Transform transform, out Aabb aabb)
+        public static void ComputeCircleAabb(ref Vector2F pos, float radius, ref Transform transform, out Aabb aabb)
         {
-            Vector2 p = transform.P + MathUtils.Mul(transform.Q, pos);
-            aabb.LowerBound = new Vector2(p.X - radius, p.Y - radius);
-            aabb.UpperBound = new Vector2(p.X + radius, p.Y + radius);
+            Vector2F p = transform.Position + MathUtils.Mul(transform.Rotation, pos);
+            aabb.LowerBound = new Vector2F(p.X - radius, p.Y - radius);
+            aabb.UpperBound = new Vector2F(p.X + radius, p.Y + radius);
         }
 
         /// <summary>
@@ -82,17 +82,17 @@ namespace Alis.Core.Physic.Collision
         /// <param name="aabb">The aabb</param>
         public static void ComputePolygonAabb(Vertices vertices, ref Transform transform, out Aabb aabb)
         {
-            Vector2 lower = MathUtils.Mul(ref transform, vertices[0]);
-            Vector2 upper = lower;
+            Vector2F lower = MathUtils.Mul(ref transform, vertices[0]);
+            Vector2F upper = lower;
 
             for (int i = 1; i < vertices.Count; ++i)
             {
-                Vector2 v = MathUtils.Mul(ref transform, vertices[i]);
-                lower = Vector2.Min(lower, v);
-                upper = Vector2.Max(upper, v);
+                Vector2F v = MathUtils.Mul(ref transform, vertices[i]);
+                lower = Vector2F.Min(lower, v);
+                upper = Vector2F.Max(upper, v);
             }
 
-            Vector2 r = new Vector2(Settings.PolygonRadius, Settings.PolygonRadius);
+            Vector2F r = new Vector2F(Settings.PolygonRadius, Settings.PolygonRadius);
             aabb.LowerBound = lower - r;
             aabb.UpperBound = upper + r;
         }

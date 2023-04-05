@@ -5,34 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Sweep.cs
+//  File:Sweep.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Shared;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision.TOI
 {
@@ -56,15 +56,15 @@ namespace Alis.Core.Physic.Collision.TOI
         public float Alpha0;
 
         /// <summary>Center world positions</summary>
-        public Vector2 C;
+        public Vector2F C;
 
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2 C0;
+        public Vector2F C0;
 
         /// <summary>Local center of mass position</summary>
-        public Vector2 LocalCenter;
+        public Vector2F LocalCenter;
 
         /// <summary>Get the interpolated transform at a specific time.</summary>
         /// <param name="xfb">The transform.</param>
@@ -72,13 +72,13 @@ namespace Alis.Core.Physic.Collision.TOI
         public void GetTransform(out Transform xfb, float beta)
         {
             xfb = new Transform();
-            xfb.P.X = (1.0f - beta) * C0.X + beta * C.X;
-            xfb.P.Y = (1.0f - beta) * C0.Y + beta * C.Y;
+            xfb.Position.X = (1.0f - beta) * C0.X + beta * C.X;
+            xfb.Position.Y = (1.0f - beta) * C0.Y + beta * C.Y;
             float angle = (1.0f - beta) * A0 + beta * A;
-            xfb.Q.Set(angle);
+            xfb.Rotation.Set(angle);
 
             // Shift to origin
-            xfb.P -= MathUtils.Mul(xfb.Q, LocalCenter);
+            xfb.Position -= MathUtils.Mul(xfb.Rotation, LocalCenter);
         }
 
         /// <summary>Advance the sweep forward, yielding a new initial state.</summary>
@@ -95,7 +95,7 @@ namespace Alis.Core.Physic.Collision.TOI
         /// <summary>Normalize the angles.</summary>
         public void Normalize()
         {
-            float d = MathConstants.TwoPi * (float) Math.Floor(A0 / MathConstants.TwoPi);
+            float d = Constant.TwoPi * (float) Math.Floor(A0 / Constant.TwoPi);
             A0 -= d;
             A -= d;
         }

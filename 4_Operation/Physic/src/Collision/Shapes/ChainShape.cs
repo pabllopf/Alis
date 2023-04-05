@@ -5,35 +5,35 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   ChainShape.cs
+//  File:ChainShape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision.Shapes
 {
@@ -49,12 +49,12 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The next vertex
         /// </summary>
-        private Vector2 nextVertex;
+        private Vector2F nextVertex;
 
         /// <summary>
         ///     The next vertex
         /// </summary>
-        private Vector2 prevVertex;
+        private Vector2F prevVertex;
 
         /// <summary>
         ///     The vertices
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </param>
         public ChainShape(Vertices vertices, bool createLoop = false) : base(ShapeType.Chain, Settings.PolygonRadius)
         {
-            Debug.Assert(vertices != null && vertices.Count >= 3);
+            Debug.Assert((vertices != null) && (vertices.Count >= 3));
             Debug.Assert(vertices[0] !=
                          vertices[
                              vertices.Count -
@@ -78,8 +78,8 @@ namespace Alis.Core.Physic.Collision.Shapes
             for (int i = 1; i < vertices.Count; ++i)
             {
                 // If the code crashes here, it means your vertices are too close together.
-                Vector2 current = vertices[i];
-                Vector2 prev = vertices[i - 1];
+                Vector2F current = vertices[i];
+                Vector2F prev = vertices[i - 1];
                 Debug.Assert(MathUtils.DistanceSquared(ref prev, ref current) >
                              Settings.LinearSlop * Settings.LinearSlop);
             }
@@ -115,14 +115,14 @@ namespace Alis.Core.Physic.Collision.Shapes
         public override int ChildCount => Vertices.Count - 1;
 
         /// <summary>Establish connectivity to a vertex that precedes the first vertex. Don't call this for loops.</summary>
-        public Vector2 PrevVertex
+        public Vector2F PrevVertex
         {
             get => prevVertex;
             set => prevVertex = value;
         }
 
         /// <summary>Establish connectivity to a vertex that follows the last vertex. Don't call this for loops.</summary>
-        public Vector2 NextVertex
+        public Vector2F NextVertex
         {
             get => nextVertex;
             set => nextVertex = value;
@@ -136,7 +136,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="index">The index</param>
         internal void GetChildEdge(EdgeShape edge, int index)
         {
-            Debug.Assert(0 <= index && index < Vertices.Count - 1);
+            Debug.Assert((0 <= index) && (index < Vertices.Count - 1));
             Debug.Assert(edge != null);
 
             //Velcro: It is already an edge shape
@@ -184,7 +184,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
+        public override bool TestPoint(ref Transform transform, ref Vector2F point) => false;
 
         /// <summary>
         ///     Describes whether this instance ray cast
@@ -207,8 +207,8 @@ namespace Alis.Core.Physic.Collision.Shapes
                 i2 = 0;
             }
 
-            Vector2 v1 = Vertices[i1];
-            Vector2 v2 = Vertices[i2];
+            Vector2F v1 = Vertices[i1];
+            Vector2F v2 = Vertices[i2];
 
             return RayCastHelper.RayCastEdge(ref v1, ref v2, false, ref input, ref transform, out output);
         }
@@ -231,8 +231,8 @@ namespace Alis.Core.Physic.Collision.Shapes
                 i2 = 0;
             }
 
-            Vector2 v1 = Vertices[i1];
-            Vector2 v2 = Vertices[i2];
+            Vector2F v1 = Vertices[i1];
+            Vector2F v2 = Vertices[i2];
 
             AabbHelper.ComputeEdgeAabb(ref v1, ref v2, ref transform, out aabb);
         }

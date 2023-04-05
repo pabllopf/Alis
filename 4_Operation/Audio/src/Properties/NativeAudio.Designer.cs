@@ -64,16 +64,6 @@ namespace Alis.Core.Audio.Properties {
         }
         
         /// <summary>
-        /// Gets the value of the alpine x64 csfml audio
-        /// </summary>
-        internal static byte[] alpine_x64_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("alpine_x64_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         /// Gets the value of the debian arm64 csfml audio
         /// </summary>
         internal static byte[] debian_arm64_csfml_audio {
@@ -89,16 +79,6 @@ namespace Alis.Core.Audio.Properties {
         internal static byte[] debian_x64_csfml_audio {
             get {
                 object obj = ResourceManager.GetObject("debian_x64_csfml_audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        /// Gets the value of the fedora x64 csfml audio
-        /// </summary>
-        internal static byte[] fedora_x64_csfml_audio {
-            get {
-                object obj = ResourceManager.GetObject("fedora_x64_csfml_audio", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -134,11 +114,31 @@ namespace Alis.Core.Audio.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the win x64 openal32
+        /// </summary>
+        internal static byte[] win_x64_openal32 {
+            get {
+                object obj = ResourceManager.GetObject("win_x64_openal32", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the win x86 csfml audio
         /// </summary>
         internal static byte[] win_x86_csfml_audio {
             get {
                 object obj = ResourceManager.GetObject("win_x86_csfml_audio", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the win x86 openal32
+        /// </summary>
+        internal static byte[] win_x86_openal32 {
+            get {
+                object obj = ResourceManager.GetObject("win_x86_openal32", resourceCulture);
                 return ((byte[])(obj));
             }
         }

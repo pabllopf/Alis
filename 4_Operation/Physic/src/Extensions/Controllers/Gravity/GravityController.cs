@@ -5,34 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   GravityController.cs
+//  File:GravityController.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Extensions.Controllers.Gravity
 {
@@ -50,9 +50,9 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
             : base(ControllerType.GravityController)
         {
             Strength = strength;
-            MaxRadius = float.MaxValue;
+            Radius = float.MaxValue;
             GravityType = GravityType.DistanceSquared;
-            Points = new List<Vector2>();
+            Points = new List<Vector2F>();
             Bodies = new List<Body>();
         }
 
@@ -66,10 +66,10 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
             : base(ControllerType.GravityController)
         {
             MinRadius = minRadius;
-            MaxRadius = maxRadius;
+            Radius = maxRadius;
             Strength = strength;
             GravityType = GravityType.DistanceSquared;
-            Points = new List<Vector2>();
+            Points = new List<Vector2F>();
             Bodies = new List<Body>();
         }
 
@@ -81,7 +81,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
         /// <summary>
         ///     Gets or sets the value of the max radius
         /// </summary>
-        public float MaxRadius { get; set; }
+        public float Radius { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the strength
@@ -101,7 +101,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
         /// <summary>
         ///     Gets or sets the value of the points
         /// </summary>
-        public List<Vector2> Points { get; set; }
+        public List<Vector2F> Points { get; set; }
 
         /// <summary>
         ///     Updates the dt
@@ -109,9 +109,9 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
         /// <param name="dt">The dt</param>
         public override void Update(float dt)
         {
-            Vector2 f = Vector2.Zero;
+            Vector2F f = Vector2F.Zero;
 
-            foreach (Body worldBody in World.BodyList)
+            foreach (Body worldBody in World.Bodies)
             {
                 if (!IsActiveOn(worldBody))
                 {
@@ -120,16 +120,16 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
 
                 foreach (Body controllerBody in Bodies)
                 {
-                    if (worldBody == controllerBody || worldBody.IsStatic && controllerBody.IsStatic ||
+                    if (worldBody == controllerBody || (worldBody.IsStatic && controllerBody.IsStatic) ||
                         !controllerBody.Enabled)
                     {
                         continue;
                     }
 
-                    Vector2 d = controllerBody.Position - worldBody.Position;
+                    Vector2F d = controllerBody.Position - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= MathConstants.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= Constant.Epsilon || r2 > Radius * Radius || r2 < MinRadius * MinRadius)
                     {
                         continue;
                     }
@@ -147,12 +147,12 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
                     worldBody.ApplyForce(ref f);
                 }
 
-                foreach (Vector2 point in Points)
+                foreach (Vector2F point in Points)
                 {
-                    Vector2 d = point - worldBody.Position;
+                    Vector2F d = point - worldBody.Position;
                     float r2 = d.LengthSquared();
 
-                    if (r2 <= MathConstants.Epsilon || r2 > MaxRadius * MaxRadius || r2 < MinRadius * MinRadius)
+                    if (r2 <= Constant.Epsilon || r2 > Radius * Radius || r2 < MinRadius * MinRadius)
                     {
                         continue;
                     }
@@ -185,7 +185,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Gravity
         ///     Adds the point using the specified point
         /// </summary>
         /// <param name="point">The point</param>
-        public void AddPoint(Vector2 point)
+        public void AddPoint(Vector2F point)
         {
             Points.Add(point);
         }

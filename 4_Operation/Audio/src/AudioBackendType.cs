@@ -37,11 +37,11 @@ namespace Alis.Core.Audio
         /// <summary>
         ///     The os audio type
         /// </summary>
-        OS = 0,
+        Os = 0,
 
         /// <summary>
         ///     The sfml audio type
         /// </summary>
-        SFML = 1
+        Sfml = 1
     }
 }

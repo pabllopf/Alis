@@ -5,32 +5,32 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   MarchingSquares.cs
+//  File:MarchingSquares.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.TextureTools
 {
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     int key = MarchSquare(f, fs, ref gp, x, y, x0, y0, x1, y1, lerpCount);
                     if (gp.Length != 0)
                     {
-                        if (combine && pre != null && (key & 9) != 0)
+                        if (combine && (pre != null) && ((key & 9) != 0))
                         {
                             CombLeft(ref pre, ref gp);
                             gp = pre;
@@ -251,8 +251,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     float ax = x * cellWidth + domain.LowerBound.X;
                     float ay = y * cellHeight + domain.LowerBound.Y;
 
-                    CxFastList<Vector2> bp = p.GeomP.Points;
-                    CxFastList<Vector2> ap = u.GeomP.Points;
+                    CxFastList<Vector2F> bp = p.GeomP.Points;
+                    CxFastList<Vector2F> ap = u.GeomP.Points;
 
                     //skip if it's already been combined with above polygon
                     if (u.GeomP == p.GeomP)
@@ -262,26 +262,26 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     }
 
                     //combine above (but disallow the hole thingies
-                    CxFastListNode<Vector2> bi = bp.Begin();
-                    while (Square(bi.GetElem().Y - ay) > MathConstants.Epsilon || bi.GetElem().X < ax)
+                    CxFastListNode<Vector2F> bi = bp.Begin();
+                    while (Square(bi.GetElem().Y - ay) > Constant.Epsilon || bi.GetElem().X < ax)
                     {
                         bi = bi.GetNext();
                     }
 
                     //NOTE: Unused
                     //Vector2 b0 = bi.elem();
-                    Vector2 b1 = bi.GetNext().GetElem();
-                    if (Square(b1.Y - ay) > MathConstants.Epsilon)
+                    Vector2F b1 = bi.GetNext().GetElem();
+                    if (Square(b1.Y - ay) > Constant.Epsilon)
                     {
                         x++;
                         continue;
                     }
 
                     bool brk = true;
-                    CxFastListNode<Vector2> ai = ap.Begin();
+                    CxFastListNode<Vector2F> ai = ap.Begin();
                     while (ai != ap.End())
                     {
-                        if (VecDsq(ai.GetElem(), b1) < MathConstants.Epsilon)
+                        if (VecDsq(ai.GetElem(), b1) < Constant.Epsilon)
                         {
                             brk = false;
                             break;
@@ -296,7 +296,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                         continue;
                     }
 
-                    CxFastListNode<Vector2> bj = bi.GetNext().GetNext();
+                    CxFastListNode<Vector2F> bj = bi.GetNext().GetNext();
                     if (bj == bp.End())
                     {
                         bj = bp.Begin();
@@ -375,7 +375,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         {
             float dv = v0 - v1;
             float t;
-            if (dv * dv < MathConstants.Epsilon)
+            if (dv * dv < Constant.Epsilon)
             {
                 t = 0.5f;
             }
@@ -434,9 +434,9 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float VecDsq(Vector2 a, Vector2 b)
+        private static float VecDsq(Vector2F a, Vector2F b)
         {
-            Vector2 d = a - b;
+            Vector2F d = a - b;
             return d.X * d.X + d.Y * d.Y;
         }
 
@@ -446,7 +446,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="a">The </param>
         /// <param name="b">The </param>
         /// <returns>The float</returns>
-        private static float VecCross(Vector2 a, Vector2 b) => a.X * b.Y - a.Y * b.X;
+        private static float VecCross(Vector2F a, Vector2F b) => a.X * b.Y - a.Y * b.X;
 
         /// <summary>
         ///     Look-up table to relate polygon key with the vertices that should be used for the sub polygon in marching
@@ -488,51 +488,51 @@ namespace Alis.Core.Physic.Tools.TextureTools
             int val = LookMarch[key];
             if (val != 0)
             {
-                CxFastListNode<Vector2> pi = null;
+                CxFastListNode<Vector2F> pi = null;
                 for (int i = 0; i < 8; i++)
                 {
-                    Vector2 p;
+                    Vector2F p;
                     if ((val & (1 << i)) != 0)
                     {
-                        if (i == 7 && (val & 1) == 0)
+                        if ((i == 7) && ((val & 1) == 0))
                         {
-                            poly.Points.Add(p = new Vector2(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
+                            poly.Points.Add(p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin)));
                         }
                         else
                         {
                             if (i == 0)
                             {
-                                p = new Vector2(x0, y0);
+                                p = new Vector2F(x0, y0);
                             }
                             else if (i == 2)
                             {
-                                p = new Vector2(x1, y0);
+                                p = new Vector2F(x1, y0);
                             }
                             else if (i == 4)
                             {
-                                p = new Vector2(x1, y1);
+                                p = new Vector2F(x1, y1);
                             }
                             else if (i == 6)
                             {
-                                p = new Vector2(x0, y1);
+                                p = new Vector2F(x0, y1);
                             }
 
                             else if (i == 1)
                             {
-                                p = new Vector2(Xlerp(x0, x1, y0, v0, v1, f, bin), y0);
+                                p = new Vector2F(Xlerp(x0, x1, y0, v0, v1, f, bin), y0);
                             }
                             else if (i == 5)
                             {
-                                p = new Vector2(Xlerp(x0, x1, y1, v3, v2, f, bin), y1);
+                                p = new Vector2F(Xlerp(x0, x1, y1, v3, v2, f, bin), y1);
                             }
 
                             else if (i == 3)
                             {
-                                p = new Vector2(x1, Ylerp(y0, y1, x1, v1, v2, f, bin));
+                                p = new Vector2F(x1, Ylerp(y0, y1, x1, v1, v2, f, bin));
                             }
                             else
                             {
-                                p = new Vector2(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
+                                p = new Vector2F(x0, Ylerp(y0, y1, x0, v0, v3, f, bin));
                             }
 
                             pi = poly.Points.Insert(pi, p);
@@ -554,32 +554,32 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// </summary>
         private static void CombLeft(ref GeomPoly polya, ref GeomPoly polyb)
         {
-            CxFastList<Vector2> ap = polya.Points;
-            CxFastList<Vector2> bp = polyb.Points;
-            CxFastListNode<Vector2> ai = ap.Begin();
-            CxFastListNode<Vector2> bi = bp.Begin();
+            CxFastList<Vector2F> ap = polya.Points;
+            CxFastList<Vector2F> bp = polyb.Points;
+            CxFastListNode<Vector2F> ai = ap.Begin();
+            CxFastListNode<Vector2F> bi = bp.Begin();
 
-            Vector2 b = bi.GetElem();
-            CxFastListNode<Vector2> prea = null;
+            Vector2F b = bi.GetElem();
+            CxFastListNode<Vector2F> prea = null;
             while (ai != ap.End())
             {
-                Vector2 a = ai.GetElem();
-                if (VecDsq(a, b) < MathConstants.Epsilon)
+                Vector2F a = ai.GetElem();
+                if (VecDsq(a, b) < Constant.Epsilon)
                 {
                     //ignore shared vertex if parallel
                     if (prea != null)
                     {
-                        Vector2 a0 = prea.GetElem();
+                        Vector2F a0 = prea.GetElem();
                         b = bi.GetNext().GetElem();
 
-                        Vector2 u = a - a0;
+                        Vector2F u = a - a0;
 
                         //vec_new(u); vec_sub(a.p.p, a0.p.p, u);
-                        Vector2 v = b - a;
+                        Vector2F v = b - a;
 
                         //vec_new(v); vec_sub(b.p.p, a.p.p, v);
                         float dot = VecCross(u, v);
-                        if (dot * dot < MathConstants.Epsilon)
+                        if (dot * dot < Constant.Epsilon)
                         {
                             ap.Erase(prea, ai);
                             polya.Length--;
@@ -589,10 +589,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                     //insert polyb into polya
                     bool fst = true;
-                    CxFastListNode<Vector2> preb = null;
+                    CxFastListNode<Vector2F> preb = null;
                     while (!bp.Empty())
                     {
-                        Vector2 bb = bp.Front();
+                        Vector2F bb = bp.Front();
                         bp.Pop();
                         if (!fst && !bp.Empty())
                         {
@@ -606,23 +606,23 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                     //ignore shared vertex if parallel
                     ai = ai.GetNext();
-                    Vector2 a1 = ai.GetElem();
+                    Vector2F a1 = ai.GetElem();
                     ai = ai.GetNext();
                     if (ai == ap.End())
                     {
                         ai = ap.Begin();
                     }
 
-                    Vector2 a2 = ai.GetElem();
-                    Vector2 a00 = preb.GetElem();
-                    Vector2 uu = a1 - a00;
+                    Vector2F a2 = ai.GetElem();
+                    Vector2F a00 = preb.GetElem();
+                    Vector2F uu = a1 - a00;
 
                     //vec_new(u); vec_sub(a1.p, a0.p, u);
-                    Vector2 vv = a2 - a1;
+                    Vector2F vv = a2 - a1;
 
                     //vec_new(v); vec_sub(a2.p, a1.p, v);
                     float dot1 = VecCross(uu, vv);
-                    if (dot1 * dot1 < MathConstants.Epsilon)
+                    if (dot1 * dot1 < Constant.Epsilon)
                     {
                         ap.Erase(preb, preb.GetNext());
                         polya.Length--;
@@ -915,14 +915,14 @@ namespace Alis.Core.Physic.Tools.TextureTools
             /// <summary>
             ///     The points
             /// </summary>
-            public CxFastList<Vector2> Points;
+            public CxFastList<Vector2F> Points;
 
             /// <summary>
             ///     Initializes a new instance of the <see cref="GeomPoly" /> class
             /// </summary>
             public GeomPoly()
             {
-                Points = new CxFastList<Vector2>();
+                Points = new CxFastList<Vector2F>();
                 Length = 0;
             }
         }

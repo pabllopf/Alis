@@ -1,0 +1,87 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:SdlHitTestResult.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
+namespace Alis.Core.Input.SDL2
+{
+    /// <summary>
+    ///     The sdl hittestresult enum
+    /// </summary>
+    public enum SdlHitTestResult
+    {
+        /// <summary>
+        ///     The sdl hittest normal sdl hittestresult
+        /// </summary>
+        SdlHittestNormal, /* Region is normal. No special properties. */
+
+        /// <summary>
+        ///     The sdl hittest draggable sdl hittestresult
+        /// </summary>
+        SdlHittestDraggable, /* Region can drag entire window. */
+
+        /// <summary>
+        ///     The sdl hittest resize topleft sdl hittestresult
+        /// </summary>
+        SdlHittestResizeTopleft,
+
+        /// <summary>
+        ///     The sdl hittest resize top sdl hittestresult
+        /// </summary>
+        SdlHittestResizeTop,
+
+        /// <summary>
+        ///     The sdl hittest resize topright sdl hittestresult
+        /// </summary>
+        SdlHittestResizeTopright,
+
+        /// <summary>
+        ///     The sdl hittest resize right sdl hittestresult
+        /// </summary>
+        SdlHittestResizeRight,
+
+        /// <summary>
+        ///     The sdl hittest resize bottomright sdl hittestresult
+        /// </summary>
+        SdlHittestResizeBottomright,
+
+        /// <summary>
+        ///     The sdl hittest resize bottom sdl hittestresult
+        /// </summary>
+        SdlHittestResizeBottom,
+
+        /// <summary>
+        ///     The sdl hittest resize bottomleft sdl hittestresult
+        /// </summary>
+        SdlHittestResizeBottomleft,
+
+        /// <summary>
+        ///     The sdl hittest resize left sdl hittestresult
+        /// </summary>
+        SdlHittestResizeLeft
+    }
+}

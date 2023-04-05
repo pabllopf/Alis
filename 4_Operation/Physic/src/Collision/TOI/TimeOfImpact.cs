@@ -5,35 +5,35 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   TimeOfImpact.cs
+//  File:TimeOfImpact.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Narrowphase;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
 
 namespace Alis.Core.Physic.Collision.TOI
 {
@@ -137,7 +137,7 @@ namespace Alis.Core.Physic.Collision.TOI
                 }
 
                 SeparationFunction.Initialize(ref cache, input.ProxyA, ref sweepA, input.ProxyB, ref sweepB, t1,
-                    out Vector2 axis, out Vector2 localPoint, out SeparationFunctionType type);
+                    out Vector2F axis, out Vector2F localPoint, out SeparationFunctionType type);
 
                 // Compute the TOI on the separating axis. We do this by successively
                 // resolving the deepest point. This loop is bounded by the number of vertices.
@@ -245,7 +245,7 @@ namespace Alis.Core.Physic.Collision.TOI
 
                     ++pushBackIter;
 
-                    if (pushBackIter == Settings.MaxPolygonVertices)
+                    if (pushBackIter == Settings.PolygonVertices)
                     {
                         break;
                     }

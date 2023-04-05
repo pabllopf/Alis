@@ -5,33 +5,33 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   FixtureFactory.cs
+//  File:FixtureFactory.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Shapes;
-using Alis.Core.Physic.Definitions;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Tools.Triangulation.TriangulationBase;
@@ -50,11 +50,11 @@ namespace Alis.Core.Physic.Factories
         /// <param name="body">The body</param>
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
-        public static Fixture AttachEdge(Vector2 start, Vector2 end, Body body, object userData = null)
+        public static Fixture AttachEdge(Vector2F start, Vector2F end, Body body, object userData = null)
         {
             EdgeShape edgeShape = new EdgeShape(start, end);
             Fixture f = body.AddFixture(edgeShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Factories
         {
             ChainShape shape = new ChainShape(vertices);
             Fixture f = body.AddFixture(shape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -84,7 +84,7 @@ namespace Alis.Core.Physic.Factories
         {
             ChainShape shape = new ChainShape(vertices, true);
             Fixture f = body.AddFixture(shape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -98,14 +98,14 @@ namespace Alis.Core.Physic.Factories
         /// <param name="body">The body</param>
         /// <param name="userData">The user data</param>
         /// <returns>The </returns>
-        public static Fixture AttachRectangle(float width, float height, float density, Vector2 offset, Body body,
+        public static Fixture AttachRectangle(float width, float height, float density, Vector2F offset, Body body,
             object userData = null)
         {
-            Vertices rectangleVertices = PolygonUtils.CreateRectangle(width / 2, height / 2);
+            Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
             rectangleVertices.Translate(ref offset);
             PolygonShape rectangleShape = new PolygonShape(rectangleVertices, density);
             Fixture f = body.AddFixture(rectangleShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Factories
 
             CircleShape circleShape = new CircleShape(radius, density);
             Fixture f = body.AddFixture(circleShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -141,7 +141,7 @@ namespace Alis.Core.Physic.Factories
         /// <param name="userData">The user data</param>
         /// <exception cref="ArgumentOutOfRangeException">Radius must be more than 0 meters</exception>
         /// <returns>The </returns>
-        public static Fixture AttachCircle(float radius, float density, Body body, Vector2 offset,
+        public static Fixture AttachCircle(float radius, float density, Body body, Vector2F offset,
             object userData = null)
         {
             if (radius <= 0)
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Factories
                 Position = offset
             };
             Fixture f = body.AddFixture(circleShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Factories
 
             PolygonShape polygon = new PolygonShape(vertices, density);
             Fixture f = body.AddFixture(polygon);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -205,10 +205,10 @@ namespace Alis.Core.Physic.Factories
                 throw new ArgumentOutOfRangeException(nameof(yRadius), "Y-radius must be more than 0");
             }
 
-            Vertices ellipseVertices = PolygonUtils.CreateEllipse(xRadius, yRadius, edges);
+            Vertices ellipseVertices = Polygon.CreateEllipse(xRadius, yRadius, edges);
             PolygonShape polygonShape = new PolygonShape(ellipseVertices, density);
             Fixture f = body.AddFixture(polygonShape);
-            f.UserData = userData;
+            //f.UserData = userData;
             return f;
         }
 
@@ -252,8 +252,8 @@ namespace Alis.Core.Physic.Factories
         /// <returns>The fixture</returns>
         public static Fixture AttachLineArc(float radians, int sides, float radius, bool closed, Body body)
         {
-            Vertices arc = PolygonUtils.CreateArc(radians, sides, radius);
-            arc.Rotate((MathConstants.Pi - radians) / 2);
+            Vertices arc = Polygon.CreateArc(radians, sides, radius);
+            arc.Rotate((Constant.Pi - radians) / 2);
             return closed ? AttachLoopShape(arc, body) : AttachChainShape(arc, body);
         }
 
@@ -268,8 +268,8 @@ namespace Alis.Core.Physic.Factories
         /// <returns>A list of fixture</returns>
         public static List<Fixture> AttachSolidArc(float density, float radians, int sides, float radius, Body body)
         {
-            Vertices arc = PolygonUtils.CreateArc(radians, sides, radius);
-            arc.Rotate((MathConstants.Pi - radians) / 2);
+            Vertices arc = Polygon.CreateArc(radians, sides, radius);
+            arc.Rotate((Constant.Pi - radians) / 2);
 
             //Close the arc
             arc.Add(arc[0]);
@@ -283,8 +283,8 @@ namespace Alis.Core.Physic.Factories
         ///     Creates the from def using the specified body
         /// </summary>
         /// <param name="body">The body</param>
-        /// <param name="fixtureDef">The fixture def</param>
+        /// <param name="fixture">The fixture def</param>
         /// <returns>The fixture</returns>
-        public static Fixture CreateFromDef(Body body, FixtureDef fixtureDef) => body.AddFixture(fixtureDef);
+        public static Fixture CreateFromDef(Body body, Fixture fixture) => body.AddFixture(fixture);
     }
 }

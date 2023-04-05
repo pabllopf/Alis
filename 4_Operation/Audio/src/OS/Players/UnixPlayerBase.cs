@@ -74,8 +74,8 @@ namespace Alis.Core.Audio.OS.Players
         public async Task Play(string fileName)
         {
             await Stop();
-            string BashToolName = GetBashCommand(fileName);
-            _process = StartBashProcess($"{BashToolName} '{fileName}'");
+            string bashToolName = GetBashCommand(fileName);
+            _process = StartBashProcess($"{bashToolName} '{fileName}'");
             _process.EnableRaisingEvents = true;
             _process.Exited += HandlePlaybackFinished;
             _process.ErrorDataReceived += HandlePlaybackFinished;

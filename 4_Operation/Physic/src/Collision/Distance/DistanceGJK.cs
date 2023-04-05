@@ -5,37 +5,37 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DistanceGJK.cs
+//  File:DistanceGJK.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Narrowphase;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision.Distance
 {
@@ -89,7 +89,7 @@ namespace Alis.Core.Physic.Collision.Distance
             int iter = 0;
 
             //Velcro: Moved the max iterations to settings
-            while (iter < Settings.MaxGjkIterations)
+            while (iter < Settings.GjkIterations)
             {
                 // Copy simplex so we can identify duplicates.
                 int saveCount = simplex.Count;
@@ -121,10 +121,10 @@ namespace Alis.Core.Physic.Collision.Distance
                 }
 
                 // Get search direction.
-                Vector2 d = simplex.GetSearchDirection();
+                Vector2F d = simplex.GetSearchDirection();
 
                 // Ensure the search direction is numerically fit.
-                if (d.LengthSquared() < MathConstants.Epsilon * MathConstants.Epsilon)
+                if (d.LengthSquared() < Constant.Epsilon * Constant.Epsilon)
                 {
                     // The origin is probably contained by a line segment
                     // or triangle. Thus the shapes are overlapped.
@@ -137,10 +137,10 @@ namespace Alis.Core.Physic.Collision.Distance
 
                 // Compute a tentative new simplex vertex using support points.
                 SimplexVertex vertex = simplex.V[simplex.Count];
-                vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.Q, -d));
+                vertex.IndexA = input.ProxyA.GetSupport(MathUtils.MulT(input.TransformA.Rotation, -d));
                 vertex.Wa = MathUtils.Mul(ref input.TransformA, input.ProxyA.Vertices[vertex.IndexA]);
 
-                vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.Q, d));
+                vertex.IndexB = input.ProxyB.GetSupport(MathUtils.MulT(input.TransformB.Rotation, d));
                 vertex.Wb = MathUtils.Mul(ref input.TransformB, input.ProxyB.Vertices[vertex.IndexB]);
                 vertex.W = vertex.Wb - vertex.Wa;
                 simplex.V[simplex.Count] = vertex;
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 bool duplicate = false;
                 for (int i = 0; i < saveCount; ++i)
                 {
-                    if (vertex.IndexA == saveA[i] && vertex.IndexB == saveB[i])
+                    if ((vertex.IndexA == saveA[i]) && (vertex.IndexB == saveB[i]))
                     {
                         duplicate = true;
                         break;
@@ -187,13 +187,13 @@ namespace Alis.Core.Physic.Collision.Distance
                 float rA = input.ProxyA.Radius;
                 float rB = input.ProxyB.Radius;
 
-                if (output.Distance > rA + rB && output.Distance > MathConstants.Epsilon)
+                if ((output.Distance > rA + rB) && (output.Distance > Constant.Epsilon))
                 {
                     // Shapes are still no overlapped.
                     // Move the witness points to the outer surface.
                     output.Distance -= rA + rB;
-                    Vector2 normal = output.PointB - output.PointA;
-                    normal = Vector2.Normalize(normal);
+                    Vector2F normal = output.PointB - output.PointA;
+                    normal = Vector2F.Normalize(normal);
                     output.PointA += rA * normal;
                     output.PointB -= rB * normal;
                 }
@@ -201,7 +201,7 @@ namespace Alis.Core.Physic.Collision.Distance
                 {
                     // Shapes are overlapped when radii are considered.
                     // Move the witness points to the middle.
-                    Vector2 p = 0.5f * (output.PointA + output.PointB);
+                    Vector2F p = 0.5f * (output.PointA + output.PointB);
                     output.PointA = p;
                     output.PointB = p;
                     output.Distance = 0.0f;
@@ -224,8 +224,8 @@ namespace Alis.Core.Physic.Collision.Distance
             {
                 Iterations = 0,
                 Lambda = 1.0f,
-                Normal = Vector2.Zero,
-                Point = Vector2.Zero
+                Normal = Vector2F.Zero,
+                Point = Vector2F.Zero
             };
 
             DistanceProxy proxyA = input.ProxyA;
@@ -238,8 +238,8 @@ namespace Alis.Core.Physic.Collision.Distance
             Transform xfA = input.TransformA;
             Transform xfB = input.TransformB;
 
-            Vector2 r = input.TranslationB;
-            Vector2 n = new Vector2(0.0f, 0.0f);
+            Vector2F r = input.TranslationB;
+            Vector2F n = new Vector2F(0.0f, 0.0f);
             float lambda = 0.0f;
 
             // Initial simplex
@@ -252,11 +252,11 @@ namespace Alis.Core.Physic.Collision.Distance
             //SimplexVertex vertices = simplex.V.Value0; //Velcro: we don't need this as we have an indexer instead
 
             // Get support point in -r direction
-            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Q, -r));
-            Vector2 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Q, r));
-            Vector2 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
-            Vector2 v = wA - wB;
+            int indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -r));
+            Vector2F wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
+            int indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, r));
+            Vector2F wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
+            Vector2F v = wA - wB;
 
             // Sigma is the target distance between polygons
             float sigma = MathUtils.Max(Settings.PolygonRadius, radius - Settings.PolygonRadius);
@@ -266,21 +266,21 @@ namespace Alis.Core.Physic.Collision.Distance
             int iter = 0;
 
             //Velcro: We have moved the max iterations into settings
-            while (iter < Settings.MaxGjkIterations && v.Length() - sigma > tolerance)
+            while ((iter < Settings.GjkIterations) && (v.Length() - sigma > tolerance))
             {
                 Debug.Assert(simplex.Count < 3);
 
                 output.Iterations += 1;
 
                 // Support in direction -v (A - B)
-                indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Q, -v));
+                indexA = proxyA.GetSupport(MathUtils.MulT(xfA.Rotation, -v));
                 wA = MathUtils.Mul(ref xfA, proxyA.GetVertex(indexA));
-                indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Q, v));
+                indexB = proxyB.GetSupport(MathUtils.MulT(xfB.Rotation, v));
                 wB = MathUtils.Mul(ref xfB, proxyB.GetVertex(indexB));
-                Vector2 p = wA - wB;
+                Vector2F p = wA - wB;
 
                 // -v is a normal at p
-                v = Vector2.Normalize(v);
+                v = Vector2F.Normalize(v);
 
                 // Intersect ray with plane
                 float vp = MathUtils.Dot(ref v, ref p);
@@ -355,12 +355,12 @@ namespace Alis.Core.Physic.Collision.Distance
             }
 
             // Prepare output.
-            simplex.GetWitnessPoints(out _, out Vector2 pointB);
+            simplex.GetWitnessPoints(out _, out Vector2F pointB);
 
             if (v.LengthSquared() > 0.0f)
             {
                 n = -v;
-                n = Vector2.Normalize(n);
+                n = Vector2F.Normalize(n);
             }
 
             output.Point = pointB + radiusA * n;

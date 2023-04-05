@@ -90,9 +90,9 @@ namespace Alis.Core.Manager.Scene
         public override void DispatchEvents()
         {
         }
-        
+
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
         public override void Draw()
         {

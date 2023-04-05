@@ -5,37 +5,35 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DynamicTree.cs
+//  File:DynamicTree.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision.Broadphase
 {
@@ -158,7 +156,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         ///     Get the maximum balance of an node in the tree. The balance is the difference in height of the two children of
         ///     a node.
         /// </summary>
-        public int MaxBalance
+        public int Balance
         {
             get
             {
@@ -171,7 +169,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                         continue;
                     }
 
-                    Debug.Assert(!node.IsLeaf());
+                    //Debug.Assert(!node.IsLeaf());
 
                     int child1 = node.Child1;
                     int child2 = node.Child2;
@@ -200,7 +198,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             int proxyId = AllocateNode();
 
             // Fatten the AABB.
-            Vector2 r = new Vector2(Settings.AabbExtension, Settings.AabbExtension);
+            Vector2F r = new Vector2F(Settings.AabbExtension, Settings.AabbExtension);
             nodes[proxyId].Aabb.LowerBound = aabb.LowerBound - r;
             nodes[proxyId].Aabb.UpperBound = aabb.UpperBound + r;
             nodes[proxyId].UserData = userData;
@@ -216,8 +214,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="proxyId">The proxy id.</param>
         public void DestroyProxy(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
-            Debug.Assert(nodes[proxyId].IsLeaf());
+            //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            //Debug.Assert(nodes[proxyId].IsLeaf());
 
             RemoveLeaf(proxyId);
             FreeNode(proxyId);
@@ -231,20 +229,20 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="aabb">The AABB.</param>
         /// <param name="displacement">The displacement.</param>
         /// <returns>true if the proxy was re-inserted.</returns>
-        public bool MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
+        public bool MoveProxy(int proxyId, ref Aabb aabb, Vector2F displacement)
         {
-            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
 
-            Debug.Assert(nodes[proxyId].IsLeaf());
+            //Debug.Assert(nodes[proxyId].IsLeaf());
 
             // Extend AABB
             Aabb fatAabb = new Aabb();
-            Vector2 r = new Vector2(Settings.AabbExtension, Settings.AabbExtension);
+            Vector2F r = new Vector2F(Settings.AabbExtension, Settings.AabbExtension);
             fatAabb.LowerBound = aabb.LowerBound - r;
             fatAabb.UpperBound = aabb.UpperBound + r;
 
             // Predict AABB movement
-            Vector2 d = Settings.AabbMultiplier * displacement;
+            Vector2F d = Settings.AabbMultiplier * displacement;
 
             if (d.X < 0.0f)
             {
@@ -302,11 +300,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The bool</returns>
-        public bool WasMoved(int proxyId)
-        {
-            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
-            return nodes[proxyId].Moved;
-        }
+        public bool WasMoved(int proxyId) =>
+            //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            nodes[proxyId].Moved;
 
         /// <summary>
         ///     Clears the moved using the specified proxy id
@@ -314,27 +310,25 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="proxyId">The proxy id</param>
         public void ClearMoved(int proxyId)
         {
-            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
             nodes[proxyId].Moved = false;
         }
-        
+
         /// <summary>
-        /// Gets the user data using the specified proxy id
+        ///     Gets the user data using the specified proxy id
         /// </summary>
         /// <param name="proxyId">The proxy id</param>
         /// <returns>The</returns>
-        public T GetUserData(int proxyId)
-        {
-            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
-            return nodes[proxyId].UserData;
-        }
+        public T GetUserData(int proxyId) =>
+            //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
+            nodes[proxyId].UserData;
 
         /// <summary>Get the fat AABB for a proxy.</summary>
         /// <param name="proxyId">The proxy id.</param>
         /// <param name="fatAabb">The fat AABB.</param>
         public void GetFatAabb(int proxyId, out Aabb fatAabb)
         {
-            Debug.Assert(0 <= proxyId && proxyId < nodeCapacity);
+            //Debug.Assert((0 <= proxyId) && (proxyId < nodeCapacity));
             fatAabb = nodes[proxyId].Aabb;
         }
 
@@ -388,26 +382,26 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="input">The ray-cast input data. The ray extends from p1 to p1 + maxFraction * (p2 - p1).</param>
         public void RayCast(Func<RayCastInput, int, float> callback, ref RayCastInput input)
         {
-            Vector2 p1 = input.Point1;
-            Vector2 p2 = input.Point2;
-            Vector2 r = p2 - p1;
-            Debug.Assert(r.LengthSquared() > 0.0f);
-            r = Vector2.Normalize(r);
+            Vector2F p1 = input.Point1;
+            Vector2F p2 = input.Point2;
+            Vector2F r = p2 - p1;
+            //Debug.Assert(r.LengthSquared() > 0.0f);
+            r = Vector2F.Normalize(r);
 
             // v is perpendicular to the segment.
-            Vector2 absV = MathUtils.Abs(new Vector2(-r.Y, r.X)); //Velcro: Inlined the 'v' variable
+            Vector2F absV = MathUtils.Abs(new Vector2F(-r.Y, r.X)); //Velcro: Inlined the 'v' variable
 
             // Separating axis for segment (Gino, p80).
             // |dot(v, p1 - c)| > dot(|v|, h)
 
-            float maxFraction = input.MaxFraction;
+            float maxFraction = input.Fraction;
 
             // Build a bounding box for the segment.
             Aabb segmentAabb = new Aabb();
             {
-                Vector2 t = p1 + maxFraction * (p2 - p1);
-                segmentAabb.LowerBound = Vector2.Min(p1, t);
-                segmentAabb.UpperBound = Vector2.Max(p1, t);
+                Vector2F t = p1 + maxFraction * (p2 - p1);
+                segmentAabb.LowerBound = Vector2F.Min(p1, t);
+                segmentAabb.UpperBound = Vector2F.Max(p1, t);
             }
 
             raycastStack.Clear();
@@ -430,9 +424,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
                 // Separating axis for segment (Gino, p80).
                 // |dot(v, p1 - c)| > dot(|v|, h)
-                Vector2 c = node.Aabb.Center;
-                Vector2 h = node.Aabb.Extents;
-                float separation = Math.Abs(Vector2.Dot(new Vector2(-r.Y, r.X), p1 - c)) - Vector2.Dot(absV, h);
+                Vector2F c = node.Aabb.Center;
+                Vector2F h = node.Aabb.Extents;
+                float separation = Math.Abs(Vector2F.Dot(new Vector2F(-r.Y, r.X), p1 - c)) - Vector2F.Dot(absV, h);
                 if (separation > 0.0f)
                 {
                     continue;
@@ -443,7 +437,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     RayCastInput subInput;
                     subInput.Point1 = input.Point1;
                     subInput.Point2 = input.Point2;
-                    subInput.MaxFraction = maxFraction;
+                    subInput.Fraction = maxFraction;
 
                     float value = callback(subInput, nodeId);
 
@@ -457,9 +451,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     {
                         // Update segment bounding box.
                         maxFraction = value;
-                        Vector2 t = p1 + maxFraction * (p2 - p1);
-                        segmentAabb.LowerBound = Vector2.Min(p1, t);
-                        segmentAabb.UpperBound = Vector2.Max(p1, t);
+                        Vector2F t = p1 + maxFraction * (p2 - p1);
+                        segmentAabb.LowerBound = Vector2F.Min(p1, t);
+                        segmentAabb.UpperBound = Vector2F.Max(p1, t);
                     }
                 }
                 else
@@ -479,7 +473,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             // Expand the node pool as needed.
             if (freeList == NullNode)
             {
-                Debug.Assert(nodeCount == nodeCapacity);
+                //Debug.Assert(nodeCount == nodeCapacity);
 
                 // The free list is empty. Rebuild a bigger pool.
                 TreeNode<T>[] oldNodes = nodes;
@@ -525,8 +519,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <param name="nodeId">The node id</param>
         private void FreeNode(int nodeId)
         {
-            Debug.Assert(0 <= nodeId && nodeId < nodeCapacity);
-            Debug.Assert(0 < nodeCount);
+            //Debug.Assert((0 <= nodeId) && (nodeId < nodeCapacity));
+            //Debug.Assert(0 < nodeCount);
             nodes[nodeId].ParentOrNext = freeList;
             nodes[nodeId].Height = -1;
             freeList = nodeId;
@@ -601,7 +595,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 }
 
                 // Descend according to the minimum cost.
-                if (cost < cost1 && cost1 < cost2)
+                if ((cost < cost1) && (cost1 < cost2))
                 {
                     break;
                 }
@@ -658,13 +652,13 @@ namespace Alis.Core.Physic.Collision.Broadphase
             index = nodes[leaf].ParentOrNext;
             while (index != NullNode)
             {
-                index = Balance(index);
+                index = BalanceTo(index);
 
                 int child1 = nodes[index].Child1;
                 int child2 = nodes[index].Child2;
 
-                Debug.Assert(child1 != NullNode);
-                Debug.Assert(child2 != NullNode);
+                //Debug.Assert(child1 != NullNode);
+                //Debug.Assert(child2 != NullNode);
 
                 nodes[index].Height = 1 + Math.Max(nodes[child1].Height, nodes[child2].Height);
                 nodes[index].Aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
@@ -718,7 +712,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 int index = grandParent;
                 while (index != NullNode)
                 {
-                    index = Balance(index);
+                    index = BalanceTo(index);
 
                     int child1 = nodes[index].Child1;
                     int child2 = nodes[index].Child2;
@@ -742,9 +736,9 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <summary>Perform a left or right rotation if node A is imbalanced.</summary>
         /// <param name="iA"></param>
         /// <returns>the new root index.</returns>
-        private int Balance(int iA)
+        private int BalanceTo(int iA)
         {
-            Debug.Assert(iA != NullNode);
+            //Debug.Assert(iA != NullNode);
 
             TreeNode<T> a = nodes[iA];
             if (a.IsLeaf() || a.Height < 2)
@@ -754,8 +748,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             int iB = a.Child1;
             int iC = a.Child2;
-            Debug.Assert(0 <= iB && iB < nodeCapacity);
-            Debug.Assert(0 <= iC && iC < nodeCapacity);
+            //Debug.Assert((0 <= iB) && (iB < nodeCapacity));
+            //Debug.Assert((0 <= iC) && (iC < nodeCapacity));
 
             TreeNode<T> b = nodes[iB];
             TreeNode<T> c = nodes[iC];
@@ -769,8 +763,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 int iG = c.Child2;
                 TreeNode<T> f = nodes[iF];
                 TreeNode<T> g = nodes[iG];
-                Debug.Assert(0 <= iF && iF < nodeCapacity);
-                Debug.Assert(0 <= iG && iG < nodeCapacity);
+                //Debug.Assert((0 <= iF) && (iF < nodeCapacity));
+                //Debug.Assert((0 <= iG) && (iG < nodeCapacity));
 
                 // Swap A and C
                 c.Child1 = iA;
@@ -786,7 +780,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     }
                     else
                     {
-                        Debug.Assert(nodes[c.ParentOrNext].Child2 == iA);
+                        //Debug.Assert(nodes[c.ParentOrNext].Child2 == iA);
                         nodes[c.ParentOrNext].Child2 = iC;
                     }
                 }
@@ -829,8 +823,8 @@ namespace Alis.Core.Physic.Collision.Broadphase
                 int iE = b.Child2;
                 TreeNode<T> d = nodes[iD];
                 TreeNode<T> e = nodes[iE];
-                Debug.Assert(0 <= iD && iD < nodeCapacity);
-                Debug.Assert(0 <= iE && iE < nodeCapacity);
+                //Debug.Assert((0 <= iD) && (iD < nodeCapacity));
+                //Debug.Assert((0 <= iE) && (iE < nodeCapacity));
 
                 // Swap A and B
                 b.Child1 = iA;
@@ -846,7 +840,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
                     }
                     else
                     {
-                        Debug.Assert(nodes[b.ParentOrNext].Child2 == iA);
+                        //Debug.Assert(nodes[b.ParentOrNext].Child2 == iA);
                         nodes[b.ParentOrNext].Child2 = iB;
                     }
                 }
@@ -890,7 +884,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         /// <returns>The height of the tree.</returns>
         public int ComputeHeight(int nodeId)
         {
-            Debug.Assert(0 <= nodeId && nodeId < nodeCapacity);
+            //Debug.Assert((0 <= nodeId) && (nodeId < nodeCapacity));
             TreeNode<T> node = nodes[nodeId];
 
             if (node.IsLeaf())
@@ -924,7 +918,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (index == root)
             {
-                Debug.Assert(nodes[index].ParentOrNext == NullNode);
+                //Debug.Assert(nodes[index].ParentOrNext == NullNode);
             }
 
             TreeNode<T> node = nodes[index];
@@ -934,17 +928,17 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (node.IsLeaf())
             {
-                Debug.Assert(child1 == NullNode);
-                Debug.Assert(child2 == NullNode);
-                Debug.Assert(node.Height == 0);
+                //Debug.Assert(child1 == NullNode);
+                //Debug.Assert(child2 == NullNode);
+                //Debug.Assert(node.Height == 0);
                 return;
             }
 
-            Debug.Assert(0 <= child1 && child1 < nodeCapacity);
-            Debug.Assert(0 <= child2 && child2 < nodeCapacity);
+            //Debug.Assert((0 <= child1) && (child1 < nodeCapacity));
+            //Debug.Assert((0 <= child2) && (child2 < nodeCapacity));
 
-            Debug.Assert(nodes[child1].ParentOrNext == index);
-            Debug.Assert(nodes[child2].ParentOrNext == index);
+            //Debug.Assert(nodes[child1].ParentOrNext == index);
+            //Debug.Assert(nodes[child2].ParentOrNext == index);
 
             ValidateStructure(child1);
             ValidateStructure(child2);
@@ -968,25 +962,25 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (node.IsLeaf())
             {
-                Debug.Assert(child1 == NullNode);
-                Debug.Assert(child2 == NullNode);
-                Debug.Assert(node.Height == 0);
+                //Debug.Assert(child1 == NullNode);
+                //Debug.Assert(child2 == NullNode);
+                //Debug.Assert(node.Height == 0);
                 return;
             }
 
-            Debug.Assert(0 <= child1 && child1 < nodeCapacity);
-            Debug.Assert(0 <= child2 && child2 < nodeCapacity);
+            //Debug.Assert((0 <= child1) && (child1 < nodeCapacity));
+            //Debug.Assert((0 <= child2) && (child2 < nodeCapacity));
 
             int height1 = nodes[child1].Height;
             int height2 = nodes[child2].Height;
             int height = 1 + Math.Max(height1, height2);
-            Debug.Assert(node.Height == height);
+            //Debug.Assert(node.Height == height);
 
             Aabb aabb = new Aabb();
             aabb.Combine(ref nodes[child1].Aabb, ref nodes[child2].Aabb);
 
-            Debug.Assert(aabb.LowerBound == node.Aabb.LowerBound);
-            Debug.Assert(aabb.UpperBound == node.Aabb.UpperBound);
+            //Debug.Assert(aabb.LowerBound == node.Aabb.LowerBound);
+            //Debug.Assert(aabb.UpperBound == node.Aabb.UpperBound);
 
             ValidateMetrics(child1);
             ValidateMetrics(child2);
@@ -1002,14 +996,14 @@ namespace Alis.Core.Physic.Collision.Broadphase
             int freeIndex = freeList;
             while (freeIndex != NullNode)
             {
-                Debug.Assert(0 <= freeIndex && freeIndex < nodeCapacity);
+                //Debug.Assert((0 <= freeIndex) && (freeIndex < nodeCapacity));
                 freeIndex = nodes[freeIndex].ParentOrNext;
                 ++freeCount;
             }
 
-            Debug.Assert(Height == ComputeHeight());
+            //Debug.Assert(Height == ComputeHeight());
 
-            Debug.Assert(nodeCount + freeCount == nodeCapacity);
+            //Debug.Assert(nodeCount + freeCount == nodeCapacity);
         }
 
         /// <summary>Build an optimal tree. Very expensive. For testing.</summary>
@@ -1041,7 +1035,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             while (count > 1)
             {
-                float minCost = MathConstants.MaxFloat;
+                float minCost = float.MaxValue;
                 int iMin = -1, jMin = -1;
                 for (int i = 0; i < count; ++i)
                 {
@@ -1090,7 +1084,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
         /// <summary>Shift the origin of the nodes</summary>
         /// <param name="newOrigin">The displacement to use.</param>
-        public void ShiftOrigin(ref Vector2 newOrigin)
+        public void ShiftOrigin(ref Vector2F newOrigin)
         {
             // Build array of leaves. Free the rest.
             for (int i = 0; i < nodeCapacity; ++i)

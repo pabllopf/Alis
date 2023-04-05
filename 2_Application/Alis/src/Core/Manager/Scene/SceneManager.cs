@@ -40,7 +40,7 @@ namespace Alis.Core.Manager.Scene
         /// <summary>
         ///     The current scene
         /// </summary>
-        internal Entity.Scene currentScene;
+        internal Entity.Scene CurrentScene;
 
         /// <summary>
         ///     Scene list
@@ -53,14 +53,14 @@ namespace Alis.Core.Manager.Scene
         public SceneManager()
         {
             scenes = new List<Entity.Scene>();
-            currentScene = new Entity.Scene();
-            currentSceneManager = this;
+            CurrentScene = new Entity.Scene();
+            CurrentSceneManager = this;
         }
 
         /// <summary>
         ///     Define the current scene manager
         /// </summary>
-        internal static SceneManager currentSceneManager;
+        internal static SceneManager CurrentSceneManager;
 
         /// <summary>
         ///     Inits this instance
@@ -69,10 +69,10 @@ namespace Alis.Core.Manager.Scene
         {
             if (scenes.Count > 0)
             {
-                currentScene = scenes[0];
+                CurrentScene = scenes[0];
             }
 
-            currentScene.Init();
+            CurrentScene.Init();
         }
 
         /// <summary>
@@ -85,60 +85,60 @@ namespace Alis.Core.Manager.Scene
                 Logger.Log($"SceneManager::Awake::Scene::'{scenes[i].Name}'");
             }
 
-            Logger.Log($"SceneManager::Awake::currentScene::'{currentScene.Name}'");
+            Logger.Log($"SceneManager::Awake::currentScene::'{CurrentScene.Name}'");
 
-            currentScene.Awake();
+            CurrentScene.Awake();
         }
 
         /// <summary>
         ///     Starts this instance
         /// </summary>
-        public override void Start() => currentScene.Start();
+        public override void Start() => CurrentScene.Start();
 
         /// <summary>
         ///     Before the update
         /// </summary>
-        public override void BeforeUpdate() => currentScene.BeforeUpdate();
+        public override void BeforeUpdate() => CurrentScene.BeforeUpdate();
 
         /// <summary>
         ///     Updates this instance
         /// </summary>
-        public override void Update() => currentScene.Update();
+        public override void Update() => CurrentScene.Update();
 
         /// <summary>
         ///     Afters the update
         /// </summary>
-        public override void AfterUpdate() => currentScene.AfterUpdate();
+        public override void AfterUpdate() => CurrentScene.AfterUpdate();
 
         /// <summary>
         ///     Dispatches the events
         /// </summary>
-        public override void DispatchEvents() => currentScene.DispatchEvents();
-        
+        public override void DispatchEvents() => CurrentScene.DispatchEvents();
+
         /// <summary>
-        /// Draws this instance
+        ///     Draws this instance
         /// </summary>
-        public override void Draw() => currentScene.Draw();
+        public override void Draw() => CurrentScene.Draw();
 
         /// <summary>
         ///     Fix the update
         /// </summary>
-        public override void FixedUpdate() => currentScene.FixedUpdate();
+        public override void FixedUpdate() => CurrentScene.FixedUpdate();
 
         /// <summary>
         ///     Resets this instance
         /// </summary>
-        public override void Reset() => currentScene.Reset();
+        public override void Reset() => CurrentScene.Reset();
 
         /// <summary>
         ///     Stops this instance
         /// </summary>
-        public override void Stop() => currentScene.Stop();
+        public override void Stop() => CurrentScene.Stop();
 
         /// <summary>
         ///     Exits this instance
         /// </summary>
-        public override void Exit() => currentScene.Exit();
+        public override void Exit() => CurrentScene.Exit();
 
         /// <summary>
         ///     Adds the scene

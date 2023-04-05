@@ -5,30 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Shape.cs
+//  File:Shape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Shared;
 
@@ -139,7 +140,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The shape world transform.</param>
         /// <param name="point">A point in world coordinates.</param>
         /// <returns>True if the point is inside the shape</returns>
-        public abstract bool TestPoint(ref Transform transform, ref Vector2 point);
+        public abstract bool TestPoint(ref Transform transform, ref Vector2F point);
 
         /// <summary>Cast a ray against a child shape.</summary>
         /// <param name="input">The ray-cast input parameters.</param>

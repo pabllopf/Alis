@@ -27,9 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
+using Alis.Core.Graphic.D2.SFML.Windows;
 
 namespace Alis.Sample.Rogue
 {
@@ -44,7 +46,7 @@ namespace Alis.Sample.Rogue
         private Animator animator;
 
         /// <summary>
-        /// The box collider
+        ///     The box collider
         /// </summary>
         private BoxCollider boxCollider;
 
@@ -82,31 +84,31 @@ namespace Alis.Sample.Rogue
         }
 
         /// <summary>
-        ///     sample
+        ///     Ons the release key using the specified key
         /// </summary>
-        /// <param name="key"></param>
-        public override void OnReleaseKey(string key)
+        /// <param name="key">The key</param>
+        public override void OnReleaseKey(Key key)
         {
-            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+            Vector2F velocity = boxCollider.Body.LinearVelocity;
 
             switch (key)
             {
-                case "D":
+                case Key.D:
                     velocity.X = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "A":
+                case Key.A:
                     velocity.X = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "W":
+                case Key.W:
                     velocity.Y = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "S":
+                case Key.S:
                     velocity.Y = 0;
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
@@ -114,36 +116,36 @@ namespace Alis.Sample.Rogue
             }
         }
 
-
         /// <summary>
-        ///     sample
+        ///     Ons the press down key using the specified key
         /// </summary>
-        /// <param name="key"></param>
-        public override void OnPressDownKey(string key)
+        /// <param name="key">The key</param>
+        public override void OnPressDownKey(Key key)
         {
-            System.Numerics.Vector2 velocity = boxCollider.Body.LinearVelocity;
+            Vector2F velocity = boxCollider.Body.LinearVelocity;
 
+            //Console.WriteLine($"key={key}");
             switch (key)
             {
-                case "D":
+                case Key.D:
                     walk = true;
                     animator.ChangeAnimationTo("WalkRight");
                     velocity.X = 5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "A":
+                case Key.A:
                     walk = true;
                     animator.ChangeAnimationTo("WalkLeft");
                     velocity.X = -5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "W":
+                case Key.W:
                     walk = true;
                     animator.ChangeAnimationTo("WalkUp");
                     velocity.Y = -5;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
-                case "S":
+                case Key.S:
                     walk = true;
                     animator.ChangeAnimationTo("WalkDown");
                     velocity.Y = 5;

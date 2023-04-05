@@ -30,10 +30,9 @@
 namespace Alis.Core.Aspect.Logging
 {
     /// <summary>
-    /// The file controller class
+    ///     The file controller class
     /// </summary>
     public class FileController
     {
-        
     }
 }

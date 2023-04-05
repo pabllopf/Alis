@@ -1,0 +1,167 @@
+name: "[PRO][PUBLISH]"
+
+on:
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.github/**'
+  
+  pull_request:
+    branches: [ master ]
+    paths-ignore:
+      - 'docs/**'
+      - '**.md'
+      - '.github/**'
+
+jobs:
+  #
+  # CREATE PACKAGES
+  #
+  
+  Create_Packages:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: master
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: |
+            6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
+
+      - name: Dotnet test
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i ; fi;done
+
+      - name: Define file name to update version
+        run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
+
+      - name: Print the file name to update version
+        run: echo $FILENAME
+
+      - name: Get the current version
+        run: echo "VERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
+
+      - name: Print the current version
+        run: echo $VERSION
+
+      - name: Get mayor version
+        run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
+
+      - name: Print mayor version
+        run: echo $MAYOR
+
+      - name: Get minor version
+        run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
+
+      - name: Print minor version
+        run: echo $MINOR
+
+      - name: Get alpha version
+        run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
+
+      - name: Print current alpha version
+        run: echo $ALPHA
+
+      - name: Increment version
+        run: echo "ALPHA=$(((ALPHA=ALPHA+1)))" >> $GITHUB_ENV
+
+      - name: Alpha version incremented
+        run: echo $ALPHA
+
+      - name: Check alpha version
+        run: if [[ "$ALPHA" -gt 9 ]]; then echo "MINOR=$(((MINOR=MINOR+1)))" >> $GITHUB_ENV ; echo "ALPHA=$(((ALPHA=0)))" >> $GITHUB_ENV ; fi
+
+      - name: Check minor version
+        run: if [[ "$MINOR" -gt 9 ]]; then echo "MAYOR=$(((MAYOR=MAYOR+1)))" >> $GITHUB_ENV; echo "MINOR=$(((MINOR=0)))" >> $GITHUB_ENV; fi
+
+      - name: Create the next version
+        run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
+
+      - name: Print the next version
+        run: echo $VERSIONFINAL
+
+      - name: Write in filename the next version
+        #run: sed -i '' -e 's/$VERSION/$VERSIONFINAL/' $FILENAME
+        #run: sed -i .bak 's/$VERSION/$VERSIONFINAL/' $FILENAME
+        run: sed -i "" "s/$VERSION/$VERSIONFINAL/" Directory.Build.props
+
+      - name: Get the current version
+        run: echo "CURRENTVERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
+
+      - name: Print the next version
+        run: echo $CURRENTVERSION
+
+      - name: Create packages
+        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet pack -c Release $i -o ./.publish/$VERSIONFINAL/ ; fi;done
+
+      - name: Publish nugets TO nuget
+        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg -s https://api.nuget.org/v3/index.json -k ${{secrets.NUGET}} --skip-duplicate
+
+      - name: Publish nugets TO github
+        run: dotnet nuget push ./.publish/$VERSIONFINAL/*.nupkg --source "https://nuget.pkg.github.com/pabllopf/index.json" -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate
+
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name: git tag -a <tag_name> HEAD -m "my version 1.4"
+        run: git tag -a v${{ env.VERSIONFINAL }} HEAD -m "v${{ env.VERSIONFINAL }}"
+
+      - name: git push --tags
+        run: git push --tags
+
+      - name: Update CHANGELOG
+        id: changelog
+        uses: Requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: "v${{ env.VERSIONFINAL }}"
+          writeToFile: true
+          excludeTypes: chore, perf
+
+      - uses: softprops/action-gh-release@v1
+        with:
+          body: ${{ steps.changelog.outputs.changes }}
+          token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
+          name: "v${{ env.VERSIONFINAL }} has arrived !!!"
+          tag_name: "v${{ env.VERSIONFINAL }}"
+          generate_release_notes: true
+          append_body: true
+          files: |
+            licence.md
+            ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
+
+      - name: create a file to save the log
+        run: date > ./.publish/generated.txt
+
+      - name: git config user.name github-actions
+        run: git config user.name github-actions
+
+      - name: git config user.email github-actions@github.com
+        run: git config user.email github-actions@github.com
+
+      - name: git config core.autocrlf false
+        run: git config core.autocrlf false
+
+      - name: git add .
+        run: git add .
+
+      - name: git commit -m "Create the packages of version '$VERSION'."
+        run: git commit -m "Create the packages of version '$VERSION'."
+
+      - name: git push
+        run: git push

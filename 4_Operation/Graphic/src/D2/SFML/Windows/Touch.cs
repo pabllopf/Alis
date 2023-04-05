@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {
@@ -58,7 +58,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="finger">Finger index</param>
         /// <returns>Current position of the finger</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2 GetPosition(uint finger) => GetPosition(finger, null);
+        public static Vector2I GetPosition(uint finger) => GetPosition(finger, null);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -69,7 +69,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="relativeTo">Reference window</param>
         /// <returns>Current position of the finger</returns>
         ////////////////////////////////////////////////////////////
-        public static Vector2 GetPosition(uint finger, Window relativeTo)
+        public static Vector2I GetPosition(uint finger, Window relativeTo)
         {
             if (relativeTo != null)
             {
@@ -94,6 +94,6 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfTouch_getPosition(uint finger, IntPtr relativeTo);
+        private static extern Vector2I sfTouch_getPosition(uint finger, IntPtr relativeTo);
     }
 }

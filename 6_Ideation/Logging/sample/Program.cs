@@ -43,15 +43,15 @@ namespace Alis.Core.Aspect.Logging.Sample
         public static void Main(string[] args)
         {
             Logger.Trace();
-            
+
             Logger.Log("Sample");
             Logger.Info("Sample");
-            
+
             Logger.Event("Sample");
-            
+
             Logger.Warning("Sample");
             Logger.Error("Sample");
-            
+
             try
             {
                 throw new NullReferenceException();
@@ -60,7 +60,6 @@ namespace Alis.Core.Aspect.Logging.Sample
             {
                 Logger.Exception(exception);
             }
-
         }
     }
 }

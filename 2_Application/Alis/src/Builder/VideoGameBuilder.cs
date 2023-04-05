@@ -47,11 +47,11 @@ namespace Alis.Builder
     {
         /// <summary>Gets or sets the video game.</summary>
         /// <value>The video game.</value>
-        private VideoGame videoGame { get; } = new VideoGame();
+        private VideoGame VideoGame { get; } = new VideoGame();
 
         /// <summary>Builds this instance.</summary>
         /// <returns></returns>
-        public VideoGame Build() => videoGame;
+        public VideoGame Build() => VideoGame;
 
         /// <summary>
         ///     Managers the value
@@ -61,7 +61,7 @@ namespace Alis.Builder
         /// <returns>The video game builder</returns>
         public VideoGameBuilder Manager<T>(Func<SceneManagerBuilder, SceneManager> value) where T : SceneManager
         {
-            videoGame.SetManager(value.Invoke(new SceneManagerBuilder()));
+            VideoGame.SetManager(value.Invoke(new SceneManagerBuilder()));
             return this;
         }
 
@@ -77,6 +77,6 @@ namespace Alis.Builder
         }
 
         /// <summary>Runs this instance.</summary>
-        public void Run() => videoGame.Run();
+        public void Run() => VideoGame.Run();
     }
 }

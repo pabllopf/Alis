@@ -5,38 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   PulleyJoint.cs
+//  File:PulleyJoint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Definitions.Joints;
-using Alis.Core.Physic.Dynamics.Joints.Misc;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -118,22 +114,22 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private Vector2 localAnchorA;
+        private Vector2F localAnchorA;
 
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private Vector2 localAnchorB;
+        private Vector2F localAnchorB;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 localCenterA;
+        private Vector2F localCenterA;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 localCenterB;
+        private Vector2F localCenterB;
 
         /// <summary>
         ///     The mass
@@ -143,7 +139,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 rA;
+        private Vector2F rA;
 
         /// <summary>
         ///     The ratio
@@ -153,47 +149,89 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 rB;
+        private Vector2F rB;
 
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 uA;
+        private Vector2F uA;
 
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 uB;
+        private Vector2F uB;
 
         /// <summary>
         ///     The world anchor
         /// </summary>
-        private Vector2 worldAnchorA;
+        private Vector2F worldAnchorA;
 
         /// <summary>
         ///     The world anchor
         /// </summary>
-        private Vector2 worldAnchorB;
+        private Vector2F worldAnchorB;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="PulleyJoint" /> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public PulleyJoint(PulleyJointDef def)
-            : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="groundAnchorA">The ground anchor</param>
+        /// <param name="groundAnchorB">The ground anchor</param>
+        /// <param name="localAnchorA">The local anchor</param>
+        /// <param name="localAnchorB">The local anchor</param>
+        /// <param name="lengthA">The length</param>
+        /// <param name="lengthB">The length</param>
+        /// <param name="ratio">The ratio</param>
+        public PulleyJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = default(JointType),
+            bool collideConnected = true,
+            Vector2F groundAnchorA = default(Vector2F),
+            Vector2F groundAnchorB = default(Vector2F),
+            Vector2F localAnchorA = default(Vector2F),
+            Vector2F localAnchorB = default(Vector2F),
+            float lengthA = 0.0f,
+            float lengthB = 0.0f,
+            float ratio = 1.0f
+        )
+            : base(bodyA, bodyB, jointType, collideConnected)
         {
-            worldAnchorA = def.GroundAnchorA;
-            worldAnchorB = def.GroundAnchorB;
-            localAnchorA = def.LocalAnchorA;
-            localAnchorB = def.LocalAnchorB;
+            if (groundAnchorA.Equals(default(Vector2F)))
+            {
+                groundAnchorA = new Vector2F(-1.0f, 1.0f);
+            }
 
-            lengthA = def.LengthA;
-            lengthB = def.LengthB;
+            if (groundAnchorB.Equals(default(Vector2F)))
+            {
+                groundAnchorB = new Vector2F(1.0f, 1.0f);
+            }
 
-            Debug.Assert(def.Ratio != 0.0f);
-            ratio = def.Ratio;
+            if (localAnchorA.Equals(default(Vector2F)))
+            {
+                localAnchorA = new Vector2F(-1.0f, 0.0f);
+            }
 
-            constant = def.LengthA + ratio * def.LengthB;
+            if (localAnchorB.Equals(default(Vector2F)))
+            {
+                localAnchorB = new Vector2F(1.0f, 0.0f);
+            }
+
+            worldAnchorA = groundAnchorA;
+            worldAnchorB = groundAnchorB;
+            this.localAnchorA = localAnchorA;
+            this.localAnchorB = localAnchorB;
+
+            this.lengthA = lengthA;
+            this.lengthB = lengthB;
+
+            //Debug.Assert(def.Ratio != 0.0f);
+            this.ratio = ratio;
+
+            constant = lengthA + this.ratio * lengthB;
         }
 
         /// <summary>Constructor for PulleyJoint.</summary>
@@ -205,8 +243,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="worldAnchorB">The world anchor for the second body.</param>
         /// <param name="ratio">The ratio.</param>
         /// <param name="useWorldCoordinates">Set to true if you are using world coordinates as anchors.</param>
-        public PulleyJoint(Body bodyA, Body bodyB, Vector2 anchorA, Vector2 anchorB, Vector2 worldAnchorA,
-            Vector2 worldAnchorB, float ratio, bool useWorldCoordinates = false)
+        public PulleyJoint(Body bodyA, Body bodyB, Vector2F anchorA, Vector2F anchorB, Vector2F worldAnchorA,
+            Vector2F worldAnchorB, float ratio, bool useWorldCoordinates = false)
             : base(bodyA, bodyB, JointType.Pulley)
         {
             this.worldAnchorA = worldAnchorA;
@@ -217,9 +255,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 localAnchorA = bodyA.GetLocalPoint(anchorA);
                 localAnchorB = bodyB.GetLocalPoint(anchorB);
 
-                Vector2 dA = anchorA - worldAnchorA;
+                Vector2F dA = anchorA - worldAnchorA;
                 lengthA = dA.Length();
-                Vector2 dB = anchorB - worldAnchorB;
+                Vector2F dB = anchorB - worldAnchorB;
                 lengthB = dB.Length();
             }
             else
@@ -227,14 +265,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 localAnchorA = anchorA;
                 localAnchorB = anchorB;
 
-                Vector2 dA = anchorA - bodyA.GetLocalPoint(worldAnchorA);
+                Vector2F dA = anchorA - bodyA.GetLocalPoint(worldAnchorA);
                 lengthA = dA.Length();
-                Vector2 dB = anchorB - bodyB.GetLocalPoint(worldAnchorB);
+                Vector2F dB = anchorB - bodyB.GetLocalPoint(worldAnchorB);
                 lengthB = dB.Length();
             }
 
-            Debug.Assert(ratio != 0.0f);
-            Debug.Assert(ratio > MathConstants.Epsilon);
+            //Debug.Assert(ratio != 0.0f);
+            //Debug.Assert(ratio > MathConstants.Epsilon);
 
             this.ratio = ratio;
             constant = lengthA + ratio * lengthB;
@@ -242,28 +280,28 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The local anchor point on BodyA</summary>
-        public Vector2 LocalAnchorA
+        public Vector2F LocalAnchorA
         {
             get => localAnchorA;
             set => localAnchorA = value;
         }
 
         /// <summary>The local anchor point on BodyB</summary>
-        public Vector2 LocalAnchorB
+        public Vector2F LocalAnchorB
         {
             get => localAnchorB;
             set => localAnchorB = value;
         }
 
         /// <summary>Get the first world anchor.</summary>
-        public sealed override Vector2 WorldAnchorA
+        public sealed override Vector2F WorldAnchorA
         {
             get => worldAnchorA;
             set => worldAnchorA = value;
         }
 
         /// <summary>Get the second world anchor.</summary>
-        public sealed override Vector2 WorldAnchorB
+        public sealed override Vector2F WorldAnchorB
         {
             get => worldAnchorB;
             set => worldAnchorB = value;
@@ -288,9 +326,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             get
             {
-                Vector2 p = BodyA.GetWorldPoint(localAnchorA);
-                Vector2 s = worldAnchorA;
-                Vector2 d = p - s;
+                Vector2F p = BodyA.GetWorldPoint(localAnchorA);
+                Vector2F s = worldAnchorA;
+                Vector2F d = p - s;
                 return d.Length();
             }
         }
@@ -300,9 +338,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         {
             get
             {
-                Vector2 p = BodyB.GetWorldPoint(localAnchorB);
-                Vector2 s = worldAnchorB;
-                Vector2 d = p - s;
+                Vector2F p = BodyB.GetWorldPoint(localAnchorB);
+                Vector2F s = worldAnchorB;
+                Vector2F d = p - s;
                 return d.Length();
             }
         }
@@ -318,7 +356,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
-        public override void ShiftOrigin(ref Vector2 newOrigin)
+        public override void ShiftOrigin(ref Vector2F newOrigin)
         {
             worldAnchorA -= newOrigin;
             worldAnchorB -= newOrigin;
@@ -329,9 +367,9 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt)
+        public override Vector2F GetReactionForce(float invDt)
         {
-            Vector2 p = impulse * uB;
+            Vector2F p = impulse * uB;
             return invDt * p;
         }
 
@@ -357,17 +395,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
             invIa = BodyA.InvI;
             invIb = BodyB.InvI;
 
-            Vector2 cA = data.Positions[indexA].C;
+            Vector2F cA = data.Positions[indexA].C;
             float aA = data.Positions[indexA].A;
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
 
-            Vector2 cB = data.Positions[indexB].C;
+            Vector2F cB = data.Positions[indexB].C;
             float aB = data.Positions[indexB].A;
-            Vector2 vB = data.Velocities[indexB].V;
+            Vector2F vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
             rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
             rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
@@ -385,7 +423,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                uA = Vector2.Zero;
+                uA = Vector2F.Zero;
             }
 
             if (lengthB > 10.0f * Settings.LinearSlop)
@@ -394,7 +432,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                uB = Vector2.Zero;
+                uB = Vector2F.Zero;
             }
 
             // Compute effective mass.
@@ -417,8 +455,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 impulse *= data.Step.DeltaTimeRatio;
 
                 // Warm starting.
-                Vector2 pa = -impulse * uA;
-                Vector2 pb = -ratio * impulse * uB;
+                Vector2F pa = -impulse * uA;
+                Vector2F pb = -ratio * impulse * uB;
 
                 vA += invMassA * pa;
                 wA += invIa * MathUtils.Cross(rA, pa);
@@ -442,20 +480,20 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
-            Vector2 vB = data.Velocities[indexB].V;
+            Vector2F vB = data.Velocities[indexB].V;
             float wB = data.Velocities[indexB].W;
 
-            Vector2 vpA = vA + MathUtils.Cross(wA, rA);
-            Vector2 vpB = vB + MathUtils.Cross(wB, rB);
+            Vector2F vpA = vA + MathUtils.Cross(wA, rA);
+            Vector2F vpB = vB + MathUtils.Cross(wB, rB);
 
-            float cdot = -Vector2.Dot(uA, vpA) - ratio * Vector2.Dot(uB, vpB);
+            float cdot = -Vector2F.Dot(uA, vpA) - ratio * Vector2F.Dot(uB, vpB);
             float impulse = -mass * cdot;
             this.impulse += impulse;
 
-            Vector2 pa = -impulse * uA;
-            Vector2 pb = -ratio * impulse * uB;
+            Vector2F pa = -impulse * uA;
+            Vector2F pb = -ratio * impulse * uB;
             vA += invMassA * pa;
             wA += invIa * MathUtils.Cross(rA, pa);
             vB += invMassB * pb;
@@ -474,19 +512,19 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <returns>The bool</returns>
         internal override bool SolvePositionConstraints(ref SolverData data)
         {
-            Vector2 cA = data.Positions[indexA].C;
+            Vector2F cA = data.Positions[indexA].C;
             float aA = data.Positions[indexA].A;
-            Vector2 cB = data.Positions[indexB].C;
+            Vector2F cB = data.Positions[indexB].C;
             float aB = data.Positions[indexB].A;
 
-            Rot qA = new Rot(aA), qB = new Rot(aB);
+            Rotation qA = new Rotation(aA), qB = new Rotation(aB);
 
-            Vector2 rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
-            Vector2 rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
+            Vector2F rA = MathUtils.Mul(qA, localAnchorA - localCenterA);
+            Vector2F rB = MathUtils.Mul(qB, localAnchorB - localCenterB);
 
             // Get the pulley axes.
-            Vector2 uA = cA + rA - worldAnchorA;
-            Vector2 uB = cB + rB - worldAnchorB;
+            Vector2F uA = cA + rA - worldAnchorA;
+            Vector2F uB = cB + rB - worldAnchorB;
 
             float lengthA = uA.Length();
             float lengthB = uB.Length();
@@ -497,7 +535,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                uA = Vector2.Zero;
+                uA = Vector2F.Zero;
             }
 
             if (lengthB > 10.0f * Settings.LinearSlop)
@@ -506,7 +544,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                uB = Vector2.Zero;
+                uB = Vector2F.Zero;
             }
 
             // Compute effective mass.
@@ -528,8 +566,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float impulse = -mass * c;
 
-            Vector2 pa = -impulse * uA;
-            Vector2 pb = -ratio * impulse * uB;
+            Vector2F pa = -impulse * uA;
+            Vector2F pb = -ratio * impulse * uB;
 
             cA += invMassA * pa;
             aA += invIa * MathUtils.Cross(rA, pa);

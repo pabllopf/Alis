@@ -31,8 +31,8 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math;
-using Alis.Core.Aspect.Math.Figures.D2;
+using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="viewRect">Rectangle defining the position and size of the view</param>
         ////////////////////////////////////////////////////////////
-        public View(Rectangle viewRect) :
+        public View(RectangleF viewRect) :
             base(sfView_createFromRect(viewRect))
         {
         }
@@ -80,7 +80,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="center">Center of the view</param>
         /// <param name="size">Size of the view</param>
         ////////////////////////////////////////////////////////////
-        public View(Vector2 center, Vector2 size) :
+        public View(Vector2F center, Vector2F size) :
             base(sfView_create())
         {
             Center = center;
@@ -113,7 +113,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Center of the view
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2 Center
+        public Vector2F Center
         {
             get => sfView_getCenter(CPointer);
             set => sfView_setCenter(CPointer, value);
@@ -124,7 +124,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Half-size of the view
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Vector2 Size
+        public Vector2F Size
         {
             get => sfView_getSize(CPointer);
             set => sfView_setSize(CPointer, value);
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     size of the target to which the view is applied
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Rectangle Viewport
+        public RectangleF Viewport
         {
             get => sfView_getViewport(CPointer);
             set => sfView_setViewport(CPointer, value);
@@ -159,7 +159,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="rectangle">Rectangle defining the position and size of the view</param>
         ////////////////////////////////////////////////////////////
-        public void Reset(Rectangle rectangle)
+        public void Reset(RectangleF rectangle)
         {
             sfView_reset(CPointer, rectangle);
         }
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <param name="offset">Offset to move the view</param>
         ////////////////////////////////////////////////////////////
-        public void Move(Vector2 offset)
+        public void Move(Vector2F offset)
         {
             sfView_move(CPointer, offset);
         }
@@ -236,7 +236,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="rect">The rect</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfView_createFromRect(Rectangle rect);
+        private static extern IntPtr sfView_createFromRect(RectangleF rect);
 
         /// <summary>
         ///     Sfs the view copy using the specified view
@@ -259,7 +259,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="center">The center</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_setCenter(IntPtr view, Vector2 center);
+        private static extern void sfView_setCenter(IntPtr view, Vector2F center);
 
         /// <summary>
         ///     Sfs the view set size using the specified view
@@ -267,7 +267,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="size">The size</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_setSize(IntPtr view, Vector2 size);
+        private static extern void sfView_setSize(IntPtr view, Vector2F size);
 
         /// <summary>
         ///     Sfs the view set rotation using the specified view
@@ -283,7 +283,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="viewport">The viewport</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_setViewport(IntPtr view, Rectangle viewport);
+        private static extern void sfView_setViewport(IntPtr view, RectangleF viewport);
 
         /// <summary>
         ///     Sfs the view reset using the specified view
@@ -291,7 +291,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="rectangle">The rectangle</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_reset(IntPtr view, Rectangle rectangle);
+        private static extern void sfView_reset(IntPtr view, RectangleF rectangle);
 
         /// <summary>
         ///     Sfs the view get center using the specified view
@@ -299,7 +299,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfView_getCenter(IntPtr view);
+        private static extern Vector2F sfView_getCenter(IntPtr view);
 
         /// <summary>
         ///     Sfs the view get size using the specified view
@@ -307,7 +307,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The vector 2f</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfView_getSize(IntPtr view);
+        private static extern Vector2F sfView_getSize(IntPtr view);
 
         /// <summary>
         ///     Sfs the view get rotation using the specified view
@@ -323,7 +323,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Rectangle sfView_getViewport(IntPtr view);
+        private static extern RectangleF sfView_getViewport(IntPtr view);
 
         /// <summary>
         ///     Sfs the view move using the specified view
@@ -331,7 +331,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="view">The view</param>
         /// <param name="offset">The offset</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfView_move(IntPtr view, Vector2 offset);
+        private static extern void sfView_move(IntPtr view, Vector2F offset);
 
         /// <summary>
         ///     Sfs the view rotate using the specified view

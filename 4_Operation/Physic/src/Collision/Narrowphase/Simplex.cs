@@ -5,36 +5,36 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Simplex.cs
+//  File:Simplex.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Distance;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Collision.Narrowphase
 {
@@ -73,8 +73,8 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 SimplexVertex v = V[i];
                 v.IndexA = cache.IndexA[i];
                 v.IndexB = cache.IndexB[i];
-                Vector2 wALocal = proxyA.Vertices[v.IndexA];
-                Vector2 wBLocal = proxyB.Vertices[v.IndexB];
+                Vector2F wALocal = proxyA.Vertices[v.IndexA];
+                Vector2F wBLocal = proxyB.Vertices[v.IndexB];
                 v.Wa = MathUtils.Mul(ref transformA, wALocal);
                 v.Wb = MathUtils.Mul(ref transformB, wBLocal);
                 v.W = v.Wb - v.Wa;
@@ -88,7 +88,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             {
                 float metric1 = cache.Metric;
                 float metric2 = GetMetric();
-                if (metric2 < 0.5f * metric1 || 2.0f * metric1 < metric2 || metric2 < MathConstants.Epsilon)
+                if (metric2 < 0.5f * metric1 || 2.0f * metric1 < metric2 || metric2 < Constant.Epsilon)
                 {
                     // Reset the simplex.
                     Count = 0;
@@ -101,8 +101,8 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                 SimplexVertex v = V[0];
                 v.IndexA = 0;
                 v.IndexB = 0;
-                Vector2 wALocal = proxyA.Vertices[0];
-                Vector2 wBLocal = proxyB.Vertices[0];
+                Vector2F wALocal = proxyA.Vertices[0];
+                Vector2F wBLocal = proxyB.Vertices[0];
                 v.Wa = MathUtils.Mul(ref transformA, wALocal);
                 v.Wb = MathUtils.Mul(ref transformB, wBLocal);
                 v.W = v.Wb - v.Wa;
@@ -131,7 +131,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         ///     Gets the search direction
         /// </summary>
         /// <returns>The vector</returns>
-        internal Vector2 GetSearchDirection()
+        internal Vector2F GetSearchDirection()
         {
             switch (Count)
             {
@@ -140,7 +140,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
                 case 2:
                 {
-                    Vector2 e12 = V[1].W - V[0].W;
+                    Vector2F e12 = V[1].W - V[0].W;
                     float sgn = MathUtils.Cross(e12, -V[0].W);
                     if (sgn > 0.0f)
                     {
@@ -154,7 +154,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
                 default:
                     Debug.Assert(false);
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
             }
         }
 
@@ -162,13 +162,13 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         ///     Gets the closest point
         /// </summary>
         /// <returns>The vector</returns>
-        internal Vector2 GetClosestPoint()
+        internal Vector2F GetClosestPoint()
         {
             switch (Count)
             {
                 case 0:
                     Debug.Assert(false);
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
 
                 case 1:
                     return V[0].W;
@@ -177,11 +177,11 @@ namespace Alis.Core.Physic.Collision.Narrowphase
                     return V[0].A * V[0].W + V[1].A * V[1].W;
 
                 case 3:
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
 
                 default:
                     Debug.Assert(false);
-                    return Vector2.Zero;
+                    return Vector2F.Zero;
             }
         }
 
@@ -191,13 +191,13 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <param name="pA">The </param>
         /// <param name="pB">The </param>
         /// <exception cref="Exception"></exception>
-        internal void GetWitnessPoints(out Vector2 pA, out Vector2 pB)
+        internal void GetWitnessPoints(out Vector2F pA, out Vector2F pB)
         {
             switch (Count)
             {
                 case 0:
-                    pA = Vector2.Zero;
-                    pB = Vector2.Zero;
+                    pA = Vector2F.Zero;
+                    pB = Vector2F.Zero;
                     Debug.Assert(false);
                     break;
 
@@ -276,12 +276,12 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// </summary>
         internal void Solve2()
         {
-            Vector2 w1 = V[0].W;
-            Vector2 w2 = V[1].W;
-            Vector2 e12 = w2 - w1;
+            Vector2F w1 = V[0].W;
+            Vector2F w2 = V[1].W;
+            Vector2F e12 = w2 - w1;
 
             // w1 region
-            float d122 = -Vector2.Dot(w1, e12);
+            float d122 = -Vector2F.Dot(w1, e12);
             if (d122 <= 0.0f)
             {
                 // a2 <= 0, so we clamp it to 0
@@ -291,7 +291,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // w2 region
-            float d121 = Vector2.Dot(w2, e12);
+            float d121 = Vector2F.Dot(w2, e12);
             if (d121 <= 0.0f)
             {
                 // a1 <= 0, so we clamp it to 0
@@ -318,17 +318,17 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// </summary>
         internal void Solve3()
         {
-            Vector2 w1 = V[0].W;
-            Vector2 w2 = V[1].W;
-            Vector2 w3 = V[2].W;
+            Vector2F w1 = V[0].W;
+            Vector2F w2 = V[1].W;
+            Vector2F w3 = V[2].W;
 
             // Edge12
             // [1      1     ][a1] = [1]
             // [w1.e12 w2.e12][a2] = [0]
             // a3 = 0
-            Vector2 e12 = w2 - w1;
-            float w1E12 = Vector2.Dot(w1, e12);
-            float w2E12 = Vector2.Dot(w2, e12);
+            Vector2F e12 = w2 - w1;
+            float w1E12 = Vector2F.Dot(w1, e12);
+            float w2E12 = Vector2F.Dot(w2, e12);
             float d121 = w2E12;
             float d122 = -w1E12;
 
@@ -336,9 +336,9 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             // [1      1     ][a1] = [1]
             // [w1.e13 w3.e13][a3] = [0]
             // a2 = 0
-            Vector2 e13 = w3 - w1;
-            float w1E13 = Vector2.Dot(w1, e13);
-            float w3E13 = Vector2.Dot(w3, e13);
+            Vector2F e13 = w3 - w1;
+            float w1E13 = Vector2F.Dot(w1, e13);
+            float w3E13 = Vector2F.Dot(w3, e13);
             float d131 = w3E13;
             float d132 = -w1E13;
 
@@ -346,9 +346,9 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             // [1      1     ][a2] = [1]
             // [w2.e23 w3.e23][a3] = [0]
             // a1 = 0
-            Vector2 e23 = w3 - w2;
-            float w2E23 = Vector2.Dot(w2, e23);
-            float w3E23 = Vector2.Dot(w3, e23);
+            Vector2F e23 = w3 - w2;
+            float w2E23 = Vector2F.Dot(w2, e23);
+            float w3E23 = Vector2F.Dot(w3, e23);
             float d231 = w3E23;
             float d232 = -w2E23;
 
@@ -360,7 +360,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             float d1233 = n123 * MathUtils.Cross(w1, w2);
 
             // w1 region
-            if (d122 <= 0.0f && d132 <= 0.0f)
+            if ((d122 <= 0.0f) && (d132 <= 0.0f))
             {
                 V.Value0.A = 1.0f;
                 Count = 1;
@@ -368,7 +368,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // e12
-            if (d121 > 0.0f && d122 > 0.0f && d1233 <= 0.0f)
+            if ((d121 > 0.0f) && (d122 > 0.0f) && (d1233 <= 0.0f))
             {
                 float invD12 = 1.0f / (d121 + d122);
                 V.Value0.A = d121 * invD12;
@@ -378,7 +378,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // e13
-            if (d131 > 0.0f && d132 > 0.0f && d1232 <= 0.0f)
+            if ((d131 > 0.0f) && (d132 > 0.0f) && (d1232 <= 0.0f))
             {
                 float invD13 = 1.0f / (d131 + d132);
                 V.Value0.A = d131 * invD13;
@@ -389,7 +389,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // w2 region
-            if (d121 <= 0.0f && d232 <= 0.0f)
+            if ((d121 <= 0.0f) && (d232 <= 0.0f))
             {
                 V.Value1.A = 1.0f;
                 Count = 1;
@@ -398,7 +398,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // w3 region
-            if (d131 <= 0.0f && d231 <= 0.0f)
+            if ((d131 <= 0.0f) && (d231 <= 0.0f))
             {
                 V.Value2.A = 1.0f;
                 Count = 1;
@@ -407,7 +407,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             }
 
             // e23
-            if (d231 > 0.0f && d232 > 0.0f && d1231 <= 0.0f)
+            if ((d231 > 0.0f) && (d232 > 0.0f) && (d1231 <= 0.0f))
             {
                 float invD23 = 1.0f / (d231 + d232);
                 V.Value1.A = d231 * invD23;

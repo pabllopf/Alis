@@ -5,30 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   DynamicTreeBroadPhase.cs
+//  File:DynamicTreeBroadPhase.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Dynamics;
@@ -148,7 +148,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         ///     Call MoveProxy as many times as you like, then when you are done call UpdatePairs to finalized the proxy pairs
         ///     (for your time step).
         /// </summary>
-        public void MoveProxy(int proxyId, ref Aabb aabb, Vector2 displacement)
+        public void MoveProxy(int proxyId, ref Aabb aabb, Vector2F displacement)
         {
             bool buffer = tree.MoveProxy(proxyId, ref aabb, displacement);
             if (buffer)
@@ -261,7 +261,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
         }
 
         /// <summary>Shift the world origin. Useful for large worlds.</summary>
-        public void ShiftOrigin(ref Vector2 newOrigin)
+        public void ShiftOrigin(ref Vector2F newOrigin)
         {
             tree.ShiftOrigin(ref newOrigin);
         }
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Collision.Broadphase
             }
 
             bool moved = tree.WasMoved(proxyId);
-            if (moved && proxyId > queryProxyId)
+            if (moved && (proxyId > queryProxyId))
             {
                 // Both proxies are moving. Avoid duplicate pairs.
                 return true;

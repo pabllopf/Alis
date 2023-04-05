@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Math.Figures.D2;
+using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -44,9 +44,9 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         public float Advance;
 
         /// <summary>Bounding rectangle of the glyph, in coordinates relative to the baseline</summary>
-        public Rectangle Bounds;
+        public RectangleF Bounds;
 
         /// <summary>Texture coordinates of the glyph inside the font's texture</summary>
-        public Rectangle TextureRect;
+        public RectangleI TextureRect;
     }
 }

@@ -31,7 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math.Figures.D2;
+using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
 
 namespace Alis.Core.Graphic.D2.SFML.Graphics
 {
@@ -78,7 +78,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="texture">Source texture to assign to the sprite</param>
         /// <param name="rectangle">Sub-rectangle of the texture to assign to the sprite</param>
         ////////////////////////////////////////////////////////////
-        public Sprite(Texture texture, Rectangle rectangle) :
+        public Sprite(Texture texture, RectangleI rectangle) :
             base(sfSprite_create())
         {
             Texture = texture;
@@ -132,7 +132,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         ///     Sub-rectangle of the source image displayed by the sprite
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public Rectangle TextureRect
+        public RectangleI TextureRect
         {
             get => sfSprite_getTextureRect(CPointer);
             set => sfSprite_setTextureRect(CPointer, value);
@@ -171,7 +171,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Local bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public Rectangle GetLocalBounds() => sfSprite_getLocalBounds(CPointer);
+        public RectangleF GetLocalBounds() => sfSprite_getLocalBounds(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -184,7 +184,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// </summary>
         /// <returns>Global bounding rectangle of the entity</returns>
         ////////////////////////////////////////////////////////////
-        public Rectangle GetGlobalBounds() =>
+        public RectangleF GetGlobalBounds() =>
             // because we override the object's transform
             // we don't use the native getGlobalBounds function,
             Transform.TransformRect(GetLocalBounds());
@@ -281,7 +281,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <param name="rect">The rect</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfSprite_setTextureRect(IntPtr cPointer, Rectangle rect);
+        private static extern void sfSprite_setTextureRect(IntPtr cPointer, RectangleI rect);
 
         /// <summary>
         ///     Sfs the sprite get texture rect using the specified c pointer
@@ -289,7 +289,7 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The int rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Rectangle sfSprite_getTextureRect(IntPtr cPointer);
+        private static extern RectangleI sfSprite_getTextureRect(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the sprite get local bounds using the specified c pointer
@@ -297,6 +297,6 @@ namespace Alis.Core.Graphic.D2.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The float rect</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Rectangle sfSprite_getLocalBounds(IntPtr cPointer);
+        private static extern RectangleF sfSprite_getLocalBounds(IntPtr cPointer);
     }
 }

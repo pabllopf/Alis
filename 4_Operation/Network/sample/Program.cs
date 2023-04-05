@@ -60,8 +60,7 @@ namespace Alis.Core.Network.Sample
             _webSocketServerFactory = new WebSocketServerFactory();
             Task task = StartWebServer();
 
-
-            RunComplexTest(args);
+            //RunComplexTest(args);
 
             if (args.Length == 0)
             {
@@ -73,15 +72,14 @@ namespace Alis.Core.Network.Sample
             }
             else
             {
-               Logger.Log("Wrong number of arguments. 0 for simple test. 5 for complex test.");
-               Logger.Log(
+                Logger.Log("Wrong number of arguments. 0 for simple test. 5 for complex test.");
+                Logger.Log(
                     "Complex Test: uri numThreads numItemsPerThread minNumBytesPerMessage maxNumBytesPerMessage");
-               Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
+                Logger.Log("e.g: ws://localhost:27416/chat/echo 5 100 4 4");
             }
 
             Logger.Log("Press any key to quit");
             Console.ReadKey();
-            task.Wait();
         }
 
         /// <summary>
@@ -134,10 +132,9 @@ namespace Alis.Core.Network.Sample
                 IList<string> supportedSubProtocols = new[] {"chatV1", "chatV2", "chatV3"};
                 using (WebServer server = new WebServer(_webSocketServerFactory, supportedSubProtocols))
                 {
-                    await server.Listen(port);
                     Debug.Print($"Listening on port {port}");
                     Debug.Print("Press any key to quit");
-                    Console.ReadKey();
+                    await server.Listen(port);
                 }
             }
             catch (Exception ex)

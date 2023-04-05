@@ -5,31 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   BreakableBody.cs
+//  File:BreakableBody.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -59,7 +59,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <summary>
         ///     The vector
         /// </summary>
-        private Vector2[] velocitiesCache = new Vector2[8];
+        private Vector2F[] velocitiesCache = new Vector2F[8];
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="BreakableBody" /> class
@@ -69,7 +69,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="density">The density</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2 position = new Vector2(),
+        public BreakableBody(World world, ICollection<Vertices> parts, float density, Vector2F position = new Vector2F(),
             float rotation = 0)
         {
             this.world = world;
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <param name="shapes">The shapes</param>
         /// <param name="position">The position</param>
         /// <param name="rotation">The rotation</param>
-        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2 position = new Vector2(),
+        public BreakableBody(World world, IEnumerable<Shape> shapes, Vector2F position = new Vector2F(),
             float rotation = 0)
         {
             this.world = world;
@@ -172,7 +172,7 @@ namespace Alis.Core.Physic.Dynamics
                 //Enlarge the cache if needed
                 if (Parts.Count > angularVelocitiesCache.Length)
                 {
-                    velocitiesCache = new Vector2[Parts.Count];
+                    velocitiesCache = new Vector2F[Parts.Count];
                     angularVelocitiesCache = new float[Parts.Count];
                 }
 
@@ -198,15 +198,14 @@ namespace Alis.Core.Physic.Dynamics
                 Fixture oldFixture = Parts[i];
 
                 Shape shape = oldFixture.Shape.Clone();
-                object userData = oldFixture.UserData;
+                //object userData = oldFixture.UserData;
 
                 MainBody.RemoveFixture(oldFixture);
 
-                Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic,
-                    MainBody.UserData);
+                Body body = BodyFactory.CreateBody(world, MainBody.Position, MainBody.Rotation, BodyType.Dynamic);
 
                 Fixture newFixture = body.AddFixture(shape);
-                newFixture.UserData = userData;
+                //newFixture.UserData = userData;
                 Parts[i] = newFixture;
 
                 body.AngularVelocity = angularVelocitiesCache[i];

@@ -5,36 +5,36 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Collision.cs
+//  File:Collision.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Config;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Shared.Optimization;
-using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Collision.Narrowphase
 {
@@ -62,7 +62,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
 
             DistanceGjk.ComputeDistance(ref input, out DistanceOutput output, out _);
 
-            return output.Distance < 10.0f * MathConstants.Epsilon;
+            return output.Distance < 10.0f * Constant.Epsilon;
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             state1 = new FixedArray2<PointState>();
             state2 = new FixedArray2<PointState>();
 
-            for (int i = 0; i < Settings.MaxManifoldPoints; ++i)
+            for (int i = 0; i < Settings.ManifoldPoints; ++i)
             {
                 state1[i] = PointState.Null;
                 state2[i] = PointState.Null;
@@ -127,7 +127,7 @@ namespace Alis.Core.Physic.Collision.Narrowphase
         /// <param name="vertexIndexA">The vertex index A.</param>
         /// <returns></returns>
         internal static int ClipSegmentToLine(out FixedArray2<ClipVertex> vOut, ref FixedArray2<ClipVertex> vIn,
-            Vector2 normal, float offset, int vertexIndexA)
+            Vector2F normal, float offset, int vertexIndexA)
         {
             vOut = new FixedArray2<ClipVertex>();
 
@@ -135,8 +135,8 @@ namespace Alis.Core.Physic.Collision.Narrowphase
             int count = 0;
 
             // Calculate the distance of end points to the line
-            float distance0 = Vector2.Dot(normal, vIn.Value0.V) - offset;
-            float distance1 = Vector2.Dot(normal, vIn.Value1.V) - offset;
+            float distance0 = Vector2F.Dot(normal, vIn.Value0.V) - offset;
+            float distance1 = Vector2F.Dot(normal, vIn.Value1.V) - offset;
 
             // If the points are behind the plane
             if (distance0 <= 0.0f)

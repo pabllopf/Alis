@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The mass interface
+    ///     The mass interface
     /// </summary>
     public interface IMass<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Masses the value
+        ///     Masses the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

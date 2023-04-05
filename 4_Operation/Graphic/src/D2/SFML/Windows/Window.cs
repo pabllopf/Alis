@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 
 namespace Alis.Core.Graphic.D2.SFML.Windows
 {
@@ -152,7 +152,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ///     Position of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public virtual Vector2 Position
+        public virtual Vector2I Position
         {
             get => sfWindow_getPosition(CPointer);
             set => sfWindow_setPosition(CPointer, value);
@@ -163,7 +163,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         ///     Size of the rendering region of the window
         /// </summary>
         ////////////////////////////////////////////////////////////
-        public virtual Vector2 Size
+        public virtual Vector2U Size
         {
             get => sfWindow_getSize(CPointer);
             set => sfWindow_setSize(CPointer, value);
@@ -438,7 +438,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <returns>Relative mouse position</returns>
         ////////////////////////////////////////////////////////////
-        public virtual Vector2 InternalGetMousePosition() => sfMouse_getPosition(CPointer);
+        public virtual Vector2I InternalGetMousePosition() => sfMouse_getPosition(CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -448,7 +448,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// </summary>
         /// <param name="position">Relative mouse position</param>
         ////////////////////////////////////////////////////////////
-        protected internal virtual void InternalSetMousePosition(Vector2 position)
+        protected internal virtual void InternalSetMousePosition(Vector2I position)
         {
             sfMouse_setPosition(position, CPointer);
         }
@@ -462,7 +462,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="finger">Finger index</param>
         /// <returns>Relative touch position</returns>
         ////////////////////////////////////////////////////////////
-        protected internal virtual Vector2 InternalGetTouchPosition(uint finger) => sfTouch_getPosition(finger, CPointer);
+        protected internal virtual Vector2I InternalGetTouchPosition(uint finger) => sfTouch_getPosition(finger, CPointer);
 
         ////////////////////////////////////////////////////////////
         /// <summary>
@@ -604,7 +604,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
                     }
 
                     break;
-                
+
                 case EventType.MouseWheelScrolled:
                     if (MouseWheelScrolled != null)
                     {
@@ -683,7 +683,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
 
         /// <summary>Event handler for the KeyReleased event</summary>
         public event EventHandler<KeyEventArgs> KeyReleased;
-        
+
         /// <summary>Event handler for the MouseWheelScrolled event</summary>
         public event EventHandler<MouseWheelScrollEventArgs> MouseWheelScrolled;
 
@@ -823,7 +823,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfWindow_getPosition(IntPtr cPointer);
+        private static extern Vector2I sfWindow_getPosition(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window set position using the specified c pointer
@@ -831,7 +831,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="cPointer">The pointer</param>
         /// <param name="position">The position</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setPosition(IntPtr cPointer, Vector2 position);
+        private static extern void sfWindow_setPosition(IntPtr cPointer, Vector2I position);
 
         /// <summary>
         ///     Sfs the window get size using the specified c pointer
@@ -839,7 +839,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2u</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfWindow_getSize(IntPtr cPointer);
+        private static extern Vector2U sfWindow_getSize(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the window set size using the specified c pointer
@@ -847,7 +847,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="cPointer">The pointer</param>
         /// <param name="size">The size</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setSize(IntPtr cPointer, Vector2 size);
+        private static extern void sfWindow_setSize(IntPtr cPointer, Vector2U size);
 
         /// <summary>
         ///     Sfs the window set title using the specified c pointer
@@ -985,7 +985,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="cPointer">The pointer</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfMouse_getPosition(IntPtr cPointer);
+        private static extern Vector2I sfMouse_getPosition(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the mouse set position using the specified position
@@ -993,7 +993,7 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="position">The position</param>
         /// <param name="cPointer">The pointer</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfMouse_setPosition(Vector2 position, IntPtr cPointer);
+        private static extern void sfMouse_setPosition(Vector2I position, IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the touch get position using the specified finger
@@ -1002,6 +1002,6 @@ namespace Alis.Core.Graphic.D2.SFML.Windows
         /// <param name="relativeTo">The relative to</param>
         /// <returns>The vector 2i</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern Vector2 sfTouch_getPosition(uint finger, IntPtr relativeTo);
+        private static extern Vector2I sfTouch_getPosition(uint finger, IntPtr relativeTo);
     }
 }

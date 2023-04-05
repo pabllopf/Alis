@@ -5,32 +5,33 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   TextureConverter.cs
+//  File:TextureConverter.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Numerics;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
 
@@ -101,7 +102,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <summary>
         ///     The identity
         /// </summary>
-        private Matrix4x4 transform = Matrix4x4.Identity;
+        private Matrix4X4F transform = Matrix4X4F.Identity;
 
         /// <summary>
         ///     The width
@@ -126,7 +127,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="pixelOffsetOptimization">The pixel offset optimization</param>
         /// <param name="transform">The transform</param>
         public TextureConverter(byte? alphaTolerance, float? hullTolerance,
-            bool? holeDetection, bool? multipartDetection, bool? pixelOffsetOptimization, Matrix4x4? transform)
+            bool? holeDetection, bool? multipartDetection, bool? pixelOffsetOptimization, Matrix4X4F? transform)
         {
             Initialize(null, null, alphaTolerance, hullTolerance, holeDetection,
                 multipartDetection, pixelOffsetOptimization, transform);
@@ -155,7 +156,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="transform">The transform</param>
         public TextureConverter(uint[] data, int width, byte? alphaTolerance,
             float? hullTolerance, bool? holeDetection, bool? multipartDetection,
-            bool? pixelOffsetOptimization, Matrix4x4? transform)
+            bool? pixelOffsetOptimization, Matrix4X4F? transform)
         {
             Initialize(data, width, alphaTolerance, hullTolerance, holeDetection,
                 multipartDetection, pixelOffsetOptimization, transform);
@@ -193,7 +194,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         }
 
         /// <summary>Can be used for scaling.</summary>
-        public Matrix4x4 Transform
+        public Matrix4X4F Transform
         {
             get => transform;
             set => transform = value;
@@ -253,19 +254,19 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <exception cref="ArgumentNullException">'data' can't be null if 'width' is set.</exception>
         /// <exception cref="ArgumentNullException">'width' can't be null if 'data' is set.</exception>
         private void Initialize(uint[] data, int? width, byte? alphaTolerance, float? hullTolerance,
-            bool? holeDetection, bool? multipartDetection, bool? pixelOffsetOptimization, Matrix4x4? transform)
+            bool? holeDetection, bool? multipartDetection, bool? pixelOffsetOptimization, Matrix4X4F? transform)
         {
-            if (data != null && !width.HasValue)
+            if ((data != null) && !width.HasValue)
             {
                 throw new ArgumentNullException(nameof(width), "'width' can't be null if 'data' is set.");
             }
 
-            if (data == null && width.HasValue)
+            if ((data == null) && width.HasValue)
             {
                 throw new ArgumentNullException(nameof(data), "'data' can't be null if 'width' is set.");
             }
 
-            if (data != null && width.HasValue)
+            if ((data != null) && width.HasValue)
             {
                 SetTextureData(data, width.Value);
             }
@@ -321,7 +322,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             }
             else
             {
-                Transform = Matrix4x4.Identity;
+                Transform = Matrix4X4F.Identity;
             }
         }
 
@@ -476,10 +477,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             List<Vertices> detectedPolygons = new List<Vertices>();
 
-            Vector2? holeEntrance = null;
-            Vector2? polygonEntrance = null;
+            Vector2F? holeEntrance = null;
+            Vector2F? polygonEntrance = null;
 
-            List<Vector2> blackList = new List<Vector2>();
+            List<Vector2F> blackList = new List<Vector2F>();
 
             bool searchOn;
             do
@@ -488,7 +489,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 if (detectedPolygons.Count == 0)
                 {
                     // First pass / single polygon
-                    polygon = new Vertices(CreateSimplePolygon(Vector2.Zero, Vector2.Zero));
+                    polygon = new Vertices(CreateSimplePolygon(Vector2F.Zero, Vector2F.Zero));
 
                     if (polygon.Count > 2)
                     {
@@ -499,7 +500,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 {
                     // Multi pass / multiple polygons
                     polygon = new Vertices(CreateSimplePolygon(polygonEntrance.Value,
-                        new Vector2(polygonEntrance.Value.X - 1f, polygonEntrance.Value.Y)));
+                        new Vector2F(polygonEntrance.Value.X - 1f, polygonEntrance.Value.Y)));
                 }
                 else
                 {
@@ -522,9 +523,9 @@ namespace Alis.Core.Physic.Tools.TextureTools
                                 {
                                     blackList.Add(holeEntrance.Value);
                                     Vertices holePolygon = CreateSimplePolygon(holeEntrance.Value,
-                                        new Vector2(holeEntrance.Value.X + 1, holeEntrance.Value.Y));
+                                        new Vector2F(holeEntrance.Value.X + 1, holeEntrance.Value.Y));
 
-                                    if (holePolygon != null && holePolygon.Count > 2)
+                                    if ((holePolygon != null) && (holePolygon.Count > 2))
                                     {
                                         switch (polygonDetectionType)
                                         {
@@ -588,7 +589,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 ApplyTriangulationCompatibleWinding(ref detectedPolygons);
             }
 
-            if (transform != Matrix4x4.Identity)
+            if (transform != Matrix4X4F.Identity)
             {
                 ApplyTransform(ref detectedPolygons);
             }
@@ -606,7 +607,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 detectedPolygons[i].Reverse();
 
-                if (detectedPolygons[i].Holes != null && detectedPolygons[i].Holes.Count > 0)
+                if ((detectedPolygons[i].Holes != null) && (detectedPolygons[i].Holes.Count > 0))
                 {
                     for (int j = 0; j < detectedPolygons[i].Holes.Count; j++)
                     {
@@ -635,7 +636,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="polygon">The polygon to search in.</param>
         /// <param name="lastHoleEntrance">The last entrance point.</param>
         /// <returns>The next holes entrance point. Null if there are no holes.</returns>
-        private Vector2? SearchHoleEntrance(Vertices polygon, Vector2? lastHoleEntrance)
+        private Vector2F? SearchHoleEntrance(Vertices polygon, Vector2F? lastHoleEntrance)
         {
             if (polygon == null)
             {
@@ -648,7 +649,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             }
 
             List<float> xCoords;
-            Vector2? entrance;
+            Vector2F? entrance;
 
             int startY;
 
@@ -671,7 +672,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             // Set the end y coordinate.
             int endY = (int) GetBottomMostCoord(polygon);
 
-            if (startY > 0 && startY < height && endY > 0 && endY < height)
+            if ((startY > 0) && (startY < height) && (endY > 0) && (endY < height))
             {
                 // go from top to bottom of the polygon
                 for (int y = startY; y <= endY; y++)
@@ -683,7 +684,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     // It's always a pair of start and end edge: nothing | polygon | hole | polygon | nothing ...
                     // If it's not then don't bother, it's probably a peak ...
                     // ...which should be filtered out by SearchCrossingEdges() anyway.
-                    if (xCoords.Count > 1 && xCoords.Count % 2 == 0)
+                    if ((xCoords.Count > 1) && (xCoords.Count % 2 == 0))
                     {
                         // Ok, this is short, but probably a little bit confusing.
                         // This part searches from left to right between the edges inside the polygon.
@@ -718,7 +719,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                                     if (foundSolid && foundTransparent)
                                     {
-                                        entrance = new Vector2(lastSolid, y);
+                                        entrance = new Vector2F(lastSolid, y);
 
                                         if (DistanceToHullAcceptable(polygon, entrance.Value, true))
                                         {
@@ -761,7 +762,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <exception cref="ArgumentNullException">'polygon' can't be null.</exception>
         /// <exception cref="ArgumentException">'polygon.MainPolygon.Count' can't be less then 3.</exception>
         /// <returns>The bool</returns>
-        private bool DistanceToHullAcceptableHoles(Vertices polygon, Vector2 point, bool higherDetail)
+        private bool DistanceToHullAcceptableHoles(Vertices polygon, Vector2F point, bool higherDetail)
         {
             if (polygon == null)
             {
@@ -805,7 +806,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <exception cref="ArgumentNullException">'polygon' can't be null.</exception>
         /// <exception cref="ArgumentException">'polygon.Count' can't be less then 3.</exception>
         /// <returns>The bool</returns>
-        private bool DistanceToHullAcceptable(Vertices polygon, Vector2 point, bool higherDetail)
+        private bool DistanceToHullAcceptable(Vertices polygon, Vector2F point, bool higherDetail)
         {
             if (polygon == null)
             {
@@ -817,8 +818,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 throw new ArgumentException("'polygon.Count' can't be less then 3.");
             }
 
-            Vector2 edgeVertex2 = polygon[polygon.Count - 1];
-            Vector2 edgeVertex1;
+            Vector2F edgeVertex2 = polygon[polygon.Count - 1];
+            Vector2F edgeVertex1;
 
             if (higherDetail)
             {
@@ -826,8 +827,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 {
                     edgeVertex1 = polygon[i];
 
-                    if (LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
-                        hullTolerance || Vector2.Distance(point, edgeVertex1) <= hullTolerance)
+                    if (Line.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
+                        hullTolerance || Vector2F.Distance(point, edgeVertex1) <= hullTolerance)
                     {
                         return false;
                     }
@@ -842,7 +843,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 edgeVertex1 = polygon[i];
 
-                if (LineUtils.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
+                if (Line.DistanceBetweenPointAndLineSegment(ref point, ref edgeVertex1, ref edgeVertex2) <=
                     hullTolerance)
                 {
                     return false;
@@ -860,7 +861,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="polygon">The polygon</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        private bool InPolygon(Vertices polygon, Vector2 point)
+        private bool InPolygon(Vertices polygon, Vector2F point)
         {
             bool inPolygon = !DistanceToHullAcceptableHoles(polygon, point, true);
 
@@ -868,11 +869,11 @@ namespace Alis.Core.Physic.Tools.TextureTools
             {
                 List<float> xCoords = SearchCrossingEdgesHoles(polygon, (int) point.Y);
 
-                if (xCoords.Count > 0 && xCoords.Count % 2 == 0)
+                if ((xCoords.Count > 0) && (xCoords.Count % 2 == 0))
                 {
                     for (int i = 0; i < xCoords.Count; i += 2)
                     {
-                        if (xCoords[i] <= point.X && xCoords[i + 1] >= point.X)
+                        if ((xCoords[i] <= point.X) && (xCoords[i + 1] >= point.X))
                         {
                             return true;
                         }
@@ -890,10 +891,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// </summary>
         /// <param name="vertices">The vertices</param>
         /// <returns>The top most</returns>
-        private Vector2? GetTopMostVertex(Vertices vertices)
+        private Vector2F? GetTopMostVertex(Vertices vertices)
         {
             float topMostValue = float.MaxValue;
-            Vector2? topMost = null;
+            Vector2F? topMost = null;
 
             for (int i = 0; i < vertices.Count; i++)
             {
@@ -994,13 +995,13 @@ namespace Alis.Core.Physic.Tools.TextureTools
             List<float> edges = new List<float>();
 
             // current edge
-            Vector2 slope;
-            Vector2 vertex1; // i
-            Vector2 vertex2; // i - 1
+            Vector2F slope;
+            Vector2F vertex1; // i
+            Vector2F vertex2; // i - 1
 
             // next edge
-            Vector2 nextSlope;
-            Vector2 nextVertex; // i + 1
+            Vector2F nextSlope;
+            Vector2F nextVertex; // i + 1
 
             bool addFind;
 
@@ -1017,8 +1018,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     vertex1 = polygon[i];
 
                     // Approx. check if the edge crosses our y coord.
-                    if (vertex1.Y >= y && vertex2.Y <= y ||
-                        vertex1.Y <= y && vertex2.Y >= y)
+                    if (((vertex1.Y >= y) && (vertex2.Y <= y)) ||
+                        ((vertex1.Y <= y) && (vertex2.Y >= y)))
                     {
                         // Ignore edges that are parallel to y.
                         if (vertex1.Y != vertex2.Y)
@@ -1071,10 +1072,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="vertex1Index">The vertex index</param>
         /// <param name="vertex2Index">The vertex index</param>
         /// <returns>The bool</returns>
-        private bool SplitPolygonEdge(Vertices polygon, Vector2 coordInsideThePolygon, out int vertex1Index,
+        private bool SplitPolygonEdge(Vertices polygon, Vector2F coordInsideThePolygon, out int vertex1Index,
             out int vertex2Index)
         {
-            Vector2 slope;
+            Vector2F slope;
             int nearestEdgeVertex1Index = 0;
             int nearestEdgeVertex2Index = 0;
             bool edgeFound = false;
@@ -1082,7 +1083,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
             float shortestDistance = float.MaxValue;
 
             bool edgeCoordFound = false;
-            Vector2 foundEdgeCoord = Vector2.Zero;
+            Vector2F foundEdgeCoord = Vector2F.Zero;
 
             List<float> xCoords = SearchCrossingEdges(polygon, (int) coordInsideThePolygon.Y);
 
@@ -1091,7 +1092,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             foundEdgeCoord.Y = coordInsideThePolygon.Y;
 
-            if (xCoords != null && xCoords.Count > 1 && xCoords.Count % 2 == 0)
+            if ((xCoords != null) && (xCoords.Count > 1) && (xCoords.Count % 2 == 0))
             {
                 float distance;
                 for (int i = 0; i < xCoords.Count; i++)
@@ -1119,9 +1120,9 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     int edgeVertex1Index;
                     for (edgeVertex1Index = 0; edgeVertex1Index < polygon.Count; edgeVertex1Index++)
                     {
-                        Vector2 tempVector1 = polygon[edgeVertex1Index];
-                        Vector2 tempVector2 = polygon[edgeVertex2Index];
-                        distance = LineUtils.DistanceBetweenPointAndLineSegment(ref foundEdgeCoord,
+                        Vector2F tempVector1 = polygon[edgeVertex1Index];
+                        Vector2F tempVector2 = polygon[edgeVertex2Index];
+                        distance = Line.DistanceBetweenPointAndLineSegment(ref foundEdgeCoord,
                             ref tempVector1, ref tempVector2);
                         if (distance < shortestDistance)
                         {
@@ -1139,10 +1140,10 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     if (edgeFound)
                     {
                         slope = polygon[nearestEdgeVertex2Index] - polygon[nearestEdgeVertex1Index];
-                        slope = Vector2.Normalize(slope);
+                        slope = Vector2F.Normalize(slope);
 
-                        Vector2 tempVector = polygon[nearestEdgeVertex1Index];
-                        distance = Vector2.Distance(tempVector, foundEdgeCoord);
+                        Vector2F tempVector = polygon[nearestEdgeVertex1Index];
+                        distance = Vector2F.Distance(tempVector, foundEdgeCoord);
 
                         vertex1Index = nearestEdgeVertex1Index;
                         vertex2Index = nearestEdgeVertex1Index + 1;
@@ -1162,7 +1163,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="entrance"></param>
         /// <param name="last"></param>
         /// <returns></returns>
-        private Vertices CreateSimplePolygon(Vector2 entrance, Vector2 last)
+        private Vertices CreateSimplePolygon(Vector2F entrance, Vector2F last)
         {
             bool entranceFound = false;
             bool endOfHull = false;
@@ -1171,16 +1172,16 @@ namespace Alis.Core.Physic.Tools.TextureTools
             Vertices hullArea = new Vertices(32);
             Vertices endOfHullArea = new Vertices(32);
 
-            Vector2 current = Vector2.Zero;
+            Vector2F current = Vector2F.Zero;
 
             // Get the entrance point.
-            if (entrance == Vector2.Zero || !InBounds(ref entrance))
+            if (entrance == Vector2F.Zero || !InBounds(ref entrance))
             {
                 entranceFound = SearchHullEntrance(out entrance);
 
                 if (entranceFound)
                 {
-                    current = new Vector2(entrance.X - 1f, entrance.Y);
+                    current = new Vector2F(entrance.X - 1f, entrance.Y);
                 }
             }
             else
@@ -1194,7 +1195,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     }
                     else
                     {
-                        if (SearchNearPixels(false, ref entrance, out Vector2 temp))
+                        if (SearchNearPixels(false, ref entrance, out Vector2F temp))
                         {
                             current = temp;
                             entranceFound = true;
@@ -1212,12 +1213,12 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 polygon.Add(entrance);
                 hullArea.Add(entrance);
 
-                Vector2 next = entrance;
+                Vector2F next = entrance;
 
                 do
                 {
                     // Search in the pre vision list for an outstanding point.
-                    if (SearchForOutstandingVertex(hullArea, out Vector2 outstanding))
+                    if (SearchForOutstandingVertex(hullArea, out Vector2F outstanding))
                     {
                         if (endOfHull)
                         {
@@ -1254,7 +1255,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                         break;
                     }
 
-                    if (next == entrance && !endOfHull)
+                    if ((next == entrance) && !endOfHull)
                     {
                         // It's the last bit of the hull, search on and exit at next found vertex.
                         endOfHull = true;
@@ -1279,7 +1280,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="current">The current</param>
         /// <param name="foundPixel">The found pixel</param>
         /// <returns>The bool</returns>
-        private bool SearchNearPixels(bool searchingForSolidPixel, ref Vector2 current, out Vector2 foundPixel)
+        private bool SearchNearPixels(bool searchingForSolidPixel, ref Vector2F current, out Vector2F foundPixel)
         {
             for (int i = 0; i < ClosepixelsLength; i++)
             {
@@ -1288,13 +1289,13 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                 if (!searchingForSolidPixel ^ IsSolid(ref x, ref y))
                 {
-                    foundPixel = new Vector2(x, y);
+                    foundPixel = new Vector2F(x, y);
                     return true;
                 }
             }
 
             // Nothing found.
-            foundPixel = Vector2.Zero;
+            foundPixel = Vector2F.Zero;
             return false;
         }
 
@@ -1304,16 +1305,16 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="current">The current</param>
         /// <param name="near">The near</param>
         /// <returns>The bool</returns>
-        private bool IsNearPixel(ref Vector2 current, ref Vector2 near)
+        private bool IsNearPixel(ref Vector2F current, ref Vector2F near)
         {
             for (int i = 0; i < ClosepixelsLength; i++)
             {
                 int x = (int) current.X + ClosePixels[i, 0];
                 int y = (int) current.Y + ClosePixels[i, 1];
 
-                if (x >= 0 && x <= width && y >= 0 && y <= height)
+                if ((x >= 0) && (x <= width) && (y >= 0) && (y <= height))
                 {
-                    if (x == (int) near.X && y == (int) near.Y)
+                    if ((x == (int) near.X) && (y == (int) near.Y))
                     {
                         return true;
                     }
@@ -1328,7 +1329,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// </summary>
         /// <param name="entrance">The entrance</param>
         /// <returns>The bool</returns>
-        private bool SearchHullEntrance(out Vector2 entrance)
+        private bool SearchHullEntrance(out Vector2F entrance)
         {
             // Search for first solid pixel.
             for (int y = 0; y <= height; y++)
@@ -1337,14 +1338,14 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 {
                     if (IsSolid(ref x, ref y))
                     {
-                        entrance = new Vector2(x, y);
+                        entrance = new Vector2F(x, y);
                         return true;
                     }
                 }
             }
 
             // If there are no solid pixels.
-            entrance = Vector2.Zero;
+            entrance = Vector2F.Zero;
             return false;
         }
 
@@ -1353,7 +1354,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="start">Search start coordinate.</param>
         /// <param name="entrance">Returns the found entrance coordinate. Null if no other shapes found.</param>
         /// <returns>True if a new shape was found.</returns>
-        private bool SearchNextHullEntrance(List<Vertices> detectedPolygons, Vector2 start, out Vector2? entrance)
+        private bool SearchNextHullEntrance(List<Vertices> detectedPolygons, Vector2F start, out Vector2F? entrance)
         {
             int x;
 
@@ -1367,7 +1368,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     if (foundTransparent)
                     {
                         x = i % width;
-                        entrance = new Vector2(x, (i - x) / (float) width);
+                        entrance = new Vector2F(x, (i - x) / (float) width);
 
                         inPolygon = false;
                         for (int polygonIdx = 0; polygonIdx < detectedPolygons.Count; polygonIdx++)
@@ -1406,7 +1407,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="current">The current</param>
         /// <param name="next">The next</param>
         /// <returns>The bool</returns>
-        private bool GetNextHullPoint(ref Vector2 last, ref Vector2 current, out Vector2 next)
+        private bool GetNextHullPoint(ref Vector2F last, ref Vector2F current, out Vector2F next)
         {
             int x;
             int y;
@@ -1421,17 +1422,17 @@ namespace Alis.Core.Physic.Tools.TextureTools
                 x = (int) current.X + ClosePixels[indexOfPixelToCheck, 0];
                 y = (int) current.Y + ClosePixels[indexOfPixelToCheck, 1];
 
-                if (x >= 0 && x < width && y >= 0 && y <= height)
+                if ((x >= 0) && (x < width) && (y >= 0) && (y <= height))
                 {
                     if (IsSolid(ref x, ref y))
                     {
-                        next = new Vector2(x, y);
+                        next = new Vector2F(x, y);
                         return true;
                     }
                 }
             }
 
-            next = Vector2.Zero;
+            next = Vector2F.Zero;
             return false;
         }
 
@@ -1441,18 +1442,18 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="hullArea">The hull area</param>
         /// <param name="outstanding">The outstanding</param>
         /// <returns>The found</returns>
-        private bool SearchForOutstandingVertex(Vertices hullArea, out Vector2 outstanding)
+        private bool SearchForOutstandingVertex(Vertices hullArea, out Vector2F outstanding)
         {
-            Vector2 outstandingResult = Vector2.Zero;
+            Vector2F outstandingResult = Vector2F.Zero;
             bool found = false;
 
             if (hullArea.Count > 2)
             {
                 int hullAreaLastPoint = hullArea.Count - 1;
 
-                Vector2 tempVector1;
-                Vector2 tempVector2 = hullArea[0];
-                Vector2 tempVector3 = hullArea[hullAreaLastPoint];
+                Vector2F tempVector1;
+                Vector2F tempVector2 = hullArea[0];
+                Vector2F tempVector3 = hullArea[hullAreaLastPoint];
 
                 // Search between the first and last hull point.
                 for (int i = 1; i < hullAreaLastPoint; i++)
@@ -1460,7 +1461,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                     tempVector1 = hullArea[i];
 
                     // Check if the distance is over the one that's tolerable.
-                    if (LineUtils.DistanceBetweenPointAndLineSegment(ref tempVector1, ref tempVector2,
+                    if (Line.DistanceBetweenPointAndLineSegment(ref tempVector1, ref tempVector2,
                             ref tempVector3) >= hullTolerance)
                     {
                         outstandingResult = hullArea[i];
@@ -1480,7 +1481,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <param name="last">The last</param>
         /// <param name="current">The current</param>
         /// <returns>The int</returns>
-        private int GetIndexOfFirstPixelToCheck(ref Vector2 last, ref Vector2 current)
+        private int GetIndexOfFirstPixelToCheck(ref Vector2F last, ref Vector2F current)
         {
             // .: pixel
             // l: last position
@@ -1545,12 +1546,12 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// </summary>
         /// <param name="v">The </param>
         /// <returns>The bool</returns>
-        public bool IsSolid(ref Vector2 v)
+        public bool IsSolid(ref Vector2F v)
         {
             tempIsSolidX = (int) v.X;
             tempIsSolidY = (int) v.Y;
 
-            if (tempIsSolidX >= 0 && tempIsSolidX < width && tempIsSolidY >= 0 && tempIsSolidY < height)
+            if ((tempIsSolidX >= 0) && (tempIsSolidX < width) && (tempIsSolidY >= 0) && (tempIsSolidY < height))
             {
                 return data[tempIsSolidX + tempIsSolidY * width] >= alphaTolerance;
             }
@@ -1568,7 +1569,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <returns>The bool</returns>
         public bool IsSolid(ref int x, ref int y)
         {
-            if (x >= 0 && x < width && y >= 0 && y < height)
+            if ((x >= 0) && (x < width) && (y >= 0) && (y < height))
             {
                 return data[x + y * width] >= alphaTolerance;
             }
@@ -1585,7 +1586,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// <returns>The bool</returns>
         public bool IsSolid(ref int index)
         {
-            if (index >= 0 && index < dataLength)
+            if ((index >= 0) && (index < dataLength))
             {
                 return data[index] >= alphaTolerance;
             }
@@ -1600,7 +1601,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
         /// </summary>
         /// <param name="coord">The coord</param>
         /// <returns>The bool</returns>
-        public bool InBounds(ref Vector2 coord) =>
-            coord.X >= 0f && coord.X < width && coord.Y >= 0f && coord.Y < height;
+        public bool InBounds(ref Vector2F coord) =>
+            (coord.X >= 0f) && (coord.X < width) && (coord.Y >= 0f) && (coord.Y < height);
     }
 }

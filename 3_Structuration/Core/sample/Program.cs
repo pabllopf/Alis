@@ -40,17 +40,17 @@ namespace Alis.Core.Sample
         /// <summary>
         ///     The width
         /// </summary>
-        private const int WIDTH = 640;
+        private const int Width = 640;
 
         /// <summary>
         ///     The height
         /// </summary>
-        private const int HEIGHT = 480;
+        private const int Height = 480;
 
         /// <summary>
         ///     The title
         /// </summary>
-        private const string TITLE = "Alis.Core.Graphic.Sample";
+        private const string Title = "Alis.Core.Graphic.Sample";
 
         /// <summary>
         ///     The blue
@@ -63,8 +63,8 @@ namespace Alis.Core.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            VideoMode mode = new VideoMode(WIDTH, HEIGHT);
-            RenderWindow window = new RenderWindow(mode, TITLE);
+            VideoMode mode = new VideoMode(Width, Height);
+            RenderWindow window = new RenderWindow(mode, Title);
 
             window.SetVerticalSyncEnabled(true);
             window.SetFramerateLimit(60);

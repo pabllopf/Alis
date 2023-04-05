@@ -5,35 +5,33 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   FixedMouseJoint.cs
+//  File:FixedMouseJoint.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Math;
-using Alis.Core.Physic.Definitions.Joints;
-using Alis.Core.Physic.Dynamics.Joints.Misc;
+using Alis.Core.Aspect.Math.Matrix;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Dynamics.Joints
 {
@@ -62,7 +60,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 c;
+        private Vector2F c;
 
         /// <summary>
         ///     The damping
@@ -78,7 +76,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The impulse
         /// </summary>
-        private Vector2 impulse;
+        private Vector2F impulse;
 
         // Solver temp
         /// <summary>
@@ -99,17 +97,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The local anchor
         /// </summary>
-        private Vector2 localAnchorA;
+        private Vector2F localAnchorA;
 
         /// <summary>
         ///     The local center
         /// </summary>
-        private Vector2 localCenterA;
+        private Vector2F localCenterA;
 
         /// <summary>
         ///     The mass
         /// </summary>
-        private Mat22 mass;
+        private Matrix2X2F mass;
 
         /// <summary>
         ///     The max force
@@ -119,7 +117,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The
         /// </summary>
-        private Vector2 rA;
+        private Vector2F rA;
 
         /// <summary>
         ///     The stiffness
@@ -129,25 +127,41 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     The target
         /// </summary>
-        private Vector2 targetB;
+        private Vector2F targetB;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="FixedMouseJoint" /> class
         /// </summary>
-        /// <param name="def">The def</param>
-        public FixedMouseJoint(FixedMouseJointDef def) : base(def)
+        /// <param name="bodyA">The body</param>
+        /// <param name="bodyB">The body</param>
+        /// <param name="jointType">The joint type</param>
+        /// <param name="collideConnected">The collide connected</param>
+        /// <param name="target">The target</param>
+        /// <param name="maxForce">The max force</param>
+        /// <param name="stiffness">The stiffness</param>
+        /// <param name="damping">The damping</param>
+        public FixedMouseJoint(
+            Body bodyA = null,
+            Body bodyB = null,
+            JointType jointType = JointType.FixedMouse,
+            bool collideConnected = false,
+            Vector2F target = default(Vector2F),
+            float maxForce = 0.0f,
+            float stiffness = 0.0f,
+            float damping = 0.0f
+        ) : base(bodyA, bodyB, jointType, collideConnected)
         {
-            targetB = def.Target;
+            targetB = target;
             localAnchorA = MathUtils.MulT(BodyB.Xf, targetB);
-            maxForce = def.MaxForce;
-            stiffness = def.Stiffness;
-            damping = def.Damping;
+            this.maxForce = maxForce;
+            this.stiffness = stiffness;
+            this.damping = damping;
         }
 
         /// <summary>This requires a world target point, tuning parameters, and the time step.</summary>
         /// <param name="body">The body.</param>
         /// <param name="target">The target.</param>
-        public FixedMouseJoint(Body body, Vector2 target)
+        public FixedMouseJoint(Body body, Vector2F target)
             : base(body, JointType.FixedMouse)
         {
             targetB = target;
@@ -155,14 +169,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         }
 
         /// <summary>The local anchor point on BodyB</summary>
-        public Vector2 LocalAnchorA
+        public Vector2F LocalAnchorA
         {
             get => localAnchorA;
             set => localAnchorA = value;
         }
 
         /// <summary>Use this to update the target point.</summary>
-        public override Vector2 WorldAnchorA
+        public override Vector2F WorldAnchorA
         {
             get => BodyA.GetWorldPoint(localAnchorA);
             set => localAnchorA = BodyA.GetLocalPoint(value);
@@ -171,7 +185,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <summary>
         ///     Gets or sets the value of the world anchor b
         /// </summary>
-        public override Vector2 WorldAnchorB
+        public override Vector2F WorldAnchorB
         {
             get => targetB;
             set
@@ -188,7 +202,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     The maximum constraint force that can be exerted to move the candidate body. Usually you will express as some
         ///     multiple of the weight (multiplier * mass * gravity). Set/get the maximum force in Newtons.
         /// </summary>
-        public float MaxForce
+        public float Force
         {
             get => maxForce;
             set => maxForce = value;
@@ -212,7 +226,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         ///     Shifts the origin using the specified new origin
         /// </summary>
         /// <param name="newOrigin">The new origin</param>
-        public override void ShiftOrigin(ref Vector2 newOrigin)
+        public override void ShiftOrigin(ref Vector2F newOrigin)
         {
             targetB -= newOrigin;
         }
@@ -222,7 +236,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// </summary>
         /// <param name="invDt">The inv dt</param>
         /// <returns>The vector</returns>
-        public override Vector2 GetReactionForce(float invDt) => invDt * impulse;
+        public override Vector2F GetReactionForce(float invDt) => invDt * impulse;
 
         /// <summary>
         ///     Gets the reaction torque using the specified inv dt
@@ -242,12 +256,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             invMassA = BodyA.InvMass;
             invIa = BodyA.InvI;
 
-            Vector2 cA = data.Positions[indexA].C;
+            Vector2F cA = data.Positions[indexA].C;
             float aA = data.Positions[indexA].A;
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
 
-            Rot qA = new Rot(aA);
+            Rotation qA = new Rotation(aA);
 
             float d = damping;
             float k = stiffness;
@@ -270,7 +284,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             // K    = [(1/m1 + 1/m2) * eye(2) - skew(r1) * invI1 * skew(r1) - skew(r2) * invI2 * skew(r2)]
             //      = [1/m1+1/m2     0    ] + invI1 * [r1.y*r1.y -r1.x*r1.y] + invI2 * [r1.y*r1.y -r1.x*r1.y]
             //        [    0     1/m1+1/m2]           [-r1.x*r1.y r1.x*r1.x]           [-r1.x*r1.y r1.x*r1.x]
-            Mat22 kk = new Mat22();
+            Matrix2X2F kk = new Matrix2X2F();
             kk.Ex.X = invMassA + invIa * rA.Y * rA.Y + gamma;
             kk.Ex.Y = -invIa * rA.X * rA.Y;
             kk.Ey.X = kk.Ex.Y;
@@ -292,7 +306,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
             }
             else
             {
-                impulse = Vector2.Zero;
+                impulse = Vector2F.Zero;
             }
 
             data.Velocities[indexA].V = vA;
@@ -305,14 +319,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data">The data</param>
         internal override void SolveVelocityConstraints(ref SolverData data)
         {
-            Vector2 vA = data.Velocities[indexA].V;
+            Vector2F vA = data.Velocities[indexA].V;
             float wA = data.Velocities[indexA].W;
 
             // Cdot = v + cross(w, r)
-            Vector2 cdot = vA + MathUtils.Cross(wA, rA);
-            Vector2 impulse = MathUtils.Mul(ref mass, -(cdot + c + gamma * this.impulse));
+            Vector2F cdot = vA + MathUtils.Cross(wA, rA);
+            Vector2F impulse = MathUtils.Mul(ref mass, -(cdot + c + gamma * this.impulse));
 
-            Vector2 oldImpulse = this.impulse;
+            Vector2F oldImpulse = this.impulse;
             this.impulse += impulse;
             float maxImpulse = data.Step.DeltaTime * maxForce;
             if (this.impulse.LengthSquared() > maxImpulse * maxImpulse)

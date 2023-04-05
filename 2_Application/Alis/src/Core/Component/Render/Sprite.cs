@@ -31,7 +31,7 @@ using System;
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Graphic;
 
@@ -51,17 +51,17 @@ namespace Alis.Core.Component.Render
         /// <summary>
         ///     The size
         /// </summary>
-        private Vector2 size;
+        private Vector2F size;
 
         /// <summary>
         ///     The sprite
         /// </summary>
-        public Alis.Core.Graphic.D2.SFML.Graphics.Sprite sprite;
+        public Graphic.D2.SFML.Graphics.Sprite SpriteSfml;
 
         /// <summary>
         ///     The texture path
         /// </summary>
-        public string texturePath;
+        public string TexturePath;
 
         /// <summary>
         ///     The level
@@ -72,16 +72,16 @@ namespace Alis.Core.Component.Render
         ///     Builders this instance
         /// </summary>
         /// <returns>The sprite builder</returns>
-        public  SpriteBuilder Builder() => new SpriteBuilder();
+        public SpriteBuilder Builder() => new SpriteBuilder();
 
         /// <summary>
         ///     Inits this instance
         /// </summary>
         public override void Init()
         {
-            sprite = new Alis.Core.Graphic.D2.SFML.Graphics.Sprite(new Texture(texturePath));
-            size = new Vector2(sprite.TextureRect.Width, sprite.TextureRect.Height);
-            Logger.Log($"Load sprite od '{texturePath}'");
+            SpriteSfml = new Graphic.D2.SFML.Graphics.Sprite(new Texture(TexturePath));
+            size = new Vector2F(SpriteSfml.TextureRect.Width, SpriteSfml.TextureRect.Height);
+            Logger.Log($"Load sprite od '{TexturePath}'");
         }
 
         /// <summary>
@@ -98,12 +98,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Start()
         {
-            sprite.Position = new Vector2(
-                GameObject.Transform.Position.X - ((size.X * GameObject.Transform.Scale.X) / 2),
-                GameObject.Transform.Position.Y - ((size.Y * GameObject.Transform.Scale.Y) / 2)
+            SpriteSfml.Position = new Vector2F(
+                GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
+                GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
-            sprite.Rotation = GameObject.Transform.Rotation;
-            sprite.Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            SpriteSfml.Rotation = GameObject.Transform.Rotation;
+            SpriteSfml.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>
@@ -112,12 +112,12 @@ namespace Alis.Core.Component.Render
         /// <exception cref="NotImplementedException"></exception>
         public override void Update()
         {
-            sprite.Position = new Vector2(
-                GameObject.Transform.Position.X - ((size.X * GameObject.Transform.Scale.X) / 2),
-                GameObject.Transform.Position.Y - ((size.Y * GameObject.Transform.Scale.Y) / 2)
+            SpriteSfml.Position = new Vector2F(
+                GameObject.Transform.Position.X - size.X * GameObject.Transform.Scale.X / 2,
+                GameObject.Transform.Position.Y - size.Y * GameObject.Transform.Scale.Y / 2
             );
-            sprite.Rotation = GameObject.Transform.Rotation;
-            sprite.Scale = new Vector2(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
+            SpriteSfml.Rotation = GameObject.Transform.Rotation;
+            SpriteSfml.Scale = new Vector2F(GameObject.Transform.Scale.X, GameObject.Transform.Scale.Y);
         }
 
         /// <summary>

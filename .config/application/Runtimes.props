@@ -5,7 +5,7 @@
               CopyToOutputDirectory="Always"
               CopyToPublishDirectory="Always"/>
     </ItemGroup>
-    
+
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
         <DefineConstants>$(DefineConstants);LINUX</DefineConstants>
     </PropertyGroup>
@@ -16,5 +16,10 @@
 
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows'))">
         <DefineConstants>$(DefineConstants);WIN</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="$(NETCoreSdkRuntimeIdentifier.Contains('arm64')) AND $([MSBuild]::IsOSPlatform('windows'))">
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+        <PlatformTarget>x64</PlatformTarget>
     </PropertyGroup>
 </Project>

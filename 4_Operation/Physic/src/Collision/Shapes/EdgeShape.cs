@@ -5,29 +5,30 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   EdgeShape.cs
+//  File:EdgeShape.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
-using System.Numerics;
+using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Collision.RayCast;
 using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Shared;
@@ -48,33 +49,33 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <summary>
         ///     The vertex
         /// </summary>
-        private Vector2 vertex0;
+        private Vector2F vertex0;
 
         /// <summary>
         ///     The vertex
         /// </summary>
-        private Vector2 vertex1;
+        private Vector2F vertex1;
 
         /// <summary>
         ///     The vertex
         /// </summary>
-        private Vector2 vertex2;
+        private Vector2F vertex2;
 
         /// <summary>
         ///     The vertex
         /// </summary>
-        private Vector2 vertex3;
+        private Vector2F vertex3;
 
         /// <summary>Create a new EdgeShape with the specified start and end. This edge supports two-sided collision.</summary>
         /// <param name="start">The start of the edge.</param>
         /// <param name="end">The end of the edge.</param>
-        public EdgeShape(Vector2 start, Vector2 end) : base(ShapeType.Edge, Settings.PolygonRadius)
+        public EdgeShape(Vector2F start, Vector2F end) : base(ShapeType.Edge, Settings.PolygonRadius)
         {
             SetTwoSided(start, end);
         }
 
         /// <summary>Create a new EdgeShape with ghost vertices for smooth collision. This edge only supports one-sided collision.</summary>
-        public EdgeShape(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3) : base(ShapeType.Edge, Settings.PolygonRadius)
+        public EdgeShape(Vector2F v0, Vector2F v1, Vector2F v2, Vector2F v3) : base(ShapeType.Edge, Settings.PolygonRadius)
         {
             SetOneSided(v0, v1, v2, v3);
         }
@@ -99,21 +100,21 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
-        public Vector2 Vertex0
+        public Vector2F Vertex0
         {
             get => vertex0;
             set => vertex0 = value;
         }
 
         /// <summary>Optional adjacent vertices. These are used for smooth collision.</summary>
-        public Vector2 Vertex3
+        public Vector2F Vertex3
         {
             get => vertex3;
             set => vertex3 = value;
         }
 
         /// <summary>These are the edge vertices</summary>
-        public Vector2 Vertex1
+        public Vector2F Vertex1
         {
             get => vertex1;
             set
@@ -124,7 +125,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         }
 
         /// <summary>These are the edge vertices</summary>
-        public Vector2 Vertex2
+        public Vector2F Vertex2
         {
             get => vertex2;
             set
@@ -141,7 +142,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="v1">The </param>
         /// <param name="v2">The </param>
         /// <param name="v3">The </param>
-        public void SetOneSided(Vector2 v0, Vector2 v1, Vector2 v2, Vector2 v3)
+        public void SetOneSided(Vector2F v0, Vector2F v1, Vector2F v2, Vector2F v3)
         {
             Vertex0 = v0;
             Vertex1 = v1;
@@ -157,7 +158,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// </summary>
         /// <param name="start">The start</param>
         /// <param name="end">The end</param>
-        public void SetTwoSided(Vector2 start, Vector2 end)
+        public void SetTwoSided(Vector2F start, Vector2F end)
         {
             Vertex1 = start;
             Vertex2 = end;
@@ -172,7 +173,7 @@ namespace Alis.Core.Physic.Collision.Shapes
         /// <param name="transform">The transform</param>
         /// <param name="point">The point</param>
         /// <returns>The bool</returns>
-        public override bool TestPoint(ref Transform transform, ref Vector2 point) => false;
+        public override bool TestPoint(ref Transform transform, ref Vector2F point) => false;
 
         /// <summary>
         ///     Describes whether this instance ray cast

@@ -5,34 +5,34 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   FlipcodeDecomposer.cs
+//  File:FlipcodeDecomposer.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
 using System.Diagnostics;
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Util;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
 {
@@ -50,17 +50,17 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2 _tmpA;
+        private static Vector2F _tmpA;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2 _tmpB;
+        private static Vector2F _tmpB;
 
         /// <summary>
         ///     The tmp
         /// </summary>
-        private static Vector2 _tmpC;
+        private static Vector2F _tmpC;
 
         /// <summary>
         ///     Decompose the polygon into triangles.
@@ -148,13 +148,13 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
             return result;
         }
 
-        /// <summary>Check if the point P is inside the triangle defined by the points A, B, C</summary>
+        /// <summary>Check if the point Position is inside the triangle defined by the points A, B, C</summary>
         /// <param name="a">The A point.</param>
         /// <param name="b">The B point.</param>
         /// <param name="c">The C point.</param>
         /// <param name="p">The point to be tested.</param>
         /// <returns>True if the point is inside the triangle</returns>
-        private static bool InsideTriangle(ref Vector2 a, ref Vector2 b, ref Vector2 c, ref Vector2 p)
+        private static bool InsideTriangle(ref Vector2F a, ref Vector2F b, ref Vector2F c, ref Vector2F p)
         {
             //A cross bp
             float abp = (c.X - b.X) * (p.Y - b.Y) - (c.Y - b.Y) * (p.X - b.X);
@@ -165,7 +165,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
             //b cross cp
             float bcp = (a.X - c.X) * (p.Y - c.Y) - (a.Y - c.Y) * (p.X - c.X);
 
-            return abp >= 0.0f && bcp >= 0.0f && aap >= 0.0f;
+            return (abp >= 0.0f) && (bcp >= 0.0f) && (aap >= 0.0f);
         }
 
         /// <summary>Cut a the contour and add a triangle into V to describe the location of the cut</summary>
@@ -178,7 +178,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
         /// <returns>True if a triangle was found</returns>
         private static bool Snip(Vertices contour, int u, int v, int w, int n, int[] vv)
         {
-            if (MathConstants.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
+            if (Constant.Epsilon > MathUtils.Area(ref _tmpA, ref _tmpB, ref _tmpC))
             {
                 return false;
             }
@@ -190,7 +190,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.FlipCode
                     continue;
                 }
 
-                Vector2 point = contour[vv[p]];
+                Vector2F point = contour[vv[p]];
 
                 if (InsideTriangle(ref _tmpA, ref _tmpB, ref _tmpC, ref point))
                 {

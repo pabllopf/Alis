@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using Alis.Builder;
 using Alis.Core;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Audio;
 using Alis.Core.Manager;
 using Alis.Core.Manager.Audio;
 using Alis.Core.Manager.Graphic;
@@ -47,6 +48,15 @@ namespace Alis
     /// <seealso cref="GameBase" />
     public class VideoGame : GameBase
     {
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="VideoGame" /> class
+        /// </summary>
+        static VideoGame()
+        {
+            ObjectBase.Load();
+            Core.Graphic.D2.SFML.ObjectBase.Load();
+        }
+
         /// <summary>
         ///     Video game
         /// </summary>
@@ -66,10 +76,10 @@ namespace Alis
                 AudioManager,
                 InputManager
             };
-            
+
             Logger.Trace();
         }
-        
+
         /// <summary>
         ///     Gets or sets the value of the input manager
         /// </summary>
@@ -91,7 +101,7 @@ namespace Alis
         public static AudioManager AudioManager { get; set; } = new AudioManager();
 
         /// <summary>
-        /// Gets or sets the value of the physic manager
+        ///     Gets or sets the value of the physic manager
         /// </summary>
         public static PhysicManager PhysicManager { get; set; } = new PhysicManager();
 

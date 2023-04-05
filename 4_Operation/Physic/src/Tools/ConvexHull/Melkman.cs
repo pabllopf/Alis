@@ -5,32 +5,31 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:   Melkman.cs
+//  File:Melkman.cs
 // 
-//  Author: Pablo Perdomo Falcón
-//  Web:    https://www.pabllopf.dev/
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
 // 
 //  Copyright (c) 2021 GNU General Public License v3.0
 // 
-//  This program is free software: you can redistribute it and/or modify
+//  This program is free software:you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
 //  the Free Software Foundation, either version 3 of the License, or
 //  (at your option) any later version.
 // 
 //  This program is distributed in the hope that it will be useful,
 //  but WITHOUT ANY WARRANTY without even the implied warranty of
-//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
 //  GNU General Public License for more details.
 // 
 //  You should have received a copy of the GNU General Public License
-//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Math;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Shared;
 using Alis.Core.Physic.Utilities;
-using Vector2 = System.Numerics.Vector2;
 
 namespace Alis.Core.Physic.Tools.ConvexHull
 {
@@ -59,7 +58,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
 
             //We'll never need a queue larger than the current number of Vertices +1
             //Create double-ended queue
-            Vector2[] deque = new Vector2[vertices.Count + 1];
+            Vector2F[] deque = new Vector2F[vertices.Count + 1];
             int qf = 3, qb = 0; //Queue front index, queue back index
 
             //Start by placing first 3 vertices in convex CCW order
@@ -76,7 +75,7 @@ namespace Alis.Core.Physic.Tools.ConvexHull
                 //Go until the end of the collinear sequence of vertices
                 for (startIndex = 3; startIndex < vertices.Count; startIndex++)
                 {
-                    Vector2 tmp = vertices[startIndex];
+                    Vector2F tmp = vertices[startIndex];
                     if (MathUtils.Area(ref deque[0], ref deque[1], ref tmp) == 0) //This point is also collinear
                     {
                         deque[1] = vertices[startIndex];
@@ -110,11 +109,11 @@ namespace Alis.Core.Physic.Tools.ConvexHull
             //Add vertices one at a time and adjust convex hull as needed
             for (int i = startIndex; i < vertices.Count; i++)
             {
-                Vector2 nextPt = vertices[i];
+                Vector2F nextPt = vertices[i];
 
                 //Ignore if it is already within the convex hull we have constructed
-                if (MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0 &&
-                    MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0)
+                if ((MathUtils.Area(ref deque[qfm1], ref deque[qf], ref nextPt) > 0) &&
+                    (MathUtils.Area(ref deque[qb], ref deque[qbm1], ref nextPt) > 0))
                 {
                     continue;
                 }
