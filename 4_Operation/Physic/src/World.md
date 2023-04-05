@@ -130,7 +130,7 @@ World.ClearForces
 /// <summary>
 /// Clear all forces
 /// </summary>
-internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());```
+internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
 
 ```
 
@@ -184,8 +184,6 @@ Test Cases:
 
 *   No exception should be thrown.
 
-csharpCopy code
-
 ```csharp
 
 [Fact]
@@ -210,7 +208,6 @@ public void Test_ClearForces_When_EmptyBodiesList_Expect_NoExceptionThrown()
 
 *   All forces are removed from the Bodies list.
 
-csharpCopy code
 
 ```csharp
 
