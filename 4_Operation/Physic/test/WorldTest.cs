@@ -52,9 +52,24 @@ namespace Alis.Core.Physic.Test
         public void AddBody_AddsBodyToBodiesCollection()
         {
             Vector2F gravity = new Vector2F(0f, 9.18f);
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
             
             // Create a mock body object.
-            Mock<Body> mockBody = new Mock<Body>();
+            Mock<Body> mockBody = new Mock<Body>(
+                position, 
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
 
             // Create a world object.
             World world = new World(gravity);

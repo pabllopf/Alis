@@ -1,21 +1,26 @@
-# World Class
+# World
 
-```
-Genera todos los casos de uso y casos de pruebas del siguiente método cumpliendo los siguientes requisitos:
-1. En ingles.
-2. En formato markdown.
-4. Los casos de uso deben incluir los siguientes apartados: Preconditions, Flow of Events y Postconditions.
-5. Los casos de pruebas deben incluir los siguientes apartados: Test Data, Test Steps , Expected Results y Unit Test (programado en c# utilizando xunit y moq)
+1. [Introduction](#introduction)
+2. [Creating a World](#creating-a-world)
+3. [World.AddBody](#worldaddbody)
+   1. Use Cases
+      1. [Use Case 1: Add a body to the world](#use-case-1-add-a-body-to-the-world)
+   2. Test Cases
+      1. [Test Case 1: Add a valid body to the world](#test-case-1-add-a-valid-body-to-the-world)
+      2. [Test Case 2: Add a null body to the world](#test-case-2-add-a-null-body-to-the-world)
+4. [World.ClearForces](#worldclearforces)
+   1. Use Cases
+      1. [Use Case 1: ClearForces with empty bodies list](#use-case-1-clearforces-with-empty-bodies-list)
+      2. [Use Case 2: ClearForces with non-empty bodies list](#use-case-2-clearforces-with-non-empty-bodies-list)
+   2. Test Cases
+      1. [Test Case 1: ClearForces with empty bodies list](#test-case-1-clearforces-with-empty-bodies-list)
+      2. [Test Case 2: ClearForces with non-empty bodies list](#test-case-2-clearforces-with-non-empty-bodies-list)
 
-/// <summary>
-/// Adds the body using the specified body
-/// </summary>
-/// <param name="body">The body</param>
-public void AddBody(Body body) => Bodies.Add(body);
-```
+## Introduction 
 
+The World class is a fundamental component of the graphics engine, responsible for managing the virtual world where all the objects, characters, and physics interact. It provides a central hub for controlling the simulation of the environment and the dynamics of the objects within it. The World class allows the creation, deletion, and manipulation of bodies, forces, and other physics-related elements, making it a crucial building block for any physics-based game or application. Its versatile design and efficient implementation make it an essential tool for creating immersive and interactive experiences.
 
-## Creating a World
+### Creating a World
 
 First, we define the gravity vector.
 
@@ -28,288 +33,192 @@ Now we create the world object.
 ```csharp
     World myWorld = new World(gravity: gravity);
 ```
-------------------
-Use Case: Add Body
-------------------
 
-### Preconditions
+World.AddBody
+=============
 
-*   The ```World``` object is instantiated.
+```csharp
 
-### Flow of Events
+/// <summary>
+/// Adds the body using the specified body
+/// </summary>
+/// <param name="body">The body</param>
+public void AddBody(Body body) => Bodies.Add(body);
 
-1.  The user calls the ```AddBody``` method with a ```Body``` object as the parameter.
-2.  The ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
+```
 
-### Postconditions
+Use Cases:
+----------
 
-*   The ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
+### Use case 1: Add a body to the world
 
-* * *
+#### Preconditions
 
-Test Case: Add Body
+*   The world exists and has been initialized.
+*   A valid body object has been created.
+
+#### Flow of Events
+
+1.  The user calls the AddBody method, passing in a valid Body object.
+2.  The method adds the body object to the list of bodies in the world.
+
+#### Postconditions
+
+*   The body object has been added to the world's list of bodies.
+*   The world has been updated to include the new body.
+
+Test Cases:
+-----------
+
+### Test case 1: Add a valid body to the world
+
+#### Test Data
+
+*   A valid Body object.
+
+#### Test Steps
+
+1.  Create a new World object.
+2.  Create a new Body object.
+3.  Call the AddBody method, passing in the Body object.
+
+#### Expected Results
+
+*   The Body object should be added to the World's list of bodies.
+*   The World's list of bodies should have a count of 1.
+
+```csharp
+[Fact]
+public void Test_AddBody_When_ValidBodyAdded_Expect_BodyAddedToWorld()
+{
+    throw new NotImplementedException();
+}
+```
+
+### Test case 2: Add a null body to the world
+
+#### Test Data
+
+*   A null Body object.
+
+#### Test Steps
+
+1.  Create a new World object.
+2.  Call the AddBody method, passing in the null Body object.
+
+#### Expected Results
+
+*   An ArgumentNullException should be thrown.
+
+```csharp
+
+[Fact]
+public void Test_AddBody_When_NullBodyAdded_Expect_ArgumentNullException()
+{
+    throw new NotImplementedException();
+}
+
+```
+
+
 -------------------
+World.ClearForces
+=================
 
-### Test Data
+```csharp
 
-*   A mock ```Body``` object.
+/// <summary>
+/// Clear all forces
+/// </summary>
+internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());```
 
-### Test Steps
+```
 
-1.  Create a mock ```Body``` object using Moq.
-2.  Create a ```World``` object.
-3.  Call the ```AddBody``` method on the ```World``` object, passing the mock ```Body``` object as the parameter.
 
-### Expected Results
+Use Cases:
+----------
 
-*   The mock ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
+### Use Case 1: ClearForces with empty bodies list
 
-### Unit Test
+#### Preconditions:
+
+*   World object with an empty Bodies list.
+
+#### Flow of Events:
+
+1.  Call the ClearForces method.
+
+#### Postconditions:
+
+*   The Bodies list remains empty.
+
+### Use Case 2: ClearForces with non-empty bodies list
+
+#### Preconditions:
+
+*   World object with a non-empty Bodies list.
+
+#### Flow of Events:
+
+1.  Add a set of forces to the bodies list.
+2.  Call the ClearForces method.
+
+#### Postconditions:
+
+*   The Bodies list contains no forces.
+
+Test Cases:
+-----------
+
+### Test Case 1: ClearForces with empty bodies list
+
+#### Test Data:
+
+*   Empty Bodies list.
+
+#### Test Steps:
+
+1.  Call the ClearForces method.
+
+#### Expected Results:
+
+*   No exception should be thrown.
 
 csharpCopy code
 
 ```csharp
-/// <summary>
-/// Tests that add body adds a body to the bodies collection.
-/// </summary>
+
 [Fact]
-public void AddBody_AddsBodyToBodiesCollection()
+public void Test_ClearForces_When_EmptyBodiesList_Expect_NoExceptionThrown()
 {
-    Vector2F gravity = new Vector2F(0f, 9.18f);
-    
-    // Create a mock body object.
-    Mock<Body> mockBody = new Mock<Body>();
+   throw new NotImplementedException();
+}
 
-    // Create a world object.
-    World world = new World(gravity);
+```
 
-    // Call the AddBody method on the world object.
-    world.AddBody(mockBody.Object);
+### Test Case 2: ClearForces with non-empty bodies list
 
-    // Assert that the mock body object is added to the bodies collection.
-    Assert.Single(world.Bodies);
-    Assert.Equal(mockBody.Object, world.Bodies[0]);
+#### Test Data:
+
+*   Bodies list with a set of forces.
+
+#### Test Steps:
+
+1.  Call the ClearForces method.
+
+#### Expected Results:
+
+*   All forces are removed from the Bodies list.
+
+csharpCopy code
+
+```csharp
+
+[Fact]
+public void Test_ClearForces_When_NonEmptyBodiesList_Expect_ForcesRemoved()
+{
+   throw new NotImplementedException();
 }
 ```
 
-This test creates a mock ```Body``` object and a ```World``` object. It then calls the ```AddBody``` method on the ```World``` object, passing the mock ```Body``` object as the parameter. Finally, it asserts that the mock ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
 
--------------------
-Test Case: Clear Forces
--------------------
-
-
-```csharp
-/// <summary>
-/// Clear all forces
-/// </summary>
-internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
-```
-
-Use Cases
----------
-
-### Use Case 1: Clear all forces
-
-**Preconditions:**
-
-*   There must be at least one body in the list of bodies.
-
-**Flow of Events:**
-
-1.  The user calls the ```ClearForces``` method.
-2.  The method iterates through each body in the list of bodies.
-3.  For each body, the method calls the ```ClearForces``` method on that body.
-
-**Postconditions:**
-
-*   All forces of all bodies in the list of bodies are cleared.
-
-Test Cases
-----------
-
-### Test Case 1: Clear forces for one body
-
-**Test Data:**
-
-*   List of bodies with one body.
-
-**Test Steps:**
-
-1.  Create a mock body object with the ```ClearForces``` method.
-2.  Add the mock body object to the list of bodies.
-3.  Call the ```ClearForces``` method on the physics engine.
-
-**Expected Results:**
-
-*   The ```ClearForces``` method is called on the mock body object.
-
-**Unit Test:**
-
-```csharp
-/// <summary>
-/// Tests that clear forces clears forces for one body
-///</summary>
-[Fact]
-public void ClearForces_ClearsForcesForOneBody()
-{
-    Vector2F gravity = new Vector2F(0f, 9.18f);
-    Vector2F position = new Vector2F(0f, 0f);
-    Vector2F velocity = new Vector2F(0f, -1f);
-    
-    // Create a world object with the ClearForces method and 9.18f gravity.
-    World world = new World(gravity);
-
-    // Create a mock body object with the ClearForces method.
-    Mock<Body> mockBody = new Mock<Body>(
-        position, 
-        velocity,
-        BodyType.Dynamic,
-        0.0f,
-        0.0f,
-        0.0f,
-        0.0f,
-        true,
-        true,
-        false,
-        false,
-        true,
-        1.0f);
-
-    // Call the ClearForces method on the physics engine.
-    world.AddBody(mockBody.Object);
-
-    // Call the ClearForces method on the word class
-    world.ClearForces();
-    
-    // Assert that the ClearForces method is called on the mock body object.
-    Assert.Single(world.Bodies);
-    
-    // Assert that the force is zero
-    Assert.Equal(Vector2F.Zero, world.Bodies[0].Force);
-    
-    // Assert that the torque is zero
-    Assert.Equal(0, world.Bodies[0].Torque);
-    
-    // Verify that the ClearForces method is called on the mock body object.
-    mockBody.VerifyAll();
-}
-```
-
-### Test Case 2: Clear forces for multiple bodies
-
-**Test Data:**
-
-*   List of bodies with multiple bodies.
-
-**Test Steps:**
-
-1.  Create mock body objects with the ```ClearForces``` method.
-2.  Add the mock body objects to the list of bodies.
-3.  Call the ```ClearForces``` method on the physics engine.
-
-**Expected Results:**
-
-*   The ```ClearForces``` method is called on all mock body objects.
-
-**Unit Test:**
-
-```csharp
-/// <summary>
-/// Tests that clear forces clears forces for multiple bodies
-/// </summary>
-[Fact]
-public void ClearForces_ClearsForcesForMultipleBodies()
-{
-    Vector2F gravity = new Vector2F(0f, 9.18f);
-    Vector2F position = new Vector2F(0f, 0f);
-    Vector2F velocity = new Vector2F(0f, -1f);
-    
-    // Create a world object with the ClearForces method and 9.18f gravity.
-    World world = new World(gravity);
-
-    List<Mock<Body>> listMocksBodies = new List<Mock<Body>>();
-
-    for (int i = 0; i < 10;i++)
-    {
-        Mock<Body> mockBody = new Mock<Body>(position, 
-            velocity, 
-            BodyType.Dynamic,
-            0.0f,
-            0.0f,
-            0.0f,
-            0.0f,
-            true,
-            true,
-            false,
-            false,
-            true,
-            1.0f);
-        
-        listMocksBodies.Add(mockBody);
-        world.AddBody(mockBody.Object);
-    }
-    
-    // Call the ClearForces method on the word class
-    world.ClearForces();
-    
-    // Assert that is not empty bodies
-    Assert.NotEmpty(world.Bodies);
-    
-    // Assert that is 10 bodies
-    Assert.Equal(10, world.Bodies.Count);
-
-    // Assert that all bodies set to zero force and torque
-    for (int i = 0; i < 10; i++)
-    {
-        // Assert that the force is zero
-        Assert.Equal(Vector2F.Zero, world.Bodies[i].Force);
-
-        // Assert that the torque is zero
-        Assert.Equal(0, world.Bodies[i].Torque);
-    }
-    
-    // Verify that the ClearForces method is called on the mock body object.
-    foreach (Mock<Body> mockBody in listMocksBodies)
-    {
-        mockBody.VerifyAll();
-    }
-}
-```
-
-### Test Case 3: Clear forces for empty list of bodies
-
-**Test Data:**
-
-*   Empty list of bodies.
-
-**Test Steps:**
-
-1.  Call the ```ClearForces``` method on the physics engine.
-
-**Expected Results:**
-
-*   No ```ClearForces``` method is called.
-
-**Unit Test:**
-
-```csharp
-/// <summary>
-/// Tests that clear forces does nothing with an empty list
-/// </summary>
-[Fact]
-public void ClearForces_DoesNothingWithEmptyList()
-{
-    // Set the gravity to 9.18f
-    Vector2F gravity = new Vector2F(0f, 9.18f);
-
-    // Create a world object with the ClearForces method and 9.18f gravity.
-    World world = new World(gravity);
-
-    // Call the ClearForces method on the word class
-    world.ClearForces();
-
-    // Assert that is empty bodies
-    Assert.Empty(world.Bodies);
-}
-```
