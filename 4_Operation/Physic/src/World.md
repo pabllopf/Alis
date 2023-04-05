@@ -8,9 +8,10 @@ Genera todos los casos de uso y casos de pruebas del siguiente método cumpliend
 5. Los casos de pruebas deben incluir los siguientes apartados: Test Data, Test Steps , Expected Results y Unit Test (programado en c# utilizando xunit y moq)
 
 /// <summary>
-/// Clears the forces
+/// Adds the body using the specified body
 /// </summary>
-internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
+/// <param name="body">The body</param>
+public void AddBody(Body body) => Bodies.Add(body);
 ```
 
 
@@ -27,10 +28,75 @@ Now we create the world object.
 ```csharp
     World myWorld = new World(gravity: gravity);
 ```
+------------------
+Use Case: Add Body
+------------------
 
----------
+### Preconditions
 
-# Method ClearForces()
+*   The ```World``` object is instantiated.
+
+### Flow of Events
+
+1.  The user calls the ```AddBody``` method with a ```Body``` object as the parameter.
+2.  The ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
+
+### Postconditions
+
+*   The ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
+
+* * *
+
+Test Case: Add Body
+-------------------
+
+### Test Data
+
+*   A mock ```Body``` object.
+
+### Test Steps
+
+1.  Create a mock ```Body``` object using Moq.
+2.  Create a ```World``` object.
+3.  Call the ```AddBody``` method on the ```World``` object, passing the mock ```Body``` object as the parameter.
+
+### Expected Results
+
+*   The mock ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
+
+### Unit Test
+
+csharpCopy code
+
+```csharp
+/// <summary>
+/// Tests that add body adds a body to the bodies collection.
+/// </summary>
+[Fact]
+public void AddBody_AddsBodyToBodiesCollection()
+{
+    Vector2F gravity = new Vector2F(0f, 9.18f);
+    
+    // Create a mock body object.
+    Mock<Body> mockBody = new Mock<Body>();
+
+    // Create a world object.
+    World world = new World(gravity);
+
+    // Call the AddBody method on the world object.
+    world.AddBody(mockBody.Object);
+
+    // Assert that the mock body object is added to the bodies collection.
+    Assert.Single(world.Bodies);
+    Assert.Equal(mockBody.Object, world.Bodies[0]);
+}
+```
+
+This test creates a mock ```Body``` object and a ```World``` object. It then calls the ```AddBody``` method on the ```World``` object, passing the mock ```Body``` object as the parameter. Finally, it asserts that the mock ```Body``` object is added to the ```Bodies``` collection of the ```World``` object.
+
+-------------------
+Test Case: Clear Forces
+-------------------
 
 
 ```csharp

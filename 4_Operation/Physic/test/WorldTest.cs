@@ -42,6 +42,34 @@ namespace Alis.Core.Physic.Test
     /// </summary>
     public class WorldTest
     {
+        
+        # region AddBody()
+        
+        /// <summary>
+        /// Tests that add body adds a body to the bodies collection.
+        /// </summary>
+        [Fact]
+        public void AddBody_AddsBodyToBodiesCollection()
+        {
+            Vector2F gravity = new Vector2F(0f, 9.18f);
+            
+            // Create a mock body object.
+            Mock<Body> mockBody = new Mock<Body>();
+
+            // Create a world object.
+            World world = new World(gravity);
+
+            // Call the AddBody method on the world object.
+            world.AddBody(mockBody.Object);
+
+            // Assert that the mock body object is added to the bodies collection.
+            Assert.Single(world.Bodies);
+            Assert.Equal(mockBody.Object, world.Bodies[0]);
+        }
+        
+        #endregion
+        
+        
         /// <summary>
         /// Tests that clear forces clears forces for a single body
         ///</summary>

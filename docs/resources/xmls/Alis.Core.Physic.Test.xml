@@ -9,6 +9,11 @@
             The world test class
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Test.WorldTest.AddBody_AddsBodyToBodiesCollection">
+            <summary>
+            Tests that add body adds a body to the bodies collection.
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.Test.WorldTest.ClearForces_ClearsForcesForOneBody">
              <summary>
              Tests that clear forces clears forces for a single body
