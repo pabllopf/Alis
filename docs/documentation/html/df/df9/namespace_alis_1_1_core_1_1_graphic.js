@@ -1,6 +1,0 @@
-var namespace_alis_1_1_core_1_1_graphic =
-[
-    [ "D2", "da/dca/namespace_alis_1_1_core_1_1_graphic_1_1_d2.html", "da/dca/namespace_alis_1_1_core_1_1_graphic_1_1_d2" ],
-    [ "D3", "d2/d19/namespace_alis_1_1_core_1_1_graphic_1_1_d3.html", "d2/d19/namespace_alis_1_1_core_1_1_graphic_1_1_d3" ],
-    [ "Properties", "db/d50/namespace_alis_1_1_core_1_1_graphic_1_1_properties.html", "db/d50/namespace_alis_1_1_core_1_1_graphic_1_1_properties" ]
-];
