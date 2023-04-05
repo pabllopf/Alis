@@ -1,4 +1,0 @@
-var class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_point_comparator =
-[
-    [ "Compare", "da/d98/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_dt_sweep_point_comparator.html#a9af8d9921101adc8cee2060ab2422a89", null ]
-];

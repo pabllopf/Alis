@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind =
-[
-    [ "AbstractForceController", "d6/ded/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_abstract_force_controller.html", "d6/ded/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_abstract_force_controller" ],
-    [ "SimpleWindForce", "d5/db4/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_simple_wind_force.html", "d5/db4/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_wind_1_1_simple_wind_force" ]
-];

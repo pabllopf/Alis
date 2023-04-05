@@ -1,5 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base =
-[
-    [ "Controller", "dd/dbe/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base_1_1_controller.html", "dd/dbe/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base_1_1_controller" ],
-    [ "ControllerFilter", "d0/d72/struct_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base_1_1_controller_filter.html", "d0/d72/struct_alis_1_1_core_1_1_physic_1_1_extensions_1_1_controllers_1_1_controller_base_1_1_controller_filter" ]
-];

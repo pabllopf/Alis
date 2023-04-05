@@ -1,6 +1,0 @@
-var namespace_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_explosion =
-[
-    [ "RayDataComparer", "d7/d80/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_ray_data_comparer.html", "d7/d80/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_ray_data_comparer" ],
-    [ "RealExplosion", "d9/d72/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_real_explosion.html", "d9/d72/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_real_explosion" ],
-    [ "SimpleExplosion", "dd/df4/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_simple_explosion.html", "dd/df4/class_alis_1_1_core_1_1_physic_1_1_extensions_1_1_physics_logics_1_1_explosion_1_1_simple_explosion" ]
-];
