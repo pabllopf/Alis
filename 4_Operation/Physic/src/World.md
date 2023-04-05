@@ -3,19 +3,26 @@
 1. [Introduction](#introduction)
 2. [Creating a World](#creating-a-world)
 3. [World.AddBody](#worldaddbody)
-    1. [Uses Cases:](#uses-cases)
+    1. Uses Cases
         1. [Use case 1: Add a body to the world](#use-case-1-add-a-body-to-the-world)
         2. [Use case 2: Add a null body to the world](#use-case-2-add-a-null-body-to-the-world)
         3. [Use case 3: Add an existing body to the world](#use-case-3-add-an-existing-body-to-the-world)
-    2. [Test Cases:](#test-cases)
+    2. Test Cases
         1. [Test case 1: Add a body to the world](#test-case-1-add-a-body-to-the-world)
         2. [Test case 2: Add a null body to the world](#test-case-2-add-a-null-body-to-the-world)
         3. [Test case 3: Add an existing body to the world](#test-case-3-add-an-existing-body-to-the-world)
-4. [World.ClearForces](#worldclearforces)
-    1. [Uses Cases:](#uses-cases-1)
+4. [World.RemoveBody](#worldremovebody)
+    1. Uses Cases
+        1. [Use case 1: Remove an existing body](#use-case-1-remove-an-existing-body)
+        2. [Use case 2: Try to remove a non-existing body](#use-case-2-try-to-remove-a-non-existing-body)
+    2. Test Cases
+        1. [Test case 1: Remove a body from the world](#test-case-1-remove-a-body-from-the-world)
+        2. [Test case 2:  Try to remove a non-existing body](#test-case-2--try-to-remove-a-non-existing-body)
+5. [World.ClearForces](#worldclearforces)
+    1. Uses Cases
         1. [Use Case 1: Clear all forces](#use-case-1-clear-all-forces)
         2. [Use Case 2: No bodies with forces applied](#use-case-2-no-bodies-with-forces-applied)
-    2. [Test Cases:](#test-cases-1)
+    2. Test Cases
         1. [Test case 1: Clear forces for all bodies](#test-case-1-clear-forces-for-all-bodies)
         2. [Test Case 2: No bodies with forces applied](#test-case-2-no-bodies-with-forces-applied)
 
@@ -128,6 +135,71 @@ public void Test_AddBody_When_WorldExistsAndBodyAlreadyInWorld_Expect_BodyAddedA
 
 
 
+
+
+
+
+
+
+# World.RemoveBody
+
+```csharp
+/// <summary>
+/// Removes the body using the specified body
+/// </summary>
+/// <param name="body">The body</param>
+public void RemoveBody(Body body) => Bodies.Remove(body);
+
+```
+## Uses Cases:
+### Use case 1: Remove an existing body
+
+
+| Preconditions                          | Flow of Events                                                        | Postconditions                      |
+|----------------------------------------|-----------------------------------------------------------------------|-------------------------------------|
+| The world contains the body to remove. | The method RemoveBody() is called with an existing body as parameter. | The body is removed from the world. |
+
+### Use case 2: Try to remove a non-existing body
+
+
+| Preconditions                                 | Flow of Events                                                           | Postconditions               |
+|-----------------------------------------------|--------------------------------------------------------------------------|------------------------------|
+| The world doesn't contain the body to remove. | The method RemoveBody() is called with a non-existing body as parameter. | The world remains unchanged. |
+
+## Test Cases:
+### Test case 1: Remove an existing body
+
+
+| Test Data                                                 | Test Steps                                                            | Expected Results                    |
+|-----------------------------------------------------------|-----------------------------------------------------------------------|-------------------------------------|
+| A world with 5 bodies, one of them is the body to remove. | 1. Call the method RemoveBody() with the body to remove as parameter. | The body is removed from the world. |
+
+```csharp
+[Fact]
+public void Test_RemoveBody_When_WorldContainsBodyToRemove_Expect_BodyRemovedFromWorld()
+{
+   throw new NotImplementedException();
+}
+
+```
+### Test case 2: Try to remove a non-existing body
+
+
+| Test Data                                                  | Test Steps                                                             | Expected Results             |
+|------------------------------------------------------------|------------------------------------------------------------------------|------------------------------|
+| A world with 5 bodies, none of them is the body to remove. | 1. Call the method RemoveBody() with a non-existing body as parameter. | The world remains unchanged. |
+
+```csharp
+[Fact]
+public void Test_RemoveBody_When_WorldDoesNotContainBodyToRemove_Expect_WorldRemainsUnchanged()
+{
+   throw new NotImplementedException();
+}
+
+```
+
+
+ --------
 
 
 

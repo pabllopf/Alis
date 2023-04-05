@@ -83,7 +83,14 @@ namespace Alis.Core.Physic.Test
         }
         
         #endregion
+
+        #region RemoveBody()
         
+        
+
+        #endregion
+        
+        # region ClearForces()
         
         /// <summary>
         /// Tests that clear forces clears forces for a single body
@@ -212,5 +219,7 @@ namespace Alis.Core.Physic.Test
             // Assert that is empty bodies
             Assert.Empty(world.Bodies);
         }
+        
+        #endregion
     }
 }
