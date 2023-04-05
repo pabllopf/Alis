@@ -24,6 +24,8 @@
         <ProjectReference Condition="$(ProjectDir.Contains('5_Declaration'))"
                           Include="$(SolutionDir)6_Ideation/**/*.csproj"
                           Exclude="$(SolutionDir)6_Ideation/**/*.Sample.csproj; $(SolutionDir)6_Ideation/**/*.Test.csproj;"/>
+
+        <InternalsVisibleTo Include="$(AssemblyName).Test" />
     </ItemGroup>
 
 
@@ -164,6 +166,8 @@
                           $(SolutionDir)6_Ideation/**/*sample/**/*.cs;
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;  $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
+
+        <InternalsVisibleTo Include="$(AssemblyName).Test" />
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">

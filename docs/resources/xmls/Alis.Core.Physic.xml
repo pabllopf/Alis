@@ -3395,6 +3395,11 @@
             </summary>
             <param name="alpha">The alpha</param>
         </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ClearForces">
+            <summary>
+            Clears the forces
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyFlags">
             <summary>
                 The body flags enum
@@ -13486,7 +13491,7 @@
         </member>
         <member name="M:Alis.Core.Physic.World.ClearForces">
             <summary>
-            Clears the forces
+            Clear all forces
             </summary>
         </member>
         <member name="T:Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve">

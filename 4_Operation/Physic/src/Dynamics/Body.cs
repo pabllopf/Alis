@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -92,8 +93,7 @@ namespace Alis.Core.Physic.Dynamics
         ///     The xf
         /// </summary>
         internal Transform Xf; // the body origin transform
-
-
+        
         /// <summary>
         ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
@@ -1295,6 +1295,15 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.A = Sweep.A0;
             Xf.Rotation.Set(Sweep.A);
             Xf.Position = Sweep.C - MathUtils.Mul(Xf.Rotation, Sweep.LocalCenter);
+        }
+
+        /// <summary>
+        /// Clears the forces
+        /// </summary>
+        internal void ClearForces()
+        {
+            Force = Vector2F.Zero;
+            Torque = 0.0f;
         }
     }
 }

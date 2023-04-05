@@ -709,13 +709,8 @@ namespace Alis.Core.Physic
         }
 
         /// <summary>
-        /// Clears the forces
+        /// Clear all forces
         /// </summary>
-        private void ClearForces() => Bodies.ForEach(i =>
-        {
-            i.Force = Vector2F.Zero;
-            i.Torque = 0.0f;
-        });
-        
+        internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
     }
 }
