@@ -1,38 +1,25 @@
-<style>
-    body{
-    }
-    table {
-        width: 100%;
-        border: 1px solid;
-    }
-    th {
-        border: 1px solid;
-        text-align: left;
-    }
-    td {
-        border: 1px solid;
-        text-align: left;
-        width: 1%;
-    }
-</style>
-
 # World
 
 1. [Introduction](#introduction)
 2. [Creating a World](#creating-a-world)
 3. [World.AddBody](#worldaddbody)
-   1. Use Cases
-      1. [Use Case 1: Add a body to the world](#use-case-1-add-a-body-to-the-world)
-   2. Test Cases
-      1. [Test Case 1: Add a valid body to the world](#test-case-1-add-a-valid-body-to-the-world)
-      2. [Test Case 2: Add a null body to the world](#test-case-2-add-a-null-body-to-the-world)
+    1. [Uses Cases:](#uses-cases)
+        1. [Use case 1: Add a body to the world](#use-case-1-add-a-body-to-the-world)
+        2. [Use case 2: Add a null body to the world](#use-case-2-add-a-null-body-to-the-world)
+        3. [Use case 3: Add an existing body to the world](#use-case-3-add-an-existing-body-to-the-world)
+    2. [Test Cases:](#test-cases)
+        1. [Test case 1: Add a body to the world](#test-case-1-add-a-body-to-the-world)
+        2. [Test case 2: Add a null body to the world](#test-case-2-add-a-null-body-to-the-world)
+        3. [Test case 3: Add an existing body to the world](#test-case-3-add-an-existing-body-to-the-world)
 4. [World.ClearForces](#worldclearforces)
-   1. Use Cases
-      1. [Use Case 1: ClearForces with empty bodies list](#use-case-1-clearforces-with-empty-bodies-list)
-      2. [Use Case 2: ClearForces with non-empty bodies list](#use-case-2-clearforces-with-non-empty-bodies-list)
-   2. Test Cases
-      1. [Test Case 1: ClearForces with empty bodies list](#test-case-1-clearforces-with-empty-bodies-list)
-      2. [Test Case 2: ClearForces with non-empty bodies list](#test-case-2-clearforces-with-non-empty-bodies-list)
+    1. [Uses Cases:](#uses-cases-1)
+        1. [Use Case 1: Clear all forces](#use-case-1-clear-all-forces)
+        2. [Use Case 2: No bodies with forces applied](#use-case-2-no-bodies-with-forces-applied)
+    2. [Test Cases:](#test-cases-1)
+        1. [Test case 1: Clear forces for all bodies](#test-case-1-clear-forces-for-all-bodies)
+        2. [Test Case 2: No bodies with forces applied](#test-case-2-no-bodies-with-forces-applied)
+
+
 
 ## Introduction 
 
@@ -54,6 +41,7 @@ Now we create the world object.
 
 
 
+
 # World.AddBody
 
 ```csharp
@@ -68,41 +56,87 @@ public void AddBody(Body body) => Bodies.Add(body);
 ## Uses Cases:
 ### Use case 1: Add a body to the world
 
-<table><thead><tr><th>Preconditions</th><th>Flow of Events</th><th>Postconditions</th></tr></thead><tbody><tr><td>The world exists</td><td>1. User calls AddBody with a valid body object <br> 2. Method adds the body to the world's list of bodies</td><td>The world's list of bodies includes the new body object</td></tr></tbody></table>
+| Preconditions     | Flow of Events     | Postconditions                  |
+|-------------------|--------------------|---------------------------------|
+| The world exists. | A body is created. | The body is added to the world. |
 
-### Use case 2: Add multiple bodies to the world
+### Use case 2: Add a null body to the world
 
-<table><thead><tr><th>Preconditions</th><th>Flow of Events</th><th>Postconditions</th></tr></thead><tbody><tr><td>The world exists</td><td>1. User calls AddBody multiple times with valid body objects <br> 2. Method adds each body to the world's list of bodies</td><td>The world's list of bodies includes all new body objects</td></tr></tbody></table>
+
+| Preconditions     | Flow of Events          | Postconditions                      |
+|-------------------|-------------------------|-------------------------------------|
+| The world exists. | A null body is created. | An ArgumentNullException is thrown. |
+
+### Use case 3: Add an existing body to the world
+
+
+| Preconditions     | Flow of Events                        | Postconditions                        |
+|-------------------|---------------------------------------|---------------------------------------|
+| The world exists. | A body already in the world is added. | The body is added again to the world. |
 
 ## Test Cases:
-### Test case 1: Add a single body to the world
+### Test case 1: Add a body to the world
 
 
-| Test Data           | Test Steps                           | Expected Results                                        |
-|---------------------|--------------------------------------|---------------------------------------------------------|
-| A valid body object | 1. Call AddBody with the body object | The world's list of bodies includes the new body object |
+| Test Data                                   | Test Steps                        | Expected Results                |
+|---------------------------------------------|-----------------------------------|---------------------------------|
+| A world with no bodies. A body to be added. | 1. Call the method AddBody(body). | The body is added to the world. |
 
 ```csharp
 [Fact]
-public void Test_AddBody_When_StateUnderTest_Expect_ExpectedBehavior()
+public void Test_AddBody_When_WorldExistsAndBodyIsNotNull_Expect_BodyAddedToWorld()
 {
-    throw new NotImplementedException();
+   throw new NotImplementedException();
+}
+
+```
+### Test case 2: Add a null body to the world
+
+
+| Test Data                                        | Test Steps                        | Expected Results                    |
+|--------------------------------------------------|-----------------------------------|-------------------------------------|
+| A world with no bodies. A null body to be added. | 1. Call the method AddBody(null). | An ArgumentNullException is thrown. |
+
+```csharp
+[Fact]
+public void Test_AddBody_When_WorldExistsAndBodyIsNull_Expect_ArgumentNullExceptionThrown()
+{
+   throw new NotImplementedException();
+}
+
+```
+### Test case 3: Add an existing body to the world
+
+
+| Test Data                                         | Test Steps                        | Expected Results                      |
+|---------------------------------------------------|-----------------------------------|---------------------------------------|
+| A world with one body. The same body to be added. | 1. Call the method AddBody(body). | The body is added again to the world. |
+
+```csharp
+[Fact]
+public void Test_AddBody_When_WorldExistsAndBodyAlreadyInWorld_Expect_BodyAddedAgainToWorld()
+{
+   throw new NotImplementedException();
 }
 
 ```
 
-### Test case 2: Add multiple bodies to the world
 
-<table><thead><tr><th>Test Data</th><th>Test Steps</th><th>Expected Results</th></tr></thead><tbody><tr><td>Two valid body objects</td><td>1. Call AddBody with the first body object <br> 2. Call AddBody with the second body object</td><td>The world's list of bodies includes both body objects</td></tr></tbody></table>
+ --------
 
-```csharp
-[Fact]
-public void Test_AddBody_When_StateUnderTest_Expect_ExpectedBehavior()
-{
-    throw new NotImplementedException();
-}
 
-```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -120,31 +154,31 @@ internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
 ### Use Case 1: Clear all forces
 
 
-| Preconditions | Flow of Events | Postconditions |
-| --- | --- | --- |
+| Preconditions                                    | Flow of Events     | Postconditions                       |
+|--------------------------------------------------|--------------------|--------------------------------------|
 | There are one or more bodies with forces applied | Call ClearForces() | All forces of all bodies are cleared |
 
 ### Use Case 2: No bodies with forces applied
 
 
-| Preconditions | Flow of Events | Postconditions |
-| --- | --- | --- |
+| Preconditions                           | Flow of Events     | Postconditions     |
+|-----------------------------------------|--------------------|--------------------|
 | There are no bodies with forces applied | Call ClearForces() | There is no change |
 
 ## Test Cases:
 
-### Test Case 1: Clear forces of all bodies
+### Test case 1: Clear forces for all bodies
 
 
-| Test Data | Test Steps | Expected Results |
-| --- | --- | --- |
-| List of bodies with forces applied | Call ClearForces() | All forces of all bodies are cleared |
+| Test Data                                         | Test Steps                        | Expected Results                                  |
+|---------------------------------------------------|-----------------------------------|---------------------------------------------------|
+| A world with 5 bodies and forces applied to them. | 1. Call the method ClearForces(). | All forces of each body in the world are cleared. |
 
 ```csharp
 [Fact]
-public void Test_ClearForces_When_ForcesApplied_Expect_ForcesCleared()
+public void Test_ClearForces_When_WorldContainsBodiesWithForces_Expect_ForcesCleared()
 {
-    throw new NotImplementedException();
+   throw new NotImplementedException();
 }
 
 ```
@@ -152,8 +186,8 @@ public void Test_ClearForces_When_ForcesApplied_Expect_ForcesCleared()
 ### Test Case 2: No bodies with forces applied
 
 
-| Test Data | Test Steps | Expected Results |
-| --- | --- | --- |
+| Test Data            | Test Steps         | Expected Results   |
+|----------------------|--------------------|--------------------|
 | List of empty bodies | Call ClearForces() | There is no change |
 
 ```csharp
@@ -164,6 +198,7 @@ public void Test_ClearForces_When_NoForcesApplied_Expect_NoChange()
 }
 
 ```
+
 
 
 
