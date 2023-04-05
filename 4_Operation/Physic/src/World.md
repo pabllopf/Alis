@@ -33,12 +33,9 @@ Now we create the world object.
 ```csharp
     World myWorld = new World(gravity: gravity);
 ```
-
-World.AddBody
-=============
+# World.AddBody
 
 ```csharp
-
 /// <summary>
 /// Adds the body using the specified body
 /// </summary>
@@ -46,80 +43,54 @@ World.AddBody
 public void AddBody(Body body) => Bodies.Add(body);
 
 ```
-
-Use Cases:
-----------
-
-### Use case 1: Add a body to the world
-
+## Uses Cases:
+### Use case 1: Add a new body to an empty world
 #### Preconditions
 
-*   The world exists and has been initialized.
-*   A valid body object has been created.
+
+| id  | Preconditions           |
+|-----|-------------------------|
+| 1   | A new instance of World |
+| 2   | No bodies in the World  |
 
 #### Flow of Events
-
-1.  The user calls the AddBody method, passing in a valid Body object.
-2.  The method adds the body object to the list of bodies in the world.
+<table><thead><tr><th>id</th><th>Flow of Events</th></tr></thead><tbody><tr><td>1</td><td>Invoke `AddBody` method with a new instance of Body as parameter</td></tr></tbody></table>
 
 #### Postconditions
 
-*   The body object has been added to the world's list of bodies.
-*   The world has been updated to include the new body.
 
-Test Cases:
------------
+| id  | Postconditions                           |
+|-----|------------------------------------------|
+| 1   | The World contains the new Body instance |
 
-### Test case 1: Add a valid body to the world
-
+## Test Cases:
+### Test case 1: Add a new body to an empty world
 #### Test Data
 
-*   A valid Body object.
+
+| id  | Test Data               |
+|-----|-------------------------|
+| 1   | A new instance of World |
+| 2   | A new instance of Body  |
 
 #### Test Steps
-
-1.  Create a new World object.
-2.  Create a new Body object.
-3.  Call the AddBody method, passing in the Body object.
+<table><thead><tr><th>id</th><th>Test Steps</th></tr></thead><tbody><tr><td>1</td><td>Invoke `AddBody` method with the new instance of Body as parameter</td></tr></tbody></table>
 
 #### Expected Results
 
-*   The Body object should be added to the World's list of bodies.
-*   The World's list of bodies should have a count of 1.
+
+| id  | Expected Results                         |
+|-----|------------------------------------------|
+| 1   | The World contains the new Body instance |
 
 ```csharp
 [Fact]
-public void Test_AddBody_When_ValidBodyAdded_Expect_BodyAddedToWorld()
+public void Test_AddBody_When_AddingNewBodyToEmptyWorld_Expect_BodyAddedToWorld()
 {
-    throw new NotImplementedException();
-}
-```
-
-### Test case 2: Add a null body to the world
-
-#### Test Data
-
-*   A null Body object.
-
-#### Test Steps
-
-1.  Create a new World object.
-2.  Call the AddBody method, passing in the null Body object.
-
-#### Expected Results
-
-*   An ArgumentNullException should be thrown.
-
-```csharp
-
-[Fact]
-public void Test_AddBody_When_NullBodyAdded_Expect_ArgumentNullException()
-{
-    throw new NotImplementedException();
+   throw new NotImplementedException();
 }
 
 ```
-
 
 -------------------
 World.ClearForces
