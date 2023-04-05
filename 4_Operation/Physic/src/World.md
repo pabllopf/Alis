@@ -1,3 +1,9 @@
+<style>
+    table {
+        width: 100%;
+    }
+</style>
+
 # World
 
 1. [Introduction](#introduction)
@@ -33,6 +39,9 @@ Now we create the world object.
 ```csharp
     World myWorld = new World(gravity: gravity);
 ```
+
+
+
 # World.AddBody
 
 ```csharp
@@ -43,54 +52,48 @@ Now we create the world object.
 public void AddBody(Body body) => Bodies.Add(body);
 
 ```
+
 ## Uses Cases:
-### Use case 1: Add a new body to an empty world
-#### Preconditions
+### Use case 1: Add a body to the world
 
+<table><thead><tr><th>Preconditions</th><th>Flow of Events</th><th>Postconditions</th></tr></thead><tbody><tr><td>The world exists</td><td>1. User calls AddBody with a valid body object <br> 2. Method adds the body to the world's list of bodies</td><td>The world's list of bodies includes the new body object</td></tr></tbody></table>
 
-| id  | Preconditions           |
-|-----|-------------------------|
-| 1   | A new instance of World |
-| 2   | No bodies in the World  |
+### Use case 2: Add multiple bodies to the world
 
-#### Flow of Events
-<table><thead><tr><th>id</th><th>Flow of Events</th></tr></thead><tbody><tr><td>1</td><td>Invoke `AddBody` method with a new instance of Body as parameter</td></tr></tbody></table>
-
-#### Postconditions
-
-
-| id  | Postconditions                           |
-|-----|------------------------------------------|
-| 1   | The World contains the new Body instance |
+<table><thead><tr><th>Preconditions</th><th>Flow of Events</th><th>Postconditions</th></tr></thead><tbody><tr><td>The world exists</td><td>1. User calls AddBody multiple times with valid body objects <br> 2. Method adds each body to the world's list of bodies</td><td>The world's list of bodies includes all new body objects</td></tr></tbody></table>
 
 ## Test Cases:
-### Test case 1: Add a new body to an empty world
-#### Test Data
+### Test case 1: Add a single body to the world
 
 
-| id  | Test Data               |
-|-----|-------------------------|
-| 1   | A new instance of World |
-| 2   | A new instance of Body  |
-
-#### Test Steps
-<table><thead><tr><th>id</th><th>Test Steps</th></tr></thead><tbody><tr><td>1</td><td>Invoke `AddBody` method with the new instance of Body as parameter</td></tr></tbody></table>
-
-#### Expected Results
-
-
-| id  | Expected Results                         |
-|-----|------------------------------------------|
-| 1   | The World contains the new Body instance |
+| Test Data           | Test Steps                           | Expected Results                                        |
+|---------------------|--------------------------------------|---------------------------------------------------------|
+| A valid body object | 1. Call AddBody with the body object | The world's list of bodies includes the new body object |
 
 ```csharp
 [Fact]
-public void Test_AddBody_When_AddingNewBodyToEmptyWorld_Expect_BodyAddedToWorld()
+public void Test_AddBody_When_StateUnderTest_Expect_ExpectedBehavior()
 {
-   throw new NotImplementedException();
+    throw new NotImplementedException();
 }
 
 ```
+
+### Test case 2: Add multiple bodies to the world
+
+<table><thead><tr><th>Test Data</th><th>Test Steps</th><th>Expected Results</th></tr></thead><tbody><tr><td>Two valid body objects</td><td>1. Call AddBody with the first body object <br> 2. Call AddBody with the second body object</td><td>The world's list of bodies includes both body objects</td></tr></tbody></table>
+
+```csharp
+[Fact]
+public void Test_AddBody_When_StateUnderTest_Expect_ExpectedBehavior()
+{
+    throw new NotImplementedException();
+}
+
+```
+
+
+
 
 -------------------
 World.ClearForces
