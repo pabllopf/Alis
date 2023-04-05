@@ -1,6 +1,18 @@
 <style>
+    body{
+    }
     table {
         width: 100%;
+        border: 1px solid;
+    }
+    th {
+        border: 1px solid;
+        text-align: left;
+    }
+    td {
+        border: 1px solid;
+        text-align: left;
+        width: 1%;
     }
 </style>
 
