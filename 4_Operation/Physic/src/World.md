@@ -94,13 +94,9 @@ public void Test_AddBody_When_StateUnderTest_Expect_ExpectedBehavior()
 
 
 
-
--------------------
-World.ClearForces
-=================
+# World.ClearForces
 
 ```csharp
-
 /// <summary>
 /// Clear all forces
 /// </summary>
@@ -108,88 +104,54 @@ internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
 
 ```
 
+## Uses Cases:
+### Use Case 1: Clear all forces
 
-Use Cases:
-----------
 
-### Use Case 1: ClearForces with empty bodies list
+| Preconditions | Flow of Events | Postconditions |
+| --- | --- | --- |
+| There are one or more bodies with forces applied | Call ClearForces() | All forces of all bodies are cleared |
 
-#### Preconditions:
+### Use Case 2: No bodies with forces applied
 
-*   World object with an empty Bodies list.
 
-#### Flow of Events:
+| Preconditions | Flow of Events | Postconditions |
+| --- | --- | --- |
+| There are no bodies with forces applied | Call ClearForces() | There is no change |
 
-1.  Call the ClearForces method.
+## Test Cases:
 
-#### Postconditions:
+### Test Case 1: Clear forces of all bodies
 
-*   The Bodies list remains empty.
 
-### Use Case 2: ClearForces with non-empty bodies list
-
-#### Preconditions:
-
-*   World object with a non-empty Bodies list.
-
-#### Flow of Events:
-
-1.  Add a set of forces to the bodies list.
-2.  Call the ClearForces method.
-
-#### Postconditions:
-
-*   The Bodies list contains no forces.
-
-Test Cases:
------------
-
-### Test Case 1: ClearForces with empty bodies list
-
-#### Test Data:
-
-*   Empty Bodies list.
-
-#### Test Steps:
-
-1.  Call the ClearForces method.
-
-#### Expected Results:
-
-*   No exception should be thrown.
+| Test Data | Test Steps | Expected Results |
+| --- | --- | --- |
+| List of bodies with forces applied | Call ClearForces() | All forces of all bodies are cleared |
 
 ```csharp
-
 [Fact]
-public void Test_ClearForces_When_EmptyBodiesList_Expect_NoExceptionThrown()
+public void Test_ClearForces_When_ForcesApplied_Expect_ForcesCleared()
 {
-   throw new NotImplementedException();
+    throw new NotImplementedException();
 }
 
 ```
 
-### Test Case 2: ClearForces with non-empty bodies list
+### Test Case 2: No bodies with forces applied
 
-#### Test Data:
 
-*   Bodies list with a set of forces.
-
-#### Test Steps:
-
-1.  Call the ClearForces method.
-
-#### Expected Results:
-
-*   All forces are removed from the Bodies list.
-
+| Test Data | Test Steps | Expected Results |
+| --- | --- | --- |
+| List of empty bodies | Call ClearForces() | There is no change |
 
 ```csharp
-
 [Fact]
-public void Test_ClearForces_When_NonEmptyBodiesList_Expect_ForcesRemoved()
+public void Test_ClearForces_When_NoForcesApplied_Expect_NoChange()
 {
-   throw new NotImplementedException();
+    throw new NotImplementedException();
 }
+
 ```
+
 
 
