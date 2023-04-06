@@ -235,13 +235,11 @@ namespace Alis.Core.Physic
             // Clear all the island flags.
             Bodies.ForEach(i => i.ClearFlags());
             
-            for (int i = 0; i < ContactManager.ContactList.Count; i++)
-            {
-                Contact c = ContactManager.ContactList[i];
-                c.Flags &= ~ContactFlags.IslandFlag;
-            }
-
-            Joints.ForEach(i => i.IslandFlag = false);
+            // Clear all flags of the contacts.
+            ContactManager.ClearFlags();
+            
+            // DisableIslandFlag for all joints.
+            Joints.ForEach(i => i.DisableIslandFlag());
             
             // Build and simulate all awake islands.
             int stackSize = Bodies.Count;

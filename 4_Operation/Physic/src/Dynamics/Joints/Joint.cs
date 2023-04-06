@@ -283,5 +283,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
         /// <param name="data"></param>
         /// <returns>returns true if the position errors are within tolerance.</returns>
         internal abstract bool SolvePositionConstraints(ref SolverData data);
+
+        /// <summary>
+        /// Disables the island flag
+        /// </summary>
+        public void DisableIslandFlag() => IslandFlag = false;
     }
 }

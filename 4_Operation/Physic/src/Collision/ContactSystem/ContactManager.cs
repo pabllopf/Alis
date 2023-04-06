@@ -416,5 +416,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             return collide;
         }
+
+        /// <summary>
+        /// Clears the flags
+        /// </summary>
+        internal void ClearFlags() => ContactList.ForEach(c => c.ClearFlags());
     }
 }

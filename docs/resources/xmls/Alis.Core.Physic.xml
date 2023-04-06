@@ -757,6 +757,11 @@
                 Destroys this instance
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.ClearFlags">
+            <summary>
+            Clears the flags
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactEdge">
             <summary>
                 A contact edge is used to connect bodies and contacts together in a contact graph where each body is a node
@@ -923,6 +928,11 @@
             <param name="fixtureA">The fixture</param>
             <param name="fixtureB">The fixture</param>
             <returns>The collide</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ClearFlags">
+            <summary>
+            Clears the flags
+            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactType">
             <summary>
@@ -4877,6 +4887,11 @@
             <summary>Solves the position constraints.</summary>
             <param name="data"></param>
             <returns>returns true if the position errors are within tolerance.</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.DisableIslandFlag">
+            <summary>
+            Disables the island flag
+            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Joints.JointEdge">
             <summary>

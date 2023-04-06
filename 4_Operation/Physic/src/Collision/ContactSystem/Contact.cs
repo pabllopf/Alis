@@ -655,5 +655,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             
             Reset(null, 0, null, 0);
         }
+
+        /// <summary>
+        /// Clears the flags
+        /// </summary>
+        public void ClearFlags() => Flags &= ~ContactFlags.FilterFlag;
     }
 }
