@@ -1284,6 +1284,11 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="ClearFlags"/> class
+        /// </summary>
+        internal void ClearFlags() => Flags &= ~BodyFlags.IslandFlag;
+
+        /// <summary>
         ///     Advances the alpha
         /// </summary>
         /// <param name="alpha">The alpha</param>

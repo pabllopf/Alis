@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
@@ -169,38 +168,59 @@ namespace Alis.Core.Physic
         /// <param name="positionIterations">The position iterations</param>
         public void Step(float dt, int velocityIterations = 8, int positionIterations = 3)
         {
-            // We need to find the new contacts
-            ContactManager.FindNewContacts();
-            
-            // Define the time step
+            FindNewContacts();
+            UpdateTimeStep(dt, velocityIterations, positionIterations);
+            UpdateControllers(dt);
+            CollideContacts();
+            Solve();
+            SolveToi();
+            UpdateInvertedDeltaTime(dt);
+            ClearForces();
+            UpdateBreakableBodies();
+        }
+
+        /// <summary>
+        /// Finds the new contacts
+        /// </summary>
+        private void FindNewContacts() => ContactManager.FindNewContacts();
+
+        /// <summary>
+        /// Updates the time step using the specified dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        /// <param name="velocityIterations">The velocity iterations</param>
+        /// <param name="positionIterations">The position iterations</param>
+        private void UpdateTimeStep(float dt, int velocityIterations, int positionIterations)
+        {
             TimeStep.DeltaTime = dt;
             TimeStep.VelocityIterations = velocityIterations;
             TimeStep.PositionIterations = positionIterations;
             TimeStep.InvertedDeltaTime = dt > 0.0f ? 1.0f / dt : 0.0f;
             TimeStep.DeltaTimeRatio = TimeStep.InvertedDeltaTimeZero * dt;
-
-            // Update the custom controllers
-            Controllers.ForEach(i => i.Update(dt));
-
-            // Update contacts. This is where some contacts are destroyed.
-            ContactManager.Collide();
-
-            // Integrate velocities, solve velocity constraints, and integrate positions.
-            Solve();
-
-            // Handle TOI events.
-            SolveToi();
-
-            // Time step invert time
-            TimeStep.InvertedDeltaTimeZero = TimeStep.DeltaTime > 0.0f ? TimeStep.InvertedDeltaTime : TimeStep.InvertedDeltaTimeZero;
-
-            // Clear all the forces
-            ClearForces();
-
-            // Update breakable bodies
-            BreakableBodies.ForEach(i => i.Update());
         }
+        
+        /// <summary>
+        /// Updates the controllers using the specified dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        private void UpdateControllers(float dt) => Controllers.ForEach(controller => controller.Update(dt));
 
+        /// <summary>
+        /// Collides the contacts
+        /// </summary>
+        private void CollideContacts() => ContactManager.Collide();
+
+        /// <summary>
+        /// Updates the inverted delta time using the specified dt
+        /// </summary>
+        /// <param name="dt">The dt</param>
+        private void UpdateInvertedDeltaTime(float dt) => TimeStep.InvertedDeltaTimeZero = TimeStep.DeltaTime > 0.0f ? TimeStep.InvertedDeltaTime : TimeStep.InvertedDeltaTimeZero;
+
+        /// <summary>
+        /// Updates the breakable bodies
+        /// </summary>
+        private void UpdateBreakableBodies() => BreakableBodies.ForEach(body => body.Update());
+        
         /// <summary>
         /// Solves the step
         /// </summary>
@@ -213,7 +233,7 @@ namespace Alis.Core.Physic
                 ContactManager);
 
             // Clear all the island flags.
-            Bodies.ForEach(i => i.Flags &= ~BodyFlags.IslandFlag);
+            Bodies.ForEach(i => i.ClearFlags());
             
             for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
             {
