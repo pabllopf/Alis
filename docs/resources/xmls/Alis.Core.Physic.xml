@@ -13409,11 +13409,6 @@
             The contact
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.BodiesStack">
-            <summary>
-            Gets or sets the value of the bodies stack
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.World.Current">
             <summary>
             The current

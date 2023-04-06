@@ -103,11 +103,6 @@ namespace Alis.Core.Physic
         /// The contact
         /// </summary>
         public Queue<Contact> ContactPool = new Queue<Contact>(256);
-        
-        /// <summary>
-        /// Gets or sets the value of the bodies stack
-        /// </summary>
-        public Body[] BodiesStack { get; private set; } = new Body[64];
 
         /// <summary>
         /// The current
@@ -228,9 +223,6 @@ namespace Alis.Core.Physic
         /// </summary>
         private void Solve()
         {
-            // Size the island for the worst case.
-            //Island.Reset(Bodies.Count, ContactManager.ContactCounter, Joints.Count, ContactManager);
-
             // Clear all the island flags.
             Bodies.ForEach(i => i.ClearFlags());
             
@@ -240,136 +232,117 @@ namespace Alis.Core.Physic
             // DisableIslandFlag for all joints.
             Joints.ForEach(i => i.DisableIslandFlag());
             
-            // Build and simulate all awake islands.
-            int stackSize = Bodies.Count;
-            if (stackSize > BodiesStack.Length)
-            {
-                BodiesStack = new Body[Math.Max(BodiesStack.Length * 2, stackSize)];
-            }
-
             for (int index = Bodies.Count - 1; index >= 0; index--)
             {
-                Body seed = Bodies[index];
-                if ((seed.Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
+                Body body = Bodies[index];
+                if ((body.Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
                 {
                     continue;
                 }
 
-                if (!seed.Awake || !seed.Enabled)
+                if (!body.Awake || !body.Enabled)
                 {
                     continue;
                 }
 
                 // The seed can be dynamic or kinematic.
-                if (seed.BodyType == BodyType.Static)
+                if (body.BodyType == BodyType.Static)
                 {
                     continue;
                 }
 
                 // Reset island and stack.
                 island.Clear();
-                int stackCount = 0;
-                BodiesStack[stackCount++] = seed;
 
-                seed.Flags |= BodyFlags.IslandFlag;
+                body.Flags |= BodyFlags.IslandFlag;
+                
+                //Debug.Assert(b.Enabled);
+                island.Add(body);
 
-                // Perform a depth first search (DFS) on the constraint graph.
-                while (stackCount > 0)
+                // To keep islands as small as possible, we don't
+                // propagate islands across static bodies.
+                if (body.BodyType == BodyType.Static)
                 {
-                    // Grab the next body off the stack and add it to the island.
-                    Body b = BodiesStack[--stackCount];
-                    //Debug.Assert(b.Enabled);
-                    island.Add(b);
+                    continue;
+                }
 
-                    // To keep islands as small as possible, we don't
-                    // propagate islands across static bodies.
-                    if (b.BodyType == BodyType.Static)
+                // Make sure the body is awake (without resetting sleep timer).
+                body.Flags |= BodyFlags.AwakeFlag;
+
+                // Search all contacts connected to this body.
+                for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+                {
+                    Contact contact = ce.Contact;
+
+                    // Has this contact already been added to an island?
+                    if (contact.IslandFlag)
                     {
                         continue;
                     }
 
-                    // Make sure the body is awake (without resetting sleep timer).
-                    b.Flags |= BodyFlags.AwakeFlag;
-
-                    // Search all contacts connected to this body.
-                    for (ContactEdge ce = b.ContactList; ce != null; ce = ce.Next)
+                    // Is this contact solid and touching?
+                    if (!contact.Enabled || !contact.IsTouching)
                     {
-                        Contact contact = ce.Contact;
+                        continue;
+                    }
 
-                        // Has this contact already been added to an island?
-                        if (contact.IslandFlag)
+                    // Skip sensors.
+                    bool sensorA = contact.FixtureA.IsSensor;
+                    bool sensorB = contact.FixtureB.IsSensor;
+                    if (sensorA || sensorB)
+                    {
+                        continue;
+                    }
+
+                    island.Add(contact);
+                    contact.Flags |= ContactFlags.IslandFlag;
+
+                    Body other = ce.Other;
+
+                    // Was the other body already added to this island?
+                    if (other.IsIsland)
+                    {
+                        continue;
+                    }
+
+                    //Debug.Assert(stackCount < stackSize);
+                    other.Flags |= BodyFlags.IslandFlag;
+                }
+
+                // Search all joints connect to this body.
+                for (JointEdge je = body.JointList; je != null; je = je.Next)
+                {
+                    if (je.Joint.IslandFlag)
+                    {
+                        continue;
+                    }
+
+                    Body other = je.Other;
+
+                    // WIP David
+                    //Enter here when it's a non-fixed joint. Non-fixed joints have a other body.
+                    if (other != null)
+                    {
+                        // Don't simulate joints connected to inactive bodies.
+                        if (!other.Enabled)
                         {
                             continue;
                         }
 
-                        // Is this contact solid and touching?
-                        if (!contact.Enabled || !contact.IsTouching)
-                        {
-                            continue;
-                        }
+                        island.Add(je.Joint);
+                        je.Joint.IslandFlag = true;
 
-                        // Skip sensors.
-                        bool sensorA = contact.FixtureA.IsSensor;
-                        bool sensorB = contact.FixtureB.IsSensor;
-                        if (sensorA || sensorB)
-                        {
-                            continue;
-                        }
-
-                        island.Add(contact);
-                        contact.Flags |= ContactFlags.IslandFlag;
-
-                        Body other = ce.Other;
-
-                        // Was the other body already added to this island?
                         if (other.IsIsland)
                         {
                             continue;
                         }
-
-                        //Debug.Assert(stackCount < stackSize);
-                        BodiesStack[stackCount++] = other;
+                        
                         other.Flags |= BodyFlags.IslandFlag;
                     }
-
-                    // Search all joints connect to this body.
-                    for (JointEdge je = b.JointList; je != null; je = je.Next)
+                    else
                     {
-                        if (je.Joint.IslandFlag)
-                        {
-                            continue;
-                        }
-
-                        Body other = je.Other;
-
-                        // WIP David
-                        //Enter here when it's a non-fixed joint. Non-fixed joints have a other body.
-                        if (other != null)
-                        {
-                            // Don't simulate joints connected to inactive bodies.
-                            if (!other.Enabled)
-                            {
-                                continue;
-                            }
-
-                            island.Add(je.Joint);
-                            je.Joint.IslandFlag = true;
-
-                            if (other.IsIsland)
-                            {
-                                continue;
-                            }
-
-                            //Debug.Assert(stackCount < stackSize);
-                            BodiesStack[stackCount++] = other;
-
-                            other.Flags |= BodyFlags.IslandFlag;
-                        }
-                        else
-                        {
-                            island.Add(je.Joint);
-                            je.Joint.IslandFlag = true;
-                        }
+                        island.Add(je.Joint);
+                        je.Joint.IslandFlag = true;
                     }
                 }
 
