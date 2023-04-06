@@ -55,6 +55,8 @@ namespace Alis.Core.Physic
         {
             Gravity = gravity;
             Current = this;
+            ContactManager = new ContactManager(new DynamicTreeBroadPhase());
+            island = new Island(ContactManager);
         }
 
         /// <summary>
@@ -85,17 +87,17 @@ namespace Alis.Core.Physic
         /// <summary>
         /// Gets or sets the value of the contact manager
         /// </summary>
-        public ContactManager ContactManager { get; set; } = new ContactManager(new DynamicTreeBroadPhase());
+        public ContactManager ContactManager { get; set; }
 
         /// <summary>
         /// Gets or sets the value of the step
         /// </summary>
         private TimeStep TimeStep { get; set; } = new TimeStep();
-        
+
         /// <summary>
         /// The island
         /// </summary>
-        private Island Island = new Island();
+        private Island island;
         
         /// <summary>
         /// The contact
@@ -227,10 +229,7 @@ namespace Alis.Core.Physic
         private void Solve()
         {
             // Size the island for the worst case.
-            Island.Reset(Bodies.Count,
-                ContactManager.ContactCounter,
-                Joints.Count,
-                ContactManager);
+            //Island.Reset(Bodies.Count, ContactManager.ContactCounter, Joints.Count, ContactManager);
 
             // Clear all the island flags.
             Bodies.ForEach(i => i.ClearFlags());
@@ -268,7 +267,7 @@ namespace Alis.Core.Physic
                 }
 
                 // Reset island and stack.
-                Island.Clear();
+                island.Clear();
                 int stackCount = 0;
                 BodiesStack[stackCount++] = seed;
 
@@ -280,7 +279,7 @@ namespace Alis.Core.Physic
                     // Grab the next body off the stack and add it to the island.
                     Body b = BodiesStack[--stackCount];
                     //Debug.Assert(b.Enabled);
-                    Island.Add(b);
+                    island.Add(b);
 
                     // To keep islands as small as possible, we don't
                     // propagate islands across static bodies.
@@ -317,7 +316,7 @@ namespace Alis.Core.Physic
                             continue;
                         }
 
-                        Island.Add(contact);
+                        island.Add(contact);
                         contact.Flags |= ContactFlags.IslandFlag;
 
                         Body other = ce.Other;
@@ -353,7 +352,7 @@ namespace Alis.Core.Physic
                                 continue;
                             }
 
-                            Island.Add(je.Joint);
+                            island.Add(je.Joint);
                             je.Joint.IslandFlag = true;
 
                             if (other.IsIsland)
@@ -368,19 +367,19 @@ namespace Alis.Core.Physic
                         }
                         else
                         {
-                            Island.Add(je.Joint);
+                            island.Add(je.Joint);
                             je.Joint.IslandFlag = true;
                         }
                     }
                 }
 
-                Island.Solve(TimeStep, Gravity, true);
+                island.Solve(TimeStep, Gravity, true);
 
                 // Post solve cleanup.
-                for (int i = 0; i < Island.BodyCount; ++i)
+                for (int i = 0; i < island.BodyCount; ++i)
                 {
                     // Allow static bodies to participate in other islands.
-                    Body b = Island.Bodies[i];
+                    Body b = island.Bodies[i];
                     if (b.BodyType == BodyType.Static)
                     {
                         b.Flags &= ~BodyFlags.IslandFlag;
@@ -418,7 +417,7 @@ namespace Alis.Core.Physic
         /// </summary>
         private void SolveToi()
         {
-            Island.Reset(2 * Settings.ToiContacts, Settings.ToiContacts, 0, ContactManager);
+            //Island.Reset(2 * Settings.ToiContacts, Settings.ToiContacts, 0, ContactManager);
 
             Bodies.ForEach(i =>
             {
@@ -591,10 +590,10 @@ namespace Alis.Core.Physic
                 bB0.Awake = true;
 
                 // Build the island
-                Island.Clear();
-                Island.Add(bA0);
-                Island.Add(bB0);
-                Island.Add(minContact);
+                island.Clear();
+                island.Add(bA0);
+                island.Add(bB0);
+                island.Add(minContact);
 
                 bA0.Flags |= BodyFlags.IslandFlag;
                 bB0.Flags |= BodyFlags.IslandFlag;
@@ -610,16 +609,6 @@ namespace Alis.Core.Physic
                         for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
                         {
                             Contact contact = ce.Contact;
-
-                            if (Island.BodyCount == Island.BodyCapacity)
-                            {
-                                break;
-                            }
-
-                            if (Island.ContactCount == Island.ContactCapacity)
-                            {
-                                break;
-                            }
 
                             // Has this contact already been added to the island?
                             if (contact.IslandFlag)
@@ -671,7 +660,7 @@ namespace Alis.Core.Physic
 
                             // Add the contact to the island
                             minContact.Flags |= ContactFlags.IslandFlag;
-                            Island.Add(contact);
+                            island.Add(contact);
 
                             // Has the other body already been added to the island?
                             if (other.IsIsland)
@@ -687,7 +676,7 @@ namespace Alis.Core.Physic
                                 other.Awake = true;
                             }
 
-                            Island.Add(other);
+                            island.Add(other);
                         }
                     }
                 }
@@ -699,12 +688,12 @@ namespace Alis.Core.Physic
                 subStep.PositionIterations = 20;
                 subStep.VelocityIterations = TimeStep.VelocityIterations;
                 subStep.WarmStarting = false;
-                Island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
+                island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < Island.BodyCount; ++i)
+                for (int i = 0; i < island.BodyCount; ++i)
                 {
-                    Body body = Island.Bodies[i];
+                    Body body = island.Bodies[i];
                     body.Flags &= ~BodyFlags.IslandFlag;
 
                     if (body.BodyType != BodyType.Dynamic)

@@ -64,22 +64,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The bodies
         /// </summary>
-        internal Body[] Bodies;
-
-        /// <summary>
-        ///     The body capacity
-        /// </summary>
-        internal int BodyCapacity;
+        internal Body[] Bodies = new Body[Settings.ToiContacts * 2];
 
         /// <summary>
         ///     The body count
         /// </summary>
         internal int BodyCount;
-
-        /// <summary>
-        ///     The contact capacity
-        /// </summary>
-        internal int ContactCapacity;
 
         /// <summary>
         ///     The contact count
@@ -94,12 +84,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The contacts
         /// </summary>
-        private Contact[] contacts;
-
-        /// <summary>
-        ///     The joint capacity
-        /// </summary>
-        private int jointCapacity;
+        private Contact[] contacts = new Contact[Settings.ToiContacts * 2];
 
         /// <summary>
         ///     The joint count
@@ -109,52 +94,21 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The joints
         /// </summary>
-        private Joint[] joints;
+        private Joint[] joints = new Joint[Settings.ToiContacts];
 
         /// <summary>
         ///     The positions
         /// </summary>
-        private Position[] positions;
+        private Position[] positions = new Position[Settings.ToiContacts];
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        private Velocity[] velocities;
+        private Velocity[] velocities = new Velocity[Settings.ToiContacts];
 
-        /// <summary>
-        ///     Resets the body capacity
-        /// </summary>
-        /// <param name="bodyCapacity">The body capacity</param>
-        /// <param name="contactCapacity">The contact capacity</param>
-        /// <param name="jointCapacity">The joint capacity</param>
-        /// <param name="contactManager">The contact manager</param>
-        public void Reset(int bodyCapacity, int contactCapacity, int jointCapacity, ContactManager contactManager)
+        public Island(ContactManager contactManager)
         {
-            BodyCapacity = bodyCapacity;
-            ContactCapacity = contactCapacity;
-            this.jointCapacity = jointCapacity;
-            BodyCount = 0;
-            ContactCount = 0;
-            jointCount = 0;
-
             this.contactManager = contactManager;
-
-            if (Bodies == null || Bodies.Length < bodyCapacity)
-            {
-                Bodies = new Body[bodyCapacity];
-                velocities = new Velocity[bodyCapacity];
-                positions = new Position[bodyCapacity];
-            }
-
-            if (contacts == null || contacts.Length < contactCapacity)
-            {
-                contacts = new Contact[contactCapacity * 2];
-            }
-
-            if (joints == null || joints.Length < jointCapacity)
-            {
-                joints = new Joint[jointCapacity * 2];
-            }
         }
 
         /// <summary>
@@ -487,7 +441,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="body">The body</param>
         public void Add(Body body)
         {
-            Debug.Assert(BodyCount < BodyCapacity);
             body.IslandIndex = BodyCount;
             Bodies[BodyCount++] = body;
         }
@@ -498,7 +451,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="contact">The contact</param>
         public void Add(Contact contact)
         {
-            Debug.Assert(ContactCount < ContactCapacity);
             contacts[ContactCount++] = contact;
         }
 
@@ -508,7 +460,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="joint">The joint</param>
         public void Add(Joint joint)
         {
-            Debug.Assert(jointCount < jointCapacity);
             joints[jointCount++] = joint;
         }
 

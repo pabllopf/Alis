@@ -6914,19 +6914,9 @@
                 The bodies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.BodyCapacity">
-            <summary>
-                The body capacity
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.BodyCount">
             <summary>
                 The body count
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.ContactCapacity">
-            <summary>
-                The contact capacity
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.ContactCount">
@@ -6942,11 +6932,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contacts">
             <summary>
                 The contacts
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.jointCapacity">
-            <summary>
-                The joint capacity
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.jointCount">
@@ -6968,15 +6953,6 @@
             <summary>
                 The velocities
             </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Reset(System.Int32,System.Int32,System.Int32,Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
-            <summary>
-                Resets the body capacity
-            </summary>
-            <param name="bodyCapacity">The body capacity</param>
-            <param name="contactCapacity">The contact capacity</param>
-            <param name="jointCapacity">The joint capacity</param>
-            <param name="contactManager">The contact manager</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Clear">
             <summary>
@@ -13423,7 +13399,7 @@
             Gets or sets the value of the step
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.Island">
+        <member name="F:Alis.Core.Physic.World.island">
             <summary>
             The island
             </summary>
