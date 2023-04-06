@@ -235,8 +235,9 @@ namespace Alis.Core.Physic
             // Clear all the island flags.
             Bodies.ForEach(i => i.ClearFlags());
             
-            for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
+            for (int i = 0; i < ContactManager.ContactList.Count; i++)
             {
+                Contact c = ContactManager.ContactList[i];
                 c.Flags &= ~ContactFlags.IslandFlag;
             }
 
@@ -427,7 +428,7 @@ namespace Alis.Core.Physic
                 i.Sweep.Alpha0 = 0.0f;
             });
 
-            for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
+            foreach (Contact c in ContactManager.ContactList)
             {
                 // Invalidate TOI
                 c.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
@@ -442,7 +443,7 @@ namespace Alis.Core.Physic
                 Contact minContact = null;
                 float minAlpha = 1.0f;
 
-                for (Contact c = ContactManager.ContactList; c != null; c = c.Next)
+                foreach (Contact c in ContactManager.ContactList)
                 {
                     // Is this contact disabled?
                     if (!c.Enabled)

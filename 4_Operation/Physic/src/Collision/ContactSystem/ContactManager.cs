@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Physic.Collision.Broadphase;
 using Alis.Core.Physic.Collision.Handlers;
 using Alis.Core.Physic.Dynamics;
@@ -53,7 +54,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     The contact list
         /// </summary>
-        internal Contact ContactList;
+        internal List<Contact> ContactList = new List<Contact>();
 
         /// <summary>Fires when a contact is deleted</summary>
         public EndContactHandler EndContact;
@@ -184,6 +185,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             bodyB = fixtureB.Body;
 
             // Insert into the world.
+            /*
             c.Previous = null;
             c.Next = ContactList;
             if (ContactList != null)
@@ -191,7 +193,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 ContactList.Previous = c;
             }
 
-            ContactList = c;
+            ContactList = c;*/
+            
+            ContactList.Add(c);
+            
 
             // Connect to island graph.
 
@@ -262,6 +267,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             Body bodyB = fixtureB.Body;
 
             // Remove from the world.
+            /*
             if (c.Previous != null)
             {
                 c.Previous.Next = c.Next;
@@ -275,7 +281,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             if (c == ContactList)
             {
                 ContactList = c.Next;
-            }
+            }*/
+            ContactList.Remove(c);
 
             // Remove from body 1
             if (c.NodeA.Prev != null)
@@ -320,12 +327,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void Collide()
         {
-            // Update awake contacts.
-
-            Contact c = ContactList;
-
-            while (c != null)
+            for (int i = 0; i < ContactList.Count; i++)
             {
+                Contact c = ContactList[i];
+                
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
@@ -336,7 +341,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 //Velcro: Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)
                 {
-                    c = c.Next;
                     continue;
                 }
 
@@ -346,27 +350,21 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     // Should these bodies collide?
                     if (!bodyB.ShouldCollide(bodyA))
                     {
-                        Contact cNuke = c;
-                        c = cNuke.Next;
-                        Remove(cNuke);
+                        Remove(c);
                         continue;
                     }
 
                     // Check default filtering
                     if (!ShouldCollide(fixtureA, fixtureB))
                     {
-                        Contact cNuke = c;
-                        c = cNuke.Next;
-                        Remove(cNuke);
+                        Remove(c);
                         continue;
                     }
 
                     // Check user filtering.
                     if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
                     {
-                        Contact cNuke = c;
-                        c = cNuke.Next;
-                        Remove(cNuke);
+                        Remove(c);
                         continue;
                     }
 
@@ -380,7 +378,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
                 {
-                    c = c.Next;
                     continue;
                 }
 
@@ -391,15 +388,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)
                 {
-                    Contact cNuke = c;
-                    c = cNuke.Next;
-                    Remove(cNuke);
+                    Remove(c);
                     continue;
                 }
 
                 // The contact persists.
                 c.Update(this);
-                c = c.Next;
             }
         }
 

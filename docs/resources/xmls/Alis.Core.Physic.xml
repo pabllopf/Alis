@@ -3389,6 +3389,11 @@
             <summary>This is used to prevent connected bodies from colliding. It may lie, depending on the collideConnected flag.</summary>
             <param name="other">The other body.</param>
         </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Body.ClearFlags">
+            <summary>
+            Initializes a new instance of the <see cref="M:Alis.Core.Physic.Dynamics.Body.ClearFlags"/> class
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.Advance(System.Single)">
             <summary>
                 Advances the alpha
@@ -13478,6 +13483,41 @@
             <param name="dt">The dt</param>
             <param name="velocityIterations">The velocity iterations</param>
             <param name="positionIterations">The position iterations</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.FindNewContacts">
+            <summary>
+            Finds the new contacts
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.UpdateTimeStep(System.Single,System.Int32,System.Int32)">
+            <summary>
+            Updates the time step using the specified dt
+            </summary>
+            <param name="dt">The dt</param>
+            <param name="velocityIterations">The velocity iterations</param>
+            <param name="positionIterations">The position iterations</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.UpdateControllers(System.Single)">
+            <summary>
+            Updates the controllers using the specified dt
+            </summary>
+            <param name="dt">The dt</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.CollideContacts">
+            <summary>
+            Collides the contacts
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.UpdateInvertedDeltaTime(System.Single)">
+            <summary>
+            Updates the inverted delta time using the specified dt
+            </summary>
+            <param name="dt">The dt</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.UpdateBreakableBodies">
+            <summary>
+            Updates the breakable bodies
+            </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.Solve">
             <summary>
