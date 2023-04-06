@@ -1,0 +1,4 @@
+var namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code =
+[
+    [ "FlipcodeDecomposer", "d0/dda/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer.html", "d0/dda/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_flip_code_1_1_flipcode_decomposer" ]
+];

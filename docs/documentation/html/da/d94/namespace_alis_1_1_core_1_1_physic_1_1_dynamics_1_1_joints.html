@@ -97,18 +97,13 @@ $(document).ready(function(){initNavTree('da/d94/namespace_alis_1_1_core_1_1_phy
 
 <div class="header">
   <div class="summary">
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Physic.Dynamics.Joints Namespace Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:d4/dd1/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/dd1/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_misc.html">Misc</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc0/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_angle_joint.html">AngleJoint</a></td></tr>
@@ -129,6 +124,9 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint class  <a href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html">JointEdge</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A joint edge is used to connect bodies and joints together in a joint graph where each body is a node and each joint is an edge. A joint edge belongs to a doubly linked list maintained in each attached body. Each joint has two joint nodes, one for each attached body.  <a href="../../df/dc3/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint_edge.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d2c/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_motor_joint.html">MotorJoint</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A motor joint is used to control the relative motion between two bodies. A typical usage is to control the movement of a dynamic body with respect to the ground.  <a href="../../d2/d2c/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_motor_joint.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,7 +145,145 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html">WheelJoint</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wheel joint. This joint provides two degrees of freedom: translation along an axis fixed in bodyA and rotation in the plane. In other words, it is a point to line constraint with a rotational motor and a linear spring/damper. The spring/damper is initialized upon creation. This joint is designed for vehicle suspensions.  <a href="../../d0/d7a/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_wheel_joint.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a6a4250970a73e3652793e6b915936a6f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">JointType</a> { <br />
+&#160;&#160;<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa88183b946cc5f0e8c96b2e66e1c74a7e">JointType.Unknown</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa358561ac4d41f41d479b7c54b19b639e">JointType.Revolute</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa35fa8acd1b8b1beb23e6c2e24313570c">JointType.Prismatic</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa0aa6f4210bf373c95eda00232e93cd98">JointType.Distance</a>, 
+<br />
+&#160;&#160;<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6faba41903d01ed39b1b98768512c8e65f5">JointType.Pulley</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fafb845762a66c26782f477febab5344dc">JointType.Gear</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6faa5df60ef4fc4447353769d66661d2229">JointType.Wheel</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa768bf199aed2d6ea5cd5d27017978530">JointType.Weld</a>, 
+<br />
+&#160;&#160;<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa6513892a7d1f1a327b2d4de2b8f69b89">JointType.Friction</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fab33538179f5661a86cbe327a1793e199">JointType.Motor</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa45f4ce6c3306644b1efe333f4f8d6929">JointType.Angle</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fabe5d9f5fe5d17b1ed014e090a0f9d94d">JointType.FixedMouse</a>, 
+<br />
+&#160;&#160;<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa59a85b3732f41a070284c0ee10611b7d">JointType.FixedRevolute</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa10c25cea0541b2393f6d6aed1c6c9736">JointType.FixedDistance</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fad46b8bc8437d639008f876c409cb2d0b">JointType.FixedLine</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa40cc91cbdb2b729c31040a77e354196b">JointType.FixedPrismatic</a>, 
+<br />
+&#160;&#160;<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa5e344a2279c3ac68f18fc1654170e7db">JointType.FixedAngle</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6fa0977c53f423eee5673c8d142f232e7d6">JointType.FixedFriction</a>
+<br />
+ }</td></tr>
+<tr class="memdesc:a6a4250970a73e3652793e6b915936a6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint type enum  <a href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">More...</a><br /></td></tr>
+<tr class="separator:a6a4250970a73e3652793e6b915936a6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ac88cf6c6dd31f00eb547abdbc324ed"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">LimitState</a> { <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324eda3cab03c00dbd11bc3569afa0748013f0">LimitState.Inactive</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324edaca182151063c1d84522f0a6b8bf974b9">LimitState.AtLower</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324edaffd094d9668b346a58bb516fbcef4253">LimitState.AtUpper</a>, 
+<a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324edaf5f286e73bda105e538310b3190f75c5">LimitState.Equal</a>
+ }</td></tr>
+<tr class="memdesc:a7ac88cf6c6dd31f00eb547abdbc324ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">The limit state enum  <a href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">More...</a><br /></td></tr>
+<tr class="separator:a7ac88cf6c6dd31f00eb547abdbc324ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a6a4250970a73e3652793e6b915936a6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a4250970a73e3652793e6b915936a6f">&#9670;&nbsp;</a></span>JointType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a6a4250970a73e3652793e6b915936a6f">Alis.Core.Physic.Dynamics.Joints.JointType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The joint type enum </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa88183b946cc5f0e8c96b2e66e1c74a7e"></a>Unknown&#160;</td><td class="fielddoc"><p>The unknown joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa358561ac4d41f41d479b7c54b19b639e"></a>Revolute&#160;</td><td class="fielddoc"><p>The revolute joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa35fa8acd1b8b1beb23e6c2e24313570c"></a>Prismatic&#160;</td><td class="fielddoc"><p>The prismatic joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa0aa6f4210bf373c95eda00232e93cd98"></a>Distance&#160;</td><td class="fielddoc"><p>The distance joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6faba41903d01ed39b1b98768512c8e65f5"></a>Pulley&#160;</td><td class="fielddoc"><p>The pulley joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fafb845762a66c26782f477febab5344dc"></a>Gear&#160;</td><td class="fielddoc"><p>The gear joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6faa5df60ef4fc4447353769d66661d2229"></a>Wheel&#160;</td><td class="fielddoc"><p>The wheel joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa768bf199aed2d6ea5cd5d27017978530"></a>Weld&#160;</td><td class="fielddoc"><p>The weld joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa6513892a7d1f1a327b2d4de2b8f69b89"></a>Friction&#160;</td><td class="fielddoc"><p>The friction joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fab33538179f5661a86cbe327a1793e199"></a>Motor&#160;</td><td class="fielddoc"><p>The motor joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa45f4ce6c3306644b1efe333f4f8d6929"></a>Angle&#160;</td><td class="fielddoc"><p>The angle joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fabe5d9f5fe5d17b1ed014e090a0f9d94d"></a>FixedMouse&#160;</td><td class="fielddoc"><p>The fixed mouse joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa59a85b3732f41a070284c0ee10611b7d"></a>FixedRevolute&#160;</td><td class="fielddoc"><p>The fixed revolute joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa10c25cea0541b2393f6d6aed1c6c9736"></a>FixedDistance&#160;</td><td class="fielddoc"><p>The fixed distance joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fad46b8bc8437d639008f876c409cb2d0b"></a>FixedLine&#160;</td><td class="fielddoc"><p>The fixed line joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa40cc91cbdb2b729c31040a77e354196b"></a>FixedPrismatic&#160;</td><td class="fielddoc"><p>The fixed prismatic joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa5e344a2279c3ac68f18fc1654170e7db"></a>FixedAngle&#160;</td><td class="fielddoc"><p>The fixed angle joint type </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a6a4250970a73e3652793e6b915936a6fa0977c53f423eee5673c8d142f232e7d6"></a>FixedFriction&#160;</td><td class="fielddoc"><p>The fixed friction joint type </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../d5/ddc/_joint_type_8cs_source.html#l00035">35</a> of file <a class="el" href="../../d5/ddc/_joint_type_8cs_source.html">JointType.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7ac88cf6c6dd31f00eb547abdbc324ed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ac88cf6c6dd31f00eb547abdbc324ed">&#9670;&nbsp;</a></span>LimitState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html#a7ac88cf6c6dd31f00eb547abdbc324ed">Alis.Core.Physic.Dynamics.Joints.LimitState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The limit state enum </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7ac88cf6c6dd31f00eb547abdbc324eda3cab03c00dbd11bc3569afa0748013f0"></a>Inactive&#160;</td><td class="fielddoc"><p>The inactive limit state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7ac88cf6c6dd31f00eb547abdbc324edaca182151063c1d84522f0a6b8bf974b9"></a>AtLower&#160;</td><td class="fielddoc"><p>The at lower limit state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7ac88cf6c6dd31f00eb547abdbc324edaffd094d9668b346a58bb516fbcef4253"></a>AtUpper&#160;</td><td class="fielddoc"><p>The at upper limit state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7ac88cf6c6dd31f00eb547abdbc324edaf5f286e73bda105e538310b3190f75c5"></a>Equal&#160;</td><td class="fielddoc"><p>The equal limit state </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../d9/d41/_limit_state_8cs_source.html#l00035">35</a> of file <a class="el" href="../../d9/d41/_limit_state_8cs_source.html">LimitState.cs</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 
@@ -155,7 +291,7 @@ Classes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html">Dynamics</a></li><li class="navelem"><a class="el" href="../../da/d94/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints.html">Joints</a></li>
     <li class="footer">
-      <a>Generated on | Sun Dec 25 2022 |</a>
+      <a>Generated on | Thu Apr 6 2023 |</a>
     </li>
   </ul>
 </div>

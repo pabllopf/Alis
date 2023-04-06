@@ -139,7 +139,7 @@ $(document).ready(function(){initNavTree('db/d0f/_message_8cs_source.html','../.
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        [JsonConstructor]</div>
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a7e9f9ad85c373c05606b3686f51cfaf1">   47</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a7e9f9ad85c373c05606b3686f51cfaf1">Message</a>(</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="../../de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html#ad8c75a1bd8aa9077019bf64344af60e4">MessageType</a> messageType, </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <a class="code" href="../../de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html#ad8c75a1bd8aa9077019bf64344af60e4">MessageType</a> messageType,</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordtype">string</span> content = <span class="stringliteral">&quot;&quot;</span>)</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ab9df2f0114fa2c34da6dd3e91f382e18">DateTime</a> = <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ab9df2f0114fa2c34da6dd3e91f382e18">DateTime</a>.Now.ToUniversalTime();</div>
@@ -148,7 +148,7 @@ $(document).ready(function(){initNavTree('db/d0f/_message_8cs_source.html','../.
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a6beae14497c2b2bf08912e9dada224cd">StackTrace</a> stackTrace1 = <span class="keyword">new</span> <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a6beae14497c2b2bf08912e9dada224cd">StackTrace</a>(2, <span class="keyword">false</span>);</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a6beae14497c2b2bf08912e9dada224cd">StackTrace</a> stackTrace2 = <span class="keyword">new</span> <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a6beae14497c2b2bf08912e9dada224cd">StackTrace</a>(2, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordtype">string</span> methodName = stackTrace1.GetFrame(0).GetMethod().Name;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            Type reflectedType = stackTrace1.GetFrame(0).GetMethod().ReflectedType;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">if</span> (reflectedType != <span class="keyword">null</span>)</div>
@@ -156,17 +156,17 @@ $(document).ready(function(){initNavTree('db/d0f/_message_8cs_source.html','../.
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordtype">string</span> className = reflectedType.FullName;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a03a5ea4acf749fb678ae5318726181a0">Method</a> = className + <span class="stringliteral">&quot;.&quot;</span> + methodName + <span class="stringliteral">&quot;()&quot;</span>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ab90c6ce222e3d52ae525b22837d02ea1">Level</a> = <a class="code" href="../../de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html#ad8c75a1bd8aa9077019bf64344af60e4">MessageType</a>.ToString();</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a6beae14497c2b2bf08912e9dada224cd">StackTrace</a> = stackTrace1.ToString().Trim();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ad1136d574008d9f89a915a17e8a234e2">File</a> = stackTrace2.GetFrame(0).GetFileName(); </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ad1136d574008d9f89a915a17e8a234e2">File</a> = stackTrace2.GetFrame(0).GetFileName();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a439961986e16c4c8a7de762c0529dd7e">Line</a> = stackTrace2.GetFrame(0).GetFileLineNumber().ToString();</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        [JsonPropertyName(<span class="stringliteral">&quot;DateTime&quot;</span>)]</div>
 <div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ab9df2f0114fa2c34da6dd3e91f382e18">   77</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ab9df2f0114fa2c34da6dd3e91f382e18">DateTime</a> <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#ab9df2f0114fa2c34da6dd3e91f382e18">DateTime</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        [JsonPropertyName(<span class="stringliteral">&quot;MessageType&quot;</span>)]</div>
 <div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#af22647cbe0e0d9f425c1a88795267beb">   83</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html#ad8c75a1bd8aa9077019bf64344af60e4">MessageType</a> <a class="code" href="../../de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html#ad8c75a1bd8aa9077019bf64344af60e4">MessageType</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
@@ -178,7 +178,7 @@ $(document).ready(function(){initNavTree('db/d0f/_message_8cs_source.html','../.
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        [JsonPropertyName(<span class="stringliteral">&quot;StackTrace&quot;</span>)]</div>
 <div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a6beae14497c2b2bf08912e9dada224cd">  101</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a6beae14497c2b2bf08912e9dada224cd">StackTrace</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        [JsonPropertyName(<span class="stringliteral">&quot;Method&quot;</span>)]</div>
 <div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a03a5ea4acf749fb678ae5318726181a0">  107</a></span>&#160;        <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code" href="../../d6/d3a/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_message.html#a03a5ea4acf749fb678ae5318726181a0">Method</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
@@ -207,7 +207,7 @@ $(document).ready(function(){initNavTree('db/d0f/_message_8cs_source.html','../.
   <ul>
     <li class="navelem"><a class="el" href="../../dir_463cc71c0efffe3f069a7466fb151c62.html">6_Ideation</a></li><li class="navelem"><a class="el" href="../../dir_68dacd79012b8e23542896a63adb5d98.html">Logging</a></li><li class="navelem"><a class="el" href="../../dir_5a39c59f90476ff0c10f0f58e64e7bdc.html">src</a></li><li class="navelem"><b>Message.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Dec 25 2022 |</a>
+      <a>Generated on | Thu Apr 6 2023 |</a>
     </li>
   </ul>
 </div>

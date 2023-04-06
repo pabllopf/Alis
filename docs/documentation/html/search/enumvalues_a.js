@@ -1,8 +1,26 @@
 var searchData=
 [
-  ['k_6701',['K',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#a459025ad1048a119457bb002652c2ac7aa5f3c6a11b03839d46af9fb43c97c188',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
-  ['keycount_6702',['KeyCount',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#a459025ad1048a119457bb002652c2ac7a6edea92c9085d3d9c713f9dc76e2a61f',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
-  ['keypressed_6703',['KeyPressed',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#aa05d54b184cb2062577108c38ee9ff94ac17e6984c1e5a887a49831beadee6bca',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
-  ['keyreleased_6704',['KeyReleased',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#aa05d54b184cb2062577108c38ee9ff94a4a77f07c8ad223b71ab4ce78a63841ab',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
-  ['kinematic_6705',['Kinematic',['../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html#a5b2c0df3670ec2d5e1357a36e1d3bf07a40c78b58b86002ee38fad2d3c9dd787e',1,'Alis::Core::Physic::Dynamics']]]
+  ['k_10936',['K',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#a459025ad1048a119457bb002652c2ac7aa5f3c6a11b03839d46af9fb43c97c188',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
+  ['keycount_10937',['KeyCount',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#a459025ad1048a119457bb002652c2ac7a6edea92c9085d3d9c713f9dc76e2a61f',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
+  ['keypressed_10938',['KeyPressed',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#aa05d54b184cb2062577108c38ee9ff94ac17e6984c1e5a887a49831beadee6bca',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
+  ['keyreleased_10939',['KeyReleased',['../d7/dab/namespace_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows.html#aa05d54b184cb2062577108c38ee9ff94a4a77f07c8ad223b71ab4ce78a63841ab',1,'Alis::Core::Graphic::D2::SFML::Windows']]],
+  ['kinematic_10940',['Kinematic',['../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html#a5b2c0df3670ec2d5e1357a36e1d3bf07a40c78b58b86002ee38fad2d3c9dd787e',1,'Alis::Core::Physic::Dynamics']]],
+  ['kmodalt_10941',['KmodAlt',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020cabd10fc50a295ed0e7b3f4ab628fd3bfd',1,'Alis::Core::Input::SDL2']]],
+  ['kmodcaps_10942',['KmodCaps',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020cac28c826a6aea59d5f8ffc70eaf33c810',1,'Alis::Core::Input::SDL2']]],
+  ['kmodctrl_10943',['KmodCtrl',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca06086e73bd6b20ae944bfc0a96d591fa',1,'Alis::Core::Input::SDL2']]],
+  ['kmodgui_10944',['KmodGui',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca8c4e82f4b72c85f41383ef3d3e418ce3',1,'Alis::Core::Input::SDL2']]],
+  ['kmodlalt_10945',['KmodLalt',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca4b0ac6e7023fb8a156b7eb42b58f8bc0',1,'Alis::Core::Input::SDL2']]],
+  ['kmodlctrl_10946',['KmodLctrl',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020cabfc449df865ba704dd2cedfff58bbede',1,'Alis::Core::Input::SDL2']]],
+  ['kmodlgui_10947',['KmodLgui',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020caaab413c4eacfc9ae6ce161fe5cf4a7ba',1,'Alis::Core::Input::SDL2']]],
+  ['kmodlshift_10948',['KmodLshift',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca174dcfc02bffb3a8a55919dd86fef8d4',1,'Alis::Core::Input::SDL2']]],
+  ['kmodmode_10949',['KmodMode',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca4b3caac046de23c63cbdd1cb7882aa6e',1,'Alis::Core::Input::SDL2']]],
+  ['kmodnone_10950',['KmodNone',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca53126e96530a0084b1a00c3b5c8f1cdc',1,'Alis::Core::Input::SDL2']]],
+  ['kmodnum_10951',['KmodNum',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca07dab14b6e1540734bcc92404edba42b',1,'Alis::Core::Input::SDL2']]],
+  ['kmodralt_10952',['KmodRalt',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020cafccccec5b0df7517d1474b9f06e4fc81',1,'Alis::Core::Input::SDL2']]],
+  ['kmodrctrl_10953',['KmodRctrl',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca7dfc7fa5853fcb43caca3200c30c43de',1,'Alis::Core::Input::SDL2']]],
+  ['kmodreserved_10954',['KmodReserved',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca1b80663e9ee55cdc5f3fdfcc515fa0de',1,'Alis::Core::Input::SDL2']]],
+  ['kmodrgui_10955',['KmodRgui',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca606a680d712b306ac478518193517284',1,'Alis::Core::Input::SDL2']]],
+  ['kmodrshift_10956',['KmodRshift',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca7dc96f6b959ef983087f2a72a0878428',1,'Alis::Core::Input::SDL2']]],
+  ['kmodscroll_10957',['KmodScroll',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020caf2444608dda481595a214d75cd8cfb5a',1,'Alis::Core::Input::SDL2']]],
+  ['kmodshift_10958',['KmodShift',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a7981812fcf50382273268f627891020ca5aba955038840fde330d9f57e7c28d71',1,'Alis::Core::Input::SDL2']]]
 ];

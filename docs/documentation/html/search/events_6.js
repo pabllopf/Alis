@@ -1,4 +1,9 @@
 var searchData=
 [
-  ['lostfocus_7264',['LostFocus',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a46c986ed4824a4b72d709d1609b1a7dd',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]]
+  ['mousebuttonpressed_12415',['MouseButtonPressed',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a0d3293f585b36e4730af752d6218f1f2',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]],
+  ['mousebuttonreleased_12416',['MouseButtonReleased',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#adcb821789304ed5dfac9b785950d32e0',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]],
+  ['mouseentered_12417',['MouseEntered',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#adfb7b00b60d6f4fc5e3d8646aea7dc50',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]],
+  ['mouseleft_12418',['MouseLeft',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#aae7f336cde4f86589ffe36d221f4f50b',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]],
+  ['mousemoved_12419',['MouseMoved',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a4695e0ed71740ab091b38f5cc19e9020',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]],
+  ['mousewheelscrolled_12420',['MouseWheelScrolled',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a957370b8de170a735cffbb42e4b83d68',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]]
 ];

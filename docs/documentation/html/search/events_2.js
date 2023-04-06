@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['fixtureadded_7252',['FixtureAdded',['../d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#ad175f177c1c89951cdd783812f04a42a',1,'Alis::Core::Physic::World']]],
-  ['fixtureremoved_7253',['FixtureRemoved',['../d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#a86a1f2297a00e69fb4c5bb5b14dea7d7',1,'Alis::Core::Physic::World']]]
+  ['gainedfocus_12406',['GainedFocus',['../dd/d09/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_window.html#a03b4ecadde3851e02a5b00204aa53896',1,'Alis::Core::Graphic::D2::SFML::Windows::Window']]]
 ];

@@ -18,11 +18,11 @@ var class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_a
     [ "sfVertexArray_append", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a8f692a6f48fbf85d0972e5db13ff9847", null ],
     [ "sfVertexArray_setPrimitiveType", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a0e457f99374494d66e309b6a304f1b16", null ],
     [ "sfVertexArray_getPrimitiveType", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a5c9ad1d6a9e38b70ad861b26d47a5860", null ],
-    [ "sfVertexArray_getBounds", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a2316f0c65436e902bb20b74b73a12e35", null ],
+    [ "sfVertexArray_getBounds", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a01ad2b8fb87daccd67418e4a7ff30b03", null ],
     [ "sfRenderWindow_drawVertexArray", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a01cd43a641e3d53fe9523095f6cc8ccc", null ],
     [ "sfRenderTexture_drawVertexArray", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#af0dc0232f6f015a1fa4e4fb1cced2abe", null ],
     [ "VertexCount", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#affbee8ca7dcc47bd87152916eb550e3e", null ],
-    [ "Bounds", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a72537705dc7fc83f00798c9f302c9bb6", null ],
+    [ "Bounds", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a202721e49e3c7fc41ac17ab3542ce16e", null ],
     [ "this[uint index]", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#ac7a8d6d568d7ffd1ad53b4f049edf785", null ],
     [ "PrimitiveType", "d9/d31/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex_array.html#a29004f3143fbb232f916a2e8b59a9bec", null ]
 ];

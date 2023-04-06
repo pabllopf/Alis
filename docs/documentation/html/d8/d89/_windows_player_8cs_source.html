@@ -221,11 +221,11 @@ $(document).ready(function(){initNavTree('d8/d89/_windows_player_8cs_source.html
 <div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="../../dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#ac903264582a4350c0c1f7ec49ce879df">  155</a></span>&#160;        <span class="keyword">public</span> Task <a class="code" href="../../dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#ac903264582a4350c0c1f7ec49ce879df">SetVolume</a>(<span class="keywordtype">byte</span> percent)</div>
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        {</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="comment">// Calculate the volume that&#39;s being set</span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordtype">int</span> NewVolume = ushort.MaxValue / 100 * percent;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordtype">int</span> newVolume = ushort.MaxValue / 100 * percent;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="comment">// Set the same volume for both the left and the right channels</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            uint NewVolumeAllChannels = ((uint) NewVolume &amp; 0x0000ffff) | ((uint) NewVolume &lt;&lt; 16);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            uint newVolumeAllChannels = ((uint) newVolume &amp; 0x0000ffff) | ((uint) newVolume &lt;&lt; 16);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="comment">// Set the volume</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <a class="code" href="../../dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#a97b1abd4c96516c61fc68eb69df52e4b">waveOutSetVolume</a>(IntPtr.Zero, NewVolumeAllChannels);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <a class="code" href="../../dc/d9e/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_players_1_1_windows_player.html#a97b1abd4c96516c61fc68eb69df52e4b">waveOutSetVolume</a>(IntPtr.Zero, newVolumeAllChannels);</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">return</span> Task.CompletedTask;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
@@ -307,7 +307,7 @@ $(document).ready(function(){initNavTree('d8/d89/_windows_player_8cs_source.html
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_ab997710990996818db96a1b91f12b5b.html">Audio</a></li><li class="navelem"><a class="el" href="../../dir_332b72cf06da1069fed6991de96bdc42.html">src</a></li><li class="navelem"><a class="el" href="../../dir_964ea0f4a65d7a9eb3ab115918004ecb.html">OS</a></li><li class="navelem"><a class="el" href="../../dir_9f968b7a703644576f66d34067d84684.html">Players</a></li><li class="navelem"><b>WindowsPlayer.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Dec 25 2022 |</a>
+      <a>Generated on | Thu Apr 6 2023 |</a>
     </li>
   </ul>
 </div>

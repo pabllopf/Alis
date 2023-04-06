@@ -146,11 +146,11 @@ $(document).ready(function(){initNavTree('d2/dab/_game_base_8cs_source.html','..
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#ad34042ac079fc7040eb32aa4a137a83c">   59</a></span>&#160;        <span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#ad34042ac079fc7040eb32aa4a137a83c">Run</a>()</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#af006a5750d48844019d069e26392a798">IsRunning</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(i =&gt; i.Init());</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(i =&gt; i.Awake());</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(i =&gt; i.Start());</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <span class="keywordflow">while</span> (<a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#af006a5750d48844019d069e26392a798">IsRunning</a>)</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            {</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="../../df/d54/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager.html">TimeManager</a>.<a class="code" href="../../db/dcb/class_alis_1_1_core_1_1_manager_1_1_time_1_1_time_manager_base.html#a39f84051d8a2075143a5397b6cf3ffd1">SyncFixedDeltaTime</a>();</div>
@@ -164,10 +164,10 @@ $(document).ready(function(){initNavTree('d2/dab/_game_base_8cs_source.html','..
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(j =&gt; j.BeforeUpdate());</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                        <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(j =&gt; j.Update());</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                        <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(j =&gt; j.AfterUpdate());</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                        </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                        <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(j =&gt; j.Draw());</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                    </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                    <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(i =&gt; i.FixedUpdate());</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                    <a class="code" href="../../df/dab/class_alis_1_1_core_1_1_game_base.html#a096ca88ff019ede7150ad25a0a1dc3c3">Managers</a>.ForEach(i =&gt; i.DispatchEvents());</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
@@ -229,7 +229,7 @@ $(document).ready(function(){initNavTree('d2/dab/_game_base_8cs_source.html','..
   <ul>
     <li class="navelem"><a class="el" href="../../dir_a8b11ca581ac0644d7a1e4e08f0a3956.html">3_Structuration</a></li><li class="navelem"><a class="el" href="../../dir_328697a33eee8451ec289865f6cf4d8c.html">Core</a></li><li class="navelem"><a class="el" href="../../dir_c9c74e5c47060b5c8b66f264a943c26b.html">src</a></li><li class="navelem"><b>GameBase.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sun Dec 25 2022 |</a>
+      <a>Generated on | Thu Apr 6 2023 |</a>
     </li>
   </ul>
 </div>
