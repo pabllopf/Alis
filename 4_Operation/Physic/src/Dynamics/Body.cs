@@ -1310,5 +1310,25 @@ namespace Alis.Core.Physic.Dynamics
             Force = Vector2F.Zero;
             Torque = 0.0f;
         }
+
+        /// <summary>
+        /// Checks the out range
+        /// </summary>
+        public void CheckOutRange()
+        {
+            // If a body was not in an island then it did not move.
+            if ((Flags & BodyFlags.IslandFlag) == 0)
+            {
+                return;
+            }
+
+            if (BodyType == BodyType.Static)
+            {
+                return;
+            }
+
+            // Update fixtures (for broad-phase).
+            SynchronizeFixtures();
+        }
     }
 }

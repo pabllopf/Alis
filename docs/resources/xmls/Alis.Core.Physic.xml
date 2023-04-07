@@ -3415,6 +3415,11 @@
             Clears the forces
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Body.CheckOutRange">
+            <summary>
+            Checks the out range
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyFlags">
             <summary>
                 The body flags enum
@@ -6954,6 +6959,12 @@
                 The velocities
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.#ctor(Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Island"/> class
+            </summary>
+            <param name="contactManager">The contact manager</param>
+        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Clear">
             <summary>
                 Clears this instance
@@ -6998,6 +7009,11 @@
                 Reports the constraints
             </summary>
             <param name="constraints">The constraints</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.PostSolveCleanup">
+            <summary>
+            Posts the solve cleanup
+            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.Position">
             This is an internal structure.

@@ -348,37 +348,13 @@ namespace Alis.Core.Physic
 
                 island.Solve(TimeStep, Gravity, true);
             }
+
+            // Posts the solve cleanup
+            island.PostSolveCleanup();
             
-            // Post solve cleanup.
-            for (int i = 0; i < island.BodyCount; ++i)
-            {
-                // Allow static bodies to participate in other islands.
-                Body b = island.Bodies[i];
-                if (b.BodyType == BodyType.Static)
-                {
-                    b.Flags &= ~BodyFlags.IslandFlag;
-                }
-            }
-
             // Synchronize fixtures, check for out of range bodies.
-            for (int index = 0; index < Bodies.Count; index++)
-            {
-                Body b = Bodies[index];
-                // If a body was not in an island then it did not move.
-                if ((b.Flags & BodyFlags.IslandFlag) == 0)
-                {
-                    continue;
-                }
-
-                if (b.BodyType == BodyType.Static)
-                {
-                    continue;
-                }
-
-                // Update fixtures (for broad-phase).
-                b.SynchronizeFixtures();
-            }
-
+            Bodies.ForEach(i => i.CheckOutRange());
+            
             // Look for new contacts.
             ContactManager.FindNewContacts();
         }

@@ -106,6 +106,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// </summary>
         private Velocity[] velocities = new Velocity[Settings.ToiContacts];
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Island"/> class
+        /// </summary>
+        /// <param name="contactManager">The contact manager</param>
         public Island(ContactManager contactManager)
         {
             this.contactManager = contactManager;
@@ -484,6 +488,22 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 //Velcro optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
                 contactManager.PostSolve?.Invoke(c, constraints[i]);
+            }
+        }
+
+        /// <summary>
+        /// Posts the solve cleanup
+        /// </summary>
+        public void PostSolveCleanup()
+        {
+            // Post solve cleanup.
+            for (int i = 0; i < BodyCount; ++i)
+            {
+                // Allow static bodies to participate in other islands.
+                if (Bodies[i].BodyType == BodyType.Static)
+                {
+                    Bodies[i].Flags &= ~BodyFlags.IslandFlag;
+                }
             }
         }
     }
