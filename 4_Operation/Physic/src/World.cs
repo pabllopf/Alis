@@ -364,8 +364,6 @@ namespace Alis.Core.Physic
         /// </summary>
         private void SolveToi()
         {
-            //Island.Reset(2 * Settings.ToiContacts, Settings.ToiContacts, 0, ContactManager);
-
             Bodies.ForEach(i =>
             {
                 i.Flags &= ~BodyFlags.IslandFlag;
