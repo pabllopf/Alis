@@ -1328,5 +1328,14 @@ namespace Alis.Core.Physic.Dynamics
             // Update fixtures (for broad-phase).
             SynchronizeFixtures();
         }
+
+        /// <summary>
+        /// Sets the alpha to zero
+        /// </summary>
+        public void SetAlphaToZero()
+        {
+            Flags &= ~BodyFlags.IslandFlag;
+            Sweep.Alpha0 = 0.0f;
+        }
     }
 }

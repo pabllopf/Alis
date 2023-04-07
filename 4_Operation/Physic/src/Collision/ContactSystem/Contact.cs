@@ -660,5 +660,15 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Clears the flags
         /// </summary>
         public void ClearFlags() => Flags &= ~ContactFlags.FilterFlag;
+
+        /// <summary>
+        /// Invalidates the toi
+        /// </summary>
+        public void InvalidateTOI()
+        {
+            Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
+            ToiCount = 0;
+            Toi = 1.0f;
+        }
     }
 }

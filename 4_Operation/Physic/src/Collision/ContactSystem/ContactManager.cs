@@ -421,5 +421,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Clears the flags
         /// </summary>
         internal void ClearFlags() => ContactList.ForEach(c => c.ClearFlags());
+
+        /// <summary>
+        /// Invalidates the toi
+        /// </summary>
+        public void InvalidateTOI() => ContactList.ForEach(i => i.InvalidateTOI());
     }
 }

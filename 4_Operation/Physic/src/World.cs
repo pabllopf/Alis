@@ -247,19 +247,11 @@ namespace Alis.Core.Physic
         /// </summary>
         private void SolveToi()
         {
-            Bodies.ForEach(i =>
-            {
-                i.Flags &= ~BodyFlags.IslandFlag;
-                i.Sweep.Alpha0 = 0.0f;
-            });
-
-            foreach (Contact c in ContactManager.ContactList)
-            {
-                // Invalidate TOI
-                c.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
-                c.ToiCount = 0;
-                c.Toi = 1.0f;
-            }
+            // Bodies that are moving fast enough should have their TOI
+            Bodies.ForEach(i => i.SetAlphaToZero());
+            
+            // Invalidate all contact TOIs on your own.
+            ContactManager.InvalidateTOI();
 
             // Find TOI events and solve them.
             for (;;)
