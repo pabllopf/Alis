@@ -453,7 +453,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
         /// <param name="contactManager">The contact manager</param>
-        internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
+        internal void SolveToi(TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
         {
             Debug.Assert(toiIndexA < Bodies.Count);
             Debug.Assert(toiIndexB < Bodies.Count);
@@ -602,6 +602,31 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 //Velcro optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
                 contactManager.PostSolve?.Invoke(c, constraints[i]);
+            }
+        }
+
+        /// <summary>
+        /// Synchronizes the bodies
+        /// </summary>
+        public void SynchronizeBodies()
+        {
+            for (int i = 0; i < Bodies.Count; ++i)
+            {
+                Body body = Bodies[i];
+                body.Flags &= ~BodyFlags.IslandFlag;
+
+                if (body.BodyType != BodyType.Dynamic)
+                {
+                    continue;
+                }
+
+                body.SynchronizeFixtures();
+
+                // Invalidate all contact TOIs on this displaced body.
+                for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+                {
+                    ce.Contact.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
+                }
             }
         }
     }

@@ -500,36 +500,24 @@ namespace Alis.Core.Physic
                         }
                     }
                 }
-
-                TimeStep subStep = new TimeStep();
-                subStep.DeltaTime = (1.0f - minAlpha) * TimeStep.DeltaTime;
-                subStep.InvertedDeltaTime = 1.0f / subStep.DeltaTime;
-                subStep.DeltaTimeRatio = 1.0f;
-                subStep.PositionIterations = 20;
-                subStep.VelocityIterations = TimeStep.VelocityIterations;
-                subStep.WarmStarting = false;
-                island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex, ContactManager);
+                
+                island.SolveToi(
+                    new TimeStep
+                {
+                    DeltaTime = (1.0f - minAlpha) * TimeStep.DeltaTime,
+                    InvertedDeltaTime = 1.0f / ((1.0f - minAlpha) * TimeStep.DeltaTime),
+                    DeltaTimeRatio = 1.0f,
+                    PositionIterations = 20,
+                    VelocityIterations = TimeStep.VelocityIterations,
+                    WarmStarting = false
+                },
+                    bA0.IslandIndex, 
+                    bB0.IslandIndex, 
+                    ContactManager);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < island.Bodies.Count; ++i)
-                {
-                    Body body = island.Bodies[i];
-                    body.Flags &= ~BodyFlags.IslandFlag;
-
-                    if (body.BodyType != BodyType.Dynamic)
-                    {
-                        continue;
-                    }
-
-                    body.SynchronizeFixtures();
-
-                    // Invalidate all contact TOIs on this displaced body.
-                    for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
-                    {
-                        ce.Contact.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
-                    }
-                }
-
+                island.SynchronizeBodies();
+                
                 // Commit fixture proxy movements to the broad-phase so that new contacts are created.
                 // Also, some contacts can be destroyed.
                 ContactManager.FindNewContacts();

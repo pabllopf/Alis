@@ -762,6 +762,11 @@
                 Clears the flags
             </summary>
         </member>
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.InvalidateTOI">
+            <summary>
+            Invalidates the toi
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactEdge">
             <summary>
                 A contact edge is used to connect bodies and contacts together in a contact graph where each body is a node
@@ -932,6 +937,11 @@
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ClearFlags">
             <summary>
                 Clears the flags
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateTOI">
+            <summary>
+            Invalidates the toi
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactType">
@@ -3418,6 +3428,11 @@
         <member name="M:Alis.Core.Physic.Dynamics.Body.CheckOutRange">
             <summary>
                 Checks the out range
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Body.SetAlphaToZero">
+            <summary>
+            Sets the alpha to zero
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyFlags">
@@ -6949,7 +6964,7 @@
             <param name="contactManager">The contact manager</param>
             <param name="bodiesOfWorld">The bodies of world</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(Alis.Core.Aspect.Time.TimeStep@,System.Int32,System.Int32,Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Int32,Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
             <summary>
             Solves the toi using the specified sub step
             </summary>
@@ -6982,6 +6997,11 @@
             </summary>
             <param name="constraints">The constraints</param>
             <param name="contactManager">The contact manager</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SynchronizeBodies">
+            <summary>
+            Synchronizes the bodies
+            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.Position">
             This is an internal structure.
