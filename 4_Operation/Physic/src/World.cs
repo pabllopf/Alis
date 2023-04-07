@@ -636,7 +636,7 @@ namespace Alis.Core.Physic
                 island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
 
                 // Reset island flags and synchronize broad-phase proxies.
-                for (int i = 0; i < island.BodyCount; ++i)
+                for (int i = 0; i < island.Bodies.Count; ++i)
                 {
                     Body body = island.Bodies[i];
                     body.Flags &= ~BodyFlags.IslandFlag;

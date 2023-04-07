@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
@@ -64,13 +65,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The bodies
         /// </summary>
-        internal Body[] Bodies = new Body[Settings.ToiContacts * 2];
-
-        /// <summary>
-        ///     The body count
-        /// </summary>
-        internal int BodyCount;
-
+        internal List<Body> Bodies = new List<Body>(Settings.ToiContacts * 2);
+        
         /// <summary>
         ///     The contact count
         /// </summary>
@@ -120,7 +116,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// </summary>
         public void Clear()
         {
-            BodyCount = 0;
+            Bodies.Clear();
             ContactCount = 0;
             jointCount = 0;
         }
@@ -136,7 +132,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             float h = step.DeltaTime;
 
             // Integrate velocities and apply damping. Initialize the body state.
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 Body b = Bodies[i];
 
@@ -226,7 +222,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             //profile.SolveVelocity = timer.ElapsedTicks;
 
             // Integrate positions
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 Vector2F c = positions[i].C;
                 float a = positions[i].A;
@@ -289,7 +285,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             }
 
             // Copy state buffers back to the bodies
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 Body body = Bodies[i];
                 body.Sweep.C = positions[i].C;
@@ -307,7 +303,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             {
                 float minSleepTime = float.MaxValue;
 
-                for (int i = 0; i < BodyCount; ++i)
+                for (int i = 0; i < Bodies.Count; ++i)
                 {
                     Body b = Bodies[i];
 
@@ -331,7 +327,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 if ((minSleepTime >= Settings.TimeToSleep) && positionSolved)
                 {
-                    for (int i = 0; i < BodyCount; ++i)
+                    for (int i = 0; i < Bodies.Count; ++i)
                     {
                         Body b = Bodies[i];
                         b.Awake = false;
@@ -348,11 +344,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="toiIndexB">The toi index</param>
         internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB)
         {
-            Debug.Assert(toiIndexA < BodyCount);
-            Debug.Assert(toiIndexB < BodyCount);
+            Debug.Assert(toiIndexA < Bodies.Count);
+            Debug.Assert(toiIndexB < Bodies.Count);
 
             // Initialize the body state.
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 Body b = Bodies[i];
                 positions[i].C = b.Sweep.C;
@@ -396,7 +392,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             float h = subStep.DeltaTime;
 
             // Integrate positions.
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 Vector2F c = positions[i].C;
                 float a = positions[i].A;
@@ -445,8 +441,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="body">The body</param>
         public void Add(Body body)
         {
-            body.IslandIndex = BodyCount;
-            Bodies[BodyCount++] = body;
+            body.IslandIndex = Bodies.Count;
+            Bodies.Add(body);
         }
 
         /// <summary>
@@ -497,7 +493,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         public void PostSolveCleanup()
         {
             // Post solve cleanup.
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 // Allow static bodies to participate in other islands.
                 if (Bodies[i].BodyType == BodyType.Static)

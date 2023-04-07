@@ -6919,11 +6919,6 @@
                 The bodies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.BodyCount">
-            <summary>
-                The body count
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.ContactCount">
             <summary>
                 The contact count
