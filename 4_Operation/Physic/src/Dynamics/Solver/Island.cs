@@ -56,11 +56,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The linear sleep tolerance
         /// </summary>
         private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
-
-        /// <summary>
-        ///     The stopwatch
-        /// </summary>
-        private readonly Stopwatch timer = new Stopwatch();
         
         /// <summary>
         ///     The contact manager
@@ -167,9 +162,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     velocities[Bodies.IndexOf(b)].W = w;  
                 }
             }
-
-            timer.Restart();
-
+            
             // Solver data
             SolverData solverData = new SolverData
             {
@@ -198,7 +191,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
             //profile.SolveInit = timer.ElapsedTicks;
 
             // Solve velocity constraints.
-            timer.Restart();
             for (int i = 0; i < step.VelocityIterations; ++i)
             {
                 for (int j = 0; j < joints.Count; ++j)
@@ -255,7 +247,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
             }
 
             // Solve position constraints
-            timer.Restart();
             bool positionSolved = false;
             for (int i = 0; i < step.PositionIterations; ++i)
             {
