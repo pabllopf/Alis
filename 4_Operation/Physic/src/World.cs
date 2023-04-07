@@ -97,7 +97,7 @@ namespace Alis.Core.Physic
         /// <summary>
         /// The island
         /// </summary>
-        private Island island;
+        private readonly Island island;
         
         /// <summary>
         /// The contact
@@ -347,42 +347,40 @@ namespace Alis.Core.Physic
                 }
 
                 island.Solve(TimeStep, Gravity, true);
-
-                // Post solve cleanup.
-                for (int i = 0; i < island.BodyCount; ++i)
-                {
-                    // Allow static bodies to participate in other islands.
-                    Body b = island.Bodies[i];
-                    if (b.BodyType == BodyType.Static)
-                    {
-                        b.Flags &= ~BodyFlags.IslandFlag;
-                    }
-                }
             }
-
+            
+            // Post solve cleanup.
+            for (int i = 0; i < island.BodyCount; ++i)
             {
-                // Synchronize fixtures, check for out of range bodies.
-                for (int index = 0; index < Bodies.Count; index++)
+                // Allow static bodies to participate in other islands.
+                Body b = island.Bodies[i];
+                if (b.BodyType == BodyType.Static)
                 {
-                    Body b = Bodies[index];
-                    // If a body was not in an island then it did not move.
-                    if ((b.Flags & BodyFlags.IslandFlag) == 0)
-                    {
-                        continue;
-                    }
+                    b.Flags &= ~BodyFlags.IslandFlag;
+                }
+            }
 
-                    if (b.BodyType == BodyType.Static)
-                    {
-                        continue;
-                    }
-
-                    // Update fixtures (for broad-phase).
-                    b.SynchronizeFixtures();
+            // Synchronize fixtures, check for out of range bodies.
+            for (int index = 0; index < Bodies.Count; index++)
+            {
+                Body b = Bodies[index];
+                // If a body was not in an island then it did not move.
+                if ((b.Flags & BodyFlags.IslandFlag) == 0)
+                {
+                    continue;
                 }
 
-                // Look for new contacts.
-                ContactManager.FindNewContacts();
+                if (b.BodyType == BodyType.Static)
+                {
+                    continue;
+                }
+
+                // Update fixtures (for broad-phase).
+                b.SynchronizeFixtures();
             }
+
+            // Look for new contacts.
+            ContactManager.FindNewContacts();
         }
 
         /// <summary>
