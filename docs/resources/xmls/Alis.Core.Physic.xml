@@ -6724,19 +6724,14 @@
                 The contact solver class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.contacts">
-            <summary>
-                The contacts
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.count">
             <summary>
                 The count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positionConstraints">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.step">
             <summary>
-                The position constraints
+                The step
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positions">
@@ -6744,9 +6739,9 @@
                 The positions
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.step">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.contacts">
             <summary>
-                The step
+                The contacts
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.velocities">
@@ -6759,7 +6754,12 @@
                 The velocity constraints
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.Reset(Alis.Core.Aspect.Time.TimeStep,System.Int32,Alis.Core.Physic.Collision.ContactSystem.Contact[],Alis.Core.Physic.Dynamics.Solver.Position[],Alis.Core.Physic.Dynamics.Solver.Velocity[])">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positionConstraints">
+            <summary>
+                The position constraints
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.Reset(Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Collections.Generic.List{Alis.Core.Physic.Collision.ContactSystem.Contact},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Position},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Velocity})">
             <summary>
                 Resets the step
             </summary>
@@ -6894,7 +6894,7 @@
         <member name="T:Alis.Core.Physic.Dynamics.Solver.Island">
             <summary>This is an internal class.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.angTolSqr">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.AngTolSqr">
             <summary>
                 The angular sleep tolerance
             </summary>
@@ -6904,7 +6904,7 @@
                 The contact solver
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.linTolSqr">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.LinTolSqr">
             <summary>
                 The linear sleep tolerance
             </summary>
@@ -6914,29 +6914,19 @@
                 The stopwatch
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.Bodies">
-            <summary>
-                The bodies
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.ContactCount">
-            <summary>
-                The contact count
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contactManager">
             <summary>
                 The contact manager
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.Bodies">
+            <summary>
+                The bodies
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contacts">
             <summary>
                 The contacts
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.jointCount">
-            <summary>
-                The joint count
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.joints">
@@ -6999,7 +6989,7 @@
             </summary>
             <param name="joint">The joint</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Report(Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint[])">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Report(System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint})">
             <summary>
                 Reports the constraints
             </summary>
@@ -7021,6 +7011,18 @@
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Position.A">
             <summary>
                 The
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Position.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Position"/> class
+            </summary>
+            <param name="c">The </param>
+            <param name="a">The </param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Position.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Position"/> class
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold">
@@ -7071,6 +7073,24 @@
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Velocity.W">
             <summary>
                 The
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Velocity.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity"/> class
+            </summary>
+            <param name="v">The </param>
+            <param name="w">The </param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Velocity.#ctor(System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity"/> class
+            </summary>
+            <param name="w">The </param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Velocity.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity"/> class
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint">

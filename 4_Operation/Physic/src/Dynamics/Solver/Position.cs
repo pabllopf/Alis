@@ -32,16 +32,36 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Physic.Dynamics.Solver
 {
     /// This is an internal structure.
-    public struct Position
+    public class Position
     {
         /// <summary>
         ///     The
         /// </summary>
-        public Vector2F C;
+        public Vector2F C = Vector2F.Zero;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float A;
+        public float A = 0.0f;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Position"/> class
+        /// </summary>
+        /// <param name="c">The </param>
+        /// <param name="a">The </param>
+        public Position(Vector2F c, float a)
+        {
+            C = c;
+            A = a;
+        }
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Position"/> class
+        /// </summary>
+        public Position()
+        {
+            C = Vector2F.Zero;
+            A = 0.0f;
+        }
     }
 }
