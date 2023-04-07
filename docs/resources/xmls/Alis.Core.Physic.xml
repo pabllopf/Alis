@@ -6899,11 +6899,6 @@
                 The bodies
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contactManager">
-            <summary>
-                The contact manager
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contacts">
             <summary>
                 The contacts
@@ -6929,12 +6924,6 @@
                 The velocities
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.#ctor(Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Island" /> class
-            </summary>
-            <param name="contactManager">The contact manager</param>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.AngTolSqr">
             <summary>
                 The angular sleep tolerance
@@ -6950,21 +6939,23 @@
                 Clears this instance
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Aspect.Time.TimeStep,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Aspect.Time.TimeStep,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
             <summary>
-                Solves the profile
+            Solves the step
             </summary>
             <param name="step">The step</param>
             <param name="gravity">The gravity</param>
             <param name="allowSleep">The allow sleep</param>
+            <param name="contactManager">The contact manager</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(Alis.Core.Aspect.Time.TimeStep@,System.Int32,System.Int32)">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(Alis.Core.Aspect.Time.TimeStep@,System.Int32,System.Int32,Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
             <summary>
-                Solves the toi using the specified sub step
+            Solves the toi using the specified sub step
             </summary>
             <param name="subStep">The sub step</param>
             <param name="toiIndexA">The toi index</param>
             <param name="toiIndexB">The toi index</param>
+            <param name="contactManager">The contact manager</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Add(Alis.Core.Physic.Dynamics.Body)">
             <summary>
@@ -6984,11 +6975,12 @@
             </summary>
             <param name="joint">The joint</param>
         </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Report(System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint})">
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Report(System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint},Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
             <summary>
-                Reports the constraints
+            Reports the constraints
             </summary>
             <param name="constraints">The constraints</param>
+            <param name="contactManager">The contact manager</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.PostSolveCleanup">
             <summary>

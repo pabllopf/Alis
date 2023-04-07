@@ -48,11 +48,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         internal readonly List<Body> Bodies = new List<Body>(Settings.ToiContacts * 2);
 
         /// <summary>
-        ///     The contact manager
-        /// </summary>
-        private readonly ContactManager contactManager;
-
-        /// <summary>
         ///     The contacts
         /// </summary>
         private readonly List<Contact> contacts = new List<Contact>(Settings.ToiContacts * 2);
@@ -78,12 +73,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         private readonly List<Velocity> velocities = new List<Velocity>(Settings.ToiContacts);
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Island" /> class
-        /// </summary>
-        /// <param name="contactManager">The contact manager</param>
-        public Island(ContactManager contactManager) => this.contactManager = contactManager;
-
-        /// <summary>
         ///     The angular sleep tolerance
         /// </summary>
         private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
@@ -103,13 +92,15 @@ namespace Alis.Core.Physic.Dynamics.Solver
             joints.Clear();
         }
 
+        
         /// <summary>
-        ///     Solves the profile
+        /// Solves the step
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
         /// <param name="allowSleep">The allow sleep</param>
-        public void Solve(TimeStep step, Vector2F gravity, bool allowSleep)
+        /// <param name="contactManager">The contact manager</param>
+        public void Solve(TimeStep step, Vector2F gravity, bool allowSleep, ContactManager contactManager)
         {
             float h = step.DeltaTime;
 
@@ -288,7 +279,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
             //profile.SolvePosition = timer.ElapsedTicks;
 
-            Report(contactSolver.VelocityConstraints);
+            Report(contactSolver.VelocityConstraints, contactManager);
 
             if (allowSleep)
             {
@@ -327,13 +318,15 @@ namespace Alis.Core.Physic.Dynamics.Solver
             }
         }
 
+        
         /// <summary>
-        ///     Solves the toi using the specified sub step
+        /// Solves the toi using the specified sub step
         /// </summary>
         /// <param name="subStep">The sub step</param>
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
-        internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB)
+        /// <param name="contactManager">The contact manager</param>
+        internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
         {
             Debug.Assert(toiIndexA < Bodies.Count);
             Debug.Assert(toiIndexB < Bodies.Count);
@@ -439,7 +432,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 body.SynchronizeTransform();
             }
 
-            Report(contactSolver.VelocityConstraints);
+            Report(contactSolver.VelocityConstraints, contactManager);
         }
 
         /// <summary>
@@ -464,17 +457,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="joint">The joint</param>
         public void Add(Joint joint) => joints.Add(joint);
 
+  
         /// <summary>
-        ///     Reports the constraints
+        /// Reports the constraints
         /// </summary>
         /// <param name="constraints">The constraints</param>
-        private void Report(List<ContactVelocityConstraint> constraints)
+        /// <param name="contactManager">The contact manager</param>
+        private void Report(List<ContactVelocityConstraint> constraints, ContactManager contactManager)
         {
-            if (contactManager == null)
-            {
-                return;
-            }
-
             for (int i = 0; i < contacts.Count; ++i)
             {
                 Contact c = contacts[i];

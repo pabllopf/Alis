@@ -71,7 +71,7 @@ namespace Alis.Core.Physic
             Gravity = gravity;
             Current = this;
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
-            island = new Island(ContactManager);
+            island = new Island();
         }
 
         /// <summary>
@@ -346,7 +346,7 @@ namespace Alis.Core.Physic
                     }
                 }
 
-                island.Solve(TimeStep, Gravity, true);
+                island.Solve(TimeStep, Gravity, true, ContactManager);
             }
 
             // Posts the solve cleanup
@@ -633,7 +633,7 @@ namespace Alis.Core.Physic
                 subStep.PositionIterations = 20;
                 subStep.VelocityIterations = TimeStep.VelocityIterations;
                 subStep.WarmStarting = false;
-                island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex);
+                island.SolveToi(ref subStep, bA0.IslandIndex, bB0.IslandIndex, ContactManager);
 
                 // Reset island flags and synchronize broad-phase proxies.
                 for (int i = 0; i < island.Bodies.Count; ++i)
