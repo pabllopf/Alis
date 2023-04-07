@@ -42,10 +42,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The
         /// </summary>
-        public float W = 0.0f;
+        public float W;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Velocity"/> class
+        ///     Initializes a new instance of the <see cref="Velocity" /> class
         /// </summary>
         /// <param name="v">The </param>
         /// <param name="w">The </param>
@@ -56,13 +56,13 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Velocity"/> class
+        ///     Initializes a new instance of the <see cref="Velocity" /> class
         /// </summary>
         /// <param name="w">The </param>
         public Velocity(float w) => W = w;
-        
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="Velocity"/> class
+        ///     Initializes a new instance of the <see cref="Velocity" /> class
         /// </summary>
         public Velocity()
         {

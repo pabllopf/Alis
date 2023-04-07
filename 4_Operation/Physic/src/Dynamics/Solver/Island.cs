@@ -43,35 +43,25 @@ namespace Alis.Core.Physic.Dynamics.Solver
     internal class Island
     {
         /// <summary>
-        ///     The angular sleep tolerance
+        ///     The bodies
         /// </summary>
-        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+        internal readonly List<Body> Bodies = new List<Body>(Settings.ToiContacts * 2);
 
-        /// <summary>
-        ///     The contact solver
-        /// </summary>
-        private readonly ContactSolver contactSolver = new ContactSolver();
-
-        /// <summary>
-        ///     The linear sleep tolerance
-        /// </summary>
-        private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
-        
         /// <summary>
         ///     The contact manager
         /// </summary>
         private readonly ContactManager contactManager;
 
         /// <summary>
-        ///     The bodies
-        /// </summary>
-        internal readonly List<Body> Bodies = new List<Body>(Settings.ToiContacts * 2);
-        
-        /// <summary>
         ///     The contacts
         /// </summary>
         private readonly List<Contact> contacts = new List<Contact>(Settings.ToiContacts * 2);
-        
+
+        /// <summary>
+        ///     The contact solver
+        /// </summary>
+        private readonly ContactSolver contactSolver = new ContactSolver();
+
         /// <summary>
         ///     The joints
         /// </summary>
@@ -88,10 +78,20 @@ namespace Alis.Core.Physic.Dynamics.Solver
         private readonly List<Velocity> velocities = new List<Velocity>(Settings.ToiContacts);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Island"/> class
+        ///     Initializes a new instance of the <see cref="Island" /> class
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         public Island(ContactManager contactManager) => this.contactManager = contactManager;
+
+        /// <summary>
+        ///     The angular sleep tolerance
+        /// </summary>
+        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+
+        /// <summary>
+        ///     The linear sleep tolerance
+        /// </summary>
+        private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
 
         /// <summary>
         ///     Clears this instance
@@ -149,9 +149,9 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 else
                 {
                     positions[Bodies.IndexOf(b)].C = c;
-                    positions[Bodies.IndexOf(b)].A = a;  
+                    positions[Bodies.IndexOf(b)].A = a;
                 }
-                
+
                 if (velocities.Count <= Bodies.IndexOf(b))
                 {
                     velocities.Insert(Bodies.IndexOf(b), new Velocity(v, w));
@@ -159,10 +159,10 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 else
                 {
                     velocities[Bodies.IndexOf(b)].V = v;
-                    velocities[Bodies.IndexOf(b)].W = w;  
+                    velocities[Bodies.IndexOf(b)].W = w;
                 }
             }
-            
+
             // Solver data
             SolverData solverData = new SolverData
             {
@@ -342,7 +342,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             for (int i = 0; i < Bodies.Count; ++i)
             {
                 Body b = Bodies[i];
-                
+
                 if (positions.Count <= Bodies.IndexOf(b))
                 {
                     positions.Add(new Position(b.Sweep.C, b.Sweep.A));
@@ -350,9 +350,9 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 else
                 {
                     positions[Bodies.IndexOf(b)].C = b.Sweep.C;
-                    positions[Bodies.IndexOf(b)].A = b.Sweep.A;  
+                    positions[Bodies.IndexOf(b)].A = b.Sweep.A;
                 }
-                
+
                 if (velocities.Count <= Bodies.IndexOf(b))
                 {
                     velocities.Insert(Bodies.IndexOf(b), new Velocity(b.LinearVelocity, b.AngularVelocity));
@@ -360,7 +360,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 else
                 {
                     velocities[Bodies.IndexOf(b)].V = b.LinearVelocity;
-                    velocities[Bodies.IndexOf(b)].W = b.AngularVelocity;  
+                    velocities[Bodies.IndexOf(b)].W = b.AngularVelocity;
                 }
             }
 
@@ -489,7 +489,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Posts the solve cleanup
+        ///     Posts the solve cleanup
         /// </summary>
         public void PostSolveCleanup()
         {

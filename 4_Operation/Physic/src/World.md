@@ -26,11 +26,14 @@
         1. [Test case 1: Clear forces for all bodies](#test-case-1-clear-forces-for-all-bodies)
         2. [Test Case 2: No bodies with forces applied](#test-case-2-no-bodies-with-forces-applied)
 
+## Introduction
 
-
-## Introduction 
-
-The World class is a fundamental component of the graphics engine, responsible for managing the virtual world where all the objects, characters, and physics interact. It provides a central hub for controlling the simulation of the environment and the dynamics of the objects within it. The World class allows the creation, deletion, and manipulation of bodies, forces, and other physics-related elements, making it a crucial building block for any physics-based game or application. Its versatile design and efficient implementation make it an essential tool for creating immersive and interactive experiences.
+The World class is a fundamental component of the graphics engine, responsible for managing the virtual world where all
+the objects, characters, and physics interact. It provides a central hub for controlling the simulation of the
+environment and the dynamics of the objects within it. The World class allows the creation, deletion, and manipulation
+of bodies, forces, and other physics-related elements, making it a crucial building block for any physics-based game or
+application. Its versatile design and efficient implementation make it an essential tool for creating immersive and
+interactive experiences.
 
 ### Creating a World
 
@@ -46,9 +49,6 @@ Now we create the world object.
     World myWorld = new World(gravity: gravity);
 ```
 
-
-
-
 # World.AddBody
 
 ```csharp
@@ -61,6 +61,7 @@ public void AddBody(Body body) => Bodies.Add(body);
 ```
 
 ## Uses Cases:
+
 ### Use case 1: Add a body to the world
 
 | Preconditions     | Flow of Events     | Postconditions                  |
@@ -69,21 +70,19 @@ public void AddBody(Body body) => Bodies.Add(body);
 
 ### Use case 2: Add a null body to the world
 
-
 | Preconditions     | Flow of Events          | Postconditions                      |
 |-------------------|-------------------------|-------------------------------------|
 | The world exists. | A null body is created. | An ArgumentNullException is thrown. |
 
 ### Use case 3: Add an existing body to the world
 
-
 | Preconditions     | Flow of Events                        | Postconditions                        |
 |-------------------|---------------------------------------|---------------------------------------|
 | The world exists. | A body already in the world is added. | The body is added again to the world. |
 
 ## Test Cases:
-### Test case 1: Add a body to the world
 
+### Test case 1: Add a body to the world
 
 | Test Data                                   | Test Steps                        | Expected Results                |
 |---------------------------------------------|-----------------------------------|---------------------------------|
@@ -97,8 +96,8 @@ public void Test_AddBody_When_WorldExistsAndBodyIsNotNull_Expect_BodyAddedToWorl
 }
 
 ```
-### Test case 2: Add a null body to the world
 
+### Test case 2: Add a null body to the world
 
 | Test Data                                        | Test Steps                        | Expected Results                    |
 |--------------------------------------------------|-----------------------------------|-------------------------------------|
@@ -112,8 +111,8 @@ public void Test_AddBody_When_WorldExistsAndBodyIsNull_Expect_ArgumentNullExcept
 }
 
 ```
-### Test case 3: Add an existing body to the world
 
+### Test case 3: Add an existing body to the world
 
 | Test Data                                         | Test Steps                        | Expected Results                      |
 |---------------------------------------------------|-----------------------------------|---------------------------------------|
@@ -128,18 +127,7 @@ public void Test_AddBody_When_WorldExistsAndBodyAlreadyInWorld_Expect_BodyAddedA
 
 ```
 
-
  --------
-
-
-
-
-
-
-
-
-
-
 
 # World.RemoveBody
 
@@ -151,9 +139,10 @@ public void Test_AddBody_When_WorldExistsAndBodyAlreadyInWorld_Expect_BodyAddedA
 public void RemoveBody(Body body) => Bodies.Remove(body);
 
 ```
-## Uses Cases:
-### Use case 1: Remove an existing body
 
+## Uses Cases:
+
+### Use case 1: Remove an existing body
 
 | Preconditions                          | Flow of Events                                                        | Postconditions                      |
 |----------------------------------------|-----------------------------------------------------------------------|-------------------------------------|
@@ -161,14 +150,13 @@ public void RemoveBody(Body body) => Bodies.Remove(body);
 
 ### Use case 2: Try to remove a non-existing body
 
-
 | Preconditions                                 | Flow of Events                                                           | Postconditions               |
 |-----------------------------------------------|--------------------------------------------------------------------------|------------------------------|
 | The world doesn't contain the body to remove. | The method RemoveBody() is called with a non-existing body as parameter. | The world remains unchanged. |
 
 ## Test Cases:
-### Test case 1: Remove an existing body
 
+### Test case 1: Remove an existing body
 
 | Test Data                                                 | Test Steps                                                            | Expected Results                    |
 |-----------------------------------------------------------|-----------------------------------------------------------------------|-------------------------------------|
@@ -182,8 +170,8 @@ public void Test_RemoveBody_When_WorldContainsBodyToRemove_Expect_BodyRemovedFro
 }
 
 ```
-### Test case 2: Try to remove a non-existing body
 
+### Test case 2: Try to remove a non-existing body
 
 | Test Data                                                  | Test Steps                                                             | Expected Results             |
 |------------------------------------------------------------|------------------------------------------------------------------------|------------------------------|
@@ -198,19 +186,7 @@ public void Test_RemoveBody_When_WorldDoesNotContainBodyToRemove_Expect_WorldRem
 
 ```
 
-
  --------
-
-
-
-
-
-
-
-
-
-
-
 
 # World.ClearForces
 
@@ -223,15 +199,14 @@ internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
 ```
 
 ## Uses Cases:
-### Use Case 1: Clear all forces
 
+### Use Case 1: Clear all forces
 
 | Preconditions                                    | Flow of Events     | Postconditions                       |
 |--------------------------------------------------|--------------------|--------------------------------------|
 | There are one or more bodies with forces applied | Call ClearForces() | All forces of all bodies are cleared |
 
 ### Use Case 2: No bodies with forces applied
-
 
 | Preconditions                           | Flow of Events     | Postconditions     |
 |-----------------------------------------|--------------------|--------------------|
@@ -240,7 +215,6 @@ internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
 ## Test Cases:
 
 ### Test case 1: Clear forces for all bodies
-
 
 | Test Data                                         | Test Steps                        | Expected Results                                  |
 |---------------------------------------------------|-----------------------------------|---------------------------------------------------|
@@ -256,7 +230,6 @@ public void Test_ClearForces_When_WorldContainsBodiesWithForces_Expect_ForcesCle
 ```
 
 ### Test Case 2: No bodies with forces applied
-
 
 | Test Data            | Test Steps         | Expected Results   |
 |----------------------|--------------------|--------------------|

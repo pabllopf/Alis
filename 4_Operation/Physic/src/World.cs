@@ -48,7 +48,22 @@ namespace Alis.Core.Physic
     public class World
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="World"/> class
+        ///     The island
+        /// </summary>
+        private readonly Island island;
+
+        /// <summary>
+        ///     The breakable body
+        /// </summary>
+        private readonly List<BreakableBody> BreakableBodies = new List<BreakableBody>();
+
+        /// <summary>
+        ///     The contact
+        /// </summary>
+        public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="World" /> class
         /// </summary>
         /// <param name="gravity">The gravity</param>
         public World(Vector2F gravity)
@@ -60,105 +75,90 @@ namespace Alis.Core.Physic
         }
 
         /// <summary>
-        /// Gets the value of the gravity
+        ///     Gets the value of the gravity
         /// </summary>
         private Vector2F Gravity { get; }
 
         /// <summary>
-        /// Gets or sets the value of the bodys
+        ///     Gets or sets the value of the bodys
         /// </summary>
         public List<Body> Bodies { get; } = new List<Body>();
-        
-        /// <summary>
-        /// The breakable body
-        /// </summary>
-        private List<BreakableBody> BreakableBodies = new List<BreakableBody>();
 
         /// <summary>
-        /// Gets or sets the value of the joints
+        ///     Gets or sets the value of the joints
         /// </summary>
         private List<Joint> Joints { get; } = new List<Joint>();
 
         /// <summary>
-        /// Gets the value of the controllers
+        ///     Gets the value of the controllers
         /// </summary>
         private List<Controller> Controllers { get; } = new List<Controller>();
 
         /// <summary>
-        /// Gets or sets the value of the contact manager
+        ///     Gets or sets the value of the contact manager
         /// </summary>
         public ContactManager ContactManager { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the step
+        ///     Gets or sets the value of the step
         /// </summary>
         private TimeStep TimeStep { get; set; } = new TimeStep();
 
         /// <summary>
-        /// The island
-        /// </summary>
-        private readonly Island island;
-        
-        /// <summary>
-        /// The contact
-        /// </summary>
-        public Queue<Contact> ContactPool = new Queue<Contact>(256);
-
-        /// <summary>
-        /// The current
+        ///     The current
         /// </summary>
         public static World Current;
-        
+
         /// <summary>
-        /// Adds the body using the specified body
+        ///     Adds the body using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         public void AddBody(Body body) => Bodies.Add(body);
-        
+
         /// <summary>
-        /// Removes the body using the specified body
+        ///     Removes the body using the specified body
         /// </summary>
         /// <param name="body">The body</param>
         public void RemoveBody(Body body) => Bodies.Remove(body);
 
         /// <summary>
-        /// Adds the breakable body using the specified breakable body
+        ///     Adds the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
         public void AddBreakableBody(BreakableBody breakableBody) => BreakableBodies.Add(breakableBody);
-        
+
         /// <summary>
-        /// Removes the breakable body using the specified breakable body
+        ///     Removes the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
         public void RemoveBreakableBody(BreakableBody breakableBody) => BreakableBodies.Remove(breakableBody);
 
         /// <summary>
-        /// Adds the joint using the specified joint
+        ///     Adds the joint using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
         public void AddJoint(Joint joint) => Joints.Add(joint);
-        
+
         /// <summary>
-        /// Removes the joint using the specified joint
+        ///     Removes the joint using the specified joint
         /// </summary>
         /// <param name="joint">The joint</param>
         public void RemoveJoint(Joint joint) => Joints.Remove(joint);
 
         /// <summary>
-        /// Adds the controller using the specified controller
+        ///     Adds the controller using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
         public void AddController(Controller controller) => Controllers.Add(controller);
-        
+
         /// <summary>
-        /// Removes the controller using the specified controller
+        ///     Removes the controller using the specified controller
         /// </summary>
         /// <param name="controller">The controller</param>
         public void RemoveController(Controller controller) => Controllers.Remove(controller);
 
         /// <summary>
-        /// Steps the dt
+        ///     Steps the dt
         /// </summary>
         /// <param name="dt">The dt</param>
         /// <param name="velocityIterations">The velocity iterations</param>
@@ -177,12 +177,12 @@ namespace Alis.Core.Physic
         }
 
         /// <summary>
-        /// Finds the new contacts
+        ///     Finds the new contacts
         /// </summary>
         private void FindNewContacts() => ContactManager.FindNewContacts();
 
         /// <summary>
-        /// Updates the time step using the specified dt
+        ///     Updates the time step using the specified dt
         /// </summary>
         /// <param name="dt">The dt</param>
         /// <param name="velocityIterations">The velocity iterations</param>
@@ -195,43 +195,43 @@ namespace Alis.Core.Physic
             TimeStep.InvertedDeltaTime = dt > 0.0f ? 1.0f / dt : 0.0f;
             TimeStep.DeltaTimeRatio = TimeStep.InvertedDeltaTimeZero * dt;
         }
-        
+
         /// <summary>
-        /// Updates the controllers using the specified dt
+        ///     Updates the controllers using the specified dt
         /// </summary>
         /// <param name="dt">The dt</param>
         private void UpdateControllers(float dt) => Controllers.ForEach(controller => controller.Update(dt));
 
         /// <summary>
-        /// Collides the contacts
+        ///     Collides the contacts
         /// </summary>
         private void CollideContacts() => ContactManager.Collide();
 
         /// <summary>
-        /// Updates the inverted delta time using the specified dt
+        ///     Updates the inverted delta time using the specified dt
         /// </summary>
         /// <param name="dt">The dt</param>
         private void UpdateInvertedDeltaTime(float dt) => TimeStep.InvertedDeltaTimeZero = TimeStep.DeltaTime > 0.0f ? TimeStep.InvertedDeltaTime : TimeStep.InvertedDeltaTimeZero;
 
         /// <summary>
-        /// Updates the breakable bodies
+        ///     Updates the breakable bodies
         /// </summary>
         private void UpdateBreakableBodies() => BreakableBodies.ForEach(body => body.Update());
-        
+
         /// <summary>
-        /// Solves the step
+        ///     Solves the step
         /// </summary>
         private void Solve()
         {
             // Clear all the island flags.
             Bodies.ForEach(i => i.ClearFlags());
-            
+
             // Clear all flags of the contacts.
             ContactManager.ClearFlags();
-            
+
             // DisableIslandFlag for all joints.
             Joints.ForEach(i => i.DisableIslandFlag());
-            
+
             for (int index = Bodies.Count - 1; index >= 0; index--)
             {
                 Body body = Bodies[index];
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic
                 island.Clear();
 
                 body.Flags |= BodyFlags.IslandFlag;
-                
+
                 //Debug.Assert(b.Enabled);
                 island.Add(body);
 
@@ -336,7 +336,7 @@ namespace Alis.Core.Physic
                         {
                             continue;
                         }
-                        
+
                         other.Flags |= BodyFlags.IslandFlag;
                     }
                     else
@@ -351,16 +351,16 @@ namespace Alis.Core.Physic
 
             // Posts the solve cleanup
             island.PostSolveCleanup();
-            
+
             // Synchronize fixtures, check for out of range bodies.
             Bodies.ForEach(i => i.CheckOutRange());
-            
+
             // Look for new contacts.
             ContactManager.FindNewContacts();
         }
 
         /// <summary>
-        /// Solves the toi
+        ///     Solves the toi
         /// </summary>
         private void SolveToi()
         {
@@ -662,7 +662,7 @@ namespace Alis.Core.Physic
         }
 
         /// <summary>
-        /// Clear all forces
+        ///     Clear all forces
         /// </summary>
         internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
     }

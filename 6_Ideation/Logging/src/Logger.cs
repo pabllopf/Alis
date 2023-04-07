@@ -66,7 +66,7 @@ namespace Alis.Core.Aspect.Logging
         public static void Event(string message) => ConsoleController.Print(new Message(MessageType.Event, message));
 
         /// <summary>
-        /// Events
+        ///     Events
         /// </summary>
         public static void Event() => ConsoleController.Print(new Message(MessageType.Event));
 
@@ -93,7 +93,5 @@ namespace Alis.Core.Aspect.Logging
         /// </summary>
         /// <param name="exception">The exception</param>
         public static void Exception(Exception exception) => ConsoleController.Print(new Message(MessageType.Exception, exception.Message));
-
-        
     }
 }

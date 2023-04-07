@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -88,12 +87,12 @@ namespace Alis.Core.Physic.Dynamics
         ///     The type
         /// </summary>
         internal BodyType Type;
-        
+
         /// <summary>
         ///     The xf
         /// </summary>
         internal Transform Xf; // the body origin transform
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
@@ -443,7 +442,6 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         FixtureList[i].CreateProxies(broadPhase, ref Xf);
                     }
-                    
                 }
                 else
                 {
@@ -781,7 +779,7 @@ namespace Alis.Core.Physic.Dynamics
         public Fixture AddFixture(Fixture fixture)
         {
             //Debug.Assert(!World.IsLocked);
-            
+
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
                 IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
@@ -797,7 +795,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 ResetMassData();
             }
-            
+
             //Velcro: Added this code to raise the FixtureAdded event
             //World.RaiseNewFixtureEvent(fixture);
 
@@ -1284,7 +1282,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ClearFlags"/> class
+        ///     Initializes a new instance of the <see cref="ClearFlags" /> class
         /// </summary>
         internal void ClearFlags() => Flags &= ~BodyFlags.IslandFlag;
 
@@ -1303,7 +1301,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Clears the forces
+        ///     Clears the forces
         /// </summary>
         internal void ClearForces()
         {
@@ -1312,7 +1310,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Checks the out range
+        ///     Checks the out range
         /// </summary>
         public void CheckOutRange()
         {

@@ -759,7 +759,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.ClearFlags">
             <summary>
-            Clears the flags
+                Clears the flags
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactEdge">
@@ -931,7 +931,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ClearFlags">
             <summary>
-            Clears the flags
+                Clears the flags
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactType">
@@ -3401,7 +3401,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.ClearFlags">
             <summary>
-            Initializes a new instance of the <see cref="M:Alis.Core.Physic.Dynamics.Body.ClearFlags"/> class
+                Initializes a new instance of the <see cref="M:Alis.Core.Physic.Dynamics.Body.ClearFlags" /> class
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.Advance(System.Single)">
@@ -3412,12 +3412,12 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.ClearForces">
             <summary>
-            Clears the forces
+                Clears the forces
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.CheckOutRange">
             <summary>
-            Checks the out range
+                Checks the out range
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyFlags">
@@ -4895,7 +4895,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Joints.Joint.DisableIslandFlag">
             <summary>
-            Disables the island flag
+                Disables the island flag
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Joints.JointEdge">
@@ -6724,14 +6724,19 @@
                 The contact solver class
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.contacts">
+            <summary>
+                The contacts
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.count">
             <summary>
                 The count
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.step">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positionConstraints">
             <summary>
-                The step
+                The position constraints
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positions">
@@ -6739,9 +6744,9 @@
                 The positions
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.contacts">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.step">
             <summary>
-                The contacts
+                The step
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.velocities">
@@ -6752,11 +6757,6 @@
         <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.VelocityConstraints">
             <summary>
                 The velocity constraints
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.ContactSolver.positionConstraints">
-            <summary>
-                The position constraints
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.ContactSolver.Reset(Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Collections.Generic.List{Alis.Core.Physic.Collision.ContactSystem.Contact},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Position},System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.Velocity})">
@@ -6894,24 +6894,9 @@
         <member name="T:Alis.Core.Physic.Dynamics.Solver.Island">
             <summary>This is an internal class.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.AngTolSqr">
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.Bodies">
             <summary>
-                The angular sleep tolerance
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contactSolver">
-            <summary>
-                The contact solver
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.LinTolSqr">
-            <summary>
-                The linear sleep tolerance
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.timer">
-            <summary>
-                The stopwatch
+                The bodies
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contactManager">
@@ -6919,14 +6904,14 @@
                 The contact manager
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.Bodies">
-            <summary>
-                The bodies
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contacts">
             <summary>
                 The contacts
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.contactSolver">
+            <summary>
+                The contact solver
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.joints">
@@ -6946,9 +6931,19 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.#ctor(Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Island"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Island" /> class
             </summary>
             <param name="contactManager">The contact manager</param>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.AngTolSqr">
+            <summary>
+                The angular sleep tolerance
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.LinTolSqr">
+            <summary>
+                The linear sleep tolerance
+            </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Clear">
             <summary>
@@ -6997,32 +6992,32 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.PostSolveCleanup">
             <summary>
-            Posts the solve cleanup
+                Posts the solve cleanup
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.Position">
             This is an internal structure.
-        </member>
-        <member name="F:Alis.Core.Physic.Dynamics.Solver.Position.C">
-            <summary>
-                The
-            </summary>
         </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Position.A">
             <summary>
                 The
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Dynamics.Solver.Position.C">
+            <summary>
+                The
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Position.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Position"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Position" /> class
             </summary>
             <param name="c">The </param>
             <param name="a">The </param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Position.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Position"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Position" /> class
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold">
@@ -7077,20 +7072,20 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Velocity.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity" /> class
             </summary>
             <param name="v">The </param>
             <param name="w">The </param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Velocity.#ctor(System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity" /> class
             </summary>
             <param name="w">The </param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Velocity.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Dynamics.Solver.Velocity" /> class
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint">
@@ -13389,113 +13384,113 @@
         <member name="T:Alis.Core.Physic.World">
             <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
         </member>
+        <member name="F:Alis.Core.Physic.World.island">
+            <summary>
+                The island
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.World.BreakableBodies">
+            <summary>
+                The breakable body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.World.ContactPool">
+            <summary>
+                The contact
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.World"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class
             </summary>
             <param name="gravity">The gravity</param>
         </member>
         <member name="P:Alis.Core.Physic.World.Gravity">
             <summary>
-            Gets the value of the gravity
+                Gets the value of the gravity
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.Bodies">
             <summary>
-            Gets or sets the value of the bodys
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.BreakableBodies">
-            <summary>
-            The breakable body
+                Gets or sets the value of the bodys
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.Joints">
             <summary>
-            Gets or sets the value of the joints
+                Gets or sets the value of the joints
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.Controllers">
             <summary>
-            Gets the value of the controllers
+                Gets the value of the controllers
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.ContactManager">
             <summary>
-            Gets or sets the value of the contact manager
+                Gets or sets the value of the contact manager
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.TimeStep">
             <summary>
-            Gets or sets the value of the step
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.island">
-            <summary>
-            The island
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.ContactPool">
-            <summary>
-            The contact
+                Gets or sets the value of the step
             </summary>
         </member>
         <member name="F:Alis.Core.Physic.World.Current">
             <summary>
-            The current
+                The current
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
-            Adds the body using the specified body
+                Adds the body using the specified body
             </summary>
             <param name="body">The body</param>
         </member>
         <member name="M:Alis.Core.Physic.World.RemoveBody(Alis.Core.Physic.Dynamics.Body)">
             <summary>
-            Removes the body using the specified body
+                Removes the body using the specified body
             </summary>
             <param name="body">The body</param>
         </member>
         <member name="M:Alis.Core.Physic.World.AddBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)">
             <summary>
-            Adds the breakable body using the specified breakable body
+                Adds the breakable body using the specified breakable body
             </summary>
             <param name="breakableBody">The breakable body</param>
         </member>
         <member name="M:Alis.Core.Physic.World.RemoveBreakableBody(Alis.Core.Physic.Dynamics.BreakableBody)">
             <summary>
-            Removes the breakable body using the specified breakable body
+                Removes the breakable body using the specified breakable body
             </summary>
             <param name="breakableBody">The breakable body</param>
         </member>
         <member name="M:Alis.Core.Physic.World.AddJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>
-            Adds the joint using the specified joint
+                Adds the joint using the specified joint
             </summary>
             <param name="joint">The joint</param>
         </member>
         <member name="M:Alis.Core.Physic.World.RemoveJoint(Alis.Core.Physic.Dynamics.Joints.Joint)">
             <summary>
-            Removes the joint using the specified joint
+                Removes the joint using the specified joint
             </summary>
             <param name="joint">The joint</param>
         </member>
         <member name="M:Alis.Core.Physic.World.AddController(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
             <summary>
-            Adds the controller using the specified controller
+                Adds the controller using the specified controller
             </summary>
             <param name="controller">The controller</param>
         </member>
         <member name="M:Alis.Core.Physic.World.RemoveController(Alis.Core.Physic.Extensions.Controllers.ControllerBase.Controller)">
             <summary>
-            Removes the controller using the specified controller
+                Removes the controller using the specified controller
             </summary>
             <param name="controller">The controller</param>
         </member>
         <member name="M:Alis.Core.Physic.World.Step(System.Single,System.Int32,System.Int32)">
             <summary>
-            Steps the dt
+                Steps the dt
             </summary>
             <param name="dt">The dt</param>
             <param name="velocityIterations">The velocity iterations</param>
@@ -13503,12 +13498,12 @@
         </member>
         <member name="M:Alis.Core.Physic.World.FindNewContacts">
             <summary>
-            Finds the new contacts
+                Finds the new contacts
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.UpdateTimeStep(System.Single,System.Int32,System.Int32)">
             <summary>
-            Updates the time step using the specified dt
+                Updates the time step using the specified dt
             </summary>
             <param name="dt">The dt</param>
             <param name="velocityIterations">The velocity iterations</param>
@@ -13516,39 +13511,39 @@
         </member>
         <member name="M:Alis.Core.Physic.World.UpdateControllers(System.Single)">
             <summary>
-            Updates the controllers using the specified dt
+                Updates the controllers using the specified dt
             </summary>
             <param name="dt">The dt</param>
         </member>
         <member name="M:Alis.Core.Physic.World.CollideContacts">
             <summary>
-            Collides the contacts
+                Collides the contacts
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.UpdateInvertedDeltaTime(System.Single)">
             <summary>
-            Updates the inverted delta time using the specified dt
+                Updates the inverted delta time using the specified dt
             </summary>
             <param name="dt">The dt</param>
         </member>
         <member name="M:Alis.Core.Physic.World.UpdateBreakableBodies">
             <summary>
-            Updates the breakable bodies
+                Updates the breakable bodies
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.Solve">
             <summary>
-            Solves the step
+                Solves the step
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.SolveToi">
             <summary>
-            Solves the toi
+                Solves the toi
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.ClearForces">
             <summary>
-            Clear all forces
+                Clear all forces
             </summary>
         </member>
         <member name="T:Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve">

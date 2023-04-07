@@ -650,14 +650,14 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             ////Debug.Assert(0 <= typeA && typeA < b2Shape::e_typeCount);
             ////Debug.Assert(0 <= typeB && typeB < b2Shape::e_typeCount);
-            
+
             World.Current.ContactPool.Enqueue(this);
-            
+
             Reset(null, 0, null, 0);
         }
 
         /// <summary>
-        /// Clears the flags
+        ///     Clears the flags
         /// </summary>
         public void ClearFlags() => Flags &= ~ContactFlags.FilterFlag;
     }

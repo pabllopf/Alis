@@ -285,7 +285,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         internal abstract bool SolvePositionConstraints(ref SolverData data);
 
         /// <summary>
-        /// Disables the island flag
+        ///     Disables the island flag
         /// </summary>
         public void DisableIslandFlag() => IslandFlag = false;
     }

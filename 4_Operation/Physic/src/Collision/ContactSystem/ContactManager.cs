@@ -194,9 +194,9 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             }
 
             ContactList = c;*/
-            
+
             ContactList.Add(c);
-            
+
 
             // Connect to island graph.
 
@@ -330,7 +330,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             for (int i = 0; i < ContactList.Count; i++)
             {
                 Contact c = ContactList[i];
-                
+
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
@@ -418,7 +418,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Clears the flags
+        ///     Clears the flags
         /// </summary>
         internal void ClearFlags() => ContactList.ForEach(c => c.ClearFlags());
     }

@@ -43,7 +43,6 @@ using System;
 using System.Linq;
 using BenchmarkDotNet.Configs;
 using BenchmarkDotNet.Exporters;
-using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Running;
 #endif
 

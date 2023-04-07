@@ -45,7 +45,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The positions
         /// </summary>
-        public List<Position> Positions; 
+        public List<Position> Positions;
 
         /// <summary>
         ///     The velocities

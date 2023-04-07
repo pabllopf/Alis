@@ -71,25 +71,30 @@ namespace Alis.Core.Physic.Dynamics.Solver
     internal class ContactSolver
     {
         /// <summary>
+        ///     The contacts
+        /// </summary>
+        private List<Contact> contacts = new List<Contact>();
+
+        /// <summary>
         ///     The count
         /// </summary>
         private int count;
-        
+
         /// <summary>
-        ///     The step
+        ///     The position constraints
         /// </summary>
-        private TimeStep step;
-        
+        private List<ContactPositionConstraint> positionConstraints = new List<ContactPositionConstraint>();
+
         /// <summary>
         ///     The positions
         /// </summary>
         private List<Position> positions = new List<Position>();
-        
+
         /// <summary>
-        ///     The contacts
+        ///     The step
         /// </summary>
-        private List<Contact> contacts = new List<Contact>();
-        
+        private TimeStep step;
+
         /// <summary>
         ///     The velocities
         /// </summary>
@@ -99,12 +104,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The velocity constraints
         /// </summary>
         public List<ContactVelocityConstraint> VelocityConstraints = new List<ContactVelocityConstraint>();
-        
-        /// <summary>
-        ///     The position constraints
-        /// </summary>
-        private List<ContactPositionConstraint> positionConstraints = new List<ContactPositionConstraint>();
-        
+
         /// <summary>
         ///     Resets the step
         /// </summary>
@@ -160,7 +160,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 {
                     VelocityConstraints.Add(new ContactVelocityConstraint());
                 }
-                
+
                 ContactVelocityConstraint vc = VelocityConstraints[i];
                 vc.Friction = contact.Friction;
                 vc.Restitution = contact.Restitution;
@@ -176,7 +176,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 vc.PointCount = pointCount;
                 vc.K.SetZero();
                 vc.NormalMass.SetZero();
-                
+
                 if (positionConstraints.Count <= i)
                 {
                     positionConstraints.Add(new ContactPositionConstraint());

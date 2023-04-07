@@ -189,7 +189,7 @@
         </member>
         <member name="M:Alis.Core.Aspect.Logging.Logger.Event">
             <summary>
-            Events
+                Events
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Logging.Logger.Warning(System.String)">
