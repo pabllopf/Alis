@@ -13420,7 +13420,7 @@
         </member>
         <member name="P:Alis.Core.Physic.World.Bodies">
             <summary>
-                Gets or sets the value of the bodys
+                Gets or sets the value of the bodies
             </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.Joints">
@@ -13548,6 +13548,62 @@
             <summary>
                 Solves the toi
             </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.SetAlphaToZeroForFastMovingBodies">
+            <summary>
+            Sets the alpha to zero for fast moving bodies
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.InvalidateContactToIs">
+            <summary>
+            Invalidates the contact to is
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.SolveToiEvents">
+            <summary>
+            Solves the toi events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)">
+            <summary>
+            Solves the toi island using the specified min alpha
+            </summary>
+            <param name="minAlpha">The min alpha</param>
+            <param name="islandIndexA">The island index</param>
+            <param name="islandIndexB">The island index</param>
+        </member>
+        <member name="M:Alis.Core.Physic.World.SynchronizeIslandBodies">
+            <summary>
+            Synchronizes the island bodies
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.IsContactDisabled(Alis.Core.Physic.Collision.ContactSystem.Contact)">
+            <summary>
+            Describes whether is contact disabled
+            </summary>
+            <param name="contact">The contact</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.World.IsSubSteppingExcessive(Alis.Core.Physic.Collision.ContactSystem.Contact)">
+            <summary>
+            Describes whether is sub stepping excessive
+            </summary>
+            <param name="contact">The contact</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.World.IsSensorPrivate(Alis.Core.Physic.Dynamics.Fixture)">
+            <summary>
+            Describes whether is sensor private
+            </summary>
+            <param name="fixture">The fixture</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.World.IsBodyActive(Alis.Core.Physic.Dynamics.Body)">
+            <summary>
+            Describes whether is body active
+            </summary>
+            <param name="body">The body</param>
+            <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Physic.World.ClearForces">
             <summary>
