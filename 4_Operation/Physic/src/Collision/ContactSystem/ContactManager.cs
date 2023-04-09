@@ -27,9 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Physic.Collision.Broadphase;
+using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Handlers;
+using Alis.Core.Physic.Collision.TOI;
+using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Handlers;
 
@@ -395,6 +400,102 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 // The contact persists.
                 c.Update(this);
             }
+        }
+
+        internal Contact GetTheMinContact(ref float minAlpha)
+        {
+            foreach (Contact c in ContactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))
+            {
+                float alpha;
+                if (c.ToiFlag)
+                {
+                    // This contact has a valid cached TOI.
+                    alpha = c.Toi;
+                    continue;
+                }
+
+                Fixture fA = c.FixtureA;
+                Fixture fB = c.FixtureB;
+
+                // Is there a sensor?
+                if (fA.IsSensorPrivate || fB.IsSensorPrivate)
+                {
+                    continue;
+                }
+
+                Body bA = fA.Body;
+                Body bB = fB.Body;
+
+                BodyType typeA = bA.BodyType;
+                BodyType typeB = bB.BodyType;
+                //Debug.Assert(typeA == BodyType.Dynamic || typeB == BodyType.Dynamic);
+
+                bool activeA = bA.Awake && (typeA != BodyType.Static);
+                bool activeB = bB.Awake && (typeB != BodyType.Static);
+
+                // Is at least one body active (awake and dynamic or kinematic)?
+                if (!activeA && !activeB)
+                {
+                    continue;
+                }
+
+                bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) &&
+                                ((fA.IgnoreCcdWith & fB.CollisionCategories) == 0) && !bA.IgnoreCcd;
+                bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) &&
+                                ((fB.IgnoreCcdWith & fA.CollisionCategories) == 0) && !bB.IgnoreCcd;
+
+                // Are these two non-bullet dynamic bodies?
+                if (!collideA && !collideB)
+                {
+                    continue;
+                }
+
+                // Compute the TOI for this contact.
+                // Put the sweeps onto the same time interval.
+                float alpha0 = bA.Sweep.Alpha0;
+
+                if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
+                {
+                    alpha0 = bB.Sweep.Alpha0;
+                    bA.Sweep.Advance(alpha0);
+                }
+                else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
+                {
+                    alpha0 = bA.Sweep.Alpha0;
+                    bB.Sweep.Advance(alpha0);
+                }
+
+                //Debug.Assert(alpha0 < 1.0f);
+
+                // Compute the time of impact in interval [0, minTOI]
+                ToiInput input = new ToiInput
+                {
+                    ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA),
+                    ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB),
+                    SweepA = bA.Sweep,
+                    SweepB = bB.Sweep,
+                    Max = 1.0f
+                };
+
+                TimeOfImpact.CalculateTimeOfImpact(ref input, out ToiOutput output);
+
+                // Beta is the fraction of the remaining portion of the .
+                float beta = output.T;
+                alpha = output.State == ToiOutputState.Touching ? Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f) : 1.0f;
+
+                c.Toi = alpha;
+                c.Flags &= ~ContactFlags.ToiFlag;
+
+
+                if (alpha < minAlpha)
+                {
+                    // This is the minimum TOI found so far.
+                    minAlpha = alpha;
+                    return c;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
