@@ -402,6 +402,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             }
         }
 
+        /// <summary>
+        /// Gets the the min contact using the specified min alpha
+        /// </summary>
+        /// <param name="minAlpha">The min alpha</param>
+        /// <returns>The contact</returns>
         internal Contact GetTheMinContact(ref float minAlpha)
         {
             foreach (Contact c in ContactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))

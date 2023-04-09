@@ -13561,7 +13561,7 @@
         </member>
         <member name="M:Alis.Core.Physic.World.SolveToiEvents">
             <summary>
-            Solves the toi events
+            Solves the TOI (Time of Impact) events.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)">
