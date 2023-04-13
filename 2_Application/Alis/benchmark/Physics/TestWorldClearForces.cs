@@ -27,7 +27,10 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using BenchmarkDotNet.Attributes;
 
@@ -43,7 +46,7 @@ namespace Alis.Benchmark.Physics
         /// </summary>
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnassignedField.Global
-        [Params(10, 100, 1000, 1_000_000)] public int N;
+        [Params(10, 100, 1000)] public int N;
 
         /// <summary>
         ///     The world
@@ -61,6 +64,8 @@ namespace Alis.Benchmark.Physics
             {
                 world.Bodies.Add(new Body());
             }
+            
+            world.Update();
         }
 
         /// <summary>
@@ -68,6 +73,12 @@ namespace Alis.Benchmark.Physics
         /// </summary>
         [Benchmark]
         public void ClearForcesOriginal() => world.ClearForcesOriginal();
+        
+        /// <summary>
+        /// Fasts the clear force
+        /// </summary>
+        [Benchmark]
+        public void FastClearForce() => world.FastClearForce();
 
         /// <summary>
         ///     Optimize this instance
@@ -86,8 +97,7 @@ namespace Alis.Benchmark.Physics
         /// </summary>
         [Benchmark]
         public void ClearForcesOptimizedWithParallel() => world.ClearForcesOptimizedWithParallel();
-
-
+        
         /// <summary>
         ///     The body class
         /// </summary>
@@ -111,6 +121,8 @@ namespace Alis.Benchmark.Physics
             /// </summary>
             public List<Body> Bodies { get; } = new List<Body>();
 
+            internal Body[] BodiesArray;
+            
             /// <summary>
             ///     Clears the forces original
             /// </summary>
@@ -141,6 +153,25 @@ namespace Alis.Benchmark.Physics
                 for (int i = 0; i < Bodies.Count; i++)
                 {
                     Bodies[i].ClearForces();
+                }
+            }
+
+            internal void Update()
+            {
+                BodiesArray = Bodies.ToArray();
+            }
+            
+            /// <summary>
+            /// Fasts the clear force
+            /// </summary>
+            internal void FastClearForce()
+            {
+                ref Body start = ref MemoryMarshal.GetArrayDataReference(BodiesArray);
+                ref Body end = ref Unsafe.Add(ref start, BodiesArray.Length);
+                while (Unsafe.IsAddressLessThan(ref start, ref end))
+                {
+                    start.ClearForces();
+                    start = ref Unsafe.Add(ref start, 1);
                 }
             }
         }

@@ -137,6 +137,11 @@
                 Originals this instance
             </summary>
         </member>
+        <member name="M:Alis.Benchmark.Physics.TestWorldClearForces.FastClearForce">
+            <summary>
+            Fasts the clear force
+            </summary>
+        </member>
         <member name="M:Alis.Benchmark.Physics.TestWorldClearForces.ClearForcesOptimizedWithCopyTemp">
             <summary>
                 Optimize this instance
@@ -190,6 +195,11 @@
         <member name="M:Alis.Benchmark.Physics.TestWorldClearForces.World.ClearForcesOptimizedWithoutCopyTemp">
             <summary>
                 Clears the forces optimized v 2
+            </summary>
+        </member>
+        <member name="M:Alis.Benchmark.Physics.TestWorldClearForces.World.FastClearForce">
+            <summary>
+            Fasts the clear force
             </summary>
         </member>
         <member name="T:Alis.Benchmark.Program">
