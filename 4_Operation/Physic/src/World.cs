@@ -60,6 +60,11 @@ namespace Alis.Core.Physic
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
 
         /// <summary>
+        /// Gets or sets the value of the current
+        /// </summary>
+        public static World Current { get; set; }
+        
+        /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class
         /// </summary>
         /// <param name="gravity">The gravity</param>
@@ -79,7 +84,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the bodies
         /// </summary>
-        public List<Body> Bodies { get; } = new List<Body>();
+        private List<Body> Bodies { get; } = new List<Body>();
 
         /// <summary>
         ///     Gets or sets the value of the joints
@@ -94,18 +99,13 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the contact manager
         /// </summary>
-        public ContactManager ContactManager { get; set; }
+        internal ContactManager ContactManager { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the step
         /// </summary>
         private TimeStep TimeStepGlobal { get; set; } = new TimeStep();
         
-        /// <summary>
-        ///     The current
-        /// </summary>
-        public static World Current;
-
         /// <summary>
         ///     Adds the body using the specified body
         /// </summary>
@@ -168,7 +168,7 @@ namespace Alis.Core.Physic
             CollideContacts();
             Solve();
             SolveToi();
-            UpdateInvertedDeltaTime(dt);
+            UpdateInvertedDeltaTime();
             ClearForces();
             UpdateBreakableBodies();
         }
@@ -207,8 +207,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Updates the inverted delta time using the specified dt
         /// </summary>
-        /// <param name="dt">The dt</param>
-        private void UpdateInvertedDeltaTime(float dt) => TimeStepGlobal.InvertedDeltaTimeZero = TimeStepGlobal.DeltaTime > 0.0f ? TimeStepGlobal.InvertedDeltaTime : TimeStepGlobal.InvertedDeltaTimeZero;
+        private void UpdateInvertedDeltaTime() => TimeStepGlobal.InvertedDeltaTimeZero = TimeStepGlobal.DeltaTime > 0.0f ? TimeStepGlobal.InvertedDeltaTime : TimeStepGlobal.InvertedDeltaTimeZero;
 
         /// <summary>
         ///     Updates the breakable bodies
@@ -281,7 +280,7 @@ namespace Alis.Core.Physic
                 }
 
                 // Advance the bodies to the TOI.
-                Body[] bodies = AdvanceBody(minContact, minAlpha);
+                Body[] bodies = BodyHelper.AdvanceBody(ContactManager, island, minContact, minAlpha);
 
                 // Solve the TOI island.
                 SolveToiIsland(minAlpha, bodies[0].IslandIndex, bodies[1].IslandIndex);
@@ -301,143 +300,7 @@ namespace Alis.Core.Physic
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bool</returns>
         private static bool IsMinAlphaGreaterThanEpsilon(float minAlpha) => minAlpha >= 1.0f - Constant.Epsilon * 10.0f;
-
-        /// <summary>
-        /// Advances the body using the specified min contact
-        /// </summary>
-        /// <param name="minContact">The min contact</param>
-        /// <param name="minAlpha">The min alpha</param>
-        /// <returns>The bodies</returns>
-        private Body[] AdvanceBody(Contact minContact, float minAlpha)
-        {
-            // Advance the bodies to the TOI.
-            Fixture fA1 = minContact.FixtureA;
-            Fixture fB1 = minContact.FixtureB;
-            Body bA0 = fA1.Body;
-            Body bB0 = fB1.Body;
-            
-            Body[] bodies = {bA0, bB0};
-
-            Sweep backup1 = bA0.Sweep;
-            Sweep backup2 = bB0.Sweep;
-
-            bA0.Advance(minAlpha);
-            bB0.Advance(minAlpha);
-
-            // The TOI contact likely has some new contact points.
-            minContact.Update(ContactManager);
-            minContact.Flags &= ~ContactFlags.ToiFlag;
-            ++minContact.ToiCount;
-
-            // Is the contact solid?
-            if (!minContact.Enabled || !minContact.IsTouching)
-            {
-                // Restore the sweeps.
-                minContact.Flags &= ~ContactFlags.EnabledFlag;
-                bA0.Sweep = backup1;
-                bB0.Sweep = backup2;
-                bA0.SynchronizeTransform();
-                bB0.SynchronizeTransform();
-                return bodies;
-            }
-
-            bA0.Awake = true;
-            bB0.Awake = true;
-
-            // Build the island
-            island.Clear();
-            island.Add(bA0);
-            island.Add(bB0);
-            island.Add(minContact);
-
-            bA0.Flags |= BodyFlags.IslandFlag;
-            bB0.Flags |= BodyFlags.IslandFlag;
-            minContact.Flags &= ~ContactFlags.IslandFlag;
-
-            // Get contacts on bodyA and bodyB;
-            for (int i = 0; i < 2; ++i)
-            {
-                Body body = bodies[i];
-                if (body.BodyType == BodyType.Dynamic)
-                {
-                    for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
-                    {
-                        Contact contact = ce.Contact;
-
-                        // Has this contact already been added to the island?
-                        if (contact.IslandFlag)
-                        {
-                            continue;
-                        }
-
-                        // Only add static, kinematic, or bullet bodies.
-                        Body other = ce.Other;
-                        if ((other.BodyType == BodyType.Dynamic) &&
-                            !body.IsBullet && !other.IsBullet)
-                        {
-                            continue;
-                        }
-
-                        // Skip sensors.
-                        bool sensorA = contact.FixtureA.IsSensorPrivate;
-                        bool sensorB = contact.FixtureB.IsSensorPrivate;
-                        if (sensorA || sensorB)
-                        {
-                            continue;
-                        }
-
-                        // Tentatively advance the body to the TOI.
-                        Sweep backup = other.Sweep;
-                        if (!other.IsIsland)
-                        {
-                            other.Advance(minAlpha);
-                        }
-
-                        // Update the contact points
-                        contact.Update(ContactManager);
-
-                        // Was the contact disabled by the user?
-                        if (!contact.Enabled)
-                        {
-                            other.Sweep = backup;
-                            other.SynchronizeTransform();
-                            continue;
-                        }
-
-                        // Are there contact points?
-                        if (!contact.IsTouching)
-                        {
-                            other.Sweep = backup;
-                            other.SynchronizeTransform();
-                            continue;
-                        }
-
-                        // Add the contact to the island
-                        minContact.Flags |= ContactFlags.IslandFlag;
-                        island.Add(contact);
-
-                        // Has the other body already been added to the island?
-                        if (other.IsIsland)
-                        {
-                            continue;
-                        }
-
-                        // Add the other body to the island.
-                        other.Flags |= BodyFlags.IslandFlag;
-
-                        if (other.BodyType != BodyType.Static)
-                        {
-                            other.Awake = true;
-                        }
-
-                        island.Add(other);
-                    }
-                }
-            }
-
-            return bodies;
-        }
-
+        
         /// <summary>
         /// Solves the toi island using the specified min alpha
         /// </summary>
@@ -455,5 +318,11 @@ namespace Alis.Core.Physic
         ///     Clear all forces
         /// </summary>
         internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
+        
+        /// <summary>
+        /// Gets the bodies
+        /// </summary>
+        /// <returns>A list of body</returns>
+        internal List<Body> GetBodies() => Bodies;
     }
 }

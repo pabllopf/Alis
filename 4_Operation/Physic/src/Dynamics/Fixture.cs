@@ -282,16 +282,9 @@ namespace Alis.Core.Physic.Dynamics
 
                 edge = edge.Next;
             }
-
-            World world = World.Current;
-
-            if (world == null)
-            {
-                return;
-            }
-
+            
             // Touch each proxy so that new pairs may be created
-            IBroadPhase broadPhase = world.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
             for (int i = 0; i < ProxyCount; ++i)
             {
                 broadPhase.TouchProxy(Proxies[i].ProxyId);

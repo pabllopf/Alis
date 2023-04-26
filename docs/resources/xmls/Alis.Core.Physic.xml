@@ -3498,6 +3498,21 @@
                 The ignore ccd body flags
             </summary>
         </member>
+        <member name="T:Alis.Core.Physic.Dynamics.BodyHelper">
+            <summary>
+            The body helper class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.BodyHelper.AdvanceBody(Alis.Core.Physic.Collision.ContactSystem.ContactManager,Alis.Core.Physic.Dynamics.Solver.Island,Alis.Core.Physic.Collision.ContactSystem.Contact,System.Single)">
+            <summary>
+            Advances the body using the specified contact manager
+            </summary>
+            <param name="contactManager">The contact manager</param>
+            <param name="island">The island</param>
+            <param name="minContact">The min contact</param>
+            <param name="minAlpha">The min alpha</param>
+            <returns>The bodies</returns>
+        </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyType">
             <summary>The body type.</summary>
         </member>
@@ -13431,6 +13446,11 @@
                 The contact
             </summary>
         </member>
+        <member name="P:Alis.Core.Physic.World.Current">
+            <summary>
+            Gets or sets the value of the current
+            </summary>
+        </member>
         <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class
@@ -13465,11 +13485,6 @@
         <member name="P:Alis.Core.Physic.World.TimeStepGlobal">
             <summary>
                 Gets or sets the value of the step
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.World.Current">
-            <summary>
-                The current
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.AddBody(Alis.Core.Physic.Dynamics.Body)">
@@ -13552,11 +13567,10 @@
                 Collides the contacts
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.UpdateInvertedDeltaTime(System.Single)">
+        <member name="M:Alis.Core.Physic.World.UpdateInvertedDeltaTime">
             <summary>
                 Updates the inverted delta time using the specified dt
             </summary>
-            <param name="dt">The dt</param>
         </member>
         <member name="M:Alis.Core.Physic.World.UpdateBreakableBodies">
             <summary>
@@ -13595,14 +13609,6 @@
             <param name="minAlpha">The min alpha</param>
             <returns>The bool</returns>
         </member>
-        <member name="M:Alis.Core.Physic.World.AdvanceBody(Alis.Core.Physic.Collision.ContactSystem.Contact,System.Single)">
-            <summary>
-            Advances the body using the specified min contact
-            </summary>
-            <param name="minContact">The min contact</param>
-            <param name="minAlpha">The min alpha</param>
-            <returns>The bodies</returns>
-        </member>
         <member name="M:Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)">
             <summary>
             Solves the toi island using the specified min alpha
@@ -13620,6 +13626,12 @@
             <summary>
                 Clear all forces
             </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.GetBodies">
+            <summary>
+            Gets the bodies
+            </summary>
+            <returns>A list of body</returns>
         </member>
         <member name="T:Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve">
             <summary>
