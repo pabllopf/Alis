@@ -99,8 +99,8 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the step
         /// </summary>
-        private TimeStep TimeStep { get; set; } = new TimeStep();
-
+        private TimeStep TimeStepGlobal { get; set; } = new TimeStep();
+        
         /// <summary>
         ///     The current
         /// </summary>
@@ -186,11 +186,11 @@ namespace Alis.Core.Physic
         /// <param name="positionIterations">The position iterations</param>
         private void UpdateTimeStep(float dt, int velocityIterations, int positionIterations)
         {
-            TimeStep.DeltaTime = dt;
-            TimeStep.VelocityIterations = velocityIterations;
-            TimeStep.PositionIterations = positionIterations;
-            TimeStep.InvertedDeltaTime = dt > 0.0f ? 1.0f / dt : 0.0f;
-            TimeStep.DeltaTimeRatio = TimeStep.InvertedDeltaTimeZero * dt;
+            TimeStepGlobal.DeltaTime = dt;
+            TimeStepGlobal.VelocityIterations = velocityIterations;
+            TimeStepGlobal.PositionIterations = positionIterations;
+            TimeStepGlobal.InvertedDeltaTime = dt > 0.0f ? 1.0f / dt : 0.0f;
+            TimeStepGlobal.DeltaTimeRatio = TimeStepGlobal.InvertedDeltaTimeZero * dt;
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Alis.Core.Physic
         ///     Updates the inverted delta time using the specified dt
         /// </summary>
         /// <param name="dt">The dt</param>
-        private void UpdateInvertedDeltaTime(float dt) => TimeStep.InvertedDeltaTimeZero = TimeStep.DeltaTime > 0.0f ? TimeStep.InvertedDeltaTime : TimeStep.InvertedDeltaTimeZero;
+        private void UpdateInvertedDeltaTime(float dt) => TimeStepGlobal.InvertedDeltaTimeZero = TimeStepGlobal.DeltaTime > 0.0f ? TimeStepGlobal.InvertedDeltaTime : TimeStepGlobal.InvertedDeltaTimeZero;
 
         /// <summary>
         ///     Updates the breakable bodies
@@ -230,7 +230,7 @@ namespace Alis.Core.Physic
             ContactManager.ClearFlags();
             
             // Island solving.
-            island.Solve(TimeStep, Gravity, true, ContactManager, Bodies);
+            island.Solve(TimeStepGlobal, Gravity, true, ContactManager, Bodies);
 
             // Synchronize fixtures, check for out of range bodies.
             Bodies.ForEach(i => i.CheckOutRange());
@@ -279,7 +279,7 @@ namespace Alis.Core.Physic
                 }
 
                 // Advance the bodies to the TOI.
-                Body[] bodies = AdvanceBody(ref minContact, ref minAlpha);
+                Body[] bodies = AdvanceBody(minContact, minAlpha);
 
                 // Solve the TOI island.
                 SolveToiIsland(minAlpha, bodies[0].IslandIndex, bodies[1].IslandIndex);
@@ -306,7 +306,7 @@ namespace Alis.Core.Physic
         /// <param name="minContact">The min contact</param>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bodies</returns>
-        private Body[] AdvanceBody(ref Contact minContact, ref float minAlpha)
+        private Body[] AdvanceBody(Contact minContact, float minAlpha)
         {
             // Advance the bodies to the TOI.
             Fixture fA1 = minContact.FixtureA;
@@ -442,22 +442,7 @@ namespace Alis.Core.Physic
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="islandIndexA">The island index</param>
         /// <param name="islandIndexB">The island index</param>
-        private void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB)
-        {
-            island.SolveToi(
-                new TimeStep
-                {
-                    DeltaTime = (1.0f - minAlpha) * TimeStep.DeltaTime,
-                    InvertedDeltaTime = 1.0f / ((1.0f - minAlpha) * TimeStep.DeltaTime),
-                    DeltaTimeRatio = 1.0f,
-                    PositionIterations = 20,
-                    VelocityIterations = TimeStep.VelocityIterations,
-                    WarmStarting = false
-                },
-                islandIndexA, 
-                islandIndexB, 
-                ContactManager);
-        }
+        private void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB) => island.SolveToi(minAlpha, TimeStepGlobal, islandIndexA, islandIndexB, ContactManager);
 
         /// <summary>
         /// Synchronizes the island bodies

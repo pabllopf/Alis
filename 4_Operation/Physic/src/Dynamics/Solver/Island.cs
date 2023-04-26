@@ -81,6 +81,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The linear sleep tolerance
         /// </summary>
         private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
+        
+        /// <summary>
+        ///     Gets or sets the value of the step
+        /// </summary>
+        private TimeStep TimeStepSolveToi { get; set; } = new TimeStep();
 
         /// <summary>
         ///     Clears this instance
@@ -446,15 +451,17 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
 
-        /// <summary>
-        /// Solves the toi using the specified sub step
-        /// </summary>
-        /// <param name="subStep">The sub step</param>
-        /// <param name="toiIndexA">The toi index</param>
-        /// <param name="toiIndexB">The toi index</param>
-        /// <param name="contactManager">The contact manager</param>
-        internal void SolveToi(TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
+       
+        internal void SolveToi(float minAlpha, TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
         {
+            TimeStepSolveToi.DeltaTime = (1.0f - minAlpha) * subStep.DeltaTime;
+            TimeStepSolveToi.InvertedDeltaTime = 1.0f / ((1.0f - minAlpha) * subStep.DeltaTime);
+            TimeStepSolveToi.DeltaTimeRatio = 1.0f;
+            TimeStepSolveToi.PositionIterations = 20;
+            TimeStepSolveToi.VelocityIterations = subStep.VelocityIterations;
+            TimeStepSolveToi.WarmStarting = false;
+            
+            
             Debug.Assert(toiIndexA < Bodies.Count);
             Debug.Assert(toiIndexB < Bodies.Count);
 
