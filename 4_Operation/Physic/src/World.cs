@@ -27,16 +27,13 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.Broadphase;
 using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.TOI;
-using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -55,7 +52,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The breakable body
         /// </summary>
-        private readonly List<BreakableBody> BreakableBodies = new List<BreakableBody>();
+        private readonly List<BreakableBody> breakableBodies = new List<BreakableBody>();
 
         /// <summary>
         ///     The contact
@@ -125,13 +122,13 @@ namespace Alis.Core.Physic
         ///     Adds the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
-        public void AddBreakableBody(BreakableBody breakableBody) => BreakableBodies.Add(breakableBody);
+        public void AddBreakableBody(BreakableBody breakableBody) => breakableBodies.Add(breakableBody);
 
         /// <summary>
         ///     Removes the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
-        public void RemoveBreakableBody(BreakableBody breakableBody) => BreakableBodies.Remove(breakableBody);
+        public void RemoveBreakableBody(BreakableBody breakableBody) => breakableBodies.Remove(breakableBody);
 
         /// <summary>
         ///     Adds the joint using the specified joint
@@ -216,7 +213,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Updates the breakable bodies
         /// </summary>
-        private void UpdateBreakableBodies() => BreakableBodies.ForEach(body => body.Update());
+        private void UpdateBreakableBodies() => breakableBodies.ForEach(body => body.Update());
 
         /// <summary>
         ///     Solves the step
@@ -275,7 +272,7 @@ namespace Alis.Core.Physic
                 // Find the first TOI contact.
                 Contact minContact = ContactManager.GetTheMinContact(ref minAlpha);
 
-                if (minContact == null || minAlpha >= 1.0f - Constant.Epsilon * 10.0f)
+                if (minContact == null || IsMinAlphaGreaterThanEpsilon(minAlpha))
                 {
                     // No more TOI events. Done!
                     return;
@@ -295,7 +292,14 @@ namespace Alis.Core.Physic
                 FindNewContacts();
             }
         }
-        
+
+        /// <summary>
+        /// Describes whether this instance is min alpha greater than epsilon
+        /// </summary>
+        /// <param name="minAlpha">The min alpha</param>
+        /// <returns>The bool</returns>
+        private static bool IsMinAlphaGreaterThanEpsilon(float minAlpha) => minAlpha >= 1.0f - Constant.Epsilon * 10.0f;
+
         /// <summary>
         /// Advances the body using the specified min contact
         /// </summary>

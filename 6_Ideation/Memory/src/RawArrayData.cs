@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:RawArrayData.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,32 +27,49 @@
 // 
 //  --------------------------------------------------------------------------
 
-#if RELEASE
-using BenchmarkDotNet.Running;
-#endif
-
-#if DEBUG
-using System;
-using System.Linq;
-using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Exporters;
-using BenchmarkDotNet.Running;
-#endif
-
-namespace Alis.Benchmark
+namespace Alis.Core.Aspect.Memory
 {
     /// <summary>
-    ///     The program class
+    /// The raw array data class
     /// </summary>
-    public class Program
+    public sealed class RawArrayData
     {
         /// <summary>
-        ///     Main the args
+        /// The length
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
+        public uint Length;
+        
+        /// <summary>
+        /// The padding
+        /// </summary>
+        public uint Padding;
+        
+        /// <summary>
+        /// The data
+        /// </summary>
+        public byte Data;
+        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RawArrayData"/> class
+        /// </summary>
+        public RawArrayData()
         {
-            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
+            Length = 0;
+            Padding = 0;
+            Data = 1;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RawArrayData"/> class
+        /// </summary>
+        /// <param name="length">The length</param>
+        /// <param name="padding">The padding</param>
+        /// <param name="data">The data</param>
+        public RawArrayData(uint length, uint padding, byte data)
+        {
+            Length = length;
+            Padding = padding;
+            Data = data;
         }
     }
 }

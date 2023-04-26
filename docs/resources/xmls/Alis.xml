@@ -48236,7 +48236,7 @@
                 The island
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.BreakableBodies">
+        <member name="F:Alis.Core.Physic.World.breakableBodies">
             <summary>
                 The breakable body
             </summary>
@@ -48402,6 +48402,13 @@
             <summary>
             Solves the TOI (Time of Impact) events.
             </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.World.IsMinAlphaGreaterThanEpsilon(System.Single)">
+            <summary>
+            Describes whether this instance is min alpha greater than epsilon
+            </summary>
+            <param name="minAlpha">The min alpha</param>
+            <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Physic.World.AdvanceBody(Alis.Core.Physic.Collision.ContactSystem.Contact@,System.Single@)">
             <summary>
@@ -52425,6 +52432,166 @@
         </member>
         <member name="F:Alis.Core.Aspect.Math.Vector.Vector4I.W">
             <summary>Projective/Homogenous component of the vector</summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.FastList`1">
+            <summary>
+            The fast list class
+            </summary>
+            <seealso cref="T:System.Collections.Generic.IList`1"/>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.FastList`1.items">
+            <summary>
+            The items
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.FastList`1.count">
+            <summary>
+            The count
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the class
+            </summary>
+            <param name="i"></param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.#ctor">
+            <summary>
+            Initializes a new instance of the class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Memory.FastList`1.Count">
+            <summary>
+            Gets the value of the count
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Memory.FastList`1.IsReadOnly">
+            <summary>
+            Gets the value of the is read only
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Memory.FastList`1.Item(System.Int32)">
+            <summary>
+            The value
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.Add(`0)">
+            <summary>
+            Adds the item
+            </summary>
+            <param name="item">The item</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.Clear">
+            <summary>
+            Clears this instance
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.Contains(`0)">
+            <summary>
+            Describes whether this instance contains
+            </summary>
+            <param name="item">The item</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.CopyTo(`0[],System.Int32)">
+            <summary>
+            Copies the to using the specified array
+            </summary>
+            <param name="array">The array</param>
+            <param name="arrayIndex">The array index</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.GetEnumerator">
+            <summary>
+            Gets the enumerator
+            </summary>
+            <returns>An enumerator of t</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.IndexOf(`0)">
+            <summary>
+            Indexes the of using the specified item
+            </summary>
+            <param name="item">The item</param>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.Insert(System.Int32,`0)">
+            <summary>
+            Inserts the index
+            </summary>
+            <param name="index">The index</param>
+            <param name="item">The item</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.ShiftRight(System.Int32,System.Int32)">
+            <summary>
+            Shifts the right using the specified start
+            </summary>
+            <param name="start">The start</param>
+            <param name="shift">The shift</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.Remove(`0)">
+            <summary>
+            Describes whether this instance remove
+            </summary>
+            <param name="item">The item</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes the at using the specified index
+            </summary>
+            <param name="index">The index</param>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.GetRefNativeArray">
+            <summary>
+            Gets the items
+            </summary>
+            <returns>The items</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Gets the enumerator
+            </summary>
+            <returns>The enumerator</returns>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.FastList`1.ForEach(System.Action{`0})">
+            <summary>
+            For the each using the specified action
+            </summary>
+            <param name="action">The action</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Memory.RawArrayData">
+            <summary>
+            The raw array data class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.RawArrayData.Length">
+            <summary>
+            The length
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.RawArrayData.Padding">
+            <summary>
+            The padding
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Memory.RawArrayData.Data">
+            <summary>
+            The data
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.RawArrayData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Memory.RawArrayData"/> class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Memory.RawArrayData.#ctor(System.UInt32,System.UInt32,System.Byte)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Memory.RawArrayData"/> class
+            </summary>
+            <param name="length">The length</param>
+            <param name="padding">The padding</param>
+            <param name="data">The data</param>
         </member>
         <member name="T:Alis.Core.Aspect.Memory.Streams.SFML.InputStream">
             <summary>

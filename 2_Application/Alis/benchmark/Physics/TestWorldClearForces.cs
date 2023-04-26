@@ -27,11 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Alis.Core.Aspect.Memory;
 using BenchmarkDotNet.Attributes;
 
 namespace Alis.Benchmark.Physics
@@ -46,7 +46,7 @@ namespace Alis.Benchmark.Physics
         /// </summary>
         // ReSharper disable once MemberCanBePrivate.Global
         // ReSharper disable once UnassignedField.Global
-        [Params(10, 100, 1000)] public int N;
+        [Params(10)] public int N;
 
         /// <summary>
         ///     The world
@@ -63,23 +63,30 @@ namespace Alis.Benchmark.Physics
             for (int i = 0; i < N; i++)
             {
                 world.Bodies.Add(new Body());
+                world.FastListBodies.Add(new Body());
             }
             
             world.Update();
         }
 
         /// <summary>
-        ///     Originals this instance
+        /// Fasts the clear force
         /// </summary>
         [Benchmark]
-        public void ClearForcesOriginal() => world.ClearForcesOriginal();
+        public void FastClearForce() => world.FastClearForce();
         
         /// <summary>
         /// Fasts the clear force
         /// </summary>
         [Benchmark]
-        public void FastClearForce() => world.FastClearForce();
-
+        public void FastClearForce_v2() => world.FastClearForce_v2();
+        
+        /// <summary>
+        ///     Originals this instance
+        /// </summary>
+        [Benchmark]
+        public void ClearForcesOriginal() => world.ClearForcesOriginal();
+        
         /// <summary>
         ///     Optimize this instance
         /// </summary>
@@ -120,7 +127,15 @@ namespace Alis.Benchmark.Physics
             ///     Gets the value of the bodies
             /// </summary>
             public List<Body> Bodies { get; } = new List<Body>();
+            
+            /// <summary>
+            /// Gets the value of the fast list bodies
+            /// </summary>
+            public FastList<Body> FastListBodies { get; } = new FastList<Body>();
 
+            /// <summary>
+            /// The bodies array
+            /// </summary>
             internal Body[] BodiesArray;
             
             /// <summary>
@@ -156,6 +171,9 @@ namespace Alis.Benchmark.Physics
                 }
             }
 
+            /// <summary>
+            /// Updates this instance
+            /// </summary>
             internal void Update()
             {
                 BodiesArray = Bodies.ToArray();
@@ -171,6 +189,20 @@ namespace Alis.Benchmark.Physics
                 while (Unsafe.IsAddressLessThan(ref start, ref end))
                 {
                     start.ClearForces();
+                    start = ref Unsafe.Add(ref start, 1);
+                }
+            }
+            
+            /// <summary>
+            /// Fasts the clear force v 2
+            /// </summary>
+            internal void FastClearForce_v2()
+            {
+                ref Body start = ref Unsafe.As<byte, Body>(ref Unsafe.As<RawArrayData>(FastListBodies.GetRefNativeArray()).Data);
+                ref Body end = ref Unsafe.Add(ref start, FastListBodies.GetRefNativeArray().Length);
+                while (Unsafe.IsAddressLessThan(ref start, ref end))
+                {
+                    start?.ClearForces();
                     start = ref Unsafe.Add(ref start, 1);
                 }
             }

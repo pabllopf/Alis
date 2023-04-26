@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:TestInsertOnList.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,45 +27,69 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Aspect.Memory.Sample
+using System;
+using System.Collections.Generic;
+using Alis.Core.Aspect.Memory;
+using BenchmarkDotNet.Attributes;
+
+namespace Alis.Benchmark.Iterator
 {
     /// <summary>
-    ///     The program class
+    /// The test insert on list class
     /// </summary>
-    public class Program
+    public class TestInsertOnList
     {
         /// <summary>
-        ///     Main the args
+        ///     Gets or sets the value of the n
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            FastClearForce_v2();
-        }
+        [Params(10)]
+        // ReSharper disable once MemberCanBePrivate.Global
+        public int N { get; set; }
         
         /// <summary>
-        /// Fasts the clear force v 2
+        /// The list
         /// </summary>
-        internal static void FastClearForce_v2()
+        public List<int> bodyList = new List<int>();
+        
+        
+        /// <summary>
+        /// The fast list
+        /// </summary>
+        public FastList<int> bodyListFast = new FastList<int>();
+
+        /// <summary>
+        ///     Setup this instance
+        /// </summary>
+        [GlobalSetup]
+        public void Setup()
         {
-            FastList<World> list = new FastList<World>();
-            list.Add(new World());
-            list.Add(new World());
-            
-            list.ForEach(i => i.clear());
+            bodyList = new List<int>(N);
+            bodyListFast = new FastList<int>(N);
         }
 
         /// <summary>
-        /// The world class
+        /// Inserts the normal list
         /// </summary>
-        public class World
+        [Benchmark]
+        public void InsertNormalList()
         {
-            /// <summary>
-            /// Clears this instance
-            /// </summary>
-            public void clear()
+            for (int i = 0; i < N; i++)
             {
-                System.Console.WriteLine("limpiar");
+                int value = Random.Shared.Next(0, N);
+                bodyList.Insert(i, value);
+            }
+        }
+        
+        /// <summary>
+        /// Inserts the fast list
+        /// </summary>
+        [Benchmark]
+        public void InsertFastList()
+        {
+            for (int i = 0; i < N; i++)
+            {
+                int value = Random.Shared.Next(0, N);
+                bodyListFast.Insert(i, value);
             }
         }
     }
