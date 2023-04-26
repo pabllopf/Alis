@@ -452,6 +452,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
 
        
+        /// <summary>
+        /// Solves the toi using the specified min alpha
+        /// </summary>
+        /// <param name="minAlpha">The min alpha</param>
+        /// <param name="subStep">The sub step</param>
+        /// <param name="toiIndexA">The toi index</param>
+        /// <param name="toiIndexB">The toi index</param>
+        /// <param name="contactManager">The contact manager</param>
         internal void SolveToi(float minAlpha, TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
         {
             TimeStepSolveToi.DeltaTime = (1.0f - minAlpha) * subStep.DeltaTime;

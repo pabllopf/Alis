@@ -270,7 +270,9 @@ namespace Alis.Core.Physic
                 float minAlpha = 1.0f;
                 
                 // Find the first TOI contact.
-                Contact minContact = ContactManager.GetTheMinContact(ref minAlpha);
+                Contact minContact = ContactManager.GetTheMinContact(minAlpha);
+                
+                minAlpha = ContactManager.CalculateMinAlpha(); 
 
                 if (minContact == null || IsMinAlphaGreaterThanEpsilon(minAlpha))
                 {

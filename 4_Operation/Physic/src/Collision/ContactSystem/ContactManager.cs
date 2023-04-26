@@ -57,6 +57,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public CollisionFilterHandler ContactFilter;
 
         /// <summary>
+        /// The last min alpha
+        /// </summary>
+        private float lastMinAlpha;
+
+        /// <summary>
         ///     The contact list
         /// </summary>
         internal List<Contact> ContactList = new List<Contact>();
@@ -407,7 +412,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The contact</returns>
-        internal Contact GetTheMinContact(ref float minAlpha)
+        internal Contact GetTheMinContact(float minAlpha)
         {
             foreach (Contact c in ContactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))
             {
@@ -495,7 +500,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 if (alpha < minAlpha)
                 {
                     // This is the minimum TOI found so far.
-                    minAlpha = alpha;
+                    lastMinAlpha = alpha;
                     return c;
                 }
             }
@@ -532,5 +537,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// Invalidates the toi
         /// </summary>
         public void InvalidateTOI() => ContactList.ForEach(i => i.InvalidateTOI());
+
+        /// <summary>
+        /// Calculates the min alpha
+        /// </summary>
+        /// <returns>The float</returns>
+        public float CalculateMinAlpha() => lastMinAlpha;
     }
 }

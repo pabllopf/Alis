@@ -869,6 +869,11 @@
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactFilter">
             <summary>The filter used by the contact manager.</summary>
         </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.lastMinAlpha">
+            <summary>
+            The last min alpha
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactList">
             <summary>
                 The contact list
@@ -950,6 +955,12 @@
             <summary>
             Invalidates the toi
             </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CalculateMinAlpha">
+            <summary>
+            Calculates the min alpha
+            </summary>
+            <returns>The float</returns>
         </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactType">
             <summary>
@@ -6975,6 +6986,16 @@
             <param name="allowSleep">The allow sleep</param>
             <param name="contactManager">The contact manager</param>
             <param name="bodiesOfWorld">The bodies of world</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(System.Single,Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Int32,Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
+            <summary>
+            Solves the toi using the specified min alpha
+            </summary>
+            <param name="minAlpha">The min alpha</param>
+            <param name="subStep">The sub step</param>
+            <param name="toiIndexA">The toi index</param>
+            <param name="toiIndexB">The toi index</param>
+            <param name="contactManager">The contact manager</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Add(Alis.Core.Physic.Dynamics.Body)">
             <summary>
