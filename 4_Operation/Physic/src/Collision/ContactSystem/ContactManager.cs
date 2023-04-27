@@ -45,9 +45,19 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     /// </summary>
     public class ContactManager
     {
+        /// <summary>
+        /// The current instance
+        /// </summary>
+        public static ContactManager Current;
+        
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact;
-
+        
+        /// <summary>
+        ///     The contact
+        /// </summary>
+        public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
+        
         /// <summary>
         ///     The contact count
         /// </summary>
@@ -84,6 +94,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="broadPhase">The broad phase</param>
         internal ContactManager(IBroadPhase broadPhase)
         {
+            Current = this;
             BroadPhase = broadPhase;
             OnBroadphaseCollision = AddPair;
         }

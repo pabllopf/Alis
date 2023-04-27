@@ -53,16 +53,6 @@ namespace Alis.Core.Physic
         ///     The breakable body
         /// </summary>
         private readonly List<BreakableBody> breakableBodies = new List<BreakableBody>();
-
-        /// <summary>
-        ///     The contact
-        /// </summary>
-        public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
-
-        /// <summary>
-        /// Gets or sets the value of the current
-        /// </summary>
-        public static World Current { get; set; }
         
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class
@@ -71,7 +61,6 @@ namespace Alis.Core.Physic
         public World(Vector2F gravity)
         {
             Gravity = gravity;
-            Current = this;
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
             island = new Island();
         }

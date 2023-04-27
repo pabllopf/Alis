@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Universe.cs
+//  File:WorldObject.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,50 +27,12 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-
 namespace Alis.Core.Physic
 {
     /// <summary>
-    /// The universe class
+    /// The world object class
     /// </summary>
-    public class Universe
+    public abstract class WorldObject
     {
-        /// <summary>
-        /// The worlds
-        /// </summary>
-        private readonly List<World> worlds = new List<World>();
-        
-        /// <summary>
-        /// Adds the world using the specified world
-        /// </summary>
-        /// <param name="world">The world</param>
-        public void AddWorld(World world) => worlds.Add(world);
-
-        /// <summary>
-        /// Removes the world using the specified world
-        /// </summary>
-        /// <param name="world">The world</param>
-        public void RemoveWorld(World world) => worlds.Remove(world);
-        
-        /// <summary>
-        /// Describes whether this instance contains world
-        /// </summary>
-        /// <param name="world">The world</param>
-        /// <returns>The bool</returns>
-        public bool ContainsWorld(World world) => worlds.Contains(world);
-        
-        /// <summary>
-        /// Counts the worlds
-        /// </summary>
-        /// <returns>The int</returns>
-        public int CountWorlds() => worlds.Count;
-
-        /// <summary>
-        /// Updates this instance
-        /// </summary>
-        public void Update()
-        {
-        }
     }
 }

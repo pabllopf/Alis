@@ -272,13 +272,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     ContactEdge ce0 = ce;
                     ce = ce.Next;
-                    World.Current.ContactManager.Remove(ce0.Contact);
+                    ContactManager.Current.Remove(ce0.Contact);
                 }
 
                 ContactList = null;
 
                 // Touch the proxies so that new contacts will be created (when appropriate)
-                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 foreach (Fixture fixture in FixtureList)
                 {
                     int proxyCount = fixture.ProxyCount;
@@ -437,7 +437,7 @@ namespace Alis.Core.Physic.Dynamics
                     Flags |= BodyFlags.Enabled;
 
                     // Create all proxies.
-                    IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
                         FixtureList[i].CreateProxies(broadPhase, ref Xf);
@@ -448,7 +448,7 @@ namespace Alis.Core.Physic.Dynamics
                     Flags &= ~BodyFlags.Enabled;
 
                     // Destroy all proxies.
-                    IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
 
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
@@ -461,7 +461,7 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         ContactEdge ce0 = ce;
                         ce = ce.Next;
-                        World.Current.ContactManager.Remove(ce0.Contact);
+                        ContactManager.Current.Remove(ce0.Contact);
                     }
 
                     ContactList = null;
@@ -782,7 +782,7 @@ namespace Alis.Core.Physic.Dynamics
 
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 fixture.CreateProxies(broadPhase, ref Xf);
             }
 
@@ -849,13 +849,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // This destroys the contact and removes it from
                     // this body's contact list.
-                    World.Current.ContactManager.Remove(c);
+                    ContactManager.Current.Remove(c);
                 }
             }
 
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
 
@@ -896,7 +896,7 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C;
             Sweep.A0 = rotation;
 
-            IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
             for (int i = 0; i < FixtureList.Count; i++)
             {
                 FixtureList[i].Synchronize(broadPhase, ref Xf, ref Xf);
@@ -1213,19 +1213,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The world velocity of a point.</returns>
         public Vector2F GetLinearVelocityFromLocalPoint(ref Vector2F localPoint) =>
             GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
-
-        /// <summary> Calling this will remove the body from its associated world.</summary>
-        public void RemoveFromWorld()
-        {
-            World.Current.RemoveBody(this);
-        }
-
+        
         /// <summary>
         ///     Synchronizes the fixtures
         /// </summary>
         internal void SynchronizeFixtures()
         {
-            IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
 
             if ((Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
             {

@@ -858,8 +858,18 @@
                 The contact manager class
             </summary>
         </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Current">
+            <summary>
+            The current instance
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact">
             <summary>Fires when a contact is created</summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactPool">
+            <summary>
+                The contact
+            </summary>
         </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactCounter">
             <summary>
@@ -3409,9 +3419,6 @@
             <summary>Get the world velocity of a local point.</summary>
             <param name="localPoint">A point in local coordinates.</param>
             <returns>The world velocity of a point.</returns>
-        </member>
-        <member name="M:Alis.Core.Physic.Dynamics.Body.RemoveFromWorld">
-            <summary> Calling this will remove the body from its associated world.</summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.SynchronizeFixtures">
             <summary>
@@ -12810,6 +12817,46 @@
                 - Does not care about winding order.
             </summary>
         </member>
+        <member name="T:Alis.Core.Physic.Universe">
+            <summary>
+            The universe class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Universe.worlds">
+            <summary>
+            The worlds
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Universe.AddWorld(Alis.Core.Physic.World)">
+            <summary>
+            Adds the world using the specified world
+            </summary>
+            <param name="world">The world</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Universe.RemoveWorld(Alis.Core.Physic.World)">
+            <summary>
+            Removes the world using the specified world
+            </summary>
+            <param name="world">The world</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Universe.ContainsWorld(Alis.Core.Physic.World)">
+            <summary>
+            Describes whether this instance contains world
+            </summary>
+            <param name="world">The world</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Universe.CountWorlds">
+            <summary>
+            Counts the worlds
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="M:Alis.Core.Physic.Universe.Update">
+            <summary>
+            Updates this instance
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Utilities.Line">
             <summary>
                 Collection of helper methods for misc collisions. Does float tolerance and line collisions with lines and
@@ -13441,16 +13488,6 @@
                 The breakable body
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.ContactPool">
-            <summary>
-                The contact
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.World.Current">
-            <summary>
-            Gets or sets the value of the current
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
             <summary>
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class
@@ -13632,6 +13669,11 @@
             Gets the bodies
             </summary>
             <returns>A list of body</returns>
+        </member>
+        <member name="T:Alis.Core.Physic.WorldObject">
+            <summary>
+            The world object class
+            </summary>
         </member>
         <member name="T:Alis.Core.Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve">
             <summary>
