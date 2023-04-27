@@ -8340,6 +8340,43 @@
             <param name="def">The def</param>
             <returns>The joint</returns>
         </member>
+        <member name="T:Alis.Core.Physic.Figure.FigureBase">
+            <summary>
+            The figure base class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Physic.Figure.Rectangle">
+            <summary>
+            The rectangle class
+            </summary>
+            <seealso cref="T:Alis.Core.Physic.Figure.FigureBase"/>
+        </member>
+        <member name="M:Alis.Core.Physic.Figure.Rectangle.#ctor(System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Dynamics.BodyType,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Single)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Figure.Rectangle"/> class
+            </summary>
+            <param name="width">The width</param>
+            <param name="height">The height</param>
+            <param name="position">The position</param>
+            <param name="linearVelocity">The linear velocity</param>
+            <param name="bodyType">The body type</param>
+            <param name="angle">The angle</param>
+            <param name="angularVelocity">The angular velocity</param>
+            <param name="linearDamping">The linear damping</param>
+            <param name="angularDamping">The angular damping</param>
+            <param name="allowSleep">The allow sleep</param>
+            <param name="awake">The awake</param>
+            <param name="fixedRotation">The fixed rotation</param>
+            <param name="isBullet">The is bullet</param>
+            <param name="enabled">The enabled</param>
+            <param name="gravityScale">The gravity scale</param>
+        </member>
+        <member name="T:Alis.Core.Physic.Figure.Square">
+            <summary>
+            The square class
+            </summary>
+            <seealso cref="T:Alis.Core.Physic.Figure.FigureBase"/>
+        </member>
         <member name="T:Alis.Core.Physic.Shared.Aabb">
             <summary>An axis aligned bounding box.</summary>
         </member>
@@ -13589,7 +13626,7 @@
             Sets the alpha to zero for fast moving bodies
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.World.InvalidateContactToIs">
+        <member name="M:Alis.Core.Physic.World.InvalidateContactToi">
             <summary>
             Invalidates the contact to is
             </summary>

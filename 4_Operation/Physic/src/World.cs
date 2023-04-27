@@ -232,7 +232,7 @@ namespace Alis.Core.Physic
         private void SolveToi()
         {
             SetAlphaToZeroForFastMovingBodies();
-            InvalidateContactToIs();
+            InvalidateContactToi();
             SolveToiEvents();
         }
         
@@ -244,7 +244,7 @@ namespace Alis.Core.Physic
         /// <summary>
         /// Invalidates the contact to is
         /// </summary>
-        private void InvalidateContactToIs() => ContactManager.InvalidateTOI();
+        private void InvalidateContactToi() => ContactManager.InvalidateTOI();
         
         /// <summary>
         /// Solves the TOI (Time of Impact) events.
