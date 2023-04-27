@@ -33,7 +33,6 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
 using Alis.Core.Physic.Collision.Broadphase;
 using Alis.Core.Physic.Collision.ContactSystem;
-using Alis.Core.Physic.Collision.TOI;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -73,7 +72,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the bodies
         /// </summary>
-        private List<Body> Bodies { get; } = new List<Body>();
+        public List<Body> Bodies { get; } = new List<Body>();
 
         /// <summary>
         ///     Gets or sets the value of the joints
@@ -307,11 +306,5 @@ namespace Alis.Core.Physic
         ///     Clear all forces
         /// </summary>
         internal void ClearForces() => Bodies.ForEach(i => i.ClearForces());
-        
-        /// <summary>
-        /// Gets the bodies
-        /// </summary>
-        /// <returns>A list of body</returns>
-        internal List<Body> GetBodies() => Bodies;
     }
 }

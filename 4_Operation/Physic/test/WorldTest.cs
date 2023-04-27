@@ -75,8 +75,8 @@ namespace Alis.Core.Physic.Test
             world.AddBody(mockBody.Object);
 
             // Assert that the mock body object is added to the bodies collection.
-            Assert.Single(world.GetBodies());
-            Assert.Equal(mockBody.Object, world.GetBodies()[0]);
+            Assert.Single(world.Bodies);
+            Assert.Equal(mockBody.Object, world.Bodies[0]);
         }
 
         #endregion
@@ -123,13 +123,13 @@ namespace Alis.Core.Physic.Test
             world.ClearForces();
 
             // Assert that the ClearForces method is called on the mock body object.
-            Assert.Single(world.GetBodies());
+            Assert.Single(world.Bodies);
 
             // Assert that the force is zero
-            Assert.Equal(Vector2F.Zero, world.GetBodies()[0].Force);
+            Assert.Equal(Vector2F.Zero, world.Bodies[0].Force);
 
             // Assert that the torque is zero
-            Assert.Equal(0, world.GetBodies()[0].Torque);
+            Assert.Equal(0, world.Bodies[0].Torque);
 
             // Verify that the ClearForces method is called on the mock body object.
             mockBody.VerifyAll();
@@ -174,19 +174,19 @@ namespace Alis.Core.Physic.Test
             world.ClearForces();
 
             // Assert that is not empty bodies
-            Assert.NotEmpty(world.GetBodies());
+            Assert.NotEmpty(world.Bodies);
 
             // Assert that is 10 bodies
-            Assert.Equal(10, world.GetBodies().Count);
+            Assert.Equal(10, world.Bodies.Count);
 
             // Assert that all bodies set to zero force and torque
             for (int i = 0; i < 10; i++)
             {
                 // Assert that the force is zero
-                Assert.Equal(Vector2F.Zero, world.GetBodies()[i].Force);
+                Assert.Equal(Vector2F.Zero, world.Bodies[i].Force);
 
                 // Assert that the torque is zero
-                Assert.Equal(0, world.GetBodies()[i].Torque);
+                Assert.Equal(0, world.Bodies[i].Torque);
             }
 
             // Verify that the ClearForces method is called on the mock body object.
@@ -212,7 +212,7 @@ namespace Alis.Core.Physic.Test
             world.ClearForces();
 
             // Assert that is empty bodies
-            Assert.Empty(world.GetBodies());
+            Assert.Empty(world.Bodies);
         }
 
         #endregion

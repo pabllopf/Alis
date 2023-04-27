@@ -32,10 +32,6 @@ using BenchmarkDotNet.Running;
 #endif
 
 #if DEBUG
-using System;
-using System.Linq;
-using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Exporters;
 using BenchmarkDotNet.Running;
 #endif
 

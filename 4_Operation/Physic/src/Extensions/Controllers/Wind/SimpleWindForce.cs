@@ -60,7 +60,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
         /// <param name="strength">The strength</param>
         public override void ApplyForce(float dt, float strength)
         {
-            foreach (Body body in World.GetBodies())
+            foreach (Body body in World.Bodies)
             {
                 float decayMultiplier = GetDecayMultiplier(body);
 
