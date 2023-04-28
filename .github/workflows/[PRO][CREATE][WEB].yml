@@ -30,7 +30,7 @@ jobs:
         run: git add .
 
       - name: commit
-        run: "git commit -m 'docs: create automatic web.'"
+        run: "git commit -m 'create automatic web.'"
 
       - name: git push
         run: git push 
