@@ -1,4 +1,3 @@
-# Run test of the framework.
 name: "[DEV][TEST]"
 
 on:
@@ -8,7 +7,7 @@ on:
     branches: [ develop ]
 
 jobs:
-  Test_On_Macos_Latest:
+  Run_Test_On_MacOs_Latest:
     runs-on: macos-latest
     steps:
       - name: Checkout repository
@@ -21,13 +20,10 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Dotnet install workload
-        run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
-
       - name: Dotnet test
         run: dotnet test alis.sln
 
-  Windows_Latest:
+  Run_Test_On_Windows_Latest:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -40,12 +36,24 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - name: Dotnet install workload
-        run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
-
       - name: Dotnet test
         run: dotnet test alis.sln
-        
+  
+  Run_Test_On_Ubuntu_Latest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: develop
+
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Dotnet test
+        run: dotnet test alis.sln    
         
         
     
