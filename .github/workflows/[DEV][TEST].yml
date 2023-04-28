@@ -1,8 +1,10 @@
-name: "[DEV][TEST]"
+name: "[PRO][TEST]"
 
 on:
-  schedule:
-    - cron: '30 1 * * *'
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
 
 jobs:
   Run_Test_On_MacOs_Latest_Release:
