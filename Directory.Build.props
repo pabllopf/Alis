@@ -2,6 +2,7 @@
     <PropertyGroup Label="BasePath">
         <SolutionDir Condition="'$(SolutionDir)'==''">$(MSBuildThisFileDirectory)</SolutionDir>
     </PropertyGroup>
+    
     <PropertyGroup>
         <AssemblyVersion>0.0.6</AssemblyVersion>
     </PropertyGroup>
