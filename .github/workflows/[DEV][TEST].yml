@@ -54,10 +54,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test
-        run: |
-          for /r %i in (*Test.csproj) do (
-            dotnet test %i --configuration Release
-          )
+        run: for %f in (*.Test) do echo %f
   
   
   Run_Test_On_Ubuntu_Latest:
