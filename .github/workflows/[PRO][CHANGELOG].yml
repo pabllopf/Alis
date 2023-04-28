@@ -44,7 +44,7 @@ jobs:
         uses: Requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: "v${{ $VERSION }}"
+          tag: "v'${{ env.VERSION }}'"
           writeToFile: true
           excludeTypes: chore, perf
 
@@ -63,8 +63,8 @@ jobs:
       - name: git add .
         run: git add .
 
-      - name: git commit -m "Create the packages of version '$VERSION'."
-        run: git commit -m "Create the packages of version '$VERSION'."
+      - name: git commit -m "Update changelog '${{ env.VERSION }}'."
+        run: git commit -m "Update changelog '${{ env.VERSION }}'."
 
       - name: git push
         run: git push
