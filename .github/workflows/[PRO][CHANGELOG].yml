@@ -44,7 +44,7 @@ jobs:
         uses: Requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: "v${{ env.$VERSION }}"
+          tag: "v${{ $VERSION }}"
           writeToFile: true
           excludeTypes: chore, perf
 
