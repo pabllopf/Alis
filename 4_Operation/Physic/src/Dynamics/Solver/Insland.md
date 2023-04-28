@@ -1,9 +1,9 @@
-
 Position Correction Notes
 =========================
 
 I tried the several algorithms for position correction of the 2D revolute joint.
 I looked at these systems:
+
 - simple pendulum (1m diameter sphere on massless 5m stick) with initial angular velocity of 100 rad/s.
 - suspension bridge with 30 1m long planks of length 1m.
 - multi-link chain with 30 1m long links.
@@ -77,8 +77,6 @@ a system where the user can select the algorithm on a per joint basis. I would
 probably default to the slower Full NGS and let the user select the faster
 Baumgarte method in performance critical scenarios.
 
-
-
 Cache Performance
 
 The Box2D solvers are dominated by cache misses. Data structures are designed
@@ -92,8 +90,6 @@ impulses and the bodies velocities/positions. The impulses are held inside the
 constraint structures. The body velocities/positions are held in compact, temporary
 arrays to increase the number of cache hits. Linear and angular velocity are
 stored in a single array since multiple arrays lead to multiple misses.
-
-
 
 2D Rotation
 

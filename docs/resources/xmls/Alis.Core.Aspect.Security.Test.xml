@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0"?>
-<doc>
-    <assembly>
-        <name>Alis.Core.Aspect.Security.Test</name>
-    </assembly>
-    <members>
-    </members>
-</doc>
-=======
 <?xml version="1.0"?>
 <doc>
     <assembly>
@@ -27,4 +17,3 @@
         </member>
     </members>
 </doc>
->>>>>>> develop

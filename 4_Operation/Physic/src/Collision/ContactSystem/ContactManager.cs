@@ -27,8 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Alis.Core.Physic.Collision.Broadphase;
+using Alis.Core.Physic.Collision.Distance;
 using Alis.Core.Physic.Collision.Handlers;
+using Alis.Core.Physic.Collision.TOI;
+using Alis.Core.Physic.Config;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Handlers;
 
@@ -39,9 +45,19 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     /// </summary>
     public class ContactManager
     {
+        /// <summary>
+        /// The current instance
+        /// </summary>
+        public static ContactManager Current;
+        
         /// <summary>Fires when a contact is created</summary>
         public BeginContactHandler BeginContact;
-
+        
+        /// <summary>
+        ///     The contact
+        /// </summary>
+        public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
+        
         /// <summary>
         ///     The contact count
         /// </summary>
@@ -51,9 +67,14 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public CollisionFilterHandler ContactFilter;
 
         /// <summary>
+        /// The last min alpha
+        /// </summary>
+        private float lastMinAlpha;
+
+        /// <summary>
         ///     The contact list
         /// </summary>
-        internal Contact ContactList;
+        internal List<Contact> ContactList = new List<Contact>();
 
         /// <summary>Fires when a contact is deleted</summary>
         public EndContactHandler EndContact;
@@ -73,6 +94,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <param name="broadPhase">The broad phase</param>
         internal ContactManager(IBroadPhase broadPhase)
         {
+            Current = this;
             BroadPhase = broadPhase;
             OnBroadphaseCollision = AddPair;
         }
@@ -184,6 +206,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             bodyB = fixtureB.Body;
 
             // Insert into the world.
+            /*
             c.Previous = null;
             c.Next = ContactList;
             if (ContactList != null)
@@ -191,7 +214,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 ContactList.Previous = c;
             }
 
-            ContactList = c;
+            ContactList = c;*/
+
+            ContactList.Add(c);
+
 
             // Connect to island graph.
 
@@ -262,6 +288,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             Body bodyB = fixtureB.Body;
 
             // Remove from the world.
+            /*
             if (c.Previous != null)
             {
                 c.Previous.Next = c.Next;
@@ -275,7 +302,8 @@ namespace Alis.Core.Physic.Collision.ContactSystem
             if (c == ContactList)
             {
                 ContactList = c.Next;
-            }
+            }*/
+            ContactList.Remove(c);
 
             // Remove from body 1
             if (c.NodeA.Prev != null)
@@ -320,12 +348,10 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// </summary>
         internal void Collide()
         {
-            // Update awake contacts.
-
-            Contact c = ContactList;
-
-            while (c != null)
+            for (int i = 0; i < ContactList.Count; i++)
             {
+                Contact c = ContactList[i];
+
                 Fixture fixtureA = c.FixtureA;
                 Fixture fixtureB = c.FixtureB;
                 int indexA = c.ChildIndexA;
@@ -336,7 +362,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 //Velcro: Do no try to collide disabled bodies
                 if (!bodyA.Enabled || !bodyB.Enabled)
                 {
-                    c = c.Next;
                     continue;
                 }
 
@@ -346,27 +371,21 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                     // Should these bodies collide?
                     if (!bodyB.ShouldCollide(bodyA))
                     {
-                        Contact cNuke = c;
-                        c = cNuke.Next;
-                        Remove(cNuke);
+                        Remove(c);
                         continue;
                     }
 
                     // Check default filtering
                     if (!ShouldCollide(fixtureA, fixtureB))
                     {
-                        Contact cNuke = c;
-                        c = cNuke.Next;
-                        Remove(cNuke);
+                        Remove(c);
                         continue;
                     }
 
                     // Check user filtering.
                     if ((ContactFilter != null) && !ContactFilter(fixtureA, fixtureB))
                     {
-                        Contact cNuke = c;
-                        c = cNuke.Next;
-                        Remove(cNuke);
+                        Remove(c);
                         continue;
                     }
 
@@ -380,7 +399,6 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 // At least one body must be awake and it must be dynamic or kinematic.
                 if (!activeA && !activeB)
                 {
-                    c = c.Next;
                     continue;
                 }
 
@@ -391,16 +409,114 @@ namespace Alis.Core.Physic.Collision.ContactSystem
                 // Here we destroy contacts that cease to overlap in the broad-phase.
                 if (!overlap)
                 {
-                    Contact cNuke = c;
-                    c = cNuke.Next;
-                    Remove(cNuke);
+                    Remove(c);
                     continue;
                 }
 
                 // The contact persists.
                 c.Update(this);
-                c = c.Next;
             }
+        }
+
+        /// <summary>
+        /// Gets the the min contact using the specified min alpha
+        /// </summary>
+        /// <param name="minAlpha">The min alpha</param>
+        /// <returns>The contact</returns>
+        internal Contact GetTheMinContact(float minAlpha)
+        {
+            foreach (Contact c in ContactList.Where(c => c.Enabled).Where(c => c.ToiCount <= Settings.SubSteps))
+            {
+                float alpha;
+                if (c.ToiFlag)
+                {
+                    // This contact has a valid cached TOI.
+                    alpha = c.Toi;
+                    continue;
+                }
+
+                Fixture fA = c.FixtureA;
+                Fixture fB = c.FixtureB;
+
+                // Is there a sensor?
+                if (fA.IsSensorPrivate || fB.IsSensorPrivate)
+                {
+                    continue;
+                }
+
+                Body bA = fA.Body;
+                Body bB = fB.Body;
+
+                BodyType typeA = bA.BodyType;
+                BodyType typeB = bB.BodyType;
+                //Debug.Assert(typeA == BodyType.Dynamic || typeB == BodyType.Dynamic);
+
+                bool activeA = bA.Awake && (typeA != BodyType.Static);
+                bool activeB = bB.Awake && (typeB != BodyType.Static);
+
+                // Is at least one body active (awake and dynamic or kinematic)?
+                if (!activeA && !activeB)
+                {
+                    continue;
+                }
+
+                bool collideA = (bA.IsBullet || typeA != BodyType.Dynamic) &&
+                                ((fA.IgnoreCcdWith & fB.CollisionCategories) == 0) && !bA.IgnoreCcd;
+                bool collideB = (bB.IsBullet || typeB != BodyType.Dynamic) &&
+                                ((fB.IgnoreCcdWith & fA.CollisionCategories) == 0) && !bB.IgnoreCcd;
+
+                // Are these two non-bullet dynamic bodies?
+                if (!collideA && !collideB)
+                {
+                    continue;
+                }
+
+                // Compute the TOI for this contact.
+                // Put the sweeps onto the same time interval.
+                float alpha0 = bA.Sweep.Alpha0;
+
+                if (bA.Sweep.Alpha0 < bB.Sweep.Alpha0)
+                {
+                    alpha0 = bB.Sweep.Alpha0;
+                    bA.Sweep.Advance(alpha0);
+                }
+                else if (bB.Sweep.Alpha0 < bA.Sweep.Alpha0)
+                {
+                    alpha0 = bA.Sweep.Alpha0;
+                    bB.Sweep.Advance(alpha0);
+                }
+
+                //Debug.Assert(alpha0 < 1.0f);
+
+                // Compute the time of impact in interval [0, minTOI]
+                ToiInput input = new ToiInput
+                {
+                    ProxyA = new DistanceProxy(fA.Shape, c.ChildIndexA),
+                    ProxyB = new DistanceProxy(fB.Shape, c.ChildIndexB),
+                    SweepA = bA.Sweep,
+                    SweepB = bB.Sweep,
+                    Max = 1.0f
+                };
+
+                TimeOfImpact.CalculateTimeOfImpact(ref input, out ToiOutput output);
+
+                // Beta is the fraction of the remaining portion of the .
+                float beta = output.T;
+                alpha = output.State == ToiOutputState.Touching ? Math.Min(alpha0 + (1.0f - alpha0) * beta, 1.0f) : 1.0f;
+
+                c.Toi = alpha;
+                c.Flags &= ~ContactFlags.ToiFlag;
+
+
+                if (alpha < minAlpha)
+                {
+                    // This is the minimum TOI found so far.
+                    lastMinAlpha = alpha;
+                    return c;
+                }
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -422,5 +538,21 @@ namespace Alis.Core.Physic.Collision.ContactSystem
 
             return collide;
         }
+
+        /// <summary>
+        ///     Clears the flags
+        /// </summary>
+        internal void ClearFlags() => ContactList.ForEach(c => c.ClearFlags());
+
+        /// <summary>
+        /// Invalidates the toi
+        /// </summary>
+        public void InvalidateTOI() => ContactList.ForEach(i => i.InvalidateTOI());
+
+        /// <summary>
+        /// Calculates the min alpha
+        /// </summary>
+        /// <returns>The float</returns>
+        public float CalculateMinAlpha() => lastMinAlpha;
     }
 }

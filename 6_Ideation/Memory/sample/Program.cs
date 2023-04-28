@@ -40,6 +40,33 @@ namespace Alis.Core.Aspect.Memory.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            FastClearForce_v2();
+        }
+        
+        /// <summary>
+        /// Fasts the clear force v 2
+        /// </summary>
+        internal static void FastClearForce_v2()
+        {
+            FastList<World> list = new FastList<World>();
+            list.Add(new World());
+            list.Add(new World());
+            
+            list.ForEach(i => i.clear());
+        }
+
+        /// <summary>
+        /// The world class
+        /// </summary>
+        public class World
+        {
+            /// <summary>
+            /// Clears this instance
+            /// </summary>
+            public void clear()
+            {
+                System.Console.WriteLine("limpiar");
+            }
         }
     }
 }

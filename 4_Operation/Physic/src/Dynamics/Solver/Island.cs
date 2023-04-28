@@ -28,6 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Time;
@@ -42,9 +43,14 @@ namespace Alis.Core.Physic.Dynamics.Solver
     internal class Island
     {
         /// <summary>
-        ///     The angular sleep tolerance
+        ///     The bodies
         /// </summary>
-        private readonly float angTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
+        internal readonly List<Body> Bodies = new List<Body>(Settings.ToiContacts * 2);
+
+        /// <summary>
+        ///     The contacts
+        /// </summary>
+        private readonly List<Contact> contacts = new List<Contact>(Settings.ToiContacts * 2);
 
         /// <summary>
         ///     The contact solver
@@ -52,359 +58,449 @@ namespace Alis.Core.Physic.Dynamics.Solver
         private readonly ContactSolver contactSolver = new ContactSolver();
 
         /// <summary>
-        ///     The linear sleep tolerance
-        /// </summary>
-        private readonly float linTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
-
-        /// <summary>
-        ///     The stopwatch
-        /// </summary>
-        private readonly Stopwatch timer = new Stopwatch();
-
-        /// <summary>
-        ///     The bodies
-        /// </summary>
-        internal Body[] Bodies;
-
-        /// <summary>
-        ///     The body capacity
-        /// </summary>
-        internal int BodyCapacity;
-
-        /// <summary>
-        ///     The body count
-        /// </summary>
-        internal int BodyCount;
-
-        /// <summary>
-        ///     The contact capacity
-        /// </summary>
-        internal int ContactCapacity;
-
-        /// <summary>
-        ///     The contact count
-        /// </summary>
-        internal int ContactCount;
-
-        /// <summary>
-        ///     The contact manager
-        /// </summary>
-        private ContactManager contactManager;
-
-        /// <summary>
-        ///     The contacts
-        /// </summary>
-        private Contact[] contacts;
-
-        /// <summary>
-        ///     The joint capacity
-        /// </summary>
-        private int jointCapacity;
-
-        /// <summary>
-        ///     The joint count
-        /// </summary>
-        private int jointCount;
-
-        /// <summary>
         ///     The joints
         /// </summary>
-        private Joint[] joints;
+        private readonly List<Joint> joints = new List<Joint>(Settings.ToiContacts);
 
         /// <summary>
         ///     The positions
         /// </summary>
-        private Position[] positions;
+        private readonly List<Position> positions = new List<Position>(Settings.ToiContacts);
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        private Velocity[] velocities;
+        private readonly List<Velocity> velocities = new List<Velocity>(Settings.ToiContacts);
 
         /// <summary>
-        ///     Resets the body capacity
+        ///     The angular sleep tolerance
         /// </summary>
-        /// <param name="bodyCapacity">The body capacity</param>
-        /// <param name="contactCapacity">The contact capacity</param>
-        /// <param name="jointCapacity">The joint capacity</param>
-        /// <param name="contactManager">The contact manager</param>
-        public void Reset(int bodyCapacity, int contactCapacity, int jointCapacity, ContactManager contactManager)
-        {
-            BodyCapacity = bodyCapacity;
-            ContactCapacity = contactCapacity;
-            this.jointCapacity = jointCapacity;
-            BodyCount = 0;
-            ContactCount = 0;
-            jointCount = 0;
+        private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
 
-            this.contactManager = contactManager;
-
-            if (Bodies == null || Bodies.Length < bodyCapacity)
-            {
-                Bodies = new Body[bodyCapacity];
-                velocities = new Velocity[bodyCapacity];
-                positions = new Position[bodyCapacity];
-            }
-
-            if (contacts == null || contacts.Length < contactCapacity)
-            {
-                contacts = new Contact[contactCapacity * 2];
-            }
-
-            if (joints == null || joints.Length < jointCapacity)
-            {
-                joints = new Joint[jointCapacity * 2];
-            }
-        }
+        /// <summary>
+        ///     The linear sleep tolerance
+        /// </summary>
+        private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
+        
+        /// <summary>
+        ///     Gets or sets the value of the step
+        /// </summary>
+        private TimeStep TimeStepSolveToi { get; set; } = new TimeStep();
 
         /// <summary>
         ///     Clears this instance
         /// </summary>
         public void Clear()
         {
-            BodyCount = 0;
-            ContactCount = 0;
-            jointCount = 0;
+            Bodies.Clear();
+            contacts.Clear();
+            joints.Clear();
         }
 
+
+       
         /// <summary>
-        ///     Solves the profile
+        /// Solves the step
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
         /// <param name="allowSleep">The allow sleep</param>
-        public void Solve(TimeStep step, Vector2F gravity, bool allowSleep)
+        /// <param name="contactManager">The contact manager</param>
+        /// <param name="bodiesOfWorld">The bodies of world</param>
+        public void Solve(TimeStep step, Vector2F gravity, bool allowSleep, ContactManager contactManager, List<Body> bodiesOfWorld)
         {
-            float h = step.DeltaTime;
-
-            // Integrate velocities and apply damping. Initialize the body state.
-            for (int i = 0; i < BodyCount; ++i)
+            for (int index = bodiesOfWorld.Count - 1; index >= 0; index--)
             {
-                Body b = Bodies[i];
-
-                Vector2F c = b.Sweep.C;
-                float a = b.Sweep.A;
-                Vector2F v = b.LinearVelocity;
-                float w = b.AngularVelocity;
-
-                // Store positions for continuous collision.
-                b.Sweep.C0 = b.Sweep.C;
-                b.Sweep.A0 = b.Sweep.A;
-
-                if (b.BodyType == BodyType.Dynamic)
+                Body body = bodiesOfWorld[index];
+                if ((body.Flags & BodyFlags.IslandFlag) == BodyFlags.IslandFlag)
                 {
-                    // Integrate velocities.
-                    v += h * b.InvMass * (b.GravityScale * b.Mass * gravity + b.Force);
-                    w += h * b.InvI * b.Torque;
-
-                    // Apply damping.
-                    // ODE: dv/dt + c * v = 0
-                    // Solution: v(t) = v0 * exp(-c * t)
-                    // Time step: v(t + dt) = v0 * exp(-c * (t + dt)) = v0 * exp(-c * t) * exp(-c * dt) = v * exp(-c * dt)
-                    // v2 = exp(-c * dt) * v1
-                    // Taylor expansion:
-                    // v2 = (1.0f - c * dt) * v1
-                    v *= MathUtils.Clamp(1.0f - h * b.LinearDamping, 0.0f, 1.0f);
-                    w *= MathUtils.Clamp(1.0f - h * b.AngularDamping, 0.0f, 1.0f);
+                    continue;
                 }
 
-                positions[i].C = c;
-                positions[i].A = a;
-                velocities[i].V = v;
-                velocities[i].W = w;
-            }
-
-            timer.Restart();
-
-            // Solver data
-            SolverData solverData = new SolverData
-            {
-                Step = step,
-                Positions = positions,
-                Velocities = velocities
-            };
-
-            //Velcro: We reduce the amount of garbage by reusing the contactsolver and only resetting the state
-            contactSolver.Reset(step, ContactCount, contacts, positions, velocities);
-            contactSolver.InitializeVelocityConstraints();
-
-            if (step.WarmStarting)
-            {
-                contactSolver.WarmStart();
-            }
-
-            for (int i = 0; i < jointCount; ++i)
-            {
-                if (joints[i].Enabled)
+                if (!body.Awake || !body.Enabled)
                 {
-                    joints[i].InitVelocityConstraints(ref solverData);
+                    continue;
                 }
-            }
 
-            //profile.SolveInit = timer.ElapsedTicks;
-
-            // Solve velocity constraints.
-            timer.Restart();
-            for (int i = 0; i < step.VelocityIterations; ++i)
-            {
-                for (int j = 0; j < jointCount; ++j)
+                // The seed can be dynamic or kinematic.
+                if (body.BodyType == BodyType.Static)
                 {
-                    Joint joint = joints[j];
+                    continue;
+                }
 
-                    if (!joint.Enabled)
+                // Reset island and stack.
+                Clear();
+
+                body.Flags |= BodyFlags.IslandFlag;
+
+                //Debug.Assert(b.Enabled);
+                Add(body);
+
+                // To keep islands as small as possible, we don't
+                // propagate islands across static bodies.
+                if (body.BodyType == BodyType.Static)
+                {
+                    continue;
+                }
+
+                // Make sure the body is awake (without resetting sleep timer).
+                body.Flags |= BodyFlags.AwakeFlag;
+
+                // Search all contacts connected to this body.
+                for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+                {
+                    Contact contact = ce.Contact;
+
+                    // Has this contact already been added to an island?
+                    if (contact.IslandFlag)
                     {
                         continue;
                     }
 
-                    joint.SolveVelocityConstraints(ref solverData);
-                    joint.Validate(step.InvertedDeltaTime);
-                }
-
-                contactSolver.SolveVelocityConstraints();
-            }
-
-            // Store impulses for warm starting.
-            contactSolver.StoreImpulses();
-            //profile.SolveVelocity = timer.ElapsedTicks;
-
-            // Integrate positions
-            for (int i = 0; i < BodyCount; ++i)
-            {
-                Vector2F c = positions[i].C;
-                float a = positions[i].A;
-                Vector2F v = velocities[i].V;
-                float w = velocities[i].W;
-
-                // Check for large velocities
-                Vector2F translation = h * v;
-                if (Vector2F.Dot(translation, translation) > Settings.Translation * Settings.Translation)
-                {
-                    float ratio = Settings.Translation / translation.Length();
-                    v *= ratio;
-                }
-
-                float rotation = h * w;
-                if (rotation * rotation > Settings.Rotation * Settings.Rotation)
-                {
-                    float ratio = Settings.Rotation / Math.Abs(rotation);
-                    w *= ratio;
-                }
-
-                // Integrate
-                c += h * v;
-                a += h * w;
-
-                positions[i].C = c;
-                positions[i].A = a;
-                velocities[i].V = v;
-                velocities[i].W = w;
-            }
-
-            // Solve position constraints
-            timer.Restart();
-            bool positionSolved = false;
-            for (int i = 0; i < step.PositionIterations; ++i)
-            {
-                bool contactsOkay = contactSolver.SolvePositionConstraints();
-
-                bool jointsOkay = true;
-                for (int j = 0; j < jointCount; ++j)
-                {
-                    Joint joint = joints[j];
-
-                    //Velcro: We support disabling joints
-                    if (!joint.Enabled)
+                    // Is this contact solid and touching?
+                    if (!contact.Enabled || !contact.IsTouching)
                     {
                         continue;
                     }
 
-                    bool jointOkay = joint.SolvePositionConstraints(ref solverData);
-                    jointsOkay = jointsOkay && jointOkay;
-                }
-
-                if (contactsOkay && jointsOkay)
-                {
-                    // Exit early if the position errors are small.
-                    positionSolved = true;
-                    break;
-                }
-            }
-
-            // Copy state buffers back to the bodies
-            for (int i = 0; i < BodyCount; ++i)
-            {
-                Body body = Bodies[i];
-                body.Sweep.C = positions[i].C;
-                body.Sweep.A = positions[i].A;
-                body.LinearVelocity = velocities[i].V;
-                body.AngularVelocity = velocities[i].W;
-                body.SynchronizeTransform();
-            }
-
-            //profile.SolvePosition = timer.ElapsedTicks;
-
-            Report(contactSolver.VelocityConstraints);
-
-            if (allowSleep)
-            {
-                float minSleepTime = float.MaxValue;
-
-                for (int i = 0; i < BodyCount; ++i)
-                {
-                    Body b = Bodies[i];
-
-                    if (b.BodyType == BodyType.Static)
+                    // Skip sensors.
+                    bool sensorA = contact.FixtureA.IsSensor;
+                    bool sensorB = contact.FixtureB.IsSensor;
+                    if (sensorA || sensorB)
                     {
                         continue;
                     }
 
-                    if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > angTolSqr ||
-                        Vector2F.Dot(b.LinearVelocity, b.LinearVelocity) > linTolSqr)
+                    Add(contact);
+                    contact.Flags |= ContactFlags.IslandFlag;
+
+                    Body other = ce.Other;
+
+                    // Was the other body already added to this island?
+                    if (other.IsIsland)
                     {
-                        b.SleepTime = 0.0f;
-                        minSleepTime = 0.0f;
+                        continue;
+                    }
+
+                    //Debug.Assert(stackCount < stackSize);
+                    other.Flags |= BodyFlags.IslandFlag;
+                }
+
+                // Search all joints connect to this body.
+                for (JointEdge je = body.JointList; je != null; je = je.Next)
+                {
+                    if (je.Joint.IslandFlag)
+                    {
+                        continue;
+                    }
+
+                    Body other = je.Other;
+
+                    // WIP David
+                    //Enter here when it's a non-fixed joint. Non-fixed joints have a other body.
+                    if (other != null)
+                    {
+                        // Don't simulate joints connected to inactive bodies.
+                        if (!other.Enabled)
+                        {
+                            continue;
+                        }
+
+                        Add(je.Joint);
+                        je.Joint.IslandFlag = true;
+
+                        if (other.IsIsland)
+                        {
+                            continue;
+                        }
+
+                        other.Flags |= BodyFlags.IslandFlag;
                     }
                     else
                     {
-                        b.SleepTime += h;
-                        minSleepTime = Math.Min(minSleepTime, b.SleepTime);
+                        Add(je.Joint);
+                        je.Joint.IslandFlag = true;
                     }
                 }
 
-                if ((minSleepTime >= Settings.TimeToSleep) && positionSolved)
+
+                float h = step.DeltaTime;
+
+                // Integrate velocities and apply damping. Initialize the body state.
+                foreach (Body b in Bodies)
                 {
-                    for (int i = 0; i < BodyCount; ++i)
+                    Vector2F c = b.Sweep.C;
+                    float a = b.Sweep.A;
+                    Vector2F v = b.LinearVelocity;
+                    float w = b.AngularVelocity;
+
+                    // Store positions for continuous collision.
+                    b.Sweep.C0 = b.Sweep.C;
+                    b.Sweep.A0 = b.Sweep.A;
+
+                    if (b.BodyType == BodyType.Dynamic)
+                    {
+                        // Integrate velocities.
+                        v += h * b.InvMass * (b.GravityScale * b.Mass * gravity + b.Force);
+                        w += h * b.InvI * b.Torque;
+
+                        // Apply damping.
+                        // ODE: dv/dt + c * v = 0
+                        // Solution: v(t) = v0 * exp(-c * t)
+                        // Time step: v(t + dt) = v0 * exp(-c * (t + dt)) = v0 * exp(-c * t) * exp(-c * dt) = v * exp(-c * dt)
+                        // v2 = exp(-c * dt) * v1
+                        // Taylor expansion:
+                        // v2 = (1.0f - c * dt) * v1
+                        v *= MathUtils.Clamp(1.0f - h * b.LinearDamping, 0.0f, 1.0f);
+                        w *= MathUtils.Clamp(1.0f - h * b.AngularDamping, 0.0f, 1.0f);
+                    }
+
+                    if (positions.Count <= Bodies.IndexOf(b))
+                    {
+                        positions.Add(new Position(c, a));
+                    }
+                    else
+                    {
+                        positions[Bodies.IndexOf(b)].C = c;
+                        positions[Bodies.IndexOf(b)].A = a;
+                    }
+
+                    if (velocities.Count <= Bodies.IndexOf(b))
+                    {
+                        velocities.Insert(Bodies.IndexOf(b), new Velocity(v, w));
+                    }
+                    else
+                    {
+                        velocities[Bodies.IndexOf(b)].V = v;
+                        velocities[Bodies.IndexOf(b)].W = w;
+                    }
+                }
+
+                // Solver data
+                SolverData solverData = new SolverData
+                {
+                    Step = step,
+                    Positions = positions,
+                    Velocities = velocities
+                };
+
+                //Velcro: We reduce the amount of garbage by reusing the contact solver and only resetting the state
+                contactSolver.Reset(step, contacts.Count, contacts, positions, velocities);
+                contactSolver.InitializeVelocityConstraints();
+
+                if (step.WarmStarting)
+                {
+                    contactSolver.WarmStart();
+                }
+
+                for (int i = 0; i < joints.Count; ++i)
+                {
+                    if (joints[i].Enabled)
+                    {
+                        joints[i].InitVelocityConstraints(ref solverData);
+                    }
+                }
+
+                //profile.SolveInit = timer.ElapsedTicks;
+
+                // Solve velocity constraints.
+                for (int i = 0; i < step.VelocityIterations; ++i)
+                {
+                    for (int j = 0; j < joints.Count; ++j)
+                    {
+                        Joint joint = joints[j];
+
+                        if (!joint.Enabled)
+                        {
+                            continue;
+                        }
+
+                        joint.SolveVelocityConstraints(ref solverData);
+                        joint.Validate(step.InvertedDeltaTime);
+                    }
+
+                    contactSolver.SolveVelocityConstraints();
+                }
+
+                // Store impulses for warm starting.
+                contactSolver.StoreImpulses();
+                //profile.SolveVelocity = timer.ElapsedTicks;
+
+                // Integrate positions
+                for (int i = 0; i < positions.Count; ++i)
+                {
+                    Vector2F c = positions[i].C;
+                    float a = positions[i].A;
+                    Vector2F v = velocities[i].V;
+                    float w = velocities[i].W;
+
+                    // Check for large velocities
+                    Vector2F translation = h * v;
+                    if (Vector2F.Dot(translation, translation) > Settings.Translation * Settings.Translation)
+                    {
+                        float ratio = Settings.Translation / translation.Length();
+                        v *= ratio;
+                    }
+
+                    float rotation = h * w;
+                    if (rotation * rotation > Settings.Rotation * Settings.Rotation)
+                    {
+                        float ratio = Settings.Rotation / Math.Abs(rotation);
+                        w *= ratio;
+                    }
+
+                    // Integrate
+                    c += h * v;
+                    a += h * w;
+
+                    positions[i].C = c;
+                    positions[i].A = a;
+                    velocities[i].V = v;
+                    velocities[i].W = w;
+                }
+
+                // Solve position constraints
+                bool positionSolved = false;
+                for (int i = 0; i < step.PositionIterations; ++i)
+                {
+                    bool contactsOkay = contactSolver.SolvePositionConstraints();
+
+                    bool jointsOkay = true;
+                    for (int j = 0; j < joints.Count; ++j)
+                    {
+                        Joint joint = joints[j];
+
+                        //Velcro: We support disabling joints
+                        if (!joint.Enabled)
+                        {
+                            continue;
+                        }
+
+                        bool jointOkay = joint.SolvePositionConstraints(ref solverData);
+                        jointsOkay = jointsOkay && jointOkay;
+                    }
+
+                    if (contactsOkay && jointsOkay)
+                    {
+                        // Exit early if the position errors are small.
+                        positionSolved = true;
+                        break;
+                    }
+                }
+
+                // Copy state buffers back to the bodies
+                for (int i = 0; i < Bodies.Count; ++i)
+                { ;
+                    Bodies[i].Sweep.C = positions[i].C;
+                    Bodies[i].Sweep.A = positions[i].A;
+                    Bodies[i].LinearVelocity = velocities[i].V;
+                    Bodies[i].AngularVelocity = velocities[i].W;
+                    Bodies[i].SynchronizeTransform();
+                }
+
+                //profile.SolvePosition = timer.ElapsedTicks;
+
+                Report(contactSolver.VelocityConstraints, contactManager);
+
+                if (allowSleep)
+                {
+                    float minSleepTime = float.MaxValue;
+
+                    for (int i = 0; i < Bodies.Count; ++i)
                     {
                         Body b = Bodies[i];
-                        b.Awake = false;
+
+                        if (b.BodyType == BodyType.Static)
+                        {
+                            continue;
+                        }
+
+                        if (!b.SleepingAllowed || b.AngularVelocity * b.AngularVelocity > AngTolSqr ||
+                            Vector2F.Dot(b.LinearVelocity, b.LinearVelocity) > LinTolSqr)
+                        {
+                            b.SleepTime = 0.0f;
+                            minSleepTime = 0.0f;
+                        }
+                        else
+                        {
+                            b.SleepTime += h;
+                            minSleepTime = Math.Min(minSleepTime, b.SleepTime);
+                        }
                     }
+
+                    if ((minSleepTime >= Settings.TimeToSleep) && positionSolved)
+                    {
+                        for (int i = 0; i < Bodies.Count; ++i)
+                        {
+                            Body b = Bodies[i];
+                            b.Awake = false;
+                        }
+                    }
+                }
+            }
+            
+            // Post solve cleanup.
+            for (int i = 0; i < Bodies.Count; ++i)
+            {
+                // Allow static bodies to participate in other islands.
+                if (Bodies[i].BodyType == BodyType.Static)
+                {
+                    Bodies[i].Flags &= ~BodyFlags.IslandFlag;
                 }
             }
         }
 
+
+       
         /// <summary>
-        ///     Solves the toi using the specified sub step
+        /// Solves the toi using the specified min alpha
         /// </summary>
+        /// <param name="minAlpha">The min alpha</param>
         /// <param name="subStep">The sub step</param>
         /// <param name="toiIndexA">The toi index</param>
         /// <param name="toiIndexB">The toi index</param>
-        internal void SolveToi(ref TimeStep subStep, int toiIndexA, int toiIndexB)
+        /// <param name="contactManager">The contact manager</param>
+        internal void SolveToi(float minAlpha, TimeStep subStep, int toiIndexA, int toiIndexB, ContactManager contactManager)
         {
-            Debug.Assert(toiIndexA < BodyCount);
-            Debug.Assert(toiIndexB < BodyCount);
+            TimeStepSolveToi.DeltaTime = (1.0f - minAlpha) * subStep.DeltaTime;
+            TimeStepSolveToi.InvertedDeltaTime = 1.0f / ((1.0f - minAlpha) * subStep.DeltaTime);
+            TimeStepSolveToi.DeltaTimeRatio = 1.0f;
+            TimeStepSolveToi.PositionIterations = 20;
+            TimeStepSolveToi.VelocityIterations = subStep.VelocityIterations;
+            TimeStepSolveToi.WarmStarting = false;
+            
+            
+            Debug.Assert(toiIndexA < Bodies.Count);
+            Debug.Assert(toiIndexB < Bodies.Count);
 
             // Initialize the body state.
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 Body b = Bodies[i];
-                positions[i].C = b.Sweep.C;
-                positions[i].A = b.Sweep.A;
-                velocities[i].V = b.LinearVelocity;
-                velocities[i].W = b.AngularVelocity;
+
+                if (positions.Count <= Bodies.IndexOf(b))
+                {
+                    positions.Add(new Position(b.Sweep.C, b.Sweep.A));
+                }
+                else
+                {
+                    positions[Bodies.IndexOf(b)].C = b.Sweep.C;
+                    positions[Bodies.IndexOf(b)].A = b.Sweep.A;
+                }
+
+                if (velocities.Count <= Bodies.IndexOf(b))
+                {
+                    velocities.Insert(Bodies.IndexOf(b), new Velocity(b.LinearVelocity, b.AngularVelocity));
+                }
+                else
+                {
+                    velocities[Bodies.IndexOf(b)].V = b.LinearVelocity;
+                    velocities[Bodies.IndexOf(b)].W = b.AngularVelocity;
+                }
             }
 
             //Velcro: We reset the contact solver instead of craeting a new one to reduce garbage
-            contactSolver.Reset(subStep, ContactCount, contacts, positions, velocities);
+            contactSolver.Reset(subStep, contacts.Count, contacts, positions, velocities);
 
             // Solve position constraints.
             for (int i = 0; i < subStep.PositionIterations; ++i)
@@ -438,7 +534,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
             float h = subStep.DeltaTime;
 
             // Integrate positions.
-            for (int i = 0; i < BodyCount; ++i)
+            for (int i = 0; i < Bodies.Count; ++i)
             {
                 Vector2F c = positions[i].C;
                 float a = positions[i].A;
@@ -478,7 +574,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 body.SynchronizeTransform();
             }
 
-            Report(contactSolver.VelocityConstraints);
+            Report(contactSolver.VelocityConstraints, contactManager);
         }
 
         /// <summary>
@@ -487,43 +583,31 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="body">The body</param>
         public void Add(Body body)
         {
-            Debug.Assert(BodyCount < BodyCapacity);
-            body.IslandIndex = BodyCount;
-            Bodies[BodyCount++] = body;
+            body.IslandIndex = Bodies.Count;
+            Bodies.Add(body);
         }
 
         /// <summary>
         ///     Adds the contact
         /// </summary>
         /// <param name="contact">The contact</param>
-        public void Add(Contact contact)
-        {
-            Debug.Assert(ContactCount < ContactCapacity);
-            contacts[ContactCount++] = contact;
-        }
+        public void Add(Contact contact) => contacts.Add(contact);
 
         /// <summary>
         ///     Adds the joint
         /// </summary>
         /// <param name="joint">The joint</param>
-        public void Add(Joint joint)
-        {
-            Debug.Assert(jointCount < jointCapacity);
-            joints[jointCount++] = joint;
-        }
+        public void Add(Joint joint) => joints.Add(joint);
 
+  
         /// <summary>
-        ///     Reports the constraints
+        /// Reports the constraints
         /// </summary>
         /// <param name="constraints">The constraints</param>
-        private void Report(ContactVelocityConstraint[] constraints)
+        /// <param name="contactManager">The contact manager</param>
+        private void Report(List<ContactVelocityConstraint> constraints, ContactManager contactManager)
         {
-            if (contactManager == null)
-            {
-                return;
-            }
-
-            for (int i = 0; i < ContactCount; ++i)
+            for (int i = 0; i < contacts.Count; ++i)
             {
                 Contact c = contacts[i];
 
@@ -533,6 +617,31 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 //Velcro optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
                 contactManager.PostSolve?.Invoke(c, constraints[i]);
+            }
+        }
+
+        /// <summary>
+        /// Synchronizes the bodies
+        /// </summary>
+        public void SynchronizeBodies()
+        {
+            for (int i = 0; i < Bodies.Count; ++i)
+            {
+                Body body = Bodies[i];
+                body.Flags &= ~BodyFlags.IslandFlag;
+
+                if (body.BodyType != BodyType.Dynamic)
+                {
+                    continue;
+                }
+
+                body.SynchronizeFixtures();
+
+                // Invalidate all contact TOIs on this displaced body.
+                for (ContactEdge ce = body.ContactList; ce != null; ce = ce.Next)
+                {
+                    ce.Contact.Flags &= ~(ContactFlags.ToiFlag | ContactFlags.IslandFlag);
+                }
             }
         }
     }

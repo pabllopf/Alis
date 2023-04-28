@@ -33,6 +33,7 @@ using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Factories;
+using Alis.Core.Physic.Figure;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Core.Component.Collider
@@ -169,7 +170,9 @@ namespace Alis.Core.Component.Collider
 
 
             VideoGame.GraphicManager.AttachCollider(rectangleShape);
-
+            
+            
+            /*
             Body = BodyFactory.CreateRectangle(
                 VideoGame.PhysicManager.World,
                 Width,
@@ -184,6 +187,38 @@ namespace Alis.Core.Component.Collider
                 GameObject
             );
 
+            Body.Restitution = Restitution;
+            Body.Friction = Friction;
+            Body.FixedRotation = FixedRotation;
+            Body.Mass = Mass;
+            Body.SleepingAllowed = false;
+            Body.IsBullet = true;
+            Body.GravityScale = GravityScale;
+            Body.LinearVelocity = LinearVelocity;
+            Body.Awake = true;
+            Body.IsSensor = IsTrigger;*/
+
+            Body = new Rectangle(
+                Width,
+                Height,
+                new Vector2F(
+                    GameObject.Transform.Position.X + RelativePosition.X,
+                    GameObject.Transform.Position.Y + RelativePosition.Y
+                ),
+                linearVelocity: LinearVelocity,
+                bodyType: BodyType,
+                angle: Rotation,
+                0,
+                0,
+                0,
+                false,
+                true,
+                FixedRotation,
+                true,
+                true,
+                GravityScale
+                );
+            
             Body.Restitution = Restitution;
             Body.Friction = Friction;
             Body.FixedRotation = FixedRotation;

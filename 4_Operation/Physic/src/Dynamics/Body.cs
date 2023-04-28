@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Util;
 using Alis.Core.Aspect.Math.Vector;
@@ -88,12 +87,12 @@ namespace Alis.Core.Physic.Dynamics
         ///     The type
         /// </summary>
         internal BodyType Type;
-        
+
         /// <summary>
         ///     The xf
         /// </summary>
         internal Transform Xf; // the body origin transform
-        
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Body" /> class
         /// </summary>
@@ -273,13 +272,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     ContactEdge ce0 = ce;
                     ce = ce.Next;
-                    World.Current.ContactManager.Remove(ce0.Contact);
+                    ContactManager.Current.Remove(ce0.Contact);
                 }
 
                 ContactList = null;
 
                 // Touch the proxies so that new contacts will be created (when appropriate)
-                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 foreach (Fixture fixture in FixtureList)
                 {
                     int proxyCount = fixture.ProxyCount;
@@ -438,19 +437,18 @@ namespace Alis.Core.Physic.Dynamics
                     Flags |= BodyFlags.Enabled;
 
                     // Create all proxies.
-                    IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
                         FixtureList[i].CreateProxies(broadPhase, ref Xf);
                     }
-                    
                 }
                 else
                 {
                     Flags &= ~BodyFlags.Enabled;
 
                     // Destroy all proxies.
-                    IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                    IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
 
                     for (int i = 0; i < FixtureList.Count; i++)
                     {
@@ -463,7 +461,7 @@ namespace Alis.Core.Physic.Dynamics
                     {
                         ContactEdge ce0 = ce;
                         ce = ce.Next;
-                        World.Current.ContactManager.Remove(ce0.Contact);
+                        ContactManager.Current.Remove(ce0.Contact);
                     }
 
                     ContactList = null;
@@ -781,10 +779,10 @@ namespace Alis.Core.Physic.Dynamics
         public Fixture AddFixture(Fixture fixture)
         {
             //Debug.Assert(!World.IsLocked);
-            
+
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 fixture.CreateProxies(broadPhase, ref Xf);
             }
 
@@ -797,7 +795,7 @@ namespace Alis.Core.Physic.Dynamics
             {
                 ResetMassData();
             }
-            
+
             //Velcro: Added this code to raise the FixtureAdded event
             //World.RaiseNewFixtureEvent(fixture);
 
@@ -851,13 +849,13 @@ namespace Alis.Core.Physic.Dynamics
                 {
                     // This destroys the contact and removes it from
                     // this body's contact list.
-                    World.Current.ContactManager.Remove(c);
+                    ContactManager.Current.Remove(c);
                 }
             }
 
             if ((Flags & BodyFlags.Enabled) == BodyFlags.Enabled)
             {
-                IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+                IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
                 fixture.DestroyProxies(broadPhase);
             }
 
@@ -898,7 +896,7 @@ namespace Alis.Core.Physic.Dynamics
             Sweep.C0 = Sweep.C;
             Sweep.A0 = rotation;
 
-            IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
             for (int i = 0; i < FixtureList.Count; i++)
             {
                 FixtureList[i].Synchronize(broadPhase, ref Xf, ref Xf);
@@ -1215,19 +1213,13 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The world velocity of a point.</returns>
         public Vector2F GetLinearVelocityFromLocalPoint(ref Vector2F localPoint) =>
             GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
-
-        /// <summary> Calling this will remove the body from its associated world.</summary>
-        public void RemoveFromWorld()
-        {
-            World.Current.RemoveBody(this);
-        }
-
+        
         /// <summary>
         ///     Synchronizes the fixtures
         /// </summary>
         internal void SynchronizeFixtures()
         {
-            IBroadPhase broadPhase = World.Current.ContactManager.BroadPhase;
+            IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
 
             if ((Flags & BodyFlags.AwakeFlag) == BodyFlags.AwakeFlag)
             {
@@ -1284,6 +1276,11 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
+        ///     Initializes a new instance of the <see cref="ClearFlags" /> class
+        /// </summary>
+        internal void ClearFlags() => Flags &= ~BodyFlags.IslandFlag;
+
+        /// <summary>
         ///     Advances the alpha
         /// </summary>
         /// <param name="alpha">The alpha</param>
@@ -1298,12 +1295,41 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Clears the forces
+        ///     Clears the forces
         /// </summary>
         internal void ClearForces()
         {
             Force = Vector2F.Zero;
             Torque = 0.0f;
+        }
+
+        /// <summary>
+        ///     Checks the out range
+        /// </summary>
+        public void CheckOutRange()
+        {
+            // If a body was not in an island then it did not move.
+            if ((Flags & BodyFlags.IslandFlag) == 0)
+            {
+                return;
+            }
+
+            if (BodyType == BodyType.Static)
+            {
+                return;
+            }
+
+            // Update fixtures (for broad-phase).
+            SynchronizeFixtures();
+        }
+
+        /// <summary>
+        /// Sets the alpha to zero
+        /// </summary>
+        public void SetAlphaToZero()
+        {
+            Flags &= ~BodyFlags.IslandFlag;
+            Sweep.Alpha0 = 0.0f;
         }
     }
 }

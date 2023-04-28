@@ -40,9 +40,9 @@ namespace Alis.Core.Aspect.Time
 
         /// <summary>Inverse time step (0 if dt == 0).</summary>
         public float InvertedDeltaTime;
-        
+
         /// <summary>
-        /// The inverted delta time
+        ///     The inverted delta time
         /// </summary>
         public float InvertedDeltaTimeZero;
 

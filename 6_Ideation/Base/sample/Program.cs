@@ -29,7 +29,7 @@
 
 namespace Alis.Core.Aspect.Base.Sample
 {
-    using System; // For using Console.WriteLine() and related methods
+    // For using Console.WriteLine() and related methods
     // Additional dependencies may be needed depending on what else is required to make this work...
 
     /// <summary>
@@ -43,7 +43,6 @@ namespace Alis.Core.Aspect.Base.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-
         }
     }
 }

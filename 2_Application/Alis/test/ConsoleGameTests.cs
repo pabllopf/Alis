@@ -42,8 +42,7 @@ namespace Alis.Test
         /// </summary>
         [Fact]
         public void Builder_Should_Return_A_ConsoleGameBuilder() => Assert.Equal(typeof(ConsoleGameBuilder), ConsoleGame.Builder().GetType());
-
-
+        
         /// <summary>
         ///     Tests that builder dont should return a null
         /// </summary>

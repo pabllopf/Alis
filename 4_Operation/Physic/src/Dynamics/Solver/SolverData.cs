@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Alis.Core.Aspect.Time;
 
 namespace Alis.Core.Physic.Dynamics.Solver
@@ -44,11 +45,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The positions
         /// </summary>
-        public Position[] Positions;
+        public List<Position> Positions;
 
         /// <summary>
         ///     The velocities
         /// </summary>
-        public Velocity[] Velocities;
+        public List<Velocity> Velocities;
     }
 }

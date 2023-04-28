@@ -28,22 +28,10 @@
 //  --------------------------------------------------------------------------
 
 #if RELEASE
-using System;
-using System.Linq;
-using BenchmarkDotNet.Analysers;
-using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Exporters;
-using BenchmarkDotNet.Loggers;
-using BenchmarkDotNet.Reports;
 using BenchmarkDotNet.Running;
 #endif
 
 #if DEBUG
-using System;
-using System.Linq;
-using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Exporters;
-using BenchmarkDotNet.Loggers;
 using BenchmarkDotNet.Running;
 #endif
 
@@ -60,50 +48,7 @@ namespace Alis.Benchmark
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-#if DEBUG
-
-            ManualConfig config = new DebugBuildConfig()
-                .WithOptions(ConfigOptions.DisableLogFile)
-                .AddColumnProvider(DefaultConfig.Instance.GetColumnProviders().ToArray())
-                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
-                .AddValidator(DefaultConfig.Instance.GetValidators().ToArray())
-                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
-                .AddAnalyser(DefaultConfig.Instance.GetAnalysers().ToArray())
-                .AddJob(DefaultConfig.Instance.GetJobs().ToArray())
-                .AddLogger(new ConsoleLogger())
-                .WithUnionRule(ConfigUnionRule.AlwaysUseGlobal)
-                .AddExporter(MarkdownExporter.GitHub)
-                .WithArtifactsPath($"../../../../docs/resources/benchmarks/{DateTime.Now:yyyy-MM-dd}/");
-
-            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, config);
-
-#endif
-
-#if RELEASE
-            ManualConfig config = new DebugBuildConfig()
-                .WithOptions(ConfigOptions.DisableLogFile)
-                .AddColumnProvider(DefaultConfig.Instance.GetColumnProviders().ToArray())
-                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
-                .AddValidator(DefaultConfig.Instance.GetValidators().ToArray())
-                .AddDiagnoser(DefaultConfig.Instance.GetDiagnosers().ToArray())
-                .AddAnalyser(DefaultConfig.Instance.GetAnalysers().ToArray())
-                .AddJob(DefaultConfig.Instance.GetJobs().ToArray())
-                .AddLogger(new ConsoleLogger())
-                .WithUnionRule(ConfigUnionRule.AlwaysUseGlobal)
-                .AddExporter(MarkdownExporter.GitHub)
-                .WithArtifactsPath($"../../../../docs/resources/benchmarks/{DateTime.Now:yyyy-MM-dd}/");
-                
-            Summary[] summarys = BenchmarkRunner.Run(typeof(Program).Assembly, config, args);
-            
-            ILogger logger = ConsoleLogger.Default;
-            
-            foreach (Summary summary in summarys)
-            {
-                MarkdownExporter.Console.ExportToLog(summary, logger);
-                ConclusionHelper.Print(logger, summary.BenchmarksCases.First().Config.GetCompositeAnalyser().Analyse(summary).ToList());
-            }
-
-#endif
+            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
         }
     }
 }

@@ -51,6 +51,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
@@ -72,7 +73,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The contacts
         /// </summary>
-        private Contact[] contacts;
+        private List<Contact> contacts = new List<Contact>();
 
         /// <summary>
         ///     The count
@@ -82,12 +83,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The position constraints
         /// </summary>
-        private ContactPositionConstraint[] positionConstraints;
+        private List<ContactPositionConstraint> positionConstraints = new List<ContactPositionConstraint>();
 
         /// <summary>
         ///     The positions
         /// </summary>
-        private Position[] positions;
+        private List<Position> positions = new List<Position>();
 
         /// <summary>
         ///     The step
@@ -97,12 +98,12 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <summary>
         ///     The velocities
         /// </summary>
-        private Velocity[] velocities;
+        private List<Velocity> velocities = new List<Velocity>();
 
         /// <summary>
         ///     The velocity constraints
         /// </summary>
-        public ContactVelocityConstraint[] VelocityConstraints;
+        public List<ContactVelocityConstraint> VelocityConstraints = new List<ContactVelocityConstraint>();
 
         /// <summary>
         ///     Resets the step
@@ -112,7 +113,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="contacts">The contacts</param>
         /// <param name="positions">The positions</param>
         /// <param name="velocities">The velocities</param>
-        public void Reset(TimeStep step, int count, Contact[] contacts, Position[] positions, Velocity[] velocities)
+        public void Reset(TimeStep step, int count, List<Contact> contacts, List<Position> positions, List<Velocity> velocities)
         {
             this.step = step;
             this.count = count;
@@ -121,17 +122,17 @@ namespace Alis.Core.Physic.Dynamics.Solver
             this.contacts = contacts;
 
             // grow the array
-            if (VelocityConstraints == null || VelocityConstraints.Length < count)
+            if (VelocityConstraints == null || VelocityConstraints.Count < count)
             {
-                VelocityConstraints = new ContactVelocityConstraint[count * 2];
-                positionConstraints = new ContactPositionConstraint[count * 2];
+                VelocityConstraints = new List<ContactVelocityConstraint>(count * 2);
+                positionConstraints = new List<ContactPositionConstraint>(count * 2);
 
-                for (int i = 0; i < VelocityConstraints.Length; i++)
+                for (int i = 0; i < VelocityConstraints.Count; i++)
                 {
                     VelocityConstraints[i] = new ContactVelocityConstraint();
                 }
 
-                for (int i = 0; i < positionConstraints.Length; i++)
+                for (int i = 0; i < positionConstraints.Count; i++)
                 {
                     positionConstraints[i] = new ContactPositionConstraint();
                 }
@@ -155,6 +156,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 int pointCount = manifold.PointCount;
                 Debug.Assert(pointCount > 0);
 
+                if (VelocityConstraints.Count <= i)
+                {
+                    VelocityConstraints.Add(new ContactVelocityConstraint());
+                }
+
                 ContactVelocityConstraint vc = VelocityConstraints[i];
                 vc.Friction = contact.Friction;
                 vc.Restitution = contact.Restitution;
@@ -170,6 +176,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
                 vc.PointCount = pointCount;
                 vc.K.SetZero();
                 vc.NormalMass.SetZero();
+
+                if (positionConstraints.Count <= i)
+                {
+                    positionConstraints.Add(new ContactPositionConstraint());
+                }
 
                 ContactPositionConstraint pc = positionConstraints[i];
                 pc.IndexA = bodyA.IslandIndex;

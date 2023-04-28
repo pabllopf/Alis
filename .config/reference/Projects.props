@@ -25,7 +25,7 @@
                           Include="$(SolutionDir)6_Ideation/**/*.csproj"
                           Exclude="$(SolutionDir)6_Ideation/**/*.Sample.csproj; $(SolutionDir)6_Ideation/**/*.Test.csproj;"/>
 
-        <InternalsVisibleTo Include="$(AssemblyName).Test" />
+        <InternalsVisibleTo Include="$(AssemblyName).Test"/>
     </ItemGroup>
 
 
@@ -98,9 +98,9 @@
         </EmbeddedResource>
 
         <Compile
-            Condition="$(ProjectDir.Contains('2_Application'))"
-            Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
-            Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
+                Condition="$(ProjectDir.Contains('2_Application'))"
+                Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
+                Link="Core/$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename).resx</DependentUpon>
@@ -127,9 +127,9 @@
         </EmbeddedResource>
 
         <Compile
-            Condition="$(ProjectDir.Contains('3_Structuration'))"
-            Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
-            Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
+                Condition="$(ProjectDir.Contains('3_Structuration'))"
+                Include="$(SolutionDir)4_Operation/**/*.Designer.cs"
+                Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
             <DependentUpon>$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename).resx</DependentUpon>
@@ -167,7 +167,7 @@
                           $(SolutionDir)6_Ideation/**/*test/**/*.cs;  $(SolutionDir)6_Ideation/**/Resources.Designer.cs"
                  Link="$([System.String]::Copy('%(RecursiveDir)').Replace('src',''))%(Filename)%(Extension)"/>
 
-        <InternalsVisibleTo Include="$(AssemblyName).Test" />
+        <InternalsVisibleTo Include="$(AssemblyName).Test"/>
     </ItemGroup>
 
     <ItemGroup Condition="$(AssemblyName.Contains('Test'))">
@@ -184,10 +184,10 @@
 
     <ItemGroup Condition="$(AssemblyName.Contains('Sample'))">
         <ProjectReference
-            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
-            Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
+                Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == True"
+                Include="$(ProjectDir)/../src/$(NameTest).csproj"/>
         <ProjectReference
-            Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
-            Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
+                Condition="Exists('$(ProjectDir)/../src/$(NameTest).csproj') == False"
+                Include="$(ProjectDir)/../../src/$(NameTest).csproj"/>
     </ItemGroup>
 </Project>
