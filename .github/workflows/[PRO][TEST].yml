@@ -35,7 +35,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test
-        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i --configuration Release ; fi;done
+        run: for /r %%i in (*Test.csproj) do dotnet test %%i --configuration Release
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
