@@ -1,4 +1,4 @@
-name: "[PRO][TEST]"
+name: "[DEV][TEST]"
 
 on:
   push:
