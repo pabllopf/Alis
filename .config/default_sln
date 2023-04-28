@@ -111,6 +111,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\[PRO][NEW][CONTRIBUTORS].yml = .github\workflows\[PRO][NEW][CONTRIBUTORS].yml
 		.github\workflows\[PRO][PUBLISH].yml = .github\workflows\[PRO][PUBLISH].yml
 		.github\workflows\[PRO][CHANGELOG].yml = .github\workflows\[PRO][CHANGELOG].yml
+		.github\workflows\[PRO][TEST].yml = .github\workflows\[PRO][TEST].yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issue_template", "issue_template", "{063D29E8-51CF-4155-B23F-8510CA62512A}"
