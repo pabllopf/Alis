@@ -54,7 +54,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test
-        run: for %f in (*.Test) do echo %f
+        run: ./scripts/windows/restart_nuget.bat
   
   
   Run_Test_On_Ubuntu_Latest:
