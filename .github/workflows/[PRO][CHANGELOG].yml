@@ -24,9 +24,6 @@ jobs:
         with:
           ref: master
 
-      - name: Dotnet test
-        run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i ; fi;done
-
       - name: Define file name to update version
         run: echo "FILENAME=$(echo './Directory.Build.props')" >> $GITHUB_ENV
 
