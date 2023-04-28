@@ -39,7 +39,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-        <PublishTrimmed>false</PublishTrimmed>
+        <PublishTrimmed>true</PublishTrimmed>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -62,4 +62,5 @@
         </PropertyGroup>
         <Warning Code="UNSUPPORTED" Text="Can't compile 'Macos apps' on Windows or Linux OS." Condition=" '$(UnsupportedTarget)' == 'true' " />
     </Target>
+    
 </Project>
