@@ -123,15 +123,6 @@ jobs:
       - name: git push --tags
         run: git push --tags
 
-      - name: Update CHANGELOG
-        id: changelog
-        uses: Requarks/changelog-action@v1
-        with:
-          token: ${{ github.token }}
-          tag: "v${{ env.VERSIONFINAL }}"
-          writeToFile: true
-          excludeTypes: chore, perf
-
       - uses: softprops/action-gh-release@v1
         with:
           body: ${{ steps.changelog.outputs.changes }}
