@@ -1,4 +1,4 @@
-name: "[PRO][PUBLISH]"
+name: "[PRO][CHANGELOG]"
 
 on:
   push:
@@ -24,15 +24,6 @@ jobs:
         with:
           ref: master
 
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v2
-        with:
-          dotnet-version: |
-            6.0.x
-
-      - name: Dotnet install workload
-        run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
-
       - name: Dotnet test
         run: for i in `find . -name "*.csproj" -type f`; do if [[ $i == *"Template"* ]] ; then echo "Skip project $i"; else dotnet test $i ; fi;done
 
@@ -48,54 +39,12 @@ jobs:
       - name: Print the current version
         run: echo $VERSION
 
-      - name: Get mayor version
-        run: echo "MAYOR=$(echo ${{ env.VERSION }} | cut -f1 -d.)" >> $GITHUB_ENV
-
-      - name: Print mayor version
-        run: echo $MAYOR
-
-      - name: Get minor version
-        run: echo "MINOR=$(echo ${{ env.VERSION }} | cut -f2 -d.)" >> $GITHUB_ENV
-
-      - name: Print minor version
-        run: echo $MINOR
-
-      - name: Get alpha version
-        run: echo "ALPHA=$(echo ${{ env.VERSION }} | cut -f3 -d.)" >> $GITHUB_ENV
-
-      - name: Print current alpha version
-        run: echo $ALPHA
-
-      - name: Increment version
-        run: echo "ALPHA=$(((ALPHA=ALPHA+1)))" >> $GITHUB_ENV
-
-      - name: Alpha version incremented
-        run: echo $ALPHA
-
-      - name: Check alpha version
-        run: if [[ "$ALPHA" -gt 9 ]]; then echo "MINOR=$(((MINOR=MINOR+1)))" >> $GITHUB_ENV ; echo "ALPHA=$(((ALPHA=0)))" >> $GITHUB_ENV ; fi
-
-      - name: Check minor version
-        run: if [[ "$MINOR" -gt 9 ]]; then echo "MAYOR=$(((MAYOR=MAYOR+1)))" >> $GITHUB_ENV; echo "MINOR=$(((MINOR=0)))" >> $GITHUB_ENV; fi
-
-      - name: Create the next version
-        run: echo "VERSIONFINAL=$(echo '${{env.MAYOR}}.${{env.MINOR}}.${{env.ALPHA}}')" >> $GITHUB_ENV
-
-      - name: Print the next version
-        run: echo $VERSIONFINAL
-
-      - name: Get the current version
-        run: echo "CURRENTVERSION=$(grep -Eo '[0-9]\.[0-9]+.[0-9]+' ${{ env.FILENAME }} )" >> $GITHUB_ENV
-
-      - name: Print the next version
-        run: echo $CURRENTVERSION
-
       - name: Update CHANGELOG
         id: changelog
         uses: Requarks/changelog-action@v1
         with:
           token: ${{ github.token }}
-          tag: "v${{ env.$CURRENTVERSION }}"
+          tag: "v${{ env.$VERSION }}"
           writeToFile: true
           excludeTypes: chore, perf
 
