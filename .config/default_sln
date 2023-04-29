@@ -129,7 +129,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E
 		.scripts\macos\restart_nuget.sh = .scripts\macos\restart_nuget.sh
 		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
 		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
-		.scripts\macos\run_test.sh = .scripts\macos\run_test.sh
+		.scripts\macos\run_tests.sh = .scripts\macos\run_tests.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
@@ -139,7 +139,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3
 		.scripts\linux\restart_nuget.sh = .scripts\linux\restart_nuget.sh
 		.scripts\linux\restart_permissions.sh = .scripts\linux\restart_permissions.sh
 		.scripts\linux\restart_sln.sh = .scripts\linux\restart_sln.sh
-		.scripts\linux\run_test.sh = .scripts\linux\run_test.sh
+		.scripts\linux\run_tests.sh = .scripts\linux\run_tests.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015EBC6B-559D-4454-9DB0-8E2D42CBBE34}"
