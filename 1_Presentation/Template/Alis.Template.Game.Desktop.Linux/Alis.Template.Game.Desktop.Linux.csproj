@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+    
+    <ItemGroup Condition="$([MSBuild]::IsOSPlatform('linux'))">
+        <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="2.88.1" />
+        <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
+    </ItemGroup>
+
+    <PropertyGroup 
+        Condition="$(NETCoreSdkRuntimeIdentifier.Contains('arm64')) AND 
+        $([MSBuild]::IsOSPlatform('linux'))">
+        <PlatformTarget>arm64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+        <PublishTrimmed>false</PublishTrimmed>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <PublishTrimmed>true</PublishTrimmed>
+    </PropertyGroup>
+
+    <PropertyGroup 
+        Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x64')) AND 
+        $([MSBuild]::IsOSPlatform('linux'))">
+        <PlatformTarget>x64</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup 
+        Condition="$(NETCoreSdkRuntimeIdentifier.Contains('x86')) AND 
+        $([MSBuild]::IsOSPlatform('linux'))">
+        <PlatformTarget>x86</PlatformTarget>
+    </PropertyGroup>
+
+    <PropertyGroup 
+        Condition="$([MSBuild]::IsOSPlatform('osx')) OR 
+        $([MSBuild]::IsOSPlatform('windows'))">
+        <OutputType>Exe</OutputType>
+        <TargetFrameworks>net6.0;</TargetFrameworks>
+        <DefineConstants>$(DefineConstants);UNSUPPORTED;</DefineConstants>
+    </PropertyGroup>
+
+    <Target Name="RestrictOS" BeforeTargets="Compile">
+        <PropertyGroup 
+            Condition="$([MSBuild]::IsOSPlatform('osx')) OR 
+            $([MSBuild]::IsOSPlatform('windows'))">
+            <UnsupportedTarget>true</UnsupportedTarget>
+        </PropertyGroup>
+        <Warning Code="UNSUPPORTED" 
+                 Text="Can't compile 'Linux apps' on MacOs or Windows OS." 
+                 Condition=" '$(UnsupportedTarget)' == 'true' " />
+    </Target>
+
+</Project>
