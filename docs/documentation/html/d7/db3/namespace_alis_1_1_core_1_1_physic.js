@@ -5,6 +5,7 @@ var namespace_alis_1_1_core_1_1_physic =
     [ "Dynamics", "dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html", "dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics" ],
     [ "Extensions", "d0/df8/namespace_alis_1_1_core_1_1_physic_1_1_extensions.html", "d0/df8/namespace_alis_1_1_core_1_1_physic_1_1_extensions" ],
     [ "Factories", "d6/d9e/namespace_alis_1_1_core_1_1_physic_1_1_factories.html", "d6/d9e/namespace_alis_1_1_core_1_1_physic_1_1_factories" ],
+    [ "Figure", "d0/da0/namespace_alis_1_1_core_1_1_physic_1_1_figure.html", "d0/da0/namespace_alis_1_1_core_1_1_physic_1_1_figure" ],
     [ "Shared", "dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared.html", "dd/df6/namespace_alis_1_1_core_1_1_physic_1_1_shared" ],
     [ "Tools", "d9/df8/namespace_alis_1_1_core_1_1_physic_1_1_tools.html", "d9/df8/namespace_alis_1_1_core_1_1_physic_1_1_tools" ],
     [ "Utilities", "de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities.html", "de/d6e/namespace_alis_1_1_core_1_1_physic_1_1_utilities" ],

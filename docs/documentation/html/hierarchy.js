@@ -13,8 +13,11 @@ var hierarchy =
     ] ],
     [ "Alis.Core.Physic.Tools.Triangulation.Bayazit.BayazitDecomposer", "d3/d2c/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_bayazit_1_1_bayazit_decomposer.html", null ],
     [ "Alis.Core.Network.Internal.BinaryReaderWriter", "d6/dd9/class_alis_1_1_core_1_1_network_1_1_internal_1_1_binary_reader_writer.html", null ],
-    [ "Alis.Core.Physic.Dynamics.Body", "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html", null ],
+    [ "Alis.Core.Physic.Dynamics.Body", "db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html", [
+      [ "Alis.Core.Physic.Figure.Rectangle", "d1/d30/class_alis_1_1_core_1_1_physic_1_1_figure_1_1_rectangle.html", null ]
+    ] ],
     [ "Alis.Core.Physic.Factories.BodyFactory", "dc/d01/class_alis_1_1_core_1_1_physic_1_1_factories_1_1_body_factory.html", null ],
+    [ "Alis.Core.Physic.Dynamics.BodyHelper", "d3/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body_helper.html", null ],
     [ "Alis.Builder.Core.Component.Mesh.BoxMeshBuilder", "d3/d6c/class_alis_1_1_builder_1_1_core_1_1_component_1_1_mesh_1_1_box_mesh_builder.html", null ],
     [ "Alis.Core.Physic.Dynamics.BreakableBody", "dc/d9d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_breakable_body.html", null ],
     [ "Alis.Core.Aspect.Math.Matrix.Matrix4X4F.CanonicalBasis", "d1/d9d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_canonical_basis.html", null ],
@@ -148,6 +151,9 @@ var hierarchy =
       [ "Alis.Core.Physic.Shared.Contracts.EnsuresException", "d3/d13/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_ensures_exception.html", null ],
       [ "Alis.Core.Physic.Shared.Contracts.RequiredException", "d3/d17/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_required_exception.html", null ],
       [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.Sweep.PointOnEdgeException", "d2/dc3/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_point_on_edge_exception.html", null ]
+    ] ],
+    [ "Alis.Core.Physic.Figure.FigureBase", "d9/d68/class_alis_1_1_core_1_1_physic_1_1_figure_1_1_figure_base.html", [
+      [ "Alis.Core.Physic.Figure.Square", "d2/d9c/class_alis_1_1_core_1_1_physic_1_1_figure_1_1_square.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Logging.FileController", "d0/d48/class_alis_1_1_core_1_1_aspect_1_1_logging_1_1_file_controller.html", null ],
     [ "Alis.Core.Audio.OS.Utils.FileUtil", "d5/dec/class_alis_1_1_core_1_1_audio_1_1_o_s_1_1_utils_1_1_file_util.html", null ],
@@ -520,6 +526,9 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.Words.ILinearVelocity< BoxColliderBuilder, float, float >", "d5/d9d/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_linear_velocity.html", [
       [ "Alis.Builder.Core.Component.Collider.BoxColliderBuilder", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html", null ]
     ] ],
+    [ "IList", null, [
+      [ "Alis.Core.Aspect.Memory.FastList< T >", "d3/d17/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_fast_list.html", null ]
+    ] ],
     [ "Alis.Core.Component.Render.Image", "de/d27/class_alis_1_1_core_1_1_component_1_1_render_1_1_image.html", null ],
     [ "Alis.Core.Aspect.Fluent.Words.IManager< out out TBuilder, in in TType, in in TArgument >", "dd/dbf/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_manager.html", null ],
     [ "IManager< VideoGameBuilder, SceneManager, Func< SceneManagerBuilder, SceneManager >>", null, [
@@ -793,12 +802,13 @@ var hierarchy =
     [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.Util.PolygonGenerator", "dc/d90/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_polygon_generator.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Delaunay.Polygon.PolygonSet", "d4/db2/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_polygon_1_1_polygon_set.html", null ],
     [ "Alis.Core.Physic.Shared.Pool< T >", "da/d93/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_pool.html", null ],
-    [ "Alis.Core.Physic.Dynamics.Solver.Position", "d8/d67/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html", null ],
+    [ "Alis.Core.Physic.Dynamics.Solver.Position", "da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html", null ],
     [ "Alis.Core.Physic.Dynamics.Solver.PositionSolverManifold", "d6/d53/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position_solver_manifold.html", null ],
     [ "Alis.Core.Physic.Dynamics.Profile", "dc/d1d/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_profile.html", null ],
     [ "Alis.App.Installer.Program", "d3/d29/class_alis_1_1_app_1_1_installer_1_1_program.html", null ],
     [ "Alis.App.Engine.Program", "d5/d6e/class_alis_1_1_app_1_1_engine_1_1_program.html", null ],
     [ "Alis.Core.Physic.Tools.Triangulation.Seidel.QueryGraph", "d8/d2b/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_seidel_1_1_query_graph.html", null ],
+    [ "Alis.Core.Aspect.Memory.RawArrayData", "d2/da4/class_alis_1_1_core_1_1_aspect_1_1_memory_1_1_raw_array_data.html", null ],
     [ "Alis.Core.Physic.Collision.RayCastHelper", "d3/d18/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_helper.html", null ],
     [ "Alis.Core.Physic.Collision.RayCast.RayCastInput", "de/d2a/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_input.html", null ],
     [ "Alis.Core.Physic.Collision.RayCast.RayCastOutput", "d8/df9/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_ray_cast_1_1_ray_cast_output.html", null ],
@@ -943,7 +953,7 @@ var hierarchy =
     [ "Alis.Core.Aspect.Math.Vector.Vector4F", "db/d51/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_f.html", null ],
     [ "Alis.Core.Aspect.Math.Vector.Vector4I", "d5/d94/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector4_i.html", null ],
     [ "Alis.Core.Aspect.Math.Matrix.Matrix4X4F.VectorBasis", "dc/d77/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_vector_basis.html", null ],
-    [ "Alis.Core.Physic.Dynamics.Solver.Velocity", "d3/d7f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html", null ],
+    [ "Alis.Core.Physic.Dynamics.Solver.Velocity", "da/d2d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html", null ],
     [ "Alis.Core.Physic.Dynamics.Solver.VelocityConstraintPoint", "d8/d54/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity_constraint_point.html", null ],
     [ "Alis.Core.Graphic.D2.SFML.Graphics.Vertex", "d9/d87/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_vertex.html", null ],
     [ "Alis.Core.Graphic.D2.SFML.Windows.VideoMode", "d7/d1f/struct_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_windows_1_1_video_mode.html", null ],

@@ -100,8 +100,10 @@ $(document).ready(function(){initNavTree('d6/d63/class_alis_1_1_core_1_1_physic_
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pac-methods">Package Functions</a> &#124;
 <a href="#pac-attribs">Package Attributes</a> &#124;
+<a href="#properties">Properties</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="../../df/df2/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Alis.Core.Physic.Dynamics.Solver.Island Class Reference</div>  </div>
@@ -113,15 +115,12 @@ $(document).ready(function(){initNavTree('d6/d63/class_alis_1_1_core_1_1_physic_
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a08cfd868c97f25d331616a6463fdbea3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a08cfd868c97f25d331616a6463fdbea3">Reset</a> (int bodyCapacity, int contactCapacity, int <a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a5ffc2346aeaf7b1d5bc3f2501d666df6">jointCapacity</a>, <a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a> <a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a620e369aceaf5ca44bca4b012bdff733">contactManager</a>)</td></tr>
-<tr class="memdesc:a08cfd868c97f25d331616a6463fdbea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the body capacity  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a08cfd868c97f25d331616a6463fdbea3">More...</a><br /></td></tr>
-<tr class="separator:a08cfd868c97f25d331616a6463fdbea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8fd753c6f0f8e66ae3af213cfa969f06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a8fd753c6f0f8e66ae3af213cfa969f06">Clear</a> ()</td></tr>
 <tr class="memdesc:a8fd753c6f0f8e66ae3af213cfa969f06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears this instance  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a8fd753c6f0f8e66ae3af213cfa969f06">More...</a><br /></td></tr>
 <tr class="separator:a8fd753c6f0f8e66ae3af213cfa969f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5189024dd7a8e063d59443704f2084e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a5189024dd7a8e063d59443704f2084e1">Solve</a> (<a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a> step, <a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a> gravity, bool allowSleep)</td></tr>
-<tr class="memdesc:a5189024dd7a8e063d59443704f2084e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the profile  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a5189024dd7a8e063d59443704f2084e1">More...</a><br /></td></tr>
-<tr class="separator:a5189024dd7a8e063d59443704f2084e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf045ec704100a95dfed6ade35cdfc6b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#adf045ec704100a95dfed6ade35cdfc6b">Solve</a> (<a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a> step, <a class="el" href="../../d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html">Vector2F</a> gravity, bool allowSleep, <a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a> contactManager, List&lt; <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> &gt; bodiesOfWorld)</td></tr>
+<tr class="memdesc:adf045ec704100a95dfed6ade35cdfc6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the step  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#adf045ec704100a95dfed6ade35cdfc6b">More...</a><br /></td></tr>
+<tr class="separator:adf045ec704100a95dfed6ade35cdfc6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d33519e660ca3f84600f3ade852d4af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a9d33519e660ca3f84600f3ade852d4af">Add</a> (<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> body)</td></tr>
 <tr class="memdesc:a9d33519e660ca3f84600f3ade852d4af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the body  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a9d33519e660ca3f84600f3ade852d4af">More...</a><br /></td></tr>
 <tr class="separator:a9d33519e660ca3f84600f3ade852d4af"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,131 +130,66 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aafc74a8591683b3bfc4394519f9c1471"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aafc74a8591683b3bfc4394519f9c1471">Add</a> (<a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a> joint)</td></tr>
 <tr class="memdesc:aafc74a8591683b3bfc4394519f9c1471"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the joint  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aafc74a8591683b3bfc4394519f9c1471">More...</a><br /></td></tr>
 <tr class="separator:aafc74a8591683b3bfc4394519f9c1471"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17561b38e8d7499a32c5fb639ae334fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a17561b38e8d7499a32c5fb639ae334fb">SynchronizeBodies</a> ()</td></tr>
+<tr class="memdesc:a17561b38e8d7499a32c5fb639ae334fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Synchronizes the bodies  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a17561b38e8d7499a32c5fb639ae334fb">More...</a><br /></td></tr>
+<tr class="separator:a17561b38e8d7499a32c5fb639ae334fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
 Package Functions</h2></td></tr>
-<tr class="memitem:a2ba5ef9132e36aa03dff25a2786c5f8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a2ba5ef9132e36aa03dff25a2786c5f8a">SolveToi</a> (ref <a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a> subStep, int toiIndexA, int toiIndexB)</td></tr>
-<tr class="memdesc:a2ba5ef9132e36aa03dff25a2786c5f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the toi using the specified sub step  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a2ba5ef9132e36aa03dff25a2786c5f8a">More...</a><br /></td></tr>
-<tr class="separator:a2ba5ef9132e36aa03dff25a2786c5f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7e4f3c4c5926f298d47e600b8bfcb8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a2a7e4f3c4c5926f298d47e600b8bfcb8">SolveToi</a> (float minAlpha, <a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a> subStep, int toiIndexA, int toiIndexB, <a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a> contactManager)</td></tr>
+<tr class="memdesc:a2a7e4f3c4c5926f298d47e600b8bfcb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves the toi using the specified min alpha  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a2a7e4f3c4c5926f298d47e600b8bfcb8">More...</a><br /></td></tr>
+<tr class="separator:a2a7e4f3c4c5926f298d47e600b8bfcb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-attribs"></a>
 Package Attributes</h2></td></tr>
-<tr class="memitem:a6dc45895dec963c3083a5941b45c1c56"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a6dc45895dec963c3083a5941b45c1c56">Bodies</a></td></tr>
-<tr class="memdesc:a6dc45895dec963c3083a5941b45c1c56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bodies  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a6dc45895dec963c3083a5941b45c1c56">More...</a><br /></td></tr>
-<tr class="separator:a6dc45895dec963c3083a5941b45c1c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85fad98ccf39630c9c6f72b0056f521e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a85fad98ccf39630c9c6f72b0056f521e">BodyCapacity</a></td></tr>
-<tr class="memdesc:a85fad98ccf39630c9c6f72b0056f521e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The body capacity  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a85fad98ccf39630c9c6f72b0056f521e">More...</a><br /></td></tr>
-<tr class="separator:a85fad98ccf39630c9c6f72b0056f521e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6bed3d1596464f933d7ae78ea3d49e10"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a6bed3d1596464f933d7ae78ea3d49e10">BodyCount</a></td></tr>
-<tr class="memdesc:a6bed3d1596464f933d7ae78ea3d49e10"><td class="mdescLeft">&#160;</td><td class="mdescRight">The body count  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a6bed3d1596464f933d7ae78ea3d49e10">More...</a><br /></td></tr>
-<tr class="separator:a6bed3d1596464f933d7ae78ea3d49e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3717530ac747c94ec45dedc070762d6b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a3717530ac747c94ec45dedc070762d6b">ContactCapacity</a></td></tr>
-<tr class="memdesc:a3717530ac747c94ec45dedc070762d6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contact capacity  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a3717530ac747c94ec45dedc070762d6b">More...</a><br /></td></tr>
-<tr class="separator:a3717530ac747c94ec45dedc070762d6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a548c04c97ea4d5ef62f39b687825fd08"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a548c04c97ea4d5ef62f39b687825fd08">ContactCount</a></td></tr>
-<tr class="memdesc:a548c04c97ea4d5ef62f39b687825fd08"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contact count  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a548c04c97ea4d5ef62f39b687825fd08">More...</a><br /></td></tr>
-<tr class="separator:a548c04c97ea4d5ef62f39b687825fd08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada843d77e8b045bb19a47b953c0e83e5"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#ada843d77e8b045bb19a47b953c0e83e5">Bodies</a> = new List&lt;<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&gt;(Settings.ToiContacts * 2)</td></tr>
+<tr class="memdesc:ada843d77e8b045bb19a47b953c0e83e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The bodies  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#ada843d77e8b045bb19a47b953c0e83e5">More...</a><br /></td></tr>
+<tr class="separator:ada843d77e8b045bb19a47b953c0e83e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+Properties</h2></td></tr>
+<tr class="memitem:a176cf2fffc75725daef255f14056e21a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a176cf2fffc75725daef255f14056e21a">TimeStepSolveToi</a> = new <a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a>()<code> [get, set]</code></td></tr>
+<tr class="memdesc:a176cf2fffc75725daef255f14056e21a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets or sets the value of the step  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a176cf2fffc75725daef255f14056e21a">More...</a><br /></td></tr>
+<tr class="separator:a176cf2fffc75725daef255f14056e21a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a55dfa34f249d7ae1596d29e2e9c1bc26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a55dfa34f249d7ae1596d29e2e9c1bc26">Report</a> (<a class="el" href="../../d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html">ContactVelocityConstraint</a>[] constraints)</td></tr>
-<tr class="memdesc:a55dfa34f249d7ae1596d29e2e9c1bc26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the constraints  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a55dfa34f249d7ae1596d29e2e9c1bc26">More...</a><br /></td></tr>
-<tr class="separator:a55dfa34f249d7ae1596d29e2e9c1bc26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77d690d1ad8d122d6e5297c5cecc02ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a77d690d1ad8d122d6e5297c5cecc02ca">Report</a> (List&lt; <a class="el" href="../../d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html">ContactVelocityConstraint</a> &gt; constraints, <a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a> contactManager)</td></tr>
+<tr class="memdesc:a77d690d1ad8d122d6e5297c5cecc02ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reports the constraints  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a77d690d1ad8d122d6e5297c5cecc02ca">More...</a><br /></td></tr>
+<tr class="separator:a77d690d1ad8d122d6e5297c5cecc02ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:aa89c136d35d13567ad9bdc341b3ec396"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aa89c136d35d13567ad9bdc341b3ec396">angTolSqr</a> = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance</td></tr>
-<tr class="memdesc:aa89c136d35d13567ad9bdc341b3ec396"><td class="mdescLeft">&#160;</td><td class="mdescRight">The angular sleep tolerance  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aa89c136d35d13567ad9bdc341b3ec396">More...</a><br /></td></tr>
-<tr class="separator:aa89c136d35d13567ad9bdc341b3ec396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa7415ad2230d4e1b61ec31868e8096fc"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="../../d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html">Contact</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aa7415ad2230d4e1b61ec31868e8096fc">contacts</a> = new List&lt;<a class="el" href="../../d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html">Contact</a>&gt;(Settings.ToiContacts * 2)</td></tr>
+<tr class="memdesc:aa7415ad2230d4e1b61ec31868e8096fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contacts  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aa7415ad2230d4e1b61ec31868e8096fc">More...</a><br /></td></tr>
+<tr class="separator:aa7415ad2230d4e1b61ec31868e8096fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5db95a228be71b572bccb0865d362305"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="../../d5/d16/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver.html">ContactSolver</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a5db95a228be71b572bccb0865d362305">contactSolver</a> = new <a class="el" href="../../d5/d16/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_solver.html">ContactSolver</a>()</td></tr>
 <tr class="memdesc:a5db95a228be71b572bccb0865d362305"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contact solver  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a5db95a228be71b572bccb0865d362305">More...</a><br /></td></tr>
 <tr class="separator:a5db95a228be71b572bccb0865d362305"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:accf6f5bd5cf3bc739f6a05ed39a3e659"><td class="memItemLeft" align="right" valign="top">readonly float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#accf6f5bd5cf3bc739f6a05ed39a3e659">linTolSqr</a> = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance</td></tr>
-<tr class="memdesc:accf6f5bd5cf3bc739f6a05ed39a3e659"><td class="mdescLeft">&#160;</td><td class="mdescRight">The linear sleep tolerance  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#accf6f5bd5cf3bc739f6a05ed39a3e659">More...</a><br /></td></tr>
-<tr class="separator:accf6f5bd5cf3bc739f6a05ed39a3e659"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8eeca8b8c6148a0849e7f6300ac9ff10"><td class="memItemLeft" align="right" valign="top">readonly Stopwatch&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a8eeca8b8c6148a0849e7f6300ac9ff10">timer</a> = new Stopwatch()</td></tr>
-<tr class="memdesc:a8eeca8b8c6148a0849e7f6300ac9ff10"><td class="mdescLeft">&#160;</td><td class="mdescRight">The stopwatch  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a8eeca8b8c6148a0849e7f6300ac9ff10">More...</a><br /></td></tr>
-<tr class="separator:a8eeca8b8c6148a0849e7f6300ac9ff10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a620e369aceaf5ca44bca4b012bdff733"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a620e369aceaf5ca44bca4b012bdff733">contactManager</a></td></tr>
-<tr class="memdesc:a620e369aceaf5ca44bca4b012bdff733"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contact manager  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a620e369aceaf5ca44bca4b012bdff733">More...</a><br /></td></tr>
-<tr class="separator:a620e369aceaf5ca44bca4b012bdff733"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae11934c707f18bf4997940c8c4cd24aa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html">Contact</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#ae11934c707f18bf4997940c8c4cd24aa">contacts</a></td></tr>
-<tr class="memdesc:ae11934c707f18bf4997940c8c4cd24aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The contacts  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#ae11934c707f18bf4997940c8c4cd24aa">More...</a><br /></td></tr>
-<tr class="separator:ae11934c707f18bf4997940c8c4cd24aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ffc2346aeaf7b1d5bc3f2501d666df6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a5ffc2346aeaf7b1d5bc3f2501d666df6">jointCapacity</a></td></tr>
-<tr class="memdesc:a5ffc2346aeaf7b1d5bc3f2501d666df6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint capacity  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a5ffc2346aeaf7b1d5bc3f2501d666df6">More...</a><br /></td></tr>
-<tr class="separator:a5ffc2346aeaf7b1d5bc3f2501d666df6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9df2f084565bc7f23cd20f240eda4d62"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a9df2f084565bc7f23cd20f240eda4d62">jointCount</a></td></tr>
-<tr class="memdesc:a9df2f084565bc7f23cd20f240eda4d62"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joint count  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a9df2f084565bc7f23cd20f240eda4d62">More...</a><br /></td></tr>
-<tr class="separator:a9df2f084565bc7f23cd20f240eda4d62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25cf7351e8429a8e759a29134c352c32"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a25cf7351e8429a8e759a29134c352c32">joints</a></td></tr>
-<tr class="memdesc:a25cf7351e8429a8e759a29134c352c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joints  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a25cf7351e8429a8e759a29134c352c32">More...</a><br /></td></tr>
-<tr class="separator:a25cf7351e8429a8e759a29134c352c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb4fcd2f7a2324f5ab1280f8bebfd65c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d67/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html">Position</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#abb4fcd2f7a2324f5ab1280f8bebfd65c">positions</a></td></tr>
-<tr class="memdesc:abb4fcd2f7a2324f5ab1280f8bebfd65c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The positions  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#abb4fcd2f7a2324f5ab1280f8bebfd65c">More...</a><br /></td></tr>
-<tr class="separator:abb4fcd2f7a2324f5ab1280f8bebfd65c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab533a41a9e1c1d64fd21c070ae65d1ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d7f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html">Velocity</a>[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#ab533a41a9e1c1d64fd21c070ae65d1ef">velocities</a></td></tr>
-<tr class="memdesc:ab533a41a9e1c1d64fd21c070ae65d1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">The velocities  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#ab533a41a9e1c1d64fd21c070ae65d1ef">More...</a><br /></td></tr>
-<tr class="separator:ab533a41a9e1c1d64fd21c070ae65d1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae5eeabacd8137a7f50fc7a4687b18a1"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aae5eeabacd8137a7f50fc7a4687b18a1">joints</a> = new List&lt;<a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&gt;(Settings.ToiContacts)</td></tr>
+<tr class="memdesc:aae5eeabacd8137a7f50fc7a4687b18a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The joints  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aae5eeabacd8137a7f50fc7a4687b18a1">More...</a><br /></td></tr>
+<tr class="separator:aae5eeabacd8137a7f50fc7a4687b18a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6e435f976ad9793f150fb4fbc084d2"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="../../da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html">Position</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aca6e435f976ad9793f150fb4fbc084d2">positions</a> = new List&lt;<a class="el" href="../../da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html">Position</a>&gt;(Settings.ToiContacts)</td></tr>
+<tr class="memdesc:aca6e435f976ad9793f150fb4fbc084d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The positions  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#aca6e435f976ad9793f150fb4fbc084d2">More...</a><br /></td></tr>
+<tr class="separator:aca6e435f976ad9793f150fb4fbc084d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdbd51637363ce0eb45bafacff6892a8"><td class="memItemLeft" align="right" valign="top">readonly List&lt; <a class="el" href="../../da/d2d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html">Velocity</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#acdbd51637363ce0eb45bafacff6892a8">velocities</a> = new List&lt;<a class="el" href="../../da/d2d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html">Velocity</a>&gt;(Settings.ToiContacts)</td></tr>
+<tr class="memdesc:acdbd51637363ce0eb45bafacff6892a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The velocities  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#acdbd51637363ce0eb45bafacff6892a8">More...</a><br /></td></tr>
+<tr class="separator:acdbd51637363ce0eb45bafacff6892a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a1914d4bd12b049216a20cee328752b12"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a1914d4bd12b049216a20cee328752b12">AngTolSqr</a> = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance</td></tr>
+<tr class="memdesc:a1914d4bd12b049216a20cee328752b12"><td class="mdescLeft">&#160;</td><td class="mdescRight">The angular sleep tolerance  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a1914d4bd12b049216a20cee328752b12">More...</a><br /></td></tr>
+<tr class="separator:a1914d4bd12b049216a20cee328752b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2062dc14d2a0506232aaa36bdfe39374"><td class="memItemLeft" align="right" valign="top">const float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a2062dc14d2a0506232aaa36bdfe39374">LinTolSqr</a> = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance</td></tr>
+<tr class="memdesc:a2062dc14d2a0506232aaa36bdfe39374"><td class="mdescLeft">&#160;</td><td class="mdescRight">The linear sleep tolerance  <a href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html#a2062dc14d2a0506232aaa36bdfe39374">More...</a><br /></td></tr>
+<tr class="separator:a2062dc14d2a0506232aaa36bdfe39374"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is an internal class. </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00042">42</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00043">43</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a08cfd868c97f25d331616a6463fdbea3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08cfd868c97f25d331616a6463fdbea3">&#9670;&nbsp;</a></span>Reset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Alis.Core.Physic.Dynamics.Solver.Island.Reset </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>bodyCapacity</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>contactCapacity</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>jointCapacity</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a>&#160;</td>
-          <td class="paramname"><em>contactManager</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Resets the body capacity </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bodyCapacity</td><td>The body capacity</td></tr>
-    <tr><td class="paramname">contactCapacity</td><td>The contact capacity</td></tr>
-    <tr><td class="paramname">jointCapacity</td><td>The joint capacity</td></tr>
-    <tr><td class="paramname">contactManager</td><td>The contact manager</td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00131">131</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
 <a id="a8fd753c6f0f8e66ae3af213cfa969f06"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fd753c6f0f8e66ae3af213cfa969f06">&#9670;&nbsp;</a></span>Clear()</h2>
 
@@ -273,12 +207,12 @@ Private Attributes</h2></td></tr>
 
 <p>Clears this instance </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00163">163</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00093">93</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
-<a id="a5189024dd7a8e063d59443704f2084e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5189024dd7a8e063d59443704f2084e1">&#9670;&nbsp;</a></span>Solve()</h2>
+<a id="adf045ec704100a95dfed6ade35cdfc6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf045ec704100a95dfed6ade35cdfc6b">&#9670;&nbsp;</a></span>Solve()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +233,19 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>allowSleep</em>&#160;</td>
+          <td class="paramname"><em>allowSleep</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a>&#160;</td>
+          <td class="paramname"><em>contactManager</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">List&lt; <a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> &gt;&#160;</td>
+          <td class="paramname"><em>bodiesOfWorld</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -309,22 +255,24 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Solves the profile </p>
+<p>Solves the step </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">step</td><td>The step</td></tr>
     <tr><td class="paramname">gravity</td><td>The gravity</td></tr>
     <tr><td class="paramname">allowSleep</td><td>The allow sleep</td></tr>
+    <tr><td class="paramname">contactManager</td><td>The contact manager</td></tr>
+    <tr><td class="paramname">bodiesOfWorld</td><td>The bodies of world</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00176">176</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00110">110</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
-<a id="a2ba5ef9132e36aa03dff25a2786c5f8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ba5ef9132e36aa03dff25a2786c5f8a">&#9670;&nbsp;</a></span>SolveToi()</h2>
+<a id="a2a7e4f3c4c5926f298d47e600b8bfcb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a7e4f3c4c5926f298d47e600b8bfcb8">&#9670;&nbsp;</a></span>SolveToi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -335,7 +283,13 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Alis.Core.Physic.Dynamics.Solver.Island.SolveToi </td>
           <td>(</td>
-          <td class="paramtype">ref <a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a>&#160;</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>minAlpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a>&#160;</td>
           <td class="paramname"><em>subStep</em>, </td>
         </tr>
         <tr>
@@ -348,7 +302,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>toiIndexB</em>&#160;</td>
+          <td class="paramname"><em>toiIndexB</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a>&#160;</td>
+          <td class="paramname"><em>contactManager</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -363,17 +323,19 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Solves the toi using the specified sub step </p>
+<p>Solves the toi using the specified min alpha </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
+    <tr><td class="paramname">minAlpha</td><td>The min alpha</td></tr>
     <tr><td class="paramname">subStep</td><td>The sub step</td></tr>
     <tr><td class="paramname">toiIndexA</td><td>The toi index</td></tr>
     <tr><td class="paramname">toiIndexB</td><td>The toi index</td></tr>
+    <tr><td class="paramname">contactManager</td><td>The contact manager</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00391">391</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00463">463</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
@@ -401,7 +363,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00488">488</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00584">584</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
@@ -429,8 +391,6 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00499">499</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
 </div>
 </div>
 <a id="aafc74a8591683b3bfc4394519f9c1471"></a>
@@ -457,12 +417,10 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00509">509</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
 </div>
 </div>
-<a id="a55dfa34f249d7ae1596d29e2e9c1bc26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a55dfa34f249d7ae1596d29e2e9c1bc26">&#9670;&nbsp;</a></span>Report()</h2>
+<a id="a77d690d1ad8d122d6e5297c5cecc02ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77d690d1ad8d122d6e5297c5cecc02ca">&#9670;&nbsp;</a></span>Report()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -473,9 +431,19 @@ Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Alis.Core.Physic.Dynamics.Solver.Island.Report </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html">ContactVelocityConstraint</a>[]&#160;</td>
-          <td class="paramname"><em>constraints</em></td><td>)</td>
+          <td class="paramtype">List&lt; <a class="el" href="../../d6/d96/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_contact_velocity_constraint.html">ContactVelocityConstraint</a> &gt;&#160;</td>
+          <td class="paramname"><em>constraints</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a>&#160;</td>
+          <td class="paramname"><em>contactManager</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -489,17 +457,39 @@ Private Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">constraints</td><td>The constraints</td></tr>
+    <tr><td class="paramname">contactManager</td><td>The contact manager</td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00519">519</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00608">608</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+
+</div>
+</div>
+<a id="a17561b38e8d7499a32c5fb639ae334fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17561b38e8d7499a32c5fb639ae334fb">&#9670;&nbsp;</a></span>SynchronizeBodies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Physic.Dynamics.Solver.Island.SynchronizeBodies </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Synchronizes the bodies </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00626">626</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa89c136d35d13567ad9bdc341b3ec396"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa89c136d35d13567ad9bdc341b3ec396">&#9670;&nbsp;</a></span>angTolSqr</h2>
+<a id="ada843d77e8b045bb19a47b953c0e83e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada843d77e8b045bb19a47b953c0e83e5">&#9670;&nbsp;</a></span>Bodies</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -508,7 +498,33 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly float Alis.Core.Physic.Dynamics.Solver.Island.angTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance</td>
+          <td class="memname">readonly List&lt;<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&gt; Alis.Core.Physic.Dynamics.Solver.Island.Bodies = new List&lt;<a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a>&gt;(Settings.ToiContacts * 2)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The bodies </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00048">48</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa7415ad2230d4e1b61ec31868e8096fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7415ad2230d4e1b61ec31868e8096fc">&#9670;&nbsp;</a></span>contacts</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly List&lt;<a class="el" href="../../d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html">Contact</a>&gt; Alis.Core.Physic.Dynamics.Solver.Island.contacts = new List&lt;<a class="el" href="../../d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html">Contact</a>&gt;(Settings.ToiContacts * 2)</td>
         </tr>
       </table>
   </td>
@@ -518,9 +534,9 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>The angular sleep tolerance </p>
+<p>The contacts </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00047">47</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00053">53</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
@@ -546,12 +562,12 @@ Private Attributes</h2></td></tr>
 
 <p>The contact solver </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00052">52</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00058">58</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
-<a id="accf6f5bd5cf3bc739f6a05ed39a3e659"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#accf6f5bd5cf3bc739f6a05ed39a3e659">&#9670;&nbsp;</a></span>linTolSqr</h2>
+<a id="aae5eeabacd8137a7f50fc7a4687b18a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae5eeabacd8137a7f50fc7a4687b18a1">&#9670;&nbsp;</a></span>joints</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -560,293 +576,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">readonly float Alis.Core.Physic.Dynamics.Solver.Island.linTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The linear sleep tolerance </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00057">57</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a8eeca8b8c6148a0849e7f6300ac9ff10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8eeca8b8c6148a0849e7f6300ac9ff10">&#9670;&nbsp;</a></span>timer</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">readonly Stopwatch Alis.Core.Physic.Dynamics.Solver.Island.timer = new Stopwatch()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The stopwatch </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00062">62</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a6dc45895dec963c3083a5941b45c1c56"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6dc45895dec963c3083a5941b45c1c56">&#9670;&nbsp;</a></span>Bodies</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/d1b/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_body.html">Body</a> [] Alis.Core.Physic.Dynamics.Solver.Island.Bodies</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The bodies </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00067">67</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a85fad98ccf39630c9c6f72b0056f521e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85fad98ccf39630c9c6f72b0056f521e">&#9670;&nbsp;</a></span>BodyCapacity</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Alis.Core.Physic.Dynamics.Solver.Island.BodyCapacity</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The body capacity </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00072">72</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a6bed3d1596464f933d7ae78ea3d49e10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6bed3d1596464f933d7ae78ea3d49e10">&#9670;&nbsp;</a></span>BodyCount</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Alis.Core.Physic.Dynamics.Solver.Island.BodyCount</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The body count </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00077">77</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a3717530ac747c94ec45dedc070762d6b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3717530ac747c94ec45dedc070762d6b">&#9670;&nbsp;</a></span>ContactCapacity</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Alis.Core.Physic.Dynamics.Solver.Island.ContactCapacity</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The contact capacity </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00082">82</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a548c04c97ea4d5ef62f39b687825fd08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a548c04c97ea4d5ef62f39b687825fd08">&#9670;&nbsp;</a></span>ContactCount</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Alis.Core.Physic.Dynamics.Solver.Island.ContactCount</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">package</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The contact count </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00087">87</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a620e369aceaf5ca44bca4b012bdff733"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a620e369aceaf5ca44bca4b012bdff733">&#9670;&nbsp;</a></span>contactManager</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html">ContactManager</a> Alis.Core.Physic.Dynamics.Solver.Island.contactManager</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The contact manager </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00092">92</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="ae11934c707f18bf4997940c8c4cd24aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae11934c707f18bf4997940c8c4cd24aa">&#9670;&nbsp;</a></span>contacts</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html">Contact</a> [] Alis.Core.Physic.Dynamics.Solver.Island.contacts</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The contacts </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00097">97</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a5ffc2346aeaf7b1d5bc3f2501d666df6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ffc2346aeaf7b1d5bc3f2501d666df6">&#9670;&nbsp;</a></span>jointCapacity</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Alis.Core.Physic.Dynamics.Solver.Island.jointCapacity</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The joint capacity </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00102">102</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a9df2f084565bc7f23cd20f240eda4d62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9df2f084565bc7f23cd20f240eda4d62">&#9670;&nbsp;</a></span>jointCount</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Alis.Core.Physic.Dynamics.Solver.Island.jointCount</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The joint count </p>
-
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00107">107</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
-
-</div>
-</div>
-<a id="a25cf7351e8429a8e759a29134c352c32"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a25cf7351e8429a8e759a29134c352c32">&#9670;&nbsp;</a></span>joints</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a> [] Alis.Core.Physic.Dynamics.Solver.Island.joints</td>
+          <td class="memname">readonly List&lt;<a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&gt; Alis.Core.Physic.Dynamics.Solver.Island.joints = new List&lt;<a class="el" href="../../d7/d40/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_joints_1_1_joint.html">Joint</a>&gt;(Settings.ToiContacts)</td>
         </tr>
       </table>
   </td>
@@ -858,12 +588,12 @@ Private Attributes</h2></td></tr>
 
 <p>The joints </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00112">112</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00063">63</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
-<a id="abb4fcd2f7a2324f5ab1280f8bebfd65c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb4fcd2f7a2324f5ab1280f8bebfd65c">&#9670;&nbsp;</a></span>positions</h2>
+<a id="aca6e435f976ad9793f150fb4fbc084d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6e435f976ad9793f150fb4fbc084d2">&#9670;&nbsp;</a></span>positions</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -872,7 +602,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d8/d67/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html">Position</a> [] Alis.Core.Physic.Dynamics.Solver.Island.positions</td>
+          <td class="memname">readonly List&lt;<a class="el" href="../../da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html">Position</a>&gt; Alis.Core.Physic.Dynamics.Solver.Island.positions = new List&lt;<a class="el" href="../../da/d34/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_position.html">Position</a>&gt;(Settings.ToiContacts)</td>
         </tr>
       </table>
   </td>
@@ -884,12 +614,12 @@ Private Attributes</h2></td></tr>
 
 <p>The positions </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00117">117</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00068">68</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
-<a id="ab533a41a9e1c1d64fd21c070ae65d1ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab533a41a9e1c1d64fd21c070ae65d1ef">&#9670;&nbsp;</a></span>velocities</h2>
+<a id="acdbd51637363ce0eb45bafacff6892a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdbd51637363ce0eb45bafacff6892a8">&#9670;&nbsp;</a></span>velocities</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -898,7 +628,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d3/d7f/struct_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html">Velocity</a> [] Alis.Core.Physic.Dynamics.Solver.Island.velocities</td>
+          <td class="memname">readonly List&lt;<a class="el" href="../../da/d2d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html">Velocity</a>&gt; Alis.Core.Physic.Dynamics.Solver.Island.velocities = new List&lt;<a class="el" href="../../da/d2d/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_velocity.html">Velocity</a>&gt;(Settings.ToiContacts)</td>
         </tr>
       </table>
   </td>
@@ -910,7 +640,86 @@ Private Attributes</h2></td></tr>
 
 <p>The velocities </p>
 
-<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00122">122</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00073">73</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1914d4bd12b049216a20cee328752b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1914d4bd12b049216a20cee328752b12">&#9670;&nbsp;</a></span>AngTolSqr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float Alis.Core.Physic.Dynamics.Solver.Island.AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The angular sleep tolerance </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00078">78</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2062dc14d2a0506232aaa36bdfe39374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2062dc14d2a0506232aaa36bdfe39374">&#9670;&nbsp;</a></span>LinTolSqr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const float Alis.Core.Physic.Dynamics.Solver.Island.LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The linear sleep tolerance </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00083">83</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a176cf2fffc75725daef255f14056e21a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a176cf2fffc75725daef255f14056e21a">&#9670;&nbsp;</a></span>TimeStepSolveToi</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a> Alis.Core.Physic.Dynamics.Solver.Island.TimeStepSolveToi = new <a class="el" href="../../d5/d6c/class_alis_1_1_core_1_1_aspect_1_1_time_1_1_time_step.html">TimeStep</a>()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span><span class="mlabel">set</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets or sets the value of the step </p>
+
+<p class="definition">Definition at line <a class="el" href="../../dc/dcd/_island_8cs_source.html#l00088">88</a> of file <a class="el" href="../../dc/dcd/_island_8cs_source.html">Island.cs</a>.</p>
 
 </div>
 </div>
@@ -921,7 +730,7 @@ Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../d7/db3/namespace_alis_1_1_core_1_1_physic.html">Physic</a></li><li class="navelem"><a class="el" href="../../dd/d6a/namespace_alis_1_1_core_1_1_physic_1_1_dynamics.html">Dynamics</a></li><li class="navelem"><a class="el" href="../../d2/df0/namespace_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver.html">Solver</a></li><li class="navelem"><a class="el" href="../../d6/d63/class_alis_1_1_core_1_1_physic_1_1_dynamics_1_1_solver_1_1_island.html">Island</a></li>
     <li class="footer">
-      <a>Generated on | Fri Apr 28 2023 |</a>
+      <a>Generated on | Sat Apr 29 2023 |</a>
     </li>
   </ul>
 </div>
