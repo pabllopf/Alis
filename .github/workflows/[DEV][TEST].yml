@@ -7,7 +7,7 @@ on:
     branches: [ develop ]
   schedule:
     - cron: '30 1 * * *'
-
+      
 jobs:
   Run_Test_On_MacOs_Latest:
     runs-on: macos-latest
@@ -22,8 +22,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
+      - name: Move to scripts folder
+        run: cd ./.scripts/macos/
+
       - name: Dotnet test
-        run: cd ./.scripts/macos/ || ./run_tests.sh
+        run: ./run_tests.sh
 
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
@@ -38,8 +41,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
+      - name: Move to scripts folder
+        run: cd .\\.scripts\\windows\\
+
       - name: Dotnet test
-        run: cd .\\.scripts\\windows\\ && .\\run_tests.bat
+        run: .\\run_tests.bat
   
   Run_Test_On_Ubuntu_Latest:
     runs-on: ubuntu-latest
@@ -54,8 +60,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
+      - name: Move to scripts folder
+        run: cd ./.scripts/linux/
+
       - name: Dotnet test
-        run: cd ./.scripts/linux/ || ./run_tests.sh
+        run: ./run_tests.sh
         
         
     
