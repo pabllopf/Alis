@@ -23,7 +23,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test
-        run: cd ./.scripts/macos/ && ./run_tests.sh
+        run: cd ./.scripts/macos/ && sudo chmod 777 ./run_tests.sh && ./run_tests.sh
 
   Run_Test_On_Windows_Latest:
     runs-on: windows-latest
@@ -55,7 +55,7 @@ jobs:
           dotnet-version: 6.0.x
 
       - name: Dotnet test
-        run: cd ./.scripts/linux/ && ./run_tests.sh
+        run: cd ./.scripts/linux/ && sudo chmod 777 ./run_tests.sh && ./run_tests.sh
         
         
     
