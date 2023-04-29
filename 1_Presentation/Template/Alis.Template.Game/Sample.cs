@@ -29,6 +29,9 @@
 
 namespace Alis.Template.Game
 {
+    /// <summary>
+    /// The sample class
+    /// </summary>
     public class Sample
     {
         

@@ -1,18 +1,35 @@
+#!/bin/bash
 
-cd ../../
-
-rm -rf ./.nuget/
-rm -rf ./**/obj/
-rm -rf ./**/bin/
-
-for i in `find . -name "*.csproj" -type f`; do
-    echo "Write default value of csproj = $i"
-    cat ./.config/Default_csproj.props > $i
+echo "Do you want to continue? (y/n)"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) 
+          
+          cd ../../
+          
+          rm -rf ./.build/
+          echo "./.build/"
+          
+          rm -rf ./.nuget/
+          echo "./.nuget/"
+          
+          rm -rf ./**/obj/
+          echo "./**/obj/"
+          
+          rm -rf ./**/bin/
+          echo "./**/bin/"
+                  
+          for i in `find . -name "*.csproj" -type f`; do
+              echo "restoring csproj = $i"
+              dotnet restore $i
+          done
+          
+          cd ./.scripts/linux/ || exit
+          
+          break;;
+        No ) 
+          echo "Goodbye!"
+          exit;;
+    esac
 done
 
-for i in `find . -name "*.csproj" -type f`; do
-    echo "restoring csproj = $i"
-    dotnet restore $i
-done
-
-cd ./.scripts/macos/

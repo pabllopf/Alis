@@ -124,36 +124,32 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".scripts", ".scripts", "{53
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "macos", "macos", "{CF7DBB5E-6C12-4E8D-AA2D-F862A024CDFB}"
 	ProjectSection(SolutionItems) = preProject
-		.scripts\macos\restart_nuget.sh = .scripts\macos\restart_nuget.sh
-		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
-		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
 		.scripts\macos\generate_comments.sh = .scripts\macos\generate_comments.sh
 		.scripts\macos\install_env.sh = .scripts\macos\install_env.sh
+		.scripts\macos\restart_nuget.sh = .scripts\macos\restart_nuget.sh
+		.scripts\macos\restart_permissions.sh = .scripts\macos\restart_permissions.sh
+		.scripts\macos\restart_sln.sh = .scripts\macos\restart_sln.sh
+		.scripts\macos\run_test.sh = .scripts\macos\run_test.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "linux", "linux", "{020BC1B3-A88C-4938-AF9C-E35A4BEBDF72}"
 	ProjectSection(SolutionItems) = preProject
-		.scripts\linux\document_code.sh = .scripts\linux\document_code.sh
-		.scripts\linux\publish.sh = .scripts\linux\publish.sh
+		.scripts\linux\generate_comments.sh = .scripts\linux\generate_comments.sh
+		.scripts\linux\install_env.sh = .scripts\linux\install_env.sh
 		.scripts\linux\restart_nuget.sh = .scripts\linux\restart_nuget.sh
+		.scripts\linux\restart_permissions.sh = .scripts\linux\restart_permissions.sh
 		.scripts\linux\restart_sln.sh = .scripts\linux\restart_sln.sh
-		.scripts\linux\trust_certificates.sh = .scripts\linux\trust_certificates.sh
-		.scripts\linux\clean_temp_files.sh = .scripts\linux\clean_temp_files.sh
-		.scripts\linux\create_web.sh = .scripts\linux\create_web.sh
-		.scripts\linux\publish_to_github.sh = .scripts\linux\publish_to_github.sh
+		.scripts\linux\run_test.sh = .scripts\linux\run_test.sh
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "windows", "windows", "{015EBC6B-559D-4454-9DB0-8E2D42CBBE34}"
 	ProjectSection(SolutionItems) = preProject
-		.scripts\windows\clean_temp_files.bat = .scripts\windows\clean_temp_files.bat
-		.scripts\windows\create_web.bat = .scripts\windows\create_web.bat
-		.scripts\windows\document_code.bat = .scripts\windows\document_code.bat
-		.scripts\windows\publish_to_github.bat = .scripts\windows\publish_to_github.bat
-		.scripts\windows\publish.bat = .scripts\windows\publish.bat
-		.scripts\windows\restart_nuget.bat = .scripts\windows\restart_nuget.bat
-		.scripts\windows\restart_sln.bat = .scripts\windows\restart_sln.bat
-		.scripts\windows\trust_certificates.bat = .scripts\windows\trust_certificates.bat
+		.scripts\windows\generate_comments.bat = .scripts\windows\generate_comments.bat
 		.scripts\windows\install_env.bat = .scripts\windows\install_env.bat
+		.scripts\windows\restart_nuget.bat = .scripts\windows\restart_nuget.bat
+		.scripts\windows\restart_permissions.bat = .scripts\windows\restart_permissions.bat
+		.scripts\windows\restart_sln.bat = .scripts\windows\restart_sln.bat
+		.scripts\windows\run_tests.bat = .scripts\windows\run_tests.bat
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{2D95A184-CC32-4BFE-838E-4A2E1764DAF4}"
