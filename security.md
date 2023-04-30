@@ -4,7 +4,7 @@ At Alis, we take security very seriously. We strive to provide a safe and secure
 
 ## 🚨 Reporting a vulnerability
 
-To report a security vulnerability, please email us at [security@alisengine.com](mailto:security@alisengine.com). We will review your report and respond as quickly as possible.
+To report a security vulnerability, please report on issues section on this repository. We will review your report and respond as quickly as possible.
 
 Please include the following information in your report:
 
