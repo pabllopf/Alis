@@ -1,10 +1,8 @@
-Claro, estaré encantado de ayudarte a mejorar tu sección Showcases. Aquí te presento una versión mejorada con emojis incluidos:
-
-## 🎉 Showcases
+# 🎉 Showcases
 
 We are proud to showcase some of the amazing projects that have been built using Alis. These projects represent the creativity and innovation of our community, and we are grateful to everyone who has contributed to them.
 
-### 🚀 How to submit your project
+## 🚀 How to submit your project
 
 If you have built a project using Alis and would like to have it featured on our showcase page, please send us an email at [showcase@alisengine.com](mailto:showcase@alisengine.com) with the following information:
 
@@ -13,7 +11,7 @@ If you have built a project using Alis and would like to have it featured on our
 - A screenshot or demo video of your project
 - Any additional information you would like to share
 
-### 🔍 Featured projects
+## 🔍 Featured projects
 
 Here are some of the amazing projects that have been built using Alis:
 
@@ -23,7 +21,7 @@ Here are some of the amazing projects that have been built using Alis:
 
 - **Project C** - [Website](https://www.project-c.com) - Project C is a mobile app that helps users track their mental health and connect with mental health professionals.
 
-### 🎁 Benefits of being featured
+## 🎁 Benefits of being featured
 
 By having your project featured on our showcase page, you can:
 
