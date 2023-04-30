@@ -1,5 +1,9 @@
 # Bots
 
+At Alis, we have developed a number of bots to help automate tasks and provide a better experience for our users. Our bots are constantly evolving and improving, thanks to the efforts of our development team and contributions from the community.
+
+## Available bots
+
 <!-- readme: bots -start -->
 <table>
 <tr>
@@ -20,3 +24,6 @@
 </table>
 <!-- readme: bots -end -->
 
+## Changes to this section
+
+We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or through a notification on our website.
