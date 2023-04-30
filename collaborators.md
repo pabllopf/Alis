@@ -95,8 +95,6 @@ Before collaborating with us, please read our [code of conduct][coc]. By partici
 
 We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or through a notification on our website.
 
-Thank you for considering collaborating with Alis! We appreciate your support and look forward to working with you.
-
 [collaboration]: https://www.alisengine.com/web/collaboration.html
 [coc]: https://www.alisengine.com/web/code_of_conduct.html
 
