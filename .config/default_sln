@@ -93,6 +93,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{18D887C5
 		quick_start.md = quick_start.md
 		security.md = security.md
 		showcases.md = showcases.md
+		licence.md = licence.md
+		donate.md = donate.md
+		features.md = features.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{6E102FFE-9727-458C-9361-4588C4157572}"
@@ -110,7 +113,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\[PRO][CREATE][WEB].yml = .github\workflows\[PRO][CREATE][WEB].yml
 		.github\workflows\[PRO][NEW][CONTRIBUTORS].yml = .github\workflows\[PRO][NEW][CONTRIBUTORS].yml
 		.github\workflows\[PRO][PUBLISH].yml = .github\workflows\[PRO][PUBLISH].yml
-		.github\workflows\[PRO][CHANGELOG].yml = .github\workflows\[PRO][CHANGELOG].yml
 		.github\workflows\[PRO][TEST].yml = .github\workflows\[PRO][TEST].yml
 	EndProjectSection
 EndProject
