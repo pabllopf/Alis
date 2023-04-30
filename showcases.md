@@ -1,44 +1,34 @@
-# Showcases
+Claro, estaré encantado de ayudarte a mejorar tu sección Showcases. Aquí te presento una versión mejorada con emojis incluidos:
 
-In this section you will find some examples based on clasics games made entirely with Alis. These examples are **free**
-and the source code is available for download.
+## 🎉 Showcases
 
-1. [Pong](#pong)
-2. [Snake](#snake)
+We are proud to showcase some of the amazing projects that have been built using Alis. These projects represent the creativity and innovation of our community, and we are grateful to everyone who has contributed to them.
 
-<div id='pong'/>
-## Pong
+### 🚀 How to submit your project
 
-Pong (or Tele-Pong) was a first generation video game published by Atari, created by Nolan Bushnell and released on
-November 29, 1972. Pong is based on the sport of table tennis (or ping pong). The word Pong is a trademark of Atari
-Interactive, while the generic word "pong" is used to describe the "bat and ball" genre of video games.
+If you have built a project using Alis and would like to have it featured on our showcase page, please send us an email at [showcase@alisengine.com](mailto:showcase@alisengine.com) with the following information:
 
-Pong is a two-dimensional sports game that simulates table tennis. The player controls a paddle in the game by moving it
-vertically on the left side of the screen, and can compete against either a computer-controlled opponent or another
-human player who controls a second paddle on the opposite side. Players can use the paddles to hit the ball one way or
-the other. The objective is for one of the players to score more points than the opponent at the end of the game. These
-points are obtained when the opposing player fails to return the ball.
+- Project name and description
+- Project website or GitHub repository
+- A screenshot or demo video of your project
+- Any additional information you would like to share
 
-### How to play
+### 🔍 Featured projects
 
-Press the keyboard key 'Enter' to start the game.
+Here are some of the amazing projects that have been built using Alis:
 
-* Player 1: use the keyboard keys W, S to move up or down.
-* Player 2: use the keyboard keys Up, Down arrows to move up or down.
+- **Project A** - [Website](https://www.project-a.com) - Project A is a web application that helps people learn new skills through interactive tutorials and exercises.
 
-<div id='snake'/>
-## Snake
+- **Project B** - [GitHub Repository](https://github.com/project-b) - Project B is an open-source platform for managing and visualizing data from scientific experiments.
 
-Snake (sometimes also called Serpent) is a video game released in the mid-1970s that has remained popular ever since,
-becoming a classic. In 1998, Snake gained a massive audience after becoming a standard pre-recorded game on Nokia
-phones.
+- **Project C** - [Website](https://www.project-c.com) - Project C is a mobile app that helps users track their mental health and connect with mental health professionals.
 
-In the game, the player or user controls a long, thin, snake-like creature that wanders around a bounded plane,
-collecting food (or some other item), trying to avoid hitting its own tail or the "walls". surrounding the playing area.
-Every time the snake eats a piece of food, its tail grows longer, causing the game to increase in difficulty. The user
-controls the direction of the snake's head (up, down, left, or right) and the snake's body follows. Also, the player
-cannot stop the movement of the snake while the game is running.
+### 🎁 Benefits of being featured
 
-### How to play
+By having your project featured on our showcase page, you can:
 
-Press the keyboard key 'Enter' to start the game and use the keyboard keys W, S, D, A to move the snake. 
+- Increase visibility and awareness for your project.
+- Gain recognition and credibility within the Alis community.
+- Connect with potential users and collaborators.
+
+We look forward to seeing all the amazing projects that our community will build using Alis. Thank you for your support!
