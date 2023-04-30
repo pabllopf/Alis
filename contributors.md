@@ -1,18 +1,18 @@
-# Contributors
+# Contributors 👥
 
 Alis is an open-source project and we welcome contributions from anyone. We would like to thank all our contributors for their time and effort in making Alis better.
 
-## How to contribute
+## How to contribute 🤝
 
 Contributing to Alis can be done in many ways, such as:
 
-- Reporting issues or suggesting improvements.
-- Submitting pull requests to fix bugs or add new features.
-- Providing feedback on existing issues or pull requests.
+- Reporting issues or suggesting improvements. 🐛💡
+- Submitting pull requests to fix bugs or add new features. 🛠️🚀
+- Providing feedback on existing issues or pull requests. 💬👀
 
 Before contributing, please read our [contributing guide][contributing-guide] for more information on how to get started.
 
-## Our contributors
+## Our contributors 🙌
 
 We would like to acknowledge and thank the following individuals and organizations for their contributions to Alis:
 
@@ -93,17 +93,15 @@ We would like to acknowledge and thank the following individuals and organizatio
 </table>
 <!-- readme: contributors -end -->
 
-
-
-## Code of Conduct
+## Code of Conduct 📜
 
 Before contributing to our project, please read our [code of conduct][coc]. By participating in our community, you agree to abide by its terms.
 
-## Changes to this section
+## Changes to this section 📝
 
 We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or through a notification on our website.
 
-Thank you for considering contributing to Alis! We appreciate your support and look forward to working with you.
+Thank you for considering contributing to Alis! We appreciate your support and look forward to working with you. 🙏
 
 [contributing-guide]: https://www.alisengine.com/web/contributing.html
 [john-doe]: https://github.com/johndoe
