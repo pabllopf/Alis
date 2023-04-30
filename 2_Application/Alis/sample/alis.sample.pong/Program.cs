@@ -62,7 +62,7 @@ namespace Alis.Sample.PingPong
             EmbeddedDllClass.LoadDll("libcsfml-system.dylib");
             EmbeddedDllClass.LoadDll("libcsfml-window.dylib");
             EmbeddedDllClass.LoadDll("libcsfml-audio.dylib");*/
-
+                
 
             VideoGame
                 .Builder()
