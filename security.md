@@ -41,5 +41,3 @@ All sensitive data on Alis is encrypted in transit and at rest. We use industry-
 ## 🛡️ Changes to this policy
 
 We reserve the right to modify this policy at any time. If we make significant changes, we will notify you by email or through a notification on our website.
-
-Thank you for helping us keep Alis safe and secure!
