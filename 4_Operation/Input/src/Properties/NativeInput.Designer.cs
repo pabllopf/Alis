@@ -68,7 +68,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] linux_arm64_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("linux_arm64_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("linux_arm64_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -78,7 +78,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] linux_x64_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("linux_x64_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("linux_x64_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -88,7 +88,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] linux_x86_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("linux_x86_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("linux_x86_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -98,7 +98,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] osx_arm64_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("osx_arm64_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("osx_arm64_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -108,7 +108,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] osx_x64_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("osx_x64_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("osx_x64_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -118,7 +118,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] win_arm64_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("win_arm64_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("win_arm64_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -128,7 +128,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] win_x64_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("win_x64_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("win_x64_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -138,7 +138,7 @@ namespace Alis.Core.Input.Properties {
         /// </summary>
         internal static byte[] win_x86_SDL2 {
             get {
-                object obj = ResourceManager.GetObject("win_x86_SDL2", resourceCulture);
+                object obj = ResourceManager.GetObject("win_x86_sdl2", resourceCulture);
                 return ((byte[])(obj));
             }
         }

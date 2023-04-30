@@ -1,27 +1,47 @@
+#!/bin/bash
 
-cd ../../
-
-dotnet new sln -o . -n Alis --force
-
-cp ./.config/default_sln  ./Alis.sln
-
-for i in `find . -name "*.csproj" -type f`; do
-    echo "Write default value of csproj = $i"
-    cat ./.config/Default_csproj.props > $i
+echo "Do you want to continue? (y/n)"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) 
+          
+          cd ../../
+          
+          dotnet new sln -o . -n Alis --force
+          
+          cp ./.config/default_sln  ./Alis.sln
+          
+          skip="Template"
+          for i in `find . -name "*.csproj" -type f`; do
+              if [[ $i == *$skip* ]] ; then
+                  echo "Skip project $i"
+              else
+                  echo "Write default value of csproj = $i"
+                  cat ./.config/Default_csproj.props > $i
+              fi
+          done
+          
+          for i in `find . -name "*.csproj" -type f`; do
+              echo "$i"
+              dotnet sln Alis.sln add $i
+          done
+          
+          rm -rf ./.nuget/
+          rm -rf ./.build/
+          rm -rf ./**/obj/
+          rm -rf ./**/bin/
+          
+          for i in `find . -name "*.csproj" -type f`; do
+              echo "$i"
+              dotnet restore $i
+          done
+          
+          cd ./.scripts/linux/ || exit
+          
+          break;;
+        No ) 
+          echo "Goodbye!"
+          exit;;
+    esac
 done
 
-for i in `find . -name "*.csproj" -type f`; do
-    echo "$i"
-    dotnet sln Alis.sln add $i
-done
-
-rm -rf ./.nuget/
-rm -rf ./**/obj/
-rm -rf ./**/bin/
-
-for i in `find . -name "*.csproj" -type f`; do
-    echo "$i"
-    dotnet restore $i
-done
-
-cd ./.scripts/macos/
