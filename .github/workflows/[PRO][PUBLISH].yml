@@ -119,6 +119,15 @@ jobs:
 
       - name: git push --tags
         run: git push --tags
+        
+      - name: Update CHANGELOG
+        id: changelog
+        uses: Requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: "v${{ env.VERSIONFINAL }}"
+          writeToFile: true
+          excludeTypes: chore, perf
 
       - uses: softprops/action-gh-release@v1
         with:
@@ -133,15 +142,6 @@ jobs:
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
             
-      - name: Update CHANGELOG
-        id: changelog
-        uses: Requarks/changelog-action@v1
-        with:
-          token: ${{ github.token }}
-          tag: "v${{ env.VERSIONFINAL }}"
-          writeToFile: true
-          excludeTypes: chore, perf
-
       - name: create a file to save the log
         run: date > ./.publish/generated.txt
 
