@@ -1,4 +1,6 @@
-# Authors
+# Author ✍️
+
+Alis is developed and maintained by Pablo Perdomo Falcón who is committed to providing the best possible experience for our users. 
 
 <!-- readme: pabllopf -start -->
 <table>
@@ -12,3 +14,7 @@
     </td></tr>
 </table>
 <!-- readme: pabllopf -end -->
+
+## Changes to this section
+
+We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or through a notification on our website.
