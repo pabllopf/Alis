@@ -1,136 +1,47 @@
-# Security Policy
+¡Claro! Aquí te dejo una versión mejorada de la sección Security Policy con emojis incluidos:
 
-GitHub takes the security of our software products and services seriously, including all of the open source code
-repositories managed through our GitHub organizations, such as [GitHub](https://github.com/GitHub).
+## 🛡️ Security Policy
 
-Even
-though [open source repositories are outside of the scope of our bug bounty program](https://bounty.github.com/index.html#scope)
-and therefore not eligible for bounty rewards, we will ensure that your finding gets passed along to the appropriate
-maintainers for remediation.
+At Alis, we take security very seriously. We strive to provide a safe and secure experience for all our users. If you have discovered a security vulnerability in Alis, we encourage you to report it to us immediately.
 
-## Reporting Security Issues
+### 🚨 Reporting a vulnerability
 
-If you believe you have found a security vulnerability in any GitHub-owned repository, please report it to us through
-coordinated disclosure.
+To report a security vulnerability, please email us at [security@alisengine.com](mailto:security@alisengine.com). We will review your report and respond as quickly as possible.
 
-**Please do not report security vulnerabilities through public GitHub issues, discussions, or pull requests.**
+Please include the following information in your report:
 
-Instead, please send an email to opensource-security[@]github.com.
+- Description of the vulnerability
+- Steps to reproduce the vulnerability
+- Possible impact of the vulnerability
+- Your contact information
 
-Please include as much of the information listed below as you can to help us better understand and resolve the issue:
+We request that you do not disclose the vulnerability publicly until we have had a chance to address it.
 
-* The type of issue (e.g., buffer overflow, SQL injection, or cross-site scripting)
-* Full paths of source file(s) related to the manifestation of the issue
-* The location of the affected source code (tag/branch/commit or direct URL)
-* Any special configuration required to reproduce the issue
-* Step-by-step instructions to reproduce the issue
-* Proof-of-concept or exploit code (if possible)
-* Impact of the issue, including how an attacker might exploit the issue
+### 🕵️‍♀️ Our commitment
 
-This information will help us triage your report more quickly.
+We are committed to addressing all security vulnerabilities as quickly as possible. Once we have received your report, we will:
 
-## Policy
+- Acknowledge receipt of your report within 24 hours
+- Investigate the issue and verify the vulnerability
+- Develop a plan to address the vulnerability
+- Communicate with you about our progress and resolution of the issue
 
-See [GitHub's Safe Harbor Policy](https://docs.github.com/en/site-policy/security-policies/github-bug-bounty-program-legal-safe-harbor)
+### 📜 Policy
 
-<!-- START SAP SECURITY.MD V0.0.1 BLOCK -->
-<!-- Please do not remove the version header, this is needed for automatic updates of the SECURITY.md -->
+We ask that you follow our responsible disclosure policy when reporting security vulnerabilities. This means that you agree:
 
-# SAP Open Source Security Policy
+- To not disclose the vulnerability publicly until we have had a chance to address it
+- To not exploit the vulnerability for any purpose other than to demonstrate the vulnerability to us
+- To not disclose the vulnerability to any third party without our permission
 
-SAP takes the security of our software products and services seriously, which includes all source code repositories
-managed through our GitHub organizations, including our
-primary [SAP](https://github.com/SAP),[SAP-samples](https://github.com/SAP-samples) ,[SAP-docs](https://github.com/SAP-docs)
-organizations as well as [our other GitHub organizations and projects](https://opensource.sap.com).
+We will not take legal action against researchers who report security vulnerabilities in accordance with this policy.
 
-If you believe you have found a security vulnerability in any SAP-owned repository, please report it to us as described
-below.
+### 🔒 Encryption
 
-## Reporting Security Issues
+All sensitive data on Alis is encrypted in transit and at rest. We use industry-standard encryption protocols to protect your data and maintain its confidentiality.
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+### 🛡️ Changes to this policy
 
-Instead, please report them via the SAP Trust Center
-at [https://www.sap.com/about/trust-center/security/incident-management.html](https://www.sap.com/about/trust-center/security/incident-management.html).
+We reserve the right to modify this policy at any time. If we make significant changes, we will notify you by email or through a notification on our website.
 
-If you prefer to submit via email, please send an email to [secure@sap.com](mailto:secure@sap.com). If possible, encrypt
-your message with our PGP key; please download it from
-the [SAP Trust Center](https://www.sap.com/dmc/policies/pgp/keyblock.txt).
-
-Please include the requested information listed below (as much as you can provide) to help us better understand the
-nature and scope of the possible issue:
-
-- The repository name or URL
-- Type of issue (buffer overflow, SQL injection, cross-site scripting, etc.)
-- Full paths of the source file(s) related to the manifestation of the issue
-- The location of the affected source code (tag/branch/commit or direct URL)
-- Any particular configuration required to reproduce the issue
-- Step-by-step instructions to reproduce the issue
-- Proof-of-concept or exploit code (if possible)
-- Impact of the issue, including how an attacker might exploit the issue
-
-This information will help us triage your report more quickly.
-
-## Preferred Languages
-
-We prefer all communications to be in English.
-
-## Disclosure Guidelines
-
-We like to ask you to follow
-the [Disclosure Guidelines for SAP Security Advisories](https://wiki.scn.sap.com/wiki/display/PSR/Disclosure+Guidelines+for+SAP+Security+Advisories).
-
-## SAP Internal Response Process
-
-As an SAP employee, please check our internal open source security response
-process ([go/oss-security-response](https://go.sap.corp/oss-security-response)) for further details on how to handle
-security incidents.
-
-<!-- END SAP SECURITY.MD V0.0.1 BLOCK -->
-
-
-
-Security policy
-Brand promise
-Keeping users safe and secure is a top priority for us at remark. We welcome the contribution of external security
-researchers.
-
-Scope
-If you believe you’ve found a security issue in any software, service, or website governed by remark, we encourage you
-to notify us.
-
-Projects governed by remark sometimes do unsafe things by design (such as a plugin that executes arbitrary code or an
-option that is dangerous). This unsafe behavior should be explicitly documented and, if it is, is not considered a
-security issue.
-
-There are no hard and fast rules to determine if a bug is worth reporting as a security issue or a “regular” issue. When
-in doubt, please do send us a report.
-
-How to submit a report
-Security issues can be reported by sending an email to security@unifiedjs.com, which will go to all unified collective
-core team members. The team will acknowledge your email within 48 hours. You will receive a more detailed response
-within 96 hours.
-
-We will create a maintainer security advisory on GitHub to discuss internally, and when needed, invite you to the
-advisory.
-
-Safe harbor
-remark supports safe harbor for security researchers who:
-
-Make a good faith effort to avoid privacy violations, destruction of data, and interruption or degradation of our
-services
-Only interact with accounts you own or with explicit permission of the account holder. If you do encounter Personally
-Identifiable Information (PII) contact us immediately, do not proceed with access, and immediately purge any local
-information
-Provide us with a reasonable amount of time to resolve vulnerabilities prior to any disclosure to the public or a
-third-party
-We will consider activities conducted consistent with this policy to constitute “authorised” conduct and will not pursue
-civil action or initiate a complaint to law enforcement. We will help to the extent we can if legal action is initiated
-by a third party against you
-Please submit a report to us before engaging in conduct that may be inconsistent with or unaddressed by this policy.
-
-Preferences
-Please provide detailed reports with reproducible steps and a clearly defined impact
-Submit one vulnerability per report
-Social engineering (such as phishing, vishing, smishing) is prohibited
-
+Thank you for helping us keep Alis safe and secure!
