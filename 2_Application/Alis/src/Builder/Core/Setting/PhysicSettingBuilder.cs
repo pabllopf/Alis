@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:Program.cs
+//  File:PhysicSettingBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,55 +27,42 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Entity;
-using Alis.Core.Manager.Scene;
+using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Fluent.Words;
+using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Setting;
 
-namespace Alis.Sample.Collisions
+namespace Alis.Builder.Core.Setting
 {
     /// <summary>
-    ///     The program class
+    /// The physic setting builder class
     /// </summary>
-    public static class Program
+    /// <seealso cref="IBuild{PhysicSetting}"/>
+    public class PhysicSettingBuilder:
+        IBuild<PhysicSetting>,
+        IGravity<PhysicSettingBuilder, float, float>
     {
         /// <summary>
-        ///     Main the args
+        /// The physic setting
         /// </summary>
-        /// <param name="args">The args</param>
-        public static void Main(string[] args)
-        {
-            VideoGame
-                .Builder()
-                .Settings(setting => setting
-                    .General(general => general
-                        .Name("Sample base collision")
-                        .Author("Pablo Perdomo Falcón")
-                        .Description("Simple game to show physics module.")
-                        .Build())
-                    .Graphic(graphic => graphic
-                        .Window(window => window
-                            .Resolution(1024.0f, 720.0f)
-                            .Build())
-                        .Build())
-                    .Physic(physic => physic
-                        .Gravity(0, -1.0f)
-                        .Build())
-                    .Build())
-                .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(scene => scene
-                        .Add<GameObject>(gameObject => gameObject
-                            .Name("")
-                            .Build())
-                        .Build())
-                    .Build())
-                .Run();
-        }
-
+        private readonly PhysicSetting physicSetting = new PhysicSetting();
+        
         /// <summary>
-        /// Settings
+        /// Builds this instance
         /// </summary>
-        public static void Setting()
+        /// <returns>The physic setting</returns>
+        public PhysicSetting Build() => physicSetting;
+        
+        /// <summary>
+        /// Gravities the x
+        /// </summary>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder Gravity(float x, float y)
         {
-            
+            physicSetting.Gravity = new Vector2F(x, y);
+            return this;
         }
     }
 }

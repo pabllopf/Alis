@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicSettingBuilder.cs
+//  File:IGravity.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Builder.Core.Entity;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Entity;
-using Alis.Core.Setting;
-
-namespace Alis.Builder.Core.Setting
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The graphic setting builder class
+    /// The gravity interface
     /// </summary>
-    public class GraphicSettingBuilder :
-        IBuild<GraphicSetting>,
-        IWindow<GraphicSettingBuilder, Func<WindowBuilder, Window>>
+    public interface IGravity<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        ///     The graphic setting
+        /// Gravities the x
         /// </summary>
-        private readonly GraphicSetting graphicSetting = new GraphicSetting();
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The graphic setting</returns>
-        public GraphicSetting Build() => graphicSetting;
-
-        /// <summary>
-        ///     Windows the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value)
-        {
-            graphicSetting.Window = value.Invoke(new WindowBuilder());
-            return this;
-        }
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The builder</returns>
+        TBuilder Gravity(TArgument1 x, TArgument2 y);
     }
 }

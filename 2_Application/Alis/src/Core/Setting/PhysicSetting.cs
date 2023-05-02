@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicSettingBuilder.cs
+//  File:PhysicSetting.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Builder.Core.Entity;
+using Alis.Builder.Core.Setting;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Entity;
-using Alis.Core.Setting;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Builder.Core.Setting
+namespace Alis.Core.Setting
 {
     /// <summary>
-    ///     The graphic setting builder class
+    /// The physic setting class
     /// </summary>
-    public class GraphicSettingBuilder :
-        IBuild<GraphicSetting>,
-        IWindow<GraphicSettingBuilder, Func<WindowBuilder, Window>>
+    /// <seealso cref="SettingBase"/>
+    /// <seealso cref="IBuilder{PhysicSettingBuilder}"/>
+    public class PhysicSetting : SettingBase,
+        IBuilder<PhysicSettingBuilder>
     {
         /// <summary>
-        ///     The graphic setting
+        /// Gets or sets the value of the gravity
         /// </summary>
-        private readonly GraphicSetting graphicSetting = new GraphicSetting();
+        public Vector2F Gravity { get; set; } = new Vector2F(0.0f, 9.8f);
 
         /// <summary>
-        ///     Builds this instance
+        /// Builders this instance
         /// </summary>
-        /// <returns>The graphic setting</returns>
-        public GraphicSetting Build() => graphicSetting;
-
-        /// <summary>
-        ///     Windows the value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value)
-        {
-            graphicSetting.Window = value.Invoke(new WindowBuilder());
-            return this;
-        }
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder Builder() => new PhysicSettingBuilder();
     }
 }

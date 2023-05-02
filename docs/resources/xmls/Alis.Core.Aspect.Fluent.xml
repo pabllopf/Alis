@@ -305,6 +305,19 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IGravity`3">
+            <summary>
+            The gravity interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IGravity`3.Gravity(`1,`2)">
+            <summary>
+            Gravities the x
+            </summary>
+            <param name="x">The </param>
+            <param name="y">The </param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IGravityScale`2">
             <summary>
                 The gravity scale interface
@@ -500,6 +513,18 @@
         <member name="M:Alis.Core.Aspect.Fluent.Words.IOrder`2.Order(`1)">
             <summary>
                 Orders the value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IPhysic`2">
+            <summary>
+            The physic interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IPhysic`2.Physic(`1)">
+            <summary>
+            Physics the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>

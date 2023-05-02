@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicSettingBuilder.cs
+//  File:IPhysic.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,42 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Builder.Core.Entity;
-using Alis.Core.Aspect.Fluent;
-using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Entity;
-using Alis.Core.Setting;
-
-namespace Alis.Builder.Core.Setting
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The graphic setting builder class
+    /// The physic interface
     /// </summary>
-    public class GraphicSettingBuilder :
-        IBuild<GraphicSetting>,
-        IWindow<GraphicSettingBuilder, Func<WindowBuilder, Window>>
+    public interface IPhysic<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     The graphic setting
-        /// </summary>
-        private readonly GraphicSetting graphicSetting = new GraphicSetting();
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The graphic setting</returns>
-        public GraphicSetting Build() => graphicSetting;
-
-        /// <summary>
-        ///     Windows the value
+        /// Physics the value
         /// </summary>
         /// <param name="value">The value</param>
-        /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value)
-        {
-            graphicSetting.Window = value.Invoke(new WindowBuilder());
-            return this;
-        }
+        /// <returns>The builder</returns>
+        TBuilder Physic(TArgument value);
     }
 }
