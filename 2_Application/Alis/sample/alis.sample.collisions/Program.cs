@@ -27,8 +27,11 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Core.Component.Collider;
+using Alis.Core.Component.Render;
 using Alis.Core.Entity;
 using Alis.Core.Manager.Scene;
+using Alis.Core.Physic.Dynamics;
 
 namespace Alis.Sample.Collisions
 {
@@ -57,13 +60,80 @@ namespace Alis.Sample.Collisions
                             .Build())
                         .Build())
                     .Physic(physic => physic
-                        .Gravity(0, -1.0f)
+                        .Gravity(0, 0.01f)
                         .Build())
                     .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager
                     .Add<Scene>(scene => scene
                         .Add<GameObject>(gameObject => gameObject
-                            .Name("")
+                            .Name("Camera")
+                            .AddComponent<Camera>(camera => camera
+                                .Builder()
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 1")
+                            .Transform(transform => transform
+                                .Position(16.0f, 16.0f)
+                                .Rotation(30f)
+                                //.Scale(2,2)
+                                .Build())
+                            .AddComponent<BoxCollider>(box => box
+                                .Builder()
+                                .Size(24, 16)
+                                .BodyType(BodyType.Static)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 2")
+                            .Transform(transform => transform
+                                .Position(0.0f, 0.0f)
+                                .Rotation(0.0f)
+                                //.Scale(2,2)
+                                .Build())
+                            .AddComponent<BoxCollider>(box => box
+                                .Builder()
+                                .BodyType(BodyType.Static)
+                                .Size(8, 24)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 3")
+                            .Transform(transform => transform
+                                .Position(0.0f, 60.0f)
+                                .Rotation(1.6f)
+                                //.Scale(2,2)
+                                .Build())
+                            .AddComponent<BoxCollider>(box => box
+                                .Builder()
+                                .BodyType(BodyType.Static)
+                                .Size(64, 8)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
+                                .Build())
+                            .Build())
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 4")
+                            .Transform(transform => transform
+                                .Position(4f, 12.0f)
+                                .Rotation(4.9f)
+                                //.Scale(2,2)
+                                .Build())
+                            .AddComponent<BoxCollider>(box => box
+                                .Builder()
+                                .BodyType(BodyType.Static)
+                                .Size(4, 36)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
+                                .Build())
                             .Build())
                         .Build())
                     .Build())

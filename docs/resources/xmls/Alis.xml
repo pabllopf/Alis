@@ -4,28 +4,6 @@
         <name>Alis</name>
     </assembly>
     <members>
-        <member name="T:Alis.Builder.ConsoleGameBuilder">
-            <summary>
-                The console game builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="P:Alis.Builder.ConsoleGameBuilder.ConsoleGame">
-            <summary>
-                Gets the value of the console game
-            </summary>
-        </member>
-        <member name="M:Alis.Builder.ConsoleGameBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The console game</returns>
-        </member>
-        <member name="M:Alis.Builder.ConsoleGameBuilder.Run">
-            <summary>
-                Runs this instance
-            </summary>
-        </member>
         <member name="T:Alis.Builder.Core.Component.Audio.AudioClipBuilder">
             <summary>
                 The audio clip builder class
@@ -245,6 +223,13 @@
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
+            <returns>The box collider builder</returns>
+        </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.AngularVelocity(System.Single)">
+            <summary>
+            Angulars the velocity using the specified value
+            </summary>
+            <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
         <member name="T:Alis.Builder.Core.Component.Collider.CircleColliderBuilder">
@@ -883,28 +868,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:Alis.Builder.SoundGameBuilder">
-            <summary>
-                The sound game builder class
-            </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
-        </member>
-        <member name="P:Alis.Builder.SoundGameBuilder.SoundGame">
-            <summary>
-                Gets the value of the sound game
-            </summary>
-        </member>
-        <member name="M:Alis.Builder.SoundGameBuilder.Build">
-            <summary>
-                Builds this instance
-            </summary>
-            <returns>The sound game</returns>
-        </member>
-        <member name="M:Alis.Builder.SoundGameBuilder.Run">
-            <summary>
-                Runs this instance
-            </summary>
-        </member>
         <member name="T:Alis.Builder.VideoGameBuilder">
             <summary>
                 The video game builder class
@@ -936,22 +899,6 @@
         </member>
         <member name="M:Alis.Builder.VideoGameBuilder.Run">
             <summary>Runs this instance.</summary>
-        </member>
-        <member name="T:Alis.ConsoleGame">
-            <summary>
-                The console game class
-            </summary>
-            <seealso cref="T:Alis.Core.GameBase" />
-        </member>
-        <member name="M:Alis.ConsoleGame.Run">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:Alis.ConsoleGame.Builder">
-            <summary>
-                Builders
-            </summary>
-            <returns>The console game builder</returns>
         </member>
         <member name="T:Alis.Core.Component.Audio.AudioClip">
             <summary>
@@ -1214,6 +1161,11 @@
         <member name="P:Alis.Core.Component.Collider.BoxCollider.LinearVelocity">
             <summary>
                 Gets or sets the value of the linear velocity
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Component.Collider.BoxCollider.AngularVelocity">
+            <summary>
+            Gets or sets the value of the angular velocity
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Collider.BoxCollider.Builder">
@@ -2519,23 +2471,6 @@
             Builders this instance
             </summary>
             <returns>The physic setting builder</returns>
-        </member>
-        <member name="T:Alis.SoundGame">
-            <summary>
-                The sound game class
-            </summary>
-            <seealso cref="T:Alis.Core.GameBase" />
-        </member>
-        <member name="M:Alis.SoundGame.Run">
-            <summary>
-                Runs this instance
-            </summary>
-        </member>
-        <member name="M:Alis.SoundGame.Builder">
-            <summary>
-                Builders
-            </summary>
-            <returns>The sound game builder</returns>
         </member>
         <member name="T:Alis.VideoGame">
             <summary>

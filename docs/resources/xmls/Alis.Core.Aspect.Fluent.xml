@@ -90,6 +90,18 @@
             <param name="value">The value</param>
             <returns>The builder</returns>
         </member>
+        <member name="T:Alis.Core.Aspect.Fluent.Words.IAngularVelocity`2">
+            <summary>
+            The angular velocity interface
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Fluent.Words.IAngularVelocity`2.AngularVelocity(`1)">
+            <summary>
+            Angular the velocity using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The builder</returns>
+        </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAudio`2">
             <summary>
                 The audio interface

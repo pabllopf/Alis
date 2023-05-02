@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ConsoleGameBuilder.cs
+//  File:IAngularVelocity.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,31 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-
-namespace Alis.Builder
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The console game builder class
+    /// The angular velocity interface
     /// </summary>
-    /// <seealso cref="IBuild{ConsoleGame}" />
-    public class ConsoleGameBuilder :
-        IBuild<ConsoleGame>
+    public interface IAngularVelocity<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Gets the value of the console game
+        /// Angular the velocity using the specified value
         /// </summary>
-        private ConsoleGame ConsoleGame { get; } = new ConsoleGame();
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The console game</returns>
-        public ConsoleGame Build() => ConsoleGame;
-
-        /// <summary>
-        ///     Runs this instance
-        /// </summary>
-        public void Run() => ConsoleGame.Run();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder AngularVelocity(TArgument value);
     }
 }
