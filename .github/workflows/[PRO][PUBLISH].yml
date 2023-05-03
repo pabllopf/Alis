@@ -8,13 +8,6 @@ on:
       - '**.md'
       - '.github/**'
   
-  pull_request:
-    branches: [ master ]
-    paths-ignore:
-      - 'docs/**'
-      - '**.md'
-      - '.github/**'
-
 jobs:
   #
   # CREATE PACKAGES
