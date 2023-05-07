@@ -125,6 +125,11 @@ namespace Alis.Core.Component.Collider
         public Vector2F LinearVelocity { get; set; } = Vector2F.Zero;
 
         /// <summary>
+        /// Gets or sets the value of the angular velocity
+        /// </summary>
+        public float AngularVelocity { get; set; } = 0.0f;
+
+        /// <summary>
         ///     Builders this instance
         /// </summary>
         /// <returns>The box collider builder</returns>
@@ -208,7 +213,7 @@ namespace Alis.Core.Component.Collider
                 linearVelocity: LinearVelocity,
                 bodyType: BodyType,
                 angle: Rotation,
-                0,
+                angularVelocity: AngularVelocity,
                 0,
                 0,
                 false,

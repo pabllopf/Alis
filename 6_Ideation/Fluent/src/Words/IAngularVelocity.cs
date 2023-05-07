@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SoundGameBuilder.cs
+//  File:IAngularVelocity.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,31 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Aspect.Fluent;
-
-namespace Alis.Builder
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The sound game builder class
+    /// The angular velocity interface
     /// </summary>
-    /// <seealso cref="IBuild{VideoGame}" />
-    public class SoundGameBuilder :
-        IBuild<SoundGame>
+    public interface IAngularVelocity<out TBuilder, in TArgument>
     {
         /// <summary>
-        ///     Gets the value of the sound game
+        /// Angular the velocity using the specified value
         /// </summary>
-        private SoundGame SoundGame { get; } = new SoundGame();
-
-        /// <summary>
-        ///     Builds this instance
-        /// </summary>
-        /// <returns>The sound game</returns>
-        public SoundGame Build() => SoundGame;
-
-        /// <summary>
-        ///     Runs this instance
-        /// </summary>
-        public void Run() => SoundGame.Run();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder AngularVelocity(TArgument value);
     }
 }

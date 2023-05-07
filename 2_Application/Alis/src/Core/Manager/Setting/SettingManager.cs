@@ -56,5 +56,10 @@ namespace Alis.Core.Manager.Setting
         ///     Gets or sets the value of the graphic
         /// </summary>
         public GraphicSetting Graphic { get; set; } = new GraphicSetting();
+        
+        /// <summary>
+        /// Gets or sets the value of the physic
+        /// </summary>
+        public PhysicSetting Physic { get; set; } = new PhysicSetting();
     }
 }

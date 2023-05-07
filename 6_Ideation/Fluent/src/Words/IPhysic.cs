@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ConsoleGame.cs
+//  File:IPhysic.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,40 +27,18 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Builder;
-using Alis.Core;
-using Alis.Core.Manager;
-using Alis.Core.Manager.Audio;
-using Alis.Core.Manager.Input;
-using Alis.Core.Manager.Physic;
-using Alis.Core.Manager.Scene;
-
-namespace Alis
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The console game class
+    /// The physic interface
     /// </summary>
-    /// <seealso cref="GameBase" />
-    public class ConsoleGame : GameBase
+    public interface IPhysic<out TBuilder, in TArgument>
     {
         /// <summary>
+        /// Physics the value
         /// </summary>
-        public override void Run()
-        {
-            Managers = new List<ManagerBase>
-            {
-                new InputManager(),
-                new AudioManager(),
-                new PhysicManager(),
-                new SceneManager()
-            };
-        }
-
-        /// <summary>
-        ///     Builders
-        /// </summary>
-        /// <returns>The console game builder</returns>
-        public static ConsoleGameBuilder Builder() => new ConsoleGameBuilder();
+        /// <param name="value">The value</param>
+        /// <returns>The builder</returns>
+        TBuilder Physic(TArgument value);
     }
 }

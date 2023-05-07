@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ConsoleGameBuilder.cs
+//  File:PhysicSetting.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,31 +27,29 @@
 // 
 //  --------------------------------------------------------------------------
 
+using Alis.Builder.Core.Setting;
 using Alis.Core.Aspect.Fluent;
+using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Builder
+namespace Alis.Core.Setting
 {
     /// <summary>
-    ///     The console game builder class
+    /// The physic setting class
     /// </summary>
-    /// <seealso cref="IBuild{ConsoleGame}" />
-    public class ConsoleGameBuilder :
-        IBuild<ConsoleGame>
+    /// <seealso cref="SettingBase"/>
+    /// <seealso cref="IBuilder{PhysicSettingBuilder}"/>
+    public class PhysicSetting : SettingBase,
+        IBuilder<PhysicSettingBuilder>
     {
         /// <summary>
-        ///     Gets the value of the console game
+        /// Gets or sets the value of the gravity
         /// </summary>
-        private ConsoleGame ConsoleGame { get; } = new ConsoleGame();
+        public Vector2F Gravity { get; set; } = new Vector2F(0.0f, 9.8f);
 
         /// <summary>
-        ///     Builds this instance
+        /// Builders this instance
         /// </summary>
-        /// <returns>The console game</returns>
-        public ConsoleGame Build() => ConsoleGame;
-
-        /// <summary>
-        ///     Runs this instance
-        /// </summary>
-        public void Run() => ConsoleGame.Run();
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder Builder() => new PhysicSettingBuilder();
     }
 }

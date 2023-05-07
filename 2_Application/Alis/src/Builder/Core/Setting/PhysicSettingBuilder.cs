@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:GraphicSettingBuilder.cs
+//  File:PhysicSettingBuilder.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,41 +27,41 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Builder.Core.Entity;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
-using Alis.Core.Entity;
+using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Setting;
 
 namespace Alis.Builder.Core.Setting
 {
     /// <summary>
-    ///     The graphic setting builder class
+    /// The physic setting builder class
     /// </summary>
-    public class GraphicSettingBuilder :
-        IBuild<GraphicSetting>,
-        IWindow<GraphicSettingBuilder, Func<WindowBuilder, Window>>
+    /// <seealso cref="IBuild{PhysicSetting}"/>
+    public class PhysicSettingBuilder:
+        IBuild<PhysicSetting>,
+        IGravity<PhysicSettingBuilder, float, float>
     {
         /// <summary>
-        ///     The graphic setting
+        /// The physic setting
         /// </summary>
-        private readonly GraphicSetting graphicSetting = new GraphicSetting();
-
+        private readonly PhysicSetting physicSetting = new PhysicSetting();
+        
         /// <summary>
-        ///     Builds this instance
+        /// Builds this instance
         /// </summary>
-        /// <returns>The graphic setting</returns>
-        public GraphicSetting Build() => graphicSetting;
-
+        /// <returns>The physic setting</returns>
+        public PhysicSetting Build() => physicSetting;
+        
         /// <summary>
-        ///     Windows the value
+        /// Gravities the x
         /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The graphic setting builder</returns>
-        public GraphicSettingBuilder Window(Func<WindowBuilder, Window> value)
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The physic setting builder</returns>
+        public PhysicSettingBuilder Gravity(float x, float y)
         {
-            graphicSetting.Window = value.Invoke(new WindowBuilder());
+            physicSetting.Gravity = new Vector2F(x, y);
             return this;
         }
     }

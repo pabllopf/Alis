@@ -27,12 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
-using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
 using Alis.Core.Physic.Dynamics;
 
@@ -41,7 +38,7 @@ namespace Alis.Sample.Collisions
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args
@@ -53,137 +50,102 @@ namespace Alis.Sample.Collisions
                 .Builder()
                 .Settings(setting => setting
                     .General(general => general
-                        .Name("GeometryDash")
+                        .Name("Sample base collision")
                         .Author("Pablo Perdomo Falcón")
-                        .Description("GeometryDash game")
-                        .Icon(Environment.CurrentDirectory + "/Assets/logo.png")
-                        .SplashScreen(screen => screen
-                            .IsActive(true)
-                            .Style(Style.Dark)
-                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
-                            .Build())
-                        .Build())
-                    .Debug(debug => debug
-                        .Build())
-                    .Audio(audio => audio
+                        .Description("Simple game to show physics module.")
                         .Build())
                     .Graphic(graphic => graphic
                         .Window(window => window
-                            .Resolution(1024, 640)
-                            .Background(Color.Black)
+                            .Resolution(1024.0f, 720.0f)
                             .Build())
+                        .Build())
+                    .Physic(physic => physic
+                        .Gravity(0, 0.01f)
                         .Build())
                     .Build())
                 .Manager<SceneManager>(sceneManager => sceneManager
-                    .Add<Scene>(gameScene => gameScene
-                        .Add<GameObject>(cameraObj => cameraObj
+                    .Add<Scene>(scene => scene
+                        .Add<GameObject>(gameObject => gameObject
                             .Name("Camera")
                             .AddComponent<Camera>(camera => camera
                                 .Builder()
                                 .Build())
                             .Build())
-                        .Add<GameObject>(soundTrack => soundTrack
-                            .Name("Soundtrack")
-                            .AddComponent<AudioSource>(audioSource => audioSource
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 1")
+                            .Transform(transform => transform
+                                .Position(16.0f, 16.0f)
+                                .Rotation(30f)
+                                //.Scale(2,2)
+                                .Build())
+                            .AddComponent<BoxCollider>(box => box
                                 .Builder()
-                                .PlayOnAwake(true)
-                                .SetAudioClip(audioClip => audioClip
-                                    .FilePath($"{Environment.CurrentDirectory}/Assets/Music/menu_1.wav")
-                                    .Volume(100.0f)
-                                    .Build())
+                                .Size(24, 16)
+                                .BodyType(BodyType.Static)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(downWall => downWall
-                            .Name("downWall")
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 2")
                             .Transform(transform => transform
-                                .Position(0, 324)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(1024, 10)
+                                .Position(0.0f, 0.0f)
                                 .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .Density(0.5f)
-                                .FixedRotation(true)
-                                .GravityScale(0.0f)
+                                //.Scale(2,2)
+                                .Build())
+                            .AddComponent<BoxCollider>(box => box
+                                .Builder()
+                                .BodyType(BodyType.Static)
+                                .Size(8, 24)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(upWall => upWall
-                            .Name("upWall")
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 3")
                             .Transform(transform => transform
-                                .Position(0, -324)
+                                .Position(0.0f, 60.0f)
+                                .Rotation(1.6f)
+                                //.Scale(2,2)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            .AddComponent<BoxCollider>(box => box
                                 .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(1024, 10)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .Density(0.5f)
-                                .FixedRotation(true)
-                                .GravityScale(0.0f)
+                                .BodyType(BodyType.Static)
+                                .Size(64, 8)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
                                 .Build())
                             .Build())
-                        .Add<GameObject>(leftWall => leftWall
-                            .Name("leftWall")
+                        .Add<GameObject>(gameObject => gameObject
+                            .Name("Body 4")
                             .Transform(transform => transform
-                                .Position(-517, 0)
+                                .Position(4f, 12.0f)
+                                .Rotation(4.9f)
+                                //.Scale(2,2)
                                 .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
+                            .AddComponent<BoxCollider>(box => box
                                 .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(10, 640)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .Density(0.5f)
-                                .FixedRotation(true)
-                                .GravityScale(0.0f)
-                                .Build())
-                            .Build())
-                        .Add<GameObject>(rightWall => rightWall
-                            .Name("rightWall")
-                            .Transform(transform => transform
-                                .Position(517, 0)
-                                .Build())
-                            .AddComponent<BoxCollider>(boxCollider => boxCollider
-                                .Builder()
-                                .IsActive(true)
-                                .BodyType(BodyType.Kinematic)
-                                .IsTrigger(false)
-                                .AutoTilling(false)
-                                .Size(10, 640)
-                                .Rotation(0.0f)
-                                .RelativePosition(0, 0)
-                                .Mass(10.0f)
-                                .Restitution(0.0f)
-                                .Friction(0.1f)
-                                .Density(0.5f)
-                                .FixedRotation(true)
-                                .GravityScale(0.0f)
+                                .BodyType(BodyType.Static)
+                                .Size(4, 36)
+                                .LinearVelocity(0.0f, 0.0f)
+                                .AngularVelocity(0.0f)
+                                .FixedRotation(false)
                                 .Build())
                             .Build())
                         .Build())
                     .Build())
                 .Run();
+        }
+
+        /// <summary>
+        /// Settings
+        /// </summary>
+        public static void Setting()
+        {
+            
         }
     }
 }

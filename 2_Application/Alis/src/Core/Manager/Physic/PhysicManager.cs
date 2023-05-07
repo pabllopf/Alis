@@ -50,8 +50,7 @@ namespace Alis.Core.Manager.Physic
         /// </summary>
         public override void Init()
         {
-            Vector2F gravity = new Vector2F(0.000000000000000e+00f, 9.807000000000000e+01f);
-            World = new World(gravity);
+            World = new World(VideoGame.Setting.Physic.Gravity);
             Logger.Trace();
         }
 

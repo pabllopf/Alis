@@ -53,7 +53,8 @@ namespace Alis.Builder.Core.Component.Collider
         IRelativePosition<BoxColliderBuilder, float, float>,
         IRestitution<BoxColliderBuilder, float>,
         IIsTrigger<BoxColliderBuilder, bool>,
-        ILinearVelocity<BoxColliderBuilder, float, float>
+        ILinearVelocity<BoxColliderBuilder, float, float>,
+        IAngularVelocity<BoxColliderBuilder, float>
     {
         /// <summary>
         ///     The box collider
@@ -231,6 +232,17 @@ namespace Alis.Builder.Core.Component.Collider
         {
             boxCollider.Width = x;
             boxCollider.Height = y;
+            return this;
+        }
+
+        /// <summary>
+        /// Angulars the velocity using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The box collider builder</returns>
+        public BoxColliderBuilder AngularVelocity(float value)
+        {
+            boxCollider.AngularVelocity = value;
             return this;
         }
     }

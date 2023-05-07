@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SoundGame.cs
+//  File:IGravity.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,39 +27,19 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Collections.Generic;
-using Alis.Builder;
-using Alis.Core;
-using Alis.Core.Manager;
-using Alis.Core.Manager.Audio;
-using Alis.Core.Manager.Input;
-using Alis.Core.Manager.Scene;
-
-namespace Alis
+namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    ///     The sound game class
+    /// The gravity interface
     /// </summary>
-    /// <seealso cref="GameBase" />
-    public class SoundGame : GameBase
+    public interface IGravity<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        ///     Runs this instance
+        /// Gravities the x
         /// </summary>
-        public override void Run()
-        {
-            Managers = new List<ManagerBase>
-            {
-                new InputManager(),
-                new AudioManager(),
-                new SceneManager()
-            };
-        }
-
-        /// <summary>
-        ///     Builders
-        /// </summary>
-        /// <returns>The sound game builder</returns>
-        public static SoundGameBuilder Builder() => new SoundGameBuilder();
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <returns>The builder</returns>
+        TBuilder Gravity(TArgument1 x, TArgument2 y);
     }
 }
