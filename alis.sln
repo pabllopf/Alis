@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".config", ".config", "{0F6E
 		.config\Config.props = .config\Config.props
 		.config\Default_csproj.props = .config\Default_csproj.props
 		Directory.Build.props = Directory.Build.props
+		.config\dotnet-tools.json = .config\dotnet-tools.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "application", "application", "{A1B35FDA-66DC-4C35-B80D-114770163610}"

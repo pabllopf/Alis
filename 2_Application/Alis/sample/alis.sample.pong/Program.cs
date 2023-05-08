@@ -36,7 +36,7 @@ using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Manager.Scene;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.PingPong
+namespace Alis.Sample.Pong
 {
     /// <summary>
     ///     The program class

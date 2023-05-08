@@ -30,7 +30,7 @@
 using System.Collections.Generic;
 using BenchmarkDotNet.Attributes;
 
-namespace Alis.Benchmark.Physics
+namespace Alis.Benchmark.Iterator
 {
     /// <summary>
     ///     The test remove list vs hasset class

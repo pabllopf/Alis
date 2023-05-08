@@ -4,23 +4,23 @@
         <name>Alis.Sample.Pong</name>
     </assembly>
     <members>
-        <member name="T:Alis.Sample.PingPong.BallController">
+        <member name="T:Alis.Sample.Pong.BallController">
             <summary>
                 The ball controller class
             </summary>
             <seealso cref="T:Alis.Core.Component.ComponentBase" />
         </member>
-        <member name="F:Alis.Sample.PingPong.BallController.boxCollider">
+        <member name="F:Alis.Sample.Pong.BallController.boxCollider">
             <summary>
                 The box collider
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.BallController.Start">
+        <member name="M:Alis.Sample.Pong.BallController.Start">
             <summary>
                 Starts this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.BallController.OnCollision(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Collision.ContactSystem.Contact)">
+        <member name="M:Alis.Sample.Pong.BallController.OnCollision(Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Dynamics.Fixture,Alis.Core.Physic.Collision.ContactSystem.Contact)">
             <summary>
                 Ons the collision using the specified fixturebfixturea
             </summary>
@@ -28,123 +28,123 @@
             <param name="fixtureb">The fixtureb</param>
             <param name="contact">The contact</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.BallController.Update">
+        <member name="M:Alis.Sample.Pong.BallController.Update">
             <summary>
                 Updates this instance
             </summary>
         </member>
-        <member name="T:Alis.Sample.PingPong.PlayerController1">
+        <member name="T:Alis.Sample.Pong.PlayerController1">
             <summary>
                 The player controller class
             </summary>
         </member>
-        <member name="F:Alis.Sample.PingPong.PlayerController1.boxCollider">
+        <member name="F:Alis.Sample.Pong.PlayerController1.boxCollider">
             <summary>
                 The box collider
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.Start">
+        <member name="M:Alis.Sample.Pong.PlayerController1.Start">
             <summary>
                 Starts this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.Update">
+        <member name="M:Alis.Sample.Pong.PlayerController1.Update">
             <summary>
                 Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.OnReleaseKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnReleaseKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
                 Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressDownKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressDownKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
                 Ons the release key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressDownButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressDownButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.OnReleaseButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnReleaseButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
             <summary>
                 Ons the release button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController1.OnPressButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="T:Alis.Sample.PingPong.PlayerController2">
+        <member name="T:Alis.Sample.Pong.PlayerController2">
             <summary>
                 The player controller class
             </summary>
         </member>
-        <member name="F:Alis.Sample.PingPong.PlayerController2.boxCollider">
+        <member name="F:Alis.Sample.Pong.PlayerController2.boxCollider">
             <summary>
                 The box collider
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.Start">
+        <member name="M:Alis.Sample.Pong.PlayerController2.Start">
             <summary>
                 Starts this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.Update">
+        <member name="M:Alis.Sample.Pong.PlayerController2.Update">
             <summary>
                 Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.OnReleaseKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnReleaseKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
                 Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressDownKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressDownKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
             <summary>
                 Ons the release key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressDownButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressDownButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.OnReleaseButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnReleaseButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
             <summary>
                 Ons the release button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.PingPong.PlayerController2.OnPressButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="T:Alis.Sample.PingPong.Program">
+        <member name="T:Alis.Sample.Pong.Program">
             <summary>
                 The program class
             </summary>
         </member>
-        <member name="M:Alis.Sample.PingPong.Program.Main(System.String[])">
+        <member name="M:Alis.Sample.Pong.Program.Main(System.String[])">
             <summary>
                 Main the args
             </summary>

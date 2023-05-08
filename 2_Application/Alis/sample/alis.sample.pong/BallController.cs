@@ -32,7 +32,7 @@ using Alis.Core.Component.Collider;
 using Alis.Core.Physic.Collision.ContactSystem;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.PingPong
+namespace Alis.Sample.Pong
 {
     /// <summary>
     ///     The ball controller class

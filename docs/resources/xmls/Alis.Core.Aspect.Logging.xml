@@ -169,9 +169,14 @@
             </summary>
             <param name="message">The message</param>
         </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Info">
+            <summary>
+            Info
+            </summary>
+        </member>
         <member name="M:Alis.Core.Aspect.Logging.Logger.Info(System.String)">
             <summary>
-                Infoes the message
+                Info the message
             </summary>
             <param name="message">The message</param>
         </member>

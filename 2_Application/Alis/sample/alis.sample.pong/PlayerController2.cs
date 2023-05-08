@@ -33,7 +33,7 @@ using Alis.Core.Component.Collider;
 using Alis.Core.Graphic.D2.SFML.Windows;
 using Alis.Core.Input.SDL2;
 
-namespace Alis.Sample.PingPong
+namespace Alis.Sample.Pong
 {
     /// <summary>
     ///     The player controller class

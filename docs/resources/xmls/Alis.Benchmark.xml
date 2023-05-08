@@ -81,68 +81,68 @@
             Inserts the fast list
             </summary>
         </member>
-        <member name="T:Alis.Benchmark.Physics.TestRemoveListVsHasSet">
+        <member name="T:Alis.Benchmark.Iterator.TestRemoveListVsHasSet">
             <summary>
                 The test remove list vs hasset class
             </summary>
         </member>
-        <member name="F:Alis.Benchmark.Physics.TestRemoveListVsHasSet.bodySet">
+        <member name="F:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.bodySet">
             <summary>
                 The body set
             </summary>
         </member>
-        <member name="F:Alis.Benchmark.Physics.TestRemoveListVsHasSet.world">
+        <member name="F:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.world">
             <summary>
                 The world
             </summary>
         </member>
-        <member name="P:Alis.Benchmark.Physics.TestRemoveListVsHasSet.N">
+        <member name="P:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.N">
             <summary>
                 Gets or sets the value of the n
             </summary>
         </member>
-        <member name="M:Alis.Benchmark.Physics.TestRemoveListVsHasSet.Setup">
+        <member name="M:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.Setup">
             <summary>
                 Setup this instance
             </summary>
         </member>
-        <member name="M:Alis.Benchmark.Physics.TestRemoveListVsHasSet.RemoveBodyFromList">
+        <member name="M:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.RemoveBodyFromList">
             <summary>
                 Removes the body from list
             </summary>
         </member>
-        <member name="M:Alis.Benchmark.Physics.TestRemoveListVsHasSet.RemoveBodyFromSet">
+        <member name="M:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.RemoveBodyFromSet">
             <summary>
                 Removes the body from set
             </summary>
         </member>
-        <member name="T:Alis.Benchmark.Physics.TestRemoveListVsHasSet.World">
+        <member name="T:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.World">
             <summary>
                 The world class
             </summary>
         </member>
-        <member name="M:Alis.Benchmark.Physics.TestRemoveListVsHasSet.World.#ctor">
+        <member name="M:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.World.#ctor">
             <summary>
-                Initializes a new instance of the <see cref="T:Alis.Benchmark.Physics.TestRemoveListVsHasSet.World" /> class
+                Initializes a new instance of the <see cref="T:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.World" /> class
             </summary>
         </member>
-        <member name="P:Alis.Benchmark.Physics.TestRemoveListVsHasSet.World.Bodies">
+        <member name="P:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.World.Bodies">
             <summary>
                 Gets or sets the value of the bodies
             </summary>
         </member>
-        <member name="M:Alis.Benchmark.Physics.TestRemoveListVsHasSet.World.RemoveBody(Alis.Benchmark.Physics.TestRemoveListVsHasSet.Body)">
+        <member name="M:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.World.RemoveBody(Alis.Benchmark.Iterator.TestRemoveListVsHasSet.Body)">
             <summary>
                 Removes the body using the specified body
             </summary>
             <param name="body">The body</param>
         </member>
-        <member name="T:Alis.Benchmark.Physics.TestRemoveListVsHasSet.Body">
+        <member name="T:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.Body">
             <summary>
                 The body class
             </summary>
         </member>
-        <member name="P:Alis.Benchmark.Physics.TestRemoveListVsHasSet.Body.Id">
+        <member name="P:Alis.Benchmark.Iterator.TestRemoveListVsHasSet.Body.Id">
             <summary>
                 Gets or sets the value of the id
             </summary>
