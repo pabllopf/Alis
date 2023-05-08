@@ -16,5 +16,6 @@ var class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_
     [ "Restitution", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a6d6d2a82a57ba84e2d51fdbaa995a430", null ],
     [ "Rotation", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a8786a9b101ba70941ef2009f80548e5d", null ],
     [ "Size", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a3240e4bb45938be5af259ee87367bb52", null ],
+    [ "AngularVelocity", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a22a93e241f806976df0f115376e73cb6", null ],
     [ "boxCollider", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html#a9b3caa80605d9a79873c908ce34d6c11", null ]
 ];

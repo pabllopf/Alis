@@ -183,8 +183,6 @@ var hierarchy =
       [ "Alis.Core.Component.Render.Frame", "df/d9e/class_alis_1_1_core_1_1_component_1_1_render_1_1_frame.html", null ]
     ] ],
     [ "Alis.Core.GameBase", "df/dab/class_alis_1_1_core_1_1_game_base.html", [
-      [ "Alis.ConsoleGame", "d7/d48/class_alis_1_1_console_game.html", null ],
-      [ "Alis.SoundGame", "d5/dd9/class_alis_1_1_sound_game.html", null ],
       [ "Alis.VideoGame", "df/d64/class_alis_1_1_video_game.html", null ]
     ] ],
     [ "Alis.Core.Physic.Tools.TextureTools.MarchingSquares.GeomPoly", "d4/d07/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_marching_squares_1_1_geom_poly.html", null ],
@@ -212,6 +210,10 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.Words.IAddFrame< out out TBuilder, in in TArgument >", "de/df1/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_add_frame.html", null ],
     [ "IAddFrame< AnimationBuilder, Func< FrameBuilder, Frame >>", null, [
       [ "Alis.Builder.Core.Component.Render.AnimationBuilder", "dd/df9/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_animation_builder.html", null ]
+    ] ],
+    [ "Alis.Core.Aspect.Fluent.Words.IAngularVelocity< out out TBuilder, in in TArgument >", "dc/d86/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_angular_velocity.html", null ],
+    [ "Alis.Core.Aspect.Fluent.Words.IAngularVelocity< BoxColliderBuilder, float >", "dc/d86/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_angular_velocity.html", [
+      [ "Alis.Builder.Core.Component.Collider.BoxColliderBuilder", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IAudio< out out TBuilder, in in TArgument >", "df/d9a/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_audio.html", null ],
     [ "IAudio< SettingManagerBuilder, Func< AudioSettingBuilder, AudioSetting >>", null, [
@@ -271,9 +273,6 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.IBuild< Camera >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
       [ "Alis.Builder.Core.Component.Render.CameraBuilder", "d4/d64/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_camera_builder.html", null ]
     ] ],
-    [ "Alis.Core.Aspect.Fluent.IBuild< ConsoleGame >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
-      [ "Alis.Builder.ConsoleGameBuilder", "db/d43/class_alis_1_1_builder_1_1_console_game_builder.html", null ]
-    ] ],
     [ "Alis.Core.Aspect.Fluent.IBuild< DebugSetting >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
       [ "Alis.Builder.Core.Setting.DebugSettingBuilder", "d8/d2d/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_debug_setting_builder.html", null ]
     ] ],
@@ -292,6 +291,9 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.IBuild< GraphicSetting >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
       [ "Alis.Builder.Core.Setting.GraphicSettingBuilder", "db/de7/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_graphic_setting_builder.html", null ]
     ] ],
+    [ "Alis.Core.Aspect.Fluent.IBuild< PhysicSetting >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
+      [ "Alis.Builder.Core.Setting.PhysicSettingBuilder", "d8/da2/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_physic_setting_builder.html", null ]
+    ] ],
     [ "Alis.Core.Aspect.Fluent.IBuild< Scene >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
       [ "Alis.Builder.Core.Entity.SceneBuilder", "db/d9d/class_alis_1_1_builder_1_1_core_1_1_entity_1_1_scene_builder.html", null ]
     ] ],
@@ -303,9 +305,6 @@ var hierarchy =
     ] ],
     [ "Alis.Core.Aspect.Fluent.IBuild< SettingManager >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
       [ "Alis.Builder.Core.Manager.SettingManagerBuilder", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html", null ]
-    ] ],
-    [ "Alis.Core.Aspect.Fluent.IBuild< SoundGame >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
-      [ "Alis.Builder.SoundGameBuilder", "df/d35/class_alis_1_1_builder_1_1_sound_game_builder.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.IBuild< SplashScreen >", "d9/d26/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_build.html", [
       [ "Alis.Builder.Core.Entity.SplashScreenBuilder", "df/d29/class_alis_1_1_builder_1_1_core_1_1_entity_1_1_splash_screen_builder.html", null ]
@@ -359,6 +358,9 @@ var hierarchy =
     ] ],
     [ "Alis.Core.Aspect.Fluent.IBuilder< GraphicSettingBuilder >", "dc/da6/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_builder.html", [
       [ "Alis.Core.Setting.GraphicSetting", "dc/d57/class_alis_1_1_core_1_1_setting_1_1_graphic_setting.html", null ]
+    ] ],
+    [ "Alis.Core.Aspect.Fluent.IBuilder< PhysicSettingBuilder >", "dc/da6/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_builder.html", [
+      [ "Alis.Core.Setting.PhysicSetting", "dd/d89/class_alis_1_1_core_1_1_setting_1_1_physic_setting.html", null ]
     ] ],
     [ "Alis.Core.Aspect.Fluent.IBuilder< RigidBodyBuilder >", "dc/da6/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_i_builder.html", [
       [ "Alis.Core.Component.Body.RigidBody", "db/dd6/class_alis_1_1_core_1_1_component_1_1_body_1_1_rigid_body.html", null ]
@@ -496,6 +498,10 @@ var hierarchy =
     [ "IGraphic< SettingManagerBuilder, Func< GraphicSettingBuilder, GraphicSetting >>", null, [
       [ "Alis.Builder.Core.Manager.SettingManagerBuilder", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html", null ]
     ] ],
+    [ "Alis.Core.Aspect.Fluent.Words.IGravity< out out TBuilder, in in TArgument1, in in TArgument2 >", "d0/da6/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_gravity.html", null ],
+    [ "Alis.Core.Aspect.Fluent.Words.IGravity< PhysicSettingBuilder, float, float >", "d0/da6/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_gravity.html", [
+      [ "Alis.Builder.Core.Setting.PhysicSettingBuilder", "d8/da2/class_alis_1_1_builder_1_1_core_1_1_setting_1_1_physic_setting_builder.html", null ]
+    ] ],
     [ "Alis.Core.Aspect.Fluent.Words.IGravityScale< out out TBuilder, in in TArgument >", "d6/d10/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_gravity_scale.html", null ],
     [ "Alis.Core.Aspect.Fluent.Words.IGravityScale< BoxColliderBuilder, float >", "d6/d10/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_gravity_scale.html", [
       [ "Alis.Builder.Core.Component.Collider.BoxColliderBuilder", "d7/de4/class_alis_1_1_builder_1_1_core_1_1_component_1_1_collider_1_1_box_collider_builder.html", null ]
@@ -581,6 +587,10 @@ var hierarchy =
     [ "Alis.Core.Aspect.Fluent.Words.IOrder< out out TBuilder, in in TArgument >", "d1/df5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_order.html", null ],
     [ "Alis.Core.Aspect.Fluent.Words.IOrder< AnimationBuilder, int >", "d1/df5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_order.html", [
       [ "Alis.Builder.Core.Component.Render.AnimationBuilder", "dd/df9/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_animation_builder.html", null ]
+    ] ],
+    [ "Alis.Core.Aspect.Fluent.Words.IPhysic< out out TBuilder, in in TArgument >", "df/d6f/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_physic.html", null ],
+    [ "IPhysic< SettingManagerBuilder, Func< PhysicSettingBuilder, PhysicSetting >>", null, [
+      [ "Alis.Builder.Core.Manager.SettingManagerBuilder", "d3/d94/class_alis_1_1_builder_1_1_core_1_1_manager_1_1_setting_manager_builder.html", null ]
     ] ],
     [ "Alis.Core.Network.IPingPongManager", "de/df6/interface_alis_1_1_core_1_1_network_1_1_i_ping_pong_manager.html", [
       [ "Alis.Core.Network.PingPongManager", "da/d5f/class_alis_1_1_core_1_1_network_1_1_ping_pong_manager.html", null ]
@@ -891,7 +901,8 @@ var hierarchy =
       [ "Alis.Core.Setting.AudioSetting", "da/da5/class_alis_1_1_core_1_1_setting_1_1_audio_setting.html", null ],
       [ "Alis.Core.Setting.DebugSetting", "d2/d20/class_alis_1_1_core_1_1_setting_1_1_debug_setting.html", null ],
       [ "Alis.Core.Setting.GeneralSetting", "d1/d7a/class_alis_1_1_core_1_1_setting_1_1_general_setting.html", null ],
-      [ "Alis.Core.Setting.GraphicSetting", "dc/d57/class_alis_1_1_core_1_1_setting_1_1_graphic_setting.html", null ]
+      [ "Alis.Core.Setting.GraphicSetting", "dc/d57/class_alis_1_1_core_1_1_setting_1_1_graphic_setting.html", null ],
+      [ "Alis.Core.Setting.PhysicSetting", "dd/d89/class_alis_1_1_core_1_1_setting_1_1_physic_setting.html", null ]
     ] ],
     [ "Alis.Core.Physic.Config.Settings", "d2/dcb/class_alis_1_1_core_1_1_physic_1_1_config_1_1_settings.html", null ],
     [ "Alis.Core.Physic.Collision.Shapes.Shape", "d5/deb/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_shapes_1_1_shape.html", [

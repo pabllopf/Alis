@@ -1,5 +1,9 @@
 var NAVTREEINDEX4 =
 {
+"d2/d85/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_cutting_1_1_yu_peng_clipper_1_1_edge.html#a6c9ed29d368a54e86c224b37b2464c83":[1,0,0,2,8,7,1,0,0,4],
+"d2/d8f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html":[1,0,0,2,8,7,5,1,3,0],
+"d2/d8f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html#adbef31c6d1ddba8a2be95c32d042cb2c":[1,0,0,2,8,7,5,1,3,0,0],
+"d2/d8f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html#ade03accade430ba15b6f7044031345a7":[1,0,0,2,8,7,5,1,3,0,1],
 "d2/d8f/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_util_1_1_point_generator.html#ae2d420a3d07d22d78242ecdcc5c79626":[1,0,0,2,8,7,5,1,3,0,2],
 "d2/d97/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_window_event.html":[1,0,0,2,5,1,83],
 "d2/d97/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_window_event.html#a05d9691ea5f3229eecbc68bfd439238a":[1,0,0,2,5,1,83,0],
@@ -108,8 +112,8 @@ var NAVTREEINDEX4 =
 "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#af6767d9bf5b398beaf6e665bb74fef65":[1,0,0,2,0,4,4,1,40],
 "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#afc9979dc16fd3e08df5dc8b5482cf44e":[1,0,0,2,0,4,4,1,1],
 "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#afec51fe9c0ff67a3500a78735105d393":[1,0,0,2,0,4,4,1,6],
-"d2/dbd/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_update.html":[1,0,0,2,0,2,0,57],
-"d2/dbd/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_update.html#abb7fee3ecff9688470ee722077202961":[1,0,0,2,0,2,0,57,0],
+"d2/dbd/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_update.html":[1,0,0,2,0,2,0,60],
+"d2/dbd/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_update.html#abb7fee3ecff9688470ee722077202961":[1,0,0,2,0,2,0,60,0],
 "d2/dc3/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_point_on_edge_exception.html":[1,0,0,2,8,7,5,1,0,0,6],
 "d2/dc3/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep_1_1_point_on_edge_exception.html#ab1ee0432259b4caa713b0cab39a710b2":[1,0,0,2,8,7,5,1,0,0,6,0],
 "d2/dca/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_internal_sdl_message_box_data.html":[1,0,0,2,5,1,10],
@@ -232,8 +236,8 @@ var NAVTREEINDEX4 =
 "d2/df3/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_haptic_ramp.html#ad257e760b00f14c91d33427bcb187434":[1,0,0,2,5,1,45,10],
 "d2/dfa/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep.html":[0,0,0,2,8,7,5,1,0,0],
 "d2/dfa/namespace_alis_1_1_core_1_1_physic_1_1_tools_1_1_triangulation_1_1_delaunay_1_1_delaunay_1_1_sweep.html":[1,0,0,2,8,7,5,1,0,0],
-"d2/dfb/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_set_texture.html":[1,0,0,2,0,2,0,49],
-"d2/dfb/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_set_texture.html#a07122189ea9ebb7aca6ca0df4a062742":[1,0,0,2,0,2,0,49,0],
+"d2/dfb/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_set_texture.html":[1,0,0,2,0,2,0,52],
+"d2/dfb/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_set_texture.html#a07122189ea9ebb7aca6ca0df4a062742":[1,0,0,2,0,2,0,52,0],
 "d3/d03/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_joy_hat_event.html":[1,0,0,2,5,1,51],
 "d3/d03/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_joy_hat_event.html#a9ef4f0a5f8f3cbcfaf25990081950dda":[1,0,0,2,5,1,51,3],
 "d3/d03/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_joy_hat_event.html#aabaab6e3d5c74742e93789dd97d72b1a":[1,0,0,2,5,1,51,0],
@@ -245,9 +249,5 @@ var NAVTREEINDEX4 =
 "d3/d0c/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_output.html":[1,0,0,2,8,0,2,2],
 "d3/d0c/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_output.html#a1c6c747ab292e6aba0d738b9bb0e3cd7":[1,0,0,2,8,0,2,2,1],
 "d3/d0c/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_output.html#a2a93a836e629704cf294fdf97eb50003":[1,0,0,2,8,0,2,2,0],
-"d3/d0c/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_output.html#a6045a5a8dc84a6ed3786eb8ff197457d":[1,0,0,2,8,0,2,2,3],
-"d3/d0c/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_output.html#aa03c224535f0063fcace29974fe4028e":[1,0,0,2,8,0,2,2,2],
-"d3/d13/class_alis_1_1_builder_1_1_core_1_1_component_1_1_light_1_1_point_light_builder.html":[1,0,0,1,0,0,3,2],
-"d3/d13/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_ensures_exception.html":[1,0,0,2,8,6,0,1],
-"d3/d13/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_contracts_1_1_ensures_exception.html#a57a84cbae1634c61110d0525536df1ac":[1,0,0,2,8,6,0,1,0]
+"d3/d0c/struct_alis_1_1_core_1_1_physic_1_1_collision_1_1_distance_1_1_distance_output.html#a6045a5a8dc84a6ed3786eb8ff197457d":[1,0,0,2,8,0,2,2,3]
 };

@@ -1,5 +1,8 @@
 var NAVTREEINDEX2 =
 {
+"d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html#abe755607034833a05e737a6023fa9303":[1,0,0,2,4,0,0,0,24,22],
+"d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html#abfa7c92d186d70a590ef2d2bf4de822f":[1,0,0,2,4,0,0,0,24,21],
+"d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html#ac0a12c395656d72a90fc4faf17e6fa61":[1,0,0,2,4,0,0,0,24,19],
 "d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html#ac92663572075c0d1df4a9ea80cdb586e":[1,0,0,2,4,0,0,0,24,10],
 "d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html#acc61f5378613fa44c58df20b137dbee4":[1,0,0,2,4,0,0,0,24,7],
 "d1/d4a/class_alis_1_1_core_1_1_graphic_1_1_d2_1_1_s_f_m_l_1_1_graphics_1_1_view.html#ad42089826079db83ce109524d837660a":[1,0,0,2,4,0,0,0,24,8],
@@ -100,10 +103,10 @@ var NAVTREEINDEX2 =
 "d1/d9d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_canonical_basis.html#a0f94ffd7b388b7ea92c0a1ce5622b183":[1,0,0,2,0,4,2,2,0,0],
 "d1/d9d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_canonical_basis.html#aa11d4867a063cf31617817b82729f2d7":[1,0,0,2,0,4,2,2,0,1],
 "d1/d9d/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_matrix_1_1_matrix4_x4_f_1_1_canonical_basis.html#af44b5a92733cc5bd152e75ce5c0845f4":[1,0,0,2,0,4,2,2,0,2],
-"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_configuration.html":[1,0,0,2,0,2,0,9],
-"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_configuration.html#ab967a1349ff0366be84e32d16bf75929":[1,0,0,2,0,2,0,9,0],
-"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_fixed_rotation.html":[1,0,0,2,0,2,0,18],
-"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_fixed_rotation.html#a85f15f74bf23aa13af730636897a4848":[1,0,0,2,0,2,0,18,0],
+"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_configuration.html":[1,0,0,2,0,2,0,10],
+"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_configuration.html#ab967a1349ff0366be84e32d16bf75929":[1,0,0,2,0,2,0,10,0],
+"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_fixed_rotation.html":[1,0,0,2,0,2,0,19],
+"d1/da5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_fixed_rotation.html#a85f15f74bf23aa13af730636897a4848":[1,0,0,2,0,2,0,19,0],
 "d1/da6/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_animator_builder.html":[1,0,0,1,0,0,6,1],
 "d1/da6/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_animator_builder.html#a72c962e90146ccf67d30e4a16cab034e":[1,0,0,1,0,0,6,1,1],
 "d1/da6/class_alis_1_1_builder_1_1_core_1_1_component_1_1_render_1_1_animator_builder.html#ab331d040b00f3a57430b5bdc4abd0f8e":[1,0,0,1,0,0,6,1,0],
@@ -218,8 +221,8 @@ var NAVTREEINDEX2 =
 "d1/de9/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_haptic_left_right.html#a60973e0877ac98fb3a346ae15e31e492":[1,0,0,2,5,1,43,1],
 "d1/de9/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_haptic_left_right.html#a9b22ecd6f22b6d18930031261edd3fec":[1,0,0,2,5,1,43,3],
 "d1/de9/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_haptic_left_right.html#ac243a13a77b7bd06a89ab07fb6b926d0":[1,0,0,2,5,1,43,2],
-"d1/df5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_order.html":[1,0,0,2,0,2,0,36],
-"d1/df5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_order.html#a95f815ab8f29b24109f4db9463a7cd2b":[1,0,0,2,0,2,0,36,0],
+"d1/df5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_order.html":[1,0,0,2,0,2,0,38],
+"d1/df5/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_order.html#a95f815ab8f29b24109f4db9463a7cd2b":[1,0,0,2,0,2,0,38,0],
 "d2/d01/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_internal_windows_wminfo.html":[1,0,0,2,5,1,15],
 "d2/d01/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_internal_windows_wminfo.html#aae26dcc4b8e9b51a4f780b996563424c":[1,0,0,2,5,1,15,0],
 "d2/d01/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_internal_windows_wminfo.html#ad1284a8241af7244e230c7d65bcef6de":[1,0,0,2,5,1,15,1],
@@ -244,10 +247,7 @@ var NAVTREEINDEX2 =
 "d2/d0e/namespace_alis_1_1_core_1_1_audio_1_1_o_s.html":[1,0,0,2,1,0],
 "d2/d0f/namespace_alis_1_1_core_1_1_setting.html":[0,0,0,2,9],
 "d2/d0f/namespace_alis_1_1_core_1_1_setting.html":[1,0,0,2,9],
-"d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html":[1,0,0,2,0,2,0,59],
-"d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html#ad526ae572258becbfccb6a6c1be9967d":[1,0,0,2,0,2,0,59,0],
-"d2/d19/namespace_alis_1_1_core_1_1_graphic_1_1_d3.html":[0,0,0,2,4,1],
-"d2/d19/namespace_alis_1_1_core_1_1_graphic_1_1_d3.html":[1,0,0,2,4,1],
-"d2/d1c/class_alis_1_1_core_1_1_manager_1_1_setting_1_1_setting_manager.html":[1,0,0,2,6,5,0],
-"d2/d1c/class_alis_1_1_core_1_1_manager_1_1_setting_1_1_setting_manager.html#a3d614c222abbb974b43a09ff19245b29":[1,0,0,2,6,5,0,1]
+"d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html":[1,0,0,2,0,2,0,62],
+"d2/d12/interface_alis_1_1_core_1_1_aspect_1_1_fluent_1_1_words_1_1_i_where.html#ad526ae572258becbfccb6a6c1be9967d":[1,0,0,2,0,2,0,62,0],
+"d2/d19/namespace_alis_1_1_core_1_1_graphic_1_1_d3.html":[0,0,0,2,4,1]
 };
