@@ -45,7 +45,7 @@ namespace SDL2
 		/// <summary>
 		/// The native lib name
 		/// </summary>
-		private const string nativeLibName = "SDL2";
+		private const string nativeLibName = "sdl2";
 
 		#endregion
 
