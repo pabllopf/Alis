@@ -50,11 +50,6 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.ConsoleController" /> class
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._messages">
-            <summary>
-                The message
-            </summary>
-        </member>
         <member name="F:Alis.Core.Aspect.Logging.ConsoleController._filePath">
             <summary>
                 The file path
@@ -70,35 +65,6 @@
                 Prints the to console using the specified message
             </summary>
             <param name="message">The message</param>
-        </member>
-        <member name="M:Alis.Core.Aspect.Logging.ConsoleController.SaveToFile(Alis.Core.Aspect.Logging.Message)">
-            <summary>
-                Saves the to file using the specified message
-            </summary>
-            <param name="message">The message</param>
-        </member>
-        <member name="T:Alis.Core.Aspect.Logging.DateTimeConverter">
-            <summary>
-                The date time converter class
-            </summary>
-            <seealso cref="T:System.Text.Json.Serialization.JsonConverter`1" />
-        </member>
-        <member name="M:Alis.Core.Aspect.Logging.DateTimeConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
-            <summary>
-                Reads the reader
-            </summary>
-            <param name="reader">The reader</param>
-            <param name="typeToConvert">The type to convert</param>
-            <param name="options">The options</param>
-            <returns>The date time</returns>
-        </member>
-        <member name="M:Alis.Core.Aspect.Logging.DateTimeConverter.Write(System.Text.Json.Utf8JsonWriter,System.DateTime,System.Text.Json.JsonSerializerOptions)">
-            <summary>
-                Writes the writer
-            </summary>
-            <param name="writer">The writer</param>
-            <param name="value">The value</param>
-            <param name="options">The options</param>
         </member>
         <member name="T:Alis.Core.Aspect.Logging.ConsoleLogConfig">
             <summary>

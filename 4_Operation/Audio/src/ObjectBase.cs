@@ -29,7 +29,7 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base.Dll;
+using Alis.Core.Aspect.Base;
 using Alis.Core.Audio.Properties;
 
 namespace Alis.Core.Audio

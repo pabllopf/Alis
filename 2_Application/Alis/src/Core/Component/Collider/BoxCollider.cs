@@ -32,7 +32,6 @@ using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Graphic.D2.SFML.Graphics;
 using Alis.Core.Physic.Dynamics;
-using Alis.Core.Physic.Factories;
 using Alis.Core.Physic.Figure;
 using Sprite = Alis.Core.Component.Render.Sprite;
 

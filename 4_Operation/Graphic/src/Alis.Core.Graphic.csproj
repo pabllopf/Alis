@@ -3,6 +3,7 @@
     <Import Project="$(SolutionDir).config/Config.props" />
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
       <Compile Update="Properties\NativeGraphic.Designer.cs">
@@ -16,5 +17,8 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>NativeGraphic.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
     </ItemGroup>
 </Project>

@@ -31,9 +31,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace Alis.Core.Aspect.Logging
 {
@@ -50,12 +47,7 @@ namespace Alis.Core.Aspect.Logging
             _dirPath = Environment.CurrentDirectory + "/log";
             _filePath = Environment.CurrentDirectory + $"/log/{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}_{DateTime.Now.Hour}-{DateTime.Now.Minute}.log";
         }
-
-        /// <summary>
-        ///     The message
-        /// </summary>
-        private static List<Message> _messages = new List<Message>();
-
+        
         /// <summary>
         ///     The file path
         /// </summary>
@@ -78,71 +70,7 @@ namespace Alis.Core.Aspect.Logging
                               $"   line:   '{message.Line}' \n" +
                               $"   file:   '{message.File}' \n" +
                               $"   {message.StackTrace} \n");
-            //SaveToFile(message);
             Console.ResetColor();
-        }
-
-        /// <summary>
-        ///     Saves the to file using the specified message
-        /// </summary>
-        /// <param name="message">The message</param>
-        private static void SaveToFile(Message message)
-        {
-            JsonSerializerOptions options = new JsonSerializerOptions
-            {
-                Encoder = JavaScriptEncoder.Default,
-                WriteIndented = true
-            };
-
-            options.Converters.Add(new DateTimeConverter());
-
-            if (!Directory.Exists(_dirPath))
-            {
-                Directory.CreateDirectory(_dirPath);
-            }
-
-            if (File.Exists(_filePath))
-            {
-                _messages = JsonSerializer.Deserialize<List<Message>>(File.ReadAllText(_filePath), options);
-            }
-
-            if (_messages != null)
-            {
-                _messages.Add(message);
-                File.WriteAllText(_filePath, JsonSerializer.Serialize(_messages, options));
-            }
-        }
-    }
-
-    /// <summary>
-    ///     The date time converter class
-    /// </summary>
-    /// <seealso cref="JsonConverter{DateTime}" />
-    public class DateTimeConverter : JsonConverter<DateTime>
-    {
-        /// <summary>
-        ///     Reads the reader
-        /// </summary>
-        /// <param name="reader">The reader</param>
-        /// <param name="typeToConvert">The type to convert</param>
-        /// <param name="options">The options</param>
-        /// <returns>The date time</returns>
-        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            Debug.Assert(typeToConvert == typeof(DateTime));
-            return DateTime.Parse(reader.GetString());
-        }
-
-        /// <summary>
-        ///     Writes the writer
-        /// </summary>
-        /// <param name="writer">The writer</param>
-        /// <param name="value">The value</param>
-        /// <param name="options">The options</param>
-        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
-        {
-            writer.WriteStringValue(value.ToUniversalTime().ToString("dd/MM/yyyy HH:mm:ss"));
-            //01/05/2020 10:12:32
         }
     }
 }

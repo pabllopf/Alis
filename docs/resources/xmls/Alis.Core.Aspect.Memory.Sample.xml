@@ -6,29 +6,14 @@
     <members>
         <member name="T:Alis.Core.Aspect.Memory.Sample.Program">
             <summary>
-                The program class
+            The program class
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Memory.Sample.Program.Main(System.String[])">
             <summary>
-                Main the args
+            Main the args
             </summary>
             <param name="args">The args</param>
-        </member>
-        <member name="M:Alis.Core.Aspect.Memory.Sample.Program.FastClearForce_v2">
-            <summary>
-            Fasts the clear force v 2
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Aspect.Memory.Sample.Program.World">
-            <summary>
-            The world class
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Aspect.Memory.Sample.Program.World.clear">
-            <summary>
-            Clears this instance
-            </summary>
         </member>
     </members>
 </doc>

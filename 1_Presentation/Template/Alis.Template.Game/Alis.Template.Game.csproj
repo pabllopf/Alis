@@ -17,4 +17,8 @@
         <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="SkiaSharp" Version="2.88.3"/>
+    </ItemGroup>
+
 </Project>

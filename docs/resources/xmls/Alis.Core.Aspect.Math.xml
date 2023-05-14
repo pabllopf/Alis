@@ -1232,13 +1232,6 @@
             <param name="x">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.X" /> field.</param>
             <param name="y">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector2F.Y" /> field.</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.#ctor(System.ReadOnlySpan{System.Single})">
-            <summary>
-                Constructs a vector from the given <see cref="T:System.ReadOnlySpan`1" />. The span must contain at least 2
-                elements.
-            </summary>
-            <param name="values">The span of elements to assign to the vector.</param>
-        </member>
         <member name="P:Alis.Core.Aspect.Math.Vector.Vector2F.Zero">
             <summary>Returns a vector whose 2 elements are equal to zero.</summary>
             <value>A vector whose two elements are equal to zero (that is, it returns the vector <c>(0,0)</c>.</value>
@@ -1508,25 +1501,6 @@
                 <paramref name="index" /> is greater than or equal to the array length.
             </exception>
             <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.CopyTo(System.Span{System.Single})">
-            <summary>Copies the vector to the given <see cref="T:System.Span`1" />.The length of the destination span must be at least 2.</summary>
-            <param name="destination">The destination span which the values are copied into.</param>
-            <exception cref="T:System.ArgumentException">
-                If number of elements in source vector is greater than those available in
-                destination span.
-            </exception>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.TryCopyTo(System.Span{System.Single})">
-            <summary>
-                Attempts to copy the vector to the given <see cref="T:System.Span`1" />. The length of the destination span must
-                be at least 2.
-            </summary>
-            <param name="destination">The destination span which the values are copied into.</param>
-            <returns>
-                <see langword="true" /> if the source vector was successfully copied to <paramref name="destination" />.
-                <see langword="false" /> if <paramref name="destination" /> is not large enough to hold the source vector.
-            </returns>
         </member>
         <member name="M:Alis.Core.Aspect.Math.Vector.Vector2F.Equals(System.Object)">
             <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
@@ -1902,13 +1876,6 @@
             <param name="y">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Y" /> field.</param>
             <param name="z">The value to assign to the <see cref="F:Alis.Core.Aspect.Math.Vector.Vector3F.Z" /> field.</param>
         </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.#ctor(System.ReadOnlySpan{System.Single})">
-            <summary>
-                Constructs a vector from the given <see cref="T:System.ReadOnlySpan`1" />. The span must contain at least 3
-                elements.
-            </summary>
-            <param name="values">The span of elements to assign to the vector.</param>
-        </member>
         <member name="P:Alis.Core.Aspect.Math.Vector.Vector3F.Zero">
             <summary>Gets a vector whose 3 elements are equal to zero.</summary>
             <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>
@@ -2174,25 +2141,6 @@
                 <paramref name="index" /> is greater than or equal to the array length.
             </exception>
             <exception cref="T:System.RankException"><paramref name="array" /> is multidimensional.</exception>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.CopyTo(System.Span{System.Single})">
-            <summary>Copies the vector to the given <see cref="T:System.Span`1" />. The length of the destination span must be at least 3.</summary>
-            <param name="destination">The destination span which the values are copied into.</param>
-            <exception cref="T:System.ArgumentException">
-                If number of elements in source vector is greater than those available in
-                destination span.
-            </exception>
-        </member>
-        <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.TryCopyTo(System.Span{System.Single})">
-            <summary>
-                Attempts to copy the vector to the given <see cref="T:System.Span`1" />. The length of the destination span must
-                be at least 3.
-            </summary>
-            <param name="destination">The destination span which the values are copied into.</param>
-            <returns>
-                <see langword="true" /> if the source vector was successfully copied to <paramref name="destination" />.
-                <see langword="false" /> if <paramref name="destination" /> is not large enough to hold the source vector.
-            </returns>
         </member>
         <member name="M:Alis.Core.Aspect.Math.Vector.Vector3F.Equals(System.Object)">
             <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
