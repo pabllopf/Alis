@@ -29,7 +29,7 @@
 
 using Alis.Builder.Core.Component.Render;
 using Alis.Core.Aspect.Fluent;
-using Alis.Core.Graphic.D2;
+using Alis.Core.Graphic;
 
 namespace Alis.Core.Component.Render
 {

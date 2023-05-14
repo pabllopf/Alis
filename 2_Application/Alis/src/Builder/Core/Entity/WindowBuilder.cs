@@ -31,7 +31,7 @@ using System.Numerics;
 using Alis.Core.Aspect.Fluent;
 using Alis.Core.Aspect.Fluent.Words;
 using Alis.Core.Entity;
-using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Graphic.SFML.Graphics;
 
 namespace Alis.Builder.Core.Entity
 {

@@ -1,10 +1,12 @@
 using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
-using ImGuiNET;
-using static OpenGL.GL;
+using Alis.Core.Graphic.ImGui.ImGui;
+using Alis.Core.Graphic.OpenGL.Constructs;
+using static Alis.Core.Graphic.OpenGL.GL;
+using ImDrawDataPtr = Alis.Core.Graphic.ImGui.ImGui.ImDrawDataPtr;
 
-namespace ImGuiGeneral
+namespace Alis.Core.Graphic.ImGui
 {
 	/// <summary>
 	/// The im gui gl renderer class
@@ -23,7 +25,7 @@ namespace ImGuiGeneral
         /// <summary>
         /// The shader
         /// </summary>
-        OpenGL.GLShaderProgram _shader;
+        GLShaderProgram _shader;
 		/// <summary>
 		/// The font texture id
 		/// </summary>
@@ -40,9 +42,9 @@ namespace ImGuiGeneral
 			_glContext = glContext;
 
 			// compile the shader program
-			_shader = new OpenGL.GLShaderProgram(VertexShader, FragmentShader);
+			_shader = new GLShaderProgram(VertexShader, FragmentShader);
 
-			ImGui.SetCurrentContext(ImGui.CreateContext());
+			ImGui.ImGui.SetCurrentContext(ImGui.ImGui.CreateContext());
 			RebuildFontAtlas();
 			InitKeyMap();
 
@@ -56,7 +58,7 @@ namespace ImGuiGeneral
 		/// </summary>
 		unsafe void RebuildFontAtlas()
 		{
-			var fonts = ImGui.GetIO().Fonts;
+			var fonts = ImGui.ImGui.GetIO().Fonts;
 
 			fonts.AddFontDefault();
 			fonts.GetTexDataAsRGBA32(out byte* pixelData, out int width, out int height, out int _);
@@ -73,9 +75,9 @@ namespace ImGuiGeneral
 		public void Render()
 		{
 			PrepareGLContext();
-			ImGui.Render();
+			ImGui.ImGui.Render();
 
-			var io = ImGui.GetIO();
+			var io = ImGui.ImGui.GetIO();
 			glViewport(0, 0, (int)io.DisplaySize.X, (int)io.DisplaySize.Y);
 			glClear(ClearBufferMask.ColorBufferBit);
 
@@ -143,7 +145,7 @@ namespace ImGuiGeneral
 		/// </summary>
 		unsafe void RenderDrawData()
 		{
-			var drawData = ImGui.GetDrawData();
+			var drawData = ImGui.ImGui.GetDrawData();
 
 			// Avoid rendering when minimized, scale coordinates for retina displays (screen coordinates != framebuffer coordinates)
 			var fbWidth = (int)(drawData.DisplaySize.X * drawData.FramebufferScale.X);
@@ -158,7 +160,7 @@ namespace ImGuiGeneral
 
 			drawData.ScaleClipRects(clipScale);
 
-			var lastTexId = ImGui.GetIO().Fonts.TexID;
+			var lastTexId = ImGui.ImGui.GetIO().Fonts.TexID;
 			glBindTexture(TextureTarget.Texture2D, (uint)lastTexId);
 
 			var drawVertSize = Marshal.SizeOf<ImDrawVert>();

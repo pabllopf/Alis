@@ -29,7 +29,7 @@
 
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.D2.SFML.Windows
+namespace Alis.Core.Graphic.SFML.Windows
 {
     /// <summary>
     ///     Touch event parameters

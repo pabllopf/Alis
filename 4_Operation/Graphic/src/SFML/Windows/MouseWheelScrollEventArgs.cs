@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.D2.SFML.Windows
+namespace Alis.Core.Graphic.SFML.Windows
 {
     /// <summary>
     ///     Mouse wheel scroll event parameters

@@ -52,7 +52,7 @@
         <member name="T:Alis.Core.Aspect.Base.Attributes.SuppressUnmanagedCodeSecurityAttribute">
             <summary>Allows managed code to call into unmanaged code without a stack walk. This class cannot be inherited.</summary>
         </member>
-        <member name="T:Alis.Core.Aspect.Base.EmbeddedDllClass">
+        <member name="T:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass">
             <summary>
                 A class used by managed classes to managed unmanaged DLLs.
                 This will extract and load DLLs from embedded binary resources.
@@ -86,12 +86,12 @@
                 </list>
             </summary>
         </member>
-        <member name="P:Alis.Core.Aspect.Base.EmbeddedDllClass.CurrentDirectory">
+        <member name="P:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.CurrentDirectory">
             <summary>
             Gets or sets the value of the current directory
             </summary>
         </member>
-        <member name="M:Alis.Core.Aspect.Base.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Byte[])">
+        <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Byte[])">
             <summary>
                 Extract DLLs from resources to temporary folder
             </summary>

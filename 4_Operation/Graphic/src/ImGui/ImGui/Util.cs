@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace ImGuiNET
+namespace Alis.Core.Graphic.ImGui.ImGui
 {
     /// <summary>
     /// The util class

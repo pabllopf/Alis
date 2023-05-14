@@ -31,7 +31,7 @@ using System;
 using System.IO;
 using System.Reflection;
 
-namespace Alis.Core.Aspect.Base
+namespace Alis.Core.Aspect.Base.Dll
 {
     /// <summary>
     ///     A class used by managed classes to managed unmanaged DLLs.

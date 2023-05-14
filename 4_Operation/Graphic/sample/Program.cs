@@ -29,8 +29,8 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Graphic.SFML.Graphics;
+using Alis.Core.Graphic.SFML.Windows;
 
 namespace Alis.Core.Graphic.Sample
 {

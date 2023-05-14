@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-namespace Alis.Core.Graphic.D2.SFML.Windows
+namespace Alis.Core.Graphic.SFML.Windows
 {
     /// <summary>
     ///     Axes supported by SFML joysticks

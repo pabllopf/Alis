@@ -1,6 +1,6 @@
 using System.Numerics;
 
-namespace OpenGL
+namespace Alis.Core.Graphic.OpenGL.NumericsExtensions
 {
 	/// <summary>
 	/// The vector ext class

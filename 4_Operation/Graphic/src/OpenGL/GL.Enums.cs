@@ -1,6 +1,6 @@
 using System;
 
-namespace OpenGL
+namespace Alis.Core.Graphic.OpenGL
 {
 	/// <summary>
 	/// The gl class

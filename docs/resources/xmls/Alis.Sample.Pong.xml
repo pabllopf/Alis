@@ -53,13 +53,13 @@
                 Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController1.OnReleaseKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnReleaseKey(Alis.Core.Graphic.SFML.Windows.Key)">
             <summary>
                 Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressDownKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressDownKey(Alis.Core.Graphic.SFML.Windows.Key)">
             <summary>
                 Ons the release key using the specified key
             </summary>
@@ -106,13 +106,13 @@
                 Updates this instance
             </summary>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController2.OnReleaseKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnReleaseKey(Alis.Core.Graphic.SFML.Windows.Key)">
             <summary>
                 Ons the press down key using the specified key
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressDownKey(Alis.Core.Graphic.D2.SFML.Windows.Key)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressDownKey(Alis.Core.Graphic.SFML.Windows.Key)">
             <summary>
                 Ons the release key using the specified key
             </summary>

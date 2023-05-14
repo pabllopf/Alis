@@ -27,14 +27,15 @@
 #endregion
 
 #region Using Statements
+
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
 
 #endregion
 
-namespace SDL2
+namespace Alis.Core.Graphic.SDL
 {
 	/// <summary>
 	/// The sdl ttf class

@@ -34,7 +34,7 @@ using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
 using Alis.Core.Aspect.Math.Vector;
 
-namespace Alis.Core.Graphic.D2.SFML.Graphics
+namespace Alis.Core.Graphic.SFML.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

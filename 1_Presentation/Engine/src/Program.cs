@@ -25,11 +25,11 @@ namespace Alis.App.Engine
 */
 
 using System;
-using ImGuiNET;
-using static SDL2.SDL;
-using ImGuiGeneral;
+using Alis.Core.Graphic.ImGui;
+using static Alis.Core.Graphic.SDL.SDL;
+using ImGui = Alis.Core.Graphic.ImGui.ImGui.ImGui;
 
-namespace Example
+namespace Alis.App.Engine
 {
     /// <summary>
     /// The main class

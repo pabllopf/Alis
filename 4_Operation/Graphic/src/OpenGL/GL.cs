@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using static SDL2.SDL;
+using static Alis.Core.Graphic.SDL.SDL;
 
-namespace OpenGL
+namespace Alis.Core.Graphic.OpenGL
 {
 	/// <summary>
 	/// The gl class
@@ -229,7 +229,7 @@ namespace OpenGL
 		/// The get program info log del
 		/// </summary>
 		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-		public delegate void GetProgramInfoLogDel(uint program, Int32 maxLength, [OutAttribute] Int32[] length, [OutAttribute] StringBuilder infoLog);
+		public delegate void GetProgramInfoLogDel(uint program, Int32 maxLength, [Out] Int32[] length, [Out] StringBuilder infoLog);
 		/// <summary>
 		/// The get program info log del
 		/// </summary>
@@ -319,7 +319,7 @@ namespace OpenGL
 		/// The get active uniform
 		/// </summary>
 		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-		public delegate void GetActiveUniform(UInt32 program, UInt32 index, Int32 bufSize, [OutAttribute] Int32[] length, [OutAttribute] Int32[] size, [OutAttribute] ActiveUniformType[] type, [OutAttribute] StringBuilder name);
+		public delegate void GetActiveUniform(UInt32 program, UInt32 index, Int32 bufSize, [Out] Int32[] length, [Out] Int32[] size, [Out] ActiveUniformType[] type, [Out] StringBuilder name);
 		/// <summary>
 		/// The get active uniform
 		/// </summary>
@@ -539,7 +539,7 @@ namespace OpenGL
 		/// The gen textures
 		/// </summary>
 		[UnmanagedFunctionPointer(CallingConvention.StdCall)]
-		public delegate void GenTextures(Int32 n, [OutAttribute] UInt32[] textures);
+		public delegate void GenTextures(Int32 n, [Out] UInt32[] textures);
 		/// <summary>
 		/// The gen textures
 		/// </summary>

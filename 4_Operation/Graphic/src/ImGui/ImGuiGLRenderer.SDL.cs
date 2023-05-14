@@ -1,9 +1,9 @@
 using System.Numerics;
-using ImGuiNET;
-using static SDL2.SDL;
+using Alis.Core.Graphic.ImGui.ImGui;
+using static Alis.Core.Graphic.SDL.SDL;
 
 
-namespace ImGuiGeneral
+namespace Alis.Core.Graphic.ImGui
 {
 	/// <summary>
 	/// The im gui gl renderer class
@@ -24,7 +24,7 @@ namespace ImGuiGeneral
 		/// </summary>
 		void InitKeyMap()
 		{
-			var io = ImGui.GetIO();
+			var io = ImGui.ImGui.GetIO();
 
 			io.KeyMap[(int)ImGuiKey.Tab] = (int)SDL_Scancode.SDL_SCANCODE_TAB;
 			io.KeyMap[(int)ImGuiKey.LeftArrow] = (int)SDL_Scancode.SDL_SCANCODE_LEFT;
@@ -55,8 +55,8 @@ namespace ImGuiGeneral
 		/// </summary>
 		public void NewFrame()
 		{
-			ImGui.NewFrame();
-			var io = ImGui.GetIO();
+			ImGui.ImGui.NewFrame();
+			var io = ImGui.ImGui.GetIO();
 
 			// Setup display size (every frame to accommodate for window resizing)
 			SDL_GetWindowSize(_window, out var w, out var h);
@@ -82,7 +82,7 @@ namespace ImGuiGeneral
 		/// <param name="evt">The evt</param>
 		public unsafe void ProcessEvent(SDL_Event evt)
 		{
-			var io = ImGui.GetIO();
+			var io = ImGui.ImGui.GetIO();
 			switch (evt.type)
 			{
 				case SDL_EventType.SDL_MOUSEWHEEL:
@@ -125,7 +125,7 @@ namespace ImGuiGeneral
 		/// </summary>
 		void UpdateMousePosAndButtons()
 		{
-			var io = ImGui.GetIO();
+			var io = ImGui.ImGui.GetIO();
 
 			// Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
 			if (io.WantSetMousePos)
@@ -155,7 +155,7 @@ namespace ImGuiGeneral
 			}
 
 			// SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
-			var any_mouse_button_down = ImGui.IsAnyMouseDown();
+			var any_mouse_button_down = ImGui.ImGui.IsAnyMouseDown();
 			SDL_CaptureMouse(any_mouse_button_down ? SDL_bool.SDL_TRUE : SDL_bool.SDL_FALSE);
 		}
 

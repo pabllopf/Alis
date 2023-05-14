@@ -29,10 +29,10 @@
 
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
 
-namespace Alis.Core.Graphic.D2.SFML
+namespace Alis.Core.Graphic.SFML
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

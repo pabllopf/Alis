@@ -31,7 +31,7 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
-using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Graphic.SFML.Windows;
 using Alis.Core.Input.SDL2;
 using Alis.Core.Manager.Scene;
 

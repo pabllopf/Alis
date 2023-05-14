@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Numerics;
 using System.Text;
-using static OpenGL.GL;
+using static Alis.Core.Graphic.OpenGL.GL;
 
-namespace OpenGL
+namespace Alis.Core.Graphic.OpenGL.Constructs
 {
 	/// <summary>
 	/// The gl shader program class

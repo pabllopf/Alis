@@ -1,12 +1,12 @@
 using System;
 using System.Runtime.InteropServices;
-using Alis.Core.Aspect.Base;
+using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
-using static SDL2.SDL;
-using static OpenGL.GL;
+using static Alis.Core.Graphic.SDL.SDL;
+using static Alis.Core.Graphic.OpenGL.GL;
 
 
-namespace ImGuiGeneral
+namespace Alis.Core.Graphic.ImGui
 {
 	/// <summary>
 	/// The im gui gl class

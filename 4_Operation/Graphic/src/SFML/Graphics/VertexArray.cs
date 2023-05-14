@@ -33,7 +33,7 @@ using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
 
-namespace Alis.Core.Graphic.D2.SFML.Graphics
+namespace Alis.Core.Graphic.SFML.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

@@ -29,7 +29,7 @@
 
 using SkiaSharp;
 
-namespace Alis.Core.Graphic.D2.SKIA
+namespace Alis.Template.Game.SKIA
 {
     /// <summary>
     ///     The custom render class

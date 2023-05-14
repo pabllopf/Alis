@@ -38,9 +38,9 @@ using Alis.Core.Aspect.Base.Settings;
 using Alis.Core.Aspect.Math.Matrix;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Aspect.Memory.Streams.SFML;
-using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Graphic.SFML.Windows;
 
-namespace Alis.Core.Graphic.D2.SFML.Graphics
+namespace Alis.Core.Graphic.SFML.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

@@ -1,11 +1,8 @@
 using System;
 using System.Numerics;
-using System.Runtime.CompilerServices;
 using System.Text;
-using Alis.Core.Graphic.ImGui.ImGui.UnsafeCode;
 
-
-namespace ImGuiNET
+namespace Alis.Core.Graphic.ImGui.ImGui
 {
     /// <summary>
     /// The im gui class
@@ -795,7 +792,7 @@ namespace ImGuiNET
         /// <returns>The bool</returns>
         public static bool MenuItem(string label, bool enabled)
         {
-            return MenuItem(label, string.Empty, false, enabled);
+            return ImGui.MenuItem(label, string.Empty, false, enabled);
         }
     }
 }

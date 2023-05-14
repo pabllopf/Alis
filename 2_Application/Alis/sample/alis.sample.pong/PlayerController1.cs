@@ -30,7 +30,7 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
-using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Graphic.SFML.Windows;
 using Alis.Core.Input.SDL2;
 
 namespace Alis.Sample.Pong

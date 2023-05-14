@@ -1,4 +1,4 @@
-namespace ImGuiNET
+namespace Alis.Core.Graphic.ImGui.ImGui
 {
     /// <summary>
     /// The im draw data ptr

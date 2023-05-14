@@ -27,9 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Graphic.SFML.Graphics;
 
-namespace Alis.Core.Graphic.D2
+namespace Alis.Core.Graphic
 {
     /// <summary>
     ///     The frame base class
