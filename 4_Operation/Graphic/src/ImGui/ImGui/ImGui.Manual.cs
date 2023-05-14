@@ -2,6 +2,8 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Alis.Core.Graphic.ImGui.ImGui.UnsafeCode;
+
 
 namespace ImGuiNET
 {
@@ -468,6 +470,8 @@ namespace ImGuiNET
             }
             Util.GetUtf8(input, utf8InputBytes, inputBufSize);
             uint clearBytesCount = (uint)(inputBufSize - utf8InputByteCount);
+            
+            //Array.Clear(utf8InputBytes, utf8InputByteCount, clearBytesCount);
             Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
             Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
 

@@ -1,4 +1,7 @@
 using System;
+using System.Runtime.InteropServices;
+using Alis.Core.Aspect.Base;
+using Alis.Core.Graphic.Properties;
 using static SDL2.SDL;
 using static OpenGL.GL;
 
@@ -10,6 +13,51 @@ namespace ImGuiGeneral
 	/// </summary>
 	public static class ImGuiGL
 	{
+        static ImGuiGL()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dylib", NativeGraphic.osx_arm64_cimgui);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dylib", NativeGraphic.osx_x64_cimgui);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dll", NativeGraphic.win_arm64_cimgui);
+                        break;
+                    case Architecture.X86:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dll", NativeGraphic.win_x86_cimgui);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.dll", NativeGraphic.win_x64_cimgui);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.debian_arm64_cimgui);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.debian_arm64_cimgui);
+                        break;
+                }
+            }
+        }
+        
 		/// <summary>
 		/// Creates the window and gl context using the specified title
 		/// </summary>

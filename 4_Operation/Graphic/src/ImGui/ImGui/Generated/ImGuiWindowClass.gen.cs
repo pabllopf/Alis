@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
+using Unsafe = Alis.Core.Graphic.ImGui.ImGui.UnsafeCode.Unsafe;
 
 namespace ImGuiNET
 {

@@ -30,6 +30,9 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
+using Alis.Core.Aspect.Base;
+using Alis.Core.Graphic.Properties;
+
 #endregion
 
 namespace SDL2
@@ -39,6 +42,51 @@ namespace SDL2
 	/// </summary>
 	public static class SDL
 	{
+        static SDL()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dylib", NativeGraphic.osx_arm64_sdl2);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dylib", NativeGraphic.osx_x64_sdl2);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dll", NativeGraphic.win_arm64_sdl2);
+                        break;
+                    case Architecture.X86:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dll", NativeGraphic.win_x86_sdl2);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.dll", NativeGraphic.win_x64_sdl2);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeGraphic.debian_arm64_cimgui);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeGraphic.debian_arm64_cimgui);
+                        break;
+                }
+            }
+        }
+        
 		#region SDL2# Variables
 
 		/// <summary>

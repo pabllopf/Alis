@@ -74,9 +74,14 @@ namespace Alis.Core.Graphic.D2.SFML
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_x64_csfml_graphics);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_x64_csfml_system);
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_x64_csfml_window);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_arm64_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_arm64_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_arm64_csfml_window);
+                        break;
+                    case Architecture.X86:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_x86_csfml_graphics);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-system.dll", NativeGraphic.win_x86_csfml_system);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-window.dll", NativeGraphic.win_x86_csfml_window);
                         break;
                     case Architecture.X64:
                         EmbeddedDllClass.ExtractEmbeddedDlls("csfml-graphics.dll", NativeGraphic.win_x64_csfml_graphics);

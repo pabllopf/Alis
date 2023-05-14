@@ -2,6 +2,8 @@ using System;
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Alis.Core.Graphic.ImGui.ImGui.UnsafeCode;
+
 
 namespace ImGuiNET
 {
