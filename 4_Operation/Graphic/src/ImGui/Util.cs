@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:Util.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -5,17 +34,17 @@ using System.Text;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The util class
+    ///     The util class
     /// </summary>
     internal static unsafe class Util
     {
         /// <summary>
-        /// The stack allocation size limit
+        ///     The stack allocation size limit
         /// </summary>
         internal const int StackAllocationSizeLimit = 2048;
 
         /// <summary>
-        /// Strings the from ptr using the specified ptr
+        ///     Strings the from ptr using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
         /// <returns>The string</returns>
@@ -31,7 +60,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Describes whether are strings equal
+        ///     Describes whether are strings equal
         /// </summary>
         /// <param name="a">The </param>
         /// <param name="aLength">The length</param>
@@ -41,29 +70,35 @@ namespace Alis.Core.Graphic.ImGui
         {
             for (int i = 0; i < aLength; i++)
             {
-                if (a[i] != b[i]) { return false; }
+                if (a[i] != b[i])
+                {
+                    return false;
+                }
             }
 
-            if (b[aLength] != 0) { return false; }
+            if (b[aLength] != 0)
+            {
+                return false;
+            }
 
             return true;
         }
 
         /// <summary>
-        /// Allocates the byte count
+        ///     Allocates the byte count
         /// </summary>
         /// <param name="byteCount">The byte count</param>
         /// <returns>The byte</returns>
-        internal static byte* Allocate(int byteCount) => (byte*)Marshal.AllocHGlobal(byteCount);
+        internal static byte* Allocate(int byteCount) => (byte*) Marshal.AllocHGlobal(byteCount);
 
         /// <summary>
-        /// Frees the ptr
+        ///     Frees the ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
-        internal static void Free(byte* ptr) => Marshal.FreeHGlobal((IntPtr)ptr);
+        internal static void Free(byte* ptr) => Marshal.FreeHGlobal((IntPtr) ptr);
 
         /// <summary>
-        /// Calcs the size in utf 8 using the specified s
+        ///     Calcs the size in utf 8 using the specified s
         /// </summary>
         /// <param name="s">The </param>
         /// <param name="start">The start</param>
@@ -84,7 +119,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Gets the utf 8 using the specified s
+        ///     Gets the utf 8 using the specified s
         /// </summary>
         /// <param name="s">The </param>
         /// <param name="utf8Bytes">The utf bytes</param>
@@ -99,7 +134,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Gets the utf 8 using the specified s
+        ///     Gets the utf 8 using the specified s
         /// </summary>
         /// <param name="s">The </param>
         /// <param name="start">The start</param>

@@ -37,13 +37,13 @@ using Alis.Core.Physic.Utilities;
 namespace Alis.Core.Physic.Figure
 {
     /// <summary>
-    /// The rectangle class
+    ///     The rectangle class
     /// </summary>
-    /// <seealso cref="FigureBase"/>
+    /// <seealso cref="FigureBase" />
     public class Rectangle : Body
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Rectangle"/> class
+        ///     Initializes a new instance of the <see cref="Rectangle" /> class
         /// </summary>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
@@ -61,20 +61,20 @@ namespace Alis.Core.Physic.Figure
         /// <param name="enabled">The enabled</param>
         /// <param name="gravityScale">The gravity scale</param>
         public Rectangle(
-            float width, 
+            float width,
             float height,
-            Vector2F position, 
-            Vector2F linearVelocity, 
-            BodyType bodyType = BodyType.Static, 
-            float angle = 0, 
-            float angularVelocity = 0, 
-            float linearDamping = 0, 
-            float angularDamping = 0, 
-            bool allowSleep = true, 
-            bool awake = true, 
-            bool fixedRotation = false, 
-            bool isBullet = false, 
-            bool enabled = true, 
+            Vector2F position,
+            Vector2F linearVelocity,
+            BodyType bodyType = BodyType.Static,
+            float angle = 0,
+            float angularVelocity = 0,
+            float linearDamping = 0,
+            float angularDamping = 0,
+            bool allowSleep = true,
+            bool awake = true,
+            bool fixedRotation = false,
+            bool isBullet = false,
+            bool enabled = true,
             float gravityScale = 1) : base(position, linearVelocity, bodyType, angle, angularVelocity, linearDamping, angularDamping, allowSleep, awake, fixedRotation, isBullet, enabled, gravityScale)
         {
             if (width <= 0)
@@ -86,14 +86,14 @@ namespace Alis.Core.Physic.Figure
             {
                 throw new ArgumentOutOfRangeException(nameof(height), @"Height must be more than 0");
             }
-            
+
             Vertices rectangleVertices = Polygon.CreateRectangle(width / 2, height / 2);
-            
+
             if (rectangleVertices.Count <= 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(rectangleVertices), "Too few points to be a polygon");
             }
-            
+
             AddFixture(new PolygonShape(rectangleVertices, 1));
         }
     }

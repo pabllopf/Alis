@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The physic interface
+    ///     The physic interface
     /// </summary>
     public interface IPhysic<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Physics the value
+        ///     Physics the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

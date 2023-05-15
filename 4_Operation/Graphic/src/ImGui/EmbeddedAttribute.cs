@@ -33,11 +33,10 @@ using System.Runtime.CompilerServices;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The embedded attribute class
+    ///     The embedded attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
-    [CompilerGenerated]
-    [Embedded]
+    /// <seealso cref="Attribute" />
+    [CompilerGenerated, Embedded]
     internal sealed class EmbeddedAttribute : Attribute
     {
     }

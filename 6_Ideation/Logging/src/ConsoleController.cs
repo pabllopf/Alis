@@ -28,9 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 
 namespace Alis.Core.Aspect.Logging
 {
@@ -47,7 +44,7 @@ namespace Alis.Core.Aspect.Logging
             _dirPath = Environment.CurrentDirectory + "/log";
             _filePath = Environment.CurrentDirectory + $"/log/{DateTime.Now.Day}-{DateTime.Now.Month}-{DateTime.Now.Year}_{DateTime.Now.Hour}-{DateTime.Now.Minute}.log";
         }
-        
+
         /// <summary>
         ///     The file path
         /// </summary>

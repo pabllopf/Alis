@@ -124,7 +124,7 @@ namespace Alis.Core.Component.Collider
         public Vector2F LinearVelocity { get; set; } = Vector2F.Zero;
 
         /// <summary>
-        /// Gets or sets the value of the angular velocity
+        ///     Gets or sets the value of the angular velocity
         /// </summary>
         public float AngularVelocity { get; set; } = 0.0f;
 
@@ -174,8 +174,8 @@ namespace Alis.Core.Component.Collider
 
 
             VideoGame.GraphicManager.AttachCollider(rectangleShape);
-            
-            
+
+
             /*
             Body = BodyFactory.CreateRectangle(
                 VideoGame.PhysicManager.World,
@@ -209,10 +209,10 @@ namespace Alis.Core.Component.Collider
                     GameObject.Transform.Position.X + RelativePosition.X,
                     GameObject.Transform.Position.Y + RelativePosition.Y
                 ),
-                linearVelocity: LinearVelocity,
-                bodyType: BodyType,
-                angle: Rotation,
-                angularVelocity: AngularVelocity,
+                LinearVelocity,
+                BodyType,
+                Rotation,
+                AngularVelocity,
                 0,
                 0,
                 false,
@@ -221,8 +221,8 @@ namespace Alis.Core.Component.Collider
                 true,
                 true,
                 GravityScale
-                );
-            
+            );
+
             Body.Restitution = Restitution;
             Body.Friction = Friction;
             Body.FixedRotation = FixedRotation;

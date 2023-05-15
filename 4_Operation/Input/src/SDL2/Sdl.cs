@@ -30,7 +30,6 @@
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Core.Aspect.Base;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Input.Properties;
 

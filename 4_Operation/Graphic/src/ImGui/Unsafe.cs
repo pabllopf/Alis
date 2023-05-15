@@ -40,19 +40,18 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="source">The location to read from.</param>
         /// <typeparam name="T">The type to read.</typeparam>
         /// <returns>An object of type <typeparamref name="T" /> read from the given location.</returns>
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [NonVersionable, MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe T Read<T>(void* source) where T : unmanaged => *(T*) source;
 
         /// <summary>
-        /// Sizes the of
+        ///     Sizes the of
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <returns>The int</returns>
         public static int SizeOf<T>() => Marshal.SizeOf<T>();
 
         /// <summary>
-        /// Converts the ref using the specified source
+        ///     Converts the ref using the specified source
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="source">The source</param>
@@ -68,19 +67,20 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="destination">The destination address to copy to.</param>
         /// <param name="source">The source address to copy from.</param>
         /// <param name="byteCount">The number of bytes to copy.</param>
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [NonVersionable, MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe void CopyBlock(void* destination, void* source, uint byteCount)
         {
             Buffer.MemoryCopy(source, destination, byteCount, byteCount);
         }
 
-        /// <summary>Initializes a block of memory at the given location with a given initial value without assuming architecture dependent alignment of the address.</summary>
+        /// <summary>
+        ///     Initializes a block of memory at the given location with a given initial value without assuming architecture
+        ///     dependent alignment of the address.
+        /// </summary>
         /// <param name="startAddress">The address of the start of the memory block to initialize.</param>
         /// <param name="value">The value to initialize the block to.</param>
         /// <param name="byteCount">The number of bytes to initialize.</param>
-        [NonVersionable]
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [NonVersionable, MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static unsafe void InitBlockUnaligned(void* startAddress, byte value, uint byteCount)
         {
             byte[] block = new byte[byteCount];

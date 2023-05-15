@@ -14,7 +14,7 @@
 
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj" />
+        <ProjectReference Include="..\..\..\2_Application\Alis\src\Alis.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

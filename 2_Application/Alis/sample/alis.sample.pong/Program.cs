@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Data;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;

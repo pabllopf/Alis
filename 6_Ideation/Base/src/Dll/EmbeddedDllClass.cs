@@ -68,7 +68,7 @@ namespace Alis.Core.Aspect.Base.Dll
     public static class EmbeddedDllClass
     {
         /// <summary>
-        /// Gets or sets the value of the current directory
+        ///     Gets or sets the value of the current directory
         /// </summary>
         public static string CurrentDirectory { get; private set; } = "";
 
@@ -82,10 +82,10 @@ namespace Alis.Core.Aspect.Base.Dll
             Assembly assem = Assembly.GetExecutingAssembly();
             string[] names = assem.GetManifestResourceNames();
             AssemblyName an = assem.GetName();
-            
-            string dirTemp =  Path.Combine(Path.GetTempPath(), string.Format("{0}.{1}.{2}", an.Name, an.ProcessorArchitecture, an.Version));
-            
-            if(!Directory.Exists(dirTemp))
+
+            string dirTemp = Path.Combine(Path.GetTempPath(), string.Format("{0}.{1}.{2}", an.Name, an.ProcessorArchitecture, an.Version));
+
+            if (!Directory.Exists(dirTemp))
             {
                 Directory.CreateDirectory(dirTemp);
             }
@@ -94,17 +94,17 @@ namespace Alis.Core.Aspect.Base.Dll
             {
                 CurrentDirectory = Environment.CurrentDirectory;
             }
-            
+
             Directory.SetCurrentDirectory(dirTemp);
-            
+
             string dllPath = Path.Combine(dirTemp, dllName);
             if (File.Exists(dllPath))
             {
                 File.Delete(dllPath);
             }
-            
+
             File.WriteAllBytes(dllPath, resourceBytes);
-            
+
             Console.WriteLine($"dllPath={dllPath}");
         }
     }

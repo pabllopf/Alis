@@ -30,10 +30,9 @@
 namespace Alis.Template.Game
 {
     /// <summary>
-    /// The sample class
+    ///     The sample class
     /// </summary>
     public class Sample
     {
-        
     }
 }

@@ -1,3 +1,32 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImGui.Manual.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 using System.Numerics;
 using System.Text;
@@ -5,12 +34,12 @@ using System.Text;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The im gui class
+    ///     The im gui class
     /// </summary>
     public static unsafe partial class ImGui
     {
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -20,12 +49,10 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             byte[] buf,
             uint buf_size)
-        {
-            return InputText(label, buf, buf_size, 0, null, IntPtr.Zero);
-        }
+            => InputText(label, buf, buf_size, 0, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -37,12 +64,10 @@ namespace Alis.Core.Graphic.ImGui
             byte[] buf,
             uint buf_size,
             ImGuiInputTextFlags flags)
-        {
-            return InputText(label, buf, buf_size, flags, null, IntPtr.Zero);
-        }
+            => InputText(label, buf, buf_size, flags, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -56,12 +81,10 @@ namespace Alis.Core.Graphic.ImGui
             uint buf_size,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback)
-        {
-            return InputText(label, buf, buf_size, flags, callback, IntPtr.Zero);
-        }
+            => InputText(label, buf, buf_size, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -89,6 +112,7 @@ namespace Alis.Core.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
                 utf8LabelBytes = stackPtr;
             }
+
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
             bool ret;
@@ -106,7 +130,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -118,7 +142,7 @@ namespace Alis.Core.Graphic.ImGui
             uint maxLength) => InputText(label, ref input, maxLength, 0, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -132,7 +156,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextFlags flags) => InputText(label, ref input, maxLength, flags, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -148,7 +172,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputText(label, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -176,10 +200,11 @@ namespace Alis.Core.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
                 utf8LabelBytes = stackPtr;
             }
+
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
             int utf8InputByteCount = Encoding.UTF8.GetByteCount(input);
-            int inputBufSize = Math.Max((int)maxLength + 1, utf8InputByteCount + 1);
+            int inputBufSize = Math.Max((int) maxLength + 1, utf8InputByteCount + 1);
 
             byte* utf8InputBytes;
             byte* originalUtf8InputBytes;
@@ -195,15 +220,16 @@ namespace Alis.Core.Graphic.ImGui
                 byte* originalInputStackBytes = stackalloc byte[inputBufSize];
                 originalUtf8InputBytes = originalInputStackBytes;
             }
+
             Util.GetUtf8(input, utf8InputBytes, inputBufSize);
-            uint clearBytesCount = (uint)(inputBufSize - utf8InputByteCount);
+            uint clearBytesCount = (uint) (inputBufSize - utf8InputByteCount);
             Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
-            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
+            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
 
             byte result = ImGuiNative.igInputText(
                 utf8LabelBytes,
                 utf8InputBytes,
-                (uint)inputBufSize,
+                (uint) inputBufSize,
                 flags,
                 callback,
                 user_data.ToPointer());
@@ -216,6 +242,7 @@ namespace Alis.Core.Graphic.ImGui
             {
                 Util.Free(utf8LabelBytes);
             }
+
             if (inputBufSize > Util.StackAllocationSizeLimit)
             {
                 Util.Free(utf8InputBytes);
@@ -226,7 +253,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Describes whether input text multiline
+        ///     Describes whether input text multiline
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -240,7 +267,7 @@ namespace Alis.Core.Graphic.ImGui
             Vector2 size) => InputTextMultiline(label, ref input, maxLength, size, 0, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text multiline
+        ///     Describes whether input text multiline
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -256,7 +283,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextFlags flags) => InputTextMultiline(label, ref input, maxLength, size, flags, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text multiline
+        ///     Describes whether input text multiline
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -274,7 +301,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text multiline
+        ///     Describes whether input text multiline
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="input">The input</param>
@@ -304,10 +331,11 @@ namespace Alis.Core.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
                 utf8LabelBytes = stackPtr;
             }
+
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
             int utf8InputByteCount = Encoding.UTF8.GetByteCount(input);
-            int inputBufSize = Math.Max((int)maxLength + 1, utf8InputByteCount + 1);
+            int inputBufSize = Math.Max((int) maxLength + 1, utf8InputByteCount + 1);
 
             byte* utf8InputBytes;
             byte* originalUtf8InputBytes;
@@ -323,15 +351,16 @@ namespace Alis.Core.Graphic.ImGui
                 byte* originalInputStackBytes = stackalloc byte[inputBufSize];
                 originalUtf8InputBytes = originalInputStackBytes;
             }
+
             Util.GetUtf8(input, utf8InputBytes, inputBufSize);
-            uint clearBytesCount = (uint)(inputBufSize - utf8InputByteCount);
+            uint clearBytesCount = (uint) (inputBufSize - utf8InputByteCount);
             Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
-            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
+            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
 
             byte result = ImGuiNative.igInputTextMultiline(
                 utf8LabelBytes,
                 utf8InputBytes,
-                (uint)inputBufSize,
+                (uint) inputBufSize,
                 size,
                 flags,
                 callback,
@@ -345,6 +374,7 @@ namespace Alis.Core.Graphic.ImGui
             {
                 Util.Free(utf8LabelBytes);
             }
+
             if (inputBufSize > Util.StackAllocationSizeLimit)
             {
                 Util.Free(utf8InputBytes);
@@ -355,7 +385,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Describes whether input text with hint
+        ///     Describes whether input text with hint
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
@@ -369,7 +399,7 @@ namespace Alis.Core.Graphic.ImGui
             uint maxLength) => InputTextWithHint(label, hint, ref input, maxLength, 0, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text with hint
+        ///     Describes whether input text with hint
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
@@ -385,7 +415,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextFlags flags) => InputTextWithHint(label, hint, ref input, maxLength, flags, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text with hint
+        ///     Describes whether input text with hint
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
@@ -403,7 +433,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text with hint
+        ///     Describes whether input text with hint
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
@@ -433,6 +463,7 @@ namespace Alis.Core.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
                 utf8LabelBytes = stackPtr;
             }
+
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
             int utf8HintByteCount = Encoding.UTF8.GetByteCount(hint);
@@ -446,10 +477,11 @@ namespace Alis.Core.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8HintByteCount + 1];
                 utf8HintBytes = stackPtr;
             }
+
             Util.GetUtf8(hint, utf8HintBytes, utf8HintByteCount);
 
             int utf8InputByteCount = Encoding.UTF8.GetByteCount(input);
-            int inputBufSize = Math.Max((int)maxLength + 1, utf8InputByteCount + 1);
+            int inputBufSize = Math.Max((int) maxLength + 1, utf8InputByteCount + 1);
 
             byte* utf8InputBytes;
             byte* originalUtf8InputBytes;
@@ -465,18 +497,19 @@ namespace Alis.Core.Graphic.ImGui
                 byte* originalInputStackBytes = stackalloc byte[inputBufSize];
                 originalUtf8InputBytes = originalInputStackBytes;
             }
+
             Util.GetUtf8(input, utf8InputBytes, inputBufSize);
-            uint clearBytesCount = (uint)(inputBufSize - utf8InputByteCount);
-            
+            uint clearBytesCount = (uint) (inputBufSize - utf8InputByteCount);
+
             //Array.Clear(utf8InputBytes, utf8InputByteCount, clearBytesCount);
             Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
-            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
+            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
 
             byte result = ImGuiNative.igInputTextWithHint(
                 utf8LabelBytes,
                 utf8HintBytes,
                 utf8InputBytes,
-                (uint)inputBufSize,
+                (uint) inputBufSize,
                 flags,
                 callback,
                 user_data.ToPointer());
@@ -489,10 +522,12 @@ namespace Alis.Core.Graphic.ImGui
             {
                 Util.Free(utf8LabelBytes);
             }
+
             if (utf8HintByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(utf8HintBytes);
             }
+
             if (inputBufSize > Util.StackAllocationSizeLimit)
             {
                 Util.Free(utf8InputBytes);
@@ -503,7 +538,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The vector</returns>
@@ -511,7 +546,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -520,7 +555,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, start);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="wrapWidth">The wrap width</param>
@@ -529,7 +564,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, wrapWidth: wrapWidth);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
@@ -538,7 +573,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -548,7 +583,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, start, length);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -558,7 +593,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, start, hideTextAfterDoubleHash: hideTextAfterDoubleHash);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -568,7 +603,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, start, wrapWidth: wrapWidth);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
@@ -578,7 +613,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, hideTextAfterDoubleHash: hideTextAfterDoubleHash, wrapWidth: wrapWidth);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -589,7 +624,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -600,7 +635,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, start, length, wrapWidth: wrapWidth);
 
         /// <summary>
-        /// Calcs the text size using the specified text
+        ///     Calcs the text size using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -612,7 +647,7 @@ namespace Alis.Core.Graphic.ImGui
             => CalcTextSizeImpl(text, start, length, hideTextAfterDoubleHash, wrapWidth);
 
         /// <summary>
-        /// Calcs the text size impl using the specified text
+        ///     Calcs the text size impl using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="start">The start</param>
@@ -633,7 +668,6 @@ namespace Alis.Core.Graphic.ImGui
             int textByteCount = 0;
             if (text != null)
             {
-
                 int textToCopyLen = length.HasValue ? length.Value : text.Length;
                 textByteCount = Util.CalcSizeInUtf8(text, start, textToCopyLen);
                 if (textByteCount > Util.StackAllocationSizeLimit)
@@ -651,7 +685,7 @@ namespace Alis.Core.Graphic.ImGui
                 nativeTextEnd = nativeTextStart + nativeTextOffset;
             }
 
-            ImGuiNative.igCalcTextSize(&ret, nativeTextStart, nativeTextEnd, *((byte*)(&hideTextAfterDoubleHash)), wrapWidth);
+            ImGuiNative.igCalcTextSize(&ret, nativeTextStart, nativeTextEnd, *(byte*) &hideTextAfterDoubleHash, wrapWidth);
             if (textByteCount > Util.StackAllocationSizeLimit)
             {
                 Util.Free(nativeTextStart);
@@ -661,7 +695,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -671,12 +705,10 @@ namespace Alis.Core.Graphic.ImGui
             string label,
             IntPtr buf,
             uint buf_size)
-        {
-            return InputText(label, buf, buf_size, 0, null, IntPtr.Zero);
-        }
+            => InputText(label, buf, buf_size, 0, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -688,12 +720,10 @@ namespace Alis.Core.Graphic.ImGui
             IntPtr buf,
             uint buf_size,
             ImGuiInputTextFlags flags)
-        {
-            return InputText(label, buf, buf_size, flags, null, IntPtr.Zero);
-        }
+            => InputText(label, buf, buf_size, flags, null, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -707,12 +737,10 @@ namespace Alis.Core.Graphic.ImGui
             uint buf_size,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback)
-        {
-            return InputText(label, buf, buf_size, flags, callback, IntPtr.Zero);
-        }
+            => InputText(label, buf, buf_size, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text
+        ///     Describes whether input text
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
@@ -740,9 +768,10 @@ namespace Alis.Core.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
                 utf8LabelBytes = stackPtr;
             }
+
             Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
 
-            bool ret = ImGuiNative.igInputText(utf8LabelBytes, (byte*)buf.ToPointer(), buf_size, flags, callback, user_data.ToPointer()) != 0;
+            bool ret = ImGuiNative.igInputText(utf8LabelBytes, (byte*) buf.ToPointer(), buf_size, flags, callback, user_data.ToPointer()) != 0;
 
             if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
             {
@@ -753,7 +782,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Describes whether begin
+        ///     Describes whether begin
         /// </summary>
         /// <param name="name">The name</param>
         /// <param name="flags">The flags</param>
@@ -771,6 +800,7 @@ namespace Alis.Core.Graphic.ImGui
                 byte* stackPtr = stackalloc byte[utf8NameByteCount + 1];
                 utf8NameBytes = stackPtr;
             }
+
             Util.GetUtf8(name, utf8NameBytes, utf8NameByteCount);
 
             byte* p_open = null;
@@ -785,14 +815,11 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Describes whether menu item
+        ///     Describes whether menu item
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="enabled">The enabled</param>
         /// <returns>The bool</returns>
-        public static bool MenuItem(string label, bool enabled)
-        {
-            return ImGui.MenuItem(label, string.Empty, false, enabled);
-        }
+        public static bool MenuItem(string label, bool enabled) => MenuItem(label, string.Empty, false, enabled);
     }
 }

@@ -9,19 +9,19 @@
                 The example class
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Data.AssetManager.AssetPath">
-            <summary>
-            The application data
-            </summary>
-        </member>
         <member name="M:Alis.Core.Aspect.Data.AssetManager.#cctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Data.AssetManager"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Data.AssetManager" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Data.AssetManager.AssetPath">
+            <summary>
+                The application data
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Data.AssetManager.Find(System.String)">
             <summary>
-            Finds the asset name
+                Finds the asset name
             </summary>
             <param name="assetName">The asset name</param>
             <returns>The string</returns>

@@ -30,11 +30,10 @@
 namespace Alis.Core.Physic.Figure
 {
     /// <summary>
-    /// The square class
+    ///     The square class
     /// </summary>
-    /// <seealso cref="FigureBase"/>
+    /// <seealso cref="FigureBase" />
     public class Square : FigureBase
     {
-        
     }
 }

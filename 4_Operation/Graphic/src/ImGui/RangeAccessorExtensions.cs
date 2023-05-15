@@ -32,18 +32,15 @@ using System.Text;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The range accessor extensions class
+    ///     The range accessor extensions class
     /// </summary>
     public static class RangeAccessorExtensions
     {
         /// <summary>
-        /// Gets the string ascii using the specified string accessor
+        ///     Gets the string ascii using the specified string accessor
         /// </summary>
         /// <param name="stringAccessor">The string accessor</param>
         /// <returns>The string</returns>
-        public static unsafe string GetStringASCII(this RangeAccessor<byte> stringAccessor)
-        {
-            return Encoding.ASCII.GetString((byte*)stringAccessor.Data, stringAccessor.Count);
-        }
+        public static unsafe string GetStringASCII(this RangeAccessor<byte> stringAccessor) => Encoding.ASCII.GetString((byte*) stringAccessor.Data, stringAccessor.Count);
     }
 }

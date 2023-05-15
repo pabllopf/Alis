@@ -92,12 +92,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IAngularVelocity`2">
             <summary>
-            The angular velocity interface
+                The angular velocity interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IAngularVelocity`2.AngularVelocity(`1)">
             <summary>
-            Angular the velocity using the specified value
+                Angular the velocity using the specified value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>
@@ -319,12 +319,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IGravity`3">
             <summary>
-            The gravity interface
+                The gravity interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IGravity`3.Gravity(`1,`2)">
             <summary>
-            Gravities the x
+                Gravities the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
@@ -531,12 +531,12 @@
         </member>
         <member name="T:Alis.Core.Aspect.Fluent.Words.IPhysic`2">
             <summary>
-            The physic interface
+                The physic interface
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Fluent.Words.IPhysic`2.Physic(`1)">
             <summary>
-            Physics the value
+                Physics the value
             </summary>
             <param name="value">The value</param>
             <returns>The builder</returns>

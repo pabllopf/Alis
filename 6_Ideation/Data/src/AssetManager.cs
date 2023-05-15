@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:ExampleClass.cs
+//  File:AssetManager.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -39,26 +39,23 @@ namespace Alis.Core.Aspect.Data
     public static class AssetManager
     {
         /// <summary>
-        /// The application data
-        /// </summary>
-        private static string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
-        
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AssetManager"/> class
+        ///     Initializes a new instance of the <see cref="AssetManager" /> class
         /// </summary>
         static AssetManager()
-        {   
+        {
             Console.WriteLine($"AssetPath={AssetPath}");
         }
 
         /// <summary>
-        /// Finds the asset name
+        ///     The application data
+        /// </summary>
+        private static string AssetPath = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location) ?? string.Empty, "Assets");
+
+        /// <summary>
+        ///     Finds the asset name
         /// </summary>
         /// <param name="assetName">The asset name</param>
         /// <returns>The string</returns>
-        public static string Find(string assetName)
-        {
-            return Path.Combine(AssetPath, assetName);
-        }
+        public static string Find(string assetName) => Path.Combine(AssetPath, assetName);
     }
 }

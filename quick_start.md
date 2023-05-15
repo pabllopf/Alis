@@ -1,6 +1,8 @@
 # 🚀 Quick Start
 
-Alis is a free, open-source, and cross-platform project that currently supports Windows, macOS, Linux, iOS, and Android. In this section, you'll find a brief introduction to the project, instructions for installation, and some examples to help you get started.
+Alis is a free, open-source, and cross-platform project that currently supports Windows, macOS, Linux, iOS, and Android.
+In this section, you'll find a brief introduction to the project, instructions for installation, and some examples to
+help you get started.
 
 ## 📥 Installation
 
@@ -24,7 +26,8 @@ dotnet add package Alis --source "https://nuget.pkg.github.com/pabllopf/index.js
 
 ## 🚀 Getting Started
 
-To use Alis for the first time, simply create a new instance of `VideoGame` using the `Builder` method and call the `Run` method:
+To use Alis for the first time, simply create a new instance of `VideoGame` using the `Builder` method and call
+the `Run` method:
 
 ```csharp
 VideoGame.Builder().Run();
@@ -52,12 +55,15 @@ class Program
 }
 ```
 
-In this example, we create a new `VideoGame` instance with the player's name, the starting level, and the game difficulty. Finally, we call the `Run` method to start the game.
+In this example, we create a new `VideoGame` instance with the player's name, the starting level, and the game
+difficulty. Finally, we call the `Run` method to start the game.
 
 ## 📝 Note
 
-Please note that Alis is a community-driven project, and we welcome contributions from anyone. If you have any questions or would like to get involved in the project, please refer to the [Contributing](#-contributing) section below.
+Please note that Alis is a community-driven project, and we welcome contributions from anyone. If you have any questions
+or would like to get involved in the project, please refer to the [Contributing](#-contributing) section below.
 
 ## 🔧 Changes to this Section
 
-We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or through a notification on our website.
+We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or
+through a notification on our website.

@@ -1,7 +1,31 @@
-//----------------------------------------------------------------------------------------------------
-// <author>Pablo Perdomo Falcón</author>
-// <copyright file="Program.cs" company="Pabllopf">GNU General Public License v3.0</copyright>
-//----------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:MainClass.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
 
 /*
 using System;
@@ -27,34 +51,36 @@ namespace Alis.App.Engine
 using System;
 using Alis.Core.Graphic.ImGui;
 using static Alis.Core.Graphic.SDL.SDL;
-using ImGui = Alis.Core.Graphic.ImGui.ImGui;
 
 namespace Alis.App.Engine
 {
     /// <summary>
-    /// The main class
+    ///     The main class
     /// </summary>
     internal class MainClass
     {
         /// <summary>
-        /// The renderer
+        ///     The renderer
         /// </summary>
-        static ImGuiGLRenderer _renderer;
-        /// <summary>
-        /// The quit
-        /// </summary>
-        static bool _quit;
-        /// <summary>
-        /// The window
-        /// </summary>
-        static IntPtr _window;
-        /// <summary>
-        /// The gl context
-        /// </summary>
-        static IntPtr _glContext;
+        private static ImGuiGLRenderer _renderer;
 
         /// <summary>
-        /// Main the args
+        ///     The quit
+        /// </summary>
+        private static bool _quit;
+
+        /// <summary>
+        ///     The window
+        /// </summary>
+        private static IntPtr _window;
+
+        /// <summary>
+        ///     The gl context
+        /// </summary>
+        private static IntPtr _glContext;
+
+        /// <summary>
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
@@ -66,7 +92,7 @@ namespace Alis.App.Engine
 
             while (!_quit)
             {
-                while (SDL_PollEvent(out var e) != 0)
+                while (SDL_PollEvent(out SDL_Event e) != 0)
                 {
                     _renderer.ProcessEvent(e);
                     switch (e.type)

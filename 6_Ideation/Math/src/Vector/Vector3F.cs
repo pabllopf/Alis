@@ -34,7 +34,6 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Core.Aspect.Math.Exceptions;
 using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Aspect.Math.Vector
@@ -80,7 +79,7 @@ namespace Alis.Core.Aspect.Math.Vector
             Y = y;
             Z = z;
         }
-        
+
 
         /// <summary>Gets a vector whose 3 elements are equal to zero.</summary>
         /// <value>A vector whose three elements are equal to zero (that is, it returns the vector <c>(0,0,0)</c>.</value>

@@ -30,32 +30,37 @@
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The stb textedit row
+    ///     The stb textedit row
     /// </summary>
     public struct StbTexteditRow
     {
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float x0;
+
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
         public float x1;
+
         /// <summary>
-        /// The baseline delta
+        ///     The baseline delta
         /// </summary>
         public float baseline_y_delta;
+
         /// <summary>
-        /// The ymin
+        ///     The ymin
         /// </summary>
         public float ymin;
+
         /// <summary>
-        /// The ymax
+        ///     The ymax
         /// </summary>
         public float ymax;
+
         /// <summary>
-        /// The num chars
+        ///     The num chars
         /// </summary>
         public int num_chars;
     }

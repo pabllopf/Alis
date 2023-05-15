@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The gravity interface
+    ///     The gravity interface
     /// </summary>
     public interface IGravity<out TBuilder, in TArgument1, in TArgument2>
     {
         /// <summary>
-        /// Gravities the x
+        ///     Gravities the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

@@ -764,7 +764,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.InvalidateTOI">
             <summary>
-            Invalidates the toi
+                Invalidates the toi
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Collision.ContactSystem.ContactEdge">
@@ -858,18 +858,13 @@
                 The contact manager class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Current">
-            <summary>
-            The current instance
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact">
-            <summary>Fires when a contact is created</summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactPool">
             <summary>
                 The contact
             </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.BeginContact">
+            <summary>Fires when a contact is created</summary>
         </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactCounter">
             <summary>
@@ -879,11 +874,6 @@
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactFilter">
             <summary>The filter used by the contact manager.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.lastMinAlpha">
-            <summary>
-            The last min alpha
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactList">
             <summary>
                 The contact list
@@ -891,6 +881,11 @@
         </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.EndContact">
             <summary>Fires when a contact is deleted</summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.lastMinAlpha">
+            <summary>
+                The last min alpha
+            </summary>
         </member>
         <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.OnBroadphaseCollision">
             <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
@@ -915,6 +910,11 @@
         <member name="P:Alis.Core.Physic.Collision.ContactSystem.ContactManager.ContactCount">
             <summary>
                 Gets the value of the contact count
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.Collision.ContactSystem.ContactManager.Current">
+            <summary>
+                The current instance
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.AddPair(Alis.Core.Physic.Dynamics.FixtureProxy@,Alis.Core.Physic.Dynamics.FixtureProxy@)">
@@ -943,7 +943,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.GetTheMinContact(System.Single)">
             <summary>
-            Gets the the min contact using the specified min alpha
+                Gets the the min contact using the specified min alpha
             </summary>
             <param name="minAlpha">The min alpha</param>
             <returns>The contact</returns>
@@ -963,12 +963,12 @@
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateTOI">
             <summary>
-            Invalidates the toi
+                Invalidates the toi
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.CalculateMinAlpha">
             <summary>
-            Calculates the min alpha
+                Calculates the min alpha
             </summary>
             <returns>The float</returns>
         </member>
@@ -3457,7 +3457,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Body.SetAlphaToZero">
             <summary>
-            Sets the alpha to zero
+                Sets the alpha to zero
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyFlags">
@@ -3507,12 +3507,12 @@
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.BodyHelper">
             <summary>
-            The body helper class
+                The body helper class
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.BodyHelper.AdvanceBody(Alis.Core.Physic.Collision.ContactSystem.ContactManager,Alis.Core.Physic.Dynamics.Solver.Island,Alis.Core.Physic.Collision.ContactSystem.Contact,System.Single)">
             <summary>
-            Advances the body using the specified contact manager
+                Advances the body using the specified contact manager
             </summary>
             <param name="contactManager">The contact manager</param>
             <param name="island">The island</param>
@@ -6979,6 +6979,11 @@
                 The velocities
             </summary>
         </member>
+        <member name="P:Alis.Core.Physic.Dynamics.Solver.Island.TimeStepSolveToi">
+            <summary>
+                Gets or sets the value of the step
+            </summary>
+        </member>
         <member name="F:Alis.Core.Physic.Dynamics.Solver.Island.AngTolSqr">
             <summary>
                 The angular sleep tolerance
@@ -6989,11 +6994,6 @@
                 The linear sleep tolerance
             </summary>
         </member>
-        <member name="P:Alis.Core.Physic.Dynamics.Solver.Island.TimeStepSolveToi">
-            <summary>
-                Gets or sets the value of the step
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Clear">
             <summary>
                 Clears this instance
@@ -7001,7 +7001,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Solve(Alis.Core.Aspect.Time.TimeStep,Alis.Core.Aspect.Math.Vector.Vector2F,System.Boolean,Alis.Core.Physic.Collision.ContactSystem.ContactManager,System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Body})">
             <summary>
-            Solves the step
+                Solves the step
             </summary>
             <param name="step">The step</param>
             <param name="gravity">The gravity</param>
@@ -7011,7 +7011,7 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SolveToi(System.Single,Alis.Core.Aspect.Time.TimeStep,System.Int32,System.Int32,Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
             <summary>
-            Solves the toi using the specified min alpha
+                Solves the toi using the specified min alpha
             </summary>
             <param name="minAlpha">The min alpha</param>
             <param name="subStep">The sub step</param>
@@ -7039,14 +7039,14 @@
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.Report(System.Collections.Generic.List{Alis.Core.Physic.Dynamics.Solver.ContactVelocityConstraint},Alis.Core.Physic.Collision.ContactSystem.ContactManager)">
             <summary>
-            Reports the constraints
+                Reports the constraints
             </summary>
             <param name="constraints">The constraints</param>
             <param name="contactManager">The contact manager</param>
         </member>
         <member name="M:Alis.Core.Physic.Dynamics.Solver.Island.SynchronizeBodies">
             <summary>
-            Synchronizes the bodies
+                Synchronizes the bodies
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Dynamics.Solver.Position">
@@ -8342,18 +8342,18 @@
         </member>
         <member name="T:Alis.Core.Physic.Figure.FigureBase">
             <summary>
-            The figure base class
+                The figure base class
             </summary>
         </member>
         <member name="T:Alis.Core.Physic.Figure.Rectangle">
             <summary>
-            The rectangle class
+                The rectangle class
             </summary>
-            <seealso cref="T:Alis.Core.Physic.Figure.FigureBase"/>
+            <seealso cref="T:Alis.Core.Physic.Figure.FigureBase" />
         </member>
         <member name="M:Alis.Core.Physic.Figure.Rectangle.#ctor(System.Single,System.Single,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Aspect.Math.Vector.Vector2F,Alis.Core.Physic.Dynamics.BodyType,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Single)">
             <summary>
-            Initializes a new instance of the <see cref="T:Alis.Core.Physic.Figure.Rectangle"/> class
+                Initializes a new instance of the <see cref="T:Alis.Core.Physic.Figure.Rectangle" /> class
             </summary>
             <param name="width">The width</param>
             <param name="height">The height</param>
@@ -8373,9 +8373,9 @@
         </member>
         <member name="T:Alis.Core.Physic.Figure.Square">
             <summary>
-            The square class
+                The square class
             </summary>
-            <seealso cref="T:Alis.Core.Physic.Figure.FigureBase"/>
+            <seealso cref="T:Alis.Core.Physic.Figure.FigureBase" />
         </member>
         <member name="T:Alis.Core.Physic.Shared.Aabb">
             <summary>An axis aligned bounding box.</summary>
@@ -13475,14 +13475,14 @@
         <member name="T:Alis.Core.Physic.World">
             <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.island">
-            <summary>
-                The island
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.World.breakableBodies">
             <summary>
                 The breakable body
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Physic.World.island">
+            <summary>
+                The island
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.#ctor(Alis.Core.Aspect.Math.Vector.Vector2F)">
@@ -13623,29 +13623,29 @@
         </member>
         <member name="M:Alis.Core.Physic.World.SetAlphaToZeroForFastMovingBodies">
             <summary>
-            Sets the alpha to zero for fast moving bodies
+                Sets the alpha to zero for fast moving bodies
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.InvalidateContactToi">
             <summary>
-            Invalidates the contact to is
+                Invalidates the contact to is
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.SolveToiEvents">
             <summary>
-            Solves the TOI (Time of Impact) events.
+                Solves the TOI (Time of Impact) events.
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.IsMinAlphaGreaterThanEpsilon(System.Single)">
             <summary>
-            Describes whether this instance is min alpha greater than epsilon
+                Describes whether this instance is min alpha greater than epsilon
             </summary>
             <param name="minAlpha">The min alpha</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Physic.World.SolveToiIsland(System.Single,System.Int32,System.Int32)">
             <summary>
-            Solves the toi island using the specified min alpha
+                Solves the toi island using the specified min alpha
             </summary>
             <param name="minAlpha">The min alpha</param>
             <param name="islandIndexA">The island index</param>
@@ -13653,7 +13653,7 @@
         </member>
         <member name="M:Alis.Core.Physic.World.SynchronizeIslandBodies">
             <summary>
-            Synchronizes the island bodies
+                Synchronizes the island bodies
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.World.ClearForces">

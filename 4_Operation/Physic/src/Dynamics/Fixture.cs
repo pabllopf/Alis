@@ -282,7 +282,7 @@ namespace Alis.Core.Physic.Dynamics
 
                 edge = edge.Next;
             }
-            
+
             // Touch each proxy so that new pairs may be created
             IBroadPhase broadPhase = ContactManager.Current.BroadPhase;
             for (int i = 0; i < ProxyCount; ++i)

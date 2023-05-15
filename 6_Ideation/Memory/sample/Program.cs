@@ -30,17 +30,16 @@
 namespace Alis.Core.Aspect.Memory.Sample
 {
     /// <summary>
-    /// The program class
+    ///     The program class
     /// </summary>
     public class Program
     {
         /// <summary>
-        /// Main the args
+        ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            
         }
     }
 }

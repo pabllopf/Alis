@@ -44,15 +44,15 @@ namespace Alis.Core.Physic
     public class World
     {
         /// <summary>
+        ///     The breakable body
+        /// </summary>
+        private readonly List<BreakableBody> breakableBodies = new List<BreakableBody>();
+
+        /// <summary>
         ///     The island
         /// </summary>
         private readonly Island island;
 
-        /// <summary>
-        ///     The breakable body
-        /// </summary>
-        private readonly List<BreakableBody> breakableBodies = new List<BreakableBody>();
-        
         /// <summary>
         ///     Initializes a new instance of the <see cref="World" /> class
         /// </summary>
@@ -93,7 +93,7 @@ namespace Alis.Core.Physic
         ///     Gets or sets the value of the step
         /// </summary>
         private TimeStep TimeStepGlobal { get; set; } = new TimeStep();
-        
+
         /// <summary>
         ///     Adds the body using the specified body
         /// </summary>
@@ -209,13 +209,13 @@ namespace Alis.Core.Physic
         {
             // Clear all the island flags.
             Bodies.ForEach(i => i.ClearFlags());
-            
+
             // DisableIslandFlag for all joints.
             Joints.ForEach(i => i.DisableIslandFlag());
 
             // Clear all flags of the contacts.
             ContactManager.ClearFlags();
-            
+
             // Island solving.
             island.Solve(TimeStepGlobal, Gravity, true, ContactManager, Bodies);
 
@@ -225,7 +225,7 @@ namespace Alis.Core.Physic
             // Look for new contacts.
             ContactManager.FindNewContacts();
         }
-        
+
         /// <summary>
         ///     Solves the toi
         /// </summary>
@@ -235,19 +235,19 @@ namespace Alis.Core.Physic
             InvalidateContactToi();
             SolveToiEvents();
         }
-        
+
         /// <summary>
-        /// Sets the alpha to zero for fast moving bodies
+        ///     Sets the alpha to zero for fast moving bodies
         /// </summary>
         private void SetAlphaToZeroForFastMovingBodies() => Bodies.ForEach(i => i.SetAlphaToZero());
 
         /// <summary>
-        /// Invalidates the contact to is
+        ///     Invalidates the contact to is
         /// </summary>
         private void InvalidateContactToi() => ContactManager.InvalidateTOI();
-        
+
         /// <summary>
-        /// Solves the TOI (Time of Impact) events.
+        ///     Solves the TOI (Time of Impact) events.
         /// </summary>
         private void SolveToiEvents()
         {
@@ -255,11 +255,11 @@ namespace Alis.Core.Physic
             {
                 // Reset minAlpha to 1.0f
                 float minAlpha = 1.0f;
-                
+
                 // Find the first TOI contact.
                 Contact minContact = ContactManager.GetTheMinContact(minAlpha);
-                
-                minAlpha = ContactManager.CalculateMinAlpha(); 
+
+                minAlpha = ContactManager.CalculateMinAlpha();
 
                 if (minContact == null || IsMinAlphaGreaterThanEpsilon(minAlpha))
                 {
@@ -283,14 +283,14 @@ namespace Alis.Core.Physic
         }
 
         /// <summary>
-        /// Describes whether this instance is min alpha greater than epsilon
+        ///     Describes whether this instance is min alpha greater than epsilon
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The bool</returns>
         private static bool IsMinAlphaGreaterThanEpsilon(float minAlpha) => minAlpha >= 1.0f - Constant.Epsilon * 10.0f;
-        
+
         /// <summary>
-        /// Solves the toi island using the specified min alpha
+        ///     Solves the toi island using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="islandIndexA">The island index</param>
@@ -298,7 +298,7 @@ namespace Alis.Core.Physic
         private void SolveToiIsland(float minAlpha, int islandIndexA, int islandIndexB) => island.SolveToi(minAlpha, TimeStepGlobal, islandIndexA, islandIndexB, ContactManager);
 
         /// <summary>
-        /// Synchronizes the island bodies
+        ///     Synchronizes the island bodies
         /// </summary>
         private void SynchronizeIslandBodies() => island.SynchronizeBodies();
 

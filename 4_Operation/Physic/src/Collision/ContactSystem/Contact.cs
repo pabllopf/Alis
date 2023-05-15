@@ -662,7 +662,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public void ClearFlags() => Flags &= ~ContactFlags.FilterFlag;
 
         /// <summary>
-        /// Invalidates the toi
+        ///     Invalidates the toi
         /// </summary>
         public void InvalidateTOI()
         {

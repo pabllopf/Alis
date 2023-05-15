@@ -33,36 +33,42 @@ using System.Numerics;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The im draw cmd
+    ///     The im draw cmd
     /// </summary>
     public unsafe struct ImDrawCmd
     {
         /// <summary>
-        /// The clip rect
+        ///     The clip rect
         /// </summary>
         public Vector4 ClipRect;
+
         /// <summary>
-        /// The texture id
+        ///     The texture id
         /// </summary>
         public IntPtr TextureId;
+
         /// <summary>
-        /// The vtx offset
+        ///     The vtx offset
         /// </summary>
         public uint VtxOffset;
+
         /// <summary>
-        /// The idx offset
+        ///     The idx offset
         /// </summary>
         public uint IdxOffset;
+
         /// <summary>
-        /// The elem count
+        ///     The elem count
         /// </summary>
         public uint ElemCount;
+
         /// <summary>
-        /// The user callback
+        ///     The user callback
         /// </summary>
         public IntPtr UserCallback;
+
         /// <summary>
-        /// The user callback data
+        ///     The user callback data
         /// </summary>
         public void* UserCallbackData;
     }

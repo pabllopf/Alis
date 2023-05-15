@@ -88,7 +88,7 @@
         </member>
         <member name="P:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.CurrentDirectory">
             <summary>
-            Gets or sets the value of the current directory
+                Gets or sets the value of the current directory
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Base.Dll.EmbeddedDllClass.ExtractEmbeddedDlls(System.String,System.Byte[])">

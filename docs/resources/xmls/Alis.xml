@@ -112,6 +112,13 @@
                 The box collider
             </summary>
         </member>
+        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.AngularVelocity(System.Single)">
+            <summary>
+                Angulars the velocity using the specified value
+            </summary>
+            <param name="value">The value</param>
+            <returns>The box collider builder</returns>
+        </member>
         <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.AutoTilling(System.Boolean)">
             <summary>
                 Autoes the tilling using the specified value
@@ -223,13 +230,6 @@
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
-            <returns>The box collider builder</returns>
-        </member>
-        <member name="M:Alis.Builder.Core.Component.Collider.BoxColliderBuilder.AngularVelocity(System.Single)">
-            <summary>
-            Angulars the velocity using the specified value
-            </summary>
-            <param name="value">The value</param>
             <returns>The box collider builder</returns>
         </member>
         <member name="T:Alis.Builder.Core.Component.Collider.CircleColliderBuilder">
@@ -716,7 +716,7 @@
         </member>
         <member name="M:Alis.Builder.Core.Manager.SettingManagerBuilder.Physic(System.Func{Alis.Builder.Core.Setting.PhysicSettingBuilder,Alis.Core.Setting.PhysicSetting})">
             <summary>
-            Physics the value
+                Physics the value
             </summary>
             <param name="value">The value</param>
             <returns>The setting manager builder</returns>
@@ -829,24 +829,24 @@
         </member>
         <member name="T:Alis.Builder.Core.Setting.PhysicSettingBuilder">
             <summary>
-            The physic setting builder class
+                The physic setting builder class
             </summary>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1"/>
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuild`1" />
         </member>
         <member name="F:Alis.Builder.Core.Setting.PhysicSettingBuilder.physicSetting">
             <summary>
-            The physic setting
+                The physic setting
             </summary>
         </member>
         <member name="M:Alis.Builder.Core.Setting.PhysicSettingBuilder.Build">
             <summary>
-            Builds this instance
+                Builds this instance
             </summary>
             <returns>The physic setting</returns>
         </member>
         <member name="M:Alis.Builder.Core.Setting.PhysicSettingBuilder.Gravity(System.Single,System.Single)">
             <summary>
-            Gravities the x
+                Gravities the x
             </summary>
             <param name="x">The </param>
             <param name="y">The </param>
@@ -1165,7 +1165,7 @@
         </member>
         <member name="P:Alis.Core.Component.Collider.BoxCollider.AngularVelocity">
             <summary>
-            Gets or sets the value of the angular velocity
+                Gets or sets the value of the angular velocity
             </summary>
         </member>
         <member name="M:Alis.Core.Component.Collider.BoxCollider.Builder">
@@ -2362,7 +2362,7 @@
         </member>
         <member name="P:Alis.Core.Manager.Setting.SettingManager.Physic">
             <summary>
-            Gets or sets the value of the physic
+                Gets or sets the value of the physic
             </summary>
         </member>
         <member name="T:Alis.Core.Manager.Time.TimeManager">
@@ -2456,19 +2456,19 @@
         </member>
         <member name="T:Alis.Core.Setting.PhysicSetting">
             <summary>
-            The physic setting class
+                The physic setting class
             </summary>
-            <seealso cref="T:Alis.Core.Setting.SettingBase"/>
-            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuilder`1"/>
+            <seealso cref="T:Alis.Core.Setting.SettingBase" />
+            <seealso cref="T:Alis.Core.Aspect.Fluent.IBuilder`1" />
         </member>
         <member name="P:Alis.Core.Setting.PhysicSetting.Gravity">
             <summary>
-            Gets or sets the value of the gravity
+                Gets or sets the value of the gravity
             </summary>
         </member>
         <member name="M:Alis.Core.Setting.PhysicSetting.Builder">
             <summary>
-            Builders this instance
+                Builders this instance
             </summary>
             <returns>The physic setting builder</returns>
         </member>

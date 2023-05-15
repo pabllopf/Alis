@@ -1,27 +1,58 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImVector.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The im vector
+    ///     The im vector
     /// </summary>
     public unsafe struct ImVector
     {
         /// <summary>
-        /// The size
+        ///     The size
         /// </summary>
         public readonly int Size;
+
         /// <summary>
-        /// The capacity
+        ///     The capacity
         /// </summary>
         public readonly int Capacity;
+
         /// <summary>
-        /// The data
+        ///     The data
         /// </summary>
         public readonly IntPtr Data;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImVector"/> class
+        ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
         /// <param name="size">The size</param>
         /// <param name="capacity">The capacity</param>
@@ -34,48 +65,44 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Refs the index
+        ///     Refs the index
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="index">The index</param>
         /// <returns>The ref</returns>
-        public ref T Ref<T>(int index) where T : unmanaged
-        {
-            return ref Unsafe.AsRef<T>((byte*)Data + index * Unsafe.SizeOf<T>());
-        }
+        public ref T Ref<T>(int index) where T : unmanaged => ref Unsafe.AsRef<T>((byte*) Data + index * Unsafe.SizeOf<T>());
 
         /// <summary>
-        /// Addresses the index
+        ///     Addresses the index
         /// </summary>
         /// <typeparam name="T">The </typeparam>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
-        public IntPtr Address<T>(int index)
-        {
-            return (IntPtr)((byte*)Data + index * Unsafe.SizeOf<T>());
-        }
+        public IntPtr Address<T>(int index) => (IntPtr) ((byte*) Data + index * Unsafe.SizeOf<T>());
     }
 
     /// <summary>
-    /// The im vector
+    ///     The im vector
     /// </summary>
     public unsafe struct ImVector<T> where T : unmanaged
     {
         /// <summary>
-        /// The size
+        ///     The size
         /// </summary>
         public readonly int Size;
+
         /// <summary>
-        /// The capacity
+        ///     The capacity
         /// </summary>
         public readonly int Capacity;
+
         /// <summary>
-        /// The data
+        ///     The data
         /// </summary>
         public readonly IntPtr Data;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImVector"/> class
+        ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
         /// <param name="vector">The vector</param>
         public ImVector(ImVector vector)
@@ -86,7 +113,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImVector"/> class
+        ///     Initializes a new instance of the <see cref="ImVector" /> class
         /// </summary>
         /// <param name="size">The size</param>
         /// <param name="capacity">The capacity</param>
@@ -99,8 +126,8 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// The 
+        ///     The
         /// </summary>
-        public ref T this[int index] => ref Unsafe.AsRef<T>((byte*)Data + index * Unsafe.SizeOf<T>());
+        public ref T this[int index] => ref Unsafe.AsRef<T>((byte*) Data + index * Unsafe.SizeOf<T>());
     }
 }

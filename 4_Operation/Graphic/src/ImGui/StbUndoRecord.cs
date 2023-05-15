@@ -30,24 +30,27 @@
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The stb undo record
+    ///     The stb undo record
     /// </summary>
     public struct StbUndoRecord
     {
         /// <summary>
-        /// The where
+        ///     The where
         /// </summary>
         public int where;
+
         /// <summary>
-        /// The insert length
+        ///     The insert length
         /// </summary>
         public int insert_length;
+
         /// <summary>
-        /// The delete length
+        ///     The delete length
         /// </summary>
         public int delete_length;
+
         /// <summary>
-        /// The char storage
+        ///     The char storage
         /// </summary>
         public int char_storage;
     }

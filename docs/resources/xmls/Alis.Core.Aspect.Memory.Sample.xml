@@ -6,12 +6,12 @@
     <members>
         <member name="T:Alis.Core.Aspect.Memory.Sample.Program">
             <summary>
-            The program class
+                The program class
             </summary>
         </member>
         <member name="M:Alis.Core.Aspect.Memory.Sample.Program.Main(System.String[])">
             <summary>
-            Main the args
+                Main the args
             </summary>
             <param name="args">The args</param>
         </member>

@@ -34,7 +34,6 @@ using System.Numerics;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
-using Alis.Core.Aspect.Math.Exceptions;
 using Alis.Core.Aspect.Math.Matrix;
 
 namespace Alis.Core.Aspect.Math.Vector
@@ -460,7 +459,7 @@ namespace Alis.Core.Aspect.Math.Vector
             array[index] = X;
             array[index + 1] = Y;
         }
-        
+
         /// <summary>Returns a value that indicates whether this instance and a specified object are equal.</summary>
         /// <param name="obj">The object to compare with the current instance.</param>
         /// <returns>

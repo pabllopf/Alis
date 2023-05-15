@@ -30,27 +30,22 @@
 namespace Alis.App.Engine
 {
     /// <summary>
-    /// The engine class
+    ///     The engine class
     /// </summary>
     public class Engine
     {
-        
         /// <summary>
-        /// Initializes a new instance of the <see cref="Engine"/> class
+        ///     Initializes a new instance of the <see cref="Engine" /> class
         /// </summary>
         /// <param name="args">The args</param>
         public Engine(string[] args)
         {
-            
         }
-        
+
         /// <summary>
-        /// Starts this instance
+        ///     Starts this instance
         /// </summary>
         /// <returns>The int</returns>
-        public int Start()
-        {
-            return 1;
-        }
+        public int Start() => 1;
     }
 }

@@ -32,10 +32,10 @@ using System;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The non versionable attribute class
+    ///     The non versionable attribute class
     /// </summary>
-    /// <seealso cref="Attribute"/>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Struct, AllowMultiple = false, Inherited = false)]
+    /// <seealso cref="Attribute" />
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Constructor | AttributeTargets.Method | AttributeTargets.Struct, Inherited = false)]
     internal sealed class NonVersionableAttribute : Attribute
     {
     }

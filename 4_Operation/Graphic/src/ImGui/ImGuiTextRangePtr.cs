@@ -1,74 +1,113 @@
+// --------------------------------------------------------------------------
+// 
+//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
+//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
+//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
+// 
+//  --------------------------------------------------------------------------
+//  File:ImGuiTextRangePtr.cs
+// 
+//  Author:Pablo Perdomo Falcón
+//  Web:https://www.pabllopf.dev/
+// 
+//  Copyright (c) 2021 GNU General Public License v3.0
+// 
+//  This program is free software:you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+// 
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+//  GNU General Public License for more details.
+// 
+//  You should have received a copy of the GNU General Public License
+//  along with this program.If not, see <http://www.gnu.org/licenses/>.
+// 
+//  --------------------------------------------------------------------------
+
 using System;
 
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The im gui text range ptr
+    ///     The im gui text range ptr
     /// </summary>
     public unsafe struct ImGuiTextRangePtr
     {
         /// <summary>
-        /// Gets the value of the native ptr
+        ///     Gets the value of the native ptr
         /// </summary>
         public ImGuiTextRange* NativePtr { get; }
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImGuiTextRangePtr"/> class
+        ///     Initializes a new instance of the <see cref="ImGuiTextRangePtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
         public ImGuiTextRangePtr(ImGuiTextRange* nativePtr) => NativePtr = nativePtr;
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImGuiTextRangePtr"/> class
+        ///     Initializes a new instance of the <see cref="ImGuiTextRangePtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiTextRangePtr(IntPtr nativePtr) => NativePtr = (ImGuiTextRange*)nativePtr;
-        
+        public ImGuiTextRangePtr(IntPtr nativePtr) => NativePtr = (ImGuiTextRange*) nativePtr;
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator ImGuiTextRangePtr(ImGuiTextRange* nativePtr) => new ImGuiTextRangePtr(nativePtr);
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiTextRange* (ImGuiTextRangePtr wrappedPtr) => wrappedPtr.NativePtr;
-        
+        public static implicit operator ImGuiTextRange*(ImGuiTextRangePtr wrappedPtr) => wrappedPtr.NativePtr;
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
         public static implicit operator ImGuiTextRangePtr(IntPtr nativePtr) => new ImGuiTextRangePtr(nativePtr);
+
         /// <summary>
-        /// Gets or sets the value of the b
+        ///     Gets or sets the value of the b
         /// </summary>
-        public IntPtr b { get => (IntPtr)NativePtr->b; set => NativePtr->b = (byte*)value; }
+        public IntPtr b
+        {
+            get => (IntPtr) NativePtr->b;
+            set => NativePtr->b = (byte*) value;
+        }
+
         /// <summary>
-        /// Gets or sets the value of the e
+        ///     Gets or sets the value of the e
         /// </summary>
-        public IntPtr e { get => (IntPtr)NativePtr->e; set => NativePtr->e = (byte*)value; }
+        public IntPtr e
+        {
+            get => (IntPtr) NativePtr->e;
+            set => NativePtr->e = (byte*) value;
+        }
+
         /// <summary>
-        /// Destroys this instance
+        ///     Destroys this instance
         /// </summary>
         public void Destroy()
         {
-            ImGuiNative.ImGuiTextRange_destroy((ImGuiTextRange*)(NativePtr));
+            ImGuiNative.ImGuiTextRange_destroy(NativePtr);
         }
+
         /// <summary>
-        /// Describes whether this instance empty
+        ///     Describes whether this instance empty
         /// </summary>
         /// <returns>The bool</returns>
         public bool empty()
         {
-            byte ret = ImGuiNative.ImGuiTextRange_empty((ImGuiTextRange*)(NativePtr));
+            byte ret = ImGuiNative.ImGuiTextRange_empty(NativePtr);
             return ret != 0;
         }
-        
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="separator"></param>
         /// <param name="out"></param>
@@ -76,7 +115,7 @@ namespace Alis.Core.Graphic.ImGui
         {
             fixed (ImVector* native_out = &@out)
             {
-                ImGuiNative.ImGuiTextRange_split((ImGuiTextRange*)(NativePtr), separator, native_out);
+                ImGuiNative.ImGuiTextRange_split(NativePtr, separator, native_out);
             }
         }
     }

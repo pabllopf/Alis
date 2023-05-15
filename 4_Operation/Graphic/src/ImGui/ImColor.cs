@@ -32,12 +32,12 @@ using System.Numerics;
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The im color
+    ///     The im color
     /// </summary>
     public struct ImColor
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public Vector4 Value;
     }

@@ -30,16 +30,17 @@
 namespace Alis.Core.Graphic.ImGui
 {
     /// <summary>
-    /// The im draw channel
+    ///     The im draw channel
     /// </summary>
     public struct ImDrawChannel
     {
         /// <summary>
-        /// The cmd buffer
+        ///     The cmd buffer
         /// </summary>
         public ImVector _CmdBuffer;
+
         /// <summary>
-        /// The idx buffer
+        ///     The idx buffer
         /// </summary>
         public ImVector _IdxBuffer;
     }

@@ -62,6 +62,17 @@ namespace Alis.Builder.Core.Component.Collider
         private BoxCollider boxCollider = new BoxCollider();
 
         /// <summary>
+        ///     Angulars the velocity using the specified value
+        /// </summary>
+        /// <param name="value">The value</param>
+        /// <returns>The box collider builder</returns>
+        public BoxColliderBuilder AngularVelocity(float value)
+        {
+            boxCollider.AngularVelocity = value;
+            return this;
+        }
+
+        /// <summary>
         ///     Autoes the tilling using the specified value
         /// </summary>
         /// <param name="value">The value</param>
@@ -232,17 +243,6 @@ namespace Alis.Builder.Core.Component.Collider
         {
             boxCollider.Width = x;
             boxCollider.Height = y;
-            return this;
-        }
-
-        /// <summary>
-        /// Angulars the velocity using the specified value
-        /// </summary>
-        /// <param name="value">The value</param>
-        /// <returns>The box collider builder</returns>
-        public BoxColliderBuilder AngularVelocity(float value)
-        {
-            boxCollider.AngularVelocity = value;
             return this;
         }
     }

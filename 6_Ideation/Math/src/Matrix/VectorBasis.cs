@@ -44,17 +44,17 @@ namespace Alis.Core.Aspect.Math.Matrix
             /// <summary>
             ///     The element
             /// </summary>
-            public unsafe Vector3F* Element0;
+            public Vector3F Element0;
 
             /// <summary>
             ///     The element
             /// </summary>
-            public unsafe Vector3F* Element1;
+            public Vector3F Element1;
 
             /// <summary>
             ///     The element
             /// </summary>
-            public unsafe Vector3F* Element2;
+            public  Vector3F Element2;
         }
     }
 }

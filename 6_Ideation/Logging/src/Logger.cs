@@ -46,12 +46,12 @@ namespace Alis.Core.Aspect.Logging
         /// </summary>
         /// <param name="message">The message</param>
         public static void Trace(string message) => ConsoleController.Print(new Message(MessageType.Trace, message));
-        
+
         /// <summary>
-        /// Info
+        ///     Info
         /// </summary>
         public static void Info() => ConsoleController.Print(new Message(MessageType.Info, "Info method called with no message."));
-        
+
         /// <summary>
         ///     Info the message
         /// </summary>
