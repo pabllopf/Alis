@@ -4,4 +4,17 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Update="Properties\NativeGraphic.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>NativeGraphic.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\NativeGraphic.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>NativeGraphic.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
 </Project>

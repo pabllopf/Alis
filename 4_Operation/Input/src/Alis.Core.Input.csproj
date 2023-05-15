@@ -4,4 +4,17 @@
     <PropertyGroup>
         <TargetFramework>$(TargetFramework2)</TargetFramework>
     </PropertyGroup>
+    <ItemGroup>
+      <Compile Update="Properties\NativeInput.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>NativeInput.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Update="Properties\NativeInput.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>NativeInput.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
 </Project>
