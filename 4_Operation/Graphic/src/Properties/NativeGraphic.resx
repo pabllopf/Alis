@@ -170,7 +170,7 @@
         </value>
     </data>
     <data name="debian-x64_cimgui1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x64\debian-x64_cimgui.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
+        <value>..\resources\linux-x64\linux-x64_cimgui.so;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral,
             PublicKeyToken=b77a5c561934e089
         </value>
     </data>
@@ -180,7 +180,7 @@
         </value>
     </data>
     <data name="debian-x64_csfml-graphics1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x64\debian-x64_csfml-graphics.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\resources\linux-x64\linux-x64_csfml-graphics.so;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
@@ -190,7 +190,7 @@
         </value>
     </data>
     <data name="debian-x64_csfml-system1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x64\debian-x64_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\resources\linux-x64\linux-x64_csfml-system.so;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
@@ -200,7 +200,7 @@
         </value>
     </data>
     <data name="debian-x64_csfml-window1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-        <value>..\resources\linux-x64\debian-x64_csfml-window.so;System.Byte[], mscorlib, Version=4.0.0.0,
+        <value>..\resources\linux-x64\linux-x64_csfml-window.so;System.Byte[], mscorlib, Version=4.0.0.0,
             Culture=neutral, PublicKeyToken=b77a5c561934e089
         </value>
     </data>
