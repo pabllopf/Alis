@@ -5,7 +5,7 @@ namespace Alis.Core.Graphic.OpenGL
 	/// <summary>
 	/// The gl class
 	/// </summary>
-	public unsafe static partial class GL
+	public static partial class GL
 	{
 		/// <summary>
 		/// The clear buffer mask enum

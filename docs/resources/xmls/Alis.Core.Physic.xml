@@ -11289,6 +11289,49 @@
             </summary>
             <param name="message">The message</param>
         </member>
+        <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable">
+            <summary>
+                The triangulatable interface
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.Points">
+            <summary>
+                Gets the value of the points
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.Triangles">
+            <summary>
+                Gets the value of the triangles
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.TriangulationMode">
+            <summary>
+                Gets the value of the triangulation mode
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.PrepareTriangulation(Alis.Core.Physic.Tools.Triangulation.Delaunay.TriangulationContext)">
+            <summary>
+                Prepares the triangulation using the specified tcx
+            </summary>
+            <param name="tcx">The tcx</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.AddTriangle(Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.DelaunayTriangle)">
+            <summary>
+                Adds the triangle using the specified t
+            </summary>
+            <param name="t">The </param>
+        </member>
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.AddTriangles(System.Collections.Generic.IEnumerable{Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.DelaunayTriangle})">
+            <summary>
+                Adds the triangles using the specified list
+            </summary>
+            <param name="list">The list</param>
+        </member>
+        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.ClearTriangles">
+            <summary>
+                Clears the triangles
+            </summary>
+        </member>
         <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.Orientation">
             <summary>
                 The orientation enum
@@ -11576,49 +11619,6 @@
                 Prepares the triangulation using the specified tcx
             </summary>
             <param name="tcx">The tcx</param>
-        </member>
-        <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable">
-            <summary>
-                The triangulatable interface
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.Points">
-            <summary>
-                Gets the value of the points
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.Triangles">
-            <summary>
-                Gets the value of the triangles
-            </summary>
-        </member>
-        <member name="P:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.TriangulationMode">
-            <summary>
-                Gets the value of the triangulation mode
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.PrepareTriangulation(Alis.Core.Physic.Tools.Triangulation.Delaunay.TriangulationContext)">
-            <summary>
-                Prepares the triangulation using the specified tcx
-            </summary>
-            <param name="tcx">The tcx</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.AddTriangle(Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.DelaunayTriangle)">
-            <summary>
-                Adds the triangle using the specified t
-            </summary>
-            <param name="t">The </param>
-        </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.AddTriangles(System.Collections.Generic.IEnumerable{Alis.Core.Physic.Tools.Triangulation.Delaunay.Delaunay.DelaunayTriangle})">
-            <summary>
-                Adds the triangles using the specified list
-            </summary>
-            <param name="list">The list</param>
-        </member>
-        <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.ITriangulatable.ClearTriangles">
-            <summary>
-                Clears the triangles
-            </summary>
         </member>
         <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.TriangulationConstraint">
             <summary>

@@ -172,15 +172,15 @@
             <param name="filename">Path of the file</param>
             <param name="innerException">Exception which is the cause ofthe current exception</param>
         </member>
-        <member name="T:Alis.Core.Aspect.Base.Exceptions.SceneGame">
-            <summary>
-                The max scene game class
-            </summary>
-            <seealso cref="T:System.Exception" />
-        </member>
         <member name="T:Alis.Core.Aspect.Base.Exceptions.NullArgumentException">
             <summary>
                 The null argument exception class
+            </summary>
+            <seealso cref="T:System.Exception" />
+        </member>
+        <member name="T:Alis.Core.Aspect.Base.Exceptions.SceneGame">
+            <summary>
+                The max scene game class
             </summary>
             <seealso cref="T:System.Exception" />
         </member>

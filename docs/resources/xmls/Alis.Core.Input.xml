@@ -9315,6 +9315,51 @@
                 The
             </summary>
         </member>
+        <member name="T:Alis.Core.Input.SDL2.SdlGameControllerAxis">
+            <summary>
+                The sdl gamecontrolleraxis enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisInvalid">
+            <summary>
+                The sdl controller axis invalid sdl gamecontrolleraxis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisLeftx">
+            <summary>
+                The sdl controller axis leftx sdl gamecontrolleraxis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisLefty">
+            <summary>
+                The sdl controller axis lefty sdl gamecontrolleraxis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisRightx">
+            <summary>
+                The sdl controller axis rightx sdl gamecontrolleraxis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisRighty">
+            <summary>
+                The sdl controller axis righty sdl gamecontrolleraxis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisTriggerleft">
+            <summary>
+                The sdl controller axis triggerleft sdl gamecontrolleraxis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisTriggerright">
+            <summary>
+                The sdl controller axis triggerright sdl gamecontrolleraxis
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisMax">
+            <summary>
+                The sdl controller axis max sdl gamecontrolleraxis
+            </summary>
+        </member>
         <member name="T:Alis.Core.Input.SDL2.SdlGameControllerBindType">
             <summary>
                 The sdl gamecontrollerbindtype enum
@@ -9458,6 +9503,21 @@
         <member name="F:Alis.Core.Input.SDL2.SdlGameControllerButton.SdlControllerButtonMax">
             <summary>
                 The sdl controller button max sdl gamecontrollerbutton
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Input.SDL2.SdlGameControllerButtonBind">
+            <summary>
+                The sdl gamecontrollerbuttonbind
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerButtonBind.bindType">
+            <summary>
+                The bind type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerButtonBind.value">
+            <summary>
+                The value
             </summary>
         </member>
         <member name="T:Alis.Core.Input.SDL2.SdlGameControllerType">
@@ -10988,21 +11048,6 @@
         <member name="F:Alis.Core.Input.SDL2.SdlGLprofile.SdlGlContextProfileEs">
             <summary>
                 The sdl gl context profile es sdl glprofile
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Input.SDL2.SdlGameControllerButtonBind">
-            <summary>
-                The sdl gamecontrollerbuttonbind
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerButtonBind.bindType">
-            <summary>
-                The bind type
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerButtonBind.value">
-            <summary>
-                The value
             </summary>
         </member>
         <member name="T:Alis.Core.Input.SDL2.SdlHapticCondition">
@@ -18294,51 +18339,6 @@
         <member name="F:Alis.Core.Input.SDL2.SdlWinRtDeviceFamily.SdlWinrtDevicefamilyXbox">
             <summary>
                 The sdl winrt devicefamily xbox sdl winrt devicefamily
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Input.SDL2.SdlGameControllerAxis">
-            <summary>
-                The sdl gamecontrolleraxis enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisInvalid">
-            <summary>
-                The sdl controller axis invalid sdl gamecontrolleraxis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisLeftx">
-            <summary>
-                The sdl controller axis leftx sdl gamecontrolleraxis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisLefty">
-            <summary>
-                The sdl controller axis lefty sdl gamecontrolleraxis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisRightx">
-            <summary>
-                The sdl controller axis rightx sdl gamecontrolleraxis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisRighty">
-            <summary>
-                The sdl controller axis righty sdl gamecontrolleraxis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisTriggerleft">
-            <summary>
-                The sdl controller axis triggerleft sdl gamecontrolleraxis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisTriggerright">
-            <summary>
-                The sdl controller axis triggerright sdl gamecontrolleraxis
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Input.SDL2.SdlGameControllerAxis.SdlControllerAxisMax">
-            <summary>
-                The sdl controller axis max sdl gamecontrolleraxis
             </summary>
         </member>
     </members>
