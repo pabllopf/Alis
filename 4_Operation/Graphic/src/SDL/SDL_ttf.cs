@@ -79,10 +79,10 @@ namespace Alis.Core.Graphic.SDL
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.so", NativeGraphic.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.so", NativeGraphic.linux_arm64_sdl2_ttf);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.so", NativeGraphic.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_ttf.so", NativeGraphic.linux_x64_sdl2_ttf);
                         break;
                 }
             }

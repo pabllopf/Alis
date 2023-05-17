@@ -78,10 +78,10 @@ namespace Alis.Core.Graphic.ImGui
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.linux_arm64_cimgui);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("cimgui.so", NativeGraphic.linux_x64_cimgui);
                         break;
                 }
             }

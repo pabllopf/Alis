@@ -30,7 +30,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Alis.Core.Graphic.SFML.Windows
+namespace Alis.Core.Input.SFML.Windows
 {
     ////////////////////////////////////////////////////////////
 

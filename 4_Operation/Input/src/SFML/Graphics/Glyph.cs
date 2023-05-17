@@ -30,7 +30,7 @@
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Math.Figures.D2.Rectangle;
 
-namespace Alis.Core.Graphic.SFML.Graphics
+namespace Alis.Core.Input.SFML.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

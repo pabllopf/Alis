@@ -53,8 +53,6 @@ namespace Alis
         /// </summary>
         static VideoGame()
         {
-            ObjectBase.Load();
-            Core.Graphic.SFML.ObjectBase.Load();
         }
 
         /// <summary>

@@ -28,8 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Entity;
+using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SFML.Windows;
-using Alis.Core.Input.SDL2;
 
 namespace Alis.Core.Component
 {
@@ -186,7 +186,7 @@ namespace Alis.Core.Component
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public virtual void OnPressButton(SdlGameControllerButton button, int device)
+        public virtual void OnPressButton(SDL.SDL_GameControllerButton button, int device)
         {
         }
 
@@ -196,7 +196,7 @@ namespace Alis.Core.Component
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public virtual void OnPressDownButton(SdlGameControllerButton button, int device)
+        public virtual void OnPressDownButton(SDL.SDL_GameControllerButton button, int device)
         {
         }
 
@@ -206,7 +206,7 @@ namespace Alis.Core.Component
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public virtual void OnReleaseButton(SdlGameControllerButton button, int device)
+        public virtual void OnReleaseButton(SDL.SDL_GameControllerButton button, int device)
         {
         }
 

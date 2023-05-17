@@ -65,21 +65,21 @@
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressDownButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressDownButton(Alis.Core.Graphic.SDL.SDL.SDL_GameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController1.OnReleaseButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnReleaseButton(Alis.Core.Graphic.SDL.SDL.SDL_GameControllerButton,System.Int32)">
             <summary>
                 Ons the release button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController1.OnPressButton(Alis.Core.Graphic.SDL.SDL.SDL_GameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
@@ -118,21 +118,21 @@
             </summary>
             <param name="key">The key</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressDownButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressDownButton(Alis.Core.Graphic.SDL.SDL.SDL_GameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController2.OnReleaseButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnReleaseButton(Alis.Core.Graphic.SDL.SDL.SDL_GameControllerButton,System.Int32)">
             <summary>
                 Ons the release button using the specified button
             </summary>
             <param name="button">The button</param>
             <param name="device">The device</param>
         </member>
-        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressButton(Alis.Core.Input.SDL2.SdlGameControllerButton,System.Int32)">
+        <member name="M:Alis.Sample.Pong.PlayerController2.OnPressButton(Alis.Core.Graphic.SDL.SDL.SDL_GameControllerButton,System.Int32)">
             <summary>
                 Ons the press button using the specified button
             </summary>

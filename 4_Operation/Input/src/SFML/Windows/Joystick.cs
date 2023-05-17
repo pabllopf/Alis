@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Attributes;
 using Alis.Core.Aspect.Base.Settings;
 
-namespace Alis.Core.Graphic.SFML.Windows
+namespace Alis.Core.Input.SFML.Windows
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

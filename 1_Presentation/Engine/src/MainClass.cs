@@ -27,30 +27,9 @@
 // 
 //  --------------------------------------------------------------------------
 
-/*
-using System;
-using System.Diagnostics.CodeAnalysis;
-
-namespace Alis.App.Engine
-{
-    /// <summary>Run the engine</summary>
-    public class Program
-    {
-        /// <summary>Mains the specified arguments.</summary>
-        /// <param name="args">The arguments.</param>
-        /// <returns>Return -1 or 0</returns>
-        [STAThread]
-        public static int Main(string[] args)
-        {
-            return new Engine(args).Start();
-        }
-    }
-}
-*/
-
 using System;
 using Alis.Core.Graphic.ImGui;
-using static Alis.Core.Graphic.SDL.SDL;
+using Alis.Core.Graphic.SDL;
 
 namespace Alis.App.Engine
 {
@@ -92,22 +71,22 @@ namespace Alis.App.Engine
 
             while (!_quit)
             {
-                while (SDL_PollEvent(out SDL_Event e) != 0)
+                while (SDL.SDL_PollEvent(out SDL.SDL_Event e) != 0)
                 {
                     _renderer.ProcessEvent(e);
                     switch (e.type)
                     {
-                        case SDL_EventType.SDL_QUIT:
+                        case SDL.SDL_EventType.SDL_QUIT:
                         {
                             _quit = true;
                             break;
                         }
-                        case SDL_EventType.SDL_KEYDOWN:
+                        case SDL.SDL_EventType.SDL_KEYDOWN:
                         {
                             switch (e.key.keysym.sym)
                             {
-                                case SDL_Keycode.SDLK_ESCAPE:
-                                case SDL_Keycode.SDLK_q:
+                                case SDL.SDL_Keycode.SDLK_ESCAPE:
+                                case SDL.SDL_Keycode.SDLK_q:
                                     _quit = true;
                                     break;
                             }
@@ -121,12 +100,12 @@ namespace Alis.App.Engine
                 _renderer.NewFrame();
                 ImGui.ShowDemoWindow();
                 _renderer.Render();
-                SDL_GL_SwapWindow(_window);
+                SDL.SDL_GL_SwapWindow(_window);
             }
 
-            SDL_GL_DeleteContext(_glContext);
-            SDL_DestroyWindow(_window);
-            SDL_Quit();
+            SDL.SDL_GL_DeleteContext(_glContext);
+            SDL.SDL_DestroyWindow(_window);
+            SDL.SDL_Quit();
         }
     }
 }

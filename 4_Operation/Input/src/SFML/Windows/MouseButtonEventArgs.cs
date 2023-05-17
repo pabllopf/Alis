@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.SFML.Windows
+namespace Alis.Core.Input.SFML.Windows
 {
     /// <summary>
     ///     Mouse buttons event parameters

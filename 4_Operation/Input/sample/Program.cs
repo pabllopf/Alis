@@ -29,7 +29,6 @@
 
 using System;
 using System.Collections.Generic;
-using Alis.Core.Input.SDL2;
 
 namespace Alis.Core.Input.Sample
 {
@@ -44,6 +43,7 @@ namespace Alis.Core.Input.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
+            /*
             Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
             Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
             Sdl.SDL_Init(Sdl.SdlInitEverything);
@@ -115,6 +115,7 @@ namespace Alis.Core.Input.Sample
                     }
                 }
             }
+            */
         }
     }
 }

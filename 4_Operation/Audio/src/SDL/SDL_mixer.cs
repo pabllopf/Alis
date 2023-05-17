@@ -32,11 +32,11 @@
 using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
-using Alis.Core.Graphic.Properties;
+using Alis.Core.Audio.Properties;
 
 #endregion
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Audio.SDL
 {
     /// <summary>
     ///     The sdl mixer class
@@ -50,10 +50,10 @@ namespace Alis.Core.Graphic.SDL
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeGraphic.osx_arm64_sdl2_mixer);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeAudio.osx_arm64_sdl2_mixer);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeGraphic.osx_x64_sdl2_mixer);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeAudio.osx_x64_sdl2_mixer);
                         break;
                 }
             }
@@ -63,13 +63,13 @@ namespace Alis.Core.Graphic.SDL
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeGraphic.win_arm64_sdl2_mixer);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x64_sdl2_mixer);
                         break;
                     case Architecture.X86:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeGraphic.win_x86_sdl2_mixer);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x86_sdl2_mixer);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeGraphic.win_x64_sdl2_mixer);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x64_sdl2_mixer);
                         break;
                 }
             }
@@ -79,10 +79,10 @@ namespace Alis.Core.Graphic.SDL
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeGraphic.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeAudio.linux_arm64_sdl2_mixer);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeGraphic.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeAudio.linux_x64_sdl2_mixer);
                         break;
                 }
             }

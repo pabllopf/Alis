@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Graphic.SFML.Graphics
+namespace Alis.Core.Input.SFML.Graphics
 {
     ////////////////////////////////////////////////////////////
     /// <summary>

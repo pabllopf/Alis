@@ -31,8 +31,8 @@ using System;
 using System.Collections.Generic;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Entity;
+using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SFML.Windows;
-using Alis.Core.Input.SDL2;
 using Alis.Core.Manager.Scene;
 
 namespace Alis.Core.Manager.Input
@@ -44,22 +44,22 @@ namespace Alis.Core.Manager.Input
         /// <summary>
         ///     The axis
         /// </summary>
-        private List<SdlGameControllerAxis> axis;
+        private List<SDL.SDL_GameControllerAxis> axis;
 
         /// <summary>
         ///     The axis temp
         /// </summary>
-        private List<SdlGameControllerAxis> axisTemp;
+        private List<SDL.SDL_GameControllerAxis> axisTemp;
 
         /// <summary>
         ///     The buttons
         /// </summary>
-        private List<SdlGameControllerButton> buttons;
+        private List<SDL.SDL_GameControllerButton> buttons;
 
         /// <summary>
         ///     The buttons temp
         /// </summary>
-        private Dictionary<string, SdlGameControllerButton> buttonsTemp;
+        private Dictionary<string, SDL.SDL_GameControllerButton> buttonsTemp;
 
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Manager.Input
         /// <summary>
         ///     The sdl event
         /// </summary>
-        private SdlEvent sdlEvent;
+        private SDL.SDL_Event sdlEvent;
 
         /// <summary>
         ///     Temp list of keys
@@ -104,38 +104,38 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Init()
         {
-            Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
-            Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
-            Sdl.SDL_Init(Sdl.SdlInitEverything);
+            SDL.SDL_SetHint(SDL.SDL_HINT_XINPUT_ENABLED, "0");
+            SDL.SDL_SetHint(SDL.SDL_HINT_JOYSTICK_THREAD, "1");
+            SDL.SDL_Init(SDL.SDL_INIT_EVERYTHING);
 
             joysticks = new List<IntPtr>();
 
-            for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
+            for (int i = 0; i < SDL.SDL_NumJoysticks(); i++)
             {
-                IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
+                IntPtr myJoystick = SDL.SDL_JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
-                    Logger.Exception($"Error on SDL2: {Sdl.SDL_GetError()}");
+                    Logger.Exception($"Error on SDL2: {SDL.SDL_GetError()}");
                 }
                 else
                 {
                     Logger.Log($"[SDL_JoystickName_id = '{i}'] \n" +
-                               $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
-                               $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
-                               $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
+                               $"SDL_JoystickName={SDL.SDL_JoystickName(myJoystick)} \n" +
+                               $"SDL_JoystickNumAxes={SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
+                               $"SDL_JoystickNumButtons={SDL.SDL_JoystickNumButtons(myJoystick)}");
                 }
 
                 joysticks.Add(myJoystick);
             }
 
-            currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
+            currentSdlNumJoysticks = SDL.SDL_NumJoysticks();
 
 
-            buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
-            buttonsTemp = new Dictionary<string, SdlGameControllerButton>();
+            buttons = new List<SDL.SDL_GameControllerButton>((SDL.SDL_GameControllerButton[]) Enum.GetValues(typeof(SDL.SDL_GameControllerButton)));
+            buttonsTemp = new Dictionary<string, SDL.SDL_GameControllerButton>();
 
-            axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
-            axisTemp = new List<SdlGameControllerAxis>();
+            axis = new List<SDL.SDL_GameControllerAxis>((SDL.SDL_GameControllerAxis[]) Enum.GetValues(typeof(SDL.SDL_GameControllerAxis)));
+            axisTemp = new List<SDL.SDL_GameControllerAxis>();
 
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();
@@ -160,31 +160,31 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void BeforeUpdate()
         {
-            Sdl.SDL_JoystickUpdate();
-            Sdl.SDL_GameControllerUpdate();
+            SDL.SDL_JoystickUpdate();
+            SDL.SDL_GameControllerUpdate();
 
-            if (Sdl.SDL_NumJoysticks() != currentSdlNumJoysticks)
+            if (SDL.SDL_NumJoysticks() != currentSdlNumJoysticks)
             {
                 joysticks = new List<IntPtr>();
-                for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
+                for (int i = 0; i < SDL.SDL_NumJoysticks(); i++)
                 {
-                    IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
+                    IntPtr myJoystick = SDL.SDL_JoystickOpen(i);
                     if (myJoystick == IntPtr.Zero)
                     {
-                        Logger.Exception($"Error on SDL2: {Sdl.SDL_GetError()}");
+                        Logger.Exception($"Error on SDL2: {SDL.SDL_GetError()}");
                     }
                     else
                     {
                         Logger.Log($"[SDL_JoystickName_id = '{i}'] \n" +
-                                   $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
-                                   $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                   $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
+                                   $"SDL_JoystickName={SDL.SDL_JoystickName(myJoystick)} \n" +
+                                   $"SDL_JoystickNumAxes={SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                   $"SDL_JoystickNumButtons={SDL.SDL_JoystickNumButtons(myJoystick)}");
                     }
 
                     joysticks.Add(myJoystick);
                 }
 
-                currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
+                currentSdlNumJoysticks = SDL.SDL_NumJoysticks();
             }
         }
 
@@ -193,15 +193,15 @@ namespace Alis.Core.Manager.Input
         /// </summary>
         public override void Update()
         {
-            while (Sdl.SDL_PollEvent(out sdlEvent) != 0)
+            while (SDL.SDL_PollEvent(out sdlEvent) != 0)
             {
-                if (Sdl.SDL_NumJoysticks() > 0)
+                if (SDL.SDL_NumJoysticks() > 0)
                 {
                     for (int joystickId = 0; joystickId < joysticks.Count; joystickId++)
                     {
                         for (int index = 0; index < buttons.Count; index++)
                         {
-                            if ((Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0)
+                            if ((SDL.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0)
                                 && !buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                             {
                                 buttonsTemp.Add($"{joysticks[joystickId]}|{buttons[index]}", buttons[index]);
@@ -211,7 +211,7 @@ namespace Alis.Core.Manager.Input
                                 }
                             }
 
-                            if ((Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) == 0)
+                            if ((SDL.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) == 0)
                                 && buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                             {
                                 buttonsTemp.Remove($"{joysticks[joystickId]}|{buttons[index]}");
@@ -225,13 +225,13 @@ namespace Alis.Core.Manager.Input
                 }
             }
 
-            if (Sdl.SDL_NumJoysticks() > 0)
+            if (SDL.SDL_NumJoysticks() > 0)
             {
                 for (int joystickId = 0; joystickId < joysticks.Count; joystickId++)
                 {
                     for (int index = 0; index < buttons.Count; index++)
                     {
-                        if ((Sdl.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0)
+                        if ((SDL.SDL_JoystickGetButton(joysticks[joystickId], (int) buttons[index]) != 0)
                             && buttonsTemp.ContainsKey($"{joysticks[joystickId]}|{buttons[index]}"))
                         {
                             foreach (GameObject currentSceneGameObject in SceneManager.CurrentSceneManager.CurrentScene.GameObjects)

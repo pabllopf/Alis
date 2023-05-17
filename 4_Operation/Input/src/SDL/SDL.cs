@@ -37,7 +37,7 @@ using Alis.Core.Input.Properties;
 
 #endregion
 
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Input.SDL
 {
     /// <summary>
     ///     The sdl class
@@ -80,10 +80,10 @@ namespace Alis.Core.Graphic.SDL
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeInput.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeInput.linux_arm64_sdl2);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeInput.debian_arm64_cimgui);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2.so", NativeInput.linux_x64_sdl2);
                         break;
                 }
             }
