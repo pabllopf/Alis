@@ -44,8 +44,6 @@ namespace Alis.Core.Physic.Test
     /// </summary>
     public class WorldTest
     {
-        # region AddBody()
-
         /// <summary>
         ///     Tests that add body adds a body to the bodies collection.
         /// </summary>
@@ -82,14 +80,6 @@ namespace Alis.Core.Physic.Test
             Assert.Single(world.Bodies);
             Assert.Equal(mockBody.Object, world.Bodies[0]);
         }
-
-        #endregion
-
-        #region RemoveBody()
-
-        #endregion
-
-        # region ClearForces()
 
         /// <summary>
         ///     Tests that clear forces clears forces for a single body
@@ -218,11 +208,6 @@ namespace Alis.Core.Physic.Test
             // Assert that is empty bodies
             Assert.Empty(world.Bodies);
         }
-
-
-
-        #endregion
-
 
         /// <summary>
         /// The world
