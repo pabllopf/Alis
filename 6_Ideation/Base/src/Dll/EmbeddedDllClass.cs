@@ -83,7 +83,7 @@ namespace Alis.Core.Aspect.Base.Dll
             string[] names = assem.GetManifestResourceNames();
             AssemblyName an = assem.GetName();
 
-            string dirTemp = Path.Combine(Path.GetTempPath(), string.Format("{0}_{1}_{2}", an.Name, an.ProcessorArchitecture, an.Version));
+            string dirTemp = Path.Combine(Path.GetTempPath(), $"{an.Name}_{an.ProcessorArchitecture}_{an.Version}");
 
 
             if (!Directory.Exists(dirTemp))

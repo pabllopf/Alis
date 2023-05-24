@@ -43,6 +43,9 @@ namespace Alis.Core.Graphic.SDL
     /// </summary>
     public static class SDL_image
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SDL_image"/> class
+        /// </summary>
         static SDL_image()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

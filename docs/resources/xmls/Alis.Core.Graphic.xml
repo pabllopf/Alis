@@ -10180,6 +10180,11 @@
                 The im gui gl class
             </summary>
         </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGuiGL.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.ImGui.ImGuiGL"/> class
+            </summary>
+        </member>
         <member name="M:Alis.Core.Graphic.ImGui.ImGuiGL.CreateWindowAndGLContext(System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)">
             <summary>
                 Creates the window and gl context using the specified title
@@ -30606,6 +30611,21 @@
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
             </summary>
         </member>
+        <member name="F:Alis.Core.Graphic.Properties.NativeGraphic.resourceMan">
+            <summary>
+            The resource man
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Properties.NativeGraphic.resourceCulture">
+            <summary>
+            The resource culture
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Properties.NativeGraphic.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.Properties.NativeGraphic"/> class
+            </summary>
+        </member>
         <member name="P:Alis.Core.Graphic.Properties.NativeGraphic.ResourceManager">
             <summary>
               Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
@@ -30900,6 +30920,11 @@
         <member name="T:Alis.Core.Graphic.SDL.SDL">
             <summary>
                 The sdl class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SDL.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SDL.SDL"/> class
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SDL.SDL_Scancode">
@@ -45712,6 +45737,11 @@
                 The sdl image class
             </summary>
         </member>
+        <member name="M:Alis.Core.Graphic.SDL.SDL_image.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SDL.SDL_image"/> class
+            </summary>
+        </member>
         <member name="F:Alis.Core.Graphic.SDL.SDL_image.nativeLibName">
             <summary>
                 The native lib name
@@ -46009,6 +46039,11 @@
         <member name="T:Alis.Core.Graphic.SDL.SDL_ttf">
             <summary>
                 The sdl ttf class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.SDL.SDL_ttf.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Graphic.SDL.SDL_ttf"/> class
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.SDL.SDL_ttf.nativeLibName">

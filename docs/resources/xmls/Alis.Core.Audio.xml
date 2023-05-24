@@ -187,6 +187,11 @@
                 SFML object. It's meant for internal use only
             </summary>
         </member>
+        <member name="M:Alis.Core.Audio.ObjectBase.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.ObjectBase"/> class
+            </summary>
+        </member>
         <member name="F:Alis.Core.Audio.ObjectBase.myCPointer">
             <summary>
                 The zero
@@ -597,6 +602,21 @@
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
             </summary>
         </member>
+        <member name="F:Alis.Core.Audio.Properties.NativeAudio.resourceMan">
+            <summary>
+            The resource man
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.Properties.NativeAudio.resourceCulture">
+            <summary>
+            The resource culture
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.Properties.NativeAudio.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.Properties.NativeAudio"/> class
+            </summary>
+        </member>
         <member name="P:Alis.Core.Audio.Properties.NativeAudio.ResourceManager">
             <summary>
               Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
@@ -691,6 +711,11 @@
         <member name="T:Alis.Core.Audio.SDL.SDL">
             <summary>
                 The sdl class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SDL.SDL.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.SDL.SDL"/> class
             </summary>
         </member>
         <member name="T:Alis.Core.Audio.SDL.SDL.SDL_Scancode">
@@ -15501,6 +15526,11 @@
         <member name="T:Alis.Core.Audio.SDL.SDL_mixer">
             <summary>
                 The sdl mixer class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Audio.SDL.SDL_mixer.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Audio.SDL.SDL_mixer"/> class
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.SDL.SDL_mixer.nativeLibName">

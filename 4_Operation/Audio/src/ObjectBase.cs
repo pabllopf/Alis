@@ -42,6 +42,9 @@ namespace Alis.Core.Audio
     ////////////////////////////////////////////////////////////
     public abstract class ObjectBase : IDisposable
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ObjectBase"/> class
+        /// </summary>
         static ObjectBase()
         {
              if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

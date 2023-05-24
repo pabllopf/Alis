@@ -36,15 +36,6 @@ namespace Alis.Core.Aspect.Base
     /// </summary>
     public class AlisObject : object
     {
-        /*
-        static AlisObject()
-        {
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-graphics.dylib", Properties.Resources.osx_arm64_libcsfml_graphics_2_5_1);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-system.dylib", Properties.Resources.osx_arm64_libcsfml_system_2_5_1);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-window.dylib", Properties.Resources.osx_arm64_libcsfml_window_2_5_1);
-            EmbeddedDllClass.ExtractEmbeddedDlls("libcsfml-audio.dylib", Properties.Resources.osx_arm64_libcsfml_audio_2_5_1);
-        }*/
-
         /// <summary>
         ///     The name
         /// </summary>

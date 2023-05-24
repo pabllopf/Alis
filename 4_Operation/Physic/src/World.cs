@@ -77,12 +77,12 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Gets or sets the value of the joints
         /// </summary>
-        private List<Joint> Joints { get; } = new List<Joint>();
+        internal List<Joint> Joints { get; } = new List<Joint>();
 
         /// <summary>
         ///     Gets the value of the controllers
         /// </summary>
-        private List<Controller> Controllers { get; } = new List<Controller>();
+        internal List<Controller> Controllers { get; } = new List<Controller>();
 
         /// <summary>
         ///     Gets or sets the value of the contact manager

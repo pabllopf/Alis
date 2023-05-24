@@ -42,6 +42,9 @@ namespace Alis.Core.Graphic.ImGui
     /// </summary>
     public static class ImGuiGL
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ImGuiGL"/> class
+        /// </summary>
         static ImGuiGL()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

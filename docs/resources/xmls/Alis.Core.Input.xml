@@ -4,9 +4,204 @@
         <name>Alis.Core.Input</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Input.Properties.NativeInput">
+            <summary>
+            The native input class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Properties.NativeInput.resourceMan">
+            <summary>
+            The resource man
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Properties.NativeInput.resourceCulture">
+            <summary>
+            The resource culture
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Input.Properties.NativeInput.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Input.Properties.NativeInput"/> class
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.ResourceManager">
+            <summary>
+            Gets the value of the resource manager
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.Culture">
+            <summary>
+            Gets or sets the value of the culture
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_arm64_csfml_system">
+            <summary>
+            Gets the value of the linux arm64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_arm64_csfml_graphics">
+            <summary>
+            Gets the value of the linux arm64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_arm64_csfml_window">
+            <summary>
+            Gets the value of the linux arm64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_arm64_sdl2">
+            <summary>
+            Gets the value of the linux arm64 sdl2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x64_csfml_graphics">
+            <summary>
+            Gets the value of the linux x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x64_csfml_system">
+            <summary>
+            Gets the value of the linux x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x64_csfml_window">
+            <summary>
+            Gets the value of the linux x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x64_sdl2">
+            <summary>
+            Gets the value of the linux x64 sdl2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x86_csfml_graphics">
+            <summary>
+            Gets the value of the linux x86 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x86_csfml_system">
+            <summary>
+            Gets the value of the linux x86 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x86_csfml_window">
+            <summary>
+            Gets the value of the linux x86 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.linux_x86_sdl2">
+            <summary>
+            Gets the value of the linux x86 sdl2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_arm64_csfml_graphics">
+            <summary>
+            Gets the value of the osx arm64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_arm64_csfml_system">
+            <summary>
+            Gets the value of the osx arm64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_arm64_csfml_window">
+            <summary>
+            Gets the value of the osx arm64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_arm64_sdl2">
+            <summary>
+            Gets the value of the osx arm64 sdl2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_x64_csfml_graphics">
+            <summary>
+            Gets the value of the osx x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_x64_csfml_system">
+            <summary>
+            Gets the value of the osx x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_x64_csfml_window">
+            <summary>
+            Gets the value of the osx x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.osx_x64_sdl2">
+            <summary>
+            Gets the value of the osx x64 sdl2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_arm64_csfml_graphics">
+            <summary>
+            Gets the value of the win arm64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_arm64_csfml_system">
+            <summary>
+            Gets the value of the win arm64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_arm64_csfml_window">
+            <summary>
+            Gets the value of the win arm64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_arm64_sdl2">
+            <summary>
+            Gets the value of the win arm64 sdl2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x64_csfml_graphics">
+            <summary>
+            Gets the value of the win x64 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x64_csfml_system">
+            <summary>
+            Gets the value of the win x64 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x64_csfml_window">
+            <summary>
+            Gets the value of the win x64 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x64_sdl2">
+            <summary>
+            Gets the value of the win x64 sdl2
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x86_csfml_graphics">
+            <summary>
+            Gets the value of the win x86 csfml graphics
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x86_csfml_system">
+            <summary>
+            Gets the value of the win x86 csfml system
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x86_csfml_window">
+            <summary>
+            Gets the value of the win x86 csfml window
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Input.Properties.NativeInput.win_x86_sdl2">
+            <summary>
+            Gets the value of the win x86 sdl2
+            </summary>
+        </member>
         <member name="T:Alis.Core.Input.SDL.SDL">
             <summary>
                 The sdl class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Input.SDL.SDL.#cctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Input.SDL.SDL"/> class
             </summary>
         </member>
         <member name="T:Alis.Core.Input.SDL.SDL.SDL_Scancode">

@@ -43,6 +43,9 @@ namespace Alis.Core.Audio.SDL
     /// </summary>
     public static class SDL_mixer
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SDL_mixer"/> class
+        /// </summary>
         static SDL_mixer()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))

@@ -30,6 +30,10 @@
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
+using Alis.Core.Physic.Dynamics.Joints;
+using Alis.Core.Physic.Dynamics.Solver;
+using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.Extensions.Controllers.Velocity;
 using Moq;
 using Xunit;
 
@@ -215,6 +219,166 @@ namespace Alis.Core.Physic.Test
             Assert.Empty(world.Bodies);
         }
 
+
+
         #endregion
+
+
+        /// <summary>
+        /// The world
+        /// </summary>
+        private readonly World _world = new World(new Vector2F(0, 9.18f));
+
+        /// <summary>
+        /// Tests that add body adds correctly
+        /// </summary>
+        [Fact]
+        public void AddBody_AddsCorrectly()
+        {
+            Vector2F gravity = new Vector2F(0f, 9.18f);
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
+
+            var bodyMock = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+
+            _world.AddBody(bodyMock.Object);
+
+            Assert.Contains(bodyMock.Object, _world.Bodies);
+        }
+
+        /// <summary>
+        /// Tests that remove body removes correctly
+        /// </summary>
+        [Fact]
+        public void RemoveBody_RemovesCorrectly()
+        {
+            Vector2F gravity = new Vector2F(0f, 9.18f);
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
+
+            var bodyMock = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+            _world.AddBody(bodyMock.Object);
+
+            _world.RemoveBody(bodyMock.Object);
+
+            Assert.DoesNotContain(bodyMock.Object, _world.Bodies);
+        }
+        
+        /// <summary>
+        /// Tests that add joint adds correctly
+        /// </summary>
+        [Fact]
+        public void AddJoint_AddsCorrectly()
+        {
+            Vector2F gravity = new Vector2F(0f, 9.18f);
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
+
+            var bodyMock = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+            
+            Mock<AngleJoint> jointMock = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+
+            _world.AddJoint(jointMock.Object);
+
+            Assert.Contains(jointMock.Object, _world.Joints);
+        }
+
+        /// <summary>
+        /// Tests that remove joint removes correctly
+        /// </summary>
+        [Fact]
+        public void RemoveJoint_RemovesCorrectly()
+        {
+            
+            Vector2F gravity = new Vector2F(0f, 9.18f);
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
+
+            var bodyMock = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+            
+            Mock<AngleJoint> jointMock = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+
+            _world.AddJoint(jointMock.Object);
+
+            _world.RemoveJoint(jointMock.Object);
+
+            Assert.DoesNotContain(jointMock.Object, _world.Joints);
+        }
+
+        /// <summary>
+        /// Tests that add controller adds correctly
+        /// </summary>
+        [Fact]
+        public void AddController_AddsCorrectly()
+        {
+            Mock<VelocityLimitController> controllerMock = new Mock<VelocityLimitController>();
+
+            _world.AddController(controllerMock.Object);
+
+            Assert.Contains(controllerMock.Object, _world.Controllers);
+        }
+
+        /// <summary>
+        /// Tests that remove controller removes correctly
+        /// </summary>
+        [Fact]
+        public void RemoveController_RemovesCorrectly()
+        {
+            Mock<VelocityLimitController> controllerMock = new Mock<VelocityLimitController>();
+            _world.AddController(controllerMock.Object);
+
+        }
     }
 }

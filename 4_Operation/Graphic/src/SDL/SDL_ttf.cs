@@ -43,6 +43,9 @@ namespace Alis.Core.Graphic.SDL
     /// </summary>
     public static class SDL_ttf
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SDL_ttf"/> class
+        /// </summary>
         static SDL_ttf()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
