@@ -174,85 +174,61 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputText(label, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        ///     Describes whether input text
+        /// Determines whether the input text.
         /// </summary>
-        /// <param name="label">The label</param>
-        /// <param name="input">The input</param>
-        /// <param name="maxLength">The max length</param>
-        /// <param name="flags">The flags</param>
-        /// <param name="callback">The callback</param>
-        /// <param name="user_data">The user data</param>
-        /// <returns>The bool</returns>
+        /// <param name="label">The label.</param>
+        /// <param name="input">The input.</param>
+        /// <param name="maxLength">The maximum length.</param>
+        /// <param name="flags">The flags.</param>
+        /// <param name="callback">The callback.</param>
+        /// <param name="userData">The user data.</param>
+        /// <returns><c>true</c> if the input text; otherwise, <c>false</c>.</returns>
         public static bool InputText(
             string label,
             ref string input,
             uint maxLength,
             ImGuiInputTextFlags flags,
             ImGuiInputTextCallback callback,
-            IntPtr user_data)
+            IntPtr userData)
         {
-            int utf8LabelByteCount = Encoding.UTF8.GetByteCount(label);
-            byte* utf8LabelBytes;
-            if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
-            {
-                utf8LabelBytes = Util.Allocate(utf8LabelByteCount + 1);
-            }
-            else
-            {
-                byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
-                utf8LabelBytes = stackPtr;
-            }
+            // Convert label and input to ANSI strings
+            IntPtr labelPtr = Marshal.StringToHGlobalAnsi(label);
+            IntPtr inputPtr = Marshal.StringToHGlobalAnsi(input);
 
-            Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
+            // Convert ANSI strings to UTF-8 bytes
+            byte* utf8LabelBytes = (byte*)labelPtr.ToPointer();
+            byte* utf8InputBytes = (byte*)inputPtr.ToPointer();
 
-            int utf8InputByteCount = Encoding.UTF8.GetByteCount(input);
-            int inputBufSize = Math.Max((int) maxLength + 1, utf8InputByteCount + 1);
+            // Create buffers for modified input
+            int inputBufSize = Math.Max((int)maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
+            byte* modifiedUtf8InputBytes = stackalloc byte[inputBufSize];
+            byte* originalUtf8InputBytes = stackalloc byte[inputBufSize];
 
-            byte* utf8InputBytes;
-            byte* originalUtf8InputBytes;
-            if (inputBufSize > Util.StackAllocationSizeLimit)
-            {
-                utf8InputBytes = Util.Allocate(inputBufSize);
-                originalUtf8InputBytes = Util.Allocate(inputBufSize);
-            }
-            else
-            {
-                byte* inputStackBytes = stackalloc byte[inputBufSize];
-                utf8InputBytes = inputStackBytes;
-                byte* originalInputStackBytes = stackalloc byte[inputBufSize];
-                originalUtf8InputBytes = originalInputStackBytes;
-            }
+            // Copy input bytes to the modified input buffer
+            Unsafe.CopyBlock(modifiedUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
 
-            Util.GetUtf8(input, utf8InputBytes, inputBufSize);
-            uint clearBytesCount = (uint) (inputBufSize - utf8InputByteCount);
-            Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
-            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
-
+            // Call the ImGuiNative method
             byte result = ImGuiNative.igInputText(
                 utf8LabelBytes,
-                utf8InputBytes,
-                (uint) inputBufSize,
+                modifiedUtf8InputBytes,
+                (uint)inputBufSize,
                 flags,
                 callback,
-                user_data.ToPointer());
-            if (!Util.AreStringsEqual(originalUtf8InputBytes, inputBufSize, utf8InputBytes))
+                userData.ToPointer());
+
+            // Check if the input was modified and update the input variable accordingly
+            if (!Util.AreStringsEqual(originalUtf8InputBytes, inputBufSize, modifiedUtf8InputBytes))
             {
-                input = Util.StringFromPtr(utf8InputBytes);
+                input = Encoding.UTF8.GetString(modifiedUtf8InputBytes, inputBufSize);
             }
 
-            if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(utf8LabelBytes);
-            }
-
-            if (inputBufSize > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(utf8InputBytes);
-                Util.Free(originalUtf8InputBytes);
-            }
+            // Free the memory allocated by Marshal.StringToHGlobalAnsi
+            Marshal.FreeHGlobal(labelPtr);
+            Marshal.FreeHGlobal(inputPtr);
 
             return result != 0;
         }
+
 
         /// <summary>
         ///     Describes whether input text multiline
