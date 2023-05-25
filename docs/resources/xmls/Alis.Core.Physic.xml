@@ -13475,7 +13475,7 @@
         <member name="T:Alis.Core.Physic.World">
             <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
         </member>
-        <member name="F:Alis.Core.Physic.World.breakableBodies">
+        <member name="P:Alis.Core.Physic.World.BreakableBodies">
             <summary>
                 The breakable body
             </summary>

@@ -29,10 +29,10 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
+using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Dynamics.Solver;
-using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
+using Alis.Core.Physic.Extensions.Controllers.Gravity;
 using Alis.Core.Physic.Extensions.Controllers.Velocity;
 using Moq;
 using Xunit;
@@ -44,6 +44,11 @@ namespace Alis.Core.Physic.Test
     /// </summary>
     public class WorldTest
     {
+        /// <summary>
+        ///     The world
+        /// </summary>
+        private readonly World _world = new World(new Vector2F(0, 9.18f));
+
         /// <summary>
         ///     Tests that add body adds a body to the bodies collection.
         /// </summary>
@@ -210,12 +215,7 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// The world
-        /// </summary>
-        private readonly World _world = new World(new Vector2F(0, 9.18f));
-
-        /// <summary>
-        /// Tests that add body adds correctly
+        ///     Tests that add body adds correctly
         /// </summary>
         [Fact]
         public void AddBody_AddsCorrectly()
@@ -224,7 +224,7 @@ namespace Alis.Core.Physic.Test
             Vector2F position = new Vector2F(0f, 0f);
             Vector2F velocity = new Vector2F(0f, -1f);
 
-            var bodyMock = new Mock<Body>(
+            Mock<Body> bodyMock = new Mock<Body>(
                 position,
                 velocity,
                 BodyType.Dynamic,
@@ -245,7 +245,7 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// Tests that remove body removes correctly
+        ///     Tests that remove body removes correctly
         /// </summary>
         [Fact]
         public void RemoveBody_RemovesCorrectly()
@@ -254,7 +254,7 @@ namespace Alis.Core.Physic.Test
             Vector2F position = new Vector2F(0f, 0f);
             Vector2F velocity = new Vector2F(0f, -1f);
 
-            var bodyMock = new Mock<Body>(
+            Mock<Body> bodyMock = new Mock<Body>(
                 position,
                 velocity,
                 BodyType.Dynamic,
@@ -274,9 +274,9 @@ namespace Alis.Core.Physic.Test
 
             Assert.DoesNotContain(bodyMock.Object, _world.Bodies);
         }
-        
+
         /// <summary>
-        /// Tests that add joint adds correctly
+        ///     Tests that add joint adds correctly
         /// </summary>
         [Fact]
         public void AddJoint_AddsCorrectly()
@@ -285,7 +285,7 @@ namespace Alis.Core.Physic.Test
             Vector2F position = new Vector2F(0f, 0f);
             Vector2F velocity = new Vector2F(0f, -1f);
 
-            var bodyMock = new Mock<Body>(
+            Mock<Body> bodyMock = new Mock<Body>(
                 position,
                 velocity,
                 BodyType.Dynamic,
@@ -299,7 +299,7 @@ namespace Alis.Core.Physic.Test
                 false,
                 true,
                 1.0f);
-            
+
             Mock<AngleJoint> jointMock = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
 
             _world.AddJoint(jointMock.Object);
@@ -308,17 +308,16 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// Tests that remove joint removes correctly
+        ///     Tests that remove joint removes correctly
         /// </summary>
         [Fact]
         public void RemoveJoint_RemovesCorrectly()
         {
-            
             Vector2F gravity = new Vector2F(0f, 9.18f);
             Vector2F position = new Vector2F(0f, 0f);
             Vector2F velocity = new Vector2F(0f, -1f);
 
-            var bodyMock = new Mock<Body>(
+            Mock<Body> bodyMock = new Mock<Body>(
                 position,
                 velocity,
                 BodyType.Dynamic,
@@ -332,7 +331,7 @@ namespace Alis.Core.Physic.Test
                 false,
                 true,
                 1.0f);
-            
+
             Mock<AngleJoint> jointMock = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
 
             _world.AddJoint(jointMock.Object);
@@ -343,7 +342,7 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// Tests that add controller adds correctly
+        ///     Tests that add controller adds correctly
         /// </summary>
         [Fact]
         public void AddController_AddsCorrectly()
@@ -356,14 +355,172 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// Tests that remove controller removes correctly
+        ///     Tests that remove controller removes correctly
         /// </summary>
         [Fact]
         public void RemoveController_RemovesCorrectly()
         {
             Mock<VelocityLimitController> controllerMock = new Mock<VelocityLimitController>();
             _world.AddController(controllerMock.Object);
+        }
+        
+        /// <summary>
+        /// Tests that add body when called should add body to physics world
+        /// </summary>
+        [Fact]
+        public void AddBody_WhenCalled_ShouldAddBodyToPhysicsWorld()
+        {
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
 
+            Mock<Body> mockBody = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+            
+            _world.AddBody(mockBody.Object);
+
+            Assert.Contains(mockBody.Object, _world.Bodies);
+        }
+        
+        /// <summary>
+        /// Tests that add joint when called should add joint to physics world
+        /// </summary>
+        [Fact]
+        public void AddJoint_WhenCalled_ShouldAddJointToPhysicsWorld()
+        {
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
+
+            Mock<Body> bodyMock = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+            
+            Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+            
+            _world.AddJoint(mockJoint.Object);
+
+            Assert.Contains(mockJoint.Object, _world.Joints);
+        }
+
+        /// <summary>
+        /// Tests that add controller when called should add controller to physics world
+        /// </summary>
+        [Fact]
+        public void AddController_WhenCalled_ShouldAddControllerToPhysicsWorld()
+        {
+            Mock<VelocityLimitController> mockController = new Mock<VelocityLimitController>();
+            _world.AddController(mockController.Object);
+
+            Assert.Contains(mockController.Object, _world.Controllers);
+        }
+
+        /// <summary>
+        /// Tests that remove body when called should remove body from physics world
+        /// </summary>
+        [Fact]
+        public void RemoveBody_WhenCalled_ShouldRemoveBodyFromPhysicsWorld()
+        {
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
+
+            Mock<Body> mockBody = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+            
+            _world.AddBody(mockBody.Object);
+            _world.RemoveBody(mockBody.Object);
+
+            Assert.DoesNotContain(mockBody.Object, _world.Bodies);
+        }
+        
+        /// <summary>
+        /// Tests that remove joint when called should remove joint from physics world
+        /// </summary>
+        [Fact]
+        public void RemoveJoint_WhenCalled_ShouldRemoveJointFromPhysicsWorld()
+        {
+            Vector2F position = new Vector2F(0f, 0f);
+            Vector2F velocity = new Vector2F(0f, -1f);
+
+            Mock<Body> bodyMock = new Mock<Body>(
+                position,
+                velocity,
+                BodyType.Dynamic,
+                0.0f,
+                0.0f,
+                0.0f,
+                0.0f,
+                true,
+                true,
+                false,
+                false,
+                true,
+                1.0f);
+            
+            Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
+            _world.AddJoint(mockJoint.Object);
+            _world.RemoveJoint(mockJoint.Object);
+
+            Assert.DoesNotContain(mockJoint.Object, _world.Joints);
+        }
+
+        /// <summary>
+        /// Tests that remove controller when called should remove controller from physics world
+        /// </summary>
+        [Fact]
+        public void RemoveController_WhenCalled_ShouldRemoveControllerFromPhysicsWorld()
+        {
+            Mock<VelocityLimitController> mockController = new Mock<VelocityLimitController>();
+            _world.AddController(mockController.Object);
+            _world.RemoveController(mockController.Object);
+
+            Assert.DoesNotContain(mockController.Object, _world.Controllers);
+        }
+
+        /// <summary>
+        /// Tests that step when called should update physics world
+        /// </summary>
+        [Fact]
+        public void Step_WhenCalled_ShouldUpdatePhysicsWorld()
+        {
+            _world.Step(1.0f);
+
+            // Perform some assertion in addition to just verifying it didn't throw exceptions
+            Assert.NotNull(_world.ContactManager);
+            Assert.NotNull(_world.Bodies);
         }
     }
 }

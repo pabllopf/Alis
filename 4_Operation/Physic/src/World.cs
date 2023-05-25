@@ -46,7 +46,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     The breakable body
         /// </summary>
-        private readonly List<BreakableBody> breakableBodies = new List<BreakableBody>();
+        internal List<BreakableBody> BreakableBodies { get; } = new List<BreakableBody>();
 
         /// <summary>
         ///     The island
@@ -110,13 +110,13 @@ namespace Alis.Core.Physic
         ///     Adds the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
-        public void AddBreakableBody(BreakableBody breakableBody) => breakableBodies.Add(breakableBody);
+        public void AddBreakableBody(BreakableBody breakableBody) => BreakableBodies.Add(breakableBody);
 
         /// <summary>
         ///     Removes the breakable body using the specified breakable body
         /// </summary>
         /// <param name="breakableBody">The breakable body</param>
-        public void RemoveBreakableBody(BreakableBody breakableBody) => breakableBodies.Remove(breakableBody);
+        public void RemoveBreakableBody(BreakableBody breakableBody) => BreakableBodies.Remove(breakableBody);
 
         /// <summary>
         ///     Adds the joint using the specified joint
@@ -200,7 +200,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Updates the breakable bodies
         /// </summary>
-        private void UpdateBreakableBodies() => breakableBodies.ForEach(body => body.Update());
+        private void UpdateBreakableBodies() => BreakableBodies.ForEach(body => body.Update());
 
         /// <summary>
         ///     Solves the step
