@@ -9097,7 +9097,7 @@
         </member>
         <member name="M:Alis.Core.Graphic.ImGui.ImGui.InputTextWithHint(System.String,System.String,System.String@,System.UInt32,Alis.Core.Graphic.ImGui.ImGuiInputTextFlags,Alis.Core.Graphic.ImGui.ImGuiInputTextCallback,System.IntPtr)">
             <summary>
-                Describes whether input text with hint
+            Describes whether input text with hint
             </summary>
             <param name="label">The label</param>
             <param name="hint">The hint</param>
@@ -9107,6 +9107,49 @@
             <param name="callback">The callback</param>
             <param name="user_data">The user data</param>
             <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGui.GetUtf8Bytes(System.String)">
+            <summary>
+            Gets the utf 8 bytes using the specified text
+            </summary>
+            <param name="text">The text</param>
+            <returns>The utf bytes</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGui.GetUtf8Bytes(System.String,System.UInt32)">
+            <summary>
+            Gets the utf 8 bytes using the specified text
+            </summary>
+            <param name="text">The text</param>
+            <param name="maxLength">The max length</param>
+            <returns>The utf bytes</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGui.AreUtf8StringsEqual(System.Byte*,System.String)">
+            <summary>
+            Describes whether are utf 8 strings equal
+            </summary>
+            <param name="utf8Bytes">The utf bytes</param>
+            <param name="text">The text</param>
+            <returns>The bool</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGui.GetStringFromUtf8(System.Byte*)">
+            <summary>
+            Gets the string from utf 8 using the specified utf 8 bytes
+            </summary>
+            <param name="utf8Bytes">The utf bytes</param>
+            <returns>The string</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGui.FreeUtf8Bytes(System.Byte*)">
+            <summary>
+            Frees the utf 8 bytes using the specified utf 8 bytes
+            </summary>
+            <param name="utf8Bytes">The utf bytes</param>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGui.GetUtf8BytesLength(System.Byte*)">
+            <summary>
+            Gets the utf 8 bytes length using the specified utf 8 bytes
+            </summary>
+            <param name="utf8Bytes">The utf bytes</param>
+            <returns>The length</returns>
         </member>
         <member name="M:Alis.Core.Graphic.ImGui.ImGui.CalcTextSize(System.String)">
             <summary>

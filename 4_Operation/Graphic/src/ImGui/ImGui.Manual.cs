@@ -29,6 +29,7 @@
 
 using System;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Alis.Core.Graphic.ImGui
@@ -433,7 +434,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        ///     Describes whether input text with hint
+        /// Describes whether input text with hint
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
@@ -452,90 +453,129 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback,
             IntPtr user_data)
         {
-            int utf8LabelByteCount = Encoding.UTF8.GetByteCount(label);
-            byte* utf8LabelBytes;
-            if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
-            {
-                utf8LabelBytes = Util.Allocate(utf8LabelByteCount + 1);
-            }
-            else
-            {
-                byte* stackPtr = stackalloc byte[utf8LabelByteCount + 1];
-                utf8LabelBytes = stackPtr;
-            }
-
-            Util.GetUtf8(label, utf8LabelBytes, utf8LabelByteCount);
-
-            int utf8HintByteCount = Encoding.UTF8.GetByteCount(hint);
-            byte* utf8HintBytes;
-            if (utf8HintByteCount > Util.StackAllocationSizeLimit)
-            {
-                utf8HintBytes = Util.Allocate(utf8HintByteCount + 1);
-            }
-            else
-            {
-                byte* stackPtr = stackalloc byte[utf8HintByteCount + 1];
-                utf8HintBytes = stackPtr;
-            }
-
-            Util.GetUtf8(hint, utf8HintBytes, utf8HintByteCount);
-
-            int utf8InputByteCount = Encoding.UTF8.GetByteCount(input);
-            int inputBufSize = Math.Max((int) maxLength + 1, utf8InputByteCount + 1);
-
-            byte* utf8InputBytes;
-            byte* originalUtf8InputBytes;
-            if (inputBufSize > Util.StackAllocationSizeLimit)
-            {
-                utf8InputBytes = Util.Allocate(inputBufSize);
-                originalUtf8InputBytes = Util.Allocate(inputBufSize);
-            }
-            else
-            {
-                byte* inputStackBytes = stackalloc byte[inputBufSize];
-                utf8InputBytes = inputStackBytes;
-                byte* originalInputStackBytes = stackalloc byte[inputBufSize];
-                originalUtf8InputBytes = originalInputStackBytes;
-            }
-
-            Util.GetUtf8(input, utf8InputBytes, inputBufSize);
-            uint clearBytesCount = (uint) (inputBufSize - utf8InputByteCount);
-
-            //Array.Clear(utf8InputBytes, utf8InputByteCount, clearBytesCount);
-            Unsafe.InitBlockUnaligned(utf8InputBytes + utf8InputByteCount, 0, clearBytesCount);
-            Unsafe.CopyBlock(originalUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
+            byte* utf8LabelBytes = GetUtf8Bytes(label);
+            byte* utf8HintBytes = GetUtf8Bytes(hint);
+            byte* utf8InputBytes = GetUtf8Bytes(input, maxLength);
 
             byte result = ImGuiNative.igInputTextWithHint(
                 utf8LabelBytes,
                 utf8HintBytes,
                 utf8InputBytes,
-                (uint) inputBufSize,
+                maxLength + 1,
                 flags,
                 callback,
                 user_data.ToPointer());
-            if (!Util.AreStringsEqual(originalUtf8InputBytes, inputBufSize, utf8InputBytes))
+
+            bool hasInputChanged = !AreUtf8StringsEqual(utf8InputBytes, input);
+            if (hasInputChanged)
             {
-                input = Util.StringFromPtr(utf8InputBytes);
+                input = GetStringFromUtf8(utf8InputBytes);
             }
 
-            if (utf8LabelByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(utf8LabelBytes);
-            }
-
-            if (utf8HintByteCount > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(utf8HintBytes);
-            }
-
-            if (inputBufSize > Util.StackAllocationSizeLimit)
-            {
-                Util.Free(utf8InputBytes);
-                Util.Free(originalUtf8InputBytes);
-            }
+            FreeUtf8Bytes(utf8LabelBytes);
+            FreeUtf8Bytes(utf8HintBytes);
+            FreeUtf8Bytes(utf8InputBytes);
 
             return result != 0;
         }
+
+        /// <summary>
+        /// Gets the utf 8 bytes using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <returns>The utf bytes</returns>
+        private static byte* GetUtf8Bytes(string text)
+        {
+            int byteCount = Encoding.UTF8.GetByteCount(text);
+            byte* utf8Bytes = (byte*)Marshal.AllocHGlobal(byteCount + 1);
+            Util.GetUtf8(text, utf8Bytes, byteCount);
+            utf8Bytes[byteCount] = 0; // Null-terminate the string
+            return utf8Bytes;
+        }
+
+
+        /// <summary>
+        /// Gets the utf 8 bytes using the specified text
+        /// </summary>
+        /// <param name="text">The text</param>
+        /// <param name="maxLength">The max length</param>
+        /// <returns>The utf bytes</returns>
+        private static byte* GetUtf8Bytes(string text, uint maxLength)
+        {
+            int byteCount = Encoding.UTF8.GetByteCount(text);
+            int inputBufSize = Math.Max((int)maxLength + 1, byteCount + 1);
+            byte[] utf8BytesArray = new byte[inputBufSize];
+            fixed (byte* utf8Bytes = utf8BytesArray)
+            {
+                Util.GetUtf8(text, utf8Bytes, inputBufSize);
+                Unsafe.InitBlockUnaligned(utf8Bytes + byteCount, 0, (uint)(inputBufSize - byteCount));
+                byte* result = (byte*)Marshal.AllocHGlobal(inputBufSize);
+                Unsafe.CopyBlock(result, utf8Bytes, (uint)inputBufSize);
+                return result;
+            }
+        }
+
+
+        /// <summary>
+        /// Describes whether are utf 8 strings equal
+        /// </summary>
+        /// <param name="utf8Bytes">The utf bytes</param>
+        /// <param name="text">The text</param>
+        /// <returns>The bool</returns>
+        private static bool AreUtf8StringsEqual(byte* utf8Bytes, string text)
+        {
+            int byteCount = Encoding.UTF8.GetByteCount(text);
+            return Util.AreStringsEqual(utf8Bytes, byteCount, utf8Bytes);
+        }
+
+        /// <summary>
+        /// Gets the string from utf 8 using the specified utf 8 bytes
+        /// </summary>
+        /// <param name="utf8Bytes">The utf bytes</param>
+        /// <returns>The string</returns>
+        private static string GetStringFromUtf8(byte* utf8Bytes)
+        {
+            return Util.StringFromPtr(utf8Bytes);
+        }
+
+        /// <summary>
+        /// Frees the utf 8 bytes using the specified utf 8 bytes
+        /// </summary>
+        /// <param name="utf8Bytes">The utf bytes</param>
+        private static void FreeUtf8Bytes(byte* utf8Bytes)
+        {
+            int allocatedSize = GetUtf8BytesLength(utf8Bytes);
+            if (allocatedSize > Util.StackAllocationSizeLimit)
+            {
+                Util.Free(utf8Bytes);
+            }
+        }
+
+        /// <summary>
+        /// Gets the utf 8 bytes length using the specified utf 8 bytes
+        /// </summary>
+        /// <param name="utf8Bytes">The utf bytes</param>
+        /// <returns>The length</returns>
+        private static int GetUtf8BytesLength(byte* utf8Bytes)
+        {
+            if (utf8Bytes == null)
+            {
+                return 0;
+            }
+
+            int length = 0;
+            while (*(utf8Bytes + length) != 0)
+            {
+                length++;
+            }
+
+            return length;
+        }
+
+
+
+
+
 
         /// <summary>
         ///     Calcs the text size using the specified text
