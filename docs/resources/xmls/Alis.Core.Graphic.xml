@@ -9051,15 +9051,23 @@
         </member>
         <member name="M:Alis.Core.Graphic.ImGui.ImGui.InputTextMultiline(System.String,System.String@,System.UInt32,System.Numerics.Vector2,Alis.Core.Graphic.ImGui.ImGuiInputTextFlags,Alis.Core.Graphic.ImGui.ImGuiInputTextCallback,System.IntPtr)">
             <summary>
-                Describes whether input text multiline
+            Determines whether the input text is multiline.
             </summary>
-            <param name="label">The label</param>
-            <param name="input">The input</param>
-            <param name="maxLength">The max length</param>
-            <param name="size">The size</param>
-            <param name="flags">The flags</param>
-            <param name="callback">The callback</param>
-            <param name="user_data">The user data</param>
+            <param name="label">The label.</param>
+            <param name="input">The input.</param>
+            <param name="maxLength">The maximum length.</param>
+            <param name="size">The size.</param>
+            <param name="flags">The flags.</param>
+            <param name="callback">The callback.</param>
+            <param name="userData">The user data.</param>
+            <returns><c>true</c> if the input text is multiline; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Alis.Core.Graphic.ImGui.ImGui.AreByteArraysEqual(System.Byte[],System.Byte[])">
+            <summary>
+            Describes whether are byte arrays equal
+            </summary>
+            <param name="array1">The array</param>
+            <param name="array2">The array</param>
             <returns>The bool</returns>
         </member>
         <member name="M:Alis.Core.Graphic.ImGui.ImGui.InputTextWithHint(System.String,System.String,System.String@,System.UInt32)">
