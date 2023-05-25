@@ -57,9 +57,10 @@ namespace Alis.Core.Network
         public static string CalculateWebSocketKey()
         {
             // this is not used for cryptography so doing something simple like he code below is op
-            Random rand = new Random((int) DateTime.Now.Ticks);
+            //Random rand = new Random((int) DateTime.Now.Ticks);
+            RandomNumberGenerator ran = RandomNumberGenerator.Create();
             byte[] keyAsBytes = new byte[16];
-            rand.NextBytes(keyAsBytes);
+            ran.GetBytes(keyAsBytes);
             return Convert.ToBase64String(keyAsBytes);
         }
 
