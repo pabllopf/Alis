@@ -32,11 +32,19 @@ jobs:
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
       actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     name: Codacy Security Scan
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       # Checkout the repository to the GitHub Actions runner
       - name: Checkout code
         uses: actions/checkout@v3
+        
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Dotnet install workload
+        run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
         
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
