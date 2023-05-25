@@ -94,17 +94,11 @@ namespace Alis.Core.Audio
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
                     case Architecture.Arm64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.debian_arm64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.linux_arm64_csfml_audio);
                         break;
                     case Architecture.X64:
-                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.debian_x64_csfml_audio);
+                        EmbeddedDllClass.ExtractEmbeddedDlls("csfml-audio.so", NativeAudio.linux_x64_csfml_audio);
                         break;
-                    case Architecture.Arm:
-                        break;
-                    case Architecture.X86:
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
             }
         }

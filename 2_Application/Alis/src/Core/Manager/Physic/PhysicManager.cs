@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic;
 using Alis.Core.Physic.Dynamics;
 

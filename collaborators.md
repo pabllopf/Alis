@@ -1,14 +1,17 @@
 # Collaborators 🤝
 
-Alis is a collaborative project and we are grateful to our collaborators for their ongoing work and support. Their contributions help us to continue developing and maintaining this project.
+Alis is a collaborative project and we are grateful to our collaborators for their ongoing work and support. Their
+contributions help us to continue developing and maintaining this project.
 
 ## How to become a collaborator
 
-If you are interested in becoming a collaborator of Alis, please visit our [collaboration page][collaboration] to learn more about how to get involved.
+If you are interested in becoming a collaborator of Alis, please visit our [collaboration page][collaboration] to learn
+more about how to get involved.
 
 ## Our current collaborators
 
-We would like to acknowledge and thank the following individuals and organizations for their contributions as collaborators to Alis:
+We would like to acknowledge and thank the following individuals and organizations for their contributions as
+collaborators to Alis:
 
 <!-- readme: collaborators -start -->
 <table>
@@ -89,12 +92,15 @@ We would like to acknowledge and thank the following individuals and organizatio
 
 ### Code of Conduct
 
-Before collaborating with us, please read our [code of conduct][coc]. By participating in our community, you agree to abide by its terms.
+Before collaborating with us, please read our [code of conduct][coc]. By participating in our community, you agree to
+abide by its terms.
 
 ## Changes to this section
 
-We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or through a notification on our website.
+We reserve the right to modify this section at any time. If we make significant changes, we will notify you by email or
+through a notification on our website.
 
 [collaboration]: https://www.alisengine.com/web/collaboration.html
+
 [coc]: https://www.alisengine.com/web/code_of_conduct.html
 

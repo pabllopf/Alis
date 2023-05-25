@@ -28,10 +28,8 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
 
 namespace Alis.Core.Aspect.Base.Dll
 {
@@ -67,15 +65,12 @@ namespace Alis.Core.Aspect.Base.Dll
     ///         <item>Continue using standard Pinvoke methods for the desired functions in the DLL</item>
     ///     </list>
     /// </summary>
-    public class EmbeddedDllClass
+    public static class EmbeddedDllClass
     {
         /// <summary>
+        ///     Gets or sets the value of the current directory
         /// </summary>
-        public static string TempFolder = "";
-
-        /// <summary>
-        /// </summary>
-        public static string DirName = "";
+        public static string CurrentDirectory { get; private set; } = "";
 
         /// <summary>
         ///     Extract DLLs from resources to temporary folder
@@ -88,72 +83,29 @@ namespace Alis.Core.Aspect.Base.Dll
             string[] names = assem.GetManifestResourceNames();
             AssemblyName an = assem.GetName();
 
-            // The temporary folder holds one or more of the temporary DLLs
-            // It is made "unique" to avoid different versions of the DLL or architectures.
-            TempFolder = string.Format("{0}.{1}.{2}", an.Name, an.ProcessorArchitecture, an.Version);
-
-            DirName = Path.Combine(Path.GetTempPath(), TempFolder);
-            DirName = Environment.CurrentDirectory;
+            string dirTemp = Path.Combine(Path.GetTempPath(), $"{an.Name}_{an.ProcessorArchitecture}_{an.Version}");
 
 
-            if (!Directory.Exists(DirName))
+            if (!Directory.Exists(dirTemp))
             {
-                Directory.CreateDirectory(DirName);
+                Directory.CreateDirectory(dirTemp);
             }
 
-            // Add the temporary dirName to the PATH environment variable (at the head!)
-            string path = Environment.GetEnvironmentVariable("PATH");
-            string[] pathPieces = path.Split(';');
-            bool found = false;
-            foreach (string pathPiece in pathPieces)
+            if (CurrentDirectory == "")
             {
-                if (pathPiece == DirName)
-                {
-                    found = true;
-                    break;
-                }
+                CurrentDirectory = Environment.CurrentDirectory;
             }
 
-            if (!found)
+            Directory.SetCurrentDirectory(dirTemp);
+
+            string dllPath = Path.Combine(dirTemp, dllName);
+
+            if (!File.Exists(dllPath))
             {
-                Environment.SetEnvironmentVariable("PATH", DirName + ";" + path);
+                File.WriteAllBytes(dllPath, resourceBytes);
             }
 
-            // See if the file exists, avoid rewriting it if not necessary
-            string dllPath = Path.Combine(DirName, dllName);
-            if (File.Exists(dllPath))
-            {
-                File.Delete(dllPath);
-            }
-
-            File.WriteAllBytes(dllPath, resourceBytes);
-        }
-
-        /// <summary>
-        ///     Loads the library using the specified lp file name
-        /// </summary>
-        /// <param name="lpFileName">The lp file name</param>
-        /// <returns>The int ptr</returns>
-        [DllImport("kernel32", SetLastError = true, CharSet = CharSet.Unicode)]
-        private static extern IntPtr LoadLibrary(string lpFileName);
-
-        /// <summary>
-        ///     managed wrapper around LoadLibrary
-        /// </summary>
-        /// <param name="dllName"></param>
-        public static void LoadDll(string dllName)
-        {
-            if (TempFolder == "")
-            {
-                throw new Exception("Please call ExtractEmbeddedDlls before LoadDll");
-            }
-
-            IntPtr h = LoadLibrary(dllName);
-            if (h == IntPtr.Zero)
-            {
-                Exception e = new Win32Exception();
-                throw new DllNotFoundException("Unable to load library: " + dllName + " from " + TempFolder, e);
-            }
+            Console.WriteLine($"dllPath={dllPath}");
         }
     }
 }

@@ -1,0 +1,308 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Aspect.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Aspect.Logging.Color">
+            <summary>
+                Color for debug drawing. Each value has the range [0,1].
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Color.r">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Color.g">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.Color.b">
+            <summary>
+                The
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Color.#ctor(System.Single,System.Single,System.Single)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.Color" /> class
+            </summary>
+            <param name="r">The </param>
+            <param name="g">The </param>
+            <param name="b">The </param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Color.Set(System.Single,System.Single,System.Single)">
+            <summary>
+                Sets the r
+            </summary>
+            <param name="r">The </param>
+            <param name="g">The </param>
+            <param name="b">The </param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.ConsoleController">
+            <summary>
+                The console controller class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.ConsoleController.#cctor">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.ConsoleController" /> class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._filePath">
+            <summary>
+                The file path
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleController._dirPath">
+            <summary>
+                The dir path
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.ConsoleController.Print(Alis.Core.Aspect.Logging.Message)">
+            <summary>
+                Prints the to console using the specified message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.ConsoleLogConfig">
+            <summary>
+                The console log config class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleLogConfig.InfoMessageColor">
+            <summary>
+                Info text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleLogConfig.LogMessageColor">
+            <summary>
+                Log text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleLogConfig.TraceMessageColor">
+            <summary>
+                Trace text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleLogConfig.WarningMessageColor">
+            <summary>
+                Warning text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleLogConfig.ErrorMessageColor">
+            <summary>
+                Error text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleLogConfig.ExceptionMessageColor">
+            <summary>
+                Exception text color
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.ConsoleLogConfig.EventMessageColor">
+            <summary>
+                Event text color
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.ConsoleLogConfig.GetColorMessageByType(Alis.Core.Aspect.Logging.MessageType)">
+            <summary>
+                Gets the color message by type using the specified message type
+            </summary>
+            <param name="messageType">The message type</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">null</exception>
+            <returns>The console color</returns>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.FileController">
+            <summary>
+                The file controller class
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.Logger">
+            <summary>
+                The logger class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Trace">
+            <summary>
+                Traces the message
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Trace(System.String)">
+            <summary>
+                Traces the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Info">
+            <summary>
+                Info
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Info(System.String)">
+            <summary>
+                Info the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Log(System.String)">
+            <summary>
+                Logs the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Event(System.String)">
+            <summary>
+                Events the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Event">
+            <summary>
+                Events
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Warning(System.String)">
+            <summary>
+                Warnings the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Error(System.String)">
+            <summary>
+                Errors the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Exception(System.String)">
+            <summary>
+                Exceptions the message
+            </summary>
+            <param name="message">The message</param>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Logger.Exception(System.Exception)">
+            <summary>
+                Exceptions the exception
+            </summary>
+            <param name="exception">The exception</param>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.LogLevel">
+            <summary>
+                The log level enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Info">
+            <summary>
+                The info log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Log">
+            <summary>
+                The log log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Normal">
+            <summary>
+                The normal log level
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.LogLevel.Critical">
+            <summary>
+                The critical log level
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.Message">
+            <summary>
+                The message class
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Aspect.Logging.Message.#ctor(Alis.Core.Aspect.Logging.MessageType,System.String)">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Logging.Message" /> class
+            </summary>
+            <param name="messageType">The message type</param>
+            <param name="content">The content</param>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.DateTime">
+            <summary>
+                Gets or sets the value of the date time
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.MessageType">
+            <summary>
+                Gets or sets the value of the message type
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.Level">
+            <summary>
+                Gets or sets the value of the level
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.Content">
+            <summary>
+                Gets or sets the value of the content
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.StackTrace">
+            <summary>
+                Gets or sets the value of the stack trace
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.Method">
+            <summary>
+                Gets or sets the value of the method
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.File">
+            <summary>
+                Gets or sets the value of the file
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Aspect.Logging.Message.Line">
+            <summary>
+                Gets or sets the value of the line
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Aspect.Logging.MessageType">
+            <summary>
+                The message type enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.MessageType.Trace">
+            <summary>
+                The trace message type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.MessageType.Info">
+            <summary>
+                The info message type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.MessageType.Log">
+            <summary>
+                The log message type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.MessageType.Event">
+            <summary>
+                The event message type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.MessageType.Warning">
+            <summary>
+                The warning message type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.MessageType.Error">
+            <summary>
+                The error message type
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Aspect.Logging.MessageType.Exception">
+            <summary>
+                The exception message type
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Sample.Collisions</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Sample.Collisions.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="M:Alis.Sample.Collisions.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+        <member name="M:Alis.Sample.Collisions.Program.Setting">
+            <summary>
+                Settings
+            </summary>
+        </member>
+    </members>
+</doc>

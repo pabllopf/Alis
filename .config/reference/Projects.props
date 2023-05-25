@@ -3,11 +3,14 @@
 
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
-        $(AssemblyName.Contains('App')) == False AND 
+        $(AssemblyName.Contains('App.Installer')) == False AND 
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
         $(Configuration) == 'Debug'">
+
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+                          Include="$(SolutionDir)2_Application/**/Alis.csproj"/>
 
         <ProjectReference Condition="$(ProjectDir.Contains('2_Application'))"
                           Include="$(SolutionDir)3_Structuration/**/*.csproj"
@@ -31,11 +34,14 @@
 
     <ItemGroup Condition="
         $(AssemblyName.Contains('Test')) == False AND
-        $(AssemblyName.Contains('App')) == False AND 
+        $(AssemblyName.Contains('App.Installer')) == False AND 
         $(AssemblyName.Contains('Sample')) == False AND
         $(AssemblyName.Contains('Template')) == False AND 
         $(AssemblyName.Contains('Benchmark')) == False AND 
         $(Configuration) == 'Release'">
+
+        <ProjectReference Condition="$(ProjectDir.Contains('1_Presentation'))"
+                          Include="$(SolutionDir)2_Application/**/Alis.csproj"/>
 
         <Compile Condition="$(ProjectDir.Contains('2_Application'))"
                  Include="

@@ -46,18 +46,13 @@ namespace Alis.Core.Physic.Collision.ContactSystem
     public class ContactManager
     {
         /// <summary>
-        /// The current instance
-        /// </summary>
-        public static ContactManager Current;
-        
-        /// <summary>Fires when a contact is created</summary>
-        public BeginContactHandler BeginContact;
-        
-        /// <summary>
         ///     The contact
         /// </summary>
         public readonly Queue<Contact> ContactPool = new Queue<Contact>(256);
-        
+
+        /// <summary>Fires when a contact is created</summary>
+        public BeginContactHandler BeginContact;
+
         /// <summary>
         ///     The contact count
         /// </summary>
@@ -67,17 +62,17 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         public CollisionFilterHandler ContactFilter;
 
         /// <summary>
-        /// The last min alpha
-        /// </summary>
-        private float lastMinAlpha;
-
-        /// <summary>
         ///     The contact list
         /// </summary>
         internal List<Contact> ContactList = new List<Contact>();
 
         /// <summary>Fires when a contact is deleted</summary>
         public EndContactHandler EndContact;
+
+        /// <summary>
+        ///     The last min alpha
+        /// </summary>
+        private float lastMinAlpha;
 
         /// <summary>Fires when the broadphase detects that two Fixtures are close to each other.</summary>
         public BroadphaseHandler OnBroadphaseCollision;
@@ -108,6 +103,11 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         ///     Gets the value of the contact count
         /// </summary>
         public int ContactCount => ContactCounter;
+
+        /// <summary>
+        ///     The current instance
+        /// </summary>
+        public static ContactManager Current;
 
         // Broad-phase callback.
         /// <summary>
@@ -419,7 +419,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         }
 
         /// <summary>
-        /// Gets the the min contact using the specified min alpha
+        ///     Gets the the min contact using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <returns>The contact</returns>
@@ -545,12 +545,12 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         internal void ClearFlags() => ContactList.ForEach(c => c.ClearFlags());
 
         /// <summary>
-        /// Invalidates the toi
+        ///     Invalidates the toi
         /// </summary>
         public void InvalidateTOI() => ContactList.ForEach(i => i.InvalidateTOI());
 
         /// <summary>
-        /// Calculates the min alpha
+        ///     Calculates the min alpha
         /// </summary>
         /// <returns>The float</returns>
         public float CalculateMinAlpha() => lastMinAlpha;

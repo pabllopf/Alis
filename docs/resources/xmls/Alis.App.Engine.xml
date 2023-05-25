@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.App.Engine</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.App.Engine.Engine">
+            <summary>
+                The engine class
+            </summary>
+        </member>
+        <member name="M:Alis.App.Engine.Engine.#ctor(System.String[])">
+            <summary>
+                Initializes a new instance of the <see cref="T:Alis.App.Engine.Engine" /> class
+            </summary>
+            <param name="args">The args</param>
+        </member>
+        <member name="M:Alis.App.Engine.Engine.Start">
+            <summary>
+                Starts this instance
+            </summary>
+            <returns>The int</returns>
+        </member>
+        <member name="T:Alis.App.Engine.MainClass">
+            <summary>
+                The main class
+            </summary>
+        </member>
+        <member name="F:Alis.App.Engine.MainClass._renderer">
+            <summary>
+                The renderer
+            </summary>
+        </member>
+        <member name="F:Alis.App.Engine.MainClass._quit">
+            <summary>
+                The quit
+            </summary>
+        </member>
+        <member name="F:Alis.App.Engine.MainClass._window">
+            <summary>
+                The window
+            </summary>
+        </member>
+        <member name="F:Alis.App.Engine.MainClass._glContext">
+            <summary>
+                The gl context
+            </summary>
+        </member>
+        <member name="M:Alis.App.Engine.MainClass.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>

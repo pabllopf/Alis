@@ -22,14 +22,14 @@
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
     </PropertyGroup>
-    
+
 
     <ItemGroup Condition="$([MSBuild]::IsOSPlatform('osx'))">
-        <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8" />
-        <MauiSplashScreen Include="Resources\alis_banner.png" BaseSize="256" Color="#F8F8F8" />
-        <PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.3" />
-        <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.3" />
-        <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj" />
+        <MauiIcon Include="Resources\appicon.png" IsAppIcon="true" Color="#F8F8F8"/>
+        <MauiSplashScreen Include="Resources\alis_banner.png" BaseSize="256" Color="#F8F8F8"/>
+        <PackageReference Include="SkiaSharp.Views.Maui.Controls.Compatibility" Version="2.88.3"/>
+        <PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.3"/>
+        <ProjectReference Include="..\Alis.Template.Game\Alis.Template.Game.csproj"/>
     </ItemGroup>
 
     <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) OR&#xA;    $([MSBuild]::IsOSPlatform('linux'))">
@@ -47,20 +47,20 @@
     </PropertyGroup>
 
     <ItemGroup Condition="&#xA;    $([MSBuild]::IsOSPlatform('windows')) OR &#xA;    $([MSBuild]::IsOSPlatform('linux'))">
-        <None Remove="App.xaml" />
-        <None Remove="MainPage.xaml" />
-        <Compile Remove="App.xaml.cs" />
-        <Compile Remove="MainPage.xaml.cs" />
-        <Compile Remove="Platforms\**" />
-        <None Remove="Platforms\**" />
-        <EmbeddedResource Remove="Platforms\**" />
+        <None Remove="App.xaml"/>
+        <None Remove="MainPage.xaml"/>
+        <Compile Remove="App.xaml.cs"/>
+        <Compile Remove="MainPage.xaml.cs"/>
+        <Compile Remove="Platforms\**"/>
+        <None Remove="Platforms\**"/>
+        <EmbeddedResource Remove="Platforms\**"/>
     </ItemGroup>
 
     <Target Name="RestrictOS" BeforeTargets="Compile">
         <PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) OR $([MSBuild]::IsOSPlatform('linux'))">
             <UnsupportedTarget>true</UnsupportedTarget>
         </PropertyGroup>
-        <Warning Code="UNSUPPORTED" Text="Can't compile 'Macos apps' on Windows or Linux OS." Condition=" '$(UnsupportedTarget)' == 'true' " />
+        <Warning Code="UNSUPPORTED" Text="Can't compile 'Macos apps' on Windows or Linux OS." Condition=" '$(UnsupportedTarget)' == 'true' "/>
     </Target>
-    
+
 </Project>

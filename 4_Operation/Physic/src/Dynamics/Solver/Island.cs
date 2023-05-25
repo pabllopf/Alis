@@ -73,6 +73,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
         private readonly List<Velocity> velocities = new List<Velocity>(Settings.ToiContacts);
 
         /// <summary>
+        ///     Gets or sets the value of the step
+        /// </summary>
+        private TimeStep TimeStepSolveToi { get; set; } = new TimeStep();
+
+        /// <summary>
         ///     The angular sleep tolerance
         /// </summary>
         private const float AngTolSqr = Settings.AngularSleepTolerance * Settings.AngularSleepTolerance;
@@ -81,11 +86,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
         ///     The linear sleep tolerance
         /// </summary>
         private const float LinTolSqr = Settings.LinearSleepTolerance * Settings.LinearSleepTolerance;
-        
-        /// <summary>
-        ///     Gets or sets the value of the step
-        /// </summary>
-        private TimeStep TimeStepSolveToi { get; set; } = new TimeStep();
 
         /// <summary>
         ///     Clears this instance
@@ -98,9 +98,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
 
-       
         /// <summary>
-        /// Solves the step
+        ///     Solves the step
         /// </summary>
         /// <param name="step">The step</param>
         /// <param name="gravity">The gravity</param>
@@ -390,7 +389,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
 
                 // Copy state buffers back to the bodies
                 for (int i = 0; i < Bodies.Count; ++i)
-                { ;
+                {
+                    ;
                     Bodies[i].Sweep.C = positions[i].C;
                     Bodies[i].Sweep.A = positions[i].A;
                     Bodies[i].LinearVelocity = velocities[i].V;
@@ -438,7 +438,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     }
                 }
             }
-            
+
             // Post solve cleanup.
             for (int i = 0; i < Bodies.Count; ++i)
             {
@@ -451,9 +451,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
 
-       
         /// <summary>
-        /// Solves the toi using the specified min alpha
+        ///     Solves the toi using the specified min alpha
         /// </summary>
         /// <param name="minAlpha">The min alpha</param>
         /// <param name="subStep">The sub step</param>
@@ -468,8 +467,8 @@ namespace Alis.Core.Physic.Dynamics.Solver
             TimeStepSolveToi.PositionIterations = 20;
             TimeStepSolveToi.VelocityIterations = subStep.VelocityIterations;
             TimeStepSolveToi.WarmStarting = false;
-            
-            
+
+
             Debug.Assert(toiIndexA < Bodies.Count);
             Debug.Assert(toiIndexB < Bodies.Count);
 
@@ -599,9 +598,9 @@ namespace Alis.Core.Physic.Dynamics.Solver
         /// <param name="joint">The joint</param>
         public void Add(Joint joint) => joints.Add(joint);
 
-  
+
         /// <summary>
-        /// Reports the constraints
+        ///     Reports the constraints
         /// </summary>
         /// <param name="constraints">The constraints</param>
         /// <param name="contactManager">The contact manager</param>
@@ -621,7 +620,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
         }
 
         /// <summary>
-        /// Synchronizes the bodies
+        ///     Synchronizes the bodies
         /// </summary>
         public void SynchronizeBodies()
         {

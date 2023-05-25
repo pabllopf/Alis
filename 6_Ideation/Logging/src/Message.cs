@@ -29,7 +29,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Text.Json.Serialization;
 
 namespace Alis.Core.Aspect.Logging
 {
@@ -43,7 +42,6 @@ namespace Alis.Core.Aspect.Logging
         /// </summary>
         /// <param name="messageType">The message type</param>
         /// <param name="content">The content</param>
-        [JsonConstructor]
         public Message(
             MessageType messageType,
             string content = "")
@@ -73,49 +71,41 @@ namespace Alis.Core.Aspect.Logging
         /// <summary>
         ///     Gets or sets the value of the date time
         /// </summary>
-        [JsonPropertyName("DateTime")]
         public DateTime DateTime { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the message type
         /// </summary>
-        [JsonPropertyName("MessageType")]
         public MessageType MessageType { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the level
         /// </summary>
-        [JsonPropertyName("Level")]
         public string Level { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the content
         /// </summary>
-        [JsonPropertyName("Content")]
         public string Content { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the stack trace
         /// </summary>
-        [JsonPropertyName("StackTrace")]
         public string StackTrace { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the method
         /// </summary>
-        [JsonPropertyName("Method")]
         public string Method { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the file
         /// </summary>
-        [JsonPropertyName("File")]
         public string File { get; set; }
 
         /// <summary>
         ///     Gets or sets the value of the line
         /// </summary>
-        [JsonPropertyName("Line")]
         public string Line { get; set; }
     }
 }

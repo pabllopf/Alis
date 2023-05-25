@@ -104,7 +104,7 @@ namespace Alis.Builder.Core.Manager
         }
 
         /// <summary>
-        /// Physics the value
+        ///     Physics the value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The setting manager builder</returns>

@@ -5,11 +5,6 @@
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     </PropertyGroup>
 
-    <PropertyGroup>
-        <PublishTrimmed>false</PublishTrimmed>
-    </PropertyGroup>
-
-
     <Import Project="$(SolutionDir).config/application/TargetFrameworks.props"/>
     <Import Project="$(SolutionDir).config/application/Runtimes.props"/>
     <Import Project="$(SolutionDir).config/application/LangVersion.props"/>

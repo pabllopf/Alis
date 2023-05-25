@@ -64,9 +64,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the linux arm64 csfml system
+        /// </summary>
+        internal static byte[] linux_arm64_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("linux_arm64_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the linux arm64 csfml graphics
+        /// </summary>
+        internal static byte[] linux_arm64_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("linux_arm64_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the linux arm64 csfml window
+        /// </summary>
+        internal static byte[] linux_arm64_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("linux_arm64_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the linux arm64 sdl2
         /// </summary>
-        internal static byte[] linux_arm64_SDL2 {
+        internal static byte[] linux_arm64_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("linux_arm64_sdl2", resourceCulture);
                 return ((byte[])(obj));
@@ -74,9 +104,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the linux x64 csfml graphics
+        /// </summary>
+        internal static byte[] linux_x64_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("linux_x64_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the linux x64 csfml system
+        /// </summary>
+        internal static byte[] linux_x64_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("linux_x64_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the linux x64 csfml window
+        /// </summary>
+        internal static byte[] linux_x64_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("linux_x64_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the linux x64 sdl2
         /// </summary>
-        internal static byte[] linux_x64_SDL2 {
+        internal static byte[] linux_x64_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("linux_x64_sdl2", resourceCulture);
                 return ((byte[])(obj));
@@ -84,9 +144,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the linux x86 csfml graphics
+        /// </summary>
+        internal static byte[] linux_x86_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("linux_x86_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the linux x86 csfml system
+        /// </summary>
+        internal static byte[] linux_x86_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("linux_x86_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the linux x86 csfml window
+        /// </summary>
+        internal static byte[] linux_x86_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("linux_x86_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the linux x86 sdl2
         /// </summary>
-        internal static byte[] linux_x86_SDL2 {
+        internal static byte[] linux_x86_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("linux_x86_sdl2", resourceCulture);
                 return ((byte[])(obj));
@@ -94,9 +184,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the osx arm64 csfml graphics
+        /// </summary>
+        internal static byte[] osx_arm64_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("osx_arm64_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the osx arm64 csfml system
+        /// </summary>
+        internal static byte[] osx_arm64_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("osx_arm64_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the osx arm64 csfml window
+        /// </summary>
+        internal static byte[] osx_arm64_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("osx_arm64_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the osx arm64 sdl2
         /// </summary>
-        internal static byte[] osx_arm64_SDL2 {
+        internal static byte[] osx_arm64_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("osx_arm64_sdl2", resourceCulture);
                 return ((byte[])(obj));
@@ -104,9 +224,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the osx x64 csfml graphics
+        /// </summary>
+        internal static byte[] osx_x64_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("osx_x64_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the osx x64 csfml system
+        /// </summary>
+        internal static byte[] osx_x64_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("osx_x64_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the osx x64 csfml window
+        /// </summary>
+        internal static byte[] osx_x64_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("osx_x64_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the osx x64 sdl2
         /// </summary>
-        internal static byte[] osx_x64_SDL2 {
+        internal static byte[] osx_x64_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("osx_x64_sdl2", resourceCulture);
                 return ((byte[])(obj));
@@ -114,9 +264,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the win arm64 csfml graphics
+        /// </summary>
+        internal static byte[] win_arm64_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("win_arm64_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the win arm64 csfml system
+        /// </summary>
+        internal static byte[] win_arm64_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("win_arm64_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the win arm64 csfml window
+        /// </summary>
+        internal static byte[] win_arm64_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("win_arm64_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the win arm64 sdl2
         /// </summary>
-        internal static byte[] win_arm64_SDL2 {
+        internal static byte[] win_arm64_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("win_arm64_sdl2", resourceCulture);
                 return ((byte[])(obj));
@@ -124,9 +304,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the win x64 csfml graphics
+        /// </summary>
+        internal static byte[] win_x64_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("win_x64_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the win x64 csfml system
+        /// </summary>
+        internal static byte[] win_x64_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("win_x64_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the win x64 csfml window
+        /// </summary>
+        internal static byte[] win_x64_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("win_x64_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the win x64 sdl2
         /// </summary>
-        internal static byte[] win_x64_SDL2 {
+        internal static byte[] win_x64_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("win_x64_sdl2", resourceCulture);
                 return ((byte[])(obj));
@@ -134,9 +344,39 @@ namespace Alis.Core.Input.Properties {
         }
         
         /// <summary>
+        /// Gets the value of the win x86 csfml graphics
+        /// </summary>
+        internal static byte[] win_x86_csfml_graphics {
+            get {
+                object obj = ResourceManager.GetObject("win_x86_csfml_graphics", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the win x86 csfml system
+        /// </summary>
+        internal static byte[] win_x86_csfml_system {
+            get {
+                object obj = ResourceManager.GetObject("win_x86_csfml_system", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        /// Gets the value of the win x86 csfml window
+        /// </summary>
+        internal static byte[] win_x86_csfml_window {
+            get {
+                object obj = ResourceManager.GetObject("win_x86_csfml_window", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         /// Gets the value of the win x86 sdl2
         /// </summary>
-        internal static byte[] win_x86_SDL2 {
+        internal static byte[] win_x86_sdl2 {
             get {
                 object obj = ResourceManager.GetObject("win_x86_sdl2", resourceCulture);
                 return ((byte[])(obj));

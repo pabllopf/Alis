@@ -30,10 +30,9 @@
 namespace Alis.Core.Physic.Figure
 {
     /// <summary>
-    /// The figure base class
+    ///     The figure base class
     /// </summary>
     public abstract class FigureBase
     {
-        
     }
 }

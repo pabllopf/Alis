@@ -1213,7 +1213,7 @@ namespace Alis.Core.Physic.Dynamics
         /// <returns>The world velocity of a point.</returns>
         public Vector2F GetLinearVelocityFromLocalPoint(ref Vector2F localPoint) =>
             GetLinearVelocityFromWorldPoint(GetWorldPoint(ref localPoint));
-        
+
         /// <summary>
         ///     Synchronizes the fixtures
         /// </summary>
@@ -1324,7 +1324,7 @@ namespace Alis.Core.Physic.Dynamics
         }
 
         /// <summary>
-        /// Sets the alpha to zero
+        ///     Sets the alpha to zero
         /// </summary>
         public void SetAlphaToZero()
         {

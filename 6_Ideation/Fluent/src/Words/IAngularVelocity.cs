@@ -30,12 +30,12 @@
 namespace Alis.Core.Aspect.Fluent.Words
 {
     /// <summary>
-    /// The angular velocity interface
+    ///     The angular velocity interface
     /// </summary>
     public interface IAngularVelocity<out TBuilder, in TArgument>
     {
         /// <summary>
-        /// Angular the velocity using the specified value
+        ///     Angular the velocity using the specified value
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The builder</returns>

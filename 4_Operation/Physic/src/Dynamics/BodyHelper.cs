@@ -34,12 +34,12 @@ using Alis.Core.Physic.Dynamics.Solver;
 namespace Alis.Core.Physic.Dynamics
 {
     /// <summary>
-    /// The body helper class
+    ///     The body helper class
     /// </summary>
     internal static class BodyHelper
     {
         /// <summary>
-        /// Advances the body using the specified contact manager
+        ///     Advances the body using the specified contact manager
         /// </summary>
         /// <param name="contactManager">The contact manager</param>
         /// <param name="island">The island</param>
@@ -53,7 +53,7 @@ namespace Alis.Core.Physic.Dynamics
             Fixture fB1 = minContact.FixtureB;
             Body bA0 = fA1.Body;
             Body bB0 = fB1.Body;
-            
+
             Body[] bodies = {bA0, bB0};
 
             Sweep backup1 = bA0.Sweep;

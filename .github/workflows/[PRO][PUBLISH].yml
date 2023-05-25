@@ -7,7 +7,7 @@ on:
       - 'docs/**'
       - '**.md'
       - '.github/**'
-  
+
 jobs:
   #
   # CREATE PACKAGES
@@ -112,7 +112,7 @@ jobs:
 
       - name: git push --tags
         run: git push --tags
-        
+
       - name: Update CHANGELOG
         id: changelog
         uses: Requarks/changelog-action@v1
@@ -134,7 +134,7 @@ jobs:
           files: |
             licence.md
             ./.publish/${{ env.VERSIONFINAL }}/*.nupkg
-            
+
       - name: create a file to save the log
         run: date > ./.publish/generated.txt
 

@@ -34,8 +34,8 @@ using System.Numerics;
 using System.Threading.Tasks;
 using Alis.Core.Aspect.Logging;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Graphic.D2.SFML.Graphics;
-using Alis.Core.Graphic.D2.SFML.Windows;
+using Alis.Core.Graphic.SFML.Graphics;
+using Alis.Core.Graphic.SFML.Windows;
 using Sprite = Alis.Core.Component.Render.Sprite;
 
 namespace Alis.Core.Manager.Graphic

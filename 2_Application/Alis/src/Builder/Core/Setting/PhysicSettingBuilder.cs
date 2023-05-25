@@ -35,26 +35,26 @@ using Alis.Core.Setting;
 namespace Alis.Builder.Core.Setting
 {
     /// <summary>
-    /// The physic setting builder class
+    ///     The physic setting builder class
     /// </summary>
-    /// <seealso cref="IBuild{PhysicSetting}"/>
-    public class PhysicSettingBuilder:
+    /// <seealso cref="IBuild{PhysicSetting}" />
+    public class PhysicSettingBuilder :
         IBuild<PhysicSetting>,
         IGravity<PhysicSettingBuilder, float, float>
     {
         /// <summary>
-        /// The physic setting
+        ///     The physic setting
         /// </summary>
         private readonly PhysicSetting physicSetting = new PhysicSetting();
-        
+
         /// <summary>
-        /// Builds this instance
+        ///     Builds this instance
         /// </summary>
         /// <returns>The physic setting</returns>
         public PhysicSetting Build() => physicSetting;
-        
+
         /// <summary>
-        /// Gravities the x
+        ///     Gravities the x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>

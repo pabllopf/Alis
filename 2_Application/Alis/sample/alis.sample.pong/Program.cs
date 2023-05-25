@@ -27,16 +27,16 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
+using Alis.Core.Aspect.Data;
 using Alis.Core.Component.Audio;
 using Alis.Core.Component.Collider;
 using Alis.Core.Component.Render;
 using Alis.Core.Entity;
-using Alis.Core.Graphic.D2.SFML.Graphics;
+using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Manager.Scene;
 using Alis.Core.Physic.Dynamics;
 
-namespace Alis.Sample.PingPong
+namespace Alis.Sample.Pong
 {
     /// <summary>
     ///     The program class
@@ -49,21 +49,6 @@ namespace Alis.Sample.PingPong
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            //Assembly assembly = null;
-
-            //DllImportSearchPath dir = new DllImportSearchPath();
-
-            //NativeLibrary.Load($"{EmbeddedDllClass.dirName}/libcsfml-graphics.dylib", Assembly.GetExecutingAssembly(), DllImportSearchPath.AssemblyDirectory);
-
-
-            /*
-            EmbeddedDllClass.LoadDll("libcsfml-graphics.dylib");
-            EmbeddedDllClass.LoadDll("libcsfml-network.dylib");
-            EmbeddedDllClass.LoadDll("libcsfml-system.dylib");
-            EmbeddedDllClass.LoadDll("libcsfml-window.dylib");
-            EmbeddedDllClass.LoadDll("libcsfml-audio.dylib");*/
-                
-
             VideoGame
                 .Builder()
                 .Settings(setting => setting
@@ -71,11 +56,11 @@ namespace Alis.Sample.PingPong
                         .Name("Pong")
                         .Author("Pablo Perdomo Falcón")
                         .Description("Pong clasic game")
-                        .Icon(Environment.CurrentDirectory + "/Assets/logo.png")
+                        .Icon(AssetManager.Find("logo.png"))
                         .SplashScreen(screen => screen
                             .IsActive(true)
                             .Style(Style.Dark)
-                            .FilePath(Environment.CurrentDirectory + "/Assets/tile000.png")
+                            .FilePath(AssetManager.Find("tile000.png"))
                             .Build())
                         .Build())
                     .Debug(debug => debug
@@ -103,7 +88,7 @@ namespace Alis.Sample.PingPong
                                 .Builder()
                                 .PlayOnAwake(true)
                                 .SetAudioClip(audioClip => audioClip
-                                    .FilePath($"{Environment.CurrentDirectory}/Assets/ping.wav")
+                                    .FilePath(AssetManager.Find("ping.wav"))
                                     .Volume(100.0f)
                                     .Build())
                                 .Build())

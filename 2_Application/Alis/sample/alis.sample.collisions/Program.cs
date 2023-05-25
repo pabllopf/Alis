@@ -141,11 +141,10 @@ namespace Alis.Sample.Collisions
         }
 
         /// <summary>
-        /// Settings
+        ///     Settings
         /// </summary>
         public static void Setting()
         {
-            
         }
     }
 }

@@ -30,10 +30,10 @@
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Component;
 using Alis.Core.Component.Collider;
-using Alis.Core.Graphic.D2.SFML.Windows;
-using Alis.Core.Input.SDL2;
+using Alis.Core.Graphic.SDL;
+using Alis.Core.Graphic.SFML.Windows;
 
-namespace Alis.Sample.PingPong
+namespace Alis.Sample.Pong
 {
     /// <summary>
     ///     The player controller class
@@ -107,7 +107,7 @@ namespace Alis.Sample.PingPong
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public override void OnPressDownButton(SdlGameControllerButton button, int device)
+        public override void OnPressDownButton(SDL.SDL_GameControllerButton button, int device)
         {
             //Console.WriteLine($"OnPressDownButton Device={device} | button={button}");
 
@@ -117,11 +117,11 @@ namespace Alis.Sample.PingPong
 
                 switch (button)
                 {
-                    case SdlGameControllerButton.SdlControllerButtonA:
+                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A:
                         velocity.Y = 5;
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case SdlGameControllerButton.SdlControllerButtonY:
+                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y:
                         velocity.Y = -5;
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -134,7 +134,7 @@ namespace Alis.Sample.PingPong
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public override void OnReleaseButton(SdlGameControllerButton button, int device)
+        public override void OnReleaseButton(SDL.SDL_GameControllerButton button, int device)
         {
             //Console.WriteLine($"OnReleaseButton Device={device} | button={button}");
 
@@ -144,11 +144,11 @@ namespace Alis.Sample.PingPong
 
                 switch (button)
                 {
-                    case SdlGameControllerButton.SdlControllerButtonA:
+                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A:
                         velocity.Y = 0;
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case SdlGameControllerButton.SdlControllerButtonY:
+                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y:
                         velocity.Y = 0;
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -161,7 +161,7 @@ namespace Alis.Sample.PingPong
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public override void OnPressButton(SdlGameControllerButton button, int device)
+        public override void OnPressButton(SDL.SDL_GameControllerButton button, int device)
         {
             //Console.WriteLine($"OnPressButton Device={device} | button={button}");
         }

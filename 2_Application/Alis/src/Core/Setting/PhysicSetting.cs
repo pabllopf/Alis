@@ -34,20 +34,20 @@ using Alis.Core.Aspect.Math.Vector;
 namespace Alis.Core.Setting
 {
     /// <summary>
-    /// The physic setting class
+    ///     The physic setting class
     /// </summary>
-    /// <seealso cref="SettingBase"/>
-    /// <seealso cref="IBuilder{PhysicSettingBuilder}"/>
+    /// <seealso cref="SettingBase" />
+    /// <seealso cref="IBuilder{PhysicSettingBuilder}" />
     public class PhysicSetting : SettingBase,
         IBuilder<PhysicSettingBuilder>
     {
         /// <summary>
-        /// Gets or sets the value of the gravity
+        ///     Gets or sets the value of the gravity
         /// </summary>
         public Vector2F Gravity { get; set; } = new Vector2F(0.0f, 9.8f);
 
         /// <summary>
-        /// Builders this instance
+        ///     Builders this instance
         /// </summary>
         /// <returns>The physic setting builder</returns>
         public PhysicSettingBuilder Builder() => new PhysicSettingBuilder();
