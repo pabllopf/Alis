@@ -1,5 +1,6 @@
 [![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/resources/images/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
 [![Platform](https://shields.io/badge/Platform-Windows%20%7C%20OSX%20%7C%20Linux%20%7C%20IOS%20%7C%20Android-blue)]()
 [![Release](https://img.shields.io/github/release/pabllopf/alis.svg)](https://github.com/pabllopf/alis/releases/latest)
 [![License](https://img.shields.io/badge/license-GPL%20v3.0-blue)](https://github.com/pabllopf/Alis/blob/main/LICENSE)
