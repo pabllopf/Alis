@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['manifoldtype_10748',['ManifoldType',['../d6/d1d/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase.html#a2ad90fd35ba3df43addcea3a461da7f1',1,'Alis::Core::Physic::Collision::Narrowphase']]],
-  ['messagetype_10749',['MessageType',['../de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html#ad8c75a1bd8aa9077019bf64344af60e4',1,'Alis::Core::Aspect::Logging']]],
-  ['mixfading_10750',['MixFading',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a86ca0a74609a35c6adace9d56410aaf4',1,'Alis::Core::Input::SDL2']]],
-  ['mixinitflags_10751',['MixInitFlags',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#af84116cf858a0df497a3c54e92f31479',1,'Alis::Core::Input::SDL2']]],
-  ['mixmusictype_10752',['MixMusicType',['../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#ac4a36ede8231af873ada5b05ac67d4dd',1,'Alis::Core::Input::SDL2']]]
+  ['manifoldtype_17152',['ManifoldType',['../d6/d1d/namespace_alis_1_1_core_1_1_physic_1_1_collision_1_1_narrowphase.html#a2ad90fd35ba3df43addcea3a461da7f1',1,'Alis::Core::Physic::Collision::Narrowphase']]],
+  ['messagetype_17153',['MessageType',['../de/dd8/namespace_alis_1_1_core_1_1_aspect_1_1_logging.html#ad8c75a1bd8aa9077019bf64344af60e4',1,'Alis::Core::Aspect::Logging']]],
+  ['mix_5ffading_17154',['Mix_Fading',['../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab3092b0fee21b02c1d97a285eba52cfd',1,'Alis::Core::Audio::SDL::SDL_mixer']]],
+  ['mix_5finitflags_17155',['MIX_InitFlags',['../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5e553e8cd54381d9779d3b1041edff35',1,'Alis::Core::Audio::SDL::SDL_mixer']]],
+  ['mix_5fmusictype_17156',['Mix_MusicType',['../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab6f2cd8b957b5f07ad6499ac779f8e13',1,'Alis::Core::Audio::SDL::SDL_mixer']]]
 ];

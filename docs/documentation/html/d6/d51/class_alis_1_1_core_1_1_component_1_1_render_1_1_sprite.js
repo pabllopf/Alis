@@ -8,7 +8,7 @@ var class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite =
     [ "Exit", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html#a5927e915fc9584465bed949c9ed6f1a3", null ],
     [ "Image", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html#a0805772014c62847cd7a689a75601ffd", null ],
     [ "size", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html#a704dffd7b84ac2ad89c1b4dba36f4348", null ],
-    [ "SpriteSfml", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html#aa67fadcd036e21621906d7b1526dbd98", null ],
+    [ "SpriteSfml", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html#a457ec71deede2fb1ea2f12beda6cf52d", null ],
     [ "TexturePath", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html#ab964eab6f80a24fa1318ae3e4096bdeb", null ],
     [ "Depth", "d6/d51/class_alis_1_1_core_1_1_component_1_1_render_1_1_sprite.html#adefc5d9f21177e3bbe27dd9d560fe057", null ]
 ];

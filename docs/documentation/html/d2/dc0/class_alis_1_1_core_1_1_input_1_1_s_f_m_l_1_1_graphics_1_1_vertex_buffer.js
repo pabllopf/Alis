@@ -1,0 +1,37 @@
+var class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer =
+[
+    [ "UsageSpecifier", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a5190a3515d8adbd8e77e5e1e681020f3", [
+      [ "Stream", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a5190a3515d8adbd8e77e5e1e681020f3aeae835e83c0494a376229f254f7d3392", null ],
+      [ "Dynamic", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a5190a3515d8adbd8e77e5e1e681020f3a971fd8cc345d8bd9f92e9f7d88fdf20c", null ],
+      [ "Static", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a5190a3515d8adbd8e77e5e1e681020f3a84a8921b25f505d0d2077aeb5db4bc16", null ]
+    ] ],
+    [ "VertexBuffer", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#aa766c526e769b077af7b990fc446f62a", null ],
+    [ "VertexBuffer", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#af9152a4809a34927f6f346d71a353d90", null ],
+    [ "Draw", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a05b7016094e98867d7329bf762361aef", null ],
+    [ "Update", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a24572ea5ca3cacde78952b8cdf72d966", null ],
+    [ "Update", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a532b8855cc7f19ea80854f96bb8446df", null ],
+    [ "Update", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#aee215c5004f884d3982ed6dbb71f0d0f", null ],
+    [ "Update", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a4ae04617e9b9ddb78675d811ab37bbe2", null ],
+    [ "Swap", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a002d523080879ab2b347f590b15bf1bb", null ],
+    [ "Destroy", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a497c06f8f0dc16701a44b07d789c0f7f", null ],
+    [ "sfVertexBuffer_create", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#af9c5c066d7b2c2fbd108d343fdea67f3", null ],
+    [ "sfVertexBuffer_copy", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a0b2696d7c7d95f2c238d67021f615d85", null ],
+    [ "sfVertexBuffer_destroy", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a9019f29d11cfc023845fce07083c759e", null ],
+    [ "sfVertexBuffer_getVertexCount", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a0108d271636099b03aa63d5d4fddf96e", null ],
+    [ "sfVertexBuffer_update", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a48bdeb9f5e94861f0570396c86c9b548", null ],
+    [ "sfVertexBuffer_updateFromVertexBuffer", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a751ed8100563ffce5960bc4702b5a31d", null ],
+    [ "sfVertexBuffer_swap", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a5de235cfb85a614713c18ef2e330789c", null ],
+    [ "sfVertexBuffer_getNativeHandle", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#aae78b1e8fe1fbf23f45847515c78b2c2", null ],
+    [ "sfVertexBuffer_setPrimitiveType", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a4188f8e073d0bc9a84dc51ef0eceee95", null ],
+    [ "sfVertexBuffer_getPrimitiveType", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a42b117c26eaafe4029cc827d549a8f08", null ],
+    [ "sfVertexBuffer_setUsage", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#ac3a39564ff2a13786d116dd45e21a9ac", null ],
+    [ "sfVertexBuffer_getUsage", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a2c553fd6e9396a948a0d1346e5c14667", null ],
+    [ "sfVertexBuffer_isAvailable", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#aeaad8fd77013e2bf590e7ac2af6ae5fb", null ],
+    [ "sfRenderWindow_drawVertexBuffer", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a0860d60b7a01b1856b5d2cfd960efcbe", null ],
+    [ "sfRenderTexture_drawVertexBuffer", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a91d288c501c124bf506eb6ac2e2e4756", null ],
+    [ "Available", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a27c95af8711a3593d5932948303af234", null ],
+    [ "VertexCount", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a58770b26aa403123b23f288ef9aafd9e", null ],
+    [ "NativeHandle", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a880a56eda619c1573b604ecaa2f6d1ab", null ],
+    [ "PrimitiveType", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#a06eef0eb5a4ee64a0d49d582fa1c6fa7", null ],
+    [ "Usage", "d2/dc0/class_alis_1_1_core_1_1_input_1_1_s_f_m_l_1_1_graphics_1_1_vertex_buffer.html#aeb07feb02ca0d75549d03ad9652c5388", null ]
+];

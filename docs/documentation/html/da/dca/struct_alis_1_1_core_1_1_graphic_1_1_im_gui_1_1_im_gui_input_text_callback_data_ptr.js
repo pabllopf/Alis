@@ -1,0 +1,28 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr =
+[
+    [ "ImGuiInputTextCallbackDataPtr", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a97dbad60b15951e17cdbeda47d170eb9", null ],
+    [ "ImGuiInputTextCallbackDataPtr", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a4c21b9da7b1afa3651563bea670e920c", null ],
+    [ "operator ImGuiInputTextCallbackDataPtr", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a58854f3fca47e6b4eeb16b1b19f784d2", null ],
+    [ "operator ImGuiInputTextCallbackData *", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#af112e6d4f2f6a2c418255b3d1edbb37c", null ],
+    [ "operator ImGuiInputTextCallbackDataPtr", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#ac11838ff9efa69f7ddf7c8c130517afb", null ],
+    [ "ClearSelection", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a1b8db6670177928e97fbc990492a01c7", null ],
+    [ "DeleteChars", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#aa31f28f314f4aaaa6d92820b0cdeafa0", null ],
+    [ "Destroy", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#aac4020bec80982712535461a22a1aefa", null ],
+    [ "HasSelection", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a113edce183350b183a4cad5ea2bb61c6", null ],
+    [ "InsertChars", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a29c51953bfc787c999eba16e026ebc93", null ],
+    [ "SelectAll", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#ad1bcca91d7019ccaa60bc0dde6714790", null ],
+    [ "Ctx", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a2b47b90a36e457e538f6fa424ddcdfa8", null ],
+    [ "EventFlag", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a30188ef447a1cf251b65e2a30efd63bc", null ],
+    [ "Flags", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#aec3b2722e383e756f0a1bc79f887dd01", null ],
+    [ "EventChar", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a1e402f11d507a080ac6bcb35b55a8d6d", null ],
+    [ "EventKey", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a37998cb895f3de5d7968f6e32e7c965d", null ],
+    [ "BufTextLen", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a8fbd758a09d328de3144b8ef41fd38fa", null ],
+    [ "BufSize", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#ab02aa965ab3d6935e49d8e7cc80b0fc3", null ],
+    [ "BufDirty", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a2b21801661f5ae81c9fce0b0d55e2d12", null ],
+    [ "CursorPos", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#ac3876747daed8aadb2b189aa872df3f4", null ],
+    [ "SelectionStart", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#aea697be323308de1e63f15d8c4f81a34", null ],
+    [ "SelectionEnd", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a1c691d1f1c03d25249c43b45c4e8d8a1", null ],
+    [ "NativePtr", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a074172d71c2a1a2d3a25fe77d447aadb", null ],
+    [ "UserData", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#a063da70d1893afdd750a1bbe7984136e", null ],
+    [ "Buf", "da/dca/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_input_text_callback_data_ptr.html#adeaf2c2a93d6bf9ae2a73a9520263c69", null ]
+];

@@ -1,0 +1,28 @@
+var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o =
+[
+    [ "Platform_CreateWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#afd4e4ff54881964c031699bdf5fc82b8", null ],
+    [ "Platform_DestroyWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a3c20c2bb60a9d34aff7be35bdce8f70a", null ],
+    [ "Platform_ShowWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a7104786dd08c0e2caf601b6a2ce14e00", null ],
+    [ "Platform_SetWindowPos", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#ab42afff90b949b56450ba1ad77e75c83", null ],
+    [ "Platform_GetWindowPos", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a532793e5ab7102c9d3568a875440b9e7", null ],
+    [ "Platform_SetWindowSize", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#aa96214e8e9bb2012410b8c83631fb22d", null ],
+    [ "Platform_GetWindowSize", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a1359aa31679150e0e103d5919c0d715d", null ],
+    [ "Platform_SetWindowFocus", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a2054ec7ef8b48bc6c6dfec15024c1c68", null ],
+    [ "Platform_GetWindowFocus", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a4a32a5b8eac5a08466fd8e747efda7cd", null ],
+    [ "Platform_GetWindowMinimized", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#aa6290839a63e11df822aa4a2e8ff5dd8", null ],
+    [ "Platform_SetWindowTitle", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a93313dfa1c99fd43e7651dc8f93044f3", null ],
+    [ "Platform_SetWindowAlpha", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a422b26bcfb7e3a4225887f45d4784889", null ],
+    [ "Platform_UpdateWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#ab11605976be1f472cefca72c49e28ec4", null ],
+    [ "Platform_RenderWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a26e79618b3d89452360d6cedfff88635", null ],
+    [ "Platform_SwapBuffers", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a939a0159ffabe0680f6ad8e813a593f7", null ],
+    [ "Platform_GetWindowDpiScale", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a80c6bd047284217cdbba4c643bb0a7cf", null ],
+    [ "Platform_OnChangedViewport", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#ade87313c3c98d6a895c8cc1a0033aef6", null ],
+    [ "Platform_CreateVkSurface", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a16f25575a548a5e88b010057729353e8", null ],
+    [ "Renderer_CreateWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a0385e895aba1d8a36b7c6a907663cb71", null ],
+    [ "Renderer_DestroyWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a7067a8f8c031c87c1d42786a0837735c", null ],
+    [ "Renderer_SetWindowSize", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a2d8c3403f85097d386b6810050a2d9c5", null ],
+    [ "Renderer_RenderWindow", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a761416591b3ce364565fe689e917a95f", null ],
+    [ "Renderer_SwapBuffers", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a934223ec3fb925de2a5c422dfee1d5a5", null ],
+    [ "Monitors", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#a084f620920a0caccdeb40f41415a6729", null ],
+    [ "Viewports", "d6/d5f/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_platform_i_o.html#aa6eed3859e09cf69609505b138e603ae", null ]
+];

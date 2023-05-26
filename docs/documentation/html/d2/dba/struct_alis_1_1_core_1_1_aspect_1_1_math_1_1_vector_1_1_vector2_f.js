@@ -2,7 +2,6 @@ var struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f =
 [
     [ "Vector2F", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#acdc93008ab41517f60c678d9bfc68b09", null ],
     [ "Vector2F", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#afc9979dc16fd3e08df5dc8b5482cf44e", null ],
-    [ "Vector2F", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#af3cad84b2d49fbe62993bfa2831efc0d", null ],
     [ "operator+", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#aa1e4809a2749f8ceaef75d824d142125", null ],
     [ "operator/", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a5d12f78fb519e3f1aa76b3be7ffe1c1a", null ],
     [ "operator/", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a3800256054f70677ba22541bb4ed58ec", null ],
@@ -39,8 +38,6 @@ var struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f =
     [ "TransformNormal", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a0171810f77ee6f40ea9a76694ffc5688", null ],
     [ "CopyTo", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a01d01b9f476734a4c101ff0174caa8c9", null ],
     [ "CopyTo", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#ac35801a428b24aa2d6d27c59724b1a2c", null ],
-    [ "CopyTo", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a0473562de165074e1eef7b9653c8b12b", null ],
-    [ "TryCopyTo", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#af6767d9bf5b398beaf6e665bb74fef65", null ],
     [ "Equals", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a15cadd0d858e509b51697260696d5dbc", null ],
     [ "Equals", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a01f98f3ceec6940295bc46aef2f665af", null ],
     [ "GetHashCode", "d2/dba/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_f.html#a5513db70c994400475a18485fc5b88d5", null ],

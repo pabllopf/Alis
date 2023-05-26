@@ -26,7 +26,7 @@ var class_alis_1_1_core_1_1_physic_1_1_world =
     [ "SynchronizeIslandBodies", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#acdd34279b94d6a43ee222ddfdff81d6a", null ],
     [ "ClearForces", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#a800938bd3a95ae24810278c03ca61252", null ],
     [ "island", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#ab80df99f95cf82d6df63ecbb1bb8b213", null ],
-    [ "breakableBodies", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#aae6e05709fcfea79e2c5d4ef7e7be18a", null ],
+    [ "BreakableBodies", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#a29ea9bf71b516ffa99c7440f74dc68c3", null ],
     [ "Gravity", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#aa6dce40d5c2f19347352a874a9f1c830", null ],
     [ "Bodies", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#a37683a8b3990b78f83f2f2146fc35752", null ],
     [ "Joints", "d8/d8c/class_alis_1_1_core_1_1_physic_1_1_world.html#a0803b25371f557e3f1fea2391215e362", null ],
