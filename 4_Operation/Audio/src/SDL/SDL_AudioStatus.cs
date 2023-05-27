@@ -29,6 +29,9 @@
 
 namespace Alis.Core.Audio.SDL
 {
+    /// <summary>
+    /// The sdl mixer class
+    /// </summary>
     public static partial class SDL_mixer
     {
         /// <summary>

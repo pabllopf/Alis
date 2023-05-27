@@ -29,6 +29,8 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Input.SFML.Graphics;
+using Alis.Core.Input.SFML.Windows;
 
 namespace Alis.Core.Input.Sample
 {
@@ -43,51 +45,56 @@ namespace Alis.Core.Input.Sample
         /// <param name="args">The args</param>
         private static void Main(string[] args)
         {
-            /*
-            Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
-            Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
-            Sdl.SDL_Init(Sdl.SdlInitEverything);
+            //SFMLINPUT();
+            SDLINPUT();
+        }
+
+        private static void SDLINPUT()
+        {
+            SDL.SDL.SDL_SetHint(SDL.SDL.SDL_HINT_XINPUT_ENABLED, "0");
+            SDL.SDL.SDL_SetHint(SDL.SDL.SDL_HINT_JOYSTICK_THREAD, "1");
+            SDL.SDL.SDL_Init(SDL.SDL.SDL_INIT_EVERYTHING);
 
 
-            for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
+            for (int i = 0; i < SDL.SDL.SDL_NumJoysticks(); i++)
             {
-                IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
+                IntPtr myJoystick = SDL.SDL.SDL_JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
-                    Console.WriteLine("Ooops, something fishy's goin' on here!" + Sdl.SDL_GetError());
+                    Console.WriteLine("Ooops, something fishy's goin' on here!" + SDL.SDL.SDL_GetError());
                 }
                 else
                 {
                     Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
+                                      $"SDL_JoystickName={SDL.SDL.SDL_JoystickName(myJoystick)} \n" +
+                                      $"SDL_JoystickNumAxes={SDL.SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                      $"SDL_JoystickNumButtons={SDL.SDL.SDL_JoystickNumButtons(myJoystick)}");
                 }
             }
 
-            List<SdlGameControllerButton> buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
-            List<SdlGameControllerAxis> axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+            List<SDL.SDL.SDL_GameControllerButton> buttons = new List<SDL.SDL.SDL_GameControllerButton>((SDL.SDL.SDL_GameControllerButton[]) Enum.GetValues(typeof(SDL.SDL.SDL_GameControllerButton)));
+            List<SDL.SDL.SDL_GameControllerAxis> axis = new List<SDL.SDL.SDL_GameControllerAxis>((SDL.SDL.SDL_GameControllerAxis[]) Enum.GetValues(typeof(SDL.SDL.SDL_GameControllerAxis)));
 
-            List<SdlKeycode> keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
+            List<SDL.SDL.SDL_Keycode> keys = new List<SDL.SDL.SDL_Keycode>((SDL.SDL.SDL_Keycode[]) Enum.GetValues(typeof(SDL.SDL.SDL_Keycode)));
 
 
-            SdlEvent sdlEvent;
+            SDL.SDL.SDL_Event sdlEvent;
 
             bool run = true;
             while (run)
             {
-                Sdl.SDL_JoystickUpdate();
+                SDL.SDL.SDL_JoystickUpdate();
 
-                while (Sdl.SDL_PollEvent(out sdlEvent) != 0)
+                while (SDL.SDL.SDL_PollEvent(out sdlEvent) != 0)
                 {
-                    foreach (SdlKeycode key in keys)
+                    foreach (SDL.SDL.SDL_Keycode key in keys)
                     {
-                        if ((sdlEvent.type == SdlEventType.SdlKeydown) &&
+                        if ((sdlEvent.type == SDL.SDL.SDL_EventType.SDL_KEYDOWN) &&
                             (sdlEvent.key.keysym.sym == key))
                         {
                             Console.WriteLine($"Pressed key={key}");
 
-                            if (sdlEvent.key.keysym.sym == SdlKeycode.SdlkEscape)
+                            if (sdlEvent.key.keysym.sym == SDL.SDL.SDL_Keycode.SDLK_ESCAPE)
                             {
                                 Console.WriteLine("End program");
                                 run = false;
@@ -96,26 +103,87 @@ namespace Alis.Core.Input.Sample
                         }
                     }
 
-                    foreach (SdlGameControllerButton button in buttons)
+                    foreach (SDL.SDL.SDL_GameControllerButton button in buttons)
                     {
-                        if ((sdlEvent.type == SdlEventType.SdlJoybuttondown)
-                            && (button == (SdlGameControllerButton) sdlEvent.cbutton.button))
+                        if ((sdlEvent.type == SDL.SDL.SDL_EventType.SDL_JOYBUTTONDOWN)
+                            && (button == (SDL.SDL.SDL_GameControllerButton) sdlEvent.cbutton.button))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed button={button}");
                         }
                     }
 
-                    foreach (SdlGameControllerAxis axi in axis)
+                    foreach (SDL.SDL.SDL_GameControllerAxis axi in axis)
                     {
-                        if ((sdlEvent.type == SdlEventType.SdlJoyaxismotion)
-                            && (axi == (SdlGameControllerAxis) sdlEvent.caxis.axis))
+                        if ((sdlEvent.type == SDL.SDL.SDL_EventType.SDL_JOYAXISMOTION)
+                            && (axi == (SDL.SDL.SDL_GameControllerAxis) sdlEvent.caxis.axis))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed axi={axi}");
                         }
                     }
                 }
             }
-            */
         }
+
+
+        public static void SFMLINPUT()
+        {
+            // Crea una ventana vacía (sin bordes ni contenido)
+            var contextSettings = new ContextSettings { DepthBits = 0, StencilBits = 0 };
+            var window = new RenderWindow(new VideoMode(1, 1), "Input Example", Styles.None, contextSettings);
+            window.SetActive(false);
+
+            // Configura los eventos de input
+            window.KeyPressed += OnKeyPressed;
+            window.MouseButtonPressed += OnMouseButtonPressed;
+            window.JoystickButtonPressed += OnJoystickButtonPressed;
+            window.JoystickConnected += WindowOnJoystickConnected;
+            window.JoystickDisconnected += WindowOnJoystickDisconnected;
+            window.JoystickMoved += WindowOnJoystickMoved;
+
+            while (true)
+            {
+                // Procesa los eventos
+                window.DispatchEvents();
+
+                // Realiza cualquier lógica de juego aquí
+
+                // Salir del bucle si se presiona la tecla Escape
+                if (Keyboard.IsKeyPressed(Key.Escape))
+                    break;
+            }
+        }
+
+        private static void WindowOnJoystickMoved(object sender, JoystickMoveEventArgs e)
+        {
+            Console.WriteLine($"WindowOnJoystickMoved: {e.Axis} {e.JoystickId} {e.Position}");
+        }
+
+        private static void WindowOnJoystickDisconnected(object sender, JoystickConnectEventArgs e)
+        {
+            Console.WriteLine($"WindowOnJoystickDisconnected: {e.JoystickId}");
+        }
+
+        private static void WindowOnJoystickConnected(object sender, JoystickConnectEventArgs e)
+        {
+            Console.WriteLine($"WindowOnJoystickConnected: {e.JoystickId}");
+        }
+
+        private static void OnJoystickButtonPressed(object sender, JoystickButtonEventArgs e)
+        {
+            Console.WriteLine($"Tecla mando presionada: {e.Button} {e.JoystickId}");
+        }
+
+
+        private static void OnKeyPressed(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine($"Tecla presionada: {e.Code}");
+        }
+
+        private static void OnMouseButtonPressed(object sender, MouseButtonEventArgs e)
+        {
+            Console.WriteLine($"Botón del mouse presionado: {e.Button}");
+        }
+            
+        
     }
 }

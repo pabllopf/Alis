@@ -103,6 +103,9 @@ namespace Alis.Core.Audio.Sample
             }
         }
         
+        /// <summary>
+        /// Inits
+        /// </summary>
         private static void Init()
         {
             //Initialize all SDL subsystems
