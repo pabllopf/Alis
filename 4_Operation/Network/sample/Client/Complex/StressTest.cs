@@ -29,6 +29,7 @@
 
 using System;
 using System.Net.WebSockets;
+using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -117,14 +118,15 @@ namespace Alis.Core.Network.Sample.Client.Complex
             {
                 CancellationTokenSource source = new CancellationTokenSource();
                 _token = source.Token;
-
-                Random rand = new Random(_seed);
+                
+                RandomNumberGenerator rand = RandomNumberGenerator.Create();
+                
                 _expectedValues = new byte[50][];
                 for (int i = 0; i < _expectedValues.Length; i++)
                 {
-                    int numBytes = rand.Next(_minNumBytesPerMessage, _maxNumBytesPerMessage);
+                    int numBytes = RandomNumberGenerator.GetInt32(_minNumBytesPerMessage, _maxNumBytesPerMessage);
                     byte[] bytes = new byte[numBytes];
-                    rand.NextBytes(bytes);
+                    rand.GetBytes(bytes);
                     _expectedValues[i] = bytes;
                 }
 

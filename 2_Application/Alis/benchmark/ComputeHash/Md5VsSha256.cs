@@ -59,7 +59,8 @@ namespace Alis.Benchmark.ComputeHash
         public Md5VsSha256()
         {
             data = new byte[N];
-            new Random(42).NextBytes(data);
+            RandomNumberGenerator randomGenerator = RandomNumberGenerator.Create();
+            randomGenerator.GetBytes(data);
         }
 
         /// <summary>

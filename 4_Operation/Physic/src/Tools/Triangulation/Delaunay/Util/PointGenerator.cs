@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
 {
@@ -37,11 +38,6 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
     /// </summary>
     internal class PointGenerator
     {
-        /// <summary>
-        ///     The random
-        /// </summary>
-        private static readonly Random Rng = new Random();
-
         /// <summary>
         ///     Uniforms the distribution using the specified n
         /// </summary>
@@ -53,7 +49,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Delaunay.Util
             List<TriangulationPoint> points = new List<TriangulationPoint>();
             for (int i = 0; i < n; i++)
             {
-                points.Add(new TriangulationPoint(scale * (0.5 - Rng.NextDouble()), scale * (0.5 - Rng.NextDouble())));
+                points.Add(new TriangulationPoint(scale * (0.5 - RandomNumberGenerator.GetInt32(1234)), scale * (0.5 - RandomNumberGenerator.GetInt32(1234))));
             }
 
             return points;

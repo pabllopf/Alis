@@ -46,10 +46,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
 
         /// <summary>The Forcetype of the instance</summary>
         public ForceTypes ForceType;
-
-        /// <summary>Provided for reuse to provide Variation functionality in inheriting classes</summary>
-        protected Random Randomize;
-
+        
         /// <summary>
         ///     Curve used by Curve Mode as an animated multiplier for the force strength. Only positions between 0 and 1 are
         ///     considered as that range is stretched to have ImpulseLength.
@@ -72,7 +69,6 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
             Triggered = false;
             StrengthCurve = new Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve();
             Variation = 0.0f;
-            Randomize = new Random(1234);
             DecayMode = DecayModes.None;
             DecayCurve = new Systems.Physics2D.Config.Extensions.Controllers.Wind.Curve.Curve();
             DecayStart = 0.0f;

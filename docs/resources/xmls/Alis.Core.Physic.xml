@@ -7446,9 +7446,6 @@
         <member name="F:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.ForceType">
             <summary>The Forcetype of the instance</summary>
         </member>
-        <member name="F:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.Randomize">
-            <summary>Provided for reuse to provide Variation functionality in inheriting classes</summary>
-        </member>
         <member name="F:Alis.Core.Physic.Extensions.Controllers.Wind.AbstractForceController.StrengthCurve">
             <summary>
                 Curve used by Curve Mode as an animated multiplier for the force strength. Only positions between 0 and 1 are
@@ -11841,11 +11838,6 @@
                 The point generator class
             </summary>
         </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Util.PointGenerator.Rng">
-            <summary>
-                The random
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.Util.PointGenerator.UniformDistribution(System.Int32,System.Double)">
             <summary>
                 Uniforms the distribution using the specified n
@@ -11865,11 +11857,6 @@
         <member name="T:Alis.Core.Physic.Tools.Triangulation.Delaunay.Util.PolygonGenerator">
             <summary>
                 The polygon generator class
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Physic.Tools.Triangulation.Delaunay.Util.PolygonGenerator.Rng">
-            <summary>
-                The random
             </summary>
         </member>
         <member name="M:Alis.Core.Physic.Tools.Triangulation.Delaunay.Util.PolygonGenerator.RandomCircleSweep(System.Double,System.Int32)">

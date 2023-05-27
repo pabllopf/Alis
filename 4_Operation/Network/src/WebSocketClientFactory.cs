@@ -35,6 +35,7 @@ using System.Net.Security;
 using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Security.Authentication;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -354,9 +355,9 @@ namespace Alis.Core.Network
         private async Task<WebSocket> PerformHandshake(Guid guid, Uri uri, Stream stream,
             WebSocketClientOptions options, CancellationToken token)
         {
-            Random rand = new Random();
+            RandomNumberGenerator rand = RandomNumberGenerator.Create();
             byte[] keyAsBytes = new byte[16];
-            rand.NextBytes(keyAsBytes);
+            rand.GetBytes(keyAsBytes);
             string secWebSocketKey = Convert.ToBase64String(keyAsBytes);
             string additionalHeaders = GetAdditionalHeaders(options.AdditionalHttpHeaders);
             string handshakeHttpRequest = $"GET {uri.PathAndQuery} HTTP/1.1\r\n" +
