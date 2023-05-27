@@ -715,7 +715,13 @@
         </member>
         <member name="T:Alis.Core.Audio.SDL.SDL_mixer">
             <summary>
+            The sdl mixer class
+            </summary>
+            <summary>
                 The sdl mixer class
+            </summary>
+            <summary>
+            The sdl mixer class
             </summary>
         </member>
         <member name="T:Alis.Core.Audio.SDL.SDL_mixer.SDL_AudioStatus">
