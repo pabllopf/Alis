@@ -61,11 +61,6 @@ namespace Alis.Core.Network.Sample.Client.Complex
         private readonly int _numItems;
 
         /// <summary>
-        ///     The seed
-        /// </summary>
-        private readonly int _seed;
-
-        /// <summary>
         ///     The uri
         /// </summary>
         private readonly Uri _uri;
@@ -95,7 +90,6 @@ namespace Alis.Core.Network.Sample.Client.Complex
         /// <param name="maxNumBytesPerMessage">The max num bytes per message</param>
         public StressTest(int seed, Uri uri, int numItems, int minNumBytesPerMessage, int maxNumBytesPerMessage)
         {
-            _seed = seed;
             _uri = uri;
             _numItems = numItems;
             _minNumBytesPerMessage = minNumBytesPerMessage;

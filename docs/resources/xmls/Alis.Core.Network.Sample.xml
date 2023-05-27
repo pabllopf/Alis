@@ -68,11 +68,6 @@
                 The num items
             </summary>
         </member>
-        <member name="F:Alis.Core.Network.Sample.Client.Complex.StressTest._seed">
-            <summary>
-                The seed
-            </summary>
-        </member>
         <member name="F:Alis.Core.Network.Sample.Client.Complex.StressTest._uri">
             <summary>
                 The uri
