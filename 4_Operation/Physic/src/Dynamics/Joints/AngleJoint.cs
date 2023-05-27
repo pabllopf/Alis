@@ -90,7 +90,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => BodyA.Position = value;
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorB
         {
             get => BodyB.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => BodyB.Position = value;
         }
 
         /// <summary>The desired angle between BodyA and BodyB</summary>
