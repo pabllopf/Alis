@@ -31,6 +31,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Audio.Properties;
 
@@ -41,7 +42,7 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The sdl mixer class
     /// </summary>
-    public static class SDL_mixer
+    public static partial class SDL_mixer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SDL_mixer"/> class
@@ -101,6 +102,84 @@ namespace Alis.Core.Audio.SDL
 
         #endregion
 
+        #region SDL
+        
+        /// <summary>
+        ///     The sdl init timer
+        /// </summary>
+        public const uint SDL_INIT_TIMER = 0x00000001;
+
+        /// <summary>
+        ///     The sdl init audio
+        /// </summary>
+        public const uint SDL_INIT_AUDIO = 0x00000010;
+
+        /// <summary>
+        ///     The sdl init video
+        /// </summary>
+        public const uint SDL_INIT_VIDEO = 0x00000020;
+
+        /// <summary>
+        ///     The sdl init joystick
+        /// </summary>
+        public const uint SDL_INIT_JOYSTICK = 0x00000200;
+
+        /// <summary>
+        ///     The sdl init haptic
+        /// </summary>
+        public const uint SDL_INIT_HAPTIC = 0x00001000;
+
+        /// <summary>
+        ///     The sdl init gamecontroller
+        /// </summary>
+        public const uint SDL_INIT_GAMECONTROLLER = 0x00002000;
+
+        /// <summary>
+        ///     The sdl init events
+        /// </summary>
+        public const uint SDL_INIT_EVENTS = 0x00004000;
+
+        /// <summary>
+        ///     The sdl init sensor
+        /// </summary>
+        public const uint SDL_INIT_SENSOR = 0x00008000;
+
+        /// <summary>
+        ///     The sdl init noparachute
+        /// </summary>
+        public const uint SDL_INIT_NOPARACHUTE = 0x00100000;
+
+        /// <summary>
+        ///     The sdl init sensor
+        /// </summary>
+        public const uint SDL_INIT_EVERYTHING = SDL_INIT_TIMER | SDL_INIT_AUDIO | SDL_INIT_VIDEO |
+                                                SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC |
+                                                SDL_INIT_GAMECONTROLLER | SDL_INIT_SENSOR;
+
+        /// <summary>
+        ///     Sdls the init using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int</returns>
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_Init(uint flags);
+
+        /// <summary>
+        ///     Sdls the init sub system using the specified flags
+        /// </summary>
+        /// <param name="flags">The flags</param>
+        /// <returns>The int</returns>
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int SDL_InitSubSystem(uint flags);
+
+        /// <summary>
+        ///     Sdls the quit
+        /// </summary>
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_Quit();
+
+        #endregion
+
         #region SDL_mixer.h
 
         /* Similar to the headers, this is the version we're expecting to be
@@ -140,7 +219,7 @@ namespace Alis.Core.Audio.SDL
         ///     The audio s16msb
         /// </summary>
         public static readonly ushort MIX_DEFAULT_FORMAT =
-            BitConverter.IsLittleEndian ? SDL.AUDIO_S16LSB : SDL.AUDIO_S16MSB;
+            BitConverter.IsLittleEndian ? AUDIO_S16LSB : AUDIO_S16MSB;
 
         /// <summary>
         ///     The mix default channels
@@ -188,6 +267,134 @@ namespace Alis.Core.Audio.SDL
             /// </summary>
             MIX_INIT_OPUS = 0x00000040
         }
+        
+        /// <summary>
+        ///     The audio u8
+        /// </summary>
+        public const ushort AUDIO_U8 = 0x0008;
+
+        /// <summary>
+        ///     The audio s8
+        /// </summary>
+        public const ushort AUDIO_S8 = 0x8008;
+
+        /// <summary>
+        ///     The audio u16lsb
+        /// </summary>
+        public const ushort AUDIO_U16LSB = 0x0010;
+
+        /// <summary>
+        ///     The audio s16lsb
+        /// </summary>
+        public const ushort AUDIO_S16LSB = 0x8010;
+
+        /// <summary>
+        ///     The audio u16msb
+        /// </summary>
+        public const ushort AUDIO_U16MSB = 0x1010;
+
+        /// <summary>
+        ///     The audio s16msb
+        /// </summary>
+        public const ushort AUDIO_S16MSB = 0x9010;
+
+        /// <summary>
+        ///     The audio u16lsb
+        /// </summary>
+        public const ushort AUDIO_U16 = AUDIO_U16LSB;
+
+        /// <summary>
+        ///     The audio s16lsb
+        /// </summary>
+        public const ushort AUDIO_S16 = AUDIO_S16LSB;
+
+        /// <summary>
+        ///     The audio s32lsb
+        /// </summary>
+        public const ushort AUDIO_S32LSB = 0x8020;
+
+        /// <summary>
+        ///     The audio s32msb
+        /// </summary>
+        public const ushort AUDIO_S32MSB = 0x9020;
+
+        /// <summary>
+        ///     The audio s32lsb
+        /// </summary>
+        public const ushort AUDIO_S32 = AUDIO_S32LSB;
+
+        /// <summary>
+        ///     The audio f32lsb
+        /// </summary>
+        public const ushort AUDIO_F32LSB = 0x8120;
+
+        /// <summary>
+        ///     The audio f32msb
+        /// </summary>
+        public const ushort AUDIO_F32MSB = 0x9120;
+
+        /// <summary>
+        ///     The audio f32lsb
+        /// </summary>
+        public const ushort AUDIO_F32 = AUDIO_F32LSB;
+
+        /// <summary>
+        ///     The audio u16msb
+        /// </summary>
+        public static readonly ushort AUDIO_U16SYS =
+            BitConverter.IsLittleEndian ? AUDIO_U16LSB : AUDIO_U16MSB;
+
+        /// <summary>
+        ///     The audio s16msb
+        /// </summary>
+        public static readonly ushort AUDIO_S16SYS =
+            BitConverter.IsLittleEndian ? AUDIO_S16LSB : AUDIO_S16MSB;
+
+        /// <summary>
+        ///     The audio s32msb
+        /// </summary>
+        public static readonly ushort AUDIO_S32SYS =
+            BitConverter.IsLittleEndian ? AUDIO_S32LSB : AUDIO_S32MSB;
+
+        /// <summary>
+        ///     The audio f32msb
+        /// </summary>
+        public static readonly ushort AUDIO_F32SYS =
+            BitConverter.IsLittleEndian ? AUDIO_F32LSB : AUDIO_F32MSB;
+
+        /// <summary>
+        ///     The sdl audio allow frequency change
+        /// </summary>
+        public const uint SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001;
+
+        /// <summary>
+        ///     The sdl audio allow format change
+        /// </summary>
+        public const uint SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002;
+
+        /// <summary>
+        ///     The sdl audio allow channels change
+        /// </summary>
+        public const uint SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004;
+
+        /// <summary>
+        ///     The sdl audio allow samples change
+        /// </summary>
+        public const uint SDL_AUDIO_ALLOW_SAMPLES_CHANGE = 0x00000008;
+
+        /// <summary>
+        ///     The sdl audio allow samples change
+        /// </summary>
+        public const uint SDL_AUDIO_ALLOW_ANY_CHANGE = SDL_AUDIO_ALLOW_FREQUENCY_CHANGE |
+                                                       SDL_AUDIO_ALLOW_FORMAT_CHANGE |
+                                                       SDL_AUDIO_ALLOW_CHANNELS_CHANGE |
+                                                       SDL_AUDIO_ALLOW_SAMPLES_CHANGE;
+
+        /// <summary>
+        ///     The sdl mix maxvolume
+        /// </summary>
+        public const int SDL_MIX_MAXVOLUME = 128;
+
 
         /// <summary>
         ///     The mix chunk
@@ -352,7 +559,7 @@ namespace Alis.Core.Audio.SDL
         ///     Sdls the mixer version using the specified x
         /// </summary>
         /// <param name="X">The </param>
-        public static void SDL_MIXER_VERSION(out SDL.SDL_version X)
+        public static void SDL_MIXER_VERSION(out SDL_version X)
         {
             X.major = SDL_MIXER_MAJOR_VERSION;
             X.minor = SDL_MIXER_MINOR_VERSION;
@@ -370,16 +577,17 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the linked version
         /// </summary>
         /// <returns>The result</returns>
-        public static SDL.SDL_version MIX_Linked_Version()
+        public static SDL_version MIX_Linked_Version()
         {
-            SDL.SDL_version result;
+            SDL_version result;
             IntPtr result_ptr = INTERNAL_MIX_Linked_Version();
-            result = (SDL.SDL_version) Marshal.PtrToStructure(
+            result = (SDL_version) Marshal.PtrToStructure(
                 result_ptr,
-                typeof(SDL.SDL_version)
+                typeof(SDL_version)
             );
             return result;
         }
+
 
         /// <summary>
         ///     Mixes the init using the specified flags
@@ -456,9 +664,43 @@ namespace Alis.Core.Audio.SDL
         /// <returns>The int ptr</returns>
         public static IntPtr Mix_LoadWAV(string file)
         {
-            IntPtr rwops = SDL.SDL_RWFromFile(file, "rb");
+            IntPtr rwops = SDL_RWFromFile(file, "rb");
             return Mix_LoadWAV_RW(rwops, 1);
         }
+        
+        /// <summary>
+        ///     Sdls the rw from file using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The rw ops</returns>
+        public static unsafe IntPtr SDL_RWFromFile(
+            string file,
+            string mode
+        )
+        {
+            byte* utf8File = Utf8EncodeHeap(file);
+            byte* utf8Mode = Utf8EncodeHeap(mode);
+            IntPtr rwOps = INTERNAL_SDL_RWFromFile(
+                utf8File,
+                utf8Mode
+            );
+            Marshal.FreeHGlobal((IntPtr) utf8Mode);
+            Marshal.FreeHGlobal((IntPtr) utf8File);
+            return rwOps;
+        }
+        
+        /// <summary>
+        ///     Internals the sdl rw from file using the specified file
+        /// </summary>
+        /// <param name="file">The file</param>
+        /// <param name="mode">The mode</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(nativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
+        private static extern unsafe IntPtr INTERNAL_SDL_RWFromFile(
+            byte* file,
+            byte* mode
+        );
 
         /* IntPtr refers to a Mix_Music* */
         /// <summary>
@@ -478,7 +720,7 @@ namespace Alis.Core.Audio.SDL
         /// <returns>The handle</returns>
         public static unsafe IntPtr Mix_LoadMUS(string file)
         {
-            byte* utf8File = SDL.Utf8EncodeHeap(file);
+            byte* utf8File = Utf8EncodeHeap(file);
             IntPtr handle = INTERNAL_Mix_LoadMUS(
                 utf8File
             );
@@ -548,7 +790,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string Mix_GetChunkDecoder(int index) => SDL.UTF8_ToManaged(
+        public static string Mix_GetChunkDecoder(int index) =>UTF8_ToManaged(
             INTERNAL_Mix_GetChunkDecoder(index)
         );
 
@@ -572,7 +814,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicDecoder(int index) => SDL.UTF8_ToManaged(
+        public static string Mix_GetMusicDecoder(int index) => UTF8_ToManaged(
             INTERNAL_Mix_GetMusicDecoder(index)
         );
 
@@ -601,7 +843,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicTitle(IntPtr music) => SDL.UTF8_ToManaged(
+        public static string Mix_GetMusicTitle(IntPtr music) => UTF8_ToManaged(
             INTERNAL_Mix_GetMusicTitle(music)
         );
 
@@ -621,7 +863,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicTitleTag(IntPtr music) => SDL.UTF8_ToManaged(
+        public static string Mix_GetMusicTitleTag(IntPtr music) => UTF8_ToManaged(
             INTERNAL_Mix_GetMusicTitleTag(music)
         );
 
@@ -641,7 +883,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicArtistTag(IntPtr music) => SDL.UTF8_ToManaged(
+        public static string Mix_GetMusicArtistTag(IntPtr music) => UTF8_ToManaged(
             INTERNAL_Mix_GetMusicArtistTag(music)
         );
 
@@ -661,7 +903,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicAlbumTag(IntPtr music) => SDL.UTF8_ToManaged(
+        public static string Mix_GetMusicAlbumTag(IntPtr music) => UTF8_ToManaged(
             INTERNAL_Mix_GetMusicAlbumTag(music)
         );
 
@@ -681,7 +923,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicCopyrightTag(IntPtr music) => SDL.UTF8_ToManaged(
+        public static string Mix_GetMusicCopyrightTag(IntPtr music) => UTF8_ToManaged(
             INTERNAL_Mix_GetMusicCopyrightTag(music)
         );
 
@@ -1240,7 +1482,7 @@ namespace Alis.Core.Audio.SDL
         /// <returns>The result</returns>
         public static unsafe int Mix_SetMusicCMD(string command)
         {
-            byte* utf8Cmd = SDL.Utf8EncodeHeap(command);
+            byte* utf8Cmd = Utf8EncodeHeap(command);
             int result = INTERNAL_Mix_SetMusicCMD(
                 utf8Cmd
             );
@@ -1280,7 +1522,7 @@ namespace Alis.Core.Audio.SDL
         /// <returns>The result</returns>
         public static unsafe int Mix_SetSoundFonts(string paths)
         {
-            byte* utf8Paths = SDL.Utf8EncodeHeap(paths);
+            byte* utf8Paths = Utf8EncodeHeap(paths);
             int result = INTERNAL_Mix_SetSoundFonts(
                 utf8Paths
             );
@@ -1299,7 +1541,7 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the get sound fonts
         /// </summary>
         /// <returns>The string</returns>
-        public static string Mix_GetSoundFonts() => SDL.UTF8_ToManaged(
+        public static string Mix_GetSoundFonts() => UTF8_ToManaged(
             INTERNAL_Mix_GetSoundFonts()
         );
 
@@ -1338,7 +1580,7 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the get timidity cfg
         /// </summary>
         /// <returns>The string</returns>
-        public static string Mix_GetTimidityCfg() => SDL.UTF8_ToManaged(
+        public static string Mix_GetTimidityCfg() => UTF8_ToManaged(
             INTERNAL_Mix_GetTimidityCfg()
         );
 
@@ -1361,7 +1603,7 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the get error
         /// </summary>
         /// <returns>The string</returns>
-        public static string Mix_GetError() => SDL.SDL_GetError();
+        public static string Mix_GetError() => SDL_GetError();
 
         /// <summary>
         ///     Mixes the set error using the specified fmt and arglist
@@ -1369,7 +1611,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="fmtAndArglist">The fmt and arglist</param>
         public static void Mix_SetError(string fmtAndArglist)
         {
-            SDL.SDL_SetError(fmtAndArglist);
+            SDL_SetError(fmtAndArglist);
         }
 
         /// <summary>
@@ -1377,8 +1619,201 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         public static void Mix_ClearError()
         {
-            SDL.SDL_ClearError();
+            SDL_ClearError();
         }
+
+        #endregion
+        
+        #region UTF8 Marshaling
+
+        /* Used for stack allocated string marshaling. */
+        /// <summary>
+        ///     Utfs the 8 size using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <returns>The int</returns>
+        internal static int Utf8Size(string str)
+        {
+            if (str == null)
+            {
+                return 0;
+            }
+
+            return str.Length * 4 + 1;
+        }
+
+        /// <summary>
+        ///     Utfs the 8 encode using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <param name="buffer">The buffer</param>
+        /// <param name="bufferSize">The buffer size</param>
+        /// <returns>The buffer</returns>
+        internal static unsafe byte* Utf8Encode(string str, byte* buffer, int bufferSize)
+        {
+            if (str == null)
+            {
+                return (byte*) 0;
+            }
+
+            fixed (char* strPtr = str)
+            {
+                Encoding.UTF8.GetBytes(strPtr, str.Length + 1, buffer, bufferSize);
+            }
+
+            return buffer;
+        }
+
+        /* Used for heap allocated string marshaling.
+         * Returned byte* must be free'd with FreeHGlobal.
+         */
+        /// <summary>
+        ///     Utfs the 8 encode heap using the specified str
+        /// </summary>
+        /// <param name="str">The str</param>
+        /// <returns>The buffer</returns>
+        internal static unsafe byte* Utf8EncodeHeap(string str)
+        {
+            if (str == null)
+            {
+                return (byte*) 0;
+            }
+
+            int bufferSize = Utf8Size(str);
+            byte* buffer = (byte*) Marshal.AllocHGlobal(bufferSize);
+            fixed (char* strPtr = str)
+            {
+                Encoding.UTF8.GetBytes(strPtr, str.Length + 1, buffer, bufferSize);
+            }
+
+            return buffer;
+        }
+
+        /* This is public because SDL_DropEvent needs it! */
+        /// <summary>
+        ///     Utfs the 8 to managed using the specified s
+        /// </summary>
+        /// <param name="s">The </param>
+        /// <param name="freePtr">The free ptr</param>
+        /// <returns>The result</returns>
+        public static unsafe string UTF8_ToManaged(IntPtr s, bool freePtr = false)
+        {
+            if (s == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            /* We get to do strlen ourselves! */
+            byte* ptr = (byte*) s;
+            while (*ptr != 0)
+            {
+                ptr++;
+            }
+
+            /* TODO: This #ifdef is only here because the equivalent
+             * .NET 2.0 constructor appears to be less efficient?
+             * Here's the pretty version, maybe steal this instead:
+             *
+            string result = new string(
+                (sbyte*) s, // Also, why sbyte???
+                0,
+                (int) (ptr - (byte*) s),
+                System.Text.Encoding.UTF8
+            );
+             * See the CoreCLR source for more info.
+             * -flibit
+             */
+#if NETSTANDARD2_0
+			/* Modern C# lets you just send the byte*, nice! */
+			string result = System.Text.Encoding.UTF8.GetString(
+				(byte*) s,
+				(int) (ptr - (byte*) s)
+			);
+#else
+            /* Old C# requires an extra memcpy, bleh! */
+            int len = (int) (ptr - (byte*) s);
+            if (len == 0)
+            {
+                return string.Empty;
+            }
+
+            char* chars = stackalloc char[len];
+            int strLen = Encoding.UTF8.GetChars((byte*) s, len, chars, len);
+            string result = new string(chars, 0, strLen);
+#endif
+
+            /* Some SDL functions will malloc, we have to free! */
+            if (freePtr)
+            {
+                SDL_free(s);
+            }
+
+            return result;
+        }
+        
+        /// <summary>
+        ///     Sdls the free using the specified memblock
+        /// </summary>
+        /// <param name="memblock">The memblock</param>
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        internal static extern void SDL_free(IntPtr memblock);
+
+        #endregion
+        
+        
+         #region SDL_error.h
+
+        /// <summary>
+        ///     Sdls the clear error
+        /// </summary>
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern void SDL_ClearError();
+
+        /// <summary>
+        ///     Internals the sdl get error
+        /// </summary>
+        /// <returns>The int ptr</returns>
+        [DllImport(nativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr INTERNAL_SDL_GetError();
+
+        /// <summary>
+        ///     Sdls the get error
+        /// </summary>
+        /// <returns>The string</returns>
+        public static string SDL_GetError() => UTF8_ToManaged(INTERNAL_SDL_GetError());
+
+        /* Use string.Format for arglists */
+        /// <summary>
+        ///     Internals the sdl set error using the specified fmt and arglist
+        /// </summary>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        [DllImport(nativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
+        private static extern unsafe void INTERNAL_SDL_SetError(byte* fmtAndArglist);
+
+        /// <summary>
+        ///     Sdls the set error using the specified fmt and arglist
+        /// </summary>
+        /// <param name="fmtAndArglist">The fmt and arglist</param>
+        public static unsafe void SDL_SetError(string fmtAndArglist)
+        {
+            int utf8FmtAndArglistBufSize = Utf8Size(fmtAndArglist);
+            byte* utf8FmtAndArglist = stackalloc byte[utf8FmtAndArglistBufSize];
+            INTERNAL_SDL_SetError(
+                Utf8Encode(fmtAndArglist, utf8FmtAndArglist, utf8FmtAndArglistBufSize)
+            );
+        }
+
+        /* IntPtr refers to a char*.
+         * Only available in 2.0.14 or higher.
+         */
+        /// <summary>
+        ///     Sdls the get error msg using the specified errstr
+        /// </summary>
+        /// <param name="errstr">The errstr</param>
+        /// <param name="maxlength">The maxlength</param>
+        /// <returns>The int ptr</returns>
+        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
 
         #endregion
     }

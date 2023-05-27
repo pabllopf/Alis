@@ -106,7 +106,7 @@ namespace Alis.Core.Audio.Sample
         private static void Init()
         {
             //Initialize all SDL subsystems
-            SDL.SDL.SDL_Init(SDL.SDL.SDL_INIT_EVERYTHING);
+            SDL.SDL_mixer.SDL_Init(SDL.SDL_mixer.SDL_INIT_AUDIO);
             
             //Initialize SDL_mixer
             if(SDL.SDL_mixer.Mix_OpenAudio( 22050, SDL.SDL_mixer.MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
