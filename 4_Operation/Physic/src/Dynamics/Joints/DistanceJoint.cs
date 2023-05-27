@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
@@ -280,14 +281,14 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public sealed override Vector2F WorldAnchorA
         {
             get => BodyA.GetWorldPoint(localAnchorA);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>The anchor on <see cref="Joint.BodyB" /> in world coordinates</summary>
         public sealed override Vector2F WorldAnchorB
         {
             get => BodyB.GetWorldPoint(localAnchorB);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>The rest length of this joint. Clamped to a stable minimum value.</summary>

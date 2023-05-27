@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics.Solver;
@@ -90,7 +91,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set => BodyA.Position = value;
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorB
         {
             get => BodyB.Position;
-            set => BodyB.Position = value;
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>The desired angle between BodyA and BodyB</summary>
