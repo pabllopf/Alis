@@ -77,7 +77,8 @@ namespace Alis.Core.Network
             byte[] concatenatedAsBytes = Encoding.UTF8.GetBytes(concatenated);
 
             // note an instance of SHA1 is not threadsafe so we have to create a new one every time here
-            byte[] sha1Hash = SHA1.Create().ComputeHash(concatenatedAsBytes);
+            HashAlgorithm hashProvider3 = new SHA512Managed();
+            byte[] sha1Hash = hashProvider3.ComputeHash(concatenatedAsBytes);
             string secWebSocketAccept = Convert.ToBase64String(sha1Hash);
             return secWebSocketAccept;
         }
