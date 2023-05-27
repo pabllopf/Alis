@@ -83,8 +83,9 @@ namespace Alis.Core.Aspect.Base.Dll
             string[] names = assem.GetManifestResourceNames();
             AssemblyName an = assem.GetName();
 
-            string dirTemp = Path.Combine(Path.GetTempPath(), $"{an.Name}_{an.ProcessorArchitecture}_{an.Version}");
+            //string dirTemp = Path.Combine(Path.GetTempPath(), $"{an.Name}_{an.ProcessorArchitecture}_{an.Version}");
 
+            string dirTemp = Environment.CurrentDirectory;
 
             if (!Directory.Exists(dirTemp))
             {
@@ -96,7 +97,7 @@ namespace Alis.Core.Aspect.Base.Dll
                 CurrentDirectory = Environment.CurrentDirectory;
             }
 
-            Directory.SetCurrentDirectory(dirTemp);
+            //Directory.SetCurrentDirectory(dirTemp);
 
             string dllPath = Path.Combine(dirTemp, dllName);
 

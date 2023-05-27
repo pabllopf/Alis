@@ -144,10 +144,14 @@ namespace Alis.Core.Audio
                 case AudioBackendType.Os:
                     player = new Player();
                     break;
+                case AudioBackendType.Sdl:
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+       
 
         /// <summary>
         ///     Gets or sets the value of the sample rate

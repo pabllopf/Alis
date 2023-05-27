@@ -9,6 +9,21 @@
               Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
             </summary>
         </member>
+        <member name="F:Alis.Core.Input.Properties.NativeInput.resourceMan">
+            <summary>
+            The resource man
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Input.Properties.NativeInput.resourceCulture">
+            <summary>
+            The resource culture
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Input.Properties.NativeInput.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Alis.Core.Input.Properties.NativeInput"/> class
+            </summary>
+        </member>
         <member name="P:Alis.Core.Input.Properties.NativeInput.ResourceManager">
             <summary>
               Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.

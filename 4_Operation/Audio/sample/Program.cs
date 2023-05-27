@@ -56,8 +56,13 @@ namespace Alis.Core.Audio.Sample
                     switch (os)
                     {
                         case "sfml":
-                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
+                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Sfml));
                             break;
+                        
+                        case "sdl":
+                            Init();
+                            break;
+                        
                         case "os":
                             audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
                             break;
@@ -96,6 +101,31 @@ namespace Alis.Core.Audio.Sample
                     Logger.Exception(ex);
                 }
             }
+        }
+        
+        private static void Init()
+        {
+            //Initialize all SDL subsystems
+            SDL.SDL.SDL_Init(SDL.SDL.SDL_INIT_EVERYTHING);
+            
+            //Initialize SDL_mixer
+            if(SDL.SDL_mixer.Mix_OpenAudio( 22050, SDL.SDL_mixer.MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
+            {
+                return;
+            }
+            
+            //Load the background image
+            //background = load_image( "background.png" );
+    
+            //Open the font
+            //font = TTF_OpenFont( "lazy.ttf", 30 );
+            
+            //Load the music
+            string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
+            IntPtr music = SDL.SDL_mixer.Mix_LoadMUS( fileName );
+            //IntPtr scratch = SDL.SDL_mixer.Mix_LoadWAV( "scratch.wav" );
+            
+            SDL.SDL_mixer.Mix_PlayMusic( music, -1 );
         }
     }
 }
