@@ -40,6 +40,9 @@ jobs:
       - name: Dotnet install workload
         run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
         
+      - name: dotnet tool 
+        run: dotnet tool install --global JetBrains.dotCover.GlobalTool
+        
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
@@ -56,6 +59,7 @@ jobs:
           dotnet restore ./alis.sln
           dotnet build ./alis.sln --configuration Release
           dotnet test ./alis.sln --collect:"XPlat Code Coverage" --logger trx --results-directory $GITHUB_WORKSPACE/test/testresults
+          dotnet dotcover test --dcReportType=HTML
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
 
 
