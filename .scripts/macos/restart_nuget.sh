@@ -20,8 +20,12 @@ select yn in "Yes" "No"; do
           echo "./**/bin/"
                   
           for i in `find . -name "*.csproj" -type f`; do
-              echo "restoring csproj = $i"
-              dotnet restore $i
+              if [[ $i == *$skip* ]] ; then
+                  echo "Skip project $i"
+              else
+                  echo "Add csproj = $i"
+                  dotnet restore $i
+              fi
           done
           
           cd ./.scripts/macos/ || exit

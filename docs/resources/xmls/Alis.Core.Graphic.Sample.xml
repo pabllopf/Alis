@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Alis.Core.Graphic.Sample</name>
+    </assembly>
+    <members>
+        <member name="T:Alis.Core.Graphic.Sample.Program">
+            <summary>
+                The program class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.Width">
+            <summary>
+                The width
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.Height">
+            <summary>
+                The height
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program.Title">
+            <summary>
+                The title
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._red">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._green">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Sample.Program._blue">
+            <summary>
+                The blue
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
+            <summary>
+                Main the args
+            </summary>
+            <param name="args">The args</param>
+        </member>
+    </members>
+</doc>

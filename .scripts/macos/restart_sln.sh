@@ -22,8 +22,12 @@ select yn in "Yes" "No"; do
           done
           
           for i in `find . -name "*.csproj" -type f`; do
-              echo "$i"
-              dotnet sln Alis.sln add $i
+              if [[ $i == *$skip* ]] ; then
+                  echo "Skip project $i"
+              else
+                  echo "Add csproj = $i"
+                  dotnet sln Alis.sln add $i
+              fi
           done
           
           rm -rf ./.nuget/
@@ -31,11 +35,16 @@ select yn in "Yes" "No"; do
           rm -rf ./**/obj/
           rm -rf ./**/bin/
           
-          for i in `find . -name "*.csproj" -type f`; do
-              echo "$i"
-              dotnet restore $i
-          done
           
+          for i in `find . -name "*.csproj" -type f`; do
+              if [[ $i == *$skip* ]] ; then
+                  echo "Skip project $i"
+              else
+                  echo "Add csproj = $i"
+                  dotnet restore $i
+              fi
+          done
+                    
           cd ./.scripts/macos/ || exit
           
           break;;
