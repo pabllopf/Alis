@@ -491,15 +491,19 @@ namespace Alis.Core.Graphic.ImGui
             int byteCount = Encoding.UTF8.GetByteCount(text);
             int inputBufSize = Math.Max((int)maxLength + 1, byteCount + 1);
             byte[] utf8BytesArray = new byte[inputBufSize];
+
             fixed (byte* utf8Bytes = utf8BytesArray)
             {
                 Util.GetUtf8(text, utf8Bytes, inputBufSize);
-                Unsafe.InitBlockUnaligned(utf8Bytes + byteCount, 0, (uint)(inputBufSize - byteCount));
+                Unsafe.InitBlockUnaligned(utf8Bytes, 0, (uint)inputBufSize);
+
                 byte* result = (byte*)Marshal.AllocHGlobal(inputBufSize);
-                Unsafe.CopyBlock(result, utf8Bytes, (uint)inputBufSize);
+                Buffer.MemoryCopy(utf8Bytes, result, inputBufSize, inputBufSize);
+
                 return result;
             }
         }
+
 
 
         /// <summary>
