@@ -172,7 +172,7 @@ namespace Alis.Core.Network
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Protocol: (.*)";
-            Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase);
+            Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match match = regex.Match(response);
             if (match.Success)
             {
@@ -193,7 +193,7 @@ namespace Alis.Core.Network
         {
             // make sure we escape the accept string which could contain special regex characters
             string regexPattern = "Sec-WebSocket-Accept: (.*)";
-            Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase);
+            Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             string actualAcceptString = regex.Match(response).Groups[1].Value.Trim();
 
             // check the accept string

@@ -123,13 +123,13 @@ namespace Alis.Core.Network
         /// <returns>True if this is an http WebSocket upgrade response</returns>
         public static bool IsWebSocketUpgradeRequest(string header)
         {
-            Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase);
+            Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match getRegexMatch = getRegex.Match(header);
 
             if (getRegexMatch.Success)
             {
                 // check if this is a web socket upgrade request
-                Regex webSocketUpgradeRegex = new Regex("Upgrade: websocket", RegexOptions.IgnoreCase);
+                Regex webSocketUpgradeRegex = new Regex("Upgrade: websocket", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
                 Match webSocketUpgradeRegexMatch = webSocketUpgradeRegex.Match(header);
                 return webSocketUpgradeRegexMatch.Success;
             }
@@ -144,7 +144,7 @@ namespace Alis.Core.Network
         /// <returns>The path</returns>
         public static string GetPathFromHeader(string httpHeader)
         {
-            Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase);
+            Regex getRegex = new Regex(HttpGetHeaderRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match getRegexMatch = getRegex.Match(httpHeader);
 
             if (getRegexMatch.Success)
@@ -164,7 +164,7 @@ namespace Alis.Core.Network
         /// <returns>A list of string</returns>
         public static IList<string> GetSubProtocols(string httpHeader)
         {
-            Regex regex = new Regex(@"Sec-WebSocket-Protocol:(?<protocols>.+)", RegexOptions.IgnoreCase);
+            Regex regex = new Regex(@"Sec-WebSocket-Protocol:(?<protocols>.+)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match match = regex.Match(httpHeader);
 
             if (match.Success)
@@ -193,7 +193,7 @@ namespace Alis.Core.Network
         /// <returns>the response code</returns>
         public static string ReadHttpResponseCode(string response)
         {
-            Regex getRegex = new Regex(@"HTTP\/1\.1 (.*)", RegexOptions.IgnoreCase);
+            Regex getRegex = new Regex(@"HTTP\/1\.1 (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
             Match getRegexMatch = getRegex.Match(response);
 
             if (getRegexMatch.Success)

@@ -124,7 +124,7 @@ namespace Alis.Core.Network
         /// <exception cref="WebSocketVersionNotSupportedException">Cannot find "Sec-WebSocket-Version" in http header</exception>
         private static void CheckWebSocketVersion(string httpHeader)
         {
-            Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase);
+            Regex webSocketVersionRegex = new Regex("Sec-WebSocket-Version: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
 
             // check the version. Support version 13 and above
             const int webSocketVersion = 13;
@@ -159,7 +159,7 @@ namespace Alis.Core.Network
         {
             try
             {
-                Regex webSocketKeyRegex = new Regex("Sec-WebSocket-Key: (.*)", RegexOptions.IgnoreCase);
+                Regex webSocketKeyRegex = new Regex("Sec-WebSocket-Key: (.*)", RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(100));
                 CheckWebSocketVersion(httpHeader);
 
                 Match match = webSocketKeyRegex.Match(httpHeader);
