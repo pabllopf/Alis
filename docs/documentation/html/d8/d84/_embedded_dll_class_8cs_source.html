@@ -145,32 +145,33 @@ $(document).ready(function(){initNavTree('d8/d84/_embedded_dll_class_8cs_source.
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordtype">string</span>[] names = assem.GetManifestResourceNames();</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            AssemblyName an = assem.GetName();</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordtype">string</span> dirTemp = Path.Combine(Path.GetTempPath(), $<span class="stringliteral">&quot;{an.Name}_{an.ProcessorArchitecture}_{an.Version}&quot;</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="comment">//string dirTemp = Path.Combine(Path.GetTempPath(), $&quot;{an.Name}_{an.ProcessorArchitecture}_{an.Version}&quot;);</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">if</span> (!Directory.Exists(dirTemp))</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                Directory.CreateDirectory(dirTemp);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a7b17b76b8dc6d4edef92c1ce994fb225">CurrentDirectory</a> == <span class="stringliteral">&quot;&quot;</span>)</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <a class="code" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a7b17b76b8dc6d4edef92c1ce994fb225">CurrentDirectory</a> = Environment.CurrentDirectory;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            Directory.SetCurrentDirectory(dirTemp);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordtype">string</span> dllPath = Path.Combine(dirTemp, dllName);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            <span class="keywordflow">if</span> (!File.Exists(dllPath))</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                File.WriteAllBytes(dllPath, resourceBytes);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            Console.WriteLine($<span class="stringliteral">&quot;dllPath={dllPath}&quot;</span>);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordtype">string</span> dirTemp = Environment.CurrentDirectory;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (!Directory.Exists(dirTemp))</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                Directory.CreateDirectory(dirTemp);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a7b17b76b8dc6d4edef92c1ce994fb225">CurrentDirectory</a> == <span class="stringliteral">&quot;&quot;</span>)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                <a class="code" href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html#a7b17b76b8dc6d4edef92c1ce994fb225">CurrentDirectory</a> = Environment.CurrentDirectory;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="comment">//Directory.SetCurrentDirectory(dirTemp);</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordtype">string</span> dllPath = Path.Combine(dirTemp, dllName);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> (!File.Exists(dllPath))</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                File.WriteAllBytes(dllPath, resourceBytes);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            Console.WriteLine($<span class="stringliteral">&quot;dllPath={dllPath}&quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aclass_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class_html"><div class="ttname"><a href="../../d6/de6/class_alis_1_1_core_1_1_aspect_1_1_base_1_1_dll_1_1_embedded_dll_class.html">Alis.Core.Aspect.Base.Dll.EmbeddedDllClass</a></div><div class="ttdoc">A class used by managed classes to managed unmanaged DLLs. This will extract and load DLLs from embed...</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d84/_embedded_dll_class_8cs_source.html#l00068">EmbeddedDllClass.cs:69</a></div></div>
@@ -182,7 +183,7 @@ $(document).ready(function(){initNavTree('d8/d84/_embedded_dll_class_8cs_source.
   <ul>
     <li class="navelem"><a class="el" href="../../dir_463cc71c0efffe3f069a7466fb151c62.html">6_Ideation</a></li><li class="navelem"><a class="el" href="../../dir_b200d16ed601f8ce3cad90f82255ba64.html">Base</a></li><li class="navelem"><a class="el" href="../../dir_d52cccb62375f5640cf0744779054641.html">src</a></li><li class="navelem"><a class="el" href="../../dir_deacf9be5396b9a83907637c65496cd6.html">Dll</a></li><li class="navelem"><b>EmbeddedDllClass.cs</b></li>
     <li class="footer">
-      <a>Generated on | Sat May 27 2023 |</a>
+      <a>Generated on | Sun May 28 2023 |</a>
     </li>
   </ul>
 </div>

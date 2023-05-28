@@ -5,7 +5,6 @@ var namespace_alis_1_1_core =
     [ "Component", "dc/d59/namespace_alis_1_1_core_1_1_component.html", "dc/d59/namespace_alis_1_1_core_1_1_component" ],
     [ "Entity", "dd/d0d/namespace_alis_1_1_core_1_1_entity.html", "dd/d0d/namespace_alis_1_1_core_1_1_entity" ],
     [ "Graphic", "df/df9/namespace_alis_1_1_core_1_1_graphic.html", "df/df9/namespace_alis_1_1_core_1_1_graphic" ],
-    [ "Input", "db/d23/namespace_alis_1_1_core_1_1_input.html", "db/d23/namespace_alis_1_1_core_1_1_input" ],
     [ "Manager", "d5/d13/namespace_alis_1_1_core_1_1_manager.html", "d5/d13/namespace_alis_1_1_core_1_1_manager" ],
     [ "Network", "dd/d38/namespace_alis_1_1_core_1_1_network.html", "dd/d38/namespace_alis_1_1_core_1_1_network" ],
     [ "Physic", "d7/db3/namespace_alis_1_1_core_1_1_physic.html", "d7/db3/namespace_alis_1_1_core_1_1_physic" ],
