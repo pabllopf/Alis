@@ -4,7 +4,7 @@ on:
     branches:
       - master
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [ opened, synchronize, reopened ]
 jobs:
   build:
     name: Build and analyze
@@ -31,7 +31,7 @@ jobs:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-        
+
       - name: Setup dotnet
         uses: actions/setup-dotnet@v2
         with:
@@ -39,10 +39,10 @@ jobs:
 
       - name: Dotnet install workload
         run: dotnet workload install maccatalyst wasm-tools maui-windows maui-ios maui-android ios android
-        
-      - name: dotnet tool 
+
+      - name: dotnet tool
         run: dotnet tool install --global JetBrains.dotCover.GlobalTool
-        
+
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell

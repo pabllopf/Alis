@@ -29,6 +29,7 @@
 
 using System;
 using Alis.Core.Aspect.Logging;
+using Alis.Core.Audio.SDL;
 
 namespace Alis.Core.Audio.Sample
 {
@@ -58,11 +59,11 @@ namespace Alis.Core.Audio.Sample
                         case "sfml":
                             audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Sfml));
                             break;
-                        
+
                         case "sdl":
                             Init();
                             break;
-                        
+
                         case "os":
                             audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Os));
                             break;
@@ -102,33 +103,33 @@ namespace Alis.Core.Audio.Sample
                 }
             }
         }
-        
+
         /// <summary>
-        /// Inits
+        ///     Inits
         /// </summary>
         private static void Init()
         {
             //Initialize all SDL subsystems
-            SDL.SdlMixer.SDL_Init(SDL.SdlMixer.SdlInitAudio);
-            
+            SdlMixer.SDL_Init(SdlMixer.SdlInitAudio);
+
             //Initialize SDL_mixer
-            if(SDL.SdlMixer.Mix_OpenAudio( 22050, SDL.SdlMixer.MixDefaultFormat, 2, 4096 ) == -1 )
+            if (SdlMixer.Mix_OpenAudio(22050, SdlMixer.MixDefaultFormat, 2, 4096) == -1)
             {
                 return;
             }
-            
+
             //Load the background image
             //background = load_image( "background.png" );
-    
+
             //Open the font
             //font = TTF_OpenFont( "lazy.ttf", 30 );
-            
+
             //Load the music
             string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            IntPtr music = SDL.SdlMixer.Mix_LoadMUS( fileName );
+            IntPtr music = SdlMixer.Mix_LoadMUS(fileName);
             //IntPtr scratch = SDL.SDL_mixer.Mix_LoadWAV( "scratch.wav" );
-            
-            SDL.SdlMixer.Mix_PlayMusic( music, -1 );
+
+            SdlMixer.Mix_PlayMusic(music, -1);
         }
     }
 }

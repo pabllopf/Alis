@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
 namespace Alis.Core.Profiling.Sample
 {
     /// <summary>

@@ -44,7 +44,7 @@ namespace Alis.Core.Graphic.SDL
     public static class SdlTtf
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdlTtf"/> class
+        ///     Initializes a new instance of the <see cref="SdlTtf" /> class
         /// </summary>
         static SdlTtf()
         {

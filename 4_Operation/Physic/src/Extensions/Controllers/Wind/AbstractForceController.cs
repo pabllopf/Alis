@@ -27,7 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Extensions.Controllers.ControllerBase;
@@ -46,7 +45,7 @@ namespace Alis.Core.Physic.Extensions.Controllers.Wind
 
         /// <summary>The Forcetype of the instance</summary>
         public ForceTypes ForceType;
-        
+
         /// <summary>
         ///     Curve used by Curve Mode as an animated multiplier for the force strength. Only positions between 0 and 1 are
         ///     considered as that range is stretched to have ImpulseLength.

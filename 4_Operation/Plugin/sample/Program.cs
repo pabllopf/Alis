@@ -27,9 +27,6 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
 namespace Alis.Core.Plugin.Sample
 {
     /// <summary>
@@ -44,9 +41,5 @@ namespace Alis.Core.Plugin.Sample
         private static void Main(string[] args)
         {
         }
-
-        
-            
-        
     }
 }

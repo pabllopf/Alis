@@ -29,10 +29,8 @@
 
 using System.Collections.Generic;
 using Alis.Core.Aspect.Math.Vector;
-using Alis.Core.Physic.Collision.Shapes;
 using Alis.Core.Physic.Dynamics;
 using Alis.Core.Physic.Dynamics.Joints;
-using Alis.Core.Physic.Extensions.Controllers.Gravity;
 using Alis.Core.Physic.Extensions.Controllers.Velocity;
 using Moq;
 using Xunit;
@@ -363,9 +361,9 @@ namespace Alis.Core.Physic.Test
             Mock<VelocityLimitController> controllerMock = new Mock<VelocityLimitController>();
             _world.AddController(controllerMock.Object);
         }
-        
+
         /// <summary>
-        /// Tests that add body when called should add body to physics world
+        ///     Tests that add body when called should add body to physics world
         /// </summary>
         [Fact]
         public void AddBody_WhenCalled_ShouldAddBodyToPhysicsWorld()
@@ -387,14 +385,14 @@ namespace Alis.Core.Physic.Test
                 false,
                 true,
                 1.0f);
-            
+
             _world.AddBody(mockBody.Object);
 
             Assert.Contains(mockBody.Object, _world.Bodies);
         }
-        
+
         /// <summary>
-        /// Tests that add joint when called should add joint to physics world
+        ///     Tests that add joint when called should add joint to physics world
         /// </summary>
         [Fact]
         public void AddJoint_WhenCalled_ShouldAddJointToPhysicsWorld()
@@ -416,16 +414,16 @@ namespace Alis.Core.Physic.Test
                 false,
                 true,
                 1.0f);
-            
+
             Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
-            
+
             _world.AddJoint(mockJoint.Object);
 
             Assert.Contains(mockJoint.Object, _world.Joints);
         }
 
         /// <summary>
-        /// Tests that add controller when called should add controller to physics world
+        ///     Tests that add controller when called should add controller to physics world
         /// </summary>
         [Fact]
         public void AddController_WhenCalled_ShouldAddControllerToPhysicsWorld()
@@ -437,7 +435,7 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// Tests that remove body when called should remove body from physics world
+        ///     Tests that remove body when called should remove body from physics world
         /// </summary>
         [Fact]
         public void RemoveBody_WhenCalled_ShouldRemoveBodyFromPhysicsWorld()
@@ -459,15 +457,15 @@ namespace Alis.Core.Physic.Test
                 false,
                 true,
                 1.0f);
-            
+
             _world.AddBody(mockBody.Object);
             _world.RemoveBody(mockBody.Object);
 
             Assert.DoesNotContain(mockBody.Object, _world.Bodies);
         }
-        
+
         /// <summary>
-        /// Tests that remove joint when called should remove joint from physics world
+        ///     Tests that remove joint when called should remove joint from physics world
         /// </summary>
         [Fact]
         public void RemoveJoint_WhenCalled_ShouldRemoveJointFromPhysicsWorld()
@@ -489,7 +487,7 @@ namespace Alis.Core.Physic.Test
                 false,
                 true,
                 1.0f);
-            
+
             Mock<AngleJoint> mockJoint = new Mock<AngleJoint>(bodyMock.Object, bodyMock.Object);
             _world.AddJoint(mockJoint.Object);
             _world.RemoveJoint(mockJoint.Object);
@@ -498,7 +496,7 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// Tests that remove controller when called should remove controller from physics world
+        ///     Tests that remove controller when called should remove controller from physics world
         /// </summary>
         [Fact]
         public void RemoveController_WhenCalled_ShouldRemoveControllerFromPhysicsWorld()
@@ -511,7 +509,7 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        /// Tests that step when called should update physics world
+        ///     Tests that step when called should update physics world
         /// </summary>
         [Fact]
         public void Step_WhenCalled_ShouldUpdatePhysicsWorld()

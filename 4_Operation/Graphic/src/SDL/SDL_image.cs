@@ -44,7 +44,7 @@ namespace Alis.Core.Graphic.SDL
     public static class SdlImage
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdlImage"/> class
+        ///     Initializes a new instance of the <see cref="SdlImage" /> class
         /// </summary>
         static SdlImage()
         {

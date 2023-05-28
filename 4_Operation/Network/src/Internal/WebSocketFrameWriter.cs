@@ -45,14 +45,6 @@ namespace Alis.Core.Network.Internal
     internal static class WebSocketFrameWriter
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="WebSocketFrameWriter" /> class
-        /// </summary>
-        static WebSocketFrameWriter()
-        {
-            
-        }
-        
-        /// <summary>
         ///     No async await stuff here because we are dealing with a memory stream
         /// </summary>
         /// <param name="opCode">The web socket opcode</param>

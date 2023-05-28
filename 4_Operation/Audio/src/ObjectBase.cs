@@ -43,11 +43,16 @@ namespace Alis.Core.Audio
     public abstract class ObjectBase : IDisposable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ObjectBase"/> class
+        ///     The zero
+        /// </summary>
+        private IntPtr myCPointer = IntPtr.Zero;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ObjectBase" /> class
         /// </summary>
         static ObjectBase()
         {
-             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
                 switch (RuntimeInformation.ProcessArchitecture)
                 {
@@ -92,11 +97,6 @@ namespace Alis.Core.Audio
                 }
             }
         }
-        
-        /// <summary>
-        ///     The zero
-        /// </summary>
-        private IntPtr myCPointer = IntPtr.Zero;
 
         ////////////////////////////////////////////////////////////
         /// <summary>

@@ -28,7 +28,6 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -174,7 +173,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputText(label, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Determines whether the input text.
+        ///     Determines whether the input text.
         /// </summary>
         /// <param name="label">The label.</param>
         /// <param name="input">The input.</param>
@@ -196,22 +195,22 @@ namespace Alis.Core.Graphic.ImGui
             IntPtr inputPtr = Marshal.StringToHGlobalAnsi(input);
 
             // Convert ANSI strings to UTF-8 bytes
-            byte* utf8LabelBytes = (byte*)labelPtr.ToPointer();
-            byte* utf8InputBytes = (byte*)inputPtr.ToPointer();
+            byte* utf8LabelBytes = (byte*) labelPtr.ToPointer();
+            byte* utf8InputBytes = (byte*) inputPtr.ToPointer();
 
             // Create buffers for modified input
-            int inputBufSize = Math.Max((int)maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
+            int inputBufSize = Math.Max((int) maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
             byte* modifiedUtf8InputBytes = stackalloc byte[inputBufSize];
             byte* originalUtf8InputBytes = stackalloc byte[inputBufSize];
 
             // Copy input bytes to the modified input buffer
-            Unsafe.CopyBlock(modifiedUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
+            Unsafe.CopyBlock(modifiedUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
 
             // Call the ImGuiNative method
             byte result = ImGuiNative.igInputText(
                 utf8LabelBytes,
                 modifiedUtf8InputBytes,
-                (uint)inputBufSize,
+                (uint) inputBufSize,
                 flags,
                 callback,
                 userData.ToPointer());
@@ -279,7 +278,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputTextMultiline(label, ref input, maxLength, size, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Determines whether the input text is multiline.
+        ///     Determines whether the input text is multiline.
         /// </summary>
         /// <param name="label">The label.</param>
         /// <param name="input">The input.</param>
@@ -303,22 +302,22 @@ namespace Alis.Core.Graphic.ImGui
             IntPtr inputPtr = Marshal.StringToHGlobalAnsi(input);
 
             // Convert ANSI strings to UTF-8 bytes
-            byte* utf8LabelBytes = (byte*)labelPtr.ToPointer();
-            byte* utf8InputBytes = (byte*)inputPtr.ToPointer();
+            byte* utf8LabelBytes = (byte*) labelPtr.ToPointer();
+            byte* utf8InputBytes = (byte*) inputPtr.ToPointer();
 
             // Create buffers for modified input
-            int inputBufSize = Math.Max((int)maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
+            int inputBufSize = Math.Max((int) maxLength + 1, Encoding.UTF8.GetByteCount(input) + 1);
             byte* modifiedUtf8InputBytes = stackalloc byte[inputBufSize];
             byte* originalUtf8InputBytes = stackalloc byte[inputBufSize];
 
             // Copy input bytes to the modified input buffer
-            Unsafe.CopyBlock(modifiedUtf8InputBytes, utf8InputBytes, (uint)inputBufSize);
+            Unsafe.CopyBlock(modifiedUtf8InputBytes, utf8InputBytes, (uint) inputBufSize);
 
             // Call the ImGuiNative method
             byte result = ImGuiNative.igInputTextMultiline(
                 utf8LabelBytes,
                 modifiedUtf8InputBytes,
-                (uint)inputBufSize,
+                (uint) inputBufSize,
                 size,
                 flags,
                 callback,
@@ -338,17 +337,15 @@ namespace Alis.Core.Graphic.ImGui
         }
 
 
-
-        
         /// <summary>
-        /// Describes whether are byte arrays equal
+        ///     Describes whether are byte arrays equal
         /// </summary>
         /// <param name="array1">The array</param>
         /// <param name="array2">The array</param>
         /// <returns>The bool</returns>
         public static bool AreByteArraysEqual(byte[] array1, byte[] array2)
         {
-            if (array1 == null && array2 == null)
+            if ((array1 == null) && (array2 == null))
             {
                 return true;
             }
@@ -368,7 +365,6 @@ namespace Alis.Core.Graphic.ImGui
 
             return true;
         }
-
 
 
         /// <summary>
@@ -420,7 +416,7 @@ namespace Alis.Core.Graphic.ImGui
             ImGuiInputTextCallback callback) => InputTextWithHint(label, hint, ref input, maxLength, flags, callback, IntPtr.Zero);
 
         /// <summary>
-        /// Describes whether input text with hint
+        ///     Describes whether input text with hint
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
@@ -466,14 +462,14 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Gets the utf 8 bytes using the specified text
+        ///     Gets the utf 8 bytes using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <returns>The utf bytes</returns>
         private static byte* GetUtf8Bytes(string text)
         {
             int byteCount = Encoding.UTF8.GetByteCount(text);
-            byte* utf8Bytes = (byte*)Marshal.AllocHGlobal(byteCount + 1);
+            byte* utf8Bytes = (byte*) Marshal.AllocHGlobal(byteCount + 1);
             Util.GetUtf8(text, utf8Bytes, byteCount);
             utf8Bytes[byteCount] = 0; // Null-terminate the string
             return utf8Bytes;
@@ -481,7 +477,7 @@ namespace Alis.Core.Graphic.ImGui
 
 
         /// <summary>
-        /// Gets the utf 8 bytes using the specified text
+        ///     Gets the utf 8 bytes using the specified text
         /// </summary>
         /// <param name="text">The text</param>
         /// <param name="maxLength">The max length</param>
@@ -489,15 +485,15 @@ namespace Alis.Core.Graphic.ImGui
         private static byte* GetUtf8Bytes(string text, uint maxLength)
         {
             int byteCount = Encoding.UTF8.GetByteCount(text);
-            int inputBufSize = Math.Max((int)maxLength + 1, byteCount + 1);
+            int inputBufSize = Math.Max((int) maxLength + 1, byteCount + 1);
             byte[] utf8BytesArray = new byte[inputBufSize];
 
             fixed (byte* utf8Bytes = utf8BytesArray)
             {
                 Util.GetUtf8(text, utf8Bytes, inputBufSize);
-                Unsafe.InitBlockUnaligned(utf8Bytes, 0, (uint)inputBufSize);
+                Unsafe.InitBlockUnaligned(utf8Bytes, 0, (uint) inputBufSize);
 
-                byte* result = (byte*)Marshal.AllocHGlobal(inputBufSize);
+                byte* result = (byte*) Marshal.AllocHGlobal(inputBufSize);
                 Buffer.MemoryCopy(utf8Bytes, result, inputBufSize, inputBufSize);
 
                 return result;
@@ -505,9 +501,8 @@ namespace Alis.Core.Graphic.ImGui
         }
 
 
-
         /// <summary>
-        /// Describes whether are utf 8 strings equal
+        ///     Describes whether are utf 8 strings equal
         /// </summary>
         /// <param name="utf8Bytes">The utf bytes</param>
         /// <param name="text">The text</param>
@@ -519,17 +514,14 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Gets the string from utf 8 using the specified utf 8 bytes
+        ///     Gets the string from utf 8 using the specified utf 8 bytes
         /// </summary>
         /// <param name="utf8Bytes">The utf bytes</param>
         /// <returns>The string</returns>
-        private static string GetStringFromUtf8(byte* utf8Bytes)
-        {
-            return Util.StringFromPtr(utf8Bytes);
-        }
+        private static string GetStringFromUtf8(byte* utf8Bytes) => Util.StringFromPtr(utf8Bytes);
 
         /// <summary>
-        /// Frees the utf 8 bytes using the specified utf 8 bytes
+        ///     Frees the utf 8 bytes using the specified utf 8 bytes
         /// </summary>
         /// <param name="utf8Bytes">The utf bytes</param>
         private static void FreeUtf8Bytes(byte* utf8Bytes)
@@ -542,7 +534,7 @@ namespace Alis.Core.Graphic.ImGui
         }
 
         /// <summary>
-        /// Gets the utf 8 bytes length using the specified utf 8 bytes
+        ///     Gets the utf 8 bytes length using the specified utf 8 bytes
         /// </summary>
         /// <param name="utf8Bytes">The utf bytes</param>
         /// <returns>The length</returns>
@@ -561,10 +553,6 @@ namespace Alis.Core.Graphic.ImGui
 
             return length;
         }
-
-
-
-
 
 
         /// <summary>

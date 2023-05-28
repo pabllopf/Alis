@@ -112,9 +112,9 @@ namespace Alis.Core.Network.Sample.Client.Complex
             {
                 CancellationTokenSource source = new CancellationTokenSource();
                 _token = source.Token;
-                
+
                 RandomNumberGenerator rand = RandomNumberGenerator.Create();
-                
+
                 _expectedValues = new byte[50][];
                 for (int i = 0; i < _expectedValues.Length; i++)
                 {

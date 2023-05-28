@@ -45,7 +45,7 @@ namespace Alis.Core.Audio.SDL
     public static class SdlMixer
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SdlMixer"/> class
+        ///     Initializes a new instance of the <see cref="SdlMixer" /> class
         /// </summary>
         static SdlMixer()
         {
@@ -103,7 +103,7 @@ namespace Alis.Core.Audio.SDL
         #endregion
 
         #region SDL
-        
+
         /// <summary>
         ///     The sdl init timer
         /// </summary>
@@ -153,8 +153,8 @@ namespace Alis.Core.Audio.SDL
         ///     The sdl init sensor
         /// </summary>
         public const uint SdlInitEverything = SdlInitTimer | SdlInitAudio | SdlInitVideo |
-                                                SdlInitEvents | SdlInitJoystick | SdlInitHaptic |
-                                                SdlInitGamecontroller | SdlInitSensor;
+                                              SdlInitEvents | SdlInitJoystick | SdlInitHaptic |
+                                              SdlInitGamecontroller | SdlInitSensor;
 
         /// <summary>
         ///     Sdls the init using the specified flags
@@ -349,9 +349,9 @@ namespace Alis.Core.Audio.SDL
         ///     The sdl audio allow samples change
         /// </summary>
         public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange |
-                                                       SdlAudioAllowFormatChange |
-                                                       SdlAudioAllowChannelsChange |
-                                                       SdlAudioAllowSamplesChange;
+                                                   SdlAudioAllowFormatChange |
+                                                   SdlAudioAllowChannelsChange |
+                                                   SdlAudioAllowSamplesChange;
 
         /// <summary>
         ///     The sdl mix maxvolume
@@ -522,7 +522,7 @@ namespace Alis.Core.Audio.SDL
             IntPtr rwops = SDL_RWFromFile(file, "rb");
             return Mix_LoadWAV_RW(rwops, 1);
         }
-        
+
         /// <summary>
         ///     Sdls the rw from file using the specified file
         /// </summary>
@@ -544,7 +544,7 @@ namespace Alis.Core.Audio.SDL
             Marshal.FreeHGlobal((IntPtr) utf8File);
             return rwOps;
         }
-        
+
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
@@ -645,7 +645,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The string</returns>
-        public static string Mix_GetChunkDecoder(int index) =>UTF8_ToManaged(
+        public static string Mix_GetChunkDecoder(int index) => UTF8_ToManaged(
             INTERNAL_Mix_GetChunkDecoder(index)
         );
 
@@ -1478,7 +1478,7 @@ namespace Alis.Core.Audio.SDL
         }
 
         #endregion
-        
+
         #region UTF8 Marshaling
 
         /* Used for stack allocated string marshaling. */
@@ -1605,7 +1605,7 @@ namespace Alis.Core.Audio.SDL
 
             return result;
         }
-        
+
         /// <summary>
         ///     Sdls the free using the specified memblock
         /// </summary>
@@ -1614,9 +1614,9 @@ namespace Alis.Core.Audio.SDL
         internal static extern void SDL_free(IntPtr memblock);
 
         #endregion
-        
-        
-         #region SDL_error.h
+
+
+        #region SDL_error.h
 
         /// <summary>
         ///     Sdls the clear error

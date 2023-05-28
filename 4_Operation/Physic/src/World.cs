@@ -44,11 +44,6 @@ namespace Alis.Core.Physic
     public class World
     {
         /// <summary>
-        ///     The breakable body
-        /// </summary>
-        internal List<BreakableBody> BreakableBodies { get; } = new List<BreakableBody>();
-
-        /// <summary>
         ///     The island
         /// </summary>
         private readonly Island island;
@@ -63,6 +58,11 @@ namespace Alis.Core.Physic
             ContactManager = new ContactManager(new DynamicTreeBroadPhase());
             island = new Island();
         }
+
+        /// <summary>
+        ///     The breakable body
+        /// </summary>
+        internal List<BreakableBody> BreakableBodies { get; } = new List<BreakableBody>();
 
         /// <summary>
         ///     Gets the value of the gravity

@@ -54,7 +54,7 @@ namespace Alis.Core.Aspect.Math.Matrix
             /// <summary>
             ///     The element
             /// </summary>
-            public  Vector3F Element2;
+            public Vector3F Element2;
         }
     }
 }

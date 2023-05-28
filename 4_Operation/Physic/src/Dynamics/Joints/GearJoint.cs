@@ -223,7 +223,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bodyC = this.jointA.BodyA;
             BodyA = this.jointA.BodyB;
-            
+
             // Get geometry of joint1
             Transform xfA = BodyA.Xf;
             float aA = BodyA.Sweep.A;
@@ -255,7 +255,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bodyD = jointB.BodyA;
             BodyB = jointB.BodyB;
-            
+
             // Get geometry of joint2
             Transform xfB = BodyB.Xf;
             float aB = BodyB.Sweep.A;
@@ -309,7 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             typeA = jointA.JointType;
             typeB = jointB.JointType;
-            
+
             float coordinateA, coordinateB;
 
             // TODO_ERIN there might be some problem with the joint edges in b2Joint.
@@ -349,7 +349,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bodyD = JointB.BodyA;
             BodyB = JointB.BodyB;
-            
+
             // Get geometry of joint2
             Transform xfB = BodyB.Xf;
             float aB = BodyB.Sweep.A;

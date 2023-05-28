@@ -151,7 +151,6 @@ namespace Alis.Core.Audio
             }
         }
 
-       
 
         /// <summary>
         ///     Gets or sets the value of the sample rate

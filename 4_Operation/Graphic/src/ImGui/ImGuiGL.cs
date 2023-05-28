@@ -43,7 +43,7 @@ namespace Alis.Core.Graphic.ImGui
     public static class ImGuiGl
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImGuiGl"/> class
+        ///     Initializes a new instance of the <see cref="ImGuiGl" /> class
         /// </summary>
         static ImGuiGl()
         {

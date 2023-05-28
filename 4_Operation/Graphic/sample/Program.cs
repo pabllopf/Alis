@@ -29,6 +29,7 @@
 
 using System;
 using System.Collections.Generic;
+using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
 
@@ -184,56 +185,56 @@ namespace Alis.Core.Graphic.Sample
                 }
             }
         }
-        
+
         /// <summary>
-        /// Sdlinputs
+        ///     Sdlinputs
         /// </summary>
         private static void Sdlinput()
         {
-            SDL.Sdl.SDL_SetHint(SDL.Sdl.SdlHintXinputEnabled, "0");
-            SDL.Sdl.SDL_SetHint(SDL.Sdl.SdlHintJoystickThread, "1");
-            SDL.Sdl.SDL_Init(SDL.Sdl.SdlInitEverything);
+            Sdl.SDL_SetHint(Sdl.SdlHintXinputEnabled, "0");
+            Sdl.SDL_SetHint(Sdl.SdlHintJoystickThread, "1");
+            Sdl.SDL_Init(Sdl.SdlInitEverything);
 
 
-            for (int i = 0; i < SDL.Sdl.SDL_NumJoysticks(); i++)
+            for (int i = 0; i < Sdl.SDL_NumJoysticks(); i++)
             {
-                IntPtr myJoystick = SDL.Sdl.SDL_JoystickOpen(i);
+                IntPtr myJoystick = Sdl.SDL_JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
-                    Console.WriteLine("Ooops, something fishy's goin' on here!" + SDL.Sdl.SDL_GetError());
+                    Console.WriteLine("Ooops, something fishy's goin' on here!" + Sdl.SDL_GetError());
                 }
                 else
                 {
                     Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={SDL.Sdl.SDL_JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={SDL.Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={SDL.Sdl.SDL_JoystickNumButtons(myJoystick)}");
+                                      $"SDL_JoystickName={Sdl.SDL_JoystickName(myJoystick)} \n" +
+                                      $"SDL_JoystickNumAxes={Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                      $"SDL_JoystickNumButtons={Sdl.SDL_JoystickNumButtons(myJoystick)}");
                 }
             }
 
-            List<SDL.Sdl.SdlGameControllerButton> buttons = new List<SDL.Sdl.SdlGameControllerButton>((SDL.Sdl.SdlGameControllerButton[]) Enum.GetValues(typeof(SDL.Sdl.SdlGameControllerButton)));
-            List<SDL.Sdl.SdlGameControllerAxis> axis = new List<SDL.Sdl.SdlGameControllerAxis>((SDL.Sdl.SdlGameControllerAxis[]) Enum.GetValues(typeof(SDL.Sdl.SdlGameControllerAxis)));
+            List<Sdl.SdlGameControllerButton> buttons = new List<Sdl.SdlGameControllerButton>((Sdl.SdlGameControllerButton[]) Enum.GetValues(typeof(Sdl.SdlGameControllerButton)));
+            List<Sdl.SdlGameControllerAxis> axis = new List<Sdl.SdlGameControllerAxis>((Sdl.SdlGameControllerAxis[]) Enum.GetValues(typeof(Sdl.SdlGameControllerAxis)));
 
-            List<SDL.Sdl.SdlKeycode> keys = new List<SDL.Sdl.SdlKeycode>((SDL.Sdl.SdlKeycode[]) Enum.GetValues(typeof(SDL.Sdl.SdlKeycode)));
+            List<Sdl.SdlKeycode> keys = new List<Sdl.SdlKeycode>((Sdl.SdlKeycode[]) Enum.GetValues(typeof(Sdl.SdlKeycode)));
 
 
-            SDL.Sdl.SdlEvent sdlEvent;
+            Sdl.SdlEvent sdlEvent;
 
             bool run = true;
             while (run)
             {
-                SDL.Sdl.SDL_JoystickUpdate();
+                Sdl.SDL_JoystickUpdate();
 
-                while (SDL.Sdl.SDL_PollEvent(out sdlEvent) != 0)
+                while (Sdl.SDL_PollEvent(out sdlEvent) != 0)
                 {
-                    foreach (SDL.Sdl.SdlKeycode key in keys)
+                    foreach (Sdl.SdlKeycode key in keys)
                     {
-                        if ((sdlEvent.type == SDL.Sdl.SdlEventType.SdlKeydown) &&
+                        if ((sdlEvent.type == Sdl.SdlEventType.SdlKeydown) &&
                             (sdlEvent.key.keysym.sym == key))
                         {
                             Console.WriteLine($"Pressed key={key}");
 
-                            if (sdlEvent.key.keysym.sym == SDL.Sdl.SdlKeycode.SdlkEscape)
+                            if (sdlEvent.key.keysym.sym == Sdl.SdlKeycode.SdlkEscape)
                             {
                                 Console.WriteLine("End program");
                                 run = false;
@@ -242,19 +243,19 @@ namespace Alis.Core.Graphic.Sample
                         }
                     }
 
-                    foreach (SDL.Sdl.SdlGameControllerButton button in buttons)
+                    foreach (Sdl.SdlGameControllerButton button in buttons)
                     {
-                        if ((sdlEvent.type == SDL.Sdl.SdlEventType.SdlJoybuttondown)
-                            && (button == (SDL.Sdl.SdlGameControllerButton) sdlEvent.cbutton.button))
+                        if ((sdlEvent.type == Sdl.SdlEventType.SdlJoybuttondown)
+                            && (button == (Sdl.SdlGameControllerButton) sdlEvent.cbutton.button))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed button={button}");
                         }
                     }
 
-                    foreach (SDL.Sdl.SdlGameControllerAxis axi in axis)
+                    foreach (Sdl.SdlGameControllerAxis axi in axis)
                     {
-                        if ((sdlEvent.type == SDL.Sdl.SdlEventType.SdlJoyaxismotion)
-                            && (axi == (SDL.Sdl.SdlGameControllerAxis) sdlEvent.caxis.axis))
+                        if ((sdlEvent.type == Sdl.SdlEventType.SdlJoyaxismotion)
+                            && (axi == (Sdl.SdlGameControllerAxis) sdlEvent.caxis.axis))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed axi={axi}");
                         }
@@ -265,13 +266,13 @@ namespace Alis.Core.Graphic.Sample
 
 
         /// <summary>
-        /// Sfmlinputs
+        ///     Sfmlinputs
         /// </summary>
         public static void Sfmlinput()
         {
             // Crea una ventana vacía (sin bordes ni contenido)
-            var contextSettings = new ContextSettings { DepthBits = 0, StencilBits = 0 };
-            var window = new RenderWindow(new VideoMode(1, 1), "Input Example", Styles.None, contextSettings);
+            ContextSettings contextSettings = new ContextSettings {DepthBits = 0, StencilBits = 0};
+            RenderWindow window = new RenderWindow(new VideoMode(1, 1), "Input Example", Styles.None, contextSettings);
             window.SetActive(false);
 
             // Configura los eventos de input
@@ -291,12 +292,14 @@ namespace Alis.Core.Graphic.Sample
 
                 // Salir del bucle si se presiona la tecla Escape
                 if (Keyboard.IsKeyPressed(Key.Escape))
+                {
                     break;
+                }
             }
         }
 
         /// <summary>
-        /// Windows the on joystick moved using the specified sender
+        ///     Windows the on joystick moved using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
@@ -306,7 +309,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Windows the on joystick disconnected using the specified sender
+        ///     Windows the on joystick disconnected using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
@@ -316,7 +319,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Windows the on joystick connected using the specified sender
+        ///     Windows the on joystick connected using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
@@ -326,7 +329,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Ons the joystick button pressed using the specified sender
+        ///     Ons the joystick button pressed using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
@@ -337,7 +340,7 @@ namespace Alis.Core.Graphic.Sample
 
 
         /// <summary>
-        /// Ons the key pressed using the specified sender
+        ///     Ons the key pressed using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>
@@ -347,7 +350,7 @@ namespace Alis.Core.Graphic.Sample
         }
 
         /// <summary>
-        /// Ons the mouse button pressed using the specified sender
+        ///     Ons the mouse button pressed using the specified sender
         /// </summary>
         /// <param name="sender">The sender</param>
         /// <param name="e">The </param>

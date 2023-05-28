@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.SDL
     public static class Sdl
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Sdl"/> class
+        ///     Initializes a new instance of the <see cref="Sdl" /> class
         /// </summary>
         static Sdl()
         {
@@ -2086,8 +2086,8 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl init sensor
         /// </summary>
         public const uint SdlInitEverything = SdlInitTimer | SdlInitAudio | SdlInitVideo |
-                                                SdlInitEvents | SdlInitJoystick | SdlInitHaptic |
-                                                SdlInitGamecontroller | SdlInitSensor;
+                                              SdlInitEvents | SdlInitJoystick | SdlInitHaptic |
+                                              SdlInitGamecontroller | SdlInitSensor;
 
         /// <summary>
         ///     Sdls the init using the specified flags
@@ -9653,9 +9653,9 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="r">The </param>
         /// <returns>The sdl bool</returns>
         public static SdlBool SDL_PointInRect(ref SdlPoint p, ref SdlRect r) => (p.x >= r.x) &&
-                                                                                   (p.x < r.x + r.w) &&
-                                                                                   (p.y >= r.y) &&
-                                                                                   (p.y < r.y + r.h)
+                                                                                (p.x < r.x + r.w) &&
+                                                                                (p.y >= r.y) &&
+                                                                                (p.y < r.y + r.h)
             ? SdlBool.SdlTrue
             : SdlBool.SdlFalse;
 
@@ -18042,9 +18042,9 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl audio allow samples change
         /// </summary>
         public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange |
-                                                       SdlAudioAllowFormatChange |
-                                                       SdlAudioAllowChannelsChange |
-                                                       SdlAudioAllowSamplesChange;
+                                                   SdlAudioAllowFormatChange |
+                                                   SdlAudioAllowChannelsChange |
+                                                   SdlAudioAllowSamplesChange;
 
         /// <summary>
         ///     The sdl mix maxvolume
