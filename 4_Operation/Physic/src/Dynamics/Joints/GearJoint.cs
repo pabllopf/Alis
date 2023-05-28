@@ -27,7 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Diagnostics;
+using System;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Vector;
 using Alis.Core.Physic.Config;
@@ -216,8 +216,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             typeA = this.jointA.JointType;
             typeB = this.jointB.JointType;
 
-            Debug.Assert(typeA == JointType.Revolute || typeA == JointType.Prismatic);
-            Debug.Assert(typeB == JointType.Revolute || typeB == JointType.Prismatic);
 
             float coordinateA, coordinateB;
 
@@ -225,10 +223,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bodyC = this.jointA.BodyA;
             BodyA = this.jointA.BodyB;
-
-            // Body B on joint1 must be dynamic
-            Debug.Assert(BodyA.Type == BodyType.Dynamic);
-
+            
             // Get geometry of joint1
             Transform xfA = BodyA.Xf;
             float aA = BodyA.Sweep.A;
@@ -260,10 +255,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bodyD = jointB.BodyA;
             BodyB = jointB.BodyB;
-
-            // Body B on joint2 must be dynamic
-            Debug.Assert(BodyB.Type == BodyType.Dynamic);
-
+            
             // Get geometry of joint2
             Transform xfB = BodyB.Xf;
             float aB = BodyB.Sweep.A;
@@ -317,12 +309,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             typeA = jointA.JointType;
             typeB = jointB.JointType;
-
-            Debug.Assert(typeA == JointType.Revolute || typeA == JointType.Prismatic ||
-                         typeA == JointType.FixedRevolute || typeA == JointType.FixedPrismatic);
-            Debug.Assert(typeB == JointType.Revolute || typeB == JointType.Prismatic ||
-                         typeB == JointType.FixedRevolute || typeB == JointType.FixedPrismatic);
-
+            
             float coordinateA, coordinateB;
 
             // TODO_ERIN there might be some problem with the joint edges in b2Joint.
@@ -330,8 +317,6 @@ namespace Alis.Core.Physic.Dynamics.Joints
             bodyC = JointA.BodyA;
             BodyA = JointA.BodyB;
 
-            // Body B on joint1 must be dynamic
-            Debug.Assert(BodyA.Type == BodyType.Dynamic);
 
             // Get geometry of joint1
             Transform xfA = BodyA.Xf;
@@ -364,10 +349,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             bodyD = JointB.BodyA;
             BodyB = JointB.BodyB;
-
-            // Body B on joint2 must be dynamic
-            Debug.Assert(BodyB.Type == BodyType.Dynamic);
-
+            
             // Get geometry of joint2
             Transform xfB = BodyB.Xf;
             float aB = BodyB.Sweep.A;
@@ -408,7 +390,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.GetWorldPoint(localAnchorA);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>
@@ -417,7 +399,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorB
         {
             get => BodyB.GetWorldPoint(localAnchorB);
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>The gear ratio.</summary>

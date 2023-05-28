@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Diagnostics;
 using Alis.Core.Aspect.Math;
 using Alis.Core.Aspect.Math.Matrix;
@@ -227,7 +228,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorA
         {
             get => BodyA.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>
@@ -236,7 +237,7 @@ namespace Alis.Core.Physic.Dynamics.Joints
         public override Vector2F WorldAnchorB
         {
             get => BodyB.Position;
-            set => Debug.Assert(false, "You can't set the world anchor on this joint type.");
+            set => throw new ArgumentException(value.ToString());
         }
 
         /// <summary>Get/set the maximum friction force in N.</summary>
