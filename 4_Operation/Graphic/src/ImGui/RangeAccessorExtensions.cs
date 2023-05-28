@@ -41,6 +41,6 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="stringAccessor">The string accessor</param>
         /// <returns>The string</returns>
-        public static unsafe string GetStringASCII(this RangeAccessor<byte> stringAccessor) => Encoding.ASCII.GetString((byte*) stringAccessor.Data, stringAccessor.Count);
+        public static unsafe string GetStringAscii(this RangeAccessor<byte> stringAccessor) => Encoding.ASCII.GetString((byte*) stringAccessor.Data, stringAccessor.Count);
     }
 }

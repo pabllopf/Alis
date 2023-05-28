@@ -37,11 +37,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The cmd buffer
         /// </summary>
-        public ImVector _CmdBuffer;
+        public ImVector CmdBuffer;
 
         /// <summary>
         ///     The idx buffer
         /// </summary>
-        public ImVector _IdxBuffer;
+        public ImVector IdxBuffer;
     }
 }

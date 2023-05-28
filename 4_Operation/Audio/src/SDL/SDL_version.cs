@@ -35,7 +35,7 @@ namespace Alis.Core.Audio.SDL
     ///     The sdl version
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SDL_version
+    public struct SdlVersion
     {
         /// <summary>
         ///     The major

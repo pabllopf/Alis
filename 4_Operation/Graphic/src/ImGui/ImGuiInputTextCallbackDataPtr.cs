@@ -157,10 +157,10 @@ namespace Alis.Core.Graphic.ImGui
         ///     Deletes the chars using the specified pos
         /// </summary>
         /// <param name="pos">The pos</param>
-        /// <param name="bytes_count">The bytes count</param>
-        public void DeleteChars(int pos, int bytes_count)
+        /// <param name="bytesCount">The bytes count</param>
+        public void DeleteChars(int pos, int bytesCount)
         {
-            ImGuiNative.ImGuiInputTextCallbackData_DeleteChars(NativePtr, pos, bytes_count);
+            ImGuiNative.ImGuiInputTextCallbackData_DeleteChars(NativePtr, pos, bytesCount);
         }
 
         /// <summary>
@@ -188,34 +188,34 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="text">The text</param>
         public void InsertChars(int pos, string text)
         {
-            byte* native_text;
-            int text_byteCount = 0;
+            byte* nativeText;
+            int textByteCount = 0;
             if (text != null)
             {
-                text_byteCount = Encoding.UTF8.GetByteCount(text);
-                if (text_byteCount > Util.StackAllocationSizeLimit)
+                textByteCount = Encoding.UTF8.GetByteCount(text);
+                if (textByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_text = Util.Allocate(text_byteCount + 1);
+                    nativeText = Util.Allocate(textByteCount + 1);
                 }
                 else
                 {
-                    byte* native_text_stackBytes = stackalloc byte[text_byteCount + 1];
-                    native_text = native_text_stackBytes;
+                    byte* nativeTextStackBytes = stackalloc byte[textByteCount + 1];
+                    nativeText = nativeTextStackBytes;
                 }
 
-                int native_text_offset = Util.GetUtf8(text, native_text, text_byteCount);
-                native_text[native_text_offset] = 0;
+                int nativeTextOffset = Util.GetUtf8(text, nativeText, textByteCount);
+                nativeText[nativeTextOffset] = 0;
             }
             else
             {
-                native_text = null;
+                nativeText = null;
             }
 
-            byte* native_text_end = null;
-            ImGuiNative.ImGuiInputTextCallbackData_InsertChars(NativePtr, pos, native_text, native_text_end);
-            if (text_byteCount > Util.StackAllocationSizeLimit)
+            byte* nativeTextEnd = null;
+            ImGuiNative.ImGuiInputTextCallbackData_InsertChars(NativePtr, pos, nativeText, nativeTextEnd);
+            if (textByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_text);
+                Util.Free(nativeText);
             }
         }
 

@@ -94,12 +94,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="s">The </param>
         /// <param name="v">The </param>
         /// <returns>The retval</returns>
-        public ImColor HSV(float h, float s, float v)
+        public ImColor Hsv(float h, float s, float v)
         {
-            ImColor __retval;
+            ImColor retval;
             float a = 1.0f;
-            ImGuiNative.ImColor_HSV(&__retval, h, s, v, a);
-            return __retval;
+            ImGuiNative.ImColor_HSV(&retval, h, s, v, a);
+            return retval;
         }
 
         /// <summary>
@@ -110,11 +110,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="v">The </param>
         /// <param name="a">The </param>
         /// <returns>The retval</returns>
-        public ImColor HSV(float h, float s, float v, float a)
+        public ImColor Hsv(float h, float s, float v, float a)
         {
-            ImColor __retval;
-            ImGuiNative.ImColor_HSV(&__retval, h, s, v, a);
-            return __retval;
+            ImColor retval;
+            ImGuiNative.ImColor_HSV(&retval, h, s, v, a);
+            return retval;
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="h">The </param>
         /// <param name="s">The </param>
         /// <param name="v">The </param>
-        public void SetHSV(float h, float s, float v)
+        public void SetHsv(float h, float s, float v)
         {
             float a = 1.0f;
             ImGuiNative.ImColor_SetHSV(NativePtr, h, s, v, a);
@@ -136,7 +136,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="s">The </param>
         /// <param name="v">The </param>
         /// <param name="a">The </param>
-        public void SetHSV(float h, float s, float v, float a)
+        public void SetHsv(float h, float s, float v, float a)
         {
             ImGuiNative.ImColor_SetHSV(NativePtr, h, s, v, a);
         }

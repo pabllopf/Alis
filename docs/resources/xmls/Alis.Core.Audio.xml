@@ -713,35 +713,169 @@
               Busca un recurso adaptado de tipo System.Byte[].
             </summary>
         </member>
-        <member name="T:Alis.Core.Audio.SDL.SDL_mixer">
+        <member name="T:Alis.Core.Audio.SDL.MIX_Chunk">
             <summary>
-            The sdl mixer class
-            </summary>
-            <summary>
-                The sdl mixer class
-            </summary>
-            <summary>
-            The sdl mixer class
+                The mix chunk
             </summary>
         </member>
-        <member name="T:Alis.Core.Audio.SDL.SDL_mixer.SDL_AudioStatus">
+        <member name="F:Alis.Core.Audio.SDL.MIX_Chunk.allocated">
+            <summary>
+                The allocated
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_Chunk.abuf">
+            <summary>
+                The abuf
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_Chunk.alen">
+            <summary>
+                The alen
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_Chunk.volume">
+            <summary>
+                The volume
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SDL.Mix_Fading">
+            <summary>
+                The mix fading enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_Fading.MIX_NO_FADING">
+            <summary>
+                The mix no fading mix fading
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_Fading.MIX_FADING_OUT">
+            <summary>
+                The mix fading out mix fading
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_Fading.MIX_FADING_IN">
+            <summary>
+                The mix fading in mix fading
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SDL.MIX_InitFlags">
+            <summary>
+                The mix initflags enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_InitFlags.MIX_INIT_FLAC">
+            <summary>
+                The mix init flac mix initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_InitFlags.MIX_INIT_MOD">
+            <summary>
+                The mix init mod mix initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_InitFlags.MIX_INIT_MP3">
+            <summary>
+                The mix init mp3 mix initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_InitFlags.MIX_INIT_OGG">
+            <summary>
+                The mix init ogg mix initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_InitFlags.MIX_INIT_MID">
+            <summary>
+                The mix init mid mix initflags
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.MIX_InitFlags.MIX_INIT_OPUS">
+            <summary>
+                The mix init opus mix initflags
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SDL.Mix_MusicType">
+            <summary>
+                The mix musictype enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_NONE">
+            <summary>
+                The mus none mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_CMD">
+            <summary>
+                The mus cmd mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_WAV">
+            <summary>
+                The mus wav mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_MOD">
+            <summary>
+                The mus mod mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_MID">
+            <summary>
+                The mus mid mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_OGG">
+            <summary>
+                The mus ogg mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_MP3">
+            <summary>
+                The mus mp3 mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_MP3_MAD_UNUSED">
+            <summary>
+                The mus mp3 mad unused mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_FLAC">
+            <summary>
+                The mus flac mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_MODPLUG_UNUSED">
+            <summary>
+                The mus modplug unused mix musictype
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.Mix_MusicType.MUS_OPUS">
+            <summary>
+                The mus opus mix musictype
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SDL.SDL_AudioStatus">
             <summary>
                 The sdl audiostatus enum
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.SDL_AudioStatus.SDL_AUDIO_STOPPED">
+        <member name="F:Alis.Core.Audio.SDL.SDL_AudioStatus.SDL_AUDIO_STOPPED">
             <summary>
                 The sdl audio stopped sdl audiostatus
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.SDL_AudioStatus.SDL_AUDIO_PLAYING">
+        <member name="F:Alis.Core.Audio.SDL.SDL_AudioStatus.SDL_AUDIO_PLAYING">
             <summary>
                 The sdl audio playing sdl audiostatus
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.SDL_AudioStatus.SDL_AUDIO_PAUSED">
+        <member name="F:Alis.Core.Audio.SDL.SDL_AudioStatus.SDL_AUDIO_PAUSED">
             <summary>
                 The sdl audio paused sdl audiostatus
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Audio.SDL.SDL_mixer">
+            <summary>
+                The sdl mixer class
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.SDL.SDL_mixer.#cctor">
@@ -861,41 +995,6 @@
         <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_MAX_VOLUME">
             <summary>
                 The mix max volume
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags">
-            <summary>
-                The mix initflags enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags.MIX_INIT_FLAC">
-            <summary>
-                The mix init flac mix initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags.MIX_INIT_MOD">
-            <summary>
-                The mix init mod mix initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags.MIX_INIT_MP3">
-            <summary>
-                The mix init mp3 mix initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags.MIX_INIT_OGG">
-            <summary>
-                The mix init ogg mix initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags.MIX_INIT_MID">
-            <summary>
-                The mix init mid mix initflags
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags.MIX_INIT_OPUS">
-            <summary>
-                The mix init opus mix initflags
             </summary>
         </member>
         <member name="F:Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U8">
@@ -1018,111 +1117,6 @@
                 The sdl mix maxvolume
             </summary>
         </member>
-        <member name="T:Alis.Core.Audio.SDL.SDL_mixer.MIX_Chunk">
-            <summary>
-                The mix chunk
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_Chunk.allocated">
-            <summary>
-                The allocated
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_Chunk.abuf">
-            <summary>
-                The abuf
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_Chunk.alen">
-            <summary>
-                The alen
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.MIX_Chunk.volume">
-            <summary>
-                The volume
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Audio.SDL.SDL_mixer.Mix_Fading">
-            <summary>
-                The mix fading enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_Fading.MIX_NO_FADING">
-            <summary>
-                The mix no fading mix fading
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_Fading.MIX_FADING_OUT">
-            <summary>
-                The mix fading out mix fading
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_Fading.MIX_FADING_IN">
-            <summary>
-                The mix fading in mix fading
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType">
-            <summary>
-                The mix musictype enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_NONE">
-            <summary>
-                The mus none mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_CMD">
-            <summary>
-                The mus cmd mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_WAV">
-            <summary>
-                The mus wav mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_MOD">
-            <summary>
-                The mus mod mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_MID">
-            <summary>
-                The mus mid mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_OGG">
-            <summary>
-                The mus ogg mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_MP3">
-            <summary>
-                The mus mp3 mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_MP3_MAD_UNUSED">
-            <summary>
-                The mus mp3 mad unused mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_FLAC">
-            <summary>
-                The mus flac mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_MODPLUG_UNUSED">
-            <summary>
-                The mus modplug unused mix musictype
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.Mix_MusicType.MUS_OPUS">
-            <summary>
-                The mus opus mix musictype
-            </summary>
-        </member>
         <member name="T:Alis.Core.Audio.SDL.SDL_mixer.MixFuncDelegate">
             <summary>
                 The mix func delegate
@@ -1153,7 +1147,7 @@
                 The sound font delegate
             </summary>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SDL_mixer.SDL_MIXER_VERSION(Alis.Core.Audio.SDL.SDL_mixer.SDL_version@)">
+        <member name="M:Alis.Core.Audio.SDL.SDL_mixer.SDL_MIXER_VERSION(Alis.Core.Audio.SDL.SDL_version@)">
             <summary>
                 Sdls the mixer version using the specified x
             </summary>
@@ -1171,7 +1165,7 @@
             </summary>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Audio.SDL.SDL_mixer.Mix_Init(Alis.Core.Audio.SDL.SDL_mixer.MIX_InitFlags)">
+        <member name="M:Alis.Core.Audio.SDL.SDL_mixer.Mix_Init(Alis.Core.Audio.SDL.MIX_InitFlags)">
             <summary>
                 Mixes the init using the specified flags
             </summary>
@@ -1980,22 +1974,22 @@
             <param name="maxlength">The maxlength</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="T:Alis.Core.Audio.SDL.SDL_mixer.SDL_version">
+        <member name="T:Alis.Core.Audio.SDL.SDL_version">
             <summary>
                 The sdl version
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.SDL_version.major">
+        <member name="F:Alis.Core.Audio.SDL.SDL_version.major">
             <summary>
                 The major
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.SDL_version.minor">
+        <member name="F:Alis.Core.Audio.SDL.SDL_version.minor">
             <summary>
                 The minor
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SDL_mixer.SDL_version.patch">
+        <member name="F:Alis.Core.Audio.SDL.SDL_version.patch">
             <summary>
                 The patch
             </summary>

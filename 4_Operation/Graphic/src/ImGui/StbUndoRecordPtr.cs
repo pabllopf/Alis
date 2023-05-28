@@ -74,21 +74,21 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the where
         /// </summary>
-        public ref int where => ref Unsafe.AsRef<int>(&NativePtr->where);
+        public ref int Where => ref Unsafe.AsRef<int>(&NativePtr->Where);
 
         /// <summary>
         ///     Gets the value of the insert length
         /// </summary>
-        public ref int insert_length => ref Unsafe.AsRef<int>(&NativePtr->insert_length);
+        public ref int InsertLength => ref Unsafe.AsRef<int>(&NativePtr->InsertLength);
 
         /// <summary>
         ///     Gets the value of the delete length
         /// </summary>
-        public ref int delete_length => ref Unsafe.AsRef<int>(&NativePtr->delete_length);
+        public ref int DeleteLength => ref Unsafe.AsRef<int>(&NativePtr->DeleteLength);
 
         /// <summary>
         ///     Gets the value of the char storage
         /// </summary>
-        public ref int char_storage => ref Unsafe.AsRef<int>(&NativePtr->char_storage);
+        public ref int CharStorage => ref Unsafe.AsRef<int>(&NativePtr->CharStorage);
     }
 }

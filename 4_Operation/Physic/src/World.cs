@@ -244,7 +244,7 @@ namespace Alis.Core.Physic
         /// <summary>
         ///     Invalidates the contact to is
         /// </summary>
-        private void InvalidateContactToi() => ContactManager.InvalidateTOI();
+        private void InvalidateContactToi() => ContactManager.InvalidateToi();
 
         /// <summary>
         ///     Solves the TOI (Time of Impact) events.

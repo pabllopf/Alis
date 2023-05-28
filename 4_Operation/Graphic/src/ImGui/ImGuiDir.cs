@@ -62,6 +62,6 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The count im gui dir
         /// </summary>
-        COUNT = 4
+        Count = 4
     }
 }

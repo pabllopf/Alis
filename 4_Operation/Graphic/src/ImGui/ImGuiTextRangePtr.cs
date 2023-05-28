@@ -74,19 +74,19 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets or sets the value of the b
         /// </summary>
-        public IntPtr b
+        public IntPtr B
         {
-            get => (IntPtr) NativePtr->b;
-            set => NativePtr->b = (byte*) value;
+            get => (IntPtr) NativePtr->B;
+            set => NativePtr->B = (byte*) value;
         }
 
         /// <summary>
         ///     Gets or sets the value of the e
         /// </summary>
-        public IntPtr e
+        public IntPtr E
         {
-            get => (IntPtr) NativePtr->e;
-            set => NativePtr->e = (byte*) value;
+            get => (IntPtr) NativePtr->E;
+            set => NativePtr->E = (byte*) value;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Alis.Core.Graphic.ImGui
         ///     Describes whether this instance empty
         /// </summary>
         /// <returns>The bool</returns>
-        public bool empty()
+        public bool Empty()
         {
             byte ret = ImGuiNative.ImGuiTextRange_empty(NativePtr);
             return ret != 0;
@@ -111,11 +111,11 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="separator"></param>
         /// <param name="out"></param>
-        public void split(byte separator, out ImVector @out)
+        public void Split(byte separator, out ImVector @out)
         {
-            fixed (ImVector* native_out = &@out)
+            fixed (ImVector* nativeOut = &@out)
             {
-                ImGuiNative.ImGuiTextRange_split(NativePtr, separator, native_out);
+                ImGuiNative.ImGuiTextRange_split(NativePtr, separator, nativeOut);
             }
         }
     }

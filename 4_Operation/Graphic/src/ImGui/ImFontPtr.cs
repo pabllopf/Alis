@@ -170,12 +170,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the used 4k pages map
         /// </summary>
-        public RangeAccessor<byte> Used4kPagesMap => new RangeAccessor<byte>(NativePtr->Used4kPagesMap, 2);
+        public RangeAccessor<byte> Used4KPagesMap => new RangeAccessor<byte>(NativePtr->Used4KPagesMap, 2);
 
         /// <summary>
         ///     Adds the glyph using the specified src cfg
         /// </summary>
-        /// <param name="src_cfg">The src cfg</param>
+        /// <param name="srcCfg">The src cfg</param>
         /// <param name="c">The </param>
         /// <param name="x0">The </param>
         /// <param name="y0">The </param>
@@ -185,11 +185,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="v0">The </param>
         /// <param name="u1">The </param>
         /// <param name="v1">The </param>
-        /// <param name="advance_x">The advance</param>
-        public void AddGlyph(ImFontConfigPtr src_cfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advance_x)
+        /// <param name="advanceX">The advance</param>
+        public void AddGlyph(ImFontConfigPtr srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX)
         {
-            ImFontConfig* native_src_cfg = src_cfg.NativePtr;
-            ImGuiNative.ImFont_AddGlyph(NativePtr, native_src_cfg, c, x0, y0, x1, y1, u0, v0, u1, v1, advance_x);
+            ImFontConfig* nativeSrcCfg = srcCfg.NativePtr;
+            ImGuiNative.ImFont_AddGlyph(NativePtr, nativeSrcCfg, c, x0, y0, x1, y1, u0, v0, u1, v1, advanceX);
         }
 
         /// <summary>
@@ -199,8 +199,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="src">The src</param>
         public void AddRemapChar(ushort dst, ushort src)
         {
-            byte overwrite_dst = 1;
-            ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, overwrite_dst);
+            byte overwriteDst = 1;
+            ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, overwriteDst);
         }
 
         /// <summary>
@@ -208,11 +208,11 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="dst">The dst</param>
         /// <param name="src">The src</param>
-        /// <param name="overwrite_dst">The overwrite dst</param>
-        public void AddRemapChar(ushort dst, ushort src, bool overwrite_dst)
+        /// <param name="overwriteDst">The overwrite dst</param>
+        public void AddRemapChar(ushort dst, ushort src, bool overwriteDst)
         {
-            byte native_overwrite_dst = overwrite_dst ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, native_overwrite_dst);
+            byte nativeOverwriteDst = overwriteDst ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImFont_AddRemapChar(NativePtr, dst, src, nativeOverwriteDst);
         }
 
         /// <summary>
@@ -285,10 +285,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Grows the index using the specified new size
         /// </summary>
-        /// <param name="new_size">The new size</param>
-        public void GrowIndex(int new_size)
+        /// <param name="newSize">The new size</param>
+        public void GrowIndex(int newSize)
         {
-            ImGuiNative.ImFont_GrowIndex(NativePtr, new_size);
+            ImGuiNative.ImFont_GrowIndex(NativePtr, newSize);
         }
 
         /// <summary>
@@ -304,15 +304,15 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Renders the char using the specified draw list
         /// </summary>
-        /// <param name="draw_list">The draw list</param>
+        /// <param name="drawList">The draw list</param>
         /// <param name="size">The size</param>
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
-        public void RenderChar(ImDrawListPtr draw_list, float size, Vector2 pos, uint col, ushort c)
+        public void RenderChar(ImDrawListPtr drawList, float size, Vector2 pos, uint col, ushort c)
         {
-            ImDrawList* native_draw_list = draw_list.NativePtr;
-            ImGuiNative.ImFont_RenderChar(NativePtr, native_draw_list, size, pos, col, c);
+            ImDrawList* nativeDrawList = drawList.NativePtr;
+            ImGuiNative.ImFont_RenderChar(NativePtr, nativeDrawList, size, pos, col, c);
         }
 
         /// <summary>
@@ -322,8 +322,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="visible">The visible</param>
         public void SetGlyphVisible(ushort c, bool visible)
         {
-            byte native_visible = visible ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImFont_SetGlyphVisible(NativePtr, c, native_visible);
+            byte nativeVisible = visible ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImFont_SetGlyphVisible(NativePtr, c, nativeVisible);
         }
     }
 }

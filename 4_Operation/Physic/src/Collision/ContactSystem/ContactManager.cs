@@ -547,7 +547,7 @@ namespace Alis.Core.Physic.Collision.ContactSystem
         /// <summary>
         ///     Invalidates the toi
         /// </summary>
-        public void InvalidateTOI() => ContactList.ForEach(i => i.InvalidateTOI());
+        public void InvalidateToi() => ContactList.ForEach(i => i.InvalidateToi());
 
         /// <summary>
         ///     Calculates the min alpha

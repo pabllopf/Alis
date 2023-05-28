@@ -52,6 +52,6 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The count im gui mouse button
         /// </summary>
-        COUNT = 5
+        Count = 5
     }
 }

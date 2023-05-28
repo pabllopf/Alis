@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.OpenGL
     /// <summary>
     ///     The gl class
     /// </summary>
-    public static partial class GL
+    public static partial class Gl
     {
         /// <summary>
         ///     The active attrib type enum
@@ -200,32 +200,32 @@ namespace Alis.Core.Graphic.OpenGL
             /// <summary>
             ///     The float mat 2x active uniform type
             /// </summary>
-            FloatMat2x3 = 0x8B65,
+            FloatMat2X3 = 0x8B65,
 
             /// <summary>
             ///     The float mat 2x active uniform type
             /// </summary>
-            FloatMat2x4 = 0x8B66,
+            FloatMat2X4 = 0x8B66,
 
             /// <summary>
             ///     The float mat 3x active uniform type
             /// </summary>
-            FloatMat3x2 = 0x8B67,
+            FloatMat3X2 = 0x8B67,
 
             /// <summary>
             ///     The float mat 3x active uniform type
             /// </summary>
-            FloatMat3x4 = 0x8B68,
+            FloatMat3X4 = 0x8B68,
 
             /// <summary>
             ///     The float mat 4x active uniform type
             /// </summary>
-            FloatMat4x2 = 0x8B69,
+            FloatMat4X2 = 0x8B69,
 
             /// <summary>
             ///     The float mat 4x active uniform type
             /// </summary>
-            FloatMat4x3 = 0x8B6A,
+            FloatMat4X3 = 0x8B6A,
 
             /// <summary>
             ///     The sampler array active uniform type
@@ -1919,102 +1919,102 @@ namespace Alis.Core.Graphic.OpenGL
             /// <summary>
             ///     The 16f pixel internal format
             /// </summary>
-            R16f = 0x822D,
+            R16F = 0x822D,
 
             /// <summary>
             ///     The 32f pixel internal format
             /// </summary>
-            R32f = 0x822E,
+            R32F = 0x822E,
 
             /// <summary>
             ///     The rg 16f pixel internal format
             /// </summary>
-            Rg16f = 0x822F,
+            Rg16F = 0x822F,
 
             /// <summary>
             ///     The rg 32f pixel internal format
             /// </summary>
-            Rg32f = 0x8230,
+            Rg32F = 0x8230,
 
             /// <summary>
             ///     The 8i pixel internal format
             /// </summary>
-            R8i = 0x8231,
+            R8I = 0x8231,
 
             /// <summary>
             ///     The 8ui pixel internal format
             /// </summary>
-            R8ui = 0x8232,
+            R8Ui = 0x8232,
 
             /// <summary>
             ///     The 16i pixel internal format
             /// </summary>
-            R16i = 0x8233,
+            R16I = 0x8233,
 
             /// <summary>
             ///     The 16ui pixel internal format
             /// </summary>
-            R16ui = 0x8234,
+            R16Ui = 0x8234,
 
             /// <summary>
             ///     The 32i pixel internal format
             /// </summary>
-            R32i = 0x8235,
+            R32I = 0x8235,
 
             /// <summary>
             ///     The 32ui pixel internal format
             /// </summary>
-            R32ui = 0x8236,
+            R32Ui = 0x8236,
 
             /// <summary>
             ///     The rg 8i pixel internal format
             /// </summary>
-            Rg8i = 0x8237,
+            Rg8I = 0x8237,
 
             /// <summary>
             ///     The rg 8ui pixel internal format
             /// </summary>
-            Rg8ui = 0x8238,
+            Rg8Ui = 0x8238,
 
             /// <summary>
             ///     The rg 16i pixel internal format
             /// </summary>
-            Rg16i = 0x8239,
+            Rg16I = 0x8239,
 
             /// <summary>
             ///     The rg 16ui pixel internal format
             /// </summary>
-            Rg16ui = 0x823A,
+            Rg16Ui = 0x823A,
 
             /// <summary>
             ///     The rg 32i pixel internal format
             /// </summary>
-            Rg32i = 0x823B,
+            Rg32I = 0x823B,
 
             /// <summary>
             ///     The rg 32ui pixel internal format
             /// </summary>
-            Rg32ui = 0x823C,
+            Rg32Ui = 0x823C,
 
             /// <summary>
             ///     The compressed rgb 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedRgbS3tcDxt1Ext = 0x83F0,
+            CompressedRgbS3TcDxt1Ext = 0x83F0,
 
             /// <summary>
             ///     The compressed rgba 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedRgbaS3tcDxt1Ext = 0x83F1,
+            CompressedRgbaS3TcDxt1Ext = 0x83F1,
 
             /// <summary>
             ///     The compressed rgba 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedRgbaS3tcDxt3Ext = 0x83F2,
+            CompressedRgbaS3TcDxt3Ext = 0x83F2,
 
             /// <summary>
             ///     The compressed rgba 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedRgbaS3tcDxt5Ext = 0x83F3,
+            CompressedRgbaS3TcDxt5Ext = 0x83F3,
 
             /// <summary>
             ///     The compressed alpha pixel internal format
@@ -2054,22 +2054,22 @@ namespace Alis.Core.Graphic.OpenGL
             /// <summary>
             ///     The rgba 32f pixel internal format
             /// </summary>
-            Rgba32f = 0x8814,
+            Rgba32F = 0x8814,
 
             /// <summary>
             ///     The rgb 32f pixel internal format
             /// </summary>
-            Rgb32f = 0x8815,
+            Rgb32F = 0x8815,
 
             /// <summary>
             ///     The rgba 16f pixel internal format
             /// </summary>
-            Rgba16f = 0x881A,
+            Rgba16F = 0x881A,
 
             /// <summary>
             ///     The rgb 16f pixel internal format
             /// </summary>
-            Rgb16f = 0x881B,
+            Rgb16F = 0x881B,
 
             /// <summary>
             ///     The depth 24 stencil pixel internal format
@@ -2079,7 +2079,7 @@ namespace Alis.Core.Graphic.OpenGL
             /// <summary>
             ///     The 11f 11f 10f pixel internal format
             /// </summary>
-            R11fG11fB10f = 0x8C3A,
+            R11FG11FB10F = 0x8C3A,
 
             /// <summary>
             ///     The rgb pixel internal format
@@ -2149,92 +2149,92 @@ namespace Alis.Core.Graphic.OpenGL
             /// <summary>
             ///     The compressed srgb 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedSrgbS3tcDxt1Ext = 0x8C4C,
+            CompressedSrgbS3TcDxt1Ext = 0x8C4C,
 
             /// <summary>
             ///     The compressed srgb alpha 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedSrgbAlphaS3tcDxt1Ext = 0x8C4D,
+            CompressedSrgbAlphaS3TcDxt1Ext = 0x8C4D,
 
             /// <summary>
             ///     The compressed srgb alpha 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedSrgbAlphaS3tcDxt3Ext = 0x8C4E,
+            CompressedSrgbAlphaS3TcDxt3Ext = 0x8C4E,
 
             /// <summary>
             ///     The compressed srgb alpha 3tc dxt ext pixel internal format
             /// </summary>
-            CompressedSrgbAlphaS3tcDxt5Ext = 0x8C4F,
+            CompressedSrgbAlphaS3TcDxt5Ext = 0x8C4F,
 
             /// <summary>
             ///     The depth component 32f pixel internal format
             /// </summary>
-            DepthComponent32f = 0x8CAC,
+            DepthComponent32F = 0x8CAC,
 
             /// <summary>
             ///     The depth 32f stencil pixel internal format
             /// </summary>
-            Depth32fStencil8 = 0x8CAD,
+            Depth32FStencil8 = 0x8CAD,
 
             /// <summary>
             ///     The rgba 32ui pixel internal format
             /// </summary>
-            Rgba32ui = 0x8D70,
+            Rgba32Ui = 0x8D70,
 
             /// <summary>
             ///     The rgb 32ui pixel internal format
             /// </summary>
-            Rgb32ui = 0x8D71,
+            Rgb32Ui = 0x8D71,
 
             /// <summary>
             ///     The rgba 16ui pixel internal format
             /// </summary>
-            Rgba16ui = 0x8D76,
+            Rgba16Ui = 0x8D76,
 
             /// <summary>
             ///     The rgb 16ui pixel internal format
             /// </summary>
-            Rgb16ui = 0x8D77,
+            Rgb16Ui = 0x8D77,
 
             /// <summary>
             ///     The rgba 8ui pixel internal format
             /// </summary>
-            Rgba8ui = 0x8D7C,
+            Rgba8Ui = 0x8D7C,
 
             /// <summary>
             ///     The rgb 8ui pixel internal format
             /// </summary>
-            Rgb8ui = 0x8D7D,
+            Rgb8Ui = 0x8D7D,
 
             /// <summary>
             ///     The rgba 32i pixel internal format
             /// </summary>
-            Rgba32i = 0x8D82,
+            Rgba32I = 0x8D82,
 
             /// <summary>
             ///     The rgb 32i pixel internal format
             /// </summary>
-            Rgb32i = 0x8D83,
+            Rgb32I = 0x8D83,
 
             /// <summary>
             ///     The rgba 16i pixel internal format
             /// </summary>
-            Rgba16i = 0x8D88,
+            Rgba16I = 0x8D88,
 
             /// <summary>
             ///     The rgb 16i pixel internal format
             /// </summary>
-            Rgb16i = 0x8D89,
+            Rgb16I = 0x8D89,
 
             /// <summary>
             ///     The rgba 8i pixel internal format
             /// </summary>
-            Rgba8i = 0x8D8E,
+            Rgba8I = 0x8D8E,
 
             /// <summary>
             ///     The rgb 8i pixel internal format
             /// </summary>
-            Rgb8i = 0x8D8F,
+            Rgb8I = 0x8D8F,
 
             /// <summary>
             ///     The float 32 unsigned int 248 rev pixel internal format
@@ -2997,7 +2997,7 @@ namespace Alis.Core.Graphic.OpenGL
             /// <summary>
             ///     The texture swizzle rgba texture parameter name
             /// </summary>
-            TextureSwizzleRGBA = 0x8E46,
+            TextureSwizzleRgba = 0x8E46,
 
             /// <summary>
             ///     The texture wrap texture parameter name

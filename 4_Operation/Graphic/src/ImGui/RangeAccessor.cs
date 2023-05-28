@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The
         /// </summary>
-        private static readonly int s_sizeOfT = Unsafe.SizeOf<T>();
+        private static readonly int SSizeOfT = Unsafe.SizeOf<T>();
 
         /// <summary>
         ///     The data
@@ -83,7 +83,7 @@ namespace Alis.Core.Graphic.ImGui
                     throw new IndexOutOfRangeException();
                 }
 
-                return ref Unsafe.AsRef<T>((byte*) Data + s_sizeOfT * index);
+                return ref Unsafe.AsRef<T>((byte*) Data + SSizeOfT * index);
             }
         }
     }

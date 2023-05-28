@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The id
         /// </summary>
-        public uint ID;
+        public uint Id;
 
         /// <summary>
         ///     The flags

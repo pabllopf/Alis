@@ -59,7 +59,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The glyph id
         /// </summary>
-        public uint GlyphID;
+        public uint GlyphId;
 
         /// <summary>
         ///     The glyph advance

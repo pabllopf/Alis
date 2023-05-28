@@ -132,6 +132,6 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The used 4k pages map
         /// </summary>
-        public fixed byte Used4kPagesMap[2];
+        public fixed byte Used4KPagesMap[2];
     }
 }

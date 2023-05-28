@@ -37,11 +37,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The
         /// </summary>
-        public byte* b;
+        public byte* B;
 
         /// <summary>
         ///     The
         /// </summary>
-        public byte* e;
+        public byte* E;
     }
 }

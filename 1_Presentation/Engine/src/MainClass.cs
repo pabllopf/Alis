@@ -41,7 +41,7 @@ namespace Alis.App.Engine
         /// <summary>
         ///     The renderer
         /// </summary>
-        private static ImGuiGLRenderer _renderer;
+        private static ImGuiGlRenderer _renderer;
 
         /// <summary>
         ///     The quit
@@ -66,27 +66,27 @@ namespace Alis.App.Engine
         {
             // create a window, GL context and our ImGui renderer
             // this is fast solution for create SDL_Window and SDL_Render
-            (_window, _glContext) = ImGuiGL.CreateWindowAndGLContext("SDL Window (OpenGL)", 800, 600);
-            _renderer = new ImGuiGLRenderer(_window, _glContext);
+            (_window, _glContext) = ImGuiGl.CreateWindowAndGlContext("SDL Window (OpenGL)", 800, 600);
+            _renderer = new ImGuiGlRenderer(_window, _glContext);
 
             while (!_quit)
             {
-                while (SDL.SDL_PollEvent(out SDL.SDL_Event e) != 0)
+                while (Sdl.SDL_PollEvent(out Sdl.SdlEvent e) != 0)
                 {
                     _renderer.ProcessEvent(e);
                     switch (e.type)
                     {
-                        case SDL.SDL_EventType.SDL_QUIT:
+                        case Sdl.SdlEventType.SdlQuit:
                         {
                             _quit = true;
                             break;
                         }
-                        case SDL.SDL_EventType.SDL_KEYDOWN:
+                        case Sdl.SdlEventType.SdlKeydown:
                         {
                             switch (e.key.keysym.sym)
                             {
-                                case SDL.SDL_Keycode.SDLK_ESCAPE:
-                                case SDL.SDL_Keycode.SDLK_q:
+                                case Sdl.SdlKeycode.SdlkEscape:
+                                case Sdl.SdlKeycode.SdlkQ:
                                     _quit = true;
                                     break;
                             }
@@ -100,12 +100,12 @@ namespace Alis.App.Engine
                 _renderer.NewFrame();
                 ImGui.ShowDemoWindow();
                 _renderer.Render();
-                SDL.SDL_GL_SwapWindow(_window);
+                Sdl.SDL_GL_SwapWindow(_window);
             }
 
-            SDL.SDL_GL_DeleteContext(_glContext);
-            SDL.SDL_DestroyWindow(_window);
-            SDL.SDL_Quit();
+            Sdl.SDL_GL_DeleteContext(_glContext);
+            Sdl.SDL_DestroyWindow(_window);
+            Sdl.SDL_Quit();
         }
     }
 }

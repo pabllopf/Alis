@@ -37,31 +37,31 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The
         /// </summary>
-        public float x0;
+        public float X0;
 
         /// <summary>
         ///     The
         /// </summary>
-        public float x1;
+        public float X1;
 
         /// <summary>
         ///     The baseline delta
         /// </summary>
-        public float baseline_y_delta;
+        public float BaselineYDelta;
 
         /// <summary>
         ///     The ymin
         /// </summary>
-        public float ymin;
+        public float Ymin;
 
         /// <summary>
         ///     The ymax
         /// </summary>
-        public float ymax;
+        public float Ymax;
 
         /// <summary>
         ///     The num chars
         /// </summary>
-        public int num_chars;
+        public int NumChars;
     }
 }

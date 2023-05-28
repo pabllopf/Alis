@@ -35,36 +35,36 @@ namespace Alis.Core.Audio.SDL
     ///     The mix initflags enum
     /// </summary>
     [Flags]
-    public enum MIX_InitFlags
+    public enum MixInitFlags
     {
         /// <summary>
         ///     The mix init flac mix initflags
         /// </summary>
-        MIX_INIT_FLAC = 0x00000001,
+        MixInitFlac = 0x00000001,
 
         /// <summary>
         ///     The mix init mod mix initflags
         /// </summary>
-        MIX_INIT_MOD = 0x00000002,
+        MixInitMod = 0x00000002,
 
         /// <summary>
         ///     The mix init mp3 mix initflags
         /// </summary>
-        MIX_INIT_MP3 = 0x00000008,
+        MixInitMp3 = 0x00000008,
 
         /// <summary>
         ///     The mix init ogg mix initflags
         /// </summary>
-        MIX_INIT_OGG = 0x00000010,
+        MixInitOgg = 0x00000010,
 
         /// <summary>
         ///     The mix init mid mix initflags
         /// </summary>
-        MIX_INIT_MID = 0x00000020,
+        MixInitMid = 0x00000020,
 
         /// <summary>
         ///     The mix init opus mix initflags
         /// </summary>
-        MIX_INIT_OPUS = 0x00000040
+        MixInitOpus = 0x00000040
     }
 }

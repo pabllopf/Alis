@@ -45,7 +45,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The tex id
         /// </summary>
-        public IntPtr TexID;
+        public IntPtr TexId;
 
         /// <summary>
         ///     The tex desired width
@@ -85,7 +85,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The tex pixels rgba 32
         /// </summary>
-        public uint* TexPixelsRGBA32;
+        public uint* TexPixelsRgba32;
 
         /// <summary>
         ///     The tex width
@@ -125,327 +125,327 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_0;
+        public Vector4 TexUvLines0;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_1;
+        public Vector4 TexUvLines1;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_2;
+        public Vector4 TexUvLines2;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_3;
+        public Vector4 TexUvLines3;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_4;
+        public Vector4 TexUvLines4;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_5;
+        public Vector4 TexUvLines5;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_6;
+        public Vector4 TexUvLines6;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_7;
+        public Vector4 TexUvLines7;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_8;
+        public Vector4 TexUvLines8;
 
         /// <summary>
         ///     The texuvlines
         /// </summary>
-        public Vector4 TexUvLines_9;
+        public Vector4 TexUvLines9;
 
         /// <summary>
         ///     The texuvlines 10
         /// </summary>
-        public Vector4 TexUvLines_10;
+        public Vector4 TexUvLines10;
 
         /// <summary>
         ///     The texuvlines 11
         /// </summary>
-        public Vector4 TexUvLines_11;
+        public Vector4 TexUvLines11;
 
         /// <summary>
         ///     The texuvlines 12
         /// </summary>
-        public Vector4 TexUvLines_12;
+        public Vector4 TexUvLines12;
 
         /// <summary>
         ///     The texuvlines 13
         /// </summary>
-        public Vector4 TexUvLines_13;
+        public Vector4 TexUvLines13;
 
         /// <summary>
         ///     The texuvlines 14
         /// </summary>
-        public Vector4 TexUvLines_14;
+        public Vector4 TexUvLines14;
 
         /// <summary>
         ///     The texuvlines 15
         /// </summary>
-        public Vector4 TexUvLines_15;
+        public Vector4 TexUvLines15;
 
         /// <summary>
         ///     The texuvlines 16
         /// </summary>
-        public Vector4 TexUvLines_16;
+        public Vector4 TexUvLines16;
 
         /// <summary>
         ///     The texuvlines 17
         /// </summary>
-        public Vector4 TexUvLines_17;
+        public Vector4 TexUvLines17;
 
         /// <summary>
         ///     The texuvlines 18
         /// </summary>
-        public Vector4 TexUvLines_18;
+        public Vector4 TexUvLines18;
 
         /// <summary>
         ///     The texuvlines 19
         /// </summary>
-        public Vector4 TexUvLines_19;
+        public Vector4 TexUvLines19;
 
         /// <summary>
         ///     The texuvlines 20
         /// </summary>
-        public Vector4 TexUvLines_20;
+        public Vector4 TexUvLines20;
 
         /// <summary>
         ///     The texuvlines 21
         /// </summary>
-        public Vector4 TexUvLines_21;
+        public Vector4 TexUvLines21;
 
         /// <summary>
         ///     The texuvlines 22
         /// </summary>
-        public Vector4 TexUvLines_22;
+        public Vector4 TexUvLines22;
 
         /// <summary>
         ///     The texuvlines 23
         /// </summary>
-        public Vector4 TexUvLines_23;
+        public Vector4 TexUvLines23;
 
         /// <summary>
         ///     The texuvlines 24
         /// </summary>
-        public Vector4 TexUvLines_24;
+        public Vector4 TexUvLines24;
 
         /// <summary>
         ///     The texuvlines 25
         /// </summary>
-        public Vector4 TexUvLines_25;
+        public Vector4 TexUvLines25;
 
         /// <summary>
         ///     The texuvlines 26
         /// </summary>
-        public Vector4 TexUvLines_26;
+        public Vector4 TexUvLines26;
 
         /// <summary>
         ///     The texuvlines 27
         /// </summary>
-        public Vector4 TexUvLines_27;
+        public Vector4 TexUvLines27;
 
         /// <summary>
         ///     The texuvlines 28
         /// </summary>
-        public Vector4 TexUvLines_28;
+        public Vector4 TexUvLines28;
 
         /// <summary>
         ///     The texuvlines 29
         /// </summary>
-        public Vector4 TexUvLines_29;
+        public Vector4 TexUvLines29;
 
         /// <summary>
         ///     The texuvlines 30
         /// </summary>
-        public Vector4 TexUvLines_30;
+        public Vector4 TexUvLines30;
 
         /// <summary>
         ///     The texuvlines 31
         /// </summary>
-        public Vector4 TexUvLines_31;
+        public Vector4 TexUvLines31;
 
         /// <summary>
         ///     The texuvlines 32
         /// </summary>
-        public Vector4 TexUvLines_32;
+        public Vector4 TexUvLines32;
 
         /// <summary>
         ///     The texuvlines 33
         /// </summary>
-        public Vector4 TexUvLines_33;
+        public Vector4 TexUvLines33;
 
         /// <summary>
         ///     The texuvlines 34
         /// </summary>
-        public Vector4 TexUvLines_34;
+        public Vector4 TexUvLines34;
 
         /// <summary>
         ///     The texuvlines 35
         /// </summary>
-        public Vector4 TexUvLines_35;
+        public Vector4 TexUvLines35;
 
         /// <summary>
         ///     The texuvlines 36
         /// </summary>
-        public Vector4 TexUvLines_36;
+        public Vector4 TexUvLines36;
 
         /// <summary>
         ///     The texuvlines 37
         /// </summary>
-        public Vector4 TexUvLines_37;
+        public Vector4 TexUvLines37;
 
         /// <summary>
         ///     The texuvlines 38
         /// </summary>
-        public Vector4 TexUvLines_38;
+        public Vector4 TexUvLines38;
 
         /// <summary>
         ///     The texuvlines 39
         /// </summary>
-        public Vector4 TexUvLines_39;
+        public Vector4 TexUvLines39;
 
         /// <summary>
         ///     The texuvlines 40
         /// </summary>
-        public Vector4 TexUvLines_40;
+        public Vector4 TexUvLines40;
 
         /// <summary>
         ///     The texuvlines 41
         /// </summary>
-        public Vector4 TexUvLines_41;
+        public Vector4 TexUvLines41;
 
         /// <summary>
         ///     The texuvlines 42
         /// </summary>
-        public Vector4 TexUvLines_42;
+        public Vector4 TexUvLines42;
 
         /// <summary>
         ///     The texuvlines 43
         /// </summary>
-        public Vector4 TexUvLines_43;
+        public Vector4 TexUvLines43;
 
         /// <summary>
         ///     The texuvlines 44
         /// </summary>
-        public Vector4 TexUvLines_44;
+        public Vector4 TexUvLines44;
 
         /// <summary>
         ///     The texuvlines 45
         /// </summary>
-        public Vector4 TexUvLines_45;
+        public Vector4 TexUvLines45;
 
         /// <summary>
         ///     The texuvlines 46
         /// </summary>
-        public Vector4 TexUvLines_46;
+        public Vector4 TexUvLines46;
 
         /// <summary>
         ///     The texuvlines 47
         /// </summary>
-        public Vector4 TexUvLines_47;
+        public Vector4 TexUvLines47;
 
         /// <summary>
         ///     The texuvlines 48
         /// </summary>
-        public Vector4 TexUvLines_48;
+        public Vector4 TexUvLines48;
 
         /// <summary>
         ///     The texuvlines 49
         /// </summary>
-        public Vector4 TexUvLines_49;
+        public Vector4 TexUvLines49;
 
         /// <summary>
         ///     The texuvlines 50
         /// </summary>
-        public Vector4 TexUvLines_50;
+        public Vector4 TexUvLines50;
 
         /// <summary>
         ///     The texuvlines 51
         /// </summary>
-        public Vector4 TexUvLines_51;
+        public Vector4 TexUvLines51;
 
         /// <summary>
         ///     The texuvlines 52
         /// </summary>
-        public Vector4 TexUvLines_52;
+        public Vector4 TexUvLines52;
 
         /// <summary>
         ///     The texuvlines 53
         /// </summary>
-        public Vector4 TexUvLines_53;
+        public Vector4 TexUvLines53;
 
         /// <summary>
         ///     The texuvlines 54
         /// </summary>
-        public Vector4 TexUvLines_54;
+        public Vector4 TexUvLines54;
 
         /// <summary>
         ///     The texuvlines 55
         /// </summary>
-        public Vector4 TexUvLines_55;
+        public Vector4 TexUvLines55;
 
         /// <summary>
         ///     The texuvlines 56
         /// </summary>
-        public Vector4 TexUvLines_56;
+        public Vector4 TexUvLines56;
 
         /// <summary>
         ///     The texuvlines 57
         /// </summary>
-        public Vector4 TexUvLines_57;
+        public Vector4 TexUvLines57;
 
         /// <summary>
         ///     The texuvlines 58
         /// </summary>
-        public Vector4 TexUvLines_58;
+        public Vector4 TexUvLines58;
 
         /// <summary>
         ///     The texuvlines 59
         /// </summary>
-        public Vector4 TexUvLines_59;
+        public Vector4 TexUvLines59;
 
         /// <summary>
         ///     The texuvlines 60
         /// </summary>
-        public Vector4 TexUvLines_60;
+        public Vector4 TexUvLines60;
 
         /// <summary>
         ///     The texuvlines 61
         /// </summary>
-        public Vector4 TexUvLines_61;
+        public Vector4 TexUvLines61;
 
         /// <summary>
         ///     The texuvlines 62
         /// </summary>
-        public Vector4 TexUvLines_62;
+        public Vector4 TexUvLines62;
 
         /// <summary>
         ///     The texuvlines 63
         /// </summary>
-        public Vector4 TexUvLines_63;
+        public Vector4 TexUvLines63;
 
         /// <summary>
         ///     The font builder io
         /// </summary>
-        public IntPtr* FontBuilderIO;
+        public IntPtr* FontBuilderIo;
 
         /// <summary>
         ///     The font builder flags

@@ -742,7 +742,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The count im gui key
         /// </summary>
-        COUNT = 652,
+        Count = 652,
 
         /// <summary>
         ///     The mod none im gui key
@@ -782,26 +782,26 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The namedkey begin im gui key
         /// </summary>
-        NamedKey_BEGIN = 512,
+        NamedKeyBegin = 512,
 
         /// <summary>
         ///     The namedkey end im gui key
         /// </summary>
-        NamedKey_END = 652,
+        NamedKeyEnd = 652,
 
         /// <summary>
         ///     The namedkey count im gui key
         /// </summary>
-        NamedKey_COUNT = 140,
+        NamedKeyCount = 140,
 
         /// <summary>
         ///     The keysdata size im gui key
         /// </summary>
-        KeysData_SIZE = 652,
+        KeysDataSize = 652,
 
         /// <summary>
         ///     The keysdata offset im gui key
         /// </summary>
-        KeysData_OFFSET = 0
+        KeysDataOffset = 0
     }
 }

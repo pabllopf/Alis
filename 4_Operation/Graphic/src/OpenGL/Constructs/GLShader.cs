@@ -28,7 +28,7 @@
 //  --------------------------------------------------------------------------
 
 using System;
-using static Alis.Core.Graphic.OpenGL.GL;
+using static Alis.Core.Graphic.OpenGL.Gl;
 
 namespace Alis.Core.Graphic.OpenGL.Constructs
 {
@@ -36,23 +36,23 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
     ///     The gl shader class
     /// </summary>
     /// <seealso cref="IDisposable" />
-    public sealed class GLShader : IDisposable
+    public sealed class GlShader : IDisposable
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="GLShader" /> class
+        ///     Initializes a new instance of the <see cref="GlShader" /> class
         /// </summary>
         /// <param name="source">The source</param>
         /// <param name="type">The type</param>
         /// <exception cref="Exception"></exception>
-        public GLShader(string source, ShaderType type)
+        public GlShader(string source, ShaderType type)
         {
             ShaderType = type;
-            ShaderID = glCreateShader(type);
+            ShaderId = GlCreateShader(type);
 
-            ShaderSource(ShaderID, source);
-            glCompileShader(ShaderID);
+            ShaderSource(ShaderId, source);
+            GlCompileShader(ShaderId);
 
-            if (!GetShaderCompileStatus(ShaderID))
+            if (!GetShaderCompileStatus(ShaderId))
             {
                 throw new Exception(ShaderLog);
             }
@@ -62,7 +62,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Gets or sets the value of the shader id
         /// </summary>
-        public uint ShaderID { get; private set; }
+        public uint ShaderId { get; private set; }
 
         // Specifies the type of shader.
         /// <summary>
@@ -74,7 +74,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Gets the value of the shader log
         /// </summary>
-        public string ShaderLog => GetShaderInfoLog(ShaderID);
+        public string ShaderLog => GetShaderInfoLog(ShaderId);
 
         /// <summary>
         ///     Disposes this instance
@@ -88,7 +88,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     /
         /// </summary>
-        ~GLShader() => Dispose(false);
+        ~GlShader() => Dispose(false);
 
         /// <summary>
         ///     Disposes the disposing
@@ -96,10 +96,10 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <param name="disposing">The disposing</param>
         private void Dispose(bool disposing)
         {
-            if (ShaderID != 0)
+            if (ShaderId != 0)
             {
-                glDeleteShader(ShaderID);
-                ShaderID = 0;
+                GlDeleteShader(ShaderId);
+                ShaderId = 0;
             }
         }
     }

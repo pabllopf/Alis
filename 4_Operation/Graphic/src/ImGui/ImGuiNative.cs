@@ -56,32 +56,32 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the arrow button using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="dir">The dir</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igArrowButton(byte* str_id, ImGuiDir dir);
+        public static extern byte igArrowButton(byte* strId, ImGuiDir dir);
 
         /// <summary>
         ///     Igs the begin using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBegin(byte* name, byte* p_open, ImGuiWindowFlags flags);
+        public static extern byte igBegin(byte* name, byte* pOpen, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin child str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="size">The size</param>
         /// <param name="border">The border</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginChild_Str(byte* str_id, Vector2 size, byte border, ImGuiWindowFlags flags);
+        public static extern byte igBeginChild_Str(byte* strId, Vector2 size, byte border, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin child id using the specified id
@@ -108,11 +108,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the begin combo using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="preview_value">The preview value</param>
+        /// <param name="previewValue">The preview value</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginCombo(byte* label, byte* preview_value, ImGuiComboFlags flags);
+        public static extern byte igBeginCombo(byte* label, byte* previewValue, ImGuiComboFlags flags);
 
         /// <summary>
         ///     Igs the begin disabled using the specified disabled
@@ -177,79 +177,79 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the begin popup using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginPopup(byte* str_id, ImGuiWindowFlags flags);
+        public static extern byte igBeginPopup(byte* strId, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin popup context item using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
-        /// <param name="popup_flags">The popup flags</param>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginPopupContextItem(byte* str_id, ImGuiPopupFlags popup_flags);
+        public static extern byte igBeginPopupContextItem(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
         ///     Igs the begin popup context void using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
-        /// <param name="popup_flags">The popup flags</param>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginPopupContextVoid(byte* str_id, ImGuiPopupFlags popup_flags);
+        public static extern byte igBeginPopupContextVoid(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
         ///     Igs the begin popup context window using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
-        /// <param name="popup_flags">The popup flags</param>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginPopupContextWindow(byte* str_id, ImGuiPopupFlags popup_flags);
+        public static extern byte igBeginPopupContextWindow(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
         ///     Igs the begin popup modal using the specified name
         /// </summary>
         /// <param name="name">The name</param>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginPopupModal(byte* name, byte* p_open, ImGuiWindowFlags flags);
+        public static extern byte igBeginPopupModal(byte* name, byte* pOpen, ImGuiWindowFlags flags);
 
         /// <summary>
         ///     Igs the begin tab bar using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginTabBar(byte* str_id, ImGuiTabBarFlags flags);
+        public static extern byte igBeginTabBar(byte* strId, ImGuiTabBarFlags flags);
 
         /// <summary>
         ///     Igs the begin tab item using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginTabItem(byte* label, byte* p_open, ImGuiTabItemFlags flags);
+        public static extern byte igBeginTabItem(byte* label, byte* pOpen, ImGuiTabItemFlags flags);
 
         /// <summary>
         ///     Igs the begin table using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="column">The column</param>
         /// <param name="flags">The flags</param>
-        /// <param name="outer_size">The outer size</param>
-        /// <param name="inner_width">The inner width</param>
+        /// <param name="outerSize">The outer size</param>
+        /// <param name="innerWidth">The inner width</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igBeginTable(byte* str_id, int column, ImGuiTableFlags flags, Vector2 outer_size, float inner_width);
+        public static extern byte igBeginTable(byte* strId, int column, ImGuiTableFlags flags, Vector2 outerSize, float innerWidth);
 
         /// <summary>
         ///     Igs the begin tooltip
@@ -292,11 +292,11 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="text">The text</param>
-        /// <param name="text_end">The text end</param>
-        /// <param name="hide_text_after_double_hash">The hide text after double hash</param>
-        /// <param name="wrap_width">The wrap width</param>
+        /// <param name="textEnd">The text end</param>
+        /// <param name="hideTextAfterDoubleHash">The hide text after double hash</param>
+        /// <param name="wrapWidth">The wrap width</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igCalcTextSize(Vector2* pOut, byte* text, byte* text_end, byte hide_text_after_double_hash, float wrap_width);
+        public static extern void igCalcTextSize(Vector2* pOut, byte* text, byte* textEnd, byte hideTextAfterDoubleHash, float wrapWidth);
 
         /// <summary>
         ///     Igs the checkbox using the specified label
@@ -312,20 +312,20 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="flags">The flags</param>
-        /// <param name="flags_value">The flags value</param>
+        /// <param name="flagsValue">The flags value</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igCheckboxFlags_IntPtr(byte* label, int* flags, int flags_value);
+        public static extern byte igCheckboxFlags_IntPtr(byte* label, int* flags, int flagsValue);
 
         /// <summary>
         ///     Igs the checkbox flags uint ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="flags">The flags</param>
-        /// <param name="flags_value">The flags value</param>
+        /// <param name="flagsValue">The flags value</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igCheckboxFlags_UintPtr(byte* label, uint* flags, uint flags_value);
+        public static extern byte igCheckboxFlags_UintPtr(byte* label, uint* flags, uint flagsValue);
 
         /// <summary>
         ///     Igs the close current popup
@@ -346,22 +346,22 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the collapsing header bool ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="p_visible">The visible</param>
+        /// <param name="pVisible">The visible</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igCollapsingHeader_BoolPtr(byte* label, byte* p_visible, ImGuiTreeNodeFlags flags);
+        public static extern byte igCollapsingHeader_BoolPtr(byte* label, byte* pVisible, ImGuiTreeNodeFlags flags);
 
         /// <summary>
         ///     Igs the color button using the specified desc id
         /// </summary>
-        /// <param name="desc_id">The desc id</param>
+        /// <param name="descId">The desc id</param>
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igColorButton(byte* desc_id, Vector4 col, ImGuiColorEditFlags flags, Vector2 size);
+        public static extern byte igColorButton(byte* descId, Vector4 col, ImGuiColorEditFlags flags, Vector2 size);
 
 
         /// <summary>
@@ -377,11 +377,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="h">The </param>
         /// <param name="s">The </param>
         /// <param name="v">The </param>
-        /// <param name="out_r">The out</param>
-        /// <param name="out_g">The out</param>
-        /// <param name="out_b">The out</param>
+        /// <param name="outR">The out</param>
+        /// <param name="outG">The out</param>
+        /// <param name="outB">The out</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igColorConvertHSVtoRGB(float h, float s, float v, float* out_r, float* out_g, float* out_b);
+        public static extern void igColorConvertHSVtoRGB(float h, float s, float v, float* outR, float* outG, float* outB);
 
         /// <summary>
         ///     Igs the color convert rg bto hsv using the specified r
@@ -389,11 +389,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="r">The </param>
         /// <param name="g">The </param>
         /// <param name="b">The </param>
-        /// <param name="out_h">The out</param>
-        /// <param name="out_s">The out</param>
-        /// <param name="out_v">The out</param>
+        /// <param name="outH">The out</param>
+        /// <param name="outS">The out</param>
+        /// <param name="outV">The out</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igColorConvertRGBtoHSV(float r, float g, float b, float* out_h, float* out_s, float* out_v);
+        public static extern void igColorConvertRGBtoHSV(float r, float g, float b, float* outH, float* outS, float* outV);
 
         /// <summary>
         /// </summary>
@@ -438,10 +438,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
-        /// <param name="ref_col">The ref col</param>
+        /// <param name="refCol">The ref col</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igColorPicker4(byte* label, Vector4* col, ImGuiColorEditFlags flags, float* ref_col);
+        public static extern byte igColorPicker4(byte* label, Vector4* col, ImGuiColorEditFlags flags, float* refCol);
 
         /// <summary>
         ///     Igs the columns using the specified count
@@ -456,46 +456,46 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the combo str arr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="current_item">The current item</param>
+        /// <param name="currentItem">The current item</param>
         /// <param name="items">The items</param>
-        /// <param name="items_count">The items count</param>
-        /// <param name="popup_max_height_in_items">The popup max height in items</param>
+        /// <param name="itemsCount">The items count</param>
+        /// <param name="popupMaxHeightInItems">The popup max height in items</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igCombo_Str_arr(byte* label, int* current_item, byte** items, int items_count, int popup_max_height_in_items);
+        public static extern byte igCombo_Str_arr(byte* label, int* currentItem, byte** items, int itemsCount, int popupMaxHeightInItems);
 
         /// <summary>
         ///     Igs the combo str using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="current_item">The current item</param>
-        /// <param name="items_separated_by_zeros">The items separated by zeros</param>
-        /// <param name="popup_max_height_in_items">The popup max height in items</param>
+        /// <param name="currentItem">The current item</param>
+        /// <param name="itemsSeparatedByZeros">The items separated by zeros</param>
+        /// <param name="popupMaxHeightInItems">The popup max height in items</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igCombo_Str(byte* label, int* current_item, byte* items_separated_by_zeros, int popup_max_height_in_items);
+        public static extern byte igCombo_Str(byte* label, int* currentItem, byte* itemsSeparatedByZeros, int popupMaxHeightInItems);
 
         /// <summary>
         ///     Igs the create context using the specified shared font atlas
         /// </summary>
-        /// <param name="shared_font_atlas">The shared font atlas</param>
+        /// <param name="sharedFontAtlas">The shared font atlas</param>
         /// <returns>The int ptr</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern IntPtr igCreateContext(ImFontAtlas* shared_font_atlas);
+        public static extern IntPtr igCreateContext(ImFontAtlas* sharedFontAtlas);
 
         /// <summary>
         ///     Igs the debug check version and data layout using the specified version str
         /// </summary>
-        /// <param name="version_str">The version str</param>
-        /// <param name="sz_io">The sz io</param>
-        /// <param name="sz_style">The sz style</param>
-        /// <param name="sz_vec2">The sz vec2</param>
-        /// <param name="sz_vec4">The sz vec4</param>
-        /// <param name="sz_drawvert">The sz drawvert</param>
-        /// <param name="sz_drawidx">The sz drawidx</param>
+        /// <param name="versionStr">The version str</param>
+        /// <param name="szIo">The sz io</param>
+        /// <param name="szStyle">The sz style</param>
+        /// <param name="szVec2">The sz vec2</param>
+        /// <param name="szVec4">The sz vec4</param>
+        /// <param name="szDrawvert">The sz drawvert</param>
+        /// <param name="szDrawidx">The sz drawidx</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDebugCheckVersionAndDataLayout(byte* version_str, uint sz_io, uint sz_style, uint sz_vec2, uint sz_vec4, uint sz_drawvert, uint sz_drawidx);
+        public static extern byte igDebugCheckVersionAndDataLayout(byte* versionStr, uint szIo, uint szStyle, uint szVec2, uint szVec4, uint szDrawvert, uint szDrawidx);
 
         /// <summary>
         ///     Igs the debug text encoding using the specified text
@@ -523,195 +523,195 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="id">The id</param>
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
-        /// <param name="window_class">The window class</param>
+        /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint igDockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass* window_class);
+        public static extern uint igDockSpace(uint id, Vector2 size, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
 
         /// <summary>
         ///     Igs the dock space over viewport using the specified viewport
         /// </summary>
         /// <param name="viewport">The viewport</param>
         /// <param name="flags">The flags</param>
-        /// <param name="window_class">The window class</param>
+        /// <param name="windowClass">The window class</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass* window_class);
+        public static extern uint igDockSpaceOverViewport(ImGuiViewport* viewport, ImGuiDockNodeFlags flags, ImGuiWindowClass* windowClass);
 
         /// <summary>
         ///     Igs the drag float using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragFloat(byte* label, float* v, float v_speed, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat(byte* label, float* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag float 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragFloat2(byte* label, Vector2* v, float v_speed, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat2(byte* label, Vector2* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag float 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragFloat3(byte* label, Vector3* v, float v_speed, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat3(byte* label, Vector3* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag float 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragFloat4(byte* label, Vector4* v, float v_speed, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragFloat4(byte* label, Vector4* v, float vSpeed, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag float range 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v_current_min">The current min</param>
-        /// <param name="v_current_max">The current max</param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vCurrentMin">The current min</param>
+        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="format_max">The format max</param>
+        /// <param name="formatMax">The format max</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragFloatRange2(byte* label, float* v_current_min, float* v_current_max, float v_speed, float v_min, float v_max, byte* format, byte* format_max, ImGuiSliderFlags flags);
+        public static extern byte igDragFloatRange2(byte* label, float* vCurrentMin, float* vCurrentMax, float vSpeed, float vMin, float vMax, byte* format, byte* formatMax, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag int using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragInt(byte* label, int* v, float v_speed, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragInt(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag int 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragInt2(byte* label, int* v, float v_speed, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragInt2(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag int 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragInt3(byte* label, int* v, float v_speed, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragInt3(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag int 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragInt4(byte* label, int* v, float v_speed, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragInt4(byte* label, int* v, float vSpeed, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag int range 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v_current_min">The current min</param>
-        /// <param name="v_current_max">The current max</param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vCurrentMin">The current min</param>
+        /// <param name="vCurrentMax">The current max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
-        /// <param name="format_max">The format max</param>
+        /// <param name="formatMax">The format max</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragIntRange2(byte* label, int* v_current_min, int* v_current_max, float v_speed, int v_min, int v_max, byte* format, byte* format_max, ImGuiSliderFlags flags);
+        public static extern byte igDragIntRange2(byte* label, int* vCurrentMin, int* vCurrentMax, float vSpeed, int vMin, int vMax, byte* format, byte* formatMax, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag scalar using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="data_type">The data type</param>
-        /// <param name="p_data">The data</param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragScalar(byte* label, ImGuiDataType data_type, void* p_data, float v_speed, void* p_min, void* p_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragScalar(byte* label, ImGuiDataType dataType, void* pData, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the drag scalar n using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="data_type">The data type</param>
-        /// <param name="p_data">The data</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
         /// <param name="components">The components</param>
-        /// <param name="v_speed">The speed</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
+        /// <param name="vSpeed">The speed</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igDragScalarN(byte* label, ImGuiDataType data_type, void* p_data, int components, float v_speed, void* p_min, void* p_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igDragScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, float vSpeed, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the dummy using the specified size
@@ -839,19 +839,19 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the find viewport by platform handle using the specified platform handle
         /// </summary>
-        /// <param name="platform_handle">The platform handle</param>
+        /// <param name="platformHandle">The platform handle</param>
         /// <returns>The im gui viewport</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiViewport* igFindViewportByPlatformHandle(void* platform_handle);
+        public static extern ImGuiViewport* igFindViewportByPlatformHandle(void* platformHandle);
 
         /// <summary>
         ///     Igs the get allocator functions using the specified p alloc func
         /// </summary>
-        /// <param name="p_alloc_func">The alloc func</param>
-        /// <param name="p_free_func">The free func</param>
-        /// <param name="p_user_data">The user data</param>
+        /// <param name="pAllocFunc">The alloc func</param>
+        /// <param name="pFreeFunc">The free func</param>
+        /// <param name="pUserData">The user data</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igGetAllocatorFunctions(IntPtr* p_alloc_func, IntPtr* p_free_func, void** p_user_data);
+        public static extern void igGetAllocatorFunctions(IntPtr* pAllocFunc, IntPtr* pFreeFunc, void** pUserData);
 
         /// <summary>
         ///     Igs the get background draw list nil
@@ -879,10 +879,10 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the get color u 32 col using the specified idx
         /// </summary>
         /// <param name="idx">The idx</param>
-        /// <param name="alpha_mul">The alpha mul</param>
+        /// <param name="alphaMul">The alpha mul</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint igGetColorU32_Col(ImGuiCol idx, float alpha_mul);
+        public static extern uint igGetColorU32_Col(ImGuiCol idx, float alphaMul);
 
         /// <summary>
         ///     Igs the get color u 32 vec 4 using the specified col
@@ -910,10 +910,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the get column offset using the specified column index
         /// </summary>
-        /// <param name="column_index">The column index</param>
+        /// <param name="columnIndex">The column index</param>
         /// <returns>The float</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern float igGetColumnOffset(int column_index);
+        public static extern float igGetColumnOffset(int columnIndex);
 
         /// <summary>
         ///     Igs the get columns count
@@ -925,10 +925,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the get column width using the specified column index
         /// </summary>
-        /// <param name="column_index">The column index</param>
+        /// <param name="columnIndex">The column index</param>
         /// <returns>The float</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern float igGetColumnWidth(int column_index);
+        public static extern float igGetColumnWidth(int columnIndex);
 
         /// <summary>
         ///     Igs the get content region avail using the specified p out
@@ -1067,34 +1067,34 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the get id str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint igGetID_Str(byte* str_id);
+        public static extern uint igGetID_Str(byte* strId);
 
         /// <summary>
         ///     Igs the get id str str using the specified str id begin
         /// </summary>
-        /// <param name="str_id_begin">The str id begin</param>
-        /// <param name="str_id_end">The str id end</param>
+        /// <param name="strIdBegin">The str id begin</param>
+        /// <param name="strIdEnd">The str id end</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint igGetID_StrStr(byte* str_id_begin, byte* str_id_end);
+        public static extern uint igGetID_StrStr(byte* strIdBegin, byte* strIdEnd);
 
         /// <summary>
         ///     Igs the get id ptr using the specified ptr id
         /// </summary>
-        /// <param name="ptr_id">The ptr id</param>
+        /// <param name="ptrId">The ptr id</param>
         /// <returns>The uint</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern uint igGetID_Ptr(void* ptr_id);
+        public static extern uint igGetID_Ptr(void* ptrId);
 
         /// <summary>
         ///     Igs the get io
         /// </summary>
         /// <returns>The im gui io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiIO* igGetIO();
+        public static extern ImGuiIo* igGetIO();
 
         /// <summary>
         ///     Igs the get item id
@@ -1144,11 +1144,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the get key pressed amount using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="repeat_delay">The repeat delay</param>
+        /// <param name="repeatDelay">The repeat delay</param>
         /// <param name="rate">The rate</param>
         /// <returns>The int</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int igGetKeyPressedAmount(ImGuiKey key, float repeat_delay, float rate);
+        public static extern int igGetKeyPressedAmount(ImGuiKey key, float repeatDelay, float rate);
 
         /// <summary>
         ///     Igs the get main viewport
@@ -1177,9 +1177,9 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="pOut">The out</param>
         /// <param name="button">The button</param>
-        /// <param name="lock_threshold">The lock threshold</param>
+        /// <param name="lockThreshold">The lock threshold</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igGetMouseDragDelta(Vector2* pOut, ImGuiMouseButton button, float lock_threshold);
+        public static extern void igGetMouseDragDelta(Vector2* pOut, ImGuiMouseButton button, float lockThreshold);
 
         /// <summary>
         ///     Igs the get mouse pos using the specified p out
@@ -1200,7 +1200,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <returns>The im gui platform io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiPlatformIO* igGetPlatformIO();
+        public static extern ImGuiPlatformIo* igGetPlatformIO();
 
         /// <summary>
         ///     Igs the get scroll max x
@@ -1368,35 +1368,35 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the image using the specified user texture id
         /// </summary>
-        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="userTextureId">The user texture id</param>
         /// <param name="size">The size</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
-        /// <param name="tint_col">The tint col</param>
-        /// <param name="border_col">The border col</param>
+        /// <param name="tintCol">The tint col</param>
+        /// <param name="borderCol">The border col</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igImage(IntPtr user_texture_id, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 tint_col, Vector4 border_col);
+        public static extern void igImage(IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 tintCol, Vector4 borderCol);
 
         /// <summary>
         ///     Igs the image button using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
-        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="strId">The str id</param>
+        /// <param name="userTextureId">The user texture id</param>
         /// <param name="size">The size</param>
         /// <param name="uv0">The uv</param>
         /// <param name="uv1">The uv</param>
-        /// <param name="bg_col">The bg col</param>
-        /// <param name="tint_col">The tint col</param>
+        /// <param name="bgCol">The bg col</param>
+        /// <param name="tintCol">The tint col</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igImageButton(byte* str_id, IntPtr user_texture_id, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 bg_col, Vector4 tint_col);
+        public static extern byte igImageButton(byte* strId, IntPtr userTextureId, Vector2 size, Vector2 uv0, Vector2 uv1, Vector4 bgCol, Vector4 tintCol);
 
         /// <summary>
         ///     Igs the indent using the specified indent w
         /// </summary>
-        /// <param name="indent_w">The indent</param>
+        /// <param name="indentW">The indent</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igIndent(float indent_w);
+        public static extern void igIndent(float indentW);
 
         /// <summary>
         ///     Igs the input double using the specified label
@@ -1404,12 +1404,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <param name="step">The step</param>
-        /// <param name="step_fast">The step fast</param>
+        /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputDouble(byte* label, double* v, double step, double step_fast, byte* format, ImGuiInputTextFlags flags);
+        public static extern byte igInputDouble(byte* label, double* v, double step, double stepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input float using the specified label
@@ -1417,12 +1417,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <param name="step">The step</param>
-        /// <param name="step_fast">The step fast</param>
+        /// <param name="stepFast">The step fast</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputFloat(byte* label, float* v, float step, float step_fast, byte* format, ImGuiInputTextFlags flags);
+        public static extern byte igInputFloat(byte* label, float* v, float step, float stepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input float 2 using the specified label
@@ -1463,11 +1463,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
         /// <param name="step">The step</param>
-        /// <param name="step_fast">The step fast</param>
+        /// <param name="stepFast">The step fast</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputInt(byte* label, int* v, int step, int step_fast, ImGuiInputTextFlags flags);
+        public static extern byte igInputInt(byte* label, int* v, int step, int stepFast, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input int 2 using the specified label
@@ -1503,57 +1503,57 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the input scalar using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="data_type">The data type</param>
-        /// <param name="p_data">The data</param>
-        /// <param name="p_step">The step</param>
-        /// <param name="p_step_fast">The step fast</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pStep">The step</param>
+        /// <param name="pStepFast">The step fast</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputScalar(byte* label, ImGuiDataType data_type, void* p_data, void* p_step, void* p_step_fast, byte* format, ImGuiInputTextFlags flags);
+        public static extern byte igInputScalar(byte* label, ImGuiDataType dataType, void* pData, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input scalar n using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="data_type">The data type</param>
-        /// <param name="p_data">The data</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
         /// <param name="components">The components</param>
-        /// <param name="p_step">The step</param>
-        /// <param name="p_step_fast">The step fast</param>
+        /// <param name="pStep">The step</param>
+        /// <param name="pStepFast">The step fast</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputScalarN(byte* label, ImGuiDataType data_type, void* p_data, int components, void* p_step, void* p_step_fast, byte* format, ImGuiInputTextFlags flags);
+        public static extern byte igInputScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pStep, void* pStepFast, byte* format, ImGuiInputTextFlags flags);
 
         /// <summary>
         ///     Igs the input text using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
-        /// <param name="buf_size">The buf size</param>
+        /// <param name="bufSize">The buf size</param>
         /// <param name="flags">The flags</param>
         /// <param name="callback">The callback</param>
-        /// <param name="user_data">The user data</param>
+        /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputText(byte* label, byte* buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* user_data);
+        public static extern byte igInputText(byte* label, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
         ///     Igs the input text multiline using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="buf">The buf</param>
-        /// <param name="buf_size">The buf size</param>
+        /// <param name="bufSize">The buf size</param>
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <param name="callback">The callback</param>
-        /// <param name="user_data">The user data</param>
+        /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputTextMultiline(byte* label, byte* buf, uint buf_size, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* user_data);
+        public static extern byte igInputTextMultiline(byte* label, byte* buf, uint bufSize, Vector2 size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
         ///     Igs the input text with hint using the specified label
@@ -1561,23 +1561,23 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="hint">The hint</param>
         /// <param name="buf">The buf</param>
-        /// <param name="buf_size">The buf size</param>
+        /// <param name="bufSize">The buf size</param>
         /// <param name="flags">The flags</param>
         /// <param name="callback">The callback</param>
-        /// <param name="user_data">The user data</param>
+        /// <param name="userData">The user data</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInputTextWithHint(byte* label, byte* hint, byte* buf, uint buf_size, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* user_data);
+        public static extern byte igInputTextWithHint(byte* label, byte* hint, byte* buf, uint bufSize, ImGuiInputTextFlags flags, ImGuiInputTextCallback callback, void* userData);
 
         /// <summary>
         ///     Igs the invisible button using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="size">The size</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igInvisibleButton(byte* str_id, Vector2 size, ImGuiButtonFlags flags);
+        public static extern byte igInvisibleButton(byte* strId, Vector2 size, ImGuiButtonFlags flags);
 
         /// <summary>
         ///     Igs the is any item active
@@ -1624,10 +1624,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the is item clicked using the specified mouse button
         /// </summary>
-        /// <param name="mouse_button">The mouse button</param>
+        /// <param name="mouseButton">The mouse button</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igIsItemClicked(ImGuiMouseButton mouse_button);
+        public static extern byte igIsItemClicked(ImGuiMouseButton mouseButton);
 
         /// <summary>
         ///     Igs the is item deactivated
@@ -1733,28 +1733,28 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the is mouse dragging using the specified button
         /// </summary>
         /// <param name="button">The button</param>
-        /// <param name="lock_threshold">The lock threshold</param>
+        /// <param name="lockThreshold">The lock threshold</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igIsMouseDragging(ImGuiMouseButton button, float lock_threshold);
+        public static extern byte igIsMouseDragging(ImGuiMouseButton button, float lockThreshold);
 
         /// <summary>
         ///     Igs the is mouse hovering rect using the specified r min
         /// </summary>
-        /// <param name="r_min">The min</param>
-        /// <param name="r_max">The max</param>
+        /// <param name="rMin">The min</param>
+        /// <param name="rMax">The max</param>
         /// <param name="clip">The clip</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igIsMouseHoveringRect(Vector2 r_min, Vector2 r_max, byte clip);
+        public static extern byte igIsMouseHoveringRect(Vector2 rMin, Vector2 rMax, byte clip);
 
         /// <summary>
         ///     Igs the is mouse pos valid using the specified mouse pos
         /// </summary>
-        /// <param name="mouse_pos">The mouse pos</param>
+        /// <param name="mousePos">The mouse pos</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igIsMousePosValid(Vector2* mouse_pos);
+        public static extern byte igIsMousePosValid(Vector2* mousePos);
 
         /// <summary>
         ///     Igs the is mouse released nil using the specified button
@@ -1767,11 +1767,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the is popup open str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igIsPopupOpen_Str(byte* str_id, ImGuiPopupFlags flags);
+        public static extern byte igIsPopupOpen_Str(byte* strId, ImGuiPopupFlags flags);
 
         /// <summary>
         ///     Igs the is rect visible nil using the specified size
@@ -1784,11 +1784,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the is rect visible vec 2 using the specified rect min
         /// </summary>
-        /// <param name="rect_min">The rect min</param>
-        /// <param name="rect_max">The rect max</param>
+        /// <param name="rectMin">The rect min</param>
+        /// <param name="rectMax">The rect max</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igIsRectVisible_Vec2(Vector2 rect_min, Vector2 rect_max);
+        public static extern byte igIsRectVisible_Vec2(Vector2 rectMin, Vector2 rectMax);
 
         /// <summary>
         ///     Igs the is window appearing
@@ -1839,28 +1839,28 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the list box str arr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="current_item">The current item</param>
+        /// <param name="currentItem">The current item</param>
         /// <param name="items">The items</param>
-        /// <param name="items_count">The items count</param>
-        /// <param name="height_in_items">The height in items</param>
+        /// <param name="itemsCount">The items count</param>
+        /// <param name="heightInItems">The height in items</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igListBox_Str_arr(byte* label, int* current_item, byte** items, int items_count, int height_in_items);
+        public static extern byte igListBox_Str_arr(byte* label, int* currentItem, byte** items, int itemsCount, int heightInItems);
 
         /// <summary>
         ///     Igs the load ini settings from disk using the specified ini filename
         /// </summary>
-        /// <param name="ini_filename">The ini filename</param>
+        /// <param name="iniFilename">The ini filename</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igLoadIniSettingsFromDisk(byte* ini_filename);
+        public static extern void igLoadIniSettingsFromDisk(byte* iniFilename);
 
         /// <summary>
         ///     Igs the load ini settings from memory using the specified ini data
         /// </summary>
-        /// <param name="ini_data">The ini data</param>
-        /// <param name="ini_size">The ini size</param>
+        /// <param name="iniData">The ini data</param>
+        /// <param name="iniSize">The ini size</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igLoadIniSettingsFromMemory(byte* ini_data, uint ini_size);
+        public static extern void igLoadIniSettingsFromMemory(byte* iniData, uint iniSize);
 
         /// <summary>
         ///     Igs the log buttons
@@ -1884,24 +1884,24 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the log to clipboard using the specified auto open depth
         /// </summary>
-        /// <param name="auto_open_depth">The auto open depth</param>
+        /// <param name="autoOpenDepth">The auto open depth</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igLogToClipboard(int auto_open_depth);
+        public static extern void igLogToClipboard(int autoOpenDepth);
 
         /// <summary>
         ///     Igs the log to file using the specified auto open depth
         /// </summary>
-        /// <param name="auto_open_depth">The auto open depth</param>
+        /// <param name="autoOpenDepth">The auto open depth</param>
         /// <param name="filename">The filename</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igLogToFile(int auto_open_depth, byte* filename);
+        public static extern void igLogToFile(int autoOpenDepth, byte* filename);
 
         /// <summary>
         ///     Igs the log to tty using the specified auto open depth
         /// </summary>
-        /// <param name="auto_open_depth">The auto open depth</param>
+        /// <param name="autoOpenDepth">The auto open depth</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igLogToTTY(int auto_open_depth);
+        public static extern void igLogToTTY(int autoOpenDepth);
 
         /// <summary>
         ///     Igs the mem alloc using the specified size
@@ -1934,11 +1934,11 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="shortcut">The shortcut</param>
-        /// <param name="p_selected">The selected</param>
+        /// <param name="pSelected">The selected</param>
         /// <param name="enabled">The enabled</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igMenuItem_BoolPtr(byte* label, byte* shortcut, byte* p_selected, byte enabled);
+        public static extern byte igMenuItem_BoolPtr(byte* label, byte* shortcut, byte* pSelected, byte enabled);
 
         /// <summary>
         ///     Igs the new frame
@@ -1961,56 +1961,56 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the open popup str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
-        /// <param name="popup_flags">The popup flags</param>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igOpenPopup_Str(byte* str_id, ImGuiPopupFlags popup_flags);
+        public static extern void igOpenPopup_Str(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
         ///     Igs the open popup id using the specified id
         /// </summary>
         /// <param name="id">The id</param>
-        /// <param name="popup_flags">The popup flags</param>
+        /// <param name="popupFlags">The popup flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igOpenPopup_ID(uint id, ImGuiPopupFlags popup_flags);
+        public static extern void igOpenPopup_ID(uint id, ImGuiPopupFlags popupFlags);
 
         /// <summary>
         ///     Igs the open popup on item click using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
-        /// <param name="popup_flags">The popup flags</param>
+        /// <param name="strId">The str id</param>
+        /// <param name="popupFlags">The popup flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igOpenPopupOnItemClick(byte* str_id, ImGuiPopupFlags popup_flags);
+        public static extern void igOpenPopupOnItemClick(byte* strId, ImGuiPopupFlags popupFlags);
 
         /// <summary>
         ///     Igs the plot histogram float ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="values">The values</param>
-        /// <param name="values_count">The values count</param>
-        /// <param name="values_offset">The values offset</param>
-        /// <param name="overlay_text">The overlay text</param>
-        /// <param name="scale_min">The scale min</param>
-        /// <param name="scale_max">The scale max</param>
-        /// <param name="graph_size">The graph size</param>
+        /// <param name="valuesCount">The values count</param>
+        /// <param name="valuesOffset">The values offset</param>
+        /// <param name="overlayText">The overlay text</param>
+        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMax">The scale max</param>
+        /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPlotHistogram_FloatPtr(byte* label, float* values, int values_count, int values_offset, byte* overlay_text, float scale_min, float scale_max, Vector2 graph_size, int stride);
+        public static extern void igPlotHistogram_FloatPtr(byte* label, float* values, int valuesCount, int valuesOffset, byte* overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride);
 
         /// <summary>
         ///     Igs the plot lines float ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="values">The values</param>
-        /// <param name="values_count">The values count</param>
-        /// <param name="values_offset">The values offset</param>
-        /// <param name="overlay_text">The overlay text</param>
-        /// <param name="scale_min">The scale min</param>
-        /// <param name="scale_max">The scale max</param>
-        /// <param name="graph_size">The graph size</param>
+        /// <param name="valuesCount">The values count</param>
+        /// <param name="valuesOffset">The values offset</param>
+        /// <param name="overlayText">The overlay text</param>
+        /// <param name="scaleMin">The scale min</param>
+        /// <param name="scaleMax">The scale max</param>
+        /// <param name="graphSize">The graph size</param>
         /// <param name="stride">The stride</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPlotLines_FloatPtr(byte* label, float* values, int values_count, int values_offset, byte* overlay_text, float scale_min, float scale_max, Vector2 graph_size, int stride);
+        public static extern void igPlotLines_FloatPtr(byte* label, float* values, int valuesCount, int valuesOffset, byte* overlayText, float scaleMin, float scaleMax, Vector2 graphSize, int stride);
 
         /// <summary>
         ///     Igs the pop button repeat
@@ -2072,10 +2072,10 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the progress bar using the specified fraction
         /// </summary>
         /// <param name="fraction">The fraction</param>
-        /// <param name="size_arg">The size arg</param>
+        /// <param name="sizeArg">The size arg</param>
         /// <param name="overlay">The overlay</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igProgressBar(float fraction, Vector2 size_arg, byte* overlay);
+        public static extern void igProgressBar(float fraction, Vector2 sizeArg, byte* overlay);
 
         /// <summary>
         ///     Igs the push button repeat using the specified repeat
@@ -2087,11 +2087,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the push clip rect using the specified clip rect min
         /// </summary>
-        /// <param name="clip_rect_min">The clip rect min</param>
-        /// <param name="clip_rect_max">The clip rect max</param>
-        /// <param name="intersect_with_current_clip_rect">The intersect with current clip rect</param>
+        /// <param name="clipRectMin">The clip rect min</param>
+        /// <param name="clipRectMax">The clip rect max</param>
+        /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushClipRect(Vector2 clip_rect_min, Vector2 clip_rect_max, byte intersect_with_current_clip_rect);
+        public static extern void igPushClipRect(Vector2 clipRectMin, Vector2 clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
         ///     Igs the push font using the specified font
@@ -2103,38 +2103,38 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the push id str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushID_Str(byte* str_id);
+        public static extern void igPushID_Str(byte* strId);
 
         /// <summary>
         ///     Igs the push id str str using the specified str id begin
         /// </summary>
-        /// <param name="str_id_begin">The str id begin</param>
-        /// <param name="str_id_end">The str id end</param>
+        /// <param name="strIdBegin">The str id begin</param>
+        /// <param name="strIdEnd">The str id end</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushID_StrStr(byte* str_id_begin, byte* str_id_end);
+        public static extern void igPushID_StrStr(byte* strIdBegin, byte* strIdEnd);
 
         /// <summary>
         ///     Igs the push id ptr using the specified ptr id
         /// </summary>
-        /// <param name="ptr_id">The ptr id</param>
+        /// <param name="ptrId">The ptr id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushID_Ptr(void* ptr_id);
+        public static extern void igPushID_Ptr(void* ptrId);
 
         /// <summary>
         ///     Igs the push id int using the specified int id
         /// </summary>
-        /// <param name="int_id">The int id</param>
+        /// <param name="intId">The int id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushID_Int(int int_id);
+        public static extern void igPushID_Int(int intId);
 
         /// <summary>
         ///     Igs the push item width using the specified item width
         /// </summary>
-        /// <param name="item_width">The item width</param>
+        /// <param name="itemWidth">The item width</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushItemWidth(float item_width);
+        public static extern void igPushItemWidth(float itemWidth);
 
         /// <summary>
         ///     Igs the push style color u 32 using the specified idx
@@ -2171,16 +2171,16 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the push tab stop using the specified tab stop
         /// </summary>
-        /// <param name="tab_stop">The tab stop</param>
+        /// <param name="tabStop">The tab stop</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushTabStop(byte tab_stop);
+        public static extern void igPushTabStop(byte tabStop);
 
         /// <summary>
         ///     Igs the push text wrap pos using the specified wrap local pos x
         /// </summary>
-        /// <param name="wrap_local_pos_x">The wrap local pos</param>
+        /// <param name="wrapLocalPosX">The wrap local pos</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igPushTextWrapPos(float wrap_local_pos_x);
+        public static extern void igPushTextWrapPos(float wrapLocalPosX);
 
         /// <summary>
         ///     Igs the radio button bool using the specified label
@@ -2196,10 +2196,10 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_button">The button</param>
+        /// <param name="vButton">The button</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igRadioButton_IntPtr(byte* label, int* v, int v_button);
+        public static extern byte igRadioButton_IntPtr(byte* label, int* v, int vButton);
 
         /// <summary>
         ///     Igs the render
@@ -2210,10 +2210,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the render platform windows default using the specified platform render arg
         /// </summary>
-        /// <param name="platform_render_arg">The platform render arg</param>
-        /// <param name="renderer_render_arg">The renderer render arg</param>
+        /// <param name="platformRenderArg">The platform render arg</param>
+        /// <param name="rendererRenderArg">The renderer render arg</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igRenderPlatformWindowsDefault(void* platform_render_arg, void* renderer_render_arg);
+        public static extern void igRenderPlatformWindowsDefault(void* platformRenderArg, void* rendererRenderArg);
 
         /// <summary>
         ///     Igs the reset mouse drag delta using the specified button
@@ -2225,25 +2225,25 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the same line using the specified offset from start x
         /// </summary>
-        /// <param name="offset_from_start_x">The offset from start</param>
+        /// <param name="offsetFromStartX">The offset from start</param>
         /// <param name="spacing">The spacing</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSameLine(float offset_from_start_x, float spacing);
+        public static extern void igSameLine(float offsetFromStartX, float spacing);
 
         /// <summary>
         ///     Igs the save ini settings to disk using the specified ini filename
         /// </summary>
-        /// <param name="ini_filename">The ini filename</param>
+        /// <param name="iniFilename">The ini filename</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSaveIniSettingsToDisk(byte* ini_filename);
+        public static extern void igSaveIniSettingsToDisk(byte* iniFilename);
 
         /// <summary>
         ///     Igs the save ini settings to memory using the specified out ini size
         /// </summary>
-        /// <param name="out_ini_size">The out ini size</param>
+        /// <param name="outIniSize">The out ini size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* igSaveIniSettingsToMemory(uint* out_ini_size);
+        public static extern byte* igSaveIniSettingsToMemory(uint* outIniSize);
 
         /// <summary>
         ///     Igs the selectable bool using the specified label
@@ -2260,12 +2260,12 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the selectable bool ptr using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="p_selected">The selected</param>
+        /// <param name="pSelected">The selected</param>
         /// <param name="flags">The flags</param>
         /// <param name="size">The size</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSelectable_BoolPtr(byte* label, byte* p_selected, ImGuiSelectableFlags flags, Vector2 size);
+        public static extern byte igSelectable_BoolPtr(byte* label, byte* pSelected, ImGuiSelectableFlags flags, Vector2 size);
 
         /// <summary>
         ///     Igs the separator
@@ -2283,11 +2283,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set allocator functions using the specified alloc func
         /// </summary>
-        /// <param name="alloc_func">The alloc func</param>
-        /// <param name="free_func">The free func</param>
-        /// <param name="user_data">The user data</param>
+        /// <param name="allocFunc">The alloc func</param>
+        /// <param name="freeFunc">The free func</param>
+        /// <param name="userData">The user data</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetAllocatorFunctions(IntPtr alloc_func, IntPtr free_func, void* user_data);
+        public static extern void igSetAllocatorFunctions(IntPtr allocFunc, IntPtr freeFunc, void* userData);
 
         /// <summary>
         ///     Igs the set clipboard text using the specified text
@@ -2306,18 +2306,18 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set column offset using the specified column index
         /// </summary>
-        /// <param name="column_index">The column index</param>
-        /// <param name="offset_x">The offset</param>
+        /// <param name="columnIndex">The column index</param>
+        /// <param name="offsetX">The offset</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetColumnOffset(int column_index, float offset_x);
+        public static extern void igSetColumnOffset(int columnIndex, float offsetX);
 
         /// <summary>
         ///     Igs the set column width using the specified column index
         /// </summary>
-        /// <param name="column_index">The column index</param>
+        /// <param name="columnIndex">The column index</param>
         /// <param name="width">The width</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetColumnWidth(int column_index, float width);
+        public static extern void igSetColumnWidth(int columnIndex, float width);
 
         /// <summary>
         ///     Igs the set current context using the specified ctx
@@ -2329,23 +2329,23 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set cursor pos using the specified local pos
         /// </summary>
-        /// <param name="local_pos">The local pos</param>
+        /// <param name="localPos">The local pos</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetCursorPos(Vector2 local_pos);
+        public static extern void igSetCursorPos(Vector2 localPos);
 
         /// <summary>
         ///     Igs the set cursor pos x using the specified local x
         /// </summary>
-        /// <param name="local_x">The local</param>
+        /// <param name="localX">The local</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetCursorPosX(float local_x);
+        public static extern void igSetCursorPosX(float localX);
 
         /// <summary>
         ///     Igs the set cursor pos y using the specified local y
         /// </summary>
-        /// <param name="local_y">The local</param>
+        /// <param name="localY">The local</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetCursorPosY(float local_y);
+        public static extern void igSetCursorPosY(float localY);
 
         /// <summary>
         ///     Igs the set cursor screen pos using the specified pos
@@ -2387,38 +2387,38 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set mouse cursor using the specified cursor type
         /// </summary>
-        /// <param name="cursor_type">The cursor type</param>
+        /// <param name="cursorType">The cursor type</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetMouseCursor(ImGuiMouseCursor cursor_type);
+        public static extern void igSetMouseCursor(ImGuiMouseCursor cursorType);
 
         /// <summary>
         ///     Igs the set next frame want capture keyboard using the specified want capture keyboard
         /// </summary>
-        /// <param name="want_capture_keyboard">The want capture keyboard</param>
+        /// <param name="wantCaptureKeyboard">The want capture keyboard</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextFrameWantCaptureKeyboard(byte want_capture_keyboard);
+        public static extern void igSetNextFrameWantCaptureKeyboard(byte wantCaptureKeyboard);
 
         /// <summary>
         ///     Igs the set next frame want capture mouse using the specified want capture mouse
         /// </summary>
-        /// <param name="want_capture_mouse">The want capture mouse</param>
+        /// <param name="wantCaptureMouse">The want capture mouse</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextFrameWantCaptureMouse(byte want_capture_mouse);
+        public static extern void igSetNextFrameWantCaptureMouse(byte wantCaptureMouse);
 
         /// <summary>
         ///     Igs the set next item open using the specified is open
         /// </summary>
-        /// <param name="is_open">The is open</param>
+        /// <param name="isOpen">The is open</param>
         /// <param name="cond">The cond</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextItemOpen(byte is_open, ImGuiCond cond);
+        public static extern void igSetNextItemOpen(byte isOpen, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set next item width using the specified item width
         /// </summary>
-        /// <param name="item_width">The item width</param>
+        /// <param name="itemWidth">The item width</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextItemWidth(float item_width);
+        public static extern void igSetNextItemWidth(float itemWidth);
 
         /// <summary>
         ///     Igs the set next window bg alpha using the specified alpha
@@ -2430,9 +2430,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set next window using the specified window class
         /// </summary>
-        /// <param name="window_class">The window class</param>
+        /// <param name="windowClass">The window class</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextWindowClass(ImGuiWindowClass* window_class);
+        public static extern void igSetNextWindowClass(ImGuiWindowClass* windowClass);
 
         /// <summary>
         ///     Igs the set next window collapsed using the specified collapsed
@@ -2452,10 +2452,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set next window dock id using the specified dock id
         /// </summary>
-        /// <param name="dock_id">The dock id</param>
+        /// <param name="dockId">The dock id</param>
         /// <param name="cond">The cond</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextWindowDockID(uint dock_id, ImGuiCond cond);
+        public static extern void igSetNextWindowDockID(uint dockId, ImGuiCond cond);
 
         /// <summary>
         ///     Igs the set next window focus
@@ -2490,63 +2490,63 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set next window size constraints using the specified size min
         /// </summary>
-        /// <param name="size_min">The size min</param>
-        /// <param name="size_max">The size max</param>
-        /// <param name="custom_callback">The custom callback</param>
-        /// <param name="custom_callback_data">The custom callback data</param>
+        /// <param name="sizeMin">The size min</param>
+        /// <param name="sizeMax">The size max</param>
+        /// <param name="customCallback">The custom callback</param>
+        /// <param name="customCallbackData">The custom callback data</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextWindowSizeConstraints(Vector2 size_min, Vector2 size_max, ImGuiSizeCallback custom_callback, void* custom_callback_data);
+        public static extern void igSetNextWindowSizeConstraints(Vector2 sizeMin, Vector2 sizeMax, ImGuiSizeCallback customCallback, void* customCallbackData);
 
         /// <summary>
         ///     Igs the set next window viewport using the specified viewport id
         /// </summary>
-        /// <param name="viewport_id">The viewport id</param>
+        /// <param name="viewportId">The viewport id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetNextWindowViewport(uint viewport_id);
+        public static extern void igSetNextWindowViewport(uint viewportId);
 
         /// <summary>
         ///     Igs the set scroll from pos x float using the specified local x
         /// </summary>
-        /// <param name="local_x">The local</param>
-        /// <param name="center_x_ratio">The center ratio</param>
+        /// <param name="localX">The local</param>
+        /// <param name="centerXRatio">The center ratio</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetScrollFromPosX_Float(float local_x, float center_x_ratio);
+        public static extern void igSetScrollFromPosX_Float(float localX, float centerXRatio);
 
         /// <summary>
         ///     Igs the set scroll from pos y float using the specified local y
         /// </summary>
-        /// <param name="local_y">The local</param>
-        /// <param name="center_y_ratio">The center ratio</param>
+        /// <param name="localY">The local</param>
+        /// <param name="centerYRatio">The center ratio</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetScrollFromPosY_Float(float local_y, float center_y_ratio);
+        public static extern void igSetScrollFromPosY_Float(float localY, float centerYRatio);
 
         /// <summary>
         ///     Igs the set scroll here x using the specified center x ratio
         /// </summary>
-        /// <param name="center_x_ratio">The center ratio</param>
+        /// <param name="centerXRatio">The center ratio</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetScrollHereX(float center_x_ratio);
+        public static extern void igSetScrollHereX(float centerXRatio);
 
         /// <summary>
         ///     Igs the set scroll here y using the specified center y ratio
         /// </summary>
-        /// <param name="center_y_ratio">The center ratio</param>
+        /// <param name="centerYRatio">The center ratio</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetScrollHereY(float center_y_ratio);
+        public static extern void igSetScrollHereY(float centerYRatio);
 
         /// <summary>
         ///     Igs the set scroll x float using the specified scroll x
         /// </summary>
-        /// <param name="scroll_x">The scroll</param>
+        /// <param name="scrollX">The scroll</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetScrollX_Float(float scroll_x);
+        public static extern void igSetScrollX_Float(float scrollX);
 
         /// <summary>
         ///     Igs the set scroll y float using the specified scroll y
         /// </summary>
-        /// <param name="scroll_y">The scroll</param>
+        /// <param name="scrollY">The scroll</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetScrollY_Float(float scroll_y);
+        public static extern void igSetScrollY_Float(float scrollY);
 
         /// <summary>
         ///     Igs the set state storage using the specified storage
@@ -2558,9 +2558,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the set tab item closed using the specified tab or docked window label
         /// </summary>
-        /// <param name="tab_or_docked_window_label">The tab or docked window label</param>
+        /// <param name="tabOrDockedWindowLabel">The tab or docked window label</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igSetTabItemClosed(byte* tab_or_docked_window_label);
+        public static extern void igSetTabItemClosed(byte* tabOrDockedWindowLabel);
 
         /// <summary>
         ///     Igs the set tooltip using the specified fmt
@@ -2643,23 +2643,23 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the show about window using the specified p open
         /// </summary>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igShowAboutWindow(byte* p_open);
+        public static extern void igShowAboutWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show debug log window using the specified p open
         /// </summary>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igShowDebugLogWindow(byte* p_open);
+        public static extern void igShowDebugLogWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show demo window using the specified p open
         /// </summary>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igShowDemoWindow(byte* p_open);
+        public static extern void igShowDemoWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show font selector using the specified label
@@ -2671,16 +2671,16 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the show metrics window using the specified p open
         /// </summary>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igShowMetricsWindow(byte* p_open);
+        public static extern void igShowMetricsWindow(byte* pOpen);
 
         /// <summary>
         ///     Igs the show stack tool window using the specified p open
         /// </summary>
-        /// <param name="p_open">The open</param>
+        /// <param name="pOpen">The open</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igShowStackToolWindow(byte* p_open);
+        public static extern void igShowStackToolWindow(byte* pOpen);
 
         /// <summary>
         /// </summary>
@@ -2706,147 +2706,147 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the slider angle using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="v_rad">The rad</param>
-        /// <param name="v_degrees_min">The degrees min</param>
-        /// <param name="v_degrees_max">The degrees max</param>
+        /// <param name="vRad">The rad</param>
+        /// <param name="vDegreesMin">The degrees min</param>
+        /// <param name="vDegreesMax">The degrees max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderAngle(byte* label, float* v_rad, float v_degrees_min, float v_degrees_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderAngle(byte* label, float* vRad, float vDegreesMin, float vDegreesMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider float using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderFloat(byte* label, float* v, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat(byte* label, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider float 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderFloat2(byte* label, Vector2* v, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat2(byte* label, Vector2* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider float 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderFloat3(byte* label, Vector3* v, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat3(byte* label, Vector3* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider float 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderFloat4(byte* label, Vector4* v, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderFloat4(byte* label, Vector4* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider int using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderInt(byte* label, int* v, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderInt(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider int 2 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderInt2(byte* label, int* v, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderInt2(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider int 3 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderInt3(byte* label, int* v, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderInt3(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider int 4 using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderInt4(byte* label, int* v, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderInt4(byte* label, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider scalar using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="data_type">The data type</param>
-        /// <param name="p_data">The data</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderScalar(byte* label, ImGuiDataType data_type, void* p_data, void* p_min, void* p_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderScalar(byte* label, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the slider scalar n using the specified label
         /// </summary>
         /// <param name="label">The label</param>
-        /// <param name="data_type">The data type</param>
-        /// <param name="p_data">The data</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
         /// <param name="components">The components</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igSliderScalarN(byte* label, ImGuiDataType data_type, void* p_data, int components, void* p_min, void* p_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igSliderScalarN(byte* label, ImGuiDataType dataType, void* pData, int components, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the small button using the specified label
@@ -2902,10 +2902,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the table get column flags using the specified column n
         /// </summary>
-        /// <param name="column_n">The column</param>
+        /// <param name="columnN">The column</param>
         /// <returns>The im gui table column flags</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiTableColumnFlags igTableGetColumnFlags(int column_n);
+        public static extern ImGuiTableColumnFlags igTableGetColumnFlags(int columnN);
 
         /// <summary>
         ///     Igs the table get column index
@@ -2917,10 +2917,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the table get column name int using the specified column n
         /// </summary>
-        /// <param name="column_n">The column</param>
+        /// <param name="columnN">The column</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* igTableGetColumnName_Int(int column_n);
+        public static extern byte* igTableGetColumnName_Int(int columnN);
 
         /// <summary>
         ///     Igs the table get row index
@@ -2959,45 +2959,45 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the table next row using the specified row flags
         /// </summary>
-        /// <param name="row_flags">The row flags</param>
-        /// <param name="min_row_height">The min row height</param>
+        /// <param name="rowFlags">The row flags</param>
+        /// <param name="minRowHeight">The min row height</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTableNextRow(ImGuiTableRowFlags row_flags, float min_row_height);
+        public static extern void igTableNextRow(ImGuiTableRowFlags rowFlags, float minRowHeight);
 
         /// <summary>
         ///     Igs the table set bg color using the specified target
         /// </summary>
         /// <param name="target">The target</param>
         /// <param name="color">The color</param>
-        /// <param name="column_n">The column</param>
+        /// <param name="columnN">The column</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTableSetBgColor(ImGuiTableBgTarget target, uint color, int column_n);
+        public static extern void igTableSetBgColor(ImGuiTableBgTarget target, uint color, int columnN);
 
         /// <summary>
         ///     Igs the table set column enabled using the specified column n
         /// </summary>
-        /// <param name="column_n">The column</param>
+        /// <param name="columnN">The column</param>
         /// <param name="v">The </param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTableSetColumnEnabled(int column_n, byte v);
+        public static extern void igTableSetColumnEnabled(int columnN, byte v);
 
         /// <summary>
         ///     Igs the table set column index using the specified column n
         /// </summary>
-        /// <param name="column_n">The column</param>
+        /// <param name="columnN">The column</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igTableSetColumnIndex(int column_n);
+        public static extern byte igTableSetColumnIndex(int columnN);
 
         /// <summary>
         ///     Igs the table setup column using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="flags">The flags</param>
-        /// <param name="init_width_or_weight">The init width or weight</param>
-        /// <param name="user_id">The user id</param>
+        /// <param name="initWidthOrWeight">The init width or weight</param>
+        /// <param name="userId">The user id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTableSetupColumn(byte* label, ImGuiTableColumnFlags flags, float init_width_or_weight, uint user_id);
+        public static extern void igTableSetupColumn(byte* label, ImGuiTableColumnFlags flags, float initWidthOrWeight, uint userId);
 
         /// <summary>
         ///     Igs the table setup scroll freeze using the specified cols
@@ -3033,9 +3033,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Igs the text unformatted using the specified text
         /// </summary>
         /// <param name="text">The text</param>
-        /// <param name="text_end">The text end</param>
+        /// <param name="textEnd">The text end</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTextUnformatted(byte* text, byte* text_end);
+        public static extern void igTextUnformatted(byte* text, byte* textEnd);
 
         /// <summary>
         ///     Igs the text wrapped using the specified fmt
@@ -3055,20 +3055,20 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the tree node str str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igTreeNode_StrStr(byte* str_id, byte* fmt);
+        public static extern byte igTreeNode_StrStr(byte* strId, byte* fmt);
 
         /// <summary>
         ///     Igs the tree node ptr using the specified ptr id
         /// </summary>
-        /// <param name="ptr_id">The ptr id</param>
+        /// <param name="ptrId">The ptr id</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igTreeNode_Ptr(void* ptr_id, byte* fmt);
+        public static extern byte igTreeNode_Ptr(void* ptrId, byte* fmt);
 
         /// <summary>
         ///     Igs the tree node ex str using the specified label
@@ -3082,22 +3082,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the tree node ex str str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         /// <param name="flags">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igTreeNodeEx_StrStr(byte* str_id, ImGuiTreeNodeFlags flags, byte* fmt);
+        public static extern byte igTreeNodeEx_StrStr(byte* strId, ImGuiTreeNodeFlags flags, byte* fmt);
 
         /// <summary>
         ///     Igs the tree node ex ptr using the specified ptr id
         /// </summary>
-        /// <param name="ptr_id">The ptr id</param>
+        /// <param name="ptrId">The ptr id</param>
         /// <param name="flags">The flags</param>
         /// <param name="fmt">The fmt</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igTreeNodeEx_Ptr(void* ptr_id, ImGuiTreeNodeFlags flags, byte* fmt);
+        public static extern byte igTreeNodeEx_Ptr(void* ptrId, ImGuiTreeNodeFlags flags, byte* fmt);
 
         /// <summary>
         ///     Igs the tree pop
@@ -3108,23 +3108,23 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Igs the tree push str using the specified str id
         /// </summary>
-        /// <param name="str_id">The str id</param>
+        /// <param name="strId">The str id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTreePush_Str(byte* str_id);
+        public static extern void igTreePush_Str(byte* strId);
 
         /// <summary>
         ///     Igs the tree push ptr using the specified ptr id
         /// </summary>
-        /// <param name="ptr_id">The ptr id</param>
+        /// <param name="ptrId">The ptr id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igTreePush_Ptr(void* ptr_id);
+        public static extern void igTreePush_Ptr(void* ptrId);
 
         /// <summary>
         ///     Igs the unindent using the specified indent w
         /// </summary>
-        /// <param name="indent_w">The indent</param>
+        /// <param name="indentW">The indent</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igUnindent(float indent_w);
+        public static extern void igUnindent(float indentW);
 
         /// <summary>
         ///     Igs the update platform windows
@@ -3161,9 +3161,9 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="prefix">The prefix</param>
         /// <param name="v">The </param>
-        /// <param name="float_format">The float format</param>
+        /// <param name="floatFormat">The float format</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void igValue_Float(byte* prefix, float v, byte* float_format);
+        public static extern void igValue_Float(byte* prefix, float v, byte* floatFormat);
 
         /// <summary>
         ///     Igs the v slider float using the specified label
@@ -3171,13 +3171,13 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igVSliderFloat(byte* label, Vector2 size, float* v, float v_min, float v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igVSliderFloat(byte* label, Vector2 size, float* v, float vMin, float vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the v slider int using the specified label
@@ -3185,28 +3185,28 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
         /// <param name="v">The </param>
-        /// <param name="v_min">The min</param>
-        /// <param name="v_max">The max</param>
+        /// <param name="vMin">The min</param>
+        /// <param name="vMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igVSliderInt(byte* label, Vector2 size, int* v, int v_min, int v_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igVSliderInt(byte* label, Vector2 size, int* v, int vMin, int vMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Igs the v slider scalar using the specified label
         /// </summary>
         /// <param name="label">The label</param>
         /// <param name="size">The size</param>
-        /// <param name="data_type">The data type</param>
-        /// <param name="p_data">The data</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
+        /// <param name="dataType">The data type</param>
+        /// <param name="pData">The data</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
         /// <param name="format">The format</param>
         /// <param name="flags">The flags</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte igVSliderScalar(byte* label, Vector2 size, ImGuiDataType data_type, void* p_data, void* p_min, void* p_max, byte* format, ImGuiSliderFlags flags);
+        public static extern byte igVSliderScalar(byte* label, Vector2 size, ImGuiDataType dataType, void* pData, void* pMin, void* pMax, byte* format, ImGuiSliderFlags flags);
 
         /// <summary>
         ///     Ims the color destroy using the specified self
@@ -3336,9 +3336,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the draw data scale clip rects using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="fb_scale">The fb scale</param>
+        /// <param name="fbScale">The fb scale</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawData_ScaleClipRects(ImDrawData* self, Vector2 fb_scale);
+        public static extern void ImDrawData_ScaleClipRects(ImDrawData* self, Vector2 fbScale);
 
         /// <summary>
         ///     Ims the draw list calc circle auto segment count using the specified self
@@ -3383,11 +3383,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
-        /// <param name="a_min_sample">The min sample</param>
-        /// <param name="a_max_sample">The max sample</param>
-        /// <param name="a_step">The step</param>
+        /// <param name="aMinSample">The min sample</param>
+        /// <param name="aMaxSample">The max sample</param>
+        /// <param name="aStep">The step</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList__PathArcToFastEx(ImDrawList* self, Vector2 center, float radius, int a_min_sample, int a_max_sample, int a_step);
+        public static extern void ImDrawList__PathArcToFastEx(ImDrawList* self, Vector2 center, float radius, int aMinSample, int aMaxSample, int aStep);
 
         /// <summary>
         ///     Ims the draw list path arc to n using the specified self
@@ -3395,11 +3395,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
-        /// <param name="a_min">The min</param>
-        /// <param name="a_max">The max</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="aMin">The min</param>
+        /// <param name="aMax">The max</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList__PathArcToN(ImDrawList* self, Vector2 center, float radius, float a_min, float a_max, int num_segments);
+        public static extern void ImDrawList__PathArcToN(ImDrawList* self, Vector2 center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
         ///     Ims the draw list pop unused draw cmd using the specified self
@@ -3432,9 +3432,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="p4">The </param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddBezierCubic(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int num_segments);
+        public static extern void ImDrawList_AddBezierCubic(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, uint col, float thickness, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add bezier quadratic using the specified self
@@ -3445,18 +3445,18 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="p3">The </param>
         /// <param name="col">The col</param>
         /// <param name="thickness">The thickness</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddBezierQuadratic(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int num_segments);
+        public static extern void ImDrawList_AddBezierQuadratic(ImDrawList* self, Vector2 p1, Vector2 p2, Vector2 p3, uint col, float thickness, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add callback using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="callback">The callback</param>
-        /// <param name="callback_data">The callback data</param>
+        /// <param name="callbackData">The callback data</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddCallback(ImDrawList* self, IntPtr callback, void* callback_data);
+        public static extern void ImDrawList_AddCallback(ImDrawList* self, IntPtr callback, void* callbackData);
 
         /// <summary>
         ///     Ims the draw list add circle using the specified self
@@ -3465,10 +3465,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
         /// <param name="col">The col</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddCircle(ImDrawList* self, Vector2 center, float radius, uint col, int num_segments, float thickness);
+        public static extern void ImDrawList_AddCircle(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
         ///     Ims the draw list add circle filled using the specified self
@@ -3477,19 +3477,19 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
         /// <param name="col">The col</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddCircleFilled(ImDrawList* self, Vector2 center, float radius, uint col, int num_segments);
+        public static extern void ImDrawList_AddCircleFilled(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add convex poly filled using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="points">The points</param>
-        /// <param name="num_points">The num points</param>
+        /// <param name="numPoints">The num points</param>
         /// <param name="col">The col</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddConvexPolyFilled(ImDrawList* self, Vector2* points, int num_points, uint col);
+        public static extern void ImDrawList_AddConvexPolyFilled(ImDrawList* self, Vector2* points, int numPoints, uint col);
 
         /// <summary>
         ///     Ims the draw list add draw cmd using the specified self
@@ -3502,20 +3502,20 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the draw list add image using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="user_texture_id">The user texture id</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
-        /// <param name="uv_min">The uv min</param>
-        /// <param name="uv_max">The uv max</param>
+        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="uvMin">The uv min</param>
+        /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddImage(ImDrawList* self, IntPtr user_texture_id, Vector2 p_min, Vector2 p_max, Vector2 uv_min, Vector2 uv_max, uint col);
+        public static extern void ImDrawList_AddImage(ImDrawList* self, IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col);
 
         /// <summary>
         ///     Ims the draw list add image quad using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="user_texture_id">The user texture id</param>
+        /// <param name="userTextureId">The user texture id</param>
         /// <param name="p1">The </param>
         /// <param name="p2">The </param>
         /// <param name="p3">The </param>
@@ -3526,22 +3526,22 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="uv4">The uv</param>
         /// <param name="col">The col</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddImageQuad(ImDrawList* self, IntPtr user_texture_id, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4, uint col);
+        public static extern void ImDrawList_AddImageQuad(ImDrawList* self, IntPtr userTextureId, Vector2 p1, Vector2 p2, Vector2 p3, Vector2 p4, Vector2 uv1, Vector2 uv2, Vector2 uv3, Vector2 uv4, uint col);
 
         /// <summary>
         ///     Ims the draw list add image rounded using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="user_texture_id">The user texture id</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
-        /// <param name="uv_min">The uv min</param>
-        /// <param name="uv_max">The uv max</param>
+        /// <param name="userTextureId">The user texture id</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="uvMin">The uv min</param>
+        /// <param name="uvMax">The uv max</param>
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddImageRounded(ImDrawList* self, IntPtr user_texture_id, Vector2 p_min, Vector2 p_max, Vector2 uv_min, Vector2 uv_max, uint col, float rounding, ImDrawFlags flags);
+        public static extern void ImDrawList_AddImageRounded(ImDrawList* self, IntPtr userTextureId, Vector2 pMin, Vector2 pMax, Vector2 uvMin, Vector2 uvMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
         ///     Ims the draw list add line using the specified self
@@ -3561,10 +3561,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
         /// <param name="col">The col</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         /// <param name="thickness">The thickness</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddNgon(ImDrawList* self, Vector2 center, float radius, uint col, int num_segments, float thickness);
+        public static extern void ImDrawList_AddNgon(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments, float thickness);
 
         /// <summary>
         ///     Ims the draw list add ngon filled using the specified self
@@ -3573,21 +3573,21 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
         /// <param name="col">The col</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddNgonFilled(ImDrawList* self, Vector2 center, float radius, uint col, int num_segments);
+        public static extern void ImDrawList_AddNgonFilled(ImDrawList* self, Vector2 center, float radius, uint col, int numSegments);
 
         /// <summary>
         ///     Ims the draw list add polyline using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="points">The points</param>
-        /// <param name="num_points">The num points</param>
+        /// <param name="numPoints">The num points</param>
         /// <param name="col">The col</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddPolyline(ImDrawList* self, Vector2* points, int num_points, uint col, ImDrawFlags flags, float thickness);
+        public static extern void ImDrawList_AddPolyline(ImDrawList* self, Vector2* points, int numPoints, uint col, ImDrawFlags flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list add quad using the specified self
@@ -3618,39 +3618,39 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the draw list add rect using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         /// <param name="thickness">The thickness</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddRect(ImDrawList* self, Vector2 p_min, Vector2 p_max, uint col, float rounding, ImDrawFlags flags, float thickness);
+        public static extern void ImDrawList_AddRect(ImDrawList* self, Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags, float thickness);
 
         /// <summary>
         ///     Ims the draw list add rect filled using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
         /// <param name="col">The col</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddRectFilled(ImDrawList* self, Vector2 p_min, Vector2 p_max, uint col, float rounding, ImDrawFlags flags);
+        public static extern void ImDrawList_AddRectFilled(ImDrawList* self, Vector2 pMin, Vector2 pMax, uint col, float rounding, ImDrawFlags flags);
 
         /// <summary>
         ///     Ims the draw list add rect filled multi color using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="p_min">The min</param>
-        /// <param name="p_max">The max</param>
-        /// <param name="col_upr_left">The col upr left</param>
-        /// <param name="col_upr_right">The col upr right</param>
-        /// <param name="col_bot_right">The col bot right</param>
-        /// <param name="col_bot_left">The col bot left</param>
+        /// <param name="pMin">The min</param>
+        /// <param name="pMax">The max</param>
+        /// <param name="colUprLeft">The col upr left</param>
+        /// <param name="colUprRight">The col upr right</param>
+        /// <param name="colBotRight">The col bot right</param>
+        /// <param name="colBotLeft">The col bot left</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddRectFilledMultiColor(ImDrawList* self, Vector2 p_min, Vector2 p_max, uint col_upr_left, uint col_upr_right, uint col_bot_right, uint col_bot_left);
+        public static extern void ImDrawList_AddRectFilledMultiColor(ImDrawList* self, Vector2 pMin, Vector2 pMax, uint colUprLeft, uint colUprRight, uint colBotRight, uint colBotLeft);
 
         /// <summary>
         ///     Ims the draw list add text vec 2 using the specified self
@@ -3658,25 +3658,25 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
-        /// <param name="text_begin">The text begin</param>
-        /// <param name="text_end">The text end</param>
+        /// <param name="textBegin">The text begin</param>
+        /// <param name="textEnd">The text end</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddText_Vec2(ImDrawList* self, Vector2 pos, uint col, byte* text_begin, byte* text_end);
+        public static extern void ImDrawList_AddText_Vec2(ImDrawList* self, Vector2 pos, uint col, byte* textBegin, byte* textEnd);
 
         /// <summary>
         ///     Ims the draw list add text font ptr using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="font">The font</param>
-        /// <param name="font_size">The font size</param>
+        /// <param name="fontSize">The font size</param>
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
-        /// <param name="text_begin">The text begin</param>
-        /// <param name="text_end">The text end</param>
-        /// <param name="wrap_width">The wrap width</param>
-        /// <param name="cpu_fine_clip_rect">The cpu fine clip rect</param>
+        /// <param name="textBegin">The text begin</param>
+        /// <param name="textEnd">The text end</param>
+        /// <param name="wrapWidth">The wrap width</param>
+        /// <param name="cpuFineClipRect">The cpu fine clip rect</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddText_FontPtr(ImDrawList* self, ImFont* font, float font_size, Vector2 pos, uint col, byte* text_begin, byte* text_end, float wrap_width, Vector4* cpu_fine_clip_rect);
+        public static extern void ImDrawList_AddText_FontPtr(ImDrawList* self, ImFont* font, float fontSize, Vector2 pos, uint col, byte* textBegin, byte* textEnd, float wrapWidth, Vector4* cpuFineClipRect);
 
         /// <summary>
         ///     Ims the draw list add triangle using the specified self
@@ -3758,10 +3758,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Ims the draw list im draw list using the specified shared data
         /// </summary>
-        /// <param name="shared_data">The shared data</param>
+        /// <param name="sharedData">The shared data</param>
         /// <returns>The im draw list</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImDrawList* ImDrawList_ImDrawList(IntPtr shared_data);
+        public static extern ImDrawList* ImDrawList_ImDrawList(IntPtr sharedData);
 
         /// <summary>
         ///     Ims the draw list path arc to using the specified self
@@ -3769,11 +3769,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
-        /// <param name="a_min">The min</param>
-        /// <param name="a_max">The max</param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="aMin">The min</param>
+        /// <param name="aMax">The max</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PathArcTo(ImDrawList* self, Vector2 center, float radius, float a_min, float a_max, int num_segments);
+        public static extern void ImDrawList_PathArcTo(ImDrawList* self, Vector2 center, float radius, float aMin, float aMax, int numSegments);
 
         /// <summary>
         ///     Ims the draw list path arc to fast using the specified self
@@ -3781,10 +3781,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="center">The center</param>
         /// <param name="radius">The radius</param>
-        /// <param name="a_min_of_12">The min of 12</param>
-        /// <param name="a_max_of_12">The max of 12</param>
+        /// <param name="aMinOf12">The min of 12</param>
+        /// <param name="aMaxOf12">The max of 12</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PathArcToFast(ImDrawList* self, Vector2 center, float radius, int a_min_of_12, int a_max_of_12);
+        public static extern void ImDrawList_PathArcToFast(ImDrawList* self, Vector2 center, float radius, int aMinOf12, int aMaxOf12);
 
         /// <summary>
         ///     Ims the draw list path bezier cubic curve to using the specified self
@@ -3793,9 +3793,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="p2">The </param>
         /// <param name="p3">The </param>
         /// <param name="p4">The </param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PathBezierCubicCurveTo(ImDrawList* self, Vector2 p2, Vector2 p3, Vector2 p4, int num_segments);
+        public static extern void ImDrawList_PathBezierCubicCurveTo(ImDrawList* self, Vector2 p2, Vector2 p3, Vector2 p4, int numSegments);
 
         /// <summary>
         ///     Ims the draw list path bezier quadratic curve to using the specified self
@@ -3803,9 +3803,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="p2">The </param>
         /// <param name="p3">The </param>
-        /// <param name="num_segments">The num segments</param>
+        /// <param name="numSegments">The num segments</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PathBezierQuadraticCurveTo(ImDrawList* self, Vector2 p2, Vector2 p3, int num_segments);
+        public static extern void ImDrawList_PathBezierQuadraticCurveTo(ImDrawList* self, Vector2 p2, Vector2 p3, int numSegments);
 
         /// <summary>
         ///     Ims the draw list path clear using the specified self
@@ -3842,12 +3842,12 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the draw list path rect using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="rect_min">The rect min</param>
-        /// <param name="rect_max">The rect max</param>
+        /// <param name="rectMin">The rect min</param>
+        /// <param name="rectMax">The rect max</param>
         /// <param name="rounding">The rounding</param>
         /// <param name="flags">The flags</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PathRect(ImDrawList* self, Vector2 rect_min, Vector2 rect_max, float rounding, ImDrawFlags flags);
+        public static extern void ImDrawList_PathRect(ImDrawList* self, Vector2 rectMin, Vector2 rectMax, float rounding, ImDrawFlags flags);
 
         /// <summary>
         ///     Ims the draw list path stroke using the specified self
@@ -3881,13 +3881,13 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="b">The </param>
         /// <param name="c">The </param>
         /// <param name="d">The </param>
-        /// <param name="uv_a">The uv</param>
-        /// <param name="uv_b">The uv</param>
-        /// <param name="uv_c">The uv</param>
-        /// <param name="uv_d">The uv</param>
+        /// <param name="uvA">The uv</param>
+        /// <param name="uvB">The uv</param>
+        /// <param name="uvC">The uv</param>
+        /// <param name="uvD">The uv</param>
         /// <param name="col">The col</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PrimQuadUV(ImDrawList* self, Vector2 a, Vector2 b, Vector2 c, Vector2 d, Vector2 uv_a, Vector2 uv_b, Vector2 uv_c, Vector2 uv_d, uint col);
+        public static extern void ImDrawList_PrimQuadUV(ImDrawList* self, Vector2 a, Vector2 b, Vector2 c, Vector2 d, Vector2 uvA, Vector2 uvB, Vector2 uvC, Vector2 uvD, uint col);
 
         /// <summary>
         ///     Ims the draw list prim rect using the specified self
@@ -3905,29 +3905,29 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="a">The </param>
         /// <param name="b">The </param>
-        /// <param name="uv_a">The uv</param>
-        /// <param name="uv_b">The uv</param>
+        /// <param name="uvA">The uv</param>
+        /// <param name="uvB">The uv</param>
         /// <param name="col">The col</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PrimRectUV(ImDrawList* self, Vector2 a, Vector2 b, Vector2 uv_a, Vector2 uv_b, uint col);
+        public static extern void ImDrawList_PrimRectUV(ImDrawList* self, Vector2 a, Vector2 b, Vector2 uvA, Vector2 uvB, uint col);
 
         /// <summary>
         ///     Ims the draw list prim reserve using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="idx_count">The idx count</param>
-        /// <param name="vtx_count">The vtx count</param>
+        /// <param name="idxCount">The idx count</param>
+        /// <param name="vtxCount">The vtx count</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PrimReserve(ImDrawList* self, int idx_count, int vtx_count);
+        public static extern void ImDrawList_PrimReserve(ImDrawList* self, int idxCount, int vtxCount);
 
         /// <summary>
         ///     Ims the draw list prim unreserve using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="idx_count">The idx count</param>
-        /// <param name="vtx_count">The vtx count</param>
+        /// <param name="idxCount">The idx count</param>
+        /// <param name="vtxCount">The vtx count</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PrimUnreserve(ImDrawList* self, int idx_count, int vtx_count);
+        public static extern void ImDrawList_PrimUnreserve(ImDrawList* self, int idxCount, int vtxCount);
 
         /// <summary>
         ///     Ims the draw list prim vtx using the specified self
@@ -3961,11 +3961,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the draw list push clip rect using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="clip_rect_min">The clip rect min</param>
-        /// <param name="clip_rect_max">The clip rect max</param>
-        /// <param name="intersect_with_current_clip_rect">The intersect with current clip rect</param>
+        /// <param name="clipRectMin">The clip rect min</param>
+        /// <param name="clipRectMax">The clip rect max</param>
+        /// <param name="intersectWithCurrentClipRect">The intersect with current clip rect</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PushClipRect(ImDrawList* self, Vector2 clip_rect_min, Vector2 clip_rect_max, byte intersect_with_current_clip_rect);
+        public static extern void ImDrawList_PushClipRect(ImDrawList* self, Vector2 clipRectMin, Vector2 clipRectMax, byte intersectWithCurrentClipRect);
 
         /// <summary>
         ///     Ims the draw list push clip rect full screen using the specified self
@@ -3978,9 +3978,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the draw list push texture id using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="texture_id">The texture id</param>
+        /// <param name="textureId">The texture id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_PushTextureID(ImDrawList* self, IntPtr texture_id);
+        public static extern void ImDrawList_PushTextureID(ImDrawList* self, IntPtr textureId);
 
         /// <summary>
         ///     Ims the draw list splitter clear using the specified self
@@ -4014,33 +4014,33 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the draw list splitter merge using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="draw_list">The draw list</param>
+        /// <param name="drawList">The draw list</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawListSplitter_Merge(ImDrawListSplitter* self, ImDrawList* draw_list);
+        public static extern void ImDrawListSplitter_Merge(ImDrawListSplitter* self, ImDrawList* drawList);
 
         /// <summary>
         ///     Ims the draw list splitter set current channel using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="draw_list">The draw list</param>
-        /// <param name="channel_idx">The channel idx</param>
+        /// <param name="drawList">The draw list</param>
+        /// <param name="channelIdx">The channel idx</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawListSplitter_SetCurrentChannel(ImDrawListSplitter* self, ImDrawList* draw_list, int channel_idx);
+        public static extern void ImDrawListSplitter_SetCurrentChannel(ImDrawListSplitter* self, ImDrawList* drawList, int channelIdx);
 
         /// <summary>
         ///     Ims the draw list splitter split using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="draw_list">The draw list</param>
+        /// <param name="drawList">The draw list</param>
         /// <param name="count">The count</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawListSplitter_Split(ImDrawListSplitter* self, ImDrawList* draw_list, int count);
+        public static extern void ImDrawListSplitter_Split(ImDrawListSplitter* self, ImDrawList* drawList, int count);
 
         /// <summary>
         ///     Ims the font add glyph using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="src_cfg">The src cfg</param>
+        /// <param name="srcCfg">The src cfg</param>
         /// <param name="c">The </param>
         /// <param name="x0">The </param>
         /// <param name="y0">The </param>
@@ -4050,9 +4050,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="v0">The </param>
         /// <param name="u1">The </param>
         /// <param name="v1">The </param>
-        /// <param name="advance_x">The advance</param>
+        /// <param name="advanceX">The advance</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFont_AddGlyph(ImFont* self, ImFontConfig* src_cfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advance_x);
+        public static extern void ImFont_AddGlyph(ImFont* self, ImFontConfig* srcCfg, ushort c, float x0, float y0, float x1, float y1, float u0, float v0, float u1, float v1, float advanceX);
 
         /// <summary>
         ///     Ims the font add remap char using the specified self
@@ -4060,9 +4060,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="dst">The dst</param>
         /// <param name="src">The src</param>
-        /// <param name="overwrite_dst">The overwrite dst</param>
+        /// <param name="overwriteDst">The overwrite dst</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFont_AddRemapChar(ImFont* self, ushort dst, ushort src, byte overwrite_dst);
+        public static extern void ImFont_AddRemapChar(ImFont* self, ushort dst, ushort src, byte overwriteDst);
 
         /// <summary>
         ///     Ims the font build lookup table using the specified self
@@ -4077,13 +4077,13 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="pOut">The out</param>
         /// <param name="self">The self</param>
         /// <param name="size">The size</param>
-        /// <param name="max_width">The max width</param>
-        /// <param name="wrap_width">The wrap width</param>
-        /// <param name="text_begin">The text begin</param>
-        /// <param name="text_end">The text end</param>
+        /// <param name="maxWidth">The max width</param>
+        /// <param name="wrapWidth">The wrap width</param>
+        /// <param name="textBegin">The text begin</param>
+        /// <param name="textEnd">The text end</param>
         /// <param name="remaining">The remaining</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFont_CalcTextSizeA(Vector2* pOut, ImFont* self, float size, float max_width, float wrap_width, byte* text_begin, byte* text_end, byte** remaining);
+        public static extern void ImFont_CalcTextSizeA(Vector2* pOut, ImFont* self, float size, float maxWidth, float wrapWidth, byte* textBegin, byte* textEnd, byte** remaining);
 
         /// <summary>
         ///     Ims the font calc word wrap position a using the specified self
@@ -4091,11 +4091,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="scale">The scale</param>
         /// <param name="text">The text</param>
-        /// <param name="text_end">The text end</param>
-        /// <param name="wrap_width">The wrap width</param>
+        /// <param name="textEnd">The text end</param>
+        /// <param name="wrapWidth">The wrap width</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* ImFont_CalcWordWrapPositionA(ImFont* self, float scale, byte* text, byte* text_end, float wrap_width);
+        public static extern byte* ImFont_CalcWordWrapPositionA(ImFont* self, float scale, byte* text, byte* textEnd, float wrapWidth);
 
         /// <summary>
         ///     Ims the font clear output data using the specified self
@@ -4150,9 +4150,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the font grow index using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="new_size">The new size</param>
+        /// <param name="newSize">The new size</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFont_GrowIndex(ImFont* self, int new_size);
+        public static extern void ImFont_GrowIndex(ImFont* self, int newSize);
 
         /// <summary>
         ///     Ims the font im font
@@ -4165,11 +4165,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the font is glyph range unused using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="c_begin">The begin</param>
-        /// <param name="c_last">The last</param>
+        /// <param name="cBegin">The begin</param>
+        /// <param name="cLast">The last</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImFont_IsGlyphRangeUnused(ImFont* self, uint c_begin, uint c_last);
+        public static extern byte ImFont_IsGlyphRangeUnused(ImFont* self, uint cBegin, uint cLast);
 
         /// <summary>
         ///     Ims the font is loaded using the specified self
@@ -4183,29 +4183,29 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the font render char using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="draw_list">The draw list</param>
+        /// <param name="drawList">The draw list</param>
         /// <param name="size">The size</param>
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
         /// <param name="c">The </param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFont_RenderChar(ImFont* self, ImDrawList* draw_list, float size, Vector2 pos, uint col, ushort c);
+        public static extern void ImFont_RenderChar(ImFont* self, ImDrawList* drawList, float size, Vector2 pos, uint col, ushort c);
 
         /// <summary>
         ///     Ims the font render text using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="draw_list">The draw list</param>
+        /// <param name="drawList">The draw list</param>
         /// <param name="size">The size</param>
         /// <param name="pos">The pos</param>
         /// <param name="col">The col</param>
-        /// <param name="clip_rect">The clip rect</param>
-        /// <param name="text_begin">The text begin</param>
-        /// <param name="text_end">The text end</param>
-        /// <param name="wrap_width">The wrap width</param>
-        /// <param name="cpu_fine_clip">The cpu fine clip</param>
+        /// <param name="clipRect">The clip rect</param>
+        /// <param name="textBegin">The text begin</param>
+        /// <param name="textEnd">The text end</param>
+        /// <param name="wrapWidth">The wrap width</param>
+        /// <param name="cpuFineClip">The cpu fine clip</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFont_RenderText(ImFont* self, ImDrawList* draw_list, float size, Vector2 pos, uint col, Vector4 clip_rect, byte* text_begin, byte* text_end, float wrap_width, byte cpu_fine_clip);
+        public static extern void ImFont_RenderText(ImFont* self, ImDrawList* drawList, float size, Vector2 pos, uint col, Vector4 clipRect, byte* textBegin, byte* textEnd, float wrapWidth, byte cpuFineClip);
 
         /// <summary>
         ///     Ims the font set glyph visible using the specified self
@@ -4224,11 +4224,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="id">The id</param>
         /// <param name="width">The width</param>
         /// <param name="height">The height</param>
-        /// <param name="advance_x">The advance</param>
+        /// <param name="advanceX">The advance</param>
         /// <param name="offset">The offset</param>
         /// <returns>The int</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int ImFontAtlas_AddCustomRectFontGlyph(ImFontAtlas* self, ImFont* font, ushort id, int width, int height, float advance_x, Vector2 offset);
+        public static extern int ImFontAtlas_AddCustomRectFontGlyph(ImFontAtlas* self, ImFont* font, ushort id, int width, int height, float advanceX, Vector2 offset);
 
         /// <summary>
         ///     Ims the font atlas add custom rect regular using the specified self
@@ -4244,69 +4244,69 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the font atlas add font using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="font_cfg">The font cfg</param>
+        /// <param name="fontCfg">The font cfg</param>
         /// <returns>The im font</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFont(ImFontAtlas* self, ImFontConfig* font_cfg);
+        public static extern ImFont* ImFontAtlas_AddFont(ImFontAtlas* self, ImFontConfig* fontCfg);
 
         /// <summary>
         ///     Ims the font atlas add font default using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="font_cfg">The font cfg</param>
+        /// <param name="fontCfg">The font cfg</param>
         /// <returns>The im font</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFontDefault(ImFontAtlas* self, ImFontConfig* font_cfg);
+        public static extern ImFont* ImFontAtlas_AddFontDefault(ImFontAtlas* self, ImFontConfig* fontCfg);
 
         /// <summary>
         ///     Ims the font atlas add font from file ttf using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="filename">The filename</param>
-        /// <param name="size_pixels">The size pixels</param>
-        /// <param name="font_cfg">The font cfg</param>
-        /// <param name="glyph_ranges">The glyph ranges</param>
+        /// <param name="sizePixels">The size pixels</param>
+        /// <param name="fontCfg">The font cfg</param>
+        /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFontFromFileTTF(ImFontAtlas* self, byte* filename, float size_pixels, ImFontConfig* font_cfg, ushort* glyph_ranges);
+        public static extern ImFont* ImFontAtlas_AddFontFromFileTTF(ImFontAtlas* self, byte* filename, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
         ///     Ims the font atlas add font from memory compressed base 85 ttf using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="compressed_font_data_base85">The compressed font data base85</param>
-        /// <param name="size_pixels">The size pixels</param>
-        /// <param name="font_cfg">The font cfg</param>
-        /// <param name="glyph_ranges">The glyph ranges</param>
+        /// <param name="compressedFontDataBase85">The compressed font data base85</param>
+        /// <param name="sizePixels">The size pixels</param>
+        /// <param name="fontCfg">The font cfg</param>
+        /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(ImFontAtlas* self, byte* compressed_font_data_base85, float size_pixels, ImFontConfig* font_cfg, ushort* glyph_ranges);
+        public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedBase85TTF(ImFontAtlas* self, byte* compressedFontDataBase85, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
         ///     Ims the font atlas add font from memory compressed ttf using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="compressed_font_data">The compressed font data</param>
-        /// <param name="compressed_font_size">The compressed font size</param>
-        /// <param name="size_pixels">The size pixels</param>
-        /// <param name="font_cfg">The font cfg</param>
-        /// <param name="glyph_ranges">The glyph ranges</param>
+        /// <param name="compressedFontData">The compressed font data</param>
+        /// <param name="compressedFontSize">The compressed font size</param>
+        /// <param name="sizePixels">The size pixels</param>
+        /// <param name="fontCfg">The font cfg</param>
+        /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedTTF(ImFontAtlas* self, void* compressed_font_data, int compressed_font_size, float size_pixels, ImFontConfig* font_cfg, ushort* glyph_ranges);
+        public static extern ImFont* ImFontAtlas_AddFontFromMemoryCompressedTTF(ImFontAtlas* self, void* compressedFontData, int compressedFontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
         ///     Ims the font atlas add font from memory ttf using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="font_data">The font data</param>
-        /// <param name="font_size">The font size</param>
-        /// <param name="size_pixels">The size pixels</param>
-        /// <param name="font_cfg">The font cfg</param>
-        /// <param name="glyph_ranges">The glyph ranges</param>
+        /// <param name="fontData">The font data</param>
+        /// <param name="fontSize">The font size</param>
+        /// <param name="sizePixels">The size pixels</param>
+        /// <param name="fontCfg">The font cfg</param>
+        /// <param name="glyphRanges">The glyph ranges</param>
         /// <returns>The im font</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImFont* ImFontAtlas_AddFontFromMemoryTTF(ImFontAtlas* self, void* font_data, int font_size, float size_pixels, ImFontConfig* font_cfg, ushort* glyph_ranges);
+        public static extern ImFont* ImFontAtlas_AddFontFromMemoryTTF(ImFontAtlas* self, void* fontData, int fontSize, float sizePixels, ImFontConfig* fontCfg, ushort* glyphRanges);
 
         /// <summary>
         ///     Ims the font atlas build using the specified self
@@ -4321,10 +4321,10 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="rect">The rect</param>
-        /// <param name="out_uv_min">The out uv min</param>
-        /// <param name="out_uv_max">The out uv max</param>
+        /// <param name="outUvMin">The out uv min</param>
+        /// <param name="outUvMax">The out uv max</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontAtlas_CalcCustomRectUV(ImFontAtlas* self, ImFontAtlasCustomRect* rect, Vector2* out_uv_min, Vector2* out_uv_max);
+        public static extern void ImFontAtlas_CalcCustomRectUV(ImFontAtlas* self, ImFontAtlasCustomRect* rect, Vector2* outUvMin, Vector2* outUvMax);
 
         /// <summary>
         ///     Ims the font atlas clear using the specified self
@@ -4447,57 +4447,57 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="cursor">The cursor</param>
-        /// <param name="out_offset">The out offset</param>
-        /// <param name="out_size">The out size</param>
-        /// <param name="out_uv_border">The out uv border</param>
-        /// <param name="out_uv_fill">The out uv fill</param>
+        /// <param name="outOffset">The out offset</param>
+        /// <param name="outSize">The out size</param>
+        /// <param name="outUvBorder">The out uv border</param>
+        /// <param name="outUvFill">The out uv fill</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImFontAtlas_GetMouseCursorTexData(ImFontAtlas* self, ImGuiMouseCursor cursor, Vector2* out_offset, Vector2* out_size, Vector2* out_uv_border, Vector2* out_uv_fill);
+        public static extern byte ImFontAtlas_GetMouseCursorTexData(ImFontAtlas* self, ImGuiMouseCursor cursor, Vector2* outOffset, Vector2* outSize, Vector2* outUvBorder, Vector2* outUvFill);
 
         /// <summary>
         ///     Ims the font atlas get tex data as alpha 8 using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="out_pixels">The out pixels</param>
-        /// <param name="out_width">The out width</param>
-        /// <param name="out_height">The out height</param>
-        /// <param name="out_bytes_per_pixel">The out bytes per pixel</param>
+        /// <param name="outPixels">The out pixels</param>
+        /// <param name="outWidth">The out width</param>
+        /// <param name="outHeight">The out height</param>
+        /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontAtlas_GetTexDataAsAlpha8(ImFontAtlas* self, byte** out_pixels, int* out_width, int* out_height, int* out_bytes_per_pixel);
+        public static extern void ImFontAtlas_GetTexDataAsAlpha8(ImFontAtlas* self, byte** outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
         ///     Ims the font atlas get tex data as alpha 8 using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="out_pixels">The out pixels</param>
-        /// <param name="out_width">The out width</param>
-        /// <param name="out_height">The out height</param>
-        /// <param name="out_bytes_per_pixel">The out bytes per pixel</param>
+        /// <param name="outPixels">The out pixels</param>
+        /// <param name="outWidth">The out width</param>
+        /// <param name="outHeight">The out height</param>
+        /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontAtlas_GetTexDataAsAlpha8(ImFontAtlas* self, IntPtr* out_pixels, int* out_width, int* out_height, int* out_bytes_per_pixel);
+        public static extern void ImFontAtlas_GetTexDataAsAlpha8(ImFontAtlas* self, IntPtr* outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
         ///     Ims the font atlas get tex data as rgba 32 using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="out_pixels">The out pixels</param>
-        /// <param name="out_width">The out width</param>
-        /// <param name="out_height">The out height</param>
-        /// <param name="out_bytes_per_pixel">The out bytes per pixel</param>
+        /// <param name="outPixels">The out pixels</param>
+        /// <param name="outWidth">The out width</param>
+        /// <param name="outHeight">The out height</param>
+        /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontAtlas_GetTexDataAsRGBA32(ImFontAtlas* self, byte** out_pixels, int* out_width, int* out_height, int* out_bytes_per_pixel);
+        public static extern void ImFontAtlas_GetTexDataAsRGBA32(ImFontAtlas* self, byte** outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
         ///     Ims the font atlas get tex data as rgba 32 using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="out_pixels">The out pixels</param>
-        /// <param name="out_width">The out width</param>
-        /// <param name="out_height">The out height</param>
-        /// <param name="out_bytes_per_pixel">The out bytes per pixel</param>
+        /// <param name="outPixels">The out pixels</param>
+        /// <param name="outWidth">The out width</param>
+        /// <param name="outHeight">The out height</param>
+        /// <param name="outBytesPerPixel">The out bytes per pixel</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontAtlas_GetTexDataAsRGBA32(ImFontAtlas* self, IntPtr* out_pixels, int* out_width, int* out_height, int* out_bytes_per_pixel);
+        public static extern void ImFontAtlas_GetTexDataAsRGBA32(ImFontAtlas* self, IntPtr* outPixels, int* outWidth, int* outHeight, int* outBytesPerPixel);
 
         /// <summary>
         ///     Ims the font atlas im font atlas
@@ -4579,17 +4579,17 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="text">The text</param>
-        /// <param name="text_end">The text end</param>
+        /// <param name="textEnd">The text end</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_AddText(ImFontGlyphRangesBuilder* self, byte* text, byte* text_end);
+        public static extern void ImFontGlyphRangesBuilder_AddText(ImFontGlyphRangesBuilder* self, byte* text, byte* textEnd);
 
         /// <summary>
         ///     Ims the font glyph ranges builder build ranges using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="out_ranges">The out ranges</param>
+        /// <param name="outRanges">The out ranges</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImFontGlyphRangesBuilder_BuildRanges(ImFontGlyphRangesBuilder* self, ImVector* out_ranges);
+        public static extern void ImFontGlyphRangesBuilder_BuildRanges(ImFontGlyphRangesBuilder* self, ImVector* outRanges);
 
         /// <summary>
         ///     Ims the font glyph ranges builder clear using the specified self
@@ -4641,9 +4641,9 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
-        /// <param name="bytes_count">The bytes count</param>
+        /// <param name="bytesCount">The bytes count</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiInputTextCallbackData_DeleteChars(ImGuiInputTextCallbackData* self, int pos, int bytes_count);
+        public static extern void ImGuiInputTextCallbackData_DeleteChars(ImGuiInputTextCallbackData* self, int pos, int bytesCount);
 
         /// <summary>
         ///     Ims the gui input text callback data destroy using the specified self
@@ -4673,9 +4673,9 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="pos">The pos</param>
         /// <param name="text">The text</param>
-        /// <param name="text_end">The text end</param>
+        /// <param name="textEnd">The text end</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiInputTextCallbackData_InsertChars(ImGuiInputTextCallbackData* self, int pos, byte* text, byte* text_end);
+        public static extern void ImGuiInputTextCallbackData_InsertChars(ImGuiInputTextCallbackData* self, int pos, byte* text, byte* textEnd);
 
         /// <summary>
         ///     Ims the gui input text callback data select all using the specified self
@@ -4690,7 +4690,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="focused">The focused</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddFocusEvent(ImGuiIO* self, byte focused);
+        public static extern void ImGuiIO_AddFocusEvent(ImGuiIo* self, byte focused);
 
         /// <summary>
         ///     Ims the gui io add input character using the specified self
@@ -4698,7 +4698,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddInputCharacter(ImGuiIO* self, uint c);
+        public static extern void ImGuiIO_AddInputCharacter(ImGuiIo* self, uint c);
 
         /// <summary>
         ///     Ims the gui io add input characters utf 8 using the specified self
@@ -4706,7 +4706,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="str">The str</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddInputCharactersUTF8(ImGuiIO* self, byte* str);
+        public static extern void ImGuiIO_AddInputCharactersUTF8(ImGuiIo* self, byte* str);
 
         /// <summary>
         ///     Ims the gui io add input character utf 16 using the specified self
@@ -4714,7 +4714,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="c">The </param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddInputCharacterUTF16(ImGuiIO* self, ushort c);
+        public static extern void ImGuiIO_AddInputCharacterUTF16(ImGuiIo* self, ushort c);
 
         /// <summary>
         ///     Ims the gui io add key analog event using the specified self
@@ -4724,7 +4724,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="down">The down</param>
         /// <param name="v">The </param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddKeyAnalogEvent(ImGuiIO* self, ImGuiKey key, byte down, float v);
+        public static extern void ImGuiIO_AddKeyAnalogEvent(ImGuiIo* self, ImGuiKey key, byte down, float v);
 
         /// <summary>
         ///     Ims the gui io add key event using the specified self
@@ -4733,7 +4733,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="key">The key</param>
         /// <param name="down">The down</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddKeyEvent(ImGuiIO* self, ImGuiKey key, byte down);
+        public static extern void ImGuiIO_AddKeyEvent(ImGuiIo* self, ImGuiKey key, byte down);
 
         /// <summary>
         ///     Ims the gui io add mouse button event using the specified self
@@ -4742,7 +4742,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="button">The button</param>
         /// <param name="down">The down</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddMouseButtonEvent(ImGuiIO* self, int button, byte down);
+        public static extern void ImGuiIO_AddMouseButtonEvent(ImGuiIo* self, int button, byte down);
 
         /// <summary>
         ///     Ims the gui io add mouse pos event using the specified self
@@ -4751,7 +4751,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddMousePosEvent(ImGuiIO* self, float x, float y);
+        public static extern void ImGuiIO_AddMousePosEvent(ImGuiIo* self, float x, float y);
 
         /// <summary>
         ///     Ims the gui io add mouse source event using the specified self
@@ -4759,7 +4759,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="source">The source</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddMouseSourceEvent(ImGuiIO* self, ImGuiMouseSource source);
+        public static extern void ImGuiIO_AddMouseSourceEvent(ImGuiIo* self, ImGuiMouseSource source);
 
         /// <summary>
         ///     Ims the gui io add mouse viewport event using the specified self
@@ -4767,72 +4767,72 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="self">The self</param>
         /// <param name="id">The id</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddMouseViewportEvent(ImGuiIO* self, uint id);
+        public static extern void ImGuiIO_AddMouseViewportEvent(ImGuiIo* self, uint id);
 
         /// <summary>
         ///     Ims the gui io add mouse wheel event using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="wheel_x">The wheel</param>
-        /// <param name="wheel_y">The wheel</param>
+        /// <param name="wheelX">The wheel</param>
+        /// <param name="wheelY">The wheel</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_AddMouseWheelEvent(ImGuiIO* self, float wheel_x, float wheel_y);
+        public static extern void ImGuiIO_AddMouseWheelEvent(ImGuiIo* self, float wheelX, float wheelY);
 
         /// <summary>
         ///     Ims the gui io clear input characters using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_ClearInputCharacters(ImGuiIO* self);
+        public static extern void ImGuiIO_ClearInputCharacters(ImGuiIo* self);
 
         /// <summary>
         ///     Ims the gui io clear input keys using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_ClearInputKeys(ImGuiIO* self);
+        public static extern void ImGuiIO_ClearInputKeys(ImGuiIo* self);
 
         /// <summary>
         ///     Ims the gui io destroy using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_destroy(ImGuiIO* self);
+        public static extern void ImGuiIO_destroy(ImGuiIo* self);
 
         /// <summary>
         ///     Ims the gui io im gui io
         /// </summary>
         /// <returns>The im gui io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiIO* ImGuiIO_ImGuiIO();
+        public static extern ImGuiIo* ImGuiIO_ImGuiIO();
 
         /// <summary>
         ///     Ims the gui io set app accepting events using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="accepting_events">The accepting events</param>
+        /// <param name="acceptingEvents">The accepting events</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_SetAppAcceptingEvents(ImGuiIO* self, byte accepting_events);
+        public static extern void ImGuiIO_SetAppAcceptingEvents(ImGuiIo* self, byte acceptingEvents);
 
         /// <summary>
         ///     Ims the gui io set key event native data using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="native_keycode">The native keycode</param>
-        /// <param name="native_scancode">The native scancode</param>
-        /// <param name="native_legacy_index">The native legacy index</param>
+        /// <param name="nativeKeycode">The native keycode</param>
+        /// <param name="nativeScancode">The native scancode</param>
+        /// <param name="nativeLegacyIndex">The native legacy index</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiIO_SetKeyEventNativeData(ImGuiIO* self, ImGuiKey key, int native_keycode, int native_scancode, int native_legacy_index);
+        public static extern void ImGuiIO_SetKeyEventNativeData(ImGuiIo* self, ImGuiKey key, int nativeKeycode, int nativeScancode, int nativeLegacyIndex);
 
         /// <summary>
         ///     Ims the gui list clipper begin using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="items_count">The items count</param>
-        /// <param name="items_height">The items height</param>
+        /// <param name="itemsCount">The items count</param>
+        /// <param name="itemsHeight">The items height</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiListClipper_Begin(ImGuiListClipper* self, int items_count, float items_height);
+        public static extern void ImGuiListClipper_Begin(ImGuiListClipper* self, int itemsCount, float itemsHeight);
 
         /// <summary>
         ///     Ims the gui list clipper destroy using the specified self
@@ -4852,10 +4852,10 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the gui list clipper force display range by indices using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="item_min">The item min</param>
-        /// <param name="item_max">The item max</param>
+        /// <param name="itemMin">The item min</param>
+        /// <param name="itemMax">The item max</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiListClipper_ForceDisplayRangeByIndices(ImGuiListClipper* self, int item_min, int item_max);
+        public static extern void ImGuiListClipper_ForceDisplayRangeByIndices(ImGuiListClipper* self, int itemMin, int itemMax);
 
         /// <summary>
         ///     Ims the gui list clipper im gui list clipper
@@ -4951,14 +4951,14 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiPlatformIO_destroy(ImGuiPlatformIO* self);
+        public static extern void ImGuiPlatformIO_destroy(ImGuiPlatformIo* self);
 
         /// <summary>
         ///     Ims the gui platform io im gui platform io
         /// </summary>
         /// <returns>The im gui platform io</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiPlatformIO* ImGuiPlatformIO_ImGuiPlatformIO();
+        public static extern ImGuiPlatformIo* ImGuiPlatformIO_ImGuiPlatformIO();
 
         /// <summary>
         ///     Ims the gui platform monitor destroy using the specified self
@@ -4993,60 +4993,60 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiStorage_GetBool(ImGuiStorage* self, uint key, byte default_val);
+        public static extern byte ImGuiStorage_GetBool(ImGuiStorage* self, uint key, byte defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get bool ref using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte* ImGuiStorage_GetBoolRef(ImGuiStorage* self, uint key, byte default_val);
+        public static extern byte* ImGuiStorage_GetBoolRef(ImGuiStorage* self, uint key, byte defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get float using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern float ImGuiStorage_GetFloat(ImGuiStorage* self, uint key, float default_val);
+        public static extern float ImGuiStorage_GetFloat(ImGuiStorage* self, uint key, float defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get float ref using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The float</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern float* ImGuiStorage_GetFloatRef(ImGuiStorage* self, uint key, float default_val);
+        public static extern float* ImGuiStorage_GetFloatRef(ImGuiStorage* self, uint key, float defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get int using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int ImGuiStorage_GetInt(ImGuiStorage* self, uint key, int default_val);
+        public static extern int ImGuiStorage_GetInt(ImGuiStorage* self, uint key, int defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get int ref using the specified self
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The int</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern int* ImGuiStorage_GetIntRef(ImGuiStorage* self, uint key, int default_val);
+        public static extern int* ImGuiStorage_GetIntRef(ImGuiStorage* self, uint key, int defaultVal);
 
         /// <summary>
         ///     Ims the gui storage get void ptr using the specified self
@@ -5062,10 +5062,10 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The void</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void** ImGuiStorage_GetVoidPtrRef(ImGuiStorage* self, uint key, void* default_val);
+        public static extern void** ImGuiStorage_GetVoidPtrRef(ImGuiStorage* self, uint key, void* defaultVal);
 
         /// <summary>
         ///     Ims the gui storage set all int using the specified self
@@ -5121,29 +5121,29 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Ims the gui storage pair im gui storage pair int using the specified  key
         /// </summary>
-        /// <param name="_key">The key</param>
-        /// <param name="_val_i">The val</param>
+        /// <param name="key">The key</param>
+        /// <param name="valI">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Int(uint _key, int _val_i);
+        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Int(uint key, int valI);
 
         /// <summary>
         ///     Ims the gui storage pair im gui storage pair float using the specified  key
         /// </summary>
-        /// <param name="_key">The key</param>
-        /// <param name="_val_f">The val</param>
+        /// <param name="key">The key</param>
+        /// <param name="valF">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Float(uint _key, float _val_f);
+        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Float(uint key, float valF);
 
         /// <summary>
         ///     Ims the gui storage pair im gui storage pair ptr using the specified  key
         /// </summary>
-        /// <param name="_key">The key</param>
-        /// <param name="_val_p">The val</param>
+        /// <param name="key">The key</param>
+        /// <param name="valP">The val</param>
         /// <returns>The im gui storage pair</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Ptr(uint _key, void* _val_p);
+        public static extern ImGuiStoragePair* ImGuiStoragePair_ImGuiStoragePair_Ptr(uint key, void* valP);
 
         /// <summary>
         ///     Ims the gui style destroy using the specified self
@@ -5163,9 +5163,9 @@ namespace Alis.Core.Graphic.ImGui
         ///     Ims the gui style scale all sizes using the specified self
         /// </summary>
         /// <param name="self">The self</param>
-        /// <param name="scale_factor">The scale factor</param>
+        /// <param name="scaleFactor">The scale factor</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle* self, float scale_factor);
+        public static extern void ImGuiStyle_ScaleAllSizes(ImGuiStyle* self, float scaleFactor);
 
         /// <summary>
         ///     Ims the gui table column sort specs destroy using the specified self
@@ -5200,9 +5200,9 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="str">The str</param>
-        /// <param name="str_end">The str end</param>
+        /// <param name="strEnd">The str end</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImGuiTextBuffer_append(ImGuiTextBuffer* self, byte* str, byte* str_end);
+        public static extern void ImGuiTextBuffer_append(ImGuiTextBuffer* self, byte* str, byte* strEnd);
 
         /// <summary>
         ///     Ims the gui text buffer appendf using the specified self
@@ -5315,10 +5315,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Ims the gui text filter im gui text filter using the specified default filter
         /// </summary>
-        /// <param name="default_filter">The default filter</param>
+        /// <param name="defaultFilter">The default filter</param>
         /// <returns>The im gui text filter</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiTextFilter* ImGuiTextFilter_ImGuiTextFilter(byte* default_filter);
+        public static extern ImGuiTextFilter* ImGuiTextFilter_ImGuiTextFilter(byte* defaultFilter);
 
         /// <summary>
         ///     Ims the gui text filter is active using the specified self
@@ -5333,10 +5333,10 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         /// <param name="self">The self</param>
         /// <param name="text">The text</param>
-        /// <param name="text_end">The text end</param>
+        /// <param name="textEnd">The text end</param>
         /// <returns>The byte</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern byte ImGuiTextFilter_PassFilter(ImGuiTextFilter* self, byte* text, byte* text_end);
+        public static extern byte ImGuiTextFilter_PassFilter(ImGuiTextFilter* self, byte* text, byte* textEnd);
 
         /// <summary>
         ///     Ims the gui text range destroy using the specified self
@@ -5363,11 +5363,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Ims the gui text range im gui text range str using the specified  b
         /// </summary>
-        /// <param name="_b">The </param>
-        /// <param name="_e">The </param>
+        /// <param name="b">The </param>
+        /// <param name="e">The </param>
         /// <returns>The im gui text range</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern ImGuiTextRange* ImGuiTextRange_ImGuiTextRange_Str(byte* _b, byte* _e);
+        public static extern ImGuiTextRange* ImGuiTextRange_ImGuiTextRange_Str(byte* b, byte* e);
 
         /// <summary>
         /// </summary>
@@ -5438,11 +5438,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Ims the vec 2 im vec 2 float using the specified  x
         /// </summary>
-        /// <param name="_x">The </param>
-        /// <param name="_y">The </param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
         /// <returns>The vector</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern Vector2* ImVec2_ImVec2_Float(float _x, float _y);
+        public static extern Vector2* ImVec2_ImVec2_Float(float x, float y);
 
         /// <summary>
         ///     Ims the vec 4 destroy using the specified self
@@ -5461,12 +5461,12 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Ims the vec 4 im vec 4 float using the specified  x
         /// </summary>
-        /// <param name="_x">The </param>
-        /// <param name="_y">The </param>
-        /// <param name="_z">The </param>
-        /// <param name="_w">The </param>
+        /// <param name="x">The </param>
+        /// <param name="y">The </param>
+        /// <param name="z">The </param>
+        /// <param name="w">The </param>
         /// <returns>The vector</returns>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern Vector4* ImVec4_ImVec4_Float(float _x, float _y, float _z, float _w);
+        public static extern Vector4* ImVec4_ImVec4_Float(float x, float y, float z, float w);
     }
 }

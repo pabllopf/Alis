@@ -118,26 +118,26 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool Draw()
         {
-            byte* native_label;
-            int label_byteCount = 0;
-            label_byteCount = Encoding.UTF8.GetByteCount("Filter(inc,-exc)");
-            if (label_byteCount > Util.StackAllocationSizeLimit)
+            byte* nativeLabel;
+            int labelByteCount = 0;
+            labelByteCount = Encoding.UTF8.GetByteCount("Filter(inc,-exc)");
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                native_label = Util.Allocate(label_byteCount + 1);
+                nativeLabel = Util.Allocate(labelByteCount + 1);
             }
             else
             {
-                byte* native_label_stackBytes = stackalloc byte[label_byteCount + 1];
-                native_label = native_label_stackBytes;
+                byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                nativeLabel = nativeLabelStackBytes;
             }
 
-            int native_label_offset = Util.GetUtf8("Filter(inc,-exc)", native_label, label_byteCount);
-            native_label[native_label_offset] = 0;
+            int nativeLabelOffset = Util.GetUtf8("Filter(inc,-exc)", nativeLabel, labelByteCount);
+            nativeLabel[nativeLabelOffset] = 0;
             float width = 0.0f;
-            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, native_label, width);
-            if (label_byteCount > Util.StackAllocationSizeLimit)
+            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, nativeLabel, width);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_label);
+                Util.Free(nativeLabel);
             }
 
             return ret != 0;
@@ -150,34 +150,34 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool Draw(string label)
         {
-            byte* native_label;
-            int label_byteCount = 0;
+            byte* nativeLabel;
+            int labelByteCount = 0;
             if (label != null)
             {
-                label_byteCount = Encoding.UTF8.GetByteCount(label);
-                if (label_byteCount > Util.StackAllocationSizeLimit)
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_label = Util.Allocate(label_byteCount + 1);
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
                 }
                 else
                 {
-                    byte* native_label_stackBytes = stackalloc byte[label_byteCount + 1];
-                    native_label = native_label_stackBytes;
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
                 }
 
-                int native_label_offset = Util.GetUtf8(label, native_label, label_byteCount);
-                native_label[native_label_offset] = 0;
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
             }
             else
             {
-                native_label = null;
+                nativeLabel = null;
             }
 
             float width = 0.0f;
-            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, native_label, width);
-            if (label_byteCount > Util.StackAllocationSizeLimit)
+            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, nativeLabel, width);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_label);
+                Util.Free(nativeLabel);
             }
 
             return ret != 0;
@@ -191,33 +191,33 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool Draw(string label, float width)
         {
-            byte* native_label;
-            int label_byteCount = 0;
+            byte* nativeLabel;
+            int labelByteCount = 0;
             if (label != null)
             {
-                label_byteCount = Encoding.UTF8.GetByteCount(label);
-                if (label_byteCount > Util.StackAllocationSizeLimit)
+                labelByteCount = Encoding.UTF8.GetByteCount(label);
+                if (labelByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_label = Util.Allocate(label_byteCount + 1);
+                    nativeLabel = Util.Allocate(labelByteCount + 1);
                 }
                 else
                 {
-                    byte* native_label_stackBytes = stackalloc byte[label_byteCount + 1];
-                    native_label = native_label_stackBytes;
+                    byte* nativeLabelStackBytes = stackalloc byte[labelByteCount + 1];
+                    nativeLabel = nativeLabelStackBytes;
                 }
 
-                int native_label_offset = Util.GetUtf8(label, native_label, label_byteCount);
-                native_label[native_label_offset] = 0;
+                int nativeLabelOffset = Util.GetUtf8(label, nativeLabel, labelByteCount);
+                nativeLabel[nativeLabelOffset] = 0;
             }
             else
             {
-                native_label = null;
+                nativeLabel = null;
             }
 
-            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, native_label, width);
-            if (label_byteCount > Util.StackAllocationSizeLimit)
+            byte ret = ImGuiNative.ImGuiTextFilter_Draw(NativePtr, nativeLabel, width);
+            if (labelByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_label);
+                Util.Free(nativeLabel);
             }
 
             return ret != 0;
@@ -240,34 +240,34 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool PassFilter(string text)
         {
-            byte* native_text;
-            int text_byteCount = 0;
+            byte* nativeText;
+            int textByteCount = 0;
             if (text != null)
             {
-                text_byteCount = Encoding.UTF8.GetByteCount(text);
-                if (text_byteCount > Util.StackAllocationSizeLimit)
+                textByteCount = Encoding.UTF8.GetByteCount(text);
+                if (textByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_text = Util.Allocate(text_byteCount + 1);
+                    nativeText = Util.Allocate(textByteCount + 1);
                 }
                 else
                 {
-                    byte* native_text_stackBytes = stackalloc byte[text_byteCount + 1];
-                    native_text = native_text_stackBytes;
+                    byte* nativeTextStackBytes = stackalloc byte[textByteCount + 1];
+                    nativeText = nativeTextStackBytes;
                 }
 
-                int native_text_offset = Util.GetUtf8(text, native_text, text_byteCount);
-                native_text[native_text_offset] = 0;
+                int nativeTextOffset = Util.GetUtf8(text, nativeText, textByteCount);
+                nativeText[nativeTextOffset] = 0;
             }
             else
             {
-                native_text = null;
+                nativeText = null;
             }
 
-            byte* native_text_end = null;
-            byte ret = ImGuiNative.ImGuiTextFilter_PassFilter(NativePtr, native_text, native_text_end);
-            if (text_byteCount > Util.StackAllocationSizeLimit)
+            byte* nativeTextEnd = null;
+            byte ret = ImGuiNative.ImGuiTextFilter_PassFilter(NativePtr, nativeText, nativeTextEnd);
+            if (textByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_text);
+                Util.Free(nativeText);
             }
 
             return ret != 0;

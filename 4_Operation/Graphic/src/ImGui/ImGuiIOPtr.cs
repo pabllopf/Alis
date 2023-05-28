@@ -36,43 +36,43 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui io ptr
     /// </summary>
-    public unsafe struct ImGuiIOPtr
+    public unsafe struct ImGuiIoPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiIO* NativePtr { get; }
+        public ImGuiIo* NativePtr { get; }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIOPtr" /> class
+        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiIOPtr(ImGuiIO* nativePtr) => NativePtr = nativePtr;
+        public ImGuiIoPtr(ImGuiIo* nativePtr) => NativePtr = nativePtr;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiIOPtr" /> class
+        ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiIOPtr(IntPtr nativePtr) => NativePtr = (ImGuiIO*) nativePtr;
+        public ImGuiIoPtr(IntPtr nativePtr) => NativePtr = (ImGuiIo*) nativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiIOPtr(ImGuiIO* nativePtr) => new ImGuiIOPtr(nativePtr);
+        public static implicit operator ImGuiIoPtr(ImGuiIo* nativePtr) => new ImGuiIoPtr(nativePtr);
 
         /// <summary>
         ///     /
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiIO*(ImGuiIOPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImGuiIo*(ImGuiIoPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiIOPtr(IntPtr nativePtr) => new ImGuiIOPtr(nativePtr);
+        public static implicit operator ImGuiIoPtr(IntPtr nativePtr) => new ImGuiIoPtr(nativePtr);
 
         /// <summary>
         ///     Gets the value of the config flags
@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the config mac osx behaviors
         /// </summary>
-        public ref bool ConfigMacOSXBehaviors => ref Unsafe.AsRef<bool>(&NativePtr->ConfigMacOSXBehaviors);
+        public ref bool ConfigMacOsxBehaviors => ref Unsafe.AsRef<bool>(&NativePtr->ConfigMacOsxBehaviors);
 
         /// <summary>
         ///     Gets the value of the config input trickle event queue
@@ -337,10 +337,10 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets or sets the value of the  unusedpadding
         /// </summary>
-        public IntPtr _UnusedPadding
+        public IntPtr UnusedPadding
         {
-            get => (IntPtr) NativePtr->_UnusedPadding;
-            set => NativePtr->_UnusedPadding = (void*) value;
+            get => (IntPtr) NativePtr->UnusedPadding;
+            set => NativePtr->UnusedPadding = (void*) value;
         }
 
         /// <summary>
@@ -491,7 +491,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the keys data
         /// </summary>
-        public RangeAccessor<ImGuiKeyData> KeysData => new RangeAccessor<ImGuiKeyData>(&NativePtr->KeysData_0, 652);
+        public RangeAccessor<ImGuiKeyData> KeysData => new RangeAccessor<ImGuiKeyData>(&NativePtr->KeysData0, 652);
 
         /// <summary>
         ///     Gets the value of the want capture mouse unless popup close
@@ -506,7 +506,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse clicked pos
         /// </summary>
-        public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>(&NativePtr->MouseClickedPos_0, 5);
+        public RangeAccessor<Vector2> MouseClickedPos => new RangeAccessor<Vector2>(&NativePtr->MouseClickedPos0, 5);
 
         /// <summary>
         ///     Gets the value of the mouse clicked time
@@ -566,7 +566,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the mouse drag max distance abs
         /// </summary>
-        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs => new RangeAccessor<Vector2>(&NativePtr->MouseDragMaxDistanceAbs_0, 5);
+        public RangeAccessor<Vector2> MouseDragMaxDistanceAbs => new RangeAccessor<Vector2>(&NativePtr->MouseDragMaxDistanceAbs0, 5);
 
         /// <summary>
         ///     Gets the value of the mouse drag max distance sqr
@@ -614,8 +614,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="focused">The focused</param>
         public void AddFocusEvent(bool focused)
         {
-            byte native_focused = focused ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddFocusEvent(NativePtr, native_focused);
+            byte nativeFocused = focused ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImGuiIO_AddFocusEvent(NativePtr, nativeFocused);
         }
 
         /// <summary>
@@ -631,35 +631,35 @@ namespace Alis.Core.Graphic.ImGui
         ///     Adds the input characters utf 8 using the specified str
         /// </summary>
         /// <param name="str">The str</param>
-        public void AddInputCharactersUTF8(string str)
+        public void AddInputCharactersUtf8(string str)
         {
-            byte* native_str;
-            int str_byteCount = 0;
+            byte* nativeStr;
+            int strByteCount = 0;
             if (str != null)
             {
-                str_byteCount = Encoding.UTF8.GetByteCount(str);
-                if (str_byteCount > Util.StackAllocationSizeLimit)
+                strByteCount = Encoding.UTF8.GetByteCount(str);
+                if (strByteCount > Util.StackAllocationSizeLimit)
                 {
-                    native_str = Util.Allocate(str_byteCount + 1);
+                    nativeStr = Util.Allocate(strByteCount + 1);
                 }
                 else
                 {
-                    byte* native_str_stackBytes = stackalloc byte[str_byteCount + 1];
-                    native_str = native_str_stackBytes;
+                    byte* nativeStrStackBytes = stackalloc byte[strByteCount + 1];
+                    nativeStr = nativeStrStackBytes;
                 }
 
-                int native_str_offset = Util.GetUtf8(str, native_str, str_byteCount);
-                native_str[native_str_offset] = 0;
+                int nativeStrOffset = Util.GetUtf8(str, nativeStr, strByteCount);
+                nativeStr[nativeStrOffset] = 0;
             }
             else
             {
-                native_str = null;
+                nativeStr = null;
             }
 
-            ImGuiNative.ImGuiIO_AddInputCharactersUTF8(NativePtr, native_str);
-            if (str_byteCount > Util.StackAllocationSizeLimit)
+            ImGuiNative.ImGuiIO_AddInputCharactersUTF8(NativePtr, nativeStr);
+            if (strByteCount > Util.StackAllocationSizeLimit)
             {
-                Util.Free(native_str);
+                Util.Free(nativeStr);
             }
         }
 
@@ -667,7 +667,7 @@ namespace Alis.Core.Graphic.ImGui
         ///     Adds the input character utf 16 using the specified c
         /// </summary>
         /// <param name="c">The </param>
-        public void AddInputCharacterUTF16(ushort c)
+        public void AddInputCharacterUtf16(ushort c)
         {
             ImGuiNative.ImGuiIO_AddInputCharacterUTF16(NativePtr, c);
         }
@@ -680,8 +680,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="v">The </param>
         public void AddKeyAnalogEvent(ImGuiKey key, bool down, float v)
         {
-            byte native_down = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddKeyAnalogEvent(NativePtr, key, native_down, v);
+            byte nativeDown = down ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImGuiIO_AddKeyAnalogEvent(NativePtr, key, nativeDown, v);
         }
 
         /// <summary>
@@ -691,8 +691,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="down">The down</param>
         public void AddKeyEvent(ImGuiKey key, bool down)
         {
-            byte native_down = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddKeyEvent(NativePtr, key, native_down);
+            byte nativeDown = down ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImGuiIO_AddKeyEvent(NativePtr, key, nativeDown);
         }
 
         /// <summary>
@@ -702,8 +702,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="down">The down</param>
         public void AddMouseButtonEvent(int button, bool down)
         {
-            byte native_down = down ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_AddMouseButtonEvent(NativePtr, button, native_down);
+            byte nativeDown = down ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImGuiIO_AddMouseButtonEvent(NativePtr, button, nativeDown);
         }
 
         /// <summary>
@@ -737,11 +737,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Adds the mouse wheel event using the specified wheel x
         /// </summary>
-        /// <param name="wheel_x">The wheel</param>
-        /// <param name="wheel_y">The wheel</param>
-        public void AddMouseWheelEvent(float wheel_x, float wheel_y)
+        /// <param name="wheelX">The wheel</param>
+        /// <param name="wheelY">The wheel</param>
+        public void AddMouseWheelEvent(float wheelX, float wheelY)
         {
-            ImGuiNative.ImGuiIO_AddMouseWheelEvent(NativePtr, wheel_x, wheel_y);
+            ImGuiNative.ImGuiIO_AddMouseWheelEvent(NativePtr, wheelX, wheelY);
         }
 
         /// <summary>
@@ -771,35 +771,35 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Sets the app accepting events using the specified accepting events
         /// </summary>
-        /// <param name="accepting_events">The accepting events</param>
-        public void SetAppAcceptingEvents(bool accepting_events)
+        /// <param name="acceptingEvents">The accepting events</param>
+        public void SetAppAcceptingEvents(bool acceptingEvents)
         {
-            byte native_accepting_events = accepting_events ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiIO_SetAppAcceptingEvents(NativePtr, native_accepting_events);
+            byte nativeAcceptingEvents = acceptingEvents ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImGuiIO_SetAppAcceptingEvents(NativePtr, nativeAcceptingEvents);
         }
 
         /// <summary>
         ///     Sets the key event native data using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="native_keycode">The native keycode</param>
-        /// <param name="native_scancode">The native scancode</param>
-        public void SetKeyEventNativeData(ImGuiKey key, int native_keycode, int native_scancode)
+        /// <param name="nativeKeycode">The native keycode</param>
+        /// <param name="nativeScancode">The native scancode</param>
+        public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode)
         {
-            int native_legacy_index = -1;
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, native_keycode, native_scancode, native_legacy_index);
+            int nativeLegacyIndex = -1;
+            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
         }
 
         /// <summary>
         ///     Sets the key event native data using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="native_keycode">The native keycode</param>
-        /// <param name="native_scancode">The native scancode</param>
-        /// <param name="native_legacy_index">The native legacy index</param>
-        public void SetKeyEventNativeData(ImGuiKey key, int native_keycode, int native_scancode, int native_legacy_index)
+        /// <param name="nativeKeycode">The native keycode</param>
+        /// <param name="nativeScancode">The native scancode</param>
+        /// <param name="nativeLegacyIndex">The native legacy index</param>
+        public void SetKeyEventNativeData(ImGuiKey key, int nativeKeycode, int nativeScancode, int nativeLegacyIndex)
         {
-            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, native_keycode, native_scancode, native_legacy_index);
+            ImGuiNative.ImGuiIO_SetKeyEventNativeData(NativePtr, key, nativeKeycode, nativeScancode, nativeLegacyIndex);
         }
     }
 }

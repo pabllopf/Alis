@@ -5,26 +5,26 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The mix chunk
     /// </summary>
-    public struct MIX_Chunk
+    public struct MixChunk
     {
         /// <summary>
         ///     The allocated
         /// </summary>
-        public int allocated;
+        public int Allocated;
 
         /// <summary>
         ///     The abuf
         /// </summary>
-        public IntPtr abuf; /* Uint8* */
+        public IntPtr Abuf; /* Uint8* */
 
         /// <summary>
         ///     The alen
         /// </summary>
-        public uint alen;
+        public uint Alen;
 
         /// <summary>
         ///     The volume
         /// </summary>
-        public byte volume;
+        public byte Volume;
     }
 }

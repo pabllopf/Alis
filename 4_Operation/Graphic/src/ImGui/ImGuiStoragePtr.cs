@@ -99,8 +99,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The bool</returns>
         public bool GetBool(uint key)
         {
-            byte default_val = 0;
-            byte ret = ImGuiNative.ImGuiStorage_GetBool(NativePtr, key, default_val);
+            byte defaultVal = 0;
+            byte ret = ImGuiNative.ImGuiStorage_GetBool(NativePtr, key, defaultVal);
             return ret != 0;
         }
 
@@ -108,12 +108,12 @@ namespace Alis.Core.Graphic.ImGui
         ///     Describes whether this instance get bool
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The bool</returns>
-        public bool GetBool(uint key, bool default_val)
+        public bool GetBool(uint key, bool defaultVal)
         {
-            byte native_default_val = default_val ? (byte) 1 : (byte) 0;
-            byte ret = ImGuiNative.ImGuiStorage_GetBool(NativePtr, key, native_default_val);
+            byte nativeDefaultVal = defaultVal ? (byte) 1 : (byte) 0;
+            byte ret = ImGuiNative.ImGuiStorage_GetBool(NativePtr, key, nativeDefaultVal);
             return ret != 0;
         }
 
@@ -124,8 +124,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The ret</returns>
         public byte* GetBoolRef(uint key)
         {
-            byte default_val = 0;
-            byte* ret = ImGuiNative.ImGuiStorage_GetBoolRef(NativePtr, key, default_val);
+            byte defaultVal = 0;
+            byte* ret = ImGuiNative.ImGuiStorage_GetBoolRef(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -133,12 +133,12 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the bool ref using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The ret</returns>
-        public byte* GetBoolRef(uint key, bool default_val)
+        public byte* GetBoolRef(uint key, bool defaultVal)
         {
-            byte native_default_val = default_val ? (byte) 1 : (byte) 0;
-            byte* ret = ImGuiNative.ImGuiStorage_GetBoolRef(NativePtr, key, native_default_val);
+            byte nativeDefaultVal = defaultVal ? (byte) 1 : (byte) 0;
+            byte* ret = ImGuiNative.ImGuiStorage_GetBoolRef(NativePtr, key, nativeDefaultVal);
             return ret;
         }
 
@@ -149,8 +149,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The ret</returns>
         public float GetFloat(uint key)
         {
-            float default_val = 0.0f;
-            float ret = ImGuiNative.ImGuiStorage_GetFloat(NativePtr, key, default_val);
+            float defaultVal = 0.0f;
+            float ret = ImGuiNative.ImGuiStorage_GetFloat(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -158,11 +158,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the float using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The ret</returns>
-        public float GetFloat(uint key, float default_val)
+        public float GetFloat(uint key, float defaultVal)
         {
-            float ret = ImGuiNative.ImGuiStorage_GetFloat(NativePtr, key, default_val);
+            float ret = ImGuiNative.ImGuiStorage_GetFloat(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -173,8 +173,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The ret</returns>
         public float* GetFloatRef(uint key)
         {
-            float default_val = 0.0f;
-            float* ret = ImGuiNative.ImGuiStorage_GetFloatRef(NativePtr, key, default_val);
+            float defaultVal = 0.0f;
+            float* ret = ImGuiNative.ImGuiStorage_GetFloatRef(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -182,11 +182,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the float ref using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The ret</returns>
-        public float* GetFloatRef(uint key, float default_val)
+        public float* GetFloatRef(uint key, float defaultVal)
         {
-            float* ret = ImGuiNative.ImGuiStorage_GetFloatRef(NativePtr, key, default_val);
+            float* ret = ImGuiNative.ImGuiStorage_GetFloatRef(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -197,8 +197,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The ret</returns>
         public int GetInt(uint key)
         {
-            int default_val = 0;
-            int ret = ImGuiNative.ImGuiStorage_GetInt(NativePtr, key, default_val);
+            int defaultVal = 0;
+            int ret = ImGuiNative.ImGuiStorage_GetInt(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -206,11 +206,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the int using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The ret</returns>
-        public int GetInt(uint key, int default_val)
+        public int GetInt(uint key, int defaultVal)
         {
-            int ret = ImGuiNative.ImGuiStorage_GetInt(NativePtr, key, default_val);
+            int ret = ImGuiNative.ImGuiStorage_GetInt(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -221,8 +221,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The ret</returns>
         public int* GetIntRef(uint key)
         {
-            int default_val = 0;
-            int* ret = ImGuiNative.ImGuiStorage_GetIntRef(NativePtr, key, default_val);
+            int defaultVal = 0;
+            int* ret = ImGuiNative.ImGuiStorage_GetIntRef(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -230,11 +230,11 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the int ref using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The ret</returns>
-        public int* GetIntRef(uint key, int default_val)
+        public int* GetIntRef(uint key, int defaultVal)
         {
-            int* ret = ImGuiNative.ImGuiStorage_GetIntRef(NativePtr, key, default_val);
+            int* ret = ImGuiNative.ImGuiStorage_GetIntRef(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -256,8 +256,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <returns>The ret</returns>
         public void** GetVoidPtrRef(uint key)
         {
-            void* default_val = null;
-            void** ret = ImGuiNative.ImGuiStorage_GetVoidPtrRef(NativePtr, key, default_val);
+            void* defaultVal = null;
+            void** ret = ImGuiNative.ImGuiStorage_GetVoidPtrRef(NativePtr, key, defaultVal);
             return ret;
         }
 
@@ -265,12 +265,12 @@ namespace Alis.Core.Graphic.ImGui
         ///     Gets the void ptr ref using the specified key
         /// </summary>
         /// <param name="key">The key</param>
-        /// <param name="default_val">The default val</param>
+        /// <param name="defaultVal">The default val</param>
         /// <returns>The ret</returns>
-        public void** GetVoidPtrRef(uint key, IntPtr default_val)
+        public void** GetVoidPtrRef(uint key, IntPtr defaultVal)
         {
-            void* native_default_val = default_val.ToPointer();
-            void** ret = ImGuiNative.ImGuiStorage_GetVoidPtrRef(NativePtr, key, native_default_val);
+            void* nativeDefaultVal = defaultVal.ToPointer();
+            void** ret = ImGuiNative.ImGuiStorage_GetVoidPtrRef(NativePtr, key, nativeDefaultVal);
             return ret;
         }
 
@@ -290,8 +290,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="val">The val</param>
         public void SetBool(uint key, bool val)
         {
-            byte native_val = val ? (byte) 1 : (byte) 0;
-            ImGuiNative.ImGuiStorage_SetBool(NativePtr, key, native_val);
+            byte nativeVal = val ? (byte) 1 : (byte) 0;
+            ImGuiNative.ImGuiStorage_SetBool(NativePtr, key, nativeVal);
         }
 
         /// <summary>
@@ -321,8 +321,8 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="val">The val</param>
         public void SetVoidPtr(uint key, IntPtr val)
         {
-            void* native_val = val.ToPointer();
-            ImGuiNative.ImGuiStorage_SetVoidPtr(NativePtr, key, native_val);
+            void* nativeVal = val.ToPointer();
+            ImGuiNative.ImGuiStorage_SetVoidPtr(NativePtr, key, nativeVal);
         }
     }
 }

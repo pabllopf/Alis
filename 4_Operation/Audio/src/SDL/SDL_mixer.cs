@@ -42,12 +42,12 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The sdl mixer class
     /// </summary>
-    public static class SDL_mixer
+    public static class SdlMixer
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SDL_mixer"/> class
+        /// Initializes a new instance of the <see cref="SdlMixer"/> class
         /// </summary>
-        static SDL_mixer()
+        static SdlMixer()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
@@ -98,7 +98,7 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     The native lib name
         /// </summary>
-        private const string nativeLibName = "sdl2_mixer";
+        private const string NativeLibName = "sdl2_mixer";
 
         #endregion
 
@@ -107,61 +107,61 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     The sdl init timer
         /// </summary>
-        public const uint SDL_INIT_TIMER = 0x00000001;
+        public const uint SdlInitTimer = 0x00000001;
 
         /// <summary>
         ///     The sdl init audio
         /// </summary>
-        public const uint SDL_INIT_AUDIO = 0x00000010;
+        public const uint SdlInitAudio = 0x00000010;
 
         /// <summary>
         ///     The sdl init video
         /// </summary>
-        public const uint SDL_INIT_VIDEO = 0x00000020;
+        public const uint SdlInitVideo = 0x00000020;
 
         /// <summary>
         ///     The sdl init joystick
         /// </summary>
-        public const uint SDL_INIT_JOYSTICK = 0x00000200;
+        public const uint SdlInitJoystick = 0x00000200;
 
         /// <summary>
         ///     The sdl init haptic
         /// </summary>
-        public const uint SDL_INIT_HAPTIC = 0x00001000;
+        public const uint SdlInitHaptic = 0x00001000;
 
         /// <summary>
         ///     The sdl init gamecontroller
         /// </summary>
-        public const uint SDL_INIT_GAMECONTROLLER = 0x00002000;
+        public const uint SdlInitGamecontroller = 0x00002000;
 
         /// <summary>
         ///     The sdl init events
         /// </summary>
-        public const uint SDL_INIT_EVENTS = 0x00004000;
+        public const uint SdlInitEvents = 0x00004000;
 
         /// <summary>
         ///     The sdl init sensor
         /// </summary>
-        public const uint SDL_INIT_SENSOR = 0x00008000;
+        public const uint SdlInitSensor = 0x00008000;
 
         /// <summary>
         ///     The sdl init noparachute
         /// </summary>
-        public const uint SDL_INIT_NOPARACHUTE = 0x00100000;
+        public const uint SdlInitNoparachute = 0x00100000;
 
         /// <summary>
         ///     The sdl init sensor
         /// </summary>
-        public const uint SDL_INIT_EVERYTHING = SDL_INIT_TIMER | SDL_INIT_AUDIO | SDL_INIT_VIDEO |
-                                                SDL_INIT_EVENTS | SDL_INIT_JOYSTICK | SDL_INIT_HAPTIC |
-                                                SDL_INIT_GAMECONTROLLER | SDL_INIT_SENSOR;
+        public const uint SdlInitEverything = SdlInitTimer | SdlInitAudio | SdlInitVideo |
+                                                SdlInitEvents | SdlInitJoystick | SdlInitHaptic |
+                                                SdlInitGamecontroller | SdlInitSensor;
 
         /// <summary>
         ///     Sdls the init using the specified flags
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_Init(uint flags);
 
         /// <summary>
@@ -169,13 +169,13 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_InitSubSystem(uint flags);
 
         /// <summary>
         ///     Sdls the quit
         /// </summary>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_Quit();
 
         #endregion
@@ -189,17 +189,17 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     The sdl mixer major version
         /// </summary>
-        public const int SDL_MIXER_MAJOR_VERSION = 2;
+        public const int SdlMixerMajorVersion = 2;
 
         /// <summary>
         ///     The sdl mixer minor version
         /// </summary>
-        public const int SDL_MIXER_MINOR_VERSION = 0;
+        public const int SdlMixerMinorVersion = 0;
 
         /// <summary>
         ///     The sdl mixer patchlevel
         /// </summary>
-        public const int SDL_MIXER_PATCHLEVEL = 5;
+        public const int SdlMixerPatchlevel = 5;
 
         /* In C, you can redefine this value before including SDL_mixer.h.
          * We're not going to allow this in SDL2#, since the value of this
@@ -208,155 +208,155 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     The mix channels
         /// </summary>
-        public const int MIX_CHANNELS = 8;
+        public const int MixChannels = 8;
 
         /// <summary>
         ///     The mix default frequency
         /// </summary>
-        public static readonly int MIX_DEFAULT_FREQUENCY = 44100;
+        public static readonly int MixDefaultFrequency = 44100;
 
         /// <summary>
         ///     The audio s16msb
         /// </summary>
-        public static readonly ushort MIX_DEFAULT_FORMAT =
-            BitConverter.IsLittleEndian ? AUDIO_S16LSB : AUDIO_S16MSB;
+        public static readonly ushort MixDefaultFormat =
+            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
 
         /// <summary>
         ///     The mix default channels
         /// </summary>
-        public static readonly int MIX_DEFAULT_CHANNELS = 2;
+        public static readonly int MixDefaultChannels = 2;
 
         /// <summary>
         ///     The mix max volume
         /// </summary>
-        public static readonly byte MIX_MAX_VOLUME = 128;
+        public static readonly byte MixMaxVolume = 128;
 
         /// <summary>
         ///     The audio u8
         /// </summary>
-        public const ushort AUDIO_U8 = 0x0008;
+        public const ushort AudioU8 = 0x0008;
 
         /// <summary>
         ///     The audio s8
         /// </summary>
-        public const ushort AUDIO_S8 = 0x8008;
+        public const ushort AudioS8 = 0x8008;
 
         /// <summary>
         ///     The audio u16lsb
         /// </summary>
-        public const ushort AUDIO_U16LSB = 0x0010;
+        public const ushort AudioU16Lsb = 0x0010;
 
         /// <summary>
         ///     The audio s16lsb
         /// </summary>
-        public const ushort AUDIO_S16LSB = 0x8010;
+        public const ushort AudioS16Lsb = 0x8010;
 
         /// <summary>
         ///     The audio u16msb
         /// </summary>
-        public const ushort AUDIO_U16MSB = 0x1010;
+        public const ushort AudioU16Msb = 0x1010;
 
         /// <summary>
         ///     The audio s16msb
         /// </summary>
-        public const ushort AUDIO_S16MSB = 0x9010;
+        public const ushort AudioS16Msb = 0x9010;
 
         /// <summary>
         ///     The audio u16lsb
         /// </summary>
-        public const ushort AUDIO_U16 = AUDIO_U16LSB;
+        public const ushort AudioU16 = AudioU16Lsb;
 
         /// <summary>
         ///     The audio s16lsb
         /// </summary>
-        public const ushort AUDIO_S16 = AUDIO_S16LSB;
+        public const ushort AudioS16 = AudioS16Lsb;
 
         /// <summary>
         ///     The audio s32lsb
         /// </summary>
-        public const ushort AUDIO_S32LSB = 0x8020;
+        public const ushort AudioS32Lsb = 0x8020;
 
         /// <summary>
         ///     The audio s32msb
         /// </summary>
-        public const ushort AUDIO_S32MSB = 0x9020;
+        public const ushort AudioS32Msb = 0x9020;
 
         /// <summary>
         ///     The audio s32lsb
         /// </summary>
-        public const ushort AUDIO_S32 = AUDIO_S32LSB;
+        public const ushort AudioS32 = AudioS32Lsb;
 
         /// <summary>
         ///     The audio f32lsb
         /// </summary>
-        public const ushort AUDIO_F32LSB = 0x8120;
+        public const ushort AudioF32Lsb = 0x8120;
 
         /// <summary>
         ///     The audio f32msb
         /// </summary>
-        public const ushort AUDIO_F32MSB = 0x9120;
+        public const ushort AudioF32Msb = 0x9120;
 
         /// <summary>
         ///     The audio f32lsb
         /// </summary>
-        public const ushort AUDIO_F32 = AUDIO_F32LSB;
+        public const ushort AudioF32 = AudioF32Lsb;
 
         /// <summary>
         ///     The audio u16msb
         /// </summary>
-        public static readonly ushort AUDIO_U16SYS =
-            BitConverter.IsLittleEndian ? AUDIO_U16LSB : AUDIO_U16MSB;
+        public static readonly ushort AudioU16Sys =
+            BitConverter.IsLittleEndian ? AudioU16Lsb : AudioU16Msb;
 
         /// <summary>
         ///     The audio s16msb
         /// </summary>
-        public static readonly ushort AUDIO_S16SYS =
-            BitConverter.IsLittleEndian ? AUDIO_S16LSB : AUDIO_S16MSB;
+        public static readonly ushort AudioS16Sys =
+            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
 
         /// <summary>
         ///     The audio s32msb
         /// </summary>
-        public static readonly ushort AUDIO_S32SYS =
-            BitConverter.IsLittleEndian ? AUDIO_S32LSB : AUDIO_S32MSB;
+        public static readonly ushort AudioS32Sys =
+            BitConverter.IsLittleEndian ? AudioS32Lsb : AudioS32Msb;
 
         /// <summary>
         ///     The audio f32msb
         /// </summary>
-        public static readonly ushort AUDIO_F32SYS =
-            BitConverter.IsLittleEndian ? AUDIO_F32LSB : AUDIO_F32MSB;
+        public static readonly ushort AudioF32Sys =
+            BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
 
         /// <summary>
         ///     The sdl audio allow frequency change
         /// </summary>
-        public const uint SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001;
+        public const uint SdlAudioAllowFrequencyChange = 0x00000001;
 
         /// <summary>
         ///     The sdl audio allow format change
         /// </summary>
-        public const uint SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002;
+        public const uint SdlAudioAllowFormatChange = 0x00000002;
 
         /// <summary>
         ///     The sdl audio allow channels change
         /// </summary>
-        public const uint SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004;
+        public const uint SdlAudioAllowChannelsChange = 0x00000004;
 
         /// <summary>
         ///     The sdl audio allow samples change
         /// </summary>
-        public const uint SDL_AUDIO_ALLOW_SAMPLES_CHANGE = 0x00000008;
+        public const uint SdlAudioAllowSamplesChange = 0x00000008;
 
         /// <summary>
         ///     The sdl audio allow samples change
         /// </summary>
-        public const uint SDL_AUDIO_ALLOW_ANY_CHANGE = SDL_AUDIO_ALLOW_FREQUENCY_CHANGE |
-                                                       SDL_AUDIO_ALLOW_FORMAT_CHANGE |
-                                                       SDL_AUDIO_ALLOW_CHANNELS_CHANGE |
-                                                       SDL_AUDIO_ALLOW_SAMPLES_CHANGE;
+        public const uint SdlAudioAllowAnyChange = SdlAudioAllowFrequencyChange |
+                                                       SdlAudioAllowFormatChange |
+                                                       SdlAudioAllowChannelsChange |
+                                                       SdlAudioAllowSamplesChange;
 
         /// <summary>
         ///     The sdl mix maxvolume
         /// </summary>
-        public const int SDL_MIX_MAXVOLUME = 128;
+        public const int SdlMixMaxvolume = 128;
 
 
         /// <summary>
@@ -373,7 +373,7 @@ namespace Alis.Core.Audio.SDL
         ///     The mix effectfunc
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void Mix_EffectFunc_t(
+        public delegate void MixEffectFuncT(
             int chan,
             IntPtr stream, // void*
             int len,
@@ -384,7 +384,7 @@ namespace Alis.Core.Audio.SDL
         ///     The mix effectdone
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void Mix_EffectDone_t(
+        public delegate void MixEffectDoneT(
             int chan,
             IntPtr udata // void*
         );
@@ -413,32 +413,32 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     Sdls the mixer version using the specified x
         /// </summary>
-        /// <param name="X">The </param>
-        public static void SDL_MIXER_VERSION(out SDL_version X)
+        /// <param name="x">The </param>
+        public static void SDL_MIXER_VERSION(out SdlVersion x)
         {
-            X.major = SDL_MIXER_MAJOR_VERSION;
-            X.minor = SDL_MIXER_MINOR_VERSION;
-            X.patch = SDL_MIXER_PATCHLEVEL;
+            x.major = SdlMixerMajorVersion;
+            x.minor = SdlMixerMinorVersion;
+            x.patch = SdlMixerPatchlevel;
         }
 
         /// <summary>
         ///     Internals the mix linked version
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "MIX_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "MIX_Linked_Version", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr INTERNAL_MIX_Linked_Version();
 
         /// <summary>
         ///     Mixes the linked version
         /// </summary>
         /// <returns>The result</returns>
-        public static SDL_version MIX_Linked_Version()
+        public static SdlVersion MIX_Linked_Version()
         {
-            SDL_version result;
-            IntPtr result_ptr = INTERNAL_MIX_Linked_Version();
-            result = (SDL_version) Marshal.PtrToStructure(
-                result_ptr,
-                typeof(SDL_version)
+            SdlVersion result;
+            IntPtr resultPtr = INTERNAL_MIX_Linked_Version();
+            result = (SdlVersion) Marshal.PtrToStructure(
+                resultPtr,
+                typeof(SdlVersion)
             );
             return result;
         }
@@ -449,13 +449,13 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="flags">The flags</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int Mix_Init(MIX_InitFlags flags);
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int Mix_Init(MixInitFlags flags);
 
         /// <summary>
         ///     Mixes the quit
         /// </summary>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_Quit();
 
         /// <summary>
@@ -466,7 +466,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="channels">The channels</param>
         /// <param name="chunksize">The chunksize</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_OpenAudio(
             int frequency,
             ushort format,
@@ -479,7 +479,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="numchans">The numchans</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_AllocateChannels(int numchans);
 
         /// <summary>
@@ -489,7 +489,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="format">The format</param>
         /// <param name="channels">The channels</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_QuerySpec(
             out int frequency,
             out ushort format,
@@ -504,7 +504,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="src">The src</param>
         /// <param name="freesrc">The freesrc</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Mix_LoadWAV_RW(
             IntPtr src,
             int freesrc
@@ -551,7 +551,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="file">The file</param>
         /// <param name="mode">The mode</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_RWFromFile", CallingConvention = CallingConvention.Cdecl)]
         private static extern unsafe IntPtr INTERNAL_SDL_RWFromFile(
             byte* file,
             byte* mode
@@ -563,7 +563,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_LoadMUS", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_LoadMUS", CallingConvention = CallingConvention.Cdecl)]
         private static extern unsafe IntPtr INTERNAL_Mix_LoadMUS(
             byte* file
         );
@@ -589,7 +589,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="mem">The mem</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Mix_QuickLoad_WAV(
             [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1)]
             byte[] mem
@@ -602,7 +602,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="mem">The mem</param>
         /// <param name="len">The len</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Mix_QuickLoad_RAW(
             [In, MarshalAs(UnmanagedType.LPArray, ArraySubType = UnmanagedType.U1, SizeParamIndex = 1)]
             byte[] mem,
@@ -614,7 +614,7 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the free chunk using the specified chunk
         /// </summary>
         /// <param name="chunk">The chunk</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_FreeChunk(IntPtr chunk);
 
         /* music refers to a Mix_Music* */
@@ -622,14 +622,14 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the free music using the specified music
         /// </summary>
         /// <param name="music">The music</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_FreeMusic(IntPtr music);
 
         /// <summary>
         ///     Mixes the get num chunk decoders
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GetNumChunkDecoders();
 
         /// <summary>
@@ -637,7 +637,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetChunkDecoder", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetChunkDecoder", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr INTERNAL_Mix_GetChunkDecoder(int index);
 
         /// <summary>
@@ -653,7 +653,7 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the get num music decoders
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GetNumMusicDecoders();
 
         /// <summary>
@@ -661,7 +661,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetMusicDecoder", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetMusicDecoder", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr INTERNAL_Mix_GetMusicDecoder(int index);
 
         /// <summary>
@@ -679,8 +679,8 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The mix music type</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Mix_MusicType Mix_GetMusicType(IntPtr music);
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern MixMusicType Mix_GetMusicType(IntPtr music);
 
         /* music refers to a Mix_Music*
          * Only available in 2.0.5 or higher.
@@ -690,7 +690,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetMusicTitle", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetMusicTitle", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr INTERNAL_Mix_GetMusicTitle(IntPtr music);
 
         /// <summary>
@@ -710,7 +710,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetMusicTitleTag", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetMusicTitleTag", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr INTERNAL_Mix_GetMusicTitleTag(IntPtr music);
 
         /// <summary>
@@ -730,7 +730,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetMusicArtistTag", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetMusicArtistTag", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr INTERNAL_Mix_GetMusicArtistTag(IntPtr music);
 
         /// <summary>
@@ -750,7 +750,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetMusicAlbumTag", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetMusicAlbumTag", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr INTERNAL_Mix_GetMusicAlbumTag(IntPtr music);
 
         /// <summary>
@@ -770,7 +770,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetMusicCopyrightTag", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetMusicCopyrightTag", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr INTERNAL_Mix_GetMusicCopyrightTag(IntPtr music);
 
         /// <summary>
@@ -785,32 +785,32 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     Mixes the set post mix using the specified mix func
         /// </summary>
-        /// <param name="mix_func">The mix func</param>
+        /// <param name="mixFunc">The mix func</param>
         /// <param name="arg">The arg</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_SetPostMix(
-            MixFuncDelegate mix_func,
+            MixFuncDelegate mixFunc,
             IntPtr arg // void*
         );
 
         /// <summary>
         ///     Mixes the hook music using the specified mix func
         /// </summary>
-        /// <param name="mix_func">The mix func</param>
+        /// <param name="mixFunc">The mix func</param>
         /// <param name="arg">The arg</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_HookMusic(
-            MixFuncDelegate mix_func,
+            MixFuncDelegate mixFunc,
             IntPtr arg // void*
         );
 
         /// <summary>
         ///     Mixes the hook music finished using the specified music finished
         /// </summary>
-        /// <param name="music_finished">The music finished</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        /// <param name="musicFinished">The music finished</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_HookMusicFinished(
-            MusicFinishedDelegate music_finished
+            MusicFinishedDelegate musicFinished
         );
 
         /* IntPtr refers to a void* */
@@ -818,16 +818,16 @@ namespace Alis.Core.Audio.SDL
         ///     Mixes the get music hook data
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Mix_GetMusicHookData();
 
         /// <summary>
         ///     Mixes the channel finished using the specified channel finished
         /// </summary>
-        /// <param name="channel_finished">The channel finished</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        /// <param name="channelFinished">The channel finished</param>
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_ChannelFinished(
-            ChannelFinishedDelegate channel_finished
+            ChannelFinishedDelegate channelFinished
         );
 
         /// <summary>
@@ -838,11 +838,11 @@ namespace Alis.Core.Audio.SDL
         /// <param name="d">The </param>
         /// <param name="arg">The arg</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_RegisterEffect(
             int chan,
-            Mix_EffectFunc_t f,
-            Mix_EffectDone_t d,
+            MixEffectFuncT f,
+            MixEffectDoneT d,
             IntPtr arg // void*
         );
 
@@ -852,10 +852,10 @@ namespace Alis.Core.Audio.SDL
         /// <param name="channel">The channel</param>
         /// <param name="f">The </param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_UnregisterEffect(
             int channel,
-            Mix_EffectFunc_t f
+            MixEffectFuncT f
         );
 
         /// <summary>
@@ -863,7 +863,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="channel">The channel</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_UnregisterAllEffects(int channel);
 
         /// <summary>
@@ -873,7 +873,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="left">The left</param>
         /// <param name="right">The right</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_SetPanning(
             int channel,
             byte left,
@@ -887,7 +887,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="angle">The angle</param>
         /// <param name="distance">The distance</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_SetPosition(
             int channel,
             short angle,
@@ -900,7 +900,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="channel">The channel</param>
         /// <param name="distance">The distance</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_SetDistance(int channel, byte distance);
 
         /// <summary>
@@ -909,7 +909,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="channel">The channel</param>
         /// <param name="flip">The flip</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_SetReverseStereo(int channel, int flip);
 
         /// <summary>
@@ -917,7 +917,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="num">The num</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_ReserveChannels(int num);
 
         /// <summary>
@@ -926,7 +926,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="which">The which</param>
         /// <param name="tag">The tag</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GroupChannel(int which, int tag);
 
         /// <summary>
@@ -936,7 +936,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="to">The to</param>
         /// <param name="tag">The tag</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GroupChannels(int from, int to, int tag);
 
         /// <summary>
@@ -944,7 +944,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="tag">The tag</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GroupAvailable(int tag);
 
         /// <summary>
@@ -952,7 +952,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="tag">The tag</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GroupCount(int tag);
 
         /// <summary>
@@ -960,7 +960,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="tag">The tag</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GroupOldest(int tag);
 
         /// <summary>
@@ -968,7 +968,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="tag">The tag</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GroupNewer(int tag);
 
         /* chunk refers to a Mix_Chunk* */
@@ -995,7 +995,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="loops">The loops</param>
         /// <param name="ticks">The ticks</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_PlayChannelTimed(
             int channel,
             IntPtr chunk,
@@ -1010,7 +1010,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="music">The music</param>
         /// <param name="loops">The loops</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_PlayMusic(IntPtr music, int loops);
 
         /* music refers to a Mix_Music* */
@@ -1021,7 +1021,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="loops">The loops</param>
         /// <param name="ms">The ms</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_FadeInMusic(
             IntPtr music,
             int loops,
@@ -1037,7 +1037,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="ms">The ms</param>
         /// <param name="position">The position</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_FadeInMusicPos(
             IntPtr music,
             int loops,
@@ -1072,7 +1072,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="ms">The ms</param>
         /// <param name="ticks">The ticks</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_FadeInChannelTimed(
             int channel,
             IntPtr chunk,
@@ -1087,7 +1087,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="channel">The channel</param>
         /// <param name="volume">The volume</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_Volume(int channel, int volume);
 
         /* chunk refers to a Mix_Chunk* */
@@ -1097,7 +1097,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="chunk">The chunk</param>
         /// <param name="volume">The volume</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_VolumeChunk(
             IntPtr chunk,
             int volume
@@ -1108,7 +1108,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="volume">The volume</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_VolumeMusic(int volume);
 
         /* music refers to a Mix_Music*
@@ -1119,7 +1119,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GetVolumeMusicStream(IntPtr music);
 
         /// <summary>
@@ -1127,7 +1127,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="channel">The channel</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_HaltChannel(int channel);
 
         /// <summary>
@@ -1135,14 +1135,14 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="tag">The tag</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_HaltGroup(int tag);
 
         /// <summary>
         ///     Mixes the halt music
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_HaltMusic();
 
         /// <summary>
@@ -1151,7 +1151,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="channel">The channel</param>
         /// <param name="ticks">The ticks</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_ExpireChannel(int channel, int ticks);
 
         /// <summary>
@@ -1160,7 +1160,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="which">The which</param>
         /// <param name="ms">The ms</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_FadeOutChannel(int which, int ms);
 
         /// <summary>
@@ -1169,7 +1169,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="tag">The tag</param>
         /// <param name="ms">The ms</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_FadeOutGroup(int tag, int ms);
 
         /// <summary>
@@ -1177,36 +1177,36 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="ms">The ms</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_FadeOutMusic(int ms);
 
         /// <summary>
         ///     Mixes the fading music
         /// </summary>
         /// <returns>The mix fading</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Mix_Fading Mix_FadingMusic();
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern MixFading Mix_FadingMusic();
 
         /// <summary>
         ///     Mixes the fading channel using the specified which
         /// </summary>
         /// <param name="which">The which</param>
         /// <returns>The mix fading</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern Mix_Fading Mix_FadingChannel(int which);
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        public static extern MixFading Mix_FadingChannel(int which);
 
         /// <summary>
         ///     Mixes the pause using the specified channel
         /// </summary>
         /// <param name="channel">The channel</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_Pause(int channel);
 
         /// <summary>
         ///     Mixes the resume using the specified channel
         /// </summary>
         /// <param name="channel">The channel</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_Resume(int channel);
 
         /// <summary>
@@ -1214,32 +1214,32 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="channel">The channel</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_Paused(int channel);
 
         /// <summary>
         ///     Mixes the pause music
         /// </summary>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_PauseMusic();
 
         /// <summary>
         ///     Mixes the resume music
         /// </summary>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_ResumeMusic();
 
         /// <summary>
         ///     Mixes the rewind music
         /// </summary>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_RewindMusic();
 
         /// <summary>
         ///     Mixes the paused music
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_PausedMusic();
 
         /// <summary>
@@ -1247,7 +1247,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="position">The position</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_SetMusicPosition(double position);
 
         /* music refers to a Mix_Music*
@@ -1258,7 +1258,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The double</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double Mix_GetMusicPosition(IntPtr music);
 
         /* music refers to a Mix_Music*
@@ -1269,7 +1269,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The double</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double Mix_MusicDuration(IntPtr music);
 
         /* music refers to a Mix_Music*
@@ -1280,7 +1280,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The double</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double Mix_GetMusicLoopStartTime(IntPtr music);
 
         /* music refers to a Mix_Music*
@@ -1291,7 +1291,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The double</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double Mix_GetMusicLoopEndTime(IntPtr music);
 
         /* music refers to a Mix_Music*
@@ -1302,7 +1302,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The double</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern double Mix_GetMusicLoopLengthTime(IntPtr music);
 
         /// <summary>
@@ -1310,14 +1310,14 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="channel">The channel</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_Playing(int channel);
 
         /// <summary>
         ///     Mixes the playing music
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_PlayingMusic();
 
         /// <summary>
@@ -1325,7 +1325,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="command">The command</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_SetMusicCMD", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_SetMusicCMD", CallingConvention = CallingConvention.Cdecl)]
         private static extern unsafe int INTERNAL_Mix_SetMusicCMD(
             byte* command
         );
@@ -1350,14 +1350,14 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_SetSynchroValue(int value);
 
         /// <summary>
         ///     Mixes the get synchro value
         /// </summary>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_GetSynchroValue();
 
         /// <summary>
@@ -1365,7 +1365,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="paths">The paths</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_SetSoundFonts", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_SetSoundFonts", CallingConvention = CallingConvention.Cdecl)]
         private static extern unsafe int INTERNAL_Mix_SetSoundFonts(
             byte* paths
         );
@@ -1389,7 +1389,7 @@ namespace Alis.Core.Audio.SDL
         ///     Internals the mix get sound fonts
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetSoundFonts", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetSoundFonts", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr INTERNAL_Mix_GetSoundFonts();
 
         /// <summary>
@@ -1406,7 +1406,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="function">The function</param>
         /// <param name="data">The data</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_EachSoundFont(
             SoundFontDelegate function,
             IntPtr data // void*
@@ -1418,7 +1418,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="path">The path</param>
         /// <returns>The int</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int Mix_SetTimidityCfg(
             [In, MarshalAs(UnmanagedType.LPStr)] string path
         );
@@ -1428,7 +1428,7 @@ namespace Alis.Core.Audio.SDL
         ///     Internals the mix get timidity cfg
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "Mix_GetTimidityCfg", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "Mix_GetTimidityCfg", CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr INTERNAL_Mix_GetTimidityCfg();
 
         /// <summary>
@@ -1445,13 +1445,13 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="channel">The channel</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr Mix_GetChunk(int channel);
 
         /// <summary>
         ///     Mixes the close audio
         /// </summary>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void Mix_CloseAudio();
 
         /// <summary>
@@ -1610,7 +1610,7 @@ namespace Alis.Core.Audio.SDL
         ///     Sdls the free using the specified memblock
         /// </summary>
         /// <param name="memblock">The memblock</param>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void SDL_free(IntPtr memblock);
 
         #endregion
@@ -1621,14 +1621,14 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     Sdls the clear error
         /// </summary>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_ClearError();
 
         /// <summary>
         ///     Internals the sdl get error
         /// </summary>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_GetError", CallingConvention = CallingConvention.Cdecl)]
         private static extern IntPtr INTERNAL_SDL_GetError();
 
         /// <summary>
@@ -1642,7 +1642,7 @@ namespace Alis.Core.Audio.SDL
         ///     Internals the sdl set error using the specified fmt and arglist
         /// </summary>
         /// <param name="fmtAndArglist">The fmt and arglist</param>
-        [DllImport(nativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, EntryPoint = "SDL_SetError", CallingConvention = CallingConvention.Cdecl)]
         private static extern unsafe void INTERNAL_SDL_SetError(byte* fmtAndArglist);
 
         /// <summary>
@@ -1667,7 +1667,7 @@ namespace Alis.Core.Audio.SDL
         /// <param name="errstr">The errstr</param>
         /// <param name="maxlength">The maxlength</param>
         /// <returns>The int ptr</returns>
-        [DllImport(nativeLibName, CallingConvention = CallingConvention.Cdecl)]
+        [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
 
         #endregion

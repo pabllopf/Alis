@@ -31,8 +31,8 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
-using static Alis.Core.Graphic.SDL.SDL;
-using static Alis.Core.Graphic.OpenGL.GL;
+using static Alis.Core.Graphic.SDL.Sdl;
+using static Alis.Core.Graphic.OpenGL.Gl;
 
 
 namespace Alis.Core.Graphic.ImGui
@@ -40,12 +40,12 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui gl class
     /// </summary>
-    public static class ImGuiGL
+    public static class ImGuiGl
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImGuiGL"/> class
+        /// Initializes a new instance of the <see cref="ImGuiGl"/> class
         /// </summary>
-        static ImGuiGL()
+        static ImGuiGl()
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
@@ -99,35 +99,35 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="fullscreen">The fullscreen</param>
         /// <param name="highDpi">The high dpi</param>
         /// <returns>The int ptr int ptr</returns>
-        public static (IntPtr, IntPtr) CreateWindowAndGLContext(string title, int width, int height, bool fullscreen = false, bool highDpi = false)
+        public static (IntPtr, IntPtr) CreateWindowAndGlContext(string title, int width, int height, bool fullscreen = false, bool highDpi = false)
         {
             // initialize SDL and set a few defaults for the OpenGL context
-            SDL_Init(SDL_INIT_VIDEO);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_FLAGS, (int) SDL_GLcontext.SDL_GL_CONTEXT_FORWARD_COMPATIBLE_FLAG);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_CORE);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_MINOR_VERSION, 2);
+            SDL_Init(SdlInitVideo);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextFlags, (int) SdlGLcontext.SdlGlContextForwardCompatibleFlag);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextProfileMask, SdlGLprofile.SdlGlContextProfileCore);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextMajorVersion, 3);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextMinorVersion, 2);
 
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_CONTEXT_PROFILE_MASK, SDL_GLprofile.SDL_GL_CONTEXT_PROFILE_CORE);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_DOUBLEBUFFER, 1);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_DEPTH_SIZE, 24);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_ALPHA_SIZE, 8);
-            SDL_GL_SetAttribute(SDL_GLattr.SDL_GL_STENCIL_SIZE, 8);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlContextProfileMask, SdlGLprofile.SdlGlContextProfileCore);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlDoublebuffer, 1);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlDepthSize, 24);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlAlphaSize, 8);
+            SDL_GL_SetAttribute(SdlGLattr.SdlGlStencilSize, 8);
 
             // create the window which should be able to have a valid OpenGL context and is resizable
-            SDL_WindowFlags flags = SDL_WindowFlags.SDL_WINDOW_OPENGL | SDL_WindowFlags.SDL_WINDOW_RESIZABLE;
+            SdlWindowFlags flags = SdlWindowFlags.SdlWindowOpengl | SdlWindowFlags.SdlWindowResizable;
             if (fullscreen)
             {
-                flags |= SDL_WindowFlags.SDL_WINDOW_FULLSCREEN;
+                flags |= SdlWindowFlags.SdlWindowFullscreen;
             }
 
             if (highDpi)
             {
-                flags |= SDL_WindowFlags.SDL_WINDOW_ALLOW_HIGHDPI;
+                flags |= SdlWindowFlags.SdlWindowAllowHighdpi;
             }
 
-            IntPtr window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
-            IntPtr glContext = CreateGLContext(window);
+            IntPtr window = SDL_CreateWindow(title, SdlWindowposCentered, SdlWindowposCentered, width, height, flags);
+            IntPtr glContext = CreateGlContext(window);
             return (window, glContext);
         }
 
@@ -137,7 +137,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="window">The window</param>
         /// <exception cref="Exception">CouldNotCreateContext</exception>
         /// <returns>The gl context</returns>
-        private static IntPtr CreateGLContext(IntPtr window)
+        private static IntPtr CreateGlContext(IntPtr window)
         {
             IntPtr glContext = SDL_GL_CreateContext(window);
             if (glContext == IntPtr.Zero)
@@ -149,11 +149,11 @@ namespace Alis.Core.Graphic.ImGui
             SDL_GL_SetSwapInterval(1);
 
             // initialize the screen to black as soon as possible
-            glClearColor(0f, 0f, 0f, 1f);
-            glClear(ClearBufferMask.ColorBufferBit);
+            GlClearColor(0f, 0f, 0f, 1f);
+            GlClear(ClearBufferMask.ColorBufferBit);
             SDL_GL_SwapWindow(window);
 
-            Console.WriteLine($"GL Version: {glGetString(StringName.Version)}");
+            Console.WriteLine($"GL Version: {GlGetString(StringName.Version)}");
             return glContext;
         }
 
@@ -169,12 +169,12 @@ namespace Alis.Core.Graphic.ImGui
         public static uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = GenTexture();
-            glPixelStorei(PixelStoreParameter.UnpackAlignment, 1);
-            glBindTexture(TextureTarget.Texture2D, textureId);
-            glTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, PixelType.UnsignedByte, pixelData);
-            glTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
-            glTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
-            glBindTexture(TextureTarget.Texture2D, 0);
+            GlPixelStorei(PixelStoreParameter.UnpackAlignment, 1);
+            GlBindTexture(TextureTarget.Texture2D, textureId);
+            GlTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, PixelType.UnsignedByte, pixelData);
+            GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+            GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+            GlBindTexture(TextureTarget.Texture2D, 0);
             return textureId;
         }
     }

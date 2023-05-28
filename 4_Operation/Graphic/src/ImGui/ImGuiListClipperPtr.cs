@@ -113,21 +113,21 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Begins the items count
         /// </summary>
-        /// <param name="items_count">The items count</param>
-        public void Begin(int items_count)
+        /// <param name="itemsCount">The items count</param>
+        public void Begin(int itemsCount)
         {
-            float items_height = -1.0f;
-            ImGuiNative.ImGuiListClipper_Begin(NativePtr, items_count, items_height);
+            float itemsHeight = -1.0f;
+            ImGuiNative.ImGuiListClipper_Begin(NativePtr, itemsCount, itemsHeight);
         }
 
         /// <summary>
         ///     Begins the items count
         /// </summary>
-        /// <param name="items_count">The items count</param>
-        /// <param name="items_height">The items height</param>
-        public void Begin(int items_count, float items_height)
+        /// <param name="itemsCount">The items count</param>
+        /// <param name="itemsHeight">The items height</param>
+        public void Begin(int itemsCount, float itemsHeight)
         {
-            ImGuiNative.ImGuiListClipper_Begin(NativePtr, items_count, items_height);
+            ImGuiNative.ImGuiListClipper_Begin(NativePtr, itemsCount, itemsHeight);
         }
 
         /// <summary>
@@ -149,11 +149,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Forces the display range by indices using the specified item min
         /// </summary>
-        /// <param name="item_min">The item min</param>
-        /// <param name="item_max">The item max</param>
-        public void ForceDisplayRangeByIndices(int item_min, int item_max)
+        /// <param name="itemMin">The item min</param>
+        /// <param name="itemMax">The item max</param>
+        public void ForceDisplayRangeByIndices(int itemMin, int itemMax)
         {
-            ImGuiNative.ImGuiListClipper_ForceDisplayRangeByIndices(NativePtr, item_min, item_max);
+            ImGuiNative.ImGuiListClipper_ForceDisplayRangeByIndices(NativePtr, itemMin, itemMax);
         }
 
         /// <summary>

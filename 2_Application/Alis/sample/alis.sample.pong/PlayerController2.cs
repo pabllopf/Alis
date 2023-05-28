@@ -108,7 +108,7 @@ namespace Alis.Sample.Pong
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public override void OnPressDownButton(SDL.SDL_GameControllerButton button, int device)
+        public override void OnPressDownButton(Sdl.SdlGameControllerButton button, int device)
         {
             //Console.WriteLine($"OnPressDownButton Device={device} | button={button}");
 
@@ -118,11 +118,11 @@ namespace Alis.Sample.Pong
 
                 switch (button)
                 {
-                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A:
+                    case Sdl.SdlGameControllerButton.SdlControllerButtonA:
                         velocity.Y = 5;
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y:
+                    case Sdl.SdlGameControllerButton.SdlControllerButtonY:
                         velocity.Y = -5;
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -135,7 +135,7 @@ namespace Alis.Sample.Pong
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public override void OnReleaseButton(SDL.SDL_GameControllerButton button, int device)
+        public override void OnReleaseButton(Sdl.SdlGameControllerButton button, int device)
         {
             //Console.WriteLine($"OnReleaseButton Device={device} | button={button}");
 
@@ -145,11 +145,11 @@ namespace Alis.Sample.Pong
 
                 switch (button)
                 {
-                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_A:
+                    case Sdl.SdlGameControllerButton.SdlControllerButtonA:
                         velocity.Y = 0;
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
-                    case SDL.SDL_GameControllerButton.SDL_CONTROLLER_BUTTON_Y:
+                    case Sdl.SdlGameControllerButton.SdlControllerButtonY:
                         velocity.Y = 0;
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
@@ -162,7 +162,7 @@ namespace Alis.Sample.Pong
         /// </summary>
         /// <param name="button">The button</param>
         /// <param name="device">The device</param>
-        public override void OnPressButton(SDL.SDL_GameControllerButton button, int device)
+        public override void OnPressButton(Sdl.SdlGameControllerButton button, int device)
         {
             //Console.WriteLine($"OnPressButton Device={device} | button={button}");
         }

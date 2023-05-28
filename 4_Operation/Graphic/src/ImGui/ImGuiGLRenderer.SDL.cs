@@ -29,7 +29,7 @@
 
 using System;
 using System.Numerics;
-using static Alis.Core.Graphic.SDL.SDL;
+using static Alis.Core.Graphic.SDL.Sdl;
 
 
 namespace Alis.Core.Graphic.ImGui
@@ -37,7 +37,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui gl renderer class
     /// </summary>
-    public partial class ImGuiGLRenderer
+    public partial class ImGuiGlRenderer
     {
         /// <summary>
         ///     The mouse pressed
@@ -54,30 +54,30 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         private void InitKeyMap()
         {
-            ImGuiIOPtr io = ImGui.GetIO();
+            ImGuiIoPtr io = ImGui.GetIo();
 
-            io.KeyMap[(int) ImGuiKey.Tab] = (int) SDL_Scancode.SDL_SCANCODE_TAB;
-            io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SDL_Scancode.SDL_SCANCODE_LEFT;
-            io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SDL_Scancode.SDL_SCANCODE_RIGHT;
-            io.KeyMap[(int) ImGuiKey.UpArrow] = (int) SDL_Scancode.SDL_SCANCODE_UP;
-            io.KeyMap[(int) ImGuiKey.DownArrow] = (int) SDL_Scancode.SDL_SCANCODE_DOWN;
-            io.KeyMap[(int) ImGuiKey.PageUp] = (int) SDL_Scancode.SDL_SCANCODE_PAGEUP;
-            io.KeyMap[(int) ImGuiKey.PageDown] = (int) SDL_Scancode.SDL_SCANCODE_PAGEDOWN;
-            io.KeyMap[(int) ImGuiKey.Home] = (int) SDL_Scancode.SDL_SCANCODE_HOME;
-            io.KeyMap[(int) ImGuiKey.End] = (int) SDL_Scancode.SDL_SCANCODE_END;
-            io.KeyMap[(int) ImGuiKey.Insert] = (int) SDL_Scancode.SDL_SCANCODE_INSERT;
-            io.KeyMap[(int) ImGuiKey.Delete] = (int) SDL_Scancode.SDL_SCANCODE_DELETE;
-            io.KeyMap[(int) ImGuiKey.Backspace] = (int) SDL_Scancode.SDL_SCANCODE_BACKSPACE;
-            io.KeyMap[(int) ImGuiKey.Space] = (int) SDL_Scancode.SDL_SCANCODE_SPACE;
-            io.KeyMap[(int) ImGuiKey.Enter] = (int) SDL_Scancode.SDL_SCANCODE_RETURN;
-            io.KeyMap[(int) ImGuiKey.Escape] = (int) SDL_Scancode.SDL_SCANCODE_ESCAPE;
-            io.KeyMap[(int) ImGuiKey.KeypadEnter] = (int) SDL_Scancode.SDL_SCANCODE_RETURN2;
-            io.KeyMap[(int) ImGuiKey.A] = (int) SDL_Scancode.SDL_SCANCODE_A;
-            io.KeyMap[(int) ImGuiKey.C] = (int) SDL_Scancode.SDL_SCANCODE_C;
-            io.KeyMap[(int) ImGuiKey.V] = (int) SDL_Scancode.SDL_SCANCODE_V;
-            io.KeyMap[(int) ImGuiKey.X] = (int) SDL_Scancode.SDL_SCANCODE_X;
-            io.KeyMap[(int) ImGuiKey.Y] = (int) SDL_Scancode.SDL_SCANCODE_Y;
-            io.KeyMap[(int) ImGuiKey.Z] = (int) SDL_Scancode.SDL_SCANCODE_Z;
+            io.KeyMap[(int) ImGuiKey.Tab] = (int) SdlScancode.SdlScancodeTab;
+            io.KeyMap[(int) ImGuiKey.LeftArrow] = (int) SdlScancode.SdlScancodeLeft;
+            io.KeyMap[(int) ImGuiKey.RightArrow] = (int) SdlScancode.SdlScancodeRight;
+            io.KeyMap[(int) ImGuiKey.UpArrow] = (int) SdlScancode.SdlScancodeUp;
+            io.KeyMap[(int) ImGuiKey.DownArrow] = (int) SdlScancode.SdlScancodeDown;
+            io.KeyMap[(int) ImGuiKey.PageUp] = (int) SdlScancode.SdlScancodePageup;
+            io.KeyMap[(int) ImGuiKey.PageDown] = (int) SdlScancode.SdlScancodePagedown;
+            io.KeyMap[(int) ImGuiKey.Home] = (int) SdlScancode.SdlScancodeHome;
+            io.KeyMap[(int) ImGuiKey.End] = (int) SdlScancode.SdlScancodeEnd;
+            io.KeyMap[(int) ImGuiKey.Insert] = (int) SdlScancode.SdlScancodeInsert;
+            io.KeyMap[(int) ImGuiKey.Delete] = (int) SdlScancode.SdlScancodeDelete;
+            io.KeyMap[(int) ImGuiKey.Backspace] = (int) SdlScancode.SdlScancodeBackspace;
+            io.KeyMap[(int) ImGuiKey.Space] = (int) SdlScancode.SdlScancodeSpace;
+            io.KeyMap[(int) ImGuiKey.Enter] = (int) SdlScancode.SdlScancodeReturn;
+            io.KeyMap[(int) ImGuiKey.Escape] = (int) SdlScancode.SdlScancodeEscape;
+            io.KeyMap[(int) ImGuiKey.KeypadEnter] = (int) SdlScancode.SdlScancodeReturn2;
+            io.KeyMap[(int) ImGuiKey.A] = (int) SdlScancode.SdlScancodeA;
+            io.KeyMap[(int) ImGuiKey.C] = (int) SdlScancode.SdlScancodeC;
+            io.KeyMap[(int) ImGuiKey.V] = (int) SdlScancode.SdlScancodeV;
+            io.KeyMap[(int) ImGuiKey.X] = (int) SdlScancode.SdlScancodeX;
+            io.KeyMap[(int) ImGuiKey.Y] = (int) SdlScancode.SdlScancodeY;
+            io.KeyMap[(int) ImGuiKey.Z] = (int) SdlScancode.SdlScancodeZ;
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Alis.Core.Graphic.ImGui
         public void NewFrame()
         {
             ImGui.NewFrame();
-            ImGuiIOPtr io = ImGui.GetIO();
+            ImGuiIoPtr io = ImGui.GetIo();
 
             // Setup display size (every frame to accommodate for window resizing)
             SDL_GetWindowSize(_window, out int w, out int h);
@@ -115,12 +115,12 @@ namespace Alis.Core.Graphic.ImGui
         ///     Processes the event using the specified evt
         /// </summary>
         /// <param name="evt">The evt</param>
-        public unsafe void ProcessEvent(SDL_Event evt)
+        public unsafe void ProcessEvent(SdlEvent evt)
         {
-            ImGuiIOPtr io = ImGui.GetIO();
+            ImGuiIoPtr io = ImGui.GetIo();
             switch (evt.type)
             {
-                case SDL_EventType.SDL_MOUSEWHEEL:
+                case SdlEventType.SdlMousewheel:
                 {
                     if (evt.wheel.x > 0)
                     {
@@ -144,40 +144,40 @@ namespace Alis.Core.Graphic.ImGui
 
                     return;
                 }
-                case SDL_EventType.SDL_MOUSEBUTTONDOWN:
+                case SdlEventType.SdlMousebuttondown:
                 {
-                    if (evt.button.button == SDL_BUTTON_LEFT)
+                    if (evt.button.button == SdlButtonLeft)
                     {
                         _mousePressed[0] = true;
                     }
 
-                    if (evt.button.button == SDL_BUTTON_RIGHT)
+                    if (evt.button.button == SdlButtonRight)
                     {
                         _mousePressed[1] = true;
                     }
 
-                    if (evt.button.button == SDL_BUTTON_MIDDLE)
+                    if (evt.button.button == SdlButtonMiddle)
                     {
                         _mousePressed[2] = true;
                     }
 
                     return;
                 }
-                case SDL_EventType.SDL_TEXTINPUT:
+                case SdlEventType.SdlTextinput:
                 {
                     string str = new string((sbyte*) evt.text.text);
-                    io.AddInputCharactersUTF8(str);
+                    io.AddInputCharactersUtf8(str);
                     return;
                 }
-                case SDL_EventType.SDL_KEYDOWN:
-                case SDL_EventType.SDL_KEYUP:
+                case SdlEventType.SdlKeydown:
+                case SdlEventType.SdlKeyup:
                 {
-                    SDL_Scancode key = evt.key.keysym.scancode;
-                    io.KeysDown[(int) key] = evt.type == SDL_EventType.SDL_KEYDOWN;
-                    io.KeyShift = (SDL_GetModState() & SDL_Keymod.KMOD_SHIFT) != 0;
-                    io.KeyCtrl = (SDL_GetModState() & SDL_Keymod.KMOD_CTRL) != 0;
-                    io.KeyAlt = (SDL_GetModState() & SDL_Keymod.KMOD_ALT) != 0;
-                    io.KeySuper = (SDL_GetModState() & SDL_Keymod.KMOD_GUI) != 0;
+                    SdlScancode key = evt.key.keysym.scancode;
+                    io.KeysDown[(int) key] = evt.type == SdlEventType.SdlKeydown;
+                    io.KeyShift = (SDL_GetModState() & SdlKeymod.KmodShift) != 0;
+                    io.KeyCtrl = (SDL_GetModState() & SdlKeymod.KmodCtrl) != 0;
+                    io.KeyAlt = (SDL_GetModState() & SdlKeymod.KmodAlt) != 0;
+                    io.KeySuper = (SDL_GetModState() & SdlKeymod.KmodGui) != 0;
                     break;
                 }
             }
@@ -188,7 +188,7 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         private void UpdateMousePosAndButtons()
         {
-            ImGuiIOPtr io = ImGui.GetIO();
+            ImGuiIoPtr io = ImGui.GetIo();
 
             // Set OS mouse position if requested (rarely used, only when ImGuiConfigFlags_NavEnableSetMousePos is enabled by user)
             if (io.WantSetMousePos)
@@ -203,10 +203,10 @@ namespace Alis.Core.Graphic.ImGui
             uint mouseButtons = SDL_GetMouseState(out int mx, out int my);
             io.MouseDown[0] =
                 _mousePressed[0] ||
-                (mouseButtons & SDL_BUTTON(SDL_BUTTON_LEFT)) !=
+                (mouseButtons & SDL_BUTTON(SdlButtonLeft)) !=
                 0; // If a mouse press event came, always pass it as "mouse held this frame", so we don't miss click-release events that are shorter than 1 frame.
-            io.MouseDown[1] = _mousePressed[1] || (mouseButtons & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0;
-            io.MouseDown[2] = _mousePressed[2] || (mouseButtons & SDL_BUTTON(SDL_BUTTON_MIDDLE)) != 0;
+            io.MouseDown[1] = _mousePressed[1] || (mouseButtons & SDL_BUTTON(SdlButtonRight)) != 0;
+            io.MouseDown[2] = _mousePressed[2] || (mouseButtons & SDL_BUTTON(SdlButtonMiddle)) != 0;
             _mousePressed[0] = _mousePressed[1] = _mousePressed[2] = false;
 
             IntPtr focusedWindow = SDL_GetKeyboardFocus();
@@ -222,13 +222,13 @@ namespace Alis.Core.Graphic.ImGui
             }
 
             // SDL_CaptureMouse() let the OS know e.g. that our imgui drag outside the SDL window boundaries shouldn't e.g. trigger the OS window resize cursor.
-            bool any_mouse_button_down = ImGui.IsAnyMouseDown();
-            SDL_CaptureMouse(any_mouse_button_down ? SDL_bool.SDL_TRUE : SDL_bool.SDL_FALSE);
+            bool anyMouseButtonDown = ImGui.IsAnyMouseDown();
+            SDL_CaptureMouse(anyMouseButtonDown ? SdlBool.SdlTrue : SdlBool.SdlFalse);
         }
 
         /// <summary>
         ///     Prepares the gl context
         /// </summary>
-        private void PrepareGLContext() => SDL_GL_MakeCurrent(_window, _glContext);
+        private void PrepareGlContext() => SDL_GL_MakeCurrent(_window, _glContext);
     }
 }

@@ -52,6 +52,6 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The count im gui mouse source
         /// </summary>
-        COUNT = 3
+        Count = 3
     }
 }

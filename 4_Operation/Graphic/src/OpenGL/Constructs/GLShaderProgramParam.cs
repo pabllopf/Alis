@@ -30,14 +30,14 @@
 using System;
 using System.Diagnostics;
 using System.Numerics;
-using static Alis.Core.Graphic.OpenGL.GL;
+using static Alis.Core.Graphic.OpenGL.Gl;
 
 namespace Alis.Core.Graphic.OpenGL.Constructs
 {
     /// <summary>
     ///     The gl shader program param class
     /// </summary>
-    public sealed class GLShaderProgramParam
+    public sealed class GlShaderProgramParam
     {
         /// <summary>
         ///     Specifies the location of the parameter in the OpenGL program.
@@ -70,12 +70,12 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public Type Type;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="GLShaderProgramParam" /> class
+        ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="paramType">The param type</param>
         /// <param name="name">The name</param>
-        public GLShaderProgramParam(Type type, ParamType paramType, string name)
+        public GlShaderProgramParam(Type type, ParamType paramType, string name)
         {
             Type = type;
             ParamType = paramType;
@@ -83,14 +83,14 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="GLShaderProgramParam" /> class
+        ///     Initializes a new instance of the <see cref="GlShaderProgramParam" /> class
         /// </summary>
         /// <param name="type">The type</param>
         /// <param name="paramType">The param type</param>
         /// <param name="name">The name</param>
         /// <param name="program">The program</param>
         /// <param name="location">The location</param>
-        public GLShaderProgramParam(Type type, ParamType paramType, string name, uint program, int location) : this(type, paramType, name)
+        public GlShaderProgramParam(Type type, ParamType paramType, string name, uint program, int location) : this(type, paramType, name)
         {
             ProgramId = Program;
             Location = location;
@@ -99,14 +99,14 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Gets the location of the parameter in a compiled OpenGL program.
         /// </summary>
-        /// <param name="Program">Specifies the shader program that contains this parameter.</param>
-        public void GetLocation(GLShaderProgram Program)
+        /// <param name="program">Specifies the shader program that contains this parameter.</param>
+        public void GetLocation(GlShaderProgram program)
         {
-            Program.Use();
+            program.Use();
             if (ProgramId == 0)
             {
-                ProgramId = Program.ProgramID;
-                Location = ParamType == ParamType.Uniform ? Program.GetUniformLocation(Name) : Program.GetAttributeLocation(Name);
+                ProgramId = program.ProgramId;
+                Location = ParamType == ParamType.Uniform ? program.GetUniformLocation(Name) : program.GetAttributeLocation(Name);
             }
         }
 
@@ -117,7 +117,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(bool param)
         {
             EnsureType<bool>();
-            glUniform1i(Location, param ? 1 : 0);
+            GlUniform1I(Location, param ? 1 : 0);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(int param)
         {
             EnsureType<int>();
-            glUniform1i(Location, param);
+            GlUniform1I(Location, param);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(float param)
         {
             EnsureType<float>();
-            glUniform1f(Location, param);
+            GlUniform1F(Location, param);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector2 param)
         {
             EnsureType<Vector2>();
-            glUniform2f(Location, param.X, param.Y);
+            GlUniform2F(Location, param.X, param.Y);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector3 param)
         {
             EnsureType<Vector3>();
-            glUniform3f(Location, param.X, param.Y, param.Z);
+            GlUniform3F(Location, param.X, param.Y, param.Z);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector4 param)
         {
             EnsureType<Vector4>();
-            glUniform4f(Location, param.X, param.Y, param.Z, param.W);
+            GlUniform4F(Location, param.X, param.Y, param.Z, param.W);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Matrix4x4 param)
         {
             EnsureType<Matrix4x4>();
-            UniformMatrix4fv(Location, param);
+            UniformMatrix4Fv(Location, param);
         }
 
         /// <summary>
@@ -190,32 +190,32 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             if (param.Length == 16)
             {
                 EnsureType<Matrix4x4>();
-                glUniformMatrix4fv(Location, 1, false, param);
+                GlUniformMatrix4Fv(Location, 1, false, param);
             }
             else if (param.Length == 9)
             {
                 EnsureType<Exception>();
-                glUniformMatrix3fv(Location, 1, false, param);
+                GlUniformMatrix3Fv(Location, 1, false, param);
             }
             else if (param.Length == 4)
             {
                 EnsureType<Vector4>();
-                glUniform4f(Location, param[0], param[1], param[2], param[3]);
+                GlUniform4F(Location, param[0], param[1], param[2], param[3]);
             }
             else if (param.Length == 3)
             {
                 EnsureType<Vector3>();
-                glUniform3f(Location, param[0], param[1], param[2]);
+                GlUniform3F(Location, param[0], param[1], param[2]);
             }
             else if (param.Length == 2)
             {
                 EnsureType<Vector2>();
-                glUniform2f(Location, param[0], param[1]);
+                GlUniform2F(Location, param[0], param[1]);
             }
             else if (param.Length == 1)
             {
                 EnsureType<float>();
-                glUniform1f(Location, param[0]);
+                GlUniform1F(Location, param[0]);
             }
             else
             {

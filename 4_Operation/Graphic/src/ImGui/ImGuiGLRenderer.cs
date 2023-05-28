@@ -31,7 +31,7 @@ using System;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using Alis.Core.Graphic.OpenGL.Constructs;
-using static Alis.Core.Graphic.OpenGL.GL;
+using static Alis.Core.Graphic.OpenGL.Gl;
 
 namespace Alis.Core.Graphic.ImGui
 {
@@ -39,7 +39,7 @@ namespace Alis.Core.Graphic.ImGui
     ///     The im gui gl renderer class
     /// </summary>
     /// <seealso cref="IDisposable" />
-    public partial class ImGuiGLRenderer : IDisposable
+    public partial class ImGuiGlRenderer : IDisposable
     {
         /// <summary>
         ///     The gl context
@@ -54,7 +54,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The shader
         /// </summary>
-        private GLShaderProgram _shader;
+        private GlShaderProgram _shader;
 
         /// <summary>
         ///     The font texture id
@@ -62,17 +62,17 @@ namespace Alis.Core.Graphic.ImGui
         private uint _vboHandle, _elementsHandle, _vertexArrayObject, _fontTextureId;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiGLRenderer" /> class
+        ///     Initializes a new instance of the <see cref="ImGuiGlRenderer" /> class
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="glContext">The gl context</param>
-        public ImGuiGLRenderer(IntPtr window, IntPtr glContext)
+        public ImGuiGlRenderer(IntPtr window, IntPtr glContext)
         {
             _window = window;
             _glContext = glContext;
 
             // compile the shader program
-            _shader = new GLShaderProgram(VertexShader, FragmentShader);
+            _shader = new GlShaderProgram(VertexShader, FragmentShader);
 
             ImGui.SetCurrentContext(ImGui.CreateContext());
             RebuildFontAtlas();
@@ -141,14 +141,14 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         private unsafe void RebuildFontAtlas()
         {
-            ImFontAtlasPtr fonts = ImGui.GetIO().Fonts;
+            ImFontAtlasPtr fonts = ImGui.GetIo().Fonts;
 
             fonts.AddFontDefault();
-            fonts.GetTexDataAsRGBA32(out byte* pixelData, out int width, out int height, out int _);
+            fonts.GetTexDataAsRgba32(out byte* pixelData, out int width, out int height, out int _);
 
-            _fontTextureId = ImGuiGL.LoadTexture((IntPtr) pixelData, width, height);
+            _fontTextureId = ImGuiGl.LoadTexture((IntPtr) pixelData, width, height);
 
-            fonts.TexID = (IntPtr) _fontTextureId;
+            fonts.TexId = (IntPtr) _fontTextureId;
             fonts.ClearTexData();
         }
 
@@ -157,16 +157,16 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         public void Render()
         {
-            PrepareGLContext();
+            PrepareGlContext();
             ImGui.Render();
 
-            ImGuiIOPtr io = ImGui.GetIO();
-            glViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
-            glClear(ClearBufferMask.ColorBufferBit);
+            ImGuiIoPtr io = ImGui.GetIo();
+            GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
+            GlClear(ClearBufferMask.ColorBufferBit);
 
             RenderDrawData();
 
-            glDisable(EnableCap.ScissorTest);
+            GlDisable(EnableCap.ScissorTest);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="a">The </param>
         public void ClearColor(float r, float g, float b, float a)
         {
-            glClearColor(r, g, b, a);
+            GlClearColor(r, g, b, a);
         }
 
         /// <summary>
@@ -189,14 +189,14 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="fbHeight">The fb height</param>
         private void SetupRenderState(ImDrawDataPtr drawData, int fbWidth, int fbHeight)
         {
-            glEnable(EnableCap.Blend);
-            glBlendEquation(BlendEquationMode.FuncAdd);
-            glBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-            glDisable(EnableCap.CullFace);
-            glDisable(EnableCap.DepthTest);
-            glEnable(EnableCap.ScissorTest);
+            GlEnable(EnableCap.Blend);
+            GlBlendEquation(BlendEquationMode.FuncAdd);
+            GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            GlDisable(EnableCap.CullFace);
+            GlDisable(EnableCap.DepthTest);
+            GlEnable(EnableCap.ScissorTest);
 
-            glUseProgram(_shader.ProgramID);
+            GlUseProgram(_shader.ProgramId);
 
             float left = drawData.DisplayPos.X;
             float right = drawData.DisplayPos.X + drawData.DisplaySize.X;
@@ -205,13 +205,13 @@ namespace Alis.Core.Graphic.ImGui
 
             _shader["Texture"].SetValue(0);
             _shader["ProjMtx"].SetValue(Matrix4x4.CreateOrthographicOffCenter(left, right, bottom, top, -1, 1));
-            glBindSampler(0, 0);
+            GlBindSampler(0, 0);
 
-            glBindVertexArray(_vertexArrayObject);
+            GlBindVertexArray(_vertexArrayObject);
 
             // Bind vertex/index buffers and setup attributes for ImDrawVert
-            glBindBuffer(BufferTarget.ArrayBuffer, _vboHandle);
-            glBindBuffer(BufferTarget.ElementArrayBuffer, _elementsHandle);
+            GlBindBuffer(BufferTarget.ArrayBuffer, _vboHandle);
+            GlBindBuffer(BufferTarget.ElementArrayBuffer, _elementsHandle);
 
             EnableVertexAttribArray(_shader["Position"].Location);
             EnableVertexAttribArray(_shader["UV"].Location);
@@ -245,8 +245,8 @@ namespace Alis.Core.Graphic.ImGui
 
             drawData.ScaleClipRects(clipScale);
 
-            IntPtr lastTexId = ImGui.GetIO().Fonts.TexID;
-            glBindTexture(TextureTarget.Texture2D, (uint) lastTexId);
+            IntPtr lastTexId = ImGui.GetIo().Fonts.TexId;
+            GlBindTexture(TextureTarget.Texture2D, (uint) lastTexId);
 
             int drawVertSize = Marshal.SizeOf<ImDrawVert>();
             int drawIdxSize = sizeof(ushort);
@@ -256,12 +256,12 @@ namespace Alis.Core.Graphic.ImGui
                 ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
                 // Upload vertex/index buffers
-                glBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
-                glBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
+                GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
+                GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
 
-                for (int cmd_i = 0; cmd_i < cmdList.CmdBuffer.Size; cmd_i++)
+                for (int cmdI = 0; cmdI < cmdList.CmdBuffer.Size; cmdI++)
                 {
-                    ImDrawCmdPtr pcmd = cmdList.CmdBuffer[cmd_i];
+                    ImDrawCmdPtr pcmd = cmdList.CmdBuffer[cmdI];
                     if (pcmd.UserCallback != IntPtr.Zero)
                     {
                         Console.WriteLine("UserCallback not implemented");
@@ -269,14 +269,14 @@ namespace Alis.Core.Graphic.ImGui
                     else
                     {
                         // Project scissor/clipping rectangles into framebuffer space
-                        Vector4 clip_rect = pcmd.ClipRect;
+                        Vector4 clipRect = pcmd.ClipRect;
 
-                        clip_rect.X = pcmd.ClipRect.X - clipOffset.X;
-                        clip_rect.Y = pcmd.ClipRect.Y - clipOffset.Y;
-                        clip_rect.Z = pcmd.ClipRect.Z - clipOffset.X;
-                        clip_rect.W = pcmd.ClipRect.W - clipOffset.Y;
+                        clipRect.X = pcmd.ClipRect.X - clipOffset.X;
+                        clipRect.Y = pcmd.ClipRect.Y - clipOffset.Y;
+                        clipRect.Z = pcmd.ClipRect.Z - clipOffset.X;
+                        clipRect.W = pcmd.ClipRect.W - clipOffset.Y;
 
-                        glScissor((int) clip_rect.X, (int) (fbHeight - clip_rect.W), (int) (clip_rect.Z - clip_rect.X), (int) (clip_rect.W - clip_rect.Y));
+                        GlScissor((int) clipRect.X, (int) (fbHeight - clipRect.W), (int) (clipRect.Z - clipRect.X), (int) (clipRect.W - clipRect.Y));
 
                         // Bind texture, Draw
                         if (pcmd.TextureId != IntPtr.Zero)
@@ -284,11 +284,11 @@ namespace Alis.Core.Graphic.ImGui
                             if (pcmd.TextureId != lastTexId)
                             {
                                 lastTexId = pcmd.TextureId;
-                                glBindTexture(TextureTarget.Texture2D, (uint) pcmd.TextureId);
+                                GlBindTexture(TextureTarget.Texture2D, (uint) pcmd.TextureId);
                             }
                         }
 
-                        glDrawElementsBaseVertex(BeginMode.Triangles, (int) pcmd.ElemCount, drawIdxSize == 2 ? DrawElementsType.UnsignedShort : DrawElementsType.UnsignedInt, (IntPtr) (pcmd.IdxOffset * drawIdxSize), (int) pcmd.VtxOffset);
+                        GlDrawElementsBaseVertex(BeginMode.Triangles, (int) pcmd.ElemCount, drawIdxSize == 2 ? DrawElementsType.UnsignedShort : DrawElementsType.UnsignedInt, (IntPtr) (pcmd.IdxOffset * drawIdxSize), (int) pcmd.VtxOffset);
                     }
                 }
             }

@@ -188,52 +188,52 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         /// Sdlinputs
         /// </summary>
-        private static void SDLINPUT()
+        private static void Sdlinput()
         {
-            SDL.SDL.SDL_SetHint(SDL.SDL.SDL_HINT_XINPUT_ENABLED, "0");
-            SDL.SDL.SDL_SetHint(SDL.SDL.SDL_HINT_JOYSTICK_THREAD, "1");
-            SDL.SDL.SDL_Init(SDL.SDL.SDL_INIT_EVERYTHING);
+            SDL.Sdl.SDL_SetHint(SDL.Sdl.SdlHintXinputEnabled, "0");
+            SDL.Sdl.SDL_SetHint(SDL.Sdl.SdlHintJoystickThread, "1");
+            SDL.Sdl.SDL_Init(SDL.Sdl.SdlInitEverything);
 
 
-            for (int i = 0; i < SDL.SDL.SDL_NumJoysticks(); i++)
+            for (int i = 0; i < SDL.Sdl.SDL_NumJoysticks(); i++)
             {
-                IntPtr myJoystick = SDL.SDL.SDL_JoystickOpen(i);
+                IntPtr myJoystick = SDL.Sdl.SDL_JoystickOpen(i);
                 if (myJoystick == IntPtr.Zero)
                 {
-                    Console.WriteLine("Ooops, something fishy's goin' on here!" + SDL.SDL.SDL_GetError());
+                    Console.WriteLine("Ooops, something fishy's goin' on here!" + SDL.Sdl.SDL_GetError());
                 }
                 else
                 {
                     Console.WriteLine($"[SDL_JoystickName_id = '{i}'] \n" +
-                                      $"SDL_JoystickName={SDL.SDL.SDL_JoystickName(myJoystick)} \n" +
-                                      $"SDL_JoystickNumAxes={SDL.SDL.SDL_JoystickNumAxes(myJoystick)} \n" +
-                                      $"SDL_JoystickNumButtons={SDL.SDL.SDL_JoystickNumButtons(myJoystick)}");
+                                      $"SDL_JoystickName={SDL.Sdl.SDL_JoystickName(myJoystick)} \n" +
+                                      $"SDL_JoystickNumAxes={SDL.Sdl.SDL_JoystickNumAxes(myJoystick)} \n" +
+                                      $"SDL_JoystickNumButtons={SDL.Sdl.SDL_JoystickNumButtons(myJoystick)}");
                 }
             }
 
-            List<SDL.SDL.SDL_GameControllerButton> buttons = new List<SDL.SDL.SDL_GameControllerButton>((SDL.SDL.SDL_GameControllerButton[]) Enum.GetValues(typeof(SDL.SDL.SDL_GameControllerButton)));
-            List<SDL.SDL.SDL_GameControllerAxis> axis = new List<SDL.SDL.SDL_GameControllerAxis>((SDL.SDL.SDL_GameControllerAxis[]) Enum.GetValues(typeof(SDL.SDL.SDL_GameControllerAxis)));
+            List<SDL.Sdl.SdlGameControllerButton> buttons = new List<SDL.Sdl.SdlGameControllerButton>((SDL.Sdl.SdlGameControllerButton[]) Enum.GetValues(typeof(SDL.Sdl.SdlGameControllerButton)));
+            List<SDL.Sdl.SdlGameControllerAxis> axis = new List<SDL.Sdl.SdlGameControllerAxis>((SDL.Sdl.SdlGameControllerAxis[]) Enum.GetValues(typeof(SDL.Sdl.SdlGameControllerAxis)));
 
-            List<SDL.SDL.SDL_Keycode> keys = new List<SDL.SDL.SDL_Keycode>((SDL.SDL.SDL_Keycode[]) Enum.GetValues(typeof(SDL.SDL.SDL_Keycode)));
+            List<SDL.Sdl.SdlKeycode> keys = new List<SDL.Sdl.SdlKeycode>((SDL.Sdl.SdlKeycode[]) Enum.GetValues(typeof(SDL.Sdl.SdlKeycode)));
 
 
-            SDL.SDL.SDL_Event sdlEvent;
+            SDL.Sdl.SdlEvent sdlEvent;
 
             bool run = true;
             while (run)
             {
-                SDL.SDL.SDL_JoystickUpdate();
+                SDL.Sdl.SDL_JoystickUpdate();
 
-                while (SDL.SDL.SDL_PollEvent(out sdlEvent) != 0)
+                while (SDL.Sdl.SDL_PollEvent(out sdlEvent) != 0)
                 {
-                    foreach (SDL.SDL.SDL_Keycode key in keys)
+                    foreach (SDL.Sdl.SdlKeycode key in keys)
                     {
-                        if ((sdlEvent.type == SDL.SDL.SDL_EventType.SDL_KEYDOWN) &&
+                        if ((sdlEvent.type == SDL.Sdl.SdlEventType.SdlKeydown) &&
                             (sdlEvent.key.keysym.sym == key))
                         {
                             Console.WriteLine($"Pressed key={key}");
 
-                            if (sdlEvent.key.keysym.sym == SDL.SDL.SDL_Keycode.SDLK_ESCAPE)
+                            if (sdlEvent.key.keysym.sym == SDL.Sdl.SdlKeycode.SdlkEscape)
                             {
                                 Console.WriteLine("End program");
                                 run = false;
@@ -242,19 +242,19 @@ namespace Alis.Core.Graphic.Sample
                         }
                     }
 
-                    foreach (SDL.SDL.SDL_GameControllerButton button in buttons)
+                    foreach (SDL.Sdl.SdlGameControllerButton button in buttons)
                     {
-                        if ((sdlEvent.type == SDL.SDL.SDL_EventType.SDL_JOYBUTTONDOWN)
-                            && (button == (SDL.SDL.SDL_GameControllerButton) sdlEvent.cbutton.button))
+                        if ((sdlEvent.type == SDL.Sdl.SdlEventType.SdlJoybuttondown)
+                            && (button == (SDL.Sdl.SdlGameControllerButton) sdlEvent.cbutton.button))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed button={button}");
                         }
                     }
 
-                    foreach (SDL.SDL.SDL_GameControllerAxis axi in axis)
+                    foreach (SDL.Sdl.SdlGameControllerAxis axi in axis)
                     {
-                        if ((sdlEvent.type == SDL.SDL.SDL_EventType.SDL_JOYAXISMOTION)
-                            && (axi == (SDL.SDL.SDL_GameControllerAxis) sdlEvent.caxis.axis))
+                        if ((sdlEvent.type == SDL.Sdl.SdlEventType.SdlJoyaxismotion)
+                            && (axi == (SDL.Sdl.SdlGameControllerAxis) sdlEvent.caxis.axis))
                         {
                             Console.WriteLine($"[SDL_JoystickName_id = '{sdlEvent.cdevice.which}'] Pressed axi={axi}");
                         }
@@ -267,7 +267,7 @@ namespace Alis.Core.Graphic.Sample
         /// <summary>
         /// Sfmlinputs
         /// </summary>
-        public static void SFMLINPUT()
+        public static void Sfmlinput()
         {
             // Crea una ventana vacía (sin bordes ni contenido)
             var contextSettings = new ContextSettings { DepthBits = 0, StencilBits = 0 };

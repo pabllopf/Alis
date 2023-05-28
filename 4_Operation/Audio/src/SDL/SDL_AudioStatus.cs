@@ -32,21 +32,21 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The sdl audiostatus enum
     /// </summary>
-    public enum SDL_AudioStatus
+    public enum SdlAudioStatus
     {
         /// <summary>
         ///     The sdl audio stopped sdl audiostatus
         /// </summary>
-        SDL_AUDIO_STOPPED,
+        SdlAudioStopped,
 
         /// <summary>
         ///     The sdl audio playing sdl audiostatus
         /// </summary>
-        SDL_AUDIO_PLAYING,
+        SdlAudioPlaying,
 
         /// <summary>
         ///     The sdl audio paused sdl audiostatus
         /// </summary>
-        SDL_AUDIO_PAUSED
+        SdlAudioPaused
     }
 }

@@ -32,61 +32,61 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The mix musictype enum
     /// </summary>
-    public enum Mix_MusicType
+    public enum MixMusicType
     {
         /// <summary>
         ///     The mus none mix musictype
         /// </summary>
-        MUS_NONE,
+        MusNone,
 
         /// <summary>
         ///     The mus cmd mix musictype
         /// </summary>
-        MUS_CMD,
+        MusCmd,
 
         /// <summary>
         ///     The mus wav mix musictype
         /// </summary>
-        MUS_WAV,
+        MusWav,
 
         /// <summary>
         ///     The mus mod mix musictype
         /// </summary>
-        MUS_MOD,
+        MusMod,
 
         /// <summary>
         ///     The mus mid mix musictype
         /// </summary>
-        MUS_MID,
+        MusMid,
 
         /// <summary>
         ///     The mus ogg mix musictype
         /// </summary>
-        MUS_OGG,
+        MusOgg,
 
         /// <summary>
         ///     The mus mp3 mix musictype
         /// </summary>
-        MUS_MP3,
+        MusMp3,
 
         /// <summary>
         ///     The mus mp3 mad unused mix musictype
         /// </summary>
-        MUS_MP3_MAD_UNUSED,
+        MusMp3MadUnused,
 
         /// <summary>
         ///     The mus flac mix musictype
         /// </summary>
-        MUS_FLAC,
+        MusFlac,
 
         /// <summary>
         ///     The mus modplug unused mix musictype
         /// </summary>
-        MUS_MODPLUG_UNUSED,
+        MusModplugUnused,
 
         /// <summary>
         ///     The mus opus mix musictype
         /// </summary>
-        MUS_OPUS
+        MusOpus
     }
 }

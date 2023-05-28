@@ -109,10 +109,10 @@ namespace Alis.Core.Audio.Sample
         private static void Init()
         {
             //Initialize all SDL subsystems
-            SDL.SDL_mixer.SDL_Init(SDL.SDL_mixer.SDL_INIT_AUDIO);
+            SDL.SdlMixer.SDL_Init(SDL.SdlMixer.SdlInitAudio);
             
             //Initialize SDL_mixer
-            if(SDL.SDL_mixer.Mix_OpenAudio( 22050, SDL.SDL_mixer.MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
+            if(SDL.SdlMixer.Mix_OpenAudio( 22050, SDL.SdlMixer.MixDefaultFormat, 2, 4096 ) == -1 )
             {
                 return;
             }
@@ -125,10 +125,10 @@ namespace Alis.Core.Audio.Sample
             
             //Load the music
             string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            IntPtr music = SDL.SDL_mixer.Mix_LoadMUS( fileName );
+            IntPtr music = SDL.SdlMixer.Mix_LoadMUS( fileName );
             //IntPtr scratch = SDL.SDL_mixer.Mix_LoadWAV( "scratch.wav" );
             
-            SDL.SDL_mixer.Mix_PlayMusic( music, -1 );
+            SDL.SdlMixer.Mix_PlayMusic( music, -1 );
         }
     }
 }

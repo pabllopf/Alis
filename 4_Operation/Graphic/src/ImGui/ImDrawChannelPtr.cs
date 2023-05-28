@@ -75,11 +75,11 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the  cmdbuffer
         /// </summary>
-        public ImPtrVector<ImDrawCmdPtr> _CmdBuffer => new ImPtrVector<ImDrawCmdPtr>(NativePtr->_CmdBuffer, Unsafe.SizeOf<ImDrawCmd>());
+        public ImPtrVector<ImDrawCmdPtr> CmdBuffer => new ImPtrVector<ImDrawCmdPtr>(NativePtr->CmdBuffer, Unsafe.SizeOf<ImDrawCmd>());
 
         /// <summary>
         ///     Gets the value of the  idxbuffer
         /// </summary>
-        public ImVector<ushort> _IdxBuffer => new ImVector<ushort>(NativePtr->_IdxBuffer);
+        public ImVector<ushort> IdxBuffer => new ImVector<ushort>(NativePtr->IdxBuffer);
     }
 }

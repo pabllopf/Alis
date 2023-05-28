@@ -3,21 +3,21 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The mix fading enum
     /// </summary>
-    public enum Mix_Fading
+    public enum MixFading
     {
         /// <summary>
         ///     The mix no fading mix fading
         /// </summary>
-        MIX_NO_FADING,
+        MixNoFading,
 
         /// <summary>
         ///     The mix fading out mix fading
         /// </summary>
-        MIX_FADING_OUT,
+        MixFadingOut,
 
         /// <summary>
         ///     The mix fading in mix fading
         /// </summary>
-        MIX_FADING_IN
+        MixFadingIn
     }
 }
