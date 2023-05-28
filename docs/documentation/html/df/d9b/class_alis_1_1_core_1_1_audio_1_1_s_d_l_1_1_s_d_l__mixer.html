@@ -102,6 +102,8 @@ $(document).ready(function(){initNavTree('df/d9b/class_alis_1_1_core_1_1_audio_1
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#pac-methods">Package Functions</a> &#124;
+<a href="#pac-static-methods">Static Package Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-static-attribs">Static Private Attributes</a> &#124;
@@ -119,9 +121,18 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d7/dcd/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_m_i_x___chunk.html">MIX_Chunk</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mix chunk  <a href="../../d7/dcd/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_m_i_x___chunk.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/da0/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_s_d_l__version.html">SDL_version</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl version  <a href="../../de/da0/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_s_d_l__version.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
+<tr class="memitem:a7ffda61a34f3fde17439da3373acdc2b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7ffda61a34f3fde17439da3373acdc2b">SDL_AudioStatus</a> { <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7ffda61a34f3fde17439da3373acdc2ba0d053d4c3a66cc36504be2e228d4c947">SDL_AudioStatus.SDL_AUDIO_STOPPED</a>, 
+<a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7ffda61a34f3fde17439da3373acdc2ba3b3d994738aea760794c5a89d3945a07">SDL_AudioStatus.SDL_AUDIO_PLAYING</a>, 
+<a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7ffda61a34f3fde17439da3373acdc2ba6327926e6a7284cf1504428615e0992b">SDL_AudioStatus.SDL_AUDIO_PAUSED</a>
+ }</td></tr>
+<tr class="memdesc:a7ffda61a34f3fde17439da3373acdc2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl audiostatus enum  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7ffda61a34f3fde17439da3373acdc2b">More...</a><br /></td></tr>
+<tr class="separator:a7ffda61a34f3fde17439da3373acdc2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e553e8cd54381d9779d3b1041edff35"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5e553e8cd54381d9779d3b1041edff35">MIX_InitFlags</a> { <br />
 &#160;&#160;<a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5e553e8cd54381d9779d3b1041edff35a3568d9ca838cc64cf3f2fbf4a85c058a">MIX_InitFlags.MIX_INIT_FLAC</a> = 0x00000001, 
 <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5e553e8cd54381d9779d3b1041edff35af09885044c8c8520c4d108f5d20d77a0">MIX_InitFlags.MIX_INIT_MOD</a> = 0x00000002, 
@@ -161,6 +172,15 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a4ee1add976beab4d453ce0fe06f3dbb7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a4ee1add976beab4d453ce0fe06f3dbb7">SDL_Init</a> (uint flags)</td></tr>
+<tr class="memdesc:a4ee1add976beab4d453ce0fe06f3dbb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the init using the specified flags  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a4ee1add976beab4d453ce0fe06f3dbb7">More...</a><br /></td></tr>
+<tr class="separator:a4ee1add976beab4d453ce0fe06f3dbb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8de7b0dfb30e00acc695fac0c0c8ac0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad8de7b0dfb30e00acc695fac0c0c8ac0">SDL_InitSubSystem</a> (uint flags)</td></tr>
+<tr class="memdesc:ad8de7b0dfb30e00acc695fac0c0c8ac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the init sub system using the specified flags  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad8de7b0dfb30e00acc695fac0c0c8ac0">More...</a><br /></td></tr>
+<tr class="separator:ad8de7b0dfb30e00acc695fac0c0c8ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a548c35992921584c642e2ec1a0599e08"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a548c35992921584c642e2ec1a0599e08">SDL_Quit</a> ()</td></tr>
+<tr class="memdesc:a548c35992921584c642e2ec1a0599e08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the quit  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a548c35992921584c642e2ec1a0599e08">More...</a><br /></td></tr>
+<tr class="separator:a548c35992921584c642e2ec1a0599e08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a609d0273ef76cf51f7989a1d0264128d"><td class="memItemLeft" align="right" valign="top">delegate void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a609d0273ef76cf51f7989a1d0264128d">MixFuncDelegate</a> (IntPtr udata, IntPtr stream, int len)</td></tr>
 <tr class="memdesc:a609d0273ef76cf51f7989a1d0264128d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mix func delegate  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a609d0273ef76cf51f7989a1d0264128d">More...</a><br /></td></tr>
 <tr class="separator:a609d0273ef76cf51f7989a1d0264128d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -410,18 +430,27 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9940202d01e2bceda92af72348b444a5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a9940202d01e2bceda92af72348b444a5">Mix_CloseAudio</a> ()</td></tr>
 <tr class="memdesc:a9940202d01e2bceda92af72348b444a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes the close audio  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a9940202d01e2bceda92af72348b444a5">More...</a><br /></td></tr>
 <tr class="separator:a9940202d01e2bceda92af72348b444a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f7981b470fedbea740106b11cf7ccfa"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a6f7981b470fedbea740106b11cf7ccfa">SDL_ClearError</a> ()</td></tr>
+<tr class="memdesc:a6f7981b470fedbea740106b11cf7ccfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the clear error  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a6f7981b470fedbea740106b11cf7ccfa">More...</a><br /></td></tr>
+<tr class="separator:a6f7981b470fedbea740106b11cf7ccfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a210ff24bea10c3c2741a268181695085"><td class="memItemLeft" align="right" valign="top">static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a210ff24bea10c3c2741a268181695085">SDL_GetErrorMsg</a> (IntPtr errstr, int maxlength)</td></tr>
+<tr class="memdesc:a210ff24bea10c3c2741a268181695085"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the get error msg using the specified errstr  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a210ff24bea10c3c2741a268181695085">More...</a><br /></td></tr>
+<tr class="separator:a210ff24bea10c3c2741a268181695085"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:af299ad6bd9438878b05b051def41541f"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af299ad6bd9438878b05b051def41541f">SDL_MIXER_VERSION</a> (out <a class="el" href="../../d1/df5/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l_1_1_s_d_l__version.html">SDL.SDL_version</a> X)</td></tr>
-<tr class="memdesc:af299ad6bd9438878b05b051def41541f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the mixer version using the specified x  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af299ad6bd9438878b05b051def41541f">More...</a><br /></td></tr>
-<tr class="separator:af299ad6bd9438878b05b051def41541f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abac8ac6330af5d91a50541599ec09c1c"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../d1/df5/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l_1_1_s_d_l__version.html">SDL.SDL_version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#abac8ac6330af5d91a50541599ec09c1c">MIX_Linked_Version</a> ()</td></tr>
-<tr class="memdesc:abac8ac6330af5d91a50541599ec09c1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes the linked version  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#abac8ac6330af5d91a50541599ec09c1c">More...</a><br /></td></tr>
-<tr class="separator:abac8ac6330af5d91a50541599ec09c1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55b8502a1314dd95880962e0c7e62bdb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a55b8502a1314dd95880962e0c7e62bdb">SDL_MIXER_VERSION</a> (out <a class="el" href="../../de/da0/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_s_d_l__version.html">SDL_version</a> X)</td></tr>
+<tr class="memdesc:a55b8502a1314dd95880962e0c7e62bdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the mixer version using the specified x  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a55b8502a1314dd95880962e0c7e62bdb">More...</a><br /></td></tr>
+<tr class="separator:a55b8502a1314dd95880962e0c7e62bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a46bf6351761400a9b0709d91f91cab1b"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="../../de/da0/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_s_d_l__version.html">SDL_version</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a46bf6351761400a9b0709d91f91cab1b">MIX_Linked_Version</a> ()</td></tr>
+<tr class="memdesc:a46bf6351761400a9b0709d91f91cab1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes the linked version  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a46bf6351761400a9b0709d91f91cab1b">More...</a><br /></td></tr>
+<tr class="separator:a46bf6351761400a9b0709d91f91cab1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab98cbdc1cb61891d84abbb9fd87bfbd3"><td class="memItemLeft" align="right" valign="top">static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab98cbdc1cb61891d84abbb9fd87bfbd3">Mix_LoadWAV</a> (string file)</td></tr>
 <tr class="memdesc:ab98cbdc1cb61891d84abbb9fd87bfbd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes the load wav using the specified file  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab98cbdc1cb61891d84abbb9fd87bfbd3">More...</a><br /></td></tr>
 <tr class="separator:ab98cbdc1cb61891d84abbb9fd87bfbd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee20f5109361b192aff1e3a45d5c06a"><td class="memItemLeft" align="right" valign="top">static unsafe IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#abee20f5109361b192aff1e3a45d5c06a">SDL_RWFromFile</a> (string file, string mode)</td></tr>
+<tr class="memdesc:abee20f5109361b192aff1e3a45d5c06a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the rw from file using the specified file  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#abee20f5109361b192aff1e3a45d5c06a">More...</a><br /></td></tr>
+<tr class="separator:abee20f5109361b192aff1e3a45d5c06a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cff862ce83085b3df70823f43803cca"><td class="memItemLeft" align="right" valign="top">static unsafe IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2cff862ce83085b3df70823f43803cca">Mix_LoadMUS</a> (string file)</td></tr>
 <tr class="memdesc:a2cff862ce83085b3df70823f43803cca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes the load mus using the specified file  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2cff862ce83085b3df70823f43803cca">More...</a><br /></td></tr>
 <tr class="separator:a2cff862ce83085b3df70823f43803cca"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -473,9 +502,48 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a0de07db4c71ad3bf736a7e86f9f5013a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0de07db4c71ad3bf736a7e86f9f5013a">Mix_ClearError</a> ()</td></tr>
 <tr class="memdesc:a0de07db4c71ad3bf736a7e86f9f5013a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mixes the clear error  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0de07db4c71ad3bf736a7e86f9f5013a">More...</a><br /></td></tr>
 <tr class="separator:a0de07db4c71ad3bf736a7e86f9f5013a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77c9a4c5b4602226c089a428c8c44b19"><td class="memItemLeft" align="right" valign="top">static unsafe string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a77c9a4c5b4602226c089a428c8c44b19">UTF8_ToManaged</a> (IntPtr s, bool freePtr=false)</td></tr>
+<tr class="memdesc:a77c9a4c5b4602226c089a428c8c44b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utfs the 8 to managed using the specified s  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a77c9a4c5b4602226c089a428c8c44b19">More...</a><br /></td></tr>
+<tr class="separator:a77c9a4c5b4602226c089a428c8c44b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11ca1b2bfb1dfef10fd8ac7a10668fa6"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a11ca1b2bfb1dfef10fd8ac7a10668fa6">SDL_GetError</a> ()</td></tr>
+<tr class="memdesc:a11ca1b2bfb1dfef10fd8ac7a10668fa6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the get error  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a11ca1b2bfb1dfef10fd8ac7a10668fa6">More...</a><br /></td></tr>
+<tr class="separator:a11ca1b2bfb1dfef10fd8ac7a10668fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0acc993a79b0ea719051ed004dbb77d3"><td class="memItemLeft" align="right" valign="top">static unsafe void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0acc993a79b0ea719051ed004dbb77d3">SDL_SetError</a> (string fmtAndArglist)</td></tr>
+<tr class="memdesc:a0acc993a79b0ea719051ed004dbb77d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the set error using the specified fmt and arglist  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0acc993a79b0ea719051ed004dbb77d3">More...</a><br /></td></tr>
+<tr class="separator:a0acc993a79b0ea719051ed004dbb77d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
+<tr class="memitem:a7a260c86ad12f262137955846c01c562"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7a260c86ad12f262137955846c01c562">SDL_INIT_TIMER</a> = 0x00000001</td></tr>
+<tr class="memdesc:a7a260c86ad12f262137955846c01c562"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init timer  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7a260c86ad12f262137955846c01c562">More...</a><br /></td></tr>
+<tr class="separator:a7a260c86ad12f262137955846c01c562"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54b41e49d861db3f761e2b6e17f78573"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a54b41e49d861db3f761e2b6e17f78573">SDL_INIT_AUDIO</a> = 0x00000010</td></tr>
+<tr class="memdesc:a54b41e49d861db3f761e2b6e17f78573"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init audio  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a54b41e49d861db3f761e2b6e17f78573">More...</a><br /></td></tr>
+<tr class="separator:a54b41e49d861db3f761e2b6e17f78573"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2fb35d543740864ac908f0a83d8517e"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae2fb35d543740864ac908f0a83d8517e">SDL_INIT_VIDEO</a> = 0x00000020</td></tr>
+<tr class="memdesc:ae2fb35d543740864ac908f0a83d8517e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init video  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae2fb35d543740864ac908f0a83d8517e">More...</a><br /></td></tr>
+<tr class="separator:ae2fb35d543740864ac908f0a83d8517e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2779a24f5bfedbb7b61a104b81b0ea56"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2779a24f5bfedbb7b61a104b81b0ea56">SDL_INIT_JOYSTICK</a> = 0x00000200</td></tr>
+<tr class="memdesc:a2779a24f5bfedbb7b61a104b81b0ea56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init joystick  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2779a24f5bfedbb7b61a104b81b0ea56">More...</a><br /></td></tr>
+<tr class="separator:a2779a24f5bfedbb7b61a104b81b0ea56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd0f08e9ed3d4db8a4e2a53ffbe66452"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afd0f08e9ed3d4db8a4e2a53ffbe66452">SDL_INIT_HAPTIC</a> = 0x00001000</td></tr>
+<tr class="memdesc:afd0f08e9ed3d4db8a4e2a53ffbe66452"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init haptic  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afd0f08e9ed3d4db8a4e2a53ffbe66452">More...</a><br /></td></tr>
+<tr class="separator:afd0f08e9ed3d4db8a4e2a53ffbe66452"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a0949d872c8ad12a97ab8081e6de85f"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a3a0949d872c8ad12a97ab8081e6de85f">SDL_INIT_GAMECONTROLLER</a> = 0x00002000</td></tr>
+<tr class="memdesc:a3a0949d872c8ad12a97ab8081e6de85f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init gamecontroller  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a3a0949d872c8ad12a97ab8081e6de85f">More...</a><br /></td></tr>
+<tr class="separator:a3a0949d872c8ad12a97ab8081e6de85f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2100976ef24a86f64d723af2f0e6c57"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aa2100976ef24a86f64d723af2f0e6c57">SDL_INIT_EVENTS</a> = 0x00004000</td></tr>
+<tr class="memdesc:aa2100976ef24a86f64d723af2f0e6c57"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init events  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aa2100976ef24a86f64d723af2f0e6c57">More...</a><br /></td></tr>
+<tr class="separator:aa2100976ef24a86f64d723af2f0e6c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af11bff3eb17e9943eb93094a54a0a5c5"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af11bff3eb17e9943eb93094a54a0a5c5">SDL_INIT_SENSOR</a> = 0x00008000</td></tr>
+<tr class="memdesc:af11bff3eb17e9943eb93094a54a0a5c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init sensor  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af11bff3eb17e9943eb93094a54a0a5c5">More...</a><br /></td></tr>
+<tr class="separator:af11bff3eb17e9943eb93094a54a0a5c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd82000265a8b919e610f705e703adbb"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afd82000265a8b919e610f705e703adbb">SDL_INIT_NOPARACHUTE</a> = 0x00100000</td></tr>
+<tr class="memdesc:afd82000265a8b919e610f705e703adbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init noparachute  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afd82000265a8b919e610f705e703adbb">More...</a><br /></td></tr>
+<tr class="separator:afd82000265a8b919e610f705e703adbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4740032918cf55e473a3b68baab99f56"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a4740032918cf55e473a3b68baab99f56">SDL_INIT_EVERYTHING</a></td></tr>
+<tr class="memdesc:a4740032918cf55e473a3b68baab99f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl init sensor  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a4740032918cf55e473a3b68baab99f56">More...</a><br /></td></tr>
+<tr class="separator:a4740032918cf55e473a3b68baab99f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12bbf685fe3a33e3da051c31a74e61e7"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a12bbf685fe3a33e3da051c31a74e61e7">SDL_MIXER_MAJOR_VERSION</a> = 2</td></tr>
 <tr class="memdesc:a12bbf685fe3a33e3da051c31a74e61e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl mixer major version  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a12bbf685fe3a33e3da051c31a74e61e7">More...</a><br /></td></tr>
 <tr class="separator:a12bbf685fe3a33e3da051c31a74e61e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -500,12 +568,105 @@ Static Public Attributes</h2></td></tr>
 <tr class="memitem:ab42d199494e18868d6f49a3cbd4d223b"><td class="memItemLeft" align="right" valign="top">static readonly byte&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab42d199494e18868d6f49a3cbd4d223b">MIX_MAX_VOLUME</a> = 128</td></tr>
 <tr class="memdesc:ab42d199494e18868d6f49a3cbd4d223b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The mix max volume  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab42d199494e18868d6f49a3cbd4d223b">More...</a><br /></td></tr>
 <tr class="separator:ab42d199494e18868d6f49a3cbd4d223b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93e430251da6eb8e8722c5f0b3f1d027"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a93e430251da6eb8e8722c5f0b3f1d027">AUDIO_U8</a> = 0x0008</td></tr>
+<tr class="memdesc:a93e430251da6eb8e8722c5f0b3f1d027"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio u8  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a93e430251da6eb8e8722c5f0b3f1d027">More...</a><br /></td></tr>
+<tr class="separator:a93e430251da6eb8e8722c5f0b3f1d027"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2185295e0a067bc6ec2cbe03367c4a36"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2185295e0a067bc6ec2cbe03367c4a36">AUDIO_S8</a> = 0x8008</td></tr>
+<tr class="memdesc:a2185295e0a067bc6ec2cbe03367c4a36"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s8  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2185295e0a067bc6ec2cbe03367c4a36">More...</a><br /></td></tr>
+<tr class="separator:a2185295e0a067bc6ec2cbe03367c4a36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a291a251721e7384a16681347579dff3f"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a291a251721e7384a16681347579dff3f">AUDIO_U16LSB</a> = 0x0010</td></tr>
+<tr class="memdesc:a291a251721e7384a16681347579dff3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio u16lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a291a251721e7384a16681347579dff3f">More...</a><br /></td></tr>
+<tr class="separator:a291a251721e7384a16681347579dff3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09726943cbe0c6a9edf11d826a5560b5"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a09726943cbe0c6a9edf11d826a5560b5">AUDIO_S16LSB</a> = 0x8010</td></tr>
+<tr class="memdesc:a09726943cbe0c6a9edf11d826a5560b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s16lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a09726943cbe0c6a9edf11d826a5560b5">More...</a><br /></td></tr>
+<tr class="separator:a09726943cbe0c6a9edf11d826a5560b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0578fffd58bb58470ff1a7ff6802f29b"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0578fffd58bb58470ff1a7ff6802f29b">AUDIO_U16MSB</a> = 0x1010</td></tr>
+<tr class="memdesc:a0578fffd58bb58470ff1a7ff6802f29b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio u16msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0578fffd58bb58470ff1a7ff6802f29b">More...</a><br /></td></tr>
+<tr class="separator:a0578fffd58bb58470ff1a7ff6802f29b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ba73ef13c5d65ce4ec1868340fb05b7"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2ba73ef13c5d65ce4ec1868340fb05b7">AUDIO_S16MSB</a> = 0x9010</td></tr>
+<tr class="memdesc:a2ba73ef13c5d65ce4ec1868340fb05b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s16msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2ba73ef13c5d65ce4ec1868340fb05b7">More...</a><br /></td></tr>
+<tr class="separator:a2ba73ef13c5d65ce4ec1868340fb05b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb72527c822c7381a89328a80fe1fc2"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a1bb72527c822c7381a89328a80fe1fc2">AUDIO_U16</a> = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a291a251721e7384a16681347579dff3f">AUDIO_U16LSB</a></td></tr>
+<tr class="memdesc:a1bb72527c822c7381a89328a80fe1fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio u16lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a1bb72527c822c7381a89328a80fe1fc2">More...</a><br /></td></tr>
+<tr class="separator:a1bb72527c822c7381a89328a80fe1fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19e0531ccfaaae7ba536981521c9955a"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a19e0531ccfaaae7ba536981521c9955a">AUDIO_S16</a> = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a09726943cbe0c6a9edf11d826a5560b5">AUDIO_S16LSB</a></td></tr>
+<tr class="memdesc:a19e0531ccfaaae7ba536981521c9955a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s16lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a19e0531ccfaaae7ba536981521c9955a">More...</a><br /></td></tr>
+<tr class="separator:a19e0531ccfaaae7ba536981521c9955a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad5e7ccf25f6b42880981a29e4312ff4"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aad5e7ccf25f6b42880981a29e4312ff4">AUDIO_S32LSB</a> = 0x8020</td></tr>
+<tr class="memdesc:aad5e7ccf25f6b42880981a29e4312ff4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s32lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aad5e7ccf25f6b42880981a29e4312ff4">More...</a><br /></td></tr>
+<tr class="separator:aad5e7ccf25f6b42880981a29e4312ff4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5728610b5558c4acf9ca8a501d5039db"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5728610b5558c4acf9ca8a501d5039db">AUDIO_S32MSB</a> = 0x9020</td></tr>
+<tr class="memdesc:a5728610b5558c4acf9ca8a501d5039db"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s32msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5728610b5558c4acf9ca8a501d5039db">More...</a><br /></td></tr>
+<tr class="separator:a5728610b5558c4acf9ca8a501d5039db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e54a380771ddd5e43e268b674ae7a0d"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0e54a380771ddd5e43e268b674ae7a0d">AUDIO_S32</a> = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aad5e7ccf25f6b42880981a29e4312ff4">AUDIO_S32LSB</a></td></tr>
+<tr class="memdesc:a0e54a380771ddd5e43e268b674ae7a0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s32lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0e54a380771ddd5e43e268b674ae7a0d">More...</a><br /></td></tr>
+<tr class="separator:a0e54a380771ddd5e43e268b674ae7a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad13d2d0062fde228eb0f724a9f82fe4b"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad13d2d0062fde228eb0f724a9f82fe4b">AUDIO_F32LSB</a> = 0x8120</td></tr>
+<tr class="memdesc:ad13d2d0062fde228eb0f724a9f82fe4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio f32lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad13d2d0062fde228eb0f724a9f82fe4b">More...</a><br /></td></tr>
+<tr class="separator:ad13d2d0062fde228eb0f724a9f82fe4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe55a027556ba8948e845048a059e0b4"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afe55a027556ba8948e845048a059e0b4">AUDIO_F32MSB</a> = 0x9120</td></tr>
+<tr class="memdesc:afe55a027556ba8948e845048a059e0b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio f32msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afe55a027556ba8948e845048a059e0b4">More...</a><br /></td></tr>
+<tr class="separator:afe55a027556ba8948e845048a059e0b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e4514c6c47cc106c018d857f924245"><td class="memItemLeft" align="right" valign="top">const ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a31e4514c6c47cc106c018d857f924245">AUDIO_F32</a> = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad13d2d0062fde228eb0f724a9f82fe4b">AUDIO_F32LSB</a></td></tr>
+<tr class="memdesc:a31e4514c6c47cc106c018d857f924245"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio f32lsb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a31e4514c6c47cc106c018d857f924245">More...</a><br /></td></tr>
+<tr class="separator:a31e4514c6c47cc106c018d857f924245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75ca2c00f7d78f3424320edd348a034a"><td class="memItemLeft" align="right" valign="top">static readonly ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a75ca2c00f7d78f3424320edd348a034a">AUDIO_U16SYS</a></td></tr>
+<tr class="memdesc:a75ca2c00f7d78f3424320edd348a034a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio u16msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a75ca2c00f7d78f3424320edd348a034a">More...</a><br /></td></tr>
+<tr class="separator:a75ca2c00f7d78f3424320edd348a034a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a545ca98c44fad2b1d35800a9de8c1013"><td class="memItemLeft" align="right" valign="top">static readonly ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a545ca98c44fad2b1d35800a9de8c1013">AUDIO_S16SYS</a></td></tr>
+<tr class="memdesc:a545ca98c44fad2b1d35800a9de8c1013"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s16msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a545ca98c44fad2b1d35800a9de8c1013">More...</a><br /></td></tr>
+<tr class="separator:a545ca98c44fad2b1d35800a9de8c1013"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9acb66ca3435d250e9c6b82ec57045e"><td class="memItemLeft" align="right" valign="top">static readonly ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af9acb66ca3435d250e9c6b82ec57045e">AUDIO_S32SYS</a></td></tr>
+<tr class="memdesc:af9acb66ca3435d250e9c6b82ec57045e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio s32msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af9acb66ca3435d250e9c6b82ec57045e">More...</a><br /></td></tr>
+<tr class="separator:af9acb66ca3435d250e9c6b82ec57045e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb4323a2a23c43f352a4efc01f8bed80"><td class="memItemLeft" align="right" valign="top">static readonly ushort&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#abb4323a2a23c43f352a4efc01f8bed80">AUDIO_F32SYS</a></td></tr>
+<tr class="memdesc:abb4323a2a23c43f352a4efc01f8bed80"><td class="mdescLeft">&#160;</td><td class="mdescRight">The audio f32msb  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#abb4323a2a23c43f352a4efc01f8bed80">More...</a><br /></td></tr>
+<tr class="separator:abb4323a2a23c43f352a4efc01f8bed80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0b00e3c4e6a10e26136b40a6ec1f0a0"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae0b00e3c4e6a10e26136b40a6ec1f0a0">SDL_AUDIO_ALLOW_FREQUENCY_CHANGE</a> = 0x00000001</td></tr>
+<tr class="memdesc:ae0b00e3c4e6a10e26136b40a6ec1f0a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl audio allow frequency change  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae0b00e3c4e6a10e26136b40a6ec1f0a0">More...</a><br /></td></tr>
+<tr class="separator:ae0b00e3c4e6a10e26136b40a6ec1f0a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93d171dc14ba0c7eb1cd05c0eecf2e57"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a93d171dc14ba0c7eb1cd05c0eecf2e57">SDL_AUDIO_ALLOW_FORMAT_CHANGE</a> = 0x00000002</td></tr>
+<tr class="memdesc:a93d171dc14ba0c7eb1cd05c0eecf2e57"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl audio allow format change  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a93d171dc14ba0c7eb1cd05c0eecf2e57">More...</a><br /></td></tr>
+<tr class="separator:a93d171dc14ba0c7eb1cd05c0eecf2e57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20ddda0e78f3bdec0f0c5303c26f332c"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a20ddda0e78f3bdec0f0c5303c26f332c">SDL_AUDIO_ALLOW_CHANNELS_CHANGE</a> = 0x00000004</td></tr>
+<tr class="memdesc:a20ddda0e78f3bdec0f0c5303c26f332c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl audio allow channels change  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a20ddda0e78f3bdec0f0c5303c26f332c">More...</a><br /></td></tr>
+<tr class="separator:a20ddda0e78f3bdec0f0c5303c26f332c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae00f164210a1346cdd333f3ddc2f2edd"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae00f164210a1346cdd333f3ddc2f2edd">SDL_AUDIO_ALLOW_SAMPLES_CHANGE</a> = 0x00000008</td></tr>
+<tr class="memdesc:ae00f164210a1346cdd333f3ddc2f2edd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl audio allow samples change  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae00f164210a1346cdd333f3ddc2f2edd">More...</a><br /></td></tr>
+<tr class="separator:ae00f164210a1346cdd333f3ddc2f2edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac02b892541fff9de41b326379dd12a42"><td class="memItemLeft" align="right" valign="top">const uint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ac02b892541fff9de41b326379dd12a42">SDL_AUDIO_ALLOW_ANY_CHANGE</a></td></tr>
+<tr class="memdesc:ac02b892541fff9de41b326379dd12a42"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl audio allow samples change  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ac02b892541fff9de41b326379dd12a42">More...</a><br /></td></tr>
+<tr class="separator:ac02b892541fff9de41b326379dd12a42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e9252ebbec04e61d94cadd000f3d652"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a8e9252ebbec04e61d94cadd000f3d652">SDL_MIX_MAXVOLUME</a> = 128</td></tr>
+<tr class="memdesc:a8e9252ebbec04e61d94cadd000f3d652"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sdl mix maxvolume  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a8e9252ebbec04e61d94cadd000f3d652">More...</a><br /></td></tr>
+<tr class="separator:a8e9252ebbec04e61d94cadd000f3d652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-methods"></a>
+Package Functions</h2></td></tr>
+<tr class="memitem:a1b8902ca65a64753e30fc3816cd6b5e0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a1b8902ca65a64753e30fc3816cd6b5e0">SDL_free</a> (IntPtr memblock)</td></tr>
+<tr class="memdesc:a1b8902ca65a64753e30fc3816cd6b5e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sdls the free using the specified memblock  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a1b8902ca65a64753e30fc3816cd6b5e0">More...</a><br /></td></tr>
+<tr class="separator:a1b8902ca65a64753e30fc3816cd6b5e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pac-static-methods"></a>
+Static Package Functions</h2></td></tr>
+<tr class="memitem:a3f7c908a25d8f755f5a766635829b39a"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a3f7c908a25d8f755f5a766635829b39a">Utf8Size</a> (string str)</td></tr>
+<tr class="memdesc:a3f7c908a25d8f755f5a766635829b39a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utfs the 8 size using the specified str  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a3f7c908a25d8f755f5a766635829b39a">More...</a><br /></td></tr>
+<tr class="separator:a3f7c908a25d8f755f5a766635829b39a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bdd9909294b1598a354b6d41abde15b"><td class="memItemLeft" align="right" valign="top">static unsafe byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a8bdd9909294b1598a354b6d41abde15b">Utf8Encode</a> (string str, byte *buffer, int bufferSize)</td></tr>
+<tr class="memdesc:a8bdd9909294b1598a354b6d41abde15b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utfs the 8 encode using the specified str  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a8bdd9909294b1598a354b6d41abde15b">More...</a><br /></td></tr>
+<tr class="separator:a8bdd9909294b1598a354b6d41abde15b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7567d2c33d5320e6b5cbe3c2f5717bc0"><td class="memItemLeft" align="right" valign="top">static unsafe byte *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7567d2c33d5320e6b5cbe3c2f5717bc0">Utf8EncodeHeap</a> (string str)</td></tr>
+<tr class="memdesc:a7567d2c33d5320e6b5cbe3c2f5717bc0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utfs the 8 encode heap using the specified str  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7567d2c33d5320e6b5cbe3c2f5717bc0">More...</a><br /></td></tr>
+<tr class="separator:a7567d2c33d5320e6b5cbe3c2f5717bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a6be626bec14c865b4935bd082fc1499b"><td class="memItemLeft" align="right" valign="top">static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a6be626bec14c865b4935bd082fc1499b">INTERNAL_MIX_Linked_Version</a> ()</td></tr>
 <tr class="memdesc:a6be626bec14c865b4935bd082fc1499b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internals the mix linked version  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a6be626bec14c865b4935bd082fc1499b">More...</a><br /></td></tr>
 <tr class="separator:a6be626bec14c865b4935bd082fc1499b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f0052fb5264b95f4b0f6a072e4445a8"><td class="memItemLeft" align="right" valign="top">static unsafe IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5f0052fb5264b95f4b0f6a072e4445a8">INTERNAL_SDL_RWFromFile</a> (byte *file, byte *mode)</td></tr>
+<tr class="memdesc:a5f0052fb5264b95f4b0f6a072e4445a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internals the sdl rw from file using the specified file  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5f0052fb5264b95f4b0f6a072e4445a8">More...</a><br /></td></tr>
+<tr class="separator:a5f0052fb5264b95f4b0f6a072e4445a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a47de143c87e3b2b92062770d887ad379"><td class="memItemLeft" align="right" valign="top">static unsafe IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a47de143c87e3b2b92062770d887ad379">INTERNAL_Mix_LoadMUS</a> (byte *file)</td></tr>
 <tr class="memdesc:a47de143c87e3b2b92062770d887ad379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internals the mix load mus using the specified file  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a47de143c87e3b2b92062770d887ad379">More...</a><br /></td></tr>
 <tr class="separator:a47de143c87e3b2b92062770d887ad379"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -524,6 +685,12 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:ab5c8796c10a9f6757fbe91d9dd5cfdff"><td class="memItemLeft" align="right" valign="top">static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab5c8796c10a9f6757fbe91d9dd5cfdff">INTERNAL_Mix_GetSoundFonts</a> ()</td></tr>
 <tr class="memdesc:ab5c8796c10a9f6757fbe91d9dd5cfdff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internals the mix get sound fonts  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ab5c8796c10a9f6757fbe91d9dd5cfdff">More...</a><br /></td></tr>
 <tr class="separator:ab5c8796c10a9f6757fbe91d9dd5cfdff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a119be4ad29a0f58fd26881d40ccd921e"><td class="memItemLeft" align="right" valign="top">static IntPtr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a119be4ad29a0f58fd26881d40ccd921e">INTERNAL_SDL_GetError</a> ()</td></tr>
+<tr class="memdesc:a119be4ad29a0f58fd26881d40ccd921e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internals the sdl get error  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a119be4ad29a0f58fd26881d40ccd921e">More...</a><br /></td></tr>
+<tr class="separator:a119be4ad29a0f58fd26881d40ccd921e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a470804416c8bb880f0514432febb4046"><td class="memItemLeft" align="right" valign="top">static unsafe void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a470804416c8bb880f0514432febb4046">INTERNAL_SDL_SetError</a> (byte *fmtAndArglist)</td></tr>
+<tr class="memdesc:a470804416c8bb880f0514432febb4046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internals the sdl set error using the specified fmt and arglist  <a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a470804416c8bb880f0514432febb4046">More...</a><br /></td></tr>
+<tr class="separator:a470804416c8bb880f0514432febb4046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-methods"></a>
 Static Private Member Functions</h2></td></tr>
@@ -540,8 +707,42 @@ Static Private Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The sdl mixer class </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00044">44</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d78/_s_d_l___audio_status_8cs_source.html#l00035">35</a> of file <a class="el" href="../../de/d78/_s_d_l___audio_status_8cs_source.html">SDL_AudioStatus.cs</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="a7ffda61a34f3fde17439da3373acdc2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ffda61a34f3fde17439da3373acdc2b">&#9670;&nbsp;</a></span>SDL_AudioStatus</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7ffda61a34f3fde17439da3373acdc2b">Alis.Core.Audio.SDL.SDL_mixer.SDL_AudioStatus</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl audiostatus enum </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7ffda61a34f3fde17439da3373acdc2ba0d053d4c3a66cc36504be2e228d4c947"></a>SDL_AUDIO_STOPPED&#160;</td><td class="fielddoc"><p>The sdl audio stopped sdl audiostatus </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7ffda61a34f3fde17439da3373acdc2ba3b3d994738aea760794c5a89d3945a07"></a>SDL_AUDIO_PLAYING&#160;</td><td class="fielddoc"><p>The sdl audio playing sdl audiostatus </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7ffda61a34f3fde17439da3373acdc2ba6327926e6a7284cf1504428615e0992b"></a>SDL_AUDIO_PAUSED&#160;</td><td class="fielddoc"><p>The sdl audio paused sdl audiostatus </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="../../de/d78/_s_d_l___audio_status_8cs_source.html#l00040">40</a> of file <a class="el" href="../../de/d78/_s_d_l___audio_status_8cs_source.html">SDL_AudioStatus.cs</a>.</p>
+
+</div>
+</div>
 <a id="a5e553e8cd54381d9779d3b1041edff35"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e553e8cd54381d9779d3b1041edff35">&#9670;&nbsp;</a></span>MIX_InitFlags</h2>
 
@@ -578,7 +779,7 @@ Static Private Attributes</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00159">159</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00238">238</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -612,7 +813,7 @@ Static Private Attributes</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00221">221</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00428">428</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -662,7 +863,7 @@ Static Private Attributes</h2></td></tr>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00242">242</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00449">449</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -692,11 +893,84 @@ Static Private Attributes</h2></td></tr>
 
 <p>Initializes a new instance of the <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html" title="The sdl mixer class">SDL_mixer</a> class </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00049">49</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00050">50</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4ee1add976beab4d453ce0fe06f3dbb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ee1add976beab4d453ce0fe06f3dbb7">&#9670;&nbsp;</a></span>SDL_Init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int Alis.Core.Audio.SDL.SDL_mixer.SDL_Init </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sdls the init using the specified flags </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>The flags</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The int</dd></dl>
+
+</div>
+</div>
+<a id="ad8de7b0dfb30e00acc695fac0c0c8ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8de7b0dfb30e00acc695fac0c0c8ac0">&#9670;&nbsp;</a></span>SDL_InitSubSystem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int Alis.Core.Audio.SDL.SDL_mixer.SDL_InitSubSystem </td>
+          <td>(</td>
+          <td class="paramtype">uint&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sdls the init sub system using the specified flags </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>The flags</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The int</dd></dl>
+
+</div>
+</div>
+<a id="a548c35992921584c642e2ec1a0599e08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a548c35992921584c642e2ec1a0599e08">&#9670;&nbsp;</a></span>SDL_Quit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Core.Audio.SDL.SDL_mixer.SDL_Quit </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sdls the quit </p>
+
+</div>
+</div>
 <a id="a609d0273ef76cf51f7989a1d0264128d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a609d0273ef76cf51f7989a1d0264128d">&#9670;&nbsp;</a></span>MixFuncDelegate()</h2>
 
@@ -874,8 +1148,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="af299ad6bd9438878b05b051def41541f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af299ad6bd9438878b05b051def41541f">&#9670;&nbsp;</a></span>SDL_MIXER_VERSION()</h2>
+<a id="a55b8502a1314dd95880962e0c7e62bdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55b8502a1314dd95880962e0c7e62bdb">&#9670;&nbsp;</a></span>SDL_MIXER_VERSION()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -886,7 +1160,7 @@ Static Private Attributes</h2></td></tr>
         <tr>
           <td class="memname">static void Alis.Core.Audio.SDL.SDL_mixer.SDL_MIXER_VERSION </td>
           <td>(</td>
-          <td class="paramtype">out <a class="el" href="../../d1/df5/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l_1_1_s_d_l__version.html">SDL.SDL_version</a>&#160;</td>
+          <td class="paramtype">out <a class="el" href="../../de/da0/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_s_d_l__version.html">SDL_version</a>&#160;</td>
           <td class="paramname"><em>X</em></td><td>)</td>
           <td></td>
         </tr>
@@ -906,7 +1180,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00355">355</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00562">562</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -938,8 +1212,8 @@ Static Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="abac8ac6330af5d91a50541599ec09c1c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abac8ac6330af5d91a50541599ec09c1c">&#9670;&nbsp;</a></span>MIX_Linked_Version()</h2>
+<a id="a46bf6351761400a9b0709d91f91cab1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46bf6351761400a9b0709d91f91cab1b">&#9670;&nbsp;</a></span>MIX_Linked_Version()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -948,7 +1222,7 @@ Static Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="../../d1/df5/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l_1_1_s_d_l__version.html">SDL.SDL_version</a> Alis.Core.Audio.SDL.SDL_mixer.MIX_Linked_Version </td>
+          <td class="memname">static <a class="el" href="../../de/da0/struct_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_1_1_s_d_l__version.html">SDL_version</a> Alis.Core.Audio.SDL.SDL_mixer.MIX_Linked_Version </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -964,7 +1238,7 @@ Static Private Attributes</h2></td></tr>
 <p>Mixes the linked version </p>
 <dl class="section return"><dt>Returns</dt><dd>The result</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00373">373</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00580">580</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -1209,7 +1483,101 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The int ptr</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00457">457</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00665">665</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="abee20f5109361b192aff1e3a45d5c06a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abee20f5109361b192aff1e3a45d5c06a">&#9670;&nbsp;</a></span>SDL_RWFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static unsafe IntPtr Alis.Core.Audio.SDL.SDL_mixer.SDL_RWFromFile </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sdls the rw from file using the specified file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>The file</td></tr>
+    <tr><td class="paramname">mode</td><td>The mode</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The rw ops</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00677">677</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5f0052fb5264b95f4b0f6a072e4445a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f0052fb5264b95f4b0f6a072e4445a8">&#9670;&nbsp;</a></span>INTERNAL_SDL_RWFromFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static unsafe IntPtr Alis.Core.Audio.SDL.SDL_mixer.INTERNAL_SDL_RWFromFile </td>
+          <td>(</td>
+          <td class="paramtype">byte *&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte *&#160;</td>
+          <td class="paramname"><em>mode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Internals the sdl rw from file using the specified file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>The file</td></tr>
+    <tr><td class="paramname">mode</td><td>The mode</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The int ptr</dd></dl>
 
 </div>
 </div>
@@ -1281,7 +1649,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The handle</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00479">479</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00721">721</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -3750,7 +4118,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The result</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01241">1241</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01483">1483</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -3869,7 +4237,7 @@ Static Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The result</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01281">1281</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01523">1523</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4148,7 +4516,7 @@ Static Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01370">1370</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01612">1612</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4177,7 +4545,401 @@ Static Private Attributes</h2></td></tr>
 
 <p>Mixes the clear error </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01378">1378</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01620">1620</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a3f7c908a25d8f755f5a766635829b39a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7c908a25d8f755f5a766635829b39a">&#9670;&nbsp;</a></span>Utf8Size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int Alis.Core.Audio.SDL.SDL_mixer.Utf8Size </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Utfs the 8 size using the specified str </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The str</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The int</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01635">1635</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8bdd9909294b1598a354b6d41abde15b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bdd9909294b1598a354b6d41abde15b">&#9670;&nbsp;</a></span>Utf8Encode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static unsafe byte* Alis.Core.Audio.SDL.SDL_mixer.Utf8Encode </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">byte *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bufferSize</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Utfs the 8 encode using the specified str </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The str</td></tr>
+    <tr><td class="paramname">buffer</td><td>The buffer</td></tr>
+    <tr><td class="paramname">bufferSize</td><td>The buffer size</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01652">1652</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7567d2c33d5320e6b5cbe3c2f5717bc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7567d2c33d5320e6b5cbe3c2f5717bc0">&#9670;&nbsp;</a></span>Utf8EncodeHeap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static unsafe byte* Alis.Core.Audio.SDL.SDL_mixer.Utf8EncodeHeap </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Utfs the 8 encode heap using the specified str </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>The str</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The buffer</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01675">1675</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a77c9a4c5b4602226c089a428c8c44b19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77c9a4c5b4602226c089a428c8c44b19">&#9670;&nbsp;</a></span>UTF8_ToManaged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static unsafe string Alis.Core.Audio.SDL.SDL_mixer.UTF8_ToManaged </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>freePtr</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Utfs the 8 to managed using the specified s </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>The </td></tr>
+    <tr><td class="paramname">freePtr</td><td>The free ptr</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The result</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01699">1699</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1b8902ca65a64753e30fc3816cd6b5e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b8902ca65a64753e30fc3816cd6b5e0">&#9670;&nbsp;</a></span>SDL_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Core.Audio.SDL.SDL_mixer.SDL_free </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>memblock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">package</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sdls the free using the specified memblock </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">memblock</td><td>The memblock</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a6f7981b470fedbea740106b11cf7ccfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f7981b470fedbea740106b11cf7ccfa">&#9670;&nbsp;</a></span>SDL_ClearError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void Alis.Core.Audio.SDL.SDL_mixer.SDL_ClearError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sdls the clear error </p>
+
+</div>
+</div>
+<a id="a119be4ad29a0f58fd26881d40ccd921e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a119be4ad29a0f58fd26881d40ccd921e">&#9670;&nbsp;</a></span>INTERNAL_SDL_GetError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IntPtr Alis.Core.Audio.SDL.SDL_mixer.INTERNAL_SDL_GetError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Internals the sdl get error </p>
+<dl class="section return"><dt>Returns</dt><dd>The int ptr</dd></dl>
+
+</div>
+</div>
+<a id="a11ca1b2bfb1dfef10fd8ac7a10668fa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11ca1b2bfb1dfef10fd8ac7a10668fa6">&#9670;&nbsp;</a></span>SDL_GetError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static string Alis.Core.Audio.SDL.SDL_mixer.SDL_GetError </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sdls the get error </p>
+<dl class="section return"><dt>Returns</dt><dd>The string</dd></dl>
+
+</div>
+</div>
+<a id="a470804416c8bb880f0514432febb4046"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a470804416c8bb880f0514432febb4046">&#9670;&nbsp;</a></span>INTERNAL_SDL_SetError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static unsafe void Alis.Core.Audio.SDL.SDL_mixer.INTERNAL_SDL_SetError </td>
+          <td>(</td>
+          <td class="paramtype">byte *&#160;</td>
+          <td class="paramname"><em>fmtAndArglist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Internals the sdl set error using the specified fmt and arglist </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fmtAndArglist</td><td>The fmt and arglist</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0acc993a79b0ea719051ed004dbb77d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0acc993a79b0ea719051ed004dbb77d3">&#9670;&nbsp;</a></span>SDL_SetError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static unsafe void Alis.Core.Audio.SDL.SDL_mixer.SDL_SetError </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>fmtAndArglist</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sdls the set error using the specified fmt and arglist </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fmtAndArglist</td><td>The fmt and arglist</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l01797">1797</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a210ff24bea10c3c2741a268181695085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a210ff24bea10c3c2741a268181695085">&#9670;&nbsp;</a></span>SDL_GetErrorMsg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static IntPtr Alis.Core.Audio.SDL.SDL_mixer.SDL_GetErrorMsg </td>
+          <td>(</td>
+          <td class="paramtype">IntPtr&#160;</td>
+          <td class="paramname"><em>errstr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxlength</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sdls the get error msg using the specified errstr </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">errstr</td><td>The errstr</td></tr>
+    <tr><td class="paramname">maxlength</td><td>The maxlength</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The int ptr</dd></dl>
 
 </div>
 </div>
@@ -4204,7 +4966,270 @@ Static Private Attributes</h2></td></tr>
 
 <p>The native lib name </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00100">100</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00101">101</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a7a260c86ad12f262137955846c01c562"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a260c86ad12f262137955846c01c562">&#9670;&nbsp;</a></span>SDL_INIT_TIMER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_TIMER = 0x00000001</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init timer </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00110">110</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a54b41e49d861db3f761e2b6e17f78573"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54b41e49d861db3f761e2b6e17f78573">&#9670;&nbsp;</a></span>SDL_INIT_AUDIO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_AUDIO = 0x00000010</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init audio </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00115">115</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae2fb35d543740864ac908f0a83d8517e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2fb35d543740864ac908f0a83d8517e">&#9670;&nbsp;</a></span>SDL_INIT_VIDEO</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_VIDEO = 0x00000020</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init video </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00120">120</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2779a24f5bfedbb7b61a104b81b0ea56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2779a24f5bfedbb7b61a104b81b0ea56">&#9670;&nbsp;</a></span>SDL_INIT_JOYSTICK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_JOYSTICK = 0x00000200</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init joystick </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00125">125</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="afd0f08e9ed3d4db8a4e2a53ffbe66452"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd0f08e9ed3d4db8a4e2a53ffbe66452">&#9670;&nbsp;</a></span>SDL_INIT_HAPTIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_HAPTIC = 0x00001000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init haptic </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00130">130</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a3a0949d872c8ad12a97ab8081e6de85f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a0949d872c8ad12a97ab8081e6de85f">&#9670;&nbsp;</a></span>SDL_INIT_GAMECONTROLLER</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_GAMECONTROLLER = 0x00002000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init gamecontroller </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00135">135</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="aa2100976ef24a86f64d723af2f0e6c57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2100976ef24a86f64d723af2f0e6c57">&#9670;&nbsp;</a></span>SDL_INIT_EVENTS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_EVENTS = 0x00004000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init events </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00140">140</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="af11bff3eb17e9943eb93094a54a0a5c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af11bff3eb17e9943eb93094a54a0a5c5">&#9670;&nbsp;</a></span>SDL_INIT_SENSOR</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_SENSOR = 0x00008000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init sensor </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00145">145</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="afd82000265a8b919e610f705e703adbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd82000265a8b919e610f705e703adbb">&#9670;&nbsp;</a></span>SDL_INIT_NOPARACHUTE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_NOPARACHUTE = 0x00100000</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl init noparachute </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00150">150</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a4740032918cf55e473a3b68baab99f56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4740032918cf55e473a3b68baab99f56">&#9670;&nbsp;</a></span>SDL_INIT_EVERYTHING</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_EVERYTHING</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7a260c86ad12f262137955846c01c562">SDL_INIT_TIMER</a> | <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a54b41e49d861db3f761e2b6e17f78573">SDL_INIT_AUDIO</a> | <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae2fb35d543740864ac908f0a83d8517e">SDL_INIT_VIDEO</a> |</div>
+<div class="line">                                                <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aa2100976ef24a86f64d723af2f0e6c57">SDL_INIT_EVENTS</a> | <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2779a24f5bfedbb7b61a104b81b0ea56">SDL_INIT_JOYSTICK</a> | <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afd0f08e9ed3d4db8a4e2a53ffbe66452">SDL_INIT_HAPTIC</a> |</div>
+<div class="line">                                                <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a3a0949d872c8ad12a97ab8081e6de85f">SDL_INIT_GAMECONTROLLER</a> | <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af11bff3eb17e9943eb93094a54a0a5c5">SDL_INIT_SENSOR</a></div>
+</div><!-- fragment -->
+<p>The sdl init sensor </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00155">155</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4230,7 +5255,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The sdl mixer major version </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00113">113</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00192">192</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4256,7 +5281,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The sdl mixer minor version </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00118">118</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00197">197</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4282,7 +5307,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The sdl mixer patchlevel </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00123">123</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00202">202</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4308,7 +5333,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The mix channels </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00132">132</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00211">211</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4334,7 +5359,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The mix default frequency </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00137">137</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00216">216</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4358,11 +5383,11 @@ Static Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">            BitConverter.IsLittleEndian ? SDL.AUDIO_S16LSB : SDL.AUDIO_S16MSB</div>
+<div class="line">            BitConverter.IsLittleEndian ? <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a09726943cbe0c6a9edf11d826a5560b5">AUDIO_S16LSB</a> : <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2ba73ef13c5d65ce4ec1868340fb05b7">AUDIO_S16MSB</a></div>
 </div><!-- fragment -->
 <p>The audio s16msb </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00142">142</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00221">221</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4388,7 +5413,7 @@ Static Private Attributes</h2></td></tr>
 
 <p>The mix default channels </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00148">148</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00227">227</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
@@ -4414,18 +5439,674 @@ Static Private Attributes</h2></td></tr>
 
 <p>The mix max volume </p>
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00153">153</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00232">232</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a93e430251da6eb8e8722c5f0b3f1d027"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93e430251da6eb8e8722c5f0b3f1d027">&#9670;&nbsp;</a></span>AUDIO_U8</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U8 = 0x0008</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio u8 </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00274">274</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2185295e0a067bc6ec2cbe03367c4a36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2185295e0a067bc6ec2cbe03367c4a36">&#9670;&nbsp;</a></span>AUDIO_S8</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S8 = 0x8008</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio s8 </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00279">279</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a291a251721e7384a16681347579dff3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a291a251721e7384a16681347579dff3f">&#9670;&nbsp;</a></span>AUDIO_U16LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U16LSB = 0x0010</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio u16lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00284">284</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a09726943cbe0c6a9edf11d826a5560b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09726943cbe0c6a9edf11d826a5560b5">&#9670;&nbsp;</a></span>AUDIO_S16LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S16LSB = 0x8010</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio s16lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00289">289</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a0578fffd58bb58470ff1a7ff6802f29b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0578fffd58bb58470ff1a7ff6802f29b">&#9670;&nbsp;</a></span>AUDIO_U16MSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U16MSB = 0x1010</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio u16msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00294">294</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a2ba73ef13c5d65ce4ec1868340fb05b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ba73ef13c5d65ce4ec1868340fb05b7">&#9670;&nbsp;</a></span>AUDIO_S16MSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S16MSB = 0x9010</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio s16msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00299">299</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a1bb72527c822c7381a89328a80fe1fc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bb72527c822c7381a89328a80fe1fc2">&#9670;&nbsp;</a></span>AUDIO_U16</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U16 = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a291a251721e7384a16681347579dff3f">AUDIO_U16LSB</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio u16lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00304">304</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a19e0531ccfaaae7ba536981521c9955a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19e0531ccfaaae7ba536981521c9955a">&#9670;&nbsp;</a></span>AUDIO_S16</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S16 = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a09726943cbe0c6a9edf11d826a5560b5">AUDIO_S16LSB</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio s16lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00309">309</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="aad5e7ccf25f6b42880981a29e4312ff4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad5e7ccf25f6b42880981a29e4312ff4">&#9670;&nbsp;</a></span>AUDIO_S32LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S32LSB = 0x8020</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio s32lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00314">314</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a5728610b5558c4acf9ca8a501d5039db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5728610b5558c4acf9ca8a501d5039db">&#9670;&nbsp;</a></span>AUDIO_S32MSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S32MSB = 0x9020</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio s32msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00319">319</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a0e54a380771ddd5e43e268b674ae7a0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e54a380771ddd5e43e268b674ae7a0d">&#9670;&nbsp;</a></span>AUDIO_S32</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S32 = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aad5e7ccf25f6b42880981a29e4312ff4">AUDIO_S32LSB</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio s32lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00324">324</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="ad13d2d0062fde228eb0f724a9f82fe4b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad13d2d0062fde228eb0f724a9f82fe4b">&#9670;&nbsp;</a></span>AUDIO_F32LSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_F32LSB = 0x8120</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio f32lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00329">329</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="afe55a027556ba8948e845048a059e0b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe55a027556ba8948e845048a059e0b4">&#9670;&nbsp;</a></span>AUDIO_F32MSB</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_F32MSB = 0x9120</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio f32msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00334">334</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a31e4514c6c47cc106c018d857f924245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31e4514c6c47cc106c018d857f924245">&#9670;&nbsp;</a></span>AUDIO_F32</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_F32 = <a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad13d2d0062fde228eb0f724a9f82fe4b">AUDIO_F32LSB</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The audio f32lsb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00339">339</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a75ca2c00f7d78f3424320edd348a034a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75ca2c00f7d78f3424320edd348a034a">&#9670;&nbsp;</a></span>AUDIO_U16SYS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U16SYS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            BitConverter.IsLittleEndian ? <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a291a251721e7384a16681347579dff3f">AUDIO_U16LSB</a> : <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0578fffd58bb58470ff1a7ff6802f29b">AUDIO_U16MSB</a></div>
+</div><!-- fragment -->
+<p>The audio u16msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00344">344</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a545ca98c44fad2b1d35800a9de8c1013"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a545ca98c44fad2b1d35800a9de8c1013">&#9670;&nbsp;</a></span>AUDIO_S16SYS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S16SYS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            BitConverter.IsLittleEndian ? <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a09726943cbe0c6a9edf11d826a5560b5">AUDIO_S16LSB</a> : <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2ba73ef13c5d65ce4ec1868340fb05b7">AUDIO_S16MSB</a></div>
+</div><!-- fragment -->
+<p>The audio s16msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00350">350</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="af9acb66ca3435d250e9c6b82ec57045e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9acb66ca3435d250e9c6b82ec57045e">&#9670;&nbsp;</a></span>AUDIO_S32SYS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S32SYS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            BitConverter.IsLittleEndian ? <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aad5e7ccf25f6b42880981a29e4312ff4">AUDIO_S32LSB</a> : <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5728610b5558c4acf9ca8a501d5039db">AUDIO_S32MSB</a></div>
+</div><!-- fragment -->
+<p>The audio s32msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00356">356</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="abb4323a2a23c43f352a4efc01f8bed80"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb4323a2a23c43f352a4efc01f8bed80">&#9670;&nbsp;</a></span>AUDIO_F32SYS</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">readonly ushort Alis.Core.Audio.SDL.SDL_mixer.AUDIO_F32SYS</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">=</div>
+<div class="line">            BitConverter.IsLittleEndian ? <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad13d2d0062fde228eb0f724a9f82fe4b">AUDIO_F32LSB</a> : <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afe55a027556ba8948e845048a059e0b4">AUDIO_F32MSB</a></div>
+</div><!-- fragment -->
+<p>The audio f32msb </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00362">362</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae0b00e3c4e6a10e26136b40a6ec1f0a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0b00e3c4e6a10e26136b40a6ec1f0a0">&#9670;&nbsp;</a></span>SDL_AUDIO_ALLOW_FREQUENCY_CHANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_FREQUENCY_CHANGE = 0x00000001</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl audio allow frequency change </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00368">368</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a93d171dc14ba0c7eb1cd05c0eecf2e57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93d171dc14ba0c7eb1cd05c0eecf2e57">&#9670;&nbsp;</a></span>SDL_AUDIO_ALLOW_FORMAT_CHANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_FORMAT_CHANGE = 0x00000002</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl audio allow format change </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00373">373</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a20ddda0e78f3bdec0f0c5303c26f332c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20ddda0e78f3bdec0f0c5303c26f332c">&#9670;&nbsp;</a></span>SDL_AUDIO_ALLOW_CHANNELS_CHANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_CHANNELS_CHANGE = 0x00000004</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl audio allow channels change </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00378">378</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="ae00f164210a1346cdd333f3ddc2f2edd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae00f164210a1346cdd333f3ddc2f2edd">&#9670;&nbsp;</a></span>SDL_AUDIO_ALLOW_SAMPLES_CHANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_SAMPLES_CHANGE = 0x00000008</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl audio allow samples change </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00383">383</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="ac02b892541fff9de41b326379dd12a42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac02b892541fff9de41b326379dd12a42">&#9670;&nbsp;</a></span>SDL_AUDIO_ALLOW_ANY_CHANGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_ANY_CHANGE</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae0b00e3c4e6a10e26136b40a6ec1f0a0">SDL_AUDIO_ALLOW_FREQUENCY_CHANGE</a> |</div>
+<div class="line">                                                       <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a93d171dc14ba0c7eb1cd05c0eecf2e57">SDL_AUDIO_ALLOW_FORMAT_CHANGE</a> |</div>
+<div class="line">                                                       <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a20ddda0e78f3bdec0f0c5303c26f332c">SDL_AUDIO_ALLOW_CHANNELS_CHANGE</a> |</div>
+<div class="line">                                                       <a class="code" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae00f164210a1346cdd333f3ddc2f2edd">SDL_AUDIO_ALLOW_SAMPLES_CHANGE</a></div>
+</div><!-- fragment -->
+<p>The sdl audio allow samples change </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00388">388</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
+
+</div>
+</div>
+<a id="a8e9252ebbec04e61d94cadd000f3d652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e9252ebbec04e61d94cadd000f3d652">&#9670;&nbsp;</a></span>SDL_MIX_MAXVOLUME</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int Alis.Core.Audio.SDL.SDL_mixer.SDL_MIX_MAXVOLUME = 128</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The sdl mix maxvolume </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00396">396</a> of file <a class="el" href="../../d0/d97/_s_d_l__mixer_8cs_source.html">SDL_mixer.cs</a>.</p>
 
 </div>
 </div>
 </div><!-- contents -->
 </div><!-- doc-content -->
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a7a260c86ad12f262137955846c01c562"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a7a260c86ad12f262137955846c01c562">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_TIMER</a></div><div class="ttdeci">const uint SDL_INIT_TIMER</div><div class="ttdoc">The sdl init timer</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00110">SDL_mixer.cs:110</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a3a0949d872c8ad12a97ab8081e6de85f"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a3a0949d872c8ad12a97ab8081e6de85f">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_GAMECONTROLLER</a></div><div class="ttdeci">const uint SDL_INIT_GAMECONTROLLER</div><div class="ttdoc">The sdl init gamecontroller</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00135">SDL_mixer.cs:135</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_aad5e7ccf25f6b42880981a29e4312ff4"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aad5e7ccf25f6b42880981a29e4312ff4">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S32LSB</a></div><div class="ttdeci">const ushort AUDIO_S32LSB</div><div class="ttdoc">The audio s32lsb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00314">SDL_mixer.cs:314</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a291a251721e7384a16681347579dff3f"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a291a251721e7384a16681347579dff3f">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U16LSB</a></div><div class="ttdeci">const ushort AUDIO_U16LSB</div><div class="ttdoc">The audio u16lsb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00284">SDL_mixer.cs:284</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a09726943cbe0c6a9edf11d826a5560b5"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a09726943cbe0c6a9edf11d826a5560b5">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S16LSB</a></div><div class="ttdeci">const ushort AUDIO_S16LSB</div><div class="ttdoc">The audio s16lsb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00289">SDL_mixer.cs:289</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a2ba73ef13c5d65ce4ec1868340fb05b7"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2ba73ef13c5d65ce4ec1868340fb05b7">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S16MSB</a></div><div class="ttdeci">const ushort AUDIO_S16MSB</div><div class="ttdoc">The audio s16msb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00299">SDL_mixer.cs:299</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a5728610b5558c4acf9ca8a501d5039db"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a5728610b5558c4acf9ca8a501d5039db">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_S32MSB</a></div><div class="ttdeci">const ushort AUDIO_S32MSB</div><div class="ttdoc">The audio s32msb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00319">SDL_mixer.cs:319</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a54b41e49d861db3f761e2b6e17f78573"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a54b41e49d861db3f761e2b6e17f78573">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_AUDIO</a></div><div class="ttdeci">const uint SDL_INIT_AUDIO</div><div class="ttdoc">The sdl init audio</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00115">SDL_mixer.cs:115</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a0578fffd58bb58470ff1a7ff6802f29b"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a0578fffd58bb58470ff1a7ff6802f29b">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_U16MSB</a></div><div class="ttdeci">const ushort AUDIO_U16MSB</div><div class="ttdoc">The audio u16msb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00294">SDL_mixer.cs:294</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_ae2fb35d543740864ac908f0a83d8517e"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae2fb35d543740864ac908f0a83d8517e">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_VIDEO</a></div><div class="ttdeci">const uint SDL_INIT_VIDEO</div><div class="ttdoc">The sdl init video</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00120">SDL_mixer.cs:120</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_ae0b00e3c4e6a10e26136b40a6ec1f0a0"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae0b00e3c4e6a10e26136b40a6ec1f0a0">Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_FREQUENCY_CHANGE</a></div><div class="ttdeci">const uint SDL_AUDIO_ALLOW_FREQUENCY_CHANGE</div><div class="ttdoc">The sdl audio allow frequency change</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00368">SDL_mixer.cs:368</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a20ddda0e78f3bdec0f0c5303c26f332c"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a20ddda0e78f3bdec0f0c5303c26f332c">Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_CHANNELS_CHANGE</a></div><div class="ttdeci">const uint SDL_AUDIO_ALLOW_CHANNELS_CHANGE</div><div class="ttdoc">The sdl audio allow channels change</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00378">SDL_mixer.cs:378</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a93d171dc14ba0c7eb1cd05c0eecf2e57"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a93d171dc14ba0c7eb1cd05c0eecf2e57">Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_FORMAT_CHANGE</a></div><div class="ttdeci">const uint SDL_AUDIO_ALLOW_FORMAT_CHANGE</div><div class="ttdoc">The sdl audio allow format change</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00373">SDL_mixer.cs:373</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_afe55a027556ba8948e845048a059e0b4"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afe55a027556ba8948e845048a059e0b4">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_F32MSB</a></div><div class="ttdeci">const ushort AUDIO_F32MSB</div><div class="ttdoc">The audio f32msb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00334">SDL_mixer.cs:334</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_aa2100976ef24a86f64d723af2f0e6c57"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#aa2100976ef24a86f64d723af2f0e6c57">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_EVENTS</a></div><div class="ttdeci">const uint SDL_INIT_EVENTS</div><div class="ttdoc">The sdl init events</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00140">SDL_mixer.cs:140</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_ae00f164210a1346cdd333f3ddc2f2edd"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ae00f164210a1346cdd333f3ddc2f2edd">Alis.Core.Audio.SDL.SDL_mixer.SDL_AUDIO_ALLOW_SAMPLES_CHANGE</a></div><div class="ttdeci">const uint SDL_AUDIO_ALLOW_SAMPLES_CHANGE</div><div class="ttdoc">The sdl audio allow samples change</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00383">SDL_mixer.cs:383</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_afd0f08e9ed3d4db8a4e2a53ffbe66452"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#afd0f08e9ed3d4db8a4e2a53ffbe66452">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_HAPTIC</a></div><div class="ttdeci">const uint SDL_INIT_HAPTIC</div><div class="ttdoc">The sdl init haptic</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00130">SDL_mixer.cs:130</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_af11bff3eb17e9943eb93094a54a0a5c5"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#af11bff3eb17e9943eb93094a54a0a5c5">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_SENSOR</a></div><div class="ttdeci">const uint SDL_INIT_SENSOR</div><div class="ttdoc">The sdl init sensor</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00145">SDL_mixer.cs:145</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_ad13d2d0062fde228eb0f724a9f82fe4b"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#ad13d2d0062fde228eb0f724a9f82fe4b">Alis.Core.Audio.SDL.SDL_mixer.AUDIO_F32LSB</a></div><div class="ttdeci">const ushort AUDIO_F32LSB</div><div class="ttdoc">The audio f32lsb</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00329">SDL_mixer.cs:329</a></div></div>
+<div class="ttc" id="aclass_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer_html_a2779a24f5bfedbb7b61a104b81b0ea56"><div class="ttname"><a href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html#a2779a24f5bfedbb7b61a104b81b0ea56">Alis.Core.Audio.SDL.SDL_mixer.SDL_INIT_JOYSTICK</a></div><div class="ttdeci">const uint SDL_INIT_JOYSTICK</div><div class="ttdoc">The sdl init joystick</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d97/_s_d_l__mixer_8cs_source.html#l00125">SDL_mixer.cs:125</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../da/db0/namespace_alis_1_1_core_1_1_audio.html">Audio</a></li><li class="navelem"><a class="el" href="../../d0/dbe/namespace_alis_1_1_core_1_1_audio_1_1_s_d_l.html">SDL</a></li><li class="navelem"><a class="el" href="../../df/d9b/class_alis_1_1_core_1_1_audio_1_1_s_d_l_1_1_s_d_l__mixer.html">SDL_mixer</a></li>
     <li class="footer">
-      <a>Generated on | Sat May 27 2023 |</a>
+      <a>Generated on | Sun May 28 2023 |</a>
     </li>
   </ul>
 </div>
