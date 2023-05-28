@@ -32,30 +32,24 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Audio.SDL
 {
     /// <summary>
-    /// The sdl mixer class
+    ///     The sdl version
     /// </summary>
-    public static partial class SDL_mixer
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SDL_version
     {
         /// <summary>
-        ///     The sdl version
+        ///     The major
         /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SDL_version
-        {
-            /// <summary>
-            ///     The major
-            /// </summary>
-            public byte major;
+        public byte major;
 
-            /// <summary>
-            ///     The minor
-            /// </summary>
-            public byte minor;
+        /// <summary>
+        ///     The minor
+        /// </summary>
+        public byte minor;
 
-            /// <summary>
-            ///     The patch
-            /// </summary>
-            public byte patch;
-        }
+        /// <summary>
+        ///     The patch
+        /// </summary>
+        public byte patch;
     }
 }

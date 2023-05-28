@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SDL_AudioStatus.cs
+//  File:Mix_MusicType.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -30,23 +30,63 @@
 namespace Alis.Core.Audio.SDL
 {
     /// <summary>
-    ///     The sdl audiostatus enum
+    ///     The mix musictype enum
     /// </summary>
-    public enum SDL_AudioStatus
+    public enum Mix_MusicType
     {
         /// <summary>
-        ///     The sdl audio stopped sdl audiostatus
+        ///     The mus none mix musictype
         /// </summary>
-        SDL_AUDIO_STOPPED,
+        MUS_NONE,
 
         /// <summary>
-        ///     The sdl audio playing sdl audiostatus
+        ///     The mus cmd mix musictype
         /// </summary>
-        SDL_AUDIO_PLAYING,
+        MUS_CMD,
 
         /// <summary>
-        ///     The sdl audio paused sdl audiostatus
+        ///     The mus wav mix musictype
         /// </summary>
-        SDL_AUDIO_PAUSED
+        MUS_WAV,
+
+        /// <summary>
+        ///     The mus mod mix musictype
+        /// </summary>
+        MUS_MOD,
+
+        /// <summary>
+        ///     The mus mid mix musictype
+        /// </summary>
+        MUS_MID,
+
+        /// <summary>
+        ///     The mus ogg mix musictype
+        /// </summary>
+        MUS_OGG,
+
+        /// <summary>
+        ///     The mus mp3 mix musictype
+        /// </summary>
+        MUS_MP3,
+
+        /// <summary>
+        ///     The mus mp3 mad unused mix musictype
+        /// </summary>
+        MUS_MP3_MAD_UNUSED,
+
+        /// <summary>
+        ///     The mus flac mix musictype
+        /// </summary>
+        MUS_FLAC,
+
+        /// <summary>
+        ///     The mus modplug unused mix musictype
+        /// </summary>
+        MUS_MODPLUG_UNUSED,
+
+        /// <summary>
+        ///     The mus opus mix musictype
+        /// </summary>
+        MUS_OPUS
     }
 }

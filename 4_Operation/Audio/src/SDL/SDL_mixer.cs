@@ -42,7 +42,7 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The sdl mixer class
     /// </summary>
-    public static partial class SDL_mixer
+    public static class SDL_mixer
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SDL_mixer"/> class
@@ -232,43 +232,6 @@ namespace Alis.Core.Audio.SDL
         public static readonly byte MIX_MAX_VOLUME = 128;
 
         /// <summary>
-        ///     The mix initflags enum
-        /// </summary>
-        [Flags]
-        public enum MIX_InitFlags
-        {
-            /// <summary>
-            ///     The mix init flac mix initflags
-            /// </summary>
-            MIX_INIT_FLAC = 0x00000001,
-
-            /// <summary>
-            ///     The mix init mod mix initflags
-            /// </summary>
-            MIX_INIT_MOD = 0x00000002,
-
-            /// <summary>
-            ///     The mix init mp3 mix initflags
-            /// </summary>
-            MIX_INIT_MP3 = 0x00000008,
-
-            /// <summary>
-            ///     The mix init ogg mix initflags
-            /// </summary>
-            MIX_INIT_OGG = 0x00000010,
-
-            /// <summary>
-            ///     The mix init mid mix initflags
-            /// </summary>
-            MIX_INIT_MID = 0x00000020,
-
-            /// <summary>
-            ///     The mix init opus mix initflags
-            /// </summary>
-            MIX_INIT_OPUS = 0x00000040
-        }
-        
-        /// <summary>
         ///     The audio u8
         /// </summary>
         public const ushort AUDIO_U8 = 0x0008;
@@ -395,114 +358,6 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         public const int SDL_MIX_MAXVOLUME = 128;
 
-
-        /// <summary>
-        ///     The mix chunk
-        /// </summary>
-        public struct MIX_Chunk
-        {
-            /// <summary>
-            ///     The allocated
-            /// </summary>
-            public int allocated;
-
-            /// <summary>
-            ///     The abuf
-            /// </summary>
-            public IntPtr abuf; /* Uint8* */
-
-            /// <summary>
-            ///     The alen
-            /// </summary>
-            public uint alen;
-
-            /// <summary>
-            ///     The volume
-            /// </summary>
-            public byte volume;
-        }
-
-        /// <summary>
-        ///     The mix fading enum
-        /// </summary>
-        public enum Mix_Fading
-        {
-            /// <summary>
-            ///     The mix no fading mix fading
-            /// </summary>
-            MIX_NO_FADING,
-
-            /// <summary>
-            ///     The mix fading out mix fading
-            /// </summary>
-            MIX_FADING_OUT,
-
-            /// <summary>
-            ///     The mix fading in mix fading
-            /// </summary>
-            MIX_FADING_IN
-        }
-
-        /// <summary>
-        ///     The mix musictype enum
-        /// </summary>
-        public enum Mix_MusicType
-        {
-            /// <summary>
-            ///     The mus none mix musictype
-            /// </summary>
-            MUS_NONE,
-
-            /// <summary>
-            ///     The mus cmd mix musictype
-            /// </summary>
-            MUS_CMD,
-
-            /// <summary>
-            ///     The mus wav mix musictype
-            /// </summary>
-            MUS_WAV,
-
-            /// <summary>
-            ///     The mus mod mix musictype
-            /// </summary>
-            MUS_MOD,
-
-            /// <summary>
-            ///     The mus mid mix musictype
-            /// </summary>
-            MUS_MID,
-
-            /// <summary>
-            ///     The mus ogg mix musictype
-            /// </summary>
-            MUS_OGG,
-
-            /// <summary>
-            ///     The mus mp3 mix musictype
-            /// </summary>
-            MUS_MP3,
-
-            /// <summary>
-            ///     The mus mp3 mad unused mix musictype
-            /// </summary>
-            MUS_MP3_MAD_UNUSED,
-
-            /// <summary>
-            ///     The mus flac mix musictype
-            /// </summary>
-            MUS_FLAC,
-
-            /// <summary>
-            ///     The mus modplug unused mix musictype
-            /// </summary>
-            MUS_MODPLUG_UNUSED,
-
-            /// <summary>
-            ///     The mus opus mix musictype
-            /// </summary>
-            MUS_OPUS
-        }
 
         /// <summary>
         ///     The mix func delegate

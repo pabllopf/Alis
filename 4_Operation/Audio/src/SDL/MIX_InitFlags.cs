@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SDL_AudioStatus.cs
+//  File:MIX_InitFlags.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,26 +27,44 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Audio.SDL
 {
     /// <summary>
-    ///     The sdl audiostatus enum
+    ///     The mix initflags enum
     /// </summary>
-    public enum SDL_AudioStatus
+    [Flags]
+    public enum MIX_InitFlags
     {
         /// <summary>
-        ///     The sdl audio stopped sdl audiostatus
+        ///     The mix init flac mix initflags
         /// </summary>
-        SDL_AUDIO_STOPPED,
+        MIX_INIT_FLAC = 0x00000001,
 
         /// <summary>
-        ///     The sdl audio playing sdl audiostatus
+        ///     The mix init mod mix initflags
         /// </summary>
-        SDL_AUDIO_PLAYING,
+        MIX_INIT_MOD = 0x00000002,
 
         /// <summary>
-        ///     The sdl audio paused sdl audiostatus
+        ///     The mix init mp3 mix initflags
         /// </summary>
-        SDL_AUDIO_PAUSED
+        MIX_INIT_MP3 = 0x00000008,
+
+        /// <summary>
+        ///     The mix init ogg mix initflags
+        /// </summary>
+        MIX_INIT_OGG = 0x00000010,
+
+        /// <summary>
+        ///     The mix init mid mix initflags
+        /// </summary>
+        MIX_INIT_MID = 0x00000020,
+
+        /// <summary>
+        ///     The mix init opus mix initflags
+        /// </summary>
+        MIX_INIT_OPUS = 0x00000040
     }
 }
