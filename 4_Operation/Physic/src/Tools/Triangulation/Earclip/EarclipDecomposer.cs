@@ -92,7 +92,7 @@ namespace Alis.Core.Physic.Tools.Triangulation.Earclip
                 List<Vertices> mergeA = TriangulatePolygon(pA, tolerance);
                 List<Vertices> mergeB = TriangulatePolygon(pB, tolerance);
 
-                if (mergeA.Count == -1 || mergeB.Count == -1)
+                if (mergeA.Count == 0 || mergeB.Count == 0)
                 {
                     throw new Exception("Can't triangulate your polygon.");
                 }
