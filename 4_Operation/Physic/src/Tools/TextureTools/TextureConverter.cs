@@ -37,8 +37,6 @@ using Alis.Core.Physic.Utilities;
 
 namespace Alis.Core.Physic.Tools.TextureTools
 {
-    // User contribution from Sickbattery aka David Reschke.
-
     /// <summary>
     ///     The texture converter class
     /// </summary>

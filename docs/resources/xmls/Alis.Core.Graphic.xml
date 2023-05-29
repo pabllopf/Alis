@@ -46882,55 +46882,6 @@
                 Blending modes for drawing
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor">
-            <summary>
-                Enumeration of the blending factors
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.Zero">
-            <summary>(0, 0, 0, 0)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.One">
-            <summary>(1, 1, 1, 1)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.SrcColor">
-            <summary>(src.r, src.g, src.b, src.a)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.OneMinusSrcColor">
-            <summary>(1, 1, 1, 1) - (src.r, src.g, src.b, src.a)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.DstColor">
-            <summary>(dst.r, dst.g, dst.b, dst.a)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.OneMinusDstColor">
-            <summary>(1, 1, 1, 1) - (dst.r, dst.g, dst.b, dst.a)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.SrcAlpha">
-            <summary>(src.a, src.a, src.a, src.a)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.OneMinusSrcAlpha">
-            <summary>(1, 1, 1, 1) - (src.a, src.a, src.a, src.a)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.DstAlpha">
-            <summary>(dst.a, dst.a, dst.a, dst.a)</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor.OneMinusDstAlpha">
-            <summary>(1, 1, 1, 1) - (dst.a, dst.a, dst.a, dst.a)</summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.SFML.Graphics.BlendMode.Equation">
-            <summary>
-                Enumeration of the blending equations
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Equation.Add">
-            <summary>Pixel = Src * SrcFactor + Dst * DstFactor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Equation.Subtract">
-            <summary>Pixel = Src * SrcFactor - Dst * DstFactor</summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Equation.ReverseSubtract">
-            <summary>Pixel = Dst * DstFactor - Src * SrcFactor</summary>
-        </member>
         <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.Alpha">
             <summary>Blend source and dest according to dest alpha</summary>
         </member>
@@ -46943,14 +46894,14 @@
         <member name="F:Alis.Core.Graphic.SFML.Graphics.BlendMode.None">
             <summary>Overwrite dest with source</summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.BlendMode.#ctor(Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor,Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor)">
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.BlendMode.#ctor(Alis.Core.Graphic.SFML.Graphics.Factor,Alis.Core.Graphic.SFML.Graphics.Factor)">
             <summary>
                 Construct the blend mode given the factors and equation
             </summary>
             <param name="sourceFactor">Specifies how to compute the source factor for the color and alpha channels.</param>
             <param name="destinationFactor">Specifies how to compute the destination factor for the color and alpha channels.</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.BlendMode.#ctor(Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor,Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor,Alis.Core.Graphic.SFML.Graphics.BlendMode.Equation)">
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.BlendMode.#ctor(Alis.Core.Graphic.SFML.Graphics.Factor,Alis.Core.Graphic.SFML.Graphics.Factor,Alis.Core.Graphic.SFML.Graphics.Equation)">
             <summary>
                 Construct the blend mode given the factors and equation
             </summary>
@@ -46958,7 +46909,7 @@
             <param name="destinationFactor">Specifies how to compute the destination factor for the color and alpha channels.</param>
             <param name="blendEquation">Specifies how to combine the source and destination colors and alpha.</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.BlendMode.#ctor(Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor,Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor,Alis.Core.Graphic.SFML.Graphics.BlendMode.Equation,Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor,Alis.Core.Graphic.SFML.Graphics.BlendMode.Factor,Alis.Core.Graphic.SFML.Graphics.BlendMode.Equation)">
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.BlendMode.#ctor(Alis.Core.Graphic.SFML.Graphics.Factor,Alis.Core.Graphic.SFML.Graphics.Factor,Alis.Core.Graphic.SFML.Graphics.Equation,Alis.Core.Graphic.SFML.Graphics.Factor,Alis.Core.Graphic.SFML.Graphics.Factor,Alis.Core.Graphic.SFML.Graphics.Equation)">
             <summary>
                 Construct the blend mode given the factors and equation
             </summary>
@@ -47340,6 +47291,55 @@
             </summary>
             <param name="index">Index of the point to change, in range [0 .. PointCount - 1]</param>
             <param name="point">New position of the point</param>
+        </member>
+        <member name="T:Alis.Core.Graphic.SFML.Graphics.Equation">
+            <summary>
+                Enumeration of the blending equations
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Equation.Add">
+            <summary>Pixel = Src * SrcFactor + Dst * DstFactor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Equation.Subtract">
+            <summary>Pixel = Src * SrcFactor - Dst * DstFactor</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Equation.ReverseSubtract">
+            <summary>Pixel = Dst * DstFactor - Src * SrcFactor</summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SFML.Graphics.Factor">
+            <summary>
+                Enumeration of the blending factors
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.Zero">
+            <summary>(0, 0, 0, 0)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.One">
+            <summary>(1, 1, 1, 1)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.SrcColor">
+            <summary>(src.r, src.g, src.b, src.a)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.OneMinusSrcColor">
+            <summary>(1, 1, 1, 1) - (src.r, src.g, src.b, src.a)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.DstColor">
+            <summary>(dst.r, dst.g, dst.b, dst.a)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.OneMinusDstColor">
+            <summary>(1, 1, 1, 1) - (dst.r, dst.g, dst.b, dst.a)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.SrcAlpha">
+            <summary>(src.a, src.a, src.a, src.a)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.OneMinusSrcAlpha">
+            <summary>(1, 1, 1, 1) - (src.a, src.a, src.a, src.a)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.DstAlpha">
+            <summary>(dst.a, dst.a, dst.a, dst.a)</summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SFML.Graphics.Factor.OneMinusDstAlpha">
+            <summary>(1, 1, 1, 1) - (dst.a, dst.a, dst.a, dst.a)</summary>
         </member>
         <member name="T:Alis.Core.Graphic.SFML.Graphics.Font">
             <summary>

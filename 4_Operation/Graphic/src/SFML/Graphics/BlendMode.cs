@@ -40,61 +40,6 @@ namespace Alis.Core.Graphic.SFML.Graphics
     [StructLayout(LayoutKind.Sequential)]
     public struct BlendMode : IEquatable<BlendMode>
     {
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Enumeration of the blending factors
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        public enum Factor
-        {
-            /// <summary>(0, 0, 0, 0)</summary>
-            Zero,
-
-            /// <summary>(1, 1, 1, 1)</summary>
-            One,
-
-            /// <summary>(src.r, src.g, src.b, src.a)</summary>
-            SrcColor,
-
-            /// <summary>(1, 1, 1, 1) - (src.r, src.g, src.b, src.a)</summary>
-            OneMinusSrcColor,
-
-            /// <summary>(dst.r, dst.g, dst.b, dst.a)</summary>
-            DstColor,
-
-            /// <summary>(1, 1, 1, 1) - (dst.r, dst.g, dst.b, dst.a)</summary>
-            OneMinusDstColor,
-
-            /// <summary>(src.a, src.a, src.a, src.a)</summary>
-            SrcAlpha,
-
-            /// <summary>(1, 1, 1, 1) - (src.a, src.a, src.a, src.a)</summary>
-            OneMinusSrcAlpha,
-
-            /// <summary>(dst.a, dst.a, dst.a, dst.a)</summary>
-            DstAlpha,
-
-            /// <summary>(1, 1, 1, 1) - (dst.a, dst.a, dst.a, dst.a)</summary>
-            OneMinusDstAlpha
-        }
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Enumeration of the blending equations
-        /// </summary>
-        ////////////////////////////////////////////////////////////
-        public enum Equation
-        {
-            /// <summary>Pixel = Src * SrcFactor + Dst * DstFactor</summary>
-            Add,
-
-            /// <summary>Pixel = Src * SrcFactor - Dst * DstFactor</summary>
-            Subtract,
-
-            /// <summary>Pixel = Dst * DstFactor - Src * SrcFactor</summary>
-            ReverseSubtract
-        }
-
         /// <summary>Blend source and dest according to dest alpha</summary>
         public static readonly BlendMode Alpha = new BlendMode(Factor.SrcAlpha, Factor.OneMinusSrcAlpha, Equation.Add,
             Factor.One, Factor.OneMinusSrcAlpha, Equation.Add);
@@ -210,21 +155,21 @@ namespace Alis.Core.Graphic.SFML.Graphics
                                              AlphaEquation.GetHashCode();
 
         /// <summary>Source blending factor for the color channels</summary>
-        public Factor ColorSrcFactor;
+        public readonly Factor ColorSrcFactor;
 
         /// <summary>Destination blending factor for the color channels</summary>
-        public Factor ColorDstFactor;
+        public readonly Factor ColorDstFactor;
 
         /// <summary>Blending equation for the color channels</summary>
-        public Equation ColorEquation;
+        public readonly Equation ColorEquation;
 
         /// <summary>Source blending factor for the alpha channel</summary>
-        public Factor AlphaSrcFactor;
+        public readonly Factor AlphaSrcFactor;
 
         /// <summary>Destination blending factor for the alpha channel</summary>
-        public Factor AlphaDstFactor;
+        public readonly Factor AlphaDstFactor;
 
         /// <summary>Blending equation for the alpha channel</summary>
-        public Equation AlphaEquation;
+        public readonly Equation AlphaEquation;
     }
 }

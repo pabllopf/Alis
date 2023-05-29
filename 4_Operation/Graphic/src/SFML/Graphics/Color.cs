@@ -191,16 +191,16 @@ namespace Alis.Core.Graphic.SFML.Graphics
             (byte) (left.A * right.A / 255));
 
         /// <summary>Red component of the color</summary>
-        public byte R;
+        public readonly byte R;
 
         /// <summary>Green component of the color</summary>
-        public byte G;
+        public readonly byte G;
 
         /// <summary>Blue component of the color</summary>
-        public byte B;
+        public readonly byte B;
 
         /// <summary>Alpha (transparent) component of the color</summary>
-        public byte A;
+        public readonly byte A;
 
         /// <summary>Predefined black color</summary>
         public static readonly Color Black = new Color(0, 0, 0);

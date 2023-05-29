@@ -345,17 +345,47 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <summary>
         ///     The 02
         /// </summary>
-        internal float m00, m01, m02;
+        internal readonly float m00;
+
+        /// <summary>
+        ///     The 02
+        /// </summary>
+        internal readonly float m01;
+
+        /// <summary>
+        ///     The 02
+        /// </summary>
+        internal readonly float m02;
 
         /// <summary>
         ///     The 12
         /// </summary>
-        internal float m10, m11, m12;
+        internal readonly float m10;
+
+        /// <summary>
+        ///     The 12
+        /// </summary>
+        internal readonly float m11;
+
+        /// <summary>
+        ///     The 12
+        /// </summary>
+        internal readonly float m12;
 
         /// <summary>
         ///     The 22
         /// </summary>
-        internal float m20, m21, m22;
+        internal readonly float m20;
+
+        /// <summary>
+        ///     The 22
+        /// </summary>
+        internal readonly float m21;
+
+        /// <summary>
+        ///     The 22
+        /// </summary>
+        internal readonly float m22;
 
         /// <summary>
         ///     Sfs the transform get inverse using the specified transform
