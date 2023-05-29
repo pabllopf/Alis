@@ -5,7 +5,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr =
     [ "operator ImDrawChannelPtr", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#a97e08b448eb0c200fc205e4d84cbe206", null ],
     [ "operator ImDrawChannel *", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#aaa7f2fe694c849ec45e3e064b1853f7e", null ],
     [ "operator ImDrawChannelPtr", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#a71aa2bac671600fb62b8ea0419bec171", null ],
-    [ "_CmdBuffer", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#aea912b2884fe9d257e7bb942d72b9fcf", null ],
-    [ "_IdxBuffer", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#af248c8ad01f4e929d9a6659fc8d50984", null ],
+    [ "CmdBuffer", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#a8ff025969919af2b9c0a0bd2245515be", null ],
+    [ "IdxBuffer", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#a9283539fea647d12daa8f08d5f2f9d99", null ],
     [ "NativePtr", "d5/d95/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_channel_ptr.html#a5c3ba23185db63da7eeb5697c40eefea", null ]
 ];

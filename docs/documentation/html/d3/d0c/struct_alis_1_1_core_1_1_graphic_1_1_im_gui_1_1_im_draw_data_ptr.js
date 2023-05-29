@@ -8,7 +8,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr =
     [ "Clear", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#ac18772d53e43454ed8567352f5df29f6", null ],
     [ "DeIndexAllBuffers", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#a70fb71d36a8dae1cbf52fa6a24b85a81", null ],
     [ "Destroy", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#a249943412a5d896ef98f78897ec8fee9", null ],
-    [ "ScaleClipRects", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#a83560e771424f1c1d45bf8eca36a7aa8", null ],
+    [ "ScaleClipRects", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#ab711f8b1efef6c1d280132190261556c", null ],
     [ "CmdListsRange", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#ae3e85990aed9d94b07e9ac58b88e8504", null ],
     [ "Valid", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#a706c81823d851f4832c3c7b192de7654", null ],
     [ "CmdListsCount", "d3/d0c/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_data_ptr.html#a21e786be46ae8796df6080cfedd9fe50", null ],

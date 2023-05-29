@@ -6,7 +6,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr =
     [ "operator ImGuiStyle *", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#a7cb34f689e20febd035b87d02ca4f75c", null ],
     [ "operator ImGuiStylePtr", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#aea1898dbd8285a9e64ea39f9e87e2a95", null ],
     [ "Destroy", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#acdd6357ade9721f9a081ff0ddb9f7255", null ],
-    [ "ScaleAllSizes", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#a5b87840297663884355cc91e3b2c17ae", null ],
+    [ "ScaleAllSizes", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#a6ddafd9b8b98843022dea1f678350a83", null ],
     [ "Alpha", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#a282f8e1ec0d777c59afc773bd3cd9279", null ],
     [ "DisabledAlpha", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#a19233343a8d0b2faa588d9c1ca260179", null ],
     [ "WindowPadding", "d2/dfe/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_style_ptr.html#aeb5a59b4ebc8907e034d38b92fdda714", null ],

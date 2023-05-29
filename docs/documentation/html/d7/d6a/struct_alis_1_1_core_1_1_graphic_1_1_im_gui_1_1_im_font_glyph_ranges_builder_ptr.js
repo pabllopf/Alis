@@ -8,7 +8,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder
     [ "AddChar", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#afcbfb226d1c0cc90e38830422cedc904", null ],
     [ "AddRanges", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#a15e4978ba72086d8614efccb166e5c80", null ],
     [ "AddText", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#a5832c706b716e446dae14090014e1335", null ],
-    [ "BuildRanges", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#a228b17c6eed5b83fd0dc522a95c0ff26", null ],
+    [ "BuildRanges", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#a7d5318220c5ed6634a5c870ff6933cc9", null ],
     [ "Clear", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#a522238dc5cd00605a80ec96b7ee20e48", null ],
     [ "Destroy", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#a228739337550f9bda3fb6ffbf46f93a8", null ],
     [ "GetBit", "d7/d6a/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_font_glyph_ranges_builder_ptr.html#a0ebabd7b64bf1d4dcc6c4b08e97c611f", null ],

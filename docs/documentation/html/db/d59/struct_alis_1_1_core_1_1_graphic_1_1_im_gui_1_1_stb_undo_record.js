@@ -1,7 +1,7 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record =
 [
-    [ "where", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#a527cbc003e757436e46ecbe21367a13e", null ],
-    [ "insert_length", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#a139a15e09157ac62f009e26ea13f36e4", null ],
-    [ "delete_length", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#abf17f9fa88f234f1d96f581b2518f657", null ],
-    [ "char_storage", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#af5f9cb4cd99c8e8af849000dfa94e742", null ]
+    [ "Where", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#a7f7ce15a1190a2184366b581e4e5aebb", null ],
+    [ "InsertLength", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#ab8d49b941b64f7504d2778b88c695e37", null ],
+    [ "DeleteLength", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#a82bfdb7a3af16f42021b8058196edc3b", null ],
+    [ "CharStorage", "db/d59/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_stb_undo_record.html#a942f2c307761af5a81417cf54765dcb7", null ]
 ];
