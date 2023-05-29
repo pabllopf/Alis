@@ -516,10 +516,11 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     float vn1 = Vector2F.Dot(dv1, normal);
                     float vn2 = Vector2F.Dot(dv2, normal);
 
-                    Vector2F b = Vector2F.Zero;
-                    b.X = vn1 - cp1.VelocityBias;
-                    b.Y = vn2 - cp2.VelocityBias;
-
+                    Vector2F b = new Vector2F(
+                        vn1 - cp1.VelocityBias,
+                        vn2 - cp2.VelocityBias
+                        );
+                    
                     // Compute b'
                     b -= MathUtils.Mul(ref vc.K, a);
 
@@ -573,8 +574,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         //   0 = a11 * x1 + a12 * 0 + b1' 
                         // vn2 = a21 * x1 + a22 * 0 + b2'
                         //
-                        x.X = -cp1.NormalMass * b.X;
-                        x.Y = 0.0f;
+                        x = new Vector2F(-cp1.NormalMass * b.X, 0.0f);
                         vn1 = 0.0f;
                         vn2 = vc.K.Ex.Y * x.X + b.Y;
 
@@ -614,8 +614,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         // vn1 = a11 * 0 + a12 * x2 + b1' 
                         //   0 = a21 * 0 + a22 * x2 + b2'
                         //
-                        x.X = 0.0f;
-                        x.Y = -cp2.NormalMass * b.Y;
+                        x = new Vector2F(0.0f, -cp2.NormalMass * b.Y);
                         vn1 = vc.K.Ey.X * x.Y + b.X;
                         vn2 = 0.0f;
 
@@ -654,8 +653,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                         // 
                         // vn1 = b1
                         // vn2 = b2;
-                        x.X = 0.0f;
-                        x.Y = 0.0f;
+                        x = Vector2F.Zero;
                         vn1 = b.X;
                         vn2 = b.Y;
 

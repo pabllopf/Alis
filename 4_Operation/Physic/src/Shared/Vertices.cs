@@ -176,22 +176,22 @@ namespace Alis.Core.Physic.Shared
             {
                 if (this[i].X < lowerBound.X)
                 {
-                    lowerBound.X = this[i].X;
+                    lowerBound = new Vector2F(this[i].X, lowerBound.Y);
                 }
 
                 if (this[i].X > upperBound.X)
                 {
-                    upperBound.X = this[i].X;
+                    upperBound = new Vector2F(this[i].X, upperBound.Y);
                 }
 
                 if (this[i].Y < lowerBound.Y)
                 {
-                    lowerBound.Y = this[i].Y;
+                    lowerBound = new Vector2F(lowerBound.X, this[i].Y);
                 }
 
                 if (this[i].Y > upperBound.Y)
                 {
-                    upperBound.Y = this[i].Y;
+                    upperBound = new Vector2F(upperBound.X, this[i].Y);
                 }
             }
 
@@ -615,8 +615,11 @@ namespace Alis.Core.Physic.Shared
             {
                 Vector2F position = sourceArray[sourceIndex + x];
                 Vector2F destination = destinationArray[destinationIndex + x];
-                destination.X = position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41;
-                destination.Y = position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42;
+                destination = new Vector2F(
+                    position.X * matrix.M11 + position.Y * matrix.M21 + matrix.M41,
+                    position.X * matrix.M12 + position.Y * matrix.M22 + matrix.M42
+                );
+                
                 destinationArray[destinationIndex + x] = destination;
             }
         }

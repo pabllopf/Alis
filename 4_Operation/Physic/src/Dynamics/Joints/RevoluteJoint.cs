@@ -491,11 +491,13 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
-            k.Ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
-            k.Ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
-            k.Ex.Y = k.Ey.X;
-            k.Ey.Y = mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB;
-
+            k = new Matrix2X2F(
+                mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB,
+                -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
+                -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
+                mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB
+            );
+            
             axialMass = iA + iB;
             bool fixedRotation;
             if (axialMass > 0.0f)
@@ -617,9 +619,8 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F cdot = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
                 Vector2F impulse = k.Solve(-cdot);
 
-                this.impulse.X += impulse.X;
-                this.impulse.Y += impulse.Y;
-
+                this.impulse = new Vector2F(impulse.X, impulse.Y);
+                
                 vA -= mA * impulse;
                 wA -= iA * MathUtils.Cross(rA, impulse);
 
@@ -696,11 +697,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float mA = invMassA, mB = invMassB;
                 float iA = invIa, iB = invIb;
 
-                Matrix2X2F k;
-                k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
-                k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
-                k.Ey.X = k.Ex.Y;
-                k.Ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
+                Matrix2X2F k = new Matrix2X2F(
+                    mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y,
+                    -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
+                    -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
+                    mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X
+                    );
 
                 Vector2F impulse = -k.Solve(c);
 

@@ -349,11 +349,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float iA = invIa, iB = invIb;
 
             // Upper 2 by 2 of K for point to point
-            Matrix2X2F k = new Matrix2X2F();
-            k.Ex.X = mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y;
-            k.Ex.Y = -iA * rA.X * rA.Y - iB * rB.X * rB.Y;
-            k.Ey.X = k.Ex.Y;
-            k.Ey.Y = mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X;
+            Matrix2X2F k = new Matrix2X2F(
+                    mA + mB + iA * rA.Y * rA.Y + iB * rB.Y * rB.Y,
+                    -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
+                    -iA * rA.X * rA.Y - iB * rB.X * rB.Y,
+                    mA + mB + iA * rA.X * rA.X + iB * rB.X * rB.X
+                );
 
             linearMass = k.Inverse;
 

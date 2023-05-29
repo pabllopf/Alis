@@ -159,11 +159,12 @@ namespace Alis.Core.Physic.Utilities
         /// <param name="c">The </param>
         public static void MulT(ref Matrix2X2F a, ref Matrix2X2F b, out Matrix2X2F c)
         {
-            c = new Matrix2X2F();
-            c.Ex.X = a.Ex.X * b.Ex.X + a.Ex.Y * b.Ex.Y;
-            c.Ex.Y = a.Ey.X * b.Ex.X + a.Ey.Y * b.Ex.Y;
-            c.Ey.X = a.Ex.X * b.Ey.X + a.Ex.Y * b.Ey.Y;
-            c.Ey.Y = a.Ey.X * b.Ey.X + a.Ey.Y * b.Ey.Y;
+            c = new Matrix2X2F(
+                a.Ex.X * b.Ex.X + a.Ex.Y * b.Ex.Y,
+                a.Ey.X * b.Ex.X + a.Ey.Y * b.Ex.Y,
+                a.Ex.X * b.Ey.X + a.Ex.Y * b.Ey.Y,
+                a.Ey.X * b.Ey.X + a.Ey.Y * b.Ey.Y
+                );
         }
 
         /// <summary>Multiply a matrix times a vector.</summary>
@@ -543,9 +544,9 @@ namespace Alis.Core.Physic.Utilities
             }
 
             float invLength = 1.0f / length;
-            v.X *= invLength;
-            v.Y *= invLength;
-
+            
+            v = new Vector2F(v.X*invLength, v.Y*invLength);
+            
             return length;
         }
 

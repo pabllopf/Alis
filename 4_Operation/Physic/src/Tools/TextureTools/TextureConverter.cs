@@ -1087,8 +1087,8 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
             vertex1Index = 0;
             vertex2Index = 0;
-
-            foundEdgeCoord.Y = coordInsideThePolygon.Y;
+            
+            foundEdgeCoord = new Vector2F(foundEdgeCoord.X, coordInsideThePolygon.Y);
 
             if ((xCoords != null) && (xCoords.Count > 1) && (xCoords.Count % 2 == 0))
             {
@@ -1102,8 +1102,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
                         if (distance < shortestDistance)
                         {
                             shortestDistance = distance;
-                            foundEdgeCoord.X = xCoords[i];
-
+                            foundEdgeCoord = new Vector2F(xCoords[i], foundEdgeCoord.Y);
                             edgeCoordFound = true;
                         }
                     }

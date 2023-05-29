@@ -185,9 +185,9 @@ namespace Alis.Core.Aspect.Math.Vector
         public static explicit operator Vector2U(Vector2I v) => new Vector2U((uint) v.X, (uint) v.Y);
 
         /// <summary>X (horizontal) component of the vector</summary>
-        public int X;
+        public readonly int X;
 
         /// <summary>Y (vertical) component of the vector</summary>
-        public int Y;
+        public readonly int Y;
     }
 }

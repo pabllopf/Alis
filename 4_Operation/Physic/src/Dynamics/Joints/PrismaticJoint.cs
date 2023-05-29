@@ -743,9 +743,10 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             // Solve the prismatic constraint in block form.
             {
-                Vector2F cdot;
-                cdot.X = MathUtils.Dot(perp, vB - vA) + s2 * wB - s1 * wA;
-                cdot.Y = wB - wA;
+                Vector2F cdot = new Vector2F(
+                        MathUtils.Dot(perp, vB - vA) + s2 * wB - s1 * wA,
+                        wB - wA
+                    );
 
                 Vector2F df = k.Solve(-cdot);
                 impulse += df;
@@ -805,10 +806,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float s2 = MathUtils.Cross(rB, perp);
 
             Vector3F impulse;
-            Vector2F c1;
-            c1.X = Vector2F.Dot(perp, d);
-            c1.Y = aB - aA - ReferenceAngle;
-
+            Vector2F c1 = new Vector2F(
+                Vector2F.Dot(perp, d),
+                aB - aA - ReferenceAngle
+                );
+            
             float linearError = MathUtils.Abs(c1.X);
             float angularError = MathUtils.Abs(c1.Y);
 

@@ -130,12 +130,12 @@ namespace Alis.Core.Physic.Utilities
                 {
                     if (i - perPhase == 0 || i - perPhase * 3 == 0)
                     {
-                        posOffset.X *= -1;
+                        posOffset = new Vector2F(posOffset.X * -1, posOffset.Y);
                         phase--;
                     }
                     else if (i - perPhase * 2 == 0)
                     {
-                        posOffset.Y *= -1;
+                        posOffset = new Vector2F(posOffset.X, posOffset.Y * -1);
                         phase--;
                     }
 

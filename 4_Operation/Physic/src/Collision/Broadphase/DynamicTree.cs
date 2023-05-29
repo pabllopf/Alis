@@ -246,20 +246,20 @@ namespace Alis.Core.Physic.Collision.Broadphase
 
             if (d.X < 0.0f)
             {
-                fatAabb.LowerBound.X += d.X;
+                fatAabb.LowerBound = new Vector2F(fatAabb.LowerBound.X + d.X, fatAabb.LowerBound.Y);
             }
             else
             {
-                fatAabb.UpperBound.X += d.X;
+                fatAabb.UpperBound = new Vector2F(fatAabb.UpperBound.X + d.X, fatAabb.UpperBound.Y);
             }
 
             if (d.Y < 0.0f)
             {
-                fatAabb.LowerBound.Y += d.Y;
+                fatAabb.LowerBound = new Vector2F(fatAabb.LowerBound.X, fatAabb.LowerBound.Y + d.Y);
             }
             else
             {
-                fatAabb.UpperBound.Y += d.Y;
+                fatAabb.UpperBound = new Vector2F(fatAabb.UpperBound.X, fatAabb.UpperBound.Y + d.Y);
             }
 
             Aabb treeAabb = nodes[proxyId].Aabb;

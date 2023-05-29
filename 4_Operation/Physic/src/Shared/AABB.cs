@@ -247,11 +247,11 @@ namespace Alis.Core.Physic.Shared
                     {
                         if (i == 0)
                         {
-                            normal.X = s;
+                            normal = new Vector2F(s, normal.Y);
                         }
                         else
                         {
-                            normal.Y = s;
+                            normal = new Vector2F(normal.X, s);
                         }
 
                         tmin = t1;

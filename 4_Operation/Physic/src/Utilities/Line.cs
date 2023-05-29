@@ -123,8 +123,10 @@ namespace Alis.Core.Physic.Utilities
 
             if ((0 < ua) && (ua < 1) && (0 < ub) && (ub < 1))
             {
-                intersectionPoint.X = x1 + ua * (x2 - x1);
-                intersectionPoint.Y = y1 + ua * (y2 - y1);
+                intersectionPoint = new Vector2F(
+                    x1 + ua * (x2 - x1),
+                    y1 + ua * (y2 - y1)
+                    );
                 return true;
             }
 
@@ -154,8 +156,10 @@ namespace Alis.Core.Physic.Utilities
             if (!MathUtils.FloatEquals(det, 0))
             {
                 // lines are not parallel
-                i.X = (b2 * c1 - b1 * c2) / det;
-                i.Y = (a1 * c2 - a2 * c1) / det;
+                i = new Vector2F(
+                    (b2 * c1 - b1 * c2) / det,
+                    (a1 * c2 - a2 * c1) / det
+                    );
             }
 
             return i;
@@ -223,8 +227,11 @@ namespace Alis.Core.Physic.Utilities
                         if (ua != 0f || ub != 0f)
                         {
                             //There is an intersection
-                            point.X = point1.X + ua * b;
-                            point.Y = point1.Y + ua * d;
+                            point = new Vector2F(
+                                point1.X + ua * b,
+                                point1.Y + ua * d
+                                );
+                            
                             return true;
                         }
                     }

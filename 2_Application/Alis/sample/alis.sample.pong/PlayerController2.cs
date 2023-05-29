@@ -71,11 +71,11 @@ namespace Alis.Sample.Pong
             switch (key)
             {
                 case Key.Up:
-                    velocity.Y = 0;
+                    velocity = new Vector2F(velocity.X, 0);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.Down:
-                    velocity.Y = 0;
+                    velocity = new Vector2F(velocity.X, 0);
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
@@ -92,11 +92,11 @@ namespace Alis.Sample.Pong
             switch (key)
             {
                 case Key.Up:
-                    velocity.Y = -5;
+                    velocity = new Vector2F(velocity.X, -5);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.Down:
-                    velocity.Y = 5;
+                    velocity = new Vector2F(velocity.X, 5);
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
             }
@@ -119,11 +119,11 @@ namespace Alis.Sample.Pong
                 switch (button)
                 {
                     case Sdl.SdlGameControllerButton.SdlControllerButtonA:
-                        velocity.Y = 5;
+                        velocity = new Vector2F(velocity.X, 5);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
                     case Sdl.SdlGameControllerButton.SdlControllerButtonY:
-                        velocity.Y = -5;
+                        velocity = new Vector2F(velocity.X, -5);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
                 }
@@ -146,11 +146,11 @@ namespace Alis.Sample.Pong
                 switch (button)
                 {
                     case Sdl.SdlGameControllerButton.SdlControllerButtonA:
-                        velocity.Y = 0;
+                        velocity = new Vector2F(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         return;
                     case Sdl.SdlGameControllerButton.SdlControllerButtonY:
-                        velocity.Y = 0;
+                        velocity = new Vector2F(velocity.X, 0);
                         boxCollider.Body.LinearVelocity = velocity;
                         break;
                 }

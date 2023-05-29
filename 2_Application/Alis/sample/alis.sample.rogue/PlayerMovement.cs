@@ -94,22 +94,22 @@ namespace Alis.Sample.Rogue
             switch (key)
             {
                 case Key.D:
-                    velocity.X = 0;
+                    velocity = new Vector2F(0, velocity.Y);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.A:
-                    velocity.X = 0;
+                    velocity = new Vector2F(0, velocity.Y);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.W:
-                    velocity.Y = 0;
+                    velocity = new Vector2F(velocity.X, 0);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.S:
-                    velocity.Y = 0;
+                    velocity = new Vector2F(velocity.X, 0);
                     walk = false;
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
@@ -130,25 +130,25 @@ namespace Alis.Sample.Rogue
                 case Key.D:
                     walk = true;
                     animator.ChangeAnimationTo("WalkRight");
-                    velocity.X = 5;
+                    velocity = new Vector2F(5, velocity.Y);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.A:
                     walk = true;
                     animator.ChangeAnimationTo("WalkLeft");
-                    velocity.X = -5;
+                    velocity = new Vector2F(-5, velocity.Y);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.W:
                     walk = true;
                     animator.ChangeAnimationTo("WalkUp");
-                    velocity.Y = -5;
+                    velocity = new Vector2F(velocity.X, -5);
                     boxCollider.Body.LinearVelocity = velocity;
                     return;
                 case Key.S:
                     walk = true;
                     animator.ChangeAnimationTo("WalkDown");
-                    velocity.Y = 5;
+                    velocity = new Vector2F(velocity.X, 5);
                     boxCollider.Body.LinearVelocity = velocity;
                     break;
             }

@@ -331,12 +331,12 @@ namespace Alis.Core.Physic.Tools.PathGenerator
 
 
             Vector2F temp = Vector2F.Subtract(a, b);
-
+            
             Vector2F output = new Vector2F
-            {
-                X = -temp.Y,
-                Y = temp.X
-            };
+            (
+                -temp.Y,
+                temp.X
+            );
 
             output = Vector2F.Normalize(output);
 

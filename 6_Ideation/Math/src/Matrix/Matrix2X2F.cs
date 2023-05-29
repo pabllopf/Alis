@@ -60,10 +60,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public Matrix2X2F(float a11, float a12, float a21, float a22)
         {
-            Ex.X = a11;
-            Ex.Y = a21;
-            Ey.X = a12;
-            Ey.Y = a22;
+            Ex = new Vector2F(a11, a21);
+            Ey = new Vector2F(a12, a22);
         }
 
         /// <summary>
@@ -73,10 +71,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         public Matrix2X2F(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Ex.X = c;
-            Ey.X = -s;
-            Ex.Y = s;
-            Ey.Y = c;
+            Ex = new Vector2F(c, -s);
+            Ey = new Vector2F(s, c);
         }
 
         /// <summary>
@@ -95,10 +91,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         public void Set(float angle)
         {
             float c = (float) System.Math.Cos(angle), s = (float) System.Math.Sin(angle);
-            Ex.X = c;
-            Ey.X = -s;
-            Ex.Y = s;
-            Ey.Y = c;
+            Ex = new Vector2F(c, -s);
+            Ey = new Vector2F(s, c);
         }
 
         /// <summary>
@@ -106,10 +100,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public void SetIdentity()
         {
-            Ex.X = 1.0f;
-            Ey.X = 0.0f;
-            Ex.Y = 0.0f;
-            Ey.Y = 1.0f;
+            Ex = new Vector2F(1.0f, 0.0f);
+            Ey = new Vector2F(0.0f, 1.0f);
         }
 
         /// <summary>
@@ -117,10 +109,8 @@ namespace Alis.Core.Aspect.Math.Matrix
         /// </summary>
         public void SetZero()
         {
-            Ex.X = 0.0f;
-            Ey.X = 0.0f;
-            Ex.Y = 0.0f;
-            Ey.Y = 0.0f;
+            Ex = new Vector2F(0.0f, 0.0f);
+            Ey = new Vector2F(0.0f, 0.0f);
         }
 
         /// <summary>
@@ -137,14 +127,17 @@ namespace Alis.Core.Aspect.Math.Matrix
             float col2X = Ey.X;
             float col1Y = Ex.Y;
             float col2Y = Ey.Y;
-            Matrix2X2F matrix2X2F = new Matrix2X2F();
+            
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            matrix2X2F.Ex.X = det * col2Y;
-            matrix2X2F.Ey.X = -det * col2X;
-            matrix2X2F.Ex.Y = -det * col1Y;
-            matrix2X2F.Ey.Y = det * col1X;
+            
+            Matrix2X2F matrix2X2F = new Matrix2X2F(
+                det * col2Y,
+                -det * col2X,
+                -det * col1Y,
+                det * col1X
+                );
             return matrix2X2F;
         }
 
@@ -161,9 +154,10 @@ namespace Alis.Core.Aspect.Math.Matrix
             float det = col1X * col2Y - col2X * col1Y;
             //Box2DxDebug.Assert(det != 0.0f);
             det = 1.0f / det;
-            Vector2F x = new Vector2F();
-            x.X = det * (col2Y * b.X - col2X * b.Y);
-            x.Y = det * (col1X * b.Y - col1Y * b.X);
+            Vector2F x = new Vector2F(
+                det * (col2Y * b.X - col2X * b.Y),
+                det * (col1X * b.Y - col1Y * b.X)
+                );
             return x;
         }
 
@@ -198,13 +192,12 @@ namespace Alis.Core.Aspect.Math.Matrix
                     det = 1.0f / det;
                 }
 
-                Matrix2X2F result = new Matrix2X2F();
-                result.Ex.X = det * d;
-                result.Ex.Y = -det * c;
-
-                result.Ey.X = -det * b;
-                result.Ey.Y = det * a;
-
+                Matrix2X2F result = new Matrix2X2F(
+                    det * d,
+                    -det * c,
+                    -det * b,
+                    det * a
+                    );
                 return result;
             }
         }
