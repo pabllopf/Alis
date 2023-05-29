@@ -45,13 +45,13 @@ namespace Alis.Core.Aspect.Math.Vector
     public struct Vector3F : IEquatable<Vector3F>, IFormattable
     {
         /// <summary>The X component of the vector.</summary>
-        public float X;
+        public readonly float X;
 
         /// <summary>The Y component of the vector.</summary>
-        public float Y;
+        public readonly float Y;
 
         /// <summary>The Z component of the vector.</summary>
-        public float Z;
+        public readonly float Z;
 
         /// <summary>Creates a new <see cref="Vector3F" /> object whose three elements have the same value.</summary>
         /// <param name="value">The value to assign to all three elements.</param>

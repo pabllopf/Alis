@@ -331,17 +331,18 @@ namespace Alis.Core.Physic.Dynamics.Joints
             float mA = invMassA, mB = invMassB;
             float iA = invIa, iB = invIb;
 
-            Matrix3X3F kk;
-            kk.Ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
-            kk.Ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
-            kk.Ez.X = -rA.Y * iA - rB.Y * iB;
-            kk.Ex.Y = kk.Ey.X;
-            kk.Ey.Y = mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB;
-            kk.Ez.Y = rA.X * iA + rB.X * iB;
-            kk.Ex.Z = kk.Ez.X;
-            kk.Ey.Z = kk.Ez.Y;
-            kk.Ez.Z = iA + iB;
-
+            Matrix3X3F kk = new Matrix3X3F(
+                mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB,
+                -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
+                -rA.Y * iA - rB.Y * iB,
+                -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
+                mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB,
+                rA.X * iA + rB.X * iB,
+                -rA.Y * iA - rB.Y * iB,
+                rA.X * iA + rB.X * iB,
+                iA + iB
+                );
+            
             if (stiffness > 0.0f)
             {
                 kk.GetInverse22(ref mass);
@@ -363,7 +364,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 bias = c * h * k * gamma;
 
                 invM += gamma;
-                mass.Ez.Z = invM != 0.0f ? 1.0f / invM : 0.0f;
+                mass.Ez = new Vector3F(
+                    mass.Ez.X,
+                    mass.Ez.Y,
+                    invM != 0.0f ? 1.0f / invM : 0.0f
+                    );
             }
             else if (kk.Ez.Z == 0.0f)
             {
@@ -421,7 +426,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float cdot2 = wB - wA;
 
                 float impulse2 = -mass.Ez.Z * (cdot2 + bias + gamma * impulse.Z);
-                impulse.Z += impulse2;
+                impulse = new Vector3F(
+                    impulse.X,
+                    impulse.Y,
+                    impulse2
+                );
 
                 wA -= iA * impulse2;
                 wB += iB * impulse2;
@@ -429,8 +438,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 Vector2F cdot1 = vB + MathUtils.Cross(wB, rB) - vA - MathUtils.Cross(wA, rA);
 
                 Vector2F impulse1 = -MathUtils.Mul22(mass, cdot1);
-                impulse.X += impulse1.X;
-                impulse.Y += impulse1.Y;
+                impulse = new Vector3F(
+                    impulse1.X,
+                    impulse1.Y,
+                    impulse.Z
+                    );
 
                 Vector2F p = impulse1;
 
@@ -486,16 +498,17 @@ namespace Alis.Core.Physic.Dynamics.Joints
 
             float positionError, angularError;
 
-            Matrix3X3F k = new Matrix3X3F();
-            k.Ex.X = mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB;
-            k.Ey.X = -rA.Y * rA.X * iA - rB.Y * rB.X * iB;
-            k.Ez.X = -rA.Y * iA - rB.Y * iB;
-            k.Ex.Y = k.Ey.X;
-            k.Ey.Y = mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB;
-            k.Ez.Y = rA.X * iA + rB.X * iB;
-            k.Ex.Z = k.Ez.X;
-            k.Ey.Z = k.Ez.Y;
-            k.Ez.Z = iA + iB;
+            Matrix3X3F k = new Matrix3X3F(
+                mA + mB + rA.Y * rA.Y * iA + rB.Y * rB.Y * iB,
+                -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
+                -rA.Y * iA - rB.Y * iB,
+                -rA.Y * rA.X * iA - rB.Y * rB.X * iB,
+                mA + mB + rA.X * rA.X * iA + rB.X * rB.X * iB,
+                rA.X * iA + rB.X * iB,
+                -rA.Y * iA - rB.Y * iB,
+                rA.X * iA + rB.X * iB,
+                iA + iB
+                );
 
             if (stiffness > 0.0f)
             {

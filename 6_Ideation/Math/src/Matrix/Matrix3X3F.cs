@@ -136,15 +136,23 @@ namespace Alis.Core.Aspect.Math.Matrix
                 det = 1.0f / det;
             }
 
-            m.Ex.X = det * d;
-            m.Ey.X = -det * b;
-            m.Ex.Z = 0.0f;
-            m.Ex.Y = -det * c;
-            m.Ey.Y = det * a;
-            m.Ey.Z = 0.0f;
-            m.Ez.X = 0.0f;
-            m.Ez.Y = 0.0f;
-            m.Ez.Z = 0.0f;
+            m.Ex = new Vector3F(
+                det * d,
+                -det * b,
+                0.0f
+                );
+            
+            m.Ey = new Vector3F(
+                -det * b,
+                det * a,
+                0.0f
+            );
+            
+            m.Ez = new Vector3F(
+                0.0f,
+                0.0f,
+                0.0f
+            );
         }
 
         /// Get the symmetric inverse of this matrix as a 3-by-3.
@@ -160,18 +168,24 @@ namespace Alis.Core.Aspect.Math.Matrix
             float a11 = Ex.X, a12 = Ey.X, a13 = Ez.X;
             float a22 = Ey.Y, a23 = Ez.Y;
             float a33 = Ez.Z;
-
-            m.Ex.X = det * (a22 * a33 - a23 * a23);
-            m.Ex.Y = det * (a13 * a23 - a12 * a33);
-            m.Ex.Z = det * (a12 * a23 - a13 * a22);
-
-            m.Ey.X = m.Ex.Y;
-            m.Ey.Y = det * (a11 * a33 - a13 * a13);
-            m.Ey.Z = det * (a13 * a12 - a11 * a23);
-
-            m.Ez.X = m.Ex.Z;
-            m.Ez.Y = m.Ey.Z;
-            m.Ez.Z = det * (a11 * a22 - a12 * a12);
+            
+            m.Ex = new Vector3F(
+                det * (a22 * a33 - a23 * a23),
+                det * (a13 * a23 - a12 * a33),
+                det * (a12 * a23 - a13 * a22)
+            );
+            
+            m.Ey = new Vector3F(
+                det * (a13 * a23 - a12 * a33),
+                det * (a11 * a33 - a13 * a13),
+                det * (a13 * a12 - a11 * a23)
+            );
+            
+            m.Ez = new Vector3F(
+                det * (a12 * a23 - a13 * a22),
+                det * (a13 * a12 - a11 * a23),
+                det * (a11 * a22 - a12 * a12)
+            );
         }
 
         /// <summary>

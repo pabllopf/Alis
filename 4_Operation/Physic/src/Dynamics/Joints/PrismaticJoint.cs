@@ -859,10 +859,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 k.Ey = new Vector3F(k12, k22, k23);
                 k.Ez = new Vector3F(k13, k23, k33);
 
-                Vector3F c;
-                c.X = c1.X;
-                c.Y = c1.Y;
-                c.Z = c2;
+                Vector3F c = new Vector3F(
+                    c1.X,
+                    c1.Y,
+                    c2
+                    );
 
                 impulse = k.Solve33(-c);
             }
@@ -881,9 +882,12 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 k.Ey = new Vector2F(k12, k22);
 
                 Vector2F impulse1 = k.Solve(-c1);
-                impulse.X = impulse1.X;
-                impulse.Y = impulse1.Y;
-                impulse.Z = 0.0f;
+                impulse = new Vector3F(
+                    impulse1.X,
+                    impulse1.Y,
+                    0.0f
+                    );
+               
             }
 
             Vector2F p = impulse.X * perp + impulse.Z * axis;
