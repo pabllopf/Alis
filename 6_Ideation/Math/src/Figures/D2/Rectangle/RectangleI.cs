@@ -135,17 +135,21 @@ namespace Alis.Core.Aspect.Math.Figures.D2.Rectangle
             // If the intersection is valid (positive non zero area), then there is an intersection
             if ((interLeft < interRight) && (interTop < interBottom))
             {
-                overlap.Left = interLeft;
-                overlap.Top = interTop;
-                overlap.Width = interRight - interLeft;
-                overlap.Height = interBottom - interTop;
+                overlap = new RectangleI(
+                    
+                    interLeft,
+                    interTop,
+                    interRight - interLeft,
+                    interBottom - interTop);
                 return true;
             }
 
-            overlap.Left = 0;
-            overlap.Top = 0;
-            overlap.Width = 0;
-            overlap.Height = 0;
+            overlap = new RectangleI(
+                0,
+                0,
+                0,
+                0
+                );
             return false;
         }
 
@@ -222,16 +226,16 @@ namespace Alis.Core.Aspect.Math.Figures.D2.Rectangle
             r.Height);
 
         /// <summary>Left coordinate of the rectangle</summary>
-        public int Left;
+        public readonly int Left;
 
         /// <summary>Top coordinate of the rectangle</summary>
-        public int Top;
+        public readonly int Top;
 
         /// <summary>Width of the rectangle</summary>
-        public int Width;
+        public readonly int Width;
 
         /// <summary>Height of the rectangle</summary>
-        public int Height;
+        public readonly int Height;
     }
 
     ////////////////////////////////////////////////////////////
