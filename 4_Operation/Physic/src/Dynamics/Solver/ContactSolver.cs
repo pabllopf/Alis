@@ -523,9 +523,7 @@ namespace Alis.Core.Physic.Dynamics.Solver
                     // Compute b'
                     b -= MathUtils.Mul(ref vc.K, a);
 
-                    for (;;)
-                    {
-                        //
+                    //
                         // Case 1: vn = 0
                         //
                         // 0 = A * x + b'
@@ -679,10 +677,6 @@ namespace Alis.Core.Physic.Dynamics.Solver
                             cp1.NormalImpulse = x.X;
                             cp2.NormalImpulse = x.Y;
                         }
-
-                        // No solution, give up. This is hit sometimes, but it doesn't seem to matter.
-                        break;
-                    }
                 }
 
                 velocities[indexA].V = vA;
