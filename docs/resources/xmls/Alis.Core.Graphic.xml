@@ -27089,286 +27089,281 @@
                 The get string
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGenBuffers">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGenBuffers">
             <summary>
                 The gen buffers
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDeleteBuffers">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteBuffers">
             <summary>
                 The delete buffers
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlViewport">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glViewport">
             <summary>
                 The viewport
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlClearColor">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glClearColor">
             <summary>
                 The clear color
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlClear">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glClear">
             <summary>
                 The clear
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlEnable">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glEnable">
             <summary>
                 The enable
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDisable">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDisable">
             <summary>
                 The disable
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlBlendEquation">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBlendEquation">
             <summary>
                 The blend equation
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlBlendFunc">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBlendFunc">
             <summary>
                 The blend func
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUseProgram">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUseProgram">
             <summary>
                 The use program
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetShaderiv">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetShaderiv">
             <summary>
                 The get shaderiv
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetShaderInfoLog">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetShaderInfoLog">
             <summary>
                 The get shader info log del
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlCreateShader">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glCreateShader">
             <summary>
                 The create shader
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlShaderSource">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glShaderSource">
             <summary>
                 The shader source del
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlCompileShader">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glCompileShader">
             <summary>
                 The compile shader
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDeleteShader">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteShader">
             <summary>
                 The delete shader
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetProgramiv">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetProgramiv">
             <summary>
                 The get programiv
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetProgramInfoLog">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetProgramInfoLog">
             <summary>
                 The get program info log del
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlCreateProgram">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glCreateProgram">
             <summary>
                 The create program
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlAttachShader">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glAttachShader">
             <summary>
                 The attach shader
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlLinkProgram">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glLinkProgram">
             <summary>
                 The link program
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetUniformLocation">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetUniformLocation">
             <summary>
                 The get uniform location
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetAttribLocation">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetAttribLocation">
             <summary>
                 The get attrib location
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDetachShader">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDetachShader">
             <summary>
                 The detach shader
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDeleteProgram">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteProgram">
             <summary>
                 The delete program
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetActiveAttrib">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetActiveAttrib">
             <summary>
                 The get active attrib
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGetActiveUniform">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGetActiveUniform">
             <summary>
                 The get active uniform
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniform1F">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform1F">
             <summary>
                 The uniform 1f
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniform2F">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform2F">
             <summary>
                 The uniform 2f
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniform3F">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform3F">
             <summary>
                 The uniform 3f
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniform4F">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform4F">
             <summary>
                 The uniform 4f
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniform1I">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform1I">
             <summary>
                 The uniform 1i
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniform3Fv">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform3Fv">
             <summary>
                 The uniform 3fv
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniform4Fv">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniform4Fv">
             <summary>
                 The uniform 4fv
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniformMatrix3Fv">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniformMatrix3Fv">
             <summary>
                 The uniform matrix 3fv del
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlUniformMatrix4Fv">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glUniformMatrix4Fv">
             <summary>
                 The uniform matrix 4fv del
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlBindSampler">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindSampler">
             <summary>
                 The bind sampler
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlBindVertexArray">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindVertexArray">
             <summary>
                 The bind vertex array
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlBindBuffer">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindBuffer">
             <summary>
                 The bind buffer
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlEnableVertexAttribArray">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glEnableVertexAttribArray">
             <summary>
                 The enable vertex attrib array del
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDisableVertexAttribArray">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDisableVertexAttribArray">
             <summary>
                 The disable vertex attrib array
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlVertexAttribPointer">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glVertexAttribPointer">
             <summary>
                 The vertex attrib pointer del
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlBindTexture">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBindTexture">
             <summary>
                 The bind texture
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlBufferData">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glBufferData">
             <summary>
                 The buffer data
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlScissor">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glScissor">
             <summary>
                 The scissor
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDrawElementsBaseVertex">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDrawElementsBaseVertex">
             <summary>
                 The draw elements base vertex
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDeleteVertexArrays">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteVertexArrays">
             <summary>
                 The delete vertex arrays
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGenVertexArrays">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGenVertexArrays">
             <summary>
                 The gen vertex arrays
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlGenTextures">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glGenTextures">
             <summary>
                 The gen textures
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlPixelStorei">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glPixelStorei">
             <summary>
                 The pixel storei
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlTexImage2D">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glTexImage2D">
             <summary>
                 The tex image
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlTexParameteri">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glTexParameteri">
             <summary>
                 The tex parameteri
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.OpenGL.Gl.GlDeleteTextures">
+        <member name="F:Alis.Core.Graphic.OpenGL.Gl.glDeleteTextures">
             <summary>
                 The delete textures
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.Gl._``1">
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl._``1(System.String)">
             <summary>
                 S
             </summary>
+            <param name="command"></param>
             <typeparam name="T">The </typeparam>
             <exception cref="T:System.Exception">nogo: {method} from {typeof(T).Name}</exception>
             <returns>The</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.Gl._Del``1">
-            <summary>
-                Alternate delegate fetcher for when our delegate Type ends in "Del". These happen when the method needs a wrapper
-                in GL.Utils.
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.OpenGL.Gl.GlGetString(Alis.Core.Graphic.OpenGL.Gl.StringName)">
+        <member name="M:Alis.Core.Graphic.OpenGL.Gl.glGetString(Alis.Core.Graphic.OpenGL.Gl.StringName)">
             <summary>
                 Gls the get string using the specified pname
             </summary>

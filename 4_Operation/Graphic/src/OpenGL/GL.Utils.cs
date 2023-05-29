@@ -60,7 +60,7 @@ namespace Alis.Core.Graphic.OpenGL
         public static uint GenBuffer()
         {
             Uint1[0] = 0;
-            GlGenBuffers(1, Uint1);
+            glGenBuffers(1, Uint1);
             return Uint1[0];
         }
 
@@ -71,7 +71,7 @@ namespace Alis.Core.Graphic.OpenGL
         public static void DeleteBuffer(uint buffer)
         {
             Uint1[0] = 0;
-            GlDeleteBuffers(1, Uint1);
+            glDeleteBuffers(1, Uint1);
             Uint1[0] = 0;
         }
 
@@ -82,14 +82,14 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The string</returns>
         public static string GetShaderInfoLog(uint shader)
         {
-            GlGetShaderiv(shader, ShaderParameter.InfoLogLength, Int1);
+            glGetShaderiv(shader, ShaderParameter.InfoLogLength, Int1);
             if (Int1[0] == 0)
             {
                 return string.Empty;
             }
 
             StringBuilder sb = new StringBuilder(Int1[0]);
-            GlGetShaderInfoLog(shader, sb.Capacity, Int1, sb);
+            glGetShaderInfoLog(shader, sb.Capacity, Int1, sb);
             return sb.ToString();
         }
 
@@ -101,7 +101,7 @@ namespace Alis.Core.Graphic.OpenGL
         public static void ShaderSource(uint shader, string source)
         {
             Int1[0] = source.Length;
-            GlShaderSource(shader, 1, new[] {source}, Int1);
+            glShaderSource(shader, 1, new[] {source}, Int1);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The bool</returns>
         public static bool GetShaderCompileStatus(uint shader)
         {
-            GlGetShaderiv(shader, ShaderParameter.CompileStatus, Int1);
+            glGetShaderiv(shader, ShaderParameter.CompileStatus, Int1);
             return Int1[0] == 1;
         }
 
@@ -122,14 +122,14 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The string</returns>
         public static string GetProgramInfoLog(uint program)
         {
-            GlGetProgramiv(program, ProgramParameter.InfoLogLength, Int1);
+            glGetProgramiv(program, ProgramParameter.InfoLogLength, Int1);
             if (Int1[0] == 0)
             {
                 return string.Empty;
             }
 
             StringBuilder sb = new StringBuilder(Int1[0]);
-            GlGetProgramInfoLog(program, sb.Capacity, Int1, sb);
+            glGetProgramInfoLog(program, sb.Capacity, Int1, sb);
             return sb.ToString();
         }
 
@@ -140,7 +140,7 @@ namespace Alis.Core.Graphic.OpenGL
         /// <returns>The bool</returns>
         public static bool GetProgramLinkStatus(uint program)
         {
-            GlGetProgramiv(program, ProgramParameter.LinkStatus, Int1);
+            glGetProgramiv(program, ProgramParameter.LinkStatus, Int1);
             return Int1[0] == 1;
         }
 
@@ -169,7 +169,7 @@ namespace Alis.Core.Graphic.OpenGL
             Matrix4Float[14] = param.M43;
             Matrix4Float[15] = param.M44;
 
-            GlUniformMatrix4Fv(location, 1, false, Matrix4Float);
+            glUniformMatrix4Fv(location, 1, false, Matrix4Float);
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace Alis.Core.Graphic.OpenGL
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
-            GlVertexAttribPointer((uint) index, size, type, normalized, stride, pointer);
+            glVertexAttribPointer((uint) index, size, type, normalized, stride, pointer);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace Alis.Core.Graphic.OpenGL
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
-            GlEnableVertexAttribArray((uint) index);
+            glEnableVertexAttribArray((uint) index);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Alis.Core.Graphic.OpenGL
         public static uint GenVertexArray()
         {
             Uint1[0] = 0;
-            GlGenVertexArrays(1, Uint1);
+            glGenVertexArrays(1, Uint1);
             return Uint1[0];
         }
 
@@ -225,7 +225,7 @@ namespace Alis.Core.Graphic.OpenGL
         public static void DeleteVertexArray(uint vao)
         {
             Uint1[0] = vao;
-            GlDeleteVertexArrays(1, Uint1);
+            glDeleteVertexArrays(1, Uint1);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Alis.Core.Graphic.OpenGL
         public static uint GenTexture()
         {
             Uint1[0] = 0;
-            GlGenTextures(1, Uint1);
+            glGenTextures(1, Uint1);
             return Uint1[0];
         }
 
@@ -246,7 +246,7 @@ namespace Alis.Core.Graphic.OpenGL
         public static void DeleteTexture(uint texture)
         {
             Uint1[0] = texture;
-            GlDeleteTextures(1, Uint1);
+            glDeleteTextures(1, Uint1);
         }
     }
 }

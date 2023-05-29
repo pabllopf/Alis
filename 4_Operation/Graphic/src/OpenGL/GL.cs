@@ -360,313 +360,297 @@ namespace Alis.Core.Graphic.OpenGL
         /// <summary>
         ///     The get string
         /// </summary>
-        private static GetString _getString = _<GetString>();
+        private static GetString _getString = _<GetString>("glGetString");
 
         /// <summary>
         ///     The gen buffers
         /// </summary>
-        public static GenBuffers GlGenBuffers = _<GenBuffers>();
+        public static GenBuffers glGenBuffers = _<GenBuffers>("glGenBuffers");
 
         /// <summary>
         ///     The delete buffers
         /// </summary>
-        public static DeleteBuffers GlDeleteBuffers = _<DeleteBuffers>();
+        public static DeleteBuffers glDeleteBuffers = _<DeleteBuffers>("glDeleteBuffers");
 
         /// <summary>
         ///     The viewport
         /// </summary>
-        public static Viewport GlViewport = _<Viewport>();
+        public static Viewport glViewport = _<Viewport>("glViewport");
 
         /// <summary>
         ///     The clear color
         /// </summary>
-        public static ClearColor GlClearColor = _<ClearColor>();
+        public static ClearColor glClearColor = _<ClearColor>("glClearColor");
 
         /// <summary>
         ///     The clear
         /// </summary>
-        public static Clear GlClear = _<Clear>();
+        public static Clear glClear = _<Clear>("glClear");
 
         /// <summary>
         ///     The enable
         /// </summary>
-        public static Enable GlEnable = _<Enable>();
+        public static Enable glEnable = _<Enable>("glEnable");
 
         /// <summary>
         ///     The disable
         /// </summary>
-        public static Disable GlDisable = _<Disable>();
+        public static Disable glDisable = _<Disable>("glDisable");
 
         /// <summary>
         ///     The blend equation
         /// </summary>
-        public static BlendEquation GlBlendEquation = _<BlendEquation>();
+        public static BlendEquation glBlendEquation = _<BlendEquation>("glBlendEquation");
 
         /// <summary>
         ///     The blend func
         /// </summary>
-        public static BlendFunc GlBlendFunc = _<BlendFunc>();
+        public static BlendFunc glBlendFunc = _<BlendFunc>("glBlendFunc");
 
         /// <summary>
         ///     The use program
         /// </summary>
-        public static UseProgram GlUseProgram = _<UseProgram>();
+        public static UseProgram glUseProgram = _<UseProgram>("glUseProgram");
 
         /// <summary>
         ///     The get shaderiv
         /// </summary>
-        public static GetShaderiv GlGetShaderiv = _<GetShaderiv>();
+        public static GetShaderiv glGetShaderiv = _<GetShaderiv>("glGetShaderiv");
 
         /// <summary>
         ///     The get shader info log del
         /// </summary>
-        public static GetShaderInfoLogDel GlGetShaderInfoLog = _Del<GetShaderInfoLogDel>();
+        public static GetShaderInfoLogDel glGetShaderInfoLog = _<GetShaderInfoLogDel>("glGetShaderInfoLog");
 
         /// <summary>
         ///     The create shader
         /// </summary>
-        public static CreateShader GlCreateShader = _<CreateShader>();
+        public static CreateShader glCreateShader = _<CreateShader>("glCreateShader");
 
         /// <summary>
         ///     The shader source del
         /// </summary>
-        public static ShaderSourceDel GlShaderSource = _Del<ShaderSourceDel>();
+        public static ShaderSourceDel glShaderSource = _<ShaderSourceDel>("glShaderSource");
 
         /// <summary>
         ///     The compile shader
         /// </summary>
-        public static CompileShader GlCompileShader = _<CompileShader>();
+        public static CompileShader glCompileShader = _<CompileShader>("glCompileShader");
 
         /// <summary>
         ///     The delete shader
         /// </summary>
-        public static DeleteShader GlDeleteShader = _<DeleteShader>();
+        public static DeleteShader glDeleteShader = _<DeleteShader>("glDeleteShader");
 
         /// <summary>
         ///     The get programiv
         /// </summary>
-        public static GetProgramiv GlGetProgramiv = _<GetProgramiv>();
+        public static GetProgramiv glGetProgramiv = _<GetProgramiv>("glGetProgramiv");
 
         /// <summary>
         ///     The get program info log del
         /// </summary>
-        public static GetProgramInfoLogDel GlGetProgramInfoLog = _Del<GetProgramInfoLogDel>();
+        public static GetProgramInfoLogDel glGetProgramInfoLog = _<GetProgramInfoLogDel>("glGetProgramInfoLog");
 
         /// <summary>
         ///     The create program
         /// </summary>
-        public static CreateProgram GlCreateProgram = _<CreateProgram>();
+        public static CreateProgram glCreateProgram = _<CreateProgram>("glCreateProgram");
 
         /// <summary>
         ///     The attach shader
         /// </summary>
-        public static AttachShader GlAttachShader = _<AttachShader>();
+        public static AttachShader glAttachShader = _<AttachShader>("glAttachShader");
 
         /// <summary>
         ///     The link program
         /// </summary>
-        public static LinkProgram GlLinkProgram = _<LinkProgram>();
+        public static LinkProgram glLinkProgram = _<LinkProgram>("glLinkProgram");
 
         /// <summary>
         ///     The get uniform location
         /// </summary>
-        public static GetUniformLocation GlGetUniformLocation = _<GetUniformLocation>();
+        public static GetUniformLocation glGetUniformLocation = _<GetUniformLocation>("glGetUniformLocation");
 
         /// <summary>
         ///     The get attrib location
         /// </summary>
-        public static GetAttribLocation GlGetAttribLocation = _<GetAttribLocation>();
+        public static GetAttribLocation glGetAttribLocation = _<GetAttribLocation>("glGetAttribLocation");
 
         /// <summary>
         ///     The detach shader
         /// </summary>
-        public static DetachShader GlDetachShader = _<DetachShader>();
+        public static DetachShader glDetachShader = _<DetachShader>("glDetachShader");
 
         /// <summary>
         ///     The delete program
         /// </summary>
-        public static DeleteProgram GlDeleteProgram = _<DeleteProgram>();
+        public static DeleteProgram glDeleteProgram = _<DeleteProgram>("glDeleteProgram");
 
         /// <summary>
         ///     The get active attrib
         /// </summary>
-        public static GetActiveAttrib GlGetActiveAttrib = _<GetActiveAttrib>();
+        public static GetActiveAttrib glGetActiveAttrib = _<GetActiveAttrib>("glGetActiveAttrib");
 
         /// <summary>
         ///     The get active uniform
         /// </summary>
-        public static GetActiveUniform GlGetActiveUniform = _<GetActiveUniform>();
+        public static GetActiveUniform glGetActiveUniform = _<GetActiveUniform>("glGetActiveUniform");
 
         /// <summary>
         ///     The uniform 1f
         /// </summary>
-        public static Uniform1F GlUniform1F = _<Uniform1F>();
+        public static Uniform1F glUniform1F = _<Uniform1F>("glUniform1f");
 
         /// <summary>
         ///     The uniform 2f
         /// </summary>
-        public static Uniform2F GlUniform2F = _<Uniform2F>();
+        public static Uniform2F glUniform2F = _<Uniform2F>("glUniform2f");
 
         /// <summary>
         ///     The uniform 3f
         /// </summary>
-        public static Uniform3F GlUniform3F = _<Uniform3F>();
+        public static Uniform3F glUniform3F = _<Uniform3F>("glUniform3f");
 
         /// <summary>
         ///     The uniform 4f
         /// </summary>
-        public static Uniform4F GlUniform4F = _<Uniform4F>();
+        public static Uniform4F glUniform4F = _<Uniform4F>("glUniform4f");
 
         /// <summary>
         ///     The uniform 1i
         /// </summary>
-        public static Uniform1I GlUniform1I = _<Uniform1I>();
+        public static Uniform1I glUniform1I = _<Uniform1I>("glUniform1i");
 
         /// <summary>
         ///     The uniform 3fv
         /// </summary>
-        public static Uniform3Fv GlUniform3Fv = _<Uniform3Fv>();
+        public static Uniform3Fv glUniform3Fv = _<Uniform3Fv>("glUniform3fv");
 
         /// <summary>
         ///     The uniform 4fv
         /// </summary>
-        public static Uniform4Fv GlUniform4Fv = _<Uniform4Fv>();
+        public static Uniform4Fv glUniform4Fv = _<Uniform4Fv>("glUniform4fv");
 
         /// <summary>
         ///     The uniform matrix 3fv del
         /// </summary>
-        public static UniformMatrix3FvDel GlUniformMatrix3Fv = _Del<UniformMatrix3FvDel>();
+        public static UniformMatrix3FvDel glUniformMatrix3Fv = _<UniformMatrix3FvDel>("glUniformMatrix3fv");
 
         /// <summary>
         ///     The uniform matrix 4fv del
         /// </summary>
-        public static UniformMatrix4FvDel GlUniformMatrix4Fv = _Del<UniformMatrix4FvDel>();
+        public static UniformMatrix4FvDel glUniformMatrix4Fv = _<UniformMatrix4FvDel>("glUniformMatrix4fv");
 
         /// <summary>
         ///     The bind sampler
         /// </summary>
-        public static BindSampler GlBindSampler = _<BindSampler>();
+        public static BindSampler glBindSampler = _<BindSampler>("glBindSampler");
 
         /// <summary>
         ///     The bind vertex array
         /// </summary>
-        public static BindVertexArray GlBindVertexArray = _<BindVertexArray>();
+        public static BindVertexArray glBindVertexArray = _<BindVertexArray>("glBindVertexArray");
 
         /// <summary>
         ///     The bind buffer
         /// </summary>
-        public static BindBuffer GlBindBuffer = _<BindBuffer>();
+        public static BindBuffer glBindBuffer = _<BindBuffer>("glBindBuffer");
 
         /// <summary>
         ///     The enable vertex attrib array del
         /// </summary>
-        public static EnableVertexAttribArrayDel GlEnableVertexAttribArray = _Del<EnableVertexAttribArrayDel>();
+        public static EnableVertexAttribArrayDel glEnableVertexAttribArray = _<EnableVertexAttribArrayDel>("glEnableVertexAttribArray");
 
         /// <summary>
         ///     The disable vertex attrib array
         /// </summary>
-        public static DisableVertexAttribArray GlDisableVertexAttribArray = _<DisableVertexAttribArray>();
+        public static DisableVertexAttribArray glDisableVertexAttribArray = _<DisableVertexAttribArray>("glDisableVertexAttribArray");
 
         /// <summary>
         ///     The vertex attrib pointer del
         /// </summary>
-        public static VertexAttribPointerDel GlVertexAttribPointer = _Del<VertexAttribPointerDel>();
+        public static VertexAttribPointerDel glVertexAttribPointer = _<VertexAttribPointerDel>("glVertexAttribPointer");
 
         /// <summary>
         ///     The bind texture
         /// </summary>
-        public static BindTexture GlBindTexture = _<BindTexture>();
+        public static BindTexture glBindTexture = _<BindTexture>("glBindTexture");
 
         /// <summary>
         ///     The buffer data
         /// </summary>
-        public static BufferData GlBufferData = _<BufferData>();
+        public static BufferData glBufferData = _<BufferData>("glBufferData");
 
         /// <summary>
         ///     The scissor
         /// </summary>
-        public static Scissor GlScissor = _<Scissor>();
+        public static Scissor glScissor = _<Scissor>("glScissor");
 
         /// <summary>
         ///     The draw elements base vertex
         /// </summary>
-        public static DrawElementsBaseVertex GlDrawElementsBaseVertex = _<DrawElementsBaseVertex>();
+        public static DrawElementsBaseVertex glDrawElementsBaseVertex = _<DrawElementsBaseVertex>("glDrawElementsBaseVertex");
 
         /// <summary>
         ///     The delete vertex arrays
         /// </summary>
-        public static DeleteVertexArrays GlDeleteVertexArrays = _<DeleteVertexArrays>();
+        public static DeleteVertexArrays glDeleteVertexArrays = _<DeleteVertexArrays>("glDeleteVertexArrays");
 
         /// <summary>
         ///     The gen vertex arrays
         /// </summary>
-        public static GenVertexArrays GlGenVertexArrays = _<GenVertexArrays>();
+        public static GenVertexArrays glGenVertexArrays = _<GenVertexArrays>("glGenVertexArrays");
 
         /// <summary>
         ///     The gen textures
         /// </summary>
-        public static GenTextures GlGenTextures = _<GenTextures>();
+        public static GenTextures glGenTextures = _<GenTextures>("glGenTextures");
 
         /// <summary>
         ///     The pixel storei
         /// </summary>
-        public static PixelStorei GlPixelStorei = _<PixelStorei>();
+        public static PixelStorei glPixelStorei = _<PixelStorei>("glPixelStorei");
 
         /// <summary>
         ///     The tex image
         /// </summary>
-        public static TexImage2D GlTexImage2D = _<TexImage2D>();
+        public static TexImage2D glTexImage2D = _<TexImage2D>("glTexImage2D");
 
         /// <summary>
         ///     The tex parameteri
         /// </summary>
-        public static TexParameteri GlTexParameteri = _<TexParameteri>();
+        public static TexParameteri glTexParameteri = _<TexParameteri>("glTexParameteri");
 
         /// <summary>
         ///     The delete textures
         /// </summary>
-        public static DeleteTextures GlDeleteTextures = _<DeleteTextures>();
+        public static DeleteTextures glDeleteTextures = _<DeleteTextures>("glDeleteTextures");
 
         /// <summary>
         ///     S
         /// </summary>
+        /// <param name="command"></param>
         /// <typeparam name="T">The </typeparam>
         /// <exception cref="Exception">nogo: {method} from {typeof(T).Name}</exception>
         /// <returns>The</returns>
-        private static T _<T>() where T : class
+        private static T _<T>(string command) where T : class
         {
-            string method = "gl" + typeof(T).Name;
-            IntPtr ptr = SDL_GL_GetProcAddress(method);
+            IntPtr ptr = SDL_GL_GetProcAddress(command);
             if (ptr == IntPtr.Zero)
             {
-                throw new Exception($"nogo: {method} from {typeof(T).Name}");
+                throw new Exception($"nogo: {command} from {typeof(T).Name}");
             }
 
             return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
         }
-
-        /// <summary>
-        ///     Alternate delegate fetcher for when our delegate Type ends in "Del". These happen when the method needs a wrapper
-        ///     in GL.Utils.
-        /// </summary>
-        private static T _Del<T>() where T : class
-        {
-            string method = "gl" + typeof(T).Name.Substring(0, typeof(T).Name.Length - 3);
-            IntPtr ptr = SDL_GL_GetProcAddress(method);
-            if (ptr == IntPtr.Zero)
-            {
-                throw new Exception($"nogo: {method} from {typeof(T).Name}");
-            }
-
-            return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
-        }
-
+        
         /// <summary>
         ///     Gls the get string using the specified pname
         /// </summary>
         /// <param name="pname">The pname</param>
         /// <returns>The string</returns>
-        public static unsafe string GlGetString(StringName pname) => new string((sbyte*) _getString(pname));
+        public static unsafe string glGetString(StringName pname) => new string((sbyte*) _getString(pname));
 
 
         /// <summary>

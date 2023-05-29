@@ -47,10 +47,10 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public GlShader(string source, ShaderType type)
         {
             ShaderType = type;
-            ShaderId = GlCreateShader(type);
+            ShaderId = glCreateShader(type);
 
             ShaderSource(ShaderId, source);
-            GlCompileShader(ShaderId);
+            glCompileShader(ShaderId);
 
             if (!GetShaderCompileStatus(ShaderId))
             {
@@ -98,7 +98,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         {
             if (ShaderId != 0)
             {
-                GlDeleteShader(ShaderId);
+                glDeleteShader(ShaderId);
                 ShaderId = 0;
             }
         }

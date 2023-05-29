@@ -161,12 +161,12 @@ namespace Alis.Core.Graphic.ImGui
             ImGui.Render();
 
             ImGuiIoPtr io = ImGui.GetIo();
-            GlViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
-            GlClear(ClearBufferMask.ColorBufferBit);
+            glViewport(0, 0, (int) io.DisplaySize.X, (int) io.DisplaySize.Y);
+            glClear(ClearBufferMask.ColorBufferBit);
 
             RenderDrawData();
 
-            GlDisable(EnableCap.ScissorTest);
+            glDisable(EnableCap.ScissorTest);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="a">The </param>
         public void ClearColor(float r, float g, float b, float a)
         {
-            GlClearColor(r, g, b, a);
+            glClearColor(r, g, b, a);
         }
 
         /// <summary>
@@ -189,14 +189,14 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="fbHeight">The fb height</param>
         private void SetupRenderState(ImDrawDataPtr drawData, int fbWidth, int fbHeight)
         {
-            GlEnable(EnableCap.Blend);
-            GlBlendEquation(BlendEquationMode.FuncAdd);
-            GlBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
-            GlDisable(EnableCap.CullFace);
-            GlDisable(EnableCap.DepthTest);
-            GlEnable(EnableCap.ScissorTest);
+            glEnable(EnableCap.Blend);
+            glBlendEquation(BlendEquationMode.FuncAdd);
+            glBlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
+            glDisable(EnableCap.CullFace);
+            glDisable(EnableCap.DepthTest);
+            glEnable(EnableCap.ScissorTest);
 
-            GlUseProgram(_shader.ProgramId);
+            glUseProgram(_shader.ProgramId);
 
             float left = drawData.DisplayPos.X;
             float right = drawData.DisplayPos.X + drawData.DisplaySize.X;
@@ -205,22 +205,22 @@ namespace Alis.Core.Graphic.ImGui
 
             _shader["Texture"].SetValue(0);
             _shader["ProjMtx"].SetValue(Matrix4x4.CreateOrthographicOffCenter(left, right, bottom, top, -1, 1));
-            GlBindSampler(0, 0);
+            glBindSampler(0, 0);
 
-            GlBindVertexArray(_vertexArrayObject);
+            glBindVertexArray(_vertexArrayObject);
 
             // Bind vertex/index buffers and setup attributes for ImDrawVert
-            GlBindBuffer(BufferTarget.ArrayBuffer, _vboHandle);
-            GlBindBuffer(BufferTarget.ElementArrayBuffer, _elementsHandle);
+            glBindBuffer(BufferTarget.ArrayBuffer, _vboHandle);
+            glBindBuffer(BufferTarget.ElementArrayBuffer, _elementsHandle);
 
             EnableVertexAttribArray(_shader["Position"].Location);
             EnableVertexAttribArray(_shader["UV"].Location);
             EnableVertexAttribArray(_shader["Color"].Location);
 
             int drawVertSize = Marshal.SizeOf<ImDrawVert>();
-            VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, Marshal.OffsetOf<ImDrawVert>("pos"));
-            VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, Marshal.OffsetOf<ImDrawVert>("uv"));
-            VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, Marshal.OffsetOf<ImDrawVert>("col"));
+            VertexAttribPointer(_shader["Position"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Pos"));
+            VertexAttribPointer(_shader["UV"].Location, 2, VertexAttribPointerType.Float, false, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Uv"));
+            VertexAttribPointer(_shader["Color"].Location, 4, VertexAttribPointerType.UnsignedByte, true, drawVertSize, Marshal.OffsetOf<ImDrawVert>("Col"));
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace Alis.Core.Graphic.ImGui
             drawData.ScaleClipRects(clipScale);
 
             IntPtr lastTexId = ImGui.GetIo().Fonts.TexId;
-            GlBindTexture(TextureTarget.Texture2D, (uint) lastTexId);
+            glBindTexture(TextureTarget.Texture2D, (uint) lastTexId);
 
             int drawVertSize = Marshal.SizeOf<ImDrawVert>();
             int drawIdxSize = sizeof(ushort);
@@ -256,8 +256,8 @@ namespace Alis.Core.Graphic.ImGui
                 ImDrawListPtr cmdList = drawData.CmdListsRange[n];
 
                 // Upload vertex/index buffers
-                GlBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
-                GlBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
+                glBufferData(BufferTarget.ArrayBuffer, (IntPtr) (cmdList.VtxBuffer.Size * drawVertSize), cmdList.VtxBuffer.Data, BufferUsageHint.StreamDraw);
+                glBufferData(BufferTarget.ElementArrayBuffer, (IntPtr) (cmdList.IdxBuffer.Size * drawIdxSize), cmdList.IdxBuffer.Data, BufferUsageHint.StreamDraw);
 
                 for (int cmdI = 0; cmdI < cmdList.CmdBuffer.Size; cmdI++)
                 {
@@ -276,7 +276,7 @@ namespace Alis.Core.Graphic.ImGui
                         clipRect.Z = pcmd.ClipRect.Z - clipOffset.X;
                         clipRect.W = pcmd.ClipRect.W - clipOffset.Y;
 
-                        GlScissor((int) clipRect.X, (int) (fbHeight - clipRect.W), (int) (clipRect.Z - clipRect.X), (int) (clipRect.W - clipRect.Y));
+                        glScissor((int) clipRect.X, (int) (fbHeight - clipRect.W), (int) (clipRect.Z - clipRect.X), (int) (clipRect.W - clipRect.Y));
 
                         // Bind texture, Draw
                         if (pcmd.TextureId != IntPtr.Zero)
@@ -284,11 +284,11 @@ namespace Alis.Core.Graphic.ImGui
                             if (pcmd.TextureId != lastTexId)
                             {
                                 lastTexId = pcmd.TextureId;
-                                GlBindTexture(TextureTarget.Texture2D, (uint) pcmd.TextureId);
+                                glBindTexture(TextureTarget.Texture2D, (uint) pcmd.TextureId);
                             }
                         }
 
-                        GlDrawElementsBaseVertex(BeginMode.Triangles, (int) pcmd.ElemCount, drawIdxSize == 2 ? DrawElementsType.UnsignedShort : DrawElementsType.UnsignedInt, (IntPtr) (pcmd.IdxOffset * drawIdxSize), (int) pcmd.VtxOffset);
+                        glDrawElementsBaseVertex(BeginMode.Triangles, (int) pcmd.ElemCount, drawIdxSize == 2 ? DrawElementsType.UnsignedShort : DrawElementsType.UnsignedInt, (IntPtr) (pcmd.IdxOffset * drawIdxSize), (int) pcmd.VtxOffset);
                     }
                 }
             }

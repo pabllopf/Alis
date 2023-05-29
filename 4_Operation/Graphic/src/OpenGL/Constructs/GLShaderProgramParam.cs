@@ -117,7 +117,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(bool param)
         {
             EnsureType<bool>();
-            GlUniform1I(Location, param ? 1 : 0);
+            glUniform1I(Location, param ? 1 : 0);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(int param)
         {
             EnsureType<int>();
-            GlUniform1I(Location, param);
+            glUniform1I(Location, param);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(float param)
         {
             EnsureType<float>();
-            GlUniform1F(Location, param);
+            glUniform1F(Location, param);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector2 param)
         {
             EnsureType<Vector2>();
-            GlUniform2F(Location, param.X, param.Y);
+            glUniform2F(Location, param.X, param.Y);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector3 param)
         {
             EnsureType<Vector3>();
-            GlUniform3F(Location, param.X, param.Y, param.Z);
+            glUniform3F(Location, param.X, param.Y, param.Z);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public void SetValue(Vector4 param)
         {
             EnsureType<Vector4>();
-            GlUniform4F(Location, param.X, param.Y, param.Z, param.W);
+            glUniform4F(Location, param.X, param.Y, param.Z, param.W);
         }
 
         /// <summary>
@@ -190,32 +190,32 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             if (param.Length == 16)
             {
                 EnsureType<Matrix4x4>();
-                GlUniformMatrix4Fv(Location, 1, false, param);
+                glUniformMatrix4Fv(Location, 1, false, param);
             }
             else if (param.Length == 9)
             {
                 EnsureType<Exception>();
-                GlUniformMatrix3Fv(Location, 1, false, param);
+                glUniformMatrix3Fv(Location, 1, false, param);
             }
             else if (param.Length == 4)
             {
                 EnsureType<Vector4>();
-                GlUniform4F(Location, param[0], param[1], param[2], param[3]);
+                glUniform4F(Location, param[0], param[1], param[2], param[3]);
             }
             else if (param.Length == 3)
             {
                 EnsureType<Vector3>();
-                GlUniform3F(Location, param[0], param[1], param[2]);
+                glUniform3F(Location, param[0], param[1], param[2]);
             }
             else if (param.Length == 2)
             {
                 EnsureType<Vector2>();
-                GlUniform2F(Location, param[0], param[1]);
+                glUniform2F(Location, param[0], param[1]);
             }
             else if (param.Length == 1)
             {
                 EnsureType<float>();
-                GlUniform1F(Location, param[0]);
+                glUniform1F(Location, param[0]);
             }
             else
             {

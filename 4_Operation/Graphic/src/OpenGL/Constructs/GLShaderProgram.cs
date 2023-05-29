@@ -76,12 +76,12 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         {
             VertexShader = vertexShader;
             FragmentShader = fragmentShader;
-            ProgramId = GlCreateProgram();
+            ProgramId = glCreateProgram();
             DisposeChildren = false;
 
-            GlAttachShader(ProgramId, vertexShader.ShaderId);
-            GlAttachShader(ProgramId, fragmentShader.ShaderId);
-            GlLinkProgram(ProgramId);
+            glAttachShader(ProgramId, vertexShader.ShaderId);
+            glAttachShader(ProgramId, fragmentShader.ShaderId);
+            glLinkProgram(ProgramId);
 
             //Check whether the program linked successfully.
             //If not then throw an error with the linking error.
@@ -135,13 +135,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
             int[] actualLength = new int[1];
             int[] arraySize = new int[1];
 
-            GlGetProgramiv(ProgramId, ProgramParameter.ActiveAttributes, resources);
+            glGetProgramiv(ProgramId, ProgramParameter.ActiveAttributes, resources);
 
             for (uint i = 0; i < resources[0]; i++)
             {
                 ActiveAttribType[] type = new ActiveAttribType[1];
                 StringBuilder sb = new StringBuilder(256);
-                GlGetActiveAttrib(ProgramId, i, 256, actualLength, arraySize, type, sb);
+                glGetActiveAttrib(ProgramId, i, 256, actualLength, arraySize, type, sb);
 
                 if (!shaderParams.ContainsKey(sb.ToString()))
                 {
@@ -151,13 +151,13 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
                 }
             }
 
-            GlGetProgramiv(ProgramId, ProgramParameter.ActiveUniforms, resources);
+            glGetProgramiv(ProgramId, ProgramParameter.ActiveUniforms, resources);
 
             for (uint i = 0; i < resources[0]; i++)
             {
                 ActiveUniformType[] type = new ActiveUniformType[1];
                 StringBuilder sb = new StringBuilder(256);
-                GlGetActiveUniform(ProgramId, i, 256, actualLength, arraySize, type, sb);
+                glGetActiveUniform(ProgramId, i, 256, actualLength, arraySize, type, sb);
 
                 if (!shaderParams.ContainsKey(sb.ToString()))
                 {
@@ -266,7 +266,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         /// <summary>
         ///     Uses this instance
         /// </summary>
-        public void Use() => GlUseProgram(ProgramId);
+        public void Use() => glUseProgram(ProgramId);
 
         /// <summary>
         ///     Gets the uniform location using the specified name
@@ -276,7 +276,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public int GetUniformLocation(string name)
         {
             Use();
-            return GlGetUniformLocation(ProgramId, name);
+            return glGetUniformLocation(ProgramId, name);
         }
 
         /// <summary>
@@ -287,7 +287,7 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         public int GetAttributeLocation(string name)
         {
             Use();
-            return GlGetAttribLocation(ProgramId, name);
+            return glGetAttribLocation(ProgramId, name);
         }
 
         /// <summary>
@@ -302,11 +302,11 @@ namespace Alis.Core.Graphic.OpenGL.Constructs
         {
             if (ProgramId != 0)
             {
-                GlUseProgram(0);
+                glUseProgram(0);
 
-                GlDetachShader(ProgramId, VertexShader.ShaderId);
-                GlDetachShader(ProgramId, FragmentShader.ShaderId);
-                GlDeleteProgram(ProgramId);
+                glDetachShader(ProgramId, VertexShader.ShaderId);
+                glDetachShader(ProgramId, FragmentShader.ShaderId);
+                glDeleteProgram(ProgramId);
 
                 if (DisposeChildren)
                 {

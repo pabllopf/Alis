@@ -149,11 +149,11 @@ namespace Alis.Core.Graphic.ImGui
             SDL_GL_SetSwapInterval(1);
 
             // initialize the screen to black as soon as possible
-            GlClearColor(0f, 0f, 0f, 1f);
-            GlClear(ClearBufferMask.ColorBufferBit);
+            glClearColor(0f, 0f, 0f, 1f);
+            glClear(ClearBufferMask.ColorBufferBit);
             SDL_GL_SwapWindow(window);
 
-            Console.WriteLine($"GL Version: {GlGetString(StringName.Version)}");
+            Console.WriteLine($"GL Version: {glGetString(StringName.Version)}");
             return glContext;
         }
 
@@ -169,12 +169,12 @@ namespace Alis.Core.Graphic.ImGui
         public static uint LoadTexture(IntPtr pixelData, int width, int height, PixelFormat format = PixelFormat.Rgba, PixelInternalFormat internalFormat = PixelInternalFormat.Rgba)
         {
             uint textureId = GenTexture();
-            GlPixelStorei(PixelStoreParameter.UnpackAlignment, 1);
-            GlBindTexture(TextureTarget.Texture2D, textureId);
-            GlTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, PixelType.UnsignedByte, pixelData);
-            GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
-            GlTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
-            GlBindTexture(TextureTarget.Texture2D, 0);
+            glPixelStorei(PixelStoreParameter.UnpackAlignment, 1);
+            glBindTexture(TextureTarget.Texture2D, textureId);
+            glTexImage2D(TextureTarget.Texture2D, 0, internalFormat, width, height, 0, format, PixelType.UnsignedByte, pixelData);
+            glTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, TextureParameter.Linear);
+            glTexParameteri(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, TextureParameter.Linear);
+            glBindTexture(TextureTarget.Texture2D, 0);
             return textureId;
         }
     }

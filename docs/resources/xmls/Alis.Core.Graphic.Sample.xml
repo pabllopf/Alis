@@ -45,54 +45,54 @@
             </summary>
             <param name="args">The args</param>
         </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.SDLINPUT">
+        <member name="M:Alis.Core.Graphic.Sample.Program.Sdlinput">
             <summary>
-            Sdlinputs
+                Sdlinputs
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.SFMLINPUT">
+        <member name="M:Alis.Core.Graphic.Sample.Program.Sfmlinput">
             <summary>
-            Sfmlinputs
+                Sfmlinputs
             </summary>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.WindowOnJoystickMoved(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickMoveEventArgs)">
             <summary>
-            Windows the on joystick moved using the specified sender
+                Windows the on joystick moved using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.WindowOnJoystickDisconnected(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickConnectEventArgs)">
             <summary>
-            Windows the on joystick disconnected using the specified sender
+                Windows the on joystick disconnected using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.WindowOnJoystickConnected(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickConnectEventArgs)">
             <summary>
-            Windows the on joystick connected using the specified sender
+                Windows the on joystick connected using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.OnJoystickButtonPressed(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickButtonEventArgs)">
             <summary>
-            Ons the joystick button pressed using the specified sender
+                Ons the joystick button pressed using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.OnKeyPressed(System.Object,Alis.Core.Graphic.SFML.Windows.KeyEventArgs)">
             <summary>
-            Ons the key pressed using the specified sender
+                Ons the key pressed using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.OnMouseButtonPressed(System.Object,Alis.Core.Graphic.SFML.Windows.MouseButtonEventArgs)">
             <summary>
-            Ons the mouse button pressed using the specified sender
+                Ons the mouse button pressed using the specified sender
             </summary>
             <param name="sender">The sender</param>
             <param name="e">The </param>
