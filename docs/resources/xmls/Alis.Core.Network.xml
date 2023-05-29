@@ -1053,11 +1053,6 @@
                 The web socket frame writer class
             </summary>
         </member>
-        <member name="M:Alis.Core.Network.Internal.WebSocketFrameWriter.#cctor">
-            <summary>
-                Initializes a new instance of the <see cref="T:Alis.Core.Network.Internal.WebSocketFrameWriter" /> class
-            </summary>
-        </member>
         <member name="M:Alis.Core.Network.Internal.WebSocketFrameWriter.Write(Alis.Core.Network.Internal.WebSocketOpCode,System.ArraySegment{System.Byte},System.IO.MemoryStream,System.Boolean,System.Boolean)">
             <summary>
                 No async await stuff here because we are dealing with a memory stream
@@ -1555,6 +1550,11 @@
         <member name="F:Alis.Core.Network.WebSocketClientFactory._bufferFactory">
             <summary>
                 The buffer factory
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Network.WebSocketClientFactory.tcpClient">
+            <summary>
+            The tcp client
             </summary>
         </member>
         <member name="F:Alis.Core.Network.WebSocketClientFactory._bufferPool">

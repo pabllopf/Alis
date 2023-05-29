@@ -29,7 +29,6 @@
 
 using System;
 using Alis.Core.Aspect.Logging;
-using Alis.Core.Audio.SDL;
 
 namespace Alis.Core.Audio.Sample
 {

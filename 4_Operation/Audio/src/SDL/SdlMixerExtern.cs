@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 namespace Alis.Core.Audio.SDL
 {
     /// <summary>
-    /// The sdl mixer extern class
+    ///     The sdl mixer extern class
     /// </summary>
     public static class SdlMixerExtern
     {
@@ -44,7 +44,7 @@ namespace Alis.Core.Audio.SDL
         /// <returns>The int ptr</returns>
         [DllImport(SdlMixer.NativeLibName, EntryPoint = "Mix_GetMusicTitle", CallingConvention = CallingConvention.Cdecl)]
         internal static extern IntPtr INTERNAL_Mix_GetMusicTitle(IntPtr music);
-        
+
         /// <summary>
         ///     Internals the mix get music artist tag using the specified music
         /// </summary>
@@ -778,7 +778,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        internal static string Mix_GetMusicArtistTag(IntPtr music) => SdlMixer.UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetMusicArtistTag(music)
+        internal static string Mix_GetMusicArtistTag(IntPtr music) => SdlMixer.UTF8_ToManaged(INTERNAL_Mix_GetMusicArtistTag(music)
         );
 
         /// <summary>

@@ -644,7 +644,7 @@ namespace Alis.Core.Graphic.OpenGL
 
             return Marshal.GetDelegateForFunctionPointer(ptr, typeof(T)) as T;
         }
-        
+
         /// <summary>
         ///     Gls the get string using the specified pname
         /// </summary>

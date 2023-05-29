@@ -49,14 +49,14 @@ namespace Alis.Core.Audio
         private Music music;
 
         /// <summary>
+        ///     The music ptr
+        /// </summary>
+        private IntPtr musicPtr;
+
+        /// <summary>
         ///     The player
         /// </summary>
         private Player player;
-
-        /// <summary>
-        /// The music ptr
-        /// </summary>
-        private IntPtr musicPtr;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="AudioClipBase" /> class
@@ -239,7 +239,7 @@ namespace Alis.Core.Audio
                         player.Play(FullPathAudioFile).Wait();
                         break;
                     case AudioBackendType.Sdl:
-                       
+
                         SdlMixerExtern.Mix_PlayMusic(musicPtr, -1);
                         break;
                     default:

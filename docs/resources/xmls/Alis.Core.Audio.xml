@@ -34,14 +34,14 @@
                 The music
             </summary>
         </member>
+        <member name="F:Alis.Core.Audio.AudioClipBase.musicPtr">
+            <summary>
+                The music ptr
+            </summary>
+        </member>
         <member name="F:Alis.Core.Audio.AudioClipBase.player">
             <summary>
                 The player
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.AudioClipBase.musicPtr">
-            <summary>
-            The music ptr
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.AudioClipBase.#cctor">
@@ -988,26 +988,6 @@
                 The mix channels
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixDefaultFrequency">
-            <summary>
-                The mix default frequency
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixDefaultFormat">
-            <summary>
-                The audio s16msb
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixDefaultChannels">
-            <summary>
-                The mix default channels
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixMaxVolume">
-            <summary>
-                The mix max volume
-            </summary>
-        </member>
         <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioU8">
             <summary>
                 The audio u8
@@ -1078,26 +1058,6 @@
                 The audio f32lsb
             </summary>
         </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioU16Sys">
-            <summary>
-                The audio u16msb
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioS16Sys">
-            <summary>
-                The audio s16msb
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioS32Sys">
-            <summary>
-                The audio s32msb
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioF32Sys">
-            <summary>
-                The audio f32msb
-            </summary>
-        </member>
         <member name="F:Alis.Core.Audio.SDL.SdlMixer.SdlAudioAllowFrequencyChange">
             <summary>
                 The sdl audio allow frequency change
@@ -1126,6 +1086,46 @@
         <member name="F:Alis.Core.Audio.SDL.SdlMixer.SdlMixMaxvolume">
             <summary>
                 The sdl mix maxvolume
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixDefaultFrequency">
+            <summary>
+                The mix default frequency
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixDefaultFormat">
+            <summary>
+                The audio s16msb
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixDefaultChannels">
+            <summary>
+                The mix default channels
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.MixMaxVolume">
+            <summary>
+                The mix max volume
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioU16Sys">
+            <summary>
+                The audio u16msb
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioS16Sys">
+            <summary>
+                The audio s16msb
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioS32Sys">
+            <summary>
+                The audio s32msb
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Audio.SDL.SdlMixer.AudioF32Sys">
+            <summary>
+                The audio f32msb
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixer.SDL_MIXER_VERSION(Alis.Core.Audio.SDL.SdlVersion@)">
@@ -1326,7 +1326,7 @@
         </member>
         <member name="T:Alis.Core.Audio.SDL.SdlMixerExtern">
             <summary>
-            The sdl mixer extern class
+                The sdl mixer extern class
             </summary>
         </member>
         <member name="M:Alis.Core.Audio.SDL.SdlMixerExtern.INTERNAL_Mix_GetMusicTitle(System.IntPtr)">

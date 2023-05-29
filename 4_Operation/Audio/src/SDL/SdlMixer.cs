@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SDL_mixer.cs
+//  File:SdlMixer.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -42,7 +42,7 @@ namespace Alis.Core.Audio.SDL
     /// <summary>
     ///     The sdl mixer class
     /// </summary>
-    public static partial class SdlMixer
+    public static class SdlMixer
     {
         /// <summary>
         ///     Initializes a new instance of the <see cref="SdlMixer" /> class
@@ -91,7 +91,7 @@ namespace Alis.Core.Audio.SDL
                 }
             }
         }
-        
+
         /// <summary>
         ///     The native lib name
         /// </summary>
@@ -163,32 +163,11 @@ namespace Alis.Core.Audio.SDL
         ///     The sdl mixer patchlevel
         /// </summary>
         public const int SdlMixerPatchlevel = 5;
-        
+
         /// <summary>
         ///     The mix channels
         /// </summary>
         public const int MixChannels = 8;
-
-        /// <summary>
-        ///     The mix default frequency
-        /// </summary>
-        public static readonly int MixDefaultFrequency = 44100;
-
-        /// <summary>
-        ///     The audio s16msb
-        /// </summary>
-        public static readonly ushort MixDefaultFormat =
-            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
-
-        /// <summary>
-        ///     The mix default channels
-        /// </summary>
-        public static readonly int MixDefaultChannels = 2;
-
-        /// <summary>
-        ///     The mix max volume
-        /// </summary>
-        public static readonly byte MixMaxVolume = 128;
 
         /// <summary>
         ///     The audio u8
@@ -261,30 +240,6 @@ namespace Alis.Core.Audio.SDL
         public const ushort AudioF32 = AudioF32Lsb;
 
         /// <summary>
-        ///     The audio u16msb
-        /// </summary>
-        public static readonly ushort AudioU16Sys =
-            BitConverter.IsLittleEndian ? AudioU16Lsb : AudioU16Msb;
-
-        /// <summary>
-        ///     The audio s16msb
-        /// </summary>
-        public static readonly ushort AudioS16Sys =
-            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
-
-        /// <summary>
-        ///     The audio s32msb
-        /// </summary>
-        public static readonly ushort AudioS32Sys =
-            BitConverter.IsLittleEndian ? AudioS32Lsb : AudioS32Msb;
-
-        /// <summary>
-        ///     The audio f32msb
-        /// </summary>
-        public static readonly ushort AudioF32Sys =
-            BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
-
-        /// <summary>
         ///     The sdl audio allow frequency change
         /// </summary>
         public const uint SdlAudioAllowFrequencyChange = 0x00000001;
@@ -316,6 +271,51 @@ namespace Alis.Core.Audio.SDL
         ///     The sdl mix maxvolume
         /// </summary>
         public const int SdlMixMaxvolume = 128;
+
+        /// <summary>
+        ///     The mix default frequency
+        /// </summary>
+        public static readonly int MixDefaultFrequency = 44100;
+
+        /// <summary>
+        ///     The audio s16msb
+        /// </summary>
+        public static readonly ushort MixDefaultFormat =
+            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
+
+        /// <summary>
+        ///     The mix default channels
+        /// </summary>
+        public static readonly int MixDefaultChannels = 2;
+
+        /// <summary>
+        ///     The mix max volume
+        /// </summary>
+        public static readonly byte MixMaxVolume = 128;
+
+        /// <summary>
+        ///     The audio u16msb
+        /// </summary>
+        public static readonly ushort AudioU16Sys =
+            BitConverter.IsLittleEndian ? AudioU16Lsb : AudioU16Msb;
+
+        /// <summary>
+        ///     The audio s16msb
+        /// </summary>
+        public static readonly ushort AudioS16Sys =
+            BitConverter.IsLittleEndian ? AudioS16Lsb : AudioS16Msb;
+
+        /// <summary>
+        ///     The audio s32msb
+        /// </summary>
+        public static readonly ushort AudioS32Sys =
+            BitConverter.IsLittleEndian ? AudioS32Lsb : AudioS32Msb;
+
+        /// <summary>
+        ///     The audio f32msb
+        /// </summary>
+        public static readonly ushort AudioF32Sys =
+            BitConverter.IsLittleEndian ? AudioF32Lsb : AudioF32Msb;
 
 
         /// <summary>
@@ -397,13 +397,13 @@ namespace Alis.Core.Audio.SDL
         /// <returns>The string</returns>
         public static string Mix_GetMusicDecoder(int index) => UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetMusicDecoder(index)
         );
-        
+
         /// <summary>
         ///     Mixes the get music title using the specified music
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicTitle(IntPtr music) => SdlMixer.UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetMusicTitle(music)
+        public static string Mix_GetMusicTitle(IntPtr music) => UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetMusicTitle(music)
         );
 
         /// <summary>
@@ -411,10 +411,10 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <param name="music">The music</param>
         /// <returns>The string</returns>
-        public static string Mix_GetMusicTitleTag(IntPtr music) => SdlMixer.UTF8_ToManaged(
+        public static string Mix_GetMusicTitleTag(IntPtr music) => UTF8_ToManaged(
             SdlMixerExtern.INTERNAL_Mix_GetMusicTitleTag(music)
         );
-        
+
         /// <summary>
         ///     Mixes the get music album tag using the specified music
         /// </summary>
@@ -512,7 +512,7 @@ namespace Alis.Core.Audio.SDL
         /// <returns>The string</returns>
         public static string Mix_GetTimidityCfg() => UTF8_ToManaged(SdlMixerExtern.INTERNAL_Mix_GetTimidityCfg()
         );
-        
+
         /// <summary>
         ///     Mixes the get error
         /// </summary>
@@ -666,7 +666,7 @@ namespace Alis.Core.Audio.SDL
         /// </summary>
         /// <returns>The string</returns>
         public static string SDL_GetError() => UTF8_ToManaged(SdlMixerExtern.INTERNAL_SDL_GetError());
-        
+
         /// <summary>
         ///     Sdls the set error using the specified fmt and arglist
         /// </summary>
@@ -702,9 +702,9 @@ namespace Alis.Core.Audio.SDL
             string mode
         )
         {
-            byte* utf8File = SdlMixer.Utf8EncodeHeap(file);
-            byte* utf8Mode = SdlMixer.Utf8EncodeHeap(mode);
-            IntPtr rwOps = SdlMixer.INTERNAL_SDL_RWFromFile(
+            byte* utf8File = Utf8EncodeHeap(file);
+            byte* utf8Mode = Utf8EncodeHeap(mode);
+            IntPtr rwOps = INTERNAL_SDL_RWFromFile(
                 utf8File,
                 utf8Mode
             );

@@ -762,7 +762,7 @@
                 Clears the flags
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.InvalidateTOI">
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.Contact.InvalidateToi">
             <summary>
                 Invalidates the toi
             </summary>
@@ -961,7 +961,7 @@
                 Clears the flags
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateTOI">
+        <member name="M:Alis.Core.Physic.Collision.ContactSystem.ContactManager.InvalidateToi">
             <summary>
                 Invalidates the toi
             </summary>
@@ -13462,11 +13462,6 @@
         <member name="T:Alis.Core.Physic.World">
             <summary>The world class manages all physics entities, dynamic simulation, and asynchronous queries.</summary>
         </member>
-        <member name="P:Alis.Core.Physic.World.BreakableBodies">
-            <summary>
-                The breakable body
-            </summary>
-        </member>
         <member name="F:Alis.Core.Physic.World.island">
             <summary>
                 The island
@@ -13477,6 +13472,11 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Physic.World" /> class
             </summary>
             <param name="gravity">The gravity</param>
+        </member>
+        <member name="P:Alis.Core.Physic.World.BreakableBodies">
+            <summary>
+                The breakable body
+            </summary>
         </member>
         <member name="P:Alis.Core.Physic.World.Gravity">
             <summary>
