@@ -49,17 +49,17 @@ namespace Alis.Core.Network
     /// <summary>
     ///     Web socket client factory used to open web socket client connections
     /// </summary>
-    public class WebSocketClientFactory : IWebSocketClientFactory
+    public class WebSocketClientFactory : IWebSocketClientFactory, IDisposable
     {
         /// <summary>
         ///     The buffer factory
         /// </summary>
         private readonly Func<MemoryStream> _bufferFactory;
-        
+
         /// <summary>
         /// The tcp client
         /// </summary>
-        private TcpClient tcpClient = new TcpClient();
+        private TcpClient tcpClient;
 
         /// <summary>
         ///     The buffer pool
@@ -73,6 +73,7 @@ namespace Alis.Core.Network
         {
             _bufferPool = new BufferPool();
             _bufferFactory = _bufferPool.GetBuffer;
+            
         }
 
         /// <summary>
@@ -277,7 +278,7 @@ namespace Alis.Core.Network
         protected virtual async Task<Stream> GetStream(Guid loggingGuid, bool isSecure, bool noDelay, string host,
             int port, CancellationToken cancellationToken)
         {
-            
+            tcpClient = new TcpClient();
             tcpClient.NoDelay = noDelay;
             IPAddress ipAddress;
             if (IPAddress.TryParse(host, out ipAddress))
@@ -293,7 +294,7 @@ namespace Alis.Core.Network
 
             cancellationToken.ThrowIfCancellationRequested();
             Stream stream = tcpClient.GetStream();
-
+            
             if (isSecure)
             {
                 SslStream sslStream = new SslStream(stream, false, ValidateServerCertificate, null);
@@ -307,6 +308,14 @@ namespace Alis.Core.Network
 
             Events.Log.ConnectionNotSecure(loggingGuid);
             return stream;
+        }
+
+        /// <summary>
+        /// Disposes this instance
+        /// </summary>
+        public void Dispose()
+        {
+            tcpClient?.Dispose();
         }
 
         /// <summary>

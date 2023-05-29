@@ -1668,6 +1668,11 @@
             <param name="cancellationToken">Used to cancel the request</param>
             <returns>A connected and open stream</returns>
         </member>
+        <member name="M:Alis.Core.Network.WebSocketClientFactory.Dispose">
+            <summary>
+            Disposes this instance
+            </summary>
+        </member>
         <member name="M:Alis.Core.Network.WebSocketClientFactory.ValidateServerCertificate(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
             <summary>
                 Invoked by the RemoteCertificateValidationDelegate
