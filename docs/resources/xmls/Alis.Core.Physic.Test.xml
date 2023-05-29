@@ -59,11 +59,6 @@
                 Tests that add controller adds correctly
             </summary>
         </member>
-        <member name="M:Alis.Core.Physic.Test.WorldTest.RemoveController_RemovesCorrectly">
-            <summary>
-                Tests that remove controller removes correctly
-            </summary>
-        </member>
         <member name="M:Alis.Core.Physic.Test.WorldTest.AddBody_WhenCalled_ShouldAddBodyToPhysicsWorld">
             <summary>
                 Tests that add body when called should add body to physics world

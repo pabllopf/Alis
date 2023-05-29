@@ -11,10 +11,9 @@
         </member>
         <member name="M:Alis.Core.Aspect.Sample.Program.Main(System.String[])">
             <summary>
-                Mains the specified arguments.
+                Main the args
             </summary>
-            <param name="args">The arguments.</param>
-            <returns></returns>
+            <param name="args">The args</param>
         </member>
     </members>
 </doc>

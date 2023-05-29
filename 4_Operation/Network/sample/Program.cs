@@ -41,7 +41,7 @@ namespace Alis.Core.Network.Sample
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         //private static ILogger _logger;
         //private static ILoggerFactory _loggerFactory;

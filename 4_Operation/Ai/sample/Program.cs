@@ -27,19 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Ai.Sample
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    internal static class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            throw new NotImplementedException();
         }
     }
 }

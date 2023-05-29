@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Logging.Sample
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args

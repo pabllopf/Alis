@@ -41,7 +41,7 @@ namespace Alis.Sample.GeometryDash
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args

@@ -38,7 +38,7 @@ namespace Alis.Core.Graphic.Sample
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     The width
@@ -73,11 +73,7 @@ namespace Alis.Core.Graphic.Sample
             window.SetFramerateLimit(60);
 
             window.Closed += (sender, args) => window.Close();
-
-            //string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            //Music music = new Music(fileName);
-            //music.Play();
-
+            
             List<Key> keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
 
             List<Axis> axis = new List<Axis>((Axis[]) Enum.GetValues(typeof(Axis)));

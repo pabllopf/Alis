@@ -27,15 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Aspect.Base.Sample
 {
-    // For using Console.WriteLine() and related methods
-    // Additional dependencies may be needed depending on what else is required to make this work...
-
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args
@@ -43,6 +42,7 @@ namespace Alis.Core.Aspect.Base.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            throw new NotImplementedException();
         }
     }
 }

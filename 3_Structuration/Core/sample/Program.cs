@@ -27,78 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
-using Alis.Core.Graphic.SFML.Graphics;
-using Alis.Core.Graphic.SFML.Windows;
+using System;
 
 namespace Alis.Core.Sample
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
-        /// <summary>
-        ///     The width
-        /// </summary>
-        private const int Width = 640;
-
-        /// <summary>
-        ///     The height
-        /// </summary>
-        private const int Height = 480;
-
-        /// <summary>
-        ///     The title
-        /// </summary>
-        private const string Title = "Alis.Core.Graphic.Sample";
-
-        /// <summary>
-        ///     The blue
-        /// </summary>
-        private static byte _red, _green, _blue;
-
         /// <summary>
         ///     Main the args
         /// </summary>
         /// <param name="args">The args</param>
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            VideoMode mode = new VideoMode(Width, Height);
-            RenderWindow window = new RenderWindow(mode, Title);
-
-            window.SetVerticalSyncEnabled(true);
-            window.SetFramerateLimit(60);
-
-            window.Closed += (sender, args) => window.Close();
-
-            //string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            //Music music = new Music(fileName);
-            //music.Play();
-
-            while (window.IsOpen)
-            {
-                window.DispatchEvents();
-                window.Clear(new Color(_red, _green, _blue));
-                window.Display();
-
-                _red += 1;
-                if (_red >= 100)
-                {
-                    _red -= 1;
-                }
-
-                _green += 2;
-                if (_green >= 100)
-                {
-                    _green -= 1;
-                }
-
-                _blue += 3;
-                if (_blue >= 100)
-                {
-                    _blue -= 1;
-                }
-            }
+            throw new NotImplementedException();
         }
     }
 }

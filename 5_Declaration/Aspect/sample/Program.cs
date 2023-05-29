@@ -27,20 +27,22 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Core.Aspect.Sample
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
-        ///     Mains the specified arguments.
+        ///     Main the args
         /// </summary>
-        /// <param name="args">The arguments.</param>
-        /// <returns></returns>
-        private static void Main(string[] args)
+        /// <param name="args">The args</param>
+        public static void Main(string[] args)
         {
+            throw new NotImplementedException();
         }
     }
 }

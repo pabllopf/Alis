@@ -34,7 +34,7 @@ namespace Alis.Core.Aspect.Math.Sample
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args
@@ -42,8 +42,7 @@ namespace Alis.Core.Aspect.Math.Sample
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
-            Console.Write("");
-            Console.ReadKey();
+            throw new NotImplementedException();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Alis.Core.Audio.Sample
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args

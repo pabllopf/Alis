@@ -27,12 +27,14 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
+
 namespace Alis.Sample.PacMan
 {
     /// <summary>
     ///     The program class
     /// </summary>
-    public class Program
+    public static class Program
     {
         /// <summary>
         ///     Main the args
@@ -40,6 +42,7 @@ namespace Alis.Sample.PacMan
         /// <param name="args">The args</param>
         public static void Main(string[] args)
         {
+            throw new NotImplementedException();
         }
     }
 }
