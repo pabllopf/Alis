@@ -39,21 +39,21 @@ namespace Alis.Core.Audio.SDL
         /// <summary>
         ///     The allocated
         /// </summary>
-        public int Allocated;
+        public int Allocated { get; }
 
         /// <summary>
         ///     The abuf
         /// </summary>
-        public IntPtr Abuf; /* Uint8* */
+        public IntPtr Abuf { get; }
 
         /// <summary>
         ///     The alen
         /// </summary>
-        public uint Alen;
+        public uint Alen { get; }
 
         /// <summary>
         ///     The volume
         /// </summary>
-        public byte Volume;
+        public byte Volume { get; }
     }
 }

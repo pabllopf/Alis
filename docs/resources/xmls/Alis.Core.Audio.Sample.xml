@@ -100,10 +100,5 @@
             </summary>
             <param name="args">The args</param>
         </member>
-        <member name="M:Alis.Core.Audio.Sample.Program.Init">
-            <summary>
-            Inits
-            </summary>
-        </member>
     </members>
 </doc>

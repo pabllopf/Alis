@@ -49,7 +49,7 @@ namespace Alis.Core.Audio.Sample
 
             while (true)
             {
-                Console.WriteLine("Select backend audio system ('sfml' | 'os')");
+                Console.WriteLine("Select backend audio system ('sfml' | 'os' | 'sdl')");
                 string os = Console.ReadLine();
 
                 try
@@ -61,7 +61,7 @@ namespace Alis.Core.Audio.Sample
                             break;
 
                         case "sdl":
-                            Init();
+                            audioSource = new AudioSource(new AudioClip(fileName, AudioBackendType.Sdl));
                             break;
 
                         case "os":
@@ -102,34 +102,6 @@ namespace Alis.Core.Audio.Sample
                     Logger.Exception(ex);
                 }
             }
-        }
-
-        /// <summary>
-        ///     Inits
-        /// </summary>
-        private static void Init()
-        {
-            //Initialize all SDL subsystems
-            SdlMixer.SDL_Init(SdlMixer.SdlInitAudio);
-
-            //Initialize SDL_mixer
-            if (SdlMixer.Mix_OpenAudio(22050, SdlMixer.MixDefaultFormat, 2, 4096) == -1)
-            {
-                return;
-            }
-
-            //Load the background image
-            //background = load_image( "background.png" );
-
-            //Open the font
-            //font = TTF_OpenFont( "lazy.ttf", 30 );
-
-            //Load the music
-            string fileName = Environment.CurrentDirectory + "/Assets/menu.wav";
-            IntPtr music = SdlMixer.Mix_LoadMUS(fileName);
-            //IntPtr scratch = SDL.SDL_mixer.Mix_LoadWAV( "scratch.wav" );
-
-            SdlMixer.Mix_PlayMusic(music, -1);
         }
     }
 }

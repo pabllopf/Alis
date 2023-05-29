@@ -14,7 +14,7 @@
                 Initializes a new instance of the <see cref="T:Alis.Core.Aspect.Data.AssetManager" /> class
             </summary>
         </member>
-        <member name="F:Alis.Core.Aspect.Data.AssetManager.AssetPath">
+        <member name="F:Alis.Core.Aspect.Data.AssetManager._assetPath">
             <summary>
                 The application data
             </summary>
