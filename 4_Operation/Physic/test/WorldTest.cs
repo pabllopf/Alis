@@ -353,16 +353,6 @@ namespace Alis.Core.Physic.Test
         }
 
         /// <summary>
-        ///     Tests that remove controller removes correctly
-        /// </summary>
-        [Fact]
-        public void RemoveController_RemovesCorrectly()
-        {
-            Mock<VelocityLimitController> controllerMock = new Mock<VelocityLimitController>();
-            _world.AddController(controllerMock.Object);
-        }
-
-        /// <summary>
         ///     Tests that add body when called should add body to physics world
         /// </summary>
         [Fact]
