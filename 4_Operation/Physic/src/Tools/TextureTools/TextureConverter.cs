@@ -568,7 +568,7 @@ namespace Alis.Core.Physic.Tools.TextureTools
 
                 if (multipartDetection || polygon.Count <= 2)
                 {
-                    if (SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
+                    if (polygonEntrance != null && SearchNextHullEntrance(detectedPolygons, polygonEntrance.Value, out polygonEntrance))
                     {
                         searchOn = true;
                     }
