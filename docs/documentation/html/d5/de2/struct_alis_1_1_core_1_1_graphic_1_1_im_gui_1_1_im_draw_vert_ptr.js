@@ -5,8 +5,8 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr =
     [ "operator ImDrawVertPtr", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#a99d58ece09f7b8bd700c9d7bc6ef6dfd", null ],
     [ "operator ImDrawVert *", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#ae6c22542f9f4c51be09d157230454755", null ],
     [ "operator ImDrawVertPtr", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#a1dd1640cfae39d691a136b7f5911dac4", null ],
-    [ "pos", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#afaeae1147ff5caf278b646b1875fc7d2", null ],
-    [ "uv", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#a9dba734b9bb32ad813af115a1bfe16b1", null ],
-    [ "col", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#af699ad8d8ef6d89a5bf388ff0cfe4571", null ],
+    [ "Pos", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#a918df2cd4b9037677c69ca0ff6af0557", null ],
+    [ "Uv", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#a9c6fec68890df59f2c52a4c65b3336e3", null ],
+    [ "Col", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#a541c8c434c435697a2c6f28fa5a346d4", null ],
     [ "NativePtr", "d5/de2/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_draw_vert_ptr.html#ae92c08a0deca99d8cc9b7c45acd9d282", null ]
 ];

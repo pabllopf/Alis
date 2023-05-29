@@ -6,7 +6,7 @@ var struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_spe
     [ "operator ImGuiTableColumnSortSpecs *", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#abb1d214e326c9f497aa4e89127805c8e", null ],
     [ "operator ImGuiTableColumnSortSpecsPtr", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#ad6d61de69cdcc264b80f162a34cf2253", null ],
     [ "Destroy", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#a15c9a2dee2496e2d133130406bcdb6b6", null ],
-    [ "ColumnUserID", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#a6e9750507cbdcb79de4d3fc4d9dbdf50", null ],
+    [ "ColumnUserId", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#a0274d5b81faa28f04c1dce2ba1649900", null ],
     [ "ColumnIndex", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#a465279423e2628118be71f61a85dcb47", null ],
     [ "SortOrder", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#ab7e28f5cd575e36aa186c7d86e5f101a", null ],
     [ "SortDirection", "de/d38/struct_alis_1_1_core_1_1_graphic_1_1_im_gui_1_1_im_gui_table_column_sort_specs_ptr.html#a16dfce5a99b9680e7a83165ce4b21131", null ],

@@ -8,7 +8,7 @@ var class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_
     [ "GetTheMinContact", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#ab927fb0f2a09f9f58a365bb439f93a36", null ],
     [ "ShouldCollide", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a5cd453f69a6e1bad89ea54521286f5e5", null ],
     [ "ClearFlags", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a62a6501fc8d4d328d6880902c2d67076", null ],
-    [ "InvalidateTOI", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a0fe0e3a73217144bf6341198295e731a", null ],
+    [ "InvalidateToi", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a48db420f4f988f72beff56012e5724c4", null ],
     [ "CalculateMinAlpha", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#ae6fc1ecc53d770d5a93c08da428db21f", null ],
     [ "ContactPool", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a3e91459deae9ea13684205967db26f9a", null ],
     [ "BeginContact", "db/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact_manager.html#a96ee78bf65477eca624d9bdcf583c6e6", null ],

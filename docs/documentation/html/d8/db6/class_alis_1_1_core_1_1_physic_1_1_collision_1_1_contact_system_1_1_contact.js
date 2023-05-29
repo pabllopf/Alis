@@ -11,7 +11,7 @@ var class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact 
     [ "Create", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#a5b1604c767c8c09a61cf5e527fe476ee", null ],
     [ "Destroy", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#aadc97cd4103fe9e5e6765aedb0e9009a", null ],
     [ "ClearFlags", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#ab3982a79b367fe1627ed803885f16bb6", null ],
-    [ "InvalidateTOI", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#a6d26ea8cd673ea550a16972b767a8ba8", null ],
+    [ "InvalidateToi", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#a16238bec91f1b3f2a13b848c0acf2773", null ],
     [ "fixtureA", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#ac41adead3119965211b963222c42e339", null ],
     [ "fixtureB", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#a6314804632a3e4191a32d50a43cff69f", null ],
     [ "friction", "d8/db6/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_contact_system_1_1_contact.html#a0a86f2579c885894043230563ae303ba", null ],
