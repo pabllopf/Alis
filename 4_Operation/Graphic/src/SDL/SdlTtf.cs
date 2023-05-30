@@ -186,7 +186,7 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdls the ttf version using the specified x
         /// </summary>
         /// <param name="x">The </param>
-        public static void SDL_TTF_VERSION(out Sdl.SdlVersion x)
+        public static void SDL_TTF_VERSION(out SdlVersion x)
         {
             x.major = SdlTtfMajorVersion;
             x.minor = SdlTtfMinorVersion;
@@ -204,13 +204,13 @@ namespace Alis.Core.Graphic.SDL
         ///     Ttfs the linked version
         /// </summary>
         /// <returns>The result</returns>
-        public static Sdl.SdlVersion TTF_LinkedVersion()
+        public static SdlVersion TTF_LinkedVersion()
         {
-            Sdl.SdlVersion result;
+            SdlVersion result;
             IntPtr resultPtr = INTERNAL_TTF_LinkedVersion();
-            result = (Sdl.SdlVersion) Marshal.PtrToStructure(
+            result = (SdlVersion) Marshal.PtrToStructure(
                 resultPtr,
-                typeof(Sdl.SdlVersion)
+                typeof(SdlVersion)
             );
             return result;
         }

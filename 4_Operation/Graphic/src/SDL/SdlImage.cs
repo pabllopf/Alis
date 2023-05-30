@@ -153,7 +153,7 @@ namespace Alis.Core.Graphic.SDL
         ///     Sdls the image version using the specified x
         /// </summary>
         /// <param name="x">The </param>
-        public static void SDL_IMAGE_VERSION(out Sdl.SdlVersion x)
+        public static void SDL_IMAGE_VERSION(out SdlVersion x)
         {
             x.major = SdlImageMajorVersion;
             x.minor = SdlImageMinorVersion;
@@ -171,13 +171,13 @@ namespace Alis.Core.Graphic.SDL
         ///     Imgs the linked version
         /// </summary>
         /// <returns>The result</returns>
-        public static Sdl.SdlVersion IMG_Linked_Version()
+        public static SdlVersion IMG_Linked_Version()
         {
-            Sdl.SdlVersion result;
+            SdlVersion result;
             IntPtr resultPtr = INTERNAL_IMG_Linked_Version();
-            result = (Sdl.SdlVersion) Marshal.PtrToStructure(
+            result = (SdlVersion) Marshal.PtrToStructure(
                 resultPtr,
-                typeof(Sdl.SdlVersion)
+                typeof(SdlVersion)
             );
             return result;
         }
