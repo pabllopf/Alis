@@ -61,57 +61,57 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The jaxis
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlJoyAxisEvent jaxis;
+        [FieldOffset(0)] public SdlJoyAxisEvent jaxis;
 
         /// <summary>
         ///     The jball
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlJoyBallEvent jball;
+        [FieldOffset(0)] public SdlJoyBallEvent jball;
 
         /// <summary>
         ///     The jhat
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlJoyHatEvent jhat;
+        [FieldOffset(0)] public SdlJoyHatEvent jhat;
 
         /// <summary>
         ///     The jbutton
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlJoyButtonEvent jbutton;
+        [FieldOffset(0)] public SdlJoyButtonEvent jbutton;
 
         /// <summary>
         ///     The jdevice
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlJoyDeviceEvent jdevice;
+        [FieldOffset(0)] public SdlJoyDeviceEvent jdevice;
 
         /// <summary>
         ///     The caxis
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlControllerAxisEvent caxis;
+        [FieldOffset(0)] public SdlControllerAxisEvent caxis;
 
         /// <summary>
         ///     The cbutton
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlControllerButtonEvent cbutton;
+        [FieldOffset(0)] public SdlControllerButtonEvent cbutton;
 
         /// <summary>
         ///     The cdevice
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlControllerDeviceEvent cdevice;
+        [FieldOffset(0)] public SdlControllerDeviceEvent cdevice;
 
         /// <summary>
         ///     The ctouchpad
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlControllerTouchpadEvent ctouchpad;
+        [FieldOffset(0)] public SdlControllerTouchpadEvent ctouchpad;
 
         /// <summary>
         ///     The csensor
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlControllerSensorEvent csensor;
+        [FieldOffset(0)] public SdlControllerSensorEvent csensor;
 
         /// <summary>
         ///     The adevice
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlAudioDeviceEvent adevice;
+        [FieldOffset(0)] public SdlAudioDeviceEvent adevice;
 
         /// <summary>
         ///     The sensor
