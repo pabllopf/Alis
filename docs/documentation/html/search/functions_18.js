@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xlerp_14445',['Xlerp',['../d2/d3d/class_alis_1_1_core_1_1_physic_1_1_tools_1_1_texture_tools_1_1_marching_squares.html#ae67b789fa32917bfd6868e2843e6cfc9',1,'Alis::Core::Physic::Tools::TextureTools::MarchingSquares']]]
+  ['zoom_14329',['Zoom',['../df/d48/class_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_view.html#a747bf364551669358c8aaf321f8bfaa8',1,'Alis::Core::Graphic::SFML::Graphics::View']]]
 ];

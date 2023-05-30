@@ -111,7 +111,7 @@ $(document).ready(function(){initNavTree('d4/df1/class_alis_1_1_core_1_1_network
 <p>Web socket client factory used to open web socket client connections  
  <a href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#details">More...</a></p>
 
-<p>Inherits <a class="el" href="../../d0/d4b/interface_alis_1_1_core_1_1_network_1_1_i_web_socket_client_factory.html">Alis.Core.Network.IWebSocketClientFactory</a>.</p>
+<p>Inherits <a class="el" href="../../d0/d4b/interface_alis_1_1_core_1_1_network_1_1_i_web_socket_client_factory.html">Alis.Core.Network.IWebSocketClientFactory</a>, and IDisposable.</p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -130,6 +130,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a20e01470b3afc6248bb212f86138f0a3"><td class="memItemLeft" align="right" valign="top">async Task&lt; WebSocket &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a20e01470b3afc6248bb212f86138f0a3">ConnectAsync</a> (Stream responseStream, string secWebSocketKey, <a class="el" href="../../d7/d26/class_alis_1_1_core_1_1_network_1_1_web_socket_client_options.html">WebSocketClientOptions</a> options, CancellationToken token=default(CancellationToken))</td></tr>
 <tr class="memdesc:a20e01470b3afc6248bb212f86138f0a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect with a stream that has already been opened and HTTP websocket upgrade request sent This function will check the handshake response from the server and proceed if successful Use this function if you have specific requirements to open a conenction like using special http headers and cookies You will have to build your own HTTP websocket upgrade request You may not even choose to use TCP/IP and this function will allow you to do that  <a href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a20e01470b3afc6248bb212f86138f0a3">More...</a><br /></td></tr>
 <tr class="separator:a20e01470b3afc6248bb212f86138f0a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d78f5bbb4fe502575cd6d59ad1cafb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a04d78f5bbb4fe502575cd6d59ad1cafb">Dispose</a> ()</td></tr>
+<tr class="memdesc:a04d78f5bbb4fe502575cd6d59ad1cafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disposes this instance  <a href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a04d78f5bbb4fe502575cd6d59ad1cafb">More...</a><br /></td></tr>
+<tr class="separator:a04d78f5bbb4fe502575cd6d59ad1cafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -172,6 +175,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af5a583b10618cac7196449f958cddc0b"><td class="memItemLeft" align="right" valign="top">readonly Func&lt; MemoryStream &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#af5a583b10618cac7196449f958cddc0b">_bufferFactory</a></td></tr>
 <tr class="memdesc:af5a583b10618cac7196449f958cddc0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The buffer factory  <a href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#af5a583b10618cac7196449f958cddc0b">More...</a><br /></td></tr>
 <tr class="separator:af5a583b10618cac7196449f958cddc0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cdb206b7abef453f8701691b89263fa"><td class="memItemLeft" align="right" valign="top">TcpClient&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a4cdb206b7abef453f8701691b89263fa">tcpClient</a></td></tr>
+<tr class="memdesc:a4cdb206b7abef453f8701691b89263fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">The tcp client  <a href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a4cdb206b7abef453f8701691b89263fa">More...</a><br /></td></tr>
+<tr class="separator:a4cdb206b7abef453f8701691b89263fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00784ab27d773df53d077bdc0a339385"><td class="memItemLeft" align="right" valign="top">readonly <a class="el" href="../../d8/d2b/interface_alis_1_1_core_1_1_network_1_1_i_buffer_pool.html">IBufferPool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a00784ab27d773df53d077bdc0a339385">_bufferPool</a></td></tr>
 <tr class="memdesc:a00784ab27d773df53d077bdc0a339385"><td class="mdescLeft">&#160;</td><td class="mdescRight">The buffer pool  <a href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html#a00784ab27d773df53d077bdc0a339385">More...</a><br /></td></tr>
 <tr class="separator:a00784ab27d773df53d077bdc0a339385"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -198,7 +204,7 @@ Private Attributes</h2></td></tr>
 
 <p>Initialises a new instance of the WebSocketClientFactory class without caring about internal buffers </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00067">67</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00072">72</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -314,7 +320,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d4b/interface_alis_1_1_core_1_1_network_1_1_i_web_socket_client_factory.html#aeb5f12f88ce364c116b51b78ce77b369">Alis.Core.Network.IWebSocketClientFactory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00097">97</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00103">103</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -370,7 +376,7 @@ Private Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="../../d0/d4b/interface_alis_1_1_core_1_1_network_1_1_i_web_socket_client_factory.html#a885df9a673957f1c32236e8fafc273e7">Alis.Core.Network.IWebSocketClientFactory</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00122">122</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00128">128</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -459,7 +465,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A task containing the web socket</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00142">142</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00148">148</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -496,7 +502,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The string</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00171">171</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00177">177</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -556,7 +562,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00192">192</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00198">198</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -599,7 +605,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00219">219</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00225">225</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -639,7 +645,7 @@ Private Attributes</h2></td></tr>
 
 <p>Override this if you need more fine grained control over the TLS handshake like setting the SslProtocol or adding a client certificate </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00253">253</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00259">259</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -715,7 +721,28 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A connected and open stream</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00272">272</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00278">278</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+
+</div>
+</div>
+<a id="a04d78f5bbb4fe502575cd6d59ad1cafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04d78f5bbb4fe502575cd6d59ad1cafb">&#9670;&nbsp;</a></span>Dispose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Alis.Core.Network.WebSocketClientFactory.Dispose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Disposes this instance </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00316">316</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -767,7 +794,7 @@ Private Attributes</h2></td></tr>
 
 <p>Invoked by the RemoteCertificateValidationDelegate If you want to ignore certificate errors (for debugging) then return true </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00311">311</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00325">325</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -804,7 +831,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The string</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00330">330</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00344">344</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -873,7 +900,7 @@ Private Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A task containing the web socket</dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00355">355</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00369">369</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -904,6 +931,32 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a4cdb206b7abef453f8701691b89263fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cdb206b7abef453f8701691b89263fa">&#9670;&nbsp;</a></span>tcpClient</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TcpClient Alis.Core.Network.WebSocketClientFactory.tcpClient</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The tcp client </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00062">62</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+
+</div>
+</div>
 <a id="a00784ab27d773df53d077bdc0a339385"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a00784ab27d773df53d077bdc0a339385">&#9670;&nbsp;</a></span>_bufferPool</h2>
 
@@ -926,7 +979,7 @@ Private Attributes</h2></td></tr>
 
 <p>The buffer pool </p>
 
-<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00062">62</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html#l00067">67</a> of file <a class="el" href="../../df/d1c/_web_socket_client_factory_8cs_source.html">WebSocketClientFactory.cs</a>.</p>
 
 </div>
 </div>
@@ -937,7 +990,7 @@ Private Attributes</h2></td></tr>
   <ul>
     <li class="navelem"><a class="el" href="../../d0/d2c/namespace_alis.html">Alis</a></li><li class="navelem"><a class="el" href="../../dd/dd9/namespace_alis_1_1_core.html">Core</a></li><li class="navelem"><a class="el" href="../../dd/d38/namespace_alis_1_1_core_1_1_network.html">Network</a></li><li class="navelem"><a class="el" href="../../d4/df1/class_alis_1_1_core_1_1_network_1_1_web_socket_client_factory.html">WebSocketClientFactory</a></li>
     <li class="footer">
-      <a>Generated on | Mon May 29 2023 |</a>
+      <a>Generated on | Tue May 30 2023 |</a>
     </li>
   </ul>
 </div>

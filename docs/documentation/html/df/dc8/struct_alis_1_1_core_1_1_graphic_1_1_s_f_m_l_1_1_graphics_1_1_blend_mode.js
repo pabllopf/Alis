@@ -1,22 +1,5 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode =
 [
-    [ "Factor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384", [
-      [ "Zero", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384ad7ed4ee1df437474d005188535f74875", null ],
-      [ "One", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384a06c2cea18679d64399783748fa367bdd", null ],
-      [ "SrcColor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384a2ad714e29d37896d79187312086bc6fe", null ],
-      [ "OneMinusSrcColor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384a09d3240b4e2481b1a729da24e9bfddf7", null ],
-      [ "DstColor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384afaedf511c99a5461048fd6a3b73da26c", null ],
-      [ "OneMinusDstColor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384a09f1a054ebd4d3850fd248bd2fa7b325", null ],
-      [ "SrcAlpha", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384ad5c7b7f0102df3f7305c43f73fc3a498", null ],
-      [ "OneMinusSrcAlpha", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384ac00a6016489cff63d50d489ce52254cc", null ],
-      [ "DstAlpha", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384af72dbe2436b38a39e5927ed644e6818b", null ],
-      [ "OneMinusDstAlpha", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a620d27a987b0c7184fe172a031242384a4132e4b87a8d461be2c6ee8fc620cfb2", null ]
-    ] ],
-    [ "Equation", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a58a1cda50df4b137e3e358621f9d6ff9", [
-      [ "Add", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a58a1cda50df4b137e3e358621f9d6ff9aec211f7c20af43e742bf2570c3cb84f9", null ],
-      [ "Subtract", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a58a1cda50df4b137e3e358621f9d6ff9a1d9baf077ee87921f57a8fe42d510b65", null ],
-      [ "ReverseSubtract", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a58a1cda50df4b137e3e358621f9d6ff9abd5458190996e76988cb2f27a820c685", null ]
-    ] ],
     [ "BlendMode", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#ac99f19aeaad7ab24c5261edb698a15d1", null ],
     [ "BlendMode", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#aea73bdff19407f4161cf772e9d30f072", null ],
     [ "BlendMode", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a42923a79437ac7196673c65bcab6f439", null ],
@@ -29,10 +12,10 @@ var struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode =
     [ "Add", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a80735143973d2c84d481252d1e018fce", null ],
     [ "Multiply", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a703984859461fa0e51e949e66658170d", null ],
     [ "None", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a3f1d20d4358b21770679bcf04e306784", null ],
-    [ "ColorSrcFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#abaac02e72db06531619a428d2b9c2f66", null ],
-    [ "ColorDstFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#aa9dd9b1d79b00aa187353b74cbaa6e85", null ],
-    [ "ColorEquation", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a80e308fe82e1606051db10d24afc138c", null ],
-    [ "AlphaSrcFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a56264a655e3f442d09af15e9c2b83614", null ],
-    [ "AlphaDstFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#ab10c7f0fd49dcbafec4ae5a3bab920c3", null ],
-    [ "AlphaEquation", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#acea558760613dd85546e0e216ccf7d7b", null ]
+    [ "ColorSrcFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a931b6133bd6b756dd9e8ebbedbd57326", null ],
+    [ "ColorDstFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a18c4792cf8d609b2d682e853150d41c2", null ],
+    [ "ColorEquation", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a210b49fad96f0fbb8ed27f4afae89002", null ],
+    [ "AlphaSrcFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a5596fb5b9c1380e662a5de5a9aba169e", null ],
+    [ "AlphaDstFactor", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#a471350bf97d4596205a4a0c1ea513603", null ],
+    [ "AlphaEquation", "df/dc8/struct_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_graphics_1_1_blend_mode.html#ae8b57e4479af5d8eb6d9b17aa4eee594", null ]
 ];

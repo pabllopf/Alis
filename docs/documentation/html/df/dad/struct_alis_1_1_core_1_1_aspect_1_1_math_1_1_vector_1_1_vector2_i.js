@@ -15,6 +15,6 @@ var struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i =
     [ "GetHashCode", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html#a2523fbaf96987c6e03122582023d212e", null ],
     [ "operator Vector2F", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html#a458fba83a58434d251aabb0688384a36", null ],
     [ "operator Vector2U", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html#aefe0b3d8a64622314ff3a5bda833217b", null ],
-    [ "X", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html#a42f9888c582a1b94ce67cf99cdb9f768", null ],
-    [ "Y", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html#ae6e5ce49c43a4865b409eb254f426906", null ]
+    [ "X", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html#a7db6db122ea7d08931153aaf7913a846", null ],
+    [ "Y", "df/dad/struct_alis_1_1_core_1_1_aspect_1_1_math_1_1_vector_1_1_vector2_i.html#a3c0a0b8aaa24fbc478528e73d1098e85", null ]
 ];

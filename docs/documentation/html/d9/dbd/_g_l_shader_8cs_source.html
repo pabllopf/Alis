@@ -139,10 +139,10 @@ $(document).ready(function(){initNavTree('d9/dbd/_g_l_shader_8cs_source.html','.
 <div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ac92f0b90f6e04280ba78db5c3ebe10e2">   47</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ac92f0b90f6e04280ba78db5c3ebe10e2">GlShader</a>(<span class="keywordtype">string</span> source, <a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#aa2088417db0ece5d9366bc9567c0f324">ShaderType</a> type)</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#aa2088417db0ece5d9366bc9567c0f324">ShaderType</a> = type;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a> = GlCreateShader(type);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a> = glCreateShader(type);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            ShaderSource(<a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a>, source);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            GlCompileShader(<a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            glCompileShader(<a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a>);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">if</span> (!GetShaderCompileStatus(<a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a>))</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            {</div>
@@ -171,7 +171,7 @@ $(document).ready(function(){initNavTree('d9/dbd/_g_l_shader_8cs_source.html','.
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a> != 0)</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                GlDeleteShader(<a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                glDeleteShader(<a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a>);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <a class="code" href="../../d2/df2/class_alis_1_1_core_1_1_graphic_1_1_open_g_l_1_1_constructs_1_1_gl_shader.html#ae494394b431ba26217c812bc1bc85f30">ShaderId</a> = 0;</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            }</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        }</div>
@@ -198,7 +198,7 @@ $(document).ready(function(){initNavTree('d9/dbd/_g_l_shader_8cs_source.html','.
   <ul>
     <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3d4360cab6ea73faf28673fc63fdb4e1.html">OpenGL</a></li><li class="navelem"><a class="el" href="../../dir_3c8c069307d59bd629744903cae961e9.html">Constructs</a></li><li class="navelem"><b>GLShader.cs</b></li>
     <li class="footer">
-      <a>Generated on | Mon May 29 2023 |</a>
+      <a>Generated on | Tue May 30 2023 |</a>
     </li>
   </ul>
 </div>

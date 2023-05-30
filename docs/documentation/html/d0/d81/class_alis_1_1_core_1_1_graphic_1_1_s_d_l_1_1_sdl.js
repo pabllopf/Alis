@@ -37,8 +37,6 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl =
     [ "SdlGameControllerButtonBind", "da/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_game_controller_button_bind.html", "da/da6/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_game_controller_button_bind" ],
     [ "SdlGenericEvent", "d7/db1/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_generic_event.html", "d7/db1/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_generic_event" ],
     [ "SdlHapticCondition", "d3/d0a/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_condition.html", "d3/d0a/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_condition" ],
-    [ "SdlHapticConstant", "de/de2/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_constant.html", "de/de2/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_constant" ],
-    [ "SdlHapticCustom", "d8/d6b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_custom.html", "d8/d6b/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_custom" ],
     [ "SdlHapticDirection", "dd/d36/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_direction.html", "dd/d36/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_direction" ],
     [ "SdlHapticEffect", "d3/d2c/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_effect.html", "d3/d2c/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_effect" ],
     [ "SdlHapticLeftRight", "d7/da7/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_left_right.html", "d7/da7/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_haptic_left_right" ],
