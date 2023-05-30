@@ -2092,45 +2092,6 @@ namespace Alis.Core.Graphic.SDL
         );
 
         /// <summary>
-        ///     The sdl messageboxbuttonflags enum
-        /// </summary>
-        [Flags]
-        public enum SdlMessageBoxButtonFlags : uint
-        {
-            /// <summary>
-            ///     The sdl messagebox button returnkey default sdl messageboxbuttonflags
-            /// </summary>
-            SdlMessageboxButtonReturnkeyDefault = 0x00000001,
-
-            /// <summary>
-            ///     The sdl messagebox button escapekey default sdl messageboxbuttonflags
-            /// </summary>
-            SdlMessageboxButtonEscapekeyDefault = 0x00000002
-        }
-
-        /// <summary>
-        ///     The sdl messageboxbuttondata
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMessageBoxButtonData
-        {
-            /// <summary>
-            ///     The flags
-            /// </summary>
-            public SdlMessageBoxButtonFlags flags;
-
-            /// <summary>
-            ///     The buttonid
-            /// </summary>
-            public int buttonid;
-
-            /// <summary>
-            ///     The text
-            /// </summary>
-            public string text; /* The UTF-8 button text */
-        }
-
-        /// <summary>
         ///     The sdl messageboxcolor
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
@@ -2140,61 +2101,6 @@ namespace Alis.Core.Graphic.SDL
             ///     The
             /// </summary>
             public byte r, g, b;
-        }
-
-        /// <summary>
-        ///     The sdl messageboxcolorscheme
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMessageBoxColorScheme
-        {
-            /// <summary>
-            ///     The colors
-            /// </summary>
-            [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int) SdlMessageBoxColorType.SdlMessageboxColorMax)]
-            public SdlMessageBoxColor[] colors;
-        }
-
-        /// <summary>
-        ///     The sdl messageboxdata
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMessageBoxData
-        {
-            /// <summary>
-            ///     The flags
-            /// </summary>
-            public SdlMessageBoxFlags flags;
-
-            /// <summary>
-            ///     The window
-            /// </summary>
-            public IntPtr window; /* Parent window, can be NULL */
-
-            /// <summary>
-            ///     The title
-            /// </summary>
-            public string title; /* UTF-8 title */
-
-            /// <summary>
-            ///     The message
-            /// </summary>
-            public string message; /* UTF-8 message text */
-
-            /// <summary>
-            ///     The numbuttons
-            /// </summary>
-            public int numbuttons;
-
-            /// <summary>
-            ///     The buttons
-            /// </summary>
-            public SdlMessageBoxButtonData[] buttons;
-
-            /// <summary>
-            ///     The color scheme
-            /// </summary>
-            public SdlMessageBoxColorScheme? colorScheme; /* Can be NULL to use system settings */
         }
 
         /// <summary>
@@ -2323,15 +2229,9 @@ namespace Alis.Core.Graphic.SDL
                 window
             );
         }
+        
 
-        #endregion
 
-        #region SDL_version.h, SDL_revision.h
-
-        /* Similar to the headers, this is the version we're expecting to be
-         * running with. You will likely want to check this somewhere in your
-         * program!
-         */
         /// <summary>
         ///     The sdl major version
         /// </summary>
@@ -2355,29 +2255,7 @@ namespace Alis.Core.Graphic.SDL
             SdlMinorVersion,
             SdlPatchlevel
         );
-
-        /// <summary>
-        ///     The sdl version
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlVersion
-        {
-            /// <summary>
-            ///     The major
-            /// </summary>
-            public byte major;
-
-            /// <summary>
-            ///     The minor
-            /// </summary>
-            public byte minor;
-
-            /// <summary>
-            ///     The patch
-            /// </summary>
-            public byte patch;
-        }
-
+        
         /// <summary>
         ///     Sdls the version using the specified x
         /// </summary>
@@ -2434,7 +2312,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetRevisionNumber();
 
-        #endregion
 
         #region SDL_video.h
 
@@ -9843,471 +9720,25 @@ namespace Alis.Core.Graphic.SDL
         }
 #pragma warning restore 0169
 
-        /// <summary>
-        ///     The sdl touchfingerevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlTouchFingerEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The touch id
-            /// </summary>
-            public long touchId; // SDL_TouchID
-
-            /// <summary>
-            ///     The finger id
-            /// </summary>
-            public long fingerId; // SDL_GestureID
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
-
-            /// <summary>
-            ///     The dx
-            /// </summary>
-            public float dx;
-
-            /// <summary>
-            ///     The dy
-            /// </summary>
-            public float dy;
-
-            /// <summary>
-            ///     The pressure
-            /// </summary>
-            public float pressure;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-        }
-
-        /// <summary>
-        ///     The sdl multigestureevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMultiGestureEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The touch id
-            /// </summary>
-            public long touchId; // SDL_TouchID
-
-            /// <summary>
-            ///     The theta
-            /// </summary>
-            public float dTheta;
-
-            /// <summary>
-            ///     The dist
-            /// </summary>
-            public float dDist;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
-
-            /// <summary>
-            ///     The num fingers
-            /// </summary>
-            public ushort numFingers;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            public ushort padding;
-        }
-
-        /// <summary>
-        ///     The sdl dollargestureevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlDollarGestureEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The touch id
-            /// </summary>
-            public long touchId; // SDL_TouchID
-
-            /// <summary>
-            ///     The gesture id
-            /// </summary>
-            public long gestureId; // SDL_GestureID
-
-            /// <summary>
-            ///     The num fingers
-            /// </summary>
-            public uint numFingers;
-
-            /// <summary>
-            ///     The error
-            /// </summary>
-            public float error;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
-        }
-
         /* File open request by system (event.drop.*), enabled by
          * default
          */
-        /// <summary>
-        ///     The sdl dropevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlDropEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /* char* filename, to be freed.
-             * Access the variable EXACTLY ONCE like this:
-             * string s = SDL.UTF8_ToManaged(evt.drop.file, true);
-             */
-            /// <summary>
-            ///     The file
-            /// </summary>
-            public IntPtr file;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-        }
-
-        /// <summary>
-        ///     The sdl sensorevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlSensorEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public int which;
-
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public fixed float data[6];
-        }
 
         /* The "quit requested" event */
-        /// <summary>
-        ///     The sdl quitevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlQuitEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-        }
 
         /* A user defined event (event.user.*) */
-        /// <summary>
-        ///     The sdl userevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlUserEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public uint type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-
-            /// <summary>
-            ///     The code
-            /// </summary>
-            public int code;
-
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public IntPtr data1; /* user-defined */
-
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public IntPtr data2; /* user-defined */
-        }
 
         /* A video driver dependent event (event.syswm.*), disabled */
-        /// <summary>
-        ///     The sdl syswmevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlSysWmEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The msg
-            /// </summary>
-            public IntPtr msg; /* SDL_SysWMmsg*, system-dependent*/
-        }
-
-        /* General event structure */
-        // C# doesn't do unions, so we do this ugly thing. */
-        /// <summary>
-        ///     The sdl event
-        /// </summary>
-        [StructLayout(LayoutKind.Explicit)]
-        public unsafe struct SdlEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            [FieldOffset(0)] public SdlEventType type;
-
-            /// <summary>
-            ///     The type sharp
-            /// </summary>
-            [FieldOffset(0)] public SdlEventType typeFSharp;
-
-            /// <summary>
-            ///     The display
-            /// </summary>
-            [FieldOffset(0)] public SdlDisplayEvent display;
-
-            /// <summary>
-            ///     The window
-            /// </summary>
-            [FieldOffset(0)] public SdlWindowEvent window;
-
-            /// <summary>
-            ///     The key
-            /// </summary>
-            [FieldOffset(0)] public SdlKeyboardEvent key;
-
-            /// <summary>
-            ///     The edit
-            /// </summary>
-            [FieldOffset(0)] public SdlTextEditingEvent edit;
-
-            /// <summary>
-            ///     The text
-            /// </summary>
-            [FieldOffset(0)] public SdlTextInputEvent text;
-
-            /// <summary>
-            ///     The motion
-            /// </summary>
-            [FieldOffset(0)] public SdlMouseMotionEvent motion;
-
-            /// <summary>
-            ///     The button
-            /// </summary>
-            [FieldOffset(0)] public SdlMouseButtonEvent button;
-
-            /// <summary>
-            ///     The wheel
-            /// </summary>
-            [FieldOffset(0)] public SdlMouseWheelEvent wheel;
-
-            /// <summary>
-            ///     The jaxis
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyAxisEvent jaxis;
-
-            /// <summary>
-            ///     The jball
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyBallEvent jball;
-
-            /// <summary>
-            ///     The jhat
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyHatEvent jhat;
-
-            /// <summary>
-            ///     The jbutton
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyButtonEvent jbutton;
-
-            /// <summary>
-            ///     The jdevice
-            /// </summary>
-            [FieldOffset(0)] public SdlJoyDeviceEvent jdevice;
-
-            /// <summary>
-            ///     The caxis
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerAxisEvent caxis;
-
-            /// <summary>
-            ///     The cbutton
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerButtonEvent cbutton;
-
-            /// <summary>
-            ///     The cdevice
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerDeviceEvent cdevice;
-
-            /// <summary>
-            ///     The ctouchpad
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerTouchpadEvent ctouchpad;
-
-            /// <summary>
-            ///     The csensor
-            /// </summary>
-            [FieldOffset(0)] public SdlControllerSensorEvent csensor;
-
-            /// <summary>
-            ///     The adevice
-            /// </summary>
-            [FieldOffset(0)] public SdlAudioDeviceEvent adevice;
-
-            /// <summary>
-            ///     The sensor
-            /// </summary>
-            [FieldOffset(0)] public SdlSensorEvent sensor;
-
-            /// <summary>
-            ///     The quit
-            /// </summary>
-            [FieldOffset(0)] public SdlQuitEvent quit;
-
-            /// <summary>
-            ///     The user
-            /// </summary>
-            [FieldOffset(0)] public SdlUserEvent user;
-
-            /// <summary>
-            ///     The syswm
-            /// </summary>
-            [FieldOffset(0)] public SdlSysWmEvent syswm;
-
-            /// <summary>
-            ///     The tfinger
-            /// </summary>
-            [FieldOffset(0)] public SdlTouchFingerEvent tfinger;
-
-            /// <summary>
-            ///     The mgesture
-            /// </summary>
-            [FieldOffset(0)] public SdlMultiGestureEvent mgesture;
-
-            /// <summary>
-            ///     The dgesture
-            /// </summary>
-            [FieldOffset(0)] public SdlDollarGestureEvent dgesture;
-
-            /// <summary>
-            ///     The drop
-            /// </summary>
-            [FieldOffset(0)] public SdlDropEvent drop;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            [FieldOffset(0)] private fixed byte padding[56];
-        }
 
         /// <summary>
         ///     The sdl eventfilter
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate int SdlEventFilter(
-            IntPtr userdata, // void*
-            IntPtr sdlevent // SDL_Event* event, lolC#
+            IntPtr userdata, 
+            IntPtr sdlevent 
         );
-
-        /* Pump the event loop, getting events from the input devices*/
+        
         /// <summary>
         ///     Sdls the pump events
         /// </summary>
@@ -11149,32 +10580,6 @@ namespace Alis.Core.Graphic.SDL
         ///     The max value
         /// </summary>
         public const uint SdlTouchMouseid = uint.MaxValue;
-
-        /// <summary>
-        ///     The sdl finger
-        /// </summary>
-        public struct SdlFinger
-        {
-            /// <summary>
-            ///     The id
-            /// </summary>
-            public long Id; // SDL_FingerID
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float X;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float Y;
-
-            /// <summary>
-            ///     The pressure
-            /// </summary>
-            public float Pressure;
-        }
 
         /* Only available in 2.0.10 or higher. */
         /// <summary>
@@ -12277,86 +11682,10 @@ namespace Alis.Core.Graphic.SDL
         }
 
         // FIXME: I'd rather this somehow be private...
-        /// <summary>
-        ///     The internal gamecontrollerbuttonbind hat
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct InternalGameControllerButtonBindHat
-        {
-            /// <summary>
-            ///     The hat
-            /// </summary>
-            public int hat;
-
-            /// <summary>
-            ///     The hat mask
-            /// </summary>
-            public int hat_mask;
-        }
 
         // FIXME: I'd rather this somehow be private...
-        /// <summary>
-        ///     The internal gamecontrollerbuttonbind union
-        /// </summary>
-        [StructLayout(LayoutKind.Explicit)]
-        public struct InternalGameControllerButtonBindUnion
-        {
-            /// <summary>
-            ///     The button
-            /// </summary>
-            [FieldOffset(0)] public int button;
-
-            /// <summary>
-            ///     The axis
-            /// </summary>
-            [FieldOffset(0)] public int axis;
-
-            /// <summary>
-            ///     The hat
-            /// </summary>
-            [FieldOffset(0)] public InternalGameControllerButtonBindHat hat;
-        }
-
-        /// <summary>
-        ///     The sdl gamecontrollerbuttonbind
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlGameControllerButtonBind
-        {
-            /// <summary>
-            ///     The bind type
-            /// </summary>
-            public SdlGameControllerBindType bindType;
-
-            /// <summary>
-            ///     The value
-            /// </summary>
-            public InternalGameControllerButtonBindUnion value;
-        }
 
         /* This exists to deal with C# being stupid about blittable types. */
-        /// <summary>
-        ///     The internal sdl gamecontrollerbuttonbind
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        private struct InternalSdlGameControllerButtonBind
-        {
-            /// <summary>
-            ///     The bind type
-            /// </summary>
-            public int bindType;
-
-            /* Largest data type in the union is two ints in size */
-            /// <summary>
-            ///     The union val
-            /// </summary>
-            public int unionVal0;
-
-            /// <summary>
-            ///     The union val
-            /// </summary>
-            public int unionVal1;
-        }
 
         /// <summary>
         ///     Internals the sdl game controller add mapping using the specified mapping string
@@ -13384,321 +12713,6 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const uint SdlHapticInfinity = 4294967295U;
 
-        /// <summary>
-        ///     The sdl hapticdirection
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlHapticDirection
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public byte type;
-
-            /// <summary>
-            ///     The dir
-            /// </summary>
-            public fixed int dir[3];
-        }
-
-        /// <summary>
-        ///     The sdl hapticperiodic
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlHapticPeriodic
-        {
-            // Header
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public ushort type;
-
-            /// <summary>
-            ///     The direction
-            /// </summary>
-            public SdlHapticDirection direction;
-
-            // Replay
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public uint length;
-
-            /// <summary>
-            ///     The delay
-            /// </summary>
-            public ushort delay;
-
-            // Trigger
-            /// <summary>
-            ///     The button
-            /// </summary>
-            public ushort button;
-
-            /// <summary>
-            ///     The interval
-            /// </summary>
-            public ushort interval;
-
-            // Periodic
-            /// <summary>
-            ///     The period
-            /// </summary>
-            public ushort period;
-
-            /// <summary>
-            ///     The magnitude
-            /// </summary>
-            public short magnitude;
-
-            /// <summary>
-            ///     The offset
-            /// </summary>
-            public short offset;
-
-            /// <summary>
-            ///     The phase
-            /// </summary>
-            public ushort phase;
-
-            // Envelope
-            /// <summary>
-            ///     The attack length
-            /// </summary>
-            public ushort attack_length;
-
-            /// <summary>
-            ///     The attack level
-            /// </summary>
-            public ushort attack_level;
-
-            /// <summary>
-            ///     The fade length
-            /// </summary>
-            public ushort fade_length;
-
-            /// <summary>
-            ///     The fade level
-            /// </summary>
-            public ushort fade_level;
-        }
-
-        /// <summary>
-        ///     The sdl hapticcondition
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlHapticCondition
-        {
-            // Header
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public ushort type;
-
-            /// <summary>
-            ///     The direction
-            /// </summary>
-            public SdlHapticDirection direction;
-
-            // Replay
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public uint length;
-
-            /// <summary>
-            ///     The delay
-            /// </summary>
-            public ushort delay;
-
-            // Trigger
-            /// <summary>
-            ///     The button
-            /// </summary>
-            public ushort button;
-
-            /// <summary>
-            ///     The interval
-            /// </summary>
-            public ushort interval;
-
-            // Condition
-            /// <summary>
-            ///     The right sat
-            /// </summary>
-            public fixed ushort right_sat[3];
-
-            /// <summary>
-            ///     The left sat
-            /// </summary>
-            public fixed ushort left_sat[3];
-
-            /// <summary>
-            ///     The right coeff
-            /// </summary>
-            public fixed short right_coeff[3];
-
-            /// <summary>
-            ///     The left coeff
-            /// </summary>
-            public fixed short left_coeff[3];
-
-            /// <summary>
-            ///     The deadband
-            /// </summary>
-            public fixed ushort deadband[3];
-
-            /// <summary>
-            ///     The center
-            /// </summary>
-            public fixed short center[3];
-        }
-
-        /// <summary>
-        ///     The sdl hapticramp
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlHapticRamp
-        {
-            // Header
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public ushort type;
-
-            /// <summary>
-            ///     The direction
-            /// </summary>
-            public SdlHapticDirection direction;
-
-            // Replay
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public uint length;
-
-            /// <summary>
-            ///     The delay
-            /// </summary>
-            public ushort delay;
-
-            // Trigger
-            /// <summary>
-            ///     The button
-            /// </summary>
-            public ushort button;
-
-            /// <summary>
-            ///     The interval
-            /// </summary>
-            public ushort interval;
-
-            // Ramp
-            /// <summary>
-            ///     The start
-            /// </summary>
-            public short start;
-
-            /// <summary>
-            ///     The end
-            /// </summary>
-            public short end;
-
-            // Envelope
-            /// <summary>
-            ///     The attack length
-            /// </summary>
-            public ushort attack_length;
-
-            /// <summary>
-            ///     The attack level
-            /// </summary>
-            public ushort attack_level;
-
-            /// <summary>
-            ///     The fade length
-            /// </summary>
-            public ushort fade_length;
-
-            /// <summary>
-            ///     The fade level
-            /// </summary>
-            public ushort fade_level;
-        }
-
-        /// <summary>
-        ///     The sdl hapticleftright
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlHapticLeftRight
-        {
-            // Header
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public ushort type;
-
-            // Replay
-            /// <summary>
-            ///     The length
-            /// </summary>
-            public uint length;
-
-            // Rumble
-            /// <summary>
-            ///     The large magnitude
-            /// </summary>
-            public ushort large_magnitude;
-
-            /// <summary>
-            ///     The small magnitude
-            /// </summary>
-            public ushort small_magnitude;
-        }
-
-        /// <summary>
-        ///     The sdl hapticeffect
-        /// </summary>
-        [StructLayout(LayoutKind.Explicit)]
-        public struct SdlHapticEffect
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            [FieldOffset(0)] public ushort type;
-
-            /// <summary>
-            ///     The constant
-            /// </summary>
-            [FieldOffset(0)] public SdlHapticConstant constant;
-
-            /// <summary>
-            ///     The periodic
-            /// </summary>
-            [FieldOffset(0)] public SdlHapticPeriodic periodic;
-
-            /// <summary>
-            ///     The condition
-            /// </summary>
-            [FieldOffset(0)] public SdlHapticCondition condition;
-
-            /// <summary>
-            ///     The ramp
-            /// </summary>
-            [FieldOffset(0)] public SdlHapticRamp ramp;
-
-            /// <summary>
-            ///     The leftright
-            /// </summary>
-            [FieldOffset(0)] public SdlHapticLeftRight leftright;
-
-            /// <summary>
-            ///     The custom
-            /// </summary>
-            [FieldOffset(0)] public SdlHapticCustom custom;
-        }
-
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic close using the specified haptic
         /// </summary>
@@ -15589,6 +14603,265 @@ namespace Alis.Core.Graphic.SDL
             Marshal.FreeHGlobal((IntPtr) urlPtr);
             return result;
         }
+    }
+
+    /// <summary>
+    ///     The sdl multigestureevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlMultiGestureEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public uint type;
+
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+
+        /// <summary>
+        ///     The touch id
+        /// </summary>
+        public long touchId; // SDL_TouchID
+
+        /// <summary>
+        ///     The theta
+        /// </summary>
+        public float dTheta;
+
+        /// <summary>
+        ///     The dist
+        /// </summary>
+        public float dDist;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float x;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
+
+        /// <summary>
+        ///     The num fingers
+        /// </summary>
+        public ushort numFingers;
+
+        /// <summary>
+        ///     The padding
+        /// </summary>
+        public ushort padding;
+    }
+
+    /// <summary>
+    ///     The sdl dollargestureevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlDollarGestureEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public uint type;
+
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+
+        /// <summary>
+        ///     The touch id
+        /// </summary>
+        public long touchId; // SDL_TouchID
+
+        /// <summary>
+        ///     The gesture id
+        /// </summary>
+        public long gestureId; // SDL_GestureID
+
+        /// <summary>
+        ///     The num fingers
+        /// </summary>
+        public uint numFingers;
+
+        /// <summary>
+        ///     The error
+        /// </summary>
+        public float error;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float x;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float y;
+    }
+
+    /// <summary>
+    ///     The sdl dropevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlDropEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public SdlEventType type;
+
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+
+        /* char* filename, to be freed.
+             * Access the variable EXACTLY ONCE like this:
+             * string s = SDL.UTF8_ToManaged(evt.drop.file, true);
+             */
+        /// <summary>
+        ///     The file
+        /// </summary>
+        public IntPtr file;
+
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
+    }
+
+    /// <summary>
+    ///     The sdl sensorevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public unsafe struct SdlSensorEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public SdlEventType type;
+
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+
+        /// <summary>
+        ///     The which
+        /// </summary>
+        public int which;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public fixed float data[6];
+    }
+
+    /// <summary>
+    ///     The sdl quitevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlQuitEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public SdlEventType type;
+
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+    }
+
+    /// <summary>
+    ///     The sdl userevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlUserEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public uint type;
+
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+
+        /// <summary>
+        ///     The window id
+        /// </summary>
+        public uint windowID;
+
+        /// <summary>
+        ///     The code
+        /// </summary>
+        public int code;
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public IntPtr data1; /* user-defined */
+
+        /// <summary>
+        ///     The data
+        /// </summary>
+        public IntPtr data2; /* user-defined */
+    }
+
+    /// <summary>
+    ///     The sdl syswmevent
+    /// </summary>
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SdlSysWmEvent
+    {
+        /// <summary>
+        ///     The type
+        /// </summary>
+        public SdlEventType type;
+
+        /// <summary>
+        ///     The timestamp
+        /// </summary>
+        public uint timestamp;
+
+        /// <summary>
+        ///     The msg
+        /// </summary>
+        public IntPtr msg; 
+    }
+
+    /// <summary>
+    ///     The sdl finger
+    /// </summary>
+    public struct SdlFinger
+    {
+        /// <summary>
+        ///     The id
+        /// </summary>
+        public long Id; // SDL_FingerID
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float X;
+
+        /// <summary>
+        ///     The
+        /// </summary>
+        public float Y;
+
+        /// <summary>
+        ///     The pressure
+        /// </summary>
+        public float Pressure;
     }
 
 }

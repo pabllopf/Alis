@@ -46,7 +46,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The direction
         /// </summary>
-        public Sdl.SdlHapticDirection direction;
+        public SdlHapticDirection direction;
 
         // Replay
         /// <summary>

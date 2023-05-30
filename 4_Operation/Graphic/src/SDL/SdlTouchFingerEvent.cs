@@ -1,11 +1,11 @@
-// --------------------------------------------------------------------------
+﻿// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlHapticCustom.cs
+//  File:SdlTouchFingerEvent.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,90 +27,64 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System;
 using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
-    ///     The sdl hapticcustom
+    ///     The sdl touchfingerevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public struct SdlHapticCustom
+    public struct SdlTouchFingerEvent
     {
-        // Header
         /// <summary>
         ///     The type
         /// </summary>
-        public ushort type;
+        public uint type;
 
         /// <summary>
-        ///     The direction
+        ///     The timestamp
         /// </summary>
-        public SdlHapticDirection direction;
-
-        // Replay
-        /// <summary>
-        ///     The length
-        /// </summary>
-        public uint length;
+        public uint timestamp;
 
         /// <summary>
-        ///     The delay
+        ///     The touch id
         /// </summary>
-        public ushort delay;
-
-        // Trigger
-        /// <summary>
-        ///     The button
-        /// </summary>
-        public ushort button;
+        public long touchId; // SDL_TouchID
 
         /// <summary>
-        ///     The interval
+        ///     The finger id
         /// </summary>
-        public ushort interval;
-
-        // Custom
-        /// <summary>
-        ///     The channels
-        /// </summary>
-        public byte channels;
+        public long fingerId; // SDL_GestureID
 
         /// <summary>
-        ///     The period
+        ///     The
         /// </summary>
-        public ushort period;
+        public float x;
 
         /// <summary>
-        ///     The samples
+        ///     The
         /// </summary>
-        public ushort samples;
+        public float y;
 
         /// <summary>
-        ///     The data
+        ///     The dx
         /// </summary>
-        public IntPtr data; // Uint16*
-
-        // Envelope
-        /// <summary>
-        ///     The attack length
-        /// </summary>
-        public ushort attack_length;
+        public float dx;
 
         /// <summary>
-        ///     The attack level
+        ///     The dy
         /// </summary>
-        public ushort attack_level;
+        public float dy;
 
         /// <summary>
-        ///     The fade length
+        ///     The pressure
         /// </summary>
-        public ushort fade_length;
+        public float pressure;
 
         /// <summary>
-        ///     The fade level
+        ///     The window id
         /// </summary>
-        public ushort fade_level;
+        public uint windowID;
     }
 }

@@ -214,7 +214,7 @@ namespace Alis.Core.Graphic.Sample
             List<SdlKeycode> keys = new List<SdlKeycode>((SdlKeycode[]) Enum.GetValues(typeof(SdlKeycode)));
 
 
-            Sdl.SdlEvent sdlEvent;
+            SdlEvent sdlEvent;
 
             bool run = true;
             while (run)
