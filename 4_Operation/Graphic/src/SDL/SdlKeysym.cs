@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------
+// --------------------------------------------------------------------------
 // 
 //                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█
 //                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄
@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl keysym
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    internal struct SdlKeysym
+    public struct SdlKeysym
     {
         /// <summary>
         ///     The scancode

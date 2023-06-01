@@ -11,7 +11,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The bind type
         /// </summary>
-        public Sdl.SdlGameControllerBindType bindType;
+        public SdlGameControllerBindType bindType;
 
         /// <summary>
         ///     The value

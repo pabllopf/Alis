@@ -95,7 +95,7 @@ namespace Alis.Core.Graphic.SDL
         private const string NativeLibName = "sdl2";
 
 
-        /* Used for stack allocated string marshaling. */
+        
         /// <summary>
         ///     Utfs the 8 size using the specified str
         /// </summary>
@@ -156,7 +156,7 @@ namespace Alis.Core.Graphic.SDL
             return buffer;
         }
 
-        /* This is public because SDL_DropEvent needs it! */
+        
         /// <summary>
         ///     Utfs the 8 to managed using the specified s
         /// </summary>
@@ -170,7 +170,7 @@ namespace Alis.Core.Graphic.SDL
                 return null;
             }
 
-            /* We get to do strlen ourselves! */
+            
             byte* ptr = (byte*) s;
             while (*ptr != 0)
             {
@@ -206,7 +206,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         public static uint SDL_FOURCC(byte a, byte b, byte c, byte d) => (uint) (a | (b << 8) | (c << 16) | (d << 24));
 
-        /* malloc/free are used by the marshaler! -flibit */
+        
 
         /// <summary>
         ///     Sdls the malloc using the specified size
@@ -223,11 +223,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void SDL_free(IntPtr memblock);
 
-        /* Buffer.BlockCopy is not available in every runtime yet. Also,
-         * using memcpy directly can be a compatibility issue in other
-         * strange ways. So, we expose this to get around all that.
-         * -flibit
-         */
+        
         /// <summary>
         ///     Sdls the memcpy using the specified dst
         /// </summary>
@@ -256,32 +252,32 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl rwops unknown
         /// </summary>
-        public const uint SdlRwopsUnknown = 0; /* Unknown stream type */
+        public const uint SdlRwopsUnknown = 0; 
 
         /// <summary>
         ///     The sdl rwops winfile
         /// </summary>
-        public const uint SdlRwopsWinfile = 1; /* Win32 file */
+        public const uint SdlRwopsWinfile = 1; 
 
         /// <summary>
         ///     The sdl rwops stdfile
         /// </summary>
-        public const uint SdlRwopsStdfile = 2; /* Stdio file */
+        public const uint SdlRwopsStdfile = 2; 
 
         /// <summary>
         ///     The sdl rwops jnifile
         /// </summary>
-        public const uint SdlRwopsJnifile = 3; /* Android asset */
+        public const uint SdlRwopsJnifile = 3; 
 
         /// <summary>
         ///     The sdl rwops memory
         /// </summary>
-        public const uint SdlRwopsMemory = 4; /* Memory stream */
+        public const uint SdlRwopsMemory = 4; 
 
         /// <summary>
         ///     The sdl rwops memory ro
         /// </summary>
-        public const uint SdlRwopsMemoryRo = 5; /* Read-Only memory stream */
+        public const uint SdlRwopsMemoryRo = 5; 
 
         /// <summary>
         ///     The sdlr wops size callback
@@ -329,7 +325,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr context
         );
 
-        /* IntPtr refers to an SDL_RWops* */
+        
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
@@ -364,7 +360,7 @@ namespace Alis.Core.Graphic.SDL
             return rwOps;
         }
 
-        /* IntPtr refers to an SDL_RWops* */
+        
         /// <summary>
         ///     Sdls the alloc rw
         /// </summary>
@@ -372,7 +368,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_AllocRW();
 
-        /* area refers to an SDL_RWops* */
+        
         /// <summary>
         ///     Sdls the free rw using the specified area
         /// </summary>
@@ -380,7 +376,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeRW(IntPtr area);
 
-        /* fp refers to a void* */
+        
         /// <summary>
         ///     Sdls the rw from fp using the specified fp
         /// </summary>
@@ -390,7 +386,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RWFromFP(IntPtr fp, SdlBool autoclose);
 
-        /* mem refers to a void*, IntPtr to an SDL_RWops* */
+        
         /// <summary>
         ///     Sdls the rw from mem using the specified mem
         /// </summary>
@@ -400,7 +396,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RWFromMem(IntPtr mem, int size);
 
-        /* mem refers to a const void*, IntPtr to an SDL_RWops* */
+        
         /// <summary>
         ///     Sdls the rw from const mem using the specified mem
         /// </summary>
@@ -410,9 +406,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RWFromConstMem(IntPtr mem, int size);
 
-        /* context refers to an SDL_RWops*.
-         * Only available in SDL 2.0.10 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the r wsize using the specified context
         /// </summary>
@@ -443,9 +437,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern long SDL_RWtell(IntPtr context);
 
-        /* context refers to an SDL_RWops*, ptr refers to a void*.
-         * Only available in SDL 2.0.10 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the r wread using the specified context
         /// </summary>
@@ -462,9 +454,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr maxnum
         );
 
-        /* context refers to an SDL_RWops*, ptr refers to a const void*.
-         * Only available in SDL 2.0.10 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the r wwrite using the specified context
         /// </summary>
@@ -481,7 +471,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr maxnum
         );
 
-        /* Read endian functions */
+        
 
         /// <summary>
         ///     Sdls the read u 8 using the specified src
@@ -602,9 +592,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_WriteBE64(IntPtr dst, ulong value);
 
-        /* context refers to an SDL_RWops*
-         * Only available in SDL 2.0.10 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the r wclose using the specified context
         /// </summary>
@@ -642,13 +630,13 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetMainReady();
 
-        /* This is used as a function pointer to a C main() function */
+        
         /// <summary>
         ///     The sdl main func
         /// </summary>
         public delegate int SdlMainFunc(int argc, IntPtr argv);
 
-        /* Use this function with UWP to call your C# Main() function! */
+        
         /// <summary>
         ///     Sdls the win rt run app using the specified main function
         /// </summary>
@@ -887,14 +875,14 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintRenderScaleQuality =
             "SDL_RENDER_SCALE_QUALITY";
 
-        /* Only available in SDL 2.0.1 or higher. */
+        
         /// <summary>
         ///     The sdl hint video highdpi disabled
         /// </summary>
         public const string SdlHintVideoHighdpiDisabled =
             "SDL_VIDEO_HIGHDPI_DISABLED";
 
-        /* Only available in SDL 2.0.2 or higher. */
+        
         /// <summary>
         ///     The sdl hint ctrl click emulate right click
         /// </summary>
@@ -937,7 +925,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintVideoMacFullscreenSpaces =
             "SDL_VIDEO_MAC_FULLSCREEN_SPACES";
 
-        /* Only available in SDL 2.0.3 or higher. */
+        
         /// <summary>
         ///     The sdl hint winrt privacy policy url
         /// </summary>
@@ -956,7 +944,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintWinrtHandleBackButton =
             "SDL_WINRT_HANDLE_BACK_BUTTON";
 
-        /* Only available in SDL 2.0.4 or higher. */
+        
         /// <summary>
         ///     The sdl hint no signal handlers
         /// </summary>
@@ -1035,7 +1023,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintAndroidApkExpansionPatchFileVersion =
             "SDL_ANDROID_APK_EXPANSION_PATCH_FILE_VERSION";
 
-        /* Only available in 2.0.5 or higher. */
+        
         /// <summary>
         ///     The sdl hint mouse focus clickthrough
         /// </summary>
@@ -1060,7 +1048,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintAppleTvRemoteAllowRotation =
             "SDL_APPLE_TV_REMOTE_ALLOW_ROTATION";
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     The sdl hint audio resampling mode
         /// </summary>
@@ -1103,7 +1091,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintWindowsIntresourceIconSmall =
             "SDL_WINDOWS_INTRESOURCE_ICON_SMALL";
 
-        /* Only available in 2.0.8 or higher. */
+        
         /// <summary>
         ///     The sdl hint ios hide home indicator
         /// </summary>
@@ -1122,7 +1110,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlVideoX11NetWmBypassCompositor =
             "SDL_VIDEO_X11_NET_WM_BYPASS_COMPOSITOR";
 
-        /* Only available in 2.0.9 or higher. */
+        
         /// <summary>
         ///     The sdl hint mouse double click time
         /// </summary>
@@ -1183,7 +1171,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintAndroidTrapBackButton =
             "SDL_ANDROID_TRAP_BACK_BUTTON";
 
-        /* Only available in 2.0.10 or higher. */
+        
         /// <summary>
         ///     The sdl hint mouse touch events
         /// </summary>
@@ -1232,7 +1220,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintWaveFactChunk =
             "SDL_WAVE_FACT_CHUNK";
 
-        /* Only available in 2.0.11 or higher. */
+        
         /// <summary>
         ///     The sdl hint vido x11 window visualid
         /// </summary>
@@ -1275,12 +1263,12 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintGamecontrollertype =
             "SDL_GAMECONTROLLERTYPE";
 
-        /* Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     The sdl hint joystick hidapi correlate xinput
         /// </summary>
         public const string SdlHintJoystickHidapiCorrelateXinput =
-            "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT"; /* NOTE: This was removed in 2.0.16. */
+            "SDL_JOYSTICK_HIDAPI_CORRELATE_XINPUT"; 
 
         /// <summary>
         ///     The sdl hint joystick rawinput
@@ -1372,7 +1360,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintJoystickHidapiPs5Rumble =
             "SDL_JOYSTICK_HIDAPI_PS5_RUMBLE";
 
-        /* Only available in 2.0.16 or higher. */
+        
         /// <summary>
         ///     The sdl hint windows force mutex critical sections
         /// </summary>
@@ -1463,7 +1451,7 @@ namespace Alis.Core.Graphic.SDL
         public const string SdlHintVideoWaylandAllowLibdecor =
             "SDL_VIDEO_WAYLAND_ALLOW_LIBDECOR";
 
-        /* Only available in 2.0.18 or higher. */
+        
         /// <summary>
         ///     The sdl hint video egl allow transparency
         /// </summary>
@@ -1511,27 +1499,6 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const string SdlHintLinuxJoystickClassic =
             "SDL_LINUX_JOYSTICK_CLASSIC";
-
-        /// <summary>
-        ///     The sdl hintpriority enum
-        /// </summary>
-        public enum SdlHintPriority
-        {
-            /// <summary>
-            ///     The sdl hint default sdl hintpriority
-            /// </summary>
-            SdlHintDefault,
-
-            /// <summary>
-            ///     The sdl hint normal sdl hintpriority
-            /// </summary>
-            SdlHintNormal,
-
-            /// <summary>
-            ///     The sdl hint override sdl hintpriority
-            /// </summary>
-            SdlHintOverride
-        }
 
         /// <summary>
         ///     Sdls the clear hints
@@ -1635,7 +1602,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Only available in 2.0.5 or higher. */
+        
         /// <summary>
         ///     Internals the sdl get hint boolean using the specified name
         /// </summary>
@@ -1686,7 +1653,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The string</returns>
         public static string SDL_GetError() => UTF8_ToManaged(INTERNAL_SDL_GetError());
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl set error using the specified fmt and arglist
         /// </summary>
@@ -1707,9 +1674,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* IntPtr refers to a char*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get error msg using the specified errstr
         /// </summary>
@@ -1720,7 +1685,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
 
 
-        /* userdata refers to a void*, message to a const char* */
+        
         /// <summary>
         ///     The sdl logoutputfunction
         /// </summary>
@@ -1732,7 +1697,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr message
         );
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log using the specified fmt and arglist
         /// </summary>
@@ -1753,7 +1718,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log verbose using the specified category
         /// </summary>
@@ -1783,7 +1748,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log debug using the specified category
         /// </summary>
@@ -1813,7 +1778,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log info using the specified category
         /// </summary>
@@ -1843,7 +1808,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log warn using the specified category
         /// </summary>
@@ -1873,7 +1838,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log error using the specified category
         /// </summary>
@@ -1903,7 +1868,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log critical using the specified category
         /// </summary>
@@ -1933,7 +1898,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log message using the specified category
         /// </summary>
@@ -1968,7 +1933,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Use string.Format for arglists */
+        
         /// <summary>
         ///     Internals the sdl log message v using the specified category
         /// </summary>
@@ -2039,7 +2004,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_LogResetPriorities();
 
-        /* userdata refers to a void* */
+        
         /// <summary>
         ///     Sdls the log get output function using the specified callback
         /// </summary>
@@ -2079,7 +2044,7 @@ namespace Alis.Core.Graphic.SDL
             }
         }
 
-        /* userdata refers to a void* */
+        
         /// <summary>
         ///     Sdls the log set output function using the specified callback
         /// </summary>
@@ -2100,7 +2065,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, EntryPoint = "SDL_ShowMessageBox", CallingConvention = CallingConvention.Cdecl)]
         private static extern int INTERNAL_SDL_ShowMessageBox([In] ref InternalSdlMessageBoxData messageboxdata, out int buttonid);
 
-        /* Ripped from Jameson's LpUtf8StrMarshaler */
+        
         /// <summary>
         ///     Internals the alloc utf 8 using the specified str
         /// </summary>
@@ -2172,7 +2137,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Internals the sdl show simple message box using the specified flags
         /// </summary>
@@ -2299,150 +2264,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetRevisionNumber();
-
-
-        #region SDL_video.h
-
-        /// <summary>
-        ///     The sdl glattr enum
-        /// </summary>
-        public enum SdlGLattr
-        {
-            /// <summary>
-            ///     The sdl gl red size sdl glattr
-            /// </summary>
-            SdlGlRedSize,
-
-            /// <summary>
-            ///     The sdl gl green size sdl glattr
-            /// </summary>
-            SdlGlGreenSize,
-
-            /// <summary>
-            ///     The sdl gl blue size sdl glattr
-            /// </summary>
-            SdlGlBlueSize,
-
-            /// <summary>
-            ///     The sdl gl alpha size sdl glattr
-            /// </summary>
-            SdlGlAlphaSize,
-
-            /// <summary>
-            ///     The sdl gl buffer size sdl glattr
-            /// </summary>
-            SdlGlBufferSize,
-
-            /// <summary>
-            ///     The sdl gl doublebuffer sdl glattr
-            /// </summary>
-            SdlGlDoublebuffer,
-
-            /// <summary>
-            ///     The sdl gl depth size sdl glattr
-            /// </summary>
-            SdlGlDepthSize,
-
-            /// <summary>
-            ///     The sdl gl stencil size sdl glattr
-            /// </summary>
-            SdlGlStencilSize,
-
-            /// <summary>
-            ///     The sdl gl accum red size sdl glattr
-            /// </summary>
-            SdlGlAccumRedSize,
-
-            /// <summary>
-            ///     The sdl gl accum green size sdl glattr
-            /// </summary>
-            SdlGlAccumGreenSize,
-
-            /// <summary>
-            ///     The sdl gl accum blue size sdl glattr
-            /// </summary>
-            SdlGlAccumBlueSize,
-
-            /// <summary>
-            ///     The sdl gl accum alpha size sdl glattr
-            /// </summary>
-            SdlGlAccumAlphaSize,
-
-            /// <summary>
-            ///     The sdl gl stereo sdl glattr
-            /// </summary>
-            SdlGlStereo,
-
-            /// <summary>
-            ///     The sdl gl multisamplebuffers sdl glattr
-            /// </summary>
-            SdlGlMultisamplebuffers,
-
-            /// <summary>
-            ///     The sdl gl multisamplesamples sdl glattr
-            /// </summary>
-            SdlGlMultisamplesamples,
-
-            /// <summary>
-            ///     The sdl gl accelerated visual sdl glattr
-            /// </summary>
-            SdlGlAcceleratedVisual,
-
-            /// <summary>
-            ///     The sdl gl retained backing sdl glattr
-            /// </summary>
-            SdlGlRetainedBacking,
-
-            /// <summary>
-            ///     The sdl gl context major version sdl glattr
-            /// </summary>
-            SdlGlContextMajorVersion,
-
-            /// <summary>
-            ///     The sdl gl context minor version sdl glattr
-            /// </summary>
-            SdlGlContextMinorVersion,
-
-            /// <summary>
-            ///     The sdl gl context egl sdl glattr
-            /// </summary>
-            SdlGlContextEgl,
-
-            /// <summary>
-            ///     The sdl gl context flags sdl glattr
-            /// </summary>
-            SdlGlContextFlags,
-
-            /// <summary>
-            ///     The sdl gl context profile mask sdl glattr
-            /// </summary>
-            SdlGlContextProfileMask,
-
-            /// <summary>
-            ///     The sdl gl share with current context sdl glattr
-            /// </summary>
-            SdlGlShareWithCurrentContext,
-
-            /// <summary>
-            ///     The sdl gl framebuffer srgb capable sdl glattr
-            /// </summary>
-            SdlGlFramebufferSrgbCapable,
-
-            /// <summary>
-            ///     The sdl gl context release behavior sdl glattr
-            /// </summary>
-            SdlGlContextReleaseBehavior,
-
-            /// <summary>
-            ///     The sdl gl context reset notification sdl glattr
-            /// </summary>
-            SdlGlContextResetNotification, /* Requires >= 2.0.6 */
-
-            /// <summary>
-            ///     The sdl gl context no error sdl glattr
-            /// </summary>
-            SdlGlContextNoError /* Requires >= 2.0.6 */
-        }
 
         /// <summary>
         ///     The sdl glprofile enum
@@ -2573,7 +2394,7 @@ namespace Alis.Core.Graphic.SDL
             /// </summary>
             SdlWindoweventClose,
 
-            /* Only available in 2.0.5 or higher. */
+            
             /// <summary>
             ///     The sdl windowevent take focus sdl windoweventid
             /// </summary>
@@ -2584,7 +2405,7 @@ namespace Alis.Core.Graphic.SDL
             /// </summary>
             SdlWindoweventHitTest,
 
-            /* Only available in 2.0.18 or higher. */
+            
             /// <summary>
             ///     The sdl windowevent iccprof changed sdl windoweventid
             /// </summary>
@@ -2614,12 +2435,12 @@ namespace Alis.Core.Graphic.SDL
             /// <summary>
             ///     The sdl displayevent connected sdl displayeventid
             /// </summary>
-            SdlDisplayeventConnected, /* Requires >= 2.0.14 */
+            SdlDisplayeventConnected, 
 
             /// <summary>
             ///     The sdl displayevent disconnected sdl displayeventid
             /// </summary>
-            SdlDisplayeventDisconnected /* Requires >= 2.0.14 */
+            SdlDisplayeventDisconnected 
         }
 
         /// <summary>
@@ -2653,7 +2474,7 @@ namespace Alis.Core.Graphic.SDL
             SdlOrientationPortraitFlipped
         }
 
-        /* Only available in 2.0.16 or higher. */
+        
         /// <summary>
         ///     The sdl flashoperation enum
         /// </summary>
@@ -2750,52 +2571,52 @@ namespace Alis.Core.Graphic.SDL
             /// <summary>
             ///     The sdl window allow highdpi sdl windowflags
             /// </summary>
-            SdlWindowAllowHighdpi = 0x00002000, /* Requires >= 2.0.1 */
+            SdlWindowAllowHighdpi = 0x00002000, 
 
             /// <summary>
             ///     The sdl window mouse capture sdl windowflags
             /// </summary>
-            SdlWindowMouseCapture = 0x00004000, /* Requires >= 2.0.4 */
+            SdlWindowMouseCapture = 0x00004000, 
 
             /// <summary>
             ///     The sdl window always on top sdl windowflags
             /// </summary>
-            SdlWindowAlwaysOnTop = 0x00008000, /* Requires >= 2.0.5 */
+            SdlWindowAlwaysOnTop = 0x00008000, 
 
             /// <summary>
             ///     The sdl window skip taskbar sdl windowflags
             /// </summary>
-            SdlWindowSkipTaskbar = 0x00010000, /* Requires >= 2.0.5 */
+            SdlWindowSkipTaskbar = 0x00010000, 
 
             /// <summary>
             ///     The sdl window utility sdl windowflags
             /// </summary>
-            SdlWindowUtility = 0x00020000, /* Requires >= 2.0.5 */
+            SdlWindowUtility = 0x00020000, 
 
             /// <summary>
             ///     The sdl window tooltip sdl windowflags
             /// </summary>
-            SdlWindowTooltip = 0x00040000, /* Requires >= 2.0.5 */
+            SdlWindowTooltip = 0x00040000, 
 
             /// <summary>
             ///     The sdl window popup menu sdl windowflags
             /// </summary>
-            SdlWindowPopupMenu = 0x00080000, /* Requires >= 2.0.5 */
+            SdlWindowPopupMenu = 0x00080000, 
 
             /// <summary>
             ///     The sdl window keyboard grabbed sdl windowflags
             /// </summary>
-            SdlWindowKeyboardGrabbed = 0x00100000, /* Requires >= 2.0.16 */
+            SdlWindowKeyboardGrabbed = 0x00100000, 
 
             /// <summary>
             ///     The sdl window vulkan sdl windowflags
             /// </summary>
-            SdlWindowVulkan = 0x10000000, /* Requires >= 2.0.6 */
+            SdlWindowVulkan = 0x10000000, 
 
             /// <summary>
             ///     The sdl window metal sdl windowflags
             /// </summary>
-            SdlWindowMetal = 0x2000000, /* Requires >= 2.0.14 */
+            SdlWindowMetal = 0x2000000, 
 
             /// <summary>
             ///     The sdl window input grabbed sdl windowflags
@@ -2804,7 +2625,7 @@ namespace Alis.Core.Graphic.SDL
                 SdlWindowMouseGrabbed
         }
 
-        /* Only available in 2.0.4 or higher. */
+        
         /// <summary>
         ///     The sdl hittestresult enum
         /// </summary>
@@ -2813,12 +2634,12 @@ namespace Alis.Core.Graphic.SDL
             /// <summary>
             ///     The sdl hittest normal sdl hittestresult
             /// </summary>
-            SdlHittestNormal, /* Region is normal. No special properties. */
+            SdlHittestNormal, 
 
             /// <summary>
             ///     The sdl hittest draggable sdl hittestresult
             /// </summary>
-            SdlHittestDraggable, /* Region can drag entire window. */
+            SdlHittestDraggable, 
 
             /// <summary>
             ///     The sdl hittest resize topleft sdl hittestresult
@@ -2909,48 +2730,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The bool</returns>
         public static bool SDL_WINDOWPOS_ISCENTERED(int x) => (x & 0xFFFF0000) == SdlWindowposCenteredMask;
 
-        /// <summary>
-        ///     The sdl displaymode
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlDisplayMode
-        {
-            /// <summary>
-            ///     The format
-            /// </summary>
-            public uint format;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int w;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int h;
-
-            /// <summary>
-            ///     The refresh rate
-            /// </summary>
-            public int refresh_rate;
-
-            /// <summary>
-            ///     The driverdata
-            /// </summary>
-            public IntPtr driverdata; // void*
-        }
-
-        /* win refers to an SDL_Window*, area to a const SDL_Point*, data to a void*.
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     The sdl hittest
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
 
-        /* IntPtr refers to an SDL_Window* */
+        
         /// <summary>
         ///     Internals the sdl create window using the specified title
         /// </summary>
@@ -2999,7 +2786,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* window refers to an SDL_Window*, renderer to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the create window and renderer using the specified width
         /// </summary>
@@ -3018,7 +2805,7 @@ namespace Alis.Core.Graphic.SDL
             out IntPtr renderer
         );
 
-        /* data refers to some native window type, IntPtr to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the create window from using the specified data
         /// </summary>
@@ -3027,7 +2814,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_CreateWindowFrom(IntPtr data);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the destroy window using the specified window
         /// </summary>
@@ -3047,7 +2834,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_EnableScreenSaver();
 
-        /* IntPtr refers to an SDL_DisplayMode. Just use closest. */
+        
         /// <summary>
         ///     Sdls the get closest display mode using the specified display index
         /// </summary>
@@ -3126,7 +2913,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRect rect
         );
 
-        /* Only available in 2.0.4 or higher. */
+        
         /// <summary>
         ///     Sdls the get display dpi using the specified display index
         /// </summary>
@@ -3143,7 +2930,7 @@ namespace Alis.Core.Graphic.SDL
             out float vdpi
         );
 
-        /* Only available in 2.0.9 or higher. */
+        
         /// <summary>
         ///     Sdls the get display orientation using the specified display index
         /// </summary>
@@ -3168,7 +2955,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlDisplayMode mode
         );
 
-        /* Only available in 2.0.5 or higher. */
+        
         /// <summary>
         ///     Sdls the get display usable bounds using the specified display index
         /// </summary>
@@ -3222,7 +3009,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The string</returns>
         public static string SDL_GetVideoDriver(int index) => UTF8_ToManaged(INTERNAL_SDL_GetVideoDriver(index));
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window brightness using the specified window
         /// </summary>
@@ -3233,9 +3020,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window opacity using the specified window
         /// </summary>
@@ -3248,9 +3033,7 @@ namespace Alis.Core.Graphic.SDL
             float opacity
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get window opacity using the specified window
         /// </summary>
@@ -3263,9 +3046,7 @@ namespace Alis.Core.Graphic.SDL
             out float outOpacity
         );
 
-        /* modal_window and parent_window refer to an SDL_Window*s
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window modal for using the specified modal window
         /// </summary>
@@ -3278,9 +3059,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr parentWindow
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window input focus using the specified window
         /// </summary>
@@ -3289,7 +3068,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_SetWindowInputFocus(IntPtr window);
 
-        /* window refers to an SDL_Window*, IntPtr to a void* */
+        
         /// <summary>
         ///     Internals the sdl get window data using the specified window
         /// </summary>
@@ -3321,7 +3100,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window display index using the specified window
         /// </summary>
@@ -3332,7 +3111,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window display mode using the specified window
         /// </summary>
@@ -3345,11 +3124,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlDisplayMode mode
         );
 
-        /* IntPtr refers to a void*
-         * window refers to an SDL_Window*
-         * mode refers to a size_t*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get window icc profile using the specified window
         /// </summary>
@@ -3362,7 +3137,7 @@ namespace Alis.Core.Graphic.SDL
             out IntPtr mode
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window flags using the specified window
         /// </summary>
@@ -3371,7 +3146,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetWindowFlags(IntPtr window);
 
-        /* IntPtr refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window from id using the specified id
         /// </summary>
@@ -3380,7 +3155,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetWindowFromID(uint id);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window gamma ramp using the specified window
         /// </summary>
@@ -3400,7 +3175,7 @@ namespace Alis.Core.Graphic.SDL
             ushort[] blue
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window grab using the specified window
         /// </summary>
@@ -3409,9 +3184,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_GetWindowGrab(IntPtr window);
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get window keyboard grab using the specified window
         /// </summary>
@@ -3420,9 +3193,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_GetWindowKeyboardGrab(IntPtr window);
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get window mouse grab using the specified window
         /// </summary>
@@ -3431,7 +3202,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_GetWindowMouseGrab(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window id using the specified window
         /// </summary>
@@ -3440,7 +3211,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetWindowID(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window pixel format using the specified window
         /// </summary>
@@ -3451,7 +3222,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window maximum size using the specified window
         /// </summary>
@@ -3465,7 +3236,7 @@ namespace Alis.Core.Graphic.SDL
             out int maxH
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window minimum size using the specified window
         /// </summary>
@@ -3479,7 +3250,7 @@ namespace Alis.Core.Graphic.SDL
             out int minH
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window position using the specified window
         /// </summary>
@@ -3493,7 +3264,7 @@ namespace Alis.Core.Graphic.SDL
             out int y
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window size using the specified window
         /// </summary>
@@ -3507,7 +3278,7 @@ namespace Alis.Core.Graphic.SDL
             out int h
         );
 
-        /* IntPtr refers to an SDL_Surface*, window to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window surface using the specified window
         /// </summary>
@@ -3516,7 +3287,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetWindowSurface(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Internals the sdl get window title using the specified window
         /// </summary>
@@ -3536,7 +3307,7 @@ namespace Alis.Core.Graphic.SDL
             INTERNAL_SDL_GetWindowTitle(window)
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the gl bind texture using the specified texture
         /// </summary>
@@ -3551,7 +3322,7 @@ namespace Alis.Core.Graphic.SDL
             out float texh
         );
 
-        /* IntPtr and window refer to an SDL_GLContext and SDL_Window* */
+        
         /// <summary>
         ///     Sdls the gl create context using the specified window
         /// </summary>
@@ -3560,7 +3331,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GL_CreateContext(IntPtr window);
 
-        /* context refers to an SDL_GLContext */
+        
         /// <summary>
         ///     Sdls the gl delete context using the specified context
         /// </summary>
@@ -3591,7 +3362,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        /* IntPtr refers to a function pointer, proc to a const char* */
+        
         /// <summary>
         ///     Sdls the gl get proc address using the specified proc
         /// </summary>
@@ -3600,7 +3371,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GL_GetProcAddress(IntPtr proc);
 
-        /* IntPtr refers to a function pointer */
+        
         /// <summary>
         ///     Sdls the gl get proc address using the specified proc
         /// </summary>
@@ -3645,7 +3416,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Only available in SDL 2.0.2 or higher. */
+        
         /// <summary>
         ///     Sdls the gl reset attributes
         /// </summary>
@@ -3671,7 +3442,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GL_GetSwapInterval();
 
-        /* window and context refer to an SDL_Window* and SDL_GLContext */
+        
         /// <summary>
         ///     Sdls the gl make current using the specified window
         /// </summary>
@@ -3684,7 +3455,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr context
         );
 
-        /* IntPtr refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the gl get current window
         /// </summary>
@@ -3692,7 +3463,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GL_GetCurrentWindow();
 
-        /* IntPtr refers to an SDL_Context */
+        
         /// <summary>
         ///     Sdls the gl get current context
         /// </summary>
@@ -3700,9 +3471,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GL_GetCurrentContext();
 
-        /* window refers to an SDL_Window*.
-         * Only available in SDL 2.0.1 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the gl get drawable size using the specified window
         /// </summary>
@@ -3748,7 +3517,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GL_SetSwapInterval(int interval);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the gl swap window using the specified window
         /// </summary>
@@ -3756,7 +3525,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_GL_SwapWindow(IntPtr window);
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the gl unbind texture using the specified texture
         /// </summary>
@@ -3765,7 +3534,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GL_UnbindTexture(IntPtr texture);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the hide window using the specified window
         /// </summary>
@@ -3780,7 +3549,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_IsScreenSaverEnabled();
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the maximize window using the specified window
         /// </summary>
@@ -3788,7 +3557,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_MaximizeWindow(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the minimize window using the specified window
         /// </summary>
@@ -3796,7 +3565,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_MinimizeWindow(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the raise window using the specified window
         /// </summary>
@@ -3804,7 +3573,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_RaiseWindow(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the restore window using the specified window
         /// </summary>
@@ -3812,7 +3581,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_RestoreWindow(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window brightness using the specified window
         /// </summary>
@@ -3825,7 +3594,7 @@ namespace Alis.Core.Graphic.SDL
             float brightness
         );
 
-        /* IntPtr and userdata are void*, window is an SDL_Window* */
+        
         /// <summary>
         ///     Internals the sdl set window data using the specified window
         /// </summary>
@@ -3862,7 +3631,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window display mode using the specified window
         /// </summary>
@@ -3875,8 +3644,8 @@ namespace Alis.Core.Graphic.SDL
             ref SdlDisplayMode mode
         );
 
-        /* window refers to an SDL_Window* */
-        /* NULL overload - use the window's dimensions and the desktop's format and refresh rate */
+        
+        
         /// <summary>
         ///     Sdls the set window display mode using the specified window
         /// </summary>
@@ -3889,7 +3658,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr mode
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window fullscreen using the specified window
         /// </summary>
@@ -3902,7 +3671,7 @@ namespace Alis.Core.Graphic.SDL
             uint flags
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window gamma ramp using the specified window
         /// </summary>
@@ -3922,7 +3691,7 @@ namespace Alis.Core.Graphic.SDL
             ushort[] blue
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window grab using the specified window
         /// </summary>
@@ -3934,9 +3703,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBool grabbed
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window keyboard grab using the specified window
         /// </summary>
@@ -3948,9 +3715,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBool grabbed
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window mouse grab using the specified window
         /// </summary>
@@ -3963,7 +3728,7 @@ namespace Alis.Core.Graphic.SDL
         );
 
 
-        /* window refers to an SDL_Window*, icon to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the set window icon using the specified window
         /// </summary>
@@ -3975,7 +3740,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr icon
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window maximum size using the specified window
         /// </summary>
@@ -3989,7 +3754,7 @@ namespace Alis.Core.Graphic.SDL
             int maxH
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window minimum size using the specified window
         /// </summary>
@@ -4003,7 +3768,7 @@ namespace Alis.Core.Graphic.SDL
             int minH
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window position using the specified window
         /// </summary>
@@ -4017,7 +3782,7 @@ namespace Alis.Core.Graphic.SDL
             int y
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window size using the specified window
         /// </summary>
@@ -4031,7 +3796,7 @@ namespace Alis.Core.Graphic.SDL
             int h
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the set window bordered using the specified window
         /// </summary>
@@ -4043,7 +3808,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBool bordered
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get window borders size using the specified window
         /// </summary>
@@ -4062,9 +3827,7 @@ namespace Alis.Core.Graphic.SDL
             out int right
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window resizable using the specified window
         /// </summary>
@@ -4076,9 +3839,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBool resizable
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window always on top using the specified window
         /// </summary>
@@ -4090,7 +3851,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBool onTop
         );
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Internals the sdl set window title using the specified window
         /// </summary>
@@ -4120,7 +3881,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the show window using the specified window
         /// </summary>
@@ -4128,7 +3889,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_ShowWindow(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the update window surface using the specified window
         /// </summary>
@@ -4137,7 +3898,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_UpdateWindowSurface(IntPtr window);
 
-        /* window refers to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the update window surface rects using the specified window
         /// </summary>
@@ -4182,9 +3943,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_VideoQuit();
 
-        /* window refers to an SDL_Window*, callback_data to a void*
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window hit test using the specified window
         /// </summary>
@@ -4199,9 +3958,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr callbackData
         );
 
-        /* IntPtr refers to an SDL_Window*
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get grabbed window
         /// </summary>
@@ -4209,9 +3966,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetGrabbedWindow();
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window mouse rect using the specified window
         /// </summary>
@@ -4224,11 +3979,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect rect
         );
 
-        /* window refers to an SDL_Window*
-         * rect refers to an SDL_Rect*
-         * This overload allows for IntPtr.Zero (null) to be passed for rect.
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set window mouse rect using the specified window
         /// </summary>
@@ -4241,10 +3992,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr rect
         );
 
-        /* window refers to an SDL_Window*
-         * IntPtr refers to an SDL_Rect*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get window mouse rect using the specified window
         /// </summary>
@@ -4255,9 +4003,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window
         );
 
-        /* window refers to an SDL_Window*
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the flash window using the specified window
         /// </summary>
@@ -4269,10 +4015,6 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window,
             SdlFlashOperation operation
         );
-
-        #endregion
-
-        #region SDL_blendmode.h
 
         /// <summary>
         ///     The sdl blendmode enum
@@ -4303,7 +4045,7 @@ namespace Alis.Core.Graphic.SDL
             /// <summary>
             ///     The sdl blendmode mul sdl blendmode
             /// </summary>
-            SdlBlendmodeMul = 0x00000008, /* >= 2.0.11 */
+            SdlBlendmodeMul = 0x00000008, 
 
             /// <summary>
             ///     The sdl blendmode invalid sdl blendmode
@@ -4398,7 +4140,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBlendfactorOneMinusDstAlpha = 0xA
         }
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the compose custom blend mode using the specified src color factor
         /// </summary>
@@ -4418,12 +4160,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBlendFactor dstAlphaFactor,
             SdlBlendOperation alphaOperation
         );
-
-        #endregion
-
-        #region SDL_vulkan.h
-
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Internals the sdl vulkan load library using the specified path
         /// </summary>
@@ -4449,7 +4186,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the vulkan get vk get instance proc addr
         /// </summary>
@@ -4457,17 +4194,14 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_Vulkan_GetVkGetInstanceProcAddr();
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the vulkan unload library
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_Vulkan_UnloadLibrary();
 
-        /* window refers to an SDL_Window*, pNames to a const char**.
-         * Only available in 2.0.6 or higher.
-         * This overload allows for IntPtr.Zero (null) to be passed for pNames.
-         */
+        
         /// <summary>
         ///     Sdls the vulkan get instance extensions using the specified window
         /// </summary>
@@ -4482,9 +4216,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr pNames
         );
 
-        /* window refers to an SDL_Window*, pNames to a const char**.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the vulkan get instance extensions using the specified window
         /// </summary>
@@ -4499,11 +4231,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr[] pNames
         );
 
-        /* window refers to an SDL_Window.
-         * instance refers to a VkInstance.
-         * surface refers to a VkSurfaceKHR.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the vulkan create surface using the specified window
         /// </summary>
@@ -4518,9 +4246,7 @@ namespace Alis.Core.Graphic.SDL
             out ulong surface
         );
 
-        /* window refers to an SDL_Window*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the vulkan get drawable size using the specified window
         /// </summary>
@@ -4534,11 +4260,6 @@ namespace Alis.Core.Graphic.SDL
             out int h
         );
 
-        #endregion
-
-        #region SDL_metal.h
-
-        /* Only available in 2.0.11 or higher. */
         /// <summary>
         ///     Sdls the metal create view using the specified window
         /// </summary>
@@ -4549,7 +4270,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window
         );
 
-        /* Only available in 2.0.11 or higher. */
+        
         /// <summary>
         ///     Sdls the metal destroy view using the specified view
         /// </summary>
@@ -4559,8 +4280,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr view
         );
 
-        /* view refers to an SDL_MetalView.
-         * Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     Sdls the metal get layer using the specified view
         /// </summary>
@@ -4571,9 +4291,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr view
         );
 
-        /* window refers to an SDL_Window*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the metal get drawable size using the specified window
         /// </summary>
@@ -4586,10 +4304,6 @@ namespace Alis.Core.Graphic.SDL
             out int w,
             out int h
         );
-
-        #endregion
-
-        #region SDL_render.h
 
         /// <summary>
         ///     The sdl rendererflags enum
@@ -4683,44 +4397,7 @@ namespace Alis.Core.Graphic.SDL
             SdlTexturemodulateVertical = 0x00000002
         }
 
-        /// <summary>
-        ///     The sdl rendererinfo
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlRendererInfo
-        {
-            /// <summary>
-            ///     The name
-            /// </summary>
-            public IntPtr name; // const char*
-
-            /// <summary>
-            ///     The flags
-            /// </summary>
-            public uint flags;
-
-            /// <summary>
-            ///     The num texture formats
-            /// </summary>
-            public uint num_texture_formats;
-
-            /// <summary>
-            ///     The texture formats
-            /// </summary>
-            public fixed uint texture_formats[16];
-
-            /// <summary>
-            ///     The max texture width
-            /// </summary>
-            public int max_texture_width;
-
-            /// <summary>
-            ///     The max texture height
-            /// </summary>
-            public int max_texture_height;
-        }
-
-        /* Only available in 2.0.11 or higher. */
+        
         /// <summary>
         ///     The sdl scalemode enum
         /// </summary>
@@ -4742,30 +4419,9 @@ namespace Alis.Core.Graphic.SDL
             SdlScaleModeBest
         }
 
-        /* Only available in 2.0.18 or higher. */
-        /// <summary>
-        ///     The sdl vertex
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlVertex
-        {
-            /// <summary>
-            ///     The position
-            /// </summary>
-            public SdlFPoint position;
+        
 
-            /// <summary>
-            ///     The color
-            /// </summary>
-            public SdlColor color;
-
-            /// <summary>
-            ///     The tex coord
-            /// </summary>
-            public SdlFPoint tex_coord;
-        }
-
-        /* IntPtr refers to an SDL_Renderer*, window to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the create renderer using the specified window
         /// </summary>
@@ -4780,7 +4436,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlags flags
         );
 
-        /* IntPtr refers to an SDL_Renderer*, surface to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the create software renderer using the specified surface
         /// </summary>
@@ -4789,7 +4445,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_CreateSoftwareRenderer(IntPtr surface);
 
-        /* IntPtr refers to an SDL_Texture*, renderer to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the create texture using the specified renderer
         /// </summary>
@@ -4808,10 +4464,7 @@ namespace Alis.Core.Graphic.SDL
             int h
         );
 
-        /* IntPtr refers to an SDL_Texture*
-         * renderer refers to an SDL_Renderer*
-         * surface refers to an SDL_Surface*
-         */
+        
         /// <summary>
         ///     Sdls the create texture from surface using the specified renderer
         /// </summary>
@@ -4824,7 +4477,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr surface
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the destroy renderer using the specified renderer
         /// </summary>
@@ -4832,7 +4485,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_DestroyRenderer(IntPtr renderer);
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the destroy texture using the specified texture
         /// </summary>
@@ -4847,7 +4500,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetNumRenderDrivers();
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the get render draw blend mode using the specified renderer
         /// </summary>
@@ -4860,9 +4513,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlBlendMode blendMode
         );
 
-        /* texture refers to an SDL_Texture*
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set texture scale mode using the specified texture
         /// </summary>
@@ -4875,9 +4526,7 @@ namespace Alis.Core.Graphic.SDL
             SdlScaleMode scaleMode
         );
 
-        /* texture refers to an SDL_Texture*
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get texture scale mode using the specified texture
         /// </summary>
@@ -4890,10 +4539,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlScaleMode scaleMode
         );
 
-        /* texture refers to an SDL_Texture*
-         * userdata refers to a void*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the set texture user data using the specified texture
         /// </summary>
@@ -4906,9 +4552,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         );
 
-        /* IntPtr refers to a void*, texture refers to an SDL_Texture*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get texture user data using the specified texture
         /// </summary>
@@ -4917,7 +4561,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetTextureUserData(IntPtr texture);
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the get render draw color using the specified renderer
         /// </summary>
@@ -4948,7 +4592,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRendererInfo info
         );
 
-        /* IntPtr refers to an SDL_Renderer*, window to an SDL_Window* */
+        
         /// <summary>
         ///     Sdls the get renderer using the specified window
         /// </summary>
@@ -4957,7 +4601,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetRenderer(IntPtr window);
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the get renderer info using the specified renderer
         /// </summary>
@@ -4970,7 +4614,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRendererInfo info
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the get renderer output size using the specified renderer
         /// </summary>
@@ -4985,7 +4629,7 @@ namespace Alis.Core.Graphic.SDL
             out int h
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the get texture alpha mod using the specified texture
         /// </summary>
@@ -4998,7 +4642,7 @@ namespace Alis.Core.Graphic.SDL
             out byte alpha
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the get texture blend mode using the specified texture
         /// </summary>
@@ -5011,7 +4655,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlBlendMode blendMode
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the get texture color mod using the specified texture
         /// </summary>
@@ -5028,7 +4672,7 @@ namespace Alis.Core.Graphic.SDL
             out byte b
         );
 
-        /* texture refers to an SDL_Texture*, pixels to a void* */
+        
         /// <summary>
         ///     Sdls the lock texture using the specified texture
         /// </summary>
@@ -5045,11 +4689,7 @@ namespace Alis.Core.Graphic.SDL
             out int pitch
         );
 
-        /* texture refers to an SDL_Texture*, pixels to a void*.
-         * Internally, this function contains logic to use default values when
-         * the rectangle is passed as NULL.
-         * This overload allows for IntPtr.Zero to be passed for rect.
-         */
+        
         /// <summary>
         ///     Sdls the lock texture using the specified texture
         /// </summary>
@@ -5066,9 +4706,7 @@ namespace Alis.Core.Graphic.SDL
             out int pitch
         );
 
-        /* texture refers to an SDL_Texture*, surface to an SDL_Surface*
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the lock texture to surface using the specified texture
         /// </summary>
@@ -5083,12 +4721,7 @@ namespace Alis.Core.Graphic.SDL
             out IntPtr surface
         );
 
-        /* texture refers to an SDL_Texture*, surface to an SDL_Surface*
-         * Internally, this function contains logic to use default values when
-         * the rectangle is passed as NULL.
-         * This overload allows for IntPtr.Zero to be passed for rect.
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the lock texture to surface using the specified texture
         /// </summary>
@@ -5103,7 +4736,7 @@ namespace Alis.Core.Graphic.SDL
             out IntPtr surface
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the query texture using the specified texture
         /// </summary>
@@ -5122,7 +4755,7 @@ namespace Alis.Core.Graphic.SDL
             out int h
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render clear using the specified renderer
         /// </summary>
@@ -5131,7 +4764,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_RenderClear(IntPtr renderer);
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the render copy using the specified renderer
         /// </summary>
@@ -5148,11 +4781,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for srcrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy using the specified renderer
         /// </summary>
@@ -5169,11 +4798,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy using the specified renderer
         /// </summary>
@@ -5190,11 +4815,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both SDL_Rects.
-         */
+        
         /// <summary>
         ///     Sdls the render copy using the specified renderer
         /// </summary>
@@ -5211,7 +4832,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5234,11 +4855,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for srcrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5261,11 +4878,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5288,11 +4901,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for center.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5315,12 +4924,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both
-         * srcrect and dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5343,12 +4947,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both
-         * srcrect and center.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5371,12 +4970,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both
-         * dstrect and center.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5399,12 +4993,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for all
-         * three parameters.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5427,7 +5016,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw line using the specified renderer
         /// </summary>
@@ -5446,7 +5035,7 @@ namespace Alis.Core.Graphic.SDL
             int y2
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw lines using the specified renderer
         /// </summary>
@@ -5461,7 +5050,7 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw point using the specified renderer
         /// </summary>
@@ -5476,7 +5065,7 @@ namespace Alis.Core.Graphic.SDL
             int y
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw points using the specified renderer
         /// </summary>
@@ -5491,7 +5080,7 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw rect using the specified renderer
         /// </summary>
@@ -5504,9 +5093,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect rect
         );
 
-        /* renderer refers to an SDL_Renderer*, rect to an SDL_Rect*.
-         * This overload allows for IntPtr.Zero (null) to be passed for rect.
-         */
+        
         /// <summary>
         ///     Sdls the render draw rect using the specified renderer
         /// </summary>
@@ -5519,7 +5106,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw rects using the specified renderer
         /// </summary>
@@ -5534,7 +5121,7 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render fill rect using the specified renderer
         /// </summary>
@@ -5547,9 +5134,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect rect
         );
 
-        /* renderer refers to an SDL_Renderer*, rect to an SDL_Rect*.
-         * This overload allows for IntPtr.Zero (null) to be passed for rect.
-         */
+        
         /// <summary>
         ///     Sdls the render fill rect using the specified renderer
         /// </summary>
@@ -5562,7 +5147,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render fill rects using the specified renderer
         /// </summary>
@@ -5577,11 +5162,6 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        #region Floating Point Render Functions
-
-        /* This region only available in SDL 2.0.10 or higher. */
-
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture* */
         /// <summary>
         ///     Sdls the render copy f using the specified renderer
         /// </summary>
@@ -5598,11 +5178,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlFRect dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for srcrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy f using the specified renderer
         /// </summary>
@@ -5619,11 +5195,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlFRect dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy f using the specified renderer
         /// </summary>
@@ -5640,11 +5212,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both SDL_Rects.
-         */
+        
         /// <summary>
         ///     Sdls the render copy f using the specified renderer
         /// </summary>
@@ -5661,7 +5229,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5684,11 +5252,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for srcrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex using the specified renderer
         /// </summary>
@@ -5711,11 +5275,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex f using the specified renderer
         /// </summary>
@@ -5738,11 +5298,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for center.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex f using the specified renderer
         /// </summary>
@@ -5765,12 +5321,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both
-         * srcrect and dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex f using the specified renderer
         /// </summary>
@@ -5793,12 +5344,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both
-         * srcrect and center.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex f using the specified renderer
         /// </summary>
@@ -5821,12 +5367,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both
-         * dstrect and center.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex f using the specified renderer
         /// </summary>
@@ -5849,12 +5390,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture*.
-         * Internally, this function contains logic to use default values when
-         * source, destination, and/or center are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for all
-         * three parameters.
-         */
+        
         /// <summary>
         ///     Sdls the render copy ex f using the specified renderer
         /// </summary>
@@ -5877,10 +5413,7 @@ namespace Alis.Core.Graphic.SDL
             SdlRendererFlip flip
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * texture refers to an SDL_Texture*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render geometry using the specified renderer
         /// </summary>
@@ -5901,11 +5434,7 @@ namespace Alis.Core.Graphic.SDL
             int numIndices
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * texture refers to an SDL_Texture*
-         * indices refers to a void*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render geometry raw using the specified renderer
         /// </summary>
@@ -5938,7 +5467,7 @@ namespace Alis.Core.Graphic.SDL
             int sizeIndices
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw point f using the specified renderer
         /// </summary>
@@ -5953,7 +5482,7 @@ namespace Alis.Core.Graphic.SDL
             float y
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw points f using the specified renderer
         /// </summary>
@@ -5968,7 +5497,7 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw line f using the specified renderer
         /// </summary>
@@ -5987,7 +5516,7 @@ namespace Alis.Core.Graphic.SDL
             float y2
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw lines f using the specified renderer
         /// </summary>
@@ -6002,7 +5531,7 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw rect f using the specified renderer
         /// </summary>
@@ -6015,9 +5544,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlFRect rect
         );
 
-        /* renderer refers to an SDL_Renderer*, rect to an SDL_Rect*.
-         * This overload allows for IntPtr.Zero (null) to be passed for rect.
-         */
+        
         /// <summary>
         ///     Sdls the render draw rect f using the specified renderer
         /// </summary>
@@ -6030,7 +5557,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render draw rects f using the specified renderer
         /// </summary>
@@ -6045,7 +5572,7 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render fill rect f using the specified renderer
         /// </summary>
@@ -6058,9 +5585,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlFRect rect
         );
 
-        /* renderer refers to an SDL_Renderer*, rect to an SDL_Rect*.
-         * This overload allows for IntPtr.Zero (null) to be passed for rect.
-         */
+        
         /// <summary>
         ///     Sdls the render fill rect f using the specified renderer
         /// </summary>
@@ -6073,7 +5598,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render fill rects f using the specified renderer
         /// </summary>
@@ -6088,9 +5613,9 @@ namespace Alis.Core.Graphic.SDL
             int count
         );
 
-        #endregion
+        
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render get clip rect using the specified renderer
         /// </summary>
@@ -6102,7 +5627,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRect rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render get logical size using the specified renderer
         /// </summary>
@@ -6116,7 +5641,7 @@ namespace Alis.Core.Graphic.SDL
             out int h
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render get scale using the specified renderer
         /// </summary>
@@ -6130,9 +5655,7 @@ namespace Alis.Core.Graphic.SDL
             out float scaleY
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render window to logical using the specified renderer
         /// </summary>
@@ -6150,9 +5673,7 @@ namespace Alis.Core.Graphic.SDL
             out float logicalY
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render logical to window using the specified renderer
         /// </summary>
@@ -6170,7 +5691,7 @@ namespace Alis.Core.Graphic.SDL
             out int windowY
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render get viewport using the specified renderer
         /// </summary>
@@ -6183,7 +5704,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRect rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render present using the specified renderer
         /// </summary>
@@ -6191,7 +5712,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_RenderPresent(IntPtr renderer);
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render read pixels using the specified renderer
         /// </summary>
@@ -6210,7 +5731,7 @@ namespace Alis.Core.Graphic.SDL
             int pitch
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render set clip rect using the specified renderer
         /// </summary>
@@ -6223,9 +5744,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect rect
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * This overload allows for IntPtr.Zero (null) to be passed for rect.
-         */
+        
         /// <summary>
         ///     Sdls the render set clip rect using the specified renderer
         /// </summary>
@@ -6238,7 +5757,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render set logical size using the specified renderer
         /// </summary>
@@ -6253,7 +5772,7 @@ namespace Alis.Core.Graphic.SDL
             int h
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render set scale using the specified renderer
         /// </summary>
@@ -6268,9 +5787,7 @@ namespace Alis.Core.Graphic.SDL
             float scaleY
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render set integer scale using the specified renderer
         /// </summary>
@@ -6283,7 +5800,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBool enable
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render set viewport using the specified renderer
         /// </summary>
@@ -6296,7 +5813,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect rect
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the set render draw blend mode using the specified renderer
         /// </summary>
@@ -6309,7 +5826,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBlendMode blendMode
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the set render draw color using the specified renderer
         /// </summary>
@@ -6328,7 +5845,7 @@ namespace Alis.Core.Graphic.SDL
             byte a
         );
 
-        /* renderer refers to an SDL_Renderer*, texture to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the set render target using the specified renderer
         /// </summary>
@@ -6341,7 +5858,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr texture
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the set texture alpha mod using the specified texture
         /// </summary>
@@ -6354,7 +5871,7 @@ namespace Alis.Core.Graphic.SDL
             byte alpha
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the set texture blend mode using the specified texture
         /// </summary>
@@ -6367,7 +5884,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBlendMode blendMode
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the set texture color mod using the specified texture
         /// </summary>
@@ -6384,7 +5901,7 @@ namespace Alis.Core.Graphic.SDL
             byte b
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the unlock texture using the specified texture
         /// </summary>
@@ -6392,7 +5909,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockTexture(IntPtr texture);
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the update texture using the specified texture
         /// </summary>
@@ -6409,7 +5926,7 @@ namespace Alis.Core.Graphic.SDL
             int pitch
         );
 
-        /* texture refers to an SDL_Texture* */
+        
         /// <summary>
         ///     Sdls the update texture using the specified texture
         /// </summary>
@@ -6426,9 +5943,7 @@ namespace Alis.Core.Graphic.SDL
             int pitch
         );
 
-        /* texture refers to an SDL_Texture*
-         * Only available in 2.0.1 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the update yuv texture using the specified texture
         /// </summary>
@@ -6453,10 +5968,7 @@ namespace Alis.Core.Graphic.SDL
             int vPitch
         );
 
-        /* texture refers to an SDL_Texture*.
-         * yPlane and uvPlane refer to const Uint*.
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the update nv texture using the specified texture
         /// </summary>
@@ -6477,7 +5989,7 @@ namespace Alis.Core.Graphic.SDL
             int uvPitch
         );
 
-        /* renderer refers to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the render target supported using the specified renderer
         /// </summary>
@@ -6488,7 +6000,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr renderer
         );
 
-        /* IntPtr refers to an SDL_Texture*, renderer to an SDL_Renderer* */
+        
         /// <summary>
         ///     Sdls the get render target using the specified renderer
         /// </summary>
@@ -6497,9 +6009,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetRenderTarget(IntPtr renderer);
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.8 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render get metal layer using the specified renderer
         /// </summary>
@@ -6510,9 +6020,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr renderer
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.8 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render get metal command encoder using the specified renderer
         /// </summary>
@@ -6523,9 +6031,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr renderer
         );
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render set v sync using the specified renderer
         /// </summary>
@@ -6535,9 +6041,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_RenderSetVSync(IntPtr renderer, int vsync);
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render is clip enabled using the specified renderer
         /// </summary>
@@ -6546,9 +6050,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_RenderIsClipEnabled(IntPtr renderer);
 
-        /* renderer refers to an SDL_Renderer*
-         * Only available in 2.0.10 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render flush using the specified renderer
         /// </summary>
@@ -6556,10 +6058,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_RenderFlush(IntPtr renderer);
-
-        #endregion
-
-        #region SDL_pixels.h
 
         /// <summary>
         ///     Sdls the define pixelfourcc using the specified a
@@ -6813,170 +6311,6 @@ namespace Alis.Core.Graphic.SDL
             ///     The sdl pixeltype arrayf32 sdl pixeltype
             /// </summary>
             SdlPixeltypeArrayf32
-        }
-
-        /// <summary>
-        ///     The sdl bitmaporder enum
-        /// </summary>
-        public enum SdlBitmapOrder
-        {
-            /// <summary>
-            ///     The sdl bitmaporder none sdl bitmaporder
-            /// </summary>
-            SdlBitmaporderNone,
-
-            /// <summary>
-            ///     The sdl bitmaporder 4321 sdl bitmaporder
-            /// </summary>
-            SdlBitmaporder4321,
-
-            /// <summary>
-            ///     The sdl bitmaporder 1234 sdl bitmaporder
-            /// </summary>
-            SdlBitmaporder1234
-        }
-
-        /// <summary>
-        ///     The sdl packedorder enum
-        /// </summary>
-        public enum SdlPackedOrder
-        {
-            /// <summary>
-            ///     The sdl packedorder none sdl packedorder
-            /// </summary>
-            SdlPackedorderNone,
-
-            /// <summary>
-            ///     The sdl packedorder xrgb sdl packedorder
-            /// </summary>
-            SdlPackedorderXrgb,
-
-            /// <summary>
-            ///     The sdl packedorder rgbx sdl packedorder
-            /// </summary>
-            SdlPackedorderRgbx,
-
-            /// <summary>
-            ///     The sdl packedorder argb sdl packedorder
-            /// </summary>
-            SdlPackedorderArgb,
-
-            /// <summary>
-            ///     The sdl packedorder rgba sdl packedorder
-            /// </summary>
-            SdlPackedorderRgba,
-
-            /// <summary>
-            ///     The sdl packedorder xbgr sdl packedorder
-            /// </summary>
-            SdlPackedorderXbgr,
-
-            /// <summary>
-            ///     The sdl packedorder bgrx sdl packedorder
-            /// </summary>
-            SdlPackedorderBgrx,
-
-            /// <summary>
-            ///     The sdl packedorder abgr sdl packedorder
-            /// </summary>
-            SdlPackedorderAbgr,
-
-            /// <summary>
-            ///     The sdl packedorder bgra sdl packedorder
-            /// </summary>
-            SdlPackedorderBgra
-        }
-
-        /// <summary>
-        ///     The sdl arrayorder enum
-        /// </summary>
-        public enum SdlArrayOrder
-        {
-            /// <summary>
-            ///     The sdl arrayorder none sdl arrayorder
-            /// </summary>
-            SdlArrayorderNone,
-
-            /// <summary>
-            ///     The sdl arrayorder rgb sdl arrayorder
-            /// </summary>
-            SdlArrayorderRgb,
-
-            /// <summary>
-            ///     The sdl arrayorder rgba sdl arrayorder
-            /// </summary>
-            SdlArrayorderRgba,
-
-            /// <summary>
-            ///     The sdl arrayorder argb sdl arrayorder
-            /// </summary>
-            SdlArrayorderArgb,
-
-            /// <summary>
-            ///     The sdl arrayorder bgr sdl arrayorder
-            /// </summary>
-            SdlArrayorderBgr,
-
-            /// <summary>
-            ///     The sdl arrayorder bgra sdl arrayorder
-            /// </summary>
-            SdlArrayorderBgra,
-
-            /// <summary>
-            ///     The sdl arrayorder abgr sdl arrayorder
-            /// </summary>
-            SdlArrayorderAbgr
-        }
-
-        /// <summary>
-        ///     The sdl packedlayout enum
-        /// </summary>
-        public enum SdlPackedLayout
-        {
-            /// <summary>
-            ///     The sdl packedlayout none sdl packedlayout
-            /// </summary>
-            SdlPackedlayoutNone,
-
-            /// <summary>
-            ///     The sdl packedlayout 332 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout332,
-
-            /// <summary>
-            ///     The sdl packedlayout 4444 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout4444,
-
-            /// <summary>
-            ///     The sdl packedlayout 1555 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout1555,
-
-            /// <summary>
-            ///     The sdl packedlayout 5551 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout5551,
-
-            /// <summary>
-            ///     The sdl packedlayout 565 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout565,
-
-            /// <summary>
-            ///     The sdl packedlayout 8888 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout8888,
-
-            /// <summary>
-            ///     The sdl packedlayout 2101010 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout2101010,
-
-            /// <summary>
-            ///     The sdl packedlayout 1010102 sdl packedlayout
-            /// </summary>
-            SdlPackedlayout1010102
         }
 
         /// <summary>
@@ -7401,158 +6735,7 @@ namespace Alis.Core.Graphic.SDL
                 (byte) 'Y', (byte) 'V', (byte) 'Y', (byte) 'U'
             );
 
-        /// <summary>
-        ///     The sdl color
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlColor
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte r;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte g;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte b;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public byte a;
-        }
-
-        /// <summary>
-        ///     The sdl palette
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlPalette
-        {
-            /// <summary>
-            ///     The ncolors
-            /// </summary>
-            public int ncolors;
-
-            /// <summary>
-            ///     The colors
-            /// </summary>
-            public IntPtr colors;
-
-            /// <summary>
-            ///     The version
-            /// </summary>
-            public int version;
-
-            /// <summary>
-            ///     The refcount
-            /// </summary>
-            public int refcount;
-        }
-
-        /// <summary>
-        ///     The sdl pixelformat
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlPixelFormat
-        {
-            /// <summary>
-            ///     The format
-            /// </summary>
-            public uint format;
-
-            /// <summary>
-            ///     The palette
-            /// </summary>
-            public IntPtr palette; // SDL_Palette*
-
-            /// <summary>
-            ///     The bits per pixel
-            /// </summary>
-            public byte BitsPerPixel;
-
-            /// <summary>
-            ///     The bytes per pixel
-            /// </summary>
-            public byte BytesPerPixel;
-
-            /// <summary>
-            ///     The rmask
-            /// </summary>
-            public uint Rmask;
-
-            /// <summary>
-            ///     The gmask
-            /// </summary>
-            public uint Gmask;
-
-            /// <summary>
-            ///     The bmask
-            /// </summary>
-            public uint Bmask;
-
-            /// <summary>
-            ///     The amask
-            /// </summary>
-            public uint Amask;
-
-            /// <summary>
-            ///     The rloss
-            /// </summary>
-            public byte Rloss;
-
-            /// <summary>
-            ///     The gloss
-            /// </summary>
-            public byte Gloss;
-
-            /// <summary>
-            ///     The bloss
-            /// </summary>
-            public byte Bloss;
-
-            /// <summary>
-            ///     The aloss
-            /// </summary>
-            public byte Aloss;
-
-            /// <summary>
-            ///     The rshift
-            /// </summary>
-            public byte Rshift;
-
-            /// <summary>
-            ///     The gshift
-            /// </summary>
-            public byte Gshift;
-
-            /// <summary>
-            ///     The bshift
-            /// </summary>
-            public byte Bshift;
-
-            /// <summary>
-            ///     The ashift
-            /// </summary>
-            public byte Ashift;
-
-            /// <summary>
-            ///     The refcount
-            /// </summary>
-            public int refcount;
-
-            /// <summary>
-            ///     The next
-            /// </summary>
-            public IntPtr next; // SDL_PixelFormat*
-        }
-
-        /* IntPtr refers to an SDL_PixelFormat* */
+        
         /// <summary>
         ///     Sdls the alloc format using the specified pixel format
         /// </summary>
@@ -7561,7 +6744,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_AllocFormat(uint pixelFormat);
 
-        /* IntPtr refers to an SDL_Palette* */
+        
         /// <summary>
         ///     Sdls the alloc palette using the specified ncolors
         /// </summary>
@@ -7582,7 +6765,7 @@ namespace Alis.Core.Graphic.SDL
             ushort[] ramp
         );
 
-        /* format refers to an SDL_PixelFormat* */
+        
         /// <summary>
         ///     Sdls the free format using the specified format
         /// </summary>
@@ -7590,7 +6773,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeFormat(IntPtr format);
 
-        /* palette refers to an SDL_Palette* */
+        
         /// <summary>
         ///     Sdls the free palette using the specified palette
         /// </summary>
@@ -7617,7 +6800,7 @@ namespace Alis.Core.Graphic.SDL
             INTERNAL_SDL_GetPixelFormatName(format)
         );
 
-        /* format refers to an SDL_PixelFormat* */
+        
         /// <summary>
         ///     Sdls the get rgb using the specified pixel
         /// </summary>
@@ -7635,7 +6818,7 @@ namespace Alis.Core.Graphic.SDL
             out byte b
         );
 
-        /* format refers to an SDL_PixelFormat* */
+        
         /// <summary>
         ///     Sdls the get rgba using the specified pixel
         /// </summary>
@@ -7655,7 +6838,7 @@ namespace Alis.Core.Graphic.SDL
             out byte a
         );
 
-        /* format refers to an SDL_PixelFormat* */
+        
         /// <summary>
         ///     Sdls the map rgb using the specified format
         /// </summary>
@@ -7672,7 +6855,7 @@ namespace Alis.Core.Graphic.SDL
             byte b
         );
 
-        /* format refers to an SDL_PixelFormat* */
+        
         /// <summary>
         ///     Sdls the map rgba using the specified format
         /// </summary>
@@ -7729,7 +6912,7 @@ namespace Alis.Core.Graphic.SDL
             out uint amask
         );
 
-        /* palette refers to an SDL_Palette* */
+        
         /// <summary>
         ///     Sdls the set palette colors using the specified palette
         /// </summary>
@@ -7746,7 +6929,7 @@ namespace Alis.Core.Graphic.SDL
             int ncolors
         );
 
-        /* format and palette refer to an SDL_PixelFormat* and SDL_Palette* */
+        
         /// <summary>
         ///     Sdls the set pixel format palette using the specified format
         /// </summary>
@@ -7759,101 +6942,6 @@ namespace Alis.Core.Graphic.SDL
             IntPtr palette
         );
 
-        #endregion
-
-        #region SDL_rect.h
-
-        /// <summary>
-        ///     The sdl point
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlPoint
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int y;
-        }
-
-        /// <summary>
-        ///     The sdl rect
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlRect
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int y;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int w;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int h;
-        }
-
-        /* Only available in 2.0.10 or higher. */
-        /// <summary>
-        ///     The sdl fpoint
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlFPoint
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
-        }
-
-        /* Only available in 2.0.10 or higher. */
-        /// <summary>
-        ///     The sdl frect
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlFRect
-        {
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float y;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float w;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public float h;
-        }
-
-        /* Only available in 2.0.4 or higher. */
         /// <summary>
         ///     Sdls the point in rect using the specified p
         /// </summary>
@@ -7964,10 +7052,6 @@ namespace Alis.Core.Graphic.SDL
             out SdlRect result
         );
 
-        #endregion
-
-        #region SDL_surface.h
-
         /// <summary>
         ///     The sdl swsurface
         /// </summary>
@@ -7988,74 +7072,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const uint SdlDontfree = 0x00000004;
 
-        /// <summary>
-        ///     The sdl surface
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlSurface
-        {
-            /// <summary>
-            ///     The flags
-            /// </summary>
-            public uint flags;
-
-            /// <summary>
-            ///     The format
-            /// </summary>
-            public IntPtr format; // SDL_PixelFormat*
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int w;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int h;
-
-            /// <summary>
-            ///     The pitch
-            /// </summary>
-            public int pitch;
-
-            /// <summary>
-            ///     The pixels
-            /// </summary>
-            public IntPtr pixels; // void*
-
-            /// <summary>
-            ///     The userdata
-            /// </summary>
-            public IntPtr userdata; // void*
-
-            /// <summary>
-            ///     The locked
-            /// </summary>
-            public int locked;
-
-            /// <summary>
-            ///     The list blitmap
-            /// </summary>
-            public IntPtr list_blitmap; // void*
-
-            /// <summary>
-            ///     The clip rect
-            /// </summary>
-            public SdlRect clip_rect;
-
-            /// <summary>
-            ///     The map
-            /// </summary>
-            public IntPtr map; // SDL_BlitMap*
-
-            /// <summary>
-            ///     The refcount
-            /// </summary>
-            public int refcount;
-        }
-
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Describes whether sdl mustlock
         /// </summary>
@@ -8071,7 +7088,7 @@ namespace Alis.Core.Graphic.SDL
             return (sur.flags & SdlRleaccel) != 0;
         }
 
-        /* src and dst refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -8088,11 +7105,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* src and dst refer to an SDL_Surface*
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for srcrect.
-         */
+        
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -8109,11 +7122,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* src and dst refer to an SDL_Surface*
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -8130,11 +7139,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* src and dst refer to an SDL_Surface*
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both SDL_Rects.
-         */
+        
         /// <summary>
         ///     Sdls the blit surface using the specified src
         /// </summary>
@@ -8151,7 +7156,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* src and dst refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -8168,11 +7173,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* src and dst refer to an SDL_Surface*
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for srcrect.
-         */
+        
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -8189,11 +7190,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* src and dst refer to an SDL_Surface*
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for dstrect.
-         */
+        
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -8210,11 +7207,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* src and dst refer to an SDL_Surface*
-         * Internally, this function contains logic to use default values when
-         * source and destination rectangles are passed as NULL.
-         * This overload allows for IntPtr.Zero (null) to be passed for both SDL_Rects.
-         */
+        
         /// <summary>
         ///     Sdls the blit scaled using the specified src
         /// </summary>
@@ -8231,7 +7224,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr dstrect
         );
 
-        /* src and dst are void* pointers */
+        
         /// <summary>
         ///     Sdls the convert pixels using the specified width
         /// </summary>
@@ -8256,9 +7249,7 @@ namespace Alis.Core.Graphic.SDL
             int dstPitch
         );
 
-        /* src and dst are void* pointers
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the premultiply alpha using the specified width
         /// </summary>
@@ -8283,10 +7274,7 @@ namespace Alis.Core.Graphic.SDL
             int dstPitch
         );
 
-        /* IntPtr refers to an SDL_Surface*
-         * src refers to an SDL_Surface*
-         * fmt refers to an SDL_PixelFormat*
-         */
+        
         /// <summary>
         ///     Sdls the convert surface using the specified src
         /// </summary>
@@ -8301,7 +7289,7 @@ namespace Alis.Core.Graphic.SDL
             uint flags
         );
 
-        /* IntPtr refers to an SDL_Surface*, src to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the convert surface format using the specified src
         /// </summary>
@@ -8316,7 +7304,7 @@ namespace Alis.Core.Graphic.SDL
             uint flags
         );
 
-        /* IntPtr refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the create rgb surface using the specified flags
         /// </summary>
@@ -8341,7 +7329,7 @@ namespace Alis.Core.Graphic.SDL
             uint amask
         );
 
-        /* IntPtr refers to an SDL_Surface*, pixels to a void* */
+        
         /// <summary>
         ///     Sdls the create rgb surface from using the specified pixels
         /// </summary>
@@ -8368,9 +7356,7 @@ namespace Alis.Core.Graphic.SDL
             uint amask
         );
 
-        /* IntPtr refers to an SDL_Surface*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the create rgb surface with format using the specified flags
         /// </summary>
@@ -8389,9 +7375,7 @@ namespace Alis.Core.Graphic.SDL
             uint format
         );
 
-        /* IntPtr refers to an SDL_Surface*, pixels to a void*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the create rgb surface with format from using the specified pixels
         /// </summary>
@@ -8412,7 +7396,7 @@ namespace Alis.Core.Graphic.SDL
             uint format
         );
 
-        /* dst refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the fill rect using the specified dst
         /// </summary>
@@ -8427,9 +7411,7 @@ namespace Alis.Core.Graphic.SDL
             uint color
         );
 
-        /* dst refers to an SDL_Surface*.
-         * This overload allows passing NULL to rect.
-         */
+        
         /// <summary>
         ///     Sdls the fill rect using the specified dst
         /// </summary>
@@ -8444,7 +7426,7 @@ namespace Alis.Core.Graphic.SDL
             uint color
         );
 
-        /* dst refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the fill rects using the specified dst
         /// </summary>
@@ -8461,7 +7443,7 @@ namespace Alis.Core.Graphic.SDL
             uint color
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the free surface using the specified surface
         /// </summary>
@@ -8469,7 +7451,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeSurface(IntPtr surface);
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the get clip rect using the specified surface
         /// </summary>
@@ -8481,9 +7463,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlRect rect
         );
 
-        /* surface refers to an SDL_Surface*.
-         * Only available in 2.0.9 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the has color key using the specified surface
         /// </summary>
@@ -8492,7 +7472,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_HasColorKey(IntPtr surface);
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the get color key using the specified surface
         /// </summary>
@@ -8505,7 +7485,7 @@ namespace Alis.Core.Graphic.SDL
             out uint key
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the get surface alpha mod using the specified surface
         /// </summary>
@@ -8518,7 +7498,7 @@ namespace Alis.Core.Graphic.SDL
             out byte alpha
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the get surface blend mode using the specified surface
         /// </summary>
@@ -8531,7 +7511,7 @@ namespace Alis.Core.Graphic.SDL
             out SdlBlendMode blendMode
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the get surface color mod using the specified surface
         /// </summary>
@@ -8548,9 +7528,9 @@ namespace Alis.Core.Graphic.SDL
             out byte b
         );
 
-        /* These are for SDL_LoadBMP, which is a macro in the SDL headers. */
-        /* IntPtr refers to an SDL_Surface* */
-        /* THIS IS AN RWops FUNCTION! */
+        
+        
+        
         /// <summary>
         ///     Internals the sdl load bmp rw using the specified src
         /// </summary>
@@ -8574,7 +7554,7 @@ namespace Alis.Core.Graphic.SDL
             return INTERNAL_SDL_LoadBMP_RW(rwops, 1);
         }
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the lock surface using the specified surface
         /// </summary>
@@ -8583,7 +7563,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_LockSurface(IntPtr surface);
 
-        /* src and dst refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the lower blit using the specified src
         /// </summary>
@@ -8600,7 +7580,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* src and dst refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the lower blit scaled using the specified src
         /// </summary>
@@ -8617,9 +7597,9 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* These are for SDL_SaveBMP, which is a macro in the SDL headers. */
-        /* IntPtr refers to an SDL_Surface* */
-        /* THIS IS AN RWops FUNCTION! */
+        
+        
+        
         /// <summary>
         ///     Internals the sdl save bmp rw using the specified surface
         /// </summary>
@@ -8646,7 +7626,7 @@ namespace Alis.Core.Graphic.SDL
             return INTERNAL_SDL_SaveBMP_RW(surface, rwops, 1);
         }
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the set clip rect using the specified surface
         /// </summary>
@@ -8659,7 +7639,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect rect
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the set color key using the specified surface
         /// </summary>
@@ -8674,7 +7654,7 @@ namespace Alis.Core.Graphic.SDL
             uint key
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the set surface alpha mod using the specified surface
         /// </summary>
@@ -8687,7 +7667,7 @@ namespace Alis.Core.Graphic.SDL
             byte alpha
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the set surface blend mode using the specified surface
         /// </summary>
@@ -8700,7 +7680,7 @@ namespace Alis.Core.Graphic.SDL
             SdlBlendMode blendMode
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the set surface color mod using the specified surface
         /// </summary>
@@ -8717,7 +7697,7 @@ namespace Alis.Core.Graphic.SDL
             byte b
         );
 
-        /* surface refers to an SDL_Surface*, palette to an SDL_Palette* */
+        
         /// <summary>
         ///     Sdls the set surface palette using the specified surface
         /// </summary>
@@ -8730,7 +7710,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr palette
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the set surface rle using the specified surface
         /// </summary>
@@ -8743,9 +7723,7 @@ namespace Alis.Core.Graphic.SDL
             int flag
         );
 
-        /* surface refers to an SDL_Surface*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the has surface rle using the specified surface
         /// </summary>
@@ -8756,7 +7734,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr surface
         );
 
-        /* src and dst refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the soft stretch using the specified src
         /// </summary>
@@ -8773,9 +7751,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* src and dst refer to an SDL_Surface*
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the soft stretch linear using the specified src
         /// </summary>
@@ -8792,7 +7768,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* surface refers to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the unlock surface using the specified surface
         /// </summary>
@@ -8800,7 +7776,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockSurface(IntPtr surface);
 
-        /* src and dst refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the upper blit using the specified src
         /// </summary>
@@ -8817,7 +7793,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* src and dst refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the upper blit scaled using the specified src
         /// </summary>
@@ -8834,7 +7810,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlRect dstrect
         );
 
-        /* surface and IntPtr refer to an SDL_Surface* */
+        
         /// <summary>
         ///     Sdls the duplicate surface using the specified surface
         /// </summary>
@@ -8842,11 +7818,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_DuplicateSurface(IntPtr surface);
-
-        #endregion
-
-        #region SDL_clipboard.h
-
+        
         /// <summary>
         ///     Sdls the has clipboard text
         /// </summary>
@@ -8894,9 +7866,9 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        #endregion
         
-        /* General keyboard/mouse state definitions. */
+        
+        
         /// <summary>
         ///     The sdl pressed
         /// </summary>
@@ -8907,7 +7879,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const byte SdlReleased = 0;
 
-        /* Default size is according to SDL2 default. */
+        
         /// <summary>
         ///     The sdl texteditingevent text size
         /// </summary>
@@ -8918,308 +7890,6 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const int SdlTextinputeventTextSize = 32;
 
-        /* The types of events that can be delivered. */
-
-        /* Only available in 2.0.4 or higher. */
-        /// <summary>
-        ///     The sdl mousewheeldirection enum
-        /// </summary>
-        public enum SdlMouseWheelDirection : uint
-        {
-            /// <summary>
-            ///     The sdl mousewheel normal sdl mousewheeldirection
-            /// </summary>
-            SdlMousewheelNormal,
-
-            /// <summary>
-            ///     The sdl mousewheel flipped sdl mousewheeldirection
-            /// </summary>
-            SdlMousewheelFlipped
-        }
-
-        /* Fields shared by every event */
-        /// <summary>
-        ///     The sdl genericevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlGenericEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-        }
-
-// Ignore private members used for padding in this struct
-#pragma warning disable 0169
-        /// <summary>
-        ///     The sdl displayevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlDisplayEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The display
-            /// </summary>
-            public uint display;
-
-            /// <summary>
-            ///     The display event
-            /// </summary>
-            public SdlDisplayEventId displayEvent; // event, lolC#
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding1;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding2;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding3;
-
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public int data1;
-        }
-#pragma warning restore 0169
-
-// Ignore private members used for padding in this struct
-#pragma warning disable 0169
-        /* Window state change event data (event.window.*) */
-        /// <summary>
-        ///     The sdl windowevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlWindowEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-
-            /// <summary>
-            ///     The window event
-            /// </summary>
-            public SdlWindowEventId windowEvent; // event, lolC#
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding1;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding2;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding3;
-
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public int data1;
-
-            /// <summary>
-            ///     The data
-            /// </summary>
-            public int data2;
-        }
-#pragma warning restore 0169
-
-// Ignore private members used for padding in this struct
-#pragma warning disable 0169
-        /* Keyboard button event structure (event.key.*) */
-
-        /// <summary>
-        ///     The sdl textinputevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public unsafe struct SdlTextInputEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-
-            /// <summary>
-            ///     The sdl textinputevent text size
-            /// </summary>
-            public fixed byte text[SdlTextinputeventTextSize];
-        }
-
-// Ignore private members used for padding in this struct
-#pragma warning disable 0169
-        /* Mouse motion event structure (event.motion.*) */
-        /// <summary>
-        ///     The sdl mousemotionevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMouseMotionEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public uint which;
-
-            /// <summary>
-            ///     The state
-            /// </summary>
-            public byte state; /* bitmask of buttons */
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding1;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding2;
-
-            /// <summary>
-            ///     The padding
-            /// </summary>
-            private byte padding3;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int x;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int y;
-
-            /// <summary>
-            ///     The xrel
-            /// </summary>
-            public int xrel;
-
-            /// <summary>
-            ///     The yrel
-            /// </summary>
-            public int yrel;
-        }
-
-#pragma warning restore 0169
-
-        /* Mouse wheel event structure (event.wheel.*) */
-        /// <summary>
-        ///     The sdl mousewheelevent
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct SdlMouseWheelEvent
-        {
-            /// <summary>
-            ///     The type
-            /// </summary>
-            public SdlEventType type;
-
-            /// <summary>
-            ///     The timestamp
-            /// </summary>
-            public uint timestamp;
-
-            /// <summary>
-            ///     The window id
-            /// </summary>
-            public uint windowID;
-
-            /// <summary>
-            ///     The which
-            /// </summary>
-            public uint which;
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int x; /* amount scrolled horizontally */
-
-            /// <summary>
-            ///     The
-            /// </summary>
-            public int y; /* amount scrolled vertically */
-
-            /// <summary>
-            ///     The direction
-            /// </summary>
-            public uint direction; /* Set to one of the SDL_MOUSEWHEEL_* defines */
-
-            /// <summary>
-            ///     The precise
-            /// </summary>
-            public float preciseX; /* Requires >= 2.0.18 */
-
-            /// <summary>
-            ///     The precise
-            /// </summary>
-            public float preciseY; /* Requires >= 2.0.18 */
-        }
-
-// Ignore private members used for padding in this struct
-#pragma warning disable 0169
-        /* Joystick axis motion event structure (event.jaxis.*) */
 
         /// <summary>
         ///     The sdl eventfilter
@@ -9254,7 +7924,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventType maxType
         );
 
-        /* Checks to see if certain events are in the event queue */
+        
         /// <summary>
         ///     Sdls the has event using the specified type
         /// </summary>
@@ -9275,7 +7945,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventType maxType
         );
 
-        /* Clears events from the event queue */
+        
         /// <summary>
         ///     Sdls the flush event using the specified type
         /// </summary>
@@ -9294,7 +7964,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventType max
         );
 
-        /* Polls for currently pending events */
+        
         /// <summary>
         ///     Sdls the poll event using the specified  event
         /// </summary>
@@ -9303,7 +7973,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_PollEvent(out SdlEvent @event);
 
-        /* Waits indefinitely for the next event */
+        
         /// <summary>
         ///     Sdls the wait event using the specified  event
         /// </summary>
@@ -9312,8 +7982,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_WaitEvent(out SdlEvent @event);
 
-        /* Waits until the specified timeout (in ms) for the next event
-         */
+        
         /// <summary>
         ///     Sdls the wait event timeout using the specified  event
         /// </summary>
@@ -9323,7 +7992,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_WaitEventTimeout(out SdlEvent @event, int timeout);
 
-        /* Add an event to the event queue */
+        
         /// <summary>
         ///     Sdls the push event using the specified  event
         /// </summary>
@@ -9332,7 +8001,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_PushEvent(ref SdlEvent @event);
 
-        /* userdata refers to a void* */
+        
         /// <summary>
         ///     Sdls the set event filter using the specified filter
         /// </summary>
@@ -9344,7 +8013,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         );
 
-        /* userdata refers to a void* */
+        
         /// <summary>
         ///     Sdls the get event filter using the specified filter
         /// </summary>
@@ -9385,7 +8054,7 @@ namespace Alis.Core.Graphic.SDL
             return retval;
         }
 
-        /* userdata refers to a void* */
+        
         /// <summary>
         ///     Sdls the add event watch using the specified filter
         /// </summary>
@@ -9397,7 +8066,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         );
 
-        /* userdata refers to a void* */
+        
         /// <summary>
         ///     Sdls the del event watch using the specified filter
         /// </summary>
@@ -9409,7 +8078,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr userdata
         );
 
-        /* userdata refers to a void* */
+        
         /// <summary>
         ///     Sdls the filter events using the specified filter
         /// </summary>
@@ -9420,8 +8089,7 @@ namespace Alis.Core.Graphic.SDL
             SdlEventFilter filter,
             IntPtr userdata
         );
-
-        /* These are for SDL_EventState() */
+        
         /// <summary>
         ///     The sdl query
         /// </summary>
@@ -9441,8 +8109,7 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl enable
         /// </summary>
         public const int SdlEnable = 1;
-
-        /* This function allows you to enable/disable certain events */
+        
         /// <summary>
         ///     Sdls the event state using the specified type
         /// </summary>
@@ -9451,8 +8118,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The byte</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern byte SDL_EventState(SdlEventType type, int state);
-
-        /* Get the state of an event */
+        
         /// <summary>
         ///     Sdls the get event state using the specified type
         /// </summary>
@@ -9460,7 +8126,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The byte</returns>
         public static byte SDL_GetEventState(SdlEventType type) => SDL_EventState(type, SdlQuery);
 
-        /* Allocate a set of user-defined events */
+        
         /// <summary>
         ///     Sdls the register events using the specified numevents
         /// </summary>
@@ -9480,21 +8146,14 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="x">The </param>
         /// <returns>The sdl keycode</returns>
         public static SdlKeycode SDL_SCANCODE_TO_KEYCODE(SdlScancode x) => (SdlKeycode) ((int) x | SdlkScancodeMask);
-
-        /* Key modifiers (bitfield) */
-
-        /* Get the window which has kbd focus */
-        /* Return type is an SDL_Window pointer */
+        
         /// <summary>
         ///     Sdls the get keyboard focus
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetKeyboardFocus();
-
-        /* Get a snapshot of the keyboard state. */
-        /* Return value is a pointer to a UInt8 array */
-        /* Numkeys returns the size of the array if non-null */
+        
         /// <summary>
         ///     Sdls the get keyboard state using the specified numkeys
         /// </summary>
@@ -9502,26 +8161,21 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetKeyboardState(out int numkeys);
-
-        /* Get the current key modifier state for the keyboard. */
+        
         /// <summary>
         ///     Sdls the get mod state
         /// </summary>
         /// <returns>The sdl keymod</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlKeymod SDL_GetModState();
-
-        /* Set the current key modifier state */
+        
         /// <summary>
         ///     Sdls the set mod state using the specified modstate
         /// </summary>
         /// <param name="modstate">The modstate</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetModState(SdlKeymod modstate);
-
-        /* Get the key code corresponding to the given scancode
-         * with the current keyboard layout.
-         */
+        
         /// <summary>
         ///     Sdls the get key from scancode using the specified scancode
         /// </summary>
@@ -9529,8 +8183,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl keycode</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlKeycode SDL_GetKeyFromScancode(SdlScancode scancode);
-
-        /* Get the scancode for the given keycode */
+        
         /// <summary>
         ///     Sdls the get scancode from key using the specified key
         /// </summary>
@@ -9538,8 +8191,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl scancode</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlScancode SDL_GetScancodeFromKey(SdlKeycode key);
-
-        /* Wrapper for SDL_GetScancodeName */
+        
         /// <summary>
         ///     Internals the sdl get scancode name using the specified scancode
         /// </summary>
@@ -9556,8 +8208,7 @@ namespace Alis.Core.Graphic.SDL
         public static string SDL_GetScancodeName(SdlScancode scancode) => UTF8_ToManaged(
             INTERNAL_SDL_GetScancodeName(scancode)
         );
-
-        /* Get a scancode from a human-readable name */
+        
         /// <summary>
         ///     Internals the sdl get scancode from name using the specified name
         /// </summary>
@@ -9569,7 +8220,7 @@ namespace Alis.Core.Graphic.SDL
         );
 
         /// <summary>
-        ///     Sdls the get scancode from name using the specified name
+        ///     Sdl the get scancode from name using the specified name
         /// </summary>
         /// <param name="name">The name</param>
         /// <returns>The sdl scancode</returns>
@@ -9581,8 +8232,7 @@ namespace Alis.Core.Graphic.SDL
                 Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
-
-        /* Wrapper for SDL_GetKeyName */
+        
         /// <summary>
         ///     Internals the sdl get key name using the specified key
         /// </summary>
@@ -9592,13 +8242,12 @@ namespace Alis.Core.Graphic.SDL
         private static extern IntPtr INTERNAL_SDL_GetKeyName(SdlKeycode key);
 
         /// <summary>
-        ///     Sdls the get key name using the specified key
+        ///     Sdl the get key name using the specified key
         /// </summary>
         /// <param name="key">The key</param>
         /// <returns>The string</returns>
         public static string SDL_GetKeyName(SdlKeycode key) => UTF8_ToManaged(INTERNAL_SDL_GetKeyName(key));
-
-        /* Get a key code from a human-readable name */
+        
         /// <summary>
         ///     Internals the sdl get key from name using the specified name
         /// </summary>
@@ -9622,303 +8271,179 @@ namespace Alis.Core.Graphic.SDL
                 Utf8Encode(name, utf8Name, utf8NameBufSize)
             );
         }
-
-        /* Start accepting Unicode text input events, show keyboard */
+        
         /// <summary>
         ///     Sdls the start text input
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_StartTextInput();
-
-        /* Check if unicode input events are enabled */
+        
         /// <summary>
         ///     Sdls the is text input active
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_IsTextInputActive();
-
-        /* Stop receiving any text input events, hide onscreen kbd */
+        
         /// <summary>
-        ///     Sdls the stop text input
+        ///     Sdl the stop text input
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_StopTextInput();
-
-        /* Set the rectangle used for text input, hint for IME */
+        
         /// <summary>
-        ///     Sdls the set text input rect using the specified rect
+        ///     Sdl the set text input rect using the specified rect
         /// </summary>
         /// <param name="rect">The rect</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetTextInputRect(ref SdlRect rect);
-
-        /* Does the platform support an on-screen keyboard? */
+        
         /// <summary>
-        ///     Sdls the has screen keyboard support
+        ///     Sdl the has screen keyboard support
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_HasScreenKeyboardSupport();
-
-        /* Is the on-screen keyboard shown for a given window? */
-        /* window is an SDL_Window pointer */
+        
         /// <summary>
-        ///     Sdls the is screen keyboard shown using the specified window
+        ///     Sdl the is screen keyboard shown using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_IsScreenKeyboardShown(IntPtr window);
-
-        #region SDL_mouse.c
-
-        /* Note: SDL_Cursor is a typedef normally. We'll treat it as
-         * an IntPtr, because C# doesn't do typedefs. Yay!
-         */
-
-        /* System cursor types */
+        
         /// <summary>
-        ///     The sdl systemcursor enum
-        /// </summary>
-        public enum SdlSystemCursor
-        {
-            /// <summary>
-            ///     The sdl system cursor arrow sdl systemcursor
-            /// </summary>
-            SdlSystemCursorArrow, // Arrow
-
-            /// <summary>
-            ///     The sdl system cursor ibeam sdl systemcursor
-            /// </summary>
-            SdlSystemCursorIbeam, // I-beam
-
-            /// <summary>
-            ///     The sdl system cursor wait sdl systemcursor
-            /// </summary>
-            SdlSystemCursorWait, // Wait
-
-            /// <summary>
-            ///     The sdl system cursor crosshair sdl systemcursor
-            /// </summary>
-            SdlSystemCursorCrosshair, // Crosshair
-
-            /// <summary>
-            ///     The sdl system cursor waitarrow sdl systemcursor
-            /// </summary>
-            SdlSystemCursorWaitarrow, // Small wait cursor (or Wait if not available)
-
-            /// <summary>
-            ///     The sdl system cursor sizenwse sdl systemcursor
-            /// </summary>
-            SdlSystemCursorSizenwse, // Double arrow pointing northwest and southeast
-
-            /// <summary>
-            ///     The sdl system cursor sizenesw sdl systemcursor
-            /// </summary>
-            SdlSystemCursorSizenesw, // Double arrow pointing northeast and southwest
-
-            /// <summary>
-            ///     The sdl system cursor sizewe sdl systemcursor
-            /// </summary>
-            SdlSystemCursorSizewe, // Double arrow pointing west and east
-
-            /// <summary>
-            ///     The sdl system cursor sizens sdl systemcursor
-            /// </summary>
-            SdlSystemCursorSizens, // Double arrow pointing north and south
-
-            /// <summary>
-            ///     The sdl system cursor sizeall sdl systemcursor
-            /// </summary>
-            SdlSystemCursorSizeall, // Four pointed arrow pointing north, south, east, and west
-
-            /// <summary>
-            ///     The sdl system cursor no sdl systemcursor
-            /// </summary>
-            SdlSystemCursorNo, // Slashed circle or crossbones
-
-            /// <summary>
-            ///     The sdl system cursor hand sdl systemcursor
-            /// </summary>
-            SdlSystemCursorHand, // Hand
-
-            /// <summary>
-            ///     The sdl num system cursors sdl systemcursor
-            /// </summary>
-            SdlNumSystemCursors
-        }
-
-        /* Get the window which currently has mouse focus */
-        /* Return value is an SDL_Window pointer */
-        /// <summary>
-        ///     Sdls the get mouse focus
+        ///     Sdl the get mouse focus
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetMouseFocus();
-
-        /* Get the current state of the mouse */
+        
         /// <summary>
-        ///     Sdls the get mouse state using the specified x
+        ///     Sdl the get mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(out int x, out int y);
-
-        /* Get the current state of the mouse */
-        /* This overload allows for passing NULL to x */
+        
         /// <summary>
-        ///     Sdls the get mouse state using the specified x
+        ///     Sdl the get mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(IntPtr x, out int y);
-
-        /* Get the current state of the mouse */
-        /* This overload allows for passing NULL to y */
+        
         /// <summary>
-        ///     Sdls the get mouse state using the specified x
+        ///     Sdl the get mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(out int x, IntPtr y);
-
-        /* Get the current state of the mouse */
-        /* This overload allows for passing NULL to both x and y */
+        
         /// <summary>
-        ///     Sdls the get mouse state using the specified x
+        ///     Sdl the get mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetMouseState(IntPtr x, IntPtr y);
-
-        /* Get the current state of the mouse, in relation to the desktop.
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
-        ///     Sdls the get global mouse state using the specified x
+        ///     Sdl the get global mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(out int x, out int y);
-
-        /* Get the current state of the mouse, in relation to the desktop.
-         * Only available in 2.0.4 or higher.
-         * This overload allows for passing NULL to x.
-         */
+        
         /// <summary>
-        ///     Sdls the get global mouse state using the specified x
+        ///     Sdl the get global mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(IntPtr x, out int y);
-
-        /* Get the current state of the mouse, in relation to the desktop.
-         * Only available in 2.0.4 or higher.
-         * This overload allows for passing NULL to y.
-         */
+        
         /// <summary>
-        ///     Sdls the get global mouse state using the specified x
+        ///     Sdl the get global mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(out int x, IntPtr y);
-
-        /* Get the current state of the mouse, in relation to the desktop.
-         * Only available in 2.0.4 or higher.
-         * This overload allows for passing NULL to both x and y
-         */
+        
         /// <summary>
-        ///     Sdls the get global mouse state using the specified x
+        ///     Sdl the get global mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetGlobalMouseState(IntPtr x, IntPtr y);
-
-        /* Get the mouse state with relative coords*/
+        
         /// <summary>
-        ///     Sdls the get relative mouse state using the specified x
+        ///     Sdl the get relative mouse state using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetRelativeMouseState(out int x, out int y);
-
-        /* Set the mouse cursor's position (within a window) */
-        /* window is an SDL_Window pointer */
+        
         /// <summary>
-        ///     Sdls the warp mouse in window using the specified window
+        ///     Sdl the warp mouse in window using the specified window
         /// </summary>
         /// <param name="window">The window</param>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_WarpMouseInWindow(IntPtr window, int x, int y);
-
-        /* Set the mouse cursor's position in global screen space.
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
-        ///     Sdls the warp mouse global using the specified x
+        ///     Sdl the warp mouse global using the specified x
         /// </summary>
         /// <param name="x">The </param>
         /// <param name="y">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_WarpMouseGlobal(int x, int y);
-
-        /* Enable/Disable relative mouse mode (grabs mouse, rel coords) */
+        
         /// <summary>
-        ///     Sdls the set relative mouse mode using the specified enabled
+        ///     Sdl the set relative mouse mode using the specified enabled
         /// </summary>
         /// <param name="enabled">The enabled</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_SetRelativeMouseMode(SdlBool enabled);
-
-        /* Capture the mouse, to track input outside an SDL window.
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
-        ///     Sdls the capture mouse using the specified enabled
+        ///     Sdl the capture mouse using the specified enabled
         /// </summary>
         /// <param name="enabled">The enabled</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_CaptureMouse(SdlBool enabled);
-
-        /* Query if the relative mouse mode is enabled */
+        
         /// <summary>
-        ///     Sdls the get relative mouse mode
+        ///     Sdl the get relative mouse mode
         /// </summary>
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_GetRelativeMouseMode();
-
-        /* Create a cursor from bitmap data (amd mask) in MSB format.
-         * data and mask are byte arrays, and w must be a multiple of 8.
-         * return value is an SDL_Cursor pointer.
-         */
+        
         /// <summary>
-        ///     Sdls the create cursor using the specified data
+        ///     Sdl the create cursor using the specified data
         /// </summary>
         /// <param name="data">The data</param>
         /// <param name="mask">The mask</param>
@@ -9936,10 +8461,7 @@ namespace Alis.Core.Graphic.SDL
             int hotX,
             int hotY
         );
-
-        /* Create a cursor from an SDL_Surface.
-         * IntPtr refers to an SDL_Cursor*, surface to an SDL_Surface*
-         */
+        
         /// <summary>
         ///     Sdls the create color cursor using the specified surface
         /// </summary>
@@ -9953,10 +8475,7 @@ namespace Alis.Core.Graphic.SDL
             int hotX,
             int hotY
         );
-
-        /* Create a cursor from a system cursor id.
-         * return value is an SDL_Cursor pointer
-         */
+        
         /// <summary>
         ///     Sdls the create system cursor using the specified id
         /// </summary>
@@ -9964,38 +8483,28 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_CreateSystemCursor(SdlSystemCursor id);
-
-        /* Set the active cursor.
-         * cursor is an SDL_Cursor pointer
-         */
+        
         /// <summary>
         ///     Sdls the set cursor using the specified cursor
         /// </summary>
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetCursor(IntPtr cursor);
-
-        /* Return the active cursor
-         * return value is an SDL_Cursor pointer
-         */
+        
         /// <summary>
         ///     Sdls the get cursor
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetCursor();
-
-        /* Frees a cursor created with one of the CreateCursor functions.
-         * cursor in an SDL_Cursor pointer
-         */
+        
         /// <summary>
         ///     Sdls the free cursor using the specified cursor
         /// </summary>
         /// <param name="cursor">The cursor</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeCursor(IntPtr cursor);
-
-        /* Toggle whether or not the cursor is shown */
+        
         /// <summary>
         ///     Sdls the show cursor using the specified toggle
         /// </summary>
@@ -10062,69 +8571,45 @@ namespace Alis.Core.Graphic.SDL
         ///     The sdl button x2
         /// </summary>
         public static readonly uint SdlButtonX2Mask = SDL_BUTTON(SdlButtonX2);
-
-        #endregion
-
-        #region SDL_touch.h
-
+        
         /// <summary>
         ///     The max value
         /// </summary>
         public const uint SdlTouchMouseid = uint.MaxValue;
-
-        /* Only available in 2.0.10 or higher. */
+        
         /// <summary>
-        ///     The sdl touchdevicetype enum
+        /// Sdl the get num touch devices
         /// </summary>
-        public enum SdlTouchDeviceType
-        {
-            /// <summary>
-            ///     The sdl touch device invalid sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceInvalid = -1,
-
-            /// <summary>
-            ///     The sdl touch device direct sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceDirect, /* touch screen with window-relative coordinates */
-
-            /// <summary>
-            ///     The sdl touch device indirect absolute sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceIndirectAbsolute, /* trackpad with absolute device coordinates */
-
-            /// <summary>
-            ///     The sdl touch device indirect relative sdl touchdevicetype
-            /// </summary>
-            SdlTouchDeviceIndirectRelative /* trackpad with screen cursor-relative coordinates */
-        }
-
-        /**
-         * \brief Get the number of registered touch devices.
-         */
+        /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetNumTouchDevices();
 
-        /**
-         * \brief Get the touch ID with the given index, or 0 if the index is invalid.
-         */
+        
+        /// <summary>
+        /// Sdl the get touch device using the specified index
+        /// </summary>
+        /// <param name="index">The index</param>
+        /// <returns>The long</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern long SDL_GetTouchDevice(int index);
-
-        /**
-         * \brief Get the number of active fingers for a given touch device.
-         */
+        
+        /// <summary>
+        /// Sdl the get num touch fingers using the specified touch id
+        /// </summary>
+        /// <param name="touchId">The touch id</param>
+        /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetNumTouchFingers(long touchId);
-
-        /**
-         * \brief Get the finger object of the given touch, with the given index.
-         * Returns pointer to SDL_Finger.
-         */
+        
+        /// <summary>
+        /// Sdl the get touch finger using the specified touch id
+        /// </summary>
+        /// <param name="touchId">The touch id</param>
+        /// <param name="index">The index</param>
+        /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetTouchFinger(long touchId, int index);
-
-        /* Only available in 2.0.10 or higher. */
+        
         /// <summary>
         ///     Sdls the get touch device type using the specified touch id
         /// </summary>
@@ -10133,9 +8618,8 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlTouchDeviceType SDL_GetTouchDeviceType(long touchId);
 
-        #endregion
+        
 
-        #region SDL_joystick.h
 
         /// <summary>
         ///     The sdl hat centered
@@ -10182,107 +8666,13 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const byte SdlHatLeftdown = SdlHatLeft | SdlHatDown;
 
-        /// <summary>
-        ///     The sdl joystickpowerlevel enum
-        /// </summary>
-        public enum SdlJoystickPowerLevel
-        {
-            /// <summary>
-            ///     The sdl joystick power unknown sdl joystickpowerlevel
-            /// </summary>
-            SdlJoystickPowerUnknown = -1,
 
-            /// <summary>
-            ///     The sdl joystick power empty sdl joystickpowerlevel
-            /// </summary>
-            SdlJoystickPowerEmpty,
-
-            /// <summary>
-            ///     The sdl joystick power low sdl joystickpowerlevel
-            /// </summary>
-            SdlJoystickPowerLow,
-
-            /// <summary>
-            ///     The sdl joystick power medium sdl joystickpowerlevel
-            /// </summary>
-            SdlJoystickPowerMedium,
-
-            /// <summary>
-            ///     The sdl joystick power full sdl joystickpowerlevel
-            /// </summary>
-            SdlJoystickPowerFull,
-
-            /// <summary>
-            ///     The sdl joystick power wired sdl joystickpowerlevel
-            /// </summary>
-            SdlJoystickPowerWired,
-
-            /// <summary>
-            ///     The sdl joystick power max sdl joystickpowerlevel
-            /// </summary>
-            SdlJoystickPowerMax
-        }
-
-        /// <summary>
-        ///     The sdl joysticktype enum
-        /// </summary>
-        public enum SdlJoystickType
-        {
-            /// <summary>
-            ///     The sdl joystick type unknown sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeUnknown,
-
-            /// <summary>
-            ///     The sdl joystick type gamecontroller sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeGamecontroller,
-
-            /// <summary>
-            ///     The sdl joystick type wheel sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeWheel,
-
-            /// <summary>
-            ///     The sdl joystick type arcade stick sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeArcadeStick,
-
-            /// <summary>
-            ///     The sdl joystick type flight stick sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeFlightStick,
-
-            /// <summary>
-            ///     The sdl joystick type dance pad sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeDancePad,
-
-            /// <summary>
-            ///     The sdl joystick type guitar sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeGuitar,
-
-            /// <summary>
-            ///     The sdl joystick type drum kit sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeDrumKit,
-
-            /// <summary>
-            ///     The sdl joystick type arcade pad sdl joysticktype
-            /// </summary>
-            SdlJoystickTypeArcadePad
-        }
-
-        /* Only available in 2.0.14 or higher. */
         /// <summary>
         ///     The sdl iphone max gforce
         /// </summary>
         public const float SdlIphoneMaxGforce = 5.0f;
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.9 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick rumble using the specified joystick
         /// </summary>
@@ -10299,9 +8689,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick rumble triggers using the specified joystick
         /// </summary>
@@ -10318,7 +8706,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick close using the specified joystick
         /// </summary>
@@ -10334,7 +8722,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickEventState(int state);
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick get axis using the specified joystick
         /// </summary>
@@ -10347,9 +8735,7 @@ namespace Alis.Core.Graphic.SDL
             int axis
         );
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick get axis initial state using the specified joystick
         /// </summary>
@@ -10364,7 +8750,7 @@ namespace Alis.Core.Graphic.SDL
             out ushort state
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick get ball using the specified joystick
         /// </summary>
@@ -10381,7 +8767,7 @@ namespace Alis.Core.Graphic.SDL
             out int dy
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick get button using the specified joystick
         /// </summary>
@@ -10394,7 +8780,7 @@ namespace Alis.Core.Graphic.SDL
             int button
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick get hat using the specified joystick
         /// </summary>
@@ -10407,7 +8793,7 @@ namespace Alis.Core.Graphic.SDL
             int hat
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Internals the sdl joystick name using the specified joystick
         /// </summary>
@@ -10446,7 +8832,7 @@ namespace Alis.Core.Graphic.SDL
             INTERNAL_SDL_JoystickNameForIndex(deviceIndex)
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick num axes using the specified joystick
         /// </summary>
@@ -10455,7 +8841,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumAxes(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick num balls using the specified joystick
         /// </summary>
@@ -10464,7 +8850,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumBalls(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick num buttons using the specified joystick
         /// </summary>
@@ -10473,7 +8859,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumButtons(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick num hats using the specified joystick
         /// </summary>
@@ -10482,7 +8868,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickNumHats(IntPtr joystick);
 
-        /* IntPtr refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick open using the specified device index
         /// </summary>
@@ -10491,14 +8877,14 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_JoystickOpen(int deviceIndex);
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick update
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_JoystickUpdate();
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the num joysticks
         /// </summary>
@@ -10516,7 +8902,7 @@ namespace Alis.Core.Graphic.SDL
             int deviceIndex
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick get guid using the specified joystick
         /// </summary>
@@ -10564,7 +8950,7 @@ namespace Alis.Core.Graphic.SDL
             );
         }
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the joystick get device vendor using the specified device index
         /// </summary>
@@ -10573,7 +8959,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetDeviceVendor(int deviceIndex);
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the joystick get device product using the specified device index
         /// </summary>
@@ -10582,7 +8968,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetDeviceProduct(int deviceIndex);
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the joystick get device product version using the specified device index
         /// </summary>
@@ -10591,7 +8977,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetDeviceProductVersion(int deviceIndex);
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the joystick get device type using the specified device index
         /// </summary>
@@ -10600,9 +8986,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlJoystickType SDL_JoystickGetDeviceType(int deviceIndex);
 
-        /* int refers to an SDL_JoystickID.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick get device instance id using the specified device index
         /// </summary>
@@ -10611,9 +8995,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickGetDeviceInstanceID(int deviceIndex);
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick get vendor using the specified joystick
         /// </summary>
@@ -10622,9 +9004,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetVendor(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick get product using the specified joystick
         /// </summary>
@@ -10633,9 +9013,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetProduct(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick get product version using the specified joystick
         /// </summary>
@@ -10644,9 +9022,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ushort SDL_JoystickGetProductVersion(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Internals the sdl joystick get serial using the specified joystick
         /// </summary>
@@ -10669,9 +9045,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_JoystickGetSerial(joystick)
             );
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick get type using the specified joystick
         /// </summary>
@@ -10680,7 +9054,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlJoystickType SDL_JoystickGetType(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick get attached using the specified joystick
         /// </summary>
@@ -10689,7 +9063,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickGetAttached(IntPtr joystick);
 
-        /* int refers to an SDL_JoystickID, joystick to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick instance id using the specified joystick
         /// </summary>
@@ -10698,9 +9072,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickInstanceID(IntPtr joystick);
 
-        /* joystick refers to an SDL_Joystick*.
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick current power level using the specified joystick
         /// </summary>
@@ -10711,9 +9083,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr joystick
         );
 
-        /* int refers to an SDL_JoystickID, IntPtr to an SDL_Joystick*.
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick from instance id using the specified instance id
         /// </summary>
@@ -10722,23 +9092,21 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_JoystickFromInstanceID(int instanceId);
 
-        /* Only available in 2.0.7 or higher. */
+        
         /// <summary>
         ///     Sdls the lock joysticks
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_LockJoysticks();
 
-        /* Only available in 2.0.7 or higher. */
+        
         /// <summary>
         ///     Sdls the unlock joysticks
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockJoysticks();
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick from player index using the specified player index
         /// </summary>
@@ -10747,9 +9115,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_JoystickFromPlayerIndex(int playerIndex);
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick set player index using the specified joystick
         /// </summary>
@@ -10761,9 +9127,7 @@ namespace Alis.Core.Graphic.SDL
             int playerIndex
         );
 
-        /* Int32 refers to an SDL_JoystickType.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick attach virtual using the specified type
         /// </summary>
@@ -10780,7 +9144,7 @@ namespace Alis.Core.Graphic.SDL
             int nhats
         );
 
-        /* Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     Sdls the joystick detach virtual using the specified device index
         /// </summary>
@@ -10789,7 +9153,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_JoystickDetachVirtual(int deviceIndex);
 
-        /* Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     Sdls the joystick is virtual using the specified device index
         /// </summary>
@@ -10798,9 +9162,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickIsVirtual(int deviceIndex);
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick set virtual axis using the specified joystick
         /// </summary>
@@ -10815,9 +9177,7 @@ namespace Alis.Core.Graphic.SDL
             short value
         );
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick set virtual button using the specified joystick
         /// </summary>
@@ -10832,9 +9192,7 @@ namespace Alis.Core.Graphic.SDL
             byte value
         );
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick set virtual hat using the specified joystick
         /// </summary>
@@ -10849,9 +9207,7 @@ namespace Alis.Core.Graphic.SDL
             byte value
         );
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick has led using the specified joystick
         /// </summary>
@@ -10860,9 +9216,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickHasLED(IntPtr joystick);
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick has rumble using the specified joystick
         /// </summary>
@@ -10871,9 +9225,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickHasRumble(IntPtr joystick);
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick has rumble triggers using the specified joystick
         /// </summary>
@@ -10882,9 +9234,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_JoystickHasRumbleTriggers(IntPtr joystick);
 
-        /* IntPtr refers to an SDL_Joystick*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick set led using the specified joystick
         /// </summary>
@@ -10901,10 +9251,7 @@ namespace Alis.Core.Graphic.SDL
             byte blue
         );
 
-        /* joystick refers to an SDL_Joystick*.
-         * data refers to a const void*.
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the joystick send effect using the specified joystick
         /// </summary>
@@ -10919,264 +9266,12 @@ namespace Alis.Core.Graphic.SDL
             int size
         );
 
-        #endregion
-
-        #region SDL_gamecontroller.h
-
-        /// <summary>
-        ///     The sdl gamecontrollerbindtype enum
-        /// </summary>
-        public enum SdlGameControllerBindType
-        {
-            /// <summary>
-            ///     The sdl controller bindtype none sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeNone,
-
-            /// <summary>
-            ///     The sdl controller bindtype button sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeButton,
-
-            /// <summary>
-            ///     The sdl controller bindtype axis sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeAxis,
-
-            /// <summary>
-            ///     The sdl controller bindtype hat sdl gamecontrollerbindtype
-            /// </summary>
-            SdlControllerBindtypeHat
-        }
-
-        /// <summary>
-        ///     The sdl gamecontrolleraxis enum
-        /// </summary>
-        public enum SdlGameControllerAxis
-        {
-            /// <summary>
-            ///     The sdl controller axis invalid sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisInvalid = -1,
-
-            /// <summary>
-            ///     The sdl controller axis leftx sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisLeftx,
-
-            /// <summary>
-            ///     The sdl controller axis lefty sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisLefty,
-
-            /// <summary>
-            ///     The sdl controller axis rightx sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisRightx,
-
-            /// <summary>
-            ///     The sdl controller axis righty sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisRighty,
-
-            /// <summary>
-            ///     The sdl controller axis triggerleft sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisTriggerleft,
-
-            /// <summary>
-            ///     The sdl controller axis triggerright sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisTriggerright,
-
-            /// <summary>
-            ///     The sdl controller axis max sdl gamecontrolleraxis
-            /// </summary>
-            SdlControllerAxisMax
-        }
-
-        /// <summary>
-        ///     The sdl gamecontrollerbutton enum
-        /// </summary>
-        public enum SdlGameControllerButton
-        {
-            /// <summary>
-            ///     The sdl controller button invalid sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonInvalid = -1,
-
-            /// <summary>
-            ///     The sdl controller button sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonA,
-
-            /// <summary>
-            ///     The sdl controller button sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonB,
-
-            /// <summary>
-            ///     The sdl controller button sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonX,
-
-            /// <summary>
-            ///     The sdl controller button sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonY,
-
-            /// <summary>
-            ///     The sdl controller button back sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonBack,
-
-            /// <summary>
-            ///     The sdl controller button guide sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonGuide,
-
-            /// <summary>
-            ///     The sdl controller button start sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonStart,
-
-            /// <summary>
-            ///     The sdl controller button leftstick sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonLeftstick,
-
-            /// <summary>
-            ///     The sdl controller button rightstick sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonRightstick,
-
-            /// <summary>
-            ///     The sdl controller button leftshoulder sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonLeftshoulder,
-
-            /// <summary>
-            ///     The sdl controller button rightshoulder sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonRightshoulder,
-
-            /// <summary>
-            ///     The sdl controller button dpad up sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonDpadUp,
-
-            /// <summary>
-            ///     The sdl controller button dpad down sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonDpadDown,
-
-            /// <summary>
-            ///     The sdl controller button dpad left sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonDpadLeft,
-
-            /// <summary>
-            ///     The sdl controller button dpad right sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonDpadRight,
-
-            /// <summary>
-            ///     The sdl controller button misc1 sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonMisc1,
-
-            /// <summary>
-            ///     The sdl controller button paddle1 sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonPaddle1,
-
-            /// <summary>
-            ///     The sdl controller button paddle2 sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonPaddle2,
-
-            /// <summary>
-            ///     The sdl controller button paddle3 sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonPaddle3,
-
-            /// <summary>
-            ///     The sdl controller button paddle4 sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonPaddle4,
-
-            /// <summary>
-            ///     The sdl controller button touchpad sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonTouchpad,
-
-            /// <summary>
-            ///     The sdl controller button max sdl gamecontrollerbutton
-            /// </summary>
-            SdlControllerButtonMax
-        }
-
-        /// <summary>
-        ///     The sdl gamecontrollertype enum
-        /// </summary>
-        public enum SdlGameControllerType
-        {
-            /// <summary>
-            ///     The sdl controller type unknown sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypeUnknown = 0,
-
-            /// <summary>
-            ///     The sdl controller type xbox360 sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypeXbox360,
-
-            /// <summary>
-            ///     The sdl controller type xboxone sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypeXboxone,
-
-            /// <summary>
-            ///     The sdl controller type ps3 sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypePs3,
-
-            /// <summary>
-            ///     The sdl controller type ps4 sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypePs4,
-
-            /// <summary>
-            ///     The sdl controller type nintendo switch pro sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypeNintendoSwitchPro,
-
-            /// <summary>
-            ///     The sdl controller type virtual sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypeVirtual, /* Requires >= 2.0.14 */
-
-            /// <summary>
-            ///     The sdl controller type ps5 sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypePs5, /* Requires >= 2.0.14 */
-
-            /// <summary>
-            ///     The sdl controller type amazon luna sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypeAmazonLuna, /* Requires >= 2.0.16 */
-
-            /// <summary>
-            ///     The sdl controller type google stadia sdl gamecontrollertype
-            /// </summary>
-            SdlControllerTypeGoogleStadia /* Requires >= 2.0.16 */
-        }
 
         // FIXME: I'd rather this somehow be private...
 
         // FIXME: I'd rather this somehow be private...
 
-        /* This exists to deal with C# being stupid about blittable types. */
+        
 
         /// <summary>
         ///     Internals the sdl game controller add mapping using the specified mapping string
@@ -11205,7 +9300,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Sdls the game controller num mappings
         /// </summary>
@@ -11213,7 +9308,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GameControllerNumMappings();
 
-        /* Only available in 2.0.6 or higher. */
+        
         /// <summary>
         ///     Internals the sdl game controller mapping for index using the specified mapping index
         /// </summary>
@@ -11234,7 +9329,7 @@ namespace Alis.Core.Graphic.SDL
             true
         );
 
-        /* THIS IS AN RWops FUNCTION! */
+        
         /// <summary>
         ///     Internals the sdl game controller add mappings from rw using the specified rw
         /// </summary>
@@ -11278,7 +9373,7 @@ namespace Alis.Core.Graphic.SDL
             true
         );
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Internals the sdl game controller mapping using the specified gamecontroller
         /// </summary>
@@ -11334,7 +9429,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerNameForIndex(joystickIndex)
             );
 
-        /* Only available in 2.0.9 or higher. */
+        
         /// <summary>
         ///     Internals the sdl game controller mapping for device index using the specified joystick index
         /// </summary>
@@ -11358,7 +9453,7 @@ namespace Alis.Core.Graphic.SDL
                 true
             );
 
-        /* IntPtr refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Sdls the game controller open using the specified joystick index
         /// </summary>
@@ -11367,7 +9462,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GameControllerOpen(int joystickIndex);
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Internals the sdl game controller name using the specified gamecontroller
         /// </summary>
@@ -11390,9 +9485,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerName(gamecontroller)
             );
 
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get vendor using the specified gamecontroller
         /// </summary>
@@ -11403,9 +9496,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get product using the specified gamecontroller
         /// </summary>
@@ -11416,9 +9507,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.6 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get product version using the specified gamecontroller
         /// </summary>
@@ -11429,9 +9518,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Internals the sdl game controller get serial using the specified gamecontroller
         /// </summary>
@@ -11454,7 +9541,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetSerial(gamecontroller)
             );
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Sdls the game controller get attached using the specified gamecontroller
         /// </summary>
@@ -11465,9 +9552,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        /* IntPtr refers to an SDL_Joystick*
-         * gamecontroller refers to an SDL_GameController*
-         */
+        
         /// <summary>
         ///     Sdls the game controller get joystick using the specified gamecontroller
         /// </summary>
@@ -11542,7 +9627,7 @@ namespace Alis.Core.Graphic.SDL
                 )
             );
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Internals the sdl game controller get bind for axis using the specified gamecontroller
         /// </summary>
@@ -11578,7 +9663,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Sdls the game controller get axis using the specified gamecontroller
         /// </summary>
@@ -11639,7 +9724,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetStringForButton(button)
             );
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Internals the sdl game controller get bind for button using the specified gamecontroller
         /// </summary>
@@ -11675,7 +9760,7 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Sdls the game controller get button using the specified gamecontroller
         /// </summary>
@@ -11688,9 +9773,7 @@ namespace Alis.Core.Graphic.SDL
             SdlGameControllerButton button
         );
 
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.9 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller rumble using the specified gamecontroller
         /// </summary>
@@ -11707,9 +9790,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller rumble triggers using the specified gamecontroller
         /// </summary>
@@ -11726,7 +9807,7 @@ namespace Alis.Core.Graphic.SDL
             uint durationMs
         );
 
-        /* gamecontroller refers to an SDL_GameController* */
+        
         /// <summary>
         ///     Sdls the game controller close using the specified gamecontroller
         /// </summary>
@@ -11736,9 +9817,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        /* gamecontroller refers to an SDL_GameController*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for button using the specified gamecontroller
         /// </summary>
@@ -11765,9 +9844,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForButton(gamecontroller, button)
             );
 
-        /* gamecontroller refers to an SDL_GameController*
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Internals the sdl game controller get apple sf symbols name for axis using the specified gamecontroller
         /// </summary>
@@ -11794,9 +9871,7 @@ namespace Alis.Core.Graphic.SDL
                 INTERNAL_SDL_GameControllerGetAppleSFSymbolsNameForAxis(gamecontroller, axis)
             );
 
-        /* int refers to an SDL_JoystickID, IntPtr to an SDL_GameController*.
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller from instance id using the specified joyid
         /// </summary>
@@ -11805,7 +9880,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GameControllerFromInstanceID(int joyid);
 
-        /* Only available in 2.0.11 or higher. */
+        
         /// <summary>
         ///     Sdls the game controller type for index using the specified joystick index
         /// </summary>
@@ -11816,9 +9891,7 @@ namespace Alis.Core.Graphic.SDL
             int joystickIndex
         );
 
-        /* IntPtr refers to an SDL_GameController*.
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get type using the specified gamecontroller
         /// </summary>
@@ -11829,9 +9902,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller
         );
 
-        /* IntPtr refers to an SDL_GameController*.
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller from player index using the specified player index
         /// </summary>
@@ -11842,9 +9913,7 @@ namespace Alis.Core.Graphic.SDL
             int playerIndex
         );
 
-        /* IntPtr refers to an SDL_GameController*.
-         * Only available in 2.0.11 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller set player index using the specified gamecontroller
         /// </summary>
@@ -11856,9 +9925,7 @@ namespace Alis.Core.Graphic.SDL
             int playerIndex
         );
 
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller has led using the specified gamecontroller
         /// </summary>
@@ -11868,10 +9935,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern SdlBool SDL_GameControllerHasLED(
             IntPtr gamecontroller
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller has rumble using the specified gamecontroller
         /// </summary>
@@ -11881,10 +9945,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern SdlBool SDL_GameControllerHasRumble(
             IntPtr gamecontroller
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller has rumble triggers using the specified gamecontroller
         /// </summary>
@@ -11894,10 +9955,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern SdlBool SDL_GameControllerHasRumbleTriggers(
             IntPtr gamecontroller
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller set led using the specified gamecontroller
         /// </summary>
@@ -11913,10 +9971,7 @@ namespace Alis.Core.Graphic.SDL
             byte green,
             byte blue
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller has axis using the specified gamecontroller
         /// </summary>
@@ -11928,10 +9983,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlGameControllerAxis axis
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller has button using the specified gamecontroller
         /// </summary>
@@ -11943,10 +9995,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlGameControllerButton button
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get num touchpads using the specified gamecontroller
         /// </summary>
@@ -11956,10 +10005,7 @@ namespace Alis.Core.Graphic.SDL
         public static extern int SDL_GameControllerGetNumTouchpads(
             IntPtr gamecontroller
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get num touchpad fingers using the specified gamecontroller
         /// </summary>
@@ -11971,10 +10017,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             int touchpad
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get touchpad finger using the specified gamecontroller
         /// </summary>
@@ -11996,10 +10039,7 @@ namespace Alis.Core.Graphic.SDL
             out float y,
             out float pressure
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller has sensor using the specified gamecontroller
         /// </summary>
@@ -12011,10 +10051,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlSensorType type
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller set sensor enabled using the specified gamecontroller
         /// </summary>
@@ -12028,10 +10065,7 @@ namespace Alis.Core.Graphic.SDL
             SdlSensorType type,
             SdlBool enabled
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller is sensor enabled using the specified gamecontroller
         /// </summary>
@@ -12043,11 +10077,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlSensorType type
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * data refers to a float*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get sensor data using the specified gamecontroller
         /// </summary>
@@ -12063,10 +10093,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr data,
             int numValues
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller get sensor data rate using the specified gamecontroller
         /// </summary>
@@ -12078,11 +10105,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr gamecontroller,
             SdlSensorType type
         );
-
-        /* gamecontroller refers to an SDL_GameController*.
-         * data refers to a const void*.
-         * Only available in 2.0.16 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the game controller send effect using the specified gamecontroller
         /// </summary>
@@ -12097,11 +10120,6 @@ namespace Alis.Core.Graphic.SDL
             int size
         );
 
-        #endregion
-
-        #region SDL_haptic.h
-
-        /* SDL_HapticEffect type */
         /// <summary>
         ///     The sdl haptic constant
         /// </summary>
@@ -12177,7 +10195,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const ushort SdlHapticPause = 1 << 15;
 
-        /* SDL_HapticDirection type */
+        
         /// <summary>
         ///     The sdl haptic polar
         /// </summary>
@@ -12196,9 +10214,9 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl haptic steering axis
         /// </summary>
-        public const byte SdlHapticSteeringAxis = 3; /* Requires >= 2.0.14 */
+        public const byte SdlHapticSteeringAxis = 3; 
 
-        /* SDL_HapticRunEffect */
+        
         /// <summary>
         ///     The sdl haptic infinity
         /// </summary>
@@ -12210,8 +10228,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="haptic">The haptic</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_HapticClose(IntPtr haptic);
-
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic destroy effect using the specified haptic
         /// </summary>
@@ -12222,8 +10239,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr haptic,
             int effect
         );
-
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic effect supported using the specified haptic
         /// </summary>
@@ -12236,7 +10252,6 @@ namespace Alis.Core.Graphic.SDL
             ref SdlHapticEffect effect
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic get effect status using the specified haptic
         /// </summary>
@@ -12249,7 +10264,6 @@ namespace Alis.Core.Graphic.SDL
             int effect
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic index using the specified haptic
         /// </summary>
@@ -12258,7 +10272,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticIndex(IntPtr haptic);
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Internals the sdl haptic name using the specified device index
         /// </summary>
@@ -12273,8 +10286,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="deviceIndex">The device index</param>
         /// <returns>The string</returns>
         public static string SDL_HapticName(int deviceIndex) => UTF8_ToManaged(INTERNAL_SDL_HapticName(deviceIndex));
-
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic new effect using the specified haptic
         /// </summary>
@@ -12287,7 +10299,6 @@ namespace Alis.Core.Graphic.SDL
             ref SdlHapticEffect effect
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic num axes using the specified haptic
         /// </summary>
@@ -12296,7 +10307,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticNumAxes(IntPtr haptic);
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic num effects using the specified haptic
         /// </summary>
@@ -12304,8 +10314,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticNumEffects(IntPtr haptic);
-
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic num effects playing using the specified haptic
         /// </summary>
@@ -12314,7 +10323,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticNumEffectsPlaying(IntPtr haptic);
 
-        /* IntPtr refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic open using the specified device index
         /// </summary>
@@ -12331,7 +10339,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticOpened(int deviceIndex);
 
-        /* IntPtr refers to an SDL_Haptic*, joystick to an SDL_Joystick* */
         /// <summary>
         ///     Sdls the haptic open from joystick using the specified joystick
         /// </summary>
@@ -12342,7 +10349,6 @@ namespace Alis.Core.Graphic.SDL
             IntPtr joystick
         );
 
-        /* IntPtr refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic open from mouse
         /// </summary>
@@ -12350,7 +10356,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_HapticOpenFromMouse();
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic pause using the specified haptic
         /// </summary>
@@ -12358,8 +10363,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticPause(IntPtr haptic);
-
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic query using the specified haptic
         /// </summary>
@@ -12367,8 +10371,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_HapticQuery(IntPtr haptic);
-
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic rumble init using the specified haptic
         /// </summary>
@@ -12377,7 +10380,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticRumbleInit(IntPtr haptic);
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic rumble play using the specified haptic
         /// </summary>
@@ -12392,7 +10394,6 @@ namespace Alis.Core.Graphic.SDL
             uint length
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic rumble stop using the specified haptic
         /// </summary>
@@ -12400,8 +10401,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticRumbleStop(IntPtr haptic);
-
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic rumble supported using the specified haptic
         /// </summary>
@@ -12410,7 +10410,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticRumbleSupported(IntPtr haptic);
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic run effect using the specified haptic
         /// </summary>
@@ -12425,7 +10424,6 @@ namespace Alis.Core.Graphic.SDL
             uint iterations
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic set autocenter using the specified haptic
         /// </summary>
@@ -12438,7 +10436,6 @@ namespace Alis.Core.Graphic.SDL
             int autocenter
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic set gain using the specified haptic
         /// </summary>
@@ -12451,7 +10448,6 @@ namespace Alis.Core.Graphic.SDL
             int gain
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic stop all using the specified haptic
         /// </summary>
@@ -12460,7 +10456,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticStopAll(IntPtr haptic);
 
-        /* haptic refers to an SDL_Haptic* */
+        
         /// <summary>
         ///     Sdls the haptic stop effect using the specified haptic
         /// </summary>
@@ -12473,7 +10469,6 @@ namespace Alis.Core.Graphic.SDL
             int effect
         );
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic unpause using the specified haptic
         /// </summary>
@@ -12482,7 +10477,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_HapticUnpause(IntPtr haptic);
 
-        /* haptic refers to an SDL_Haptic* */
         /// <summary>
         ///     Sdls the haptic update effect using the specified haptic
         /// </summary>
@@ -12497,7 +10491,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlHapticEffect data
         );
 
-        /* joystick refers to an SDL_Joystick* */
+        
         /// <summary>
         ///     Sdls the joystick is haptic using the specified joystick
         /// </summary>
@@ -12519,38 +10513,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_NumHaptics();
-
-        #endregion
-
-        #region SDL_sensor.h
-
-        /* This region is only available in 2.0.9 or higher. */
-
-        /// <summary>
-        ///     The sdl sensortype enum
-        /// </summary>
-        public enum SdlSensorType
-        {
-            /// <summary>
-            ///     The sdl sensor invalid sdl sensortype
-            /// </summary>
-            SdlSensorInvalid = -1,
-
-            /// <summary>
-            ///     The sdl sensor unknown sdl sensortype
-            /// </summary>
-            SdlSensorUnknown,
-
-            /// <summary>
-            ///     The sdl sensor accel sdl sensortype
-            /// </summary>
-            SdlSensorAccel,
-
-            /// <summary>
-            ///     The sdl sensor gyro sdl sensortype
-            /// </summary>
-            SdlSensorGyro
-        }
 
         /// <summary>
         ///     The sdl standard gravity
@@ -12603,7 +10565,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_SensorGetDeviceInstanceID(int deviceIndex);
 
-        /* IntPtr refers to an SDL_Sensor* */
         /// <summary>
         ///     Sdls the sensor open using the specified device index
         /// </summary>
@@ -12612,7 +10573,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_SensorOpen(int deviceIndex);
 
-        /* IntPtr refers to an SDL_Sensor* */
         /// <summary>
         ///     Sdls the sensor from instance id using the specified instance id
         /// </summary>
@@ -12623,7 +10583,6 @@ namespace Alis.Core.Graphic.SDL
             int instanceId
         );
 
-        /* sensor refers to an SDL_Sensor* */
         /// <summary>
         ///     Internals the sdl sensor get name using the specified sensor
         /// </summary>
@@ -12639,7 +10598,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The string</returns>
         public static string SDL_SensorGetName(IntPtr sensor) => UTF8_ToManaged(INTERNAL_SDL_SensorGetName(sensor));
 
-        /* sensor refers to an SDL_Sensor* */
         /// <summary>
         ///     Sdls the sensor get type using the specified sensor
         /// </summary>
@@ -12648,7 +10606,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlSensorType SDL_SensorGetType(IntPtr sensor);
 
-        /* sensor refers to an SDL_Sensor* */
         /// <summary>
         ///     Sdls the sensor get non portable type using the specified sensor
         /// </summary>
@@ -12657,7 +10614,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_SensorGetNonPortableType(IntPtr sensor);
 
-        /* sensor refers to an SDL_Sensor* */
         /// <summary>
         ///     Sdls the sensor get instance id using the specified sensor
         /// </summary>
@@ -12665,8 +10621,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_SensorGetInstanceID(IntPtr sensor);
-
-        /* sensor refers to an SDL_Sensor* */
+        
         /// <summary>
         ///     Sdls the sensor get data using the specified sensor
         /// </summary>
@@ -12680,8 +10635,7 @@ namespace Alis.Core.Graphic.SDL
             float[] data,
             int numValues
         );
-
-        /* sensor refers to an SDL_Sensor* */
+        
         /// <summary>
         ///     Sdls the sensor close using the specified sensor
         /// </summary>
@@ -12694,25 +10648,19 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SensorUpdate();
-
-        /* Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     Sdls the lock sensors
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_LockSensors();
-
-        /* Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     Sdls the unlock sensors
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockSensors();
-
-        #endregion
-
-        #region SDL_audio.h
-
+        
         /// <summary>
         ///     The sdl audio mask bitsize
         /// </summary>
@@ -12909,28 +10857,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const int SdlMixMaxvolume = 128;
 
-        /// <summary>
-        ///     The sdl audiostatus enum
-        /// </summary>
-        public enum SdlAudioStatus
-        {
-            /// <summary>
-            ///     The sdl audio stopped sdl audiostatus
-            /// </summary>
-            SdlAudioStopped,
 
-            /// <summary>
-            ///     The sdl audio playing sdl audiostatus
-            /// </summary>
-            SdlAudioPlaying,
-
-            /// <summary>
-            ///     The sdl audio paused sdl audiostatus
-            /// </summary>
-            SdlAudioPaused
-        }
-
-        /* userdata refers to a void*, stream to a Uint8 */
         /// <summary>
         ///     The sdl audiocallback
         /// </summary>
@@ -12977,7 +10904,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_CloseAudio();
 
-        /* dev refers to an SDL_AudioDeviceID */
+        
         /// <summary>
         ///     Sdls the close audio device using the specified dev
         /// </summary>
@@ -12985,7 +10912,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_CloseAudioDevice(uint dev);
 
-        /* audio_buf refers to a malloc()'d buffer from SDL_LoadWAV */
+        
         /// <summary>
         ///     Sdls the free wav using the specified audio buf
         /// </summary>
@@ -13018,8 +10945,7 @@ namespace Alis.Core.Graphic.SDL
             => UTF8_ToManaged(
                 INTERNAL_SDL_GetAudioDeviceName(index, iscapture)
             );
-
-        /* dev refers to an SDL_AudioDeviceID */
+        
         /// <summary>
         ///     Sdls the get audio device status using the specified dev
         /// </summary>
@@ -13082,8 +11008,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetNumAudioDrivers();
 
-        /* audio_buf refers to a malloc()'d buffer, IntPtr to an SDL_AudioSpec* */
-        /* THIS IS AN RWops FUNCTION! */
         /// <summary>
         ///     Internals the sdl load wav rw using the specified src
         /// </summary>
@@ -13133,7 +11057,6 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_LockAudio();
 
-        /* dev refers to an SDL_AudioDeviceID */
         /// <summary>
         ///     Sdls the lock audio device using the specified dev
         /// </summary>
@@ -13157,9 +11080,7 @@ namespace Alis.Core.Graphic.SDL
             uint len,
             int volume
         );
-
-        /* format refers to an SDL_AudioFormat */
-        /* This overload allows raw pointers to be passed for dst and src. */
+        
         /// <summary>
         ///     Sdls the mix audio format using the specified dst
         /// </summary>
@@ -13177,7 +11098,6 @@ namespace Alis.Core.Graphic.SDL
             int volume
         );
 
-        /* format refers to an SDL_AudioFormat */
         /// <summary>
         ///     Sdls the mix audio format using the specified dst
         /// </summary>
@@ -13220,9 +11140,7 @@ namespace Alis.Core.Graphic.SDL
             ref SdlAudioSpec desired,
             IntPtr obtained
         );
-
-        /* uint refers to an SDL_AudioDeviceID */
-        /* This overload allows for IntPtr.Zero (null) to be passed for device. */
+        
         /// <summary>
         ///     Sdls the open audio device using the specified device
         /// </summary>
@@ -13241,7 +11159,6 @@ namespace Alis.Core.Graphic.SDL
             int allowedChanges
         );
 
-        /* uint refers to an SDL_AudioDeviceID */
         /// <summary>
         ///     Internals the sdl open audio device using the specified device
         /// </summary>
@@ -13294,8 +11211,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="pauseOn">The pause on</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_PauseAudio(int pauseOn);
-
-        /* dev refers to an SDL_AudioDeviceID */
+        
         /// <summary>
         ///     Sdls the pause audio device using the specified dev
         /// </summary>
@@ -13312,18 +11228,14 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockAudio();
-
-        /* dev refers to an SDL_AudioDeviceID */
+        
         /// <summary>
         ///     Sdls the unlock audio device using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_UnlockAudioDevice(uint dev);
-
-        /* dev refers to an SDL_AudioDeviceID, data to a void*
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the queue audio using the specified dev
         /// </summary>
@@ -13337,10 +11249,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr data,
             uint len
         );
-
-        /* dev refers to an SDL_AudioDeviceID, data to a void*
-         * Only available in 2.0.5 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the dequeue audio using the specified dev
         /// </summary>
@@ -13354,10 +11263,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr data,
             uint len
         );
-
-        /* dev refers to an SDL_AudioDeviceID
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get queued audio size using the specified dev
         /// </summary>
@@ -13365,21 +11271,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetQueuedAudioSize(uint dev);
-
-        /* dev refers to an SDL_AudioDeviceID
-         * Only available in 2.0.4 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the clear queued audio using the specified dev
         /// </summary>
         /// <param name="dev">The dev</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_ClearQueuedAudio(uint dev);
-
-        /* src_format and dst_format refer to SDL_AudioFormats.
-         * IntPtr refers to an SDL_AudioStream*.
-         * Only available in 2.0.7 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the new audio stream using the specified src format
         /// </summary>
@@ -13399,10 +11298,7 @@ namespace Alis.Core.Graphic.SDL
             byte dstChannels,
             int dstRate
         );
-
-        /* stream refers to an SDL_AudioStream*, buf to a void*.
-         * Only available in 2.0.7 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the audio stream put using the specified stream
         /// </summary>
@@ -13416,10 +11312,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr buf,
             int len
         );
-
-        /* stream refers to an SDL_AudioStream*, buf to a void*.
-         * Only available in 2.0.7 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the audio stream get using the specified stream
         /// </summary>
@@ -13434,9 +11327,6 @@ namespace Alis.Core.Graphic.SDL
             int len
         );
 
-        /* stream refers to an SDL_AudioStream*.
-         * Only available in 2.0.7 or higher.
-         */
         /// <summary>
         ///     Sdls the audio stream available using the specified stream
         /// </summary>
@@ -13444,20 +11334,14 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_AudioStreamAvailable(IntPtr stream);
-
-        /* stream refers to an SDL_AudioStream*.
-         * Only available in 2.0.7 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the audio stream clear using the specified stream
         /// </summary>
         /// <param name="stream">The stream</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_AudioStreamClear(IntPtr stream);
-
-        /* stream refers to an SDL_AudioStream*.
-         * Only available in 2.0.7 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the free audio stream using the specified stream
         /// </summary>
@@ -13465,7 +11349,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_FreeAudioStream(IntPtr stream);
 
-        /* Only available in 2.0.16 or higher. */
+        
         /// <summary>
         ///     Sdls the get audio device spec using the specified index
         /// </summary>
@@ -13479,10 +11363,7 @@ namespace Alis.Core.Graphic.SDL
             int iscapture,
             out SdlAudioSpec spec
         );
-
-        #endregion
-
-
+        
         /// <summary>
         ///     Describes whether sdl ticks passed
         /// </summary>
@@ -13491,56 +11372,48 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The bool</returns>
         public static bool SDL_TICKS_PASSED(uint a, uint b) => (int) (b - a) <= 0;
 
-        /* Delays the thread's processing based on the milliseconds parameter */
         /// <summary>
         ///     Sdls the delay using the specified ms
         /// </summary>
         /// <param name="ms">The ms</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_Delay(uint ms);
-
-        /* Returns the milliseconds that have passed since SDL was initialized */
+        
         /// <summary>
         ///     Sdls the get ticks
         /// </summary>
         /// <returns>The int 32</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_GetTicks();
-
-        /* Returns the milliseconds that have passed since SDL was initialized
-         * Only available in 2.0.18 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get ticks 64
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetTicks64();
-
-        /* Get the current value of the high resolution counter */
+        
         /// <summary>
         ///     Sdls the get performance counter
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetPerformanceCounter();
-
-        /* Get the count per second of the high resolution counter */
+        
         /// <summary>
         ///     Sdls the get performance frequency
         /// </summary>
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetPerformanceFrequency();
-
-        /* param refers to a void* */
+        
         /// <summary>
         ///     The sdl timercallback
         /// </summary>
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate uint SdlTimerCallback(uint interval, IntPtr param);
 
-        /* int refers to an SDL_TimerID, param to a void* */
+        
         /// <summary>
         ///     Sdls the add timer using the specified interval
         /// </summary>
@@ -13555,7 +11428,6 @@ namespace Alis.Core.Graphic.SDL
             IntPtr param
         );
 
-        /* id refers to an SDL_TimerID */
         /// <summary>
         ///     Sdls the remove timer using the specified id
         /// </summary>
@@ -13563,7 +11435,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_RemoveTimer(int id);
-
         
         /// <summary>
         ///     The sdl windowsmessagehook
@@ -13587,11 +11458,7 @@ namespace Alis.Core.Graphic.SDL
             SdlWindowsMessageHook callback,
             IntPtr userdata
         );
-
-        /* renderer refers to an SDL_Renderer*
-         * IntPtr refers to an IDirect3DDevice9*
-         * Only available in 2.0.1 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the render get d 3 d 9 device using the specified renderer
         /// </summary>
@@ -13599,8 +11466,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RenderGetD3D9Device(IntPtr renderer);
-
-
+        
         /// <summary>
         ///     Sdls the render get d 3 d 11 device using the specified renderer
         /// </summary>
@@ -13625,7 +11491,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_iPhoneSetAnimationCallback(
-            IntPtr window, /* SDL_Window* */
+            IntPtr window, 
             int interval,
             SdlIPhoneAnimationCallback callback,
             IntPtr callbackParam
@@ -13638,7 +11504,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_iPhoneSetEventPump(SdlBool enabled);
 
-        /* Android */
+        
 
         /// <summary>
         ///     The sdl android external storage read
@@ -13650,7 +11516,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         public const int SdlAndroidExternalStorageWrite = 0x02;
 
-        /* IntPtr refers to a JNIEnv* */
+        
         /// <summary>
         ///     Sdls the android get jni env
         /// </summary>
@@ -13658,7 +11524,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_AndroidGetJNIEnv();
 
-        /* IntPtr refers to a jobject */
+        
         /// <summary>
         ///     Sdls the android get activity
         /// </summary>
@@ -13737,7 +11603,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetAndroidSDKVersion();
 
-        /* Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     Internals the sdl android request permission using the specified permission
         /// </summary>
@@ -13764,8 +11630,7 @@ namespace Alis.Core.Graphic.SDL
             Marshal.FreeHGlobal((IntPtr) permissionPtr);
             return result;
         }
-
-        /* Only available in 2.0.16 or higher. */
+        
         /// <summary>
         ///     Internals the sdl android show toast using the specified message
         /// </summary>
@@ -13812,9 +11677,7 @@ namespace Alis.Core.Graphic.SDL
             Marshal.FreeHGlobal((IntPtr) messagePtr);
             return result;
         }
-
-        /* WinRT */
-
+        
         /// <summary>
         ///     Sdls the win rt get device family
         /// </summary>
@@ -13828,10 +11691,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_IsTablet();
-
-
-        // FIXME: I wish these weren't public...
-
+        
         /// <summary>
         ///     Sdls the get window wm info using the specified window
         /// </summary>
@@ -13843,9 +11703,7 @@ namespace Alis.Core.Graphic.SDL
             IntPtr window,
             ref SdlSysWMinfo info
         );
-
-
-        /* Only available in 2.0.1 or higher. */
+        
         /// <summary>
         ///     Internals the sdl get base path
         /// </summary>
@@ -13859,7 +11717,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The string</returns>
         public static string SDL_GetBasePath() => UTF8_ToManaged(INTERNAL_SDL_GetBasePath(), true);
 
-        /* Only available in 2.0.1 or higher. */
         /// <summary>
         ///     Internals the sdl get pref path using the specified org
         /// </summary>
@@ -14011,24 +11868,21 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_HasNEON();
-
-        /* Only available in 2.0.1 or higher. */
+        
         /// <summary>
         ///     Sdls the get system ram
         /// </summary>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern int SDL_GetSystemRAM();
-
-        /* Only available in SDL 2.0.10 or higher. */
+        
         /// <summary>
         ///     Sdls the simd get alignment
         /// </summary>
         /// <returns>The uint</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern uint SDL_SIMDGetAlignment();
-
-        /* Only available in SDL 2.0.10 or higher. */
+        
         /// <summary>
         ///     Sdls the simd alloc using the specified len
         /// </summary>
@@ -14036,8 +11890,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_SIMDAlloc(uint len);
-
-        /* Only available in SDL 2.0.14 or higher. */
+        
         /// <summary>
         ///     Sdls the simd realloc using the specified ptr
         /// </summary>
@@ -14046,34 +11899,27 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_SIMDRealloc(IntPtr ptr, uint len);
-
-        /* Only available in SDL 2.0.10 or higher. */
+        
         /// <summary>
         ///     Sdls the simd free using the specified ptr
         /// </summary>
         /// <param name="ptr">The ptr</param>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SIMDFree(IntPtr ptr);
-
-        /* Only available in SDL 2.0.11 or higher. */
+        
         /// <summary>
         ///     Sdls the has armsimd
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_HasARMSIMD();
-
-        /* IntPtr refers to an SDL_Locale*.
-         * Only available in 2.0.14 or higher.
-         */
+        
         /// <summary>
         ///     Sdls the get preferred locales
         /// </summary>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_GetPreferredLocales();
-
-
-        /* Only available in 2.0.14 or higher. */
+        
         /// <summary>
         ///     Internals the sdl open url using the specified url
         /// </summary>
@@ -14095,5 +11941,4 @@ namespace Alis.Core.Graphic.SDL
             return result;
         }
     }
-
 }

@@ -1,4 +1,4 @@
-﻿using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;
 
 namespace Alis.Core.Graphic.SDL
 {
@@ -21,12 +21,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The display
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlDisplayEvent display;
+        [FieldOffset(0)] public SdlDisplayEvent display;
 
         /// <summary>
         ///     The window
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlWindowEvent window;
+        [FieldOffset(0)] public SdlWindowEvent window;
 
         /// <summary>
         ///     The key
@@ -41,12 +41,12 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The text
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlTextInputEvent text;
+        [FieldOffset(0)] public SdlTextInputEvent text;
 
         /// <summary>
         ///     The motion
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlMouseMotionEvent motion;
+        [FieldOffset(0)] public SdlMouseMotionEvent motion;
 
         /// <summary>
         ///     The button
@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The wheel
         /// </summary>
-        [FieldOffset(0)] public Sdl.SdlMouseWheelEvent wheel;
+        [FieldOffset(0)] public SdlMouseWheelEvent wheel;
 
         /// <summary>
         ///     The jaxis

@@ -1,4 +1,4 @@
-﻿namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic.SDL
 {
     /// <summary>
     ///     The sdl finger
