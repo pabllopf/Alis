@@ -519,12 +519,9 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="name">Name of the uniform variable in GLSL</param>
         /// <param name="array">array of <c>mat3</c> values</param>
         ////////////////////////////////////////////////////////////
-        public unsafe void SetUniformArray(string name, Matrix3X3F[] array)
+        public unsafe void SetUniformArray(string name, Matrix3X3F array)
         {
-            fixed (Matrix3X3F* data = array)
-            {
-                sfShader_setMat3UniformArray(CPointer, name, data, (uint) array.Length);
-            }
+            sfShader_setMat3UniformArray(CPointer, name, array, (uint)9);
         }
 
         ////////////////////////////////////////////////////////////
@@ -978,7 +975,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="data">The data</param>
         /// <param name="length">The length</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfShader_setMat3UniformArray(IntPtr shader, string name, Matrix3X3F* data,
+        private static extern void sfShader_setMat3UniformArray(IntPtr shader, string name, Matrix3X3F data,
             uint length);
 
         /// <summary>

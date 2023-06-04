@@ -31481,31 +31481,6 @@
                 The sdl rwops memory ro
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlrWopsSizeCallback">
-            <summary>
-                The sdlr wops size callback
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlrWopsSeekCallback">
-            <summary>
-                The sdlr wops seek callback
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlrWopsReadCallback">
-            <summary>
-                The sdlr wops read callback
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlrWopsWriteCallback">
-            <summary>
-                The sdlr wops write callback
-            </summary>
-        </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlrWopsCloseCallback">
-            <summary>
-                The sdlr wops close callback
-            </summary>
-        </member>
         <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_RWFromFile(System.Byte*,System.Byte*)">
             <summary>
                 Internals the sdl rw from file using the specified file
@@ -31734,12 +31709,7 @@
                 Sdls the set main ready
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlMainFunc">
-            <summary>
-                The sdl main func
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_WinRTRunApp(Alis.Core.Graphic.SDL.Sdl.SdlMainFunc,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_WinRTRunApp(Alis.Core.Graphic.SDL.SdlMainFunc,System.IntPtr)">
             <summary>
                 Sdls the win rt run app using the specified main function
             </summary>
@@ -31747,7 +31717,7 @@
             <param name="reserved">The reserved</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_UIKitRunApp(System.Int32,System.IntPtr,Alis.Core.Graphic.SDL.Sdl.SdlMainFunc)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_UIKitRunApp(System.Int32,System.IntPtr,Alis.Core.Graphic.SDL.SdlMainFunc)">
             <summary>
                 Sdls the ui kit run app using the specified argc
             </summary>
@@ -32556,11 +32526,6 @@
             <param name="maxlength">The maxlength</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlLogOutputFunction">
-            <summary>
-                The sdl logoutputfunction
-            </summary>
-        </member>
         <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_Log(System.Byte*)">
             <summary>
                 Internals the sdl log using the specified fmt and arglist
@@ -32721,14 +32686,14 @@
             <param name="callback">The callback</param>
             <param name="userdata">The userdata</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_LogGetOutputFunction(Alis.Core.Graphic.SDL.Sdl.SdlLogOutputFunction@,System.IntPtr@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_LogGetOutputFunction(Alis.Core.Graphic.SDL.SdlLogOutputFunction@,System.IntPtr@)">
             <summary>
                 Sdls the log get output function using the specified callback
             </summary>
             <param name="callback">The callback</param>
             <param name="userdata">The userdata</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_LogSetOutputFunction(Alis.Core.Graphic.SDL.Sdl.SdlLogOutputFunction,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_LogSetOutputFunction(Alis.Core.Graphic.SDL.SdlLogOutputFunction,System.IntPtr)">
             <summary>
                 Sdls the log set output function using the specified callback
             </summary>
@@ -33293,11 +33258,6 @@
             </summary>
             <param name="x">The </param>
             <returns>The bool</returns>
-        </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlHitTest">
-            <summary>
-                The sdl hittest
-            </summary>
         </member>
         <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_CreateWindow(System.Byte*,System.Int32,System.Int32,System.Int32,System.Int32,Alis.Core.Graphic.SDL.Sdl.SdlWindowFlags)">
             <summary>
@@ -34067,7 +34027,7 @@
                 Sdls the video quit
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowHitTest(System.IntPtr,Alis.Core.Graphic.SDL.Sdl.SdlHitTest,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowHitTest(System.IntPtr,Alis.Core.Graphic.SDL.SdlHitTest,System.IntPtr)">
             <summary>
                 Sdls the set window hit test using the specified window
             </summary>
@@ -36516,11 +36476,6 @@
                 The sdl textinputevent text size
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlEventFilter">
-            <summary>
-                The sdl eventfilter
-            </summary>
-        </member>
         <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_PumpEvents">
             <summary>
                 Sdls the pump events
@@ -36594,7 +36549,7 @@
             <param name="event">The event</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetEventFilter(Alis.Core.Graphic.SDL.Sdl.SdlEventFilter,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetEventFilter(Alis.Core.Graphic.SDL.SdlEventFilter,System.IntPtr)">
             <summary>
                 Sdls the set event filter using the specified filter
             </summary>
@@ -36609,7 +36564,7 @@
             <param name="userdata">The userdata</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetEventFilter(Alis.Core.Graphic.SDL.Sdl.SdlEventFilter@,System.IntPtr@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GetEventFilter(Alis.Core.Graphic.SDL.SdlEventFilter@,System.IntPtr@)">
             <summary>
                 Sdls the get event filter using the specified filter
             </summary>
@@ -36617,21 +36572,21 @@
             <param name="userdata">The userdata</param>
             <returns>The retval</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_AddEventWatch(Alis.Core.Graphic.SDL.Sdl.SdlEventFilter,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_AddEventWatch(Alis.Core.Graphic.SDL.SdlEventFilter,System.IntPtr)">
             <summary>
                 Sdls the add event watch using the specified filter
             </summary>
             <param name="filter">The filter</param>
             <param name="userdata">The userdata</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_DelEventWatch(Alis.Core.Graphic.SDL.Sdl.SdlEventFilter,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_DelEventWatch(Alis.Core.Graphic.SDL.SdlEventFilter,System.IntPtr)">
             <summary>
                 Sdls the del event watch using the specified filter
             </summary>
             <param name="filter">The filter</param>
             <param name="userdata">The userdata</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FilterEvents(Alis.Core.Graphic.SDL.Sdl.SdlEventFilter,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_FilterEvents(Alis.Core.Graphic.SDL.SdlEventFilter,System.IntPtr)">
             <summary>
                 Sdls the filter events using the specified filter
             </summary>
@@ -38699,11 +38654,6 @@
                 The sdl mix maxvolume
             </summary>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlAudioCallback">
-            <summary>
-                The sdl audiocallback
-            </summary>
-        </member>
         <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_AudioInit(System.Byte*)">
             <summary>
                 Internals the sdl audio init using the specified driver name
@@ -39069,12 +39019,7 @@
             </summary>
             <returns>The int 64</returns>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlTimerCallback">
-            <summary>
-                The sdl timercallback
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_AddTimer(System.UInt32,Alis.Core.Graphic.SDL.Sdl.SdlTimerCallback,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_AddTimer(System.UInt32,Alis.Core.Graphic.SDL.SdlTimerCallback,System.IntPtr)">
             <summary>
                 Sdls the add timer using the specified interval
             </summary>
@@ -39090,12 +39035,7 @@
             <param name="id">The id</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlWindowsMessageHook">
-            <summary>
-                The sdl windowsmessagehook
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowsMessageHook(Alis.Core.Graphic.SDL.Sdl.SdlWindowsMessageHook,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_SetWindowsMessageHook(Alis.Core.Graphic.SDL.SdlWindowsMessageHook,System.IntPtr)">
             <summary>
                 Sdls the set windows message hook using the specified callback
             </summary>
@@ -39116,12 +39056,7 @@
             <param name="renderer">The renderer</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.Sdl.SdlIPhoneAnimationCallback">
-            <summary>
-                The sdl iphoneanimationcallback
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_iPhoneSetAnimationCallback(System.IntPtr,System.Int32,Alis.Core.Graphic.SDL.Sdl.SdlIPhoneAnimationCallback,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_iPhoneSetAnimationCallback(System.IntPtr,System.Int32,Alis.Core.Graphic.SDL.SdlIPhoneAnimationCallback,System.IntPtr)">
             <summary>
                 Sdls the i phone set animation callback using the specified window
             </summary>
@@ -39458,26 +39393,6 @@
             <param name="url">The url</param>
             <returns>The result</returns>
         </member>
-        <member name="T:Alis.Core.Graphic.SDL.SdlBitmapOrder">
-            <summary>
-                The sdl bitmaporder enum
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitmaporderNone">
-            <summary>
-                The sdl bitmaporder none sdl bitmaporder
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitmaporder4321">
-            <summary>
-                The sdl bitmaporder 4321 sdl bitmaporder
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitmaporder1234">
-            <summary>
-                The sdl bitmaporder 1234 sdl bitmaporder
-            </summary>
-        </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlArrayOrder">
             <summary>
                 The sdl arrayorder enum
@@ -39516,6 +39431,11 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlArrayOrder.SdlArrayorderAbgr">
             <summary>
                 The sdl arrayorder abgr sdl arrayorder
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlAudioCallback">
+            <summary>
+                The sdl audiocallback
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlAudioDeviceEvent">
@@ -39621,6 +39541,26 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlAudioStatus.SdlAudioPaused">
             <summary>
                 The sdl audio paused sdl audiostatus
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlBitmapOrder">
+            <summary>
+                The sdl bitmaporder enum
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitmaporderNone">
+            <summary>
+                The sdl bitmaporder none sdl bitmaporder
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitmaporder4321">
+            <summary>
+                The sdl bitmaporder 4321 sdl bitmaporder
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.SDL.SdlBitmapOrder.SdlBitmaporder1234">
+            <summary>
+                The sdl bitmaporder 1234 sdl bitmaporder
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlBool">
@@ -40176,6 +40116,11 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlEventaction.SdlGetevent">
             <summary>
                 The sdl getevent sdl eventaction
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlEventFilter">
+            <summary>
+                The sdl eventfilter
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlEventType">
@@ -41388,6 +41333,11 @@
                 The sdl hint override sdl hintpriority
             </summary>
         </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlHitTest">
+            <summary>
+                The sdl hittest
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlImage">
             <summary>
                 The sdl image class
@@ -41691,6 +41641,11 @@
             </summary>
             <param name="src">The src</param>
             <returns>The int ptr</returns>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlIPhoneAnimationCallback">
+            <summary>
+                The sdl iphoneanimationcallback
+            </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlJoyAxisEvent">
             <summary>
@@ -43472,6 +43427,11 @@
                 The sdl log category custom sdl logcategory
             </summary>
         </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlLogOutputFunction">
+            <summary>
+                The sdl logoutputfunction
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlLogPriority">
             <summary>
                 The sdl logpriority enum
@@ -43510,6 +43470,11 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlLogPriority.SdlNumLogPriorities">
             <summary>
                 The sdl num log priorities sdl logpriority
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlMainFunc">
+            <summary>
+                The sdl main func
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlMessageBoxButtonData">
@@ -44280,6 +44245,31 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlRWops.type">
             <summary>
                 The type
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlrWopsCloseCallback">
+            <summary>
+                The sdlr wops close callback
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlrWopsReadCallback">
+            <summary>
+                The sdlr wops read callback
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlrWopsSeekCallback">
+            <summary>
+                The sdlr wops seek callback
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlrWopsSizeCallback">
+            <summary>
+                The sdlr wops size callback
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlrWopsWriteCallback">
+            <summary>
+                The sdlr wops write callback
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlScancode">
@@ -45867,6 +45857,11 @@
                 The sdl textinputevent text size
             </summary>
         </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlTimerCallback">
+            <summary>
+                The sdl timercallback
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlTouchDeviceType">
             <summary>
                 The sdl touchdevicetype enum
@@ -46865,6 +46860,11 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlWindowEvent.data2">
             <summary>
                 The data
+            </summary>
+        </member>
+        <member name="T:Alis.Core.Graphic.SDL.SdlWindowsMessageHook">
+            <summary>
+                The sdl windowsmessagehook
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlWinRtDeviceFamily">
@@ -49886,7 +49886,7 @@
             <param name="name">Name of the uniform variable in GLSL</param>
             <param name="array">array of <c>vec4</c> values</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F[])">
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.SetUniformArray(System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F)">
             <summary>
                 Specify values for <c>mat3[]</c> array uniforms
             </summary>
@@ -50218,7 +50218,7 @@
             <param name="data">The data</param>
             <param name="length">The length</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setMat3UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F*,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SFML.Graphics.Shader.sfShader_setMat3UniformArray(System.IntPtr,System.String,Alis.Core.Aspect.Math.Matrix.Matrix3X3F,System.UInt32)">
             <summary>
                 Sfs the shader set mat 3 uniform array using the specified shader
             </summary>

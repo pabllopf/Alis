@@ -107,6 +107,48 @@ namespace Alis.Core.Audio
                         break;
                 }
             }
+            
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeAudio.osx_arm64_sdl2_mixer);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dylib", NativeAudio.osx_x64_sdl2_mixer);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x64_sdl2_mixer);
+                        break;
+                    case Architecture.X86:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x86_sdl2_mixer);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.dll", NativeAudio.win_x64_sdl2_mixer);
+                        break;
+                }
+            }
+
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                switch (RuntimeInformation.ProcessArchitecture)
+                {
+                    case Architecture.Arm64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeAudio.linux_arm64_sdl2_mixer);
+                        break;
+                    case Architecture.X64:
+                        EmbeddedDllClass.ExtractEmbeddedDlls("sdl2_mixer.so", NativeAudio.linux_x64_sdl2_mixer);
+                        break;
+                }
+            }
         }
 
         /// <summary>

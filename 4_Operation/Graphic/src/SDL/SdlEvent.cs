@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl event
     /// </summary>
     [StructLayout(LayoutKind.Explicit)]
-    public unsafe struct SdlEvent
+    public struct SdlEvent
     {
         /// <summary>
         ///     The type
@@ -156,6 +156,43 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The padding
         /// </summary>
-        [FieldOffset(0)] private fixed byte padding[56];
+        [FieldOffset(0)] private byte[] padding;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlEvent"/> class
+        /// </summary>
+        public SdlEvent()
+        {
+            type = SdlEventType.SdlFirstevent;
+            typeFSharp = SdlEventType.SdlFirstevent;
+            display = default;
+            window = default;
+            key = default;
+            edit = default;
+            text = default;
+            motion = default;
+            button = default;
+            wheel = default;
+            jaxis = default;
+            jball = default;
+            jhat = default;
+            jbutton = default;
+            jdevice = default;
+            caxis = default;
+            cbutton = default;
+            cdevice = default;
+            ctouchpad = default;
+            csensor = default;
+            adevice = default;
+            sensor = default;
+            quit = default;
+            user = default;
+            syswm = default;
+            tfinger = default;
+            mgesture = default;
+            dgesture = default;
+            drop = default;
+            padding = new byte[56];
+        }
     }
 }

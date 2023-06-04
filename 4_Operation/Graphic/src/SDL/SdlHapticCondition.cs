@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl hapticcondition
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlHapticCondition
+    public struct SdlHapticCondition
     {
         // Header
         /// <summary>
@@ -45,31 +45,55 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The right sat
         /// </summary>
-        public fixed ushort right_sat[3];
+        public ushort[] right_sat = new ushort[3];
 
         /// <summary>
         ///     The left sat
         /// </summary>
-        public fixed ushort left_sat[3];
+        public ushort[] left_sat = new ushort[3];
 
         /// <summary>
         ///     The right coeff
         /// </summary>
-        public fixed short right_coeff[3];
+        public short[] right_coeff = new short[3];
 
         /// <summary>
         ///     The left coeff
         /// </summary>
-        public fixed short left_coeff[3];
+        public short[] left_coeff = new short[3];
 
         /// <summary>
         ///     The deadband
         /// </summary>
-        public fixed ushort deadband[3];
+        public ushort[] deadband = new ushort[3];
 
         /// <summary>
         ///     The center
         /// </summary>
-        public fixed short center[3];
+        public short[] center = new short[3];
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlHapticCondition"/> class
+        /// </summary>
+        public SdlHapticCondition()
+        {
+            type = 0;
+            direction = default;
+            length = 0;
+            delay = 0;
+            button = 0;
+            interval = 0;
+         right_sat = new ushort[3];
+
+         left_sat = new ushort[3];
+
+        right_coeff = new short[3];
+
+        left_coeff = new short[3];
+
+        deadband = new ushort[3];
+        
+        center = new short[3];
+        }
     }
 }

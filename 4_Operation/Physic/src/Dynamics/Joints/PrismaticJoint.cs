@@ -854,7 +854,11 @@ namespace Alis.Core.Physic.Dynamics.Joints
                 float k23 = iA * a1 + iB * a2;
                 float k33 = mA + mB + iA * a1 * a1 + iB * a2 * a2;
 
-                Matrix3X3F k;
+                Matrix3X3F k = new Matrix3X3F(
+                    new Vector3F(k11, k12, k13),
+                    new Vector3F(k12, k22, k23),
+                    new Vector3F(k13, k23, k33)
+                    );
                 k.Ex = new Vector3F(k11, k12, k13);
                 k.Ey = new Vector3F(k12, k22, k23);
                 k.Ez = new Vector3F(k13, k23, k33);

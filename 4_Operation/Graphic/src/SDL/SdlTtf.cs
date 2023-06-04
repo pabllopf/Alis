@@ -90,23 +90,12 @@ namespace Alis.Core.Graphic.SDL
                 }
             }
         }
-
-        #region SDL2# Variables
-
-        /* Used by DllImport to load the native library. */
+        
         /// <summary>
         ///     The native lib name
         /// </summary>
         private const string NativeLibName = "sdl2_ttf";
 
-        #endregion
-
-        #region SDL_ttf.h
-
-        /* Similar to the headers, this is the version we're expecting to be
-         * running with. You will likely want to check this somewhere in your
-         * program!
-         */
         /// <summary>
         ///     The sdl ttf major version
         /// </summary>
@@ -1416,7 +1405,5 @@ namespace Alis.Core.Graphic.SDL
         {
             Sdl.SDL_SetError(fmtAndArglist);
         }
-
-        #endregion
     }
 }
