@@ -277,55 +277,9 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The sdl rwops memory ro
         /// </summary>
-        public const uint SdlRwopsMemoryRo = 5; 
+        public const uint SdlRwopsMemoryRo = 5;
 
-        /// <summary>
-        ///     The sdlr wops size callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate long SdlrWopsSizeCallback(IntPtr context);
 
-        /// <summary>
-        ///     The sdlr wops seek callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate long SdlrWopsSeekCallback(
-            IntPtr context,
-            long offset,
-            int whence
-        );
-
-        /// <summary>
-        ///     The sdlr wops read callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlrWopsReadCallback(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr maxnum
-        );
-
-        /// <summary>
-        ///     The sdlr wops write callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlrWopsWriteCallback(
-            IntPtr context,
-            IntPtr ptr,
-            IntPtr size,
-            IntPtr num
-        );
-
-        /// <summary>
-        ///     The sdlr wops close callback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SdlrWopsCloseCallback(
-            IntPtr context
-        );
-
-        
         /// <summary>
         ///     Internals the sdl rw from file using the specified file
         /// </summary>
@@ -630,13 +584,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern void SDL_SetMainReady();
 
-        
-        /// <summary>
-        ///     The sdl main func
-        /// </summary>
-        public delegate int SdlMainFunc(int argc, IntPtr argv);
 
-        
         /// <summary>
         ///     Sdls the win rt run app using the specified main function
         /// </summary>
@@ -1685,19 +1633,6 @@ namespace Alis.Core.Graphic.SDL
         public static extern IntPtr SDL_GetErrorMsg(IntPtr errstr, int maxlength);
 
 
-        
-        /// <summary>
-        ///     The sdl logoutputfunction
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlLogOutputFunction(
-            IntPtr userdata,
-            int category,
-            SdlLogPriority priority,
-            IntPtr message
-        );
-
-        
         /// <summary>
         ///     Internals the sdl log using the specified fmt and arglist
         /// </summary>
@@ -2730,14 +2665,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The bool</returns>
         public static bool SDL_WINDOWPOS_ISCENTERED(int x) => (x & 0xFFFF0000) == SdlWindowposCenteredMask;
 
-        
-        /// <summary>
-        ///     The sdl hittest
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate SdlHitTestResult SdlHitTest(IntPtr win, IntPtr area, IntPtr data);
 
-        
         /// <summary>
         ///     Internals the sdl create window using the specified title
         /// </summary>
@@ -7892,15 +7820,6 @@ namespace Alis.Core.Graphic.SDL
 
 
         /// <summary>
-        ///     The sdl eventfilter
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int SdlEventFilter(
-            IntPtr userdata, 
-            IntPtr sdlevent 
-        );
-        
-        /// <summary>
         ///     Sdls the pump events
         /// </summary>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
@@ -10859,16 +10778,6 @@ namespace Alis.Core.Graphic.SDL
 
 
         /// <summary>
-        ///     The sdl audiocallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlAudioCallback(
-            IntPtr userdata,
-            IntPtr stream,
-            int len
-        );
-
-        /// <summary>
         ///     Internals the sdl audio init using the specified driver name
         /// </summary>
         /// <param name="driverName">The driver name</param>
@@ -11406,14 +11315,8 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int 64</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern ulong SDL_GetPerformanceFrequency();
-        
-        /// <summary>
-        ///     The sdl timercallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate uint SdlTimerCallback(uint interval, IntPtr param);
 
-        
+
         /// <summary>
         ///     Sdls the add timer using the specified interval
         /// </summary>
@@ -11435,18 +11338,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern SdlBool SDL_RemoveTimer(int id);
-        
-        /// <summary>
-        ///     The sdl windowsmessagehook
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate IntPtr SdlWindowsMessageHook(
-            IntPtr userdata,
-            IntPtr hWnd,
-            uint message,
-            ulong wParam,
-            long lParam
-        );
 
         /// <summary>
         ///     Sdls the set windows message hook using the specified callback
@@ -11474,12 +11365,6 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr SDL_RenderGetD3D11Device(IntPtr renderer);
-        
-        /// <summary>
-        ///     The sdl iphoneanimationcallback
-        /// </summary>
-        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void SdlIPhoneAnimationCallback(IntPtr p);
 
         /// <summary>
         ///     Sdls the i phone set animation callback using the specified window
