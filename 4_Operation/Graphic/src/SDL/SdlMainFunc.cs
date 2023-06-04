@@ -1,0 +1,9 @@
+using System;
+
+namespace Alis.Core.Graphic.SDL
+{
+    /// <summary>
+    ///     The sdl main func
+    /// </summary>
+    public delegate int SdlMainFunc(int argc, IntPtr argv);
+}
