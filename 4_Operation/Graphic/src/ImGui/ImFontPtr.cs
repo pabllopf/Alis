@@ -40,20 +40,14 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImFont* NativePtr { get; }
+        public ImFont NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImFontPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImFontPtr(ImFont* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImFontPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImFontPtr(IntPtr nativePtr) => NativePtr = (ImFont*) nativePtr;
-
+        public ImFontPtr(ImFont nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>

@@ -108,17 +108,11 @@ namespace Alis.Core.Graphic.SFML.Graphics
         {
             get
             {
-                unsafe
-                {
-                    return *sfVertexArray_getVertex(CPointer, index);
-                }
+                return sfVertexArray_getVertex(CPointer, index);
             }
             set
             {
-                unsafe
-                {
-                    *sfVertexArray_getVertex(CPointer, index) = value;
-                }
+                sfVertexArray_getVertex(CPointer, index) = value;
             }
         }
 
@@ -248,7 +242,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="index">The index</param>
         /// <returns>The vertex</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe Vertex* sfVertexArray_getVertex(IntPtr cPointer, uint index);
+        private static extern Vertex[] sfVertexArray_getVertex(IntPtr cPointer, uint index);
 
         /// <summary>
         ///     Sfs the vertex array clear using the specified c pointer

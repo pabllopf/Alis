@@ -3661,7 +3661,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="textBegin">The text begin</param>
         /// <param name="textEnd">The text end</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddText_Vec2(ImDrawList self, Vector2 pos, uint col, byte textBegin, byte textEnd);
+        public static extern void ImDrawList_AddText_Vec2(ImDrawList self, Vector2 pos, uint col, byte[] textBegin, byte[] textEnd);
 
         /// <summary>
         ///     Ims the draw list add text font ptr using the specified self
@@ -3676,7 +3676,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="wrapWidth">The wrap width</param>
         /// <param name="cpuFineClipRect">The cpu fine clip rect</param>
         [DllImport("cimgui", CallingConvention = CallingConvention.Cdecl)]
-        public static extern void ImDrawList_AddText_FontPtr(ImDrawList self, ImFont font, float fontSize, Vector2 pos, uint col, byte textBegin, byte textEnd, float wrapWidth, Vector4 cpuFineClipRect);
+        public static extern void ImDrawList_AddText_FontPtr(ImDrawList self, ImFont font, float fontSize, Vector2 pos, uint col, byte[] textBegin, byte[] textEnd, float wrapWidth, Vector4 cpuFineClipRect);
 
         /// <summary>
         ///     Ims the draw list add triangle using the specified self

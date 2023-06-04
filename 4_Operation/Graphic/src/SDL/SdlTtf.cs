@@ -227,7 +227,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_OpenFont", CallingConvention = CallingConvention.Cdecl)]
         private static extern  IntPtr INTERNAL_TTF_OpenFont(
-            byte* file,
+            byte[] file,
             int ptsize
         );
 
@@ -274,7 +274,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_OpenFontIndex", CallingConvention = CallingConvention.Cdecl)]
         private static extern  IntPtr INTERNAL_TTF_OpenFontIndex(
-            byte* file,
+            byte[] file,
             int ptsize,
             long index
         );

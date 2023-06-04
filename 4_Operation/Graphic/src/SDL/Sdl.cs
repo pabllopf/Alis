@@ -1486,8 +1486,8 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The sdl bool</returns>
         [DllImport(NativeLibName, EntryPoint = "SDL_SetHint", CallingConvention = CallingConvention.Cdecl)]
         private static extern  SdlBool INTERNAL_SDL_SetHint(
-            byte* name,
-            byte* value
+            byte[] name,
+            byte[] value
         );
 
         /// <summary>
