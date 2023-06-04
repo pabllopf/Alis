@@ -35,36 +35,30 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im draw cmd header ptr
     /// </summary>
-    public unsafe struct ImDrawCmdHeaderPtr
+    public struct ImDrawCmdHeaderPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImDrawCmdHeader* NativePtr { get; }
+        public ImDrawCmdHeader NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImDrawCmdHeaderPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImDrawCmdHeaderPtr(ImDrawCmdHeader* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImDrawCmdHeaderPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImDrawCmdHeaderPtr(IntPtr nativePtr) => NativePtr = (ImDrawCmdHeader*) nativePtr;
-
+        public ImDrawCmdHeaderPtr(ImDrawCmdHeader nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImDrawCmdHeaderPtr(ImDrawCmdHeader* nativePtr) => new ImDrawCmdHeaderPtr(nativePtr);
+        public static implicit operator ImDrawCmdHeaderPtr(ImDrawCmdHeader nativePtr) => new ImDrawCmdHeaderPtr(nativePtr);
 
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImDrawCmdHeader*(ImDrawCmdHeaderPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImDrawCmdHeader(ImDrawCmdHeaderPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>

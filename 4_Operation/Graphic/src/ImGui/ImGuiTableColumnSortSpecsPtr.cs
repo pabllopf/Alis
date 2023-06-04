@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui table column sort specs ptr
     /// </summary>
-    public unsafe struct ImGuiTableColumnSortSpecsPtr
+    public struct ImGuiTableColumnSortSpecsPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

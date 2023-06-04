@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im font
     /// </summary>
-    public unsafe struct ImFont
+    public struct ImFont
     {
         /// <summary>
         ///     The index advance

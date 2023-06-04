@@ -27,6 +27,7 @@
 // 
 //  --------------------------------------------------------------------------
 
+using System;
 using System.Numerics;
 
 namespace Alis.Core.Graphic.ImGui
@@ -34,12 +35,12 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui size callback data
     /// </summary>
-    public unsafe struct ImGuiSizeCallbackData
+    public struct ImGuiSizeCallbackData
     {
         /// <summary>
         ///     The user data
         /// </summary>
-        public void* UserData;
+        public IntPtr UserData;
 
         /// <summary>
         ///     The pos

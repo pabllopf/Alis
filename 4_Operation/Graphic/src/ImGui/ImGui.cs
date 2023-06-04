@@ -36,7 +36,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui class
     /// </summary>
-    public static unsafe partial class ImGui
+    public static  partial class ImGui
     {
         /// <summary>
         ///     Accepts the drag drop payload using the specified type

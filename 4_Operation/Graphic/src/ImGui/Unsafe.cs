@@ -41,7 +41,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <typeparam name="T">The type to read.</typeparam>
         /// <returns>An object of type <typeparamref name="T" /> read from the given location.</returns>
         [NonVersionable, MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe T Read<T>(void* source) where T : unmanaged => *(T*) source;
+        public static  T Read<T>(IntPtr source) where T : unmanaged => *(T*) source;
 
         /// <summary>
         ///     Sizes the of
@@ -56,7 +56,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <typeparam name="T">The </typeparam>
         /// <param name="source">The source</param>
         /// <returns>The ref</returns>
-        public static unsafe ref T AsRef<T>(void* source) where T : unmanaged
+        public static  ref T AsRef<T>(IntPtr source) where T : unmanaged
         {
             T* typedPointer = (T*) source;
 
@@ -68,7 +68,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="source">The source address to copy from.</param>
         /// <param name="byteCount">The number of bytes to copy.</param>
         [NonVersionable, MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe void CopyBlock(void* destination, void* source, uint byteCount)
+        public static  void CopyBlock(IntPtr destination, IntPtr source, uint byteCount)
         {
             Buffer.MemoryCopy(source, destination, byteCount, byteCount);
         }
@@ -81,7 +81,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <param name="value">The value to initialize the block to.</param>
         /// <param name="byteCount">The number of bytes to initialize.</param>
         [NonVersionable, MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe void InitBlockUnaligned(void* startAddress, byte value, uint byteCount)
+        public static  void InitBlockUnaligned(IntPtr startAddress, byte value, uint byteCount)
         {
             byte[] block = new byte[byteCount];
             for (int i = 0; i < byteCount; i++)

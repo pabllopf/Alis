@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui viewport
     /// </summary>
-    public unsafe struct ImGuiViewport
+    public struct ImGuiViewport
     {
         /// <summary>
         ///     The id

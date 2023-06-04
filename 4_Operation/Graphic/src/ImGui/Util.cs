@@ -36,8 +36,9 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The util class
     /// </summary>
-    internal static unsafe class Util
+    internal static class Util 
     {
+        
         /// <summary>
         ///     The stack allocation size limit
         /// </summary>

@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im ptr vector
     /// </summary>
-    public unsafe struct ImPtrVector<T> where T : unmanaged
+    public struct ImPtrVector<T> where T : unmanaged
     {
         /// <summary>
         ///     The size

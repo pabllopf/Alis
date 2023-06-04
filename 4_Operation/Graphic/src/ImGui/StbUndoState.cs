@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The stb undo state
     /// </summary>
-    public unsafe struct StbUndoState
+    public struct StbUndoState
     {
         /// <summary>
         ///     The undo rec

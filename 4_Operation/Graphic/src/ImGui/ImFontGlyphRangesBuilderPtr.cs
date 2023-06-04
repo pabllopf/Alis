@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im font glyph ranges builder ptr
     /// </summary>
-    public unsafe struct ImFontGlyphRangesBuilderPtr
+    public struct ImFontGlyphRangesBuilderPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

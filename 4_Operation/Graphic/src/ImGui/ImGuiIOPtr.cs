@@ -36,12 +36,12 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui io ptr
     /// </summary>
-    public unsafe struct ImGuiIoPtr
+    public struct ImGuiIoPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiIo* NativePtr { get; }
+        public ImGuiIo NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiIoPtr" /> class

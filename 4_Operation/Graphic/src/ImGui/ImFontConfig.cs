@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im font config
     /// </summary>
-    public unsafe struct ImFontConfig
+    public struct ImFontConfig
     {
         /// <summary>
         ///     The font data

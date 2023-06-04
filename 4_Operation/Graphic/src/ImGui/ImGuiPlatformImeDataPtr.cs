@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui platform ime data ptr
     /// </summary>
-    public unsafe struct ImGuiPlatformImeDataPtr
+    public struct ImGuiPlatformImeDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

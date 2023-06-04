@@ -34,36 +34,36 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui key data ptr
     /// </summary>
-    public unsafe struct ImGuiKeyDataPtr
+    public struct ImGuiKeyDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiKeyData* NativePtr { get; }
+        public ImGuiKeyData NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiKeyDataPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiKeyDataPtr(ImGuiKeyData* nativePtr) => NativePtr = nativePtr;
+        public ImGuiKeyDataPtr(ImGuiKeyData nativePtr) => NativePtr = nativePtr;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiKeyDataPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiKeyDataPtr(IntPtr nativePtr) => NativePtr = (ImGuiKeyData*) nativePtr;
+        public ImGuiKeyDataPtr(IntPtr nativePtr) => NativePtr = (ImGuiKeyData) nativePtr;
 
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiKeyDataPtr(ImGuiKeyData* nativePtr) => new ImGuiKeyDataPtr(nativePtr);
+        public static implicit operator ImGuiKeyDataPtr(ImGuiKeyData nativePtr) => new ImGuiKeyDataPtr(nativePtr);
 
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiKeyData*(ImGuiKeyDataPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImGuiKeyData(ImGuiKeyDataPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>

@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui payload
     /// </summary>
-    public unsafe struct ImGuiPayload
+    public struct ImGuiPayload
     {
         /// <summary>
         ///     The data

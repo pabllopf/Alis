@@ -35,37 +35,31 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im color ptr
     /// </summary>
-    public unsafe struct ImColorPtr
+    public struct ImColorPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImColor* NativePtr { get; }
+        public ImColor NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImColorPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImColorPtr(ImColor* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImColorPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImColorPtr(IntPtr nativePtr) => NativePtr = (ImColor*) nativePtr;
-
+        public ImColorPtr(ImColor nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImColorPtr(ImColor* nativePtr) => new ImColorPtr(nativePtr);
+        public static implicit operator ImColorPtr(ImColor nativePtr) => new ImColorPtr(nativePtr);
 
         /// <summary>
         ///     /
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImColor*(ImColorPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImColor(ImColorPtr wrappedPtr) => wrappedPtr.NativePtr;
 
 
         /// <summary>

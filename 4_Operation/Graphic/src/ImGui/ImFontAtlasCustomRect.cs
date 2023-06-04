@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im font atlas custom rect
     /// </summary>
-    public unsafe struct ImFontAtlasCustomRect
+    public struct ImFontAtlasCustomRect
     {
         /// <summary>
         ///     The width

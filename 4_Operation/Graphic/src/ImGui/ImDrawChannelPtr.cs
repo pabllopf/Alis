@@ -34,37 +34,31 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im draw channel ptr
     /// </summary>
-    public unsafe struct ImDrawChannelPtr
+    public struct ImDrawChannelPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImDrawChannel* NativePtr { get; }
+        public ImDrawChannel NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImDrawChannelPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImDrawChannelPtr(ImDrawChannel* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImDrawChannelPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImDrawChannelPtr(IntPtr nativePtr) => NativePtr = (ImDrawChannel*) nativePtr;
-
+        public ImDrawChannelPtr(ImDrawChannel nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImDrawChannelPtr(ImDrawChannel* nativePtr) => new ImDrawChannelPtr(nativePtr);
+        public static implicit operator ImDrawChannelPtr(ImDrawChannel nativePtr) => new ImDrawChannelPtr(nativePtr);
 
         /// <summary>
         ///     /
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImDrawChannel*(ImDrawChannelPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImDrawChannel(ImDrawChannelPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>

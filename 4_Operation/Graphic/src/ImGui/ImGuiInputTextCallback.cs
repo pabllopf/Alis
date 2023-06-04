@@ -35,5 +35,5 @@ namespace Alis.Core.Graphic.ImGui
     ///     The im gui input text callback
     /// </summary>
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-    public unsafe delegate int ImGuiInputTextCallback(ImGuiInputTextCallbackData* data);
+    public delegate int ImGuiInputTextCallback(ImGuiInputTextCallbackData data);
 }

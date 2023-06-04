@@ -34,36 +34,30 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui list clipper ptr
     /// </summary>
-    public unsafe struct ImGuiListClipperPtr
+    public struct ImGuiListClipperPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiListClipper* NativePtr { get; }
+        public ImGuiListClipper NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiListClipperPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiListClipperPtr(ImGuiListClipper* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiListClipperPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiListClipperPtr(IntPtr nativePtr) => NativePtr = (ImGuiListClipper*) nativePtr;
-
+        public ImGuiListClipperPtr(ImGuiListClipper nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiListClipperPtr(ImGuiListClipper* nativePtr) => new ImGuiListClipperPtr(nativePtr);
+        public static implicit operator ImGuiListClipperPtr(ImGuiListClipper nativePtr) => new ImGuiListClipperPtr(nativePtr);
 
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiListClipper*(ImGuiListClipperPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImGuiListClipper(ImGuiListClipperPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>

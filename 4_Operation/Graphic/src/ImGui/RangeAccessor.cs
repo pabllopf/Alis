@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The range accessor
     /// </summary>
-    public unsafe struct RangeAccessor<T> where T : unmanaged
+    public struct RangeAccessor<T> where T : unmanaged
     {
         /// <summary>
         ///     The

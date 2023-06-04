@@ -226,7 +226,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="ptsize">The ptsize</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_OpenFont", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_TTF_OpenFont(
+        private static extern  IntPtr INTERNAL_TTF_OpenFont(
             byte* file,
             int ptsize
         );
@@ -237,7 +237,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <param name="ptsize">The ptsize</param>
         /// <returns>The handle</returns>
-        public static unsafe IntPtr TTF_OpenFont(string file, int ptsize)
+        public static  IntPtr TTF_OpenFont(string file, int ptsize)
         {
             byte* utf8File = Sdl.Utf8EncodeHeap(file);
             IntPtr handle = INTERNAL_TTF_OpenFont(
@@ -273,7 +273,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="index">The index</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_OpenFontIndex", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_TTF_OpenFontIndex(
+        private static extern  IntPtr INTERNAL_TTF_OpenFontIndex(
             byte* file,
             int ptsize,
             long index
@@ -286,7 +286,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="ptsize">The ptsize</param>
         /// <param name="index">The index</param>
         /// <returns>The handle</returns>
-        public static unsafe IntPtr TTF_OpenFontIndex(
+        public static  IntPtr TTF_OpenFontIndex(
             string file,
             int ptsize,
             long index
@@ -600,7 +600,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="h">The </param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_SizeUTF8", CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int INTERNAL_TTF_SizeUTF8(
+        public static extern  int INTERNAL_TTF_SizeUTF8(
             IntPtr font,
             byte* text,
             out int w,
@@ -615,7 +615,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="w">The </param>
         /// <param name="h">The </param>
         /// <returns>The result</returns>
-        public static unsafe int TTF_SizeUTF8(
+        public static  int TTF_SizeUTF8(
             IntPtr font,
             string text,
             out int w,
@@ -684,7 +684,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="count">The count</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_MeasureUTF8", CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe int INTERNAL_TTF_MeasureUTF8(
+        public static extern  int INTERNAL_TTF_MeasureUTF8(
             IntPtr font,
             byte* text,
             int measureWidth,
@@ -701,7 +701,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="extent">The extent</param>
         /// <param name="count">The count</param>
         /// <returns>The result</returns>
-        public static unsafe int TTF_MeasureUTF8(
+        public static  int TTF_MeasureUTF8(
             IntPtr font,
             string text,
             int measureWidth,
@@ -766,7 +766,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Solid", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Solid(
+        private static extern  IntPtr INTERNAL_TTF_RenderUTF8_Solid(
             IntPtr font,
             byte* text,
             SdlColor fg
@@ -779,7 +779,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The result</returns>
-        public static unsafe IntPtr TTF_RenderUTF8_Solid(
+        public static  IntPtr TTF_RenderUTF8_Solid(
             IntPtr font,
             string text,
             SdlColor fg
@@ -841,7 +841,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Solid_Wrapped", CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Solid_Wrapped(
+        public static extern  IntPtr INTERNAL_TTF_RenderUTF8_Solid_Wrapped(
             IntPtr font,
             byte* text,
             SdlColor fg,
@@ -856,7 +856,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
-        public static unsafe IntPtr TTF_RenderUTF8_Solid_Wrapped(
+        public static  IntPtr TTF_RenderUTF8_Solid_Wrapped(
             IntPtr font,
             string text,
             SdlColor fg,
@@ -952,7 +952,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bg">The bg</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Shaded", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Shaded(
+        private static extern  IntPtr INTERNAL_TTF_RenderUTF8_Shaded(
             IntPtr font,
             byte* text,
             SdlColor fg,
@@ -967,7 +967,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <param name="bg">The bg</param>
         /// <returns>The result</returns>
-        public static unsafe IntPtr TTF_RenderUTF8_Shaded(
+        public static  IntPtr TTF_RenderUTF8_Shaded(
             IntPtr font,
             string text,
             SdlColor fg,
@@ -1034,7 +1034,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Shaded_Wrapped", CallingConvention = CallingConvention.Cdecl)]
-        public static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(
+        public static extern  IntPtr INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(
             IntPtr font,
             byte* text,
             SdlColor fg,
@@ -1051,7 +1051,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="bg">The bg</param>
         /// <param name="wrapLength">The wrap length</param>
         /// <returns>The result</returns>
-        public static unsafe IntPtr TTF_RenderUTF8_Shaded_Wrapped(
+        public static  IntPtr TTF_RenderUTF8_Shaded_Wrapped(
             IntPtr font,
             string text,
             SdlColor fg,
@@ -1150,7 +1150,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Blended", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Blended(
+        private static extern  IntPtr INTERNAL_TTF_RenderUTF8_Blended(
             IntPtr font,
             byte* text,
             SdlColor fg
@@ -1163,7 +1163,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="text">The text</param>
         /// <param name="fg">The fg</param>
         /// <returns>The result</returns>
-        public static unsafe IntPtr TTF_RenderUTF8_Blended(
+        public static  IntPtr TTF_RenderUTF8_Blended(
             IntPtr font,
             string text,
             SdlColor fg
@@ -1221,7 +1221,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "TTF_RenderUTF8_Blended_Wrapped", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_TTF_RenderUTF8_Blended_Wrapped(
+        private static extern  IntPtr INTERNAL_TTF_RenderUTF8_Blended_Wrapped(
             IntPtr font,
             byte* text,
             SdlColor fg,
@@ -1236,7 +1236,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="fg">The fg</param>
         /// <param name="wrapped">The wrapped</param>
         /// <returns>The result</returns>
-        public static unsafe IntPtr TTF_RenderUTF8_Blended_Wrapped(
+        public static  IntPtr TTF_RenderUTF8_Blended_Wrapped(
             IntPtr font,
             string text,
             SdlColor fg,

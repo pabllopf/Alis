@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui list clipper
     /// </summary>
-    public unsafe struct ImGuiListClipper
+    public struct ImGuiListClipper
     {
         /// <summary>
         ///     The ctx
@@ -69,6 +69,6 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The temp data
         /// </summary>
-        public void* TempData;
+        public IntPtr TempData;
     }
 }

@@ -34,12 +34,12 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The range ptr accessor
     /// </summary>
-    public unsafe struct RangePtrAccessor<T> where T : unmanaged
+    public struct RangePtrAccessor<T> where T : unmanaged
     {
         /// <summary>
         ///     The data
         /// </summary>
-        public readonly void* Data;
+        public readonly IntPtr Data;
 
         /// <summary>
         ///     The count

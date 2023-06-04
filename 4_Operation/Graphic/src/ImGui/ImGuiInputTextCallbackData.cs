@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui input text callback data
     /// </summary>
-    public unsafe struct ImGuiInputTextCallbackData
+    public struct ImGuiInputTextCallbackData
     {
         /// <summary>
         ///     The ctx
@@ -54,7 +54,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The user data
         /// </summary>
-        public void* UserData;
+        public IntPtr UserData;
 
         /// <summary>
         ///     The event char
@@ -69,7 +69,7 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     The buf
         /// </summary>
-        public byte* Buf;
+        public byte Buf;
 
         /// <summary>
         ///     The buf text len

@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im draw data ptr
     /// </summary>
-    public unsafe struct ImDrawDataPtr
+    public struct ImDrawDataPtr
     {
         /// <summary>
         ///     Gets the value of the cmd lists range

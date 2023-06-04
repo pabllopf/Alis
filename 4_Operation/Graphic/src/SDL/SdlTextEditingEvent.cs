@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl texteditingevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlTextEditingEvent
+    public struct SdlTextEditingEvent
     {
         /// <summary>
         ///     The type
@@ -53,9 +53,9 @@ namespace Alis.Core.Graphic.SDL
         public uint windowID;
 
         /// <summary>
-        ///     The sdl texteditingevent text size
+        ///     The sdl text event text size
         /// </summary>
-        public fixed byte text[Sdl.SdlTexteditingeventTextSize];
+        public byte[] text;
 
         /// <summary>
         ///     The start
@@ -66,5 +66,18 @@ namespace Alis.Core.Graphic.SDL
         ///     The length
         /// </summary>
         public int length;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlTextEditingEvent"/> class
+        /// </summary>
+        public SdlTextEditingEvent()
+        {
+            type = SdlEventType.SdlFirstevent;
+            timestamp = 0;
+            windowID = 0;
+            start = 0;
+            length = 0;
+            text = new byte[Sdl.SdlTexteditingeventTextSize];
+        }
     }
 }

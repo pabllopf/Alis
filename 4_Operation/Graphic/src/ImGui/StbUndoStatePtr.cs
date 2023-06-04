@@ -34,7 +34,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The stb undo state ptr
     /// </summary>
-    public unsafe struct StbUndoStatePtr
+    public struct StbUndoStatePtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

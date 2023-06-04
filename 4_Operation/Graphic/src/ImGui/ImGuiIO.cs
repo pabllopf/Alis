@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui io
     /// </summary>
-    public unsafe struct ImGuiIo
+    public struct ImGuiIo
     {
         /// <summary>
         ///     The config flags

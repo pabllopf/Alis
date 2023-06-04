@@ -34,12 +34,12 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui text range ptr
     /// </summary>
-    public unsafe struct ImGuiTextRangePtr
+    public struct ImGuiTextRangePtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiTextRange* NativePtr { get; }
+        public ImGuiTextRange NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiTextRangePtr" /> class

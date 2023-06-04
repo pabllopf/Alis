@@ -32,16 +32,16 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui text range
     /// </summary>
-    public unsafe struct ImGuiTextRange
+    public struct ImGuiTextRange
     {
         /// <summary>
         ///     The
         /// </summary>
-        public byte* B;
+        public byte B;
 
         /// <summary>
         ///     The
         /// </summary>
-        public byte* E;
+        public byte E;
     }
 }

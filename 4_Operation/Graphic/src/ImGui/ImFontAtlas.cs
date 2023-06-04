@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im font atlas
     /// </summary>
-    public unsafe struct ImFontAtlas
+    public struct ImFontAtlas
     {
         /// <summary>
         ///     The flags

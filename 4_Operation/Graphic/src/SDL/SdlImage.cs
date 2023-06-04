@@ -31,6 +31,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
 
@@ -203,7 +204,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Load", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_IMG_Load(
+        private static extern  IntPtr INTERNAL_IMG_Load(
             byte* file
         );
 
@@ -212,7 +213,7 @@ namespace Alis.Core.Graphic.SDL
         /// </summary>
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
-        public static unsafe IntPtr IMG_Load(string file)
+        public static  IntPtr IMG_Load(string file)
         {
             byte* utf8File = Sdl.Utf8EncodeHeap(file);
             IntPtr handle = INTERNAL_IMG_Load(
@@ -246,7 +247,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTyped_RW", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_IMG_LoadTyped_RW(
+        private static extern  IntPtr INTERNAL_IMG_LoadTyped_RW(
             IntPtr src,
             int freesrc,
             byte* type
@@ -259,7 +260,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="freesrc">The freesrc</param>
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
-        public static unsafe IntPtr IMG_LoadTyped_RW(
+        public static  IntPtr IMG_LoadTyped_RW(
             IntPtr src,
             int freesrc,
             string type
@@ -282,7 +283,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTexture", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_IMG_LoadTexture(
+        private static extern  IntPtr INTERNAL_IMG_LoadTexture(
             IntPtr renderer,
             byte* file
         );
@@ -293,7 +294,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="renderer">The renderer</param>
         /// <param name="file">The file</param>
         /// <returns>The handle</returns>
-        public static unsafe IntPtr IMG_LoadTexture(
+        public static  IntPtr IMG_LoadTexture(
             IntPtr renderer,
             string file
         )
@@ -340,7 +341,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="type">The type</param>
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTextureTyped_RW", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe IntPtr INTERNAL_IMG_LoadTextureTyped_RW(
+        private static extern  IntPtr INTERNAL_IMG_LoadTextureTyped_RW(
             IntPtr renderer,
             IntPtr src,
             int freesrc,
@@ -355,7 +356,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="freesrc">The freesrc</param>
         /// <param name="type">The type</param>
         /// <returns>The handle</returns>
-        public static unsafe IntPtr IMG_LoadTextureTyped_RW(
+        public static  IntPtr IMG_LoadTextureTyped_RW(
             IntPtr renderer,
             IntPtr src,
             int freesrc,
@@ -393,7 +394,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="file">The file</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SavePNG", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe int INTERNAL_IMG_SavePNG(
+        private static extern  int INTERNAL_IMG_SavePNG(
             IntPtr surface,
             byte* file
         );
@@ -404,7 +405,7 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="surface">The surface</param>
         /// <param name="file">The file</param>
         /// <returns>The result</returns>
-        public static unsafe int IMG_SavePNG(IntPtr surface, string file)
+        public static  int IMG_SavePNG(IntPtr surface, string file)
         {
             byte* utf8File = Sdl.Utf8EncodeHeap(file);
             int result = INTERNAL_IMG_SavePNG(
@@ -440,30 +441,30 @@ namespace Alis.Core.Graphic.SDL
         /// <param name="quality">The quality</param>
         /// <returns>The int</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_SaveJPG", CallingConvention = CallingConvention.Cdecl)]
-        private static extern unsafe int INTERNAL_IMG_SaveJPG(
+        private static extern  int INTERNAL_IMG_SaveJPG(
             IntPtr surface,
-            byte* file,
+            byte[] file,
             int quality
         );
-
+        
         /// <summary>
-        ///     Imgs the save jpg using the specified surface
+        /// Saves the image as a JPG using the specified surface.
         /// </summary>
-        /// <param name="surface">The surface</param>
-        /// <param name="file">The file</param>
-        /// <param name="quality">The quality</param>
-        /// <returns>The result</returns>
-        public static unsafe int IMG_SaveJPG(IntPtr surface, string file, int quality)
+        /// <param name="surface">The surface.</param>
+        /// <param name="file">The file path.</param>
+        /// <param name="quality">The image quality.</param>
+        /// <returns>The result.</returns>
+        public static int SaveJPG(IntPtr surface, string file, int quality)
         {
-            byte* utf8File = Sdl.Utf8EncodeHeap(file);
+            byte[] utf8Bytes = Encoding.UTF8.GetBytes(file);
             int result = INTERNAL_IMG_SaveJPG(
                 surface,
-                utf8File,
+                utf8Bytes,
                 quality
             );
-            Marshal.FreeHGlobal((IntPtr) utf8File);
             return result;
         }
+        
 
         /* surface refers to an SDL_Surface*, dst to an SDL_RWops* */
         /* THIS IS A PUBLIC RWops FUNCTION! */

@@ -35,36 +35,30 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui size callback data ptr
     /// </summary>
-    public unsafe struct ImGuiSizeCallbackDataPtr
+    public struct ImGuiSizeCallbackDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiSizeCallbackData* NativePtr { get; }
+        public ImGuiSizeCallbackData NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiSizeCallbackDataPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiSizeCallbackDataPtr(ImGuiSizeCallbackData* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiSizeCallbackDataPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiSizeCallbackDataPtr(IntPtr nativePtr) => NativePtr = (ImGuiSizeCallbackData*) nativePtr;
-
+        public ImGuiSizeCallbackDataPtr(ImGuiSizeCallbackData nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiSizeCallbackDataPtr(ImGuiSizeCallbackData* nativePtr) => new ImGuiSizeCallbackDataPtr(nativePtr);
+        public static implicit operator ImGuiSizeCallbackDataPtr(ImGuiSizeCallbackData nativePtr) => new ImGuiSizeCallbackDataPtr(nativePtr);
 
         /// <summary>
         /// </summary>
         /// <param name="wrappedPtr"></param>
         /// <returns></returns>
-        public static implicit operator ImGuiSizeCallbackData*(ImGuiSizeCallbackDataPtr wrappedPtr) => wrappedPtr.NativePtr;
+        public static implicit operator ImGuiSizeCallbackData(ImGuiSizeCallbackDataPtr wrappedPtr) => wrappedPtr.NativePtr;
 
         /// <summary>
         /// </summary>

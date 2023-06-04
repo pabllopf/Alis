@@ -32,7 +32,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui text filter
     /// </summary>
-    public unsafe struct ImGuiTextFilter
+    public struct ImGuiTextFilter
     {
         /// <summary>
         ///     The input buf

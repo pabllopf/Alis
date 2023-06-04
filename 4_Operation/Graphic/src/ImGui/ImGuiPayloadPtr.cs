@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui payload ptr
     /// </summary>
-    public unsafe struct ImGuiPayloadPtr
+    public struct ImGuiPayloadPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr

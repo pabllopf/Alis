@@ -39,13 +39,13 @@ namespace Alis.Core.Graphic.ImGui
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiOnceUponAFrame* NativePtr { get; }
+        public ImGuiOnceUponAFrame NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiOnceUponAFramePtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiOnceUponAFramePtr(ImGuiOnceUponAFrame* nativePtr) => NativePtr = nativePtr;
+        public ImGuiOnceUponAFramePtr(ImGuiOnceUponAFrame nativePtr) => NativePtr = nativePtr;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiOnceUponAFramePtr" /> class

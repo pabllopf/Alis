@@ -34,25 +34,19 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui storage pair ptr
     /// </summary>
-    public unsafe struct ImGuiStoragePairPtr
+    public struct ImGuiStoragePairPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiStoragePair* NativePtr { get; }
+        public ImGuiStoragePair NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiStoragePairPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiStoragePairPtr(ImGuiStoragePair* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiStoragePairPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiStoragePairPtr(IntPtr nativePtr) => NativePtr = (ImGuiStoragePair*) nativePtr;
-
+        public ImGuiStoragePairPtr(ImGuiStoragePair nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>

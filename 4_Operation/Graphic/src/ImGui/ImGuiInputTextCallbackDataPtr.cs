@@ -35,25 +35,19 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui input text callback data ptr
     /// </summary>
-    public unsafe struct ImGuiInputTextCallbackDataPtr
+    public struct ImGuiInputTextCallbackDataPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
         /// </summary>
-        public ImGuiInputTextCallbackData* NativePtr { get; }
+        public ImGuiInputTextCallbackData NativePtr { get; }
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ImGuiInputTextCallbackDataPtr" /> class
         /// </summary>
         /// <param name="nativePtr">The native ptr</param>
-        public ImGuiInputTextCallbackDataPtr(ImGuiInputTextCallbackData* nativePtr) => NativePtr = nativePtr;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ImGuiInputTextCallbackDataPtr" /> class
-        /// </summary>
-        /// <param name="nativePtr">The native ptr</param>
-        public ImGuiInputTextCallbackDataPtr(IntPtr nativePtr) => NativePtr = (ImGuiInputTextCallbackData*) nativePtr;
-
+        public ImGuiInputTextCallbackDataPtr(ImGuiInputTextCallbackData nativePtr) => NativePtr = nativePtr;
+        
         /// <summary>
         /// </summary>
         /// <param name="nativePtr"></param>

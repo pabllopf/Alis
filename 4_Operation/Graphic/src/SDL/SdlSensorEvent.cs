@@ -6,7 +6,7 @@ namespace Alis.Core.Graphic.SDL
     ///     The sdl sensorevent
     /// </summary>
     [StructLayout(LayoutKind.Sequential)]
-    public unsafe struct SdlSensorEvent
+    public struct SdlSensorEvent
     {
         /// <summary>
         ///     The type
@@ -26,6 +26,17 @@ namespace Alis.Core.Graphic.SDL
         /// <summary>
         ///     The data
         /// </summary>
-        public fixed float data[6];
+        public float[] data;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SdlSensorEvent"/> class
+        /// </summary>
+        public SdlSensorEvent()
+        {
+            type = SdlEventType.SdlFirstevent;
+            timestamp = 0;
+            which = 0;
+            data = new float[6];
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace Alis.Core.Graphic.ImGui
     /// <summary>
     ///     The im gui text filter ptr
     /// </summary>
-    public unsafe struct ImGuiTextFilterPtr
+    public struct ImGuiTextFilterPtr
     {
         /// <summary>
         ///     Gets the value of the native ptr
