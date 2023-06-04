@@ -205,7 +205,7 @@ namespace Alis.Core.Graphic.SDL
         /// <returns>The int ptr</returns>
         [DllImport(NativeLibName, EntryPoint = "IMG_Load", CallingConvention = CallingConvention.Cdecl)]
         private static extern  IntPtr INTERNAL_IMG_Load(
-            byte* file
+            byte[] file
         );
 
         /// <summary>
@@ -250,7 +250,7 @@ namespace Alis.Core.Graphic.SDL
         private static extern  IntPtr INTERNAL_IMG_LoadTyped_RW(
             IntPtr src,
             int freesrc,
-            byte* type
+            byte[] type
         );
 
         /// <summary>
@@ -285,7 +285,7 @@ namespace Alis.Core.Graphic.SDL
         [DllImport(NativeLibName, EntryPoint = "IMG_LoadTexture", CallingConvention = CallingConvention.Cdecl)]
         private static extern  IntPtr INTERNAL_IMG_LoadTexture(
             IntPtr renderer,
-            byte* file
+            byte[] file
         );
 
         /// <summary>
