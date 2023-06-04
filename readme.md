@@ -1,6 +1,5 @@
 [![](https://raw.githubusercontent.com/pabllopf/Alis/master/docs/resources/images/Alis_Banner_970x250.png)](https://pabllopf.github.io/Alis/index.html)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=coverage)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=pabllopf_Alis&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=pabllopf_Alis)
