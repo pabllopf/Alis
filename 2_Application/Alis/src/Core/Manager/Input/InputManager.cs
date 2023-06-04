@@ -44,22 +44,22 @@ namespace Alis.Core.Manager.Input
         /// <summary>
         ///     The axis
         /// </summary>
-        private List<Sdl.SdlGameControllerAxis> axis;
+        private List<SdlGameControllerAxis> axis;
 
         /// <summary>
         ///     The axis temp
         /// </summary>
-        private List<Sdl.SdlGameControllerAxis> axisTemp;
+        private List<SdlGameControllerAxis> axisTemp;
 
         /// <summary>
         ///     The buttons
         /// </summary>
-        private List<Sdl.SdlGameControllerButton> buttons;
+        private List<SdlGameControllerButton> buttons;
 
         /// <summary>
         ///     The buttons temp
         /// </summary>
-        private Dictionary<string, Sdl.SdlGameControllerButton> buttonsTemp;
+        private Dictionary<string, SdlGameControllerButton> buttonsTemp;
 
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Alis.Core.Manager.Input
         /// <summary>
         ///     The sdl event
         /// </summary>
-        private Sdl.SdlEvent sdlEvent;
+        private SdlEvent sdlEvent;
 
         /// <summary>
         ///     Temp list of keys
@@ -131,11 +131,11 @@ namespace Alis.Core.Manager.Input
             currentSdlNumJoysticks = Sdl.SDL_NumJoysticks();
 
 
-            buttons = new List<Sdl.SdlGameControllerButton>((Sdl.SdlGameControllerButton[]) Enum.GetValues(typeof(Sdl.SdlGameControllerButton)));
-            buttonsTemp = new Dictionary<string, Sdl.SdlGameControllerButton>();
+            buttons = new List<SdlGameControllerButton>((SdlGameControllerButton[]) Enum.GetValues(typeof(SdlGameControllerButton)));
+            buttonsTemp = new Dictionary<string, SdlGameControllerButton>();
 
-            axis = new List<Sdl.SdlGameControllerAxis>((Sdl.SdlGameControllerAxis[]) Enum.GetValues(typeof(Sdl.SdlGameControllerAxis)));
-            axisTemp = new List<Sdl.SdlGameControllerAxis>();
+            axis = new List<SdlGameControllerAxis>((SdlGameControllerAxis[]) Enum.GetValues(typeof(SdlGameControllerAxis)));
+            axisTemp = new List<SdlGameControllerAxis>();
 
             keys = new List<Key>((Key[]) Enum.GetValues(typeof(Key)));
             tempListOfKeys = new List<Key>();

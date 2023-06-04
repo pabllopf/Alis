@@ -31,6 +31,7 @@ using System;
 using System.Runtime.InteropServices;
 using Alis.Core.Aspect.Base.Dll;
 using Alis.Core.Graphic.Properties;
+using Alis.Core.Graphic.SDL;
 using static Alis.Core.Graphic.SDL.Sdl;
 using static Alis.Core.Graphic.OpenGL.Gl;
 

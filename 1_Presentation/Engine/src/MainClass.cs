@@ -71,22 +71,22 @@ namespace Alis.App.Engine
 
             while (!_quit)
             {
-                while (Sdl.SDL_PollEvent(out Sdl.SdlEvent e) != 0)
+                while (Sdl.SDL_PollEvent(out SdlEvent e) != 0)
                 {
                     _renderer.ProcessEvent(e);
                     switch (e.type)
                     {
-                        case Sdl.SdlEventType.SdlQuit:
+                        case SdlEventType.SdlQuit:
                         {
                             _quit = true;
                             break;
                         }
-                        case Sdl.SdlEventType.SdlKeydown:
+                        case SdlEventType.SdlKeydown:
                         {
                             switch (e.key.keysym.sym)
                             {
-                                case Sdl.SdlKeycode.SdlkEscape:
-                                case Sdl.SdlKeycode.SdlkQ:
+                                case SdlKeycode.SdlkEscape:
+                                case SdlKeycode.SdlkQ:
                                     _quit = true;
                                     break;
                             }
