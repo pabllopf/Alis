@@ -20,6 +20,6 @@ var searchData=
   ['queryproxyid_5525',['queryProxyId',['../d5/d52/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree_broad_phase.html#a74d85a14a7cdeef8887bc272faeca3bd',1,'Alis::Core::Physic::Collision::Broadphase::DynamicTreeBroadPhase']]],
   ['querystack_5526',['queryStack',['../d3/ded/class_alis_1_1_core_1_1_physic_1_1_collision_1_1_broadphase_1_1_dynamic_tree.html#a10d582e17b853913f0b26a2e68d6013f',1,'Alis::Core::Physic::Collision::Broadphase::DynamicTree']]],
   ['queue_5527',['queue',['../da/d93/class_alis_1_1_core_1_1_physic_1_1_shared_1_1_pool.html#a1288aa34e268240628ffd21830594f9c',1,'Alis::Core::Physic::Shared::Pool']]],
-  ['quit_5528',['quit',['../d7/de3/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_1_1_sdl_event.html#ab87a81c5bbd99c8dc17533beb944224d',1,'Alis::Core::Graphic::SDL::Sdl::SdlEvent']]],
+  ['quit_5528',['quit',['../d4/d49/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_event.html#a04e4368012f4e0de5bf1e9398ee73bbe',1,'Alis::Core::Graphic::SDL::SdlEvent']]],
   ['quote_5529',['Quote',['../d1/ddd/namespace_alis_1_1_core_1_1_graphic_1_1_s_f_m_l_1_1_windows.html#a0c482d122e248f6b9b1919319603dde3ac48e929b2b1eabba2ba036884433345e',1,'Alis::Core::Graphic::SFML::Windows']]]
 ];

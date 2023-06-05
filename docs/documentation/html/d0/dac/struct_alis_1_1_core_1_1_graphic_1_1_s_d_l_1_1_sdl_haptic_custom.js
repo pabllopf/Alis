@@ -1,7 +1,7 @@
 var struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_custom =
 [
     [ "type", "d0/dac/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_custom.html#a866d8f7f1d7ce92d6d4a04ebd519f1d8", null ],
-    [ "direction", "d0/dac/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_custom.html#a51d3565061d15d4720c1803a3514c305", null ],
+    [ "direction", "d0/dac/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_custom.html#ae0da421c9b77fbef6dd123f41269a97b", null ],
     [ "length", "d0/dac/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_custom.html#a40af9ba37ce769cf3bdddc907e035c85", null ],
     [ "delay", "d0/dac/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_custom.html#a3a071a337ce19443eb154cd96ebc564f", null ],
     [ "button", "d0/dac/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_haptic_custom.html#af6ca8dc17193f0fc9e4b087e1dfe3470", null ],

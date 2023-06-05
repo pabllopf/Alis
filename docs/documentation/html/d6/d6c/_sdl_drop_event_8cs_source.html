@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALIS: D:/a/Alis/Alis/4_Operation/Input/src/SDL2/SdlDropEvent.cs Source File</title>
+<title>ALIS: D:/a/Alis/Alis/4_Operation/Graphic/src/SDL/SdlDropEvent.cs Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -100,71 +100,42 @@ $(document).ready(function(){initNavTree('d6/d6c/_sdl_drop_event_8cs_source.html
 <div class="title">SdlDropEvent.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// --------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//  File:SdlDropEvent.cs</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//  Author:Pablo Perdomo Falcón</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//  Web:https://www.pabllopf.dev/</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//  Copyright (c) 2021 GNU General Public License v3.0</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//  This program is free software:you can redistribute it and/or modify</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//  it under the terms of the GNU General Public License as published by</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//  the Free Software Foundation, either version 3 of the License, or</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//  (at your option) any later version.</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//  This program is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//  but WITHOUT ANY WARRANTY without even the implied warranty of</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//  GNU General Public License for more details.</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//  You should have received a copy of the GNU General Public License</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//  along with this program.If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">using</span> System;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">using</span> System.Runtime.InteropServices;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html">Alis.Core.Input.SDL2</a></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    [StructLayout(LayoutKind.Sequential)]</div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html">   39</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html">SdlDropEvent</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a45591dc05f77dd79eb3d5450e57b002c">   44</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a8813a66d53cc29a2ad678d4b26afd8cf">SdlEventType</a> <a class="code" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a45591dc05f77dd79eb3d5450e57b002c">type</a>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a1290e670a9e91f57aab412e97d62ff3b">   49</a></span>&#160;        <span class="keyword">public</span> uint <a class="code" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a1290e670a9e91f57aab412e97d62ff3b">timestamp</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">/* char* filename, to be freed.</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">         * Access the variable EXACTLY ONCE like this:</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">         * string s = SDL.UTF8_ToManaged(evt.drop.file, true);</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">         */</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a6aa51e248d7d11b8e779acc50ebfd7a9">   58</a></span>&#160;        <span class="keyword">public</span> IntPtr <a class="code" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a6aa51e248d7d11b8e779acc50ebfd7a9">file</a>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a0942f2bea5ec90aa58167a8d805b2c6b">   63</a></span>&#160;        <span class="keyword">public</span> uint <a class="code" href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a0942f2bea5ec90aa58167a8d805b2c6b">windowID</a>;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">using</span> System;</div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> System.Runtime.InteropServices;</div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html">Alis.Core.Graphic.SDL</a></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    [StructLayout(LayoutKind.Sequential)]</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html">   10</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">struct </span><a class="code" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html">SdlDropEvent</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    {</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a5aefa82102f5bc279d0f4ae578ed097e">   15</a></span>&#160;        <span class="keyword">public</span> <a class="code" href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html#a49974dc3107efa64f276c40242931841">SdlEventType</a> <a class="code" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a5aefa82102f5bc279d0f4ae578ed097e">type</a>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a402e93e0d91ef1d567fb390636078b6f">   20</a></span>&#160;        <span class="keyword">public</span> uint <a class="code" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a402e93e0d91ef1d567fb390636078b6f">timestamp</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="comment">/* char* filename, to be freed.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">             * Access the variable EXACTLY ONCE like this:</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">             * string s = SDL.UTF8_ToManaged(evt.drop.file, true);</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">             */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#afb8c34ac9c7d75e46c5e3c730400bd0a">   29</a></span>&#160;        <span class="keyword">public</span> IntPtr <a class="code" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#afb8c34ac9c7d75e46c5e3c730400bd0a">file</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a869ab0537e86351eaf961b7f162e83f7">   34</a></span>&#160;        <span class="keyword">public</span> uint <a class="code" href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a869ab0537e86351eaf961b7f162e83f7">windowID</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="astruct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event_html_a6aa51e248d7d11b8e779acc50ebfd7a9"><div class="ttname"><a href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a6aa51e248d7d11b8e779acc50ebfd7a9">Alis.Core.Input.SDL2.SdlDropEvent.file</a></div><div class="ttdeci">IntPtr file</div><div class="ttdoc">The file</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00058">SdlDropEvent.cs:58</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_input_1_1_s_d_l2_html_a8813a66d53cc29a2ad678d4b26afd8cf"><div class="ttname"><a href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#a8813a66d53cc29a2ad678d4b26afd8cf">Alis.Core.Input.SDL2.SdlEventType</a></div><div class="ttdeci">SdlEventType</div><div class="ttdoc">The sdl eventtype enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6e/_sdl_event_type_8cs_source.html#l00035">SdlEventType.cs:36</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_input_1_1_s_d_l2_html"><div class="ttname"><a href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html">Alis.Core.Input.SDL2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d40/_img_init_flags_8cs_source.html#l00032">ImgInitFlags.cs:33</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event_html_a0942f2bea5ec90aa58167a8d805b2c6b"><div class="ttname"><a href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a0942f2bea5ec90aa58167a8d805b2c6b">Alis.Core.Input.SDL2.SdlDropEvent.windowID</a></div><div class="ttdeci">uint windowID</div><div class="ttdoc">The window id</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00063">SdlDropEvent.cs:63</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event_html_a1290e670a9e91f57aab412e97d62ff3b"><div class="ttname"><a href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a1290e670a9e91f57aab412e97d62ff3b">Alis.Core.Input.SDL2.SdlDropEvent.timestamp</a></div><div class="ttdeci">uint timestamp</div><div class="ttdoc">The timestamp</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00049">SdlDropEvent.cs:49</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event_html"><div class="ttname"><a href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html">Alis.Core.Input.SDL2.SdlDropEvent</a></div><div class="ttdoc">The sdl dropevent</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00039">SdlDropEvent.cs:40</a></div></div>
-<div class="ttc" id="astruct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event_html_a45591dc05f77dd79eb3d5450e57b002c"><div class="ttname"><a href="../../d4/d69/struct_alis_1_1_core_1_1_input_1_1_s_d_l2_1_1_sdl_drop_event.html#a45591dc05f77dd79eb3d5450e57b002c">Alis.Core.Input.SDL2.SdlDropEvent.type</a></div><div class="ttdeci">SdlEventType type</div><div class="ttdoc">The type</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00044">SdlDropEvent.cs:44</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event_html_a402e93e0d91ef1d567fb390636078b6f"><div class="ttname"><a href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a402e93e0d91ef1d567fb390636078b6f">Alis.Core.Graphic.SDL.SdlDropEvent.timestamp</a></div><div class="ttdeci">uint timestamp</div><div class="ttdoc">The timestamp</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00020">SdlDropEvent.cs:20</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event_html"><div class="ttname"><a href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html">Alis.Core.Graphic.SDL.SdlDropEvent</a></div><div class="ttdoc">The sdl dropevent</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00010">SdlDropEvent.cs:11</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event_html_a5aefa82102f5bc279d0f4ae578ed097e"><div class="ttname"><a href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a5aefa82102f5bc279d0f4ae578ed097e">Alis.Core.Graphic.SDL.SdlDropEvent.type</a></div><div class="ttdeci">SdlEventType type</div><div class="ttdoc">The type</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00015">SdlDropEvent.cs:15</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_html_a49974dc3107efa64f276c40242931841"><div class="ttname"><a href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html#a49974dc3107efa64f276c40242931841">Alis.Core.Graphic.SDL.SdlEventType</a></div><div class="ttdeci">SdlEventType</div><div class="ttdoc">The sdl eventtype enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6e/_sdl_event_type_8cs_source.html#l00035">SdlEventType.cs:36</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_html"><div class="ttname"><a href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html">Alis.Core.Graphic.SDL</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d2b/_internal_android_wminfo_8cs_source.html#l00033">InternalAndroidWminfo.cs:34</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event_html_afb8c34ac9c7d75e46c5e3c730400bd0a"><div class="ttname"><a href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#afb8c34ac9c7d75e46c5e3c730400bd0a">Alis.Core.Graphic.SDL.SdlDropEvent.file</a></div><div class="ttdeci">IntPtr file</div><div class="ttdoc">The file</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00029">SdlDropEvent.cs:29</a></div></div>
+<div class="ttc" id="astruct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event_html_a869ab0537e86351eaf961b7f162e83f7"><div class="ttname"><a href="../../dc/d4f/struct_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_drop_event.html#a869ab0537e86351eaf961b7f162e83f7">Alis.Core.Graphic.SDL.SdlDropEvent.windowID</a></div><div class="ttdeci">uint windowID</div><div class="ttdoc">The window id</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6c/_sdl_drop_event_8cs_source.html#l00034">SdlDropEvent.cs:34</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_238b0a13914001cbd06f0ed2d2149b50.html">Input</a></li><li class="navelem"><a class="el" href="../../dir_6a385d721ce73af84939698084bf5220.html">src</a></li><li class="navelem"><a class="el" href="../../dir_0d3a89007931887fbde208c2e682af83.html">SDL2</a></li><li class="navelem"><b>SdlDropEvent.cs</b></li>
+    <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_9f2e27e21277a7acf55f027c9293ece1.html">SDL</a></li><li class="navelem"><b>SdlDropEvent.cs</b></li>
     <li class="footer">
-      <a>Generated on | Thu May 25 2023 |</a>
+      <a>Generated on | Mon Jun 5 2023 |</a>
     </li>
   </ul>
 </div>

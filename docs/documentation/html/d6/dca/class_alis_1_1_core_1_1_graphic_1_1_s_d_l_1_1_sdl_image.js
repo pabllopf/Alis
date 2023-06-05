@@ -8,9 +8,9 @@ var class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image =
       [ "ImgInitWebp", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a23708aeaf6955417fec83b4ff1fefbeca15e81c3a030bd73d497cfa1fe43f9a73", null ]
     ] ],
     [ "SdlImage", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a37194aadf8e54d44eda0acc22cb23c89", null ],
-    [ "SDL_IMAGE_VERSION", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a8ebc13b16710ef296134ece845d420b7", null ],
+    [ "SDL_IMAGE_VERSION", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a5b1d8a63fda7596e1f8d8bbd14e25588", null ],
     [ "INTERNAL_IMG_Linked_Version", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#abbc5fdd482e7bc23943251ff6102f728", null ],
-    [ "IMG_Linked_Version", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#ad0993ee2e7242081d8b02a0595a3429b", null ],
+    [ "IMG_Linked_Version", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#ad886b38c1cda5eb2c37264171ffb0cd0", null ],
     [ "IMG_Init", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#ad3c92d7c53a5cad8fab3a46c6ad4978e", null ],
     [ "IMG_Quit", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a110bb3715bd60a3c31a0b567eec6e4e1", null ],
     [ "INTERNAL_IMG_Load", "d6/dca/class_alis_1_1_core_1_1_graphic_1_1_s_d_l_1_1_sdl_image.html#a8867300bd52d1eef083e94dbc22c538e", null ],

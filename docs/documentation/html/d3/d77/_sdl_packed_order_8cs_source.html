@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.20"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ALIS: D:/a/Alis/Alis/4_Operation/Input/src/SDL2/SdlPackedOrder.cs Source File</title>
+<title>ALIS: D:/a/Alis/Alis/4_Operation/Graphic/src/SDL/SdlPackedOrder.cs Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -100,69 +100,40 @@ $(document).ready(function(){initNavTree('d3/d77/_sdl_packed_order_8cs_source.ht
 <div class="title">SdlPackedOrder.cs</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// --------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//                               █▀▀█ ░█─── ▀█▀ ░█▀▀▀█</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//                              ░█▄▄█ ░█─── ░█─ ─▀▀▀▄▄</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//  File:SdlPackedOrder.cs</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//  Author:Pablo Perdomo Falcón</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//  Web:https://www.pabllopf.dev/</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//  Copyright (c) 2021 GNU General Public License v3.0</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//  This program is free software:you can redistribute it and/or modify</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//  it under the terms of the GNU General Public License as published by</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//  the Free Software Foundation, either version 3 of the License, or</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//  (at your option) any later version.</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//  This program is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//  but WITHOUT ANY WARRANTY without even the implied warranty of</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//  GNU General Public License for more details.</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//  You should have received a copy of the GNU General Public License</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">//  along with this program.If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// </span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  --------------------------------------------------------------------------</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html">Alis.Core.Input.SDL2</a></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#ae3fec22a82d0537ed956f3a9c41daf6c">   35</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#ae3fec22a82d0537ed956f3a9c41daf6c">SdlPackedOrder</a></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        SdlPackedorderNone,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        SdlPackedorderXrgb,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        SdlPackedorderRgbx,</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        SdlPackedorderArgb,</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        SdlPackedorderRgba,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        SdlPackedorderXbgr,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        SdlPackedorderBgrx,</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        SdlPackedorderAbgr,</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#ae3fec22a82d0537ed956f3a9c41daf6caf11e6e51f3f352579d5b2c705b8926d7">SdlPackedorderBgra</a></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html">Alis.Core.Graphic.SDL</a></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;{</div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html#a04bce0b08cbfb34b614ee513b37c17fb">    6</a></span>&#160;    <span class="keyword">public</span> <span class="keyword">enum</span> <a class="code" href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html#a04bce0b08cbfb34b614ee513b37c17fb">SdlPackedOrder</a></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        SdlPackedorderNone,</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        SdlPackedorderXrgb,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        SdlPackedorderRgbx,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        SdlPackedorderArgb,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        SdlPackedorderRgba,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        SdlPackedorderXbgr,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        SdlPackedorderBgrx,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        SdlPackedorderAbgr,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html#a04bce0b08cbfb34b614ee513b37c17fbaf11e6e51f3f352579d5b2c705b8926d7">SdlPackedorderBgra</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_input_1_1_s_d_l2_html_ae3fec22a82d0537ed956f3a9c41daf6c"><div class="ttname"><a href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#ae3fec22a82d0537ed956f3a9c41daf6c">Alis.Core.Input.SDL2.SdlPackedOrder</a></div><div class="ttdeci">SdlPackedOrder</div><div class="ttdoc">The sdl packedorder enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d77/_sdl_packed_order_8cs_source.html#l00035">SdlPackedOrder.cs:36</a></div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_input_1_1_s_d_l2_html_ae3fec22a82d0537ed956f3a9c41daf6caf11e6e51f3f352579d5b2c705b8926d7"><div class="ttname"><a href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html#ae3fec22a82d0537ed956f3a9c41daf6caf11e6e51f3f352579d5b2c705b8926d7">Alis.Core.Input.SDL2.SdlPackedOrder.SdlPackedorderNone</a></div><div class="ttdeci">@ SdlPackedorderNone</div><div class="ttdoc">The sdl packedorder none sdl packedorder</div></div>
-<div class="ttc" id="anamespace_alis_1_1_core_1_1_input_1_1_s_d_l2_html"><div class="ttname"><a href="../../db/df4/namespace_alis_1_1_core_1_1_input_1_1_s_d_l2.html">Alis.Core.Input.SDL2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d40/_img_init_flags_8cs_source.html#l00032">ImgInitFlags.cs:33</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_html_a04bce0b08cbfb34b614ee513b37c17fbaf11e6e51f3f352579d5b2c705b8926d7"><div class="ttname"><a href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html#a04bce0b08cbfb34b614ee513b37c17fbaf11e6e51f3f352579d5b2c705b8926d7">Alis.Core.Graphic.SDL.SdlPackedOrder.SdlPackedorderNone</a></div><div class="ttdeci">@ SdlPackedorderNone</div><div class="ttdoc">The sdl packedorder none sdl packedorder</div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_html_a04bce0b08cbfb34b614ee513b37c17fb"><div class="ttname"><a href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html#a04bce0b08cbfb34b614ee513b37c17fb">Alis.Core.Graphic.SDL.SdlPackedOrder</a></div><div class="ttdeci">SdlPackedOrder</div><div class="ttdoc">The sdl packedorder enum</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d77/_sdl_packed_order_8cs_source.html#l00006">SdlPackedOrder.cs:7</a></div></div>
+<div class="ttc" id="anamespace_alis_1_1_core_1_1_graphic_1_1_s_d_l_html"><div class="ttname"><a href="../../d7/d46/namespace_alis_1_1_core_1_1_graphic_1_1_s_d_l.html">Alis.Core.Graphic.SDL</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d2b/_internal_android_wminfo_8cs_source.html#l00033">InternalAndroidWminfo.cs:34</a></div></div>
 
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_238b0a13914001cbd06f0ed2d2149b50.html">Input</a></li><li class="navelem"><a class="el" href="../../dir_6a385d721ce73af84939698084bf5220.html">src</a></li><li class="navelem"><a class="el" href="../../dir_0d3a89007931887fbde208c2e682af83.html">SDL2</a></li><li class="navelem"><b>SdlPackedOrder.cs</b></li>
+    <li class="navelem"><a class="el" href="../../dir_8272ea2c9ef4a5a450abbc74ffafe4de.html">4_Operation</a></li><li class="navelem"><a class="el" href="../../dir_430bc0ab51a660a0cbdd8e26a7c3af11.html">Graphic</a></li><li class="navelem"><a class="el" href="../../dir_10daa31737c712bdd2ca762b4eaa2d4b.html">src</a></li><li class="navelem"><a class="el" href="../../dir_9f2e27e21277a7acf55f027c9293ece1.html">SDL</a></li><li class="navelem"><b>SdlPackedOrder.cs</b></li>
     <li class="footer">
-      <a>Generated on | Thu May 25 2023 |</a>
+      <a>Generated on | Mon Jun 5 2023 |</a>
     </li>
   </ul>
 </div>
