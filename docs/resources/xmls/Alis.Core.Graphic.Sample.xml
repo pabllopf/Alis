@@ -6,7 +6,7 @@
     <members>
         <member name="T:Alis.Core.Graphic.Sample.Program">
             <summary>
-                The program class
+            The program class
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program.Width">
@@ -17,11 +17,6 @@
         <member name="F:Alis.Core.Graphic.Sample.Program.Height">
             <summary>
                 The height
-            </summary>
-        </member>
-        <member name="F:Alis.Core.Graphic.Sample.Program.Title">
-            <summary>
-                The title
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.Sample.Program._red">
@@ -41,61 +36,14 @@
         </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.Main(System.String[])">
             <summary>
-                Main the args
+            Main the args
             </summary>
             <param name="args">The args</param>
         </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.Sdlinput">
+        <member name="M:Alis.Core.Graphic.Sample.Program.RenderColors">
             <summary>
-                Sdlinputs
+            Renders the colors
             </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.Sfmlinput">
-            <summary>
-                Sfmlinputs
-            </summary>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.WindowOnJoystickMoved(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickMoveEventArgs)">
-            <summary>
-                Windows the on joystick moved using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.WindowOnJoystickDisconnected(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickConnectEventArgs)">
-            <summary>
-                Windows the on joystick disconnected using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.WindowOnJoystickConnected(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickConnectEventArgs)">
-            <summary>
-                Windows the on joystick connected using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.OnJoystickButtonPressed(System.Object,Alis.Core.Graphic.SFML.Windows.JoystickButtonEventArgs)">
-            <summary>
-                Ons the joystick button pressed using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.OnKeyPressed(System.Object,Alis.Core.Graphic.SFML.Windows.KeyEventArgs)">
-            <summary>
-                Ons the key pressed using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
-        </member>
-        <member name="M:Alis.Core.Graphic.Sample.Program.OnMouseButtonPressed(System.Object,Alis.Core.Graphic.SFML.Windows.MouseButtonEventArgs)">
-            <summary>
-                Ons the mouse button pressed using the specified sender
-            </summary>
-            <param name="sender">The sender</param>
-            <param name="e">The </param>
         </member>
     </members>
 </doc>

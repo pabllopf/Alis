@@ -137,44 +137,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
                 throw new LoadingFailedException("image");
             }
         }
-
-        ////////////////////////////////////////////////////////////
-        /// <summary>
-        ///     Construct the image directly from an array of pixels
-        /// </summary>
-        /// <param name="pixels">2 dimensions array containing the pixels</param>
-        /// <exception cref="LoadingFailedException" />
-        ////////////////////////////////////////////////////////////
-        public Image(Color[,] pixels) :
-            base(IntPtr.Zero)
-        {
-            uint width = (uint) pixels.GetLength(0);
-            uint height = (uint) pixels.GetLength(1);
-
-            // Transpose the array (.Net gives dimensions in reverse order of what SFML expects)
-            Color[,] transposed = new Color[height, width];
-            for (int x = 0; x < width; ++x)
-            {
-                for (int y = 0; y < height; ++y)
-                {
-                    transposed[y, x] = pixels[x, y];
-                }
-            }
-
-            unsafe
-            {
-                fixed (Color* pixelsPtr = transposed)
-                {
-                    CPointer = sfImage_createFromPixels(width, height, (byte*) pixelsPtr);
-                }
-            }
-
-            if (CPointer == IntPtr.Zero)
-            {
-                throw new LoadingFailedException("image");
-            }
-        }
-
+        
         ////////////////////////////////////////////////////////////
         /// <summary>
         ///     Construct the image directly from an array of pixels
@@ -187,13 +150,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         public Image(uint width, uint height, byte[] pixels) :
             base(IntPtr.Zero)
         {
-            unsafe
-            {
-                fixed (byte* pixelsPtr = pixels)
-                {
-                    CPointer = sfImage_createFromPixels(width, height, pixelsPtr);
-                }
-            }
+            CPointer = sfImage_createFromPixels(width, height, pixels);
 
             if (CPointer == IntPtr.Zero)
             {
@@ -407,7 +364,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="pixels">The pixels</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern  IntPtr sfImage_createFromPixels(uint width, uint height, byte* pixels);
+        private static extern  IntPtr sfImage_createFromPixels(uint width, uint height, byte[] pixels);
 
         /// <summary>
         ///     Sfs the image create from file using the specified filename
