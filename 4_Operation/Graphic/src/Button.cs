@@ -5,7 +5,7 @@
 //                              ░█─░█ ░█▄▄█ ▄█▄ ░█▄▄▄█
 // 
 //  --------------------------------------------------------------------------
-//  File:SdlTextEditingEvent.cs
+//  File:Button.cs
 // 
 //  Author:Pablo Perdomo Falcón
 //  Web:https://www.pabllopf.dev/
@@ -27,57 +27,30 @@
 // 
 //  --------------------------------------------------------------------------
 
-using System.Runtime.InteropServices;
-
-namespace Alis.Core.Graphic.SDL
+namespace Alis.Core.Graphic
 {
     /// <summary>
-    ///     The sdl texteditingevent
+    /// The button class
     /// </summary>
-    [StructLayout(LayoutKind.Sequential)]
-    public struct SdlTextEditingEvent
+    public enum Button
     {
         /// <summary>
-        ///     The type
+        /// The  button
         /// </summary>
-        public SdlEventType type;
-
+        A,
         /// <summary>
-        ///     The timestamp
+        /// The  button
         /// </summary>
-        public uint timestamp;
-
+        B,
+        
         /// <summary>
-        ///     The window id
+        /// The  button
         /// </summary>
-        public uint windowID;
-
+        Y,
+        
         /// <summary>
-        ///     The sdl text event text size
+        /// The  button
         /// </summary>
-        public byte[] text;
-
-        /// <summary>
-        ///     The start
-        /// </summary>
-        public int start;
-
-        /// <summary>
-        ///     The length
-        /// </summary>
-        public int length;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SdlTextEditingEvent"/> class
-        /// </summary>
-        public SdlTextEditingEvent()
-        {
-            type = SdlEventType.SdlFirstevent;
-            timestamp = 0;
-            windowID = 0;
-            start = 0;
-            length = 0;
-            text = new byte[Sdl.SdlTexteditingeventTextSize];
-        }
+        X
     }
 }

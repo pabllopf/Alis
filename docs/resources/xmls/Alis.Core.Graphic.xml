@@ -4,6 +4,31 @@
         <name>Alis.Core.Graphic</name>
     </assembly>
     <members>
+        <member name="T:Alis.Core.Graphic.Button">
+            <summary>
+            The button class
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Button.A">
+            <summary>
+            The  button
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Button.B">
+            <summary>
+            The  button
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Button.Y">
+            <summary>
+            The  button
+            </summary>
+        </member>
+        <member name="F:Alis.Core.Graphic.Button.X">
+            <summary>
+            The  button
+            </summary>
+        </member>
         <member name="T:Alis.Core.Graphic.FrameBase">
             <summary>
                 The frame base class
