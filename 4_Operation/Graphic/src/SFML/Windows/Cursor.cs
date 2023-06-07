@@ -78,13 +78,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         public Cursor(byte[] pixels, Vector2U size, Vector2U hotspot)
             : base((IntPtr) 0)
         {
-            unsafe
-            {
-                fixed (byte* ptr = pixels)
-                {
-                    CPointer = sfCursor_createFromPixels((IntPtr) ptr, size, hotspot);
-                }
-            }
+            CPointer = sfCursor_createFromPixels(pixels, size, hotspot);
         }
 
         /// <summary>
@@ -222,7 +216,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="hotspot">The hotspot</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfCursor_createFromPixels(IntPtr pixels, Vector2U size, Vector2U hotspot);
+        private static extern IntPtr sfCursor_createFromPixels(byte[] pixels, Vector2U size, Vector2U hotspot);
 
         /// <summary>
         ///     Sfs the cursor destroy using the specified c pointer

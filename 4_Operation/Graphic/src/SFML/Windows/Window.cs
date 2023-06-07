@@ -86,13 +86,7 @@ namespace Alis.Core.Graphic.SFML.Windows
             // Copy the title to a null-terminated UTF-32 byte array
             byte[] titleAsUtf32 = Encoding.UTF32.GetBytes(title + '\0');
 
-            unsafe
-            {
-                fixed (byte* titlePtr = titleAsUtf32)
-                {
-                    CPointer = sfWindow_createUnicode(mode, (IntPtr) titlePtr, style, ref settings);
-                }
-            }
+            CPointer = sfWindow_createUnicode(mode, titleAsUtf32, style, ref settings);
         }
 
         ////////////////////////////////////////////////////////////
@@ -209,13 +203,7 @@ namespace Alis.Core.Graphic.SFML.Windows
             // Copy the title to a null-terminated UTF-32 byte array
             byte[] titleAsUtf32 = Encoding.UTF32.GetBytes(title + '\0');
 
-            unsafe
-            {
-                fixed (byte* titlePtr = titleAsUtf32)
-                {
-                    sfWindow_setUnicodeTitle(CPointer, (IntPtr) titlePtr);
-                }
-            }
+            sfWindow_setUnicodeTitle(CPointer, titleAsUtf32);
         }
 
         ////////////////////////////////////////////////////////////
@@ -228,13 +216,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         ////////////////////////////////////////////////////////////
         public virtual void SetIcon(uint width, uint height, byte[] pixels)
         {
-            unsafe
-            {
-                fixed (byte* pixelsPtr = pixels)
-                {
-                    sfWindow_setIcon(CPointer, width, height, pixelsPtr);
-                }
-            }
+            sfWindow_setIcon(CPointer, width, height, pixels);
         }
 
         ////////////////////////////////////////////////////////////
@@ -750,7 +732,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="params">The params</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfWindow_createUnicode(VideoMode mode, IntPtr title, Styles style,
+        private static extern IntPtr sfWindow_createUnicode(VideoMode mode, byte[] title, Styles style,
             ref ContextSettings @params);
 
         /// <summary>
@@ -863,7 +845,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="cPointer">The pointer</param>
         /// <param name="title">The title</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfWindow_setUnicodeTitle(IntPtr cPointer, IntPtr title);
+        private static extern void sfWindow_setUnicodeTitle(IntPtr cPointer, byte[] title);
 
         /// <summary>
         ///     Sfs the window set icon using the specified c pointer
@@ -873,7 +855,7 @@ namespace Alis.Core.Graphic.SFML.Windows
         /// <param name="height">The height</param>
         /// <param name="pixels">The pixels</param>
         [DllImport(Csfml.Window, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe void sfWindow_setIcon(IntPtr cPointer, uint width, uint height, byte* pixels);
+        private static extern  void sfWindow_setIcon(IntPtr cPointer, uint width, uint height, byte[] pixels);
 
         /// <summary>
         ///     Sfs the window set visible using the specified c pointer

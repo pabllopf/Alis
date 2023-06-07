@@ -192,13 +192,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         ////////////////////////////////////////////////////////////
         public bool Update(Vertex[] vertices, uint vertexCount, uint offset)
         {
-            unsafe
-            {
-                fixed (Vertex* verts = vertices)
-                {
-                    return sfVertexBuffer_update(CPointer, verts, vertexCount, offset);
-                }
-            }
+            return sfVertexBuffer_update(CPointer, vertices, vertexCount, offset);
         }
 
         ////////////////////////////////////////////////////////////
@@ -318,7 +312,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="offset">The offset</param>
         /// <returns>The bool</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern unsafe bool sfVertexBuffer_update(IntPtr cPointer, Vertex* vertices, uint vertexCount,
+        private static extern  bool sfVertexBuffer_update(IntPtr cPointer, Vertex[] vertices, uint vertexCount,
             uint offset);
 
         /// <summary>

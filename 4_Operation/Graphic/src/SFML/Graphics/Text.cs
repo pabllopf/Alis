@@ -183,24 +183,10 @@ namespace Alis.Core.Graphic.SFML.Graphics
             get
             {
                 // Get a pointer to the source string (UTF-32)
-                IntPtr source = sfText_getUnicodeString(CPointer);
-
-                // Find its length (find the terminating 0)
-                uint length = 0;
-                unsafe
-                {
-                    for (uint* ptr = (uint*) source.ToPointer(); *ptr != 0; ++ptr)
-                    {
-                        length++;
-                    }
-                }
-
-                // Copy it to a byte array
-                byte[] sourceBytes = new byte[length * 4];
-                Marshal.Copy(source, sourceBytes, 0, sourceBytes.Length);
-
+                byte[] source = sfText_getUnicodeString(CPointer);
+                
                 // Convert it to a C# string
-                return Encoding.UTF32.GetString(sourceBytes);
+                return Encoding.UTF32.GetString(source);
             }
 
             set
@@ -209,13 +195,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
                 byte[] utf32 = Encoding.UTF32.GetBytes(value + '\0');
 
                 // Pass it to the C API
-                unsafe
-                {
-                    fixed (byte* ptr = utf32)
-                    {
-                        sfText_setUnicodeString(CPointer, (IntPtr) ptr);
-                    }
-                }
+                sfText_setUnicodeString(CPointer, utf32);
             }
         }
 
@@ -502,7 +482,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <param name="text">The text</param>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern void sfText_setUnicodeString(IntPtr cPointer, IntPtr text);
+        private static extern void sfText_setUnicodeString(IntPtr cPointer, byte[] text);
 
         /// <summary>
         ///     Sfs the text set font using the specified c pointer
@@ -558,7 +538,7 @@ namespace Alis.Core.Graphic.SFML.Graphics
         /// <param name="cPointer">The pointer</param>
         /// <returns>The int ptr</returns>
         [DllImport(Csfml.Graphics, CallingConvention = CallingConvention.Cdecl), SuppressUnmanagedCodeSecurity]
-        private static extern IntPtr sfText_getUnicodeString(IntPtr cPointer);
+        private static extern byte[] sfText_getUnicodeString(IntPtr cPointer);
 
         /// <summary>
         ///     Sfs the text get character size using the specified c pointer
