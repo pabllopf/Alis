@@ -28,6 +28,8 @@
 //  --------------------------------------------------------------------------
 
 
+using System;
+using Alis.Core.Graphic.SDL;
 using Alis.Core.Graphic.SFML.Graphics;
 using Alis.Core.Graphic.SFML.Windows;
 
@@ -58,6 +60,65 @@ namespace Alis.Core.Graphic.Sample
         /// </summary>
         /// <param name="args">The args</param>
         private static void Main(string[] args)
+        {
+            SdlRender();
+        }
+
+        /// <summary>
+        /// Sdls the render
+        /// </summary>
+        public static void SdlRender()
+        {
+            // Initilizes SDL.
+            if (Sdl.SDL_Init(Sdl.SdlInitEverything) < 0)
+            {
+                Console.WriteLine($"There was an issue initializing SDL. {Sdl.SDL_GetError()}");
+            }
+
+            // Create a new window given a title, size, and passes it a flag indicating it should be shown.
+            IntPtr window = Sdl.SDL_CreateWindow(
+                "SDL .NET 6 Tutorial",
+                 Sdl.SdlWindowposUndefined, 
+                Sdl.SdlWindowposUndefined, 
+                Width, 
+                Height, 
+                Sdl.SdlWindowFlags.SdlWindowShown);
+
+            if (window == IntPtr.Zero)
+            {
+                Console.WriteLine($"There was an issue creating the window. {Sdl.SDL_GetError()}");
+            }
+
+            // Creates a new SDL hardware renderer using the default graphics device with VSYNC enabled.
+            var renderer = Sdl.SDL_CreateRenderer(
+                window,
+                -1,
+                Sdl.SdlRendererFlags.SdlRendererAccelerated |
+                Sdl.SdlRendererFlags.SdlRendererPresentvsync);
+
+            if (renderer == IntPtr.Zero)
+            {
+                Console.WriteLine($"There was an issue creating the renderer. {Sdl.SDL_GetError()}");
+            }
+            
+            // Sets the color that the screen will be cleared with.
+            Sdl.SDL_SetRenderDrawColor(renderer, 135, 206, 235, 255);
+
+            // Clears the current render surface.
+            Sdl.SDL_RenderClear(renderer);
+
+            // Switches out the currently presented render surface with the one we just did work on.
+            Sdl.SDL_RenderPresent(renderer);
+            
+            Sdl.SDL_DestroyRenderer(renderer);
+            Sdl.SDL_DestroyWindow(window);
+            Sdl.SDL_Quit(); 
+        }
+
+        /// <summary>
+        /// Sfmls the render
+        /// </summary>
+        public static void SfmlRender()
         {
             VideoMode mode = new VideoMode(Width, Height);
             RenderWindow window = new RenderWindow(mode, "Sample");

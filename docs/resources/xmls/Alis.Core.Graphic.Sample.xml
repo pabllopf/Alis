@@ -40,6 +40,16 @@
             </summary>
             <param name="args">The args</param>
         </member>
+        <member name="M:Alis.Core.Graphic.Sample.Program.SdlRender">
+            <summary>
+            Sdls the render
+            </summary>
+        </member>
+        <member name="M:Alis.Core.Graphic.Sample.Program.SfmlRender">
+            <summary>
+            Sfmls the render
+            </summary>
+        </member>
         <member name="M:Alis.Core.Graphic.Sample.Program.RenderColors">
             <summary>
             Renders the colors
