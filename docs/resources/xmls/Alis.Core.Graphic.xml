@@ -789,7 +789,7 @@
             <param name="str">The str</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.Utf8Encode(System.String,System.Byte*,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.Utf8Encode(System.String,System.Byte[],System.Int32)">
             <summary>
                 Utfs the 8 encode using the specified str
             </summary>
@@ -823,7 +823,7 @@
             <param name="d">The </param>
             <returns>The uint</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_malloc(System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_malloc(System.Int32)">
             <summary>
                 Sdls the malloc using the specified size
             </summary>
@@ -915,7 +915,7 @@
                 The sdlr wops close callback
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_RWFromFile(System.Byte*,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_RWFromFile(System.Byte[],System.Byte[])">
             <summary>
                 Internals the sdl rw from file using the specified file
             </summary>
@@ -1122,7 +1122,7 @@
             <param name="context">The context</param>
             <returns>The long</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LoadFile(System.Byte*,System.IntPtr@)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LoadFile(System.Byte[],System.IntPtr@)">
             <summary>
                 Internals the sdl load file using the specified file
             </summary>
@@ -1864,7 +1864,7 @@
                 Sdls the clear hints
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetHint(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetHint(System.Byte[])">
             <summary>
                 Internals the sdl get hint using the specified name
             </summary>
@@ -1878,7 +1878,7 @@
             <param name="name">The name</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetHint(System.Byte*,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetHint(System.Byte[],System.Byte[])">
             <summary>
                 Internals the sdl set hint using the specified name
             </summary>
@@ -1894,7 +1894,7 @@
             <param name="value">The value</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetHintWithPriority(System.Byte*,System.Byte*,Alis.Core.Graphic.SDL.SdlHintPriority)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetHintWithPriority(System.Byte[],System.Byte[],Alis.Core.Graphic.SDL.SdlHintPriority)">
             <summary>
                 Internals the sdl set hint with priority using the specified name
             </summary>
@@ -1912,7 +1912,7 @@
             <param name="priority">The priority</param>
             <returns>The sdl bool</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetHintBoolean(System.Byte*,Alis.Core.Graphic.SDL.SdlBool)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetHintBoolean(System.Byte[],Alis.Core.Graphic.SDL.SdlBool)">
             <summary>
                 Internals the sdl get hint boolean using the specified name
             </summary>
@@ -1945,7 +1945,7 @@
             </summary>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetError(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetError(System.Byte[])">
             <summary>
                 Internals the sdl set error using the specified fmt and arglist
             </summary>
@@ -1970,7 +1970,7 @@
                 The sdl logoutputfunction
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_Log(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_Log(System.Byte[])">
             <summary>
                 Internals the sdl log using the specified fmt and arglist
             </summary>
@@ -1982,7 +1982,7 @@
             </summary>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogVerbose(System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogVerbose(System.Int32,System.Byte[])">
             <summary>
                 Internals the sdl log verbose using the specified category
             </summary>
@@ -1996,7 +1996,7 @@
             <param name="category">The category</param>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogDebug(System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogDebug(System.Int32,System.Byte[])">
             <summary>
                 Internals the sdl log debug using the specified category
             </summary>
@@ -2010,7 +2010,7 @@
             <param name="category">The category</param>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogInfo(System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogInfo(System.Int32,System.Byte[])">
             <summary>
                 Internals the sdl log info using the specified category
             </summary>
@@ -2024,7 +2024,7 @@
             <param name="category">The category</param>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogWarn(System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogWarn(System.Int32,System.Byte[])">
             <summary>
                 Internals the sdl log warn using the specified category
             </summary>
@@ -2038,7 +2038,7 @@
             <param name="category">The category</param>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogError(System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogError(System.Int32,System.Byte[])">
             <summary>
                 Internals the sdl log error using the specified category
             </summary>
@@ -2052,7 +2052,7 @@
             <param name="category">The category</param>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogCritical(System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogCritical(System.Int32,System.Byte[])">
             <summary>
                 Internals the sdl log critical using the specified category
             </summary>
@@ -2066,7 +2066,7 @@
             <param name="category">The category</param>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogMessage(System.Int32,Alis.Core.Graphic.SDL.SdlLogPriority,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogMessage(System.Int32,Alis.Core.Graphic.SDL.SdlLogPriority,System.Byte[])">
             <summary>
                 Internals the sdl log message using the specified category
             </summary>
@@ -2082,7 +2082,7 @@
             <param name="priority">The priority</param>
             <param name="fmtAndArglist">The fmt and arglist</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogMessageV(System.Int32,Alis.Core.Graphic.SDL.SdlLogPriority,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_LogMessageV(System.Int32,Alis.Core.Graphic.SDL.SdlLogPriority,System.Byte[])">
             <summary>
                 Internals the sdl log message v using the specified category
             </summary>
@@ -2167,7 +2167,7 @@
             <param name="buttonid">The buttonid</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_ShowSimpleMessageBox(Alis.Core.Graphic.SDL.SdlMessageBoxFlags,System.Byte*,System.Byte*,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_ShowSimpleMessageBox(Alis.Core.Graphic.SDL.SdlMessageBoxFlags,System.Byte[],System.Byte[],System.IntPtr)">
             <summary>
                 Internals the sdl show simple message box using the specified flags
             </summary>
@@ -2708,7 +2708,7 @@
                 The sdl hittest
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_CreateWindow(System.Byte*,System.Int32,System.Int32,System.Int32,System.Int32,Alis.Core.Graphic.SDL.Sdl.SdlWindowFlags)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_CreateWindow(System.Byte[],System.Int32,System.Int32,System.Int32,System.Int32,Alis.Core.Graphic.SDL.Sdl.SdlWindowFlags)">
             <summary>
                 Internals the sdl create window using the specified title
             </summary>
@@ -2930,7 +2930,7 @@
             <param name="window">The window</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetWindowData(System.IntPtr,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetWindowData(System.IntPtr,System.Byte[])">
             <summary>
                 Internals the sdl get window data using the specified window
             </summary>
@@ -3103,7 +3103,7 @@
             </summary>
             <param name="context">The context</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GL_LoadLibrary(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GL_LoadLibrary(System.Byte[])">
             <summary>
                 Internals the sdl gl load library using the specified path
             </summary>
@@ -3117,7 +3117,7 @@
             <param name="path">The path</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_GetProcAddress(System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.SDL_GL_GetProcAddress(System.Byte[])">
             <summary>
                 Sdls the gl get proc address using the specified proc
             </summary>
@@ -3136,7 +3136,7 @@
                 Sdls the gl unload library
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GL_ExtensionSupported(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GL_ExtensionSupported(System.Byte[])">
             <summary>
                 Internals the sdl gl extension supported using the specified extension
             </summary>
@@ -3277,7 +3277,7 @@
             <param name="brightness">The brightness</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetWindowData(System.IntPtr,System.Byte*,System.IntPtr)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetWindowData(System.IntPtr,System.Byte[],System.IntPtr)">
             <summary>
                 Internals the sdl set window data using the specified window
             </summary>
@@ -3421,7 +3421,7 @@
             <param name="window">The window</param>
             <param name="onTop">The on top</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetWindowTitle(System.IntPtr,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetWindowTitle(System.IntPtr,System.Byte[])">
             <summary>
                 Internals the sdl set window title using the specified window
             </summary>
@@ -3457,7 +3457,7 @@
             <param name="numrects">The numrects</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_VideoInit(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_VideoInit(System.Byte[])">
             <summary>
                 Internals the sdl video init using the specified driver name
             </summary>
@@ -3654,7 +3654,7 @@
             <param name="alphaOperation">The alpha operation</param>
             <returns>The sdl blend mode</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_Vulkan_LoadLibrary(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_Vulkan_LoadLibrary(System.Byte[])">
             <summary>
                 Internals the sdl vulkan load library using the specified path
             </summary>
@@ -5891,7 +5891,7 @@
             </summary>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetClipboardText(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_SetClipboardText(System.Byte[])">
             <summary>
                 Internals the sdl set clipboard text using the specified text
             </summary>
@@ -6154,7 +6154,7 @@
             <param name="scancode">The scancode</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetScancodeFromName(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetScancodeFromName(System.Byte[])">
             <summary>
                 Internals the sdl get scancode from name using the specified name
             </summary>
@@ -6182,7 +6182,7 @@
             <param name="key">The key</param>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetKeyFromName(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetKeyFromName(System.Byte[])">
             <summary>
                 Internals the sdl get key from name using the specified name
             </summary>
@@ -6717,7 +6717,7 @@
             <param name="pszGuid">The psz guid</param>
             <param name="cbGuid">The cb guid</param>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_JoystickGetGUIDFromString(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_JoystickGetGUIDFromString(System.Byte[])">
             <summary>
                 Internals the sdl joystick get guid from string using the specified pch guid
             </summary>
@@ -6951,7 +6951,7 @@
             <param name="size">The size</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerAddMapping(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerAddMapping(System.Byte[])">
             <summary>
                 Internals the sdl game controller add mapping using the specified mapping string
             </summary>
@@ -7145,7 +7145,7 @@
                 Sdls the game controller update
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetAxisFromString(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetAxisFromString(System.Byte[])">
             <summary>
                 Internals the sdl game controller get axis from string using the specified pch string
             </summary>
@@ -7197,7 +7197,7 @@
             <param name="axis">The axis</param>
             <returns>The short</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetButtonFromString(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GameControllerGetButtonFromString(System.Byte[])">
             <summary>
                 Internals the sdl game controller get button from string using the specified pch string
             </summary>
@@ -8113,7 +8113,7 @@
                 The sdl audiocallback
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_AudioInit(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_AudioInit(System.Byte[])">
             <summary>
                 Internals the sdl audio init using the specified driver name
             </summary>
@@ -8305,7 +8305,7 @@
             <param name="allowedChanges">The allowed changes</param>
             <returns>The uint</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_OpenAudioDevice(System.Byte*,System.Int32,Alis.Core.Graphic.SDL.SdlAudioSpec@,Alis.Core.Graphic.SDL.SdlAudioSpec@,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_OpenAudioDevice(System.Byte[],System.Int32,Alis.Core.Graphic.SDL.SdlAudioSpec@,Alis.Core.Graphic.SDL.SdlAudioSpec@,System.Int32)">
             <summary>
                 Internals the sdl open audio device using the specified device
             </summary>
@@ -8627,7 +8627,7 @@
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_AndroidRequestPermission(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_AndroidRequestPermission(System.Byte[])">
             <summary>
                 Internals the sdl android request permission using the specified permission
             </summary>
@@ -8641,7 +8641,7 @@
             <param name="permission">The permission</param>
             <returns>The result</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_AndroidShowToast(System.Byte*,System.Int32,System.Int32,System.Int32,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_AndroidShowToast(System.Byte[],System.Int32,System.Int32,System.Int32,System.Int32)">
             <summary>
                 Internals the sdl android show toast using the specified message
             </summary>
@@ -8695,7 +8695,7 @@
             </summary>
             <returns>The string</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetPrefPath(System.Byte*,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_GetPrefPath(System.Byte[],System.Byte[])">
             <summary>
                 Internals the sdl get pref path using the specified org
             </summary>
@@ -8853,7 +8853,7 @@
             </summary>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_OpenURL(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.Sdl.INTERNAL_SDL_OpenURL(System.Byte[])">
             <summary>
                 Internals the sdl open url using the specified url
             </summary>
@@ -10887,7 +10887,7 @@
                 Imgs the quit
             </summary>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_Load(System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_Load(System.Byte[])">
             <summary>
                 Internals the img load using the specified file
             </summary>
@@ -10909,7 +10909,7 @@
             <param name="freesrc">The freesrc</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTyped_RW(System.IntPtr,System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTyped_RW(System.IntPtr,System.Int32,System.Byte[])">
             <summary>
                 Internals the img load typed rw using the specified src
             </summary>
@@ -10927,7 +10927,7 @@
             <param name="type">The type</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTexture(System.IntPtr,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTexture(System.IntPtr,System.Byte[])">
             <summary>
                 Internals the img load texture using the specified renderer
             </summary>
@@ -10952,7 +10952,7 @@
             <param name="freesrc">The freesrc</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTextureTyped_RW(System.IntPtr,System.IntPtr,System.Int32,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_LoadTextureTyped_RW(System.IntPtr,System.IntPtr,System.Int32,System.Byte[])">
             <summary>
                 Internals the img load texture typed rw using the specified renderer
             </summary>
@@ -10979,7 +10979,7 @@
             <param name="xpm">The xpm</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_SavePNG(System.IntPtr,System.Byte*)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_SavePNG(System.IntPtr,System.Byte[])">
             <summary>
                 Internals the img save png using the specified surface
             </summary>
@@ -11004,7 +11004,7 @@
             <param name="freedst">The freedst</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_SaveJPG(System.IntPtr,System.Byte*,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlImage.INTERNAL_IMG_SaveJPG(System.IntPtr,System.Byte[],System.Int32)">
             <summary>
                 Internals the img save jpg using the specified surface
             </summary>
@@ -15501,7 +15501,7 @@
             </summary>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_OpenFont(System.Byte*,System.Int32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_OpenFont(System.Byte[],System.Int32)">
             <summary>
                 Internals the ttf open font using the specified file
             </summary>
@@ -15526,7 +15526,7 @@
             <param name="ptsize">The ptsize</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_OpenFontIndex(System.Byte*,System.Int32,System.Int64)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_OpenFontIndex(System.Byte[],System.Int32,System.Int64)">
             <summary>
                 Internals the ttf open font index using the specified file
             </summary>
@@ -15740,7 +15740,7 @@
             <param name="h">The </param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_SizeUTF8(System.IntPtr,System.Byte*,System.Int32@,System.Int32@)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_SizeUTF8(System.IntPtr,System.Byte[],System.Int32@,System.Int32@)">
             <summary>
                 Internals the ttf size utf 8 using the specified font
             </summary>
@@ -15781,7 +15781,7 @@
             <param name="count">The count</param>
             <returns>The int</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_MeasureUTF8(System.IntPtr,System.Byte*,System.Int32,System.Int32@,System.Int32@)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_MeasureUTF8(System.IntPtr,System.Byte[],System.Int32,System.Int32@,System.Int32@)">
             <summary>
                 Internals the ttf measure utf 8 using the specified font
             </summary>
@@ -15823,7 +15823,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Solid(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Solid(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor)">
             <summary>
                 Internals the ttf render utf 8 solid using the specified font
             </summary>
@@ -15860,7 +15860,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Solid_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
             <summary>
                 Internals the ttf render utf 8 solid wrapped using the specified font
             </summary>
@@ -15918,7 +15918,7 @@
             <param name="bg">The bg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Shaded(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Shaded(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor)">
             <summary>
                 Internals the ttf render utf 8 shaded using the specified font
             </summary>
@@ -15959,7 +15959,7 @@
             <param name="wrapLength">The wrap length</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Shaded_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
             <summary>
                 Internals the ttf render utf 8 shaded wrapped using the specified font
             </summary>
@@ -16021,7 +16021,7 @@
             <param name="fg">The fg</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Blended(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Blended(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor)">
             <summary>
                 Internals the ttf render utf 8 blended using the specified font
             </summary>
@@ -16058,7 +16058,7 @@
             <param name="wrapped">The wrapped</param>
             <returns>The int ptr</returns>
         </member>
-        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.Byte*,Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
+        <member name="M:Alis.Core.Graphic.SDL.SdlTtf.INTERNAL_TTF_RenderUTF8_Blended_Wrapped(System.IntPtr,System.Byte[],Alis.Core.Graphic.SDL.SdlColor,System.UInt32)">
             <summary>
                 Internals the ttf render utf 8 blended wrapped using the specified font
             </summary>
