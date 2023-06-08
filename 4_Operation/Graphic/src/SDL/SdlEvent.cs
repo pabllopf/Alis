@@ -196,11 +196,11 @@ namespace Alis.Core.Graphic.SDL
         {
             get
             {
-                byte[] textBytes = new byte[Sdl.SdlTexteditingeventTextSize];
-                Marshal.Copy(paddingPtr, textBytes, 0, Sdl.SdlTexteditingeventTextSize);
+                byte[] textBytes = new byte[56];
+                Marshal.Copy(paddingPtr, textBytes, 0, 56);
                 return textBytes;
             }
-            set => Marshal.Copy(value, 0, paddingPtr, Sdl.SdlTexteditingeventTextSize);
+            set => Marshal.Copy(value, 0, paddingPtr, 56);
         }
     }
 }

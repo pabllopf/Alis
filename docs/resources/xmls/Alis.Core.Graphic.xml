@@ -14941,9 +14941,14 @@
                 The which
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.data">
+        <member name="F:Alis.Core.Graphic.SDL.SdlSensorEvent.dataPtr">
             <summary>
                 The data
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.SDL.SdlSensorEvent.data">
+            <summary>
+            Gets or sets the value of the text
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlSensorType">
