@@ -108,8 +108,8 @@ namespace Alis.Core.Graphic.ImGui
         /// </summary>
         public IntPtr UserCallbackData
         {
-            get => (IntPtr) NativePtr->UserCallbackData;
-            set => NativePtr->UserCallbackData = (void*) value;
+            get => NativePtr->UserCallbackData;
+            set => NativePtr->UserCallbackData = value;
         }
 
         /// <summary>

@@ -232,7 +232,7 @@
         </member>
         <member name="T:Alis.Core.Graphic.ImGui.ImDrawCmd">
             <summary>
-                The im draw cmd
+            The im draw cmd
             </summary>
         </member>
         <member name="F:Alis.Core.Graphic.ImGui.ImDrawCmd.ClipRect">
