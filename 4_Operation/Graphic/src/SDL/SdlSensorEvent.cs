@@ -40,7 +40,7 @@ namespace Alis.Core.Graphic.SDL
                 Buffer.BlockCopy(data, 0, dataBytes, 0, 6);
                 return dataBytes;
             }
-            set => Marshal.Copy(value, 0, dataPtr, Sdl.SdlTexteditingeventTextSize);
+            set => Marshal.Copy(value, 0, dataPtr, 6);
         }
     }
 }

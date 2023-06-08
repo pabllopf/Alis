@@ -13646,7 +13646,7 @@
                 The num texture formats
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.texture_formats">
+        <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.textureFormatsPtr">
             <summary>
                 The texture formats
             </summary>
@@ -13659,6 +13659,11 @@
         <member name="F:Alis.Core.Graphic.SDL.SdlRendererInfo.max_texture_height">
             <summary>
                 The max texture height
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.SDL.SdlRendererInfo.texture_formats">
+            <summary>
+            Gets or sets the value of the text
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlRWops">
@@ -15286,9 +15291,14 @@
                 The window id
             </summary>
         </member>
-        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.text">
+        <member name="F:Alis.Core.Graphic.SDL.SdlTextInputEvent.textPtr">
             <summary>
-                The sdl text text size
+                The sdl texteditingevent text size
+            </summary>
+        </member>
+        <member name="P:Alis.Core.Graphic.SDL.SdlTextInputEvent.text">
+            <summary>
+            Gets or sets the value of the text
             </summary>
         </member>
         <member name="T:Alis.Core.Graphic.SDL.SdlTouchDeviceType">

@@ -25,8 +25,22 @@ namespace Alis.Core.Graphic.SDL
         public uint windowID;
 
         /// <summary>
-        ///     The sdl text text size
+        ///     The sdl texteditingevent text size
         /// </summary>
-        public IntPtr text;
+        private IntPtr textPtr;
+        
+        /// <summary>
+        /// Gets or sets the value of the text
+        /// </summary>
+        public byte[] text
+        {
+            get
+            {
+                byte[] textBytes = new byte[Sdl.SdlTexteditingeventTextSize];
+                Marshal.Copy(textPtr, textBytes, 0, Sdl.SdlTexteditingeventTextSize);
+                return textBytes;
+            }
+            set => Marshal.Copy(value, 0, textPtr, Sdl.SdlTexteditingeventTextSize);
+        }
     }
 }
