@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Profiling.Sample
+namespace Alis.Core.Profile.Sample
 {
     /// <summary>
     ///     The program class

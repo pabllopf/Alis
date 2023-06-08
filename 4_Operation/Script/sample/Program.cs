@@ -29,7 +29,7 @@
 
 using System;
 
-namespace Alis.Core.Scripting.Sample
+namespace Alis.Core.Script.Sample
 {
     /// <summary>
     ///     The program class
